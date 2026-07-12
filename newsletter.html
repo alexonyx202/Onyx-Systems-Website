@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Computer Brief — July 12, 2026 | Onyx Systems</title>
+<meta name="description" content="Onyx Systems Daily Computer Brief for Sunday, July 12, 2026: Patch Chrome now (two zero-days exploited), today in tech, and a daily tip.">
+<style>
+  :root{
+    --onyx:#16161A; --ink:#0e0e12;
+    --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#9A5326; --cream:#F7F4EF; --paper:#FBF8F2;
+    --paper-2:#F1ECE2; --muted:#6B635A; --line:#e4ddd0;
+    --brand-font:'SerpentineBold','SerpentineStandIn','Oswald',"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.65;-webkit-font-smoothing:antialiased}
+  header.bar{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar .wrap{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 20px}
+  .bar a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream)}
+  .bar .brand img{height:30px}
+  .bar .brand .word{font-family:var(--brand-font);font-weight:700;font-size:17px;letter-spacing:.04em}
+  .bar a.back{color:var(--copper-2);font-weight:600;text-decoration:none;font-size:14px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  .doc{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(14,14,18,.10);margin:28px auto 60px;overflow:hidden}
+  .doc .masthead{background:var(--onyx);color:var(--cream);text-align:center;padding:34px 24px 28px}
+  .doc .masthead img{max-width:280px;width:100%;height:auto;margin:0 auto 14px;display:block}
+  .doc .masthead .kicker{color:var(--copper-2);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
+  .doc .masthead h1{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(26px,5vw,38px);margin-top:6px;line-height:1.1}
+  .doc .masthead .date{color:#cfc9c0;margin-top:8px;font-size:14px}
+  .doc .body{padding:30px 34px 38px}
+  .doc .body > p{margin-bottom:14px}
+  .section{margin:30px 0;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+  .section.alert{border-color:#f3c9c2;background:#fdf3f1}
+  .section.tip{border-color:#e3dcc9;background:#fbf6ec}
+  .section h2{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:22px;color:var(--onyx);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .section.alert h2{color:#b3261e}
+  .section ul{margin:0;padding-left:20px}
+  .section li{margin-bottom:12px}
+  .section li .src{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  .section .tag{display:inline-block;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+  .section.alert .tag{background:#b3261e}
+  .section.tip .tag{background:var(--copper-deep)}
+  .comic{text-align:center;margin:30px 0}
+  .comic img{max-width:340px;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+  .comic .cap{font-style:italic;color:var(--muted);margin-top:10px;font-size:14px}
+  .comic .by{color:var(--muted);font-size:12px}
+  .signoff{border-top:1px solid var(--line);margin-top:30px;padding-top:22px;text-align:center}
+  .signoff p{color:var(--muted);font-size:15px}
+  .signoff .name{font-weight:700;color:var(--onyx);font-size:16px}
+  .bizcard{text-align:center;margin-top:24px}
+  .bizcard img{max-width:340px;width:100%;height:auto;border-radius:12px}
+  .inline-tel{color:var(--copper-deep);font-weight:700;text-decoration:none;border-bottom:2px solid var(--copper)}
+  .btn-cta{display:inline-block;background:var(--copper);color:#fff;font-weight:700;font-size:15px;padding:11px 18px;border-radius:999px;text-decoration:none;box-shadow:0 8px 22px rgba(194,112,61,.35)}
+  .btn-cta:hover{background:var(--copper-deep);color:#fff}
+  .btn-cta.ghost{background:transparent;border:2px solid var(--copper);color:var(--copper-deep)}
+  .btn-cta.ghost:hover{background:var(--copper);color:#fff}
+  .proof-badge{display:inline-block;margin-top:14px;background:rgba(255,255,255,.08);color:var(--cream);font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px}
+  footer.site a{color:var(--copper-2)}
+  footer.site{background:var(--ink);color:#cfc9c0;padding:34px 0 24px;margin-top:20px;text-align:center;font-size:14px}
+  footer a{color:var(--copper-2);text-decoration:none}
+  @media(max-width:560px){.doc .body{padding:22px 18px 30px}.section{padding:18px 16px}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
+      <span class="word">ONYX SYSTEMS</span>
+    </a>
+    <a class="back" href="index.html">← Back to site</a>
+  </div>
+</header>
+
+<article class="wrap doc">
+  <div class="masthead">
+    <img src="assets/img/brand/header.png" alt="Onyx Systems">
+    <div class="kicker">Serving Lake City &amp; North Florida</div>
+    <h1>Your Daily Computer Brief</h1>
+    <div class="date">Sunday, July 12, 2026</div>
+    <div class="proof-badge">★ 4.9/5 from 65+ Lake City locals</div>
+  </div>
+
+  <div class="body">
+    <div class="section alert">
+      <span class="tag">🔴 Alert</span>
+      <h2>Patch Chrome Now: Two Zero-Days Are Live</h2>
+      <p>Google pushed an emergency Chrome update on July 11, 2026 to fix two zero-day flaws hackers are already exploiting in real attacks (CVE-2026-3909 in Chrome's Skia graphics engine and CVE-2026-3910 in the V8 JavaScript engine). You don't have to click anything — just loading a malicious webpage can hand over your machine. Open Chrome → Settings → About Chrome and let it update. Using Edge or Brave? Same engine — update those too.</p>
+      <p class="src">Source: Google Security Advisory, July 11, 2026</p>
+    </div>
+
+    <div class="section">
+      <span class="tag">📰 Today in Tech</span>
+      <h2>Today in Tech</h2>
+      <ul>
+        <li>AMD confirmed its first Zen 6 chip — 6th-Gen EPYC "Venice" — debuts July 22–23 at its Advancing AI event in San Francisco, with Ryzen desktop CPUs to follow.<span class="src">Source: VideoCardz, July 11, 2026</span></li>
+        <li>Ransomware crew DragonForce added Florida-based The Schuett Companies to its leak site on July 10–11, the latest manufacturing-sector hit tracked by Ransomware.live.<span class="src">Source: Ransomware.live, July 11, 2026</span></li>
+        <li>Google DeepMind's Gemini 3.5 Pro is slated for general availability on July 17, per a launch plan leaked July 10 and reported July 12.<span class="src">Source: buildfastwithai, July 12, 2026</span></li>
+      </ul>
+    </div>
+
+    <div class="section tip">
+      <span class="tag">💡 Daily Tip</span>
+      <h2>Give Your Browser Extensions a Cleanup</h2>
+      <p>Most browser hijacks ride in through extensions you forgot you installed. Open Chrome → Extensions → Manage Extensions and remove anything you don't recognize or no longer use. Stick to tools from known developers — a free "PDF converter" can quietly siphon your saved passwords. Takes about two minutes, twice a year.</p>
+    </div>
+
+    <div class="comic">
+      <img src="assets/img/news/2026-07-12-farside.jpg" alt="The Far Side comic for July 12, 2026">
+      <div class="cap">"Crimony! Millions of people in this city, and look who I rear-end."</div>
+      <div class="by">— Gary Larson, The Far Side®</div>
+    </div>
+
+    <div class="signoff">
+      <p>Stay safe out there — and if your browser's been acting weird lately, <a class="inline-tel" href="tel:+13867557772">call John</a> and we'll sort it out.</p>
+      <p class="name">— John @ ONYX SYSTEMS ✌️</p>
+      <p style="margin-top:14px"><a class="btn-cta" href="tel:+13867557772">📞 Call (386) 755-7772</a> <a class="btn-cta ghost" href="index.html#reviews">★ 65+ 5-star reviews</a></p>
+    </div>
+
+    <div class="bizcard">
+      <img src="assets/img/brand/business-card.png" alt="Onyx Systems business card">
+    </div>
+  </div>
+</article>
+
+<footer class="site">
+  <div><strong>ONYX SYSTEMS</strong> · 757 SW State Rd 247 Ste 108, Lake City, FL 32025 · <a href="tel:+13867557772">(386) 755-7772</a></div>
+  <div style="margin-top:8px"><a href="index.html">onyxpc.us</a> · Your hometown computer repair experts</div>
+</footer>
+</body>
+</html>

@@ -66,16 +66,18 @@
   .btn-ghost:hover{background:var(--copper);color:#fff}
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
 
-  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 6px 24px rgba(0,0,0,.28)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
   .brand{display:flex;align-items:center;gap:12px;background:#F7F4EF;padding:7px 16px 7px 14px;border-radius:12px}
   .brand img.logo-mark{height:34px;width:auto}
   .brand .word{font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.04em}
   .brand .word b{color:var(--copper-2)}
-  .nav-links{display:flex;align-items:center;gap:18px}
-  .nav-links a{color:#cfc9c0;font-weight:500;font-size:15px;transition:.2s}
-  .nav-links a:hover{color:var(--copper-2)}
-  .nav-phone{background:var(--copper);color:#fff!important;padding:9px 16px;border-radius:999px;font-weight:700}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{color:#e8e2d8;font-weight:700;font-size:16px;padding:9px 14px;border-radius:999px;transition:.2s;position:relative}
+  .nav-links a:hover{color:var(--copper-2);background:rgba(255,255,255,.06)}
+  .nav-links a.active{color:var(--ink);background:var(--copper-2)}
+  .nav-links a.active:hover{color:var(--ink)}
+  .nav-phone{background:var(--copper-deep);color:#fff!important;padding:9px 16px;border-radius:999px;font-weight:800;font-size:15px;box-shadow:0 6px 18px rgba(154,83,38,.4)}
   .nav-phone:hover{background:var(--copper-2);color:var(--ink)!important}
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
   .nav-toggle span{width:26px;height:3px;background:var(--cream);border-radius:2px}
@@ -164,15 +166,17 @@
   .news{padding:56px 0;background:var(--paper-2)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
-  .tab.active{background:var(--copper);color:#fff;border-color:var(--copper)}
+  .tab.active{background:var(--copper-deep);color:#fff;border-color:var(--copper-deep)}
   .news-grid{display:block}
-  .brief-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:520px}
+  .brief-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:640px;transition:.2s;text-decoration:none}
   .brief-card .iv-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--paper)}
-  .brief-card .iv-head .f-tag{display:inline-block;background:var(--copper);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.04em}
+  .brief-card .iv-head .f-tag{display:inline-block;background:var(--copper-deep);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.04em}
   .brief-card .iv-head h3{font-size:17px;color:var(--onyx);margin:0;line-height:1.25}
-  .brief-link{display:block;cursor:pointer}
-  .brief-card .brief-link img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:top}
-  .brief-foot{padding:12px 18px;color:var(--muted);font-size:13px}
+  .brief-cta-card:hover{transform:translateY(-3px);border-color:var(--copper);box-shadow:0 22px 56px rgba(14,14,18,.22)}
+  .brief-cover{display:block;width:100%;height:auto}
+  .brief-foot{padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+  .brief-foot .read-btn{display:inline-block;background:var(--copper-deep);color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;white-space:nowrap}
+  .brief-cta-card:hover .read-btn{background:var(--copper-2);color:var(--ink)}
   .games-sec{padding:56px 0;background:#fff}
   .game-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
   .game-frame{width:100%;aspect-ratio:960/760;border:0;border-radius:12px;background:#05080a;display:block}
@@ -241,7 +245,9 @@
   .mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--copper);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:17px}
 
   @media(max-width:860px){
-    .nav-links{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--onyx);padding:20px;gap:16px;transform:translateY(-130%);transition:.3s;align-items:flex-start}
+    .nav-links{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--onyx);padding:20px;gap:10px;transform:translateY(-130%);transition:.3s;align-items:stretch}
+    .nav-links a{padding:14px 16px;font-size:17px}
+    .nav-links a.active{background:var(--copper-2)}
     .nav-links.open{transform:translateY(0)}
     .nav-toggle{display:flex}
     .locator .wrap,.news-grid{grid-template-columns:1fr}
@@ -259,8 +265,9 @@
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="Onyx Systems home">
       <img class="logo-mark" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
+      <span class="word">ONYX <b>SYSTEMS</b></span>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="nav-links">
       <a href="#hub">Sections</a>
       <a href="#engage">Fun &amp; Tools</a>
@@ -360,21 +367,22 @@
       <p>Real, useful stuff — the daily tech brief we post here, plus tech news and hands-on tips. Fresh every morning.</p>
       <p class="legend"><span class="dot news"></span> News — what's happening &amp; why it matters &nbsp;·&nbsp; <span class="dot tip"></span> Tip — something you can do today</p>
     </div>
-    <div class="tabs reveal">
-      <button class="tab active" data-tab="newstips">🛠️ Tech News &amp; Tips</button>
-      <button class="tab" data-tab="brief">📰 Daily Brief</button>
+    <div class="tabs reveal" role="tablist" aria-label="Brief and news">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-newstips" data-tab="newstips">🛠️ Tech News &amp; Tips</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-brief" data-tab="brief">📰 Daily Brief</button>
     </div>
     <div id="tab-newstips" class="news-grid">
       <div id="newsTipsGrid"></div>
     </div>
     <div id="tab-brief" class="news-grid" style="display:none">
-      <div class="brief-card">
-        <div class="iv-head"><span class="f-tag">★ Daily Computer Brief</span><h3 id="issueTitle">Latest issue</h3></div>
-        <a class="brief-link" id="briefLink" href="#" target="_blank" rel="noopener">
-          <img id="issueImg" src="assets/img/news/2026-07-11-composite.jpg" alt="Daily Computer Brief">
-        </a>
-        <div class="brief-foot">Your real daily brief — scams, fixes, and tips. Tap to open the full issue.</div>
-      </div>
+      <a class="brief-card brief-cta-card" id="briefLink" href="newsletter.html" target="_blank" rel="noopener">
+        <div class="iv-head"><span class="f-tag">★ Daily Computer Brief</span><h3 id="issueTitle">Today's issue — July 12, 2026</h3></div>
+        <img id="issueImg" class="brief-cover" src="assets/img/news/2026-07-12-composite.png" alt="Daily Computer Brief — July 12, 2026">
+        <div class="brief-foot">
+          <span class="read-btn">📖 Read the full brief →</span>
+          <span class="muted">Scams, fixes, and tips — one page, no scrolling marathons.</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -481,7 +489,33 @@
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
   els.forEach(function(e){io.observe(e);});})();
-document.getElementById('nav-toggle').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open');});
+document.getElementById('nav-toggle').addEventListener('click',function(){var open=document.getElementById('nav-links').classList.toggle('open');this.setAttribute('aria-expanded',open?'true':'false');});
+// Close mobile menu when a link is tapped
+document.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-toggle').setAttribute('aria-expanded','false');});});
+// Scroll-spy: highlight the nav link for the section currently in view
+(function(){
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('#nav-links a'));
+  var map={};
+  navLinks.forEach(function(a){
+    var id=a.getAttribute('href');
+    if(id && id.charAt(0)==='#'){var sec=document.getElementById(id.slice(1));if(sec)map[id.slice(1)]=a;}
+  });
+  var ids=Object.keys(map);
+  if(!ids.length)return;
+  var ticking=false;
+  var spy=function(){
+    ticking=false;
+    var pos=window.scrollY+window.innerHeight*0.4, current=null;
+    // only mark active once we're actually into a section (not the hero)
+    ids.forEach(function(id){var sec=document.getElementById(id);if(sec && sec.offsetTop<=pos)current=id;});
+    navLinks.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
+    if(current && map[current]){map[current].classList.add('active');map[current].setAttribute('aria-current','true');}
+  };
+  var onScroll=function(){if(!ticking){ticking=true;requestAnimationFrame(spy);}};
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  spy();
+})();
 
 /* ---------- Section content ---------- */
 var SECTIONS={
@@ -640,17 +674,9 @@ var FEED_FALLBACK={
     {type:'tip',headline:'Don\'t Toss That Old Laptop',tip:'A ~$30 SSD turns a 2015–2018 laptop from unusable to snappy. Boot drops from 3 min to 15 sec.',tags:['#SSDUpgrade']}]
 };
 function renderAll(d){
-  // DAILY BRIEF — compact card, latest composite; tap opens full issue
-  var news=(d.news||[]).slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
-  var img=document.getElementById('issueImg');
-  var titleEl=document.getElementById('issueTitle');
+  // DAILY BRIEF — static composite cover (07-12) links to the full readable newsletter page
   var link=document.getElementById('briefLink');
-  if(news.length){
-    var latest=news[0];
-    if(img)img.src=latest.image;
-    if(titleEl)titleEl.textContent=latest.title||('Daily Brief · '+fmtDate(latest.date));
-    if(link)link.href=latest.image;
-  }
+  if(link){link.href='newsletter.html';link.target='_blank';link.rel='noopener';}
   // TECH NEWS & TIPS — ONE consolidated feed, tagged by type so news ≠ tips
   var posts=(d.posts||[]).slice().sort(function(a,b){
     var an=(a.type==='news')?-1:1, bn=(b.type==='news')?-1:1;
@@ -698,8 +724,8 @@ function renderAll(d){
 })();
 /* ---------- TABS ---------- */
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
-  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
-  t.classList.add('active');
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
+  t.classList.add('active');t.setAttribute('aria-selected','true');
   var which=t.dataset.tab;
   document.getElementById('tab-newstips').style.display=which==='newstips'?'block':'none';
   document.getElementById('tab-brief').style.display=which==='brief'?'block':'none';
