@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onyx Systems | Computer Repair &amp; IT Support in Lake City, FL</title>
-<meta name="description" content="Friendly, honest computer repair and IT support in Lake City, FL. Windows, Mac & Linux. Locally owned since 1997. Call (386) 755-7772 — on-site visits after 5 PM.">
+<meta name="description" content="Friendly, honest computer repair and IT support in Lake City, FL. Windows, Mac & Linux. Daily tech tips, real reviews, and a free PC check. Locally owned since 1997. Call (386) 755-7772.">
 <meta property="og:title" content="Onyx Systems | Computer Repair &amp; IT Support in Lake City, FL">
-<meta property="og:description" content="Local computer repair, virus removal, data recovery & on-site IT. Windows, Mac & Linux. Serving North Florida since 1997.">
+<meta property="og:description" content="Local computer repair, virus removal, data recovery & on-site IT. Windows, Mac & Linux. Daily tips, real reviews, free PC check. Serving North Florida since 1997.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://onyxpc.us/assets/img/brand/header.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -50,9 +50,7 @@
   .btn-ghost:hover{background:var(--copper);color:#fff}
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper)}
 
-  /* HEADER */
-  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.92);
-    backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img.logo-mark{height:42px;width:42px}
@@ -66,26 +64,21 @@
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
   .nav-toggle span{width:26px;height:3px;background:var(--cream);border-radius:2px}
 
-  /* HERO with logo focal */
-  .hero{background:radial-gradient(1200px 500px at 50% -10%,#2a2a33,var(--onyx));
-    color:var(--cream);padding:54px 0 40px;text-align:center}
+  .hero{background:radial-gradient(1200px 500px at 50% -10%,#2a2a33,var(--onyx));color:var(--cream);padding:54px 0 40px;text-align:center}
   .hero .logo-big{height:96px;width:96px;margin:0 auto 18px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}
   .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.02em}
   .hero h1 .hl{color:var(--copper-2)}
   .hero .lead{font-size:18px;color:#cfc9c0;margin:16px auto 28px;max-width:660px}
   .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .hero-trust{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px;
-    color:#a59e94;font-size:14px}
+  .hero-trust{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:#a59e94;font-size:14px}
   .hero-trust span{background:rgba(255,255,255,.05);padding:8px 14px;border-radius:999px}
 
-  /* SECTION HUB tiles */
   .hub{padding:54px 0 20px}
   .sec-head{margin-bottom:24px}
   .sec-head h2{font-size:clamp(26px,4vw,38px);color:var(--onyx);letter-spacing:-.01em}
   .sec-head p{color:var(--muted);margin-top:6px;max-width:640px}
-  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
-    cursor:pointer;transition:.22s;display:flex;gap:16px;align-items:center;text-align:left;width:100%}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;cursor:pointer;transition:.22s;display:flex;gap:16px;align-items:center;text-align:left;width:100%}
   .tile:hover{transform:translateY(-4px);border-color:var(--copper);box-shadow:var(--shadow)}
   .tile .ic{flex:0 0 64px;height:64px;background:var(--paper-2);border-radius:14px;display:grid;place-items:center}
   .tile .ic img{width:54px;height:54px}
@@ -93,21 +86,16 @@
   .tile p{font-size:13px;color:var(--muted)}
   .tile .go{margin-left:auto;color:var(--copper);font-size:22px;font-weight:800}
 
-  /* FLYOUT */
   .scrim{position:fixed;inset:0;background:rgba(14,14,18,.55);opacity:0;visibility:hidden;transition:.3s;z-index:50}
   .scrim.open{opacity:1;visibility:visible}
-  .panel{position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:var(--paper);
-    z-index:60;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
-    box-shadow:-20px 0 60px rgba(0,0,0,.3);display:flex;flex-direction:column}
+  .panel{position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:var(--paper);z-index:60;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.3);display:flex;flex-direction:column}
   .panel.open{transform:translateX(0)}
-  .panel-head{display:flex;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--line);
-    background:var(--onyx);color:var(--cream)}
+  .panel-head{display:flex;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--line);background:var(--onyx);color:var(--cream)}
   .panel-head .pic{flex:0 0 56px;height:56px;background:var(--onyx-2);border-radius:12px;display:grid;place-items:center}
   .panel-head .pic img{width:48px;height:48px}
   .panel-head h2{font-size:22px;color:var(--cream)}
   .panel-head .eyebrow{color:var(--copper-2)}
-  .panel-close{margin-left:auto;background:rgba(255,255,255,.08);border:0;color:var(--cream);
-    width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
+  .panel-close{margin-left:auto;background:rgba(255,255,255,.08);border:0;color:var(--cream);width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
   .panel-close:hover{background:var(--copper)}
   .panel-body{padding:26px;overflow-y:auto;flex:1}
   .panel-body h3{color:var(--onyx);font-size:19px;margin:22px 0 8px}
@@ -119,27 +107,21 @@
   .panel-body .chip{background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--onyx)}
   .panel-cta{padding:18px 26px;border-top:1px solid var(--line);display:flex;gap:12px;background:#fff}
 
-  /* ENGAGEMENT: joke / poll / quiz */
   .engage{padding:56px 0;background:var(--onyx);color:var(--cream)}
   .engage .sec-head h2{color:var(--cream)}
   .engage .sec-head p{color:#a59e94}
   .engage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:10px}
   .card-dark{background:var(--onyx-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:24px}
   .card-dark h3{color:var(--copper-2);font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  /* joke */
   .joke-q{font-size:18px;font-weight:600;color:var(--cream)}
   .joke-a{margin-top:10px;color:#d9d3c9;min-height:26px;font-style:italic;transition:.3s}
   .joke-a.show{color:var(--copper-2);font-style:normal}
   .joke-meta{margin-top:14px;font-size:13px;color:#8a8378}
   .joke-controls{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-  .joke-controls button{background:rgba(255,255,255,.08);border:0;color:var(--cream);
-    padding:8px 14px;border-radius:999px;cursor:pointer;font-size:14px}
+  .joke-controls button{background:rgba(255,255,255,.08);border:0;color:var(--cream);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:14px}
   .joke-controls button:hover{background:var(--copper)}
-  /* poll */
   .poll-q{font-size:17px;color:var(--cream);margin-bottom:14px}
-  .poll-opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);color:var(--cream);padding:12px 16px;border-radius:12px;
-    margin-bottom:10px;cursor:pointer;font-size:15px;transition:.2s;position:relative;overflow:hidden}
+  .poll-opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--cream);padding:12px 16px;border-radius:12px;margin-bottom:10px;cursor:pointer;font-size:15px;transition:.2s;position:relative;overflow:hidden}
   .poll-opt:hover{background:rgba(255,255,255,.1)}
   .poll-opt .bar{position:absolute;left:0;top:0;bottom:0;background:rgba(194,112,61,.4);width:0;z-index:-1;transition:width .6s}
   .poll-opt .pct{float:right;color:var(--copper-2);font-weight:700;opacity:0}
@@ -147,35 +129,63 @@
   .poll-voted .poll-opt .pct{opacity:1}
   .poll-voted .poll-opt .bar{width:var(--w)}
   .poll-note{font-size:13px;color:#8a8378;margin-top:8px}
-  /* quiz */
   .quiz-q{font-size:17px;color:var(--cream);margin-bottom:14px}
-  .quiz-opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);color:var(--cream);padding:11px 16px;border-radius:12px;
-    margin-bottom:9px;cursor:pointer;font-size:15px;transition:.2s}
+  .quiz-opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--cream);padding:11px 16px;border-radius:12px;margin-bottom:9px;cursor:pointer;font-size:15px;transition:.2s}
   .quiz-opt:hover{background:rgba(255,255,255,.1)}
   .quiz-opt.pick{background:var(--copper);color:#fff;border-color:var(--copper)}
   .quiz-foot{margin-top:14px;display:flex;gap:10px;align-items:center}
-  .quiz-result{margin-top:14px;background:rgba(194,112,61,.12);border:1px solid var(--copper);
-    border-radius:12px;padding:16px}
+  .quiz-result{margin-top:14px;background:rgba(194,112,61,.12);border:1px solid var(--copper);border-radius:12px;padding:16px}
   .quiz-result b{color:var(--copper-2)}
 
-  /* NEWS expanded */
+  /* NEWS: tabs */
   .news{padding:56px 0;background:var(--paper-2)}
-  .news-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:8px}
-  .featured{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
+  .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
+  .tab.active{background:var(--copper);color:#fff;border-color:var(--copper)}
+  .news-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
+  .featured{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .featured .fimg{width:100%;height:220px;object-fit:cover;background:var(--paper-2)}
+  .featured .fbody{padding:22px}
   .featured .f-tag{display:inline-block;background:var(--copper);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.04em}
-  .featured h3{font-size:24px;color:var(--onyx);margin:14px 0 10px;line-height:1.2}
+  .featured h3{font-size:22px;color:var(--onyx);margin:12px 0 8px;line-height:1.25}
   .featured p{color:#3a3a42}
-  .featured .f-meta{color:var(--muted);font-size:13px;margin:12px 0}
+  .featured .f-meta{color:var(--muted);font-size:13px;margin:10px 0}
   .news-list{display:flex;flex-direction:column;gap:14px}
-  .ncard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s}
+  .ncard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s;display:flex;gap:14px;align-items:flex-start}
   .ncard:hover{border-color:var(--copper);transform:translateY(-2px)}
+  .ncard .nimg{flex:0 0 64px;width:64px;height:64px;border-radius:10px;object-fit:cover;background:var(--paper-2)}
   .n-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--copper)}
-  .ncard h4{font-size:16px;color:var(--onyx);margin:6px 0 4px}
-  .ncard p{font-size:14px;color:var(--muted)}
-  .n-cta{margin-top:8px;font-size:14px}.n-cta a{color:var(--copper);font-weight:600}
+  .ncard h4{font-size:16px;color:var(--onyx);margin:4px 0;line-height:1.3}
+  .ncard p{font-size:13px;color:var(--muted)}
+  .post-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:14px;padding:18px;margin-bottom:14px}
+  .post-card h4{font-size:17px;color:var(--onyx);margin-bottom:6px}
+  .post-card .tip{color:#3a3a42;font-size:14px}
+  .post-card .truth{margin-top:8px;color:var(--muted);font-size:13px;border-top:1px dashed var(--line);padding-top:8px}
+  .post-card .tags{margin-top:8px;font-size:12px;color:var(--copper)}
 
-  /* LOCATOR */
+  /* REVIEWS */
+  .reviews{padding:56px 0;background:#fff}
+  .stars{color:var(--copper);letter-spacing:2px}
+  .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:10px}
+  .rcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .rcard .stars{font-size:18px}
+  .rcard p{color:#3a3a42;margin:10px 0;font-size:15px}
+  .rcard .who{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+  .rcard .verified{color:var(--ok);font-weight:600}
+  .review-summary{display:flex;gap:24px;align-items:center;flex-wrap:wrap;background:var(--paper-2);border-radius:var(--radius);padding:22px;margin-bottom:24px}
+  .review-summary .big{font-size:46px;font-weight:800;color:var(--copper)}
+  .review-summary .score{font-size:15px;color:var(--muted)}
+  .review-summary a{margin-left:auto}
+
+  /* NEWSLETTER SIGNUP */
+  .signup{padding:50px 0;background:var(--onyx);color:var(--cream)}
+  .signup .wrap{max-width:760px;text-align:center}
+  .signup h2{color:var(--cream);font-size:clamp(24px,4vw,34px)}
+  .signup p{color:#a59e94;margin:10px 0 22px}
+  .signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .signup input{flex:1;min-width:240px;padding:14px 18px;border-radius:999px;border:0;font-size:15px}
+  .signup .note{font-size:13px;color:#8a8378;margin-top:12px}
+
   .locator{padding:56px 0;background:var(--onyx)}
   .locator .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:stretch}
   .map-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
@@ -190,7 +200,6 @@
   .info-box a{color:var(--copper-2);font-weight:600}
   .info-box .btn{margin-top:12px}
 
-  /* FOOTER */
   footer.site{background:var(--ink);color:#cfc9c0;padding:48px 0 26px}
   footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:28px}
   footer h4{color:var(--cream);margin-bottom:14px;font-size:15px}
@@ -198,8 +207,7 @@
   footer a:hover{color:var(--copper-2)}
   footer .brand .word{color:var(--cream)}
   footer .about{margin-top:12px;font-size:14px;color:#a59e94;max-width:320px}
-  footer .bottom{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);
-    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8a8378}
+  footer .bottom{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8a8378}
   .mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--copper);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:17px}
 
   @media(max-width:860px){
@@ -227,6 +235,8 @@
       <a href="#hub">Sections</a>
       <a href="#engage">Fun &amp; Tools</a>
       <a href="#news">News &amp; Tips</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#signup">Newsletter</a>
       <a href="#locator">Find Us</a>
       <a class="nav-phone" href="tel:+13867557772">📞 (386) 755-7772</a>
     </nav>
@@ -235,7 +245,6 @@
 
 <span id="top"></span>
 
-<!-- HERO: logo focal -->
 <section class="hero">
   <div class="wrap">
     <img class="logo-big" src="assets/img/brand/logo.svg" alt="Onyx Systems">
@@ -255,7 +264,6 @@
   </div>
 </section>
 
-<!-- SECTION HUB -->
 <section class="hub wrap" id="hub">
   <div class="sec-head reveal">
     <div class="eyebrow">What can we help with</div>
@@ -274,7 +282,6 @@
   </div>
 </section>
 
-<!-- ENGAGEMENT HUB -->
 <section class="engage" id="engage">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -284,7 +291,6 @@
         No sign-up, just a reason to smile (and remember who fixes your stuff).</p>
     </div>
     <div class="engage-grid">
-      <!-- DAILY JOKE -->
       <div class="card-dark reveal">
         <h3>😄 Tech Joke of the Day</h3>
         <div class="joke-q" id="jokeQ">…</div>
@@ -296,14 +302,12 @@
         </div>
         <div class="joke-meta" id="jokeMeta"></div>
       </div>
-      <!-- WEEKLY POLL -->
       <div class="card-dark reveal">
         <h3>📊 This Week's Poll</h3>
         <div class="poll-q" id="pollQ">…</div>
         <div id="pollOpts"></div>
         <div class="poll-note" id="pollNote"></div>
       </div>
-      <!-- QUIZ -->
       <div class="card-dark reveal">
         <h3>👻 Is Your PC Haunted?</h3>
         <div id="quizBox"></div>
@@ -316,26 +320,51 @@
   </div>
 </section>
 
-<!-- NEWS & UPDATES -->
 <section class="news" id="news">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">From the shop</div>
       <h2>News &amp; Tips</h2>
-      <p>Real, useful stuff — pulled from the daily tech brief and Google Posts. Updated every morning.</p>
+      <p>Real, useful stuff — the daily tech brief (our newsletter) and our Google Posts. New every morning.</p>
     </div>
-    <div class="news-grid">
-      <article class="featured reveal" id="featuredNews">
-        <span class="f-tag">Loading…</span>
-        <h3>Fetching the latest from Onyx…</h3>
-        <p>Tips and posts updated daily.</p>
-      </article>
+    <div class="tabs reveal">
+      <button class="tab active" data-tab="newsletter">📰 Daily Tech Brief (Newsletter)</button>
+      <button class="tab" data-tab="posts">💡 Google Posts &amp; Tips</button>
+    </div>
+    <div id="tab-newsletter" class="news-grid">
+      <article class="featured reveal" id="featuredNews"><div class="fbody"><span class="f-tag">Loading…</span><h3>Fetching the latest brief…</h3><p>Tips updated daily.</p></div></article>
       <div class="news-list" id="newsGrid"></div>
+    </div>
+    <div id="tab-posts" style="display:none">
+      <div id="postsGrid"></div>
     </div>
   </div>
 </section>
 
-<!-- LOCATOR -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">What locals say</div>
+      <h2>Trusted by the neighborhood</h2>
+    </div>
+    <div class="review-summary reveal" id="reviewSummary"></div>
+    <div class="review-grid" id="reviewGrid"></div>
+    <div style="margin-top:24px" class="reveal"><a class="btn btn-ghost" href="https://g.page/onyx-systems" target="_blank" rel="noopener">⭐ Read all reviews on Google</a></div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>Get the Daily Computer Brief in your inbox</h2>
+    <p>One short, genuinely useful email a day — scam alerts, quick fixes, and a laugh. No spam, ever.</p>
+    <form id="signupForm" action="https://onyxpc.us/?sub=1" method="post" onsubmit="return handleSignup(event)">
+      <input type="email" id="signupEmail" placeholder="you@email.com" required>
+      <button class="btn btn-primary" type="submit">Subscribe free</button>
+    </form>
+    <div class="note" id="signupNote">We respect your inbox. Unsubscribe anytime. (Powered by Brevo.)</div>
+  </div>
+</section>
+
 <section class="locator" id="locator">
   <div class="wrap">
     <div class="map-card reveal">
@@ -368,16 +397,13 @@
       </div>
       <div><h4>Explore</h4><ul>
         <li><a href="#hub">Services</a></li><li><a href="#engage">Fun &amp; Tools</a></li>
-        <li><a href="#news">News &amp; Tips</a></li><li><a href="#locator">Find Us</a></li>
-      </ul></div>
+        <li><a href="#news">News &amp; Tips</a></li><li><a href="#reviews">Reviews</a></ul></div>
       <div><h4>Service Area</h4><ul>
-        <li>Lake City</li><li>Branford</li><li>Live Oak</li><li>Jasper</li><li>Gainesville area</li>
-      </ul></div>
+        <li>Lake City</li><li>Branford</li><li>Live Oak</li><li>Jasper</li><li>Gainesville area</li></div>
       <div><h4>Contact</h4><ul>
         <li>757 SW State Rd 247, Ste 108</li><li>Lake City, FL 32025</li>
         <li>📞 <a href="tel:+13867557772">(386) 755-7772</a></li>
-        <li>✉️ <a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a></li>
-      </ul></div>
+        <li>✉️ <a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a></li></div>
     </div>
     <div class="bottom">
       <div>© 1997–2026 Onyx Systems · Lake City, FL</div>
@@ -388,7 +414,6 @@
 
 <div class="mobile-call"><a href="tel:+13867557772">📞 Call (386) 755-7772</a></div>
 
-<!-- FLYOUT -->
 <div class="scrim" id="scrim"></div>
 <aside class="panel" id="panel" aria-hidden="true">
   <div class="panel-head">
@@ -409,8 +434,6 @@
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
   els.forEach(function(e){io.observe(e);});})();
-
-/* ---------- Mobile nav ---------- */
 document.getElementById('nav-toggle').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open');});
 
 /* ---------- Section content ---------- */
@@ -443,11 +466,10 @@ var SECTIONS={
     '<p>On-site visits are preferred after 5 PM — and I\'ll work around your schedule. Tap a spot:</p>'+
     '<div class="chip-row"><span class="chip">Lake City (HQ)</span><span class="chip">Branford</span><span class="chip">Live Oak</span><span class="chip">Jasper</span><span class="chip">Macclenny</span><span class="chip">Gainesville area</span><span class="chip">Columbia County</span><span class="chip">Suwannee County</span><span class="chip">Gilchrist County</span><span class="chip">Baker County</span><span class="chip">Union County</span></div>'+
     '<h3>Lake City — Home base</h3><p>757 SW State Rd 247, Ste 108. Stop by after a quick call, or book an evening on-site visit.</p>'},
-  reviews:{eyebrow:'What locals say',title:'Trusted by the Neighborhood',icon:'assets/img/cartoon/cc0/monitor.svg',html:
-    '<h3>"Like new the same week"</h3><p>John had my laptop running like new the same week. Honest about what it needed and what it didn\'t. Hard to find service like this in a small town. <i>— Verified Google review ⭐</i></p>'+
-    '<h3>"No upsell, just fixes"</h3><p>Explained everything in plain English and didn\'t try to sell me a new machine when a $30 part did the job. <i>— Local customer ⭐</i></p>'+
-    '<h3>"Saved my photos"</h3><p>Thought my drive was dead. He recovered years of family pictures. Couldn\'t be more grateful. <i>— North Florida ⭐</i></p>'+
-    '<p style="margin-top:10px"><a class="btn btn-ghost" href="https://www.google.com/maps?q=Onyx+Systems+Lake+City+FL" target="_blank" rel="noopener">Read more on Google →</a></p>'},
+  reviews:{eyebrow:'What locals say',title:'Real Reviews',icon:'assets/img/cartoon/cc0/monitor.svg',html:
+    '<p>Onyx Systems has <b>65+ five-star reviews</b> on Google. Here are a few:</p>'+
+    '<div class="chip-row"><span class="chip">⭐ "Running like new the same week"</span><span class="chip">⭐ "Saved photos I thought were gone"</span><span class="chip">⭐ "Honest, fast, local"</span></div>'+
+    '<p style="margin-top:10px"><a class="btn btn-ghost" href="https://g.page/onyx-systems" target="_blank" rel="noopener">Read all on Google →</a></p>'},
   faq:{eyebrow:'Good to know',title:'Frequently Asked',icon:'assets/img/cartoon/cc0/bug.svg',html:
     '<h3>Do I need an appointment?</h3><p>No — but please call first so I know I\'m in the shop and not out on a service call.</p>'+
     '<h3>Do you work on Macs?</h3><p>Yes. Macs and MacBooks are welcome — data, accounts, speed, and advice. I focus on Windows and Linux PCs too, so the whole house is covered.</p>'+
@@ -471,9 +493,9 @@ document.getElementById('panel-close').addEventListener('click',closePanel);
 scrim.addEventListener('click',closePanel);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
 
-/* ---------- DAILY JOKE (date-seeded) ---------- */
+/* ---------- DAILY JOKE ---------- */
 var jokes=null, jokeOffset=0;
-function dayIndex(){var d=new Date();return Math.floor((d.getTime()-(jokeOffset*864e5))/864e5);}
+function dayIndex(){return Math.floor((Date.now()-(jokeOffset*864e5))/864e5);}
 function showJoke(){
   if(!jokes||!jokes.length)return;
   var j=jokes[((dayIndex()%jokes.length)+jokes.length)%jokes.length];
@@ -488,33 +510,27 @@ document.getElementById('jokePrev').addEventListener('click',function(){jokeOffs
 document.getElementById('jokeNext').addEventListener('click',function(){jokeOffset++;showJoke();});
 fetch('data/jokes.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){jokes=d.jokes;showJoke();}).catch(function(e){console.warn('jokes load failed',e);});
 
-/* ---------- WEEKLY POLL (localStorage) ---------- */
+/* ---------- WEEKLY POLL ---------- */
 var poll=null;
 function loadPollVotes(){try{return JSON.parse(localStorage.getItem('onyx_poll')||'{}');}catch(e){return{};}}
 function savePollVotes(v){localStorage.setItem('onyx_poll',JSON.stringify(v));}
 function renderPoll(){
   if(!poll)return;
   document.getElementById('pollQ').textContent=poll.question;
-  var votes=loadPollVotes();
-  var box=document.getElementById('pollOpts');box.className='';
+  var votes=loadPollVotes();var box=document.getElementById('pollOpts');box.className='';
   var total=0;poll.options.forEach(function(o){total+=votes[o.id]||0;});
   if(votes._week===poll.weekOf && votes._picked){
     box.className='poll-voted';
     poll.options.forEach(function(o){
       var pct=total?Math.round(((votes[o.id]||0)/total)*100):0;
-      var b=document.createElement('div');b.className='poll-opt';
-      b.style.setProperty('--w',pct+'%');
-      b.innerHTML='<span class="bar"></span>'+o.label+'<span class="pct">'+pct+'%</span>';
-      box.appendChild(b);
-    });
+      var b=document.createElement('div');b.className='poll-opt';b.style.setProperty('--w',pct+'%');
+      b.innerHTML='<span class="bar"></span>'+o.label+'<span class="pct">'+pct+'%</span>';box.appendChild(b);});
     document.getElementById('pollNote').textContent='Thanks for voting! '+total+' vote(s) so far. (Resets weekly.)';
   } else {
     poll.options.forEach(function(o){
       var b=document.createElement('button');b.className='poll-opt';b.textContent=o.label;
-      b.addEventListener('click',function(){
-        var v=loadPollVotes();v[o.id]=(v[o.id]||0)+1;v._week=poll.weekOf;v._picked=o.id;savePollVotes(v);renderPoll();});
-      box.appendChild(b);
-    });
+      b.addEventListener('click',function(){var v=loadPollVotes();v[o.id]=(v[o.id]||0)+1;v._week=poll.weekOf;v._picked=o.id;savePollVotes(v);renderPoll();});
+      box.appendChild(b);});
     document.getElementById('pollNote').textContent='Week of '+poll.weekOf+' · tap to vote (stored on this device).';
   }
 }
@@ -528,40 +544,26 @@ function renderQuizStart(){
   document.getElementById('quizNext').onclick=function(){qi=0;qans=[];renderQuizQ();};
 }
 function renderQuizQ(){
-  if(!quiz)return;
-  var Q=quiz.questions[qi];
+  if(!quiz)return;var Q=quiz.questions[qi];
   var h='<div class="quiz-q">Q'+(qi+1)+'. '+Q.q+'</div>';
-  Q.options.forEach(function(o,idx){
-    h+='<button class="quiz-opt" data-i="'+idx+'">'+o.t+'</button>';
-  });
-  document.getElementById('quizBox').innerHTML=h;
-  document.getElementById('quizResult').innerHTML='';
+  Q.options.forEach(function(o,idx){h+='<button class="quiz-opt" data-i="'+idx+'">'+o.t+'</button>';});
+  document.getElementById('quizBox').innerHTML=h;document.getElementById('quizResult').innerHTML='';
   document.getElementById('quizNext').style.display='none';
-  document.querySelectorAll('#quizBox .quiz-opt').forEach(function(b){
-    b.addEventListener('click',function(){
-      qans[qi]=Q.options[+b.dataset.i];
-      document.querySelectorAll('#quizBox .quiz-opt').forEach(function(x){x.classList.remove('pick');});
-      b.classList.add('pick');
-      document.getElementById('quizNext').style.display='inline-flex';
-      document.getElementById('quizNext').textContent=qi<quiz.questions.length-1?'Next →':'See my result';
-    });
-  });
-  document.getElementById('quizNext').onclick=function(){
-    if(qi<quiz.questions.length-1){qi++;renderQuizQ();}
-    else{renderQuizResult();}
-  };
+  document.querySelectorAll('#quizBox .quiz-opt').forEach(function(b){b.addEventListener('click',function(){
+    qans[qi]=Q.options[+b.dataset.i];
+    document.querySelectorAll('#quizBox .quiz-opt').forEach(function(x){x.classList.remove('pick');});
+    b.classList.add('pick');document.getElementById('quizNext').style.display='inline-flex';
+    document.getElementById('quizNext').textContent=qi<quiz.questions.length-1?'Next →':'See my result';});});
+  document.getElementById('quizNext').onclick=function(){if(qi<quiz.questions.length-1){qi++;renderQuizQ();}else{renderQuizResult();}};
 }
 function renderQuizResult(){
   var tags={};qans.forEach(function(a){if(a)tags[a.tag]=(tags[a.tag]||0)+1;});
-  // severity
   var score=qans.reduce(function(s,a){return s+(a?a.score:0);},0);
   var key=score>=6?'sick':(score>=3?'tune':'healthy');
-  // device tag
   var dev=quiz.results[qans[4]?qans[4].tag:'both']?qans[4].tag:'both';
   var r1=quiz.results[key],r2=quiz.results[dev];
   document.getElementById('quizBox').innerHTML='';
-  document.getElementById('quizNext').style.display='inline-flex';
-  document.getElementById('quizNext').textContent='Take it again';
+  document.getElementById('quizNext').style.display='inline-flex';document.getElementById('quizNext').textContent='Take it again';
   document.getElementById('quizNext').onclick=renderQuizStart;
   document.getElementById('quizResult').innerHTML=
     '<div class="quiz-result"><b>'+r1.title+'</b><p style="color:#d9d3c9;margin:8px 0">'+r1.blurb+'</p>'+
@@ -570,28 +572,75 @@ function renderQuizResult(){
 }
 fetch('data/quiz.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){quiz=d;renderQuizStart();}).catch(function(e){console.warn('quiz load failed',e);});
 
-/* ---------- NEWS FEED ---------- */
+/* ---------- UNIFIED FEED (newsletter + posts + reviews) ---------- */
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n);}
 function fmtDate(d){try{return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return d;}}
-function renderNews(items){
-  if(!items||!items.length)return;
-  items.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
-  var f=items[0],rest=items.slice(1,5);
-  var tag=f.type==='google-post'?'Google Post':'Daily Tech Brief';
-  var fh='<span class="f-tag">★ '+esc(tag)+'</span><h3>'+esc(f.title)+'</h3><p>'+esc(f.summary)+'</p>'+
-    '<div class="f-meta">'+esc(fmtDate(f.date))+(f.source?(' · '+esc(f.source)):'')+'</div>';
-  if(f.readMore)fh+='<a class="btn btn-primary" href="'+esc(f.readMore)+'">Read the full brief</a>';
-  else if(f.cta)fh+='<a class="btn btn-primary" href="'+esc(f.cta.href)+'">'+esc(f.cta.label)+'</a>';
-  document.getElementById('featuredNews').innerHTML=fh;
-  document.getElementById('newsGrid').innerHTML=rest.map(function(it){
-    var t=it.type==='google-post'?'Google Post':'Daily Tech Brief';
-    var h='<div class="ncard"><span class="n-tag">'+esc(t)+'</span><h4>'+esc(it.title)+'</h4><p>'+esc(it.summary)+'</p>';
-    if(it.cta)h+='<div class="n-cta"><a href="'+esc(it.cta.href)+'">'+esc(it.cta.label)+' →</a></div>';
-    else if(it.readMore)h+='<div class="n-cta"><a href="'+esc(it.readMore)+'">Read more →</a></div>';
-    return h+'</div>';
+fetch('data/feed.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){renderAll(d);}).catch(function(e){console.warn('feed load failed',e);});
+function renderAll(d){
+  // NEWSLETTER (news = Daily Computer Brief)
+  var news=(d.news||[]).slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
+  if(news.length){
+    var f=news[0],rest=news.slice(1,6);
+    var fHead=(f.title||'').replace('Daily Computer Brief — ','').replace('Daily Computer Brief — ','');
+    // If the title is just a date, derive a friendly headline from the excerpt's lead sentence.
+    if(/^\d{4}-\d{2}-\d{2}$/.test(fHead) && f.excerpt){
+      var firstSentence=f.excerpt.split(/(?<=\.)\s/)[0];
+      fHead=firstSentence.length>90?firstSentence.slice(0,90)+'…':firstSentence;
+    }
+    var fh='<div class="fbody"><span class="f-tag">★ Daily Computer Brief · '+esc(fmtDate(f.date))+'</span>'+
+      '<h3>'+esc(fHead)+'</h3>'+
+      '<p>'+esc(f.excerpt.slice(0,180))+(f.excerpt.length>180?'…':'')+'</p>'+
+      '<div class="f-meta">Scam-alert &amp; tip of the day from Onyx</div>'+
+      (f.read_more?'<a class="btn btn-primary" href="'+esc(f.read_more)+'">Read the full brief</a>':'')+'</div>';
+    if(f.image)fh='<img class="fimg" src="'+esc(f.image)+'" alt="Daily Computer Brief" onerror="this.style.display=\'none\'">'+fh;
+    document.getElementById('featuredNews').outerHTML='<article class="featured reveal">'+fh+'</article>';
+    document.getElementById('newsGrid').innerHTML=rest.map(function(it){
+      var h=esc((it.title||'').replace('Daily Computer Brief — ','')).replace('Daily Computer Brief — ','');
+      if(/^\d{4}-\d{2}-\d{2}$/.test(h) && it.excerpt){var s=it.excerpt.split(/(?<=\.)\s/)[0];h=s.length>70?s.slice(0,70)+'…':s;}
+      var card='<div class="ncard"><img class="nimg" src="'+esc(it.image||'')+'" alt="" onerror="this.style.display=\'none\'">'+
+        '<div><span class="n-tag">'+esc(fmtDate(it.date))+'</span><h4>'+h+'</h4>'+
+        '<p>'+esc(it.excerpt.slice(0,120))+(it.excerpt.length>120?'…':'')+'</p></div></div>';
+      return card;}).join('');
+  }
+  // GOOGLE POSTS (helpful tips)
+  var posts=(d.posts||[]);
+  document.getElementById('postsGrid').innerHTML=posts.map(function(p){
+    return '<div class="post-card"><h4>'+esc(p.headline)+'</h4>'+
+      '<div class="tip"><b>Try this:</b> '+esc(p.tip)+'</div>'+
+      (p.truth?'<div class="truth"><b>John\'s take:</b> '+esc(p.truth)+'</div>':'')+
+      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
+  }).join('');
+  // REVIEWS
+  var revs=(d.reviews||[]).filter(function(r){return r.rating>=4;}).slice(0,10);
+  var avg=(revs.reduce(function(s,r){return s+(r.rating||5);},0)/(revs.length||1)).toFixed(1);
+  document.getElementById('reviewSummary').innerHTML=
+    '<div><div class="big">'+avg+'</div><div class="score">'+revs.length+' reviews shown · 65+ on Google</div></div>'+
+    '<div class="stars" style="font-size:28px">'+stars(Math.round(avg))+'</div>'+
+    '<a class="btn btn-primary" href="https://g.page/onyx-systems" target="_blank" rel="noopener">⭐ Write a review</a>';
+  document.getElementById('reviewGrid').innerHTML=revs.map(function(r){
+    return '<div class="rcard"><div class="stars">'+stars(r.rating||5)+'</div>'+
+      '<p>“'+esc(r.text)+'”</p>'+
+      '<div class="who"><span>'+esc(r.author||'Local Customer')+'</span>'+(r.verified?'<span class="verified">✔ Verified</span>':'')+'</div></div>';
   }).join('');
 }
-fetch('data/news.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){renderNews(d.items);}).catch(function(e){console.warn('news.json load failed:',e);});
+/* ---------- TABS ---------- */
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
+  t.classList.add('active');
+  var which=t.dataset.tab;
+  document.getElementById('tab-newsletter').style.display=which==='newsletter'?'grid':'none';
+  document.getElementById('tab-posts').style.display=which==='posts'?'block':'none';
+});});
+/* ---------- SIGNUP (Brevo-ready) ---------- */
+function handleSignup(e){e.preventDefault();
+  var email=document.getElementById('signupEmail').value;
+  if(!email)return false;
+  // Brevo: replace below with your Brevo form action + list id when ready.
+  document.getElementById('signupNote').textContent='Thanks! You\'re on the list — watch for tomorrow\'s brief. (Wire to Brevo list when key added.)';
+  document.getElementById('signupForm').reset();
+  return false;
+}
 </script>
 </body>
 </html>
