@@ -39,17 +39,18 @@
   /* Brand font: kept LOCAL. Drop your real serpentine.ttf into assets/fonts/ and
      uncomment the block below — it takes precedence automatically. */
   @font-face{
+    font-family:'SerpentineBold';
+    src:url('assets/fonts/serpentine.woff2') format('woff2'),
+        url('assets/fonts/serpentine.woff') format('woff'),
+        url('assets/fonts/serpentine.ttf') format('truetype');
+    font-weight:700;font-style:normal;font-display:swap;
+  }
+  /* @font-face{
     font-family:'SerpentineStandIn';
     src:url('assets/fonts/Oswald-VF.ttf') format('truetype');
     font-weight:200 700;font-style:normal;font-display:swap;
-  }
-  /* @font-face{
-    font-family:'SerpentineBold';
-    src:url('assets/fonts/serpentine.ttf') format('truetype');
-    font-weight:700;font-style:normal;font-display:swap;
   } */
-  .brand-font{font-family:var(--brand-font);font-weight:700;font-style:italic;letter-spacing:.02em;
-    transform:skewX(-7deg);display:inline-block}
+  .brand-font{font-family:var(--brand-font);font-weight:700;letter-spacing:.02em;display:inline-block}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
@@ -96,7 +97,7 @@
 
   .hub{padding:54px 0 20px}
   .sec-head{margin-bottom:24px}
-  .sec-head h2{font-size:clamp(26px,4vw,38px);color:var(--onyx);letter-spacing:-.01em;font-family:var(--brand-font);font-style:italic;font-weight:700}
+  .sec-head h2{font-size:clamp(26px,4vw,38px);color:var(--onyx);letter-spacing:-.01em;font-family:var(--brand-font);font-style:normal;font-weight:700}
   .sec-head p{color:var(--muted);margin-top:6px;max-width:640px}
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
   .tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.22s;display:flex;gap:14px;align-items:center;text-align:left;width:100%}
