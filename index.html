@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onyx Systems | Computer Repair &amp; IT Support in Lake City, FL</title>
-<meta name="description" content="Friendly, honest computer repair and IT support in Lake City, FL. Windows, Mac & Linux. Daily tech tips, real reviews, and a free PC check. Locally owned since 1997. Call (386) 755-7772.">
+<meta name="description" content="Friendly, honest computer repair and IT support in Lake City, FL. Windows, Mac, Linux & ChromeOS. Daily tech tips, real reviews, and a free PC check. Locally owned since 1997. Call (386) 755-7772.">
 <meta property="og:title" content="Onyx Systems | Computer Repair &amp; IT Support in Lake City, FL">
-<meta property="og:description" content="Local computer repair, virus removal, data recovery & on-site IT. Windows, Mac & Linux. Daily tips, real reviews, free PC check. Serving North Florida since 1997.">
+<meta property="og:description" content="Local computer repair, virus removal, data recovery & on-site IT. Windows, Mac, Linux & ChromeOS. Daily tips, real reviews, free PC check. Serving North Florida since 1997.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://onyxpc.us/assets/img/brand/header.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -15,7 +15,7 @@
 {
   "@context":"https://schema.org","@type":"LocalBusiness",
   "name":"Onyx Systems","image":"https://onyxpc.us/assets/img/brand/header.png",
-  "description":"Local computer repair and IT support serving Lake City and North Florida since 1997. Windows, Mac & Linux.",
+  "description":"Local computer repair and IT support serving Lake City and North Florida since 1997. Windows, Mac, Linux & ChromeOS.",
   "founder":{"@type":"Person","name":"John D. Gunther"},
   "address":{"@type":"PostalAddress","streetAddress":"757 SW State Rd 247, Ste 108","addressLocality":"Lake City","addressRegion":"FL","postalCode":"32025","addressCountry":"US"},
   "telephone":"+1-386-755-7772","email":"onyxpc@gmail.com",
@@ -24,7 +24,7 @@
   "areaServed":["Lake City","Branford","Live Oak","Jasper","Macclenny","Gainesville","Columbia County","Suwannee County","Gilchrist County","Baker County","Union County"],
   "openingHours":"Mo-Fr 09:30-17:30",
   "hasMap":"https://www.google.com/maps?q=757+SW+State+Rd+247+Lake+City+FL",
-  "makesOffer":["Computer repair","Laptop repair","Mac repair","Virus removal","Data recovery","IT support","Network setup"],
+  "makesOffer":["Computer repair","Laptop repair","Mac repair","Virus removal","Data recovery","IT support","Network setup","ChromeOS support"],
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"65","bestRating":"5","worstRating":"1"}
 }
 </script>
@@ -50,13 +50,13 @@
   .btn-ghost:hover{background:var(--copper);color:#fff}
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper)}
 
-  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand img.logo-mark{height:42px;width:42px}
-  .brand .word{font-weight:800;font-size:20px;color:var(--cream);letter-spacing:.04em}
-  .brand .word b{color:var(--copper)}
-  .nav-links{display:flex;align-items:center;gap:20px}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);padding:6px 14px 6px 8px;border-radius:14px}
+  .brand img.logo-mark{height:40px;width:40px;border-radius:9px}
+  .brand .word{font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.04em}
+  .brand .word b{color:var(--copper-2)}
+  .nav-links{display:flex;align-items:center;gap:18px}
   .nav-links a{color:#cfc9c0;font-weight:500;font-size:15px;transition:.2s}
   .nav-links a:hover{color:var(--copper-2)}
   .nav-phone{background:var(--copper);color:#fff!important;padding:9px 16px;border-radius:999px;font-weight:700}
@@ -64,48 +64,55 @@
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
   .nav-toggle span{width:26px;height:3px;background:var(--cream);border-radius:2px}
 
-  .hero{background:radial-gradient(1200px 500px at 50% -10%,#2a2a33,var(--onyx));color:var(--cream);padding:54px 0 40px;text-align:center}
-  .hero .logo-big{height:96px;width:96px;margin:0 auto 18px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}
-  .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.02em}
+  .hero{position:relative;background:radial-gradient(1100px 480px at 50% -15%,#2a2a33,var(--onyx));color:var(--cream);padding:56px 0 46px;text-align:center;overflow:hidden}
+  .hero .logo-big{height:104px;width:104px;margin:0 auto 18px;filter:drop-shadow(0 10px 26px rgba(0,0,0,.45));animation:floaty 5s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .hero .blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.25;animation:drift 12s ease-in-out infinite}
+  .hero .blob.b1{width:260px;height:260px;background:var(--copper);left:-60px;top:20px}
+  .hero .blob.b2{width:220px;height:220px;background:#3b6ea5;right:-40px;bottom:-30px;animation-delay:3s}
+  @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,18px)}}
+  .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.02em;position:relative}
   .hero h1 .hl{color:var(--copper-2)}
-  .hero .lead{font-size:18px;color:#cfc9c0;margin:16px auto 28px;max-width:660px}
-  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .hero-trust{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:#a59e94;font-size:14px}
-  .hero-trust span{background:rgba(255,255,255,.05);padding:8px 14px;border-radius:999px}
+  .hero .lead{font-size:18px;color:#cfc9c0;margin:16px auto 28px;max-width:660px;position:relative}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .hero-trust{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:#a59e94;font-size:14px;position:relative}
+  .hero-trust span{background:rgba(255,255,255,.06);padding:8px 14px;border-radius:999px}
 
   .hub{padding:54px 0 20px}
   .sec-head{margin-bottom:24px}
   .sec-head h2{font-size:clamp(26px,4vw,38px);color:var(--onyx);letter-spacing:-.01em}
   .sec-head p{color:var(--muted);margin-top:6px;max-width:640px}
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-  .tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;cursor:pointer;transition:.22s;display:flex;gap:16px;align-items:center;text-align:left;width:100%}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.22s;display:flex;gap:14px;align-items:center;text-align:left;width:100%}
   .tile:hover{transform:translateY(-4px);border-color:var(--copper);box-shadow:var(--shadow)}
-  .tile .ic{flex:0 0 64px;height:64px;background:var(--paper-2);border-radius:14px;display:grid;place-items:center}
-  .tile .ic img{width:54px;height:54px}
+  .tile .ic{flex:0 0 58px;height:58px;background:var(--paper-2);border-radius:14px;display:grid;place-items:center;transition:.22s}
+  .tile:hover .ic{background:var(--copper);animation:wobble .6s}
+  @keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+  .tile .ic img{width:48px;height:48px}
   .tile h3{font-size:17px;color:var(--onyx);margin-bottom:2px}
   .tile p{font-size:13px;color:var(--muted)}
   .tile .go{margin-left:auto;color:var(--copper);font-size:22px;font-weight:800}
 
-  .scrim{position:fixed;inset:0;background:rgba(14,14,18,.55);opacity:0;visibility:hidden;transition:.3s;z-index:50}
+  .scrim{position:fixed;inset:0;background:rgba(14,14,18,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
   .scrim.open{opacity:1;visibility:visible}
-  .panel{position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:var(--paper);z-index:60;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.3);display:flex;flex-direction:column}
+  .panel{position:fixed;top:0;right:0;height:100%;width:min(540px,94vw);background:var(--paper);z-index:60;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.3);display:flex;flex-direction:column}
   .panel.open{transform:translateX(0)}
-  .panel-head{display:flex;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--line);background:var(--onyx);color:var(--cream)}
-  .panel-head .pic{flex:0 0 56px;height:56px;background:var(--onyx-2);border-radius:12px;display:grid;place-items:center}
-  .panel-head .pic img{width:48px;height:48px}
-  .panel-head h2{font-size:22px;color:var(--cream)}
+  .panel-head{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--line);background:var(--onyx);color:var(--cream)}
+  .panel-head .pic{flex:0 0 52px;height:52px;background:#fff;border-radius:12px;display:grid;place-items:center;padding:6px}
+  .panel-head .pic img{width:40px;height:40px}
+  .panel-head h2{font-size:21px;color:var(--cream)}
   .panel-head .eyebrow{color:var(--copper-2)}
-  .panel-close{margin-left:auto;background:rgba(255,255,255,.08);border:0;color:var(--cream);width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
-  .panel-close:hover{background:var(--copper)}
+  .panel-close{margin-left:auto;background:rgba(255,255,255,.1);border:0;color:var(--cream);width:38px;height:38px;border-radius:50%;font-size:22px;cursor:pointer;transition:.2s}
+  .panel-close:hover{background:var(--copper);color:#fff}
   .panel-body{padding:26px;overflow-y:auto;flex:1}
-  .panel-body h3{color:var(--onyx);font-size:19px;margin:22px 0 8px}
+  .panel-body h3{color:var(--onyx);font-size:19px;margin:20px 0 8px}
   .panel-body h3:first-child{margin-top:0}
   .panel-body p{color:#3a3a42;margin-bottom:12px}
   .panel-body ul{margin:0 0 14px 18px;color:#3a3a42}
   .panel-body li{margin-bottom:6px}
   .panel-body .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
   .panel-body .chip{background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--onyx)}
-  .panel-cta{padding:18px 26px;border-top:1px solid var(--line);display:flex;gap:12px;background:#fff}
+  .panel-cta{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:12px;background:#fff;position:sticky;bottom:0}
 
   .engage{padding:56px 0;background:var(--onyx);color:var(--cream)}
   .engage .sec-head h2{color:var(--cream)}
@@ -137,7 +144,6 @@
   .quiz-result{margin-top:14px;background:rgba(194,112,61,.12);border:1px solid var(--copper);border-radius:12px;padding:16px}
   .quiz-result b{color:var(--copper-2)}
 
-  /* NEWS: tabs */
   .news{padding:56px 0;background:var(--paper-2)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
@@ -160,10 +166,8 @@
   .post-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:14px;padding:18px;margin-bottom:14px}
   .post-card h4{font-size:17px;color:var(--onyx);margin-bottom:6px}
   .post-card .tip{color:#3a3a42;font-size:14px}
-  .post-card .truth{margin-top:8px;color:var(--muted);font-size:13px;border-top:1px dashed var(--line);padding-top:8px}
   .post-card .tags{margin-top:8px;font-size:12px;color:var(--copper)}
 
-  /* REVIEWS */
   .reviews{padding:56px 0;background:#fff}
   .stars{color:var(--copper);letter-spacing:2px}
   .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:10px}
@@ -177,7 +181,6 @@
   .review-summary .score{font-size:15px;color:var(--muted)}
   .review-summary a{margin-left:auto}
 
-  /* NEWSLETTER SIGNUP */
   .signup{padding:50px 0;background:var(--onyx);color:var(--cream)}
   .signup .wrap{max-width:760px;text-align:center}
   .signup h2{color:var(--cream);font-size:clamp(24px,4vw,34px)}
@@ -211,7 +214,7 @@
   .mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--copper);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:17px}
 
   @media(max-width:860px){
-    .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;background:var(--onyx);padding:20px;gap:16px;transform:translateY(-130%);transition:.3s;align-items:flex-start}
+    .nav-links{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--onyx);padding:20px;gap:16px;transform:translateY(-130%);transition:.3s;align-items:flex-start}
     .nav-links.open{transform:translateY(0)}
     .nav-toggle{display:flex}
     .locator .wrap,.news-grid{grid-template-columns:1fr}
@@ -227,7 +230,7 @@
 <header class="site">
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="Onyx Systems home">
-      <img class="logo-mark" src="assets/img/brand/logo.svg" alt="Onyx Systems logo">
+      <img class="logo-mark" src="assets/img/brand/logo-light.svg" alt="Onyx Systems logo">
       <span class="word">ONYX<b>.</b>SYSTEMS</span>
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -246,19 +249,20 @@
 <span id="top"></span>
 
 <section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
   <div class="wrap">
-    <img class="logo-big" src="assets/img/brand/logo.svg" alt="Onyx Systems">
+    <img class="logo-big" src="assets/img/brand/logo-light.svg" alt="Onyx Systems">
     <div class="eyebrow" style="color:var(--copper-2)">Lake City &amp; North Florida</div>
     <h1>Computer repair &amp; IT support, <span class="hl">done right.</span></h1>
     <p class="lead">Friendly, honest help from a local tech with nearly 30 years of experience —
-      for Windows, Mac, and Linux. Call before you stop by — I may be out on a service call.</p>
+      for every kind of computer. Call before you stop by — I may be out on a service call.</p>
     <div class="hero-cta">
       <a href="tel:+13867557772" class="btn btn-primary">📞 Call (386) 755-7772</a>
       <a href="#locator" class="btn btn-ghost" style="border-color:var(--copper-2);color:var(--copper-2)">📍 Find the shop</a>
     </div>
     <div class="hero-trust">
       <span>✔ Locally owned since 1997</span>
-      <span>✔ Windows · Mac · Linux</span>
+      <span>✔ Windows · Mac · Linux · ChromeOS</span>
       <span>✔ 5-star local reviews</span>
     </div>
   </div>
@@ -271,10 +275,10 @@
     <p>No endless scrolling — just the answers you need, one tap away.</p>
   </div>
   <div class="tiles reveal">
-    <button class="tile" data-panel="services"><span class="ic"><img src="assets/img/cartoon/cc0/computer.svg" alt=""></span><span><h3>Services</h3><p>Repairs, upgrades &amp; everyday IT</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="services"><span class="ic"><img src="assets/img/cartoon/cc0/computer-fix.svg" alt=""></span><span><h3>Services</h3><p>Repairs, upgrades &amp; everyday IT</p></span><span class="go">›</span></button>
     <button class="tile" data-panel="process"><span class="ic"><img src="assets/img/cartoon/cc0/desktop-pc.svg" alt=""></span><span><h3>How It Works</h3><p>Three simple steps</p></span><span class="go">›</span></button>
     <button class="tile" data-panel="owner"><span class="ic"><img src="assets/img/cartoon/cc0/Geek.svg" alt=""></span><span><h3>Meet John</h3><p>Your local tech</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="mac"><span class="ic"><img src="assets/img/cartoon/cc0/laptop.svg" alt=""></span><span><h3>Mac Help</h3><p>Yes — we do Macs too</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="mac"><span class="ic"><img src="assets/img/cartoon/cc0/laptop.svg" alt=""></span><span><h3>All Computers</h3><p>Windows, Mac, Linux, ChromeOS</p></span><span class="go">›</span></button>
     <button class="tile" data-panel="area"><span class="ic"><img src="assets/img/cartoon/cc0/wifi.svg" alt=""></span><span><h3>Service Area</h3><p>Around N. Florida</p></span><span class="go">›</span></button>
     <button class="tile" data-panel="reviews"><span class="ic"><img src="assets/img/cartoon/cc0/monitor.svg" alt=""></span><span><h3>Reviews</h3><p>What locals say</p></span><span class="go">›</span></button>
     <button class="tile" data-panel="faq"><span class="ic"><img src="assets/img/cartoon/cc0/bug.svg" alt=""></span><span><h3>FAQ</h3><p>Good to know</p></span><span class="go">›</span></button>
@@ -325,19 +329,19 @@
     <div class="sec-head reveal">
       <div class="eyebrow">From the shop</div>
       <h2>News &amp; Tips</h2>
-      <p>Real, useful stuff — the daily tech brief (our newsletter) and our Google Posts. New every morning.</p>
+      <p>Real, useful stuff — the daily tech brief (our newsletter), plus tech news and hands-on tips. New every morning.</p>
     </div>
     <div class="tabs reveal">
-      <button class="tab active" data-tab="newsletter">📰 Daily Tech Brief (Newsletter)</button>
-      <button class="tab" data-tab="posts">💡 Google Posts &amp; Tips</button>
+      <button class="tab active" data-tab="newsletter">📰 Newsletter</button>
+      <button class="tab" data-tab="technews">🗞️ Tech News</button>
+      <button class="tab" data-tab="techtips">💡 Tech Tips</button>
     </div>
     <div id="tab-newsletter" class="news-grid">
       <article class="featured reveal" id="featuredNews"><div class="fbody"><span class="f-tag">Loading…</span><h3>Fetching the latest brief…</h3><p>Tips updated daily.</p></div></article>
       <div class="news-list" id="newsGrid"></div>
     </div>
-    <div id="tab-posts" style="display:none">
-      <div id="postsGrid"></div>
-    </div>
+    <div id="tab-technews" style="display:none"><div id="techNewsGrid"></div></div>
+    <div id="tab-techtips" style="display:none"><div id="techTipsGrid"></div></div>
   </div>
 </section>
 
@@ -392,8 +396,8 @@
   <div class="wrap">
     <div class="cols">
       <div>
-        <div class="brand"><img class="logo-mark" src="assets/img/brand/logo.svg" alt=""><span class="word">ONYX<b>.</b>SYSTEMS</span></div>
-        <p class="about">Your hometown computer repair experts — honest work, fair prices, no jargon. Windows, Mac & Linux. Serving North Florida since 1997.</p>
+        <div class="brand"><img class="logo-mark" src="assets/img/brand/logo-light.svg" alt=""><span class="word">ONYX<b>.</b>SYSTEMS</span></div>
+        <p class="about">Your hometown computer repair experts — honest work, fair prices, no jargon. Every kind of computer. Serving North Florida since 1997.</p>
       </div>
       <div><h4>Explore</h4><ul>
         <li><a href="#hub">Services</a></li><li><a href="#engage">Fun &amp; Tools</a></li>
@@ -438,14 +442,14 @@ document.getElementById('nav-toggle').addEventListener('click',function(){docume
 
 /* ---------- Section content ---------- */
 var SECTIONS={
-  services:{eyebrow:'What I do',title:'Services',icon:'assets/img/cartoon/cc0/computer.svg',html:
+  services:{eyebrow:'What I do',title:'Services',icon:'assets/img/cartoon/cc0/computer-fix.svg',html:
     '<h3>Computer &amp; Laptop Repair</h3><p>Cracked screens, dead batteries, slow machines, hardware faults — diagnosed and fixed right.</p>'+
     '<h3>Virus &amp; Malware Removal</h3><p>Clean infections, lock things down, and get you back online safely.</p>'+
     '<h3>Data Recovery</h3><p>Photos, documents, and drives recovered from failed or corrupted storage.</p>'+
     '<h3>Upgrades &amp; Custom Builds</h3><p>More speed, more storage, or a new PC built to your needs and budget.</p>'+
-    '<h3>Windows, Mac &amp; Linux</h3><p>OS installs, migrations, and tuning across all three. Macs included — data, accounts, speed, and advice.</p>'+
+    '<h3>All Operating Systems</h3><p>Windows, macOS, Linux, and ChromeOS — setup, tuning, and fixes across the board.</p>'+
     '<h3>On-Site IT &amp; Networks</h3><p>Wi-Fi, wiring, and small-business support at your home or office.</p>'+
-    '<div class="chip-row"><span class="chip">Virus removal</span><span class="chip">SSD upgrades</span><span class="chip">Screen repair</span><span class="chip">Mac help</span><span class="chip">Backups</span><span class="chip">Wi-Fi</span><span class="chip">Tuning</span></div>'},
+    '<div class="chip-row"><span class="chip">Virus removal</span><span class="chip">SSD upgrades</span><span class="chip">Screen repair</span><span class="chip">Mac &amp; Linux</span><span class="chip">Backups</span><span class="chip">Wi-Fi</span><span class="chip">Tuning</span></div>'},
   process:{eyebrow:'How it works',title:'Three Simple Steps',icon:'assets/img/cartoon/cc0/desktop-pc.svg',html:
     '<h3>1 · Call first</h3><p>Give me a ring so I know I\'m in the shop. A 30-second call saves you a wasted trip.</p>'+
     '<h3>2 · We diagnose — free of pressure</h3><p>I tell you straight what\'s wrong, what it\'ll take, and whether it\'s worth fixing. No upsell, ever.</p>'+
@@ -453,15 +457,16 @@ var SECTIONS={
     '<p style="margin-top:14px;background:var(--paper-2);padding:14px;border-radius:12px"><b>Tip:</b> text or call (386) 755-7772 before you stop by — I may be out on a service call.</p>'},
   owner:{eyebrow:'Meet your tech',title:'Hi, I\'m John',icon:'assets/img/cartoon/cc0/Geek.svg',html:
     '<p>Onyx Systems has been my shop since 1997. When you call, you talk to the person who actually does the work — no call center, no script, no hand-off to a stranger.</p>'+
-    '<p>I started fixing computers in the era of dial-up and never stopped learning. Today that means I can rescue a 2015 laptop with a $30 SSD, harden your accounts against the latest scams, or set you up on Linux if you want out of the upgrade treadmill.</p>'+
+    '<p>I work on all computers — Windows, macOS, Linux, and ChromeOS. I\'m well versed in all things computers, from a 1995 beige box to a brand-new laptop, and I keep learning as the tech changes.</p>'+
     '<p>The promise is simple: explain it in plain English, charge a fair price, and never sell you something you don\'t need.</p>'+
-    '<div class="chip-row"><span class="chip">✔ Locally owned</span><span class="chip">✔ 29 years experience</span><span class="chip">✔ Windows · Mac · Linux</span></div>'+
+    '<div class="chip-row"><span class="chip">✔ Locally owned</span><span class="chip">✔ 29 years experience</span><span class="chip">✔ Every OS</span></div>'+
     '<p style="color:var(--copper);font-weight:600">— John Gunther, Owner</p>'},
-  mac:{eyebrow:'Yes, we do Macs',title:'Mac &amp; MacBook Help',icon:'assets/img/cartoon/cc0/laptop.svg',html:
-    '<h3>Slow Mac? We can fix that.</h3><p>macOS tune-ups, storage cleanup, battery and screen swaps, and getting an older Mac running like new.</p>'+
-    '<h3>Data &amp; accounts</h3><p>Transfers, backups, iCloud and Apple ID snags, and untangling the things that quietly break over time.</p>'+
+  mac:{eyebrow:'Every computer',title:'All Computers Welcome',icon:'assets/img/cartoon/cc0/laptop.svg',html:
+    '<p>I work on all computers — Windows, macOS, Linux, and ChromeOS. Whatever you\'ve got, I can help.</p>'+
+    '<h3>Slow or stuck?</h3><p>Tune-ups, storage cleanup, battery and screen swaps, and getting an older machine running like new.</p>'+
+    '<h3>Data &amp; accounts</h3><p>Transfers, backups, and untangling the things that quietly break over time.</p>'+
     '<h3>Honest advice</h3><p>Not sure if a repair is worth it versus a new one? I\'ll tell you straight — no commission, no upsell.</p>'+
-    '<p style="background:var(--paper-2);padding:14px;border-radius:12px">Got a Mac problem? Call (386) 755-7772 and we\'ll figure it out.</p>'},
+    '<p style="background:var(--paper-2);padding:14px;border-radius:12px">Got a problem? Call (386) 755-7772 and we\'ll figure it out.</p>'},
   area:{eyebrow:'Where I work',title:'Around Lake City &amp; N. Florida',icon:'assets/img/cartoon/cc0/wifi.svg',html:
     '<p>On-site visits are preferred after 5 PM — and I\'ll work around your schedule. Tap a spot:</p>'+
     '<div class="chip-row"><span class="chip">Lake City (HQ)</span><span class="chip">Branford</span><span class="chip">Live Oak</span><span class="chip">Jasper</span><span class="chip">Macclenny</span><span class="chip">Gainesville area</span><span class="chip">Columbia County</span><span class="chip">Suwannee County</span><span class="chip">Gilchrist County</span><span class="chip">Baker County</span><span class="chip">Union County</span></div>'+
@@ -472,7 +477,7 @@ var SECTIONS={
     '<p style="margin-top:10px"><a class="btn btn-ghost" href="https://g.page/onyx-systems" target="_blank" rel="noopener">Read all on Google →</a></p>'},
   faq:{eyebrow:'Good to know',title:'Frequently Asked',icon:'assets/img/cartoon/cc0/bug.svg',html:
     '<h3>Do I need an appointment?</h3><p>No — but please call first so I know I\'m in the shop and not out on a service call.</p>'+
-    '<h3>Do you work on Macs?</h3><p>Yes. Macs and MacBooks are welcome — data, accounts, speed, and advice. I focus on Windows and Linux PCs too, so the whole house is covered.</p>'+
+    '<h3>What kinds of computers do you work on?</h3><p>All of them — Windows, macOS, Linux, and ChromeOS. I\'m well versed in all things computers.</p>'+
     '<h3>What are your on-site hours?</h3><p>I prefer on-site visits after 5 PM, and I\'ll gladly make other arrangements to fit your schedule.</p>'+
     '<h3>Is my data safe during a repair?</h3><p>Always. Your files are private, backed up before risky work when possible, and never accessed beyond what the repair requires.</p>'+
     '<h3>What does it cost?</h3><p>Fair, flat, and explained up front. I\'ll tell you the likely cost before I start.</p>'},
@@ -572,22 +577,18 @@ function renderQuizResult(){
 }
 fetch('data/quiz.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){quiz=d;renderQuizStart();}).catch(function(e){console.warn('quiz load failed',e);});
 
-/* ---------- UNIFIED FEED (newsletter + posts + reviews) ---------- */
+/* ---------- UNIFIED FEED ---------- */
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n);}
 function fmtDate(d){try{return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return d;}}
+function headlineFromExcerpt(ex){if(!ex)return'';var s=ex.split(/(?<=\.)\s/)[0];return s.length>90?s.slice(0,90)+'…':s;}
 fetch('data/feed.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){renderAll(d);}).catch(function(e){console.warn('feed load failed',e);});
 function renderAll(d){
-  // NEWSLETTER (news = Daily Computer Brief)
+  // NEWSLETTER (Daily Computer Brief)
   var news=(d.news||[]).slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
   if(news.length){
     var f=news[0],rest=news.slice(1,6);
-    var fHead=(f.title||'').replace('Daily Computer Brief — ','').replace('Daily Computer Brief — ','');
-    // If the title is just a date, derive a friendly headline from the excerpt's lead sentence.
-    if(/^\d{4}-\d{2}-\d{2}$/.test(fHead) && f.excerpt){
-      var firstSentence=f.excerpt.split(/(?<=\.)\s/)[0];
-      fHead=firstSentence.length>90?firstSentence.slice(0,90)+'…':firstSentence;
-    }
+    var fHead=headlineFromExcerpt(f.excerpt)||f.title;
     var fh='<div class="fbody"><span class="f-tag">★ Daily Computer Brief · '+esc(fmtDate(f.date))+'</span>'+
       '<h3>'+esc(fHead)+'</h3>'+
       '<p>'+esc(f.excerpt.slice(0,180))+(f.excerpt.length>180?'…':'')+'</p>'+
@@ -596,19 +597,21 @@ function renderAll(d){
     if(f.image)fh='<img class="fimg" src="'+esc(f.image)+'" alt="Daily Computer Brief" onerror="this.style.display=\'none\'">'+fh;
     document.getElementById('featuredNews').outerHTML='<article class="featured reveal">'+fh+'</article>';
     document.getElementById('newsGrid').innerHTML=rest.map(function(it){
-      var h=esc((it.title||'').replace('Daily Computer Brief — ','')).replace('Daily Computer Brief — ','');
-      if(/^\d{4}-\d{2}-\d{2}$/.test(h) && it.excerpt){var s=it.excerpt.split(/(?<=\.)\s/)[0];h=s.length>70?s.slice(0,70)+'…':s;}
-      var card='<div class="ncard"><img class="nimg" src="'+esc(it.image||'')+'" alt="" onerror="this.style.display=\'none\'">'+
-        '<div><span class="n-tag">'+esc(fmtDate(it.date))+'</span><h4>'+h+'</h4>'+
-        '<p>'+esc(it.excerpt.slice(0,120))+(it.excerpt.length>120?'…':'')+'</p></div></div>';
-      return card;}).join('');
+      var h=headlineFromExcerpt(it.excerpt)||it.title;
+      return '<div class="ncard"><img class="nimg" src="'+esc(it.image||'')+'" alt="" onerror="this.style.display=\'none\'">'+
+        '<div><span class="n-tag">'+esc(fmtDate(it.date))+'</span><h4>'+esc(h)+'</h4>'+
+        '<p>'+esc(it.excerpt.slice(0,120))+(it.excerpt.length>120?'…':'')+'</p></div></div>';}).join('');
   }
-  // GOOGLE POSTS (helpful tips)
+  // TECH NEWS (Google Post headlines — news side)
   var posts=(d.posts||[]);
-  document.getElementById('postsGrid').innerHTML=posts.map(function(p){
+  document.getElementById('techNewsGrid').innerHTML=posts.map(function(p){
     return '<div class="post-card"><h4>'+esc(p.headline)+'</h4>'+
-      '<div class="tip"><b>Try this:</b> '+esc(p.tip)+'</div>'+
-      (p.truth?'<div class="truth"><b>John\'s take:</b> '+esc(p.truth)+'</div>':'')+
+      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
+  }).join('');
+  // TECH TIPS (Google Post tips — actionable)
+  document.getElementById('techTipsGrid').innerHTML=posts.map(function(p){
+    return '<div class="post-card"><h4>'+esc(p.headline)+'</h4>'+
+      '<div class="tip">'+esc(p.tip)+'</div>'+
       (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
   }).join('');
   // REVIEWS
@@ -630,13 +633,13 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
   t.classList.add('active');
   var which=t.dataset.tab;
   document.getElementById('tab-newsletter').style.display=which==='newsletter'?'grid':'none';
-  document.getElementById('tab-posts').style.display=which==='posts'?'block':'none';
+  document.getElementById('tab-technews').style.display=which==='technews'?'block':'none';
+  document.getElementById('tab-techtips').style.display=which==='techtips'?'block':'none';
 });});
-/* ---------- SIGNUP (Brevo-ready) ---------- */
+/* ---------- SIGNUP ---------- */
 function handleSignup(e){e.preventDefault();
   var email=document.getElementById('signupEmail').value;
   if(!email)return false;
-  // Brevo: replace below with your Brevo form action + list id when ready.
   document.getElementById('signupNote').textContent='Thanks! You\'re on the list — watch for tomorrow\'s brief. (Wire to Brevo list when key added.)';
   document.getElementById('signupForm').reset();
   return false;
