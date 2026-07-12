@@ -66,18 +66,16 @@
   .btn-ghost:hover{background:var(--copper);color:#fff}
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
 
-  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 6px 24px rgba(0,0,0,.28)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-  .brand{display:flex;align-items:center;gap:12px;background:#F7F4EF;padding:7px 16px 7px 14px;border-radius:12px}
-  .brand img.logo-mark{height:34px;width:auto}
-  .brand .word{font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.04em}
-  .brand .word b{color:var(--copper-2)}
-  .nav-links{display:flex;align-items:center;gap:6px}
-  .nav-links a{color:#e8e2d8;font-weight:700;font-size:16px;padding:9px 14px;border-radius:999px;transition:.2s;position:relative}
-  .nav-links a:hover{color:var(--copper-2);background:rgba(255,255,255,.06)}
-  .nav-links a.active{color:var(--ink);background:var(--copper-2)}
-  .nav-links a.active:hover{color:var(--ink)}
-  .nav-phone{background:var(--copper-deep);color:#fff!important;padding:9px 16px;border-radius:999px;font-weight:800;font-size:15px;box-shadow:0 6px 18px rgba(154,83,38,.4)}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.10)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:11px 0;gap:16px}
+  .brand{display:flex;align-items:center;flex:0 0 auto;margin-right:auto}
+  .brand img.logo-mark{height:40px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+  .nav-links a{color:#e8e2d8;font-weight:600;font-size:15px;padding:8px 12px;border-radius:8px;transition:.18s;position:relative;white-space:nowrap;line-height:1}
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+  .nav-links a.active{color:#fff}
+  .nav-links a.active::after{content:"";position:absolute;left:6px;right:6px;bottom:2px;height:3px;border-radius:2px;background:var(--copper)}
+  .nav-phone{background:var(--copper-deep);color:#fff!important;padding:10px 16px;border-radius:999px;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:0 4px 14px rgba(154,83,38,.35);margin-left:6px}
   .nav-phone:hover{background:var(--copper-2);color:var(--ink)!important}
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
   .nav-toggle span{width:26px;height:3px;background:var(--cream);border-radius:2px}
@@ -228,11 +226,6 @@
   .biz-card{background:var(--onyx-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
   .biz-card img{width:100%;border-radius:12px}
   .footer-sunset{width:120px;height:auto;margin:10px 0 6px;border-radius:12px;display:block;opacity:.92}
-  .info-box{background:var(--onyx-2);color:var(--cream);border-radius:var(--radius);padding:20px}
-  .info-box h3{color:var(--copper-2);margin-bottom:10px;font-size:18px}
-  .info-box div{margin-bottom:8px;color:#d9d3c9}
-  .info-box a{color:var(--copper-2);font-weight:600}
-  .info-box .btn{margin-top:12px}
 
   footer.site{background:var(--ink);color:#cfc9c0;padding:48px 0 26px}
   footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:28px}
@@ -244,10 +237,11 @@
   footer .bottom{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8a8378}
   .mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--copper);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:17px}
 
-  @media(max-width:860px){
+  @media(max-width:1024px){
     .nav-links{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--onyx);padding:20px;gap:10px;transform:translateY(-130%);transition:.3s;align-items:stretch}
-    .nav-links a{padding:14px 16px;font-size:17px}
-    .nav-links a.active{background:var(--copper-2)}
+    .nav-links a{padding:14px 16px;font-size:17px;border-radius:8px}
+    .nav-links a.active{background:rgba(255,255,255,.08);color:#fff}
+    .nav-links a.active::after{left:16px;right:16px;bottom:6px}
     .nav-links.open{transform:translateY(0)}
     .nav-toggle{display:flex}
     .locator .wrap,.news-grid{grid-template-columns:1fr}
@@ -265,17 +259,15 @@
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="Onyx Systems home">
       <img class="logo-mark" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
-      <span class="word">ONYX <b>SYSTEMS</b></span>
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="nav-links">
-      <a href="#hub">Sections</a>
-      <a href="#engage">Fun &amp; Tools</a>
-      <a href="#news">News &amp; Tips</a>
+      <a href="#hub">Services</a>
+      <a href="#news">News</a>
       <a href="#games">Games</a>
       <a href="#reviews">Reviews</a>
-      <a href="#locator">Find Us</a>
-      <a class="nav-phone" href="tel:+13867557772">📞 (386) 755-7772</a>
+      <a href="#locator">Contact</a>
+      <a class="nav-phone" href="tel:+13867557772">📞 Call (386) 755-7772</a>
     </nav>
   </div>
 </header>
@@ -430,14 +422,6 @@
     <div class="card-side">
       <div class="shop-photo reveal"><img src="assets/img/brand/storefront.jpg" alt="Onyx Systems storefront in Lake City, FL"></div>
       <div class="biz-card reveal"><img src="assets/img/brand/business-card.png" alt="Onyx Systems business card"></div>
-      <div class="info-box reveal">
-        <h3>Onyx Systems</h3>
-        <div>📍 757 SW State Rd 247, Ste 108<br>Lake City, FL 32025</div>
-        <div>🕘 Mon–Fri 9:30 AM – 5:30 PM<br>🌙 On-site visits after 5 PM</div>
-        <div>📞 <a href="tel:+13867557772">(386) 755-7772</a></div>
-        <div>✉️ <a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a></div>
-        <a class="btn btn-primary" href="tel:+13867557772">Call now</a>
-      </div>
     </div>
   </div>
 </section>
