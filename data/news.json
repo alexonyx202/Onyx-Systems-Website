@@ -1,0 +1,53 @@
+{
+  "updated": "2026-07-12",
+  "items": [
+    {
+      "id": "news-2026-07-12",
+      "type": "newsletter",
+      "date": "2026-07-12",
+      "title": "ALERT — Patch Chrome Now: Two Zero-Days Are Already Exploited",
+      "tag": "Security Alert",
+      "summary": "Google pushed an emergency Chrome update on July 11 to fix two zero-day flaws hackers are already exploiting. Just loading a malicious page can hand over your machine. Update Chrome (and Edge/Brave — same engine) now.",
+      "body": [
+        "Google pushed an emergency Chrome update on July 11, 2026 to fix two zero-day flaws hackers are already exploiting in real attacks (CVE-2026-3909 in Chrome's Skia graphics engine and CVE-2026-3910 in the V8 JavaScript engine).",
+        "You don't have to click anything — just loading a malicious webpage can hand over your machine. Open Chrome → Settings → About Chrome and let it update. Using Edge or Brave? Same engine — update those too.",
+        "Daily tip: most browser hijacks ride in through extensions you forgot you installed. Open Extensions → Manage Extensions and remove anything you don't recognize. Takes two minutes, twice a year."
+      ],
+      "source": "Google Security Advisory, July 11, 2026",
+      "comic": "Newsletter - 2026-07-12-0957-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "post-2026-07-10",
+      "type": "google-post",
+      "date": "2026-07-10",
+      "title": "Summer Hours — Onsite Visits After 5 PM",
+      "tag": "Announcement",
+      "summary": "Reminder: the shop runs Mon–Fri 9:30 AM – 5:30 PM, but John does onsite calls in the evenings after 5 PM — your schedule first. Call before you stop by.",
+      "body": [
+        "Onsite service calls are available evenings after 5 PM across Lake City and North Florida.",
+        "Call or text (386) 755-7772 before you stop by — John may be out on a service call."
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "post-2026-07-01",
+      "type": "google-post",
+      "date": "2026-07-01",
+      "title": "Free Diagnostic on Laptop Tune-Ups This Month",
+      "tag": "Offer",
+      "summary": "Bring in a slow laptop for a free diagnostic and we'll tell you straight what it needs — no pressure, no BS. Limited to July.",
+      "body": [
+        "Free diagnostic on any laptop tune-up or cleanup visit through July.",
+        "Honest assessment, plain-English explanation, and a fixed plan before any work begins."
+      ],
+      "cta": {
+        "label": "Book a diagnostic",
+        "href": "tel:+13867557772"
+      }
+    }
+  ]
+}

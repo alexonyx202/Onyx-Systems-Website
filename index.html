@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Onyx Systems | Computer Repair & IT Support in Lake City, FL</title>
+<meta name="description" content="Friendly, honest computer repair & IT support in Lake City, FL. Virus removal, data recovery, upgrades, custom builds, Linux/Windows, on-site service. Serving North Florida since 1997. Call (386) 755-7772." />
+<meta name="theme-color" content="#16161A" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316161A'/%3E%3Cpath d='M16 6l7 5v10l-7 5-7-5V11z' fill='none' stroke='%23C2703D' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Onyx Systems | Computer Repair & IT Support in Lake City, FL" />
+<meta property="og:description" content="Local, honest computer repair & IT support since 1997. Call (386) 755-7772." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://onyxpc.us/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Onyx Systems | Computer Repair & IT Support in Lake City, FL" />
+<meta name="twitter:description" content="Local, honest computer repair & IT support since 1997. Call (386) 755-7772." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --onyx:#16161A;
+    --onyx-2:#1F1F25;
+    --paper:#F7F4EF;
+    --paper-2:#EFEAE2;
+    --ink:#23201C;
+    --muted:#6B635A;
+    --accent:#C2703D;
+    --accent-deep:#A8542A;
+    --hairline:rgba(35,32,28,0.12);
+    --maxw:1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1;color:var(--onyx);text-wrap:balance;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:var(--accent-deep);}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .section{padding:72px 0;}
+  .section--alt{background:var(--paper-2);}
+
+  .eyebrow{
+    font-family:'DM Sans',sans-serif;font-weight:600;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:14px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'DM Sans',sans-serif;font-weight:600;font-size:1.02rem;
+    padding:15px 26px;border-radius:10px;min-height:48px;cursor:pointer;
+    border:2px solid transparent;transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+  }
+  .btn--primary{background:var(--accent);color:#fff;}
+  .btn--primary:hover{background:var(--accent-deep);color:#fff;transform:translateY(-2px);box-shadow:0 8px 22px rgba(168,84,42,.30);}
+  .btn--ghost{background:transparent;color:var(--onyx);border-color:var(--onyx);}
+  .btn--ghost:hover{background:var(--onyx);color:var(--paper);transform:translateY(-2px);}
+  .btn--light{background:var(--paper);color:var(--onyx);}
+  .btn--light:hover{background:#fff;transform:translateY(-2px);}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;background:rgba(247,244,239,.92);
+    backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--hairline);
+  }
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;letter-spacing:.04em;color:var(--onyx);}
+  .brand span{color:var(--accent);}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{color:var(--ink);font-weight:500;font-size:.96rem;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-phone{font-weight:600;color:var(--onyx);}
+  .nav-phone:hover{color:var(--accent);}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
+    font-weight:600;padding:10px 18px;border-radius:999px;font-size:.95rem;
+  }
+  .pill:hover{background:var(--accent-deep);color:#fff;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(194,112,61,.10), transparent 60%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper) 70%, var(--paper-2) 100%);
+    padding:84px 0 70px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,3.7rem);margin-bottom:18px;}
+  .hero h1 .em{color:var(--accent);}
+  .hero p.lead{font-size:1.18rem;color:var(--muted);max-width:34ch;margin-bottom:28px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px;}
+  .trustline{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:.92rem;color:var(--muted);font-weight:500;}
+  .trustline span{display:inline-flex;align-items:center;gap:7px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;}
+
+  /* Hero visual card */
+  .hero-card{
+    background:var(--onyx);border-radius:18px;padding:30px;color:var(--paper);
+    box-shadow:0 24px 60px rgba(22,22,26,.22);position:relative;
+  }
+  .hero-card h3{color:var(--paper);font-size:1.5rem;margin-bottom:6px;}
+  .hero-card .sub{color:#C9C2B8;font-size:.95rem;margin-bottom:18px;}
+  .card-phone{
+    display:flex;align-items:center;gap:14px;background:var(--onyx-2);
+    border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 18px;margin-bottom:14px;
+  }
+  .card-phone .ic{width:42px;height:42px;border-radius:10px;background:var(--accent);display:grid;place-items:center;flex:none;}
+  .card-phone .num{font-family:'Fraunces',serif;font-size:1.5rem;color:#fff;font-weight:600;}
+  .card-phone .lbl{font-size:.8rem;color:#9a948a;}
+  .hero-card .hours{font-size:.9rem;color:#C9C2B8;margin-top:6px;line-height:1.7;}
+  .hero-card .hours b{color:var(--paper);font-weight:600;}
+  .hero-card .btn{width:100%;margin-top:16px;}
+
+  /* ---------- Trust strip ---------- */
+  .truststrip{background:var(--onyx);color:var(--paper);}
+  .truststrip .row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:30px 0;}
+  .truststrip .item{padding:6px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.10);}
+  .truststrip .item:last-child{border-right:none;}
+  .truststrip .big{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:600;color:#fff;}
+  .truststrip .small{font-size:.9rem;color:#B8B1A7;margin-top:2px;}
+
+  /* ---------- Section heads ---------- */
+  .head{max-width:640px;margin-bottom:42px;}
+  .head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:12px;}
+  .head p{color:var(--muted);font-size:1.06rem;}
+
+  /* ---------- Service tiles ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .tile{
+    display:block;background:var(--paper);border:1px solid var(--hairline);border-radius:14px;
+    padding:26px 24px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+  }
+  .tile:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px rgba(35,32,28,.10);}
+  .tile .ic{width:50px;height:50px;border-radius:12px;background:var(--paper-2);color:var(--accent);display:grid;place-items:center;margin-bottom:16px;}
+  .tile h3{font-size:1.22rem;margin-bottom:6px;}
+  .tile p{font-size:.96rem;color:var(--muted);}
+
+  /* ---------- Detail columns ---------- */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .col h4{font-size:1.15rem;margin-bottom:10px;display:flex;align-items:center;gap:9px;}
+  .col h4 .mk{color:var(--accent);}
+  .col ul{list-style:none;}
+  .col li{padding:7px 0;border-bottom:1px solid var(--hairline);font-size:.97rem;color:var(--ink);}
+  .col li:last-child{border-bottom:none;}
+
+  /* ---------- Two tracks ---------- */
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .track{
+    background:var(--paper);border:1px solid var(--hairline);border-radius:16px;padding:34px 30px;
+    display:flex;flex-direction:column;
+  }
+  .track .badge{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .track h3{font-size:1.55rem;margin-bottom:12px;}
+  .track p{color:var(--muted);margin-bottom:18px;font-size:1.02rem;}
+  .track ul{list-style:none;margin-bottom:24px;}
+  .track li{padding:8px 0 8px 26px;position:relative;font-size:.98rem;}
+  .track li::before{content:"";position:absolute;left:0;top:14px;width:9px;height:9px;border-radius:2px;background:var(--accent);transform:rotate(45deg);}
+  .track .btn{align-self:flex-start;margin-top:auto;}
+
+  /* ---------- NPS badge ---------- */
+  .nps{display:flex;align-items:center;gap:18px;background:var(--onyx);color:var(--paper);border-radius:14px;padding:22px 28px;margin-top:8px;}
+  .nps .score{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;color:var(--accent);line-height:1;}
+  .nps .txt{font-size:.98rem;color:#D8D1C7;}
+  .nps .txt b{color:#fff;}
+
+  /* ---------- Scheduling ---------- */
+  .how{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .how-card{background:var(--paper);border:1px solid var(--hairline);border-radius:16px;padding:30px;}
+  .how-card .step{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--accent);font-weight:600;margin-bottom:8px;}
+  .how-card h3{font-size:1.3rem;margin-bottom:10px;}
+  .how-card p{color:var(--muted);}
+
+  /* ---------- Service area ---------- */
+  .area-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .area-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .chip{background:var(--paper);border:1px solid var(--hairline);border-radius:999px;padding:8px 16px;font-size:.92rem;font-weight:500;}
+  .mapbox{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:14px;height:280px;display:grid;place-items:center;color:var(--muted);text-align:center;font-size:.9rem;}
+
+  /* ---------- NEWS & UPDATES ---------- */
+  .featured{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:0;background:var(--onyx);color:var(--paper);
+    border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(22,22,26,.22);
+  }
+  .featured .f-body{padding:38px 40px;}
+  .featured .f-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+  .featured h3{color:#fff;font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:14px;line-height:1.12;}
+  .featured p{color:#D8D1C7;font-size:1.04rem;margin-bottom:18px;}
+  .featured .f-meta{font-size:.85rem;color:#9a948a;margin-bottom:20px;}
+  .featured .f-side{background:var(--onyx-2);padding:38px 34px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(255,255,255,.08);}
+  .featured .f-side .lbl{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#9a948a;margin-bottom:10px;}
+  .featured .f-side .big{font-family:'Fraunces',serif;font-size:1.15rem;color:#fff;margin-bottom:6px;}
+  .featured .f-side .small{font-size:.92rem;color:#C9C2B8;}
+  .featured img.f-comic{max-width:200px;border-radius:10px;margin-top:14px;align-self:flex-start;}
+
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
+  .ncard{
+    background:var(--paper);border:1px solid var(--hairline);border-radius:16px;padding:26px;
+    display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  }
+  .ncard:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px rgba(35,32,28,.10);}
+  .ncard .n-tag{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;align-self:flex-start;margin-bottom:14px;}
+  .n-tag--newsletter{background:rgba(194,112,61,.14);color:var(--accent-deep);}
+  .n-tag--google-post{background:rgba(35,32,28,.08);color:var(--onyx);}
+  .ncard h4{font-size:1.18rem;margin-bottom:8px;line-height:1.25;}
+  .ncard .n-sum{font-size:.96rem;color:var(--muted);flex:1;}
+  .ncard .n-meta{font-size:.82rem;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline);}
+  .ncard .n-cta{margin-top:12px;font-weight:600;font-size:.92rem;}
+  .ncard .n-cta a{display:inline-flex;align-items:center;gap:6px;}
+
+  /* ---------- Testimonials ---------- */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .quote{background:var(--paper);border:1px solid var(--hairline);border-radius:16px;padding:26px;display:flex;flex-direction:column;}
+  .quote .stars{color:var(--accent);letter-spacing:2px;margin-bottom:12px;font-size:.95rem;}
+  .quote blockquote{font-size:1.02rem;line-height:1.6;color:var(--ink);flex:1;}
+  .quote .who{margin-top:18px;font-weight:600;color:var(--onyx);font-size:.95rem;}
+  .quote .who span{display:block;font-weight:400;color:var(--muted);font-size:.85rem;}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--onyx);color:var(--paper);}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .contact h2{color:#fff;font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px;}
+  .contact p.intro{color:#C9C2B8;font-size:1.08rem;max-width:36ch;margin-bottom:26px;}
+  .nap{list-style:none;margin-top:6px;}
+  .nap li{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.10);font-size:1rem;}
+  .nap li:last-child{border-bottom:none;}
+  .nap .ic{flex:none;color:var(--accent);margin-top:3px;}
+  .nap b{color:#fff;font-weight:600;}
+  .nap a{color:var(--paper);}
+  .nap a:hover{color:var(--accent);}
+
+  form.contact-form{background:var(--onyx-2);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:26px;}
+  form.contact-form label{display:block;font-size:.85rem;color:#B8B1A7;margin:0 0 6px 2px;font-weight:500;}
+  form.contact-form .req{color:var(--accent);}
+  form.contact-form input,form.contact-form textarea{
+    width:100%;background:var(--onyx);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;margin-bottom:16px;
+  }
+  form.contact-form input:focus,form.contact-form textarea:focus{outline:none;border-color:var(--accent);}
+  form.contact-form textarea{resize:vertical;min-height:96px;}
+  form.contact-form .btn{width:100%;}
+  form.contact-form .note{font-size:.82rem;color:#9a948a;margin-top:10px;text-align:center;}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:#0F0F12;color:#B8B1A7;padding:40px 0;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center;}
+  footer .brand{color:#fff;}
+  footer .brand span{color:var(--accent);}
+  footer .fnap{font-size:.9rem;line-height:1.7;}
+  footer .fnap a{color:#B8B1A7;}
+  footer .fnap a:hover{color:var(--accent);}
+  .copybar{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:20px;font-size:.84rem;color:#8a847b;}
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--accent);display:none;}
+  .mobile-cta a{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;font-weight:700;font-size:1.08rem;padding:16px;min-height:58px;}
+  .mobile-cta a:hover{background:var(--accent-deep);color:#fff;}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .tiles,.cols,.quotes,.news-grid{grid-template-columns:1fr 1fr;}
+    .tracks,.how,.area-grid,.contact .grid{grid-template-columns:1fr;}
+    .featured{grid-template-columns:1fr;}
+    .featured .f-side{border-left:none;border-top:1px solid rgba(255,255,255,.08);}
+    .nav-links{display:none;}
+  }
+  @media (max-width:640px){
+    .section{padding:54px 0;}
+    .tiles,.cols,.quotes,.news-grid{grid-template-columns:1fr;}
+    .truststrip .row{grid-template-columns:1fr;}
+    .truststrip .item{border-right:none;border-bottom:1px solid rgba(255,255,255,.10);padding:14px;}
+    .truststrip .item:last-child{border-bottom:none;}
+    .nav-phone{display:none;}
+    .mobile-cta{display:block;}
+    body{padding-bottom:58px;}
+    .hero{padding:60px 0 50px;}
+    .featured .f-body,.featured .f-side{padding:28px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <div class="wrap navbar">
+    <div class="brand">ONYX<span>·</span>SYSTEMS</div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#news">News</a>
+      <a href="#area">Service Area</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+13867557772">(386) 755-7772</a>
+      <a class="pill" href="tel:+13867557772">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Lake City · North Florida</div>
+      <h1>Computer Repair &amp; <span class="em">IT Support</span> in Lake City, FL</h1>
+      <p class="lead">Friendly, honest help from a local tech with nearly 30 years of experience. Call before you stop by — I may be out on a service call.</p>
+      <div class="hero-cta">
+        <a class="btn btn--primary" href="tel:+13867557772">Call (386) 755-7772</a>
+        <a class="btn btn--ghost" href="#contact">Request a Call Back</a>
+      </div>
+      <div class="trustline">
+        <span><i class="dot"></i> Serving North Florida since 1997</span>
+        <span><i class="dot"></i> Locally owned &amp; operated</span>
+        <span><i class="dot"></i> Real 5-star local reviews</span>
+      </div>
+    </div>
+
+    <aside class="hero-card reveal" aria-label="Contact card">
+      <h3>Talk to John directly</h3>
+      <div class="sub">One-man shop. I am the tech that shows up.</div>
+      <div class="card-phone">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="lbl">Call or text</div>
+          <a class="num" href="tel:+13867557772">(386) 755-7772</a>
+        </div>
+      </div>
+      <div class="hours">
+        <b>Mon–Fri:</b> 9:30 AM – 5:30 PM<br>
+        <b>Sat–Sun:</b> Closed<br>
+        <b>Onsite calls:</b> Evenings after 5 PM — your schedule first
+      </div>
+      <a class="btn btn--light" href="mailto:onyxpc@gmail.com?subject=Call%20Back%20Request">Email onyxpc@gmail.com</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="truststrip">
+  <div class="wrap">
+    <div class="row">
+      <div class="item"><div class="big">5.0 ★</div><div class="small">65 Google reviews</div></div>
+      <div class="item"><div class="big">Since 1997</div><div class="small">In business 29 years</div></div>
+      <div class="item"><div class="big">Locally Owned</div><div class="small">Lake City &amp; North Florida</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">What I Can Help With</div>
+      <h2>Real repair &amp; IT help, done right</h2>
+      <p>From a dead laptop to a full network, I handle it all — and I'll explain what's wrong in plain English.</p>
+    </div>
+
+    <div class="tiles">
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Repairs &amp; Upgrades</h3>
+        <p>PCs, laptops &amp; Macs fixed fast — screens, batteries, boards, speed-ups.</p>
+      </a>
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Virus &amp; Malware Removal</h3>
+        <p>Kick out infections, pop-ups &amp; scams — and lock things down after.</p>
+      </a>
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+        <h3>Data Recovery</h3>
+        <p>Photos, files &amp; drives rescued from crashed or failing systems.</p>
+      </a>
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div>
+        <h3>Custom PC Builds</h3>
+        <p>Built to your needs &amp; budget — gaming, office, or workstation.</p>
+      </a>
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V5a2 2 0 0 1 2-2h4M21 9V5a2 2 0 0 0-2-2h-4M3 15v4a2 2 0 0 0 2 2h4M21 15v4a2 2 0 0 1-2 2h-4"/></svg></div>
+        <h3>Windows &amp; Linux</h3>
+        <p>Installs, migrations &amp; open-source setups that just work for you.</p>
+      </a>
+      <a class="tile reveal" href="#contact">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a7 7 0 0 1 14 0M2 12.5h3M19 12.5h3M8 19l-1 3M16 19l1 3M12 9v3M9.5 11.5h5"/></svg></div>
+        <h3>Networks &amp; Wi-Fi</h3>
+        <p>Setup, fix &amp; secure your home or office wireless &amp; wired network.</p>
+      </a>
+    </div>
+
+    <div class="cols" style="margin-top:46px;">
+      <div class="col reveal">
+        <h4><span class="mk">▸</span> Hardware &amp; Software</h4>
+        <ul>
+          <li>PC, laptop &amp; Mac sales</li>
+          <li>Parts &amp; upgrades</li>
+          <li>Home &amp; office software</li>
+          <li>Refurbished PCs</li>
+        </ul>
+      </div>
+      <div class="col reveal">
+        <h4><span class="mk">▸</span> Repair &amp; Care</h4>
+        <ul>
+          <li>Diagnostics &amp; inspection</li>
+          <li>Virus / malware cleanup</li>
+          <li>Data backup &amp; recovery</li>
+          <li>Performance tuning</li>
+        </ul>
+      </div>
+      <div class="col reveal">
+        <h4><span class="mk">▸</span> On-Site &amp; IT</h4>
+        <ul>
+          <li>On-site service by appointment</li>
+          <li>Network &amp; Wi-Fi setup</li>
+          <li>Linux migration</li>
+          <li>New device setup</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTIONS ============ -->
+<section class="section section--alt" id="solutions">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Two Ways I Help</div>
+      <h2>Solutions for your home &amp; your business</h2>
+      <p>Whether it's your own laptop or your whole office, you get the same careful, honest work.</p>
+    </div>
+
+    <div class="tracks">
+      <div class="track reveal">
+        <div class="badge">For Home</div>
+        <h3>Personal Use Solutions</h3>
+        <p>From making your computer faster to setting up a new device — calm, patient help for whatever tech is in your life.</p>
+        <ul>
+          <li>Slow computer? I'll speed it up</li>
+          <li>Virus, pop-ups &amp; scam cleanup</li>
+          <li>New PC, phone or tablet setup</li>
+          <li>Printer, Wi-Fi &amp; smart-TV help</li>
+        </ul>
+        <a class="btn btn--primary" href="#contact">Get Home Help</a>
+      </div>
+      <div class="track reveal">
+        <div class="badge">For Business</div>
+        <h3>Small Business Solutions</h3>
+        <p>Your personal IT support team — on-site service, remote fixes, and fast turnaround so you can get back to work.</p>
+        <ul>
+          <li>On-site &amp; remote PC support</li>
+          <li>Desktop &amp; network troubleshooting</li>
+          <li>Backups &amp; data safety</li>
+          <li>Linux / open-source migrations</li>
+        </ul>
+        <a class="btn btn--primary" href="#contact">Get Business Help</a>
+      </div>
+    </div>
+
+    <div class="nps reveal">
+      <div class="score">5.0★</div>
+      <div class="txt"><b>Rated 5.0 from 65 Google reviews.</b><br>Neighbors call Onyx their "go-to" for laptop repair — "knowledgeable," "honest," and "goes above and beyond." Read the real reviews on Google &amp; Nextdoor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS & UPDATES ============ -->
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">News &amp; Updates</div>
+      <h2>From the shop — alerts, tips &amp; posts</h2>
+      <p>John's daily tech brief, security alerts, and what's new at Onyx. Updated regularly so you always know what's worth knowing.</p>
+    </div>
+
+    <!-- Featured latest entry (filled by JS from data/news.json) -->
+    <div class="featured reveal" id="featuredNews" aria-live="polite"></div>
+
+    <!-- Grid of remaining entries (filled by JS) -->
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ HOW WE WORK / SCHEDULING ============ -->
+<section class="section section--alt" id="how">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">How Scheduling Works</div>
+      <h2>Simple, people-first — you're the priority</h2>
+    </div>
+    <div class="how">
+      <div class="how-card reveal">
+        <div class="step">01</div>
+        <h3>Call first, please</h3>
+        <p>No appointment needed — but a quick call makes sure I'm in the shop and not out on a service call. It saves you a wasted trip.</p>
+      </div>
+      <div class="how-card reveal">
+        <div class="step">02</div>
+        <h3>Onsite visits after 5 PM</h3>
+        <p>I prefer evenings for house and business calls, and I'll gladly work around <em>your</em> schedule. You come first — always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="section section--alt" id="area">
+  <div class="wrap">
+    <div class="area-grid">
+      <div class="reveal">
+        <div class="eyebrow">Service Area</div>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:12px;">Serving Lake City &amp; North Florida</h2>
+        <p style="color:var(--muted);font-size:1.06rem;">On-site service is available across the region — just ask. Remote support covers anywhere with an internet connection.</p>
+        <div class="area-list">
+          <span class="chip">Lake City</span>
+          <span class="chip">Branford</span>
+          <span class="chip">Live Oak</span>
+          <span class="chip">Jasper</span>
+          <span class="chip">Macclenny</span>
+          <span class="chip">Gainesville area</span>
+          <span class="chip">Columbia County</span>
+          <span class="chip">Suwannee County</span>
+          <span class="chip">Gilchrist County</span>
+          <span class="chip">Baker County</span>
+          <span class="chip">Union County</span>
+        </div>
+      </div>
+      <div class="mapbox reveal">
+        <div>
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 10px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>757 SW State Rd 247, Ste 108<br>Lake City, FL 32025</div>
+          <div style="margin-top:8px;"><a href="https://www.google.com/maps?q=757+SW+State+Rd+247+Suite+108+Lake+City+FL+32025" target="_blank" rel="noopener">Open in Google Maps →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">What Locals Say</div>
+      <h2>Reviews from your neighbors</h2>
+      <p>Onyx Systems has been the go-to shop in Lake City for nearly 30 years. Here's what people tell us.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"John is amazing! He truly takes care of his customers and goes above and beyond to make sure you are satisfied. I have been a customer for years and I would NEVER go anywhere else. Thank you John for all you do. I appreciate you."</blockquote>
+        <div class="who">Toni Marie L.<span>South Lake City · Nextdoor</span></div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Mr John is a very knowledgeable and talented person. I wish I had met him before — he goes above and beyond to ensure the customer is happy and explains how to do things in a way they understand."</blockquote>
+        <div class="who">Eduardo Florez<span>Local Guide · Google Review</span></div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"John will treat you right. Been doing business with him for years!!!!!"</blockquote>
+        <div class="who">L. J.<span>Lake City, FL · Nextdoor</span></div>
+      </div>
+    </div>
+    <div class="quotes" style="margin-top:20px;">
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"John at Onyx is awesome. He owns his business and is very kind. No BS either!"</blockquote>
+        <div class="who">Linda Jones<span>SW Faith Rd · Nextdoor</span></div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"This was the first time visiting the store, and I can assure you it will not be the last. He was very thorough and very knowledgeable. You will be well taken care of by a caring staff."</blockquote>
+        <div class="who">Psalm91 Ministry<span>Google Review</span></div>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted);margin-top:22px;text-align:center;">★ Rated <b>5.0 / 5</b> on Google from <b>65 reviews</b> · Real neighbor recommendations on Nextdoor. <a href="https://www.google.com/maps/place/Onyx+Systems+%7C+COMPUTER+CARE+CENTER+in+Lake+City+FL/@30.1713048,-82.6736559,17z" target="_blank" rel="noopener">Read all reviews →</a></p>
+  </div>
+</section>
+
+<!-- ============ CONTACT / FINAL CTA ============ -->
+<section class="section contact" id="contact">
+  <div class="wrap grid">
+    <div class="reveal">
+      <h2>Ready to get it fixed?</h2>
+      <p class="intro">Call before you stop by, or send a note and I'll get back to you. Either way, you'll talk to John — not a call center.</p>
+
+      <ul class="nap">
+        <li>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><b>Phone / Text</b><br><a href="tel:+13867557772">(386) 755-7772</a></span>
+        </li>
+        <li>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></span>
+          <span><b>Email</b><br><a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><b>Shop</b><br>757 SW State Rd 247, Ste 108<br>Lake City, FL 32025</span>
+        </li>
+        <li>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <span><b>Hours</b><br>Mon–Fri 9:30 AM – 5:30 PM · Call first · Onsite after 5 PM</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm" onsubmit="return buildMail(this)">
+      <label for="fname">First Name <span class="req">*</span></label>
+      <input id="fname" name="First Name" type="text" required placeholder="Your first name" />
+
+      <label for="lname">Last Name <span class="req">*</span></label>
+      <input id="lname" name="Last Name" type="text" required placeholder="Your last name" />
+
+      <label for="phone">Phone Number <span class="req">*</span></label>
+      <input id="phone" name="Phone" type="tel" required placeholder="(386) 555-1234" />
+
+      <label for="email">Email Address</label>
+      <input id="email" name="Email" type="email" placeholder="you@example.com" />
+
+      <label for="msg">How can I help? <span class="req">*</span></label>
+      <textarea id="msg" name="Message" required placeholder="What's going on with your computer?"></textarea>
+
+      <button class="btn btn--primary" type="submit">Send Request</button>
+      <p class="note">Or just call — I'd rather hear it from you. (386) 755-7772</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">ONYX<span>·</span>SYSTEMS</div>
+        <p style="margin-top:8px;font-size:.92rem;">Computer Care Center — Lake City, FL</p>
+      </div>
+      <div class="fnap">
+        <b style="color:#fff;">Onyx Systems</b><br>
+        757 SW State Rd 247, Ste 108, Lake City, FL 32025<br>
+        <a href="tel:+13867557772">(386) 755-7772</a> · <a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a><br>
+        Mon–Fri 9:30 AM – 5:30 PM
+      </div>
+    </div>
+    <div class="copybar">© 2026 Onyx Systems · Lake City, FL · Serving North Florida since 1997. Website built with care for a local shop.</div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="mobile-cta">
+  <a href="tel:+13867557772">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call (386) 755-7772
+  </a>
+</div>
+
+<!-- ============ NEWS RENDERER ============ -->
+<script>
+  function fmtDate(iso){
+    try{ return new Date(iso+'T00:00:00').toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
+    catch(e){ return iso; }
+  }
+  function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function renderNews(items){
+    if(!items || !items.length){ return; }
+    // newest first
+    items.sort(function(a,b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+    var featured = items[0];
+    var rest = items.slice(1, 7);
+
+    // Featured
+    var tagLabel = featured.type === 'google-post' ? 'Google Post' : 'Daily Tech Brief';
+    var fHtml = '';
+    fHtml += '<div class="f-body">';
+    fHtml += '  <span class="f-tag">★ '+esc(tagLabel)+'</span>';
+    fHtml += '  <h3>'+esc(featured.title)+'</h3>';
+    fHtml += '  <p>'+esc(featured.summary)+'</p>';
+    fHtml += '  <div class="f-meta">'+esc(fmtDate(featured.date))+(featured.source?(' · Source: '+esc(featured.source)):'')+'</div>';
+    if(featured.readMore){ fHtml += '<a class="btn btn--light" href="'+esc(featured.readMore)+'">Read the full brief</a>'; }
+    else if(featured.cta){ fHtml += '<a class="btn btn--light" href="'+esc(featured.cta.href)+'">'+esc(featured.cta.label)+'</a>'; }
+    fHtml += '</div>';
+    // Side panel
+    fHtml += '<div class="f-side">';
+    fHtml += '  <div class="lbl">Latest from Onyx</div>';
+    if(featured.comic){
+      fHtml += '  <img class="f-comic" src="data/'+esc(featured.comic)+'" alt="Daily comic" loading="lazy" onerror="this.style.display=\'none\'">';
+    } else {
+      fHtml += '  <div class="big">'+esc(featured.tag||tagLabel)+'</div>';
+      fHtml += '  <div class="small">'+esc(featured.summary.slice(0,90))+'…</div>';
+    }
+    fHtml += '</div>';
+    document.getElementById('featuredNews').innerHTML = fHtml;
+
+    // Grid
+    var gHtml = '';
+    rest.forEach(function(it){
+      var t = it.type === 'google-post' ? 'Google Post' : 'Daily Tech Brief';
+      gHtml += '<article class="ncard reveal">';
+      gHtml += '  <span class="n-tag n-tag--'+(it.type==='google-post'?'google-post':'newsletter')+'">'+esc(t)+'</span>';
+      gHtml += '  <h4>'+esc(it.title)+'</h4>';
+      gHtml += '  <p class="n-sum">'+esc(it.summary)+'</p>';
+      gHtml += '  <div class="n-meta">'+esc(fmtDate(it.date))+(it.tag?(' · '+esc(it.tag)):'')+'</div>';
+      if(it.cta){ gHtml += '<div class="n-cta"><a href="'+esc(it.cta.href)+'">'+esc(it.cta.label)+' →</a></div>'; }
+      else if(it.readMore){ gHtml += '<div class="n-cta"><a href="'+esc(it.readMore)+'">Read more →</a></div>'; }
+      gHtml += '</article>';
+    });
+    document.getElementById('newsGrid').innerHTML = gHtml;
+
+    // re-observe new reveal elements
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:0.12});
+      document.querySelectorAll('#newsGrid .reveal').forEach(function(e){ io.observe(e); });
+    } else {
+      document.querySelectorAll('#newsGrid .reveal').forEach(function(e){ e.classList.add('in'); });
+    }
+  }
+
+  fetch('data/news.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){ renderNews(d.items); })
+    .catch(function(e){ console.warn('news.json load failed:', e); });
+</script>
+
+<!-- ============ JSON-LD LocalBusiness ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Onyx Systems",
+  "alternateName": "Onyx Systems | Computer Care Center",
+  "description": "Local computer repair and IT support in Lake City, FL. Virus removal, data recovery, upgrades, custom builds, Windows/Linux, on-site service.",
+  "image": "https://onyxpc.us/og-image.png",
+  "url": "https://onyxpc.us",
+  "telephone": "+1-386-755-7772",
+  "email": "onyxpc@gmail.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "757 SW State Rd 247, Ste 108",
+    "addressLocality": "Lake City",
+    "addressRegion": "FL",
+    "postalCode": "32025",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    "Lake City", "Branford", "Live Oak", "Jasper", "Macclenny", "Gainesville",
+    "Columbia County", "Suwannee County", "Gilchrist County", "Baker County", "Union County"
+  ],
+  "founder": {"@type": "Person", "name": "John D. Gunther"},
+  "openingHours": "Mo-Fr 09:30-17:30",
+  "geo": {"@type": "GeoCoordinates", "latitude": 30.1715315, "longitude": -82.6736942},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "65", "bestRating": "5", "worstRating": "1"}
+}
+</script>
+
+<!-- ============ Reveal-on-scroll ============ -->
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:0.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+
+<!-- ============ Contact form mailto builder ============ -->
+<script>
+  function buildMail(form){
+    var f=(form.FirstName.value||"").trim();
+    var l=(form.LastName.value||"").trim();
+    var ph=(form.Phone.value||"").trim();
+    var em=(form.Email.value||"").trim();
+    var msg=(form.Message.value||"").trim();
+    var body="Name: "+f+" "+l+"\nPhone: "+ph+"\nEmail: "+em+"\n\nHow can I help?\n"+msg;
+    var href="mailto:onyxpc@gmail.com?subject="+encodeURIComponent("Website repair request from "+f+" "+l)+"&body="+encodeURIComponent(body);
+    window.location.href=href;
+    return false;
+  }
+</script>
+
+</body>
+</html>
