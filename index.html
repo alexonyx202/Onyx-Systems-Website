@@ -197,14 +197,6 @@
   .review-summary .score{font-size:15px;color:var(--muted)}
   .review-summary a{margin-left:auto}
 
-  .signup{padding:50px 0;background:var(--onyx);color:var(--cream)}
-  .signup .wrap{max-width:760px;text-align:center}
-  .signup h2{color:var(--cream);font-size:clamp(24px,4vw,34px)}
-  .signup p{color:#a59e94;margin:10px 0 22px}
-  .signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .signup input{flex:1;min-width:240px;padding:14px 18px;border-radius:999px;border:0;font-size:15px}
-  .signup .note{font-size:13px;color:#8a8378;margin-top:12px}
-
   .locator{padding:56px 0;background:var(--onyx)}
   .locator .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:stretch}
   .map-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
@@ -254,7 +246,7 @@
       <a href="#engage">Fun &amp; Tools</a>
       <a href="#news">News &amp; Tips</a>
       <a href="#reviews">Reviews</a>
-      <a href="#signup">Newsletter</a>
+      <a href="#reviews">Reviews</a>
       <a href="#locator">Find Us</a>
       <a class="nav-phone" href="tel:+13867557772">📞 (386) 755-7772</a>
     </nav>
@@ -344,7 +336,7 @@
     <div class="sec-head reveal">
       <div class="eyebrow">From the shop</div>
       <h2>News &amp; Tips</h2>
-      <p>Real, useful stuff — the daily tech brief (our newsletter), plus tech news and hands-on tips. New every morning.</p>
+      <p>Real, useful stuff — the daily tech brief we post here, plus tech news and hands-on tips. Fresh every morning.</p>
     </div>
     <div class="tabs reveal">
       <button class="tab active" data-tab="newsletter">📰 Newsletter</button>
@@ -369,18 +361,6 @@
     <div class="review-summary reveal" id="reviewSummary"></div>
     <div class="review-grid" id="reviewGrid"></div>
     <div style="margin-top:24px" class="reveal"><a class="btn btn-ghost" href="https://g.page/onyx-systems" target="_blank" rel="noopener">⭐ Read all reviews on Google</a></div>
-  </div>
-</section>
-
-<section class="signup" id="signup">
-  <div class="wrap">
-    <h2>Get the Daily Computer Brief in your inbox</h2>
-    <p>One short, genuinely useful email a day — scam alerts, quick fixes, and a laugh. No spam, ever.</p>
-    <form id="signupForm" action="https://onyxpc.us/?sub=1" method="post" onsubmit="return handleSignup(event)">
-      <input type="email" id="signupEmail" placeholder="you@email.com" required>
-      <button class="btn btn-primary" type="submit">Subscribe free</button>
-    </form>
-    <div class="note" id="signupNote">We respect your inbox. Unsubscribe anytime. (Powered by Brevo.)</div>
   </div>
 </section>
 
@@ -619,7 +599,7 @@ function renderAll(d){
       '<h3>'+esc(f.title&&f.title.indexOf('Brief')<0?f.title:f.excerpt.slice(0,90)+(f.excerpt.length>90?'…':''))+'</h3>'+
       '<p>'+esc(f.excerpt.slice(0,180))+(f.excerpt.length>180?'…':'')+'</p>'+
       '<div class="f-meta">Scam-alert &amp; tip of the day from Onyx</div>'+
-      (f.read_more&&f.read_more!=='#'?'<a class="btn btn-primary" href="'+esc(f.read_more)+'">Read the full brief</a>':'')+'</div>';
+      ''+'</div>';
     if(f.image)fh='<img class="fimg" src="'+esc(f.image)+'" alt="Daily Computer Brief" onerror="this.style.display=\'none\'">'+fh;
     var feat=document.getElementById('featuredNews');if(feat)feat.outerHTML='<article class="featured reveal">'+fh+'</article>';
     var ng=document.getElementById('newsGrid');if(ng)ng.innerHTML=rest.map(function(it){
@@ -676,14 +656,6 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
   document.getElementById('tab-technews').style.display=which==='technews'?'block':'none';
   document.getElementById('tab-techtips').style.display=which==='techtips'?'block':'none';
 });});
-/* ---------- SIGNUP ---------- */
-function handleSignup(e){e.preventDefault();
-  var email=document.getElementById('signupEmail').value;
-  if(!email)return false;
-  document.getElementById('signupNote').textContent='Thanks! You\'re on the list — watch for tomorrow\'s brief. (Wire to Brevo list when key added.)';
-  document.getElementById('signupForm').reset();
-  return false;
-}
 </script>
 </body>
 </html>
