@@ -8,13 +8,13 @@
 <meta property="og:title" content="Onyx Systems | Computer Repair &amp; IT Support in Lake City, FL">
 <meta property="og:description" content="Local computer repair, virus removal, data recovery & on-site IT. Windows, Mac, Linux & ChromeOS. Daily tips, real reviews, free PC check. Serving North Florida since 1997.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://onyxpc.us/assets/img/brand/header.png">
+<meta property="og:image" content="og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/brand/logo.svg">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"LocalBusiness",
-  "name":"Onyx Systems","image":"https://onyxpc.us/assets/img/brand/header.png",
+  "image":"og-image.png",
   "description":"Local computer repair and IT support serving Lake City and North Florida since 1997. Windows, Mac, Linux & ChromeOS.",
   "founder":{"@type":"Person","name":"John D. Gunther"},
   "address":{"@type":"PostalAddress","streetAddress":"757 SW State Rd 247, Ste 108","addressLocality":"Lake City","addressRegion":"FL","postalCode":"32025","addressCountry":"US"},
@@ -31,7 +31,7 @@
 <style>
   :root{
     --onyx:#16161A; --onyx-2:#1f1f25; --onyx-3:#23232b; --ink:#0e0e12;
-    --copper:#C2703D; --copper-2:#E8B06A; --cream:#F7F4EF; --paper:#FBF8F2;
+    --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#9A5326; --cream:#F7F4EF; --paper:#FBF8F2;
     --paper-2:#F1ECE2; --muted:#6B635A; --line:#e4ddd0;
     --ok:#3fae6b; --shadow:0 18px 50px rgba(14,14,18,.16); --radius:18px;
     --brand-font:'SerpentineBold','SerpentineStandIn','Oswald',"Segoe UI",sans-serif;
@@ -62,9 +62,9 @@
     font-weight:600;font-size:15px;cursor:pointer;border:2px solid transparent;transition:.2s}
   .btn-primary{background:var(--copper);color:#fff;box-shadow:0 8px 22px rgba(194,112,61,.35)}
   .btn-primary:hover{background:var(--copper-2);color:var(--ink);transform:translateY(-2px)}
-  .btn-ghost{background:transparent;border-color:var(--copper);color:var(--copper)}
+  .btn-ghost{background:transparent;border-color:var(--copper);color:var(--copper-deep)}
   .btn-ghost:hover{background:var(--copper);color:#fff}
-  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper)}
+  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
 
   header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
@@ -108,7 +108,7 @@
   .tile .ic img{width:48px;height:48px}
   .tile h3{font-size:17px;color:var(--onyx);margin-bottom:2px}
   .tile p{font-size:13px;color:var(--muted)}
-  .tile .go{margin-left:auto;color:var(--copper);font-size:22px;font-weight:800}
+  .tile .go{margin-left:auto;color:var(--copper-deep);font-size:22px;font-weight:800}
 
   .scrim{position:fixed;inset:0;background:rgba(14,14,18,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
   .scrim.open{opacity:1;visibility:visible}
@@ -166,29 +166,33 @@
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
   .tab.active{background:var(--copper);color:#fff;border-color:var(--copper)}
   .news-grid{display:block}
-  .issue-viewer{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-  .issue-viewer .iv-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--paper)}
-  .issue-viewer .iv-head .f-tag{display:inline-block;background:var(--copper);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.04em}
-  .issue-viewer .iv-head h3{font-size:18px;color:var(--onyx);margin:0;line-height:1.25}
-  .issue-viewer .iv-body{max-height:560px;overflow-y:auto}
-  .issue-viewer .iv-body img{display:block;width:100%;height:auto}
-  .issue-viewer .loading{padding:40px;text-align:center;color:var(--muted)}
-  .issue-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin-top:16px}
-  .issue-strip button{background:none;border:2px solid transparent;border-radius:12px;padding:0;cursor:pointer;overflow:hidden;aspect-ratio:1;transition:.18s}
-  .issue-strip button:hover{border-color:var(--copper)}
-  .issue-strip button.active{border-color:var(--copper);box-shadow:0 6px 18px rgba(194,112,61,.3)}
-  .issue-strip img{width:100%;height:100%;object-fit:cover;display:block}
+  .brief-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:520px}
+  .brief-card .iv-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--paper)}
+  .brief-card .iv-head .f-tag{display:inline-block;background:var(--copper);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.04em}
+  .brief-card .iv-head h3{font-size:17px;color:var(--onyx);margin:0;line-height:1.25}
+  .brief-link{display:block;cursor:pointer}
+  .brief-card .brief-link img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:top}
+  .brief-foot{padding:12px 18px;color:var(--muted);font-size:13px}
   .news-list{display:flex;flex-direction:column;gap:14px}
   .ncard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s;display:flex;gap:14px;align-items:flex-start}
   .ncard:hover{border-color:var(--copper);transform:translateY(-2px)}
   .ncard .nimg{flex:0 0 64px;width:64px;height:64px;border-radius:10px;object-fit:cover;background:var(--paper-2)}
-  .n-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--copper)}
+  .n-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--copper-deep)}
+  .ntag{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+  .ntag-news{background:#EAF1FB;color:#1F5FB0;border:1px solid #C9DDF5}
+  .ntag-tip{background:#FBF0E6;color:#B5612B;border:1px solid #F0D3BC}
+  .post-news{border-left:4px solid #1F5FB0}
+  .post-tip{border-left:4px solid var(--copper)}
   .ncard h4{font-size:16px;color:var(--onyx);margin:4px 0;line-height:1.3}
   .ncard p{font-size:13px;color:var(--muted)}
   .post-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:14px;padding:18px;margin-bottom:14px}
   .post-card h4{font-size:17px;color:var(--onyx);margin-bottom:6px}
   .post-card .tip{color:#3a3a42;font-size:14px}
-  .post-card .tags{margin-top:8px;font-size:12px;color:var(--copper)}
+  .post-card .tags{margin-top:8px;font-size:12px;color:var(--copper-deep)}
+  .legend{font-size:13px;color:var(--muted);margin-top:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .legend .dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;margin-right:4px}
+  .legend .dot.news{background:#1F5FB0}
+  .legend .dot.tip{background:var(--copper)}
 
   .reviews{padding:56px 0;background:#fff}
   .stars{color:var(--copper);letter-spacing:2px}
@@ -255,7 +259,6 @@
       <a href="#engage">Fun &amp; Tools</a>
       <a href="#news">News &amp; Tips</a>
       <a href="#reviews">Reviews</a>
-      <a href="#reviews">Reviews</a>
       <a href="#locator">Find Us</a>
       <a class="nav-phone" href="tel:+13867557772">📞 (386) 755-7772</a>
     </nav>
@@ -279,6 +282,7 @@
     <div class="hero-trust">
       <span>✔ Locally owned since 1997</span>
       <span>✔ Windows · Mac · Linux · ChromeOS</span>
+      <span>✔ No fix, no fee — you only pay if it's repaired</span>
       <span>✔ 5-star local reviews</span>
     </div>
   </div>
@@ -346,21 +350,24 @@
       <div class="eyebrow">From the shop</div>
       <h2>News &amp; Tips</h2>
       <p>Real, useful stuff — the daily tech brief we post here, plus tech news and hands-on tips. Fresh every morning.</p>
+      <p class="legend"><span class="dot news"></span> News — what's happening &amp; why it matters &nbsp;·&nbsp; <span class="dot tip"></span> Tip — something you can do today</p>
     </div>
     <div class="tabs reveal">
-      <button class="tab active" data-tab="newsletter">📰 Newsletter</button>
-      <button class="tab" data-tab="technews">🗞️ Tech News</button>
-      <button class="tab" data-tab="techtips">💡 Tech Tips</button>
+      <button class="tab active" data-tab="newstips">🛠️ Tech News &amp; Tips</button>
+      <button class="tab" data-tab="brief">📰 Daily Brief</button>
     </div>
-    <div id="tab-newsletter" class="news-grid">
-      <div class="issue-viewer" id="issueViewer">
-        <div class="iv-head"><span class="f-tag">★ Daily Computer Brief</span><h3 id="issueTitle">Loading the latest brief…</h3></div>
-        <div class="iv-body"><img id="issueImg" src="assets/img/news/2026-07-11-composite.jpg" alt="Daily Computer Brief"></div>
+    <div id="tab-newstips" class="news-grid">
+      <div id="newsTipsGrid"></div>
+    </div>
+    <div id="tab-brief" class="news-grid" style="display:none">
+      <div class="brief-card">
+        <div class="iv-head"><span class="f-tag">★ Daily Computer Brief</span><h3 id="issueTitle">Latest issue</h3></div>
+        <a class="brief-link" id="briefLink" href="#" target="_blank" rel="noopener">
+          <img id="issueImg" src="assets/img/news/2026-07-11-composite.jpg" alt="Daily Computer Brief">
+        </a>
+        <div class="brief-foot">Your real daily brief — scams, fixes, and tips. Tap to open the full issue.</div>
       </div>
-      <div class="issue-strip" id="issueStrip"></div>
     </div>
-    <div id="tab-technews" style="display:none"><div id="techNewsGrid"></div></div>
-    <div id="tab-techtips" style="display:none"><div id="techTipsGrid"></div></div>
   </div>
 </section>
 
@@ -560,7 +567,7 @@ function renderQuizStart(){
 function renderQuizQ(){
   if(!quiz)return;var Q=quiz.questions[qi];
   var h='<div class="quiz-q">Q'+(qi+1)+'. '+Q.q+'</div>';
-  Q.options.forEach(function(o,idx){h+='<button class="quiz-opt" data-i="'+idx+'">'+o.t+'</button>';});
+  Q.options.forEach(function(o,idx){h+='<button class="quiz-opt" data-i="'+idx+'">'+esc(o.t)+'</button>';});
   document.getElementById('quizBox').innerHTML=h;document.getElementById('quizResult').innerHTML='';
   document.getElementById('quizNext').style.display='none';
   document.querySelectorAll('#quizBox .quiz-opt').forEach(function(b){b.addEventListener('click',function(){
@@ -598,54 +605,45 @@ var FEED_FALLBACK={
     {author:'Local Customer',rating:5,date:'2026',text:'Brought in a dead PC everyone else wanted to replace. John repaired it for a fair price.',source:'Google',verified:true},
     {author:'Local Customer',rating:5,date:'2026',text:'Honest, fast, and local. Set up 2FA on all my accounts.',source:'Google',verified:true}],
   news:[{date:'2026-07-11',title:'Daily Computer Brief',excerpt:'That "FTC Agent" Wants Your Money Back — Into Their Pocket. A caller claiming to be the FTC says you\'re owed a refund and just needs your bank details. The FTC never calls. Hang up.',image:'assets/img/news/2026-07-11-composite.jpg',read_more:'#'}],
-  posts:[{headline:'Free AI Background Remover That Works in Seconds',tip:'Upload any photo to Pixlr\'s free AI background remover — cuts out backgrounds in seconds, no signup.',tags:['#FreeTools']},
-    {headline:'Stop Using SMS for 2FA — Here\'s Why',tip:'Switch important accounts to an authenticator app (Aegis, Bitwarden Auth). SMS can be intercepted via SIM swapping.',tags:['#Security']},
-    {headline:'Your Browser Is Leaking Data — Fix It',tip:'Install uBlock Origin (Lite) to block trackers and fingerprinting scripts that follow you across sites.',tags:['#Privacy']},
-    {headline:'Windows 11 24H2 Is Breaking Things',tip:'After the 24H2 update, check sound and Wi-Fi. Roll back drivers in Device Manager if they break.',tags:['#Windows11']},
-    {headline:'Don\'t Toss That Old Laptop',tip:'A ~$30 SSD turns a 2015–2018 laptop from unusable to snappy. Boot drops from 3 min to 15 sec.',tags:['#SSDUpgrade']}]
+  posts:[
+    {type:'tip',headline:'Free AI Background Remover That Works in Seconds',tip:'Upload any photo to Pixlr\'s free AI background remover — cuts out backgrounds in seconds, no signup.',tags:['#FreeTools']},
+    {type:'tip',headline:'Stop Using SMS for 2FA — Here\'s Why',tip:'Switch important accounts to an authenticator app (Aegis, Bitwarden Auth). SMS can be intercepted via SIM swapping.',tags:['#Security']},
+    {type:'tip',headline:'Your Browser Is Leaking Data — Fix It',tip:'Install uBlock Origin (Lite) to block trackers and fingerprinting scripts that follow you across sites.',tags:['#Privacy']},
+    {type:'news',headline:'Windows 11 24H2 Is Breaking Things',truth:'The 24H2 update breaks some older drivers (audio/Wi-Fi) and can reset defaults. Check sound and network after updating.',tip:'After the 24H2 update, check sound and Wi-Fi. Roll back drivers in Device Manager if they break.',tags:['#Windows11']},
+    {type:'tip',headline:'Don\'t Toss That Old Laptop',tip:'A ~$30 SSD turns a 2015–2018 laptop from unusable to snappy. Boot drops from 3 min to 15 sec.',tags:['#SSDUpgrade']}]
 };
 function renderAll(d){
-  // NEWSLETTER — render the actual composite brief (your branded image)
+  // DAILY BRIEF — compact card, latest composite; tap opens full issue
   var news=(d.news||[]).slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
   var img=document.getElementById('issueImg');
   var titleEl=document.getElementById('issueTitle');
-  var strip=document.getElementById('issueStrip');
-  function showIssue(it){
-    if(img)img.src=it.image;
-    if(titleEl)titleEl.textContent=it.title||('Issue · '+fmtDate(it.date));
-    if(strip)Array.prototype.forEach.call(strip.children,function(b){b.classList.remove('active');});
-  }
+  var link=document.getElementById('briefLink');
   if(news.length){
-    showIssue(news[0]);
-    if(strip){
-      strip.innerHTML='';
-      news.forEach(function(it,i){
-        var btn=document.createElement('button');
-        btn.className=(i===0?'active':'');btn.title=fmtDate(it.date);btn.setAttribute('data-i',i);
-        var im=document.createElement('img');
-        im.src=it.comic||it.image;im.alt=fmtDate(it.date);im.loading='lazy';
-        im.onerror=function(){this.style.display='none';};
-        btn.appendChild(im);
-        btn.addEventListener('click',function(){showIssue(news[i]);btn.classList.add('active');});
-        strip.appendChild(btn);
-      });
-    }
+    var latest=news[0];
+    if(img)img.src=latest.image;
+    if(titleEl)titleEl.textContent=latest.title||('Daily Brief · '+fmtDate(latest.date));
+    if(link)link.href=latest.image;
   }
-  // TECH NEWS — the headline + why it matters (context)
-  var posts=(d.posts||[]);
-  var tn=document.getElementById('techNewsGrid');
-  if(tn)tn.innerHTML=posts.map(function(p){
-    var why=p.truth?('<div class="tip" style="color:#6B635A"><b>Why it matters:</b> '+esc(p.truth)+'</div>'):'';
-    return '<div class="post-card"><span class="n-tag">News</span><h4>'+esc(p.headline)+'</h4>'+
-      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+why+'</div>';
-  }).join('');
-  // TECH TIPS — the actionable step you can do today
-  var tt=document.getElementById('techTipsGrid');
-  if(tt)tt.innerHTML=posts.map(function(p){
-    return '<div class="post-card"><span class="n-tag">Tip</span><h4>'+esc(p.headline)+'</h4>'+
-      '<div class="tip"><b>Try this:</b> '+esc(p.tip)+'</div>'+
-      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
-  }).join('');
+  // TECH NEWS & TIPS — ONE consolidated feed, tagged by type so news ≠ tips
+  var posts=(d.posts||[]).slice().sort(function(a,b){
+    var an=(a.type==='news')?-1:1, bn=(b.type==='news')?-1:1;
+    return an-bn;
+  });
+  var grid=document.getElementById('newsTipsGrid');
+  if(grid){
+    if(!posts.length)posts=FEED_FALLBACK.posts;
+    grid.innerHTML=posts.map(function(p){
+      var isNews=(p.type==='news');
+      var tag=isNews?'News':'Tip';
+      var body=isNews
+        ? (p.truth?'<div class="tip"><b>Why it matters:</b> '+esc(p.truth)+'</div>':'')
+        : '<div class="tip"><b>Try this:</b> '+esc(p.tip||'')+'</div>';
+      return '<div class="post-card '+(isNews?'post-news':'post-tip')+'">'+
+        '<span class="ntag '+(isNews?'ntag-news':'ntag-tip')+'">'+tag+'</span>'+
+        '<h4>'+esc(p.headline)+'</h4>'+body+
+        (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
+    }).join('');
+  }
   // REVIEWS
   var revs=(d.reviews||[]).filter(function(r){return r.rating>=4;}).slice(0,10);
   if(!revs.length)revs=FEED_FALLBACK.reviews;
@@ -676,9 +674,8 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
   document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
   t.classList.add('active');
   var which=t.dataset.tab;
-  document.getElementById('tab-newsletter').style.display=which==='newsletter'?'grid':'none';
-  document.getElementById('tab-technews').style.display=which==='technews'?'block':'none';
-  document.getElementById('tab-techtips').style.display=which==='techtips'?'block':'none';
+  document.getElementById('tab-newstips').style.display=which==='newstips'?'block':'none';
+  document.getElementById('tab-brief').style.display=which==='brief'?'block':'none';
 });});
 </script>
 </body>
