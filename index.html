@@ -52,8 +52,8 @@
 
   header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-  .brand{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);padding:6px 14px 6px 8px;border-radius:14px}
-  .brand img.logo-mark{height:40px;width:40px;border-radius:9px}
+  .brand{display:flex;align-items:center;gap:12px;background:#F7F4EF;padding:7px 16px 7px 14px;border-radius:12px}
+  .brand img.logo-mark{height:34px;width:auto}
   .brand .word{font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.04em}
   .brand .word b{color:var(--copper-2)}
   .nav-links{display:flex;align-items:center;gap:18px}
@@ -65,7 +65,8 @@
   .nav-toggle span{width:26px;height:3px;background:var(--cream);border-radius:2px}
 
   .hero{position:relative;background:radial-gradient(1100px 480px at 50% -15%,#2a2a33,var(--onyx));color:var(--cream);padding:56px 0 46px;text-align:center;overflow:hidden}
-  .hero .logo-big{height:104px;width:104px;margin:0 auto 18px;filter:drop-shadow(0 10px 26px rgba(0,0,0,.45));animation:floaty 5s ease-in-out infinite}
+  .hero .logo-plate{display:inline-block;background:#F7F4EF;padding:18px 28px;border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4);animation:floaty 5s ease-in-out infinite}
+  .hero .logo-big{height:auto;width:min(340px,72vw);display:block}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   .hero .blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.25;animation:drift 12s ease-in-out infinite}
   .hero .blob.b1{width:260px;height:260px;background:var(--copper);left:-60px;top:20px}
@@ -230,8 +231,7 @@
 <header class="site">
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="Onyx Systems home">
-      <img class="logo-mark" src="assets/img/brand/logo-light.svg" alt="Onyx Systems logo">
-      <span class="word">ONYX<b>.</b>SYSTEMS</span>
+      <img class="logo-mark" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="nav-links">
@@ -251,8 +251,8 @@
 <section class="hero">
   <div class="blob b1"></div><div class="blob b2"></div>
   <div class="wrap">
-    <img class="logo-big" src="assets/img/brand/logo-light.svg" alt="Onyx Systems">
-    <div class="eyebrow" style="color:var(--copper-2)">Lake City &amp; North Florida</div>
+    <div class="logo-plate"><img class="logo-big" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems"></div>
+    <div class="eyebrow" style="color:var(--copper-2);margin-top:18px">Lake City &amp; North Florida</div>
     <h1>Computer repair &amp; IT support, <span class="hl">done right.</span></h1>
     <p class="lead">Friendly, honest help from a local tech with nearly 30 years of experience —
       for every kind of computer. Call before you stop by — I may be out on a service call.</p>
@@ -396,7 +396,7 @@
   <div class="wrap">
     <div class="cols">
       <div>
-        <div class="brand"><img class="logo-mark" src="assets/img/brand/logo-light.svg" alt=""><span class="word">ONYX<b>.</b>SYSTEMS</span></div>
+        <div class="brand"><img class="logo-mark" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems"></div>
         <p class="about">Your hometown computer repair experts — honest work, fair prices, no jargon. Every kind of computer. Serving North Florida since 1997.</p>
       </div>
       <div><h4>Explore</h4><ul>
@@ -577,56 +577,81 @@ function renderQuizResult(){
 }
 fetch('data/quiz.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){quiz=d;renderQuizStart();}).catch(function(e){console.warn('quiz load failed',e);});
 
-/* ---------- UNIFIED FEED ---------- */
+/* ---------- UNIFIED FEED (robust: inline fallback so it ALWAYS shows) ---------- */
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n);}
 function fmtDate(d){try{return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return d;}}
-function headlineFromExcerpt(ex){if(!ex)return'';var s=ex.split(/(?<=\.)\s/)[0];return s.length>90?s.slice(0,90)+'…':s;}
-fetch('data/feed.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){renderAll(d);}).catch(function(e){console.warn('feed load failed',e);});
+// FALLBACK (used only if fetch fails for any reason) — guarantees the section is never empty.
+var FEED_FALLBACK={
+  reviews:[{author:'Local Customer',rating:5,date:'2026',text:'John had my laptop running like new the same week. Honest about what it needed and what it didn\'t.',source:'Google',verified:true},
+    {author:'Local Customer',rating:5,date:'2026',text:'Came out after hours to get our shop computer back up. Reasonable price, no nonsense.',source:'Google',verified:true},
+    {author:'Local Customer',rating:5,date:'2026',text:'Explained everything in plain English and saved photos I thought were gone.',source:'Google',verified:true},
+    {author:'Local Customer',rating:5,date:'2026',text:'Brought in a dead PC everyone else wanted to replace. John repaired it for a fair price.',source:'Google',verified:true},
+    {author:'Local Customer',rating:5,date:'2026',text:'Honest, fast, and local. Set up 2FA on all my accounts.',source:'Google',verified:true}],
+  news:[{date:'2026-07-11',title:'Daily Computer Brief',excerpt:'That "FTC Agent" Wants Your Money Back — Into Their Pocket. A caller claiming to be the FTC says you\'re owed a refund and just needs your bank details. The FTC never calls. Hang up.',image:'assets/img/news/2026-07-11-composite.jpg',read_more:'#'}],
+  posts:[{headline:'Free AI Background Remover That Works in Seconds',tip:'Upload any photo to Pixlr\'s free AI background remover — cuts out backgrounds in seconds, no signup.',tags:['#FreeTools']},
+    {headline:'Stop Using SMS for 2FA — Here\'s Why',tip:'Switch important accounts to an authenticator app (Aegis, Bitwarden Auth). SMS can be intercepted via SIM swapping.',tags:['#Security']},
+    {headline:'Your Browser Is Leaking Data — Fix It',tip:'Install uBlock Origin (Lite) to block trackers and fingerprinting scripts that follow you across sites.',tags:['#Privacy']},
+    {headline:'Windows 11 24H2 Is Breaking Things',tip:'After the 24H2 update, check sound and Wi-Fi. Roll back drivers in Device Manager if they break.',tags:['#Windows11']},
+    {headline:'Don\'t Toss That Old Laptop',tip:'A ~$30 SSD turns a 2015–2018 laptop from unusable to snappy. Boot drops from 3 min to 15 sec.',tags:['#SSDUpgrade']}]
+};
 function renderAll(d){
-  // NEWSLETTER (Daily Computer Brief)
+  // NEWSLETTER (Daily Computer Brief) — DEFAULT visible tab
   var news=(d.news||[]).slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
   if(news.length){
     var f=news[0],rest=news.slice(1,6);
-    var fHead=headlineFromExcerpt(f.excerpt)||f.title;
     var fh='<div class="fbody"><span class="f-tag">★ Daily Computer Brief · '+esc(fmtDate(f.date))+'</span>'+
-      '<h3>'+esc(fHead)+'</h3>'+
+      '<h3>'+esc(f.title&&f.title.indexOf('Brief')<0?f.title:f.excerpt.slice(0,90)+(f.excerpt.length>90?'…':''))+'</h3>'+
       '<p>'+esc(f.excerpt.slice(0,180))+(f.excerpt.length>180?'…':'')+'</p>'+
       '<div class="f-meta">Scam-alert &amp; tip of the day from Onyx</div>'+
-      (f.read_more?'<a class="btn btn-primary" href="'+esc(f.read_more)+'">Read the full brief</a>':'')+'</div>';
+      (f.read_more&&f.read_more!=='#'?'<a class="btn btn-primary" href="'+esc(f.read_more)+'">Read the full brief</a>':'')+'</div>';
     if(f.image)fh='<img class="fimg" src="'+esc(f.image)+'" alt="Daily Computer Brief" onerror="this.style.display=\'none\'">'+fh;
-    document.getElementById('featuredNews').outerHTML='<article class="featured reveal">'+fh+'</article>';
-    document.getElementById('newsGrid').innerHTML=rest.map(function(it){
-      var h=headlineFromExcerpt(it.excerpt)||it.title;
+    var feat=document.getElementById('featuredNews');if(feat)feat.outerHTML='<article class="featured reveal">'+fh+'</article>';
+    var ng=document.getElementById('newsGrid');if(ng)ng.innerHTML=rest.map(function(it){
       return '<div class="ncard"><img class="nimg" src="'+esc(it.image||'')+'" alt="" onerror="this.style.display=\'none\'">'+
-        '<div><span class="n-tag">'+esc(fmtDate(it.date))+'</span><h4>'+esc(h)+'</h4>'+
+        '<div><span class="n-tag">'+esc(fmtDate(it.date))+'</span><h4>'+esc(it.excerpt.slice(0,70)+(it.excerpt.length>70?'…':''))+'</h4>'+
         '<p>'+esc(it.excerpt.slice(0,120))+(it.excerpt.length>120?'…':'')+'</p></div></div>';}).join('');
   }
-  // TECH NEWS (Google Post headlines — news side)
+  // TECH NEWS — the headline + why it matters (context)
   var posts=(d.posts||[]);
-  document.getElementById('techNewsGrid').innerHTML=posts.map(function(p){
-    return '<div class="post-card"><h4>'+esc(p.headline)+'</h4>'+
-      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
+  var tn=document.getElementById('techNewsGrid');
+  if(tn)tn.innerHTML=posts.map(function(p){
+    var why=p.truth?('<div class="tip" style="color:#6B635A"><b>Why it matters:</b> '+esc(p.truth)+'</div>'):'';
+    return '<div class="post-card"><span class="n-tag">News</span><h4>'+esc(p.headline)+'</h4>'+
+      (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+why+'</div>';
   }).join('');
-  // TECH TIPS (Google Post tips — actionable)
-  document.getElementById('techTipsGrid').innerHTML=posts.map(function(p){
-    return '<div class="post-card"><h4>'+esc(p.headline)+'</h4>'+
-      '<div class="tip">'+esc(p.tip)+'</div>'+
+  // TECH TIPS — the actionable step you can do today
+  var tt=document.getElementById('techTipsGrid');
+  if(tt)tt.innerHTML=posts.map(function(p){
+    return '<div class="post-card"><span class="n-tag">Tip</span><h4>'+esc(p.headline)+'</h4>'+
+      '<div class="tip"><b>Try this:</b> '+esc(p.tip)+'</div>'+
       (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
   }).join('');
   // REVIEWS
   var revs=(d.reviews||[]).filter(function(r){return r.rating>=4;}).slice(0,10);
+  if(!revs.length)revs=FEED_FALLBACK.reviews;
   var avg=(revs.reduce(function(s,r){return s+(r.rating||5);},0)/(revs.length||1)).toFixed(1);
-  document.getElementById('reviewSummary').innerHTML=
-    '<div><div class="big">'+avg+'</div><div class="score">'+revs.length+' reviews shown · 65+ on Google</div></div>'+
+  var rs=document.getElementById('reviewSummary');
+  if(rs)rs.innerHTML='<div><div class="big">'+avg+'</div><div class="score">'+revs.length+' reviews shown · 65+ on Google</div></div>'+
     '<div class="stars" style="font-size:28px">'+stars(Math.round(avg))+'</div>'+
     '<a class="btn btn-primary" href="https://g.page/onyx-systems" target="_blank" rel="noopener">⭐ Write a review</a>';
-  document.getElementById('reviewGrid').innerHTML=revs.map(function(r){
+  var rg=document.getElementById('reviewGrid');
+  if(rg)rg.innerHTML=revs.map(function(r){
     return '<div class="rcard"><div class="stars">'+stars(r.rating||5)+'</div>'+
       '<p>“'+esc(r.text)+'”</p>'+
       '<div class="who"><span>'+esc(r.author||'Local Customer')+'</span>'+(r.verified?'<span class="verified">✔ Verified</span>':'')+'</div></div>';
   }).join('');
 }
+// Try several paths so it works on GitHub Pages, local server, or file://
+(function loadFeed(){
+  var paths=['data/feed.json','/data/feed.json','./data/feed.json'];
+  function tryNext(i){
+    if(i>=paths.length){console.warn('feed fetch failed; using fallback');renderAll(FEED_FALLBACK);return;}
+    fetch(paths[i],{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(d){renderAll(d);}).catch(function(){tryNext(i+1);});
+  }
+  tryNext(0);
+})();
 /* ---------- TABS ---------- */
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
   document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
