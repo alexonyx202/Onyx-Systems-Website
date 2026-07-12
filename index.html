@@ -173,6 +173,12 @@
   .brief-link{display:block;cursor:pointer}
   .brief-card .brief-link img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:top}
   .brief-foot{padding:12px 18px;color:var(--muted);font-size:13px}
+  .games-sec{padding:56px 0;background:#fff}
+  .game-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .game-frame{width:100%;aspect-ratio:960/760;border:0;border-radius:12px;background:#05080a;display:block}
+  .game-cta h3{font-size:20px;color:var(--onyx);margin-bottom:8px}
+  .game-cta p{color:var(--muted);margin-bottom:16px;font-size:14px}
+  .game-cta .btn{margin:0 8px 8px 0}
   .news-list{display:flex;flex-direction:column;gap:14px}
   .ncard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s;display:flex;gap:14px;align-items:flex-start}
   .ncard:hover{border-color:var(--copper);transform:translateY(-2px)}
@@ -239,6 +245,7 @@
     .nav-links.open{transform:translateY(0)}
     .nav-toggle{display:flex}
     .locator .wrap,.news-grid{grid-template-columns:1fr}
+    .game-feature{grid-template-columns:1fr}
     footer .cols{grid-template-columns:1fr 1fr}
     .mobile-call{display:block}
   }
@@ -258,6 +265,7 @@
       <a href="#hub">Sections</a>
       <a href="#engage">Fun &amp; Tools</a>
       <a href="#news">News &amp; Tips</a>
+      <a href="#games">Games</a>
       <a href="#reviews">Reviews</a>
       <a href="#locator">Find Us</a>
       <a class="nav-phone" href="tel:+13867557772">📞 (386) 755-7772</a>
@@ -366,6 +374,25 @@
           <img id="issueImg" src="assets/img/news/2026-07-11-composite.jpg" alt="Daily Computer Brief">
         </a>
         <div class="brief-foot">Your real daily brief — scams, fixes, and tips. Tap to open the full issue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="games-sec" id="games">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Free &amp; fun</div>
+      <h2>Games</h2>
+      <p>No downloads, no installs, no accounts — just click and play. A little something to break up your day while you're here. More games landing all the time.</p>
+    </div>
+    <div class="game-feature reveal">
+      <iframe class="game-frame" src="games/wargames-missile-command.html" title="WarGames: Global Thermonuclear War" loading="lazy" allow="autoplay"></iframe>
+      <div class="game-cta">
+        <h3>WarGames: Global Thermonuclear War</h3>
+        <p>Defend NORAD, Moscow &amp; Beijing from incoming ICBMs. 12 escalating waves, retro CRT styling, and WebAudio sound — all in your browser.</p>
+        <a class="btn btn-primary" href="games/wargames-missile-command.html" target="_blank" rel="noopener">▶ Play full screen</a>
+        <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Browse all games →</a>
       </div>
     </div>
   </div>

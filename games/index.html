@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games — Onyx Systems</title>
+<meta name="description" content="Free browser games from Onyx Systems. WarGames missile command and more — no downloads, no installs.">
+<style>
+  :root{
+    --onyx:#16161A; --onyx-2:#1f1f25; --ink:#0e0e12;
+    --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#9A5326; --cream:#F7F4EF; --paper:#FBF8F2;
+    --paper-2:#F1ECE2; --muted:#6B635A; --line:#e4ddd0;
+    --ok:#3fae6b; --shadow:0 18px 50px rgba(14,14,18,.16); --radius:18px;
+    --brand-font:'SerpentineBold','SerpentineStandIn','Oswald',"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.6;-webkit-font-smoothing:antialiased}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand .logo{height:38px;width:auto}
+  .brand .word{font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.04em}
+  .nav a.back{color:var(--copper-2);font-weight:600;text-decoration:none;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .sec-head{text-align:center;margin:48px 0 28px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
+  .sec-head h1{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(30px,5vw,46px);color:var(--onyx);margin-top:6px}
+  .sec-head p{color:var(--muted);max-width:640px;margin:12px auto 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:60px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.22s}
+  .card:hover{transform:translateY(-4px);border-color:var(--copper)}
+  .card .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--onyx);display:block}
+  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card h3{font-size:19px;color:var(--onyx);line-height:1.2}
+  .card .tag{font-size:13px;color:var(--copper-deep);font-weight:600}
+  .card p{font-size:14px;color:var(--muted);flex:1}
+  .btn{display:inline-block;text-decoration:none;padding:11px 20px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;transition:.2s;border:2px solid transparent}
+  .btn-primary{background:var(--copper);color:#fff;box-shadow:0 8px 22px rgba(194,112,61,.35)}
+  .btn-primary:hover{background:var(--copper-2);color:var(--ink);transform:translateY(-2px)}
+  .featured-flag{display:inline-block;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:999px;align-self:flex-start}
+  footer.site{background:var(--ink);color:#cfc9c0;padding:40px 0 26px;margin-top:20px}
+  footer .cols{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
+  footer a{color:var(--copper-2);text-decoration:none}
+  .empty{text-align:center;color:var(--muted);padding:60px 0}
+</style>
+</head>
+<body>
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="logo" src="../assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
+      <span class="word">ONYX SYSTEMS</span>
+    </a>
+    <a class="back" href="../index.html">← Back to site</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Free &amp; fun</div>
+    <h1>Games</h1>
+    <p>No downloads. No installs. No accounts. Just click and play — a little something to break up your day while you're here.</p>
+  </div>
+  <div class="grid" id="gameGrid"></div>
+  <div class="empty" id="empty" style="display:none">More games coming soon — check back!</div>
+</main>
+
+<footer class="site">
+  <div class="cols">
+    <div>Onyx Systems · Lake City, FL · (386) 755-7772</div>
+    <div><a href="../index.html">onyxpc.us</a></div>
+  </div>
+</footer>
+
+<script>
+function esc(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function renderGames(list){
+  var grid=document.getElementById('gameGrid');
+  if(!list||!list.length){document.getElementById('empty').style.display='block';return;}
+  list.sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
+  grid.innerHTML=list.map(function(g){
+    return '<a class="card" href="'+esc(g.file)+'">'+
+      '<img class="thumb" src="'+esc(g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
+      '<div class="body">'+
+        (g.featured?'<span class="featured-flag">Featured</span>':'')+
+        '<h3>'+esc(g.title)+'</h3>'+
+        '<div class="tag">'+esc(g.tagline||'Play now')+'</div>'+
+        '<p>'+esc(g.desc||'')+'</p>'+
+        '<span class="btn btn-primary">▶ Play</span>'+
+      '</div></a>';
+  }).join('');
+}
+// Try local manifest, fall back to inline so the hub never breaks offline
+var MANIFEST=[{"file":"wargames-missile-command.html","title":"WarGames: Global Thermonuclear War","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. 12 escalating waves, radar sweep, WebAudio sound, no downloads.","thumb":"assets/wargames-thumbnail.png","featured":true}];
+fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
+</script>
+</body>
+</html>
