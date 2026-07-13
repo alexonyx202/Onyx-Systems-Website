@@ -47,6 +47,14 @@
       "desc": "A retrowave Pac-Man clone. Drive a glowing Data Packet through a circuit-board maze, dodge four Corrupted Processes (Bug, Firewall, Botnet, Legacy), grab Root Access to flip them into Garbage Collection, and purge the system. No downloads.",
       "thumb": "assets/algo-chaser-thumb.png",
       "featured": false
+    },
+    {
+      "file": "algo-chaser-v3.html",
+      "title": "ALGO CHASER // 3 Difficulty Tiers",
+      "tagline": "Data Packet vs 4/5/6 Corrupted Processes. Pick your tier.",
+      "desc": "The 3-level edition: Easy (28x31 maze, 4 ghosts), Medium (33x35, 5 ghosts, 2 ghost houses), Hard (37x39, 6 ghosts, 3 ghost houses). Canonical Pac-Man AI (BFS targeting, scatter/chase, Root Access fright), circuit-board maze, WebAudio, 39/39 headless-verified. No downloads.",
+      "thumb": "assets/algo-chaser-thumb.png",
+      "featured": true
     }
   ]
 }
