@@ -9,8 +9,8 @@ USAGE
                          --comic "Newsletter - 2026-07-12-0957-comic-square.png" \
                          --type newsletter
 
-  # From explicit Google Post fields:
-  python3 update_news.py --type google-post --title "..." --date 2026-07-12 \
+  # From explicit Onyx Tech Notes fields:
+  python3 update_news.py --type tech-note --title "..." --date 2026-07-12 \
                          --summary "..." --tag "Offer" --cta-label "Book now" \
                          --cta-href "tel:+13867557772"
 
@@ -75,7 +75,7 @@ def parse_newsletter(path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--type", required=True, choices=["newsletter", "google-post"])
+    ap.add_argument("--type", required=True, choices=["newsletter", "tech-note"])
     ap.add_argument("--from-newsletter")
     ap.add_argument("--title"); ap.add_argument("--date")
     ap.add_argument("--summary"); ap.add_argument("--tag")
@@ -110,7 +110,7 @@ def main():
         "type": args.type,
         "date": date,
         "title": title,
-        "tag": args.tag or ("Daily Brief" if args.type == "newsletter" else "Announcement"),
+        "tag": args.tag or ("Daily Brief" if args.type == "newsletter" else "Tech Note"),
         "summary": summary,
     }
     if comic:
