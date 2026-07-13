@@ -165,29 +165,12 @@
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
   .tab.active{background:var(--copper-deep);color:#fff;border-color:var(--copper-deep)}
-  .news-grid{display:block}
-  .news-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 22px}
+  .news-grid{display:block;margin-top:18px}
+  .news-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 4px}
   .news-note{color:var(--muted);font-size:14px}
-  /* Right-side flyout preview */
-  .flyout-scrim{position:fixed;inset:0;background:rgba(14,14,18,.55);z-index:60;opacity:0;transition:.25s;backdrop-filter:blur(2px)}
-  .flyout-scrim.show{opacity:1}
-  .flyout{position:fixed;top:0;right:0;height:100%;width:min(460px,92vw);background:var(--paper);z-index:61;box-shadow:-18px 0 60px rgba(0,0,0,.35);transform:translateX(102%);transition:transform .3s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;overflow:hidden}
-  .flyout.open{transform:translateX(0)}
-  .flyout-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line);background:#fff}
-  .flyout-head h3{margin:2px 0 0;font-size:20px;color:var(--onyx)}
-  .flyout-close{background:rgba(0,0,0,.06);border:0;width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--ink);transition:.2s}
-  .flyout-close:hover{background:var(--copper);color:#fff}
-  .flyout-body{padding:22px;overflow-y:auto;flex:1}
-  .f-alert,.f-block{background:#fff;border:1px solid var(--line);border-left:4px solid var(--copper-deep);border-radius:12px;padding:14px 16px;margin-bottom:18px}
-  .f-alert{border-left-color:#b3261e}
-  .f-alert p,.f-block p{margin:8px 0 0;color:var(--ink);font-size:15px;line-height:1.55}
-  .tag{display:inline-block;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
-  .tag.alert{background:#b3261e}
-  .f-comic{margin:6px 0 20px;text-align:center}
-  .f-comic img{width:100%;max-width:440px;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
-  .f-comic .cap{font-style:italic;color:var(--muted);margin-top:10px;font-size:14px}
-  .fly-full{display:block;text-align:center;margin-top:4px}
+  .news-actions .btn.active{background:var(--copper-deep);border-color:var(--copper-deep);color:#fff}
   @media(max-width:560px){.news-actions .btn{width:100%;text-align:center}.news-note{width:100%}}
+
   .games-sec{padding:56px 0;background:#fff}
   .game-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
   .game-frame{width:100%;aspect-ratio:960/760;border:0;border-radius:12px;background:#05080a;display:block}
@@ -369,37 +352,17 @@
     <div class="sec-head reveal">
       <div class="eyebrow">From the shop</div>
       <h2>News &amp; Tips</h2>
-      <p>Real, useful stuff — the daily tech brief we post here, plus tech news and hands-on tips. Fresh every morning.</p>
+      <p>Real, useful stuff — tech news and hands-on tips, fresh every morning.</p>
       <p class="legend"><span class="dot news"></span> News — what's happening &amp; why it matters &nbsp;·&nbsp; <span class="dot tip"></span> Tip — something you can do today</p>
     </div>
     <div class="news-actions reveal">
-      <a class="btn btn-primary" href="newsletter.html" target="_blank" rel="noopener">📰 Read the Daily Brief</a>
-      <button class="btn btn-ghost" id="briefPreviewBtn" aria-haspopup="dialog" aria-controls="briefFlyout">👁 Preview it here</button>
+      <button class="btn btn-primary" id="showNewsBtn" aria-expanded="false" aria-controls="newsTipsGrid">🛠️ News &amp; Tips</button>
+      <a class="btn btn-ghost" href="newsletter.html" target="_blank" rel="noopener">📰 Daily Brief (new tab)</a>
       <span class="news-note">Fresh every morning — scams, fixes &amp; tips from John.</span>
     </div>
+    <div id="newsTipsGrid" class="news-grid" style="display:none"></div>
   </div>
 </section>
-
-<!-- Right-side flyout preview of the Daily Brief -->
-<div class="flyout-scrim" id="briefScrim" hidden></div>
-<aside class="flyout" id="briefFlyout" role="dialog" aria-modal="true" aria-label="Daily Brief preview" aria-hidden="true">
-  <div class="flyout-head">
-    <div>
-      <div class="eyebrow">Daily Computer Brief</div>
-      <h3 id="flyIssue">July 12, 2026</h3>
-    </div>
-    <button class="flyout-close" id="briefClose" aria-label="Close preview">✕</button>
-  </div>
-  <div class="flyout-body" id="flyBody">
-    <div class="f-alert"><span class="tag alert">Alert</span><p><strong>Patch Chrome now.</strong> Two zero-days (CVE-2025-6558 &amp; CVE-2025-6682) are already exploited in the wild — update Chrome and Edge today.</p></div>
-    <div class="f-block"><span class="tag tip">Tip</span><p>Trim your browser extensions. Most people run 10+ they forgot about; each is a tracking and breach risk. Keep only what you use.</p></div>
-    <div class="f-comic">
-      <img id="flyComic" src="assets/img/news/2026-07-12-farside.jpg" alt="The Far Side comic for July 12, 2026">
-      <div class="cap">"Crimony! Millions of people in this city, and look who I rear-end." — Gary Larson, The Far Side®</div>
-    </div>
-    <a class="btn btn-primary fly-full" href="newsletter.html" target="_blank" rel="noopener">📰 Read the full brief →</a>
-  </div>
-</aside>
 
 <section class="games-sec" id="games">
   <div class="wrap">
@@ -725,19 +688,17 @@ function renderAll(d){
   }
   tryNext(0);
 })();
-/* ---------- DAILY BRIEF FLYOUT ---------- */
+/* ---------- NEWS & TIPS TOGGLE ---------- */
 (function(){
-  var btn=document.getElementById('briefPreviewBtn');
-  var fly=document.getElementById('briefFlyout');
-  var scrim=document.getElementById('briefScrim');
-  var close=document.getElementById('briefClose');
-  if(!btn||!fly)return;
-  function openFly(){fly.classList.add('open');fly.setAttribute('aria-hidden','false');scrim.hidden=false;requestAnimationFrame(function(){scrim.classList.add('show');});document.body.style.overflow='hidden';}
-  function closeFly(){fly.classList.remove('open');fly.setAttribute('aria-hidden','true');scrim.classList.remove('show');setTimeout(function(){scrim.hidden=true;},250);document.body.style.overflow='';}
-  btn.addEventListener('click',openFly);
-  close.addEventListener('click',closeFly);
-  scrim.addEventListener('click',closeFly);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&fly.classList.contains('open'))closeFly();});
+  var btn=document.getElementById('showNewsBtn');
+  var grid=document.getElementById('newsTipsGrid');
+  if(!btn||!grid)return;
+  btn.addEventListener('click',function(){
+    var open=grid.style.display!=='block';
+    grid.style.display=open?'block':'none';
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.classList.toggle('active',open);
+  });
 })();
 </script>
 </body>
