@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-12",
+    "last_updated": "2026-07-13",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "date": "2026-07-13",
+      "title": "Six Zero-Days Live: Patch These Now",
+      "excerpt": "Six vulnerabilities are already under active attack today (July 13, 2026) — including flaws in Adobe ColdFusion, Langflow, and a cluster of Joomla extensions. If you run any of those tools, isolate them. Everyone else: stop hitting \"remind me later\" on updates.",
+      "image": "assets/img/news/2026-07-13-composite.jpg",
+      "comic": "assets/img/news/2026-07-13-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-11",
       "title": "That \"FTC Agent\" Wants Your Money Back — Into Their Pocket",
       "excerpt": "That \"FTC Agent\" Wants Your Money Back — Into Their Pocket",
@@ -138,17 +146,51 @@
       "image": "assets/img/news/2026-07-07-composite.jpg",
       "comic": "assets/img/news/2026-07-07-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-06",
-      "title": "That \"Virus Detected\" Popup Is a Total Fake",
-      "excerpt": "That \"Virus Detected\" Popup Is a Total Fake",
-      "image": "assets/img/news/2026-07-06-composite.jpg",
-      "comic": "assets/img/news/2026-07-06-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "date": "2026-07-13",
+      "type": "tip",
+      "headline": "That computer you just bought came loaded with junk — here's how to clear it",
+      "tip": "Open Settings > Apps > Installed apps and uninstall the trialware and 'Get started' cruft; for a safe full sweep I run a debloat script that strips the rest without touching the operating system.",
+      "truth": "Most people don't realize a brand-new machine is the slowest it'll ever be on day one. The manufacturer stuffs it with adware trials and \"buy me\" tiles to make a few extra dollars, and that's what drags your boot time down before you've even opened a browser.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#PCSetup",
+        "#SpeedTips"
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "type": "news",
+      "headline": "Stop paying $100 a year for Office — this free suite opens every file you have",
+      "tip": "Download LibreOffice (free, no subscription) and it opens, edits, and saves every Word, Excel, and PowerPoint file you already own.",
+      "truth": "Most people don't realize they're renting software they used to own outright. Microsoft 365 has crept up to around $100 a year and people just keep paying because they think there's no other way. There is.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#FreeSoftware",
+        "#LibreOffice"
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "type": "news",
+      "headline": "Six Zero-Days Live: Patch These Now",
+      "tip": "Six vulnerabilities are already under active attack today (July 13, 2026) — including flaws in Adobe ColdFusion, Langflow, and a cluster of Joomla extensions. No vendor patches exist yet for the new disclosures. If you run any of those tools, isolate them and watch for fixes. (Source: CVE Brief, July 13, 2026)",
+      "truth": "Today in tech: Apple sued OpenAI over alleged trade-secret theft by former Apple staff now building AI hardware; Google DeepMind's Gemini 3.5 Pro is targeted for a July 17 launch with a 2-million-token context window. (Sources: CNBC/NYT; Geeky-Gadgets)",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#CyberSecurity",
+        "#ZeroDay"
+      ]
+    },
     {
       "date": "2026-07-06",
       "headline": "Free AI Background Remover That Works in Seconds 🎨",
@@ -222,36 +264,6 @@
         "#SaveMoney"
       ],
       "type": "tip"
-    },
-    {
-      "date": "2026-07-09",
-      "type": "news",
-      "headline": "Windows 11 24H2 Hits End of Support Oct 13, 2026",
-      "truth": "Microsoft ends security and feature updates for Windows 11 24H2 (Home/Pro) on October 13, 2026. After that, unpatched machines stop getting protection from new threats. If your PC can't move to a supported build, it's time to plan a replacement or offboard sensitive tasks.",
-      "tip": "Check your Windows version (Settings → System → About). If it says 24H2 and you're past Oct 2026, stop banking and shopping on it until it's upgraded or replaced. We'll tell you straight whether your hardware can move forward.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#EndOfSupport",
-        "#Security"
-      ]
-    },
-    {
-      "date": "2026-07-08",
-      "type": "news",
-      "headline": "AI Phishing & Voice-Cloning Scams Are Surging in 2026",
-      "truth": "Consumer experts warn AI-driven phishing and voice-cloning 'family emergency' calls are harder to spot than ever in 2026. Scammers clone a voice from a 30-second clip and beg for gift cards or wire transfers. Google's own 2026 advisory says heed the scam warnings in Messages and Phone.",
-      "tip": "Never send money or codes because a 'relative' called in a panic — hang up and call the real number. Turn on scam alerts in your phone's messaging app. If something feels urgent and odd, it's几乎 always a scam.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ScamAlert",
-        "#Security",
-        "#Phishing"
-      ]
     }
   ]
 }

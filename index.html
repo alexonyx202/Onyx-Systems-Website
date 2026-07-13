@@ -545,21 +545,30 @@ scrim.addEventListener('click',closePanel);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
 
 /* ---------- DAILY JOKE ---------- */
-var jokes=null, jokeOffset=0;
-function dayIndex(){return Math.floor((Date.now()-(jokeOffset*864e5))/864e5);}
+var jokes=null, todaysJoke=null, jokeOffset=0;
+function dayIndex(){return Math.floor(Date.now()/864e5);}
 function showJoke(){
-  if(!jokes||!jokes.length)return;
-  var j=jokes[((dayIndex()%jokes.length)+jokes.length)%jokes.length];
-  document.getElementById('jokeQ').textContent=j.q;
-  var a=document.getElementById('jokeA');a.textContent='…';a.classList.remove('show');
-  document.getElementById('jokeMeta').textContent='Joke #'+(((dayIndex()%jokes.length)+jokes.length)%jokes.length+1)+' of '+jokes.length+' · '+(jokeOffset===0?'today':(jokeOffset<0?(-jokeOffset)+' day(s) ago':jokeOffset+' day(s) ahead'));
+  var q=document.getElementById('jokeQ'), a=document.getElementById('jokeA'), m=document.getElementById('jokeMeta');
+  if(todaysJoke && jokeOffset===0){
+    q.textContent=todaysJoke.q; a.textContent='…'; a.classList.remove('show');
+    m.textContent='Joke of the day · '+(todaysJoke.date||'');
+    return;
+  }
+  if(!jokes||!jokes.length){ if(todaysJoke){q.textContent=todaysJoke.q;m.textContent='Joke of the day';} return; }
+  var idx=((dayIndex()+jokeOffset)%jokes.length+jokes.length)%jokes.length;
+  var j=jokes[idx];
+  q.textContent=j.q; a.textContent='…'; a.classList.remove('show');
+  m.textContent='Joke #'+(idx+1)+' of '+jokes.length+' · '+(jokeOffset===0?'today':(jokeOffset<0?(-jokeOffset)+' day(s) ago':jokeOffset+' day(s) ahead'));
 }
 document.getElementById('jokeReveal').addEventListener('click',function(){
-  if(!jokes||!jokes.length)return;var j=jokes[((dayIndex()%jokes.length)+jokes.length)%jokes.length];
-  var a=document.getElementById('jokeA');a.textContent=j.a;a.classList.add('show');});
+  var j = (todaysJoke && jokeOffset===0) ? todaysJoke : (jokes&&jokes.length ? jokes[((dayIndex()+jokeOffset)%jokes.length+jokes.length)%jokes.length] : null);
+  if(!j)return; var a=document.getElementById('jokeA'); a.textContent=j.a; a.classList.add('show');});
 document.getElementById('jokePrev').addEventListener('click',function(){jokeOffset--;showJoke();});
 document.getElementById('jokeNext').addEventListener('click',function(){jokeOffset++;showJoke();});
-fetch('data/jokes.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){jokes=d.jokes;showJoke();}).catch(function(e){console.warn('jokes load failed',e);});
+Promise.all([
+  fetch('data/jokes.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){jokes=d.jokes;}).catch(function(){console.warn('jokes load failed');}),
+  fetch('data/today_joke.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysJoke=t;}).catch(function(){console.warn('today_joke load failed');})
+]).then(showJoke);
 
 /* ---------- WEEKLY POLL ---------- */
 var poll=null;
