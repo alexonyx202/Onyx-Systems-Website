@@ -92,7 +92,7 @@ function renderGames(list){
   }).join('');
 }
 // Try local manifest, fall back to inline so the hub never breaks offline
-var MANIFEST=[{"file":"wargames-missile-command.html","title":"WarGames: Global Thermonuclear War","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. 12 escalating waves, radar sweep, WebAudio sound, no downloads.","thumb":"assets/wargames-thumbnail.png","featured":true}];
+var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound — no downloads.","thumb":"assets/wargames-thumbnail.png","featured":true}];
 fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
 </script>
 </body>
