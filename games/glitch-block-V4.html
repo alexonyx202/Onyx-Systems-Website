@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>GLITCH BLOCK // SYSTEM RESTORE — V4</title>
+<style>
+  .machine {
+    --bg: #000; --fg: #00ff00;
+    background: #000; color: #00ff00;
+    font-family: 'Courier New', monospace;
+    display: inline-block; padding: 14px;
+    border: 2px solid #00ff00; border-radius: 6px;
+    box-shadow:0 0 24px rgba(0,255,0,.25), inset 0 0 40px rgba(0,255,0,.05);
+    text-shadow: 0 0 6px rgba(0,255,0,.6);
+  }
+  .machine h1 { font-size: 15px; letter-spacing: 2px; margin: 0 0 8px 0; text-transform: uppercase; }
+  .machine canvas { display: block; background: #000; image-rendering: pixelated; border: 1px solid #00ff00; max-width: 100%; height: auto; touch-action: none; }
+  .screen-wrap { position: relative; display: inline-block; max-width: 100%; }
+  .screen-wrap::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,.18) 3px, rgba(0,0,0,.18) 3px);
+    mix-blend-mode: multiply;
+  }
+  .machine .hint { font-size: 11px; opacity: .75; margin-top: 8px; line-height: 1.5; }
+  .machine .legend { font-size: 10px; opacity: .7; margin-top: 6px; line-height: 1.4; }
+  .machine button {
+    font-family: 'Courier New', monospace; background: #001a00; color: #00ff00;
+    border: 1px solid #00ff00; padding: 8px 14px; cursor: pointer; letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(0,255,0,.6);
+  }
+  .machine button:hover { background: #003300; }
+  .machine.win95 { background: #008080; color: #000; border-color: #c0c0c0;
+    box-shadow: none; text-shadow: none; }
+  .machine.win95 h1 { color: #fff; background: #000080; padding: 2px 6px; }
+  .machine.win95 canvas { border-color: #000; }
+  .machine.win95 .hint, .machine.win95 .legend { color: #000; opacity: .9; }
+  .machine.win95 .screen-wrap::after { display: none; }
+  .machine.win95 button { background: #c0c0c0; color: #000; border: 2px outset #fff; text-shadow: none; }
+  .machine.win95 button:active { border-style: inset; }
+  #overlay {
+    position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+    flex-direction: column; background: rgba(0,0,0,.82); text-align: center; z-index: 5;
+  }
+  #overlay h2 { font-size: 26px; margin: 0 0 12px 0; letter-spacing: 3px; }
+  #overlay p  { font-size: 13px; margin: 4px 0; opacity: .85; }
+</style>
+</head>
+<body>
+<div class="machine" id="machine">
+  <h1>Glitch Block // System Restore — V4</h1>
+  <div class="screen-wrap">
+    <canvas id="game" width="600" height="640"></canvas>
+    <div id="overlay">
+      <h2 id="ov-title">SYSTEM FAILURE</h2>
+      <p id="ov-sub">RAM CORRUPTED</p>
+      <button id="restart">RESTART SYSTEM</button>
+    </div>
+  </div>
+  <div class="hint">
+    ←/→ MOVE &nbsp; ↑ ROTATE &nbsp; ↓ SOFT DROP &nbsp; SPACE HARD DROP &nbsp; C HOLD &nbsp;
+    P PAUSE &nbsp; M MUTE &nbsp; T SKIN &nbsp; 1/2/3 BOOT LVL &nbsp; ENTER BOOT/RESTART<br>
+    <span class="legend">
+      touch: swipe L/R move, swipe ↑ rotate, swipe ↓ soft, tap hard &nbsp;|&nbsp;
+      DATA #@*%+&amp;$ &nbsp; CORRUPT X &nbsp; MALWARE Ξ &nbsp; ANTIVIRUS A &nbsp; FIREWALL F &nbsp; BSOD B
+    </span>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Constants ----------
+  const COLS = 10, ROWS = 20, CELL = 28;
+  const BOARD_X = 24, BOARD_Y = 40;
+  const CANVAS_W = 600, CANVAS_H = 640;
+  const HUD_X = 330;
+  const LINE_SCORES = [0, 100, 300, 500, 800];
+  const GLITCH_THRESHOLD = 500;
+  const GLITCH_DURATION = 5000;
+  const GLITCH_TYPES = ["shift", "invert", "swap", "drop"];
+  const WALL_DURATION = 4000;
+  const BSOD_FREEZE = 3000;
+  const CADENCE = { bsod: 16, firewall: 14, antivirus: 12, corrupted: 10 };
+  const HS_KEY = "gb_hs_v4";
+
+  const THEMES = {
+    terminal: { bg:"#000000", grid:"rgba(0,255,0,0.10)", border:"#00ff00", fg:"#00ff00", normal:{fill:"#00ff00",border:"#0a3a0a",glyph:"#001a00"}, scanline:true },
+    win95:    { bg:"#008080", grid:"rgba(0,0,128,0.18)", border:"#000080", fg:"#000000", normal:{fill:"#c0c0c0",border:"#404040",glyph:"#000000"}, scanline:false },
+  };
+  const INV = { bg:"#ffffff", grid:"rgba(0,0,0,0.10)", border:"#000000", fg:"#000000", normal:{fill:"#000000",border:"#ffffff",glyph:"#ffffff"}, scanline:false };
+
+  const TYPES = ["I", "O", "T", "S", "Z", "J", "L"];
+  const base = {
+    I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+    O: [[1,1],[1,1]],
+    T: [[0,1,0],[1,1,1],[0,0,0]],
+    S: [[0,1,1],[1,1,0],[0,0,0]],
+    Z: [[1,1,0],[0,1,1],[0,0,0]],
+    J: [[1,0,0],[1,1,1],[0,0,0]],
+    L: [[0,0,1],[1,1,1],[0,0,0]],
+  };
+  const GLYPHS = { I:"#", O:"@", T:"*", S:"%", Z:"+", J:"&", L:"$" };
+  const SPECIAL_GLYPH = { a:"A", f:"F", b:"B", c:"X", m:"Ξ" };
+
+  // ---------- State ----------
+  let canvas, ctx, overlay, ovTitle, ovSub, restartBtn, machineEl;
+  let board, score, lines, level, combo;
+  let current, nextType, nextSpecial, pieceCount;
+  let nextGlitch;
+  let dropTimer, dropInterval, lastDrop;
+  let glitch;
+  let invert, controlsSwapped;
+  let particles;
+  let state;
+  let theme = "terminal";
+  let T = 0;
+  let muted = false;
+  let firewallBarrier = null;
+  let bsodFreeze = null;
+  let bsodDropPending = false;
+  let holdType = null;          // V4: held piece type
+  let holdUsed = false;         // V4: one hold per piece
+  let startLevel = 1;          // V4: boot-level selector
+
+  // ---------- Audio ----------
+  let actx = null;
+  function audio() {
+    if (muted) return null;
+    if (actx === null) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { actx = false; } }
+    return actx || null;
+  }
+  function beep(freq, dur, type, vol) {
+    const a = audio(); if (!a) return;
+    const o = a.createOscillator(), g = a.createGain();
+    o.type = type || "square"; o.frequency.value = freq;
+    g.gain.value = vol || 0.05; g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
+    o.connect(g); g.connect(a.destination); o.start(); o.stop(a.currentTime + dur);
+  }
+  function noiseBurst(dur, vol) {
+    const a = audio(); if (!a) return;
+    const n = Math.floor(a.sampleRate * dur);
+    const buf = a.createBuffer(1, n, a.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+    const src = a.createBufferSource(); src.buffer = buf;
+    const g = a.createGain(); g.gain.value = vol || 0.06;
+    src.connect(g); g.connect(a.destination); src.start();
+  }
+  const sndDelete = () => { beep(880,0.08,"square",0.06); beep(440,0.12,"sawtooth",0.05); noiseBurst(0.12,0.05); };
+  const sndLock   = () => beep(220,0.05,"square",0.04);
+  const sndGlitch = () => { noiseBurst(0.25,0.08); beep(120,0.2,"sawtooth",0.05); };
+  const sndOver   = () => { beep(200,0.2,"sawtooth",0.06); beep(120,0.4,"sawtooth",0.06); };
+  const sndAnti   = () => { beep(660,0.06,"square",0.06); beep(990,0.1,"square",0.05); noiseBurst(0.08,0.05); };
+  const sndCombo  = () => { beep(1320,0.07,"triangle",0.06); beep(1760,0.09,"triangle",0.05); };
+  const sndHold   = () => beep(520,0.06,"square",0.05);
+  const sndBSOD   = () => { beep(160,0.4,"sawtooth",0.07); noiseBurst(0.4,0.06); };
+
+  // ---------- High-score table (localStorage, guarded) ----------
+  function loadHS() {
+    try { const s = (typeof localStorage !== "undefined") ? localStorage.getItem(HS_KEY) : null; return s ? JSON.parse(s) : []; }
+    catch (e) { return []; }
+  }
+  function saveHS(list) {
+    try { if (typeof localStorage !== "undefined") localStorage.setItem(HS_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function recordScore(sc, ln, lv) {
+    const prev = loadHS().slice().sort((a, b) => b.score - a.score);
+    const qualifies = prev.length < 5 || sc > prev[prev.length - 1].score;
+    const list = loadHS();
+    list.push({ score: sc, lines: ln, level: lv, date: (new Date()).toISOString().slice(0, 10) });
+    list.sort((a, b) => b.score - a.score);
+    const top = list.slice(0, 5);
+    saveHS(top);
+    const rank = top.findIndex(x => x.score === sc && x.lines === ln && x.level === lv);
+    return { top, rank, qualifies };
+  }
+
+  // ---------- Board helpers ----------
+  function emptyRow() { return new Array(COLS).fill(null); }
+  function emptyBoard() { return Array.from({ length: ROWS }, emptyRow); }
+  function cloneMatrix(m) { return m.map(r => r.slice()); }
+  function rotateCW(m) {
+    const n = m.length, c = m[0].length;
+    const r = Array.from({ length: c }, () => new Array(n).fill(0));
+    for (let i = 0; i < n; i++) for (let j = 0; j < c; j++) r[j][n - 1 - i] = m[i][j];
+    return r;
+  }
+  function decideSpecial(n) {
+    if (n % CADENCE.bsod === 0) return 'b';
+    if (n % CADENCE.firewall === 0) return 'f';
+    if (n % CADENCE.antivirus === 0) return 'a';
+    if (n % CADENCE.corrupted === 0) return 'c';
+    return null;
+  }
+  function ch() { return invert ? INV : THEMES[theme]; }
+
+  // ---------- Collision ----------
+  function collide(x, y, m) {
+    for (let r = 0; r < m.length; r++) {
+      for (let c = 0; c < m[r].length; c++) {
+        if (!m[r][c]) continue;
+        const br = y + r, bc = x + c;
+        if (bc < 0 || bc >= COLS || br >= ROWS) return true;
+        if (br >= 0 && board[br][bc]) return true;
+        if (firewallBarrier && br === firewallBarrier.row) return true;
+      }
+    }
+    return false;
+  }
+
+  // ---------- Piece spawning ----------
+  function randType() { return TYPES[Math.floor(Math.random() * TYPES.length)]; }
+  function spawn() {
+    const special = nextSpecial;
+    const type = special ? randType() : (nextType || randType());
+    if (!special) nextType = randType();
+    const m = cloneMatrix(base[type]);
+    current = {
+      type, m,
+      x: Math.floor((COLS - m[0].length) / 2),
+      y: 0,
+      special: special,
+      corrupted: special === 'c',
+      cellType: special ? special : 'n',
+      glyph: special ? SPECIAL_GLYPH[special] : GLYPHS[type],
+    };
+    pieceCount++;
+    nextType = nextType || randType();
+    nextSpecial = decideSpecial(pieceCount + 1);
+    if (collide(current.x, current.y, current.m)) gameOver();
+  }
+  // V4: spawn a specific held type (no cadence advance)
+  function spawnHeld(type) {
+    const m = cloneMatrix(base[type]);
+    current = {
+      type, m,
+      x: Math.floor((COLS - m[0].length) / 2),
+      y: 0,
+      special: null, corrupted: false, cellType: 'n', glyph: GLYPHS[type],
+    };
+    if (collide(current.x, current.y, current.m)) gameOver();
+  }
+
+  // ---------- Movement ----------
+  function move(dx) {
+    let d = dx;
+    if (controlsSwapped) d = -d;
+    if (!collide(current.x + d, current.y, current.m)) { current.x += d; return true; }
+    return false;
+  }
+  function rotatePiece() {
+    const rot = rotateCW(current.m);
+    const kicks = [0, -1, 1, -2, 2];
+    for (const k of kicks) {
+      if (!collide(current.x + k, current.y, rot)) { current.x += k; current.m = rot; return true; }
+    }
+    return false;
+  }
+  function softDrop() { if (!collide(current.x, current.y + 1, current.m)) { current.y++; score += 1; } else lock(); }
+  function hardDrop() {
+    let dist = 0;
+    while (!collide(current.x, current.y + 1, current.m)) { current.y++; dist++; }
+    score += dist * 2;
+    lock();
+  }
+  // V4: hold piece
+  function doHold() {
+    if (state !== "PLAY" || bsodFreeze || !current || holdUsed) return;
+    holdUsed = true;
+    sndHold();
+    const cur = current.type;
+    if (holdType === null) {
+      holdType = cur;
+      spawn();
+    } else {
+      const swap = holdType;
+      holdType = cur;
+      spawnHeld(swap);
+    }
+  }
+
+  // ---------- Locking + clears ----------
+  function merge() {
+    const m = current.m;
+    for (let r = 0; r < m.length; r++)
+      for (let c = 0; c < m[r].length; c++)
+        if (m[r][c]) {
+          const br = current.y + r, bc = current.x + c;
+          if (br >= 0 && br < ROWS && bc >= 0 && bc < COLS)
+            board[br][bc] = { t: current.cellType, g: current.glyph };
+        }
+  }
+  function detonateAt(cr, cc) {
+    for (let r = cr - 1; r <= cr + 1; r++)
+      for (let c = cc - 1; c <= cc + 1; c++) {
+        if (r < 0 || r >= ROWS || c < 0 || c >= COLS) continue;
+        if (board[r][c]) { spawnFx(r, c, board[r][c], true); board[r][c] = null; }
+      }
+  }
+  function setFirewallBarrier(lowRow) {
+    const row = lowRow + 1;
+    if (row >= 0 && row < ROWS) firewallBarrier = { row, until: T + WALL_DURATION };
+  }
+  function dropAllLinesDown() {
+    for (let r = ROWS - 1; r > 0; r--) board[r] = board[r - 1];
+    board[0] = emptyRow();
+  }
+  function spawnMalware(n) {
+    let placed = 0, guard = 0;
+    while (placed < n && guard < 200) {
+      guard++;
+      const r = ROWS - 1 - Math.floor(Math.random() * 5);
+      const c = Math.floor(Math.random() * COLS);
+      if (r >= 0 && r < ROWS && !board[r][c]) { board[r][c] = { t: 'm', g: SPECIAL_GLYPH.m }; placed++; }
+    }
+  }
+
+  function clearLines() {
+    const cleared = [];
+    let bsodHit = false;
+    for (let r = 0; r < ROWS; r++) {
+      const full = board[r].every(c => c);
+      if (!full) continue;
+      if (board[r].some(c => c.t === 'c' || c.t === 'm')) continue;
+      if (board[r].some(c => c.t === 'b')) bsodHit = true;
+      cleared.push(r);
+    }
+    if (cleared.length === 0) return 0;
+    for (const r of cleared)
+      for (let c = 0; c < COLS; c++) spawnFx(r, c, board[r][c]);
+    const set = new Set(cleared);
+    const kept = board.filter((_, r) => !set.has(r));
+    while (kept.length < ROWS) kept.unshift(emptyRow());
+    board = kept;
+    if (bsodHit) { bsodDropPending = true; bsodFreeze = { until: T + BSOD_FREEZE }; }
+    return cleared.length;
+  }
+  function removeCorrupted() {
+    for (let c = 0; c < COLS; c++)
+      for (let r = 0; r < ROWS; r++) {
+        const cell = board[r][c];
+        if (!cell || cell.t !== 'c') continue;
+        if (r === ROWS - 1) { spawnFx(r, c, cell, true); board[r][c] = null; continue; }
+        let cnt = 0;
+        for (let k = 1; k <= 3; k++) {
+          const rr = r - k; if (rr < 0) break;
+          const b = board[rr][c]; if (b && b.t !== 'c') cnt++; else break;
+        }
+        if (cnt >= 3) { spawnFx(r, c, cell, true); board[r][c] = null; }
+      }
+  }
+  function lock() {
+    merge();
+    sndLock();
+    if (current.special === 'a') {
+      const cx = current.x + Math.floor(current.m[0].length / 2);
+      const cy = current.y + Math.floor(current.m.length / 2);
+      let hit = 0;
+      for (let r = cy - 1; r <= cy + 1; r++)
+        for (let c = cx - 1; c <= cx + 1; c++)
+          if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] && board[r][c].t === 'm') hit++;
+      detonateAt(cy, cx);
+      if (hit > 0) {
+        combo++;
+        score += hit * 50 * combo;
+        spawnFx(cy, cx, { t: 'a', g: 'x' + combo }, true);
+        sndCombo();
+      } else { combo = 0; }
+      sndAnti();
+    }
+    if (current.special === 'f') {
+      let lowRow = 0;
+      for (let r = 0; r < current.m.length; r++)
+        for (let c = 0; c < current.m[r].length; c++)
+          if (current.m[r][c]) lowRow = Math.max(lowRow, current.y + r);
+      setFirewallBarrier(lowRow);
+      sndGlitch();
+    }
+    const n = clearLines();
+    if (n > 0) {
+      score += LINE_SCORES[n] * level;
+      lines += n;
+      level = 1 + Math.floor(lines / 10);
+      sndDelete();
+      if (score >= nextGlitch) { triggerGlitch(); nextGlitch += GLITCH_THRESHOLD; }
+    }
+    if (n === 0 && pieceCount % 4 === 0) spawnMalware(1);
+    removeCorrupted();
+    dropTimer = 0;
+    holdUsed = false;            // V4: new piece may be held again
+    spawn();
+  }
+
+  // ---------- Glitch engine ----------
+  function triggerGlitch() {
+    const type = GLITCH_TYPES[Math.floor(Math.random() * GLITCH_TYPES.length)];
+    glitch = { active: true, type, until: T + GLITCH_DURATION };
+    if (type === "invert") invert = true;
+    if (type === "swap") controlsSwapped = true;
+    if (type === "shift") glitchShift();
+    if (type === "drop") glitchDrop();
+    sndGlitch();
+  }
+  function endGlitch() { glitch = { active: false, type: null, until: 0 }; invert = false; controlsSwapped = false; }
+  function glitchShift() {
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    for (let r = 0; r < ROWS; r++) {
+      if (dir === 1) { const last = board[r][COLS-1]; for (let c = COLS-1; c > 0; c--) board[r][c] = board[r][c-1]; board[r][0] = last; }
+      else { const first = board[r][0]; for (let c = 0; c < COLS-1; c++) board[r][c] = board[r][c+1]; board[r][COLS-1] = first; }
+    }
+  }
+  function glitchDrop() {
+    for (let c = 0; c < COLS; c++)
+      for (let r = ROWS - 2; r >= 0; r--)
+        if (board[r][c] && !board[r + 1][c]) { board[r + 1][c] = board[r][c]; board[r][c] = null; }
+  }
+
+  // ---------- Particles ----------
+  function spawnFx(r, c, cell, buried) {
+    const px = BOARD_X + c * CELL + CELL / 2;
+    const py = BOARD_Y + r * CELL + CELL / 2;
+    const color = cell && cell.t === 'c' ? "#ff5050"
+                : cell && cell.t === 'm' ? "#ff5fff"
+                : cell && cell.t === 'a' ? "#ffff80"
+                : cell && cell.t === 'f' ? "#88aaff"
+                : cell && cell.t === 'b' ? "#ff6060"
+                : (buried ? "#ffd000" : "#00ff00");
+    const g = cell ? cell.g : "#";
+    for (let i = 0; i < 3; i++)
+      particles.push({ x: px, y: py, vx: (Math.random()*2-1)*1.4, vy: (Math.random()*-1-0.3)*1.6, life: 1, g, color });
+  }
+  function updateParticles(dt) {
+    const f = dt / 16;
+    for (const p of particles) { p.x += p.vx*f; p.y += p.vy*f; p.vy += 0.12*f; p.life -= 0.02*f; }
+    particles = particles.filter(p => p.life > 0);
+  }
+
+  // ---------- Update / Draw ----------
+  function update(dt) {
+    updateParticles(dt);
+    if (state !== "PLAY") return;
+    if (glitch.active && T >= glitch.until) endGlitch();
+    if (firewallBarrier && T >= firewallBarrier.until) firewallBarrier = null;
+    if (bsodFreeze) {
+      if (T >= bsodFreeze.until && bsodDropPending) { dropAllLinesDown(); bsodDropPending = false; bsodFreeze = null; }
+      return;
+    }
+    const interval = Math.max(80, dropInterval - (level - 1) * 70);
+    dropTimer += dt;
+    if (dropTimer >= interval) {
+      dropTimer = 0;
+      if (!collide(current.x, current.y + 1, current.m)) current.y++;
+      else lock();
+    }
+  }
+
+  function cellColors(t, inv, thName) {
+    if (inv) {
+      switch (t) {
+        case 'c': return { fill:'#330000', border:'#ff5050', glyph:'#ffd0d0' };
+        case 'm': return { fill:'#3a003a', border:'#ff5fff', glyph:'#ffd0ff' };
+        case 'a': return { fill:'#3a3500', border:'#ffff80', glyph:'#000000' };
+        case 'f': return { fill:'#001a4d', border:'#88aaff', glyph:'#cfe0ff' };
+        case 'b': return { fill:'#550000', border:'#ff3030', glyph:'#ffffff' };
+        default:  return INV.normal;
+      }
+    }
+    switch (t) {
+      case 'c': return { fill:'#ff2b2b', border:'#ff8b8b', glyph:'#ffffff' };
+      case 'm': return { fill:'#c000c0', border:'#ff5fff', glyph:'#ffffff' };
+      case 'a': return { fill:'#ffe000', border:'#ffff80', glyph:'#000000' };
+      case 'f': return { fill:'#2a5cff', border:'#88aaff', glyph:'#ffffff' };
+      case 'b': return { fill:'#0000aa', border:'#ff3030', glyph:'#ffffff' };
+      default:  return THEMES[thName].normal;
+    }
+  }
+
+  function draw() {
+    const k = ch();
+    ctx.fillStyle = k.bg;
+    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+    ctx.strokeStyle = k.border;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(BOARD_X - 2, BOARD_Y - 2, COLS * CELL + 4, ROWS * CELL + 4);
+    ctx.strokeStyle = k.grid;
+    ctx.beginPath();
+    for (let c = 0; c <= COLS; c++) { ctx.moveTo(BOARD_X + c*CELL, BOARD_Y); ctx.lineTo(BOARD_X + c*CELL, BOARD_Y + ROWS*CELL); }
+    for (let r = 0; r <= ROWS; r++) { ctx.moveTo(BOARD_X, BOARD_Y + r*CELL); ctx.lineTo(BOARD_X + COLS*CELL, BOARD_Y + r*CELL); }
+    ctx.stroke();
+
+    for (let r = 0; r < ROWS; r++)
+      for (let c = 0; c < COLS; c++)
+        if (board[r][c]) drawCell(c, r, board[r][c]);
+
+    if (current && state === "PLAY") {
+      drawGhost();
+      const m = current.m;
+      for (let r = 0; r < m.length; r++)
+        for (let c = 0; c < m[r].length; c++)
+          if (m[r][c]) {
+            const br = current.y + r, bc = current.x + c;
+            if (br >= 0) drawCell(bc, br, { t: current.cellType, g: current.glyph });
+          }
+    }
+
+    if (firewallBarrier) {
+      const y = BOARD_Y + firewallBarrier.row * CELL;
+      ctx.fillStyle = "rgba(42,92,255,0.28)";
+      ctx.fillRect(BOARD_X, y, COLS * CELL, CELL);
+      ctx.strokeStyle = "#88aaff"; ctx.setLineDash([6,4]);
+      ctx.strokeRect(BOARD_X, y + 1, COLS * CELL, CELL - 2);
+      ctx.setLineDash([]);
+    }
+
+    drawParticles();
+    drawHUD();
+    if (state === "TITLE") drawTitle();
+    if (state === "PAUSE") drawCenter("PAUSED", "PRESS P TO RESUME");
+    if (bsodFreeze) drawCenter("::: BSOD :::", "SYSTEM CRASH // DROPPING");
+  }
+
+  function drawCell(c, r, cell) {
+    const x = BOARD_X + c * CELL, y = BOARD_Y + r * CELL;
+    const col = cellColors(cell.t, invert, theme);
+    ctx.fillStyle = col.fill;
+    ctx.fillRect(x + 1, y + 1, CELL - 2, CELL - 2);
+    ctx.strokeStyle = col.border; ctx.lineWidth = 1;
+    ctx.strokeRect(x + 1.5, y + 1.5, CELL - 3, CELL - 3);
+    ctx.fillStyle = col.glyph;
+    ctx.font = (CELL - 12) + "px 'Courier New', monospace";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText(cell.g || "#", x + CELL / 2, y + CELL / 2 + 1);
+  }
+
+  function drawGhost() {
+    let gy = current.y;
+    while (!collide(current.x, gy + 1, current.m)) gy++;
+    const m = current.m;
+    ctx.fillStyle = invert ? "rgba(0,0,0,0.12)" : "rgba(0,255,0,0.12)";
+    for (let r = 0; r < m.length; r++)
+      for (let c = 0; c < m[r].length; c++)
+        if (m[r][c]) {
+          const br = gy + r, bc = current.x + c;
+          if (br >= 0) ctx.fillRect(BOARD_X + bc*CELL + 2, BOARD_Y + br*CELL + 2, CELL - 4, CELL - 4);
+        }
+  }
+
+  function drawParticles() {
+    ctx.font = (CELL - 14) + "px 'Courier New', monospace";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    for (const p of particles) {
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.fillStyle = p.color;
+      ctx.fillText(p.g, p.x, p.y);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawTitle() {
+    const k = ch();
+    ctx.fillStyle = "rgba(0,0,0,0.6)";
+    ctx.fillRect(BOARD_X, BOARD_Y, COLS * CELL, ROWS * CELL);
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = k.fg;
+    ctx.font = "20px 'Courier New', monospace";
+    ctx.fillText("GLITCH BLOCK", BOARD_X + (COLS*CELL)/2, BOARD_Y + 56);
+    ctx.font = "12px 'Courier New', monospace";
+    ctx.fillText("PRESS ENTER TO BOOT", BOARD_X + (COLS*CELL)/2, BOARD_Y + 92);
+    ctx.fillText("BOOT LEVEL: " + startLevel + "  (1/2/3)", BOARD_X + (COLS*CELL)/2, BOARD_Y + 114);
+    const hs = loadHS().slice(0, 5);
+    ctx.fillText("-- TOP SYSTEMS --", BOARD_X + (COLS*CELL)/2, BOARD_Y + 150);
+    if (hs.length === 0) {
+      ctx.fillText("no records", BOARD_X + (COLS*CELL)/2, BOARD_Y + 174);
+    } else {
+      hs.forEach((h, i) => {
+        ctx.fillText((i+1) + ". " + String(h.score).padStart(6) + "  L" + h.level, BOARD_X + (COLS*CELL)/2, BOARD_Y + 174 + i*18);
+      });
+    }
+    ctx.textAlign = "left"; ctx.textBaseline = "top";
+  }
+
+  function drawHUD() {
+    const k = ch();
+    ctx.textAlign = "left"; ctx.textBaseline = "top";
+    ctx.fillStyle = k.fg;
+    ctx.font = "14px 'Courier New', monospace";
+    let y = BOARD_Y;
+    const line = (label, val) => { ctx.fillText(label, HUD_X, y); ctx.fillText(String(val), HUD_X + 110, y); y += 22; };
+    line("SCORE", score); line("LINES", lines); line("LEVEL", level); line("PIECE", pieceCount);
+
+    if (combo > 1) { ctx.fillStyle = invert ? "#888800" : "#ffff80"; ctx.fillText("COMBO x" + combo, HUD_X, y); y += 18; }
+
+    // HOLD preview (V4)
+    ctx.fillStyle = k.fg;
+    ctx.fillText("HOLD", HUD_X, y); y += 16;
+    if (holdType) {
+      const m = base[holdType], col = cellColors('n', invert, theme);
+      for (let r = 0; r < m.length; r++)
+        for (let c = 0; c < m[r].length; c++)
+          if (m[r][c]) {
+            const x = HUD_X + c * 14, yy = y + r * 14;
+            ctx.fillStyle = col.fill; ctx.fillRect(x, yy, 12, 12);
+            ctx.fillStyle = col.glyph; ctx.font = "9px 'Courier New', monospace";
+            ctx.textAlign = "center"; ctx.textBaseline = "middle";
+            ctx.fillText(GLYPHS[holdType], x + 6, yy + 6);
+            ctx.textAlign = "left"; ctx.textBaseline = "top";
+          }
+    } else { ctx.fillText("--", HUD_X, y); }
+    y += 4 * 14 + 8;
+
+    const filled = board.flat().filter(Boolean).length;
+    const cap = ROWS * COLS;
+    ctx.fillStyle = k.fg;
+    ctx.fillText("RAM", HUD_X, y); y += 16;
+    const mw = CANVAS_W - HUD_X - 24;
+    ctx.strokeStyle = k.border;
+    ctx.strokeRect(HUD_X, y, mw, 14);
+    ctx.fillStyle = invert ? "#000000" : (theme === 'win95' ? "#c0c0c0" : "#00ff00");
+    ctx.fillRect(HUD_X + 1, y + 1, (mw - 2) * (filled / cap), 12);
+    ctx.fillStyle = k.fg;
+    ctx.fillText(filled + "/" + cap, HUD_X, y + 18);
+    y += 40;
+
+    ctx.fillText("NEXT", HUD_X, y); y += 16;
+    const nt = nextSpecial || nextType;
+    const ng = nextSpecial ? SPECIAL_GLYPH[nextSpecial] : GLYPHS[nextType];
+    if (nt) {
+      const m = base[nextType];
+      const col = cellColors(nextSpecial || 'n', invert, theme);
+      for (let r = 0; r < m.length; r++)
+        for (let c = 0; c < m[r].length; c++)
+          if (m[r][c]) {
+            const x = HUD_X + c * 18, yy = y + r * 18;
+            ctx.fillStyle = col.fill; ctx.fillRect(x, yy, 16, 16);
+            ctx.fillStyle = col.glyph; ctx.font = "10px 'Courier New', monospace";
+            ctx.textAlign = "center"; ctx.textBaseline = "middle";
+            ctx.fillText(ng, x + 8, yy + 8);
+            ctx.textAlign = "left"; ctx.textBaseline = "top";
+          }
+    }
+    y += 4 * 18 + 12;
+
+    const malware = board.flat().filter(c => c && c.t === 'm').length;
+    ctx.fillStyle = malware > 0 ? "#ff5fff" : k.fg;
+    ctx.fillText("MALWARE " + malware, HUD_X, y); y += 18;
+    if (firewallBarrier) { ctx.fillStyle = "#88aaff"; ctx.fillText("FIREWALL UP", HUD_X, y); y += 18; }
+    if (bsodDropPending) { ctx.fillStyle = "#ff6060"; ctx.fillText("BSOD PENDING", HUD_X, y); y += 18; }
+
+    ctx.fillStyle = glitch.active ? "#ff5050" : k.fg;
+    if (glitch.active) {
+      const remain = Math.ceil((glitch.until - T) / 1000);
+      ctx.fillText("!! GLITCH !!", HUD_X, y); y += 18;
+      ctx.fillText("TYPE: " + glitch.type.toUpperCase(), HUD_X, y); y += 18;
+      ctx.fillText("T-" + remain + "s", HUD_X, y);
+    } else {
+      ctx.fillText("SYS: NOMINAL", HUD_X, y); y += 18;
+      ctx.fillText("NEXT GLITCH", HUD_X, y); y += 18;
+      ctx.fillText("@ " + nextGlitch + " pts", HUD_X, y);
+    }
+  }
+
+  function drawCenter(title, sub) {
+    ctx.fillStyle = "rgba(0,0,0,0.7)";
+    ctx.fillRect(BOARD_X, BOARD_Y, COLS * CELL, ROWS * CELL);
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = "#00ff00";
+    ctx.font = "22px 'Courier New', monospace";
+    ctx.fillText(title, BOARD_X + (COLS*CELL)/2, BOARD_Y + (ROWS*CELL)/2 - 10);
+    ctx.font = "12px 'Courier New', monospace";
+    ctx.fillText(sub, BOARD_X + (COLS*CELL)/2, BOARD_Y + (ROWS*CELL)/2 + 18);
+    ctx.textAlign = "left"; ctx.textBaseline = "top";
+  }
+
+  // ---------- Lifecycle ----------
+  function reset() {
+    board = emptyBoard();
+    score = 0; lines = 0; level = startLevel; combo = 0;
+    pieceCount = 0; nextGlitch = GLITCH_THRESHOLD;
+    dropInterval = Math.max(80, 800 - (startLevel - 1) * 70);  // V4: start speed by level
+    dropTimer = 0; lastDrop = 0;
+    glitch = { active: false, type: null, until: 0 };
+    invert = false; controlsSwapped = false;
+    particles = [];
+    firewallBarrier = null; bsodFreeze = null; bsodDropPending = false;
+    holdType = null; holdUsed = false;                                  // V4
+    nextType = randType(); nextSpecial = decideSpecial(1);
+    spawnMalware(3);
+    spawn();
+  }
+  function start(lvl) {
+    if (lvl) startLevel = lvl;
+    reset();
+    state = "PLAY"; hideOverlay();
+  }
+  function restart() { start(startLevel); }
+  function gameOver() {
+    const res = recordScore(score, lines, level);                     // V4: persist
+    state = "OVER"; sndOver();
+    const tag = res.qualifies && res.rank >= 0 ? ("NEW HIGH SCORE #" + (res.rank + 1) + "  //  ") : "";
+    showOverlay("SYSTEM FAILURE", tag + "SCORE " + score + "  //  RAM LOST");
+  }
+  function toggleSkin() {
+    theme = (theme === "terminal") ? "win95" : "terminal";
+    if (machineEl) machineEl.classList.toggle("win95", theme === "win95");
+  }
+
+  function showOverlay(title, sub) { ovTitle.textContent = title; ovSub.textContent = sub; overlay.style.display = "flex"; }
+  function hideOverlay() { overlay.style.display = "none"; }
+
+  // ---------- Input ----------
+  function onKey(e) {
+    if (state === "TITLE") {
+      if (e.key === "1") { startLevel = 1; return; }
+      if (e.key === "2") { startLevel = 5; return; }
+      if (e.key === "3") { startLevel = 10; return; }
+      if (e.key === "Enter") { start(startLevel); return; }
+      return;
+    }
+    if (state === "OVER") { if (e.key === "Enter") restart(); return; }
+    if (e.key === "p" || e.key === "P") { state = state === "PAUSE" ? "PLAY" : "PAUSE"; return; }
+    if (e.key === "m" || e.key === "M") { muted = !muted; return; }
+    if (e.key === "t" || e.key === "T") { toggleSkin(); return; }
+    if (state !== "PLAY" || bsodFreeze) return;
+    switch (e.key) {
+      case "ArrowLeft":  case "a": case "A": move(-1); e.preventDefault(); break;
+      case "ArrowRight": case "d": case "D": move(1); e.preventDefault(); break;
+      case "ArrowUp": case "x": case "X": case "w": case "W": rotatePiece(); e.preventDefault(); break;
+      case "ArrowDown":  case "s": case "S": softDrop(); e.preventDefault(); break;
+      case " ": case "c": case "C": hardDrop(); e.preventDefault(); break;   // default: space hard drop
+      case "Shift": doHold(); e.preventDefault(); break;                       // V4: hold
+    }
+  }
+
+  // ---------- Touch (mobile) ----------
+  function classifyGesture(dx, dy, dtMs) {
+    if (Math.abs(dx) < 24 && Math.abs(dy) < 24 && dtMs < 300) return "tap";
+    if (Math.abs(dx) > Math.abs(dy)) return dx > 0 ? "right" : "left";
+    return dy < 0 ? "rotate" : "soft";
+  }
+  function applyGesture(g) {
+    if (state === "TITLE") {
+      if (g === "tap") start(startLevel);
+      else if (g === "right") startLevel = Math.min(10, startLevel + 1);
+      else if (g === "left") startLevel = Math.max(1, startLevel - 1);
+      return;
+    }
+    if (state === "OVER" && g === "tap") { restart(); return; }
+    if (state !== "PLAY" || bsodFreeze) return;
+    switch (g) {
+      case "left":  move(-1); break;
+      case "right": move(1);  break;
+      case "rotate": rotatePiece(); break;
+      case "soft":  softDrop(); break;
+      case "tap":   hardDrop(); break;
+    }
+  }
+  let tsx = 0, tsy = 0, tst = 0;
+  function onTouchStart(e) { const t = e.touches[0]; tsx = t.clientX; tsy = t.clientY; tst = Date.now(); }
+  function onTouchEnd(e) {
+    const t = e.changedTouches[0];
+    const g = classifyGesture(t.clientX - tsx, t.clientY - tsy, Date.now() - tst);
+    applyGesture(g);
+    e.preventDefault();
+  }
+
+  // ---------- Boot ----------
+  function boot() {
+    canvas = document.getElementById("game");
+    ctx = canvas.getContext("2d");
+    overlay = document.getElementById("overlay");
+    ovTitle = document.getElementById("ov-title");
+    ovSub = document.getElementById("ov-sub");
+    restartBtn = document.getElementById("restart");
+    machineEl = document.getElementById("machine");
+    restartBtn.addEventListener("click", restart);
+    window.addEventListener("keydown", onKey);
+    canvas.addEventListener("touchstart", onTouchStart, { passive: true });
+    canvas.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+    canvas.addEventListener("touchend", onTouchEnd, { passive: false });
+    window.addEventListener("pointerdown", () => { const a = audio(); if (a && a.resume) a.resume(); }, { once: true });
+
+    state = "TITLE";
+    board = emptyBoard();
+    glitch = { active: false, type: null, until: 0 };
+    invert = false; controlsSwapped = false;
+    particles = [];
+    firewallBarrier = null; bsodFreeze = null; bsodDropPending = false;
+    holdType = null; holdUsed = false;
+    score = 0; lines = 0; level = 1; combo = 0; pieceCount = 0; nextGlitch = GLITCH_THRESHOLD;
+    current = null; nextType = null; nextSpecial = null;
+
+    let last = performance.now();
+    function loop(now) {
+      T = now;
+      const dt = Math.min(50, now - last);
+      last = now;
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  // Test hook
+  if (typeof window !== "undefined" && window.__EXPOSE__) {
+    window.__GB = {
+      get state() { return state; }, set state(v) { state = v; },
+      get board() { return board; }, set board(b) { board = b; },
+      get score() { return score; }, set score(v) { score = v; },
+      get lines() { return lines; },
+      get level() { return level; },
+      get combo() { return combo; }, set combo(v) { combo = v; },
+      get current() { return current; },
+      get glitch() { return glitch; },
+      get pieceCount() { return pieceCount; }, set pieceCount(v) { pieceCount = v; },
+      get nextGlitch() { return nextGlitch; }, set nextGlitch(v) { nextGlitch = v; },
+      get nextType() { return nextType; }, set nextType(v) { nextType = v; },
+      get nextSpecial() { return nextSpecial; }, set nextSpecial(v) { nextSpecial = v; },
+      get invert() { return invert; }, set invert(v) { invert = v; },
+      get controlsSwapped() { return controlsSwapped; }, set controlsSwapped(v) { controlsSwapped = v; },
+      get theme() { return theme; }, set theme(v) { theme = v; if (machineEl) machineEl.classList.toggle("win95", v === "win95"); },
+      get particles() { return particles; },
+      get firewallBarrier() { return firewallBarrier; }, set firewallBarrier(v) { firewallBarrier = v; },
+      get bsodFreeze() { return bsodFreeze; },
+      get bsodDropPending() { return bsodDropPending; },
+      get holdType() { return holdType; }, set holdType(v) { holdType = v; },
+      get holdUsed() { return holdUsed; }, set holdUsed(v) { holdUsed = v; },
+      get startLevel() { return startLevel; }, set startLevel(v) { startLevel = v; },
+      COLS, ROWS, CELL, LINE_SCORES, GLITCH_TYPES, TYPES, CADENCE, base, GLYPHS, SPECIAL_GLYPH, THEMES, INV, HS_KEY,
+      WALL_DURATION, BSOD_FREEZE,
+      emptyRow, emptyBoard, cloneMatrix, collide, decideSpecial, ch,
+      spawn, spawnHeld, lock, clearLines, removeCorrupted, triggerGlitch, endGlitch,
+      detonateAt, setFirewallBarrier, dropAllLinesDown, spawnMalware,
+      move, rotatePiece, softDrop, hardDrop, doHold,
+      update, draw, drawTitle, start, restart, gameOver, toggleSkin,
+      classifyGesture, applyGesture,
+      loadHS, saveHS, recordScore,
+      setTime(v) { T = v; }, getTime() { return T; },
+      fillCell(r, c, cell) { board[r][c] = cell; },
+      cellColors,
+    };
+  }
+
+  if (typeof document !== "undefined" && document.getElementById) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+    else boot();
+  }
+})();
+</script>
+</body>
+</html>

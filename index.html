@@ -172,11 +172,17 @@
   @media(max-width:560px){.news-actions .btn{width:100%;text-align:center}.news-note{width:100%}}
 
   .games-sec{padding:56px 0;background:#fff}
-  .game-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-  .game-frame{width:100%;aspect-ratio:960/760;border:0;border-radius:12px;background:#05080a;display:block}
-  .game-cta h3{font-size:20px;color:var(--onyx);margin-bottom:8px}
-  .game-cta p{color:var(--muted);margin-bottom:16px;font-size:14px}
-  .game-cta .btn{margin:0 8px 8px 0}
+  .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
+  .game-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
+  .game-card:hover{transform:translateY(-4px);border-color:var(--copper)}
+  .game-card .gthumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
+  .game-card .gbody{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .game-card h3{font-size:19px;color:var(--onyx);line-height:1.2}
+  .game-card .gtag{font-size:13px;color:var(--copper-deep);font-weight:600}
+  .game-card .gbtn{margin-top:auto;align-self:flex-start;background:var(--copper);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;transition:.2s}
+  .game-card:hover .gbtn{background:var(--copper-2);color:var(--ink)}
+  .game-card .flag{position:absolute;top:12px;left:12px;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;box-shadow:0 4px 12px rgba(154,83,38,.4)}
+  .games-foot{margin-top:28px;text-align:center}
   .news-list{display:flex;flex-direction:column;gap:14px}
   .ncard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s;display:flex;gap:14px;align-items:flex-start}
   .ncard:hover{border-color:var(--copper);transform:translateY(-2px)}
@@ -241,7 +247,6 @@
     .nav-links.open{transform:translateY(0)}
     .nav-toggle{display:flex}
     .locator .wrap,.news-grid{grid-template-columns:1fr}
-    .game-feature{grid-template-columns:1fr}
     footer .cols{grid-template-columns:1fr 1fr}
     .mobile-call{display:block}
   }
@@ -371,14 +376,51 @@
       <h2>Games</h2>
       <p>No downloads, no installs, no accounts — just click and play. A little something to break up your day while you're here. More games landing all the time.</p>
     </div>
-    <div class="game-feature reveal">
-      <iframe class="game-frame" src="games/wargames-v3.html" title="WarGames: Missile Defense" loading="lazy" allow="autoplay"></iframe>
-      <div class="game-cta">
-        <h3>WarGames: Missile Defense</h3>
-        <p>Defend NORAD, Moscow &amp; Beijing from incoming ICBMs. Pick your threat level, read the defense briefing, then survive 12 escalating waves — retro CRT styling, WebAudio sound, all in your browser.</p>
-        <a class="btn btn-primary" href="games/wargames-v3.html" target="_blank" rel="noopener">▶ Play full screen</a>
-        <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Browse all games →</a>
-      </div>
+    <div class="games-grid reveal">
+      <a class="game-card" href="games/wargames-v3.html" target="_blank" rel="noopener">
+        <span class="flag">Featured</span>
+        <img class="gthumb" src="games/assets/wargames-thumbnail.png" alt="WarGames: Missile Defense" loading="lazy">
+        <div class="gbody">
+          <h3>WarGames: Missile Defense</h3>
+          <div class="gtag">Defend NORAD, Moscow &amp; Beijing from incoming ICBMs.</div>
+          <span class="gbtn">▶ Play now</span>
+        </div>
+      </a>
+      <a class="game-card" href="games/glitch-block-V4.html" target="_blank" rel="noopener">
+        <img class="gthumb" src="games/assets/glitch-block-thumb.png" alt="Glitch Block System Restore" loading="lazy">
+        <div class="gbody">
+          <h3>Glitch Block // System Restore</h3>
+          <div class="gtag">System restore — one block at a time.</div>
+          <span class="gbtn">▶ Play now</span>
+        </div>
+      </a>
+      <a class="game-card" href="games/drone-hunt-v4.html" target="_blank" rel="noopener">
+        <img class="gthumb" src="games/assets/drone-hunt-thumb.png" alt="Drone Hunt" loading="lazy">
+        <div class="gbody">
+          <h3>Drone Hunt</h3>
+          <div class="gtag">Laser rifle. Drones. Don't hit the birds.</div>
+          <span class="gbtn">▶ Play now</span>
+        </div>
+      </a>
+      <a class="game-card" href="games/computer-chaos-v4.html" target="_blank" rel="noopener">
+        <img class="gthumb" src="games/assets/computer-chaos-thumb.png" alt="Computer Chaos" loading="lazy">
+        <div class="gbody">
+          <h3>Computer Chaos</h3>
+          <div class="gtag">Catch the parts. Fill the orders. Beat the clock.</div>
+          <span class="gbtn">▶ Play now</span>
+        </div>
+      </a>
+      <a class="game-card" href="games/skydrift-v1.html" target="_blank" rel="noopener">
+        <img class="gthumb" src="games/assets/skydrift-thumb.png" alt="SKYDRIFT" loading="lazy">
+        <div class="gbody">
+          <h3>SKYDRIFT</h3>
+          <div class="gtag">Neon bolts, drones &amp; a high-score table.</div>
+          <span class="gbtn">▶ Play now</span>
+        </div>
+      </a>
+    </div>
+    <div class="games-foot reveal">
+      <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Browse all games &amp; full catalog →</a>
     </div>
   </div>
 </section>
