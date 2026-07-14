@@ -37,18 +37,6 @@
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
   .sec-head h1{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(30px,5vw,46px);color:var(--onyx);margin-top:6px}
   .sec-head p{color:var(--muted);max-width:640px;margin:12px auto 0}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:60px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.22s}
-  .card:hover{transform:translateY(-4px);border-color:var(--copper)}
-  .card .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--onyx);display:block}
-  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .card h3{font-size:19px;color:var(--onyx);line-height:1.2}
-  .card .tag{font-size:13px;color:var(--copper-deep);font-weight:600}
-  .card p{font-size:14px;color:var(--muted);flex:1}
-  .btn{display:inline-block;text-decoration:none;padding:11px 20px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;transition:.2s;border:2px solid transparent}
-  .btn-primary{background:var(--copper);color:#fff;box-shadow:0 8px 22px rgba(194,112,61,.35)}
-  .btn-primary:hover{background:var(--copper-2);color:var(--ink);transform:translateY(-2px)}
-  .featured-flag{display:inline-block;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:999px;align-self:flex-start}
   footer.site{background:var(--ink);color:#cfc9c0;padding:40px 0 26px;margin-top:20px}
   footer .cols{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
   footer a{color:var(--copper-2);text-decoration:none}
@@ -60,7 +48,9 @@
     linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
   body::after{content:"";position:fixed;left:-50%;right:-50%;top:-10%;bottom:-10%;height:auto;z-index:-1;opacity:.55;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(60deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
-  .arcade-hub{position:relative;z-index:2}
+  .arcade-hub{position:relative;overflow:hidden;z-index:2}
+  .arcade-hub .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('../assets/img/arcade/bg-wireframe.jpg')}
+  .arcade-hub .wrap{position:relative;z-index:2}
   .arcade-hub .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
   .arcade-hub .sec-head{text-align:center;position:relative}
   .arcade-hub .sec-head::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(700px,94%);height:160%;z-index:-1;background:radial-gradient(closest-side,rgba(10,6,18,.85),transparent)}
@@ -68,12 +58,18 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .card{position:relative;background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);color:#fff}
-  .card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
-  .card .thumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8)}
-  .card .thumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
-  .card h3{color:#fff}
-  .card .tag{color:var(--copper-2)}
+  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
+  .arcade-hub .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px;position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:.22s}
+  .arcade-hub .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
+  .arcade-hub .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
+  .arcade-hub .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+  .arcade-hub .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11);display:flex;flex-direction:column;gap:8px;flex:1}
+  .arcade-hub .gbody h3{color:#fff;font-size:19px;line-height:1.2}
+  .arcade-hub .gtag{color:var(--copper-2);font-size:13px;font-weight:600}
+  .arcade-hub .gdesc{color:#cfc9c0;font-size:14px}
+  .arcade-hub .gbtn{margin-top:auto;align-self:flex-start;background:var(--copper);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;transition:.2s}
+  .arcade-hub .game-card:hover .gbtn{background:var(--copper-2);color:var(--ink)}
+  .arcade-hub .flag{position:absolute;top:12px;left:12px;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;z-index:3;box-shadow:0 4px 12px rgba(154,83,38,.4)}
 
   @media (prefers-reduced-motion:reduce){body::after{animation:none}}
 </style>
@@ -90,13 +86,14 @@
 </header>
 
 <main class="wrap arcade-hub">
+  <div class="arcade-bg"></div>
   <div class="scanlines"></div>
   <div class="sec-head">
     <div class="eyebrow">Onyx Arena presents</div>
     <h1><img class="arcade-logo" src="../assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE</h1>
     <p>No downloads. No installs. No accounts. Just press start and play — a little something to break up your day while you're here.</p>
   </div>
-  <div class="grid" id="gameGrid"></div>
+  <div class="games-grid" id="gameGrid"></div>
   <div class="empty" id="empty" style="display:none">More games coming soon — check back!</div>
 </main>
 
@@ -114,14 +111,14 @@ function renderGames(list){
   if(!list||!list.length){document.getElementById('empty').style.display='block';return;}
   list.sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
   grid.innerHTML=list.map(function(g){
-    return '<a class="card" href="'+esc(g.file)+'">'+
-      '<img class="thumb" src="'+esc(g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
-      '<div class="body">'+
-        (g.featured?'<span class="featured-flag">Featured</span>':'')+
+    return '<a class="game-card" href="'+esc(g.file)+'">'+
+      (g.featured?'<span class="flag">Featured</span>':'')+
+      '<img class="gthumb" src="'+esc(g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
+      '<div class="gbody">'+
         '<h3>'+esc(g.title)+'</h3>'+
-        '<div class="tag">'+esc(g.tagline||'Play now')+'</div>'+
-        '<p>'+esc(g.desc||'')+'</p>'+
-        '<span class="btn btn-primary">▶ Play</span>'+
+        '<div class="gtag">'+esc(g.tagline||'Play now')+'</div>'+
+        '<p class="gdesc">'+esc(g.desc||'')+'</p>'+
+        '<span class="gbtn">▶ Play now</span>'+
       '</div></a>';
   }).join('');
 }

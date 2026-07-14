@@ -214,6 +214,12 @@
   .wx-temp{font-size:30px;font-weight:800;color:#fff}
   .wx-cond{color:#cfc9c0;font-size:15px;flex:1}
   .wx-meta{margin-top:12px;font-size:13px;color:#8a8378}
+  .wx-8h{display:flex;gap:8px;margin-top:16px;overflow-x:auto;padding-bottom:4px}
+  .wx-8h .hr{flex:1 0 0;min-width:62px;background:rgba(255,255,255,.05);border:1px solid rgba(194,112,61,.28);border-radius:12px;padding:10px 6px;text-align:center}
+  .wx-8h .hr .t{font-size:12px;color:var(--copper-2);font-weight:700}
+  .wx-8h .hr img{width:34px;height:34px;margin:4px auto;display:block;filter:drop-shadow(0 0 6px rgba(194,112,61,.35))}
+  .wx-8h .hr .deg{font-size:17px;font-weight:800;color:#fff}
+  .wx-8h .hr .c{font-size:10px;color:#bdb6ab;line-height:1.15;margin-top:2px;min-height:24px}
 
   .news{padding:56px 0;background:var(--paper-2)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
@@ -452,6 +458,7 @@
           <div class="wx-cond" id="wxCond">Loading…</div>
         </div>
         <div class="wx-meta" id="wxMeta">Local time · America/New_York</div>
+        <div class="wx-8h" id="wx8h" aria-label="Next 8 hours"></div>
       </div>
     </div>
   </div>
@@ -894,15 +901,42 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
       document.getElementById('wxDate').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:TZ});
     }catch(e){ document.getElementById('wxTime').textContent=now.toLocaleTimeString(); document.getElementById('wxDate').textContent=now.toLocaleDateString(); }
   }
-  var forecastUrl=null;
+  var forecastUrl=null, hourlyUrl=null;
   function loadWeather(){
-    if(!forecastUrl){
+    var needPoint = !(forecastUrl && hourlyUrl);
+    if(needPoint){
       fetch('https://api.weather.gov/points/'+LAT+','+LON,{cache:'no-store'})
         .then(function(r){return r.json();}).then(function(d){
           forecastUrl=d.properties&&d.properties.forecast;
+          hourlyUrl=d.properties&&d.properties.forecastHourly;
           if(forecastUrl) fetchForecast();
+          if(hourlyUrl) fetchHourly();
         }).catch(function(){ /* leave Loading state if points fails */ });
-    } else { fetchForecast(); }
+    } else {
+      fetchForecast(); fetchHourly();
+    }
+  }
+  function fetchHourly(){
+    if(!hourlyUrl) return;
+    fetch(hourlyUrl,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var periods=(d.properties&&d.properties.periods)||[];
+      var strip=document.getElementById('wx8h');
+      strip.textContent='';
+      var n=Math.min(8,periods.length);
+      for(var i=0;i<n;i++){
+        var p=periods[i];
+        var dt=new Date(p.startTime);
+        var label;
+        if(i===0){ label='Now'; }
+        else { try{ label=dt.toLocaleTimeString('en-US',{hour:'numeric',timeZone:TZ}); }catch(e){ label=dt.toLocaleTimeString(); } }
+        var cell=document.createElement('div'); cell.className='hr';
+        var t=document.createElement('div'); t.className='t'; t.textContent=label; cell.appendChild(t);
+        if(p.icon){ var img=document.createElement('img'); img.src=p.icon; img.alt=p.shortForecast||''; img.loading='lazy'; cell.appendChild(img); }
+        var deg=document.createElement('div'); deg.className='deg'; deg.textContent=p.temperature+'°'+(p.temperatureUnit||''); cell.appendChild(deg);
+        var c=document.createElement('div'); c.className='c'; c.textContent=p.shortForecast||''; cell.appendChild(c);
+        strip.appendChild(cell);
+      }
+    }).catch(function(){ var s=document.getElementById('wx8h'); if(s && !s.children.length){ s.textContent='Hourly forecast unavailable'; } });
   }
   function fetchForecast(){
     fetch(forecastUrl,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
