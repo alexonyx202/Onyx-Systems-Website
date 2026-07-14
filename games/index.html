@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARCADE — Onyx Systems</title>
-<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command and more — no downloads, no installs.">
+<title>ARCADE — Free Browser Games | Onyx Systems</title>
+<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command, Glitch Block, Drone Hunt and more. No downloads, no installs — just play.">
+<meta rel="canonical" href="https://onyxpc.us/games/">
+<meta property="og:title" content="ARCADE — Free Browser Games | Onyx Systems">
+<meta property="og:description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. No downloads, no installs — just play.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onyxpc.us/games/">
+<meta property="og:image" content="https://onyxpc.us/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ARCADE — Free Browser Games | Onyx Systems">
+<meta name="twitter:description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. No downloads, no installs — just play.">
+<meta name="twitter:image" content="https://onyxpc.us/og-image.png">
 <style>
   :root{
     --onyx:#16161A; --onyx-2:#1f1f25; --ink:#0e0e12;
@@ -113,7 +123,7 @@ function renderGames(list){
   }).join('');
 }
 // Try local manifest, fall back to inline so the hub never breaks offline
-var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.png","featured":true},{"file":"glitch-block-V4.html","title":"Glitch Block // System Restore","tagline":"System restore \u2014 one block at a time.","desc":"A computer-themed Tetris with a glitch engine \u2014 data-packet blocks, corrupted files, malware and antivirus specials, hold, boot-level select, and a top-5 high-score table. No downloads.","thumb":"assets/glitch-block-thumb.png","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.png","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.png","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.png","featured":false}];
+var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","featured":true},{"file":"glitch-block-V4.html","title":"Glitch Block // System Restore","tagline":"System restore \u2014 one block at a time.","desc":"A computer-themed Tetris with a glitch engine \u2014 data-packet blocks, corrupted files, malware and antivirus specials, hold, boot-level select, and a top-5 high-score table. No downloads.","thumb":"assets/glitch-block-thumb.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","featured":false}];
 fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
 </script>
 </body>
