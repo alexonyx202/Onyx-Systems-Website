@@ -166,6 +166,30 @@
   .quiz-result{margin-top:14px;background:rgba(194,112,61,.12);border:1px solid var(--copper);border-radius:12px;padding:16px}
   .quiz-result b{color:var(--copper-2)}
 
+  /* ---- Play & Learn redesign: weather hero + intent clusters (room to grow) ---- */
+  .pl-hero{display:grid;grid-template-columns:minmax(280px,1.3fr) minmax(260px,1fr);gap:22px;margin-top:8px}
+  .weather-hero{grid-column:1 / -1;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
+    background:linear-gradient(135deg,#1f2733,#16161A);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:26px 30px}
+  .weather-hero .wx-clock{text-align:center;min-width:150px}
+  .weather-hero .wx-time{font-family:var(--brand-font);font-size:46px;font-weight:700;color:var(--cream);line-height:1;letter-spacing:.04em}
+  .weather-hero .wx-date{color:var(--copper-2);font-size:14px;margin-top:8px;text-transform:capitalize}
+  .weather-hero .wx-now{display:flex;align-items:center;gap:18px}
+  .weather-hero .wx-icon{width:72px;height:72px;object-fit:contain;background:rgba(255,255,255,.06);border-radius:14px;padding:6px}
+  .weather-hero .wx-temp{font-family:var(--brand-font);font-size:40px;font-weight:700;color:var(--cream)}
+  .weather-hero .wx-cond{color:#d9d3c9;font-size:16px}
+  .weather-hero .wx-meta{color:#8a8378;font-size:12px;margin-top:4px}
+  .weather-hero .wx-8h{display:flex;gap:10px;overflow-x:auto;padding-top:6px}
+  .weather-hero .wx-8h .hr{flex:0 0 auto;text-align:center;min-width:62px;background:rgba(255,255,255,.05);border-radius:10px;padding:8px 6px}
+  .weather-hero .wx-8h .t{font-size:12px;color:var(--copper-2)}
+  .weather-hero .wx-8h img{width:34px;height:34px;object-fit:contain}
+  .weather-hero .wx-8h .deg{font-size:14px;color:var(--cream);font-weight:700}
+  .weather-hero .wx-8h .c{font-size:10px;color:#a59e94;line-height:1.2}
+  .pl-cluster{margin-top:26px}
+  .pl-cluster h3.pl-cluster-title{color:var(--copper-2);font-size:13px;text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .pl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .pl-grid .card-dark{flex-direction:column}
+  @media(max-width:680px){ .pl-hero{grid-template-columns:1fr} .weather-hero{grid-template-columns:1fr;text-align:center} .weather-hero .wx-now{justify-content:center} }
+
   /* ---- Word of the Day ---- */
   .wotd-word{font-family:var(--brand-font);font-size:28px;font-weight:700;color:var(--cream);line-height:1.1;letter-spacing:.02em}
   .wotd-pos{color:var(--copper-2);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
@@ -398,67 +422,88 @@
 <section class="engage" id="engage">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow" style="color:var(--copper-2)">Hang out a while</div>
-      <h2>Play &amp; Learn — Free, Every Day</h2>
-      <p>A word of the day, a fresh crossword, a tech joke, this week's poll, and a quick
-        &ldquo;is your PC haunted?&rdquo; check. No sign-up — just a reason to smile
+      <div class="eyebrow" style="color:var(--copper-2)">Lake City &amp; North Florida · live</div>
+      <h2>Play, Learn &amp; Local — Your Daily Hangout</h2>
+      <p>Local weather &amp; time, a word of the day, a fresh crossword, a tech joke, this week's poll,
+        and a quick &ldquo;is your PC haunted?&rdquo; check. No sign-up — just a reason to smile
         (and remember who fixes your stuff).</p>
     </div>
-    <div class="engage-grid">
-      <div class="card-dark reveal">
-        <h3>😄 Tech Joke of the Day</h3>
-        <div class="joke-q" id="jokeQ">…</div>
-        <div class="joke-a" id="jokeA">…</div>
-        <div class="joke-controls">
-          <button id="jokeReveal">Show punchline</button>
-          <button id="jokePrev">← Yesterday</button>
-          <button id="jokeNext">Tomorrow →</button>
+
+    <!-- Weather + clock hero (promoted: the only live-updating card) -->
+    <div class="pl-hero">
+      <div class="weather-hero" id="weatherCard">
+        <div class="wx-clock">
+          <div class="wx-time" id="wxTime">--:--:--</div>
+          <div class="wx-date" id="wxDate">—</div>
         </div>
-        <div class="joke-meta" id="jokeMeta"></div>
-      </div>
-      <div class="card-dark reveal">
-        <h3>📊 This Week's Poll</h3>
-        <div class="poll-q" id="pollQ">…</div>
-        <div id="pollOpts"></div>
-        <div class="poll-note" id="pollNote"></div>
-      </div>
-      <div class="card-dark reveal">
-        <h3>👻 Is Your PC Haunted?</h3>
-        <div id="quizBox"></div>
-        <div class="quiz-foot">
-          <button class="btn btn-primary" id="quizNext" style="padding:9px 16px;font-size:14px">Start the 5-question check</button>
-        </div>
-        <div id="quizResult"></div>
-      </div>
-      <div class="card-dark reveal">
-        <h3>📖 Word of the Day</h3>
-        <div class="wotd-word" id="wotdWord">…</div>
-        <div class="wotd-pos" id="wotdPos"></div>
-        <div class="wotd-def" id="wotdDef"></div>
-        <div class="wotd-ex" id="wotdEx"></div>
-        <div class="wotd-meta" id="wotdMeta"></div>
-      </div>
-      <div class="card-dark reveal">
-        <h3>🔤 Daily Crossword</h3>
-        <a class="xw-thumb-link" href="crossword.html" target="_blank" rel="noopener" aria-label="Open today's full crossword in a new tab">
-          <div class="xw-thumb" id="xwThumb"></div>
-          <div class="xw-thumb-foot">
-            <span id="xwThumbTitle" class="xw-thumb-title"></span>
-            <span class="xw-thumb-open">Open full puzzle ↗</span>
+        <div>
+          <div class="wx-now">
+            <img class="wx-icon" id="wxIcon" alt="" src="" hidden>
+            <div>
+              <div class="wx-temp" id="wxTemp">—°</div>
+              <div class="wx-cond" id="wxCond">Loading…</div>
+            </div>
           </div>
-        </a>
-      </div>
-      <div class="card-dark reveal" id="weatherCard" style="display:none">
-        <h3>🌤️ Lake City, FL — Right Now</h3>
-        <div class="wx-time" id="wxTime">--:--:--</div>
-        <div class="wx-date" id="wxDate">—</div>
-        <div class="wx-now">
-          <img class="wx-icon" id="wxIcon" alt="" src="" hidden>
-          <div class="wx-temp" id="wxTemp">—°</div>
-          <div class="wx-cond" id="wxCond">Loading…</div>
+          <div class="wx-meta" id="wxMeta">Local time · America/New_York</div>
+          <div class="wx-8h" id="wx8h" aria-label="Next 8 hours"></div>
         </div>
-        <div class="wx-meta" id="wxMeta">Local time · America/New_York</div>
-        <div class="wx-8h" id="wx8h" aria-label="Next 8 hours"></div>
+      </div>
+    </div>
+
+    <!-- Cluster 1: Learn & Local -->
+    <div class="pl-cluster">
+      <h3 class="pl-cluster-title">📚 Learn &amp; Local</h3>
+      <div class="pl-grid">
+        <div class="card-dark reveal">
+          <h3>📖 Word of the Day</h3>
+          <div class="wotd-word" id="wotdWord">…</div>
+          <div class="wotd-pos" id="wotdPos"></div>
+          <div class="wotd-def" id="wotdDef"></div>
+          <div class="wotd-ex" id="wotdEx"></div>
+          <div class="wotd-meta" id="wotdMeta"></div>
+        </div>
+        <div class="card-dark reveal">
+          <h3>🔤 Daily Crossword</h3>
+          <a class="xw-thumb-link" href="crossword.html" target="_blank" rel="noopener" aria-label="Open today's full crossword in a new tab">
+            <div class="xw-thumb" id="xwThumb"></div>
+            <div class="xw-thumb-foot">
+              <span id="xwThumbTitle" class="xw-thumb-title"></span>
+              <span class="xw-thumb-open">Open full puzzle ↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster 2: Play & Engage -->
+    <div class="pl-cluster">
+      <h3 class="pl-cluster-title">🎮 Play &amp; Engage</h3>
+      <div class="pl-grid">
+        <div class="card-dark reveal">
+          <h3>😄 Tech Joke of the Day</h3>
+          <div class="joke-q" id="jokeQ">…</div>
+          <div class="joke-a" id="jokeA">…</div>
+          <div class="joke-controls">
+            <button id="jokeReveal">Show punchline</button>
+            <button id="jokePrev">← Yesterday</button>
+            <button id="jokeNext">Tomorrow →</button>
+          </div>
+          <div class="joke-meta" id="jokeMeta"></div>
+        </div>
+        <div class="card-dark reveal">
+          <h3>📊 This Week's Poll</h3>
+          <div class="poll-q" id="pollQ">…</div>
+          <div id="pollOpts"></div>
+          <div class="poll-note" id="pollNote"></div>
+        </div>
+        <div class="card-dark reveal">
+          <h3>👻 Is Your PC Haunted?</h3>
+          <div id="quizBox"></div>
+          <div class="quiz-foot">
+            <button class="btn btn-primary" id="quizNext" style="padding:9px 16px;font-size:14px">Start the 5-question check</button>
+          </div>
+          <div id="quizResult"></div>
+        </div>
       </div>
     </div>
   </div>
