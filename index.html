@@ -166,6 +166,36 @@
   .quiz-result{margin-top:14px;background:rgba(194,112,61,.12);border:1px solid var(--copper);border-radius:12px;padding:16px}
   .quiz-result b{color:var(--copper-2)}
 
+  /* ---- Word of the Day ---- */
+  .wotd-word{font-family:var(--brand-font);font-size:28px;font-weight:700;color:var(--cream);line-height:1.1;letter-spacing:.02em}
+  .wotd-pos{color:var(--copper-2);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+  .wotd-def{color:#d9d3c9;margin-top:12px;line-height:1.55}
+  .wotd-ex{color:#a59e94;font-style:italic;margin-top:8px;font-size:14px}
+  .wotd-meta{margin-top:14px;font-size:13px;color:#8a8378}
+
+  /* ---- Daily Crossword ---- */
+  .xw-wrap{margin-top:6px}
+  .xw-grid{display:grid;gap:2px;background:rgba(255,255,255,.12);padding:3px;border-radius:8px;width:max-content;margin:0 auto}
+  .xw-cell{position:relative;width:34px;height:34px;background:var(--cream);border-radius:3px}
+  .xw-cell.block{background:transparent}
+  .xw-cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:18px;font-weight:700;text-transform:uppercase;color:#16161A;padding:0;border-radius:3px;cursor:pointer}
+  .xw-cell input:focus{outline:2px solid var(--copper-2);outline-offset:-2px}
+  .xw-num{position:absolute;top:1px;left:3px;font-size:9px;line-height:1;color:#6B635A;pointer-events:none;font-weight:700}
+  .xw-cell.correct{background:#bfe6c4}
+  .xw-cell.wrong{background:#e8b4ad}
+  .xw-clues{display:flex;gap:20px;margin-top:16px;font-size:13.5px}
+  .xw-col{flex:1;min-width:0}
+  .xw-h{font-weight:700;color:var(--copper-2);margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+  .xw-list{list-style:none;margin:0;padding:0;counter-reset:none}
+  .xw-clue{margin-bottom:5px;color:#cfc9c0;cursor:pointer;line-height:1.35}
+  .xw-clue b{color:var(--cream)}
+  .xw-clue.active{color:var(--copper-2);font-weight:600}
+  .xw-controls{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .xw-controls button{background:rgba(255,255,255,.08);border:0;color:var(--cream);padding:8px 16px;border-radius:999px;cursor:pointer;font-size:14px;transition:.2s}
+  .xw-controls button:hover{background:var(--copper)}
+  .xw-msg{margin-top:10px;font-size:14px;min-height:20px;color:var(--copper-2);font-weight:600}
+  @media(max-width:480px){.xw-cell{width:30px;height:30px}.xw-cell input{font-size:16px}}
+
   .news{padding:56px 0;background:var(--paper-2)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
@@ -183,7 +213,7 @@
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
   .arcade-sec .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
   .arcade-sec .wrap{position:relative;z-index:2}
-  .arcade-sec .sec-head{text-align:center;position:relative}
+  .arcade-sec .sec-head{text-align:center;position:relative;max-width:760px;margin-left:auto;margin-right:auto}
   .arcade-sec .sec-head::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(700px,94%);height:150%;z-index:-1;background:radial-gradient(closest-side,rgba(10,6,18,.85),transparent)}
   .arcade-sec .sec-head .eyebrow{color:var(--copper-2);text-shadow:0 2px 8px rgba(0,0,0,.7)}
   .arcade-sec .sec-head h2{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
@@ -345,9 +375,10 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow" style="color:var(--copper-2)">Hang out a while</div>
-      <h2>Fun &amp; free tools — come back daily</h2>
-      <p>A new joke every day, a weekly poll, and a quick "is your PC haunted?" check.
-        No sign-up, just a reason to smile (and remember who fixes your stuff).</p>
+      <h2>Play &amp; Learn — Free, Every Day</h2>
+      <p>A word of the day, a fresh crossword, a tech joke, this week's poll, and a quick
+        &ldquo;is your PC haunted?&rdquo; check. No sign-up — just a reason to smile
+        (and remember who fixes your stuff).</p>
     </div>
     <div class="engage-grid">
       <div class="card-dark reveal">
@@ -374,6 +405,36 @@
           <button class="btn btn-primary" id="quizNext" style="padding:9px 16px;font-size:14px">Start the 5-question check</button>
         </div>
         <div id="quizResult"></div>
+      </div>
+      <div class="card-dark reveal">
+        <h3>📖 Word of the Day</h3>
+        <div class="wotd-word" id="wotdWord">…</div>
+        <div class="wotd-pos" id="wotdPos"></div>
+        <div class="wotd-def" id="wotdDef"></div>
+        <div class="wotd-ex" id="wotdEx"></div>
+        <div class="wotd-meta" id="wotdMeta"></div>
+      </div>
+      <div class="card-dark reveal">
+        <h3>🔤 Daily Crossword — <span id="xwTitle"></span></h3>
+        <div class="xw-wrap">
+          <div class="xw-grid" id="xwGrid"></div>
+          <div class="xw-clues">
+            <div class="xw-col">
+              <div class="xw-h">Across</div>
+              <ol id="xwAcross" class="xw-list"></ol>
+            </div>
+            <div class="xw-col">
+              <div class="xw-h">Down</div>
+              <ol id="xwDown" class="xw-list"></ol>
+            </div>
+          </div>
+        </div>
+        <div class="xw-controls">
+          <button id="xwCheck">Check</button>
+          <button id="xwReveal">Reveal</button>
+          <button id="xwClear">Clear</button>
+        </div>
+        <div class="xw-msg" id="xwMsg"></div>
       </div>
     </div>
   </div>
@@ -780,6 +841,143 @@ function renderAll(d){
     btn.classList.toggle('active',open);
   });
 })();
+
+/* ---------- WORD OF THE DAY ---------- */
+var wotdList=null, todaysWord=null;
+function showWotd(){
+  var todayStr=new Date().toISOString().slice(0,10);
+  var fresh = todaysWord && todaysWord.word && todaysWord.date===todayStr;
+  var w = fresh ? todaysWord
+        : (wotdList && wotdList.length ? wotdList[dayIndex()%wotdList.length] : null);
+  if(!w)return;
+  document.getElementById('wotdWord').textContent=w.word||'';
+  document.getElementById('wotdPos').textContent=w.pos||'';
+  document.getElementById('wotdDef').textContent=w.definition||'';
+  document.getElementById('wotdEx').textContent=w.example?('“'+w.example+'”'):'';
+  document.getElementById('wotdMeta').textContent='Word of the day'+(fresh?(' · '+todaysWord.date):'');
+}
+Promise.all([
+  fetch('data/words.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){wotdList=d.words;}).catch(function(){console.warn('words load failed');}),
+  fetch('data/today_word.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysWord=t;}).catch(function(){console.warn('today_word load failed');})
+]).then(showWotd);
+
+/* ---------- DAILY CROSSWORD (hand-rolled, no deps) ---------- */
+var xwPuzzles=null, todaysXw=null, xw={cells:[],sol:[],size:5,dir:'across',active:null,numMap:{},clues:{}};
+function currentXw(){
+  var todayStr=new Date().toISOString().slice(0,10);
+  if(todaysXw && todaysXw.grid && todaysXw.date===todayStr) return todaysXw;
+  if(xwPuzzles && xwPuzzles.length) return xwPuzzles[dayIndex()%xwPuzzles.length];
+  return null;
+}
+function xwInit(){
+  var p=currentXw(); if(!p)return;
+  xw.size=p.size; xw.sol=[]; xw.cells=[]; xw.numMap={}; xw.clues=p.clues||{across:[],down:[]};
+  document.getElementById('xwTitle').textContent=p.title||'';
+  var grid=p.grid, n=p.size, box=document.getElementById('xwGrid');
+  box.innerHTML=''; box.style.gridTemplateColumns='repeat('+n+',34px)';
+  var num=0;
+  for(var r=0;r<n;r++){
+    xw.sol[r]=[]; xw.cells[r]=[];
+    for(var c=0;c<n;c++){
+      var ch=grid[r][c]; xw.sol[r][c]=ch;
+      var cell=document.createElement('div'); cell.className='xw-cell';
+      if(ch==='.'){ cell.classList.add('block'); box.appendChild(cell); xw.cells[r][c]=null; continue; }
+      var isAc=(c===0||grid[r][c-1]==='.')&&(c+1<n&&grid[r][c+1]!=='.');
+      var isDn=(r===0||grid[r-1][c]==='.')&&(r+1<n&&grid[r+1][c]!=='.');
+      if(isAc||isDn){ num++; var s=document.createElement('span'); s.className='xw-num'; s.textContent=num; cell.appendChild(s); xw.numMap[r+'-'+c]=num; }
+      var inp=document.createElement('input'); inp.maxLength=1; inp.dataset.r=r; inp.dataset.c=c; inp.setAttribute('inputmode','text');
+      (function(inp,r,c){
+        inp.addEventListener('focus',function(){ xw.active={r:r,c:c}; setDir('across'); xwPaint(); });
+        inp.addEventListener('input',function(){ this.value=this.value.toUpperCase().replace(/[^A-Z]/g,''); xwStep(1); });
+        inp.addEventListener('keydown',function(e){ xwKey(e); });
+      })(inp,r,c);
+      cell.appendChild(inp); box.appendChild(cell); xw.cells[r][c]=inp;
+    }
+  }
+  xwRenderClues(); xw.active=firstCell(); xwPaint();
+}
+function firstCell(){ for(var r=0;r<xw.size;r++)for(var c=0;c<xw.size;c++)if(xw.cells[r][c])return{r:r,c:c}; return null; }
+function setDir(d){ xw.dir=d; }
+function xwStep(d){
+  if(!xw.active)return;
+  var r=xw.active.r, c=xw.active.c, n=xw.size;
+  if(xw.dir==='across'){ c+=d; while(c>=0&&c<n&&xw.cells[r][c]){ xw.active={r:r,c:c}; var el=xw.cells[r][c]; if(el){el.focus();return;} } }
+  else { r+=d; while(r>=0&&r<n&&xw.cells[r][c]){ xw.active={r:r,c:c}; var el=xw.cells[r][c]; if(el){el.focus();return;} } }
+}
+function xwKey(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); xw.dir=(e.key==='ArrowRight')?'across':'down'; xwStep(1); }
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); xw.dir=(e.key==='ArrowLeft')?'across':'down'; xwStep(-1); }
+  else if(e.key==='Backspace'){ e.preventDefault(); if(xw.active&&xw.cells[xw.active.r][xw.active.c]){ xw.cells[xw.active.r][xw.active.c].value=''; } xwStep(-1); }
+  else if(e.key===' '){ e.preventDefault(); xw.dir=(xw.dir==='across')?'down':'across'; xwPaint(); }
+}
+function xwClueFor(r,c,dir){
+  var clueList=xw.clues[dir]||[];
+  for(var i=0;i<clueList.length;i++){ if(clueList[i].row===r+1 && clueList[i].col===c+1) return clueList[i]; }
+  return null;
+}
+function xwPaint(){
+  // highlight active word + active clue
+  var n=xw.size;
+  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.classList.remove('active-cell'); } }
+  document.querySelectorAll('.xw-clue').forEach(function(e){ e.classList.remove('active'); });
+  if(!xw.active)return;
+  var ar=xw.active.r, ac=xw.active.c;
+  // which clue are we in?
+  var clue = xwClueFor(ar,ac,xw.dir) || xwClueFor(ar,ac, xw.dir==='across'?'down':'across');
+  // highlight the whole word
+  var r=ar,c=ac;
+  while(r>0 && xw.cells[r-1] && xw.cells[r-1][c] && (xw.dir==='down')) r--;
+  while(c>0 && xw.cells[r][c-1] && (xw.dir==='across')) c--;
+  while(xw.cells[r][c]){
+    var el=xw.cells[r][c]; if(el){ el.classList.add('active-cell'); el.style.outline=(r===ar&&c===ac)?'2px solid var(--copper-2)':'2px solid rgba(194,112,61,.35)'; el.style.outlineOffset='-2px'; }
+    if(xw.dir==='across'){ if(c+1>=n||!xw.cells[r][c+1])break; c++; } else { if(r+1>=n||!xw.cells[r+1][c])break; r++; }
+  }
+  if(clue){ var elc=document.getElementById('xwClue'+clue.num+'-'+(xw.dir)); if(elc)elc.classList.add('active'); }
+}
+function xwRenderClues(){
+  var a=document.getElementById('xwAcross'), d=document.getElementById('xwDown');
+  a.innerHTML=''; d.innerHTML='';
+  (xw.clues.across||[]).forEach(function(cl){
+    var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-across';
+    li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue;
+    li.addEventListener('click',function(){ xw.active={r:cl.row-1,c:cl.col-1}; setDir('across'); xwPaint(); var el=xw.cells[cl.row-1][cl.col-1]; if(el)el.focus(); });
+    a.appendChild(li);
+  });
+  (xw.clues.down||[]).forEach(function(cl){
+    var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-down';
+    li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue;
+    li.addEventListener('click',function(){ xw.active={r:cl.row-1,c:cl.col-1}; setDir('down'); xwPaint(); var el=xw.cells[cl.row-1][cl.col-1]; if(el)el.focus(); });
+    d.appendChild(li);
+  });
+}
+document.getElementById('xwCheck').addEventListener('click',function(){
+  var n=xw.size, right=0, total=0;
+  for(var r=0;r<n;r++)for(var c=0;c<n;c++){
+    var el=xw.cells[r][c]; if(!el)continue; total++;
+    var ok = el.value.toUpperCase()===xw.sol[r][c].toUpperCase();
+    el.classList.toggle('correct', ok && el.value!=='');
+    el.classList.toggle('wrong', !ok && el.value!=='');
+    if(ok)right++;
+  }
+  var msg=document.getElementById('xwMsg');
+  if(total>0 && right===total && allFilled()) msg.textContent='🎉 Solved! Nicely done.';
+  else msg.textContent=right+' of '+total+' squares correct — keep going!';
+});
+document.getElementById('xwReveal').addEventListener('click',function(){
+  var n=xw.size;
+  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.value=xw.sol[r][c]; el.classList.remove('wrong'); el.classList.add('correct'); } }
+  document.getElementById('xwMsg').textContent='Here’s the solution — come back tomorrow for a new one!';
+});
+document.getElementById('xwClear').addEventListener('click',function(){
+  var n=xw.size;
+  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.value=''; el.classList.remove('correct','wrong'); } }
+  document.getElementById('xwMsg').textContent='';
+});
+function allFilled(){ var n=xw.size; for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el&&el.value==='')return false; } return true; }
+Promise.all([
+  fetch('data/crosswords.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){xwPuzzles=d.puzzles;}).catch(function(){console.warn('crosswords load failed');}),
+  fetch('data/today_crossword.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysXw=t;}).catch(function(){console.warn('today_crossword load failed');})
+]).then(xwInit);
 </script>
 </body>
 </html>

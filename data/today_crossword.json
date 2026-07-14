@@ -1,0 +1,50 @@
+{
+  "title": "Tech",
+  "size": 5,
+  "grid": [
+    "TECH.",
+    "AVU..",
+    "BEE..",
+    ".....",
+    "....."
+  ],
+  "clues": {
+    "across": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 1,
+        "len": 4,
+        "answer": "TECH",
+        "clue": "Short for technology"
+      }
+    ],
+    "down": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 1,
+        "len": 3,
+        "answer": "TAB",
+        "clue": "Browser page, or a small bill"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 2,
+        "len": 3,
+        "answer": "EVE",
+        "clue": "The night before a holiday"
+      },
+      {
+        "num": 3,
+        "row": 1,
+        "col": 3,
+        "len": 3,
+        "answer": "CUE",
+        "clue": "Signal to act, or a pool stick"
+      }
+    ]
+  },
+  "date": "2026-07-14"
+}

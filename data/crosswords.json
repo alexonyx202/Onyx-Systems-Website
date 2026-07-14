@@ -1,0 +1,290 @@
+{
+  "puzzles": [
+    {
+      "title": "Storage",
+      "size": 5,
+      "grid": [
+        "DISK.",
+        "AN...",
+        "TP...",
+        "AU...",
+        ".T..."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "DISK",
+            "clue": "Storage drive that holds your files"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts and files your PC stores"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type into a computer"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Cables",
+      "size": 5,
+      "grid": [
+        "CABLE",
+        "ARU..",
+        "PTS..",
+        ".....",
+        "....."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "CABLE",
+            "clue": "Wire that carries signal or power"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "CAP",
+            "clue": "A bottle lid, or a short coat"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "ART",
+            "clue": "Painting, music, or sculpture"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "BUS",
+            "clue": "Vehicle that carries passengers"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Power",
+      "size": 5,
+      "grid": [
+        "POWER",
+        "IWA..",
+        "GLR..",
+        ".....",
+        "....."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "POWER",
+            "clue": "The energy that runs your machine"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "PIG",
+            "clue": "Farm animal that loves mud"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "OWL",
+            "clue": "Night bird with big eyes"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "WAR",
+            "clue": "Armed conflict between nations"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Mice",
+      "size": 5,
+      "grid": [
+        "MOUSE",
+        "AAR..",
+        "PKN..",
+        ".....",
+        "....."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "MOUSE",
+            "clue": "Pointing device \u2014 or a small rodent"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "MAP",
+            "clue": "Folded guide to where things are"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "OAK",
+            "clue": "Strong, long-lived shade tree"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "URN",
+            "clue": "Vase, often for ashes or tea"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Boot",
+      "size": 5,
+      "grid": [
+        "BOOT.",
+        "UAR..",
+        "STE..",
+        ".....",
+        "....."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "BOOT",
+            "clue": "Start up a computer"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "BUS",
+            "clue": "Vehicle that carries passengers"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "OAT",
+            "clue": "Grain in oatmeal and granola"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "ORE",
+            "clue": "Rock mined for metal"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tech",
+      "size": 5,
+      "grid": [
+        "TECH.",
+        "AVU..",
+        "BEE..",
+        ".....",
+        "....."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "TECH",
+            "clue": "Short for technology"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "TAB",
+            "clue": "Browser page, or a small bill"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "EVE",
+            "clue": "The night before a holiday"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "CUE",
+            "clue": "Signal to act, or a pool stick"
+          }
+        ]
+      }
+    }
+  ]
+}
