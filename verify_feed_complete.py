@@ -47,6 +47,7 @@ KNOWN_PRODUCTS = [
     "chrome", "edge", "firefox", "adobe", "acrobat", "coldfusion",
     "joomla", "langflow", "gemini", "openai", "nvidia", "apple",
     "2fa", "sms", "wifi", "ssd", "ram", "gpu", "cpu", "dns",
+    "ventoy", "lm studio",
     "sim", "vpn", "onedrive", "google", "passkey", "passkeys",
 ]
 
