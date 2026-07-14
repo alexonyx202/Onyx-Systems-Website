@@ -171,7 +171,29 @@
   .news-actions .btn.active{background:var(--copper-deep);border-color:var(--copper-deep);color:#fff}
   @media(max-width:560px){.news-actions .btn{width:100%;text-align:center}.news-note{width:100%}}
 
-  .games-sec{padding:56px 0;background:#fff}
+  .arcade-sec{position:relative;overflow:hidden;background:#0a0612;color:#f7f4ef;padding:56px 0}
+  .arcade-sec::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(120% 80% at 50% 120%,#2a0b3f 0%,#0a0612 60%),linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
+  .arcade-sec .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('assets/img/arcade/bg-wireframe.jpg')}
+  .arcade-sec::after{content:"";position:absolute;left:-50%;right:-50%;bottom:-10%;height:55%;z-index:0;opacity:.5;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(68deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%)}
+  @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
+  .arcade-sec .arcade-sun{position:absolute;top:6%;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;z-index:0;opacity:.8;background:linear-gradient(180deg,#ff8a3d,#c2703d 45%,#7a2f6b);box-shadow:0 0 80px 18px rgba(194,112,61,.5);-webkit-mask-image:repeating-linear-gradient(180deg,#000 0 9px,transparent 9px 15px);mask-image:repeating-linear-gradient(180deg,#000 0 9px,transparent 9px 15px);animation:arcadeSun 8s ease-in-out infinite alternate}
+  @keyframes arcadeSun{from{filter:hue-rotate(0)}to{filter:hue-rotate(-16deg)}}
+  .arcade-sec .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+  .arcade-sec .wrap{position:relative;z-index:2}
+  .arcade-sec .sec-head .eyebrow{color:var(--copper-2)}
+  .arcade-sec .sec-head h2{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff;font-family:var(--brand-font);font-style:normal}
+  .arcade-sec .sec-head p{color:#d9cfc4}
+  .arcade-logo{height:54px;width:54px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(194,112,61,.6))}
+  .arcade-sec .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px}
+  .arcade-sec .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
+  .arcade-sec .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);background:#05080a}
+  .arcade-sec .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+  .arcade-sec .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11)}
+  .arcade-sec .gbody h3{color:#fff}
+  .arcade-sec .gtag{color:var(--copper-2)}
+  .arcade-sec .game-card::after{content:"";position:absolute;left:18px;bottom:16px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6b6b,#8a1f1f);box-shadow:0 3px 6px rgba(0,0,0,.6),0 0 10px rgba(255,80,80,.5)}
+  .arcade-sec .game-card::before{content:"";position:absolute;right:18px;bottom:16px;width:40px;height:14px;background:radial-gradient(circle at 10px 7px,#ffd166 6px,transparent 7px),radial-gradient(circle at 28px 7px,#4cc9f0 6px,transparent 7px);box-shadow:0 2px 4px rgba(0,0,0,.6)}
+  @media (prefers-reduced-motion:reduce){.arcade-sec::after,.arcade-sec .arcade-sun{animation:none}}
   .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
   .game-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
   .game-card:hover{transform:translateY(-4px);border-color:var(--copper)}
@@ -265,7 +287,7 @@
     <nav class="nav-links" id="nav-links">
       <a href="#hub">Services</a>
       <a href="#news">News</a>
-      <a href="#games">Games</a>
+      <a href="#games">ARCADE</a>
       <a href="#reviews">Reviews</a>
       <a href="#locator">Contact</a>
       <a class="nav-phone" href="tel:+13867557772">📞 Call (386) 755-7772</a>
@@ -369,12 +391,15 @@
   </div>
 </section>
 
-<section class="games-sec" id="games">
+<section class="arcade-sec" id="games">
+  <div class="arcade-bg"></div>
+  <div class="arcade-sun"></div>
+  <div class="scanlines"></div>
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">Free &amp; fun</div>
-      <h2>Games</h2>
-      <p>No downloads, no installs, no accounts — just click and play. A little something to break up your day while you're here. More games landing all the time.</p>
+      <div class="eyebrow">Onyx Arena presents</div>
+      <h2><img class="arcade-logo" src="assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE</h2>
+      <p>No downloads, no installs, no accounts — just press start and play. A little something to break up your day while you're here. More games landing all the time.</p>
     </div>
     <div class="games-grid reveal">
       <a class="game-card" href="games/wargames-v3.html" target="_blank" rel="noopener">
@@ -420,7 +445,7 @@
       </a>
     </div>
     <div class="games-foot reveal">
-      <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Browse all games &amp; full catalog →</a>
+      <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Enter the full ARCADE →</a>
     </div>
   </div>
 </section>

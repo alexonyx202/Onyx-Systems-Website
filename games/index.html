@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games — Onyx Systems</title>
-<meta name="description" content="Free browser games from Onyx Systems. WarGames missile command and more — no downloads, no installs.">
+<title>ARCADE — Onyx Systems</title>
+<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command and more — no downloads, no installs.">
 <style>
   :root{
     --onyx:#16161A; --onyx-2:#1f1f25; --ink:#0e0e12;
@@ -43,6 +43,25 @@
   footer .cols{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
   footer a{color:var(--copper-2);text-decoration:none}
   .empty{text-align:center;color:var(--muted);padding:60px 0}
+  body{background:#0a0612;color:#f7f4ef}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(120% 80% at 50% 120%,#2a0b3f 0%,#0a0612 60%),linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
+  body::after{content:"";position:fixed;left:-25%;right:-25%;bottom:0;height:55%;z-index:-1;opacity:.5;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(68deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%)}
+  @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
+  .arcade-hub{position:relative;z-index:2}
+  .arcade-hub .arcade-sun{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;z-index:0;opacity:.8;background:linear-gradient(180deg,#ff8a3d,#c2703d 45%,#7a2f6b);box-shadow:0 0 80px 18px rgba(194,112,61,.5);-webkit-mask-image:repeating-linear-gradient(180deg,#000 0 9px,transparent 9px 15px);mask-image:repeating-linear-gradient(180deg,#000 0 9px,transparent 9px 15px);animation:arcadeSun 8s ease-in-out infinite alternate}
+  @keyframes arcadeSun{from{filter:hue-rotate(0)}to{filter:hue-rotate(-16deg)}}
+  .arcade-hub .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+  .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff}
+  .arcade-logo{height:54px;width:54px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(194,112,61,.6))}
+  .card{position:relative;background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);color:#fff}
+  .card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
+  .card .thumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8)}
+  .card .thumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+  .card h3{color:#fff}
+  .card .tag{color:var(--copper-2)}
+  .card::after{content:"";position:absolute;left:18px;bottom:14px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6b6b,#8a1f1f);box-shadow:0 3px 6px rgba(0,0,0,.6),0 0 10px rgba(255,80,80,.5)}
+  .card::before{content:"";position:absolute;right:18px;bottom:16px;width:40px;height:14px;background:radial-gradient(circle at 10px 7px,#ffd166 6px,transparent 7px),radial-gradient(circle at 28px 7px,#4cc9f0 6px,transparent 7px);box-shadow:0 2px 4px rgba(0,0,0,.6)}
+  @media (prefers-reduced-motion:reduce){body::after,.arcade-hub .arcade-sun{animation:none}}
 </style>
 </head>
 <body>
@@ -56,11 +75,13 @@
   </nav>
 </header>
 
-<main class="wrap">
+<main class="wrap arcade-hub">
+  <div class="arcade-sun"></div>
+  <div class="scanlines"></div>
   <div class="sec-head">
-    <div class="eyebrow">Free &amp; fun</div>
-    <h1>Games</h1>
-    <p>No downloads. No installs. No accounts. Just click and play — a little something to break up your day while you're here.</p>
+    <div class="eyebrow">Onyx Arena presents</div>
+    <h1><img class="arcade-logo" src="../assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE</h1>
+    <p>No downloads. No installs. No accounts. Just press start and play — a little something to break up your day while you're here.</p>
   </div>
   <div class="grid" id="gameGrid"></div>
   <div class="empty" id="empty" style="display:none">More games coming soon — check back!</div>
