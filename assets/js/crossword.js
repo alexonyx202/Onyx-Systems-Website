@@ -48,7 +48,7 @@ var XW = (function(){
       var inp=document.createElement('input'); inp.maxLength=1; inp.dataset.r=r; inp.dataset.c=c; inp.setAttribute('inputmode','text');
       (function(inp,r,c){
         inp.addEventListener('focus',function(){ state.active={r:r,c:c}; state.dir='across'; paint(); });
-        inp.addEventListener('input',function(){ this.value=this.value.toUpperCase().replace(/[^A-Z]/g,''); step(1); });
+        inp.addEventListener('input',function(){ this.value=this.value.toUpperCase().replace(/[^A-Z]/g,''); step(1); updateRevealLock(); });
         inp.addEventListener('keydown',function(e){ onKey(e); });
       })(inp,r,c);
       cell.appendChild(inp); gridEl.appendChild(cell); cells[r][c]=inp;
@@ -83,17 +83,17 @@ var XW = (function(){
       (clues.across||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-across'; li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('across'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); acrossEl.appendChild(li); });
       (clues.down||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-down'; li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('down'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); downEl.appendChild(li); });
     }
-    function allFilled(){ for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e&&e.value==='')return false; } return true; }
+    var revealBtn=document.getElementById('xwReveal');
+    function filledPct(){ var f=0,t=0; for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(!e)continue; t++; if(e.value!=='')f++; } return t? f/t : 0; }
+    function updateRevealLock(){ if(!revealBtn)return; var unlocked=filledPct()>=0.5; revealBtn.disabled=!unlocked; revealBtn.classList.toggle('locked',!unlocked); if(msgEl&&!unlocked&&revealBtn.dataset.shown!=='1'){ msgEl.textContent='Fill at least 50% of the squares to unlock Reveal.'; } }
     renderClues(); state.active=first(); paint();
+    updateRevealLock();
     if(document.getElementById('xwCheck')) document.getElementById('xwCheck').addEventListener('click',function(){
       var right=0,total=0;
       for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(!e)continue; total++; var ok=e.value.toUpperCase()===sol[r][c].toUpperCase(); e.classList.toggle('correct',ok&&e.value!==''); e.classList.toggle('wrong',!ok&&e.value!==''); if(ok)right++; }
       if(msgEl){ if(total>0&&right===total&&allFilled()) msgEl.textContent='🎉 Solved! Nicely done.'; else msgEl.textContent=right+' of '+total+' squares correct — keep going!'; }
     });
-    if(document.getElementById('xwReveal')) document.getElementById('xwReveal').addEventListener('click',function(){
-      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=sol[r][c]; e.classList.remove('wrong'); e.classList.add('correct'); } }
-      if(msgEl) msgEl.textContent='Here’s the solution — come back tomorrow for a new one!';
-    });
+    if(revealBtn) revealBtn.addEventListener('click',function(){ if(this.disabled)return; for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=sol[r][c]; e.classList.remove('wrong'); e.classList.add('correct'); } } this.dataset.shown='1'; if(msgEl) msgEl.textContent='Here’s the solution — come back tomorrow for a new one!'; });
     if(document.getElementById('xwClear')) document.getElementById('xwClear').addEventListener('click',function(){
       for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=''; e.classList.remove('correct','wrong'); } }
       if(msgEl) msgEl.textContent='';
