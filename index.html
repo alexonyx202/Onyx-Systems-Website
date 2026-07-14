@@ -196,6 +196,25 @@
   .xw-msg{margin-top:10px;font-size:14px;min-height:20px;color:var(--copper-2);font-weight:600}
   @media(max-width:480px){.xw-cell{width:30px;height:30px}.xw-cell input{font-size:16px}}
 
+  /* Crossword thumbnail (homepage card) */
+  .xw-thumb-link{display:block;text-decoration:none;border:2px solid var(--copper);border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#15131c,#0d0b13);transition:.2s}
+  .xw-thumb-link:hover{transform:translateY(-3px);border-color:var(--copper-2);box-shadow:0 14px 30px rgba(194,112,61,.3)}
+  .xw-thumb{display:grid;gap:2px;background:#0a0612;padding:10px;max-width:200px;margin:10px auto}
+  .xw-tcell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#f3ead9;border-radius:2px;font-size:9px;font-weight:800;color:#16161a;line-height:1}
+  .xw-tcell.block{background:transparent}
+  .xw-thumb-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;background:linear-gradient(180deg,#18181d,#0d0d11);border-top:1px solid rgba(194,112,61,.35)}
+  .xw-thumb-title{color:var(--cream);font-weight:700;font-family:var(--brand-font);font-size:15px}
+  .xw-thumb-open{color:var(--copper-2);font-size:13px;font-weight:600;white-space:nowrap}
+
+  /* Lake City weather widget */
+  .wx-time{font-family:var(--brand-font);font-size:34px;font-weight:700;color:var(--cream);line-height:1;letter-spacing:.02em}
+  .wx-date{color:var(--copper-2);font-size:14px;margin-top:4px;text-transform:capitalize}
+  .wx-now{display:flex;align-items:center;gap:12px;margin-top:14px}
+  .wx-icon{width:54px;height:54px;filter:drop-shadow(0 0 8px rgba(194,112,61,.4))}
+  .wx-temp{font-size:30px;font-weight:800;color:#fff}
+  .wx-cond{color:#cfc9c0;font-size:15px;flex:1}
+  .wx-meta{margin-top:12px;font-size:13px;color:#8a8378}
+
   .news{padding:56px 0;background:var(--paper-2)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:#fff;border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:.2s}
@@ -216,9 +235,9 @@
   .arcade-sec .sec-head{text-align:center;position:relative;max-width:760px;margin-left:auto;margin-right:auto}
   .arcade-sec .sec-head::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(700px,94%);height:150%;z-index:-1;background:radial-gradient(closest-side,rgba(10,6,18,.85),transparent)}
   .arcade-sec .sec-head .eyebrow{color:var(--copper-2);text-shadow:0 2px 8px rgba(0,0,0,.7)}
-  .arcade-sec .sec-head h2{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
+  .arcade-sec .sec-head h2{display:block;text-align:center;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-sec .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85)}
-  .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
+  .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;display:inline-block;vertical-align:middle;margin-right:16px;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   .arcade-sec .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px}
   .arcade-sec .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
   .arcade-sec .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);background:#05080a}
@@ -226,8 +245,7 @@
   .arcade-sec .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11)}
   .arcade-sec .gbody h3{color:#fff}
   .arcade-sec .gtag{color:var(--copper-2)}
-  .arcade-sec .game-card::after{content:"";position:absolute;left:18px;bottom:16px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6b6b,#8a1f1f);box-shadow:0 3px 6px rgba(0,0,0,.6),0 0 10px rgba(255,80,80,.5)}
-  .arcade-sec .game-card::before{content:"";position:absolute;right:18px;bottom:16px;width:40px;height:14px;background:radial-gradient(circle at 10px 7px,#ffd166 6px,transparent 7px),radial-gradient(circle at 28px 7px,#4cc9f0 6px,transparent 7px);box-shadow:0 2px 4px rgba(0,0,0,.6)}
+
   @media (prefers-reduced-motion:reduce){.arcade-sec::after{animation:none}}
   .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
   .game-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
@@ -415,26 +433,25 @@
         <div class="wotd-meta" id="wotdMeta"></div>
       </div>
       <div class="card-dark reveal">
-        <h3>🔤 Daily Crossword — <span id="xwTitle"></span></h3>
-        <div class="xw-wrap">
-          <div class="xw-grid" id="xwGrid"></div>
-          <div class="xw-clues">
-            <div class="xw-col">
-              <div class="xw-h">Across</div>
-              <ol id="xwAcross" class="xw-list"></ol>
-            </div>
-            <div class="xw-col">
-              <div class="xw-h">Down</div>
-              <ol id="xwDown" class="xw-list"></ol>
-            </div>
+        <h3>🔤 Daily Crossword</h3>
+        <a class="xw-thumb-link" href="crossword.html" target="_blank" rel="noopener" aria-label="Open today's full crossword in a new tab">
+          <div class="xw-thumb" id="xwThumb"></div>
+          <div class="xw-thumb-foot">
+            <span id="xwThumbTitle" class="xw-thumb-title"></span>
+            <span class="xw-thumb-open">Open full puzzle ↗</span>
           </div>
+        </a>
+      </div>
+      <div class="card-dark reveal" id="weatherCard" style="display:none">
+        <h3>🌤️ Lake City, FL — Right Now</h3>
+        <div class="wx-time" id="wxTime">--:--:--</div>
+        <div class="wx-date" id="wxDate">—</div>
+        <div class="wx-now">
+          <img class="wx-icon" id="wxIcon" alt="" src="" hidden>
+          <div class="wx-temp" id="wxTemp">—°</div>
+          <div class="wx-cond" id="wxCond">Loading…</div>
         </div>
-        <div class="xw-controls">
-          <button id="xwCheck">Check</button>
-          <button id="xwReveal">Reveal</button>
-          <button id="xwClear">Clear</button>
-        </div>
-        <div class="xw-msg" id="xwMsg"></div>
+        <div class="wx-meta" id="wxMeta">Local time · America/New_York</div>
       </div>
     </div>
   </div>
@@ -584,7 +601,9 @@
   </div>
 </aside>
 
+<script src="assets/js/crossword.js" defer></script>
 <script>
+document.addEventListener('DOMContentLoaded',function(){
 /* ---------- Reveal ---------- */
 (function(){var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
@@ -861,123 +880,46 @@ Promise.all([
   fetch('data/today_word.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysWord=t;}).catch(function(){console.warn('today_word load failed');})
 ]).then(showWotd);
 
-/* ---------- DAILY CROSSWORD (hand-rolled, no deps) ---------- */
-var xwPuzzles=null, todaysXw=null, xw={cells:[],sol:[],size:5,dir:'across',active:null,numMap:{},clues:{}};
-function currentXw(){
-  var todayStr=new Date().toISOString().slice(0,10);
-  if(todaysXw && todaysXw.grid && todaysXw.date===todayStr) return todaysXw;
-  if(xwPuzzles && xwPuzzles.length) return xwPuzzles[dayIndex()%xwPuzzles.length];
-  return null;
-}
-function xwInit(){
-  var p=currentXw(); if(!p)return;
-  xw.size=p.size; xw.sol=[]; xw.cells=[]; xw.numMap={}; xw.clues=p.clues||{across:[],down:[]};
-  document.getElementById('xwTitle').textContent=p.title||'';
-  var grid=p.grid, n=p.size, box=document.getElementById('xwGrid');
-  box.innerHTML=''; box.style.gridTemplateColumns='repeat('+n+',34px)';
-  var num=0;
-  for(var r=0;r<n;r++){
-    xw.sol[r]=[]; xw.cells[r]=[];
-    for(var c=0;c<n;c++){
-      var ch=grid[r][c]; xw.sol[r][c]=ch;
-      var cell=document.createElement('div'); cell.className='xw-cell';
-      if(ch==='.'){ cell.classList.add('block'); box.appendChild(cell); xw.cells[r][c]=null; continue; }
-      var isAc=(c===0||grid[r][c-1]==='.')&&(c+1<n&&grid[r][c+1]!=='.');
-      var isDn=(r===0||grid[r-1][c]==='.')&&(r+1<n&&grid[r+1][c]!=='.');
-      if(isAc||isDn){ num++; var s=document.createElement('span'); s.className='xw-num'; s.textContent=num; cell.appendChild(s); xw.numMap[r+'-'+c]=num; }
-      var inp=document.createElement('input'); inp.maxLength=1; inp.dataset.r=r; inp.dataset.c=c; inp.setAttribute('inputmode','text');
-      (function(inp,r,c){
-        inp.addEventListener('focus',function(){ xw.active={r:r,c:c}; setDir('across'); xwPaint(); });
-        inp.addEventListener('input',function(){ this.value=this.value.toUpperCase().replace(/[^A-Z]/g,''); xwStep(1); });
-        inp.addEventListener('keydown',function(e){ xwKey(e); });
-      })(inp,r,c);
-      cell.appendChild(inp); box.appendChild(cell); xw.cells[r][c]=inp;
-    }
+/* ---------- DAILY CROSSWORD (thumbnail on homepage; full puzzle in crossword.html) ---------- */
+XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.getElementById('xwThumbTitle')); });
+
+/* ---------- LAKE CITY WEATHER (NWS api.weather.gov — public domain, no key) ---------- */
+(function(){
+  var LAT=30.19, LON=-82.64, TZ='America/New_York';
+  function pad(n){return (n<10?'0':'')+n;}
+  function tick(){
+    var now=new Date();
+    try{
+      document.getElementById('wxTime').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:TZ});
+      document.getElementById('wxDate').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:TZ});
+    }catch(e){ document.getElementById('wxTime').textContent=now.toLocaleTimeString(); document.getElementById('wxDate').textContent=now.toLocaleDateString(); }
   }
-  xwRenderClues(); xw.active=firstCell(); xwPaint();
-}
-function firstCell(){ for(var r=0;r<xw.size;r++)for(var c=0;c<xw.size;c++)if(xw.cells[r][c])return{r:r,c:c}; return null; }
-function setDir(d){ xw.dir=d; }
-function xwStep(d){
-  if(!xw.active)return;
-  var r=xw.active.r, c=xw.active.c, n=xw.size;
-  if(xw.dir==='across'){ c+=d; while(c>=0&&c<n&&xw.cells[r][c]){ xw.active={r:r,c:c}; var el=xw.cells[r][c]; if(el){el.focus();return;} } }
-  else { r+=d; while(r>=0&&r<n&&xw.cells[r][c]){ xw.active={r:r,c:c}; var el=xw.cells[r][c]; if(el){el.focus();return;} } }
-}
-function xwKey(e){
-  if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); xw.dir=(e.key==='ArrowRight')?'across':'down'; xwStep(1); }
-  else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); xw.dir=(e.key==='ArrowLeft')?'across':'down'; xwStep(-1); }
-  else if(e.key==='Backspace'){ e.preventDefault(); if(xw.active&&xw.cells[xw.active.r][xw.active.c]){ xw.cells[xw.active.r][xw.active.c].value=''; } xwStep(-1); }
-  else if(e.key===' '){ e.preventDefault(); xw.dir=(xw.dir==='across')?'down':'across'; xwPaint(); }
-}
-function xwClueFor(r,c,dir){
-  var clueList=xw.clues[dir]||[];
-  for(var i=0;i<clueList.length;i++){ if(clueList[i].row===r+1 && clueList[i].col===c+1) return clueList[i]; }
-  return null;
-}
-function xwPaint(){
-  // highlight active word + active clue
-  var n=xw.size;
-  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.classList.remove('active-cell'); } }
-  document.querySelectorAll('.xw-clue').forEach(function(e){ e.classList.remove('active'); });
-  if(!xw.active)return;
-  var ar=xw.active.r, ac=xw.active.c;
-  // which clue are we in?
-  var clue = xwClueFor(ar,ac,xw.dir) || xwClueFor(ar,ac, xw.dir==='across'?'down':'across');
-  // highlight the whole word
-  var r=ar,c=ac;
-  while(r>0 && xw.cells[r-1] && xw.cells[r-1][c] && (xw.dir==='down')) r--;
-  while(c>0 && xw.cells[r][c-1] && (xw.dir==='across')) c--;
-  while(xw.cells[r][c]){
-    var el=xw.cells[r][c]; if(el){ el.classList.add('active-cell'); el.style.outline=(r===ar&&c===ac)?'2px solid var(--copper-2)':'2px solid rgba(194,112,61,.35)'; el.style.outlineOffset='-2px'; }
-    if(xw.dir==='across'){ if(c+1>=n||!xw.cells[r][c+1])break; c++; } else { if(r+1>=n||!xw.cells[r+1][c])break; r++; }
+  var forecastUrl=null;
+  function loadWeather(){
+    if(!forecastUrl){
+      fetch('https://api.weather.gov/points/'+LAT+','+LON,{cache:'no-store'})
+        .then(function(r){return r.json();}).then(function(d){
+          forecastUrl=d.properties&&d.properties.forecast;
+          if(forecastUrl) fetchForecast();
+        }).catch(function(){ /* leave Loading state if points fails */ });
+    } else { fetchForecast(); }
   }
-  if(clue){ var elc=document.getElementById('xwClue'+clue.num+'-'+(xw.dir)); if(elc)elc.classList.add('active'); }
-}
-function xwRenderClues(){
-  var a=document.getElementById('xwAcross'), d=document.getElementById('xwDown');
-  a.innerHTML=''; d.innerHTML='';
-  (xw.clues.across||[]).forEach(function(cl){
-    var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-across';
-    li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue;
-    li.addEventListener('click',function(){ xw.active={r:cl.row-1,c:cl.col-1}; setDir('across'); xwPaint(); var el=xw.cells[cl.row-1][cl.col-1]; if(el)el.focus(); });
-    a.appendChild(li);
-  });
-  (xw.clues.down||[]).forEach(function(cl){
-    var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-down';
-    li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue;
-    li.addEventListener('click',function(){ xw.active={r:cl.row-1,c:cl.col-1}; setDir('down'); xwPaint(); var el=xw.cells[cl.row-1][cl.col-1]; if(el)el.focus(); });
-    d.appendChild(li);
-  });
-}
-document.getElementById('xwCheck').addEventListener('click',function(){
-  var n=xw.size, right=0, total=0;
-  for(var r=0;r<n;r++)for(var c=0;c<n;c++){
-    var el=xw.cells[r][c]; if(!el)continue; total++;
-    var ok = el.value.toUpperCase()===xw.sol[r][c].toUpperCase();
-    el.classList.toggle('correct', ok && el.value!=='');
-    el.classList.toggle('wrong', !ok && el.value!=='');
-    if(ok)right++;
+  function fetchForecast(){
+    fetch(forecastUrl,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var p=(d.properties&&d.properties.periods&&d.properties.periods[0])||null;
+      var card=document.getElementById('weatherCard');
+      if(!p){ card.style.display='block'; document.getElementById('wxCond').textContent='Unavailable right now'; return; }
+      card.style.display='block';
+      document.getElementById('wxTemp').textContent=p.temperature+'°'+p.temperatureUnit;
+      document.getElementById('wxCond').textContent=p.shortForecast||'';
+      var ic=document.getElementById('wxIcon');
+      if(p.icon){ ic.src=p.icon; ic.hidden=false; }
+    }).catch(function(){ var c=document.getElementById('weatherCard'); if(c.style.display!=='block'){c.style.display='block';} document.getElementById('wxCond').textContent='Unavailable right now'; });
   }
-  var msg=document.getElementById('xwMsg');
-  if(total>0 && right===total && allFilled()) msg.textContent='🎉 Solved! Nicely done.';
-  else msg.textContent=right+' of '+total+' squares correct — keep going!';
+  tick(); setInterval(tick,1000);
+  loadWeather(); setInterval(loadWeather,20*60*1000);
+})();
 });
-document.getElementById('xwReveal').addEventListener('click',function(){
-  var n=xw.size;
-  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.value=xw.sol[r][c]; el.classList.remove('wrong'); el.classList.add('correct'); } }
-  document.getElementById('xwMsg').textContent='Here’s the solution — come back tomorrow for a new one!';
-});
-document.getElementById('xwClear').addEventListener('click',function(){
-  var n=xw.size;
-  for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el){ el.value=''; el.classList.remove('correct','wrong'); } }
-  document.getElementById('xwMsg').textContent='';
-});
-function allFilled(){ var n=xw.size; for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var el=xw.cells[r][c]; if(el&&el.value==='')return false; } return true; }
-Promise.all([
-  fetch('data/crosswords.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){xwPuzzles=d.puzzles;}).catch(function(){console.warn('crosswords load failed');}),
-  fetch('data/today_crossword.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysXw=t;}).catch(function(){console.warn('today_crossword load failed');})
-]).then(xwInit);
 </script>
 </body>
 </html>
