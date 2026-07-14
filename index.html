@@ -197,6 +197,24 @@
   .wotd-ex{color:#a59e94;font-style:italic;margin-top:8px;font-size:14px}
   .wotd-meta{margin-top:14px;font-size:13px;color:#8a8378}
 
+  /* ---- Tech Trivia ---- */
+  .triv-q{font-size:18px;font-weight:600;color:var(--cream)}
+  .triv-a{margin-top:10px;color:#d9d3c9;min-height:26px;font-style:italic;transition:.3s}
+  .triv-a.show{color:var(--copper-2);font-style:normal}
+  .triv-meta{margin-top:14px;font-size:13px;color:#8a8378}
+  .triv-controls{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .triv-controls button{background:rgba(255,255,255,.08);border:0;color:var(--cream);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:14px}
+  .triv-controls button:hover{background:var(--copper)}
+
+  /* ---- Local Events feed ---- */
+  .evt-list{display:flex;flex-direction:column;gap:14px;max-height:320px;overflow-y:auto;padding-right:4px}
+  .evt-item{border-left:3px solid var(--copper);padding:2px 0 2px 12px}
+  .evt-date{font-size:12px;color:var(--copper-2);text-transform:uppercase;letter-spacing:.08em}
+  .evt-title{font-size:16px;font-weight:600;color:var(--cream);margin:2px 0}
+  .evt-where{font-size:13px;color:#a59e94}
+  .evt-blurb{font-size:13px;color:#d9d3c9;line-height:1.5;margin-top:4px}
+  .evt-foot{margin-top:14px}
+
   /* ---- Daily Crossword ---- */
   .xw-wrap{margin-top:6px}
   .xw-grid{display:grid;gap:2px;background:rgba(255,255,255,.12);padding:3px;border-radius:8px;width:max-content;margin:0 auto}
@@ -471,6 +489,30 @@
               <span class="xw-thumb-open">Open full puzzle ↗</span>
             </div>
           </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster 1.5: Around Town (trivia + local events) -->
+    <div class="pl-cluster">
+      <h3 class="pl-cluster-title">📍 Around Town</h3>
+      <div class="pl-grid">
+        <div class="card-dark reveal">
+          <h3>🧠 Tech Trivia</h3>
+          <div class="triv-q" id="trivQ">…</div>
+          <div class="triv-a" id="trivA">…</div>
+          <div class="triv-controls">
+            <button id="trivReveal">Show answer</button>
+            <button id="trivNext">Next question →</button>
+          </div>
+          <div class="triv-meta" id="trivMeta"></div>
+        </div>
+        <div class="card-dark reveal">
+          <h3>📅 Local Events</h3>
+          <div class="evt-list" id="evtList">Loading…</div>
+          <div class="evt-foot">
+            <a class="btn btn-ghost" href="https://lakecityfl.com/events/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep);font-size:13px;padding:7px 12px">More Lake City events ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -798,6 +840,44 @@ function renderPoll(){
   }
 }
 fetch('data/poll.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){poll=d.poll;renderPoll();}).catch(function(e){console.warn('poll load failed',e);});
+
+/* ---------- TECH TRIVIA ---------- */
+var triviaList=null, todaysTrivia=null, trivOffset=0;
+function showTrivia(){
+  var q=document.getElementById('trivQ'), a=document.getElementById('trivA'), m=document.getElementById('trivMeta');
+  var t = (todaysTrivia && trivOffset===0) ? todaysTrivia
+        : (triviaList && triviaList.length ? triviaList[((dayIndex()+trivOffset)%triviaList.length+triviaList.length)%triviaList.length] : null);
+  if(!t){ if(q){q.textContent='No trivia today — check back soon!';} return; }
+  q.textContent=t.q; a.textContent='…'; a.classList.remove('show');
+  m.textContent=(t.category||'Trivia')+(todaysTrivia&&trivOffset===0?' · today':(trivOffset>0?' · new':''));
+}
+document.getElementById('trivReveal').addEventListener('click',function(){
+  var t = (todaysTrivia && trivOffset===0) ? todaysTrivia
+        : (triviaList&&triviaList.length ? triviaList[((dayIndex()+trivOffset)%triviaList.length+triviaList.length)%triviaList.length] : null);
+  if(!t)return; var a=document.getElementById('trivA'); a.textContent=t.a; a.classList.add('show');
+});
+document.getElementById('trivNext').addEventListener('click',function(){trivOffset++;showTrivia();});
+Promise.all([
+  fetch('data/trivia.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){triviaList=d.trivia;}).catch(function(){console.warn('trivia load failed');}),
+  fetch('data/today_trivia.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todaysTrivia=t;}).catch(function(){console.warn('today_trivia load failed');})
+]).then(showTrivia);
+
+/* ---------- LOCAL EVENTS FEED ---------- */
+fetch('data/events.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+  var list=(d.events||[]).slice().sort(function(a,b){return a.date<b.date?-1:1;});
+  var box=document.getElementById('evtList');
+  if(!box)return;
+  if(!list.length){ box.textContent='No local events listed right now.'; return; }
+  box.innerHTML=list.map(function(e){
+    return '<div class="evt-item">'+
+      '<div class="evt-date">'+esc(fmtDate(e.date))+(e.recurrence?(' · '+esc(e.recurrence)):'')+'</div>'+
+      '<div class="evt-title">'+esc(e.title)+'</div>'+
+      '<div class="evt-where">'+esc(e.where||'')+(e.time?(' · '+esc(e.time)):'')+'</div>'+
+      (e.blurb?'<div class="evt-blurb">'+esc(e.blurb)+'</div>':'')+
+      (e.link?'<div class="evt-where" style="margin-top:4px"><a href="'+esc(e.link)+'" target="_blank" rel="noopener" style="color:var(--copper-2)">Details ↗</a></div>':'')+
+    '</div>';
+  }).join('');
+}).catch(function(e){ var b=document.getElementById('evtList'); if(b)b.textContent='Event feed unavailable right now.'; console.warn('events load failed',e); });
 
 /* ---------- HAUNTED PC QUIZ ---------- */
 var quiz=null,qi=0,qans=[];

@@ -1,0 +1,14 @@
+{
+  "trivia": [
+    {"q":"What does 'HTTP' stand for?","a":"HyperText Transfer Protocol — the rulebook your browser uses to fetch web pages.","category":"Web"},
+    {"q":"Which company first shipped a commercial computer mouse?","a":"Apple, with the 1984 Macintosh (though the mouse itself was invented at Xerox PARC in the 1970s).","category":"History"},
+    {"q":"What does 'RAM' stand for, and why is it called that?","a":"Random Access Memory — any byte can be reached in roughly the same time, unlike a tape you'd have to fast-forward through.","category":"Hardware"},
+    {"q":"What's the difference between HTTPS and HTTP?","a":"The 'S' means secure: the connection is encrypted (TLS), so nobody on the Wi-Fi can read what you send.","category":"Security"},
+    {"q":"Roughly how many characters can a 7-bit ASCII code encode?","a":"128 — enough for English letters, digits, and basic punctuation.","category":"Basics"},
+    {"q":"What does 'GPU' stand for?","a":"Graphics Processing Unit — built to crunch thousands of simple math ops at once, which is also why it powers AI.","category":"Hardware"},
+    {"q":"What year was the first Raspberry Pi released?","a":"2012 — and it kicked off the modern maker and retro-computing boom.","category":"History"},
+    {"q":"What does 'SSD' stand for, and how is it different from an HDD?","a":"Solid-State Drive. No moving parts, so it's far faster and more shock-proof than a spinning Hard Disk Drive.","category":"Hardware"},
+    {"q":"What's a 'phishing' email?","a":"A fake message that pretends to be your bank or boss to trick you into handing over passwords or money.","category":"Security"},
+    {"q":"What does 'Open Source' mean?","a":"The source code is public and free to use, modify, and share — like Linux.","category":"Software"}
+  ]
+}
