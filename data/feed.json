@@ -150,6 +150,76 @@
   ],
   "posts": [
     {
+      "date": "2026-07-14",
+      "type": "tip",
+      "headline": "Patch now: Microsoft's July 2026 Windows Update closes 127 security holes",
+      "tip": "Open Settings > Windows Update and click Check for updates, then install the July 2026 cumulative update - it patches 127 flaws including a wormable remote-code-execution bug.",
+      "truth": "Most people think 'if it ain't broke, don't update.' That thinking is what gets folks crypto-locked. The bad actors are already writing exploits the day Microsoft publishes these holes.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#WindowsUpdate",
+        "#Security"
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "type": "tip",
+      "headline": "Stop paying for Microsoft Office - LibreOffice is free and opens every Word, Excel and PowerPoint file",
+      "tip": "Download LibreOffice free from libreoffice.org - it opens, edits and saves .docx, .xlsx and .pptx with no Microsoft 365 subscription.",
+      "truth": "I see people paying $100 a year just to open a resume or a tax form. You don't need a subscription to read your own documents.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#LibreOffice",
+        "#FreeSoftware"
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "type": "tip",
+      "headline": "Your games and apps stutter - update your NVIDIA GeForce driver free",
+      "tip": "Download the latest GeForce driver free from nvidia.com/geforce/drivers (or open NVIDIA GeForce Experience and hit Check for updates) - it stops crashes and closes driver security holes.",
+      "truth": "Half the 'my computer is slow' calls I get are just a two-year-old graphics driver. People blame the hardware and go shopping for a new PC when a 5-minute download would've fixed it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#NVIDIA",
+        "#Drivers"
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "type": "tip",
+      "headline": "Your drive can fail with no warning - CrystalDiskInfo reads its health free",
+      "tip": "Install CrystalDiskInfo free from crystalmark.info, run it, and read the health status at the top - Caution or Bad means copy your files now before the drive gives out.",
+      "truth": "Drives don't get sick - they just die. The SMART data on the drive knows it's in trouble weeks before you see a blue screen, and Windows won't tell you.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Backup",
+        "#CrystalDiskInfo"
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "type": "tip",
+      "headline": "Want private AI that never leaves your PC - Ollama runs it free",
+      "tip": "Install Ollama free from ollama.com, then run `ollama run llama3` in a terminal to chat with an AI model that never sends your data to the cloud.",
+      "truth": "Every cloud AI you use is reading what you type. For most folks that's fine. But the moment you paste a tax return or a customer list into one of those boxes, it's not your data anymore.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Privacy",
+        "#Ollama"
+      ]
+    },
+    {
       "date": "2026-07-13",
       "type": "tip",
       "headline": "That computer you just bought came loaded with junk — here's how to clear it",
@@ -249,21 +319,6 @@
         "#DriverIssues"
       ],
       "type": "news"
-    },
-    {
-      "date": "2026-07-13",
-      "type": "tip",
-      "headline": "Stop emailing yourself files — LocalSend moves them between phone and PC for free",
-      "tip": "Download LocalSend free from localsend.org or your phone's app store; it sends files straight between your devices over your own Wi-Fi — no cloud, no account, no login.",
-      "truth": "Most people don't realize they trade a little privacy every time they bounce a file through a cloud drive or email just to get it from their phone to their laptop. LocalSend keeps the transfer on your own network — the file never touches the internet.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#FreeTools",
-        "#Privacy",
-        "#LocalSend"
-      ]
     }
   ]
 }

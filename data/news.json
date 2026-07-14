@@ -1,6 +1,51 @@
 {
-  "updated": "2026-07-13",
+  "updated": "2026-07-14",
   "items": [
+    {
+      "id": "t1-2026-07-14",
+      "type": "tech-note",
+      "date": "2026-07-14",
+      "title": "Patch now: Microsoft's July 2026 Windows Update closes 127 security holes",
+      "tag": "Tech News",
+      "summary": "Open Settings > Windows Update and click Check for updates, then install the July 2026 cumulative update - it patches 127 flaws including a wormable remote-code-execution bug.",
+      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
+    },
+    {
+      "id": "t2-2026-07-14",
+      "type": "tech-note",
+      "date": "2026-07-14",
+      "title": "Stop paying for Microsoft Office - LibreOffice is free and opens every Word, Excel and PowerPoint file",
+      "tag": "Tech Note",
+      "summary": "Download LibreOffice free from libreoffice.org - it opens, edits and saves .docx, .xlsx and .pptx with no Microsoft 365 subscription.",
+      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
+    },
+    {
+      "id": "t3-2026-07-14",
+      "type": "tech-note",
+      "date": "2026-07-14",
+      "title": "Your games and apps stutter - update your NVIDIA GeForce driver free",
+      "tag": "Tech Note",
+      "summary": "Download the latest GeForce driver free from nvidia.com/geforce/drivers (or open NVIDIA GeForce Experience and hit Check for updates) - it stops crashes and closes driver security holes.",
+      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
+    },
+    {
+      "id": "t4-2026-07-14",
+      "type": "tech-note",
+      "date": "2026-07-14",
+      "title": "Your drive can fail with no warning - CrystalDiskInfo reads its health free",
+      "tag": "Tech Note",
+      "summary": "Install CrystalDiskInfo free from crystalmark.info, run it, and read the health status at the top - Caution or Bad means copy your files now before the drive gives out.",
+      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
+    },
+    {
+      "id": "t5-2026-07-14",
+      "type": "tech-note",
+      "date": "2026-07-14",
+      "title": "Want private AI that never leaves your PC - Ollama runs it free",
+      "tag": "Tech Note",
+      "summary": "Install Ollama free from ollama.com, then run `ollama run llama3` in a terminal to chat with an AI model that never sends your data to the cloud.",
+      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
+    },
     {
       "id": "n-2026-07-13",
       "type": "newsletter",
