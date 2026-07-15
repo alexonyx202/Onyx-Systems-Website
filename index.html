@@ -137,6 +137,8 @@
     border-radius:var(--r-pill);border:1px solid var(--line-strong);background:transparent;color:var(--text);
     cursor:pointer;font-size:18px;transition:.18s;margin-left:4px}
   .theme-toggle:hover{background:rgba(128,128,128,.12);border-color:var(--copper)}
+  .mode-label{flex:0 0 auto;align-self:center;margin-left:8px;font-size:11px;font-weight:800;letter-spacing:.14em;
+    color:var(--muted);text-transform:uppercase;user-select:none;line-height:1}
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;margin-left:4px}
   .nav-toggle span{width:26px;height:3px;background:var(--text);border-radius:2px}
 
@@ -471,6 +473,7 @@
     <a href="#top" class="brand" aria-label="Onyx Systems home">
       <img class="logo-mark" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
     </a>
+    <span class="mode-label" aria-hidden="true">MODE</span>
     <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark">☾</button>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="nav-links">
@@ -839,8 +842,22 @@ document.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener
   var ticking=false;
   var spy=function(){
     ticking=false;
-    var pos=window.scrollY+window.innerHeight*0.4, current=null;
-    ids.forEach(function(id){var sec=document.getElementById(id);if(sec && sec.offsetTop<=pos)current=id;});
+    var trigger=window.scrollY+150, current=null;
+    // primary: the section whose box currently spans the trigger line
+    ids.forEach(function(id){
+      var sec=document.getElementById(id); if(!sec) return;
+      var top=sec.getBoundingClientRect().top+window.scrollY;
+      var bottom=top+sec.offsetHeight;
+      if(top<=trigger && bottom>trigger) current=id;
+    });
+    // fallback: last section whose top has passed the trigger (between sections)
+    if(!current){
+      ids.forEach(function(id){
+        var sec=document.getElementById(id); if(!sec) return;
+        var top=sec.getBoundingClientRect().top+window.scrollY;
+        if(top<=trigger) current=id;
+      });
+    }
     navLinks.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
     if(current && map[current]){map[current].classList.add('active');map[current].setAttribute('aria-current','true');}
   };
