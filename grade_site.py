@@ -324,6 +324,21 @@ def main():
         if not (clk.get('newsActive') and not clk.get('hubActive')):
             problems.append(f"nav click highlight delayed: news active={clk.get('newsActive')} hub active={clk.get('hubActive')} (want news active immediately, hub not)")
 
+        # FIX 5 verification — mobile bottom-tab HOVER marker must use the centered
+        # geometry (left/right 25%) like the active marker, plus copper color + .55 preview opacity.
+        # Guards PATCH B so a future CSS edit can't silently break mobile hover alignment.
+        rpc(ws, "Page.navigate", {"url": url}, sid=sid); time.sleep(1.0)
+        rpc(ws, "Emulation.setDeviceMetricsOverride", {"width": 800, "height": 900, "deviceScaleFactor": 1, "mobile": True}, sid=sid)
+        time.sleep(0.5)
+        _rect = json.loads(ev(ws, """(()=>{const a=document.querySelector('#nav-links a[href="#reviews"]');const r=a.getBoundingClientRect();return JSON.stringify({x:r.x+r.width/2,y:r.y+r.height/2});})()""", sid))
+        rpc(ws, "Input.dispatchMouseEvent", {"type": "mouseMoved", "x": _rect["x"], "y": _rect["y"]}, sid=sid)
+        time.sleep(0.4)
+        hv = json.loads(ev(ws, """(()=>{const a=document.querySelector('#nav-links a[href="#reviews"]');const cs=getComputedStyle(a,'::after');const n=parseFloat(cs.left)||0,m=parseFloat(cs.right)||0;const copper=/194, ?112, ?61|199, ?112, ?61/.test(cs.backgroundColor);return JSON.stringify({content:cs.content,left:cs.left,right:cs.right,opacity:cs.opacity,bg:cs.backgroundColor,centered:Math.abs(n-m)<2,copper:copper});})()""", sid))
+        _ok = hv.get('content') not in (None,'none') and hv.get('centered') and (0.4 < float(hv.get('opacity',0) or 0) < 0.9) and hv.get('copper')
+        print(f"[{'PASS' if _ok else 'FAIL'}] mobile hover marker: content='{hv.get('content')}' left={hv.get('left')} right={hv.get('right')} opacity={hv.get('opacity')} bg='{hv.get('bg')}' centered={hv.get('centered')} copper={hv.get('copper')}")
+        if not _ok:
+            problems.append(f"mobile hover marker wrong: content='{hv.get('content')}' centered={hv.get('centered')} opacity={hv.get('opacity')} bg='{hv.get('bg')}' copper={hv.get('copper')} (want copper .55 centered bar)")
+
         rpc(ws, "Target.closeTarget", {"targetId": tid}); ws.close()
     finally:
         if proc is not None:
