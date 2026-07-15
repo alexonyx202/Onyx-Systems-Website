@@ -1,110 +1,70 @@
 {
-  "title": "☭ Tion Sion puzzle ☭",
-  "size": 23,
+  "title": "Network",
+  "category": "web",
+  "size": 8,
   "grid": [
-    ".............m.........",
-    ".............u.........",
-    ".............l.........",
-    ".............t.c.......",
-    ".............i.o.......",
-    ".............p.n.......",
-    ".............l.f.......",
-    ".............i.u.......",
-    ".............c.s.......",
-    ".............a.i.......",
-    ".............t.o.......",
-    ".....subtraction.......",
-    "..........d..o.........",
-    "..........d..n.........",
-    "......a...i............",
-    ".action.n.t............",
-    "......i.a.i............",
-    "......m.t.o............",
-    "celebration............",
-    "......t.o..............",
-    ".division..............",
-    "......o................",
-    "......n................"
+    "NETWORK.",
+    "OT.I.OE.",
+    "DH.F.UR.",
+    "EE.I.TN.",
+    ".R...EE.",
+    ".N...RL.",
+    ".E......",
+    ".T......"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 12,
-        "col": 6,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "a math symbol that subtracts"
-      },
-      {
-        "num": 6,
-        "row": 16,
-        "col": 2,
-        "len": 6,
-        "answer": "action",
-        "clue": "motion"
-      },
-      {
-        "num": 8,
-        "row": 19,
+        "num": 1,
+        "row": 1,
         "col": 1,
-        "len": 11,
-        "answer": "celebration",
-        "clue": "a state of celebrating"
-      },
-      {
-        "num": 9,
-        "row": 21,
-        "col": 2,
-        "len": 8,
-        "answer": "division",
-        "clue": "a math symbol that divides"
+        "len": 7,
+        "answer": "NETWORK",
+        "clue": "Devices wired together to share"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 14,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "a math symbol that multiplies"
+        "col": 1,
+        "len": 4,
+        "answer": "NODE",
+        "clue": "One point in a network"
       },
       {
         "num": 2,
-        "row": 4,
-        "col": 16,
-        "len": 9,
-        "answer": "confusion",
-        "clue": "not knowing what to do"
+        "row": 1,
+        "col": 2,
+        "len": 8,
+        "answer": "ETHERNET",
+        "clue": "Wired networking with a cable"
+      },
+      {
+        "num": 3,
+        "row": 1,
+        "col": 4,
+        "len": 4,
+        "answer": "WIFI",
+        "clue": "Wireless internet in the air"
       },
       {
         "num": 4,
-        "row": 12,
-        "col": 11,
-        "len": 8,
-        "answer": "addition",
-        "clue": "a math symbol that adds"
+        "row": 1,
+        "col": 6,
+        "len": 6,
+        "answer": "ROUTER",
+        "clue": "Directs traffic between your devices and the net"
       },
       {
         "num": 5,
-        "row": 15,
+        "row": 1,
         "col": 7,
-        "len": 9,
-        "answer": "animation",
-        "clue": "moving pictures"
-      },
-      {
-        "num": 7,
-        "row": 16,
-        "col": 9,
         "len": 6,
-        "answer": "nation",
-        "clue": "a country"
+        "answer": "KERNEL",
+        "clue": "The core of an operating system"
       }
     ]
   },
-  "date": "2026-07-14",
-  "category": "math",
-  "slug": "tion-sion-puzzle-2"
+  "date": "2026-07-15"
 }

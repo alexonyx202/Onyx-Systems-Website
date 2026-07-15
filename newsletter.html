@@ -1,125 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Computer Brief — July 14, 2026 | ONYX SYSTEMS</title>
-<meta name="description" content="ONYX SYSTEMS Daily Computer Brief for Tuesday, July 14, 2026: Fake Apple Support FaceTime calls draining bank accounts, today in tech, and a daily tip.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Computer Brief — Wednesday, July 15th, 2026 | ONYX SYSTEMS</title>
+<meta name="description" content="ONYX SYSTEMS Daily Computer Brief for Wednesday, July 15th, 2026.">
 <style>
-  :root{
-    --onyx:#16161A; --ink:#0e0e12;
-    --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#9A5326; --cream:#F7F4EF; --paper:#FBF8F2;
-    --paper-2:#F1ECE2; --muted:#6B635A; --line:#e4ddd0;
-    --brand-font:'SerpentineBold','SerpentineStandIn','Oswald',"Segoe UI",sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.65;-webkit-font-smoothing:antialiased}
-  header.bar{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-  .bar .wrap{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 20px}
-  .bar a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream)}
-  .bar .brand img{height:30px}
-  .bar .brand .word{font-family:var(--brand-font);font-weight:700;font-size:17px;letter-spacing:.04em}
-  .bar a.back{color:var(--copper-2);font-weight:600;text-decoration:none;font-size:14px}
-  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
-  .doc{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(14,14,18,.10);margin:28px auto 60px;overflow:hidden}
-  .doc .masthead{background:var(--onyx);color:var(--cream);text-align:center;padding:34px 24px 28px}
-  .doc .masthead img{max-width:280px;width:100%;height:auto;margin:0 auto 14px;display:block}
-  .doc .masthead .kicker{color:var(--copper-2);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
-  .doc .masthead h1{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(26px,5vw,38px);margin-top:6px;line-height:1.1}
-  .doc .masthead .date{color:#cfc9c0;margin-top:8px;font-size:14px}
-  .doc .body{padding:30px 40px 38px}
-  .doc .body > p{margin-bottom:14px}
-  .section{margin:30px 0;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+  :root{--paper:#F7F4EF;--ink:#23201C;--muted:#6B635A;--accent:#C2703D;--line:#E4DED3;--shadow:0 6px 24px rgba(0,0,0,.08)}
+  body{margin:0;background:#EDE8DF;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6}
+  .wrap{max-width:760px;margin:32px auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .mast{background:#16161A;color:#F7F4EF;padding:22px 28px;display:flex;justify-content:space-between;align-items:center}
+  .brand{font-weight:800;letter-spacing:.06em;font-size:20px}
+  .date{color:#C9C2B6;font-size:14px}
+  .doc{padding:28px}
+  h1{font-size:28px;margin:0 0 18px}
+  .section{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
   .section.alert{border-color:#f3c9c2;background:#fdf3f1}
-  .section.tip{border-color:#e3dcc9;background:#fbf6ec}
-  .section h2{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:22px;color:var(--onyx);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-  .section.alert h2{color:#b3261e}
-  .section ul{margin:0;padding-left:20px}
-  .section li{margin-bottom:12px}
-  .section li .src{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-  .section .tag{display:inline-block;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:999px;margin-bottom:10px}
-  .section.alert .tag{background:#b3261e}
-  .section.tip .tag{background:var(--copper-deep)}
+  .section.alert h2{color:#b3261e;margin-top:0}
+  .section.tip{border-color:#d9ead0;background:#f3f9ef}
+  .section.tip h2{color:#3f7a2e;margin-top:0}
+  h2{font-size:20px;margin:0 0 10px}
+  ul{margin:8px 0 0;padding-left:20px}
+  li{margin:6px 0}
   .comic{text-align:center;margin:30px 0}
   .comic img{max-width:760px;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
   .comic .cap{font-style:italic;color:var(--muted);margin-top:10px;font-size:14px}
-  .comic .by{color:var(--muted);font-size:12px}
-  .signoff{border-top:1px solid var(--line);margin-top:30px;padding-top:22px;text-align:center}
-  .signoff p{color:var(--muted);font-size:15px}
-  .signoff .name{font-family:var(--brand-font);font-weight:700;color:var(--onyx);font-size:16px}
-  .bizcard{text-align:center;margin-top:24px}
-  .inline-tel{color:var(--copper-deep);font-weight:700;text-decoration:none;border-bottom:2px solid var(--copper)}
-  .btn-cta{display:inline-block;background:var(--copper);color:#fff;font-weight:700;font-size:15px;padding:11px 18px;border-radius:999px;text-decoration:none;box-shadow:0 8px 22px rgba(194,112,61,.35)}
-  .btn-cta:hover{background:var(--copper-deep);color:#fff}
-  .btn-cta.ghost{background:transparent;border:2px solid var(--copper);color:var(--copper-deep)}
-  .btn-cta.ghost:hover{background:var(--copper);color:#fff}
-  .proof-badge{display:inline-block;margin-top:14px;background:rgba(255,255,255,.08);color:var(--cream);font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px}
-  footer.site a{color:var(--copper-2)}
-  footer.site{background:var(--ink);color:#cfc9c0;padding:34px 0 24px;margin-top:20px;text-align:center;font-size:14px}
-  footer a{color:var(--copper-2);text-decoration:none}
-  @media(max-width:560px){.doc .body{padding:22px 18px 30px}.section{padding:18px 16px}}
+  .foot{padding:18px 28px;background:#16161A;color:#C9C2B6;font-size:13px;text-align:center}
+  .foot a{color:var(--accent);text-decoration:none}
 </style>
 </head>
 <body>
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <img src="assets/img/brand/onyxsystems-logo.png" alt="ONYX SYSTEMS">
-      <span class="word">ONYX SYSTEMS</span>
-    </a>
-    <a class="back" href="index.html">← Back to site</a>
-  </div>
-</header>
-
 <article class="wrap doc">
-  <div class="masthead">
-    <img src="assets/img/brand/header.png" alt="ONYX SYSTEMS">
-    <div class="kicker">Serving Lake City &amp; North Florida</div>
-    <h1>Your Daily Computer Brief</h1>
-    <div class="date">Tuesday, July 14, 2026</div>
-    <div class="proof-badge">★ 4.9/5 from 65+ Lake City locals</div>
+  <div class="mast"><span class="brand">ONYX SYSTEMS</span><span class="date">Wednesday, July 15th, 2026</span></div>
+  <h1>Your Daily Computer Brief</h1>
+  <div class="section alert">
+    <h2>— New "CrashStealer" malware hijacks your Mac by faking Apple</h2>
+    <p>A new macOS infostealer called CrashStealer is spreading through fake "Werkbit Setup" sites. It steals passwords, browser data, and crypto wallets by impersonating Apple's own CrashReporter app — same name, icon, and system ID — and is Apple-notarized, so it slips past Gatekeeper. Once installed it adds a hidden LaunchAgent and shows a fake password box that mimics a real macOS dialog. Jamf Threat Labs flagged it July 14, 2026; if you see "CrashReporter.dmg" in Downloads, don't open it. (Source: BleepingComputer / Jamf Threat Labs)
+━━━ 📰 TODAY IN TECH ━━━
+• Microsoft has paused its July 2026 Windows 11 update (KB5101650) for some Dell PCs after an Intel driver bug began shutting machines down; affected devices are now blocked from the patch. (Windows Latest, July 15, 2026)
+• HWMonitor v1.65 restores hotspot-temperature readings on NVIDIA's RTX 50-series "Blackwell" GPUs — data NVIDIA had hidden at launch — handy for spotting overheating. (TechPowerUp, July 14, 2026)
+• Samsung's July 2026 security patch is rolling out globally to the Galaxy S25 series, fixing 57 flaws; grab it via Settings → Software update. (SamMobile, July 2026)
+━━━ 💡 DAILY TIP: Shield your laptop on public Wi-Fi ━━━
+When you're on hotel, café, or airport Wi-Fi, turn on a VPN before you log into anything. A VPN encrypts your traffic so nearby snoops can't grab your passwords or bank sessions over the open network. Free options like Proton VPN or the built-in Cloudflare Warp take under two minutes to switch on. (Source: ONYX SYSTEMS)
+━━━ 😄 COMEDY BREAK ━━━
+"That's him! That's the one! ... I'd recognize that silly little hat anywhere!"
+— Gary Larson, The Far Side®</p>
   </div>
-
-  <div class="body">
-    <div class="section alert">
-      <span class="tag">🔴 Alert</span>
-      <h2>Fake "Apple Support" FaceTime Calls Empty Bank Accounts</h2>
-      <p>Apple is warning that scammers are using FaceTime calls — not just texts — to pose as "Apple Support" or your bank. A live video or audio call feels more legitimate, so people let their guard down and hand over card details, banking logins, or one-time passcodes. Apple and your bank will NOT FaceTime you about fraud. Hang up, then call the number on the back of your card. Report fake calls to reportfacetimefraud@apple.com. <span class="src">Source: Malwarebytes, July 14, 2026</span></p>
-    </div>
-
-    <div class="section">
-      <span class="tag">📰 Today in Tech</span>
-      <h2>Today in Tech</h2>
-      <ul>
-        <li>A new proof-of-concept called "Ghostcommit" hides malicious AI instructions inside ordinary PNG image files, turning routine code reviews into a path for secret theft. <span class="src">Source: Malwarebytes, July 13, 2026</span></li>
-        <li>CISA added two critical Joomla website extension flaws (perfect 10.0 severity) to its Known Exploited Vulnerabilities list after attackers used them to plant malicious code. <span class="src">Source: The Register, July 14, 2026</span></li>
-        <li>A fresh strain of Windows malware can take full control of a PC and then wipe it clean, erasing files to cover the attacker's tracks. <span class="src">Source: Malwarebytes, July 10, 2026</span></li>
-      </ul>
-    </div>
-
-    <div class="section tip">
-      <span class="tag">💡 Daily Tip</span>
-      <h2>Freeze Your Credit (It's Free)</h2>
-      <p>After every breach, the real damage is someone opening new accounts in your name. A credit freeze blocks that — and it's free. Visit each bureau (Equifax, Experian, TransUnion), create a login, and toggle the freeze on. It takes about five minutes total and doesn't hurt your score. When you actually need credit, thaw it temporarily, then re-freeze. Simple, free, and it stops new-account fraud cold.</p>
-    </div>
-
-    <div class="comic">
-      <img src="assets/img/news/2026-07-14-farside.jpg" alt="The Far Side comic for July 14, 2026">
-      <div class="cap">"You idiot! I said get the room freshener! That's the insecticide!"</div>
-      <div class="by">— Gary Larson, The Far Side®</div>
-    </div>
-
-    <div class="signoff">
-      <p>A scam call feels real because it's live video. The fix is boring but it works: hang up, call the number on your card. If your machine's been acting up or you want your accounts locked down, swing by the shop — no geek-speak, no pressure.</p>
-      <p class="name">— John @ ONYX SYSTEMS ✌️</p>
-      <p style="margin-top:14px"><a class="btn-cta" href="tel:+138****7772">📞 Call (386) 755-7772</a> <a class="btn-cta ghost" href="index.html#reviews">★ 65+ 5-star reviews</a></p>
-    </div>
+  <div class="section">
+    <h2>Today in Tech</h2>
+    <ul>
+      <li>Microsoft has paused its July 2026 Windows 11 update (KB5101650) for some Dell PCs after an Intel driver bug began shutting machines down; affected devices are now blocked from the patch. (Windows Latest, July 15, 2026)</li>
+      <li>HWMonitor v1.65 restores hotspot-temperature readings on NVIDIA's RTX 50-series "Blackwell" GPUs — data NVIDIA had hidden at launch — handy for spotting overheating. (TechPowerUp, July 14, 2026)</li>
+      <li>Samsung's July 2026 security patch is rolling out globally to the Galaxy S25 series, fixing 57 flaws; grab it via Settings → Software update. (SamMobile, July 2026)</li>
+    </ul>
+  </div>
+  <div class="section tip">
+    <h2>Daily Tip</h2>
+    <p>When you're on hotel, café, or airport Wi-Fi, turn on a VPN before you log into anything. A VPN encrypts your traffic so nearby snoops can't grab your passwords or bank sessions over the open network. Free options like Proton VPN or the built-in Cloudflare Warp take under two minutes to switch on. (Source: ONYX SYSTEMS)
+━━━ 😄 COMEDY BREAK ━━━
+"That's him! That's the one! ... I'd recognize that silly little hat anywhere!"
+— Gary Larson, The Far Side®</p>
+  </div>
+  <div class="comic">
+    <img src="assets/img/news/2026-07-15-farside.jpg" alt="The Far Side comic for Wednesday, July 15th, 2026">
+    <div class="cap">The Far Side &mdash; your daily laugh.</div>
   </div>
 </article>
-
-<footer class="site">
-  <div><a href="index.html">← Back to onyxpc.us</a> · Your hometown computer repair experts in Lake City, FL</div>
-</footer>
+<div class="foot">ONYX SYSTEMS &mdash; Computer Care Center &middot; Lake City, FL &middot; (386) 755-7772</div>
 </body>
 </html>

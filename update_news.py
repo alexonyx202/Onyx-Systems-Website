@@ -80,6 +80,7 @@ def main():
     ap.add_argument("--title"); ap.add_argument("--date")
     ap.add_argument("--summary"); ap.add_argument("--tag")
     ap.add_argument("--comic")
+    ap.add_argument("--id-suffix", help="unique per-post suffix so multiple same-day tech-notes don't collide")
     ap.add_argument("--cta-label"); ap.add_argument("--cta-href")
     ap.add_argument("--read-more", default="https://onyxpc.us/#contact")
     ap.add_argument("--max", type=int, default=MAX_ITEMS)
@@ -101,6 +102,9 @@ def main():
         sys.exit("ERROR: need --title/--summary or --from-newsletter")
 
     eid = f"{args.type[:1]}-{date}"
+    # Allow an explicit per-post id suffix so multiple same-day tech-notes don't collide.
+    if args.id_suffix:
+        eid = f"{eid}-{args.id_suffix}"
     if any(it.get("id") == eid for it in items):
         print(f"SKIP: entry id={eid} already exists")
         return

@@ -47,7 +47,7 @@ KNOWN_PRODUCTS = [
     "chrome", "edge", "firefox", "adobe", "acrobat", "coldfusion",
     "joomla", "langflow", "gemini", "openai", "nvidia", "apple",
     "2fa", "sms", "wifi", "ssd", "ram", "gpu", "cpu", "dns",
-    "ventoy", "lm studio",
+    "ventoy", "lm studio", "have i been pwned", "hwinfo",
     "sim", "vpn", "onedrive", "google", "passkey", "passkeys",
 ]
 
@@ -75,7 +75,7 @@ def check_entry(fname, eid, headline, body):
         "daily computer brief", "summer hours", "free diagnostic",
         "onsite", "open", "hours", "announcement", "welcome",
         "zero-days", "zero days", "ftc agent", "patch chrome",
-        "patch ", "alert", "wants your money",
+        "patch ", "alert", "wants your money", "crashstealer",
         "loaded with junk", "came loaded", "trialware", "debloat",
     ]
     if any(s in low for s in SKIP):

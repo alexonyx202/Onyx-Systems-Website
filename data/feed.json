@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-14",
+    "last_updated": "2026-07-15",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "date": "2026-07-15",
+      "title": "🔴 ALERT — New 'CrashStealer' malware hijacks your Mac by faking Apple",
+      "excerpt": "A new macOS infostealer called CrashStealer spreads through fake \"Werkbit Setup\" sites, impersonating Apple's CrashReporter to steal passwords, browser data, and crypto wallets. If you see \"CrashReporter.dmg\" in Downloads, don't open it.",
+      "image": "assets/img/news/2026-07-15-composite.jpg",
+      "comic": "assets/img/news/2026-07-15-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-14",
       "title": "🔴 ALERT — Microsoft's July 2026 Patch Tuesday Fixes 570 Flaws, 3 Zero-Days",
       "excerpt": "Microsoft's July 2026 Patch Tuesday is the largest in company history: 570 flaws fixed, including 3 zero-days — 2 already exploited in the wild. If you run Windows, Office, Exchange, or SharePoint, install updates TODAY.",
@@ -138,17 +146,74 @@
       "image": "assets/img/news/2026-07-09-composite.jpg",
       "comic": "assets/img/news/2026-07-09-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-08",
-      "title": "Daily Computer Brief — 2026-07-08",
-      "excerpt": "Daily Computer Brief — 2026-07-08",
-      "image": "assets/img/news/2026-07-08-composite.jpg",
-      "comic": "assets/img/news/2026-07-08-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "type": "tip",
+      "headline": "Stop feeding ad-trackers your data — uBlock Origin blocks ads and trackers free inside Firefox",
+      "tip": "Install uBlock Origin for free from `addons.mozilla.org` — open Firefox, press `Ctrl+Shift+A` to reach Add-ons, search \"uBlock Origin,\" and click Add. Out of the box it blocks ads, cross-site trackers, and coin-miner scripts with almost no memory cost.",
+      "truth": "Most people don't realize the \"free\" web is paid for by watching everything you do. An ad-blocker isn't about killing ads — it's about stopping strangers from building a file on you.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Post"
+      ],
+      "date": "2026-07-15"
+    },
+    {
+      "type": "tip",
+      "headline": "Find out if your email is already in a data breach — Have I Been Pwned checks it free in 10 seconds",
+      "tip": "Go to Have I Been Pwned at `haveibeenpwned.com`, type your email address, and hit \"pwned?\" — it checks your address against billions of breached accounts and tells you exactly which breaches exposed it. No signup, no cost.",
+      "truth": "The honest answer is your password was probably leaked years ago in some breach you forgot about. Checking isn't scary — not checking is what gets you hacked.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Post"
+      ],
+      "date": "2026-07-15"
+    },
+    {
+      "type": "tip",
+      "headline": "Run private AI on your own PC — LM Studio is the free desktop app that keeps your chats off the cloud",
+      "tip": "Download LM Studio free from `lmstudio.ai`, install it, pick a model like Llama or Qwen from its built-in catalog, and start chatting — everything runs on your machine. No account, nothing leaves your PC.",
+      "truth": "Most people don't realize every \"free\" AI website is reading what you type. If it's private, run it locally. LM Studio makes that stupid-easy — no command line, no PhD required.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Post"
+      ],
+      "date": "2026-07-15"
+    },
+    {
+      "type": "tip",
+      "headline": "Your PC says it can't run Windows 11? WhyNotWin11 tells you exactly which requirement fails — free",
+      "tip": "Download WhyNotWin11 free from `github.com/rcmaehl/WhyNotWin11`, run the `.exe`, and it lists each Windows 11 requirement — TPM 2.0, Secure Boot, RAM, CPU, storage — as pass or fail, so you know what's actually blocking you.",
+      "truth": "I see this all the time — Microsoft tells you \"this PC can't run Windows 11\" and people assume they need a new computer. Half the time it's one setting in the BIOS. Know what's wrong before you spend a dime.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Post"
+      ],
+      "date": "2026-07-15"
+    },
+    {
+      "type": "tip",
+      "headline": "Your fan is screaming or your PC keeps crashing? HWiNFO shows the real temperatures, voltages and fan speeds for free",
+      "tip": "Download HWiNFO free from `hwinfo.com`, run it and choose \"Sensors-only,\" and you'll see live temperatures, fan RPM, and voltages for every part — so you fix the actual failing component instead of guessing.",
+      "truth": "Most people don't realize a crashing PC is rarely \"the whole computer.\" It's one hot chip or a dying fan. HWiNFO shows you the truth on screen in 30 seconds — no guessing, no expensive parts you didn't need.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Post"
+      ],
+      "date": "2026-07-15"
+    },
     {
       "type": "tip",
       "headline": "Carry one USB for every job — Ventoy boots any ISO free, no reformatting",
@@ -218,35 +283,7 @@
         "#LocalAI"
       ],
       "date": "2026-07-14"
-    },
-    {
-      "date": "2026-07-13",
-      "type": "tip",
-      "headline": "That computer you just bought came loaded with junk — here's how to clear it",
-      "tip": "Open Settings > Apps > Installed apps and uninstall the trialware and 'Get started' cruft; for a safe full sweep I run a debloat script that strips the rest without touching the operating system.",
-      "truth": "Most people don't realize a brand-new machine is the slowest it'll ever be on day one. The manufacturer stuffs it with adware trials and \"buy me\" tiles to make a few extra dollars, and that's what drags your boot time down before you've even opened a browser.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#PCSetup",
-        "#SpeedTips"
-      ]
-    },
-    {
-      "date": "2026-07-13",
-      "type": "news",
-      "headline": "Stop renting Office for $100/yr — LibreOffice is free and opens every file you have",
-      "tip": "Download LibreOffice (free, no subscription) and it opens, edits, and saves every Word, Excel, and PowerPoint file you already own.",
-      "truth": "Most people don't realize they're renting software they used to own outright. Microsoft 365 has crept up to around $100 a year and people just keep paying because they think there's no other way. There is.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#FreeSoftware",
-        "#LibreOffice"
-      ]
     }
   ],
-  "updated": "2026-07-14"
+  "updated": "2026-07-15"
 }

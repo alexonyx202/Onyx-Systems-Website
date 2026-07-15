@@ -1,128 +1,55 @@
 {
-  "updated": "2026-07-14",
+  "updated": "2026-07-15",
   "items": [
     {
-      "id": "t1-2026-07-14",
-      "type": "tech-note",
-      "date": "2026-07-14",
-      "title": "Firefox 152.0.6 ships a free built-in page-summary assistant",
-      "tag": "Tech Note",
-      "summary": "Firefox 152.0.6 (July 14, 2026) adds a Smart Window that summarizes pages plus anti-fingerprinting and location-privacy upgrades. Update free from firefox.com or menu ☰ → Help → About Firefox.",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
-    },
-    {
-      "id": "t2-2026-07-14",
-      "type": "tech-note",
-      "date": "2026-07-14",
-      "title": "Carry one USB for every job — Ventoy boots any ISO free, no reformatting",
-      "tag": "Tech Tip",
-      "summary": "Ventoy turns one USB stick into a multiboot drive: drop Linux, Windows, and utility ISOs on it and pick from a menu. Install free from ventoy.net, then just copy ISOs — no reformatting.",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
-    },
-    {
-      "id": "t3-2026-07-14",
-      "type": "tech-note",
-      "date": "2026-07-14",
-      "title": "Hurricane season is here — the free FEMA App sends NWS alerts for Lake City first",
-      "tag": "Tech Note",
-      "summary": "The official FEMA App pushes real-time National Weather Service alerts, locates shelters, and works offline for checklists. Install free from fema.gov/mobile-products and set location to Lake City, FL.",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
-    },
-    {
-      "id": "t4-2026-07-14",
-      "type": "tech-note",
-      "date": "2026-07-14",
-      "title": "Stop trackers selling your data — uBlock Origin blocks them free",
-      "tag": "Tech Tip",
-      "summary": "uBlock Origin is a free open-source blocker that kills ads, trackers, and cryptominers. Add it free from addons.mozilla.org (Firefox) or uBlock Origin Lite from the Chrome Web Store.",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
-    },
-    {
-      "id": "t5-2026-07-14",
-      "type": "tech-note",
-      "date": "2026-07-14",
-      "title": "Run AI on your own PC with no cloud and no subscription — LM Studio is free",
-      "tag": "Tech Note",
-      "summary": "LM Studio is a free desktop app that runs open models like Qwen3 and Gemma3 entirely on your hardware — nothing leaves the machine. Download free from lmstudio.ai and chat offline.",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg"
-    },
-    {
-      "id": "n-2026-07-14",
+      "id": "n-2026-07-15",
       "type": "newsletter",
-      "date": "2026-07-14",
-      "title": "🔴 ALERT — Fake \"Apple Support\" FaceTime Calls Empty Bank Accounts",
+      "date": "2026-07-15",
+      "title": "🔴 New 'CrashStealer' malware hijacks Macs by faking Apple's CrashReporter",
       "tag": "Daily Brief",
-      "summary": "Apple warns scammers are using FaceTime calls (not just texts) to pose as Apple Support or your bank, tricking people into handing over card details, logins, or passcodes. Apple and your bank will NOT FaceTime you about fraud — hang up and call the number on your card. (Source: Malwarebytes, July 14, 2026)",
-      "comic": "assets/img/news/2026-07-14-farside.jpg",
+      "summary": "title: \"🔴 New 'CrashStealer' malware hijacks Macs by faking Apple's CrashReporter\"",
+      "comic": "Newsletter - 2026-07-15-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     },
     {
-      "id": "n-2026-07-13",
-      "type": "newsletter",
-      "date": "2026-07-13",
-      "title": "🔴 ALERT — Six Zero-Days Live: Patch These Now",
-      "tag": "Daily Brief",
-      "summary": "Six vulnerabilities are already under active attack today (July 13, 2026) — including flaws in Adobe ColdFusion, Langflow, and a cluster of Joomla extensions. If you run any of those tools, isolate them. Everyone else: stop hitting \"remind me later\" on updates. (Source: CVE Brief, July 13, 2026)",
-      "comic": "assets/img/news/2026-07-13-comic-square.jpg",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t1-2026-07-13",
+      "id": "t-2026-07-15-1",
       "type": "tech-note",
-      "date": "2026-07-13",
-      "title": "Six Zero-Days Live: Patch These Now",
-      "tag": "Tech News",
-      "summary": "Six vulnerabilities are already under active attack today (July 13, 2026) — including flaws in Adobe ColdFusion, Langflow, and a cluster of Joomla extensions. No vendor patches exist yet for the new disclosures. If you run any of those tools, isolate them and watch for fixes. (Source: CVE Brief, July 13, 2026)",
-      "comic": "assets/img/news/2026-07-13-comic-square.jpg"
-    },
-    {
-      "id": "t2-2026-07-13",
-      "type": "tech-note",
-      "date": "2026-07-13",
-      "title": "Stop renting Office for $100/yr — LibreOffice is free and opens every file you have",
-      "tag": "Tech News",
-      "summary": "Download LibreOffice (free, no subscription) and it opens, edits, and saves every Word, Excel, and PowerPoint file you already own.",
-      "comic": "assets/img/news/2026-07-13-comic-square.jpg"
-    },
-    {
-      "id": "t3-2026-07-13",
-      "type": "tech-note",
-      "date": "2026-07-13",
-      "title": "That computer you just bought came loaded with junk — here's how to clear it",
+      "date": "2026-07-15",
+      "title": "Stop feeding ad-trackers your data — uBlock Origin blocks ads and trackers free inside Firefox",
       "tag": "Tech Tip",
-      "summary": "Open Settings > Apps > Installed apps and uninstall the trialware and 'Get started' cruft; for a safe full sweep I run a debloat script that strips the rest without touching the operating system.",
-      "comic": "assets/img/news/2026-07-13-comic-square.jpg"
+      "summary": "Install uBlock Origin for free from `addons.mozilla.org` — open Firefox, press `Ctrl+Shift+A` to reach Add-ons, search \"uBlock Origin,\" and click Add. Out of the box it blocks ads, cross-site trackers, and coin-miner scripts with almost no memory cost."
     },
     {
-      "id": "news-2026-07-12",
-      "type": "newsletter",
-      "date": "2026-07-12",
-      "title": "ALERT — Patch Chrome Now: Two Zero-Days Are Already Exploited",
-      "tag": "Security Alert",
-      "summary": "Google pushed an emergency Chrome update on July 11 to fix two zero-day flaws hackers are already exploiting. Just loading a malicious page can hand over your machine. Update Chrome (and Edge/Brave — same engine) now.",
-      "body": [
-        "Google pushed an emergency Chrome update on July 11, 2026 to fix two zero-day flaws hackers are already exploiting in real attacks (CVE-2026-3909 in Chrome's Skia graphics engine and CVE-2026-3910 in the V8 JavaScript engine).",
-        "You don't have to click anything — just loading a malicious webpage can hand over your machine. Open Chrome → Settings → About Chrome and let it update. Using Edge or Brave? Same engine — update those too.",
-        "Daily tip: most browser hijacks ride in through extensions you forgot you installed. Open Extensions → Manage Extensions and remove anything you don't recognize. Takes two minutes, twice a year."
-      ],
-      "source": "Google Security Advisory, July 11, 2026",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "post-2026-07-10",
+      "id": "t-2026-07-15-2",
       "type": "tech-note",
-      "date": "2026-07-10",
-      "title": "Summer Hours — Onsite Visits After 5 PM",
-      "tag": "Announcement",
-      "summary": "Reminder: the shop runs Mon–Fri 9:30 AM – 5:30 PM, but John does onsite calls in the evenings after 5 PM — your schedule first. Call before you stop by.",
-      "body": [
-        "Onsite service calls are available evenings after 5 PM across Lake City and North Florida.",
-        "Call or text (386) 755-7772 before you stop by — John may be out on a service call."
-      ],
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
+      "date": "2026-07-15",
+      "title": "Find out if your email is already in a data breach — Have I Been Pwned checks it free in 10 seconds",
+      "tag": "Tech Tip",
+      "summary": "Go to Have I Been Pwned at `haveibeenpwned.com`, type your email address, and hit \"pwned?\" — it checks your address against billions of breached accounts and tells you exactly which breaches exposed it. No signup, no cost."
+    },
+    {
+      "id": "t-2026-07-15-3",
+      "type": "tech-note",
+      "date": "2026-07-15",
+      "title": "Run private AI on your own PC — LM Studio is the free desktop app that keeps your chats off the cloud",
+      "tag": "Tech Tip",
+      "summary": "Download LM Studio free from `lmstudio.ai`, install it, pick a model like Llama or Qwen from its built-in catalog, and start chatting — everything runs on your machine. No account, nothing leaves your PC."
+    },
+    {
+      "id": "t-2026-07-15-4",
+      "type": "tech-note",
+      "date": "2026-07-15",
+      "title": "Your PC says it can't run Windows 11? WhyNotWin11 tells you exactly which requirement fails — free",
+      "tag": "Tech Tip",
+      "summary": "Download WhyNotWin11 free from `github.com/rcmaehl/WhyNotWin11`, run the `.exe`, and it lists each Windows 11 requirement — TPM 2.0, Secure Boot, RAM, CPU, storage — as pass or fail, so you know what's actually blocking you."
+    },
+    {
+      "id": "t-2026-07-15-5",
+      "type": "tech-note",
+      "date": "2026-07-15",
+      "title": "Your fan is screaming or your PC keeps crashing? HWiNFO shows the real temperatures, voltages and fan speeds for free",
+      "tag": "Tech Tip",
+      "summary": "Download HWiNFO free from `hwinfo.com`, run it and choose \"Sensors-only,\" and you'll see live temperatures, fan RPM, and voltages for every part — so you fix the actual failing component instead of guessing."
     }
   ]
 }

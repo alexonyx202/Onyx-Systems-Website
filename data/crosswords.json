@@ -1,113 +1,1225 @@
 {
   "puzzles": [
     {
-      "title": "☭ Tion Sion puzzle ☭",
-      "size": 23,
+      "title": "Storage",
+      "category": "hardware",
+      "size": 8,
       "grid": [
-        ".............m.........",
-        ".............u.........",
-        ".............l.........",
-        ".............t.c.......",
-        ".............i.o.......",
-        ".............p.n.......",
-        ".............l.f.......",
-        ".............i.u.......",
-        ".............c.s.......",
-        ".............a.i.......",
-        ".............t.o.......",
-        ".....subtraction.......",
-        "..........d..o.........",
-        "..........d..n.........",
-        "......a...i............",
-        ".action.n.t............",
-        "......i.a.i............",
-        "......m.t.o............",
-        "celebration............",
-        "......t.o..............",
-        ".division..............",
-        "......o................",
-        "......n................"
+        "COMPUTER",
+        "P.O.S..A",
+        "U.D.B..M",
+        "..E.....",
+        "..M.....",
+        "........",
+        "........",
+        "........"
       ],
       "clues": {
         "across": [
           {
-            "num": 3,
-            "row": 12,
-            "col": 6,
-            "len": 11,
-            "answer": "subtraction",
-            "clue": "a math symbol that subtracts"
-          },
-          {
-            "num": 6,
-            "row": 16,
-            "col": 2,
-            "len": 6,
-            "answer": "action",
-            "clue": "motion"
-          },
-          {
-            "num": 8,
-            "row": 19,
+            "num": 1,
+            "row": 1,
             "col": 1,
-            "len": 11,
-            "answer": "celebration",
-            "clue": "a state of celebrating"
-          },
-          {
-            "num": 9,
-            "row": 21,
-            "col": 2,
             "len": 8,
-            "answer": "division",
-            "clue": "a math symbol that divides"
+            "answer": "COMPUTER",
+            "clue": "The machine you're using right now"
           }
         ],
         "down": [
           {
             "num": 1,
             "row": 1,
-            "col": 14,
-            "len": 14,
-            "answer": "multiplication",
-            "clue": "a math symbol that multiplies"
+            "col": 1,
+            "len": 3,
+            "answer": "CPU",
+            "clue": "The chip that does the thinking"
           },
           {
             "num": 2,
-            "row": 4,
-            "col": 16,
-            "len": 9,
-            "answer": "confusion",
-            "clue": "not knowing what to do"
+            "row": 1,
+            "col": 3,
+            "len": 5,
+            "answer": "MODEM",
+            "clue": "Turns signal into data and back"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 5,
+            "len": 3,
+            "answer": "USB",
+            "clue": "The universal plug on every gadget"
           },
           {
             "num": 4,
-            "row": 12,
-            "col": 11,
+            "row": 1,
+            "col": 8,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Network",
+      "category": "web",
+      "size": 8,
+      "grid": [
+        "NETWORK.",
+        "OT.I.OE.",
+        "DH.F.UR.",
+        "EE.I.TN.",
+        ".R...EE.",
+        ".N...RL.",
+        ".E......",
+        ".T......"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 7,
+            "answer": "NETWORK",
+            "clue": "Devices wired together to share"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "NODE",
+            "clue": "One point in a network"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
             "len": 8,
-            "answer": "addition",
-            "clue": "a math symbol that adds"
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 4,
+            "answer": "WIFI",
+            "clue": "Wireless internet in the air"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 6,
+            "len": 6,
+            "answer": "ROUTER",
+            "clue": "Directs traffic between your devices and the net"
           },
           {
             "num": 5,
-            "row": 15,
+            "row": 1,
             "col": 7,
+            "len": 6,
+            "answer": "KERNEL",
+            "clue": "The core of an operating system"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Web",
+      "category": "web",
+      "size": 8,
+      "grid": [
+        "INTERNET",
+        "NORTA...",
+        "PDOHM...",
+        "UEJE....",
+        "T.AR....",
+        "..NN....",
+        "...E....",
+        "...T...."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "INTERNET",
+            "clue": "The world's network of networks"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 4,
+            "answer": "NODE",
+            "clue": "One point in a network"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 4,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 5,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Typing",
+      "category": "hardware",
+      "size": 8,
+      "grid": [
+        "KEYBOARD",
+        "ET.A..AA",
+        "RH.C..MT",
+        "NE.K...A",
+        "ER.U....",
+        "LN.P....",
+        ".E......",
+        ".T......"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "KEYBOARD",
+            "clue": "Where your fingers live"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 6,
+            "answer": "KERNEL",
+            "clue": "The core of an operating system"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 6,
+            "answer": "BACKUP",
+            "clue": "A second copy, just in case"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 7,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 8,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Programs",
+      "category": "software",
+      "size": 8,
+      "grid": [
+        "SOFTWARE",
+        "S.IR..AT",
+        "D.RO..MH",
+        "..EJ...E",
+        "..WA...R",
+        "..AN...N",
+        "..L....E",
+        "..L....T"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "SOFTWARE",
+            "clue": "The programs, not the metal"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "SSD",
+            "clue": "Storage with no moving parts"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 8,
+            "answer": "FIREWALL",
+            "clue": "Guards the door to your network"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 7,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 8,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Metal",
+      "category": "hardware",
+      "size": 8,
+      "grid": [
+        "HARDWARE",
+        "D.AAI.OT",
+        "D.MTR.UH",
+        "...AE.TE",
+        "......ER",
+        "......RN",
+        ".......E",
+        ".......T"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "HARDWARE",
+            "clue": "The physical parts you can touch"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 3,
+            "answer": "HDD",
+            "clue": "Spinning-disk storage"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 4,
+            "answer": "WIRE",
+            "clue": "A thin conductor"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 7,
+            "len": 6,
+            "answer": "ROUTER",
+            "clue": "Directs traffic between your devices and the net"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 8,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Screen",
+      "category": "hardware",
+      "size": 7,
+      "grid": [
+        "MONITOR",
+        "O.ON..A",
+        "D.DP..M",
+        "E.EU...",
+        "M..T...",
+        ".......",
+        "......."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 7,
+            "answer": "MONITOR",
+            "clue": "The screen you stare at"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "MODEM",
+            "clue": "Turns signal into data and back"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 4,
+            "answer": "NODE",
+            "clue": "One point in a network"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 7,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Paper",
+      "category": "hardware",
+      "size": 8,
+      "grid": [
+        "PRINTER.",
+        "OAN.RT..",
+        "RMP.OH..",
+        "T.U.JE..",
+        "..T.AR..",
+        "....NN..",
+        ".....E..",
+        ".....T.."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 7,
+            "answer": "PRINTER",
+            "clue": "Puts pixels onto paper"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "PORT",
+            "clue": "A doorway number for network traffic"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 6,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Secret",
+      "category": "security",
+      "size": 8,
+      "grid": [
+        "PASSWORD",
+        "I.ESI.AA",
+        "X.RDF.MT",
+        "E.V.I..A",
+        "L.E.....",
+        "..R.....",
+        "........",
+        "........"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "PASSWORD",
+            "clue": "The secret that proves it's you"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "PIXEL",
+            "clue": "One tiny dot of light on screen"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 6,
+            "answer": "SERVER",
+            "clue": "A computer that serves others"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 3,
+            "answer": "SSD",
+            "clue": "Storage with no moving parts"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 4,
+            "answer": "WIFI",
+            "clue": "Wireless internet in the air"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 7,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 8,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Data",
+      "category": "software",
+      "size": 8,
+      "grid": [
+        "DATABASE",
+        "A...A.ET",
+        "T...C.RH",
+        "A...K.VE",
+        "....U.ER",
+        "....P.RN",
+        ".......E",
+        ".......T"
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "DATABASE",
+            "clue": "An organized pile of data"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 5,
+            "len": 6,
+            "answer": "BACKUP",
+            "clue": "A second copy, just in case"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 7,
+            "len": 6,
+            "answer": "SERVER",
+            "clue": "A computer that serves others"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 8,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Wall",
+      "category": "security",
+      "size": 8,
+      "grid": [
+        "FIREWALL",
+        ".NATI...",
+        ".PMHF...",
+        ".U.EI...",
+        ".T.R....",
+        "...N....",
+        "...E....",
+        "...T...."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "FIREWALL",
+            "clue": "Guards the door to your network"
+          }
+        ],
+        "down": [
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 4,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 5,
+            "len": 4,
+            "answer": "WIFI",
+            "clue": "Wireless internet in the air"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Pipe",
+      "category": "web",
+      "size": 9,
+      "grid": [
+        "BANDWIDTH",
+        "A.OAIN.RD",
+        "C.DTRP.OD",
+        "K.EAEU.J.",
+        "U....T.A.",
+        "P......N.",
+        ".........",
+        ".........",
+        "........."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
             "len": 9,
-            "answer": "animation",
-            "clue": "moving pictures"
+            "answer": "BANDWIDTH",
+            "clue": "How wide the data pipe is"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 6,
+            "answer": "BACKUP",
+            "clue": "A second copy, just in case"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 4,
+            "answer": "NODE",
+            "clue": "One point in a network"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 4,
+            "answer": "WIRE",
+            "clue": "A thin conductor"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 6,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 8,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
           },
           {
             "num": 7,
-            "row": 16,
+            "row": 1,
             "col": 9,
-            "len": 6,
-            "answer": "nation",
-            "clue": "a country"
+            "len": 3,
+            "answer": "HDD",
+            "clue": "Spinning-disk storage"
           }
         ]
-      },
-      "category": "math",
-      "slug": "tion-sion-puzzle-2"
+      }
+    },
+    {
+      "title": "Brain",
+      "category": "software",
+      "size": 9,
+      "grid": [
+        "ALGORITHM",
+        ".IP.ANR.O",
+        ".NU.MPO.D",
+        ".U...UJ.E",
+        ".X...TA.M",
+        "......N..",
+        ".........",
+        ".........",
+        "........."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 9,
+            "answer": "ALGORITHM",
+            "clue": "A step-by-step recipe for solving a problem"
+          }
+        ],
+        "down": [
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 5,
+            "answer": "LINUX",
+            "clue": "The free open-source OS"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 3,
+            "len": 3,
+            "answer": "GPU",
+            "clue": "Crunches graphics and AI math"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 6,
+            "len": 5,
+            "answer": "INPUT",
+            "clue": "What you type or click in"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 7,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
+          },
+          {
+            "num": 7,
+            "row": 1,
+            "col": 9,
+            "len": 5,
+            "answer": "MODEM",
+            "clue": "Turns signal into data and back"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Chip",
+      "category": "hardware",
+      "size": 9,
+      "grid": [
+        "PROCESSOR",
+        "OA.ATES..",
+        "RM.CHRD..",
+        "T..HEV...",
+        "...ERE...",
+        "....NR...",
+        "....E....",
+        "....T....",
+        "........."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 9,
+            "answer": "PROCESSOR",
+            "clue": "Does the number-crunching"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "PORT",
+            "clue": "A doorway number for network traffic"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 5,
+            "answer": "CACHE",
+            "clue": "Fast storage for frequent data"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 6,
+            "len": 6,
+            "answer": "SERVER",
+            "clue": "A computer that serves others"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 7,
+            "len": 3,
+            "answer": "SSD",
+            "clue": "Storage with no moving parts"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Carry",
+      "category": "hardware",
+      "size": 7,
+      "grid": [
+        "LAPTOPS",
+        "I.IR.OE",
+        "N.XO.RR",
+        "U.EJ.TV",
+        "X.LA..E",
+        "...N..R",
+        "......."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 7,
+            "answer": "LAPTOPS",
+            "clue": "Laptops"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "LINUX",
+            "clue": "The free open-source OS"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 5,
+            "answer": "PIXEL",
+            "clue": "One tiny dot of light on screen"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 6,
+            "answer": "TROJAN",
+            "clue": "Malware disguised as something harmless"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 6,
+            "len": 4,
+            "answer": "PORT",
+            "clue": "A doorway number for network traffic"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 7,
+            "len": 6,
+            "answer": "SERVER",
+            "clue": "A computer that serves others"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Power",
+      "category": "hardware",
+      "size": 8,
+      "grid": [
+        "CHARGERS",
+        "AD.AAT.E",
+        "CD.MTH.R",
+        "H...EE.V",
+        "E...WR.E",
+        "....AN.R",
+        "....YE..",
+        ".....T.."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 8,
+            "answer": "CHARGERS",
+            "clue": "Gives your gear power"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "CACHE",
+            "clue": "Fast storage for frequent data"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 3,
+            "answer": "HDD",
+            "clue": "Spinning-disk storage"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 3,
+            "answer": "RAM",
+            "clue": "Short-term memory your PC forgets when off"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 7,
+            "answer": "GATEWAY",
+            "clue": "The door between two networks"
+          },
+          {
+            "num": 5,
+            "row": 1,
+            "col": 6,
+            "len": 8,
+            "answer": "ETHERNET",
+            "clue": "Wired networking with a cable"
+          },
+          {
+            "num": 6,
+            "row": 1,
+            "col": 8,
+            "len": 6,
+            "answer": "SERVER",
+            "clue": "A computer that serves others"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Online",
+      "category": "web",
+      "size": 5,
+      "grid": [
+        "CLOUD",
+        "AI.SA",
+        "CN.BT",
+        "HU..A",
+        "EX..."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "CLOUD",
+            "clue": "Someone else's computer, online"
+          }
+        ],
+        "down": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 5,
+            "answer": "CACHE",
+            "clue": "Fast storage for frequent data"
+          },
+          {
+            "num": 2,
+            "row": 1,
+            "col": 2,
+            "len": 5,
+            "answer": "LINUX",
+            "clue": "The free open-source OS"
+          },
+          {
+            "num": 3,
+            "row": 1,
+            "col": 4,
+            "len": 3,
+            "answer": "USB",
+            "clue": "The universal plug on every gadget"
+          },
+          {
+            "num": 4,
+            "row": 1,
+            "col": 5,
+            "len": 4,
+            "answer": "DATA",
+            "clue": "The facts your PC stores"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Languages",
+      "category": "software",
+      "size": 5,
+      "grid": [
+        "JAVA.",
+        "..I..",
+        "..R..",
+        "..U..",
+        "..S.."
+      ],
+      "clues": {
+        "across": [
+          {
+            "num": 1,
+            "row": 1,
+            "col": 1,
+            "len": 4,
+            "answer": "JAVA",
+            "clue": "A write-once-run-anywhere language"
+          }
+        ],
+        "down": [
+          {
+            "num": 2,
+            "row": 1,
+            "col": 3,
+            "len": 5,
+            "answer": "VIRUS",
+            "clue": "Self-copying malicious program"
+          }
+        ]
+      }
     }
   ]
 }
