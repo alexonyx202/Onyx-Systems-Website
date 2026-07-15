@@ -339,6 +339,21 @@ def main():
         if not _ok:
             problems.append(f"mobile hover marker wrong: content='{hv.get('content')}' centered={hv.get('centered')} opacity={hv.get('opacity')} bg='{hv.get('bg')}' copper={hv.get('copper')} (want copper .55 centered bar)")
 
+        # FIX 6 verification — DESKTOP hover marker must show the copper underline preview
+        # at .55 opacity with the default geometry (left/right 14px, bottom 3px). Guards PATCH A
+        # so a future CSS edit can't silently drop the hover highlight on desktop.
+        rpc(ws, "Page.navigate", {"url": url}, sid=sid); time.sleep(1.0)
+        rpc(ws, "Emulation.setDeviceMetricsOverride", {"width": 1280, "height": 900, "deviceScaleFactor": 1, "mobile": False}, sid=sid)
+        time.sleep(0.5)
+        _drect = json.loads(ev(ws, """(()=>{const a=document.querySelector('#nav-links a[href="#reviews"]');const r=a.getBoundingClientRect();return JSON.stringify({x:r.x+r.width/2,y:r.y+r.height/2});})()""", sid))
+        rpc(ws, "Input.dispatchMouseEvent", {"type": "mouseMoved", "x": _drect["x"], "y": _drect["y"]}, sid=sid)
+        time.sleep(0.4)
+        dv = json.loads(ev(ws, """(()=>{const a=document.querySelector('#nav-links a[href="#reviews"]');const cs=getComputedStyle(a,'::after');const copper=/194, ?112, ?61|199, ?112, ?61/.test(cs.backgroundColor);return JSON.stringify({content:cs.content,opacity:cs.opacity,bg:cs.backgroundColor,copper:copper});})()""", sid))
+        _dok = dv.get('content') not in (None,'none') and (0.4 < float(dv.get('opacity',0) or 0) < 0.9) and dv.get('copper')
+        print(f"[{'PASS' if _dok else 'FAIL'}] desktop hover marker: content='{dv.get('content')}' opacity={dv.get('opacity')} bg='{dv.get('bg')}' copper={dv.get('copper')}")
+        if not _dok:
+            problems.append(f"desktop hover marker wrong: content='{dv.get('content')}' opacity={dv.get('opacity')} bg='{dv.get('bg')}' copper={dv.get('copper')} (want copper .55 preview bar)")
+
         rpc(ws, "Target.closeTarget", {"targetId": tid}); ws.close()
     finally:
         if proc is not None:
