@@ -202,6 +202,13 @@
   .tile p{font-size:13px;color:var(--muted)}
   .tile .go{margin-left:auto;color:var(--copper-deep);font-size:22px;font-weight:800}
 
+  /* Services flyout sub-item icons (on-brand copper style, reuse palette tokens) ICONS-2026-07-15 */
+  .svc-row{display:flex;align-items:center;gap:12px;margin:18px 0 6px}
+  .svc-row:first-of-type{margin-top:0}
+  .svc-ic{flex:0 0 26px;width:26px;height:26px;object-fit:contain;transition:.2s}
+  .svc-row h3{margin:0}
+  .panel-body .svc-row:hover .svc-ic{filter:drop-shadow(0 0 6px rgba(194,112,61,.5))}
+
   /* ===== FLYOUT PANEL ===== */
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
   .scrim.open{opacity:1;visibility:visible}
@@ -545,13 +552,13 @@
     <p>Tap any tile for the details. Repair, upgrades, virus removal, data recovery, on-site IT — and a few good reasons to trust the shop.</p>
   </div>
   <div class="tiles reveal">
-    <button class="tile" data-panel="services"><span class="ic"><img src="assets/img/cartoon/cc0/computer-fix.svg" alt=""></span><span><h3>Services</h3><p>Repairs, upgrades &amp; everyday IT</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="process"><span class="ic"><img src="assets/img/cartoon/cc0/desktop-pc.svg" alt=""></span><span><h3>How It Works</h3><p>Three simple steps</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="owner"><span class="ic"><img src="assets/img/cartoon/cc0/Geek.svg" alt=""></span><span><h3>Meet John</h3><p>Your local tech</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="mac"><span class="ic"><img src="assets/img/cartoon/cc0/laptop.svg" alt=""></span><span><h3>All Computers</h3><p>Windows, Mac, Linux, ChromeOS</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="area"><span class="ic"><img src="assets/img/cartoon/cc0/wifi.svg" alt=""></span><span><h3>Service Area</h3><p>Around N. Florida</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="faq"><span class="ic"><img src="assets/img/cartoon/cc0/bug.svg" alt=""></span><span><h3>FAQ</h3><p>Good to know</p></span><span class="go">›</span></button>
-    <button class="tile" data-panel="contact"><span class="ic"><img src="assets/img/brand/business-card.png" alt="" style="object-fit:contain;border-radius:8px"></span><span><h3>Contact Card</h3><p>All the ways to reach us</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="services"><span class="ic"><img src="assets/img/cartoon/computer-fix.svg" alt="Services icon"></span><span><h3>Services</h3><p>Repairs, upgrades &amp; everyday IT</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="process"><span class="ic"><img src="assets/img/cartoon/gear.svg" alt="How it works icon"></span><span><h3>How It Works</h3><p>Three simple steps</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="owner"><span class="ic"><img src="assets/img/cartoon/john.svg" alt="Meet John icon"></span><span><h3>Meet John</h3><p>Your local tech</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="mac"><span class="ic"><img src="assets/img/cartoon/laptop.svg" alt="All computers icon"></span><span><h3>All Computers</h3><p>Windows, Mac, Linux, ChromeOS</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="area"><span class="ic"><img src="assets/img/cartoon/coverage.svg" alt="Service area icon"></span><span><h3>Service Area</h3><p>Around N. Florida</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="faq"><span class="ic"><img src="assets/img/cartoon/faq.svg" alt="FAQ icon"></span><span><h3>FAQ</h3><p>Good to know</p></span><span class="go">›</span></button>
+    <button class="tile" data-panel="contact"><span class="ic"><img src="assets/img/brand/business-card.png" alt="Contact card" style="object-fit:contain;border-radius:8px"></span><span><h3>Contact Card</h3><p>All the ways to reach us</p></span><span class="go">›</span></button>
   </div>
 </section>
 
@@ -896,36 +903,36 @@ document.addEventListener('DOMContentLoaded',function(){
 
 /* ---------- Section content ---------- */
 var SECTIONS={
-  services:{eyebrow:'What I do',title:'Services',icon:'assets/img/cartoon/cc0/computer-fix.svg',html:
-    '<h3>Computer &amp; Laptop Repair</h3><p>Cracked screens, dead batteries, slow machines, hardware faults — diagnosed and fixed right.</p>'+
-    '<h3>Virus &amp; Malware Removal</h3><p>Clean infections, lock things down, and get you back online safely.</p>'+
-    '<h3>Data Recovery</h3><p>Photos, documents, and drives recovered from failed or corrupted storage.</p>'+
-    '<h3>Upgrades &amp; Custom Builds</h3><p>More speed, more storage, or a new PC built to your needs and budget.</p>'+
-    '<h3>All Operating Systems</h3><p>Windows, macOS, Linux, and ChromeOS — setup, tuning, and fixes across the board.</p>'+
-    '<h3>On-Site IT &amp; Networks</h3><p>Wi-Fi, wiring, and small-business support at your home or office.</p>'+
+  services:{eyebrow:'What I do',title:'Services',icon:'assets/img/cartoon/computer-fix.svg',html:
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/computer-fix.svg" alt="Computer and laptop repair icon"><h3>Computer &amp; Laptop Repair</h3></div><p>Cracked screens, dead batteries, slow machines, hardware faults — diagnosed and fixed right.</p>'+
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/virus.svg" alt="Virus and malware removal icon"><h3>Virus &amp; Malware Removal</h3></div><p>Clean infections, lock things down, and get you back online safely.</p>'+
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/data.svg" alt="Data recovery icon"><h3>Data Recovery</h3></div><p>Photos, documents, and drives recovered from failed or corrupted storage.</p>'+
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/upgrade.svg" alt="Upgrades and custom builds icon"><h3>Upgrades &amp; Custom Builds</h3></div><p>More speed, more storage, or a new PC built to your needs and budget.</p>'+
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/os.svg" alt="All operating systems icon"><h3>All Operating Systems</h3></div><p>Windows, macOS, Linux, and ChromeOS — setup, tuning, and fixes across the board.</p>'+
+    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/network.svg" alt="On-site IT and networks icon"><h3>On-Site IT &amp; Networks</h3></div><p>Wi-Fi, wiring, and small-business support at your home or office.</p>'+
     '<div class="chip-row"><span class="chip">Virus removal</span><span class="chip">SSD upgrades</span><span class="chip">Screen repair</span><span class="chip">Mac &amp; Linux</span><span class="chip">Backups</span><span class="chip">Wi-Fi</span><span class="chip">Tuning</span></div>'},
-  process:{eyebrow:'How it works',title:'Three Simple Steps',icon:'assets/img/cartoon/cc0/desktop-pc.svg',html:
+  process:{eyebrow:'How it works',title:'Three Simple Steps',icon:'assets/img/cartoon/gear.svg',html:
     '<h3>1 · Call first</h3><p>Give me a ring so I know I\'m in the shop. A 30-second call saves you a wasted trip.</p>'+
     '<h3>2 · We diagnose — free of pressure</h3><p>I tell you straight what\'s wrong, what it\'ll take, and whether it\'s worth fixing. No upsell, ever.</p>'+
     '<h3>3 · Fixed &amp; back to you</h3><p>In the shop or at your place after 5 PM. You\'re the priority, and the work is built to last.</p>'+
     '<p style="margin-top:14px;background:var(--surface-2);padding:14px;border-radius:12px"><b>Tip:</b> text or call (386) 755-7772 before you stop by — I may be out on a service call.</p>'},
-  owner:{eyebrow:'Meet your tech',title:'Hi, I\'m John',icon:'assets/img/cartoon/cc0/Geek.svg',html:
+  owner:{eyebrow:'Meet your tech',title:'Hi, I\'m John',icon:'assets/img/cartoon/john.svg',html:
     '<p>Onyx Systems has been my shop since 1997. When you call, you talk to the person who actually does the work — no call center, no script, no hand-off to a stranger.</p>'+
     '<p>I work on all computers — Windows, macOS, Linux, and ChromeOS. I\'m well versed in all things computers, from a 1995 beige box to a brand-new laptop, and I keep learning as the tech changes.</p>'+
     '<p>The promise is simple: explain it in plain English, charge a fair price, and never sell you something you don\'t need.</p>'+
     '<div class="chip-row"><span class="chip">✔ Locally owned</span><span class="chip">✔ 29 years experience</span><span class="chip">✔ Every OS</span></div>'+
     '<p style="color:var(--copper);font-weight:600">— John Gunther, Owner</p>'},
-  mac:{eyebrow:'Every computer',title:'All Computers Welcome',icon:'assets/img/cartoon/cc0/laptop.svg',html:
+  mac:{eyebrow:'Every computer',title:'All Computers Welcome',icon:'assets/img/cartoon/laptop.svg',html:
     '<p>I work on all computers — Windows, macOS, Linux, and ChromeOS. Whatever you\'ve got, I can help.</p>'+
     '<h3>Slow or stuck?</h3><p>Tune-ups, storage cleanup, battery and screen swaps, and getting an older machine running like new.</p>'+
     '<h3>Data &amp; accounts</h3><p>Transfers, backups, and untangling the things that quietly break over time.</p>'+
     '<h3>Honest advice</h3><p>Not sure if a repair is worth it versus a new one? I\'ll tell you straight — no commission, no upsell.</p>'+
     '<p style="background:var(--surface-2);padding:14px;border-radius:12px">Got a problem? Call (386) 755-7772 and we\'ll figure it out.</p>'},
-  area:{eyebrow:'Where I work',title:'Around Lake City &amp; N. Florida',icon:'assets/img/cartoon/cc0/wifi.svg',html:
+  area:{eyebrow:'Where I work',title:'Around Lake City &amp; N. Florida',icon:'assets/img/cartoon/coverage.svg',html:
     '<p>On-site visits are preferred after 5 PM — and I\'ll work around your schedule. Tap a spot:</p>'+
     '<div class="chip-row"><span class="chip">Lake City (HQ)</span><span class="chip">Branford</span><span class="chip">Live Oak</span><span class="chip">Jasper</span><span class="chip">Macclenny</span><span class="chip">Gainesville area</span><span class="chip">Columbia County</span><span class="chip">Suwannee County</span><span class="chip">Gilchrist County</span><span class="chip">Baker County</span><span class="chip">Union County</span></div>'+
     '<h3>Lake City — Home base</h3><p>757 SW State Rd 247, Ste 108. Stop by after a quick call, or book an evening on-site visit.</p>'},
-  faq:{eyebrow:'Good to know',title:'Frequently Asked',icon:'assets/img/cartoon/cc0/bug.svg',html:
+  faq:{eyebrow:'Good to know',title:'Frequently Asked',icon:'assets/img/cartoon/faq.svg',html:
     '<h3>Do I need an appointment?</h3><p>No — but please call first so I know I\'m in the shop and not out on a service call.</p>'+
     '<h3>What kinds of computers do you work on?</h3><p>All of them — Windows, macOS, Linux, and ChromeOS. I\'m well versed in all things computers.</p>'+
     '<h3>What are your on-site hours?</h3><p>I prefer on-site visits after 5 PM, and I\'ll gladly make other arrangements to fit your schedule.</p>'+
