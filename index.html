@@ -366,9 +366,12 @@
   .tab{background:var(--bg);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:var(--r-pill);cursor:pointer;font-weight:700;font-size:14px;transition:.2s}
   .tab.active{background:var(--copper-deep);color:#fff;border-color:var(--copper-deep)}
   .news-grid{display:block;margin-top:18px}
+  .news-grid[hidden]{display:none}
   .news-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 4px}
   .news-note{color:var(--text-2);font-size:14px}
   .news-actions .btn.active{background:var(--copper-deep);border-color:var(--copper-deep);color:#fff}
+  .news-toggle .caret{display:inline-block;transition:transform .2s ease;margin-right:6px;font-size:.9em}
+  .news-toggle[aria-expanded="true"] .caret{transform:rotate(90deg)}
   @media(max-width:560px){.news-actions .btn{width:100%;text-align:center}.news-note{width:100%}}
   .ncard{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px;transition:.2s;display:flex;gap:14px;align-items:flex-start}
   .ncard:hover{border-color:var(--copper);transform:translateY(-2px)}
@@ -687,11 +690,13 @@
       <p class="legend"><span class="dot news"></span> News — what's happening &amp; why it matters &nbsp;·&nbsp; <span class="dot tip"></span> Tip — something you can do today</p>
     </div>
     <div class="news-actions reveal">
-      <button class="btn btn-primary" id="showNewsBtn" aria-expanded="true" aria-controls="newsTipsGrid">🛠️ News &amp; Tips</button>
+      <button class="btn btn-primary news-toggle" id="showNewsBtn" aria-expanded="false" aria-controls="newsTipsGrid">
+        <span class="caret" aria-hidden="true">▸</span><span class="news-toggle-label">SHOW</span>
+      </button>
       <a class="btn btn-ghost" href="newsletter.html" target="_blank" rel="noopener">📰 Daily Brief (new tab)</a>
       <span class="news-note">Fresh every morning — scams, fixes &amp; tips from John.</span>
     </div>
-    <div id="newsTipsGrid" class="news-grid" style="display:block"></div>
+    <div id="newsTipsGrid" class="news-grid" hidden></div>
   </div>
 </section>
 
@@ -1180,12 +1185,18 @@ function renderAll(d){
   var btn=document.getElementById('showNewsBtn');
   var grid=document.getElementById('newsTipsGrid');
   if(!btn||!grid)return;
-  btn.addEventListener('click',function(){
-    var open=grid.style.display!=='block';
-    grid.style.display=open?'block':'none';
+  var label=btn.querySelector('.news-toggle-label');
+  function sync(){
+    var open=!grid.hasAttribute('hidden');
     btn.setAttribute('aria-expanded',open?'true':'false');
     btn.classList.toggle('active',open);
+    if(label)label.textContent=open?'HIDE':'SHOW';
+  }
+  btn.addEventListener('click',function(){
+    if(grid.hasAttribute('hidden'))grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
+    sync();
   });
+  sync();
 })();
 
 /* ---------- WORD OF THE DAY ---------- */
