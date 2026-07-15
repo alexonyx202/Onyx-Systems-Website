@@ -391,7 +391,7 @@
   .legend .dot.tip{background:var(--copper)}
 
   /* ===== ARCADE (verbatim — do not alter) ===== */
-  .arcade-sec{position:relative;overflow:hidden;background:#0a0612;color:#f7f4ef;padding:56px 0}
+  .arcade-sec{position:relative;overflow:hidden;background:#0a0612;color:#f7f4ef;padding:56px 0;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
   .arcade-sec::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(120% 80% at 50% 120%,#2a0b3f 0%,#0a0612 60%),linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
   .arcade-sec .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('assets/img/arcade/bg-wireframe.jpg')}
   .arcade-sec::after{content:"";position:absolute;left:-50%;right:-50%;bottom:-10%;height:55%;z-index:0;opacity:.5;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(68deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%)}
@@ -412,7 +412,14 @@
   .arcade-sec .gbody h3{color:#fff}
   .arcade-sec .gtag{color:var(--copper-2)}
   @media (prefers-reduced-motion:reduce){.arcade-sec::after{animation:none}}
-  .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
+  .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(12px,1.6vw,20px);margin:18px auto 0;max-width:1120px}
+.arcade-sec .game-card{flex:1 1 0;min-width:0;max-width:clamp(150px,15vw,190px)}
+.arcade-sec .gdesc{display:none}
+.arcade-sec .gbody{padding:12px 12px 44px;gap:6px}
+.arcade-sec .gbody h3{font-size:16px}
+.arcade-sec .gtag{font-size:12px}
+.arcade-sec .gbtn{font-size:13px;padding:7px 14px}
+@media (max-width:640px){.arcade-sec .games-grid{flex-wrap:wrap}.arcade-sec .game-card{flex:1 1 42%;max-width:46%}}
   .game-card{position:relative;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
   .game-card:hover{transform:translateY(-4px);border-color:var(--copper)}
   .game-card .gthumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
@@ -707,11 +714,11 @@
           <span class="gbtn">▶ Play now</span>
         </div>
       </a>
-      <a class="game-card" href="games/glitch-block-V4.html" target="_blank" rel="noopener">
-        <img class="gthumb" src="games/assets/glitch-block-thumb.webp" alt="Glitch Block System Restore" loading="lazy">
+      <a class="game-card" href="games/disk-defrag.html" target="_blank" rel="noopener">
+        <img class="gthumb" src="games/assets/disk-defrag-thumb.webp" alt="Disk Defrag" loading="lazy">
         <div class="gbody">
-          <h3>Glitch Block // System Restore</h3>
-          <div class="gtag">System restore — one block at a time.</div>
+          <h3>Disk Defrag // DiskDefrag.exe</h3>
+          <div class="gtag">Defragment the drive. Clear the lines.</div>
           <span class="gbtn">▶ Play now</span>
         </div>
       </a>

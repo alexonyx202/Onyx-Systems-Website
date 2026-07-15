@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARCADE — Free Browser Games | Onyx Systems</title>
-<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command, Glitch Block, Drone Hunt and more. No downloads, no installs — just play.">
+<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command, Disk Defrag, Drone Hunt and more. No downloads, no installs — just play.">
 <meta rel="canonical" href="https://onyxpc.us/games/">
 <meta property="og:title" content="ARCADE — Free Browser Games | Onyx Systems">
 <meta property="og:description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. No downloads, no installs — just play.">
@@ -48,7 +48,7 @@
     linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
   body::after{content:"";position:fixed;left:-50%;right:-50%;top:-10%;bottom:-10%;height:auto;z-index:-1;opacity:.55;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(60deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
-  .arcade-hub{position:relative;overflow:hidden;z-index:2}
+  .arcade-hub{position:relative;overflow:hidden;z-index:2;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
   .arcade-hub .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('../assets/img/arcade/bg-wireframe.jpg')}
   .arcade-hub .wrap{position:relative;z-index:2}
   .arcade-hub .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
@@ -58,7 +58,14 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-top:8px}
+  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(12px,1.6vw,20px);margin:18px auto 0;max-width:1120px}
+.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(150px,15vw,190px)}
+.arcade-hub .gdesc{display:none}
+.arcade-hub .gbody{padding:12px 12px 44px;gap:6px}
+.arcade-hub .gbody h3{font-size:16px}
+.arcade-hub .gtag{font-size:12px}
+.arcade-hub .gbtn{font-size:13px;padding:7px 14px}
+@media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%}}
   .arcade-hub .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px;position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:.22s}
   .arcade-hub .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
   .arcade-hub .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
@@ -123,7 +130,7 @@ function renderGames(list){
   }).join('');
 }
 // Try local manifest, fall back to inline so the hub never breaks offline
-var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","featured":true},{"file":"glitch-block-V4.html","title":"Glitch Block // System Restore","tagline":"System restore \u2014 one block at a time.","desc":"A computer-themed Tetris with a glitch engine \u2014 data-packet blocks, corrupted files, malware and antivirus specials, hold, boot-level select, and a top-5 high-score table. No downloads.","thumb":"assets/glitch-block-thumb.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","featured":false}];
+var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","featured":true},{"file":"disk-defrag.html","title":"Disk Defrag // DiskDefrag.exe","tagline":"Defragment the drive. Clear the lines.","desc":"A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.","thumb":"assets/disk-defrag-thumb.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","featured":false}];
 fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
 </script>
 </body>
