@@ -56,8 +56,8 @@
     --surface-2:#27272F;     /* nested/raised */
     --surface-warm:#2F2D2B;  /* brand-tinted elevated (warm, on-brand) */
     --text:#EDE8E0;          /* 13.1:1 on surface — primary body */
-    --text-2:#CFC9C0;        /* secondary */
-    --muted:#9A9088;         /* 5.1:1 on surface — meta ONLY */
+    --text-2:#E0DAD1;        /* secondary — bumped lighter for contrast (was #CFC9C0) */
+    --muted:#A89E94;         /* meta — bumped lighter for contrast (was #9A9088) */
     --line:rgba(255,255,255,.08);
     --line-strong:rgba(255,255,255,.14);
     --line-accent:rgba(199,112,61,.35);
@@ -72,8 +72,8 @@
     --surface-2:#FBF8F2;
     --surface-warm:#FBF1E6;
     --text:#23201C;          /* ink — 14.4:1 on bg */
-    --text-2:#4f4842;
-    --muted:#6E665C;         /* 5.0:1 on bg — meta */
+    --text-2:#403a34;        /* secondary — bumped darker for contrast (was #4f4842) */
+    --muted:#5d564d;         /* meta — bumped darker for contrast (was #6E665C) */
     --line:rgba(35,32,28,.12);
     --line-strong:rgba(35,32,28,.18);
     --line-accent:rgba(168,84,42,.35);
@@ -108,11 +108,28 @@
   .brand{display:flex;align-items:center;flex:0 0 auto;margin-right:auto}
   .brand img.logo-mark{height:40px;width:auto;display:block}
   .nav-links{display:flex;align-items:center;gap:6px;flex:0 0 auto}
-  .nav-links a{color:var(--text-2);font-weight:700;font-size:15px;padding:9px 13px;border-radius:var(--r-sm);
-    transition:.18s;position:relative;white-space:nowrap;line-height:1}
-  .nav-links a:hover{color:var(--text);background:rgba(128,128,128,.10)}
+  .nav-links a{color:var(--text-2);font-weight:700;font-size:15px;padding:12px 14px;border-radius:var(--r-sm);
+    transition:.2s;position:relative;white-space:nowrap;line-height:1;min-height:48px;display:inline-flex;align-items:center}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--copper-2);background:var(--copper-wash);
+    box-shadow:0 0 0 1px var(--line-accent),0 6px 18px rgba(199,112,61,.18)}
   .nav-links a.active{color:var(--text)}
   .nav-links a.active::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:3px;border-radius:2px;background:var(--copper)}
+  /* one-time attention sweep on load (glow, 0 flashes/sec, never loops) */
+  @keyframes navPulse{
+    0%{box-shadow:0 0 0 0 rgba(194,112,61,0);color:var(--text-2);background:transparent}
+    40%{box-shadow:0 0 0 3px rgba(194,112,61,.55),0 0 18px rgba(194,112,61,.40);color:var(--copper-2);background:var(--copper-wash)}
+    100%{box-shadow:0 0 0 0 rgba(194,112,61,0);color:var(--text-2);background:transparent}}
+  .nav-links a.nav-attn,.nav-phone.nav-attn,.theme-toggle.nav-attn{animation:navPulse 1s ease-out both}
+  .nav-links a:nth-child(1){animation-delay:0s}
+  .nav-links a:nth-child(2){animation-delay:.07s}
+  .nav-links a:nth-child(3){animation-delay:.14s}
+  .nav-links a:nth-child(4){animation-delay:.21s}
+  .nav-links a:nth-child(5){animation-delay:.28s}
+  .nav-phone{animation-delay:.45s}
+  .theme-toggle{animation-delay:.52s}
+  @media(prefers-reduced-motion:reduce){
+    .nav-links a.nav-attn,.nav-phone.nav-attn,.theme-toggle.nav-attn{animation:none!important}
+  }
   .nav-phone{background:var(--copper-deep);color:#fff!important;padding:11px 16px;border-radius:var(--r-pill);
     font-weight:800;font-size:14px;white-space:nowrap;box-shadow:0 4px 14px rgba(154,83,38,.30);margin-left:4px}
   .nav-phone:hover{background:var(--copper-2);color:#23201C!important}
@@ -139,6 +156,13 @@
   .hero-promise{margin:18px auto 0;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;
     font-size:13px;font-weight:700;color:var(--copper);letter-spacing:.02em}
   .hero-promise span{background:var(--copper-wash);padding:7px 14px;border-radius:var(--r-pill)}
+  .hero-values{margin:18px auto 0;max-width:680px}
+  .hero-values-line{font-family:var(--brand-font);font-weight:700;font-size:clamp(18px,2.6vw,24px);
+    letter-spacing:.06em;color:var(--copper);text-shadow:0 1px 0 rgba(0,0,0,.25)}
+  .hero-values-sub{margin-top:6px;font-size:clamp(12px,1.5vw,14px);font-weight:700;
+    letter-spacing:.10em;color:var(--text-2);text-transform:uppercase}
+  :root[data-theme="light"] .hero-values-line{color:var(--copper-deep)}
+  .hero .lead{font-weight:500}
 
   /* ===== SECTION HEADERS ===== */
   .sec-head{margin-bottom:var(--s5)}
@@ -203,8 +227,8 @@
   .weather-hero .wx-temp{font-family:var(--brand-font);font-size:38px;font-weight:700;color:var(--text)}
   .weather-hero .wx-cond{color:var(--text-2);font-size:16px}
   .weather-hero .wx-meta{color:var(--muted);font-size:12px;margin-top:4px}
-  .weather-hero .wx-8h{display:flex;gap:10px;overflow-x:auto;padding-top:6px}
-  .weather-hero .wx-8h .hr{flex:0 0 auto;text-align:center;min-width:62px;background:var(--surface-2);border:1px solid var(--line-accent);border-radius:var(--r-md);padding:8px 6px}
+  .weather-hero .wx-8h{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;padding-top:6px}
+  .weather-hero .wx-8h .hr{text-align:center;background:var(--surface-2);border:1px solid var(--line-accent);border-radius:var(--r-md);padding:8px 4px}
   .weather-hero .wx-8h .t{font-size:12px;color:var(--copper-2)}
   .weather-hero .wx-8h img{width:32px;height:32px;object-fit:contain}
   .weather-hero .wx-8h .deg{font-size:14px;color:var(--text);font-weight:700}
@@ -295,12 +319,17 @@
   .wx-temp{font-size:30px;font-weight:800;color:var(--text)}
   .wx-cond{color:var(--text-2);font-size:15px;flex:1}
   .wx-meta{margin-top:12px;font-size:13px;color:var(--muted)}
-  .wx-8h{display:flex;gap:8px;margin-top:16px;overflow-x:auto;padding-bottom:4px}
-  .wx-8h .hr{flex:1 0 0;min-width:62px;background:var(--surface-2);border:1px solid var(--line-accent);border-radius:12px;padding:10px 6px;text-align:center}
+  .wx-8h{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-top:16px}
+  .wx-8h .hr{background:var(--surface-2);border:1px solid var(--line-accent);border-radius:12px;padding:10px 4px;text-align:center}
   .wx-8h .hr .t{font-size:12px;color:var(--copper-2);font-weight:700}
   .wx-8h .hr img{width:34px;height:34px;margin:4px auto;display:block;filter:drop-shadow(0 0 6px rgba(194,112,61,.35))}
   .wx-8h .hr .deg{font-size:17px;font-weight:800;color:var(--text)}
   .wx-8h .hr .c{font-size:10px;color:var(--muted);line-height:1.15;margin-top:2px;min-height:24px}
+  /* 12-hour strip: fills width on desktop; scroll only on mobile where 12 cols are too tight */
+  @media(max-width:768px){
+    .weather-hero .wx-8h,.wx-8h{grid-template-columns:none;display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+    .weather-hero .wx-8h .hr,.wx-8h .hr{flex:0 0 auto;min-width:62px}
+  }
 
   /* ===== NEWS ===== */
   .news{padding:var(--s7) 0;background:var(--surface)}
@@ -381,6 +410,19 @@
   .review-summary .score{font-size:15px;color:var(--muted)}
   .review-summary a{margin-left:auto}
 
+  /* ===== TRUST BADGES (below Find Us) — enlarged ~20%, crisp, centered ===== */
+  .trust-badges{background:var(--surface);padding:var(--s6) 0;border-top:1px solid var(--line)}
+  .badges-row{display:flex;gap:var(--s5);justify-content:center;flex-wrap:wrap;max-width:860px;margin:0 auto}
+  .badge{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line-strong);
+    border-radius:var(--r-md);padding:18px 24px;font-size:19px;font-weight:600;color:var(--text);
+    box-shadow:var(--shadow)}
+  .badge strong{color:var(--copper);font-weight:800}
+  .badge .badge-star{flex:0 0 auto;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;
+    background:var(--copper-wash);color:var(--copper);font-size:22px;font-weight:800}
+  .badge .badge-meta{display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+  @media(max-width:768px){.badge{padding:14px 18px;font-size:16px;gap:10px}
+    .badge .badge-star{width:34px;height:34px;font-size:18px}}
+
   /* ===== LOCATOR ===== */
   .locator{padding:var(--s7) 0;background:var(--surface)}
   .locator .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--s5);align-items:stretch}
@@ -451,6 +493,10 @@
       <img class="logo-big" src="assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems — Computer Care Center, Lake City FL">
     </div>
     <h1>Computer &amp; laptop repair in Lake City — <span class="hl">fixed right, fast</span>, since 1997.</h1>
+    <div class="hero-values" aria-hidden="false">
+      <div class="hero-values-line">HONEST&nbsp;·&nbsp;KNOWLEDGEABLE&nbsp;·&nbsp;FAIR</div>
+      <div class="hero-values-sub">COMPLETE CUSTOMER SATISFACTION SINCE 1997</div>
+    </div>
     <p class="lead">Honest work, fair prices, no jargon. I work on all computers — Windows, macOS, Linux, and ChromeOS. Your hometown shop for Lake City &amp; North Florida.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="tel:+13867557772">📞 Call John — (386) 755-7772</a>
@@ -462,7 +508,7 @@
       <span>All computers welcome</span>
     </div>
     <div class="hero-promise">
-      <span>Free diagnostics</span><span>Most repairs same-day</span><span>No fix, no fee</span>
+      <span>Free diagnostics</span><span>Most repairs same-day</span>
     </div>
   </div>
 </section>
@@ -509,7 +555,7 @@
             </div>
           </div>
           <div class="wx-meta" id="wxMeta">Local time · America/New_York</div>
-          <div class="wx-8h" id="wx8h" aria-label="Next 8 hours"></div>
+          <div class="wx-8h" id="wx8h" aria-label="Next 12 hours"></div>
         </div>
       </div>
     </div>
@@ -691,6 +737,16 @@
   </div>
 </section>
 
+<!-- Trust badges (below Find Us) — enlarged 20% for prominence -->
+<section class="trust-badges" aria-label="Onyx Systems trust badges">
+  <div class="wrap badges-row reveal">
+    <div class="badge"><span class="badge-star">★</span><span><strong>5.0</strong> Google rating</span><span class="badge-meta">65+ reviews</span></div>
+    <div class="badge"><span class="badge-star">✓</span><span><strong>Locally owned</strong></span><span class="badge-meta">Since 1997</span></div>
+    <div class="badge"><span class="badge-star">⚡</span><span><strong>Same-day</strong> repairs</span><span class="badge-meta">Most jobs</span></div>
+    <div class="badge"><span class="badge-star">🛡️</span><span><strong>Free</strong> diagnostics</span><span class="badge-meta">No guesswork</span></div>
+  </div>
+</section>
+
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -735,6 +791,15 @@
 <script src="assets/js/crossword.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
+/* ---------- Nav attention sweep on load (one-time, reduced-motion safe) ---------- */
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var items=document.querySelectorAll('#nav-links a, .nav-phone, .theme-toggle');
+  items.forEach(function(el){
+    el.classList.add('nav-attn');
+    el.addEventListener('animationend',function(){el.classList.remove('nav-attn');},{once:true});
+  });
+}());
 /* ---------- Theme toggle ---------- */
 (function(){
   var root=document.documentElement, key='onyx-theme';
@@ -1093,7 +1158,7 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
       var periods=(d.properties&&d.properties.periods)||[];
       var strip=document.getElementById('wx8h');
       strip.textContent='';
-      var n=Math.min(8,periods.length);
+      var n=Math.min(12,periods.length);
       for(var i=0;i<n;i++){
         var p=periods[i];
         var dt=new Date(p.startTime);
