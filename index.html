@@ -691,7 +691,7 @@
     </div>
     <div class="news-actions reveal">
       <button class="btn btn-primary news-toggle" id="showNewsBtn" aria-expanded="false" aria-controls="newsTipsGrid">
-        <span class="caret" aria-hidden="true">▸</span><span class="news-toggle-label">SHOW</span>
+        <span class="caret" aria-hidden="true">▸</span><span class="news-toggle-label">Show News &amp; Tips</span>
       </button>
       <a class="btn btn-ghost" href="newsletter.html" target="_blank" rel="noopener">📰 Daily Brief (new tab)</a>
       <span class="news-note">Fresh every morning — scams, fixes &amp; tips from John.</span>
@@ -1190,7 +1190,7 @@ function renderAll(d){
     var open=!grid.hasAttribute('hidden');
     btn.setAttribute('aria-expanded',open?'true':'false');
     btn.classList.toggle('active',open);
-    if(label)label.textContent=open?'HIDE':'SHOW';
+    if(label)label.textContent=open?'Hide News & Tips':'Show News & Tips';
   }
   btn.addEventListener('click',function(){
     if(grid.hasAttribute('hidden'))grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
