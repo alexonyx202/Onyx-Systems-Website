@@ -301,6 +301,29 @@ def main():
         if not (lag.get('reviewsActive') and not lag.get('prevActive')):
             problems.append(f"scroll-spy lag/lingering: reviews active={lag.get('reviewsActive')} prev(games) active={lag.get('prevActive')} (want reviews active, prev not)")
 
+        # FIX 4 verification — nav CLICK has ZERO highlight delay. With smooth-scroll disabled,
+        # a nav click must set .active on the SAME/next frame (instant jump, no scroll animation).
+        # Click #news, then on the NEXT frame (double-rAF) assert #news is active and #hub is NOT.
+        rpc(ws, "Page.navigate", {"url": url}, sid=sid); time.sleep(1.0)
+        rpc(ws, "Emulation.setDeviceMetricsOverride", {"width": 1280, "height": 900, "deviceScaleFactor": 1, "mobile": False}, sid=sid)
+        ev(ws, "document.documentElement.style.scrollBehavior='auto'", sid)
+        time.sleep(0.2)
+        _clkexpr = """(()=>new Promise(res=>{
+          document.querySelector('#nav-links a[href="#news"]').click();
+          requestAnimationFrame(()=>requestAnimationFrame(()=>{
+            const active = document.querySelector('#nav-links a.active');
+            const href = active ? active.getAttribute('href').slice(1) : null;
+            const newsActive = !!document.querySelector('#nav-links a[href="#news"].active');
+            const hubActive = !!document.querySelector('#nav-links a[href="#hub"].active');
+            res(JSON.stringify({href, newsActive, hubActive}));
+          }));
+        }))()"""
+        _clkres = rpc(ws, "Runtime.evaluate", {"expression": _clkexpr, "returnByValue": True, "awaitPromise": True}, sid=sid, mid=952)
+        clk = json.loads(_clkres.get("result", {}).get("value", "{}"))
+        print(f"[{'PASS' if (clk.get('newsActive') and not clk.get('hubActive')) else 'FAIL'}] nav click zero-delay highlight: #news active={clk.get('newsActive')} #hub active={clk.get('hubActive')} (active='{clk.get('href')}')")
+        if not (clk.get('newsActive') and not clk.get('hubActive')):
+            problems.append(f"nav click highlight delayed: news active={clk.get('newsActive')} hub active={clk.get('hubActive')} (want news active immediately, hub not)")
+
         rpc(ws, "Target.closeTarget", {"targetId": tid}); ws.close()
     finally:
         if proc is not None:
