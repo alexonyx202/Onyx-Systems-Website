@@ -1,16 +1,16 @@
 {
-  "title": "Network",
+  "title": "Web",
   "category": "web",
   "size": 8,
   "grid": [
-    "NETWORK.",
-    "OT.I.OE.",
-    "DH.F.UR.",
-    "EE.I.TN.",
-    ".R...EE.",
-    ".N...RL.",
-    ".E......",
-    ".T......"
+    "INTERNET",
+    "NORTA...",
+    "PDOHM...",
+    "UEJE....",
+    "T.AR....",
+    "..NN....",
+    "...E....",
+    "...T...."
   ],
   "clues": {
     "across": [
@@ -18,9 +18,9 @@
         "num": 1,
         "row": 1,
         "col": 1,
-        "len": 7,
-        "answer": "NETWORK",
-        "clue": "Devices wired together to share"
+        "len": 8,
+        "answer": "INTERNET",
+        "clue": "The world's network of networks"
       }
     ],
     "down": [
@@ -28,41 +28,41 @@
         "num": 1,
         "row": 1,
         "col": 1,
-        "len": 4,
-        "answer": "NODE",
-        "clue": "One point in a network"
+        "len": 5,
+        "answer": "INPUT",
+        "clue": "What you type or click in"
       },
       {
         "num": 2,
         "row": 1,
         "col": 2,
+        "len": 4,
+        "answer": "NODE",
+        "clue": "One point in a network"
+      },
+      {
+        "num": 3,
+        "row": 1,
+        "col": 3,
+        "len": 6,
+        "answer": "TROJAN",
+        "clue": "Malware disguised as something harmless"
+      },
+      {
+        "num": 4,
+        "row": 1,
+        "col": 4,
         "len": 8,
         "answer": "ETHERNET",
         "clue": "Wired networking with a cable"
       },
       {
-        "num": 3,
-        "row": 1,
-        "col": 4,
-        "len": 4,
-        "answer": "WIFI",
-        "clue": "Wireless internet in the air"
-      },
-      {
-        "num": 4,
-        "row": 1,
-        "col": 6,
-        "len": 6,
-        "answer": "ROUTER",
-        "clue": "Directs traffic between your devices and the net"
-      },
-      {
         "num": 5,
         "row": 1,
-        "col": 7,
-        "len": 6,
-        "answer": "KERNEL",
-        "clue": "The core of an operating system"
+        "col": 5,
+        "len": 3,
+        "answer": "RAM",
+        "clue": "Short-term memory your PC forgets when off"
       }
     ]
   },
