@@ -109,20 +109,22 @@
   .brand{display:flex;align-items:center;flex:0 0 auto}
   .brand img.logo-mark{height:40px;width:auto;display:block}
   .nav-links{display:flex;align-items:center;gap:4px;flex:1 1 auto;justify-content:center}
-  /* anchor jumps stop below the sticky bar; skip-link for keyboard users */
-  #hub,#engage,#news,#games,#reviews,#locator,#top{scroll-margin-top:var(--nav-h,72px)}
+  /* anchor jumps stop flush at the sticky bar bottom via scroll-padding-top on <html> (SINGLE offset).
+     scroll-margin-top removed to avoid a double offset (visible gap under the bar). skip-link for keyboard users */
+  /* #hub,#engage,#news,#games,#reviews,#locator,#top no longer carry scroll-margin-top */
   .skip-link{position:absolute;left:50%;top:-60px;transform:translateX(-50%);background:var(--copper-deep);color:#fff;
     padding:10px 18px;border-radius:0 0 10px 10px;font-weight:800;z-index:200;transition:top .2s}
   .skip-link:focus{top:0}
   .nav-links a{color:var(--text-2);font-weight:700;font-size:15px;padding:9px 15px;border-radius:999px;
     transition:.2s;position:relative;white-space:nowrap;line-height:1;min-height:44px;display:inline-flex;align-items:center;
-    text-shadow:0 0 6px rgba(194,112,61,.18)} /* GLOW-2026-07-15 */ faint always-on copper font glow
+    -webkit-text-stroke:.4px rgba(194,112,61,.35);
+    text-shadow:0 0 1px rgba(199,112,61,.55), 0 0 8px rgba(194,112,61,.30)} /* GLOW-2026-07-15 */ faint copper glow + thin bright edge
   .nav-links a:hover,.nav-links a:focus-visible{color:var(--copper-2);background:var(--copper-wash);
     box-shadow:0 0 0 1px var(--line-accent),0 6px 18px rgba(199,112,61,.18);
-    text-shadow:0 0 10px rgba(194,112,61,.45)} /* GLOW-2026-07-15 */ stronger on hover/focus
+    text-shadow:0 0 1px rgba(199,112,61,.60), 0 0 10px rgba(194,112,61,.45)} /* GLOW-2026-07-15 */ stronger on hover/focus
   .nav-links a:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
   .nav-links a.active{color:var(--copper-2);background:var(--copper-wash);font-weight:800;
-    text-shadow:0 0 10px rgba(194,112,61,.45)} /* GLOW-2026-07-15 */ stronger on active
+    text-shadow:0 0 1px rgba(199,112,61,.60), 0 0 10px rgba(194,112,61,.45)} /* GLOW-2026-07-15 */ stronger on active
   .nav-links a.active::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:3px;border-radius:2px;background:var(--copper)}
   /* one-time attention sweep on load (glow, 0 flashes/sec, never loops) */
   @keyframes navPulse{
@@ -877,28 +879,29 @@ document.addEventListener('DOMContentLoaded',function(){
   // elevation cue once scrolled
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 8); }, {passive:true});
 
-  var navH=function(){ return header.offsetHeight; };
-  var io=new IntersectionObserver(function(){
-    // Align the active underline to the REAL click-landing line. A nav click
-    // lands a section at (scroll-padding-top + scroll-margin-top) below the
-    // viewport top — the page applies BOTH, so read it from computed styles
-    // rather than guessing navH (which under-shoots by ~1 section). +1px cushion.
-    var _cs=window.getComputedStyle(document.documentElement);
-    var _sec=document.getElementById(ids[0]);
-    var _pad=parseFloat(_cs.scrollPaddingTop)||0;
-    var _mar=_sec?parseFloat(window.getComputedStyle(_sec).scrollMarginTop||0):0;
-    var triggerY=_pad+_mar+1, current=null, maxTop=-Infinity; /* SPY-ALIGN-2026-07-15 */
-    // canonical scroll-spy: the section whose top is the largest value <= trigger line
-    // (= the last section you've scrolled into). Handles nested sections (reviews/games).
-    ids.forEach(function(id){
-      var sec=document.getElementById(id); if(!sec) return;
+  // Continuous, zero-lag scroll-spy: on EVERY scroll frame pick the section whose
+  // top is the largest value <= landingLine (navH + 1px). landingLine is the SINGLE
+  // offset = scroll-padding-top on <html> (scroll-margin-top removed, so no double gap).
+  var rafPending=false, currentId=null;
+  function spy(){
+    rafPending=false;
+    var landingLine=header.offsetHeight+1; /* SPY-ALIGN-2026-07-15 */
+    var best=null, maxTop=-Infinity;
+    for(var i=0;i<ids.length;i++){
+      var sec=document.getElementById(ids[i]); if(!sec) continue;
       var top=sec.getBoundingClientRect().top;
-      if(top<=triggerY && top>maxTop){ maxTop=top; current=id; }
-    });
-    navLinks.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
-    if(current && map[current]){ map[current].classList.add('active'); map[current].setAttribute('aria-current','true'); }
-  }, {rootMargin:'0px 0px -45% 0px', threshold:[0,.25,.5,1]});
-  ids.forEach(function(id){ var s=document.getElementById(id); if(s) io.observe(s); });
+      if(top<=landingLine && top>maxTop){ maxTop=top; best=ids[i]; }
+    }
+    if(best!==currentId){
+      currentId=best;
+      navLinks.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
+      if(best && map[best]){ map[best].classList.add('active'); map[best].setAttribute('aria-current','true'); }
+    }
+  }
+  function onScroll(){ if(!rafPending){ rafPending=true; requestAnimationFrame(spy); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', spy, {passive:true});
+  spy(); // set initial active state immediately
 })();
 
 /* ---------- Section content ---------- */

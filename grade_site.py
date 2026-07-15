@@ -21,7 +21,7 @@ KEY HARNESS LESSONS baked in:
 Run:  python3 grade_site.py [--serve-dir /path]
 Exits 0 only if ALL checks pass.
 """
-import argparse, json, sys, time, base64, subprocess, os, tempfile, http.server, socketserver, threading, functools, socket as pysock
+import argparse, json, sys, time, base64, subprocess, os, tempfile, http.server, socketserver, threading, functools, socket as pysock, re
 import websocket, urllib.request
 
 WIDTHS = [1280, 768, 390]
@@ -66,24 +66,43 @@ def main():
 
     problems = []
 
+    _cdp_log = None
     if args.existing_port:
         args.port = args.existing_port
         print(f"[setup] reusing existing chromium CDP on port {args.port} (no new process)")
         proc = None
     else:
-        # Pick a FREE debug port at runtime (bind(0)) so a leftover grader's bound
-        # port can't collide with this run.
-        _ss = pysock.socket(pysock.AF_INET, pysock.SOCK_STREAM)
-        _ss.bind(("127.0.0.1", 0))
-        args.port = _ss.getsockname()[1]
-        _ss.close()
+        # Robust launch: let chromium auto-pick the debug port (--remote-debugging-port=0)
+        # and read the REAL bound port from its stderr ("DevTools listening on ws://...:PORT/").
+        # Pre-picking a port with bind(0) loses a race under chrome-proc saturation: the socket
+        # is closed but the OS can hold the 5-tuple briefly, so chromium fails to bind and the
+        # grader times out. Auto-pick + parse avoids the collision entirely.
         profile_dir = tempfile.mkdtemp(prefix="onyx-grade-")
+        _cdp_log = os.path.join(profile_dir, "cdp.log")
         proc = subprocess.Popen(
             ["chromium", "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
              "--disable-dev-shm-usage", f"--user-data-dir={profile_dir}",
-             "--remote-debugging-port={args.port}", "--remote-allow-origins=*",
+             "--remote-debugging-port=0", "--remote-allow-origins=*",
              "--window-size=1280,900", "about:blank"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            stdout=open(_cdp_log, "w"), stderr=subprocess.STDOUT)
+
+    # When auto-picking (--remote-debugging-port=0), read the REAL bound port from
+    # chromium's stderr line: "DevTools listening on ws://127.0.0.1:PORT/devtools/browser/...".
+    if not args.existing_port:
+        _deadline = time.time() + 30
+        while time.time() < _deadline:
+            try:
+                with open(_cdp_log) as _f:
+                    _txt = _f.read()
+                _m = re.search(r"ws://127\.0\.0\.1:(\d+)/devtools/browser", _txt)
+                if _m:
+                    args.port = int(_m.group(1))
+                    break
+            except Exception:
+                pass
+            time.sleep(0.3)
+        else:
+            raise RuntimeError("could not parse auto-picked chromium debug port from cdp log")
 
     # Chromium (snap) can take longer than 6s to bind the debug port when the
     # box is under load (hundreds of other chrome procs). Poll /json/version
@@ -186,23 +205,22 @@ def main():
         if not (tt['t'] == 'light' and tt['ls'] == 'light'):
             problems.append("theme toggle did not switch to light+persist")
 
-        # FIX 1 verification — scroll-spy underline must align with the click-landing line.
-        # A nav click lands a section top at scroll-margin-top = var(--nav-h) = header height.
-        # The active link should match the section whose top is the largest value <= navH+1.
-        # Use a REAL click (disable smooth scroll for determinism) and wait for the IO to fire.
+        # FIX 1 verification — click landing must be a SINGLE offset = nav-h (no double gap).
+        # A nav click lands a section top at scroll-padding-top on <html> = var(--nav-h).
+        # scroll-margin-top was removed, so landing == nav-h (NOT 2xnav-h). Verify dynamically.
         rpc(ws, "Page.navigate", {"url": url}, sid=sid); time.sleep(1.0)
         rpc(ws, "Emulation.setDeviceMetricsOverride", {"width": 1280, "height": 900, "deviceScaleFactor": 1, "mobile": False}, sid=sid)
         ev(ws, "document.documentElement.style.scrollBehavior='auto'", sid)  # kill smooth-scroll for instant landing
         time.sleep(0.2)
         ev(ws, "document.querySelector('#nav-links a[href=\"#news\"]').click()", sid)  # real click → scrolls #news to landing line
-        time.sleep(0.7)  # let the IntersectionObserver recompute .active
+        time.sleep(0.5)  # rAF spy settles on the scroll frame (no IO wait needed)
         spy = json.loads(ev(ws, """(()=>{
           const navH = document.querySelector('header.site').offsetHeight;
           const cs = window.getComputedStyle(document.documentElement);
           const sec = document.getElementById('news');
           const pad = parseFloat(cs.scrollPaddingTop)||0;
           const mar = sec ? parseFloat(window.getComputedStyle(sec).scrollMarginTop||0) : 0;
-          const landing = pad + mar;
+          const landing = pad + mar;  // == nav-h once scroll-margin-top is removed
           const ids = ['hub','engage','news','games','reviews','locator'];
           const r = document.getElementById('news').getBoundingClientRect();
           const active = document.querySelector('#nav-links a.active');
@@ -210,25 +228,78 @@ def main():
           let best=null, maxTop=-Infinity;
           ids.forEach(id=>{const t=document.getElementById(id).getBoundingClientRect().top;
             if(t<=landing+1 && t>maxTop){maxTop=t;best=id;}});
-          return JSON.stringify({newsTop:Math.round(r.top), navH, landing, href, best,
-            aligned: Math.abs(r.top - landing) < 2, match: href==='news' && best==='news'});
+          return JSON.stringify({newsTop:Math.round(r.top), navH, pad, mar, landing, href, best,
+            aligned: Math.abs(r.top - landing) < 2,
+            singleOffset: Math.abs(landing - navH) < 2 && mar < 1,
+            match: href==='news' && best==='news'});
         })()""", sid))
         print(f"[{'PASS' if spy['match'] else 'FAIL'}] scroll-spy aligns with click: news.top={spy['newsTop']} landing={spy['landing']} active='{spy['href']}' expected='news' clickAligned={spy['aligned']}")
         if not spy['match']:
             problems.append(f"scroll-spy misaligned: active='{spy['href']}' expected='news' (newsTop={spy['newsTop']}, landing={spy['landing']})")
+        print(f"[{'PASS' if spy['singleOffset'] else 'FAIL'}] click landing = SINGLE offset (nav-h), no double gap: landing={spy['landing']} navH={spy['navH']} mar={spy['mar']}")
+        if not spy['singleOffset']:
+            problems.append(f"click landing double-offset: landing={spy['landing']} navH={spy['navH']} mar={spy['mar']} (want landing≈navH, scroll-margin-top removed)")
 
-        # FIX 2 verification — faint always-on copper text-shadow on nav font.
+        # FIX 2 verification — nav-font glow must be PERCEPTIBLE: a TIGHT copper component
+        # (blur <= 2px) OR a copper -webkit-text-stroke. A 6px/.18-alpha blur alone is invisible.
         glow = json.loads(ev(ws, """(()=>{
           const a = document.querySelector('#nav-links a');
           const cs = getComputedStyle(a);
-          return JSON.stringify({
-            baseShadow: cs.textShadow,
-            on: /rgba?\\(194, ?112, ?61/.test(cs.textShadow) || /rgba?\\(199, ?112, ?61/.test(cs.textShadow)
-          });
+          const shadow = cs.textShadow || 'none';
+          let hasCopper=false, tightBlur=Infinity;
+          if(shadow && shadow!=='none'){
+            shadow.split(',').forEach(layer=>{
+              const cm = layer.match(/rgba?\\(\\s*(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)/);
+              const copper = cm && ((+cm[1]===194&&+cm[2]===112&&+cm[3]===61)||(+cm[1]===199&&+cm[2]===112&&+cm[3]===61));
+              if(copper){
+                hasCopper=true;
+                const nums=(layer.match(/-?[\\d.]+px/g)||[]).map(parseFloat);
+                let blur = nums.length>=3 ? nums[2] : (nums.length===2 ? nums[1] : null);
+                if(blur!==null && blur<tightBlur) tightBlur=blur;
+              }
+            });
+          }
+          const strokeW = parseFloat(cs.getPropertyValue('-webkit-text-stroke-width')||'0')||0;
+          const strokeColor = (cs.getPropertyValue('-webkit-text-stroke-color')||'').trim();
+          const strokeCopper = /199, ?112, ?61|194, ?112, ?61/.test(strokeColor);
+          const tightEnough = hasCopper && tightBlur<=2;
+          const strokeEnough = strokeW>0 && strokeCopper;
+          return JSON.stringify({baseShadow:shadow, tightBlur:tightBlur===Infinity?null:tightBlur,
+            strokeW, strokeColor, ok: tightEnough||strokeEnough,
+            detail: (tightEnough?'tight-copper-blur<=2px':'')+(strokeEnough?'+copper-text-stroke':'')});
         })()""", sid))
-        print(f"[{'PASS' if glow['on'] else 'FAIL'}] nav-font glow present: baseTextShadow='{glow['baseShadow']}'")
-        if not glow['on']:
-            problems.append("nav-font copper text-shadow not applied")
+        print(f"[{'PASS' if glow['ok'] else 'FAIL'}] nav-font glow perceptible: textShadow='{glow['baseShadow']}' tightBlur={glow['tightBlur']} stroke={glow['strokeW']} color='{glow['strokeColor']}' ({glow['detail']})")
+        if not glow['ok']:
+            problems.append(f"nav-font glow not perceptible: textShadow='{glow['baseShadow']}' (want tight copper blur<=2px or copper -webkit-text-stroke)")
+
+        # FIX 3 verification — scroll-spy must have ZERO lag (no lingering stale highlight).
+        # Disable smooth scroll, scrollTo so #reviews sits exactly at the landing line, then
+        # assert on the NEXT frame that #reviews is active and the PREVIOUS section (#games) is NOT.
+        rpc(ws, "Page.navigate", {"url": url}, sid=sid); time.sleep(1.0)
+        rpc(ws, "Emulation.setDeviceMetricsOverride", {"width": 1280, "height": 900, "deviceScaleFactor": 1, "mobile": False}, sid=sid)
+        ev(ws, "document.documentElement.style.scrollBehavior='auto'", sid)
+        time.sleep(0.2)
+        _expr = """(()=>new Promise(res=>{
+          const navH = document.querySelector('header.site').offsetHeight;
+          const landingLine = navH + 1;
+          const reviews = document.getElementById('reviews');
+          const r = reviews.getBoundingClientRect();
+          const targetY = Math.max(0, window.scrollY + (r.top - landingLine));
+          window.scrollTo(0, targetY);
+          requestAnimationFrame(()=>requestAnimationFrame(()=>{
+            const active = document.querySelector('#nav-links a.active');
+            const href = active ? active.getAttribute('href').slice(1) : null;
+            const prev = document.querySelector('#nav-links a[href=\"#games\"]');
+            const prevActive = prev ? prev.classList.contains('active') : false;
+            const reviewsActive = !!document.querySelector('#nav-links a[href=\"#reviews\"].active');
+            res(JSON.stringify({href, prevActive, reviewsActive, landingLine}));
+          }));
+        }))()"""
+        _lagres = rpc(ws, "Runtime.evaluate", {"expression": _expr, "returnByValue": True, "awaitPromise": True}, sid=sid, mid=951)
+        lag = json.loads(_lagres.get("result", {}).get("value", "{}"))
+        print(f"[{'PASS' if (lag.get('reviewsActive') and not lag.get('prevActive')) else 'FAIL'}] scroll-spy zero-lag: #reviews active={lag.get('reviewsActive')} prev(#games) active={lag.get('prevActive')} (landingLine={lag.get('landingLine')})")
+        if not (lag.get('reviewsActive') and not lag.get('prevActive')):
+            problems.append(f"scroll-spy lag/lingering: reviews active={lag.get('reviewsActive')} prev(games) active={lag.get('prevActive')} (want reviews active, prev not)")
 
         rpc(ws, "Target.closeTarget", {"targetId": tid}); ws.close()
     finally:
