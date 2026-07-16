@@ -501,7 +501,7 @@
   footer .brand .word{color:#fff}
   footer .about{margin-top:12px;font-size:14px;color:#a59e94;max-width:320px}
   footer .bottom{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8a8378}
-  .mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--copper);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:17px}
+  .mobile-call{display:none;position:fixed;bottom:64px;left:0;right:0;z-index:54;background:var(--copper);color:#fff;text-align:center;padding:14px;font-weight:700;font-size:17px}
 
   /* ===== RESPONSIVE ===== */
   @media(max-width:1024px){
@@ -515,13 +515,15 @@
     .nav-links a.active::after,.nav-links a:hover::after,.nav-links a:focus-visible::after{left:25%;right:25%;bottom:2px}
     .nav-phone{margin-left:0;align-self:center;padding:9px 12px;font-size:12px}
     .nav-phone::before{display:none}
-    .mobile-call{display:none}
+    .mobile-call{display:block} /* quick-dial above the bottom tab bar (tab bar is 56px at bottom:0) */
     body{padding-bottom:64px}
     #hub,#engage,#news,#games,#reviews,#locator,#top{scroll-margin-bottom:72px}
     .locator .wrap{grid-template-columns:1fr}
     footer .cols{grid-template-columns:1fr 1fr}
+    footer.site{padding:40px 0 28px}
+    footer .bottom{margin-top:22px;padding-top:14px}
   }
-  @media(max-width:520px){footer .cols{grid-template-columns:1fr}}
+  @media(max-width:520px){footer .cols{grid-template-columns:1fr 1fr;gap:18px}footer .about{max-width:none}}
   .reveal{opacity:0;transform:translateY(18px);transition:.5s}.reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}*{scroll-behavior:auto!important}}
 </style>
