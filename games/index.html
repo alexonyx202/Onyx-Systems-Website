@@ -58,14 +58,15 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(12px,1.6vw,20px);margin:18px auto 0;max-width:1120px}
-.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(150px,15vw,190px)}
+  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
+.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(180px,17vw,220px);height:340px}
 .arcade-hub .gdesc{display:none}
-.arcade-hub .gbody{padding:12px 12px 44px;gap:6px}
-.arcade-hub .gbody h3{font-size:16px}
-.arcade-hub .gtag{font-size:12px}
-.arcade-hub .gbtn{font-size:13px;padding:7px 14px}
-@media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%}}
+.arcade-hub .gthumb{aspect-ratio:16/9;min-height:120px}
+.arcade-hub .gbody{padding:14px 14px 16px;gap:8px;flex:1}
+.arcade-hub .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center}
+.arcade-hub .gtag{font-size:12px;min-height:32px}
+.arcade-hub .gbtn{margin-top:auto;align-self:center;font-size:13px;padding:8px 16px}
+@media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%;height:auto}}
   .arcade-hub .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px;position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:.22s}
   .arcade-hub .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
   .arcade-hub .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
