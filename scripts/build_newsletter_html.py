@@ -56,10 +56,20 @@ def find_section(md, marker_prefix):
     title = header[len(marker_prefix):].strip().strip("━").strip()
     # body starts after the header newline
     rest = md[nl + 1:] if nl > 0 else ""
-    m = re.search(r"\n\s*━+\s*\n|\n\s*-{3,}\s*\n|\Z", rest)
-    seg = rest[:m.start()] if m else rest
+    # A section runs until the next box-drawing header line (starts with ━) or a
+    # horizontal rule (---). The old boundary regex failed to match headers that
+    # carry text after the leading ━, which made every section over-capture the
+    # rest of the document. Split on header/rule lines instead.
+    seg_lines = []
+    for ln in rest.split("\n"):
+        if ln.lstrip().startswith("━"):
+            break
+        if ln.strip() == "---" or set(ln.strip()) == {"-"}:
+            break
+        seg_lines.append(ln)
+    seg = "\n".join(seg_lines).strip()
     # strip the comic markdown line (![...](farside...)) if it leaked in
-    seg = re.sub(r"!\[[^\]]*\]\([^)]*farside[^\]]*\)", "", seg)
+    seg = re.sub(r"!\[[^]]*\]\([^)]*farside[^]]*\)", "", seg)
     seg = re.sub(r"\n{2,}", "\n", seg).strip()
     return title, seg
 
