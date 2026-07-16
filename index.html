@@ -534,19 +534,59 @@
   @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}*{scroll-behavior:auto!important}}
   /* ---------- GALLERY: From Inside the Shop (2026-07-16) ---------- */
   .gallery-sec{background:var(--onyx-2);padding:64px 0}
-  .gallery-grid{column-count:3;column-gap:14px;margin-top:26px}
-  .gallery-item{break-inside:avoid;margin:0 0 14px;display:block;width:100%;
+  /* teaser: single-row horizontal scroll strip */
+  .gallery-teaser{display:flex;gap:12px;margin-top:26px;overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;padding:4px 2px 14px;-webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;scrollbar-color:var(--copper-deep) transparent}
+  .gallery-teaser::-webkit-scrollbar{height:8px}
+  .gallery-teaser::-webkit-scrollbar-thumb{background:var(--copper-deep);border-radius:8px}
+  .gallery-teaser::-webkit-scrollbar-track{background:transparent}
+  .gallery-teaser .gallery-item{flex:0 0 auto;width:240px;scroll-snap-align:start;margin:0;
     background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer}
-  .gallery-item picture,.gallery-item img,.gallery-item video{display:block;width:100%;border-radius:12px;
-    background:#000;box-shadow:0 6px 18px rgba(0,0,0,.30);transition:transform .25s ease, box-shadow .25s ease}
-  .gallery-item:hover picture img,.gallery-item:hover video{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  @media(max-width:600px){.gallery-teaser .gallery-item{width:170px}}
+  .gallery-teaser .gallery-item picture,.gallery-teaser .gallery-item img,.gallery-teaser .gallery-item video{
+    display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#000;
+    box-shadow:0 6px 18px rgba(0,0,0,.30);transition:transform .25s ease, box-shadow .25s ease}
+  .gallery-teaser .gallery-item:hover picture img,.gallery-teaser .gallery-item:hover video,
+  .gallery-teaser .gallery-item:focus-visible picture img{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  .gallery-teaser .gallery-item:focus-visible{outline:3px solid var(--copper-deep);outline-offset:3px;border-radius:10px}
   .gallery-item.video{position:relative}
-  .gallery-expand{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;
-    border:none;background:rgba(22,22,26,.7);color:#fff;font-size:18px;line-height:1;cursor:pointer;
+  .gallery-expand{position:absolute;top:8px;right:8px;z-index:2;width:36px;height:36px;border-radius:50%;
+    border:none;background:rgba(22,22,26,.7);color:#fff;font-size:16px;line-height:1;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:background .2s}
   .gallery-expand:hover{background:var(--copper-deep)}
-  @media(max-width:900px){.gallery-grid{column-count:2}}
-  @media(max-width:560px){.gallery-grid{column-count:1}}
+  .gallery-teaser-foot{margin-top:14px;display:flex;justify-content:center}
+  .gallery-viewall{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;
+    border:none;border-radius:999px;padding:11px 22px;font:inherit;font-weight:600;letter-spacing:.02em;
+    cursor:pointer;transition:background .2s, transform .15s}
+  .gallery-viewall:hover{background:#8c451f;transform:translateY(-2px)}
+  .gallery-viewall:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+  /* full gallery overlay (modal) */
+  .gallery-overlay{position:fixed;inset:0;z-index:320;background:rgba(8,8,10,.97);
+    display:flex;flex-direction:column;padding:18px 0 0}
+  .gallery-overlay[hidden]{display:none}
+  .go-bar{display:flex;align-items:center;justify-content:space-between;padding:6px 22px 14px;flex:0 0 auto}
+  .go-title{color:var(--paper);font-weight:700;letter-spacing:.06em;font-size:clamp(18px,3.2vw,26px)}
+  .go-sub{color:var(--accent);font-weight:600;letter-spacing:.08em;font-size:.7em;text-transform:uppercase;margin-left:6px}
+  .go-close{width:44px;height:44px;border-radius:50%;border:none;background:var(--copper-deep);color:#fff;
+    font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .go-close:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+  .gallery-overlay .gallery-grid{flex:1 1 auto;overflow-y:auto;column-count:3;column-gap:14px;
+    padding:0 22px 28px;margin:0}
+  .gallery-overlay .gallery-grid .gallery-item{break-inside:avoid;margin:0 0 14px;display:block;width:100%;
+    background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer}
+  .gallery-overlay .gallery-grid .gallery-item picture,.gallery-overlay .gallery-grid .gallery-item img,
+  .gallery-overlay .gallery-grid .gallery-item video{display:block;width:100%;border-radius:12px;background:#000;
+    box-shadow:0 6px 18px rgba(0,0,0,.30);transition:transform .25s ease, box-shadow .25s ease}
+  .gallery-overlay .gallery-grid .gallery-item:hover picture img,
+  .gallery-overlay .gallery-grid .gallery-item:hover video{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  .gallery-overlay .gallery-grid .gallery-item:focus-visible{outline:3px solid var(--copper-deep);outline-offset:3px;border-radius:12px}
+  @media(max-width:900px){.gallery-overlay .gallery-grid{column-count:2}}
+  @media(max-width:560px){.gallery-overlay .gallery-grid{column-count:1}}
+  @media (prefers-reduced-motion:reduce){.gallery-teaser .gallery-item:hover picture img,
+    .gallery-teaser .gallery-item:hover video,
+    .gallery-overlay .gallery-grid .gallery-item:hover picture img,
+    .gallery-overlay .gallery-grid .gallery-item:hover video{transform:none}}
   .gallery-lightbox{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px}
   .gallery-lightbox[hidden]{display:none}
   .gl-scrim{position:absolute;inset:0;background:rgba(8,8,10,.92);backdrop-filter:blur(4px);cursor:zoom-out}
@@ -765,13 +805,23 @@
       <h2>GALLERY</h2>
       <p>A look inside Onyx Systems</p>
     </div>
-    <div class="gallery-grid" id="galleryGrid" aria-label="Photo and video gallery, newest first"></div>
+    <div class="gallery-teaser" id="galleryTeaser" aria-label="Gallery preview, newest first" tabindex="0"></div>
+    <div class="gallery-teaser-foot">
+      <button type="button" class="gallery-viewall" id="galleryViewAll">View full gallery <span aria-hidden="true">→</span></button>
+    </div>
   </div>
   <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photo and video viewer" hidden>
     <div class="gl-scrim" id="glScrim"></div>
     <div class="gl-stage" id="glStage">
       <button class="gl-close" id="glClose" aria-label="Close viewer (Esc)">×</button>
     </div>
+  </div>
+  <div class="gallery-overlay" id="galleryOverlay" role="dialog" aria-modal="true" aria-label="Full gallery" hidden>
+    <div class="go-bar">
+      <div class="go-title">GALLERY <span class="go-sep" aria-hidden="true">·</span> <span class="go-sub">From Inside the Shop</span></div>
+      <button type="button" class="go-close" id="galleryOverlayClose" aria-label="Close full gallery (Esc)">×</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid" aria-label="Full photo and video gallery, newest first"></div>
   </div>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ImageGallery","name":"Gallery — From Inside the Shop — Onyx Systems","description":"Photos and video from inside the Onyx Systems computer repair shop in Lake City, FL.","image":["assets/img/gallery/g-2026-07-09.jpg","assets/img/gallery/g-2023-08-11.jpg","assets/img/gallery/g-2020-07-27.jpg","assets/img/gallery/g-2016-12-08-1.jpg","assets/img/gallery/g-2016-12-08-2.jpg","assets/img/gallery/g-2016-12-08-3.jpg","assets/img/gallery/g-2016-11-07-1.jpg","assets/img/gallery/g-2016-11-07-2.jpg","assets/img/gallery/g-2016-11-07-3.jpg","assets/img/gallery/g-2016-11-07-4.jpg","assets/img/gallery/g-2016-11-07-5.jpg","assets/img/gallery/g-2016-11-07-6.jpg"]}
@@ -1395,11 +1445,16 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
     {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-5.jpg', thumb:'assets/img/gallery/g-2016-11-07-5-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
     {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-6.jpg', thumb:'assets/img/gallery/g-2016-11-07-6-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'}
   ];
-  var items=GALLERY, grid=document.getElementById('galleryGrid'),
+  var items=GALLERY,
+      teaser=document.getElementById('galleryTeaser'),
+      grid=document.getElementById('galleryGrid'),
+      overlay=document.getElementById('galleryOverlay'),
+      viewAllBtn=document.getElementById('galleryViewAll'),
+      overlayClose=document.getElementById('galleryOverlayClose'),
       lightbox=document.getElementById('galleryLightbox'),
       stage=document.getElementById('glStage'), scrim=document.getElementById('glScrim'),
       closeBtn=document.getElementById('glClose');
-  var lastFocus=null, rafId=null;
+  var lastFocus=null, lastOverlayFocus=null, rafId=null;
   var supportsWebp=false;
   (function(){try{var c=document.createElement('canvas');supportsWebp=!!(c.getContext&&c.getContext('2d')&&c.toDataURL&&c.toDataURL('image/webp').indexOf('image/webp')===0);}catch(e){supportsWebp=false;}})();
 
@@ -1417,39 +1472,42 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
     p.appendChild(im);
     return p;
   }
-  function build(){
-    if(!grid) return;
-    grid.innerHTML='';
-    for(var i=0;i<items.length;i++){
-      (function(item){
-        if(item.type==='video'){
-          var wrap=document.createElement('button');
-          wrap.className='gallery-item video'; wrap.type='button';
-          wrap.setAttribute('data-i', String(i)); wrap.setAttribute('aria-label','Play video: '+(item.alt||'shop video'));
-          var v=document.createElement('video');
-          v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
-          v.muted=true; v.loop=true; v.playsInline=true; v.preload='metadata';
-          v.style.aspectRatio=(item.w&&item.h)?(item.w+'/'+item.h):'16/9';
-          var ex=document.createElement('button'); ex.className='gallery-expand'; ex.type='button';
-          ex.setAttribute('aria-label','Expand video'); ex.textContent='⤢';
-          ex.setAttribute('data-expand','1');
-          wrap.appendChild(v); wrap.appendChild(ex);
-          wrap.addEventListener('click', function(e){
-            if(e.target===ex) return; // handled below
-            if(v.paused){ v.play().catch(function(){}); } else { v.pause(); }
-          });
-          ex.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(item); });
-          grid.appendChild(wrap);
-        } else {
-          var b=document.createElement('button');
-          b.className='gallery-item'; b.type='button';
-          b.setAttribute('data-i', String(i)); b.setAttribute('aria-label','View photo: '+(item.alt||'shop photo'));
-          b.appendChild(pic(item,false));
-          b.addEventListener('click', function(){ openLightbox(item); });
-          grid.appendChild(b);
-        }
-      })(items[i]);
+  function makeItem(item, i){
+    if(item.type==='video'){
+      var wrap=document.createElement('button');
+      wrap.className='gallery-item video'; wrap.type='button';
+      wrap.setAttribute('data-i', String(i)); wrap.setAttribute('aria-label','Play video: '+(item.alt||'shop video'));
+      var v=document.createElement('video');
+      v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
+      v.muted=true; v.loop=true; v.playsInline=true; v.preload='metadata';
+      v.style.aspectRatio=(item.w&&item.h)?(item.w+'/'+item.h):'16/9';
+      var ex=document.createElement('button'); ex.className='gallery-expand'; ex.type='button';
+      ex.setAttribute('aria-label','Expand video'); ex.textContent='⤢';
+      ex.setAttribute('data-expand','1');
+      wrap.appendChild(v); wrap.appendChild(ex);
+      wrap.addEventListener('click', function(e){
+        if(e.target===ex) return;
+        if(v.paused){ v.play().catch(function(){}); } else { v.pause(); }
+      });
+      ex.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(item); });
+      return wrap;
+    } else {
+      var b=document.createElement('button');
+      b.className='gallery-item'; b.type='button';
+      b.setAttribute('data-i', String(i)); b.setAttribute('aria-label','View photo: '+(item.alt||'shop photo'));
+      b.appendChild(pic(item,false));
+      b.addEventListener('click', function(){ openLightbox(item); });
+      return b;
     }
+  }
+  function renderInto(container){
+    if(!container) return;
+    container.innerHTML='';
+    for(var i=0;i<items.length;i++){ container.appendChild(makeItem(items[i], i)); }
+  }
+  function build(){
+    renderInto(teaser);
+    renderInto(grid);
   }
   function openLightbox(item){
     lastFocus=document.activeElement;
@@ -1478,9 +1536,34 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
     stage.querySelectorAll('.gl-media,.gl-extra').forEach(function(n){ if(n.tagName==='VIDEO'){try{n.pause();}catch(e){}} n.remove(); });
     if(lastFocus && lastFocus.focus) lastFocus.focus();
   }
+  function openOverlay(){
+    lastOverlayFocus=document.activeElement;
+    overlay.hidden=false;
+    document.body.style.overflow='hidden';
+    overlayClose.focus();
+    if(grid) grid.scrollTop=0;
+  }
+  function closeOverlay(){
+    if(overlay.hidden) return;
+    overlay.hidden=true;
+    document.body.style.overflow='';
+    if(lastOverlayFocus && lastOverlayFocus.focus) lastOverlayFocus.focus();
+  }
   if(scrim) scrim.addEventListener('click', closeLightbox);
   if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !lightbox.hidden) closeLightbox(); });
+  if(viewAllBtn) viewAllBtn.addEventListener('click', openOverlay);
+  if(overlayClose) overlayClose.addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', function(e){
+    if(e.key!=='Escape') return;
+    if(!lightbox.hidden) closeLightbox();
+    else if(!overlay.hidden) closeOverlay();
+  });
+  if(teaser){
+    teaser.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ teaser.scrollBy({left:260, behavior:'smooth'}); }
+      else if(e.key==='ArrowLeft'){ teaser.scrollBy({left:-260, behavior:'smooth'}); }
+    });
+  }
   try{ build(); }catch(e){ console.warn('gallery build failed, using fallback',e); items=GALLERY_FALLBACK; try{ build(); }catch(e2){ console.error('gallery fallback failed',e2); } }
 })();
 });
