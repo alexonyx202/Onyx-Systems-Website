@@ -37,36 +37,44 @@ var XW = (function(){
   /* Render a FULL interactive puzzle into #grid, with #clues-across / #clues-down,
      and wire Check/Reveal/Clear buttons (#xwCheck/#xwReveal/#xwClear) + #xwMsg.
      The board renders the TRUE full size x size layout (block cells in their real
-     positions) and auto-sizes to fill the available screen: on desktop the cell px
-     is derived from the board container's real width/height so the puzzle + title +
-     controls fit the viewport (no half-empty page); on mobile it fits the width.
-     Recomputed on resize (debounced). Internal arrays stay full size x size. */
+     positions) and auto-sizes so the puzzle + title + clues + controls always fit
+     the viewport (no half-empty page, no overflow). The board container is a definite
+     flex child, so cell sizing is read from its REAL measured box (no circular
+     dependency). A readable floor (22px) is enforced; oversized grids (> ~44 cells)
+     spill into a scrollable board instead of shrinking unreadably. */
   function renderFull(gridEl, acrossEl, downEl, msgEl, titleEl){
     var p=current(); if(!p||!gridEl)return;
     if(titleEl) titleEl.textContent=p.title||'Today’s Puzzle';
+    /* meta line: size + clue counts */
+    var meta=document.getElementById('xwMeta');
+    if(meta) meta.textContent='· '+p.size+'×'+p.size+' · '+(p.clues.across.length)+(p.clues.across.length===1?' across':' across')+' / '+(p.clues.down.length)+(p.clues.down.length===1?' down':' down');
     var n=p.size, grid=p.grid, sol=[], cells=[], clues=p.clues||{across:[],down:[]}, numMap={}, state={dir:'across',active:null};
     for(var r=0;r<n;r++){ sol[r]=[]; cells[r]=[]; }
-    /* --- intelligent cell sizing from the REAL board container --- */
+    var boardEl=gridEl.parentElement;   /* .xw-board (definite flex child) */
+
+    /* --- cell sizing from the board's REAL measured box --- */
     function fitCell(){
-      var board=gridEl.parentElement;                       /* .board */
-      var availW=board.clientWidth - 28;                    /* minus .board padding(14*2) */
-      var availH=board.clientHeight - 28;                   /* minus .board padding(14*2) */
-      if(availW<40) availW=Math.min(window.innerWidth,1080) - 36;   /* fallback if not laid out yet */
-      if(availH<40) availH=window.innerHeight - 360;
-      var gap=3;
-      var byW=Math.floor((availW - (n-1)*gap) / n);
-      var byH=Math.floor((availH - (n-1)*gap) / n);
-      var cell=Math.min(byW, byH);
-      cell=Math.max(14, Math.min(cell, 60));                /* fits large grids, tappable, fills tall screens */
+      var pad = (boardEl.clientWidth>0 && getComputedStyle(boardEl).padding)
+                ? (parseInt(getComputedStyle(boardEl).paddingLeft)||0)*2 : 32;
+      var availW = Math.max(120, boardEl.clientWidth  - pad);
+      var availH = Math.max(120, boardEl.clientHeight - pad);
+      // On narrow / mobile, let the board be as wide as it can and allow vertical scroll.
+      var gap=3, byW, byH, cell;
+      byW=Math.floor((availW - (n-1)*gap) / n);
+      byH=Math.floor((availH - (n-1)*gap) / n);
+      cell=Math.min(byW, byH);
+      // Readable floor; if a big grid can't fit, it scrolls inside the board.
+      cell=Math.max(22, Math.min(cell, 42));
       return cell;
     }
+    var wordEls=[];
     function paint(){ /* hoisted below */ }
     function build(){
       var cell=fitCell();
       document.documentElement.style.setProperty('--xw-cell', cell+'px');
       gridEl.style.gridTemplateColumns='repeat('+n+','+cell+'px)';
       gridEl.style.gridTemplateRows='repeat('+n+','+cell+'px)';
-      gridEl.innerHTML='';
+      gridEl.innerHTML=''; wordEls=[];
       var num=0;
       for(var r=0;r<n;r++)for(var c=0;c<n;c++){
         var ch=grid[r][c]; sol[r][c]=ch;
@@ -76,8 +84,9 @@ var XW = (function(){
         var isDn=(r===0||grid[r-1][c]==='.')&&(r+1<n&&grid[r+1][c]!=='.');
         if(isAc||isDn){ num++; var s=document.createElement('span'); s.className='xw-num'; s.textContent=num; cellDiv.appendChild(s); numMap[r+'-'+c]=num; }
         var inp=document.createElement('input'); inp.maxLength=1; inp.dataset.r=r; inp.dataset.c=c; inp.setAttribute('inputmode','text');
+        inp.setAttribute('aria-label', (isAc?'across':'down')+' clue square');
         (function(inp,r,c){
-          inp.addEventListener('focus',function(){ state.active={r:r,c:c}; state.dir='across'; paint(); });
+          inp.addEventListener('focus',function(){ state.active={r:r,c:c}; state.dir=clueFor(r,c,'across')?'across':'down'; paint(); });
           inp.addEventListener('input',function(){ this.value=this.value.toUpperCase().replace(/[^A-Z]/g,''); step(1); updateRevealLock(); });
           inp.addEventListener('keydown',function(e){ onKey(e); });
         })(inp,r,c);
@@ -102,38 +111,63 @@ var XW = (function(){
     }
     function clueFor(r,c,dir){ var L=clues[dir]||[]; for(var i=0;i<L.length;i++) if(L[i].row===r+1&&L[i].col===c+1) return L[i]; return null; }
     function paint(){
-      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.classList.remove('active-cell'); e.style.outline=''; } }
+      for(var r=0;r<n;r++)for(var c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.parentElement.classList.remove('word','active-cell'); } }
       if(!state.active)return;
       var ar=state.active.r, ac=state.active.c;
       var clue=clueFor(ar,ac,state.dir)||clueFor(ar,ac,state.dir==='across'?'down':'across');
+      if(clue && clueFor(ar,ac,state.dir)!==clue){ state.dir = (clueFor(ar,ac,'across')? 'across':'down'); }
+      else if(clue && clueFor(ar,ac,state.dir)===clue){ /* keep */ }
+      else { /* fallback: whichever exists */ if(clueFor(ar,ac,'across'))state.dir='across'; else if(clueFor(ar,ac,'down'))state.dir='down'; }
       var r=ar,c=ac;
       while(r>0&&cells[r-1]&&cells[r-1][c]&&state.dir==='down') r--;
       while(c>0&&cells[r][c-1]&&state.dir==='across') c--;
-      while(cells[r][c]){ var e=cells[r][c]; if(e){ e.classList.add('active-cell'); e.style.outline=(r===ar&&c===ac)?'2px solid #E8B06A':'2px solid rgba(194,112,61,.35)'; e.style.outlineOffset='-2px'; } if(state.dir==='across'){ if(c+1>=n||!cells[r][c+1])break; c++; } else { if(r+1>=n||!cells[r+1][c])break; r++; } }
+      while(cells[r]&&cells[r][c]){
+        var e=cells[r][c];
+        if(e){ e.parentElement.classList.add('word');
+          if(r===ar&&c===ac) e.parentElement.classList.add('active-cell'); }
+        if(state.dir==='across'){ if(c+1>=n||!cells[r][c+1])break; c++; }
+        else { if(r+1>=n||!cells[r+1][c])break; r++; }
+      }
+      /* current-clue bar */
+      var cur=clueFor(ar,ac,state.dir)||clueFor(ar,ac,state.dir==='across'?'down':'across');
+      var now=document.getElementById('xwNow');
+      if(cur && now){
+        var numEl=now.querySelector('.xw-now-num'), txtEl=now.querySelector('.xw-now-text');
+        if(numEl) numEl.textContent=cur.num+' '+(state.dir==='across'?'Across':'Down');
+        if(txtEl) txtEl.textContent=cur.clue;
+      }
       if(clue){ var elc=document.getElementById('xwClue'+clue.num+'-'+state.dir); if(elc)elc.classList.add('active'); }
     }
     function renderClues(){
       acrossEl.innerHTML=''; downEl.innerHTML='';
-      (clues.across||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-across'; li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('across'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); acrossEl.appendChild(li); });
-      (clues.down||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-down'; li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('down'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); downEl.appendChild(li); });
+      (clues.across||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-across'; li.setAttribute('role','listitem'); li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('across'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); acrossEl.appendChild(li); });
+      (clues.down||[]).forEach(function(cl){ var li=document.createElement('li'); li.className='xw-clue'; li.id='xwClue'+cl.num+'-down'; li.setAttribute('role','listitem'); li.innerHTML='<b>'+cl.num+'.</b> '+cl.clue; li.addEventListener('click',function(){ state.active={r:cl.row-1,c:cl.col-1}; setDir('down'); paint(); var e=cells[cl.row-1][cl.col-1]; if(e)e.focus(); }); downEl.appendChild(li); });
     }
+    /* ---- clue tabs (mobile switches visible list; desktop shows both) ---- */
+    var tabs=document.querySelectorAll('.xw-tab');
+    function selectTab(dir){
+      tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.dir===dir?'true':'false'); });
+      acrossEl.hidden=(dir!=='across');
+      downEl.hidden=(dir!=='down');
+    }
+    tabs.forEach(function(t){ t.addEventListener('click',function(){ selectTab(t.dataset.dir); }); });
+
     var revealBtn=document.getElementById('xwReveal');
     function filledPct(){ var f=0,t=0; for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(!e)continue; t++; if(e.value!=='')f++; } return t? f/t : 0; }
-    function updateRevealLock(){ if(!revealBtn)return; var unlocked=filledPct()>=0.5; revealBtn.disabled=!unlocked; revealBtn.classList.toggle('locked',!unlocked); if(msgEl&&!unlocked&&revealBtn.dataset.shown!=='1'){ msgEl.textContent='Fill at least 50% of the squares to unlock Reveal.'; } }
+    function updateRevealLock(){ if(!revealBtn)return; var unlocked=filledPct()>=0.5; revealBtn.disabled=!unlocked; if(msgEl&&!unlocked&&revealBtn.dataset.shown!=='1'){ msgEl.textContent='Fill at least 50% of the squares to unlock Reveal.'; } }
     function allFilled(){ for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e&&e.value==='')return false; } return true; }
     if(document.getElementById('xwCheck')) document.getElementById('xwCheck').addEventListener('click',function(){
       var right=0,total=0;
-      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(!e)continue; total++; var ok=e.value.toUpperCase()===sol[r][c].toUpperCase(); e.classList.toggle('correct',ok&&e.value!==''); e.classList.toggle('wrong',!ok&&e.value!==''); if(ok)right++; }
+      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(!e)continue; total++; var ok=e.value.toUpperCase()===sol[r][c].toUpperCase(); e.parentElement.classList.toggle('correct',ok&&e.value!==''); e.parentElement.classList.toggle('wrong',!ok&&e.value!==''); if(ok)right++; }
       if(msgEl){ if(total>0&&right===total&&allFilled()) msgEl.textContent='🎉 Solved! Nicely done.'; else msgEl.textContent=right+' of '+total+' squares correct — keep going!'; }
     });
-    if(revealBtn) revealBtn.addEventListener('click',function(){ if(this.disabled)return; for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=sol[r][c]; e.classList.remove('wrong'); e.classList.add('correct'); } } this.dataset.shown='1'; if(msgEl) msgEl.textContent='Here’s the solution — come back tomorrow for a new one!'; });
+    if(revealBtn) revealBtn.addEventListener('click',function(){ if(this.disabled)return; for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=sol[r][c]; e.parentElement.classList.remove('wrong'); e.parentElement.classList.add('correct'); } } this.dataset.shown='1'; if(msgEl) msgEl.textContent='Here’s the solution — come back tomorrow for a new one!'; });
     if(document.getElementById('xwClear')) document.getElementById('xwClear').addEventListener('click',function(){
-      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=''; e.classList.remove('correct','wrong'); } }
+      for(r=0;r<n;r++)for(c=0;c<n;c++){ var e=cells[r][c]; if(e){ e.value=''; e.parentElement.classList.remove('correct','wrong'); } }
       if(msgEl) msgEl.textContent='';
     });
     build();
     updateRevealLock();
-    /* recompute sizing on resize/orientation (debounced) — keeps board dynamic but sane */
     var rzT=null;
     function onResize(){ if(rzT)clearTimeout(rzT); rzT=setTimeout(build, 120); }
     window.addEventListener('resize', onResize);
