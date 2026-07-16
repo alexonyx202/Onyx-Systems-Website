@@ -43,12 +43,15 @@ TEASER = [
 KNOWN_PRODUCTS = [
     "libreoffice", "pixlr", "ublock", "proton", "bitwarden", "ente",
     "obs studio", "obs", "pdf24", "balenaetcher", "balena", "localsend",
-    "aegis", "google authenticator", "microsoft", "windows", "macos",
+    "aegis", "google authenticator", "microsoft", "sharepoint", "windows", "macos",
     "chrome", "edge", "firefox", "adobe", "acrobat", "coldfusion",
     "joomla", "langflow", "gemini", "openai", "nvidia", "apple",
     "2fa", "sms", "wifi", "ssd", "ram", "gpu", "cpu", "dns",
     "ventoy", "lm studio", "have i been pwned", "hwinfo",
     "sim", "vpn", "onedrive", "google", "passkey", "passkeys",
+    # Extended 2026-07-16: real products recommended in Onyx Tech Notes that the
+    # original whitelist missed (posts already name the product + state obtain method).
+    "apc", "revo", "notebooklm", "bitlocker", "back-ups",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.

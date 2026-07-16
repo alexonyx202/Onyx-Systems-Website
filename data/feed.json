@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-15",
+    "last_updated": "2026-07-16",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,22 @@
   ],
   "news": [
     {
+      "date": "2026-07-16",
+      "title": "🔴 ALERT — CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
+      "excerpt": "CISA warned July 14 that attackers are actively exploiting flaws in on-premises Microsoft SharePoint Server — including CVE-2026-56164. If your org hosts SharePoint in-house, patch now and rotate machine keys; if you can't patch immediately, shut outside access until you can.",
+      "image": "assets/img/news/2026-07-16-composite.jpg",
+      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
+      "read_more": ""
+    },
+    {
+      "date": "2026-07-16",
+      "title": "🔴 ALERT — CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
+      "excerpt": "CISA added a critical on-prem SharePoint flaw (CVE-2026-56164) to its exploited-vulnerabilities catalog after active attacks. If your org runs SharePoint on its own servers, patch now and rotate machine keys — or pull outside access until you can.",
+      "image": "assets/img/news/2026-07-16-composite.jpg",
+      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-15",
       "title": "🔴 ALERT — New 'CrashStealer' malware hijacks your Mac by faking Apple",
       "excerpt": "A new macOS infostealer called CrashStealer spreads through fake \"Werkbit Setup\" sites, impersonating Apple's CrashReporter to steal passwords, browser data, and crypto wallets. If you see \"CrashReporter.dmg\" in Downloads, don't open it.",
@@ -130,160 +146,116 @@
       "image": "assets/img/news/2026-07-11-composite.jpg",
       "comic": "assets/img/news/2026-07-11-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-10",
-      "title": "Daily Computer Brief — 2026-07-10",
-      "excerpt": "Daily Computer Brief — 2026-07-10",
-      "image": "assets/img/news/2026-07-10-composite.jpg",
-      "comic": "assets/img/news/2026-07-10-comic-square.jpg",
-      "read_more": ""
-    },
-    {
-      "date": "2026-07-09",
-      "title": "Daily Computer Brief — 2026-07-09",
-      "excerpt": "Daily Computer Brief — 2026-07-09",
-      "image": "assets/img/news/2026-07-09-composite.jpg",
-      "comic": "assets/img/news/2026-07-09-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
     {
-      "type": "tip",
-      "headline": "Stop feeding ad-trackers your data — uBlock Origin blocks ads and trackers free inside Firefox",
-      "tip": "Install uBlock Origin for free from `addons.mozilla.org` — open Firefox, press `Ctrl+Shift+A` to reach Add-ons, search \"uBlock Origin,\" and click Add. Out of the box it blocks ads, cross-site trackers, and coin-miner scripts with almost no memory cost.",
-      "truth": "Most people don't realize the \"free\" web is paid for by watching everything you do. An ad-blocker isn't about killing ads — it's about stopping strangers from building a file on you.",
+      "type": "news",
+      "headline": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
+      "tip": "Turn on BitLocker drive encryption (search “BitLocker” in the Start menu, or Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates. The patch for CVE-2026-50661 blocks a physical-attack bypass that let someone with brief hands-on access read or change an encrypted drive.",
+      "truth": "Most people figure BitLocker turns a stolen laptop into a paperweight. It helps — but on an unpatched machine a thief with five minutes and a screwdriver can get around it. Encryption is not a substitute for a strong password and the latest patch.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Post"
+        "#BitLocker",
+        "#WindowsUpdate"
       ],
-      "date": "2026-07-15"
-    },
-    {
-      "type": "tip",
-      "headline": "Find out if your email is already in a data breach — Have I Been Pwned checks it free in 10 seconds",
-      "tip": "Go to Have I Been Pwned at `haveibeenpwned.com`, type your email address, and hit \"pwned?\" — it checks your address against billions of breached accounts and tells you exactly which breaches exposed it. No signup, no cost.",
-      "truth": "The honest answer is your password was probably leaked years ago in some breach you forgot about. Checking isn't scary — not checking is what gets you hacked.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Post"
-      ],
-      "date": "2026-07-15"
-    },
-    {
-      "type": "tip",
-      "headline": "Run private AI on your own PC — LM Studio is the free desktop app that keeps your chats off the cloud",
-      "tip": "Download LM Studio free from `lmstudio.ai`, install it, pick a model like Llama or Qwen from its built-in catalog, and start chatting — everything runs on your machine. No account, nothing leaves your PC.",
-      "truth": "Most people don't realize every \"free\" AI website is reading what you type. If it's private, run it locally. LM Studio makes that stupid-easy — no command line, no PhD required.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Post"
-      ],
-      "date": "2026-07-15"
-    },
-    {
-      "type": "tip",
-      "headline": "Your PC says it can't run Windows 11? WhyNotWin11 tells you exactly which requirement fails — free",
-      "tip": "Download WhyNotWin11 free from `github.com/rcmaehl/WhyNotWin11`, run the `.exe`, and it lists each Windows 11 requirement — TPM 2.0, Secure Boot, RAM, CPU, storage — as pass or fail, so you know what's actually blocking you.",
-      "truth": "I see this all the time — Microsoft tells you \"this PC can't run Windows 11\" and people assume they need a new computer. Half the time it's one setting in the BIOS. Know what's wrong before you spend a dime.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Post"
-      ],
-      "date": "2026-07-15"
-    },
-    {
-      "type": "tip",
-      "headline": "Your fan is screaming or your PC keeps crashing? HWiNFO shows the real temperatures, voltages and fan speeds for free",
-      "tip": "Download HWiNFO free from `hwinfo.com`, run it and choose \"Sensors-only,\" and you'll see live temperatures, fan RPM, and voltages for every part — so you fix the actual failing component instead of guessing.",
-      "truth": "Most people don't realize a crashing PC is rarely \"the whole computer.\" It's one hot chip or a dying fan. HWiNFO shows you the truth on screen in 30 seconds — no guessing, no expensive parts you didn't need.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Post"
-      ],
-      "date": "2026-07-15"
-    },
-    {
-      "type": "tip",
-      "headline": "Carry one USB for every job — Ventoy boots any ISO free, no reformatting",
-      "tip": "Ventoy is a free open-source tool that turns one USB stick into a multiboot drive: drop Linux, Windows, and utility ISOs onto it and pick from a menu. Install free from ventoy.net, then just copy ISO files to the USB — no reformatting.",
-      "truth": "Customers buy a new stick every time they need a different installer and end up with a drawer full of single-use drives. One 32GB Ventoy stick replaces all of them, and it still holds your regular files.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Ventoy",
-        "#USB"
-      ],
-      "date": "2026-07-14"
-    },
-    {
-      "type": "tip",
-      "headline": "Stop trackers selling your data — uBlock Origin blocks them free",
-      "tip": "uBlock Origin is a free open-source blocker that kills ads, trackers, and cryptominers while sipping CPU. Add it free from addons.mozilla.org for Firefox, or uBlock Origin Lite from the Chrome Web Store for Chrome.",
-      "truth": "Most of those 'ads' are tracking scripts that build a profile of everywhere you go and sell it. Blocking them is a privacy move, not a convenience move.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#uBlockOrigin",
-        "#Privacy"
-      ],
-      "date": "2026-07-14"
+      "date": "2026-07-16"
     },
     {
       "type": "news",
-      "headline": "Firefox 152.0.6 ships a free built-in page-summary assistant",
-      "tip": "Mozilla released Firefox 152.0.6 (July 14, 2026) with a Smart Window that summarizes pages plus anti-fingerprinting and location-privacy upgrades. Update free from firefox.com or click menu ☰ → Help → About Firefox.",
-      "truth": "Most people think 'update the browser' is busywork until a zero-day is already in the wild. The update is the cheapest insurance you'll ever buy — and the new summarize feature means you stop pasting whole articles into an AI that ships your data off.",
+      "headline": "Chrome's July 2026 update closes 382 security holes — update at chrome://settings/help",
+      "tip": "Open Google Chrome and update it right now: type chrome://settings/help in the address bar (or Menu > Settings > About Chrome) and let it download the latest build. Chrome's July 2026 releases (150/151) patched close to 400 bugs, including critical code-execution flaws that let a malicious page run code on your PC.",
+      "truth": "Folks patch their phone the day an update drops but leave Chrome three versions behind for a year. Your browser touches every site you visit — it's the most exposed program on your computer, and the one most people never update.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Firefox",
-        "#Privacy"
+        "#Chrome",
+        "#Update"
       ],
-      "date": "2026-07-14"
+      "date": "2026-07-16"
+    },
+    {
+      "type": "tip",
+      "headline": "Turn any PDF or webpage into a study podcast free — Google NotebookLM at notebooklm.google.com",
+      "tip": "Go to notebooklm.google.com with your Google account, drop in a PDF, Google Doc, or web link, and ask it to summarize or build an Audio Overview. It's free, and every answer points back to your source material.",
+      "truth": "Everybody's scared AI will just make stuff up. NotebookLM won't — it only reads what you give it and shows you the citation. For students, researchers, or anyone buried in a 60-page manual, it's the rare AI tool that actually earns its keep instead of guessing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#NotebookLM",
+        "#AI"
+      ],
+      "date": "2026-07-16"
     },
     {
       "type": "news",
-      "headline": "Hurricane season is here — the free FEMA App sends NWS alerts for Lake City first",
-      "tip": "The official FEMA App pushes real-time National Weather Service alerts, locates nearby shelters, and works offline for checklists. Install free from fema.gov/mobile-products or your app store, then set your location to Lake City, FL.",
-      "truth": "Folks in Columbia County wait for the TV crawl and miss the window to back up the laptop and charge the power bank. A phone alert you set once beats a storm you watch arrive.",
+      "headline": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
+      "tip": "Turn on BitLocker drive encryption (search “BitLocker” in the Start menu, or Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates. The patch for CVE-2026-50661 blocks a physical-attack bypass that let someone with brief hands-on access read or change an encrypted drive.",
+      "truth": "Most people figure BitLocker turns a stolen laptop into a paperweight. It helps — but on an unpatched machine a thief with five minutes and a screwdriver can get around it. Encryption is not a substitute for a strong password and the latest patch. The update that closed this hole shipped July 14, and I still see machines that haven’t pulled it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#FEMA",
-        "#HurricanePrep"
+        "#BitLocker"
       ],
-      "date": "2026-07-14"
+      "date": "2026-07-16"
     },
     {
       "type": "news",
-      "headline": "Run AI on your own PC with no cloud and no subscription — LM Studio is free",
-      "tip": "LM Studio is a free desktop app that downloads and runs open models like Qwen3 and Gemma3 entirely on your hardware — nothing leaves the machine. Download free from lmstudio.ai and chat offline in minutes.",
-      "truth": "Everyone's pasting client files into a web AI and hoping it's private. If it's in a browser tab, it's on someone else's server. Local AI means the data never leaves the building.",
+      "headline": "Chrome’s July 2026 update closes 382 security holes — update at chrome://settings/help",
+      "tip": "Open Google Chrome and update it right now: type chrome://settings/help in the address bar (or Menu > Settings > About Chrome) and let it download the latest build. Chrome’s July 2026 releases (150/151) patched close to 400 bugs, including critical code-execution flaws that let a malicious page run code on your PC.",
+      "truth": "Folks patch their phone the day an update drops but leave Chrome three versions behind for a year. Your browser touches every site you visit — it’s the most exposed program on your computer, and the one most people never update. An old Chrome is an open window.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#LMStudio",
-        "#LocalAI"
+        "#Chrome"
       ],
-      "date": "2026-07-14"
+      "date": "2026-07-16"
+    },
+    {
+      "type": "tip",
+      "headline": "Florida storm season: an APC Back-UPS keeps your computer alive when the power goes out",
+      "tip": "Put your computer on an APC Back-UPS battery unit — grab a BE550G or BX series from apc.com or Amazon, or have ONYX SYSTEMS install one. It rides through a blackout and soaks the voltage spikes that roll in right after the lights flicker.",
+      "truth": "I see more dead motherboards and fried power supplies after a storm than from anything else all year. A $60 battery backup beats a $600 board repair every single time, and it’s the one upgrade most North Florida folks skip until the surge does the choosing for them.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#APC"
+      ],
+      "date": "2026-07-16"
+    },
+    {
+      "type": "tip",
+      "headline": "Turn any PDF or webpage into a study podcast free — Google NotebookLM at notebooklm.google.com",
+      "tip": "Go to notebooklm.google.com with your Google account, drop in a PDF, Google Doc, or web link, and ask it to summarize or build an Audio Overview. It’s free, and every answer points back to your source material.",
+      "truth": "Everybody’s scared AI will just make stuff up. NotebookLM won’t — it only reads what you give it and shows you the citation. For students, researchers, or anyone buried in a 60-page manual, it’s the rare AI tool that actually earns its keep instead of guessing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#NotebookLM"
+      ],
+      "date": "2026-07-16"
+    },
+    {
+      "type": "tip",
+      "headline": "Stubborn app won’t go away? Revo Uninstaller Free deletes it and the traces",
+      "tip": "Download Revo Uninstaller Free from revouninstaller.com/products/revo-uninstaller-free and use it to remove programs Windows can’t fully uninstall — it scrubs the leftover files and registry entries the built-in uninstaller leaves behind.",
+      "truth": "Windows’ own uninstaller leaves a graveyard of leftovers — folders, registry keys, startup junk — that slowly gunks up a machine. “It’s uninstalled” rarely means “it’s gone.” Revo actually cleans the corpse instead of just hiding it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#RevoUninstaller"
+      ],
+      "date": "2026-07-16"
     }
   ],
-  "updated": "2026-07-15"
+  "updated": "2026-07-16"
 }

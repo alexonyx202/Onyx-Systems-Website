@@ -1,6 +1,90 @@
 {
-  "updated": "2026-07-15",
+  "updated": "2026-07-16",
   "items": [
+    {
+      "id": "n-2026-07-16",
+      "type": "newsletter",
+      "date": "2026-07-16",
+      "title": "CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
+      "tag": "Daily Brief",
+      "summary": "CISA warned July 14 that attackers are actively exploiting flaws in on-premises Microsoft SharePoint Server — including CVE-2026-56164. Patch now and rotate machine keys; if you can't patch immediately, shut outside access until you can.",
+      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-16-1",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
+      "tag": "Security",
+      "summary": "Turn on BitLocker (Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates."
+    },
+    {
+      "id": "t-2026-07-16-2",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Chrome's July 2026 update closes 382 security holes — update at chrome://settings/help",
+      "tag": "Software",
+      "summary": "Open Google Chrome and update it now: type chrome://settings/help in the address bar (or Menu > Settings > About Chrome) and let it download the latest build."
+    },
+    {
+      "id": "t-2026-07-16-4",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Turn any PDF or webpage into a study podcast free — Google NotebookLM at notebooklm.google.com",
+      "tag": "AI",
+      "summary": "Go to notebooklm.google.com with your Google account, drop in a PDF, Google Doc, or web link, and ask it to build an Audio Overview — free."
+    },
+    {
+      "id": "n-2026-07-16",
+      "type": "newsletter",
+      "date": "2026-07-16",
+      "title": "CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
+      "tag": "Daily Brief",
+      "summary": "title: \"CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now\"",
+      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-16-1",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
+      "tag": "Tech Tip",
+      "summary": "Turn on BitLocker (Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates to block the CVE-2026-50661 physical-attack bypass."
+    },
+    {
+      "id": "t-2026-07-16-2",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Chrome’s July 2026 update closes 382 security holes — update at chrome://settings/help",
+      "tag": "Tech Tip",
+      "summary": "Update Google Chrome free at chrome://settings/help or Menu > Settings > About Chrome — the July 2026 builds (150/151) patch close to 400 flaws including code-execution bugs."
+    },
+    {
+      "id": "t-2026-07-16-3",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Florida storm season: an APC Back-UPS keeps your computer alive when the power goes out",
+      "tag": "Tech Tip",
+      "summary": "Put your PC on an APC Back-UPS (BE550G or BX series from apc.com or Amazon, or installed by ONYX SYSTEMS) to ride through blackouts and soak post-storm surges."
+    },
+    {
+      "id": "t-2026-07-16-4",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Turn any PDF or webpage into a study podcast free — Google NotebookLM at notebooklm.google.com",
+      "tag": "Tech Tip",
+      "summary": "Google NotebookLM is free at notebooklm.google.com — drop in a PDF, Doc, or web link and get a summary or audio overview that cites your source."
+    },
+    {
+      "id": "t-2026-07-16-5",
+      "type": "tech-note",
+      "date": "2026-07-16",
+      "title": "Stubborn app won’t go away? Revo Uninstaller Free deletes it and the traces",
+      "tag": "Tech Tip",
+      "summary": "Revo Uninstaller Free (revouninstaller.com/products/revo-uninstaller-free) removes stubborn programs and scrubs the leftover files and registry entries."
+    },
     {
       "id": "n-2026-07-15",
       "type": "newsletter",
@@ -18,38 +102,6 @@
       "title": "Stop feeding ad-trackers your data — uBlock Origin blocks ads and trackers free inside Firefox",
       "tag": "Tech Tip",
       "summary": "Install uBlock Origin for free from `addons.mozilla.org` — open Firefox, press `Ctrl+Shift+A` to reach Add-ons, search \"uBlock Origin,\" and click Add. Out of the box it blocks ads, cross-site trackers, and coin-miner scripts with almost no memory cost."
-    },
-    {
-      "id": "t-2026-07-15-2",
-      "type": "tech-note",
-      "date": "2026-07-15",
-      "title": "Find out if your email is already in a data breach — Have I Been Pwned checks it free in 10 seconds",
-      "tag": "Tech Tip",
-      "summary": "Go to Have I Been Pwned at `haveibeenpwned.com`, type your email address, and hit \"pwned?\" — it checks your address against billions of breached accounts and tells you exactly which breaches exposed it. No signup, no cost."
-    },
-    {
-      "id": "t-2026-07-15-3",
-      "type": "tech-note",
-      "date": "2026-07-15",
-      "title": "Run private AI on your own PC — LM Studio is the free desktop app that keeps your chats off the cloud",
-      "tag": "Tech Tip",
-      "summary": "Download LM Studio free from `lmstudio.ai`, install it, pick a model like Llama or Qwen from its built-in catalog, and start chatting — everything runs on your machine. No account, nothing leaves your PC."
-    },
-    {
-      "id": "t-2026-07-15-4",
-      "type": "tech-note",
-      "date": "2026-07-15",
-      "title": "Your PC says it can't run Windows 11? WhyNotWin11 tells you exactly which requirement fails — free",
-      "tag": "Tech Tip",
-      "summary": "Download WhyNotWin11 free from `github.com/rcmaehl/WhyNotWin11`, run the `.exe`, and it lists each Windows 11 requirement — TPM 2.0, Secure Boot, RAM, CPU, storage — as pass or fail, so you know what's actually blocking you."
-    },
-    {
-      "id": "t-2026-07-15-5",
-      "type": "tech-note",
-      "date": "2026-07-15",
-      "title": "Your fan is screaming or your PC keeps crashing? HWiNFO shows the real temperatures, voltages and fan speeds for free",
-      "tag": "Tech Tip",
-      "summary": "Download HWiNFO free from `hwinfo.com`, run it and choose \"Sensors-only,\" and you'll see live temperatures, fan RPM, and voltages for every part — so you fix the actual failing component instead of guessing."
     }
   ]
 }
