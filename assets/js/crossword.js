@@ -70,7 +70,11 @@ var XW = (function(){
       var byW=Math.floor((availW - (n-1)*gap) / n);
       var byH=Math.floor((availH - (n-1)*gap) / n);
       var cell=Math.min(byW, byH);
-      cell=Math.max(11, Math.min(cell, 42));   /* low safety floor; 42px cap for small puzzles */
+      /* Never floor the cell for "readability": a floor forces the grid wider
+         than the frame once it needs smaller cells, which causes overflow +
+         the flex-center left clip. The cell simply shrinks to fit — the only
+         hard rule is the 42px cap for small puzzles and a 1px safety guard. */
+      cell=Math.max(1, Math.min(cell, 42));
       return cell;
     }
     var wordEls=[];
@@ -80,6 +84,9 @@ var XW = (function(){
       document.documentElement.style.setProperty('--xw-cell', cell+'px');
       gridEl.style.gridTemplateColumns='repeat('+n+','+cell+'px)';
       gridEl.style.gridTemplateRows='repeat('+n+','+cell+'px)';
+      /* Reserve scrollbar gutter so a scrollbar never steals the measured box
+         and re-trigger an overflow/refit loop. */
+      boardEl.style.overflowY='scroll';
       gridEl.innerHTML=''; wordEls=[];
       var num=0;
       for(var r=0;r<n;r++)for(var c=0;c<n;c++){
