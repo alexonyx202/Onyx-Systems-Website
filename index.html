@@ -532,6 +532,31 @@
   @media(max-width:520px){footer .cols{grid-template-columns:1fr 1fr;gap:18px}footer .about{max-width:none}}
   .reveal{opacity:0;transform:translateY(18px);transition:.5s}.reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}*{scroll-behavior:auto!important}}
+  /* ---------- GALLERY: Behind the Bench (2026-07-16) ---------- */
+  .gallery-sec{background:var(--onyx-2);padding:64px 0}
+  .gallery-grid{column-count:3;column-gap:14px;margin-top:26px}
+  .gallery-item{break-inside:avoid;margin:0 0 14px;display:block;width:100%;
+    background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer}
+  .gallery-item picture,.gallery-item img,.gallery-item video{display:block;width:100%;border-radius:12px;
+    background:#000;box-shadow:0 6px 18px rgba(0,0,0,.30);transition:transform .25s ease, box-shadow .25s ease}
+  .gallery-item:hover picture img,.gallery-item:hover video{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  .gallery-item.video{position:relative}
+  .gallery-expand{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;
+    border:none;background:rgba(22,22,26,.7);color:#fff;font-size:18px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .gallery-expand:hover{background:var(--copper-deep)}
+  @media(max-width:900px){.gallery-grid{column-count:2}}
+  @media(max-width:560px){.gallery-grid{column-count:1}}
+  .gallery-lightbox{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px}
+  .gallery-lightbox[hidden]{display:none}
+  .gl-scrim{position:absolute;inset:0;background:rgba(8,8,10,.92);backdrop-filter:blur(4px);cursor:zoom-out}
+  .gl-stage{position:relative;z-index:1;max-width:min(1100px,94vw);max-height:90vh;display:flex;align-items:center;justify-content:center}
+  .gl-media{max-width:100%;max-height:90vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000;display:block}
+  .gl-close{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:none;
+    background:var(--copper-deep);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2;
+    display:flex;align-items:center;justify-content:center}
+  .gl-close:hover{background:var(--copper)}
+  @media (prefers-reduced-motion:reduce){.gallery-item picture img,.gallery-item video{transition:none}}
 </style>
 </head>
 <body>
@@ -549,6 +574,7 @@
       <a href="#hub">Services</a>
       <a href="#engage">Play</a>
       <a href="#news">News</a>
+      <a href="#gallery">Behind the Bench</a>
       <a href="#games">ARCADE</a>
       <a href="#reviews">Reviews</a>
       <a href="#locator">Contact</a>
@@ -729,6 +755,27 @@
     </div>
     <div id="newsTipsGrid" class="news-grid" hidden></div>
   </div>
+</section>
+
+<!-- GALLERY-2026-07-16 -->
+<section class="gallery-sec" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Inside the shop</div>
+      <h2>Behind the Bench</h2>
+      <p>A look inside Onyx Systems — the shop, the work bench, and the computers I've built and repaired over the years.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid" aria-label="Photo and video gallery, newest first"></div>
+  </div>
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photo and video viewer" hidden>
+    <div class="gl-scrim" id="glScrim"></div>
+    <div class="gl-stage" id="glStage">
+      <button class="gl-close" id="glClose" aria-label="Close viewer (Esc)">×</button>
+    </div>
+  </div>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ImageGallery","name":"Behind the Bench — Onyx Systems","description":"Photos and video from inside the Onyx Systems computer repair shop in Lake City, FL.","image":["assets/img/gallery/g-2026-07-09.jpg","assets/img/gallery/g-2023-08-11.jpg","assets/img/gallery/g-2020-07-27.jpg","assets/img/gallery/g-2016-12-08-1.jpg","assets/img/gallery/g-2016-12-08-2.jpg","assets/img/gallery/g-2016-12-08-3.jpg","assets/img/gallery/g-2016-11-07-1.jpg","assets/img/gallery/g-2016-11-07-2.jpg","assets/img/gallery/g-2016-11-07-3.jpg","assets/img/gallery/g-2016-11-07-4.jpg","assets/img/gallery/g-2016-11-07-5.jpg","assets/img/gallery/g-2016-11-07-6.jpg"]}
+  </script>
 </section>
 
 <section class="arcade-sec" id="games">
@@ -1314,6 +1361,127 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
   }
   tick(); setInterval(tick,1000);
   loadWeather(); setInterval(loadWeather,20*60*1000);
+})();
+
+/* ---------- GALLERY: Behind the Bench (2026-07-16) ---------- */
+(function(){
+  var GALLERY=[
+    {date:'2026-07-09', type:'image', full:'assets/img/gallery/g-2026-07-09.webp', fullJpg:'assets/img/gallery/g-2026-07-09.jpg', thumb:'assets/img/gallery/g-2026-07-09-thumb.webp', thumbJpg:'assets/img/gallery/g-2026-07-09-thumb.jpg', w:1600, h:1205, alt:'Inside the Onyx Systems shop with John working at the repair bench (2026).'},
+    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.webp', fullJpg:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.webp', thumbJpg:'assets/img/gallery/g-2023-08-11-thumb.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
+    {date:'2020-07-27', type:'image', full:'assets/img/gallery/g-2020-07-27.webp', fullJpg:'assets/img/gallery/g-2020-07-27.jpg', thumb:'assets/img/gallery/g-2020-07-27-thumb.webp', thumbJpg:'assets/img/gallery/g-2020-07-27-thumb.jpg', w:1600, h:900, alt:'The Onyx Systems shop and work area (2020).'},
+    {date:'2020-04-24', type:'video', video:'assets/img/gallery/g-2020-04-24.mp4', poster:'assets/img/gallery/g-2020-04-24-poster.webp', posterJpg:'assets/img/gallery/g-2020-04-24-poster.jpg', w:1280, h:720, alt:'Video: a computer on the bench at Onyx Systems being repaired and updated.'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-1.webp', fullJpg:'assets/img/gallery/g-2016-12-08-1.jpg', thumb:'assets/img/gallery/g-2016-12-08-1-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-12-08-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-2.webp', fullJpg:'assets/img/gallery/g-2016-12-08-2.jpg', thumb:'assets/img/gallery/g-2016-12-08-2-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-12-08-2-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-3.webp', fullJpg:'assets/img/gallery/g-2016-12-08-3.jpg', thumb:'assets/img/gallery/g-2016-12-08-3-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-12-08-3-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-1.webp', fullJpg:'assets/img/gallery/g-2016-11-07-1.jpg', thumb:'assets/img/gallery/g-2016-11-07-1-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-2.webp', fullJpg:'assets/img/gallery/g-2016-11-07-2.jpg', thumb:'assets/img/gallery/g-2016-11-07-2-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-2-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-3.webp', fullJpg:'assets/img/gallery/g-2016-11-07-3.jpg', thumb:'assets/img/gallery/g-2016-11-07-3-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-3-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-4.webp', fullJpg:'assets/img/gallery/g-2016-11-07-4.jpg', thumb:'assets/img/gallery/g-2016-11-07-4-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-4-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-5.webp', fullJpg:'assets/img/gallery/g-2016-11-07-5.jpg', thumb:'assets/img/gallery/g-2016-11-07-5-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-5-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-6.webp', fullJpg:'assets/img/gallery/g-2016-11-07-6.jpg', thumb:'assets/img/gallery/g-2016-11-07-6-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-11-07-6-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'}
+  ];
+  var GALLERY_FALLBACK=[
+    {date:'2026-07-09', type:'image', full:'assets/img/gallery/g-2026-07-09.jpg', thumb:'assets/img/gallery/g-2026-07-09-thumb.jpg', w:1600, h:1205, alt:'Inside the Onyx Systems shop with John working at the repair bench (2026).'},
+    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
+    {date:'2020-07-27', type:'image', full:'assets/img/gallery/g-2020-07-27.jpg', thumb:'assets/img/gallery/g-2020-07-27-thumb.jpg', w:1600, h:900, alt:'The Onyx Systems shop and work area (2020).'},
+    {date:'2020-04-24', type:'video', video:'assets/img/gallery/g-2020-04-24.mp4', poster:'assets/img/gallery/g-2020-04-24-poster.jpg', w:1280, h:720, alt:'Video: a computer on the bench at Onyx Systems being repaired and updated.'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-1.jpg', thumb:'assets/img/gallery/g-2016-12-08-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-2.jpg', thumb:'assets/img/gallery/g-2016-12-08-2-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-3.jpg', thumb:'assets/img/gallery/g-2016-12-08-3-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-1.jpg', thumb:'assets/img/gallery/g-2016-11-07-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-2.jpg', thumb:'assets/img/gallery/g-2016-11-07-2-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-3.jpg', thumb:'assets/img/gallery/g-2016-11-07-3-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-4.jpg', thumb:'assets/img/gallery/g-2016-11-07-4-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-5.jpg', thumb:'assets/img/gallery/g-2016-11-07-5-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'},
+    {date:'2016-11-07', type:'image', full:'assets/img/gallery/g-2016-11-07-6.jpg', thumb:'assets/img/gallery/g-2016-11-07-6-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (November 2016).'}
+  ];
+  var items=GALLERY, grid=document.getElementById('galleryGrid'),
+      lightbox=document.getElementById('galleryLightbox'),
+      stage=document.getElementById('glStage'), scrim=document.getElementById('glScrim'),
+      closeBtn=document.getElementById('glClose');
+  var lastFocus=null, rafId=null;
+  var supportsWebp=false;
+  (function(){try{var c=document.createElement('canvas');supportsWebp=!!(c.getContext&&c.getContext('2d')&&c.toDataURL&&c.toDataURL('image/webp').indexOf('image/webp')===0);}catch(e){supportsWebp=false;}})();
+
+  function pic(item, isFull){
+    var p=document.createElement('picture');
+    var srcW=isFull?item.full:item.thumb, srcF=isFull?item.fullJpg:item.thumbJpg;
+    if(supportsWebp){
+      var s1=document.createElement('source'); s1.srcset=srcW; s1.type='image/webp'; p.appendChild(s1);
+    }
+    var im=document.createElement('img');
+    im.src=supportsWebp?srcW:srcF; im.alt=item.alt||'';
+    var w=item.w, h=item.h;
+    if(isFull && w && h){ im.width=w; im.height=h; } else { im.style.aspectRatio=(w&&h)?(w+'/'+h):'3/2'; }
+    if(!isFull) im.loading='lazy';
+    p.appendChild(im);
+    return p;
+  }
+  function build(){
+    if(!grid) return;
+    grid.innerHTML='';
+    for(var i=0;i<items.length;i++){
+      (function(item){
+        if(item.type==='video'){
+          var wrap=document.createElement('button');
+          wrap.className='gallery-item video'; wrap.type='button';
+          wrap.setAttribute('data-i', String(i)); wrap.setAttribute('aria-label','Play video: '+(item.alt||'shop video'));
+          var v=document.createElement('video');
+          v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
+          v.muted=true; v.loop=true; v.playsInline=true; v.preload='metadata';
+          v.style.aspectRatio=(item.w&&item.h)?(item.w+'/'+item.h):'16/9';
+          var ex=document.createElement('button'); ex.className='gallery-expand'; ex.type='button';
+          ex.setAttribute('aria-label','Expand video'); ex.textContent='⤢';
+          ex.setAttribute('data-expand','1');
+          wrap.appendChild(v); wrap.appendChild(ex);
+          wrap.addEventListener('click', function(e){
+            if(e.target===ex) return; // handled below
+            if(v.paused){ v.play().catch(function(){}); } else { v.pause(); }
+          });
+          ex.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(item); });
+          grid.appendChild(wrap);
+        } else {
+          var b=document.createElement('button');
+          b.className='gallery-item'; b.type='button';
+          b.setAttribute('data-i', String(i)); b.setAttribute('aria-label','View photo: '+(item.alt||'shop photo'));
+          b.appendChild(pic(item,false));
+          b.addEventListener('click', function(){ openLightbox(item); });
+          grid.appendChild(b);
+        }
+      })(items[i]);
+    }
+  }
+  function openLightbox(item){
+    lastFocus=document.activeElement;
+    stage.querySelectorAll('.gl-media,.gl-extra').forEach(function(n){n.remove();});
+    if(item.type==='video'){
+      var v=document.createElement('video');
+      v.className='gl-media'; v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
+      v.controls=true; v.autoplay=true; v.playsInline=true; v.muted=false;
+      v.setAttribute('aria-label', item.alt||'shop video');
+      stage.appendChild(v);
+      v.play().catch(function(){});
+    } else {
+      stage.appendChild(pic(item,true));
+    }
+    lightbox.hidden=false;
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+    if(window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      rafId=requestAnimationFrame(function(){ /* allow paint */ });
+    }
+  }
+  function closeLightbox(){
+    if(lightbox.hidden) return;
+    lightbox.hidden=true;
+    document.body.style.overflow='';
+    stage.querySelectorAll('.gl-media,.gl-extra').forEach(function(n){ if(n.tagName==='VIDEO'){try{n.pause();}catch(e){}} n.remove(); });
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if(scrim) scrim.addEventListener('click', closeLightbox);
+  if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !lightbox.hidden) closeLightbox(); });
+  try{ build(); }catch(e){ console.warn('gallery build failed, using fallback',e); items=GALLERY_FALLBACK; try{ build(); }catch(e2){ console.error('gallery fallback failed',e2); } }
 })();
 });
 </script>
