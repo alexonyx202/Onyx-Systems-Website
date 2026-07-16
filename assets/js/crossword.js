@@ -32,49 +32,42 @@ var XW = (function(){
   }
   /* Render a FULL interactive puzzle into #grid, with #clues-across / #clues-down,
      and wire Check/Reveal/Clear buttons (#xwCheck/#xwReveal/#xwClear) + #xwMsg.
-     The board is auto-sized to the window: we compute the true bounding box of the
-     non-block cells (puzzles are not square), trim empty margins, and pick a cell
-     pixel size that fits both viewport width and a comfortable max height, recomputed
-     on resize. Internal cell arrays stay full size×size so step()/paint()/sol behave. */
+     The board renders the TRUE full size x size layout (block cells in their real
+     positions) and auto-sizes to fill the available screen: on desktop the cell px
+     is derived from the board container's real width/height so the puzzle + title +
+     controls fit the viewport (no half-empty page); on mobile it fits the width.
+     Recomputed on resize (debounced). Internal arrays stay full size x size. */
   function renderFull(gridEl, acrossEl, downEl, msgEl, titleEl){
     var p=current(); if(!p||!gridEl)return;
     if(titleEl) titleEl.textContent=p.title||'Today’s Puzzle';
     var n=p.size, grid=p.grid, sol=[], cells=[], clues=p.clues||{across:[],down:[]}, numMap={}, state={dir:'across',active:null};
     for(var r=0;r<n;r++){ sol[r]=[]; cells[r]=[]; }
-    /* --- true bounding box of non-block cells --- */
-    var minR=n,maxR=0,minC=n,maxC=0;
-    for(r=0;r<n;r++)for(var c=0;c<n;c++){ if(grid[r][c]!=='.'){ if(r<minR)minR=r; if(r>maxR)maxR=r; if(c<minC)minC=c; if(c>maxC)maxC=c; } }
-    if(maxR<minR){ minR=maxR=0; } if(maxC<minC){ minC=maxC=0; }
-    var bbRows=maxR-minR+1, bbCols=maxC-minC+1;
-    /* --- intelligent cell sizing --- */
+    /* --- intelligent cell sizing from the REAL board container --- */
     function fitCell(){
-      var pad=36;                                   /* .wrap horizontal padding (18px each side) */
-      var gap=3;                                    /* -- matches .xw-grid gap */
-      var boardChrome=12+2;                          /* .board padding(18x2->trim) + border approx */
-      var availW=Math.min(window.innerWidth, 1080) - pad - boardChrome;
-      var availH=window.innerHeight - 360;          /* leave room for header/clues/controls */
-      if(availH<200) availH=200;
-      var byW=Math.floor((availW - (bbCols-1)*gap) / bbCols);
-      var byH=Math.floor((availH - (bbRows-1)*gap) / bbRows);
+      var board=gridEl.parentElement;                       /* .board */
+      var availW=board.clientWidth - 28;                    /* minus .board padding(14*2) */
+      var availH=board.clientHeight - 28;                   /* minus .board padding(14*2) */
+      if(availW<40) availW=Math.min(window.innerWidth,1080) - 36;   /* fallback if not laid out yet */
+      if(availH<40) availH=window.innerHeight - 360;
+      var gap=3;
+      var byW=Math.floor((availW - (n-1)*gap) / n);
+      var byH=Math.floor((availH - (n-1)*gap) / n);
       var cell=Math.min(byW, byH);
-      cell=Math.max(24, Math.min(cell, 44));        /* tappable but not huge */
+      cell=Math.max(22, Math.min(cell, 60));                /* tappable, can fill a tall desktop screen */
       return cell;
     }
     function paint(){ /* hoisted below */ }
-    var ctx={}; /* shared between render + resize */
     function build(){
       var cell=fitCell();
       document.documentElement.style.setProperty('--xw-cell', cell+'px');
-      gridEl.style.gridTemplateColumns='repeat('+bbCols+','+cell+'px)';
-      gridEl.style.gridTemplateRows='repeat('+bbRows+','+cell+'px)';
+      gridEl.style.gridTemplateColumns='repeat('+n+','+cell+'px)';
+      gridEl.style.gridTemplateRows='repeat('+n+','+cell+'px)';
       gridEl.innerHTML='';
       var num=0;
-      for(r=0;r<n;r++)for(c=0;c<n;c++){
+      for(var r=0;r<n;r++)for(var c=0;c<n;c++){
         var ch=grid[r][c]; sol[r][c]=ch;
-        if(ch==='.'){ cells[r][c]=null; continue; }
-        /* only render cells inside the bounding box (trim empty margins) */
-        if(r<minR||r>maxR||c<minC||c>maxC){ cells[r][c]=null; continue; }
         var cellDiv=document.createElement('div'); cellDiv.className='xw-cell';
+        if(ch==='.'){ cellDiv.classList.add('block'); gridEl.appendChild(cellDiv); cells[r][c]=null; continue; }
         var isAc=(c===0||grid[r][c-1]==='.')&&(c+1<n&&grid[r][c+1]!=='.');
         var isDn=(r===0||grid[r-1][c]==='.')&&(r+1<n&&grid[r+1][c]!=='.');
         if(isAc||isDn){ num++; var s=document.createElement('span'); s.className='xw-num'; s.textContent=num; cellDiv.appendChild(s); numMap[r+'-'+c]=num; }
@@ -90,7 +83,7 @@ var XW = (function(){
       if(!state.active) state.active=first();
       paint();
     }
-    function first(){ for(r=0;r<n;r++)for(c=0;c<n;c++)if(cells[r][c])return{r:r,c:c}; return null; }
+    function first(){ for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(cells[r][c])return{r:r,c:c}; return null; }
     function setDir(d){ state.dir=d; }
     function step(d){
       if(!state.active)return; var r=state.active.r,c=state.active.c;

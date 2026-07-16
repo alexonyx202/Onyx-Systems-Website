@@ -7,21 +7,20 @@
 <style>
   :root{--copper:#C2703D;--copper-2:#E8B06A;--cream:#f7f4ef;--xw-cell:30px}
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:#0a0612;color:#f7f4ef;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;min-height:100vh;
+  html,body{margin:0;padding:0;height:100%}
+  body{background:#0a0612;color:#f7f4ef;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;height:100vh;overflow:hidden;
     background-image:radial-gradient(120% 70% at 50% 0%,#3a1052 0%,transparent 55%),radial-gradient(120% 80% at 50% 120%,#2a0b3f 0%,#0a0612 60%),linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d);
     background-attachment:fixed}
   body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.18;pointer-events:none;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px}
-  .wrap{max-width:1080px;margin:0 auto;padding:32px 18px 60px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .wrap{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto minmax(0,1fr) auto auto;grid-template-areas:"header header" "board clues" "controls clues" "msg clues";max-width:1080px;height:100vh;margin:0 auto;padding:16px 18px 12px;gap:0 30px;overflow:hidden}
+  header{grid-area:header;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 12px}
   .title{font-family:"Oswald","Segoe UI",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);color:#fff;letter-spacing:.02em;
     text-shadow:0 0 1px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .title .pill{color:var(--copper-2)}
   .close{display:inline-block;text-decoration:none;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--cream);font-weight:700;border:1px solid rgba(194,112,61,.4);transition:.2s}
   .close:hover{background:var(--copper);color:#fff}
-  .layout{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;justify-content:center}
-  @media(max-width:720px){.layout{grid-template-columns:1fr}}
-  .board{background:linear-gradient(180deg,#15131c,#0d0b13);border:2px solid var(--copper);border-radius:16px;padding:18px;display:flex;justify-content:center}
+  .layout{display:contents}
+  .board{grid-area:board;background:linear-gradient(180deg,#15131c,#0d0b13);border:2px solid var(--copper);border-radius:16px;padding:14px;display:flex;justify-content:center;align-items:center;min-width:0;min-height:0}
   .xw-grid{display:grid;gap:3px;background:#0a0612;padding:6px;border-radius:8px}
   .xw-cell{position:relative;width:var(--xw-cell);height:var(--xw-cell);background:#f3ead9;border-radius:3px}
   .xw-cell.block{background:transparent}
@@ -31,8 +30,7 @@
   .xw-cell.correct{background:#bfe6c4}
   .xw-cell.wrong{background:#e8b4ad}
   .xw-cell.active-cell{box-shadow:inset 0 0 0 2px rgba(194,112,61,.5)}
-  .clues{display:flex;flex-direction:column;gap:22px}
-  @media(max-width:720px){.clues{flex-direction:row;flex-wrap:wrap}}
+  .clues{grid-area:clues;display:flex;flex-direction:column;gap:22px;min-width:0;min-height:0;overflow:auto;padding-right:6px}
   .clue-col{flex:1;min-width:240px}
   .xw-h{font-weight:800;color:var(--copper-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-size:14px;border-bottom:1px solid rgba(194,112,61,.35);padding-bottom:6px}
   .xw-list{list-style:none;margin:0;padding:0}
@@ -40,11 +38,21 @@
   .xw-clue b{color:var(--cream)}
   .xw-clue:hover{background:rgba(255,255,255,.05)}
   .xw-clue.active{background:rgba(194,112,61,.18);color:var(--copper-2);font-weight:600}
-  .controls{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+  .controls{grid-area:controls;display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
   .controls button{background:rgba(255,255,255,.08);border:1px solid rgba(194,112,61,.4);color:var(--cream);padding:11px 22px;border-radius:999px;cursor:pointer;font-size:15px;font-weight:700;transition:.2s}
   .controls button:hover{background:var(--copper);color:#fff}
   .controls button:disabled,.controls button.locked{opacity:.45;cursor:not-allowed;filter:grayscale(.5);background:rgba(255,255,255,.04);color:#9a938a}
-  .xw-msg{margin-top:14px;font-size:16px;min-height:22px;color:var(--copper-2);font-weight:700}
+  .xw-msg{grid-area:msg;margin-top:10px;font-size:16px;min-height:22px;color:var(--copper-2);font-weight:700}
+  @media(max-width:720px){
+    html,body{height:auto}
+    body{height:auto;overflow:auto;min-height:100vh}
+    .wrap{display:flex;flex-direction:column;height:auto;min-height:100vh;overflow:visible;padding:16px 18px 24px;gap:16px}
+    header{order:0;margin:0 0 4px}
+    .board{order:1;width:100%;padding:10px;overflow-x:auto}
+    .controls{order:2;margin-top:0}
+    .clues{order:3;width:100%;overflow:visible;padding-right:0}
+    .xw-msg{order:4}
+  }
 </style>
 </head>
 <body>
