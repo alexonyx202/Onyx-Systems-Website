@@ -52,19 +52,25 @@ var XW = (function(){
     for(var r=0;r<n;r++){ sol[r]=[]; cells[r]=[]; }
     var boardEl=gridEl.parentElement;   /* .xw-board (definite flex child) */
 
-    /* --- cell sizing from the board's REAL measured box --- */
+    /* --- cell sizing from the board's EXACT usable inner box ---
+       Account for the board's own padding AND the grid's own padding + gaps, so
+       the entire puzzle fits the frame with zero overflow. No hard readability
+       floor that forces scroll on large grids — the cell simply shrinks to fit
+       (with a low safety floor so it never vanishes). */
     function fitCell(){
-      var pad = (boardEl.clientWidth>0 && getComputedStyle(boardEl).padding)
-                ? (parseInt(getComputedStyle(boardEl).paddingLeft)||0)*2 : 32;
-      var availW = Math.max(120, boardEl.clientWidth  - pad);
-      var availH = Math.max(120, boardEl.clientHeight - pad);
-      // On narrow / mobile, let the board be as wide as it can and allow vertical scroll.
-      var gap=3, byW, byH, cell;
-      byW=Math.floor((availW - (n-1)*gap) / n);
-      byH=Math.floor((availH - (n-1)*gap) / n);
-      cell=Math.min(byW, byH);
-      // Readable floor; if a big grid can't fit, it scrolls inside the board.
-      cell=Math.max(22, Math.min(cell, 42));
+      var bcs=getComputedStyle(boardEl);
+      var bPadX=(parseInt(bcs.paddingLeft)||0)+(parseInt(bcs.paddingRight)||0);
+      var bPadY=(parseInt(bcs.paddingTop)||0)+(parseInt(bcs.paddingBottom)||0);
+      var gcs=getComputedStyle(gridEl);
+      var gPadX=(parseInt(gcs.paddingLeft)||0)+(parseInt(gcs.paddingRight)||0);
+      var gPadY=(parseInt(gcs.paddingTop)||0)+(parseInt(gcs.paddingBottom)||0);
+      var gap=3;
+      var availW=Math.max(60, boardEl.clientWidth  - bPadX - gPadX);
+      var availH=Math.max(60, boardEl.clientHeight - bPadY - gPadY);
+      var byW=Math.floor((availW - (n-1)*gap) / n);
+      var byH=Math.floor((availH - (n-1)*gap) / n);
+      var cell=Math.min(byW, byH);
+      cell=Math.max(11, Math.min(cell, 42));   /* low safety floor; 42px cap for small puzzles */
       return cell;
     }
     var wordEls=[];
@@ -168,10 +174,17 @@ var XW = (function(){
     });
     build();
     updateRevealLock();
+    /* Refit on ANY real change to the board's size — window resize, orientation
+       change, AND the responsive layout switch (mobile stacks the board to full
+       width). A ResizeObserver catches the layout-timing cases a window 'resize'
+       event misses, so cells never size against a stale/measured-too-early box. */
     var rzT=null;
-    function onResize(){ if(rzT)clearTimeout(rzT); rzT=setTimeout(build, 120); }
-    window.addEventListener('resize', onResize);
-    window.addEventListener('orientationchange', onResize);
+    function scheduleBuild(){ if(rzT)clearTimeout(rzT); rzT=setTimeout(build, 100); }
+    if(window.ResizeObserver){ try{ new ResizeObserver(scheduleBuild).observe(boardEl); }catch(e){} }
+    window.addEventListener('resize', scheduleBuild);
+    window.addEventListener('orientationchange', scheduleBuild);
+    /* one more pass on the next frame, in case the first paint measured pre-layout */
+    requestAnimationFrame(function(){ requestAnimationFrame(build); });
   }
   return { load:load, renderThumb:renderThumb, renderFull:renderFull, current:current,
     /* test hook: force a specific puzzle as 'current' (used by verification harness only) */
