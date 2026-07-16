@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Crossword — Onyx Systems</title>
 <style>
-  :root{--copper:#C2703D;--copper-2:#E8B06A;--cream:#f7f4ef;--xw-cell:27px}
+  :root{--copper:#C2703D;--copper-2:#E8B06A;--cream:#f7f4ef;--xw-cell:30px}
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{background:#0a0612;color:#f7f4ef;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;min-height:100vh;
@@ -19,15 +19,15 @@
   .title .pill{color:var(--copper-2)}
   .close{display:inline-block;text-decoration:none;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--cream);font-weight:700;border:1px solid rgba(194,112,61,.4);transition:.2s}
   .close:hover{background:var(--copper);color:#fff}
-  .layout{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start}
+  .layout{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;justify-content:center}
   @media(max-width:720px){.layout{grid-template-columns:1fr}}
   .board{background:linear-gradient(180deg,#15131c,#0d0b13);border:2px solid var(--copper);border-radius:16px;padding:18px;display:flex;justify-content:center}
   .xw-grid{display:grid;gap:3px;background:#0a0612;padding:6px;border-radius:8px}
   .xw-cell{position:relative;width:var(--xw-cell);height:var(--xw-cell);background:#f3ead9;border-radius:3px}
   .xw-cell.block{background:transparent}
-  .xw-cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:22px;font-weight:800;text-transform:uppercase;color:#16161a;padding:0;border-radius:3px;cursor:pointer}
+  .xw-cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:calc(var(--xw-cell) * 0.78);font-weight:800;text-transform:uppercase;color:#16161a;padding:0;border-radius:3px;cursor:pointer}
   .xw-cell input:focus{outline:2px solid var(--copper-2);outline-offset:-2px}
-  .xw-num{position:absolute;top:1px;left:3px;font-size:10px;line-height:1;color:#6B635A;pointer-events:none;font-weight:800}
+  .xw-num{position:absolute;top:1px;left:3px;font-size:calc(var(--xw-cell) * 0.36);line-height:1;color:#6B635A;pointer-events:none;font-weight:800}
   .xw-cell.correct{background:#bfe6c4}
   .xw-cell.wrong{background:#e8b4ad}
   .xw-cell.active-cell{box-shadow:inset 0 0 0 2px rgba(194,112,61,.5)}
@@ -36,7 +36,7 @@
   .clue-col{flex:1;min-width:240px}
   .xw-h{font-weight:800;color:var(--copper-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-size:14px;border-bottom:1px solid rgba(194,112,61,.35);padding-bottom:6px}
   .xw-list{list-style:none;margin:0;padding:0}
-  .xw-clue{margin-bottom:8px;color:#cfc9c0;cursor:pointer;line-height:1.4;font-size:15px;padding:4px 8px;border-radius:6px}
+  .xw-clue{margin-bottom:8px;color:#cfc9c0;cursor:pointer;line-height:1.4;font-size:clamp(13px, calc(var(--xw-cell) * 0.58), 17px);padding:4px 8px;border-radius:6px}
   .xw-clue b{color:var(--cream)}
   .xw-clue:hover{background:rgba(255,255,255,.05)}
   .xw-clue.active{background:rgba(194,112,61,.18);color:var(--copper-2);font-weight:600}
@@ -45,7 +45,6 @@
   .controls button:hover{background:var(--copper);color:#fff}
   .controls button:disabled,.controls button.locked{opacity:.45;cursor:not-allowed;filter:grayscale(.5);background:rgba(255,255,255,.04);color:#9a938a}
   .xw-msg{margin-top:14px;font-size:16px;min-height:22px;color:var(--copper-2);font-weight:700}
-  @media(max-width:520px){:root{--xw-cell:22px}.xw-cell input{font-size:18px}}
 </style>
 </head>
 <body>
