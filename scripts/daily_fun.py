@@ -77,151 +77,95 @@ def cursor_pick(pool, state_path, today):
     return pool[idx], idx
 
 # ----------------------------------------------------------------------------
-# CROSSWORD emit/validate (reused, proven from make_daily_fun.py)
+# CROSSWORD: load from the pre-built Obsidian bank (Converted CrosswordLabs
+# puzzles). The bank is the authoritative source of complete, fully-clued
+# two-way crosswords (real across + down lists). A tech/computer category is
+# preferred automatically once John fetches one; otherwise math+science.
+# daily_fun.py only READS the bank and rotates through it (never-repeat cursor).
 # ----------------------------------------------------------------------------
-def build_grid(puzzle):
-    n = puzzle["size"]
-    grid = [["." for _ in range(n)] for _ in range(n)]
-    def place(word, r, c, dr, dc):
-        for i, ch in enumerate(word):
-            rr, cc = r - 1 + i * dr, c - 1 + i * dc
-            if grid[rr][cc] != "." and grid[rr][cc] != ch:
-                raise ValueError(f"conflict at {rr},{cc}: {grid[rr][cc]} vs {ch}")
-            grid[rr][cc] = ch
-    for w, r, c in puzzle["across"]:
-        place(w, r, c, 0, 1)
-    for w, r, c in puzzle["down"]:
-        place(w, r, c, 1, 0)
-    return ["".join(row) for row in grid]
+import glob as _glob
+import os.path as _osp
 
-def validate(puzzle):
-    n = puzzle["size"]
-    g = build_grid(puzzle)
-    for w, r, c in puzzle["across"]:
-        got = "".join(g[r-1][c-1+i] for i in range(len(w)))
-        assert got == w, f"{puzzle['title']} across {w} != {got}"
-    for w, r, c in puzzle["down"]:
-        got = "".join(g[r-1+i][c-1] for i in range(len(w)))
-        assert got == w, f"{puzzle['title']} down {w} != {got}"
-    filled = {(r-1, c-1+i) for w, r, c in puzzle["across"] for i in range(len(w))}
-    filled |= {(r-1+i, c-1) for w, r, c in puzzle["down"] for i in range(len(w))}
-    for r in range(n):
-        for c in range(n):
-            if g[r][c] != "." and (r, c) not in filled:
-                raise ValueError(f"orphan cell {r},{c}={g[r][c]} in {puzzle['title']}")
-    return g
+BANK_DIR = _osp.expanduser(os.path.join("~", "Documents", "Obsidian Vault",
+                                         "Games", "Crosswords"))
+BANK_TECH_DIRS = ["tech", "computer", "technology"]  # tried first, in order
 
-def emit_puzzle(puzzle):
-    g = validate(puzzle)
-    n = puzzle["size"]
-    starts = {}
-    num = 1
-    for r in range(n):
-        for c in range(n):
-            if g[r][c] == ".":
+
+def _bank_valid(p):
+    """Mirror the converter's validate(): every clue reads back, no orphans.
+    Accepts grid either as list-of-strings OR list-of-lists; normalizes first.
+    Returns False on any malformed/oversized entry rather than raising."""
+    raw = p.get("grid")
+    if not isinstance(raw, list) or not raw:
+        return False
+    # normalize rows to strings
+    try:
+        rows = ["".join(row) if isinstance(row, list) else str(row) for row in raw]
+    except Exception:
+        return False
+    n = p.get("size") or len(rows)
+    if n != len(rows):
+        return False
+    width = min(len(r) for r in rows)
+    if width != max(len(r) for r in rows):
+        return False  # not square
+    grid = rows
+    for dirn in ("across", "down"):
+        for cl in p.get("clues", {}).get(dirn, []):
+            if not all(k in cl for k in ("num", "row", "col", "len", "answer", "clue")):
+                return False
+            r, c = cl["row"] - 1, cl["col"] - 1
+            if r < 0 or c < 0 or r >= n or c >= width:
+                return False
+            try:
+                got = "".join(grid[r][c + i] if dirn == "across" else grid[r + i][c]
+                              for i in range(cl["len"]))
+            except Exception:
+                return False
+            if got != cl["answer"]:
+                return False
+    return True
+
+
+def _load_bank_puzzles():
+    cand_dirs = []
+    for d in BANK_TECH_DIRS:
+        pp = os.path.join(BANK_DIR, d)
+        if os.path.isdir(pp):
+            cand_dirs.append(pp)
+    if not cand_dirs:
+        # fall back to every category subdir (math, science, ...)
+        cand_dirs = [os.path.join(BANK_DIR, d) for d in sorted(os.listdir(BANK_DIR))
+                     if os.path.isdir(os.path.join(BANK_DIR, d))]
+    puzzles = []
+    for d in cand_dirs:
+        for fp in sorted(_glob.glob(os.path.join(d, "*.json"))):
+            if os.path.basename(fp) in ("index.json", "Crosswords.md"):
                 continue
-            is_ac = (c == 0 or g[r][c-1] == ".") and (c+1 < n and g[r][c+1] != ".")
-            is_dn = (r == 0 or g[r-1][c] == ".") and (r+1 < n and g[r+1][c] != ".")
-            if is_ac or is_dn:
-                starts[(r, c)] = num
-                num += 1
-    across, down = [], []
-    for w, r, c in puzzle["across"]:
-        across.append({"num": starts[(r-1, c-1)], "row": r, "col": c, "len": len(w),
-                       "answer": w, "clue": _clue(w)})
-    for w, r, c in puzzle["down"]:
-        down.append({"num": starts[(r-1, c-1)], "row": r, "col": c, "len": len(w),
-                     "answer": w, "clue": _clue(w)})
-    return {"title": puzzle["title"], "category": puzzle.get("category", ""), "size": n,
-            "grid": g, "clues": {"across": across, "down": down}}
+            try:
+                pz = json.load(open(fp))
+            except Exception:
+                continue
+            if not _bank_valid(pz):
+                continue
+            # require a real across list (the whole point of this fix)
+            if len(pz.get("clues", {}).get("across", [])) < 2:
+                continue
+            puzzles.append(pz)
+    # stable de-dup by slug/title+size
+    seen, out = set(), []
+    for pz in puzzles:
+        key = (pz.get("slug") or pz.get("title"), pz.get("size"))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(pz)
+    return out
 
-XLUES = {
-    "COMPUTER": "The machine you're using right now", "CPU": "The chip that does the thinking",
-    "RAM": "Short-term memory your PC forgets when off", "SSD": "Storage with no moving parts",
-    "HDD": "Spinning-disk storage", "GPU": "Crunches graphics and AI math",
-    "USB": "The universal plug on every gadget", "WIFI": "Wireless internet in the air",
-    "HTML": "The markup language of web pages", "CSS": "Styles the look of a web page",
-    "HTTP": "How browsers fetch pages", "URL": "A web address",
-    "JAVA": "A write-once-run-anywhere language", "CACHE": "Fast storage for frequent data",
-    "PIXEL": "One tiny dot of light on screen", "MODEM": "Turns signal into data and back",
-    "ROUTER": "Directs traffic between your devices and the net", "SERVER": "A computer that serves others",
-    "KERNEL": "The core of an operating system", "DRIVER": "Lets the OS talk to hardware",
-    "VIRUS": "Self-copying malicious program", "TROJAN": "Malware disguised as something harmless",
-    "COOKIE": "A small bit of site data in your browser", "PORT": "A doorway number for network traffic",
-    "NODE": "One point in a network", "PACKET": "A chunk of data sent over the net",
-    "QUERY": "A question you ask a database", "HASH": "A fixed fingerprint of data",
-    "BYTE": "8 bits — one character of memory", "THREAD": "One line of execution in a program",
-    "SOCKET": "An endpoint for sending data", "GATEWAY": "The door between two networks",
-    "ETHERNET": "Wired networking with a cable", "DAEMON": "A background helper process",
-    "COMPILER": "Turns code into machine language", "VIRTUAL": "Simulated, not physical",
-    "BINARY": "Just zeros and ones", "ALGORITHM": "A step-by-step recipe for solving a problem",
-    "NETWORK": "Devices wired together to share", "INTERNET": "The world's network of networks",
-    "KEYBOARD": "Where your fingers live", "SOFTWARE": "The programs, not the metal",
-    "HARDWARE": "The physical parts you can touch", "MONITOR": "The screen you stare at",
-    "PRINTER": "Puts pixels onto paper", "PASSWORD": "The secret that proves it's you",
-    "DATABASE": "An organized pile of data", "FIREWALL": "Guards the door to your network",
-    "BANDWIDTH": "How wide the data pipe is", "PROCESSOR": "Does the number-crunching",
-    "LAPTOP": "A computer you can carry", "CHARGERS": "Gives your gear power",
-    "POWER": "The juice that runs it all", "DATA": "The facts your PC stores",
-    "INPUT": "What you type or click in", "CABLE": "Carries signal or power",
-    "WIRE": "A thin conductor", "CLOUD": "Someone else's computer, online",
-    "LINUX": "The free open-source OS", "MACOS": "Apple's desktop operating system",
-    "WINDOWS": "Microsoft's operating system", "BACKUP": "A second copy, just in case",
-    "MALWARE": "Software built to do harm", "PHISHING": "A scam that steals your login",
-    "ENCRYPT": "Scramble so only the key opens it", "SPAM": "Unwanted bulk junk mail",
-}
-def _clue(w):
-    return XLUES.get(w, w.title())
-
-# Build puzzles from an "across spine + down crosses" spec. The builder places each
-# down word at the first column whose across-letter matches the down word's first
-# letter — so every crossing is guaranteed valid. (Same proven pattern as the
-# original 5x5 puzzles, generalized to richer sizes.)
-def puzzle_from_across(title, category, across, down_words):
-    placed = {}
-    for d in down_words:
-        for k, ch in enumerate(across):
-            if ch == d[0] and k not in placed:
-                placed[k] = d
-                break
-    n = max(len(across), max((len(d) for d in placed.values()), default=0))
-    spec = {"title": title, "category": category, "size": n,
-            "across": [(across, 1, 1)],
-            "down": [(d, 1, k + 1) for k, d in sorted(placed.items())]}
-    return spec
-
-# 18 hand-built puzzles (varied sizes). Each (title, category, ACROSS_SPINE,
-# [down words]). The builder places each down word at the first spine column whose
-# letter matches the down word's first letter, so every crossing is guaranteed
-# valid. Only down words whose first letter appears in the spine are placed;
-# all specs below are verified by emit_puzzle()'s validate() at startup.
-_PUZ_SPECS = [
-    ("Storage", "hardware", "COMPUTER", ["CPU", "RAM", "SSD", "USB", "MODEM", "ROUTER", "SERVER"]),
-    ("Network", "web", "NETWORK", ["NODE", "ETHERNET", "ROUTER", "WIFI", "DATA", "KERNEL", "PORT"]),
-    ("Web", "web", "INTERNET", ["INPUT", "NODE", "DATA", "ETHERNET", "RAM", "TROJAN"]),
-    ("Typing", "hardware", "KEYBOARD", ["KERNEL", "ETHERNET", "USB", "BACKUP", "RAM", "DATA"]),
-    ("Programs", "software", "SOFTWARE", ["SSD", "SERVER", "FIREWALL", "TROJAN", "RAM", "ETHERNET"]),
-    ("Metal", "hardware", "HARDWARE", ["HDD", "RAM", "DATA", "WIRE", "MODEM", "ROUTER", "ETHERNET"]),
-    ("Screen", "hardware", "MONITOR", ["MODEM", "DATA", "NODE", "INPUT", "RAM", "SERVER"]),
-    ("Paper", "hardware", "PRINTER", ["PORT", "RAM", "INPUT", "TROJAN", "ETHERNET", "DATA"]),
-    ("Secret", "security", "PASSWORD", ["PIXEL", "SERVER", "SSD", "WIFI", "NODE", "DATA", "RAM"]),
-    ("Data", "software", "DATABASE", ["DATA", "BACKUP", "SERVER", "CACHE", "ETHERNET", "SSD"]),
-    ("Wall", "security", "FIREWALL", ["SSD", "INPUT", "RAM", "ETHERNET", "WIFI", "DATA", "SERVER"]),
-    ("Pipe", "web", "BANDWIDTH", ["BACKUP", "DATA", "NODE", "WIRE", "INPUT", "TROJAN", "HDD"]),
-    ("Brain", "software", "ALGORITHM", ["RAM", "LINUX", "GPU", "INPUT", "TROJAN", "MODEM", "SERVER"]),
-    ("Chip", "hardware", "PROCESSOR", ["PORT", "RAM", "CACHE", "ETHERNET", "SERVER", "SSD", "DATA"]),
-    ("Carry", "hardware", "LAPTOPS", ["LINUX", "BACKUP", "PIXEL", "TROJAN", "PORT", "SERVER", "SSD"]),
-    ("Power", "hardware", "CHARGERS", ["CACHE", "HDD", "RAM", "GATEWAY", "ETHERNET", "DATA", "SERVER"]),
-    ("Online", "web", "CLOUD", ["CACHE", "LINUX", "USB", "DATA", "SERVER"]),
-    ("Languages", "software", "JAVA", ["KERNEL", "BACKUP", "VIRUS", "DATA", "RAM", "SERVER", "NODE", "MODEM"]),
-]
 
 def build_puzzles():
-    out = []
-    for title, cat, across, downs in _PUZ_SPECS:
-        spec = puzzle_from_across(title, cat, across, downs)
-        out.append(emit_puzzle(spec))
-    return out
+    return _load_bank_puzzles()
+
 
 # ----------------------------------------------------------------------------
 # WORD OF THE DAY pool (40 curated tech terms; + EXTRA for refill)

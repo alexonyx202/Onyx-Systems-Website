@@ -17,16 +17,20 @@ var XW = (function(){
       fetch('data/today_crossword.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){todays=t;}).catch(function(){console.warn('today_crossword load failed');})
     ]).then(cb);
   }
-  /* Render a SMALL static preview (no inputs) into #el. */
+  /* Render a SMALL static preview (no inputs) into #el.
+     Shape-only silhouette: shows the puzzle outline via filled vs blocked
+     cells — no solution letters (unreadable on large grids). The thumbnail is
+     a launch affordance; the full puzzle (with clues + letters) opens on click. */
   function renderThumb(el, titleEl){
     var p=current(); if(!p||!el)return;
     if(titleEl) titleEl.textContent=p.title||'Today’s Puzzle';
     var n=p.size, grid=p.grid;
     el.innerHTML=''; el.style.gridTemplateColumns='repeat('+n+',1fr)';
+    el.style.gridTemplateRows='repeat('+n+',1fr)';
     for(var r=0;r<n;r++)for(var c=0;c<n;c++){
       var ch=grid[r][c];
-      var cell=document.createElement('div'); cell.className='xw-tcell'+(ch==='.'?' block':'');
-      if(ch!=='.') cell.textContent=ch;
+      var cell=document.createElement('div');
+      cell.className='xw-tcell'+(ch==='.'?' block':'');
       el.appendChild(cell);
     }
   }
@@ -53,7 +57,7 @@ var XW = (function(){
       var byW=Math.floor((availW - (n-1)*gap) / n);
       var byH=Math.floor((availH - (n-1)*gap) / n);
       var cell=Math.min(byW, byH);
-      cell=Math.max(22, Math.min(cell, 60));                /* tappable, can fill a tall desktop screen */
+      cell=Math.max(14, Math.min(cell, 60));                /* fits large grids, tappable, fills tall screens */
       return cell;
     }
     function paint(){ /* hoisted below */ }

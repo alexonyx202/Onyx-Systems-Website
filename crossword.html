@@ -20,8 +20,8 @@
   .close{display:inline-block;text-decoration:none;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--cream);font-weight:700;border:1px solid rgba(194,112,61,.4);transition:.2s}
   .close:hover{background:var(--copper);color:#fff}
   .layout{display:contents}
-  .board{grid-area:board;background:linear-gradient(180deg,#15131c,#0d0b13);border:2px solid var(--copper);border-radius:16px;padding:14px;display:flex;justify-content:center;align-items:center;min-width:0;min-height:0}
-  .xw-grid{display:grid;gap:3px;background:#0a0612;padding:6px;border-radius:8px}
+  .board{grid-area:board;background:linear-gradient(180deg,#15131c,#0d0b13);border:2px solid var(--copper);border-radius:16px;padding:14px;display:flex;justify-content:center;align-items:center;min-width:0;min-height:0;overflow:auto}
+  .xw-grid{display:grid;gap:3px;background:#0a0612;padding:6px;border-radius:8px;margin:auto}
   .xw-cell{position:relative;width:var(--xw-cell);height:var(--xw-cell);background:#f3ead9;border-radius:3px}
   .xw-cell.block{background:transparent}
   .xw-cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:calc(var(--xw-cell) * 0.78);font-weight:800;text-transform:uppercase;color:#16161a;padding:0;border-radius:3px;cursor:pointer}
