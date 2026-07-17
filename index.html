@@ -482,7 +482,7 @@
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;display:inline-block;vertical-align:middle;margin-right:16px;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   .arcade-sec .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px}
   .arcade-sec .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
-  .arcade-sec .game-card .gthumb{position:relative;width:100%;height:190px;object-fit:cover;display:block;background:#05080a;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none;transition:transform .35s ease,filter .35s ease}
+  .arcade-sec .game-card .gthumb{position:relative;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block;background:#05080a;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none;transition:transform .35s ease,filter .35s ease}
   .arcade-sec .game-card:hover .gthumb{transform:scale(1.06);filter:saturate(1.08) contrast(1.04)}
   .arcade-sec .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);pointer-events:none}
   .arcade-sec .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11);text-align:center}
@@ -492,7 +492,7 @@
   .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
 .arcade-sec .game-card{flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,260px);height:384px}
 .arcade-sec .gdesc{display:none}
-.arcade-sec .gthumb{aspect-ratio:auto;min-height:0}
+.arcade-sec .gthumb{aspect-ratio:16/9;min-height:0}
 .arcade-sec .gbody{padding:14px 14px 16px;gap:8px;flex:1}
 .arcade-sec .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center;justify-content:center;text-align:center}
 .arcade-sec .gtag{font-size:12px;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:center}
