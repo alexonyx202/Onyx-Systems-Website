@@ -241,7 +241,7 @@
   .hub .sec-head p,.news .sec-head p,.engage .sec-head p{max-width:680px;margin-left:auto;margin-right:auto}
 
   /* ===== HUB / SERVICES ===== */
-  .hub{padding:var(--s7) 0 var(--s5);background:var(--surface)}
+  .hub{padding:var(--s7) var(--s5) var(--s5);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow)}
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s4)}
   .tile{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;
     cursor:pointer;transition:.2s;display:flex;gap:14px;align-items:center;text-align:left;width:100%;min-height:84px}
@@ -526,7 +526,7 @@
   .review-summary a{margin-left:auto}
 
   /* ===== TRUST BADGES (below Find Us) — enlarged ~20%, crisp, centered ===== */
-  .trust-badges{background:var(--surface);padding:var(--s6) 0;border-top:1px solid var(--line)}
+  .trust-badges{width:min(var(--maxw),92vw);margin:var(--s5) auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:var(--s6)}
   .badges-row{display:flex;gap:var(--s5);justify-content:center;flex-wrap:wrap;max-width:860px;margin:0 auto}
   .badge{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line-strong);
     border-radius:var(--r-md);padding:18px 24px;font-size:19px;font-weight:600;color:var(--text);
