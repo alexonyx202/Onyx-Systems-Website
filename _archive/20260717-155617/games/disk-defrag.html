@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- user-scalable=no + maximum-scale=1 stops mobile double-tap zoom; 100dvh keeps everything on one screen -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>DiskDefrag.exe</title>
+<style>
+  /* ===== Theme variables (Classic Light = default, Cyber Dark via body.dark) ===== */
+  :root{
+    --bg:#c0c0c0; --panel:#d4d0c8; --panel2:#ece9e4;
+    --title:#000080; --titletext:#ffffff;
+    --text:#000000; --muted:#404040;
+    --boardbg:#ffffff; --grid:rgba(0,0,0,.08);
+    --accent:#000080; --accenttext:#ffffff;
+    --bl:#ffffff; --bd:#404040;            /* bevel light / dark */
+    --glow:none; --font:"Tahoma","Segoe UI",Geneva,Verdana,sans-serif;
+    --frag:#b23b3b; --ok:#2ecc71;           /* disk-map fragmented / defragged */
+    --highlight:#b35900;                    /* gold/amber highlight — readable on light gray */
+  }
+  body.dark{
+    --bg:#000000; --panel:#0a0e14; --panel2:#0d131c;
+    --title:#0a0e14; --titletext:#00ffea;
+    --text:#9fefff; --muted:#6fb3b3;
+    --boardbg:#05080a; --grid:rgba(0,255,234,.07);
+    --accent:#00ffea; --accenttext:#001014;
+    --bl:#00ffea; --bd:#003b36;
+    --glow:0 0 6px #00ffea, 0 0 14px rgba(0,255,234,.35);
+    --font:"Consolas","SFMono-Regular",Menlo,Monaco,monospace;
+    --frag:#7a1f1f; --ok:#19e07a;
+    --highlight:#ffd700;
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; padding:0; height:100%; width:100%; overflow:hidden; background:var(--bg);
+    font-family:var(--font); color:var(--text); user-select:none; -webkit-user-select:none;
+    overscroll-behavior:none; -webkit-text-size-adjust:100%; touch-action:none; }
+  /* ===== Win95-style bevel helpers ===== */
+  .out{ border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl); }
+  .in{ border:2px solid; border-color:var(--bd) var(--bl) var(--bl) var(--bd); }
+  /* ===== Window shell ===== */
+  .win{ position:relative; width:min(560px,96vw); margin:0 auto; background:var(--panel);
+    border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl);
+    box-shadow:var(--glow); display:flex; flex-direction:column;
+    height:100vh; height:100dvh; max-height:100dvh; min-height:0; }
+  .titlebar{ display:flex; align-items:center; gap:8px; background:var(--title); color:var(--titletext);
+    padding:4px 6px; font-weight:bold; text-shadow:var(--glow); letter-spacing:.5px; }
+  .titlebar .ico{ width:16px; height:16px; background:var(--accenttext); border:1px solid var(--accent); flex:0 0 auto; }
+  .titlebar .ttl{ flex:1; font-size:14px; }
+  .titlebar .x{ width:18px; height:16px; background:var(--panel); color:var(--text); text-align:center;
+    line-height:12px; font-weight:bold; cursor:default; }
+  .titlebar .tbtn{ width:22px; height:16px; background:var(--titletext); color:var(--title);
+    border:1px solid var(--titletext); font-size:12px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; padding:0; flex:0 0 auto; }
+  .titlebar .tbtn:active{ filter:brightness(.85); }
+  .menubar{ display:flex; gap:14px; padding:3px 8px; font-size:12px; color:var(--muted); }
+  .menubar span u{ text-decoration:underline; }
+  .body{ display:flex; gap:10px; padding:10px; align-items:stretch; flex:1 1 auto; min-height:0; }
+  .stage{ flex:1 1 auto; display:flex; flex-direction:column; min-width:0; min-height:0; }
+  .canvas-wrap{ flex:0 1 auto; width:fit-content; margin:0 auto; display:flex; align-items:center; justify-content:center; min-height:0;
+    background:var(--boardbg); border:2px solid; border-color:var(--bd) var(--bl) var(--bl) var(--bd); overflow:hidden; }
+  canvas#game{ display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;
+    aspect-ratio:1/2; touch-action:none; image-rendering:auto; }
+  .statusbar{ margin-top:6px; display:flex; gap:6px; font-size:11px; color:var(--muted); }
+  .statusbar .cell{ flex:1; padding:2px 6px; background:var(--panel2); }
+  /* ===== Side panel (HUD + leaderboard) ===== */
+  .side{ flex:0 0 190px; display:flex; flex-direction:column; gap:8px; min-height:0; overflow:hidden; }
+  .panel{ background:var(--panel2); padding:6px; min-height:0; }
+  .panel h3{ margin:0 0 4px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); }
+  .stat{ display:flex; justify-content:space-between; font-size:13px; padding:1px 0; }
+  .stat b{ color:var(--accent); text-shadow:var(--glow); }
+  canvas#next{ display:block; width:100%; height:auto; max-height:100%; object-fit:contain; background:var(--boardbg);
+    border:2px solid; border-color:var(--bd) var(--bl) var(--bl) var(--bd); touch-action:none; }
+  .lb{ list-style:none; margin:0; padding:0; font-size:12px; }
+  .lb li{ display:flex; justify-content:space-between; padding:2px 4px; border-bottom:1px dotted var(--muted); }
+  .lb li .rk{ color:var(--muted); }
+  .lb li .nm{ color:var(--accent); text-shadow:var(--glow); font-weight:bold; }
+  .btn{ font-family:var(--font); font-size:13px; padding:6px 10px; background:var(--panel); color:var(--text);
+    border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl); cursor:pointer; }
+  .btn:active{ border-color:var(--bd) var(--bl) var(--bl) var(--bd); }
+  .btn:focus-visible, .padbtn:focus-visible, #initials:focus-visible, #winInitials:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px; }
+  .btn.primary{ background:var(--accent); color:var(--accenttext); text-shadow:var(--glow); font-weight:bold; }
+  /* ===== Touch pad ===== */
+  .touchpad{ display:none; grid-template-columns:repeat(4,1fr); gap:8px; padding:8px 10px 12px; }
+  .padbtn{ font-family:var(--font); font-size:15px; font-weight:bold; padding:0; height:60px; color:var(--text);
+    background:var(--panel2); border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl);
+    border-radius:8px; touch-action:none; user-select:none; display:flex; align-items:center; justify-content:center; }
+  .padbtn:active{ border-color:var(--bd) var(--bl) var(--bl) var(--bd); background:var(--accent); color:var(--accenttext); }
+  /* ===== Overlays (title / game over) ===== */
+  .overlay{ position:absolute; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:center;
+    justify-content:center; flex-direction:column; padding:14px; z-index:20; text-align:center; }
+  .overlay.hidden{ display:none; }
+  .dialog{ width:min(420px,94%); background:var(--panel); border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl);
+    box-shadow:var(--glow); }
+  .dialog .bar{ background:var(--title); color:var(--titletext); text-shadow:var(--glow); padding:5px 8px; font-weight:bold; text-align:left; }
+  .dialog .content{ padding:14px; display:flex; flex-direction:column; gap:10px; }
+  .dialog .big{ font-size:18px; font-weight:bold; color:var(--accent); text-shadow:var(--glow); }
+  .dialog .sub{ font-size:13px; color:var(--muted); }
+  /* Win / "Defrag Complete" theming — green/cyan success vs red failure */
+  .dialog.win{ border-color:var(--ok); box-shadow:0 0 18px var(--ok); }
+  .dialog.win .bar.win-bar{ background:linear-gradient(90deg,#0a3d22,#0c5e34); color:#aaffc8; text-shadow:0 0 6px var(--ok); border-bottom:1px solid var(--ok); }
+  body.light .dialog.win .bar.win-bar{ background:linear-gradient(90deg,#bff5d6,#9be8c2);
+    color:#034d28; text-shadow:0 0 4px rgba(25,224,122,.6); border-bottom:1px solid var(--ok); }
+  .dialog.over{ border-color:#ff4040; box-shadow:0 0 18px #ff4040; }
+  .dialog.win .big.win-title{ color:var(--ok); text-shadow:0 0 12px var(--ok); font-size:20px; }
+  .dialog .row{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .dialog .instr{ font-size:12px; color:var(--muted); text-align:left; line-height:1.5; background:var(--panel2); padding:8px; }
+  .dialog .instr code{ color:var(--accent); text-shadow:var(--glow); }
+  #initials{ width:80px; text-transform:uppercase; text-align:center; font-weight:bold; font-family:var(--font);
+    font-size:18px; padding:4px; border:2px solid; border-color:var(--bd) var(--bl) var(--bl) var(--bd); background:var(--panel2); color:var(--text); }
+  .pause-msg{ position:absolute; inset:0; display:none; align-items:center; justify-content:center; font-size:28px;
+    font-weight:bold; color:var(--accent); text-shadow:var(--glow); background:rgba(0,0,0,.35); z-index:15; }
+  /* ===== Disk map (title screen) ===== */
+  .disk-map{ display:grid; grid-template-columns:repeat(10, 1fr); gap:2px; margin:4px 0; }
+  .disk-map .cell{ aspect-ratio:1/1; border-radius:2px; background:var(--frag); box-shadow:inset 0 0 0 1px rgba(0,0,0,.25); transition:background .35s, box-shadow .35s; }
+  .disk-map .cell.ok{ background:var(--ok); box-shadow:inset 0 0 0 1px rgba(255,255,255,.2), 0 0 4px var(--ok); }
+  .disk-legend{ display:flex; gap:12px; font-size:11px; opacity:.8; margin:2px 0; }
+  .disk-legend .sw{ display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:4px; vertical-align:middle; }
+  .disk-legend .sw.frag{ background:var(--frag); }
+  .disk-legend .sw.ok{ background:var(--ok); }
+  .disk-pct{ font-size:12px; font-weight:bold; color:var(--accent); text-shadow:var(--glow); margin-top:2px; }
+  /* ===== T-Spin / B2B flash banner ===== */
+  .flash{ position:absolute; left:50%; top:18%; transform:translateX(-50%);
+    padding:6px 14px; border-radius:4px; font-weight:bold; font-size:18px; pointer-events:none;
+    background:rgba(0,0,0,.55); color:var(--highlight); text-shadow:0 0 8px var(--highlight); border:1px solid var(--highlight);
+    opacity:0; transition:opacity .25s; z-index:16; white-space:nowrap; }
+  .flash.show{ opacity:1; animation:flashpop .4s ease-out; }
+  @keyframes flashpop{ 0%{ transform:translateX(-50%) scale(.7); } 60%{ transform:translateX(-50%) scale(1.12); } 100%{ transform:translateX(-50%) scale(1); } }
+  /* ===== Responsive: phone layout ===== */
+  @media (max-width:700px){
+    .win{ width:100vw; height:100svh; height:100dvh; max-height:100dvh; margin:0; border-width:0; }
+    .body{ flex-direction:column; padding:6px; gap:6px; flex:1 1 auto; min-height:0; }
+    .stage{ flex:1 1 auto; min-height:0; }
+    .canvas-wrap{ min-height:0; }
+    .side{ flex:0 0 auto; flex-direction:row; flex-wrap:wrap; gap:6px; }
+    .side .panel{ flex:1 1 30%; }
+    .side .panel.lbpanel{ flex:1 1 100%; }
+    .touchpad{ display:grid; }
+    .menubar{ display:none; }
+    .overlay{ padding:8px; }
+    canvas#next{ max-height:120px; }
+    canvas#hold{ max-height:64px; }
+  }
+  @media (max-width:380px){ .padbtn{ height:52px; font-size:13px; } }
+</style>
+</head>
+<body class="dark">
+  <div class="win">
+    <div class="titlebar">
+      <div class="ico"></div>
+      <div class="ttl">DiskDefrag.exe</div>
+      <button class="tbtn theme-toggle" id="themeBtnBar" title="Toggle theme">◐</button>
+      <button class="tbtn" id="pauseBtnBar" title="Pause">II</button>
+      <div class="x out" title="close">×</div>
+    </div>
+    <div class="menubar">
+      <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>H</u>elp</span>
+    </div>
+
+    <div class="body">
+      <div class="stage">
+        <div class="canvas-wrap">
+          <canvas id="game" width="600" height="1200"></canvas>
+          <div class="flash" id="flash"></div>
+        </div>
+        <div class="statusbar">
+          <div class="cell out">STATUS: <span id="statusText">IDLE</span></div>
+          <div class="cell out">NEXT PIECE →</div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="panel out">
+          <h3>Hold</h3>
+          <canvas id="hold" width="160" height="120"></canvas>
+        </div>
+        <div class="panel out">
+          <h3>Defrag Stats</h3>
+          <div class="stat"><span>SCORE</span><b id="score">0</b></div>
+          <div class="stat"><span>FRAGMENTS</span><b id="lines">0</b></div>
+          <div class="stat"><span>PASS</span><b id="level">1</b></div>
+          <div class="stat"><span>PIECES</span><b id="pieces">0</b></div>
+          <div class="stat"><span>COMBO</span><b id="combo">0</b></div>
+        </div>
+        <div class="panel out">
+          <h3>Next</h3>
+          <canvas id="next" width="160" height="560"></canvas>
+        </div>
+        <div class="panel lbpanel out">
+          <h3>Top Defraggers</h3>
+          <ol class="lb" id="leaderboard"><li class="sub">No records yet</li></ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="touchpad">
+      <button class="padbtn" data-act="left">◀</button>
+      <button class="padbtn" data-act="rotate">⟳</button>
+      <button class="padbtn" data-act="rotccw">⟲</button>
+      <button class="padbtn" data-act="right">▶</button>
+      <button class="padbtn" data-act="hold">HOLD</button>
+      <button class="padbtn" data-act="soft">▼</button>
+      <button class="padbtn" data-act="hard">⤓ DROP</button>
+      <button class="padbtn" data-act="sound">🔊</button>
+      <button class="padbtn" data-act="pause">⏸ PAUSE</button>
+    </div>
+
+    <div class="pause-msg" id="pauseMsg">|| PAUSED</div>
+
+    <!-- TITLE SCREEN -->
+    <div class="overlay" id="titleScreen">
+      <div class="dialog">
+        <div class="bar">DiskDefrag.exe — Disk Optimization Utility</div>
+        <div class="content">
+          <div class="big">DEFRAGMENT YOUR DRIVE</div>
+          <div class="sub">Pack the data chunks, clear full bands, and keep the platter spinning.</div>
+          <div class="row">
+            <button class="btn primary" id="startBtn">▶ START DEFRAG</button>
+            <button class="btn theme-toggle" id="themeBtn">◐ THEME TOGGLE</button>
+            <button class="btn" id="soundBtn">🔊 SOUND</button>
+          </div>
+          <!-- Disk map: shows how "defragmented" the drive is as you score -->
+          <div class="panel out" style="text-align:left">
+            <h3>Drive Map — Fragmentation</h3>
+            <div class="disk-map" id="diskMap"></div>
+            <div class="disk-legend">
+              <span><i class="sw frag"></i>Fragmented</span>
+              <span><i class="sw ok"></i>Defragged</span>
+            </div>
+            <div class="disk-pct" id="diskPct">0% optimized</div>
+          </div>
+          <div class="instr">
+            <b>Desktop:</b> <code>← →</code> move · <code>↑ / X</code> rotate · <code>Z</code> rotate CCW ·
+            <code>↓</code> soft drop · <code>Space</code> hard drop · <code>Shift</code> hold · <code>P</code> pause · <code>M</code> mute<br>
+            <b>Mobile:</b> Use the on-screen touch buttons below. Hold <code>◀</code>/<code>▶</code> to slide continuously.<br>
+            <b>Pro tip:</b> the ghost shows where a piece lands; hold a piece with HOLD; rotate a T into a tight slot (T-Spin) and chain Tetrises for Back-to-Back bonuses.
+          </div>
+          <div class="panel out" style="text-align:left">
+            <h3>Top Defraggers</h3>
+            <ol class="lb" id="leaderboardTitle"><li class="sub">No records yet</li></ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div class="overlay hidden" id="gameOver">
+      <div class="dialog over">
+        <div class="bar">System Alert</div>
+        <div class="content">
+          <div class="big" style="color:#ff4040; text-shadow:0 0 8px #ff4040">Fatal Error: Drive Full</div>
+          <div class="sub">Final Score: <b id="finalScore" style="color:var(--accent);text-shadow:var(--glow)">0</b></div>
+          <div class="sub">Drive Optimization: <b id="driveGrade" style="color:var(--ok,#19e07a);text-shadow:0 0 6px var(--ok,#19e07a)">0%</b></div>
+          <div id="newHigh" class="sub" style="display:none; color:var(--highlight); text-shadow:0 0 6px var(--highlight)">★ NEW HIGH SCORE! Enter your initials: ★</div>
+          <div class="row" id="initialsRow" style="display:none">
+            <input id="initials" maxlength="3" placeholder="AMG" autocomplete="off" inputmode="text" autocapitalize="characters" enterkeyhint="done">
+            <button class="btn primary" id="saveScore">SAVE</button>
+          </div>
+          <div class="panel out" style="text-align:left">
+            <h3>Top Defraggers</h3>
+            <ol class="lb" id="leaderboardOver"><li class="sub">No records yet</li></ol>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="retryBtn">⟲ REBOOT &amp; RETRY</button>
+            <button class="btn theme-toggle" id="themeBtnOver">◐ THEME</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAUSE SCREEN -->
+    <div class="overlay hidden" id="pauseScreen">
+      <div class="dialog">
+        <div class="bar">Paused</div>
+        <div class="content">
+          <div class="big">|| PAUSED</div>
+          <div class="sub">The platter is spinning in low-power mode.</div>
+          <div class="row">
+            <button class="btn primary" id="resumeBtn">▶ RESUME</button>
+            <button class="btn" id="pauseNewGameBtn">⟲ NEW GAME</button>
+            <button class="btn theme-toggle" id="themeBtnPause">◐ THEME</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="winScreen">
+      <div class="dialog win">
+        <div class="bar win-bar">Operation Complete</div>
+        <div class="content">
+          <div class="big win-title">✔ Defrag Complete</div>
+          <div class="sub">The drive is fully optimized.</div>
+          <div class="sub">Final Score: <b id="winScore" style="color:var(--accent);text-shadow:var(--glow)">0</b></div>
+          <div class="sub">Drive Optimization: <b id="winGrade" style="color:var(--ok,#19e07a);text-shadow:0 0 6px var(--ok,#19e07a)">100%</b></div>
+          <div id="winNewHigh" class="sub" style="display:none; color:var(--highlight); text-shadow:0 0 6px var(--highlight)">★ NEW HIGH SCORE! Enter your initials: ★</div>
+          <div class="row" id="winInitialsRow" style="display:none">
+            <input id="winInitials" maxlength="3" placeholder="AMG" autocomplete="off" inputmode="text" autocapitalize="characters" enterkeyhint="done">
+            <button class="btn primary" id="winSaveScore">SAVE</button>
+          </div>
+          <div class="panel out" style="text-align:left">
+            <h3>Top Defraggers</h3>
+            <ol class="lb" id="leaderboardWin"><li class="sub">No records yet</li></ol>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="winRetryBtn">⟲ DEFRAG AGAIN</button>
+            <button class="btn theme-toggle" id="winBtnOver">◐ THEME</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ===================================================================
+  //  CONFIG / CONSTANTS
+  // ===================================================================
+  const COLS = 10, ROWS = 20;        // standard playfield
+  const CELL = 30;                   // logical px per cell (canvas internally 2x for crispness)
+  const SOFT_INTERVAL = 80;          // HELD soft-drop rate: ms per cell while ArrowDown is HELD (~12.5 cells/sec; a 20-row traversal takes ~1.6s, clearly controlled). A single ArrowDown keydown still steps exactly ONE row (see softDrop() in keydown handler) — it never teleports to the floor. Space remains the ONLY instant/hard drop.
+  const LOCK_DELAY = 500;            // ms a piece can rest before locking (desktop)
+  const LOCK_DELAY_MOBILE = 650;     // ms on touch devices — a bit more room to slide/rotate
+  const MAX_RESETS = 15;             // move/rotate lock-delay resets before forced lock
+  const RAM_EVERY = 10;              // drop a RAM Booster every Nth piece
+  const RAM_BONUS = 120;             // points for a RAM Booster detonation
+  const NEXT_COUNT = 5;              // pieces shown in the Next queue
+  const LINE_SCORES = [0, 100, 300, 500, 800];  // single/double/triple/tetris * (level+1)
+  const LB_KEY = 'diskdefrag_lb_v1';
+  // Detect a touch-primary device to tune feel (more forgiving lock delay on phones).
+  const IS_TOUCH = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) ||
+                  (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+
+  // Per-level gravity (ms per cell). Index = level; >=15 falls back to 50ms.
+  const GRAVITY = [800,720,630,550,470,380,300,220,130,100,80,80,80,70,70,70];
+  function gravityFor(lv){ return lv < GRAVITY.length ? GRAVITY[lv] : 50; }
+
+  // ===================================================================
+  //  TETROMINO DEFINITIONS (SRS spawn orientations)
+  // ===================================================================
+  const BASE = {
+    I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+    J: [[1,0,0],[1,1,1],[0,0,0]],
+    L: [[0,0,1],[1,1,1],[0,0,0]],
+    O: [[1,1],[1,1]],
+    S: [[0,1,1],[1,1,0],[0,0,0]],
+    T: [[0,1,0],[1,1,1],[0,0,0]],
+    Z: [[1,1,0],[0,1,1],[0,0,0]],
+    RAM: [[1]],
+  };
+  const TYPES = ['I','J','L','O','S','T','Z'];
+
+  // Vibrant "data chunk" colors that pop on light AND dark backgrounds.
+  const COLORS = {
+    light: { I:'#00bcd4', J:'#2962ff', L:'#ff9100', O:'#ffd600', S:'#00c853', T:'#aa00ff', Z:'#ff1744', RAM:'#ffd700' },
+    dark:  { I:'#22e6ff', J:'#4f7bff', L:'#ffb02e', O:'#ffe14d', S:'#2bff88', T:'#d24bff', Z:'#ff4d6d', RAM:'#ffe23d' },
+  };
+
+  // ===================================================================
+  //  SRS WALL-KICK TABLES  (offsets in [x, y]; y positive = UP)
+  //  Rotation states: 0=spawn, 1=R(cw), 2=180, 3=L(ccw)
+  // ===================================================================
+  const KICKS_JLSTZ = {
+    '0>1': [[0,0],[-1,0],[-1,1],[0,-2],[1,-2]],
+    '1>0': [[0,0],[1,0],[1,-1],[0,2],[-1,2]],
+    '1>2': [[0,0],[1,0],[1,-1],[0,2],[-1,2]],
+    '2>1': [[0,0],[-1,0],[-1,1],[0,-2],[1,-2]],
+    '2>3': [[0,0],[1,0],[1,1],[0,-2],[-1,-2]],
+    '3>2': [[0,0],[-1,0],[-1,-1],[0,2],[1,2]],
+    '3>0': [[0,0],[-1,0],[-1,-1],[0,2],[1,2]],
+    '0>3': [[0,0],[1,0],[1,1],[0,-2],[-1,-2]],
+  };
+  const KICKS_I = {
+    '0>1': [[0,0],[-2,0],[1,0],[-2,-1],[1,2]],
+    '1>0': [[0,0],[2,0],[-1,0],[2,1],[-1,-2]],
+    '1>2': [[0,0],[-1,0],[2,0],[-1,2],[2,-1]],
+    '2>1': [[0,0],[1,0],[-2,0],[1,-2],[-2,1]],
+    '2>3': [[0,0],[2,0],[-1,0],[2,1],[-1,-2]],
+    '3>2': [[0,0],[-2,0],[1,0],[-2,-1],[1,2]],
+    '3>0': [[0,0],[1,0],[-2,0],[1,-2],[-2,1]],
+    '0>3': [[0,0],[-1,0],[2,0],[-1,2],[2,-1]],
+  };
+  function getKicks(type, from, to){
+    if(type === 'I') return KICKS_I[from+'>'+to];
+    if(type === 'O') return [[0,0]];
+    return KICKS_JLSTZ[from+'>'+to];
+  }
+
+  // ===================================================================
+  //  STATE
+  // ===================================================================
+  const STATE = { TITLE:'title', PLAY:'play', OVER:'over', WIN:'win' };
+  let state = STATE.TITLE;
+  let board, current, nextQueue, bag, pieceCount, holdType, holdUsed;
+  let score, lines, level, dropInterval;
+  let dropTimer, lockTimer, lockResets, softDropping, combo, paused;
+  let theme = 'dark';
+  try { const t = localStorage.getItem('dd_theme'); if(t === 'dark' || t === 'light') theme = t; } catch(e){}
+  let b2b = false;            // back-to-back chain (tetris / T-spin line clears)
+  let lastRotation = false;   // last successful move was a rotation (T-Spin req)
+  let lastKickIndex = -1;     // index of the SRS kick used by the last rotation (for mini/full)
+
+  // DOM refs
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  canvas.width = COLS*CELL*2; canvas.height = ROWS*CELL*2; ctx.scale(2,2);
+  const nextCv = document.getElementById('next');
+  const nctx = nextCv.getContext('2d');
+  nextCv.width = 4*20*2; nextCv.height = NEXT_COUNT*4*20*2; nctx.scale(2,2);
+  const holdCv = document.getElementById('hold');
+  const hctx = holdCv.getContext('2d');
+  holdCv.width = 4*20*2; holdCv.height = 3*20*2; hctx.scale(2,2);
+  const el = (id)=>document.getElementById(id);
+
+  // ===================================================================
+  //  AUDIO (lazy, guarded — no-op in headless)
+  // ===================================================================
+  let actx = null;
+  let muted = false;
+  try { muted = localStorage.getItem('dd_muted') === '1'; } catch(e){}
+  function initAudio(){
+    if(actx){ if(actx.state === 'suspended') actx.resume(); return; }
+    try {
+      actx = new (window.AudioContext || window.webkitAudioContext)();
+      // Browsers start the context "suspended" under autoplay policy; resume on creation
+      // and on the next user gesture so the first sound is audible.
+      if(actx.state === 'suspended') actx.resume();
+      const resume = () => { if(actx && actx.state === 'suspended') actx.resume(); };
+      window.addEventListener('pointerdown', resume, { once:true });
+      window.addEventListener('keydown', resume, { once:true });
+    } catch(e){ actx = null; }
+  }
+  function beep(freq, dur, type, vol){
+    if(muted || !actx) return;
+    try{
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type || 'square'; o.frequency.value = freq;
+      o.connect(g); g.connect(actx.destination);
+      const t = actx.currentTime;
+      g.gain.setValueAtTime(vol || 0.04, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.start(t); o.stop(t + dur);
+    } catch(e){}
+  }
+  function setMuted(m){
+    muted = !!m;
+    try { localStorage.setItem('dd_muted', muted ? '1' : '0'); } catch(e){}
+    const b = el('soundBtn');
+    if(b) b.textContent = muted ? '🔇 MUTED' : '🔊 SOUND';
+  }
+  const sfx = {
+    move(){ beep(220, 0.04, 'square', 0.025); },
+    rotate(){ beep(340, 0.05, 'square', 0.03); },
+    lock(){ beep(150, 0.06, 'triangle', 0.04); },
+    clear(){ beep(523, 0.12, 'sawtooth', 0.05); },
+    hard(){ beep(110, 0.08, 'square', 0.05); },
+    ram(){ beep(880, 0.14, 'sine', 0.06); setTimeout(()=>beep(1320,0.14,'sine',0.05),70); },
+    over(){ beep(80, 0.5, 'sawtooth', 0.06); },
+    win(){ [523,659,784,1047].forEach((f,i)=> setTimeout(()=>beep(f,0.16,'sine',0.06), i*120)); },
+  };
+
+  // ===================================================================
+  //  HELPERS
+  // ===================================================================
+  function cloneMat(m){ return m.map(row => row.slice()); }
+  function rotateCW(m){
+    const N = m.length;
+    const r = Array.from({length:N}, ()=>Array(N).fill(0));
+    for(let y=0;y<N;y++) for(let x=0;x<N;x++) r[x][N-1-y] = m[y][x];
+    return r;
+  }
+  function emptyBoard(){ return Array.from({length:ROWS}, ()=>Array(COLS).fill(null)); }
+
+  // Collision test for a matrix at (px,py). br<0 (above top) is allowed; sides/floor/occupied collide.
+  function collide(m, px, py){
+    for(let r=0;r<m.length;r++){
+      for(let c=0;c<m[r].length;c++){
+        if(!m[r][c]) continue;
+        const br = py + r, bc = px + c;
+        if(bc < 0 || bc >= COLS || br >= ROWS) return true;
+        if(br >= 0 && board[br][bc]) return true;
+      }
+    }
+    return false;
+  }
+
+  // 7-bag randomizer
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+  function nextFromBag(){
+    if(bag.length === 0) bag = shuffle(TYPES.slice());
+    return bag.pop();
+  }
+
+  function spawnX(type){
+    const N = BASE[type].length;
+    if(N === 4) return 3;   // I / 4-wide
+    if(N === 3) return 3;   // J L S T Z
+    if(N === 2) return 4;   // O
+    return 4;               // RAM (1x1, centered-ish)
+  }
+
+  // ===================================================================
+  //  PIECE SPAWN / HOLD
+  // ===================================================================
+  function spawnPiece(type){
+    const m = cloneMat(BASE[type]);
+    current = { type, matrix:m, rotation:0, x:spawnX(type), y:0, special:(type==='RAM') };
+    if(collide(current.matrix, current.x, current.y)){
+      current = null;
+      gameOver();
+      return false;
+    }
+    return true;
+  }
+
+  function spawn(){
+    pieceCount++;
+    let type = nextQueue.shift();
+    nextQueue.push(nextFromBag());
+    if(pieceCount % RAM_EVERY === 0) type = 'RAM';   // RAM Booster every 10th piece
+    holdUsed = false;
+    lastRotation = false;
+    lastKickIndex = -1;
+    return spawnPiece(type);
+  }
+
+  function hold(){
+    if(!current || holdUsed || state !== STATE.PLAY) return;
+    const t = current.type;
+    if(holdType === null){
+      holdType = t;
+      const nt = nextQueue.shift(); nextQueue.push(nextFromBag());
+      spawnPiece(nt);
+    } else {
+      const h = holdType; holdType = t; spawnPiece(h);
+    }
+    holdUsed = true;
+  }
+
+  // ===================================================================
+  //  PLAYER ACTIONS
+  // ===================================================================
+  function onManip(){ // successful move/rotate while resting -> reset lock delay (limited)
+    if(collide(current.matrix, current.x, current.y + 1)){
+      if(lockResets > 0){ lockTimer = 0; lockResets--; }
+    }
+  }
+  function move(dx){
+    if(!current || state !== STATE.PLAY || paused) return false;
+    if(!collide(current.matrix, current.x + dx, current.y)){
+      current.x += dx; sfx.move(); lastRotation = false; lastKickIndex = -1; onManip(); return true;
+    }
+    return false;
+  }
+  function rotate(dir){ // dir +1 = cw, -1 = ccw
+    if(!current || state !== STATE.PLAY || paused) return false;
+    if(current.type === 'O' || current.type === 'RAM'){ return false; }
+    const from = current.rotation;
+    const to = (from + (dir > 0 ? 1 : 3)) % 4;
+    const nm = (dir > 0) ? rotateCW(current.matrix) : rotateCW(rotateCW(rotateCW(current.matrix)));
+    const kicks = getKicks(current.type, from, to);
+    for(let ki = 0; ki < kicks.length; ki++){
+      const [kx, ky] = kicks[ki];
+      const nx = current.x + kx, ny = current.y - ky; // y up positive
+      if(!collide(nm, nx, ny)){
+        current.matrix = nm; current.rotation = to; current.x = nx; current.y = ny;
+        sfx.rotate(); lastRotation = true; lastKickIndex = ki; onManip(); return true;
+      }
+    }
+    return false;
+  }
+  function softDrop(){
+    if(!current || state !== STATE.PLAY || paused) return false;
+    if(!collide(current.matrix, current.x, current.y + 1)){ current.y++; score += 1; lastRotation = false; lastKickIndex = -1; return true; }
+    return false;
+  }
+  function hardDrop(){
+    if(!current || state !== STATE.PLAY || paused) return;
+    let d = 0;
+    while(!collide(current.matrix, current.x, current.y + 1)){ current.y++; d++; }
+    score += d * 2;
+    sfx.hard();
+    lastRotation = false;
+    lastKickIndex = -1;
+    lock();
+  }
+
+  // ===================================================================
+  //  LOCK / LINE CLEAR
+  // ===================================================================
+  // T-Spin detection (3-corner rule): T piece locked after a rotation, with >=3 of the
+  // 4 diagonal corners around its center occupied (wall counts as occupied).
+  // Returns 'full' (>=3 corners, or a kick-5 mini), 'mini' (2-point rule), or null.
+  function detectTSpin(){
+    if(current.type !== 'T' || !lastRotation) return null;
+    const cx = current.x + 1, cy = current.y + 1;   // center of the 3x3 T
+    const corners = [[cy-1,cx-1],[cy-1,cx+1],[cy+1,cx-1],[cy+1,cx+1]];
+    const filled = corners.map(([r,c]) =>
+      (c < 0 || c >= COLS || r >= ROWS) ? 1 : (r >= 0 && board[r][c] ? 1 : 0));
+    const occ = filled[0] + filled[1] + filled[2] + filled[3];
+    if(occ < 2) return null;
+    // The two "front" corners = the flat side of the T, which depends on rotation:
+    //  rot0 -> top edge (corners 0,1); rot1 -> right edge (1,3); rot2 -> bottom edge (2,3); rot3 -> left edge (0,2)
+    const front = { 0:[0,1], 1:[1,3], 2:[2,3], 3:[0,2] }[current.rotation];
+    const frontFilled = filled[front[0]] && filled[front[1]];
+    if(occ >= 3) return 'full';              // 3+ corners = full T-spin
+    if(occ === 2 && frontFilled){
+      // 2-point rule: both front corners filled -> mini, UNLESS the last kick was the big (5th) kick
+      return (lastKickIndex === 4) ? 'full' : 'mini';
+    }
+    return null;
+  }
+
+  function lock(){
+    if(!current) return;
+    const cells = [];
+    for(let r=0;r<current.matrix.length;r++){
+      for(let c=0;c<current.matrix[r].length;c++){
+        if(!current.matrix[r][c]) continue;
+        const br = current.y + r, bc = current.x + c;
+        if(br < 0){ gameOver(); return; }   // locked above the field => top out
+        board[br][bc] = { type: current.type };
+        cells.push([br, bc]);
+      }
+    }
+    lastLock = { cells: cells.slice(), t: performance.now() };   // hard/lock impact flash
+    sfx.lock();
+
+    const tspinType = detectTSpin();        // 'full' | 'mini' | null
+    const isTSpin = !!tspinType;
+    if(current.special){ // RAM Booster: clear 3x3 around itself
+      const [br, bc] = cells[0];
+      for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
+        const rr = br+dr, cc = bc+dc;
+        if(rr>=0 && rr<ROWS && cc>=0 && cc<COLS) board[rr][cc] = null;
+      }
+      score += RAM_BONUS;
+      sfx.ram();
+    }
+
+    const cleared = clearLines();
+    if(cleared > 0){
+      lines += cleared;
+      combo++;
+      // ---- scoring (Tetris Guideline, with T-Spin + Back-to-Back) ----
+      const isMini = tspinType === 'mini';
+      // a T-spin MINI that clears lines is still a "difficult" clear for B2B (mini no-clear is not)
+      const isDifficult = (cleared === 4) || isTSpin;   // Tetris or any T-Spin line clear
+      let base = 0;
+      if(tspinType === 'full'){
+        base = (cleared === 0 ? 400 : cleared === 1 ? 800 : cleared === 2 ? 1200 : 1600);
+      } else if(tspinType === 'mini'){
+        base = (cleared === 0 ? 100 : cleared === 1 ? 200 : cleared === 2 ? 400 : 800);
+      } else {
+        base = LINE_SCORES[cleared];
+      }
+      if(isDifficult && b2b) base = Math.floor(base * 1.5);   // Back-to-Back x1.5
+      let gained = base * (level + 1);
+      if(combo > 0) gained += 50 * combo * (level + 1);       // combo bonus
+      score += gained;
+
+      // Perfect Clear (all-clear) bonus — board fully emptied by this clear
+      if(board.every(row => row.every(c => !c))){
+        const PC = [0, 800, 1200, 1800, 2000][cleared] || 0;
+        score += PC * (level + 1);
+        showFlash('PERFECT CLEAR ✓');
+      }
+
+      // update B2B chain + flash banner (exactly ONE banner per lock — fixes double-flash on B2B Tetris)
+      let banner = null;
+      if(isTSpin && cleared === 0){
+        banner = isMini ? 'T-SPIN MINI' : 'T-SPIN';
+      } else if(cleared > 0){
+        if(isDifficult && b2b) banner = (isTSpin ? (isMini ? 'T-SPIN MINI ' : 'T-SPIN ') : 'B2B ') + clearedLabel(cleared);
+        else if(isTSpin)        banner = (isMini ? 'T-SPIN MINI ' : 'T-SPIN ') + clearedLabel(cleared);
+        else if(cleared === 4)  banner = 'TETRIS';
+      }
+      if(banner) showFlash(banner);
+      // B2B chain update: a difficult line clear (Tetris or T-spin line clear) continues it;
+      // only a non-difficult LINE CLEAR breaks it. (isDifficult already true for any T-spin.)
+      b2b = !!isDifficult;
+
+      level = Math.floor(lines / 10);
+      dropInterval = gravityFor(level);
+      sfx.clear();
+      updateDiskMap();
+    } else {
+      combo = -1;
+      // NOTE: a no-clear lock must NOT break the B2B chain — only a non-difficult LINE CLEAR does
+      // (handled by `b2b = false` in the cleared>0 branch above). So nothing to reset here.
+    }
+
+    spawn();
+    // WIN state: drive fully optimized (reached the 100% disk-map cap)
+    if(state === STATE.PLAY && score >= WIN_SCORE) winGame();
+  }
+  function clearedLabel(n){ return n === 1 ? 'SINGLE' : n === 2 ? 'DOUBLE' : n === 3 ? 'TRIPLE' : n === 4 ? 'TETRIS' : ''; }
+  let flashTimer = null;
+  let lastLock = null;   // { cells:[[r,c]...], t:ms } for the hard-drop impact flash
+  function showFlash(msg){
+    const f = el('flash'); if(!f) return;
+    f.textContent = msg;
+    f.classList.remove('show'); void f.offsetWidth; f.classList.add('show');
+    if(flashTimer) clearTimeout(flashTimer);
+    flashTimer = setTimeout(()=> f.classList.remove('show'), 1400);
+  }
+
+  function clearLines(){
+    let cleared = 0;
+    for(let r = ROWS - 1; r >= 0; r--){
+      if(board[r].every(cell => cell)){
+        board.splice(r, 1);
+        board.unshift(Array(COLS).fill(null));
+        cleared++; r++; // re-check shifted row
+      }
+    }
+    return cleared;
+  }
+
+  // ===================================================================
+  //  GAME FLOW
+  // ===================================================================
+  function start(){
+    board = emptyBoard();
+    score = 0; lines = 0; level = 0; pieceCount = 0; combo = -1; b2b = false; lastRotation = false;
+    holdType = null; holdUsed = false;
+    dropInterval = gravityFor(0);
+    dropTimer = 0; lockTimer = 0; lockResets = MAX_RESETS;
+    softDropping = false; paused = false;
+    bag = []; nextQueue = []; for(let i=0;i<5;i++) nextQueue.push(nextFromBag());
+    state = STATE.PLAY;
+    el('titleScreen').classList.add('hidden');
+    el('gameOver').classList.add('hidden');
+    el('winScreen').classList.add('hidden');
+    el('pauseScreen').classList.add('hidden');
+    el('pauseMsg').style.display = 'none';
+    el('statusText').textContent = 'DEFRAGGING';
+    spawn();
+    renderHUD();
+    updateDiskMap();
+  }
+
+  function gameOver(){
+    state = STATE.OVER;
+    softDropping = false;
+    sfx.over();
+    el('statusText').textContent = 'DRIVE FULL';
+    el('finalScore').textContent = score;
+    el('driveGrade').textContent = driveGrade() + '%';
+    const q = qualifies(score);
+    el('newHigh').style.display = q ? 'block' : 'none';
+    el('initialsRow').style.display = q ? 'flex' : 'none';
+    if(q){ const inp = el('initials'); inp.value = ''; try{ inp.focus(); }catch(e){} }
+    renderLeaderboard('leaderboardOver');
+    el('gameOver').classList.remove('hidden');
+  }
+
+  // "Defrag Complete" WIN state — reached when the drive hits 100% optimized (score >= WIN_SCORE).
+  // Distinct green/cyan success screen (vs the red "Drive Full" failure).
+  const WIN_SCORE = 30000;
+  function winGame(){
+    state = STATE.WIN;
+    softDropping = false;
+    sfx.win ? sfx.win() : sfx.clear();
+    el('statusText').textContent = 'DEFRAG COMPLETE';
+    el('winScore').textContent = score;
+    el('winGrade').textContent = driveGrade() + '%';
+    const q = qualifies(score);
+    el('winNewHigh').style.display = q ? 'block' : 'none';
+    el('winInitialsRow').style.display = q ? 'flex' : 'none';
+    if(q){ const inp = el('winInitials'); inp.value = ''; try{ inp.focus(); }catch(e){} }
+    renderLeaderboard('leaderboardWin');
+    el('gameOver').classList.add('hidden');
+    el('winScreen').classList.remove('hidden');
+  }
+
+  // "Drive Optimization %" end-screen grade: rewards lines cleared and survival (level
+  // reached), lightly penalized by the score-per-line efficiency. Casual, always >= 0.
+  function driveGrade(){
+    const lineScore = lines * 100 * (level + 1);          // expected baseline
+    const eff = lineScore > 0 ? Math.min(1, score / (lineScore * 1.15)) : (score > 0 ? 1 : 0);
+    const base = Math.min(100, Math.round((lines * 2.2) + (level * 4) + eff * 30));
+    return Math.max(0, Math.min(100, base));
+  }
+
+  // ===================================================================
+  //  LEADERBOARD (localStorage, Top 5)
+  // ===================================================================
+  function loadLB(){
+    try { const v = JSON.parse(localStorage.getItem(LB_KEY)); return Array.isArray(v) ? v : []; }
+    catch(e){ return []; }
+  }
+  function saveLB(list){
+    try { localStorage.setItem(LB_KEY, JSON.stringify(list)); } catch(e){}
+  }
+  function recordScore(initials, sc){
+    let list = loadLB();
+    list.push({ initials: (initials || 'AMG').toUpperCase().slice(0,3), score: sc });
+    list.sort((a,b)=> b.score - a.score);
+    list = list.slice(0, 5);
+    saveLB(list);
+    return list;
+  }
+  function qualifies(sc){
+    const l = loadLB();
+    if(l.length < 5) return sc > 0;              // board not full yet -> any real score makes it
+    return sc > l[l.length - 1].score;           // board full -> must beat the lowest
+  }
+  function renderLeaderboard(targetId){
+    const list = loadLB();
+    const node = el(targetId);
+    if(!list.length){ node.innerHTML = '<li class="sub">No records yet</li>'; return; }
+    node.innerHTML = list.map((e,i)=>
+      `<li><span class="rk">${i+1}.</span><span class="nm">${e.initials}</span><span>${e.score}</span></li>`
+    ).join('');
+  }
+
+  // ===================================================================
+  //  THEME
+  // ===================================================================
+  function applyTheme(){
+    document.body.classList.toggle('dark', theme === 'dark');
+    document.body.classList.toggle('light', theme === 'light');
+    // cache the board background + grid color once per theme change (avoid per-frame getComputedStyle)
+    try { boardBg = getComputedStyle(document.body).getPropertyValue('--boardbg').trim() || boardBg; } catch(e){}
+    try { gridColor = getComputedStyle(document.body).getPropertyValue('--grid').trim() || gridColor; } catch(e){}
+  }
+  let boardBg = '#05080a';
+  let gridColor = 'rgba(0,255,234,0.07)';
+  function toggleTheme(){ theme = (theme === 'dark') ? 'light' : 'dark'; applyTheme(); try { localStorage.setItem('dd_theme', theme); } catch(e){} }
+
+  // ===================================================================
+  //  RENDERING
+  // ===================================================================
+  function cellColor(type){
+    const pal = (theme === 'dark') ? COLORS.dark : COLORS.light;
+    if(type === 'RAM'){
+      // flashing golden tile
+      return (Math.floor(Date.now() / 140) % 2) ? pal.RAM : '#fff7c0';
+    }
+    return pal[type] || '#888';
+  }
+  function drawCell(c, r, color, alpha){
+    const x = c*CELL, y = r*CELL, s = CELL;
+    ctx.globalAlpha = alpha == null ? 1 : alpha;
+    ctx.fillStyle = color;
+    ctx.fillRect(x+1, y+1, s-2, s-2);
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';          // top-left highlight (data chunk bevel)
+    ctx.fillRect(x+1, y+1, s-2, 3);
+    ctx.fillRect(x+1, y+1, 3, s-2);
+    ctx.fillStyle = 'rgba(0,0,0,0.35)';                // bottom-right shadow
+    ctx.fillRect(x+1, y+s-4, s-2, 3);
+    ctx.fillRect(x+s-4, y+1, 3, s-2);
+    ctx.globalAlpha = 1;
+  }
+  function drawBoard(){
+    const bg = boardBg;
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, COLS*CELL, ROWS*CELL);
+    // grid
+    const grid = gridColor;
+    ctx.strokeStyle = grid; ctx.lineWidth = 1;
+    for(let c=0;c<=COLS;c++){ ctx.beginPath(); ctx.moveTo(c*CELL+0.5,0); ctx.lineTo(c*CELL+0.5,ROWS*CELL); ctx.stroke(); }
+    for(let r=0;r<=ROWS;r++){ ctx.beginPath(); ctx.moveTo(0,r*CELL+0.5); ctx.lineTo(COLS*CELL,r*CELL+0.5); ctx.stroke(); }
+    // locked cells
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+      if(board[r][c]) drawCell(c, r, cellColor(board[r][c].type));
+    }
+  }
+  function ghostY(){
+    let gy = current.y;
+    while(!collide(current.matrix, current.x, gy + 1)) gy++;
+    return gy;
+  }
+  function drawPiece(m, ox, oy, color, alpha, flash){
+    for(let r=0;r<m.length;r++) for(let c=0;c<m[r].length;c++){
+      if(m[r][c]) drawCell(ox+c, oy+r, color, alpha);
+    }
+  }
+  function render(){
+    drawBoard();
+    // hard/lock impact flash: briefly paint the just-locked cells white for tactile feedback
+    if(lastLock && performance.now() - lastLock.t < 90){
+      const flashCol = (theme === 'dark') ? '#ffffff' : '#101010';
+      for(const [r,c] of lastLock.cells) drawCell(c, r, flashCol, 0.85);
+    }
+    if(current && state === STATE.PLAY){
+      // ghost
+      const gy = ghostY();
+      drawPiece(current.matrix, current.x, gy, cellColor(current.type), 0.22);
+      // active
+      drawPiece(current.matrix, current.x, current.y, cellColor(current.type));
+    }
+    renderNext();
+    renderHold();
+    renderHUD();
+  }
+  function renderHold(){
+    const cs = 20;
+    hctx.clearRect(0, 0, 4*cs, 3*cs);
+    const bg = boardBg;
+    hctx.fillStyle = bg; hctx.fillRect(0,0,4*cs,3*cs);
+    const type = holdType;
+    if(!type || type === 'RAM') return;
+    const m = BASE[type];
+    const w = m[0].length, h = m.length;
+    const ox = Math.floor((4 - w)/2), oy = Math.floor((3 - h)/2);
+    const col = (theme === 'dark') ? COLORS.dark[type] : COLORS.light[type];
+    for(let r=0;r<h;r++) for(let c=0;c<w;c++){
+      if(m[r][c]){
+        const x=(ox+c)*cs, y=(oy+r)*cs, s=cs;
+        hctx.fillStyle = col; hctx.fillRect(x+1,y+1,s-2,s-2);
+        hctx.fillStyle='rgba(255,255,255,0.35)'; hctx.fillRect(x+1,y+1,s-2,2); hctx.fillRect(x+1,y+1,2,s-2);
+        hctx.fillStyle='rgba(0,0,0,0.35)'; hctx.fillRect(x+1,y+s-3,s-2,2); hctx.fillRect(x+s-3,y+1,2,s-2);
+      }
+    }
+  }
+  function renderNext(){
+    const cs = 20;
+    const slot = NEXT_COUNT * 4;                      // total cells tall for NEXT_COUNT pieces
+    nctx.clearRect(0, 0, 4*cs, slot*cs);
+    const bg = boardBg;
+    nctx.fillStyle = bg; nctx.fillRect(0,0,4*cs,slot*cs);
+    for(let i=0;i<Math.min(NEXT_COUNT, nextQueue.length);i++){
+      const type = nextQueue[i];
+      const m = BASE[type];
+      const w = m[0].length, h = m.length;
+      const ox = Math.floor((4 - w)/2), oy = i*4 + Math.floor((4 - h)/2);
+      const col = (theme === 'dark') ? COLORS.dark[type] : COLORS.light[type];
+      for(let r=0;r<h;r++) for(let c=0;c<w;c++){
+        if(m[r][c]){
+          const x=(ox+c)*cs, y=(oy+r)*cs, s=cs;
+          nctx.fillStyle = col; nctx.fillRect(x+1,y+1,s-2,s-2);
+          nctx.fillStyle='rgba(255,255,255,0.35)'; nctx.fillRect(x+1,y+1,s-2,2); nctx.fillRect(x+1,y+1,2,s-2);
+          nctx.fillStyle='rgba(0,0,0,0.35)'; nctx.fillRect(x+1,y+s-3,s-2,2); nctx.fillRect(x+s-3,y+1,2,s-2);
+        }
+      }
+    }
+  }
+  function renderHUD(){
+    el('score').textContent = score;
+    el('lines').textContent = lines;
+    el('level').textContent = level + 1;
+    el('pieces').textContent = pieceCount;
+    el('combo').textContent = combo > 0 ? combo : 0;
+  }
+
+  // ===================================================================
+  //  DISK-MAP PROGRESS (title screen themed bar)
+  // ===================================================================
+  const DISK_CELLS = 40;
+  let diskBuilt = false;
+  function buildDiskMap(){
+    const m = el('diskMap'); if(!m || diskBuilt) return;
+    m.style.gridTemplateColumns = 'repeat(10, 1fr)';
+    let html = '';
+    for(let i=0;i<DISK_CELLS;i++) html += '<div class="cell"></div>';
+    m.innerHTML = html;
+    diskBuilt = true;
+  }
+  function updateDiskMap(){
+    buildDiskMap();
+    const m = el('diskMap'); if(!m) return;
+    const pct = Math.max(0, Math.min(1, score / 30000));   // ~30k = fully defragged
+    const okCount = Math.round(pct * DISK_CELLS);
+    const cells = m.children;
+    for(let i=0;i<DISK_CELLS;i++) cells[i].classList.toggle('ok', i < okCount);
+    const lbl = el('diskPct'); if(lbl) lbl.textContent = Math.round(pct*100) + '% optimized';
+  }
+
+  // ===================================================================
+  //  MAIN LOOP
+  // ===================================================================
+  let last = (typeof performance !== 'undefined') ? performance.now() : 0;
+  function frame(now){
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    update(dt);
+    render();
+    requestAnimationFrame(frame);
+  }
+  function update(dt){
+    if(state !== STATE.PLAY || paused || !current) return;
+    const ms = dt * 1000;
+    const lockDelay = IS_TOUCH ? LOCK_DELAY_MOBILE : LOCK_DELAY;   // more room to adjust on phones
+    const canDown = !collide(current.matrix, current.x, current.y + 1);
+    if(canDown){
+      lockTimer = 0; lockResets = MAX_RESETS; dropTimer += ms;
+      const interval = softDropping ? Math.min(dropInterval, SOFT_INTERVAL) : dropInterval;
+      while(dropTimer >= interval){
+        dropTimer -= interval;
+        if(!collide(current.matrix, current.x, current.y + 1)){ current.y++; if(softDropping) score += 1; }
+        else { dropTimer = 0; break; }
+      }
+    } else {
+      dropTimer = 0; lockTimer += ms;
+      if(lockTimer >= lockDelay) lock();
+    }
+  }
+
+  // ===================================================================
+  //  INPUT — keyboard (desktop)
+  // ===================================================================
+  let dasTimer = null, dasTimeout = null, dasDir = 0;
+  const DAS_DELAY = 160, ARR = 45;
+  function startDAS(dir){
+    if(dasTimer || dasTimeout) return;
+    dasDir = dir; move(dir);
+    dasTimeout = setTimeout(()=>{ dasTimer = setInterval(()=>move(dasDir), ARR); }, DAS_DELAY);
+  }
+  function stopDAS(){
+    if(dasTimeout){ clearTimeout(dasTimeout); dasTimeout = null; }
+    if(dasTimer){ clearInterval(dasTimer); dasTimer = null; }
+  }
+
+  window.addEventListener('keydown', (e)=>{
+    initAudio();
+    if(state === STATE.TITLE){ if(e.key === 'Enter'){ start(); } return; }
+    if(state === STATE.OVER){ if(e.key === 'Enter'){ start(); } return; }
+    let handled = true;
+    switch(e.key){
+      case 'ArrowLeft':  startDAS(-1); break;
+      case 'ArrowRight': startDAS(1); break;
+      case 'ArrowUp': case 'x': case 'X': rotate(1); break;
+      case 'z': case 'Z': case 'Control': rotate(-1); break;
+      case 'ArrowDown': softDropping = true; dropTimer = 0; if(!e.repeat) softDrop(); break;
+      case ' ': hardDrop(); break;
+      case 'Shift': case 'c': case 'C': hold(); break;
+      case 'p': case 'P': togglePause(); break;
+      case 'm': case 'M': setMuted(!muted); break;
+      default: handled = false;
+    }
+    if(handled) e.preventDefault();
+  });
+  window.addEventListener('keyup', (e)=>{
+    if(e.key === 'ArrowLeft' && dasDir === 0) stopDAS();
+    if(e.key === 'ArrowRight') stopDAS();
+    if(e.key === 'ArrowLeft') stopDAS();
+    if(e.key === 'ArrowDown'){ softDropping = false; dropTimer = 0; }
+  });
+  function togglePause(){
+    if(state !== STATE.PLAY) return;
+    paused = !paused;
+    softDropping = false;   // don't silently resume a held soft-drop after un-pausing
+    // Primary pause UI is the #pauseScreen overlay (works for keyboard, touch, and titlebar).
+    el('pauseScreen').classList.toggle('hidden', !paused);
+    // Keep the legacy big-text #pauseMsg as a subtle secondary indicator.
+    el('pauseMsg').style.display = paused ? 'flex' : 'none';
+    el('statusText').textContent = paused ? 'PAUSED' : 'DEFRAGGING';
+  }
+  function hidePause(){
+    if(paused){ paused = false; }
+    el('pauseScreen').classList.add('hidden');
+    el('pauseMsg').style.display = 'none';
+    el('statusText').textContent = 'DEFRAGGING';
+  }
+  // Auto-pause if the tab/window loses focus mid-game so the player never returns to a surprise.
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden && state === STATE.PLAY && !paused) togglePause();
+  });
+
+  // ===================================================================
+  //  INPUT — touch pad (mobile), Pointer Events prevent zoom/lag
+  // ===================================================================
+  function bindPad(act, elBtn){
+    let timer = null;
+    const stop = (e)=>{
+      if(timer){ clearInterval(timer); timer = null; }
+      if(act === 'soft'){ softDropping = false; dropTimer = 0; }
+      try{ elBtn.releasePointerCapture(e.pointerId); }catch(_){}
+    };
+    const down = (e)=>{
+      e.preventDefault(); initAudio();
+      try{ elBtn.setPointerCapture(e.pointerId); }catch(_){}
+      if(state !== STATE.PLAY) return;
+      if(act === 'left'){ move(-1); timer = setInterval(()=>move(-1), ARR); }
+      else if(act === 'right'){ move(1); timer = setInterval(()=>move(1), ARR); }
+      else if(act === 'rotate'){ rotate(1); }
+      else if(act === 'rotccw'){ rotate(-1); }
+      else if(act === 'hold'){ hold(); }
+      else if(act === 'soft'){ softDropping = true; dropTimer = 0; softDrop(); }
+      else if(act === 'hard'){ hardDrop(); }
+      else if(act === 'sound'){ setMuted(!muted); }
+      else if(act === 'pause'){ togglePause(); }
+    };
+    elBtn.addEventListener('pointerdown', down);
+    elBtn.addEventListener('pointerup', stop);
+    elBtn.addEventListener('pointercancel', stop);
+    elBtn.addEventListener('lostpointercapture', stop);
+    elBtn.addEventListener('contextmenu', (e)=>e.preventDefault());
+  }
+  document.querySelectorAll('.padbtn').forEach(b=> bindPad(b.dataset.act, b));
+
+  // ===================================================================
+  //  BUTTONS
+  // ===================================================================
+  el('startBtn').addEventListener('click', ()=>{ initAudio(); start(); });
+  el('retryBtn').addEventListener('click', ()=>{ initAudio(); start(); });
+  el('winRetryBtn').addEventListener('click', ()=>{ initAudio(); start(); });
+  el('themeBtn').addEventListener('click', toggleTheme);
+  document.querySelectorAll('.theme-toggle').forEach(b => b.addEventListener('click', toggleTheme));
+  el('soundBtn').addEventListener('click', ()=>{ initAudio(); setMuted(!muted); });
+  el('saveScore').addEventListener('click', ()=>{
+    const v = (el('initials').value || 'AMG').toUpperCase().slice(0,3) || 'AMG';
+    recordScore(v, score);
+    el('newHigh').style.display = 'none';
+    el('initialsRow').style.display = 'none';
+    renderLeaderboard('leaderboardOver');
+  });
+  el('winSaveScore').addEventListener('click', ()=>{
+    const v = (el('winInitials').value || 'AMG').toUpperCase().slice(0,3) || 'AMG';
+    recordScore(v, score);
+    el('winNewHigh').style.display = 'none';
+    el('winInitialsRow').style.display = 'none';
+    renderLeaderboard('leaderboardWin');
+  });
+  // Pause control wiring (v9): titlebar pause button, overlay Resume / New Game.
+  el('pauseBtnBar').onclick = ()=>{ if(state === STATE.PLAY) togglePause(); };
+  el('resumeBtn').onclick = ()=> togglePause();                 // toggles paused back to false + hides overlay
+  el('pauseNewGameBtn').onclick = ()=>{ hidePause(); start(); };  // full restart from pause (start() resets score/board + hides overlays)
+
+  // ===================================================================
+  //  BOOT
+  // ===================================================================
+  applyTheme();
+  board = emptyBoard();
+  bag = []; nextQueue = [];
+  score = 0; lines = 0; level = 0; pieceCount = 0;
+  renderLeaderboard('leaderboard');
+  renderLeaderboard('leaderboardTitle');
+  buildDiskMap();
+  updateDiskMap();
+  setMuted(muted);          // sync the SOUND/MUTED button label with saved state
+  requestAnimationFrame(frame);
+
+  // ===================================================================
+  //  HEADLESS TEST HOOK (only active when window.__EXPOSE__ is set)
+  // ===================================================================
+  if(typeof window !== 'undefined' && window.__EXPOSE__){
+    window.__GB = {
+      get state(){ return state; }, set state(v){ state = v; },
+      get score(){ return score; }, set score(v){ score = v; },
+      get lines(){ return lines; }, set lines(v){ lines = v; },
+      get level(){ return level; }, set level(v){ level = v; },
+      get pieceCount(){ return pieceCount; }, set pieceCount(v){ pieceCount = v; },
+      get board(){ return board; },
+      get current(){ return current; },
+      get nextQueue(){ return nextQueue; },
+      get holdType(){ return holdType; }, set holdType(v){ holdType = v; },
+      get combo(){ return combo; },
+      get b2b(){ return b2b; }, set b2b(v){ b2b = !!v; },
+      get diskPct(){ return el('diskPct') ? el('diskPct').textContent : ''; },
+      get holdUsed(){ return holdUsed; },
+      get dropInterval(){ return dropInterval; },
+      get paused(){ return paused; },
+      get theme(){ return theme; },
+      set current(c){ current = c; },
+      setCurrent(c){ current = c; },
+      nextFromBag,
+      fillBag(){ bag = TYPES.slice(); },
+      COLS, ROWS, LINE_SCORES, RAM_EVERY, RAM_BONUS, LB_KEY,
+      BASE, KICKS_I, KICKS_JLSTZ, COLORS, gravityFor,
+      start, spawn, spawnPiece, hold, move, rotate, softDrop, hardDrop, lock, clearLines,
+      collide, gameOver, toggleTheme, togglePause,
+      recordScore, loadLB, qualifies, renderLeaderboard,
+      setSoft(v){ softDropping = !!v; },
+      setNextType(t){ nextQueue[0] = t; },
+      fillCell(r,c,type){ board[r][c] = { type: type || 'I' }; },
+      clearBoard(){ board = emptyBoard(); },
+      makeRAM(x,y){ current = { type:'RAM', matrix:cloneMat(BASE.RAM), rotation:0, x:x, y:y, special:true }; },
+      reset(){ start(); },
+      getTPSpin(){ return lastRotation; }, setTPSpin(v){ lastRotation = !!v; },
+      getLastKick(){ return lastKickIndex; }, setLastKick(v){ lastKickIndex = v|0; },
+      detectTSpin,
+      showFlash,
+      updateDiskMap,
+      get muted(){ return muted; }, setMuted,
+      get comboDom(){ return el('combo') ? el('combo').textContent : ''; },
+      comboText(){ return String(combo > 0 ? combo : 0); },   // mirrors renderHUD's assignment
+      driveGrade,
+      get isTouch(){ return IS_TOUCH; },
+      get nextCount(){ return NEXT_COUNT; },
+      lockDelayFor(){ return IS_TOUCH ? LOCK_DELAY_MOBILE : LOCK_DELAY; },
+      winGame, WIN_SCORE,
+      get isWin(){ return state === STATE.WIN; },
+      update, render,
+    };
+  }
+})();
+</script>
+</body>
+</html>

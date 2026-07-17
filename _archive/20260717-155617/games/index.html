@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADE — Free Browser Games | Onyx Systems</title>
+<meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command, Disk Defrag, Drone Hunt and more. No downloads, no installs — just play.">
+<meta rel="canonical" href="https://onyxpc.us/games/">
+<meta property="og:title" content="ARCADE — Free Browser Games | Onyx Systems">
+<meta property="og:description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. No downloads, no installs — just play.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onyxpc.us/games/">
+<meta property="og:image" content="https://onyxpc.us/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ARCADE — Free Browser Games | Onyx Systems">
+<meta name="twitter:description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. No downloads, no installs — just play.">
+<meta name="twitter:image" content="https://onyxpc.us/og-image.png">
+<style>
+  :root{
+    --onyx:#16161A; --onyx-2:#1f1f25; --ink:#0e0e12;
+    --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#9A5326; --cream:#F7F4EF; --paper:#FBF8F2;
+    --paper-2:#F1ECE2; --muted:#6B635A; --line:#e4ddd0;
+    --ok:#3fae6b; --shadow:0 18px 50px rgba(14,14,18,.16); --radius:18px;
+    --brand-font:'SerpentineBold','SerpentineStandIn','Oswald',"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.6;-webkit-font-smoothing:antialiased}
+  header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand .logo{height:38px;width:auto}
+  .brand .word{font-family:var(--brand-font);font-weight:700;font-size:19px;color:var(--cream);letter-spacing:.06em;text-transform:uppercase}
+  .nav a.back{color:var(--copper-2);font-weight:600;text-decoration:none;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .sec-head{text-align:center;margin:48px 0 28px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--copper-deep)}
+  .sec-head h1{font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(30px,5vw,46px);color:var(--onyx);margin-top:6px}
+  .sec-head p{color:var(--muted);max-width:640px;margin:12px auto 0}
+  footer.site{background:var(--ink);color:#cfc9c0;padding:40px 0 26px;margin-top:20px}
+  footer .cols{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
+  footer a{color:var(--copper-2);text-decoration:none}
+  .empty{text-align:center;color:var(--muted);padding:60px 0}
+  body{background:#0a0612;color:#f7f4ef}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(120% 70% at 50% 0%,#3a1052 0%,transparent 55%),
+    radial-gradient(120% 80% at 50% 120%,#2a0b3f 0%,#0a0612 60%),
+    linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
+  body::after{content:"";position:fixed;left:-50%;right:-50%;top:-10%;bottom:-10%;height:auto;z-index:-1;opacity:.55;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(60deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+  @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
+  .arcade-hub{position:relative;overflow:hidden;z-index:2;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+  .arcade-hub .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('../assets/img/arcade/bg-wireframe.jpg')}
+  .arcade-hub .wrap{position:relative;z-index:2}
+  .arcade-hub .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+  .arcade-hub .sec-head{text-align:center;position:relative}
+  .arcade-hub .sec-head::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(700px,94%);height:160%;z-index:-1;background:radial-gradient(closest-side,rgba(10,6,18,.85),transparent)}
+  .arcade-hub .sec-head .eyebrow{color:var(--copper-2);text-shadow:0 2px 8px rgba(0,0,0,.7)}
+  .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
+  .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
+  .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
+  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
+.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,260px);height:384px}
+.arcade-hub .gdesc{display:none}
+.arcade-hub .gthumb{aspect-ratio:16/9;min-height:0}
+.arcade-hub .gbody{padding:14px 14px 16px;gap:8px;flex:1}
+.arcade-hub .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center}
+.arcade-hub .gtag{font-size:12px;min-height:32px}
+.arcade-hub .gbtn{margin-top:auto;align-self:center;font-size:13px;padding:8px 16px}
+@media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%;height:auto}}
+  .arcade-hub .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px;position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:.22s}
+  .arcade-hub .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
+  .arcade-hub .gthumb{position:relative;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block;background:#05080a;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none;transition:transform .35s ease,filter .35s ease}
+  .arcade-hub .game-card:hover .gthumb{transform:scale(1.06);filter:saturate(1.08) contrast(1.04)}
+  .arcade-hub .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);pointer-events:none}
+  .arcade-hub .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11);display:flex;flex-direction:column;gap:8px;flex:1;text-align:center}
+  .arcade-hub .gbody h3{color:#fff;font-size:19px;line-height:1.2;text-align:center}
+  .arcade-hub .gtag{color:var(--copper-2);font-size:13px;font-weight:600;text-align:center}
+  .arcade-hub .gdesc{color:#cfc9c0;font-size:14px;text-align:center}
+  .arcade-hub .gbtn{margin-top:auto;align-self:center;background:var(--copper);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;transition:.2s}
+  .arcade-hub .game-card:hover .gbtn{background:var(--copper-2);color:var(--ink)}
+  .arcade-hub .flag{position:absolute;top:12px;left:12px;background:var(--copper);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;z-index:3;box-shadow:0 4px 12px rgba(154,83,38,.4)}
+
+  @media (prefers-reduced-motion:reduce){body::after{animation:none}}
+</style>
+</head>
+<body>
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="../index.html">
+      <img class="logo" src="../assets/img/brand/onyxsystems-logo.png" alt="Onyx Systems">
+      <span class="word">ONYX SYSTEMS</span>
+    </a>
+    <a class="back" href="../index.html">← Back to site</a>
+  </nav>
+</header>
+
+<main class="wrap arcade-hub">
+  <div class="arcade-bg"></div>
+  <div class="scanlines"></div>
+  <div class="sec-head">
+    <div class="eyebrow">Onyx Arena presents</div>
+    <h1><img class="arcade-logo" src="../assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE</h1>
+    <p>No downloads. No installs. No accounts. Just press start and play — a little something to break up your day while you're here.</p>
+  </div>
+  <div class="games-grid" id="gameGrid"></div>
+  <div class="empty" id="empty" style="display:none">More games coming soon — check back!</div>
+</main>
+
+<footer class="site">
+  <div class="cols">
+    <div>Onyx Systems · Lake City, FL · (386) 755-7772</div>
+    <div><a href="../index.html">onyxpc.us</a></div>
+  </div>
+</footer>
+
+<script>
+function esc(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function renderGames(list){
+  var grid=document.getElementById('gameGrid');
+  if(!list||!list.length){document.getElementById('empty').style.display='block';return;}
+  list.sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
+  grid.innerHTML=list.map(function(g){
+    return '<a class="game-card" href="'+esc(g.file)+'">'+
+      (g.featured?'<span class="flag">Featured</span>':'')+
+      '<img class="gthumb" src="'+esc(g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
+      '<div class="gbody">'+
+        '<h3>'+esc(g.title)+'</h3>'+
+        '<div class="gtag">'+esc(g.tagline||'Play now')+'</div>'+
+        '<p class="gdesc">'+esc(g.desc||'')+'</p>'+
+        '<span class="gbtn">▶ Play now</span>'+
+      '</div></a>';
+  }).join('');
+}
+// Try local manifest, fall back to inline so the hub never breaks offline
+var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","featured":true},{"file":"disk-defrag.html","title":"Disk Defrag","tagline":"Defragment the drive. Clear the lines.","desc":"A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.","thumb":"assets/disk-defrag-thumb.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","featured":false}];
+fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
+</script>
+</body>
+</html>
