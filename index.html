@@ -206,6 +206,11 @@
   .hero .logo-big{height:auto;width:min(320px,70vw);display:block}
   .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.02em;margin-top:22px;position:relative}
   .hero h1 .hl{color:var(--copper-2)}
+  /* HERO-CARD-2026-07-16 — frame the hero content in the same crisp rounded bordered
+     card as the .tile/.card-dark sections below (surface bg + 1px line border + radius + shadow),
+     so the top of the page matches the bordered sections instead of two bare color bands. */
+  .hero .wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    box-shadow:var(--shadow);padding:clamp(28px,4vw,52px) clamp(18px,3vw,40px)}
   .hero .lead{font-size:18px;color:var(--text-2);margin:16px auto 24px;max-width:660px}
   .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
   .hero-trust{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:var(--muted);font-size:14px;font-weight:600}
