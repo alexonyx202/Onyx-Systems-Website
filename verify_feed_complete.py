@@ -52,6 +52,8 @@ KNOWN_PRODUCTS = [
     # Extended 2026-07-16: real products recommended in Onyx Tech Notes that the
     # original whitelist missed (posts already name the product + state obtain method).
     "apc", "revo", "notebooklm", "bitlocker", "back-ups",
+    # Extended 2026-07-17: today's Onyx Tech Notes real products (named + obtain method stated).
+    "keepassxc", "7-zip", "handbrake", "jan ",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
