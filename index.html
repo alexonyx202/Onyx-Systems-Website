@@ -610,6 +610,14 @@
   .gallery-teaser .gallery-item{flex:0 0 auto;width:240px;scroll-snap-align:start;margin:0;
     background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer}
   @media(max-width:600px){.gallery-teaser .gallery-item{width:170px}}
+  /* TEASER-STATIC-2026-07-17 — homepage preview strip is a non-interactive scrollable
+     showcase: thumbnails are visible + horizontally scrollable, but NOT clickable /
+     keyboard-activatable (no lightbox). Full interactivity lives on gallery.html /
+     the full-gallery overlay. */
+  .gallery-teaser .gallery-item{pointer-events:none}
+  .gallery-teaser .gallery-item:hover picture img,
+  .gallery-teaser .gallery-item:hover video{transform:none}
+  .gallery-teaser .gallery-item:focus-visible{outline:none}
   .gallery-teaser .gallery-item picture,.gallery-teaser .gallery-item img,.gallery-teaser .gallery-item video{
     display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#000;
     box-shadow:0 6px 18px rgba(0,0,0,.30);transition:transform .25s ease, box-shadow .25s ease}
@@ -1595,7 +1603,9 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
     p.appendChild(im);
     return p;
   }
-  function makeItem(item, i){
+  function makeItem(item, i, opts){
+    opts=opts||{};
+    var isStatic = !!opts.static;
     if(item.type==='video'){
       var wrap=document.createElement('button');
       wrap.className='gallery-item video'; wrap.type='button';
@@ -1604,33 +1614,42 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
       v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
       v.muted=true; v.loop=true; v.playsInline=true; v.preload='metadata';
       v.style.aspectRatio=(item.w&&item.h)?(item.w+'/'+item.h):'16/9';
-      var ex=document.createElement('button'); ex.className='gallery-expand'; ex.type='button';
-      ex.setAttribute('aria-label','Expand video'); ex.textContent='⤢';
-      ex.setAttribute('data-expand','1');
-      wrap.appendChild(v); wrap.appendChild(ex);
-      wrap.addEventListener('click', function(e){
-        if(e.target===ex) return;
-        if(v.paused){ v.play().catch(function(){}); } else { v.pause(); }
-      });
-      ex.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(item); });
+      wrap.appendChild(v);
+      if(isStatic){
+        wrap.tabIndex=-1; wrap.setAttribute('aria-disabled','true'); wrap.style.cursor='default';
+      } else {
+        var ex=document.createElement('button'); ex.className='gallery-expand'; ex.type='button';
+        ex.setAttribute('aria-label','Expand video'); ex.textContent='⤢';
+        ex.setAttribute('data-expand','1');
+        wrap.appendChild(ex);
+        wrap.addEventListener('click', function(e){
+          if(e.target===ex) return;
+          if(v.paused){ v.play().catch(function(){}); } else { v.pause(); }
+        });
+        ex.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(item); });
+      }
       return wrap;
     } else {
       var b=document.createElement('button');
       b.className='gallery-item'; b.type='button';
       b.setAttribute('data-i', String(i)); b.setAttribute('aria-label','View photo: '+(item.alt||'shop photo'));
       b.appendChild(pic(item,false));
-      b.addEventListener('click', function(){ openLightbox(item); });
+      if(isStatic){
+        b.tabIndex=-1; b.setAttribute('aria-disabled','true'); b.style.cursor='default';
+      } else {
+        b.addEventListener('click', function(){ openLightbox(item); });
+      }
       return b;
     }
   }
-  function renderInto(container){
+  function renderInto(container, static){
     if(!container) return;
     container.innerHTML='';
-    for(var i=0;i<items.length;i++){ container.appendChild(makeItem(items[i], i)); }
+    for(var i=0;i<items.length;i++){ container.appendChild(makeItem(items[i], i, {static: !!static})); }
   }
   function build(){
-    renderInto(teaser);
-    renderInto(grid);
+    renderInto(teaser, true);   /* homepage teaser = static preview strip: visible + scrollable, NO click/keyboard-open */
+    renderInto(grid);           /* full-gallery overlay grid = interactive */
   }
   function openLightbox(item){
     lastFocus=document.activeElement;
