@@ -484,17 +484,17 @@
   .arcade-sec .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
   .arcade-sec .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);background:#05080a}
   .arcade-sec .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
-  .arcade-sec .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11)}
-  .arcade-sec .gbody h3{color:#fff}
-  .arcade-sec .gtag{color:var(--copper-2)}
+  .arcade-sec .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11);text-align:center}
+  .arcade-sec .gbody h3{color:#fff;text-align:center}
+  .arcade-sec .gtag{color:var(--copper-2);text-align:center}
   @media (prefers-reduced-motion:reduce){.arcade-sec::after{animation:none}}
   .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
 .arcade-sec .game-card{flex:1 1 0;min-width:0;max-width:clamp(180px,17vw,220px);height:340px}
 .arcade-sec .gdesc{display:none}
 .arcade-sec .gthumb{aspect-ratio:16/9;min-height:120px}
 .arcade-sec .gbody{padding:14px 14px 16px;gap:8px;flex:1}
-.arcade-sec .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center}
-.arcade-sec .gtag{font-size:12px;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.arcade-sec .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center;justify-content:center;text-align:center}
+.arcade-sec .gtag{font-size:12px;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:center}
 .arcade-sec .gbtn{margin-top:auto;align-self:center;font-size:13px;padding:8px 16px}
 @media (max-width:640px){.arcade-sec .games-grid{flex-wrap:wrap}.arcade-sec .game-card{flex:1 1 42%;max-width:46%;height:auto}}
   .game-card{position:relative;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
