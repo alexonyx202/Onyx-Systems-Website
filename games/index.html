@@ -59,9 +59,9 @@
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
-.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(180px,17vw,220px);height:340px}
+.arcade-hub .game-card{flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,260px);height:384px}
 .arcade-hub .gdesc{display:none}
-.arcade-hub .gthumb{aspect-ratio:16/9;min-height:120px}
+.arcade-hub .gthumb{aspect-ratio:auto;min-height:0}
 .arcade-hub .gbody{padding:14px 14px 16px;gap:8px;flex:1}
 .arcade-hub .gbody h3{font-size:16px;line-height:1.2;min-height:38px;display:flex;align-items:center}
 .arcade-hub .gtag{font-size:12px;min-height:32px}
@@ -69,8 +69,9 @@
 @media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%;height:auto}}
   .arcade-hub .game-card{background:linear-gradient(180deg,#1f1f25,#16161a);border:2px solid var(--copper);border-radius:16px;position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:.22s}
   .arcade-hub .game-card:hover{transform:translateY(-5px);border-color:var(--copper-2);box-shadow:0 18px 40px rgba(194,112,61,.35)}
-  .arcade-hub .gthumb{position:relative;border-bottom:3px solid #000;box-shadow:inset 0 0 0 3px rgba(0,0,0,.6),inset 0 0 22px rgba(0,0,0,.8);width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
-  .arcade-hub .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+  .arcade-hub .gthumb{position:relative;width:100%;height:190px;object-fit:cover;display:block;background:#05080a;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:none;transition:transform .35s ease,filter .35s ease}
+  .arcade-hub .game-card:hover .gthumb{transform:scale(1.06);filter:saturate(1.08) contrast(1.04)}
+  .arcade-hub .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);pointer-events:none}
   .arcade-hub .gbody{padding:14px 16px 52px;background:linear-gradient(180deg,#18181d,#0d0d11);display:flex;flex-direction:column;gap:8px;flex:1;text-align:center}
   .arcade-hub .gbody h3{color:#fff;font-size:19px;line-height:1.2;text-align:center}
   .arcade-hub .gtag{color:var(--copper-2);font-size:13px;font-weight:600;text-align:center}
