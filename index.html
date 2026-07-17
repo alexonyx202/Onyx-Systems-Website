@@ -430,7 +430,11 @@
   }
 
   /* ===== NEWS ===== */
-  .news{padding:var(--s7) 0;background:var(--surface)}
+  .news{padding:var(--s7) 0;background:var(--bg)}
+  /* NEWS-CARD-2026-07-17 — frame the News & Tips content in the same crisp rounded bordered
+     card as the hero/hub/trust-badges (.tile/.card-dark language): surface fill on a --bg band,
+     1px --line border + --r-lg radius + --shadow. Mirrors the hero .wrap card fix. */
+  .news .wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:clamp(28px,4vw,52px) clamp(18px,3vw,40px)}
   .tabs{display:flex;gap:10px;margin:14px 0 22px;flex-wrap:wrap}
   .tab{background:var(--bg);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:var(--r-pill);cursor:pointer;font-weight:700;font-size:14px;transition:.2s}
   .tab.active{background:var(--copper-deep);color:#fff;border-color:var(--copper-deep)}
@@ -615,6 +619,12 @@
   @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}*{scroll-behavior:auto!important}}
   /* ---------- GALLERY: From Inside the Shop (2026-07-16) ---------- */
   .gallery-sec{background:var(--onyx-2);padding:64px 0}
+  /* GALLERY-CARD-2026-07-17 — frame the Gallery content in the same crisp rounded bordered
+     card as the hero/hub/news (.tile/.card-dark language): surface fill on the --onyx-2 band,
+     1px --line border + --r-lg radius + --shadow. Mirrors the hero .wrap card fix. */
+  .gallery-sec .wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:clamp(28px,4vw,52px) clamp(18px,3vw,40px)}
+  .gallery-sec .sec-head{text-align:center}
+  .gallery-sec .sec-head p{max-width:680px;margin-left:auto;margin-right:auto}
   /* teaser: single-row horizontal scroll strip */
   .gallery-teaser{display:flex;gap:12px;margin-top:26px;overflow-x:auto;overflow-y:hidden;
     scroll-snap-type:x mandatory;padding:4px 2px 14px;-webkit-overflow-scrolling:touch;
@@ -901,7 +911,7 @@
 <section class="gallery-sec" id="gallery">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow">From Inside the Shop</div>
+      <div class="eyebrow">Inside the Shop</div>
       <h2>GALLERY</h2>
       <p>A look inside Onyx Systems</p>
     </div>
@@ -918,13 +928,13 @@
   </div>
   <div class="gallery-overlay" id="galleryOverlay" role="dialog" aria-modal="true" aria-label="Full gallery" hidden>
     <div class="go-bar">
-      <div class="go-title">GALLERY <span class="go-sep" aria-hidden="true">·</span> <span class="go-sub">From Inside the Shop</span></div>
+      <div class="go-title">GALLERY <span class="go-sep" aria-hidden="true">·</span> <span class="go-sub">Inside the Shop</span></div>
       <button type="button" class="go-close" id="galleryOverlayClose" aria-label="Close full gallery (Esc)">×</button>
     </div>
     <div class="gallery-grid" id="galleryGrid" aria-label="Full photo and video gallery, newest first"></div>
   </div>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ImageGallery","name":"Gallery — From Inside the Shop — Onyx Systems","description":"Photos and video from inside the Onyx Systems computer repair shop in Lake City, FL.","image":["assets/img/gallery/g-2026-07-09.jpg","assets/img/gallery/g-2020-07-27.jpg","assets/img/gallery/g-2016-12-08-1.jpg","assets/img/gallery/g-2016-12-08-2.jpg","assets/img/gallery/g-2016-12-08-3.jpg","assets/img/gallery/g-2016-11-07-1.jpg","assets/img/gallery/g-2016-11-07-2.jpg","assets/img/gallery/g-2016-11-07-3.jpg","assets/img/gallery/g-2016-11-07-4.jpg","assets/img/gallery/g-2016-11-07-5.jpg","assets/img/gallery/g-2016-11-07-6.jpg"]}
+  {"@context":"https://schema.org","@type":"ImageGallery","name":"Gallery — Inside the Shop — Onyx Systems","description":"Photos and video from inside the Onyx Systems computer repair shop in Lake City, FL.","image":["assets/img/gallery/g-2026-07-09.jpg","assets/img/gallery/g-2020-07-27.jpg","assets/img/gallery/g-2016-12-08-1.jpg","assets/img/gallery/g-2016-12-08-2.jpg","assets/img/gallery/g-2016-12-08-3.jpg","assets/img/gallery/g-2016-11-07-1.jpg","assets/img/gallery/g-2016-11-07-2.jpg","assets/img/gallery/g-2016-11-07-3.jpg","assets/img/gallery/g-2016-11-07-4.jpg","assets/img/gallery/g-2016-11-07-5.jpg","assets/img/gallery/g-2016-11-07-6.jpg"]}
   </script>
 </section>
 
