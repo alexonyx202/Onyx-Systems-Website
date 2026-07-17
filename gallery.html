@@ -60,6 +60,14 @@
   .gallery-item video{aspect-ratio:16/9}
   .gallery-item:hover{box-shadow:0 18px 40px rgba(194,112,61,.35);border-color:var(--copper)}
   .gallery-item:focus-visible{outline:3px solid var(--copper-deep);outline-offset:3px}
+  /* full-size in-page viewer (click pic -> largest that fits, aspect preserved, click-out returns to grid) */
+  .gl-viewer{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px}
+  .gl-viewer[hidden]{display:none}
+  .glv-scrim{position:absolute;inset:0;background:rgba(8,8,10,.94);backdrop-filter:blur(4px);cursor:zoom-out}
+  .glv-stage{position:relative;z-index:1;max-width:96vw;max-height:94vh;display:flex;align-items:center;justify-content:center}
+  .glv-stage img,.glv-stage video{max-width:100%;max-height:94vh;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000;display:block}
+  .glv-close{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:none;background:var(--copper-deep);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+  .glv-close:hover{background:var(--copper)}
   footer.site{background:var(--footer-bg,#0e0e12);color:#cfc9c0;padding:32px 0;text-align:center;font-size:14px;margin-top:40px}
   footer a{color:var(--copper-2)}
   @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -90,6 +98,13 @@
     <p style="margin-top:6px"><a href="tel:+13867557772">📞 (386) 755-7772</a> · <a href="index.html">Back to home</a></p>
   </div>
 </footer>
+
+<div class="gl-viewer" id="glViewer" role="dialog" aria-modal="true" aria-label="Photo and video viewer" hidden>
+  <div class="glv-scrim" id="glvScrim"></div>
+  <div class="glv-stage" id="glvStage">
+    <button class="glv-close" id="glvClose" aria-label="Close viewer (Esc)">×</button>
+  </div>
+</div>
 
 <script>
 /* ---- Gallery data (mirrors index.html GALLERY array; newest-first) ---- */
@@ -131,7 +146,50 @@ var GALLERY=[
       p.appendChild(im); fig.appendChild(p);
     }
     grid.appendChild(fig);
+    fig.style.cursor='pointer';
+    fig.setAttribute('role','button');
+    fig.setAttribute('tabindex','0');
+    fig.setAttribute('aria-label',(item.type==='video'?'Play video: ':'View photo: ')+(item.alt||'shop media'));
+    fig.addEventListener('click', function(){ openViewer(item); });
+    fig.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openViewer(item); } });
   });
+
+  /* ---- full-size in-page viewer: click pic -> largest that fits, aspect preserved; click-out/ESC/backdrop returns to grid (no URL change) ---- */
+  var viewer=document.getElementById('glViewer'),
+      vstage=document.getElementById('glvStage'),
+      vscrim=document.getElementById('glvScrim'),
+      vclose=document.getElementById('glvClose'),
+      vLast=null;
+  function openViewer(item){
+    vLast=document.activeElement;
+    vstage.querySelectorAll('.glv-media').forEach(function(n){ if(n.tagName==='VIDEO'){try{n.pause();}catch(e){}} n.remove(); });
+    if(item.type==='video'){
+      var v=document.createElement('video');
+      v.className='glv-media'; v.src=item.video; v.poster=supportsWebp?item.poster:item.posterJpg;
+      v.controls=true; v.autoplay=true; v.playsInline=true; v.muted=false;
+      v.setAttribute('aria-label', item.alt||'shop video');
+      vstage.appendChild(v); v.play().catch(function(){});
+    } else {
+      var p=document.createElement('picture');
+      if(supportsWebp){ var s=document.createElement('source'); s.srcset=item.full; s.type='image/webp'; p.appendChild(s); }
+      var im=document.createElement('img'); im.className='glv-media';
+      im.src=supportsWebp?item.full:item.fullJpg; im.alt=item.alt||'';
+      p.appendChild(im); vstage.appendChild(p);
+    }
+    viewer.hidden=false;
+    document.body.style.overflow='hidden';
+    vclose.focus();
+  }
+  function closeViewer(){
+    if(viewer.hidden) return;
+    viewer.hidden=true;
+    document.body.style.overflow='';
+    vstage.querySelectorAll('.glv-media').forEach(function(n){ if(n.tagName==='VIDEO'){try{n.pause();}catch(e){}} n.remove(); });
+    if(vLast && vLast.focus) vLast.focus();
+  }
+  if(vscrim) vscrim.addEventListener('click', closeViewer);
+  if(vclose) vclose.addEventListener('click', closeViewer);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !viewer.hidden) closeViewer(); });
 })();
 </script>
 </body>
