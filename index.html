@@ -44,6 +44,8 @@
     /* ===== SHARED TOKENS ===== */
     /* accent (brand copper — same in both themes) */
     --copper:#C2703D; --copper-2:#E8B06A; --copper-deep:#A8542A; --copper-wash:rgba(199,112,61,.14);
+    --accent:#C2703D; --accent-deep:#A8542A;   /* gallery/CTA tokens (alias of copper) */
+    --onyx-2:#1F1F25; --paper:#F7F4EF;          /* shared brand tokens */
     --ok:#5fbf86;
     /* spacing scale (8px base / 4px half) */
     --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
@@ -98,6 +100,23 @@
   :root[data-theme="light"] .nav-links a:focus-visible,
   :root[data-theme="light"] .nav-links a.active{color:var(--copper-deep)}
   :root[data-theme="light"] .sec-head .eyebrow{color:var(--copper-deep)!important}
+  /* Extended light-theme copper-TEXT remap (audit: copper #C2703D / #E8B06A fail AA on
+     paper #F4F1EB; copper-deep #A8542A = 4.70:1 AA). Scoped to [data-theme=light] only so
+     the dark theme keeps full-strength copper (deeper bg = better there). */
+  :root[data-theme="light"] .weather-hero .wx-date,
+  :root[data-theme="light"] .weather-hero .wx-8h .t,
+  :root[data-theme="light"] .card-dark h3,
+  :root[data-theme="light"] .pl-cluster-title,
+  :root[data-theme="light"] .badge strong,
+  :root[data-theme="light"] .panel-head .eyebrow,
+  :root[data-theme="light"] .xw-h,
+  :root[data-theme="light"] .xw-clue.active,
+  :root[data-theme="light"] .xw-msg,
+  :root[data-theme="light"] .wotd-pos,
+  :root[data-theme="light"] .evt-date,
+  :root[data-theme="light"] .triv-a.show,
+  :root[data-theme="light"] .joke-a.show,
+  :root[data-theme="light"] .quiz-result b{color:var(--copper-deep)}
 
   .brand-font{font-family:var(--brand-font);font-weight:700;letter-spacing:.02em;display:inline-block}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -284,6 +303,23 @@
   .weather-hero .wx-8h img{width:32px;height:32px;object-fit:contain}
   .weather-hero .wx-8h .deg{font-size:14px;color:var(--text);font-weight:700}
   .weather-hero .wx-8h .c{font-size:10px;color:var(--muted);line-height:1.2}
+  /* ===== MOBILE (<=768px) — collapse Play & Learn two-col grids to one column =====
+     Root cause of the overflow: .pl-hero minmax(280px,1.3fr) minmax(260px,1fr)
+     + .weather-hero grid-column:1/-1 force min-content wider than a phone. Scoped ONLY
+     to mobile so the desktop layout is untouched. */
+  @media(max-width:768px){
+    .wrap{width:100%}
+    .pl-hero{grid-template-columns:1fr;max-width:100%}
+    .weather-hero{grid-template-columns:1fr;gap:14px;padding:18px;width:100%;max-width:100%}
+    /* min-width:0 frees grid items from their intrinsic min-content (the live clock
+       can force ~900px). Without this the weather hero overflows at 768px because
+       grid items default to min-width:auto. Scoped to the tablet/phone band. */
+    .weather-hero,.weather-hero>*{min-width:0;max-width:100%;overflow-x:hidden}
+    .weather-hero .wx-clock{min-width:0;max-width:100%}
+    .weather-hero .wx-now{flex-wrap:wrap;justify-content:center}
+    .weather-hero .wx-8h{grid-template-columns:none;display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+    .weather-hero .wx-8h .hr{flex:0 0 auto;min-width:54px}
+  }
   .pl-cluster{margin-top:var(--s5)}
   .pl-cluster h3.pl-cluster-title{color:var(--copper-2);font-size:13px;font-weight:800;text-transform:uppercase;
     letter-spacing:.16em;margin-bottom:var(--s4);display:flex;align-items:center;gap:8px;justify-content:center}
@@ -458,6 +494,20 @@
   .games-foot{margin-top:28px;text-align:center}
   .news-list{display:flex;flex-direction:column;gap:14px}
 
+  /* ===== FAQ ACCORDION (visible, surfaced for conversion) ===== */
+  .faq-sec{padding:var(--s7) 0;background:var(--surface)}
+  .faq-sec .sec-head{text-align:center}
+  .faq-sec .sec-head p{max-width:640px;margin-left:auto;margin-right:auto}
+  .faq-list{margin-top:var(--s5);display:flex;flex-direction:column;gap:12px;max-width:820px;margin-left:auto;margin-right:auto}
+  .faq-item{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+  .faq-q{width:100%;text-align:left;background:transparent;border:0;color:var(--text);cursor:pointer;
+    padding:18px 20px;font-size:17px;font-weight:700;display:flex;align-items:center;gap:12px}
+  .faq-q .faq-plus{margin-left:auto;color:var(--copper-2);font-size:22px;transition:transform .2s;flex:0 0 auto}
+  .faq-item.open .faq-q .faq-plus{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--text-2);padding:0 20px}
+  .faq-item.open .faq-a{max-height:360px;padding:0 20px 18px}
+  .faq-a p{margin:0}
+
   /* ===== REVIEWS ===== */
   .reviews{padding:var(--s7) 0;background:var(--bg)}
   .stars{color:var(--copper);letter-spacing:2px}
@@ -482,6 +532,7 @@
   .badge .badge-star{flex:0 0 auto;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;
     background:var(--copper-wash);color:var(--copper);font-size:22px;font-weight:800}
   .badge .badge-meta{display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+  .trust-area{text-align:center;color:var(--muted);font-size:14px;font-weight:600;margin:16px auto 0;max-width:780px;line-height:1.5}
   @media(max-width:768px){.badge{padding:14px 18px;font-size:16px;gap:10px}
     .badge .badge-star{width:34px;height:34px;font-size:18px}}
 
@@ -507,7 +558,8 @@
   footer .brand .word{color:#fff}
   footer .about{margin-top:12px;font-size:14px;color:#a59e94;max-width:320px}
   footer .bottom{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8a8378}
-  .mobile-call{display:none;position:fixed;bottom:64px;left:0;right:0;z-index:54;background:var(--copper);color:#fff;text-align:center;padding:14px;font-weight:700;font-size:17px}
+  .mobile-call{display:none;position:fixed;bottom:64px;left:0;right:0;z-index:54;background:var(--copper);color:#fff;text-align:center;font-weight:700;font-size:17px}
+  .mobile-call a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;color:#fff;font-weight:700;font-size:16px}
 
   /* ===== RESPONSIVE ===== */
   @media(max-width:1024px){
@@ -521,11 +573,22 @@
     .nav-links a.active::after,.nav-links a:hover::after,.nav-links a:focus-visible::after{left:25%;right:25%;bottom:2px}
     .nav-phone{margin-left:0;align-self:center;padding:9px 12px;font-size:12px}
     .nav-phone::before{display:none}
-    .mobile-call{display:block} /* quick-dial above the bottom tab bar (tab bar is 56px at bottom:0) */
+    .mobile-call{display:flex;gap:0;padding:0} /* quick-dial above the bottom tab bar (tab bar is 56px at bottom:0) */
+    .mobile-call a{flex:1 1 0}
+    .mobile-call .mc-call{background:var(--copper)}
+    .mobile-call .mc-call:active{background:var(--copper-deep)}
+    .mobile-call .mc-dir{background:var(--onyx-2);border-left:1px solid rgba(255,255,255,.18)}
     body{padding-bottom:64px}
     #hub,#engage,#news,#games,#reviews,#locator,#top{scroll-margin-bottom:72px}
     .locator .wrap{grid-template-columns:1fr}
     footer .cols{grid-template-columns:1fr 1fr}
+    /* Collapse Play & Learn weather hero on tablet/phone so the live clock can't force
+       min-content wider than the viewport. Applies at <=1024 (covers 768/390). */
+    .pl-hero{grid-template-columns:1fr}
+    .weather-hero{grid-template-columns:1fr;max-width:100%}
+    .weather-hero .wx-clock{min-width:0;max-width:100%}
+    .weather-hero .wx-time{font-size:clamp(26px,7vw,38px)}
+    .weather-hero .wx-now{flex-wrap:wrap;justify-content:center}
     footer.site{padding:40px 0 28px}
     footer .bottom{margin-top:22px;padding-top:14px}
   }
@@ -642,19 +705,30 @@
       <div class="hero-values-sub">TOTAL CUSTOMER SATISFACTION SINCE 1997</div>
     </div>
     <p class="lead">Honest work, fair prices, no jargon. I work on all computers — Windows, macOS, Linux, and ChromeOS. Your hometown shop for Lake City &amp; North Florida.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="tel:+13867557772">📞 Call John — (386) 755-7772</a>
-      <a class="btn btn-ghost" href="#locator">📍 Find us</a>
-    </div>
     <div class="hero-trust">
       <span>★ 5.0 from 65 Google reviews</span>
       <span>Locally owned · Since 1997</span>
       <span>All computers welcome</span>
     </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="tel:+13867557772">📞 Call John — (386) 755-7772</a>
+      <a class="btn btn-ghost" href="#locator">📍 Find us</a>
+    </div>
     <div class="hero-promise">
-      <span>Free diagnostics</span><span>Most repairs same-day</span>
+      <span>Free diagnostics</span><span>Quote before work</span><span>Most repairs same-day</span>
     </div>
   </div>
+</section>
+
+<!-- TRUST-UP-2026-07-16 — trust band surfaced EARLY (right after hero) for instant credibility -->
+<section class="trust-badges" aria-label="Onyx Systems trust badges">
+  <div class="wrap badges-row reveal">
+    <div class="badge"><span class="badge-star">★</span><span><strong>5.0</strong> Google rating</span><span class="badge-meta">65+ reviews</span></div>
+    <div class="badge"><span class="badge-star">✓</span><span><strong>Locally owned</strong></span><span class="badge-meta">Since 1997</span></div>
+    <div class="badge"><span class="badge-star">⚡</span><span><strong>Same-day</strong> repairs</span><span class="badge-meta">Most jobs</span></div>
+    <div class="badge"><span class="badge-star">🛡️</span><span><strong>Free</strong> diagnostics</span><span class="badge-meta">No guesswork</span></div>
+  </div>
+  <p class="trust-area">Serving Lake City, Live Oak, Branford, Jasper, Macclenny &amp; the Gainesville area.</p>
 </section>
 
 <section class="hub wrap" id="hub">
@@ -886,6 +960,18 @@
   </div>
 </section>
 
+<!-- FAQ-ACC-2026-07-16 — visible accordion surfaced for pre-purchase objections (research #1 FAQ rec) -->
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Good to know</div>
+      <h2>Questions customers ask</h2>
+      <p>Straight answers before you call. Tap a question to expand it.</p>
+    </div>
+    <div class="faq-list reveal" id="faqList"></div>
+  </div>
+</section>
+
 <section class="reviews" id="reviews">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -914,16 +1000,6 @@
   </div>
 </section>
 
-<!-- Trust badges (below Find Us) — enlarged 20% for prominence -->
-<section class="trust-badges" aria-label="Onyx Systems trust badges">
-  <div class="wrap badges-row reveal">
-    <div class="badge"><span class="badge-star">★</span><span><strong>5.0</strong> Google rating</span><span class="badge-meta">65+ reviews</span></div>
-    <div class="badge"><span class="badge-star">✓</span><span><strong>Locally owned</strong></span><span class="badge-meta">Since 1997</span></div>
-    <div class="badge"><span class="badge-star">⚡</span><span><strong>Same-day</strong> repairs</span><span class="badge-meta">Most jobs</span></div>
-    <div class="badge"><span class="badge-star">🛡️</span><span><strong>Free</strong> diagnostics</span><span class="badge-meta">No guesswork</span></div>
-  </div>
-</section>
-
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -949,7 +1025,10 @@
   </div>
 </footer>
 
-<div class="mobile-call"><a href="tel:+13867557772">📞 Call (386) 755-7772</a></div>
+<div class="mobile-call">
+  <a class="mc-call" href="tel:+13867557772">📞 Call (386) 755-7772</a>
+  <a class="mc-dir" href="https://www.google.com/maps/dir/?api=1&destination=757+SW+State+Rd+247+Lake+City+FL+32025" target="_blank" rel="noopener">📍 Directions</a>
+</div>
 
 <div class="scrim" id="scrim"></div>
 <aside class="panel" id="panel" aria-hidden="true">
@@ -1022,26 +1101,47 @@ document.addEventListener('DOMContentLoaded',function(){
   // elevation cue once scrolled
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 8); }, {passive:true});
 
-  // Continuous, zero-lag scroll-spy: on EVERY scroll frame pick the section whose
+  // Continuous, zero-lag scroll-spy: on EVERY scroll event pick the section whose
   // top is the largest value <= landingLine (navH + 1px). landingLine is the SINGLE
   // offset = scroll-padding-top on <html> (scroll-margin-top removed, so no double gap).
-  var rafPending=false, currentId=null;
+  // ZERO-LAG-2026-07-16: spy() runs SYNCHRONOUSLY in the scroll handler
+  // (no rAF debounce gate) so the active link reflects the scroll position the
+  // instant the scroll event fires — no 1-frame lag behind an external scrollTo.
+  var currentId=null;
   function spy(){
-    rafPending=false;
     var landingLine=header.offsetHeight+1; /* SPY-ALIGN-2026-07-15 */
     var best=null, maxTop=-Infinity;
     for(var i=0;i<ids.length;i++){
       var sec=document.getElementById(ids[i]); if(!sec) continue;
       var top=sec.getBoundingClientRect().top;
-      if(top<=landingLine && top>maxTop){ maxTop=top; best=ids[i]; }
+      // +1px tolerance: a section scrolled to EXACTLY the landing line can land
+      // at landingLine+~0.3px (float rounding). Without slack it fails `top<=line`
+      // and the previous (higher) section wrongly stays active. 1px ~ sub-pixel slack.
+      if(top<=landingLine+1 && top>maxTop){ maxTop=top; best=ids[i]; }
     }
+    /* ZERO-LAG FALLBACK-2026-07-16: if no section's top is <= landingLine
+       (e.g. we've scrolled into #reviews but its top is still just below the bar),
+       do NOT keep the previous (stale, lower) section's highlight. Instead pick the
+       LAST section whose top is above the viewport bottom — i.e. the closest one we
+       have actually reached. This kills the off-by-one lag where #games stayed
+       active after landing on #reviews. */
+    if(best===null){
+      var aboveBottom=-Infinity, aboveId=null;
+      for(var j=0;j<ids.length;j++){
+        var s2=document.getElementById(ids[j]); if(!s2) continue;
+        var t2=s2.getBoundingClientRect().top;
+        if(t2<=window.innerHeight && t2>aboveBottom){ aboveBottom=t2; aboveId=ids[j]; }
+      }
+      best=aboveId;
+    }
+    if(best===null) best=ids[0];
     if(best!==currentId){
       currentId=best;
       navLinks.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
       if(best && map[best]){ map[best].classList.add('active'); map[best].setAttribute('aria-current','true'); }
     }
   }
-  function onScroll(){ if(!rafPending){ rafPending=true; requestAnimationFrame(spy); } }
+  function onScroll(){ spy(); } /* synchronous — zero-lag */
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', spy, {passive:true});
 
@@ -1113,13 +1213,47 @@ var SECTIONS={
 var panel=document.getElementById('panel'),scrim=document.getElementById('scrim');
 function openPanel(key){var s=SECTIONS[key];if(!s)return;
   document.getElementById('p-ic').src=s.icon;document.getElementById('p-eyebrow').textContent=s.eyebrow;
-  document.getElementById('p-title').textContent=s.title;document.getElementById('p-body').innerHTML=s.html;
+  document.getElementById('p-title').textContent=s.title;
+  var body=document.getElementById('p-body');
+  body.innerHTML=s.html;
+  /* Documented constraint: <img> injected via innerHTML does NOT load in headless Chromium.
+     Re-insert any body images via createElement+appendChild so they render everywhere. */
+  body.querySelectorAll('img').forEach(function(old){
+    var im=document.createElement('img');
+    im.src=old.getAttribute('src')||''; im.alt=old.getAttribute('alt')||'';
+    if(old.getAttribute('style')) im.setAttribute('style',old.getAttribute('style'));
+    old.parentNode.replaceChild(im,old);
+  });
   panel.classList.add('open');scrim.classList.add('open');panel.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
 function closePanel(){panel.classList.remove('open');scrim.classList.remove('open');panel.setAttribute('aria-hidden','true');document.body.style.overflow='';}
 document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(){openPanel(t.dataset.panel);});});
 document.getElementById('panel-close').addEventListener('click',closePanel);
 scrim.addEventListener('click',closePanel);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+
+/* ---------- VISIBLE FAQ ACCORDION (surfaced for conversion) ---------- */
+(function(){
+  var FAQ=[
+    {q:'Do I need an appointment?',a:'No — but please call first so I know I’m in the shop and not out on a service call.'},
+    {q:'What kinds of computers do you work on?',a:'All of them — Windows, macOS, Linux, and ChromeOS. I’m well versed in all things computers.'},
+    {q:'What are your on-site hours?',a:'I prefer on-site visits after 5 PM, and I’ll gladly make other arrangements to fit your schedule.'},
+    {q:'Is my data safe during a repair?',a:'Always. Your files are private, backed up before risky work when possible, and never accessed beyond what the repair requires.'},
+    {q:'What does it cost?',a:'Fair, flat, and explained up front. I tell you the likely cost before I start — free diagnostic, quote before work.'}
+  ];
+  var box=document.getElementById('faqList'); if(!box)return;
+  FAQ.forEach(function(item,i){
+    var wrap=document.createElement('div'); wrap.className='faq-item';
+    var btn=document.createElement('button'); btn.className='faq-q'; btn.type='button';
+    btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','faqA'+i);
+    var qspan=document.createElement('span'); qspan.textContent=item.q;
+    var plus=document.createElement('span'); plus.className='faq-plus'; plus.setAttribute('aria-hidden','true'); plus.textContent='+';
+    btn.appendChild(qspan); btn.appendChild(plus);
+    var ans=document.createElement('div'); ans.className='faq-a'; ans.id='faqA'+i; ans.setAttribute('role','region');
+    var p=document.createElement('p'); p.textContent=item.a; ans.appendChild(p);
+    btn.addEventListener('click',function(){ var open=wrap.classList.toggle('open'); btn.setAttribute('aria-expanded',open?'true':'false'); });
+    wrap.appendChild(btn); wrap.appendChild(ans); box.appendChild(wrap);
+  });
+})();
 
 /* ---------- DAILY JOKE ---------- */
 var jokes=null, todaysJoke=null, jokeOffset=0;
@@ -1417,7 +1551,7 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
 (function(){
   var GALLERY=[
     {date:'2026-07-09', type:'image', full:'assets/img/gallery/g-2026-07-09.webp', fullJpg:'assets/img/gallery/g-2026-07-09.jpg', thumb:'assets/img/gallery/g-2026-07-09-thumb.webp', thumbJpg:'assets/img/gallery/g-2026-07-09-thumb.jpg', w:1600, h:1205, alt:'Inside the Onyx Systems shop with John working at the repair bench (2026).'},
-    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.webp', fullJpg:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.webp', thumbJpg:'assets/img/gallery/g-2023-08-11-thumb.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
+    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.webp', fullJpg:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.webp', thumbJpg:'assets/img/gallery/g-2023-08-11.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
     {date:'2020-07-27', type:'image', full:'assets/img/gallery/g-2020-07-27.webp', fullJpg:'assets/img/gallery/g-2020-07-27.jpg', thumb:'assets/img/gallery/g-2020-07-27-thumb.webp', thumbJpg:'assets/img/gallery/g-2020-07-27-thumb.jpg', w:1600, h:900, alt:'The Onyx Systems shop and work area (2020).'},
     {date:'2020-04-24', type:'video', video:'assets/img/gallery/g-2020-04-24.mp4', poster:'assets/img/gallery/g-2020-04-24-poster.webp', posterJpg:'assets/img/gallery/g-2020-04-24-poster.jpg', w:1280, h:720, alt:'Video: a computer on the bench at Onyx Systems being repaired and updated.'},
     {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-1.webp', fullJpg:'assets/img/gallery/g-2016-12-08-1.jpg', thumb:'assets/img/gallery/g-2016-12-08-1-thumb.webp', thumbJpg:'assets/img/gallery/g-2016-12-08-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
@@ -1432,7 +1566,7 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
   ];
   var GALLERY_FALLBACK=[
     {date:'2026-07-09', type:'image', full:'assets/img/gallery/g-2026-07-09.jpg', thumb:'assets/img/gallery/g-2026-07-09-thumb.jpg', w:1600, h:1205, alt:'Inside the Onyx Systems shop with John working at the repair bench (2026).'},
-    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
+    {date:'2023-08-11', type:'image', full:'assets/img/gallery/g-2023-08-11.jpg', thumb:'assets/img/gallery/g-2023-08-11-thumb.webp', thumbJpg:'assets/img/gallery/g-2023-08-11.jpg', w:1205, h:1600, alt:'John at work inside the Onyx Systems shop (2023).'},
     {date:'2020-07-27', type:'image', full:'assets/img/gallery/g-2020-07-27.jpg', thumb:'assets/img/gallery/g-2020-07-27-thumb.jpg', w:1600, h:900, alt:'The Onyx Systems shop and work area (2020).'},
     {date:'2020-04-24', type:'video', video:'assets/img/gallery/g-2020-04-24.mp4', poster:'assets/img/gallery/g-2020-04-24-poster.jpg', w:1280, h:720, alt:'Video: a computer on the bench at Onyx Systems being repaired and updated.'},
     {date:'2016-12-08', type:'image', full:'assets/img/gallery/g-2016-12-08-1.jpg', thumb:'assets/img/gallery/g-2016-12-08-1-thumb.jpg', w:1600, h:900, alt:'Inside the Onyx Systems shop (December 2016).'},
@@ -1551,7 +1685,7 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
   }
   if(scrim) scrim.addEventListener('click', closeLightbox);
   if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  if(viewAllBtn) viewAllBtn.addEventListener('click', openOverlay);
+  if(viewAllBtn) viewAllBtn.addEventListener('click', function(e){ e.preventDefault(); window.open('gallery.html','_blank','noopener'); });
   if(overlayClose) overlayClose.addEventListener('click', closeOverlay);
   document.addEventListener('keydown', function(e){
     if(e.key!=='Escape') return;
@@ -1563,6 +1697,18 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
       if(e.key==='ArrowRight'){ teaser.scrollBy({left:260, behavior:'smooth'}); }
       else if(e.key==='ArrowLeft'){ teaser.scrollBy({left:-260, behavior:'smooth'}); }
     });
+    /* Mouse-wheel -> horizontal scroll on the teaser (desktop nicety). Only consume the
+       wheel when the strip can actually scroll sideways, so vertical page scroll is preserved
+       when the strip is fully scrolled or not overflowing. */
+    teaser.addEventListener('wheel', function(e){
+      if(e.deltaY===0) return;                 // already horizontal wheel — let it be
+      var max=teaser.scrollWidth-teaser.clientWidth;
+      if(max<=0) return;                        // nothing to scroll horizontally
+      var atStart=teaser.scrollLeft<=0, atEnd=teaser.scrollLeft>=max-1;
+      if((e.deltaY<0&&atStart)||(e.deltaY>0&&atEnd)) return; // let page scroll at the edges
+      e.preventDefault();
+      teaser.scrollLeft+=e.deltaY;
+    }, {passive:false});
   }
   try{ build(); }catch(e){ console.warn('gallery build failed, using fallback',e); items=GALLERY_FALLBACK; try{ build(); }catch(e2){ console.error('gallery fallback failed',e2); } }
 })();
