@@ -33,7 +33,11 @@
   "priceRange":"$$","url":"https://onyxpc.us",
   "geo":{"@type":"GeoCoordinates","latitude":30.1715315,"longitude":-82.6736942},
   "areaServed":["Lake City","Branford","Live Oak","Jasper","Macclenny","Gainesville","Columbia County","Suwannee County","Gilchrist County","Baker County","Union County"],
-  "openingHours":"Mo-Fr 09:30-17:30",
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:30","closes":"17:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"00:00","closes":"00:00","validFrom":"2026-01-01","validThrough":"2026-12-31"}
+  ],
+  "additionalProperty":{"@type":"PropertyValue","name":"On-site service","value":"Available by appointment only"},
   "hasMap":"https://www.google.com/maps?q=757+SW+State+Rd+247+Lake+City+FL",
   "makesOffer":["Computer repair","Laptop repair","Mac repair","Virus removal","Data recovery","IT support","Network setup","ChromeOS support"],
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"65","bestRating":"5","worstRating":"1"}
@@ -552,6 +556,15 @@
   .shop-photo img{width:100%;border-radius:10px;display:block}
   .biz-card{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow)}
   .biz-card img{width:100%;border-radius:12px}
+  /* LOC-INFO-2026-07-17 — Visit & Contact card in the locator, mirrors .biz-card language */
+  .loc-info{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;box-shadow:var(--shadow);text-align:left}
+  .loc-info-h{font-family:var(--brand-font);font-size:20px;font-weight:700;color:var(--text);margin:0 0 10px;letter-spacing:.01em}
+  .loc-info-row{margin:0 0 8px;font-size:15px;color:var(--text-2);line-height:1.4}
+  .loc-info-row:last-child{margin-bottom:0}
+  .loc-info-k{display:inline-block;min-width:64px;font-weight:700;color:var(--copper-2)}
+  .loc-info-row a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-accent)}
+  .loc-info-row a:hover{color:var(--copper-2)}
+  .loc-info-addr{color:var(--muted)}
   .footer-sunset{width:120px;height:auto;margin:10px 0 6px;border-radius:12px;display:block;opacity:.92}
 
   /* ===== FOOTER ===== */
@@ -592,7 +605,7 @@
     .pl-hero{grid-template-columns:1fr}
     .weather-hero{grid-template-columns:1fr;max-width:100%}
     .weather-hero .wx-clock{min-width:0;max-width:100%}
-    .weather-hero .wx-time{font-size:clamp(26px,7vw,38px)}
+    .weather-hero .wx-time{font-size:clamp(22px,6vw,32px);min-width:0;white-space:nowrap}
     .weather-hero .wx-now{flex-wrap:wrap;justify-content:center}
     footer.site{padding:40px 0 28px}
     footer .bottom{margin-top:22px;padding-top:14px}
@@ -997,6 +1010,14 @@
     <div class="card-side">
       <div class="shop-photo reveal"><img loading="lazy" decoding="async" src="assets/img/brand/storefront.jpg" alt="Onyx Systems storefront in Lake City, FL"></div>
       <div class="biz-card reveal"><img loading="lazy" decoding="async" src="assets/img/brand/business-card.png" alt="Onyx Systems business card"></div>
+      <div class="loc-info reveal">
+        <h3 class="loc-info-h">Visit &amp; Contact</h3>
+        <p class="loc-info-row"><span class="loc-info-k">Hours</span> Mon&ndash;Fri 9:30 AM &ndash; 5:30 PM</p>
+        <p class="loc-info-row"><span class="loc-info-k">On-site</span> By appointment only</p>
+        <p class="loc-info-row"><span class="loc-info-k">Phone</span> <a href="tel:+13867557772">(386) 755-7772</a></p>
+        <p class="loc-info-row"><span class="loc-info-k">Email</span> <a href="mailto:onyxpc@gmail.com">onyxpc@gmail.com</a></p>
+        <p class="loc-info-row loc-info-addr">757 SW State Rd 247, Ste 108<br>Lake City, FL 32025</p>
+      </div>
     </div>
   </div>
 </section>
