@@ -473,7 +473,7 @@
   .arcade-sec::after{content:"";position:absolute;left:-50%;right:-50%;bottom:-10%;height:55%;z-index:0;opacity:.5;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(68deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
   .arcade-sec .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
-  .arcade-sec .wrap{position:relative;z-index:2}
+  .arcade-sec .wrap{position:relative;z-index:2;max-width:1480px;padding:0 24px}
   .arcade-sec .sec-head{text-align:center;position:relative;max-width:760px;margin-left:auto;margin-right:auto}
   .arcade-sec .sec-head::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(700px,94%);height:150%;z-index:-1;background:radial-gradient(closest-side,rgba(10,6,18,.85),transparent)}
   .arcade-sec .sec-head .eyebrow{color:var(--copper-2);text-shadow:0 2px 8px rgba(0,0,0,.7)}
@@ -482,7 +482,7 @@
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;display:inline-block;vertical-align:middle;margin-right:16px;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   /* ---- ARCADE cabinet cards (v5): cabinet composite on TOP, tagline + Play BELOW (no overlap) ---- */
   /* Main-page teaser = same design as the arcade page, but SMALLER (.game-card max-width is the only size knob). */
-  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;max-width:1280px;margin:18px auto 0;padding:0 24px}
+  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;max-width:1480px;margin:18px auto 0;padding:0 24px}
   .arcade-sec .game-card{
     position:relative;display:flex;flex-direction:column;
     border:0;                                /* neutralize generic .game-card cream border (line ~527) */
