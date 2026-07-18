@@ -59,36 +59,43 @@
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
-  /* ---- ARCADE cabinet cards (v4): screenshot is the hero, framed by the Gemini cabinet ---- */
+  /* ---- ARCADE cabinet cards (v5): full cabinet image on TOP, tagline + Play BELOW (no overlap) ---- */
   .arcade-hub .game-card{
     position:relative;flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,255px);
-    aspect-ratio:1376/768;           /* matches cabinet-* composite (1376x768) */
+    display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
     border-radius:14px;overflow:hidden;text-decoration:none;
     background:#0a0612;box-shadow:0 10px 30px rgba(0,0,0,.5);
     transition:transform .25s ease,box-shadow .25s ease;
   }
   .arcade-hub .game-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(194,112,61,.45)}
-  /* Full Gemini composite (cabinet + baked marquee title + gameplay screenshot).
-     Title is baked into the artwork, so NO separate .gtitle overlay. */
+  /* Image block keeps the cabinet aspect ratio; footer flows underneath, never overlapping */
+  .arcade-hub .game-card .gcab-wrap{
+    position:relative;display:block;width:100%;
+    aspect-ratio:1376/768;background:#0a0612;overflow:hidden;
+  }
   .arcade-hub .game-card .gcab{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;
     display:block;z-index:1;transition:transform .35s ease,filter .35s ease;
   }
   .arcade-hub .game-card:hover .gcab{transform:scale(1.05);filter:saturate(1.08) contrast(1.04)}
   .arcade-hub .game-card .gcab::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px);pointer-events:none}
+  /* Footer below the image: tagline + Play button stacked and centered */
+  .arcade-hub .game-card .gfoot{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    padding:12px 10px 14px;text-align:center;
+  }
   .arcade-hub .game-card .gtag{
-    position:absolute;left:6%;right:6%;bottom:8.5%;z-index:4;text-align:center;
-    font-size:11px;font-weight:600;line-height:1.1;color:var(--copper-2);
-    text-shadow:0 1px 2px #000;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
+    font-size:11px;font-weight:600;line-height:1.2;color:var(--copper-2);
+    text-shadow:0 1px 2px #000;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
   }
   .arcade-hub .game-card .gbtn{
-    position:absolute;left:50%;bottom:2.2%;transform:translateX(-50%);z-index:4;
     background:linear-gradient(180deg,var(--copper-2),var(--copper));color:#231a10;
     font-weight:800;font-size:12px;letter-spacing:.04em;padding:4px 14px;border-radius:999px;
     box-shadow:0 3px 0 rgba(120,60,20,.6);transition:background .2s ease;
   }
   .arcade-hub .game-card:hover .gbtn{background:linear-gradient(180deg,#ffd79a,var(--copper-2))}
   .arcade-hub .gdesc{display:none}
+  /* Featured flag pinned OVER the cabinet image (lives inside .gcab-wrap) */
   .arcade-hub .game-card .flag{
     position:absolute;top:3%;left:4%;z-index:5;background:var(--copper);color:#fff;
     font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
@@ -137,11 +144,15 @@ function renderGames(list){
   if(!list||!list.length){document.getElementById('empty').style.display='block';return;}
   list.sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
   grid.innerHTML=list.map(function(g){
-    return '<a class="game-card" href="'+esc(g.file)+'">'+
-      (g.featured?'<span class="flag">Featured</span>':'')+
-      '<img class="gcab" src="'+esc(g.cabinet||g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
-      '<span class="gtag">'+esc(g.tagline||'Play now')+'</span>'+
-      '<span class="gbtn">▶ Play</span></a>';
+    return '<a class="game-card" href="'+esc(g.file)+'">'+ 
+      '<span class="gcab-wrap">'+
+        '<img class="gcab" src="'+esc(g.cabinet||g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
+        (g.featured?'<span class="flag">Featured</span>':'')+
+      '</span>'+
+      '<span class="gfoot">'+
+        '<span class="gtag">'+esc(g.tagline||'Play now')+'</span>'+
+        '<span class="gbtn">▶ Play</span>'+
+      '</span></a>';
   }).join('');
 }
 // Try local manifest, fall back to inline so the hub never breaks offline
