@@ -54,6 +54,9 @@ KNOWN_PRODUCTS = [
     "apc", "revo", "notebooklm", "bitlocker", "back-ups",
     # Extended 2026-07-17: today's Onyx Tech Notes real products (named + obtain method stated).
     "keepassxc", "7-zip", "handbrake", "jan ",
+    # Extended 2026-07-18: real products named in today's Onyx Tech Notes
+    # (named + obtain method stated — legit, not teasers).
+    "logitech", "fast.com", "netflix",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
@@ -82,6 +85,8 @@ def check_entry(fname, eid, headline, body):
         "zero-days", "zero days", "ftc agent", "patch chrome",
         "patch ", "alert", "wants your money", "crashstealer",
         "loaded with junk", "came loaded", "trialware", "debloat",
+        # Extended 2026-07-18: FTC-impersonation scam brief is a security alert (exempt).
+        "ftc",
     ]
     if any(s in low for s in SKIP):
         return fails

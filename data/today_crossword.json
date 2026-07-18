@@ -1,179 +1,246 @@
 {
-  "title": "16 Career Clusters",
-  "size": 34,
+  "title": "About Mr. Gettings",
+  "size": 21,
   "grid": [
-    "................g.................",
-    "................o.................",
-    "................v....hospitality..",
-    "................e........n........",
-    "................r....manufacturing",
-    "................n........o........",
-    "................m........r........",
-    "............m...e...a....m........",
-    "........education...r.human.......",
-    "business....r...t...c.e..t........",
-    ".......c....k.......h.a..i........",
-    "......finance.......i.l..o........",
-    ".......e.r..transportation........",
-    ".......n.t..i.......e.h...........",
-    ".......c.s..n.......c.............",
-    ".......e....g.......t.............",
-    "....................u.............",
-    "..........l.........r.............",
-    "..........agriculture.............",
-    "..........w.......................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    ".................................."
+    "..............p......",
+    ".............math....",
+    "...........d..c......",
+    ".f.........a.gettings",
+    ".i.....f...y..l......",
+    ".f...c.a...t..l......",
+    "lafayette.cooking....",
+    "..u..n.h...n...u.....",
+    "..n.attempt....m.....",
+    ".....r.r....t..b.....",
+    ".....a.....bigten..y.",
+    ".....l......m..r...e.",
+    ".....c...green.soccer",
+    "....pass.u.......a.t.",
+    ".....t...i....scary..",
+    "..mathematics........",
+    ".....o...a.o.........",
+    "....oliver.four......",
+    ".....i.....f.........",
+    ".....c.....e.........",
+    "..........help......."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 3,
-        "col": 22,
-        "len": 11,
-        "answer": "hospitality",
-        "clue": "people who like food and/or traveling"
+        "row": 2,
+        "col": 14,
+        "len": 4,
+        "answer": "math",
+        "clue": "Abbreviation for mathematics"
       },
       {
-        "num": 4,
-        "row": 5,
-        "col": 22,
-        "len": 13,
-        "answer": "manufacturing",
-        "clue": "like making things and DIYs"
-      },
-      {
-        "num": 7,
-        "row": 9,
-        "col": 9,
-        "len": 9,
-        "answer": "education",
-        "clue": "good leadership and role models"
+        "num": 5,
+        "row": 4,
+        "col": 14,
+        "len": 8,
+        "answer": "gettings",
+        "clue": "My last name"
       },
       {
         "num": 8,
-        "row": 9,
-        "col": 23,
-        "len": 5,
-        "answer": "human",
-        "clue": "good listening skills and patience"
-      },
-      {
-        "num": 9,
-        "row": 10,
+        "row": 7,
         "col": 1,
-        "len": 8,
-        "answer": "business",
-        "clue": "usually are good at communication skills"
+        "len": 9,
+        "answer": "lafayette",
+        "clue": "Mr. Gettings' hometown"
       },
       {
-        "num": 11,
-        "row": 12,
-        "col": 7,
-        "len": 7,
-        "answer": "finance",
-        "clue": "good at math, can explain things"
-      },
-      {
-        "num": 13,
-        "row": 13,
-        "col": 13,
-        "len": 14,
-        "answer": "transportation",
-        "clue": "like to drive or fix vehicles"
-      },
-      {
-        "num": 15,
-        "row": 19,
+        "num": 10,
+        "row": 7,
         "col": 11,
+        "len": 7,
+        "answer": "cooking",
+        "clue": "Mr. and Dr. Gettings' favorite home hobby"
+      },
+      {
+        "num": 12,
+        "row": 9,
+        "col": 5,
+        "len": 7,
+        "answer": "attempt",
+        "clue": "To try"
+      },
+      {
+        "num": 14,
+        "row": 11,
+        "col": 12,
+        "len": 6,
+        "answer": "bigten",
+        "clue": "Favorite NCAA conference"
+      },
+      {
+        "num": 16,
+        "row": 13,
+        "col": 10,
+        "len": 5,
+        "answer": "green",
+        "clue": "Favorite color"
+      },
+      {
+        "num": 17,
+        "row": 13,
+        "col": 16,
+        "len": 6,
+        "answer": "soccer",
+        "clue": "Mr. Gettings' favorite sport"
+      },
+      {
+        "num": 19,
+        "row": 14,
+        "col": 5,
+        "len": 4,
+        "answer": "pass",
+        "clue": "Your fate in my class if you put in the effort"
+      },
+      {
+        "num": 20,
+        "row": 15,
+        "col": 15,
+        "len": 5,
+        "answer": "scary",
+        "clue": "Adjective for math for those who fear it"
+      },
+      {
+        "num": 21,
+        "row": 16,
+        "col": 3,
         "len": 11,
-        "answer": "agriculture",
-        "clue": "most of these jobs are outside"
+        "answer": "mathematics",
+        "clue": "Expansion of math"
+      },
+      {
+        "num": 23,
+        "row": 18,
+        "col": 5,
+        "len": 6,
+        "answer": "oliver",
+        "clue": "Son's name"
+      },
+      {
+        "num": 24,
+        "row": 18,
+        "col": 12,
+        "len": 4,
+        "answer": "four",
+        "clue": "Number of siblings in Mr. Gettings' family"
+      },
+      {
+        "num": 25,
+        "row": 21,
+        "col": 11,
+        "len": 4,
+        "answer": "help",
+        "clue": "What you ask for when you don't understand"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 17,
-        "len": 10,
-        "answer": "government",
-        "clue": "interest in politics, good communication"
+        "col": 15,
+        "len": 7,
+        "answer": "pacelli",
+        "clue": "\"Cardinal ___\""
       },
       {
         "num": 3,
         "row": 3,
-        "col": 26,
-        "len": 11,
-        "answer": "information",
-        "clue": "usually in office, for technology people"
+        "col": 12,
+        "len": 6,
+        "answer": "dayton",
+        "clue": "College alma mater"
       },
       {
-        "num": 5,
-        "row": 8,
-        "col": 13,
-        "len": 9,
-        "answer": "marketing",
-        "clue": "good communication skills talkative"
+        "num": 4,
+        "row": 4,
+        "col": 2,
+        "len": 4,
+        "answer": "fifa",
+        "clue": "Favorite video game"
       },
       {
         "num": 6,
-        "row": 8,
-        "col": 21,
-        "len": 12,
-        "answer": "architecture",
-        "clue": "good at math and enjoy design/decor"
-      },
-      {
-        "num": 8,
-        "row": 9,
-        "col": 23,
-        "len": 6,
-        "answer": "health",
-        "clue": "like to help others, in hospital usually"
-      },
-      {
-        "num": 10,
-        "row": 10,
+        "row": 5,
         "col": 8,
-        "len": 7,
-        "answer": "science",
-        "clue": "loves science or math, usually in lab"
+        "len": 6,
+        "answer": "father",
+        "clue": "Mr. Gettings' family title"
       },
       {
-        "num": 12,
-        "row": 12,
-        "col": 10,
-        "len": 4,
-        "answer": "arts",
-        "clue": "in this field like dance,music, acting"
+        "num": 7,
+        "row": 6,
+        "col": 6,
+        "len": 15,
+        "answer": "centralcatholic",
+        "clue": "H.S. alma mater"
       },
       {
-        "num": 14,
-        "row": 18,
-        "col": 11,
+        "num": 9,
+        "row": 7,
+        "col": 3,
         "len": 3,
-        "answer": "law",
-        "clue": "brave and want to protect people"
+        "answer": "fun",
+        "clue": "Adjective for math for those who succeed in it"
+      },
+      {
+        "num": 11,
+        "row": 7,
+        "col": 16,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "e.g. -1,0, 1/3..."
+      },
+      {
+        "num": 13,
+        "row": 10,
+        "col": 13,
+        "len": 4,
+        "answer": "time",
+        "clue": "Homework will be turned in \"on __\""
+      },
+      {
+        "num": 15,
+        "row": 11,
+        "col": 20,
+        "len": 4,
+        "answer": "yeet",
+        "clue": "the sound you make when you solve a tough problem"
+      },
+      {
+        "num": 16,
+        "row": 13,
+        "col": 10,
+        "len": 6,
+        "answer": "guitar",
+        "clue": "Instrument I play"
+      },
+      {
+        "num": 18,
+        "row": 13,
+        "col": 18,
+        "len": 3,
+        "answer": "car",
+        "clue": "Mode of transportation"
+      },
+      {
+        "num": 22,
+        "row": 16,
+        "col": 12,
+        "len": 6,
+        "answer": "coffee",
+        "clue": "Mr. Gettings' favorite morning beverage"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/16-career-clusters-7",
-  "slug": "16-career-clusters-7",
-  "fetched_at": "2026-07-14T19:22:00.989359+00:00",
-  "date": "2026-07-17"
+  "source_url": "https://crosswordlabs.com/view/2020-08-13-106",
+  "slug": "2020-08-13-106",
+  "fetched_at": "2026-07-14T19:11:55.307312+00:00",
+  "date": "2026-07-18"
 }

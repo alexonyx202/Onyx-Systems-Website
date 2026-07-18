@@ -86,8 +86,7 @@ def cursor_pick(pool, state_path, today):
 import glob as _glob
 import os.path as _osp
 
-BANK_DIR = _osp.expanduser(os.path.join("~", "Documents", "Obsidian Vault",
-                                         "Games", "Crosswords"))
+BANK_DIR = "/home/ai/Documents/Obsidian Vault/Games/Crosswords"
 BANK_TECH_DIRS = ["tech", "computer", "technology"]  # tried first, in order
 
 

@@ -1,6 +1,56 @@
 {
-  "updated": "2026-07-17",
+  "updated": "2026-07-18",
   "items": [
+    {
+      "id": "n-2026-07-18",
+      "type": "newsletter",
+      "date": "2026-07-18",
+      "title": "New FTC Text Scam Sends a Fake Photo ID",
+      "tag": "Daily Brief",
+      "summary": "Scammers are texting folks pretending to be FTC employees — and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
+      "comic": "2026-07-18-comic-square.jpg",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-18-1",
+      "type": "tech-note",
+      "date": "2026-07-18",
+      "title": "Your laptop camera is grainy or dead — the Logitech C920 is the $70 webcam that finally looks good",
+      "tag": "Tech Note",
+      "summary": "The Logitech C920 is a 1080p webcam with a real glass lens and built-in dual mics, far sharper than almost any built-in laptop camera. Get it at logitech.com or Amazon (search 'Logitech C920') and clip it to your laptop lid or desk — no drivers needed."
+    },
+    {
+      "id": "t-2026-07-18-2",
+      "type": "tech-note",
+      "date": "2026-07-18",
+      "title": "Firefox 152 now summarizes pages and blocks fingerprinting free — update at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Mozilla Firefox 152 (released July 14, 2026) adds a Smart Window that summarizes and explains any selected text, plus stronger anti-fingerprinting and Private Browsing protections. Get it free at firefox.com, or update in-app at Help > About Firefox."
+    },
+    {
+      "id": "t-2026-07-18-3",
+      "type": "tech-note",
+      "date": "2026-07-18",
+      "title": "Type by talking — Whisper Local runs OpenAI's speech-to-text on your PC for free, no cloud",
+      "tag": "Tech Note",
+      "summary": "Whisper Local is a free, open-source dictation app powered by OpenAI's Whisper model that types what you say at a hotkey — 100% offline, no subscription, no cloud. Grab it at github.com/drajb/whisper-local (Windows & Mac)."
+    },
+    {
+      "id": "t-2026-07-18-4",
+      "type": "tech-note",
+      "date": "2026-07-18",
+      "title": "Your drive is packed and Windows is crawling — TreeSize Free shows exactly what's eating the space",
+      "tag": "Tech Note",
+      "summary": "TreeSize Free by JAM Software scans your drives and lists your biggest folders by size in seconds. Download it free at treesize.com (the 'TreeSize Free' edition), run it, and sort by size to find the culprit — usually old downloads or a bloated Temp folder."
+    },
+    {
+      "id": "t-2026-07-18-5",
+      "type": "tech-note",
+      "date": "2026-07-18",
+      "title": "North Florida internet acting up? Fast.com (Netflix's free speed test) tells you the truth in 5 seconds",
+      "tag": "Tech Note",
+      "summary": "When your Lake City connection feels slow, don't guess — open Fast.com in any browser (or the Fast Speed Test app) for a real download-speed number. It's Netflix's free tool, no sign-up, and it shows whether you're actually getting what you pay your provider for."
+    },
     {
       "id": "n-2026-07-17",
       "type": "newsletter",
@@ -50,56 +100,6 @@
       "title": "Shrink that giant video file — HandBrake converts any clip to a smaller size for free",
       "tag": "Shop",
       "summary": "HandBrake is a free, open-source video converter that shrinks MP4, MKV, and DVD files without losing noticeable quality. Download it free from **handbrake.fr**."
-    },
-    {
-      "id": "n-2026-07-16",
-      "type": "newsletter",
-      "date": "2026-07-16",
-      "title": "CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
-      "tag": "Daily Brief",
-      "summary": "CISA warned July 14 that attackers are actively exploiting flaws in on-premises Microsoft SharePoint Server — including CVE-2026-56164. Patch now and rotate machine keys; if you can't patch immediately, shut outside access until you can.",
-      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-16-1",
-      "type": "tech-note",
-      "date": "2026-07-16",
-      "title": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
-      "tag": "Security",
-      "summary": "Turn on BitLocker (Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates."
-    },
-    {
-      "id": "t-2026-07-16-2",
-      "type": "tech-note",
-      "date": "2026-07-16",
-      "title": "Chrome's July 2026 update closes 382 security holes — update at chrome://settings/help",
-      "tag": "Software",
-      "summary": "Open Google Chrome and update it now: type chrome://settings/help in the address bar (or Menu > Settings > About Chrome) and let it download the latest build."
-    },
-    {
-      "id": "t-2026-07-16-4",
-      "type": "tech-note",
-      "date": "2026-07-16",
-      "title": "Turn any PDF or webpage into a study podcast free — Google NotebookLM at notebooklm.google.com",
-      "tag": "AI",
-      "summary": "Go to notebooklm.google.com with your Google account, drop in a PDF, Google Doc, or web link, and ask it to build an Audio Overview — free."
-    },
-    {
-      "id": "t-2026-07-16-3",
-      "type": "tech-note",
-      "date": "2026-07-16",
-      "title": "Florida storm season: an APC Back-UPS keeps your computer alive when the power goes out",
-      "tag": "Tech Tip",
-      "summary": "Put your PC on an APC Back-UPS (BE550G or BX series from apc.com or Amazon, or installed by ONYX SYSTEMS) to ride through blackouts and soak post-storm surges."
-    },
-    {
-      "id": "t-2026-07-16-5",
-      "type": "tech-note",
-      "date": "2026-07-16",
-      "title": "Stubborn app won’t go away? Revo Uninstaller Free deletes it and the traces",
-      "tag": "Tech Tip",
-      "summary": "Revo Uninstaller Free (revouninstaller.com/products/revo-uninstaller-free) removes stubborn programs and scrubs the leftover files and registry entries."
     }
   ]
 }

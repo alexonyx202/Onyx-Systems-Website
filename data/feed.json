@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "date": "2026-07-18",
+      "title": "🔴 ALERT — New FTC Text Scam Sends a Fake Photo ID",
+      "excerpt": "Scammers are texting folks pretending to be FTC employees — and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
+      "image": "assets/img/news/2026-07-18-composite.jpg",
+      "comic": "assets/img/news/2026-07-18-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-17",
       "title": "🔴 ALERT — 7-Zip Just Patched a Dangerous Flaw — Update Now",
       "excerpt": "A serious security hole (CVE-2026-14266) was disclosed in 7-Zip, the free file compressor many folks use. Opening a malicious .7z file or a bad webpage could let an attacker run code on your PC — even drop ransomware. The fix is simple: update 7-Zip to version 26.02 (open 7-Zip, click Help, then Check for Updates).",
@@ -138,17 +146,49 @@
       "image": "assets/img/news/2026-07-13-composite.jpg",
       "comic": "assets/img/news/2026-07-13-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-11",
-      "title": "That \"FTC Agent\" Wants Your Money Back — Into Their Pocket",
-      "excerpt": "That \"FTC Agent\" Wants Your Money Back — Into Their Pocket",
-      "image": "assets/img/news/2026-07-11-composite.jpg",
-      "comic": "assets/img/news/2026-07-11-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "type": "news",
+      "headline": "Your laptop camera is grainy or dead — the Logitech C920 is the $70 webcam that finally looks good",
+      "tip": "The Logitech C920 is a 1080p webcam with a real glass lens and built-in dual mics, far sharper than almost any built-in laptop camera. Get it at logitech.com or Amazon (search 'Logitech C920') and clip it to your laptop lid or desk — no drivers needed.",
+      "truth": "Most people blame their internet when a video call looks bad. Nine times out of ten it's the $10 webcam baked into the lid. A $70 camera and good light fix more 'my WiFi is slow' complaints than any router ever will.",
+      "date": "2026-07-18",
+      "id": "t-2026-07-18-1"
+    },
+    {
+      "type": "news",
+      "headline": "Firefox 152 now summarizes pages and blocks fingerprinting free — update at firefox.com",
+      "tip": "Mozilla Firefox 152 (released July 14, 2026) adds a Smart Window that summarizes and explains any selected text, plus stronger anti-fingerprinting and Private Browsing protections. Get it free at firefox.com, or update in-app at Help > About Firefox.",
+      "truth": "People think they have to switch to some new paid browser to get AI features. Firefox just baked summarize and tracker-blocking in for free. The best upgrade is usually the one you already have — you just haven't updated it.",
+      "date": "2026-07-18",
+      "id": "t-2026-07-18-2"
+    },
+    {
+      "type": "tip",
+      "headline": "Type by talking — Whisper Local runs OpenAI's speech-to-text on your PC for free, no cloud",
+      "tip": "Whisper Local is a free, open-source dictation app powered by OpenAI's Whisper model that types what you say at a hotkey — 100% offline, no subscription, no cloud. Grab it at github.com/drajb/whisper-local (Windows & Mac).",
+      "truth": "Folks pay $15 a month for dictation that phones home with everything they say. Whisper Local runs the same engine on your own machine and never sends a byte anywhere. Free and private beats a subscription every time.",
+      "date": "2026-07-18",
+      "id": "t-2026-07-18-3"
+    },
+    {
+      "type": "tip",
+      "headline": "Your drive is packed and Windows is crawling — TreeSize Free shows exactly what's eating the space",
+      "tip": "TreeSize Free by JAM Software scans your drives and lists your biggest folders by size in seconds. Download it free at treesize.com (the 'TreeSize Free' edition), run it, and sort by size to find the culprit — usually old downloads or a bloated Temp folder.",
+      "truth": "Everyone's first instinct when the drive fills up is 'I need a bigger one.' Half the time it's 40 GB of forgotten downloads and a Temp folder that never got cleaned. Knowing what's actually there saves you a $90 drive.",
+      "date": "2026-07-18",
+      "id": "t-2026-07-18-4"
+    },
+    {
+      "type": "tip",
+      "headline": "North Florida internet acting up? Fast.com (Netflix's free speed test) tells you the truth in 5 seconds",
+      "tip": "When your Lake City connection feels slow, don't guess — open Fast.com in any browser (or the Fast Speed Test app) for a real download-speed number. It's Netflix's free tool, no sign-up, and it shows whether you're actually getting what you pay your provider for.",
+      "truth": "Customers swear their 'internet is broken' and blame the PC. I run Fast.com and we watch the number together. If it's 200 Mbps, the problem is the computer, not the wire — and that's a $40 cleanup, not a new modem.",
+      "date": "2026-07-18",
+      "id": "t-2026-07-18-5"
+    },
     {
       "type": "tip",
       "headline": "Stop the ads and trackers following you around the web — uBlock Origin is the free blocker that still works on Firefox and Brave",
@@ -187,72 +227,7 @@
         "#JanAI"
       ],
       "date": "2026-07-17"
-    },
-    {
-      "type": "tip",
-      "headline": "Stop paying for WinZip — 7-Zip zips, unzips, and encrypts any archive for free",
-      "tip": "7-Zip is a free, open-source file archiver that opens ZIP, RAR, and 7z files and can password-protect them with strong AES-256 encryption. Download it free from **7-zip.org**.",
-      "truth": "Most people don't realize Windows' built-in zip tool is fine for basic stuff but can't open half the archives people email them, and it won't encrypt a thing. 7-Zip opens RAR, ISO, you name it, and locks a file with a password in two clicks. The \"free trial\" popups in paid archivers are just noise — this does the job better and asks nothing.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#7Zip"
-      ],
-      "date": "2026-07-17"
-    },
-    {
-      "type": "tip",
-      "headline": "Shrink that giant video file — HandBrake converts any clip to a smaller size for free",
-      "tip": "HandBrake is a free, open-source video converter that shrinks MP4, MKV, and DVD files without losing noticeable quality. Download it free from **handbrake.fr**.",
-      "truth": "The honest answer is most people are sitting on 2 GB phone videos they can't email, text, or upload because they were never compressed. HandBrake takes that clip down to a tenth the size with no visible difference — and it's the very same tool we run on the bench when someone brings in a phone full of unshareable memories.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#HandBrake"
-      ],
-      "date": "2026-07-17"
-    },
-    {
-      "type": "news",
-      "headline": "Lost laptop? BitLocker can be bypassed in minutes — install the July Windows Update to close the hole",
-      "tip": "Turn on BitLocker drive encryption (search “BitLocker” in the Start menu, or Settings > Privacy & Security > Device encryption) and install the July 2026 Windows Update at Settings > Windows Update > Check for updates. The patch for CVE-2026-50661 blocks a physical-attack bypass that let someone with brief hands-on access read or change an encrypted drive.",
-      "truth": "Most people figure BitLocker turns a stolen laptop into a paperweight. It helps — but on an unpatched machine a thief with five minutes and a screwdriver can get around it. Encryption is not a substitute for a strong password and the latest patch. The update that closed this hole shipped July 14, and I still see machines that haven’t pulled it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#BitLocker"
-      ],
-      "date": "2026-07-16"
-    },
-    {
-      "type": "news",
-      "headline": "Chrome’s July 2026 update closes 382 security holes — update at chrome://settings/help",
-      "tip": "Open Google Chrome and update it right now: type chrome://settings/help in the address bar (or Menu > Settings > About Chrome) and let it download the latest build. Chrome’s July 2026 releases (150/151) patched close to 400 bugs, including critical code-execution flaws that let a malicious page run code on your PC.",
-      "truth": "Folks patch their phone the day an update drops but leave Chrome three versions behind for a year. Your browser touches every site you visit — it’s the most exposed program on your computer, and the one most people never update. An old Chrome is an open window.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Chrome"
-      ],
-      "date": "2026-07-16"
-    },
-    {
-      "type": "tip",
-      "headline": "Florida storm season: an APC Back-UPS keeps your computer alive when the power goes out",
-      "tip": "Put your computer on an APC Back-UPS battery unit — grab a BE550G or BX series from apc.com or Amazon, or have Onyx install one. It rides through a blackout and soaks the voltage spikes that roll in right after the lights flicker.",
-      "truth": "I see more dead motherboards and fried power supplies after a storm than from anything else all year. A $60 battery backup beats a $600 board repair every single time, and it’s the one upgrade most North Florida folks skip until the surge does the choosing for them.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#APC"
-      ],
-      "date": "2026-07-16"
     }
   ],
-  "updated": "2026-07-17"
+  "updated": "2026-07-18"
 }
