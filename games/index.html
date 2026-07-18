@@ -58,10 +58,10 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(14px,1.8vw,22px);margin:18px auto 0;max-width:1180px}
+  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(16px,2vw,26px);margin:18px auto 0;max-width:1320px}  /* wider grid → room for LARGE 3-up */
   /* ---- ARCADE cabinet cards (v5): full cabinet image on TOP, tagline + Play BELOW (no overlap) ---- */
   .arcade-hub .game-card{
-    position:relative;flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,255px);
+    position:relative;flex:1 1 clamp(300px,26vw,340px);min-width:0;max-width:clamp(340px,30vw,400px);  /* LARGE 3-up: real basis forces a wrap so 3 fit per row */
     display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
     border-radius:14px;overflow:hidden;text-decoration:none;
     background:#0a0612;box-shadow:0 10px 30px rgba(0,0,0,.5);
@@ -101,8 +101,9 @@
     font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
     padding:3px 8px;border-radius:999px;box-shadow:0 3px 10px rgba(154,83,38,.5);
   }
-  @media (prefers-reduced-motion:reduce){.arcade-hub .game-card,.arcade-hub .game-card .gthumb{transition:none;transform:none}}
-  @media (max-width:640px){.arcade-hub .games-grid{flex-wrap:wrap}.arcade-hub .game-card{flex:1 1 42%;max-width:46%}}
+  @media (prefers-reduced-motion:reduce){.arcade-hub .game-card,.arcade-hub .game-card .gcab{transition:none;transform:none}}
+  @media (max-width:1024px){.arcade-hub .game-card{flex:1 1 42%;max-width:46%}}
+  @media (max-width:640px){.arcade-hub .game-card{flex:1 1 100%;max-width:420px}}
 
   @media (prefers-reduced-motion:reduce){body::after{animation:none}}
 </style>
