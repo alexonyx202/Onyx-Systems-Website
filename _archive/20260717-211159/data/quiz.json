@@ -1,0 +1,59 @@
+{
+  "title": "Is Your PC Haunted? (A Fun 5-Question Tech Check)",
+  "subtitle": "Answer honestly — at the end we'll tell you what's probably going on and how John can fix it. No email required.",
+  "questions": [
+    {
+      "q": "How fast does your computer feel these days?",
+      "options": [
+        {"t": "Like new — snappy", "score": 0, "tag": "healthy"},
+        {"t": "A bit sluggish", "score": 1, "tag": "tune"},
+        {"t": "Coffee-break slow", "score": 2, "tag": "tune"},
+        {"t": "I start it and go make lunch", "score": 3, "tag": "sick"}
+      ]
+    },
+    {
+      "q": "Pop-ups or weird messages appearing out of nowhere?",
+      "options": [
+        {"t": "Never", "score": 0, "tag": "healthy"},
+        {"t": "Rarely", "score": 1, "tag": "tune"},
+        {"t": "Too often", "score": 2, "tag": "sick"},
+        {"t": "Constantly — it's possessed", "score": 3, "tag": "sick"}
+      ]
+    },
+    {
+      "q": "When did you last back up your photos & files?",
+      "options": [
+        {"t": "Automatically, all the time", "score": 0, "tag": "healthy"},
+        {"t": "A few months ago", "score": 1, "tag": "tune"},
+        {"t": "Can't remember", "score": 2, "tag": "sick"},
+        {"t": "What's a backup?", "score": 3, "tag": "sick"}
+      ]
+    },
+    {
+      "q": "How's your Wi-Fi at home or the shop?",
+      "options": [
+        {"t": "Rock solid", "score": 0, "tag": "healthy"},
+        {"t": "One dead spot", "score": 1, "tag": "tune"},
+        {"t": "Drops daily", "score": 2, "tag": "sick"},
+        {"t": "I use my phone's hotspot", "score": 3, "tag": "sick"}
+      ]
+    },
+    {
+      "q": "What device are we talking about?",
+      "options": [
+        {"t": "Windows PC or laptop", "score": 0, "tag": "win"},
+        {"t": "A Mac or MacBook", "score": 0, "tag": "mac"},
+        {"t": "Both", "score": 0, "tag": "both"},
+        {"t": "Honestly, all of it", "score": 1, "tag": "both"}
+      ]
+    }
+  ],
+  "results": {
+    "healthy": {"title": "Healthy as a horse 🐎", "blurb": "Your machine is in good shape. Keep those backups running and you're golden. Swing by anyway — John loves talking shop."},
+    "tune": {"title": "Needs a tune-up 🔧", "blurb": "A little sluggish but nothing fatal. A good cleanup and a few tweaks often work wonders — John can have it running like new without a big parts bill."},
+    "sick": {"title": "Definitely haunted 👻", "blurb": "This one's crying for help — viruses, lost files, or a dying drive. Don't wait. Call John before it gets worse (and more expensive)."},
+    "win": {"title": "Windows box — John's bread & butter", "blurb": "Windows PCs are John's specialty. Whatever it's doing, he's fixed it a hundred times."},
+    "mac": {"title": "Mac help? Yep, John does that too 🍎", "blurb": "Despite the old rumor, John works on Macs — data, accounts, speed, and advice. Book an evening visit."},
+    "both": {"title": "Mixed fleet — John handles all of it", "blurb": "Windows, Mac, Linux, networks. One call covers the whole house."}
+  }
+}
