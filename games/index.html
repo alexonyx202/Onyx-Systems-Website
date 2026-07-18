@@ -62,28 +62,22 @@
   /* ---- ARCADE cabinet cards (v4): screenshot is the hero, framed by the Gemini cabinet ---- */
   .arcade-hub .game-card{
     position:relative;flex:1 1 0;min-width:0;max-width:clamp(210px,19vw,255px);
-    aspect-ratio:526/768;            /* matches cabinet-v4-frame.png */
+    aspect-ratio:1376/768;           /* matches cabinet-* composite (1376x768) */
     border-radius:14px;overflow:hidden;text-decoration:none;
     background:#0a0612;box-shadow:0 10px 30px rgba(0,0,0,.5);
     transition:transform .25s ease,box-shadow .25s ease;
   }
   .arcade-hub .game-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(194,112,61,.45)}
-  .arcade-hub .game-card .gthumb{
-    position:absolute;left:16.5%;top:27.3%;width:69.4%;height:62.5%;
-    object-fit:cover;object-position:50% 42%;display:block;background:#05080a;
-    transition:transform .35s ease,filter .35s ease;z-index:1;
+  /* Full Gemini composite (cabinet + baked marquee title + gameplay screenshot).
+     Title is baked into the artwork, so NO separate .gtitle overlay. */
+  .arcade-hub .game-card .gcab{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;
+    display:block;z-index:1;transition:transform .35s ease,filter .35s ease;
   }
-  .arcade-hub .game-card:hover .gthumb{transform:scale(1.05);filter:saturate(1.08) contrast(1.04)}
-  .arcade-hub .game-card .gthumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px);pointer-events:none}
-  .arcade-hub .game-card .gcab{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:3;pointer-events:none}
-  .arcade-hub .game-card .gtitle{
-    position:absolute;left:6%;right:6%;top:5.5%;z-index:4;text-align:center;
-    font-family:var(--brand-font);font-weight:700;font-size:clamp(13px,1.5vw,16px);
-    line-height:1.05;color:#fff;text-shadow:0 1px 3px #000,0 0 10px rgba(0,0,0,.8);
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  }
+  .arcade-hub .game-card:hover .gcab{transform:scale(1.05);filter:saturate(1.08) contrast(1.04)}
+  .arcade-hub .game-card .gcab::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px);pointer-events:none}
   .arcade-hub .game-card .gtag{
-    position:absolute;left:6%;right:6%;top:90.5%;z-index:4;text-align:center;
+    position:absolute;left:6%;right:6%;bottom:8.5%;z-index:4;text-align:center;
     font-size:11px;font-weight:600;line-height:1.1;color:var(--copper-2);
     text-shadow:0 1px 2px #000;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
   }
@@ -145,15 +139,13 @@ function renderGames(list){
   grid.innerHTML=list.map(function(g){
     return '<a class="game-card" href="'+esc(g.file)+'">'+
       (g.featured?'<span class="flag">Featured</span>':'')+
-      '<img class="gthumb" src="'+esc(g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
-      '<img class="gcab" src="assets/cabinet-v4-frame.png" alt="">'+
-      '<span class="gtitle">'+esc(g.title)+'</span>'+
+      '<img class="gcab" src="'+esc(g.cabinet||g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
       '<span class="gtag">'+esc(g.tagline||'Play now')+'</span>'+
       '<span class="gbtn">▶ Play</span></a>';
   }).join('');
 }
 // Try local manifest, fall back to inline so the hub never breaks offline
-var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","featured":true},{"file":"disk-defrag.html","title":"Disk Defrag","tagline":"Defragment the drive. Clear the lines.","desc":"A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.","thumb":"assets/disk-defrag-thumb.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","featured":false}];
+var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","cabinet":"assets/cabinet-wargames.webp","featured":true},{"file":"disk-defrag.html","title":"Disk Defrag","tagline":"Defragment the drive. Clear the lines.","desc":"A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.","thumb":"assets/disk-defrag-thumb.webp","cabinet":"assets/cabinet-disk-defrag.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","cabinet":"assets/cabinet-drone-hunt.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","cabinet":"assets/cabinet-computer-chaos.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","cabinet":"assets/cabinet-skydrift.webp","featured":false}];
 fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
 </script>
 </body>
