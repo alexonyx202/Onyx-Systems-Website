@@ -48,7 +48,7 @@
     linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
   body::after{content:"";position:fixed;left:-50%;right:-50%;top:-10%;bottom:-10%;height:auto;z-index:-1;opacity:.55;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(60deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
-  .arcade-hub{position:relative;z-index:2;max-width:1480px;margin:0 auto;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+  .arcade-hub{position:relative;z-index:2;max-width:1480px;margin:0 auto;min-height:88vh;display:flex;flex-direction:column}
   .arcade-hub .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('../assets/img/arcade/bg-wireframe.jpg')}
   .arcade-hub .wrap{position:relative;z-index:2}
   .arcade-hub .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
@@ -58,7 +58,7 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;max-width:1480px;margin:18px auto 0;padding:0 24px}  /* futureproof: cards fixed ~230px; auto-fill rows absorb any catalog size */
+  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1480px;width:100%;margin:auto auto;padding:0 24px}  /* auto-fit: 5 cards fill one row; clip-proof (no justify-center overflow) */
   /* ---- ARCADE cabinet cards (v5): full cabinet image on TOP, tagline + Play BELOW (no overlap) ---- */
   .arcade-hub .game-card{
     position:relative;display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
