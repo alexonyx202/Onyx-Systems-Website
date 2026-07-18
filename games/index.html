@@ -58,14 +58,13 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(16px,2vw,26px);margin:18px auto 0;max-width:1320px}  /* wider grid → room for LARGE 3-up */
+  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;max-width:1280px;margin:18px auto 0;padding:0 24px}  /* futureproof: cards fixed ~230px; auto-fill rows absorb any catalog size */
   /* ---- ARCADE cabinet cards (v5): full cabinet image on TOP, tagline + Play BELOW (no overlap) ---- */
   .arcade-hub .game-card{
-    position:relative;flex:1 1 clamp(300px,26vw,340px);min-width:0;max-width:clamp(340px,30vw,400px);  /* LARGE 3-up: real basis forces a wrap so 3 fit per row */
-    display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
+    position:relative;display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
     border-radius:14px;overflow:hidden;text-decoration:none;
     background:#0a0612;box-shadow:0 10px 30px rgba(0,0,0,.5);
-    transition:transform .25s ease,box-shadow .25s ease;
+    transition:transform .2s ease,box-shadow .2s ease;
   }
   .arcade-hub .game-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(194,112,61,.45)}
   /* Image block keeps the cabinet aspect ratio; footer flows underneath, never overlapping */
@@ -101,9 +100,26 @@
     font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
     padding:3px 8px;border-radius:999px;box-shadow:0 3px 10px rgba(154,83,38,.5);
   }
+  /* ---- HERO-ON-HOVER overlay: slide-up panel revealing title/desc/tagline (NEVER Play; Play stays below) ---- */
+  .arcade-hub .game-card .hover-panel{
+    position:absolute;left:0;right:0;bottom:0;height:74%;z-index:2;pointer-events:none;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:14px 14px 16px;text-align:left;
+    background:linear-gradient(to top,rgba(8,6,14,.95) 35%,rgba(8,6,14,.8) 60%,rgba(8,6,14,0) 100%);
+    transform:translateY(101%);opacity:0;
+    transition:transform .24s cubic-bezier(.22,1,.36,1),opacity .2s ease;transition-delay:.12s;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .arcade-hub .game-card:hover .hover-panel,
+    .arcade-hub .game-card:focus-within .hover-panel{transform:translateY(0);opacity:1;transition-delay:.22s}
+  }
+  .arcade-hub .game-card.expanded .hover-panel{transform:translateY(0);opacity:1}
+  .arcade-hub .game-card .hp-title{font-family:var(--brand-font,Oswald,"Segoe UI",sans-serif);font-weight:700;font-size:16px;line-height:1.05;color:var(--copper-2);text-shadow:0 0 12px rgba(194,112,61,.55)}
+  .arcade-hub .game-card .hp-desc{font-size:11.5px;line-height:1.35;color:#ece6df;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .arcade-hub .game-card .hp-tag{font-size:10.5px;font-weight:600;color:#b9a7c9;font-style:italic}
+  @media (prefers-reduced-motion:reduce){.arcade-hub .game-card .hover-panel{transition:opacity .2s ease;transform:none!important}}
   @media (prefers-reduced-motion:reduce){.arcade-hub .game-card,.arcade-hub .game-card .gcab{transition:none;transform:none}}
-  @media (max-width:1024px){.arcade-hub .game-card{flex:1 1 42%;max-width:46%}}
-  @media (max-width:640px){.arcade-hub .game-card{flex:1 1 100%;max-width:420px}}
+  @media (max-width:1024px){.arcade-hub .games-grid{gap:18px}}
+  @media (max-width:640px){.arcade-hub .games-grid{gap:14px;padding:0 16px}}
 
   @media (prefers-reduced-motion:reduce){body::after{animation:none}}
 </style>
@@ -145,10 +161,16 @@ function renderGames(list){
   if(!list||!list.length){document.getElementById('empty').style.display='block';return;}
   list.sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
   grid.innerHTML=list.map(function(g){
+    var panel='<span class="hover-panel">'+
+        '<span class="hp-title">'+esc(g.title)+'</span>'+
+        '<span class="hp-desc">'+esc(g.desc||'')+'</span>'+
+        '<span class="hp-tag">'+esc(g.tagline||'')+'</span>'+
+      '</span>';
     return '<a class="game-card" href="'+esc(g.file)+'">'+ 
       '<span class="gcab-wrap">'+
         '<img class="gcab" src="'+esc(g.cabinet||g.thumb||'')+'" alt="'+esc(g.title)+'" loading="lazy">'+
         (g.featured?'<span class="flag">Featured</span>':'')+
+        panel+
       '</span>'+
       '<span class="gfoot">'+
         '<span class="gtag">'+esc(g.tagline||'Play now')+'</span>'+
@@ -159,6 +181,7 @@ function renderGames(list){
 // Try local manifest, fall back to inline so the hub never breaks offline
 var MANIFEST=[{"file":"wargames-v3.html","title":"WarGames: Missile Defense","tagline":"Defend NORAD, Moscow & Beijing from incoming ICBMs.","desc":"A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.","thumb":"assets/wargames-thumbnail.webp","cabinet":"assets/cabinet-wargames.webp","featured":true},{"file":"disk-defrag.html","title":"Disk Defrag","tagline":"Defragment the drive. Clear the lines.","desc":"A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.","thumb":"assets/disk-defrag-thumb.webp","cabinet":"assets/cabinet-disk-defrag.webp","featured":false},{"file":"drone-hunt-v4.html","title":"Drone Hunt","tagline":"Laser rifle. Drones. Don't hit the birds.","desc":"A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.","thumb":"assets/drone-hunt-thumb.webp","cabinet":"assets/cabinet-drone-hunt.webp","featured":false},{"file":"computer-chaos-v4.html","title":"Computer Chaos","tagline":"Catch the parts. Fill the orders. Beat the clock.","desc":"A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.","thumb":"assets/computer-chaos-thumb.webp","cabinet":"assets/cabinet-computer-chaos.webp","featured":false},{"file":"skydrift-v1.html","title":"SKYDRIFT","tagline":"Neon bolts, drones and a high-score table.","desc":"A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.","thumb":"assets/skydrift-thumb.webp","cabinet":"assets/cabinet-skydrift.webp","featured":false}];
 fetch('games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){renderGames(d.games||MANIFEST);}).catch(function(){renderGames(MANIFEST);});
+document.addEventListener('click',function(e){var c=e.target.closest('.game-card');if(c&&window.matchMedia('(hover:none)').matches){e.preventDefault();c.classList.toggle('expanded');}});
 </script>
 </body>
 </html>
