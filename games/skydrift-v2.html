@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>SKYDRIFT — Retro Arcade Shooter</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#05050f}
 body{font-family:'Courier New',monospace;user-select:none;color:#fff}
-canvas{display:block;cursor:crosshair}
+canvas{display:block;cursor:crosshair;touch-action:none}
 #hud{position:fixed;top:0;left:0;right:0;padding:6px 16px;display:flex;justify-content:space-between;color:#fff;font-size:13px;z-index:10;pointer-events:none;text-shadow:0 0 6px currentColor,1px 1px 2px #000}
 #hud span{margin:0 8px}
 .hi{color:#ffcc44}.hw{color:#44ffaa}.hl{color:#ff5577}.hb{color:#55aaff}.hp{color:#ff88ff}
@@ -53,6 +53,17 @@ button:active{transform:scale(.96)}
 .m{padding:3px 12px;font-size:13px;font-weight:bold;margin-bottom:4px;animation:mf 1.5s forwards;white-space:nowrap}
 @keyframes mf{0%{opacity:1;transform:scale(1)}70%{opacity:1}100%{opacity:0;transform:scale(.9) translateY(-10px)}}
 .mw{color:#ff4444;text-shadow:0 0 8px #ff0000}.mb{color:#ffcc44;text-shadow:0 0 8px #ff8800}.mi{color:#55aaff;text-shadow:0 0 8px #0066ff}
+
+/* ============ TOUCH CONTROLS (mobile only) ============ */
+#touch{position:fixed;inset:0;z-index:80;pointer-events:none;display:none}
+body.touch.playing #touch{display:block}
+#joy{position:absolute;width:120px;height:120px;border-radius:50%;border:2px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05);display:none;box-shadow:inset 0 0 18px rgba(0,0,0,.4)}
+#joyThumb{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(255,204,68,.45);border:2px solid #ffcc44;box-shadow:0 0 14px rgba(255,204,68,.6)}
+.tbtn{position:absolute;pointer-events:auto;touch-action:none;border-radius:50%;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.07);color:#fff;font-family:'Courier New',monospace;font-weight:bold;letter-spacing:1px;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;-webkit-touch-callout:none;user-select:none}
+#btnFire{width:88px;height:88px;right:22px;bottom:96px;background:rgba(255,90,90,.16);border-color:rgba(255,120,120,.5);color:#ffcc44;font-size:14px}
+#btnBomb{width:62px;height:62px;right:120px;bottom:26px;background:rgba(85,170,255,.16);border-color:rgba(120,190,255,.5);color:#9fd0ff;font-size:12px}
+#btnPause{width:46px;height:46px;right:14px;top:52px;font-size:13px;color:#ffcc44}
+.tbtn:active{filter:brightness(1.4)}
 </style>
 </head>
 <body>
@@ -67,6 +78,12 @@ button:active{transform:scale(.96)}
 <div id="msgs"></div>
 <div id="overlay" class="show title"></div>
 <div id="crt"></div>
+<div id="touch">
+  <div id="joy"><div id="joyThumb"></div></div>
+  <button id="btnFire" class="tbtn">FIRE</button>
+  <button id="btnBomb" class="tbtn">BOMB</button>
+  <button id="btnPause" class="tbtn">II</button>
+</div>
 <script>
 var C=document.getElementById('C'),X=C.getContext('2d'),W,H;
 function resize(){W=C.width=innerWidth;H=C.height=innerHeight;}
@@ -143,6 +160,7 @@ var G={
   toTitle:function(){this.state='TITLE';this.showTitle();},
 
   showTitle:function(){
+    for(var k in this.keys)this.keys[k]=false;
     var hs=loadHS();var rows='';
     if(hs.length===0){rows='<div class="empty">— NO SCORES YET —</div>';}
     else{for(var i=0;i<hs.length;i++){rows+='<div class="hsrow"><span class="rk">'+(i+1)+'.</span><span class="sc">'+String(hs[i].score).padStart(6,'0')+'</span><span class="wv">W'+hs[i].wave+'</span><span class="dt">'+hs[i].date+'</span></div>';}}
@@ -161,6 +179,7 @@ var G={
   },
 
   showOver:function(rr){
+    for(var k in this.keys)this.keys[k]=false;
     var hs=loadHS();var rows='';var curScore=this.score;
     for(var i=0;i<hs.length;i++){
       var isCur=(hs[i].score===curScore&&i===rr.rank);
@@ -393,10 +412,46 @@ addEventListener('keydown',function(e){G.keys[e.key.toLowerCase()]=true;
 addEventListener('keyup',function(e){G.keys[e.key.toLowerCase()]=false;});
 addEventListener('click',function(){if(G.state==='TITLE'||G.state==='OVER'){G.start();}});
 
+/* ============ TOUCH CONTROLS (mobile only) ============ */
+(function(){
+  var isTouch = ('ontouchstart' in window) || (typeof navigator!=='undefined' && navigator.maxTouchPoints>0);
+  if(!isTouch) return;                       // desktop: do nothing, game unchanged
+  document.body.classList.add('touch');
+  var joy=document.getElementById('joy'), thumb=document.getElementById('joyThumb');
+  var joyId=null, jx=0, jy=0, MAX=33, DZ=14;
+  function setMove(dx,dy){
+    G.keys['arrowleft']=dx<-DZ; G.keys['arrowright']=dx>DZ;
+    G.keys['arrowup']=dy<-DZ; G.keys['arrowdown']=dy>DZ;
+  }
+  function clearMove(){ G.keys['arrowleft']=G.keys['arrowright']=G.keys['arrowup']=G.keys['arrowdown']=false; }
+  function joyStart(t){ joyId=t.identifier; jx=t.clientX; jy=t.clientY; joy.style.left=(jx-60)+'px'; joy.style.top=(jy-60)+'px'; joy.style.display='block'; thumb.style.transform='translate(0,0)'; }
+  function joyMove(t){ var dx=t.clientX-jx, dy=t.clientY-jy, d=Math.hypot(dx,dy); if(d>MAX){ dx=dx/d*MAX; dy=dy/d*MAX; } thumb.style.transform='translate('+dx+'px,'+dy+'px)'; setMove(dx,dy); }
+  function joyEnd(t){ if(t.identifier!==joyId)return; joyId=null; joy.style.display='none'; clearMove(); }
+  document.addEventListener('touchstart',function(e){
+    if(G.state!=='PLAY')return;
+    for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; if(joyId===null && t.clientX < window.innerWidth*0.5){ joyStart(t); } }
+  },{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(joyId===null)return; e.preventDefault();
+    for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; if(t.identifier===joyId){ joyMove(t); } }
+  },{passive:false});
+  function onEnd(e){ for(var i=0;i<e.changedTouches.length;i++){ joyEnd(e.changedTouches[i]); } }
+  document.addEventListener('touchend',onEnd);
+  document.addEventListener('touchcancel',onEnd);
+  function hold(id,on,off){ var el=document.getElementById(id);
+    el.addEventListener('touchstart',function(e){ e.preventDefault(); e.stopPropagation(); on(); },{passive:false});
+    el.addEventListener('touchend',function(e){ e.preventDefault(); e.stopPropagation(); off(); },{passive:false});
+    el.addEventListener('touchcancel',function(e){ off(); });
+  }
+  hold('btnFire', function(){ G.keys[' ']=true; }, function(){ G.keys[' ']=false; });
+  hold('btnBomb', function(){ if(G.state==='PLAY') G.bomb(); }, function(){});
+  hold('btnPause', function(){ if(G.state==='PLAY') G.state='PAUSE'; else if(G.state==='PAUSE') G.state='PLAY'; }, function(){});
+})();
+
 G.init();G.showTitle();
 
 var lastT=0;
-function loop(t){var dt=Math.min(t-lastT,50);lastT=t;G.update(dt);G.render();requestAnimationFrame(loop);}
+function loop(t){var dt=Math.min(t-lastT,50);lastT=t;G.update(dt);G.render();if(document.body)document.body.classList.toggle('playing',G.state==='PLAY'||G.state==='PAUSE');requestAnimationFrame(loop);}
 requestAnimationFrame(loop);
 
 /* ===== Headless verification hook ===== */
