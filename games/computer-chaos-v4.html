@@ -46,6 +46,20 @@
   #msg-btn:hover { filter:brightness(1.1); }
   #controls-hint { max-width:520px; margin:8px auto 0; font-size:12px; color:#64748b; text-align:center; }
   #mute-btn { position:absolute; top:8px; right:8px; z-index:6; background:rgba(22,27,46,0.8); color:#94a3b8; border:1px solid #2a3358; border-radius:8px; width:30px; height:30px; cursor:pointer; font-size:14px; }
+  /* short landscape (phones rotated): lay out as a row (canvas + side panel) and cap canvas to viewport height,
+     so the 520px column no longer overflows the short screen */
+  @media (orientation:landscape) and (max-height:500px){
+    html,body{ height:100%; overflow:hidden; }
+    #game-wrap{ display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto auto auto;
+      grid-template-areas:"canvas ui" "canvas combo" "canvas order" "canvas hint";
+      align-content:center; justify-content:center; gap:6px 16px; height:100dvh; max-width:980px; padding:0 12px; }
+    #canvas-container{ grid-area:canvas; max-height:calc(100dvh - env(safe-area-inset-bottom,0)); width:auto; }
+    #canvas-container canvas{ max-height:calc(100dvh - env(safe-area-inset-bottom,0) - 8px); width:auto; height:auto; }
+    #ui-bar{ grid-area:ui; margin:0; }
+    #combo-box{ grid-area:combo; margin:0; }
+    #order-box{ grid-area:order; margin:0; }
+    #controls-hint{ grid-area:hint; margin:0; text-align:left; }
+  }
 </style>
 </head>
 <body>

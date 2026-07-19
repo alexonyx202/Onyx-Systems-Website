@@ -82,7 +82,12 @@
   @keyframes blink{50%{opacity:0}}
 
   canvas{
-    display:block;width:100%;height:auto;
+    display:block;
+    width:auto; height:auto; max-width:100%;
+    /* fit the canvas to the SHORT landscape height (keep 960x600 ratio) so it never overflows/clips */
+    max-height:calc(100dvh - env(safe-area-inset-bottom,0) - 120px);
+    max-height:calc(100vh - 120px);
+    margin:0 auto;
     image-rendering:pixelated;
     background:#04070a;
     cursor:crosshair;
