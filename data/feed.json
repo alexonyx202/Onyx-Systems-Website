@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "date": "2026-07-19",
+      "title": "🔴 ALERT — New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
+      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails — type the web address in yourself.",
+      "image": "assets/img/news/2026-07-19-composite.jpg",
+      "comic": "assets/img/news/2026-07-19-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-18",
       "title": "🔴 ALERT — New FTC Text Scam Sends a Fake Photo ID",
       "excerpt": "Scammers are texting folks pretending to be FTC employees — and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
@@ -138,17 +146,79 @@
       "image": "assets/img/news/2026-07-14-composite.jpg",
       "comic": "assets/img/news/2026-07-14-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-13",
-      "title": "Six Zero-Days Live: Patch These Now",
-      "excerpt": "Six vulnerabilities are already under active attack today (July 13, 2026) — including flaws in Adobe ColdFusion, Langflow, and a cluster of Joomla extensions. If you run any of those tools, isolate them. Everyone else: stop hitting \"remind me later\" on updates.",
-      "image": "assets/img/news/2026-07-13-composite.jpg",
-      "comic": "assets/img/news/2026-07-13-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "type": "tip",
+      "headline": "Stop feeding Google your browsing history — Brave is the free browser that blocks trackers by default (brave.com)",
+      "tip": "Download Brave free from brave.com for Windows, Mac, or Linux. It blocks ads and trackers out of the box — no extensions to install, no settings menus to hunt through.",
+      "truth": "Most people think \"private browsing\" in Chrome keeps them private. It doesn't — it only hides your history from the person on your own couch. Brave blocks the trackers that follow you across the entire web, the day you install it, with zero setup.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Brave"
+      ],
+      "date": "2026-07-19",
+      "id": "t-2026-07-19-1"
+    },
+    {
+      "type": "tip",
+      "headline": "Encrypt a lost USB stick so it can't expose your tax files — VeraCrypt is the free tool (veracrypt.fr)",
+      "tip": "Download VeraCrypt free from veracrypt.fr, then create an encrypted container (a locked file) or encrypt a whole USB drive. Your files stay scrambled even if the drive is lost or stolen.",
+      "truth": "People buy $20 \"secure\" thumb drives and think they're safe. They're not — a lost drive with plain files is an open book to whoever finds it. VeraCrypt is free, open-source, and has been independently audited. Paying more doesn't make it safer here.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VeraCrypt"
+      ],
+      "date": "2026-07-19",
+      "id": "t-2026-07-19-2"
+    },
+    {
+      "type": "tip",
+      "headline": "Make AI art and run 100+ AI tools on your own PC free — Pinokio installs them with one click (pinokio.computer)",
+      "tip": "Get Pinokio free from pinokio.computer for Windows, Mac, or Linux. It's a launcher that installs Stable Diffusion and other AI apps locally with one click — no command line, no Python errors.",
+      "truth": "Everyone assumes \"AI\" means a monthly ChatGPT bill and your data sitting in someone else's cloud. Pinokio flips that — it pulls AI models down to your own machine and runs them offline. Free, and nothing leaves the house.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Pinokio"
+      ],
+      "date": "2026-07-19",
+      "id": "t-2026-07-19-3"
+    },
+    {
+      "type": "tip",
+      "headline": "That video file won't open in Windows? VLC plays every format free (videolan.org)",
+      "tip": "Download VLC free from videolan.org. It plays MP4, MKV, AVI, DVD, and the codecs Windows lacks — no codec packs, no \"searching for a codec\" dead ends.",
+      "truth": "Customers bring me laptops convinced the video file is broken. Nine times out of ten the file is fine — Windows just doesn't have the codec. A free player fixes it in two minutes, not a $150 \"repair.\"",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VLC"
+      ],
+      "date": "2026-07-19",
+      "id": "t-2026-07-19-4"
+    },
+    {
+      "type": "news",
+      "headline": "Multi-gig Xfinity internet is coming to Lake County by Fall 2026 — check if it's at your address (xfinity.com)",
+      "tip": "Visit xfinity.com or call Xfinity to see if multi-gig internet is available at your Lake City address. Comcast's Lake County build-out runs through Fall 2026 and adds over 2,900 newly served homes and businesses.",
+      "truth": "Half the \"slow computer\" calls I get are really slow internet. Before you blame the PC, check what your connection actually delivers — and if fast fiber just reached your street, you may not need a new machine at all.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Xfinity"
+      ],
+      "date": "2026-07-19",
+      "id": "t-2026-07-19-5"
+    },
     {
       "type": "news",
       "headline": "Your laptop camera is grainy or dead — the Logitech C920 is the $70 webcam that finally looks good",
@@ -172,62 +242,7 @@
       "truth": "Folks pay $15 a month for dictation that phones home with everything they say. Whisper Local runs the same engine on your own machine and never sends a byte anywhere. Free and private beats a subscription every time.",
       "date": "2026-07-18",
       "id": "t-2026-07-18-3"
-    },
-    {
-      "type": "tip",
-      "headline": "Your drive is packed and Windows is crawling — TreeSize Free shows exactly what's eating the space",
-      "tip": "TreeSize Free by JAM Software scans your drives and lists your biggest folders by size in seconds. Download it free at treesize.com (the 'TreeSize Free' edition), run it, and sort by size to find the culprit — usually old downloads or a bloated Temp folder.",
-      "truth": "Everyone's first instinct when the drive fills up is 'I need a bigger one.' Half the time it's 40 GB of forgotten downloads and a Temp folder that never got cleaned. Knowing what's actually there saves you a $90 drive.",
-      "date": "2026-07-18",
-      "id": "t-2026-07-18-4"
-    },
-    {
-      "type": "tip",
-      "headline": "North Florida internet acting up? Fast.com (Netflix's free speed test) tells you the truth in 5 seconds",
-      "tip": "When your Lake City connection feels slow, don't guess — open Fast.com in any browser (or the Fast Speed Test app) for a real download-speed number. It's Netflix's free tool, no sign-up, and it shows whether you're actually getting what you pay your provider for.",
-      "truth": "Customers swear their 'internet is broken' and blame the PC. I run Fast.com and we watch the number together. If it's 200 Mbps, the problem is the computer, not the wire — and that's a $40 cleanup, not a new modem.",
-      "date": "2026-07-18",
-      "id": "t-2026-07-18-5"
-    },
-    {
-      "type": "tip",
-      "headline": "Stop the ads and trackers following you around the web — uBlock Origin is the free blocker that still works on Firefox and Brave",
-      "tip": "uBlock Origin is a free, open-source content blocker that removes ads, trackers, and YouTube ads from your browsing. Install it free from the **Firefox Add-ons store (addons.mozilla.org)** or **Brave's extension library** — the full version runs great on both. (Chrome users get the limited \"uBlock Origin Lite\" because of Google's Manifest V3 changes, so Firefox or Brave is the move for the real thing.)",
-      "truth": "Most people don't realize the \"free\" internet is paid for by watching you. Every ad network is also a tracking network, and half the junk that bogs down an old machine for years is just that stuff loading in the background. Block the tracker and the page gets lighter, the battery lasts longer, and the creeps learn a lot less about you.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#uBlockOrigin"
-      ],
-      "date": "2026-07-17"
-    },
-    {
-      "type": "news",
-      "headline": "Tired of reusing passwords? KeePassXC is the free offline password manager that never touches the cloud",
-      "tip": "KeePassXC is a free, open-source password manager that stores everything in one encrypted file on your own machine — no cloud account, no subscription, nothing leaving your PC. Download it free from **keepassxc.org/download** for Windows, Mac, or Linux.",
-      "truth": "The honest answer is most people's \"password system\" is one good password reused everywhere. One breach — and there's a fresh one in the news every week — and every account falls like dominoes. A local vault you control beats any \"free\" cloud service that can itself get hacked. Your passwords in your hands, not somebody's server.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#KeePassXC"
-      ],
-      "date": "2026-07-17"
-    },
-    {
-      "type": "tip",
-      "headline": "Skip the monthly ChatGPT bill — Jan is the free desktop app that runs AI models on your PC with no internet and no account",
-      "tip": "Jan is a free, open-source desktop app that downloads and runs AI language models entirely on your own PC — no cloud, no login, no subscription. Get it at **jan.ai** for Windows, Mac, or Linux.",
-      "truth": "I see this all the time — folks worried their private notes, tax docs, and family letters are being read by some server halfway across the world. With Jan, the model runs in your room. Your data never leaves the machine. For anything sensitive, that's the only way I'd do it, and it costs you nothing but a little disk space.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#JanAI"
-      ],
-      "date": "2026-07-17"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-07-19"
 }

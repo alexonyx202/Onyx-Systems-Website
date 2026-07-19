@@ -57,6 +57,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-07-18: real products named in today's Onyx Tech Notes
     # (named + obtain method stated — legit, not teasers).
     "logitech", "fast.com", "netflix",
+    # Extended 2026-07-19: real products named in today's Onyx Tech Notes
+    # (named + obtain method stated — legit, not teasers).
+    "brave", "veracrypt", "pinokio", "vlc", "xfinity",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.

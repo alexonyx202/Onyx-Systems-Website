@@ -1,140 +1,212 @@
 {
-  "title": "BMS CROSS WORD by mohammed",
-  "size": 19,
+  "title": "Math!",
+  "size": 35,
   "grid": [
-    "............s......",
-    "...........homework",
-    ".....l......i......",
-    "l....o..s...c......",
-    "u...science.a......",
-    "n....k..a.l.l......",
-    "cluster.class......",
-    "h....r..k...t......",
-    "...fast.....u......",
-    "............d......",
-    "........reading....",
-    "............e......",
-    "..........bms......",
-    "...........a.......",
-    "...........t.......",
-    "...........h.......",
-    "...................",
-    "...................",
-    "..................."
+    ".......d...........................",
+    "...quotient........................",
+    ".......s...........................",
+    ".......t...........................",
+    "......fraction.....................",
+    ".......i...........................",
+    ".......b...........................",
+    ".......u...........................",
+    ".......t...........................",
+    ".......i...........................",
+    ".......negative....................",
+    "graphing.r.......c.................",
+    ".........e....e..o.................",
+    ".........a.inequality..............",
+    "...product....u..o.................",
+    ".........equivalent................",
+    ".........r....t....................",
+    "...........positive................",
+    "..............o....................",
+    "..........balance..................",
+    "..............s.q..................",
+    "...............sum.................",
+    "................a..................",
+    "..............v.l..................",
+    ".............ratio.................",
+    "..........d...r.t..................",
+    ".........simplify..................",
+    "..........f...a....................",
+    "..........f...b....................",
+    "..........e...l....................",
+    "..........r..less..................",
+    "..........e........................",
+    "..........n........................",
+    "..........c........................",
+    "..........e........................"
   ],
   "clues": {
     "across": [
       {
         "num": 2,
         "row": 2,
-        "col": 12,
+        "col": 4,
         "len": 8,
-        "answer": "homework",
-        "clue": "Homework"
+        "answer": "quotient",
+        "clue": "divide"
+      },
+      {
+        "num": 3,
+        "row": 5,
+        "col": 7,
+        "len": 8,
+        "answer": "fraction",
+        "clue": "number expressed by a quotient"
+      },
+      {
+        "num": 4,
+        "row": 11,
+        "col": 8,
+        "len": 8,
+        "answer": "negative",
+        "clue": "\u200b-"
       },
       {
         "num": 6,
-        "row": 5,
-        "col": 5,
-        "len": 7,
-        "answer": "science",
-        "clue": "science"
-      },
-      {
-        "num": 8,
-        "row": 7,
+        "row": 12,
         "col": 1,
-        "len": 7,
-        "answer": "cluster",
-        "clue": "cluster"
+        "len": 8,
+        "answer": "graphing",
+        "clue": "graph it"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 9,
-        "len": 5,
-        "answer": "class",
-        "clue": "class"
+        "row": 14,
+        "col": 12,
+        "len": 10,
+        "answer": "inequality",
+        "clue": "greater than or equal to"
       },
       {
         "num": 10,
-        "row": 9,
+        "row": 15,
         "col": 4,
-        "len": 4,
-        "answer": "fast",
-        "clue": "fast"
+        "len": 7,
+        "answer": "product",
+        "clue": "multiply"
       },
       {
         "num": 11,
-        "row": 11,
-        "col": 9,
-        "len": 7,
-        "answer": "reading",
-        "clue": "reeding"
+        "row": 16,
+        "col": 10,
+        "len": 10,
+        "answer": "equivalent",
+        "clue": "values that are the same"
       },
       {
         "num": 12,
-        "row": 13,
+        "row": 18,
+        "col": 12,
+        "len": 8,
+        "answer": "positive",
+        "clue": "+"
+      },
+      {
+        "num": 13,
+        "row": 20,
         "col": 11,
+        "len": 7,
+        "answer": "balance",
+        "clue": "even"
+      },
+      {
+        "num": 15,
+        "row": 22,
+        "col": 16,
         "len": 3,
-        "answer": "bms",
-        "clue": "BMS"
+        "answer": "sum",
+        "clue": "addition"
+      },
+      {
+        "num": 17,
+        "row": 25,
+        "col": 14,
+        "len": 5,
+        "answer": "ratio",
+        "clue": "comparison of two qualities"
+      },
+      {
+        "num": 19,
+        "row": 27,
+        "col": 10,
+        "len": 8,
+        "answer": "simplify",
+        "clue": "break it down"
+      },
+      {
+        "num": 20,
+        "row": 31,
+        "col": 14,
+        "len": 4,
+        "answer": "less",
+        "clue": "<"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 13,
-        "len": 13,
-        "answer": "soicalstudies",
-        "clue": "soicalstudies"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 6,
-        "len": 7,
-        "answer": "lockers",
-        "clue": "lockers"
-      },
-      {
-        "num": 4,
-        "row": 4,
-        "col": 1,
-        "len": 5,
-        "answer": "lunch",
-        "clue": "lunch"
+        "col": 8,
+        "len": 12,
+        "answer": "distributing",
+        "clue": "share"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 9,
-        "len": 5,
-        "answer": "snack",
-        "clue": "snack"
+        "row": 11,
+        "col": 10,
+        "len": 7,
+        "answer": "greater",
+        "clue": ">"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 11,
-        "len": 3,
-        "answer": "ela",
-        "clue": "Ela"
+        "row": 12,
+        "col": 18,
+        "len": 5,
+        "answer": "colon",
+        "clue": "\"to\" used for a ratio"
       },
       {
-        "num": 13,
+        "num": 8,
         "row": 13,
-        "col": 12,
-        "len": 4,
-        "answer": "math",
-        "clue": "math"
+        "col": 15,
+        "len": 9,
+        "answer": "equations",
+        "clue": "problem"
+      },
+      {
+        "num": 14,
+        "row": 20,
+        "col": 17,
+        "len": 8,
+        "answer": "equality",
+        "clue": "values that are the same"
+      },
+      {
+        "num": 16,
+        "row": 24,
+        "col": 15,
+        "len": 8,
+        "answer": "variable",
+        "clue": "a letter"
+      },
+      {
+        "num": 18,
+        "row": 26,
+        "col": 11,
+        "len": 10,
+        "answer": "difference",
+        "clue": "subtract"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2021-09-28-352",
-  "slug": "2021-09-28-352",
-  "fetched_at": "2026-07-14T19:20:00.748446+00:00",
-  "date": "2026-07-18"
+  "source_url": "https://crosswordlabs.com/view/2021-12-09-845",
+  "slug": "2021-12-09-845",
+  "fetched_at": "2026-07-14T19:19:43.232234+00:00",
+  "date": "2026-07-19"
 }
