@@ -1,0 +1,31 @@
+{
+  "name": "Onyx Arena ARCADE",
+  "short_name": "Onyx ARCADE",
+  "description": "Free browser games from Onyx Systems — WarGames, Disk Defrag, Drone Hunt, Computer Chaos and SKYDRIFT. No downloads, no installs.",
+  "start_url": "/games/",
+  "scope": "/games/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#05050f",
+  "theme_color": "#0a0612",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

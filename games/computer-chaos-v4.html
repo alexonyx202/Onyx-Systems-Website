@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -275,6 +277,18 @@
   // clean exit: tear down orientation lock / fullscreen / overflow so returning to the hub is never stuck in landscape
   function cleanExit(){try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}document.body.style.overflow='';document.documentElement.style.overflow='';}
   window.addEventListener('pagehide',cleanExit);window.addEventListener('beforeunload',cleanExit);
+
+  // Android: on first user gesture, go fullscreen + lock landscape. iOS Safari ignores this (no-op).
+  function goFullscreenLandscape(){
+    try{ var el=document.documentElement;
+      if(el.requestFullscreen){ el.requestFullscreen().then(function(){ try{ if(screen.orientation&&screen.orientation.lock) return screen.orientation.lock('landscape'); }catch(e){} }).catch(function(){}); }
+      else if(el.webkitRequestFullscreen){ el.webkitRequestFullscreen(); }
+    }catch(e){}
+  }
+  function firstGesture(){ goFullscreenLandscape(); window.removeEventListener('pointerdown',firstGesture); window.removeEventListener('touchstart',firstGesture); window.removeEventListener('keydown',firstGesture); }
+  window.addEventListener('pointerdown',firstGesture,{once:true,passive:true});
+  window.addEventListener('touchstart',firstGesture,{once:true,passive:true});
+  window.addEventListener('keydown',firstGesture,{once:true});
 })();
 </script>
 </body>
