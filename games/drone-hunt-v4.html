@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Drone Hunt V4 — Laser Assault (Remastered)</title>
 <style>
 /* === Mobile landscape rotate prompt (portrait touch only) === */
@@ -16,8 +19,11 @@
   body>*:not(#rotate-prompt){visibility:hidden}
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { overflow: hidden; background: #050508; font-family: 'Courier New', monospace; }
-canvas { display: block; cursor: none; }
+body { overflow: hidden; background: #050508; font-family: 'Courier New', monospace;
+  /* reserve iOS Safari's landscape Call/Locate bar so it never covers the HUD/buttons */
+  padding-bottom: env(safe-area-inset-bottom,0);
+  padding-bottom: constant(safe-area-inset-bottom); }
+canvas { display: block; cursor: none; position:fixed; inset:0; width:100%; height:100% }
 #ui {
     position: fixed; top: 0; left: 0; right: 0;
     padding: 8px 20px;
@@ -135,12 +141,17 @@ canvas { display: block; cursor: none; }
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
+function vpSize(){var v=window.visualViewport;return v?{w:v.width,h:v.height}:{w:innerWidth,h:innerHeight};}
+function resize(){var s=vpSize();canvas.width=Math.round(s.w);canvas.height=Math.round(s.h);}
+function resizeDeferred(){requestAnimationFrame(resize);}
 resize();
-window.addEventListener('resize', resize);
+window.addEventListener('resize', resizeDeferred);
+window.addEventListener('orientationchange', resizeDeferred);
+if(window.visualViewport){visualViewport.addEventListener('resize',resizeDeferred);visualViewport.addEventListener('scroll',resizeDeferred);}
+matchMedia('(orientation:portrait)').addEventListener('change',resizeDeferred);
+/* clean exit: tear down orientation lock / fullscreen / overflow so returning to the hub is never stuck in landscape */
+function cleanExit(){try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}document.body.style.overflow='';document.documentElement.style.overflow='';}
+window.addEventListener('pagehide',cleanExit);window.addEventListener('beforeunload',cleanExit);
 
 // ─── AUDIO (V4: procedural WebAudio, no external assets) ───
 const Sound = (() => {

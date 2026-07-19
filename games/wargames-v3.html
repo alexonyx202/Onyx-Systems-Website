@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>WARGAMES :: MISSILE DEFENSE</title>
 <style>
 /* === Mobile landscape rotate prompt (portrait touch only) === */
@@ -29,7 +32,11 @@
     color:var(--green);
     font-family:"Courier New",Courier,monospace;
     -webkit-font-smoothing:none;
+    /* reserve iOS Safari's landscape Call/Locate bar so it never covers the machine UI */
+    padding-bottom:env(safe-area-inset-bottom,0);
+    padding-bottom:constant(safe-area-inset-bottom);
   }
+  canvas{display:block;width:100%;height:auto}
   /* centered framed shell so it looks right embedded or standalone */
   .wrap{
     min-height:100%;
@@ -39,6 +46,8 @@
   .machine{
     position:relative;
     width:min(960px,100%);
+    max-height:calc(100dvh - env(safe-area-inset-bottom,0) - 32px);
+    max-height:calc(100vh - 32px);
     border:2px solid var(--green-dim);
     border-radius:10px;
     background:
@@ -757,6 +766,10 @@
     }
   }
   window.addEventListener('keydown', onKey);
+
+  // clean exit: tear down orientation lock / fullscreen / overflow so returning to the hub is never stuck in landscape
+  function cleanExit(){try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}document.body.style.overflow='';document.documentElement.style.overflow='';}
+  window.addEventListener('pagehide',cleanExit);window.addEventListener('beforeunload',cleanExit);
 
   // start: render one frame so diffButtons exist, then drive the loop
   initCities();

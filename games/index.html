@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>ARCADE — Free Browser Games | Onyx Systems</title>
 <meta name="description" content="Onyx Arena ARCADE — free browser games from Onyx Systems. WarGames missile command, Disk Defrag, Drone Hunt and more. No downloads, no installs — just play.">
 <meta rel="canonical" href="https://onyxpc.us/games/">
@@ -25,7 +28,10 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--onyx);line-height:1.6;-webkit-font-smoothing:antialiased;
+    /* reserve iOS Safari's landscape Call/Locate bar so the footer/nav are never hidden under it */
+    padding-bottom:env(safe-area-inset-bottom,0);
+    padding-bottom:constant(safe-area-inset-bottom);}
   header.site{position:sticky;top:0;z-index:40;background:rgba(22,22,26,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none}

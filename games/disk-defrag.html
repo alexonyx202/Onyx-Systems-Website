@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <!-- user-scalable=no + maximum-scale=1 stops mobile double-tap zoom; 100dvh keeps everything on one screen -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>DiskDefrag.exe</title>
 <style>
 /* === Mobile landscape rotate prompt (portrait touch only) === */
@@ -43,7 +46,10 @@
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html,body{ margin:0; padding:0; height:100%; width:100%; overflow:hidden; background:var(--bg);
     font-family:var(--font); color:var(--text); user-select:none; -webkit-user-select:none;
-    overscroll-behavior:none; -webkit-text-size-adjust:100%; touch-action:none; }
+    overscroll-behavior:none; -webkit-text-size-adjust:100%; touch-action:none;
+    /* reserve iOS Safari's landscape Call/Locate bar so it never covers the window chrome */
+    padding-bottom:env(safe-area-inset-bottom,0);
+    padding-bottom:constant(safe-area-inset-bottom); }
   /* ===== Win95-style bevel helpers ===== */
   .out{ border:2px solid; border-color:var(--bl) var(--bd) var(--bd) var(--bl); }
   .in{ border:2px solid; border-color:var(--bd) var(--bl) var(--bl) var(--bd); }
@@ -1148,6 +1154,10 @@
   updateDiskMap();
   setMuted(muted);          // sync the SOUND/MUTED button label with saved state
   requestAnimationFrame(frame);
+
+  // clean exit: tear down orientation lock / fullscreen / overflow so returning to the hub is never stuck in landscape
+  function cleanExit(){try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}document.body.style.overflow='';document.documentElement.style.overflow='';}
+  window.addEventListener('pagehide',cleanExit);window.addEventListener('beforeunload',cleanExit);
 
   // ===================================================================
   //  HEADLESS TEST HOOK (only active when window.__EXPOSE__ is set)
