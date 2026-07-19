@@ -740,6 +740,19 @@
     display:flex;align-items:center;justify-content:center}
   .gl-close:hover{background:var(--copper)}
   @media (prefers-reduced-motion:reduce){.gallery-item picture img,.gallery-item video{transition:none}}
+
+/* === MOBILE FLUID FIX (additive) — stop fixed-width sections clipping on phones === */
+@media (max-width:1024px){
+  .arcade-sec{width:100%;max-width:100%;box-sizing:border-box}
+  .arcade-sec .sec-head{width:100%;max-width:100%;box-sizing:border-box}
+  .faq-list{width:100%;max-width:100%;box-sizing:border-box}
+  .badges-row{width:100%;max-width:100%;box-sizing:border-box}
+  .trust-area{width:100%;max-width:100%;box-sizing:border-box}
+  .hero .lead{width:100%;max-width:100%;box-sizing:border-box}
+  .hero-badges{width:100%;max-width:100%;box-sizing:border-box}
+  .hero-values{width:100%;max-width:100%;box-sizing:border-box}
+  .about{width:100%;max-width:100%;box-sizing:border-box}
+}
 </style>
 </head>
 <body>
