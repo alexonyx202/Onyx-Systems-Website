@@ -1,27 +1,23 @@
 {
   "poll": {
     "weekOf": "2026-07-19",
-    "question": "What's your biggest tech headache right now?",
+    "question": "How do you back up your photos and files?",
     "options": [
       {
-        "id": "slow",
-        "label": "Sluggish, slow computer"
+        "id": "auto",
+        "label": "Automatic cloud backup"
       },
       {
-        "id": "virus",
-        "label": "Virus / pop-ups"
+        "id": "drive",
+        "label": "External drive"
       },
       {
-        "id": "wifi",
-        "label": "Wi-Fi that drops"
+        "id": "none",
+        "label": "I don't (yet)"
       },
       {
-        "id": "data",
-        "label": "Scared I'll lose my files"
-      },
-      {
-        "id": "mac",
-        "label": "My Mac needs help"
+        "id": "unsure",
+        "label": "Not sure how"
       }
     ]
   }

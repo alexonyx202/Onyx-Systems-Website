@@ -1,148 +1,117 @@
 {
-  "title": "Math!",
-  "size": 35,
+  "title": "Math",
+  "size": 12,
   "grid": [
-    ".......d...........................",
-    "...quotient........................",
-    ".......s...........................",
-    ".......t...........................",
-    "......fraction.....................",
-    ".......i...........................",
-    ".......b...........................",
-    ".......u...........................",
-    ".......t...........................",
-    ".......i...........................",
-    ".......negative....................",
-    "graphing.r.......c.................",
-    ".........e....e..o.................",
-    ".........a.inequality..............",
-    "...product....u..o.................",
-    ".........equivalent................",
-    ".........r....t....................",
-    "...........positive................",
-    "..............o....................",
-    "..........balance..................",
-    "..............s.q..................",
-    "...............sum.................",
-    "................a..................",
-    "..............v.l..................",
-    ".............ratio.................",
-    "..........d...r.t..................",
-    ".........simplify..................",
-    "..........f...a....................",
-    "..........f...b....................",
-    "..........e...l....................",
-    "..........r..less..................",
-    "..........e........................",
-    "..........n........................",
-    "..........c........................",
-    "..........e........................"
+    ".......7.38.",
+    "...7...269..",
+    ".1.7.100.0..",
+    "96.754......",
+    ".102.9....2.",
+    "....216.1121",
+    "...13.0.5.5.",
+    "....0.617...",
+    ".7240...19..",
+    "............",
+    "............",
+    "............"
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 2,
-        "col": 4,
-        "len": 8,
-        "answer": "quotient",
-        "clue": "divide"
-      },
-      {
-        "num": 3,
-        "row": 5,
-        "col": 7,
-        "len": 8,
-        "answer": "fraction",
-        "clue": "number expressed by a quotient"
+        "row": 1,
+        "col": 10,
+        "len": 2,
+        "answer": "38",
+        "clue": "XXXVIII"
       },
       {
         "num": 4,
-        "row": 11,
+        "row": 2,
         "col": 8,
-        "len": 8,
-        "answer": "negative",
-        "clue": "\u200b-"
+        "len": 3,
+        "answer": "269",
+        "clue": "Movie tickets are $3.50. Sam buys 66 tickets for his class. How much change does he get from $500?"
       },
       {
         "num": 6,
-        "row": 12,
+        "row": 3,
+        "col": 6,
+        "len": 3,
+        "answer": "100",
+        "clue": "Centimeters in 1 meter"
+      },
+      {
+        "num": 7,
+        "row": 4,
         "col": 1,
-        "len": 8,
-        "answer": "graphing",
-        "clue": "graph it"
+        "len": 2,
+        "answer": "96",
+        "clue": "Fluid ounces in 12 cups"
+      },
+      {
+        "num": 8,
+        "row": 4,
+        "col": 4,
+        "len": 3,
+        "answer": "754",
+        "clue": "Change for $246 from a $1000 dollar bill"
       },
       {
         "num": 9,
-        "row": 14,
-        "col": 12,
-        "len": 10,
-        "answer": "inequality",
-        "clue": "greater than or equal to"
-      },
-      {
-        "num": 10,
-        "row": 15,
-        "col": 4,
-        "len": 7,
-        "answer": "product",
-        "clue": "multiply"
+        "row": 5,
+        "col": 2,
+        "len": 3,
+        "answer": "102",
+        "clue": "Inches in 8.5 feet"
       },
       {
         "num": 11,
-        "row": 16,
-        "col": 10,
-        "len": 10,
-        "answer": "equivalent",
-        "clue": "values that are the same"
-      },
-      {
-        "num": 12,
-        "row": 18,
-        "col": 12,
-        "len": 8,
-        "answer": "positive",
-        "clue": "+"
+        "row": 6,
+        "col": 5,
+        "len": 3,
+        "answer": "216",
+        "clue": "9 days = ___ hours"
       },
       {
         "num": 13,
-        "row": 20,
-        "col": 11,
-        "len": 7,
-        "answer": "balance",
-        "clue": "even"
+        "row": 6,
+        "col": 9,
+        "len": 4,
+        "answer": "1121",
+        "clue": "10 dollars + 4 quarters + 2 dimes  +  1 penny"
+      },
+      {
+        "num": 14,
+        "row": 7,
+        "col": 4,
+        "len": 2,
+        "answer": "13",
+        "clue": "___,26, 39, 52, 65, 78, 91"
       },
       {
         "num": 15,
-        "row": 22,
-        "col": 16,
+        "row": 8,
+        "col": 7,
         "len": 3,
-        "answer": "sum",
-        "clue": "addition"
+        "answer": "617",
+        "clue": "129+472+24-8"
+      },
+      {
+        "num": 16,
+        "row": 9,
+        "col": 2,
+        "len": 4,
+        "answer": "7240",
+        "clue": "362 X 20"
       },
       {
         "num": 17,
-        "row": 25,
-        "col": 14,
-        "len": 5,
-        "answer": "ratio",
-        "clue": "comparison of two qualities"
-      },
-      {
-        "num": 19,
-        "row": 27,
-        "col": 10,
-        "len": 8,
-        "answer": "simplify",
-        "clue": "break it down"
-      },
-      {
-        "num": 20,
-        "row": 31,
-        "col": 14,
-        "len": 4,
-        "answer": "less",
-        "clue": "<"
+        "row": 9,
+        "col": 9,
+        "len": 2,
+        "answer": "19",
+        "clue": "133 days in weeks"
       }
     ],
     "down": [
@@ -150,63 +119,79 @@
         "num": 1,
         "row": 1,
         "col": 8,
-        "len": 12,
-        "answer": "distributing",
-        "clue": "share"
+        "len": 3,
+        "answer": "720",
+        "clue": "12 minutes = ____ seconds"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 10,
+        "len": 3,
+        "answer": "390",
+        "clue": "Round 387 to the nearest ten"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 4,
+        "len": 4,
+        "answer": "7772",
+        "clue": "$7895-$123"
       },
       {
         "num": 5,
-        "row": 11,
-        "col": 10,
-        "len": 7,
-        "answer": "greater",
-        "clue": ">"
+        "row": 3,
+        "col": 2,
+        "len": 3,
+        "answer": "161",
+        "clue": "23 weeks = ___ days"
       },
       {
-        "num": 7,
-        "row": 12,
-        "col": 18,
-        "len": 5,
-        "answer": "colon",
-        "clue": "\"to\" used for a ratio"
+        "num": 6,
+        "row": 3,
+        "col": 6,
+        "len": 4,
+        "answer": "1491",
+        "clue": "7455/5"
       },
       {
-        "num": 8,
-        "row": 13,
-        "col": 15,
-        "len": 9,
-        "answer": "equations",
-        "clue": "problem"
-      },
-      {
-        "num": 14,
-        "row": 20,
-        "col": 17,
-        "len": 8,
-        "answer": "equality",
-        "clue": "values that are the same"
-      },
-      {
-        "num": 16,
-        "row": 24,
-        "col": 15,
-        "len": 8,
-        "answer": "variable",
-        "clue": "a letter"
-      },
-      {
-        "num": 18,
-        "row": 26,
+        "num": 10,
+        "row": 5,
         "col": 11,
-        "len": 10,
-        "answer": "difference",
-        "clue": "subtract"
+        "len": 3,
+        "answer": "225",
+        "clue": "15 squared"
+      },
+      {
+        "num": 11,
+        "row": 6,
+        "col": 5,
+        "len": 4,
+        "answer": "2300",
+        "clue": "Round 2345 to the nearest hundred"
+      },
+      {
+        "num": 12,
+        "row": 6,
+        "col": 7,
+        "len": 3,
+        "answer": "606",
+        "clue": "6 dollars + 1 nickel + 1 penny"
+      },
+      {
+        "num": 13,
+        "row": 6,
+        "col": 9,
+        "len": 4,
+        "answer": "1571",
+        "clue": "MDLXXI"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2021-12-09-845",
-  "slug": "2021-12-09-845",
-  "fetched_at": "2026-07-14T19:19:43.232234+00:00",
+  "source_url": "https://crosswordlabs.com/view/2022-03-06-406",
+  "slug": "2022-03-06-406",
+  "fetched_at": "2026-07-14T19:15:18.186642+00:00",
   "date": "2026-07-19"
 }
