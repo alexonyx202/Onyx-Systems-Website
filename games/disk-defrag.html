@@ -6,6 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>DiskDefrag.exe</title>
 <style>
+/* === Mobile landscape rotate prompt (portrait touch only) === */
+#rotate-prompt{display:none;position:fixed;inset:0;z-index:99999;background:#05050f;color:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px;font-family:'Courier New',monospace}
+#rotate-prompt .icon{font-size:60px;animation:rot-hint 2s ease-in-out infinite}
+#rotate-prompt .msg{font-size:16px;letter-spacing:1px;max-width:280px;line-height:1.5}
+#rotate-prompt .sub{font-size:12px;color:#9fc2e0}
+@keyframes rot-hint{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
+@media (orientation:portrait) and (hover:none) and (pointer:coarse){
+  #rotate-prompt{display:flex!important}
+  body>*:not(#rotate-prompt){visibility:hidden}
+}
   /* ===== Theme variables (Classic Light = default, Cyber Dark via body.dark) ===== */
   :root{
     --bg:#c0c0c0; --panel:#d4d0c8; --panel2:#ece9e4;
@@ -145,6 +155,11 @@
 </style>
 </head>
 <body class="dark">
+<div id="rotate-prompt">
+  <div class="icon">📱</div>
+  <div class="msg">Rotate your phone to landscape to play</div>
+  <div class="sub">↻ Turn your device for the full screen</div>
+</div>
   <div class="win">
     <div class="titlebar">
       <div class="ico"></div>
