@@ -1841,7 +1841,11 @@ XW.load(function(){ XW.renderThumb(document.getElementById('xwThumb'), document.
   try{ build(); }catch(e){ console.warn('gallery build failed, using fallback',e); items=GALLERY_FALLBACK; try{ build(); }catch(e2){ console.error('gallery fallback failed',e2); } }
 })();
 });
-document.addEventListener('click',function(e){var c=e.target.closest('.game-card');if(c&&window.matchMedia('(hover:none)').matches){e.preventDefault();c.classList.toggle('expanded');}});
+/* [MOBILE FIX 2026-07-19] Arcade cards are plain <a href> links. The old handler called
+   e.preventDefault() on every touch tap, which blocked the "▶ Play" navigation on mobile.
+   Touch devices now navigate natively (the whole card is the Play link). Desktop is unaffected
+   because this behavior was previously gated by (hover:none) and is now simply removed. */
+document.addEventListener('click',function(e){var c=e.target.closest('.game-card');if(c&&window.matchMedia('(hover:none)').matches){c.classList.toggle('expanded');}});
 </script>
 </body>
 </html>
