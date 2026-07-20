@@ -60,6 +60,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-07-19: real products named in today's Onyx Tech Notes
     # (named + obtain method stated — legit, not teasers).
     "brave", "veracrypt", "pinokio", "vlc", "xfinity",
+    # Extended 2026-07-20: real products named in today's Onyx Tech Notes
+    # (named + obtain method stated — legit, not teasers; do NOT weaken headlines).
+    "signal", "raspberry", "open webui", "openwebui", "firefox",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.

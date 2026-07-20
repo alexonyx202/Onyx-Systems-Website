@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "date": "2026-07-20",
+      "title": "🔴 ALERT — Update Firefox & Chrome Now — Exploit Code Is Public",
+      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu → Help → About Google Chrome to force the update now — don't wait for the slow auto-rollout.",
+      "image": "assets/img/news/2026-07-20-composite.jpg",
+      "comic": "assets/img/news/2026-07-20-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-19",
       "title": "🔴 ALERT — New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
       "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails — type the web address in yourself.",
@@ -138,17 +146,79 @@
       "image": "assets/img/news/2026-07-15-composite.jpg",
       "comic": "assets/img/news/2026-07-15-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-14",
-      "title": "🔴 ALERT — Microsoft's July 2026 Patch Tuesday Fixes 570 Flaws, 3 Zero-Days",
-      "excerpt": "Microsoft's July 2026 Patch Tuesday is the largest in company history: 570 flaws fixed, including 3 zero-days — 2 already exploited in the wild. If you run Windows, Office, Exchange, or SharePoint, install updates TODAY.",
-      "image": "assets/img/news/2026-07-14-composite.jpg",
-      "comic": "assets/img/news/2026-07-14-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "type": "tip",
+      "headline": "Stop fighting codecs — VLC plays any video or audio file free at videolan.org",
+      "tip": "Download VLC free at videolan.org. It opens every video and music format — MP4, MKV, AVI, FLAC — without hunting for a 'codec pack.' No ads, no popups.",
+      "truth": "People pay for a media player or Google 'why won't this file play' for an hour. The honest answer is one free app handles all of it, always has, and never pops an ad.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VLC"
+      ],
+      "date": "2026-07-20",
+      "id": "t-2026-07-20-5"
+    },
+    {
+      "type": "tip",
+      "headline": "Chat with AI privately in your own browser — Open WebUI is the free local tool at openwebui.com",
+      "tip": "Install Open WebUI free from openwebui.com (or run 'pip install open-webui') and pair it with Ollama to run AI models on your own PC so your chats never leave the house. No subscription, no cloud.",
+      "truth": "Folks worry AI is shipping their documents off to some cloud. The honest answer is you can run the exact same models at home — your data never leaves the drive, and there's no monthly fee.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#OpenWebUI"
+      ],
+      "date": "2026-07-20",
+      "id": "t-2026-07-20-4"
+    },
+    {
+      "type": "tip",
+      "headline": "A $35 Raspberry Pi 5 is a real desktop and project computer that fits in your palm",
+      "tip": "Buy a Raspberry Pi 5 for $35 at raspberrypi.com or Amazon and boot Raspberry Pi OS from a microSD card. It runs a full Linux desktop — perfect for a kid's first PC, a retro game box, or a smart-home hub.",
+      "truth": "Everyone assumes a 'real computer' costs $600 or more. The honest answer is a $35 board plus the keyboard and TV you already own gets a student online for schoolwork and coding — no Windows tax, no bloat.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#RaspberryPi"
+      ],
+      "date": "2026-07-20",
+      "id": "t-2026-07-20-3"
+    },
+    {
+      "type": "tip",
+      "headline": "Signal is the free messaging app that encrypts every text and call — get it at signal.org",
+      "tip": "Install Signal free from signal.org or your phone's app store. It's open-source and end-to-end encrypts your texts, calls, and photos so not even Signal can read them.",
+      "truth": "People tell me 'nobody's reading my texts.' The honest answer is every big messenger scans your messages to sell you ads. Signal literally can't — that's the whole design, and it costs you nothing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Signal"
+      ],
+      "date": "2026-07-20",
+      "id": "t-2026-07-20-2"
+    },
+    {
+      "type": "news",
+      "headline": "Firefox 152 puts an AI assistant and one-tap site shortcuts in your browser — free at firefox.com",
+      "tip": "Update free at firefox.com or via the in-app updater (Menu > Help > About Firefox). Firefox 152's new 'Smart Window' summarizes and explains any text you select using a built-in assistant, and the New Tab shows a row of shortcuts back to your favorite sites.",
+      "truth": "Most people think they're stuck with whatever browser shipped on the machine. The honest answer is you can switch today and keep every password and bookmark — Firefox imports them in two clicks, and it tracks you a whole lot less than the default.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox"
+      ],
+      "date": "2026-07-20",
+      "id": "t-2026-07-20-1"
+    },
     {
       "type": "tip",
       "headline": "Stop feeding Google your browsing history — Brave is the free browser that blocks trackers by default (brave.com)",
@@ -190,59 +260,7 @@
       ],
       "date": "2026-07-19",
       "id": "t-2026-07-19-3"
-    },
-    {
-      "type": "tip",
-      "headline": "That video file won't open in Windows? VLC plays every format free (videolan.org)",
-      "tip": "Download VLC free from videolan.org. It plays MP4, MKV, AVI, DVD, and the codecs Windows lacks — no codec packs, no \"searching for a codec\" dead ends.",
-      "truth": "Customers bring me laptops convinced the video file is broken. Nine times out of ten the file is fine — Windows just doesn't have the codec. A free player fixes it in two minutes, not a $150 \"repair.\"",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VLC"
-      ],
-      "date": "2026-07-19",
-      "id": "t-2026-07-19-4"
-    },
-    {
-      "type": "news",
-      "headline": "Multi-gig Xfinity internet is coming to Lake County by Fall 2026 — check if it's at your address (xfinity.com)",
-      "tip": "Visit xfinity.com or call Xfinity to see if multi-gig internet is available at your Lake City address. Comcast's Lake County build-out runs through Fall 2026 and adds over 2,900 newly served homes and businesses.",
-      "truth": "Half the \"slow computer\" calls I get are really slow internet. Before you blame the PC, check what your connection actually delivers — and if fast fiber just reached your street, you may not need a new machine at all.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Xfinity"
-      ],
-      "date": "2026-07-19",
-      "id": "t-2026-07-19-5"
-    },
-    {
-      "type": "news",
-      "headline": "Your laptop camera is grainy or dead — the Logitech C920 is the $70 webcam that finally looks good",
-      "tip": "The Logitech C920 is a 1080p webcam with a real glass lens and built-in dual mics, far sharper than almost any built-in laptop camera. Get it at logitech.com or Amazon (search 'Logitech C920') and clip it to your laptop lid or desk — no drivers needed.",
-      "truth": "Most people blame their internet when a video call looks bad. Nine times out of ten it's the $10 webcam baked into the lid. A $70 camera and good light fix more 'my WiFi is slow' complaints than any router ever will.",
-      "date": "2026-07-18",
-      "id": "t-2026-07-18-1"
-    },
-    {
-      "type": "news",
-      "headline": "Firefox 152 now summarizes pages and blocks fingerprinting free — update at firefox.com",
-      "tip": "Mozilla Firefox 152 (released July 14, 2026) adds a Smart Window that summarizes and explains any selected text, plus stronger anti-fingerprinting and Private Browsing protections. Get it free at firefox.com, or update in-app at Help > About Firefox.",
-      "truth": "People think they have to switch to some new paid browser to get AI features. Firefox just baked summarize and tracker-blocking in for free. The best upgrade is usually the one you already have — you just haven't updated it.",
-      "date": "2026-07-18",
-      "id": "t-2026-07-18-2"
-    },
-    {
-      "type": "tip",
-      "headline": "Type by talking — Whisper Local runs OpenAI's speech-to-text on your PC for free, no cloud",
-      "tip": "Whisper Local is a free, open-source dictation app powered by OpenAI's Whisper model that types what you say at a hotkey — 100% offline, no subscription, no cloud. Grab it at github.com/drajb/whisper-local (Windows & Mac).",
-      "truth": "Folks pay $15 a month for dictation that phones home with everything they say. Whisper Local runs the same engine on your own machine and never sends a byte anywhere. Free and private beats a subscription every time.",
-      "date": "2026-07-18",
-      "id": "t-2026-07-18-3"
     }
   ],
-  "updated": "2026-07-19"
+  "updated": "2026-07-20"
 }
