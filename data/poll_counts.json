@@ -1,0 +1,5 @@
+{
+  "_note": "Owner: each week set 'weekOf' to match data/poll.json and update 'counts' with the REAL number of votes gathered (in-store, phone, social, etc.). The widget adds each visitor's own tap to this published total so the count is accurate. Leave 'counts' as {} until real numbers exist — do not fabricate votes.",
+  "weekOf": "2026-07-19",
+  "counts": {}
+}
