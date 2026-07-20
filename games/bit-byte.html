@@ -113,6 +113,12 @@
   };
   const OPP = { UP: 'DOWN', DOWN: 'UP', LEFT: 'RIGHT', RIGHT: 'LEFT', NONE: 'NONE' };
   const WRAP = c => ((c % 28) + 28) % 28;
+  // Signed shortest-delta across the horizontal wrap seam. Normal moves have
+  // |d|<=1 so the result is unchanged; only the tunnel seam (d = ±27) becomes
+  // ∓1, so an entity exits one edge and re-enters the other over a 1-tile gap
+  // instead of sliding across the whole playfield. Fixes the "ghost appears
+  // across screen" glitch when Pac and a ghost share the tunnel path.
+  const WRAP_delta = d => { d = ((d % 28) + 28) % 28; return d > 14 ? d - 28 : d; };
   const key = (c, r) => c + ',' + r;
 
   const MAZE1 = [
@@ -536,7 +542,7 @@
       // collects". Eating on the current tile every frame fixes that and also
       // guarantees the energizer always registers the instant Pac reaches it.
       this.eatAtPacTile();
-      p.px = p.col + 0.5 + (p.nextCol - p.col) * p.progress;
+      p.px = p.col + 0.5 + WRAP_delta(p.nextCol - p.col) * p.progress;
       p.py = p.row + 0.5 + (p.nextRow - p.row) * p.progress;
       if (p.px < -0.5) p.px += 28; if (p.px > 28.5) p.px -= 28;
     }
@@ -587,7 +593,7 @@
         const ch = chooseDir(g, target, true, m, g.mode === 'frightened');
         g.dir = ch.d; g.nextCol = ch.nc; g.nextRow = ch.nr;
       }
-      g.px = g.col + 0.5 + (g.nextCol - g.col) * g.progress;
+      g.px = g.col + 0.5 + WRAP_delta(g.nextCol - g.col) * g.progress;
       g.py = g.row + 0.5 + (g.nextRow - g.row) * g.progress;
       if (g.px < -0.5) g.px += 28; if (g.px > 28.5) g.px -= 28;
     }
