@@ -482,7 +482,7 @@
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;display:inline-block;vertical-align:middle;margin-right:16px;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   /* ---- ARCADE cabinet cards (v5): cabinet composite on TOP, tagline + Play BELOW (no overlap) ---- */
   /* Main-page teaser = same design as the arcade page, but SMALLER (.game-card max-width is the only size knob). */
-  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
+  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
   .arcade-sec .game-card{
     position:relative;display:flex;flex-direction:column;
     border:0;                                /* neutralize generic .game-card cream border (line ~527) */
@@ -540,7 +540,7 @@
   .arcade-sec .game-card .hp-tag{font-size:10.5px;font-weight:600;color:#b9a7c9;font-style:italic}
   @media (prefers-reduced-motion:reduce){.arcade-sec .game-card .hover-panel{transition:opacity .2s ease;transform:none!important}}
   @media (prefers-reduced-motion:reduce){.arcade-sec .game-card,.arcade-sec .game-card .gcab{transition:none;transform:none}}
-  @media (max-width:640px){.arcade-sec .games-grid{gap:14px;padding:0 16px}}
+  @media (max-width:640px){.arcade-sec .games-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:0 16px}}
   .game-card{position:relative;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;transition:.22s}
   .game-card:hover{transform:translateY(-4px);border-color:var(--copper)}
   .game-card .gthumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:#05080a;display:block}
@@ -1025,7 +1025,7 @@
           <img class="gcab" src="games/assets/cabinet-disk-defrag.webp" alt="Disk Defrag" loading="lazy">
           <span class="hover-panel">
             <span class="hp-title">Disk Defrag</span>
-            <span class="hp-desc">A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.</span>
+            <span class="hp-desc">A puzzle where colorful blocks slide down from the top and you twist them to fill the empty spaces at the bottom. Complete a full row and the whole line clears — clear several at once for a bigger score. Easy to pick up, tough to stop, with a local high-score table and a sound toggle. No downloads.</span>
             <span class="hp-tag">Defragment the drive. Clear the lines.</span>
           </span>
         </span>
@@ -1073,6 +1073,20 @@
         </span>
         <span class="gfoot">
           <span class="gtag">Neon bolts, drones &amp; high scores.</span>
+          <span class="gbtn">▶ Play</span>
+        </span>
+      </a>
+      <a class="game-card" href="games/bit-byte.html" target="_blank" rel="noopener">
+        <span class="gcab-wrap">
+          <img class="gcab" src="games/assets/cabinet-bit-byte.webp" alt="Bit-Byte" loading="lazy">
+          <span class="hover-panel">
+            <span class="hp-title">Bit-Byte</span>
+            <span class="hp-desc">A classic maze chase. Gobble the dots, grab a glowing power pill to turn the tables and hunt the four chasers, and clear all 7 mazes to win. Simple to play, tricky to master. No downloads.</span>
+            <span class="hp-tag">Chomp the bits. Outrun the viruses.</span>
+          </span>
+        </span>
+        <span class="gfoot">
+          <span class="gtag">Chomp the bits. Outrun the viruses.</span>
           <span class="gbtn">▶ Play</span>
         </span>
       </a>

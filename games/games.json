@@ -13,7 +13,7 @@
       "file": "disk-defrag.html",
       "title": "Disk Defrag",
       "tagline": "Defragment the drive. Clear the lines.",
-      "desc": "A disk-defragmenter-themed Tetris with a Win95-meets-cyber-dark aesthetic. SRS rotation, 7-bag, ghost, hold, T-spin/B2B scoring, sound toggle, and a top-5 high-score table. No downloads.",
+      "desc": "A puzzle where colorful blocks slide down from the top and you twist them to fill the empty spaces at the bottom. Complete a full row and the whole line clears \u2014 clear several at once for a bigger score. Easy to pick up, tough to stop, with a local high-score table and a sound toggle. No downloads.",
       "thumb": "assets/disk-defrag-thumb.webp",
       "cabinet": "assets/cabinet-disk-defrag.webp",
       "featured": false
@@ -43,6 +43,15 @@
       "desc": "A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.",
       "thumb": "assets/skydrift-thumb.webp",
       "cabinet": "assets/cabinet-skydrift.webp",
+      "featured": false
+    },
+    {
+      "file": "bit-byte.html",
+      "title": "Bit-Byte",
+      "tagline": "Chomp the bits. Outrun the viruses.",
+      "desc": "A classic maze chase. Gobble the dots, grab a glowing power pill to turn the tables and hunt the four chasers, and clear all 7 mazes to win. Simple to play, tricky to master. No downloads.",
+      "thumb": "assets/cabinet-bit-byte.webp",
+      "cabinet": "assets/cabinet-bit-byte.webp",
       "featured": false
     }
   ]

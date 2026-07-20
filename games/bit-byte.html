@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bit-Byte — Terminal Maze</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { --bg: #05060f; --fg: #7df9ff; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #02030a;
+    color: var(--fg);
+    font-family: "Courier New", monospace;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    margin: 0; font-size: 20px; letter-spacing: 2px;
+    color: #ffe600; text-shadow: 0 0 8px #ff5f1f88;
+  }
+  h1 .prompt { color: #ff5f1f; }
+  #wrap {
+    position: relative;
+    border: 2px solid #1b2540;
+    border-radius: 8px;
+    box-shadow: 0 0 28px #0af3ff22, inset 0 0 18px #000;
+    background: #000;
+    padding: 6px;
+  }
+  canvas { display: block; image-rendering: pixelated; background: #000; border-radius: 4px; }
+  #hint {
+    font-size: 12px; color: #5a6b8c; letter-spacing: 1px; text-align: center; line-height: 1.6;
+  }
+  #hint b { color: #7df9ff; }
+  .scanlines:before {
+    content: ""; position: absolute; inset: 6px; pointer-events: none;
+    background: repeating-linear-gradient(to bottom, #ffffff06 0 1px, transparent 1px 3px);
+    border-radius: 4px;
+  }
+  /* ---- touch controls (shown only on touch / small-screen devices) ---- */
+  #touch { display: none; width: 100%; max-width: 680px; margin-top: 10px; }
+  body.touch #touch { display: flex; }
+  #dpad {
+    display: grid; grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(3, 52px);
+    gap: 6px; flex: 0 0 auto;
+  }
+  #dpad button {
+    font-size: 22px; color: #7df9ff; background: #0b1226; border: 2px solid #1b2540;
+    border-radius: 8px; touch-action: none; user-select: none; -webkit-user-select: none;
+    box-shadow: 0 0 10px #0af3ff22;
+  }
+  #dpad button:active { background: #122; color: #ffe600; }
+  #dpad .up { grid-area: 1 / 2; } #dpad .left { grid-area: 2 / 1; }
+  #dpad .right { grid-area: 2 / 3; } #dpad .down { grid-area: 3 / 2; }
+  #sysbtns { display: flex; flex-direction: column; gap: 6px; margin-left: auto; }
+  #sysbtns button {
+    font-size: 12px; letter-spacing: 1px; color: #7df9ff; background: #0b1226;
+    border: 2px solid #1b2540; border-radius: 8px; padding: 8px 12px; min-width: 92px;
+    touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  #sysbtns button:active { background: #122; color: #ffe600; }
+  #hint .touchonly { display: none; }
+  body.touch #hint .touchonly { display: inline; }
+  </style>
+  
+</head>
+<body>
+  <h1><span class="prompt">C:\&gt;</span> BIT-BYTE.EXE</h1>
+  <div id="wrap" class="scanlines">
+  <canvas id="game"></canvas>
+  </div>
+  <div id="touch">
+  <div id="dpad">
+    <button class="up"    data-dir="UP" aria-label="up">▲</button>
+    <button class="left"  data-dir="LEFT" aria-label="left">◀</button>
+    <button class="right" data-dir="RIGHT" aria-label="right">▶</button>
+    <button class="down"  data-dir="DOWN" aria-label="down">▼</button>
+  </div>
+  <div id="sysbtns">
+    <button id="btnMute">MUTE</button>
+    <button id="btnPause">PAUSE</button>
+    <button id="btnReboot">REBOOT</button>
+  </div>
+  </div>
+  <div id="hint">
+  <b>ARROWS</b> / <b>WASD</b> move &nbsp;·&nbsp; <b>ENTER</b> reboot &nbsp;·&nbsp; <b>M</b> mute &nbsp;·&nbsp; <b>P</b> pause
+  <span class="touchonly">&nbsp;·&nbsp; <b>SWIPE</b> or tap D-pad to steer</span>
+  </div>
+
+  
+  <!-- Inlined maze data (browser-safe) -->
+  <script>window.__BB_MAZES__ = {"MAZES":[["############################","#............##............#","#.####.#####.##.#####.####.#","#o#  #.#   #.##.#   #.#  #o#","#.####.#####.##.#####.####.#","#..........................#","#.####.##.########.##.####.#","#.####.##.########.##.####.#","#......##....##....##......#","######.##### ## #####.######","     #.##### ## #####.#     ","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","     #.##          ##.#     ","     #.## ######## ##.#     ","######.## ######## ##.######","#............##............#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#o..##.......  .......##..o#","###.##.##.########.##.##.###","###.##.##.########.##.##.###","#......##....##....##......#","#.##########.##.##########.#","#.##########.##.##########.#","#..........................#","############################"],["############################","#......##..........##......#","#o####.##.########.##.####o#","#.####.##.########.##.####.#","#..........................#","###.##.#####.##.#####.##.###","###.##.#####.##.#####.##.###","###.##.#####.##.#####.##.###","   .##.......##.......##.   ","###.##### ######## #####.###","###.##### ######## #####.###","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","   .   ##          ##   .   ","###.######## ## ########.###","###.######## ## ########.###","###.......   ##   .......###","###.#####.########.#####.###","###.#####.########.#####.###","#............  ............#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#.####.##....##....##.####.#","#o####.##.########.##.####o#","#.####.##.########.##.####.#","#..........................#","############################"],["############################","       ##..........##       ","###### ##.########.## ######","###### ##.########.## ######","#o...........##...........o#","#.#######.##.##.##.#######.#","#.#######.##.##.##.#######.#","#.##......##.##.##......##.#","#.##.#### ##....## ####.##.#","#.##.#### ######## ####.##.#","#......## ######## ##......#","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","###.##.##          ##.##.###","###.##.#### #### ####.##.###","###.##.#### #### ####.##.###","###.........####.........###","###.#######.####.#######.###","###.#######.####.#######.###","   ....##...    ...##....   ","###.##.##.########.##.##.###","###.##.##.########.##.##.###","#o..##.......##.......##..o#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#..........................#","############################"],["############################","#.........##....##.........#","#.#######.##.##.##.#######.#","#o#######.##.##.##.#######o#","#.##.........##.........##.#","#.##.##.####.##.####.##.##.#","#....##.####.##.####.##....#","####.##.####.##.####.##.####","####.##..............##.####"," ....#### ######## ####.... ","#.## #### ######## #### ##.#","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","#.##                    ##.#","#.#### ##### ## ##### ####.#","#.#### ##### ## ##### ####.#","#......##....##....##......#","###.##.##.########.##.##.###","###.##.##.########.##.##.###","#o..##.......  .......##..o#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#......##....##....##......#","#.####.##.########.##.####.#","#.####.##.########.##.####.#","#......##..........##......#","############################"],["############################","#..........................#","#.##.####.########.####.##.#","#o##.####.########.####.##o#","#.##.####.##....##.####.##.#","#.##......##.##.##......##.#","#.####.##.##.##.##.##.####.#","#.####.##.##.##.##.##.####.#","#......##....##....##......#","###.######## ## ########.###","###.######## ## ########.###","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","### ##.##          ##.## ###","###....##### ## #####....###","###.##.##### ## #####.##.###","###.##....   ##   ....##.###","###.#####.## ## ##.#####.###","###.#####.## ## ##.#####.###","#.........##    ##.........#","#.####.##.########.##.####.#","#.####.##.########.##.####.#","#.##...##..........##...##.#","#o##.#######.##.#######.##o#","#.##.#######.##.#######.##.#","#............##............#","############################"],["############################","       ##..........##       ","###### ##.########.## ######","###### ##.########.## ######","#o...........##...........o#","#.#######.##.##.##.#######.#","#.#######.##.##.##.#######.#","#.##......##.##.##......##.#","#.##.#### ##....## ####.##.#","#.##.#### ######## ####.##.#","#......## ######## ##......#","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","###.##.##          ##.##.###","###.##.#### #### ####.##.###","###.##.#### #### ####.##.###","###.........####.........###","###.#######.####.#######.###","###.#######.####.#######.###","   ....##...    ...##....   ","###.##.##.########.##.##.###","###.##.##.########.##.##.###","#o..##.......##.......##..o#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#..........................#","############################"],["############################","#.........##....##.........#","#.#######.##.##.##.#######.#","#o#######.##.##.##.#######o#","#.##.........##.........##.#","#.##.##.####.##.####.##.##.#","#....##.####.##.####.##....#","####.##.####.##.####.##.####","####.##..............##.####"," ....#### ######## ####.... ","#.## #### ######## #### ##.#","     #.##          ##.#     ","     #.## ###--### ##.#     ","######.## #      # ##.######","      .   #      #   .      ","######.## #      # ##.######","     #.## ######## ##.#     ","#.##                    ##.#","#.#### ##### ## ##### ####.#","#.#### ##### ## ##### ####.#","#......##....##....##......#","###.##.##.########.##.##.###","###.##.##.########.##.##.###","#o..##.......  .......##..o#","#.####.#####.##.#####.####.#","#.####.#####.##.#####.####.#","#......##....##....##......#","#.####.##.########.##.####.#","#.####.##.########.##.####.#","#......##..........##......#","############################"]],"MAZE_COLORS":[{"wall":"#2121de","wall2":"#4040ff","name":"BLUE"},{"wall":"#ffb8ff","wall2":"#ff60ff","name":"PINK"},{"wall":"#00e0e0","wall2":"#40ffff","name":"TEAL"},{"wall":"#ffb852","wall2":"#ff8020","name":"ORANGE"},{"wall":"#2121de","wall2":"#4040ff","name":"DBLUE"},{"wall":"#a040ff","wall2":"#d060ff","name":"PURPLE"},{"wall":"#ffd000","wall2":"#fff040","name":"YELLOW"}],"PAC_SPAWNS":[{"c":13,"r":23},{"c":13,"r":23},{"c":13,"r":23},{"c":13,"r":23},{"c":13,"r":23},{"c":13,"r":23},{"c":13,"r":23}]};</script>
+  <script>
+/* =====================================================================
+   BIT-BYTE — Core Simulation Engine (DOM-free, unit-testable)
+   Faithful Pac-Man / Ms. Pac-Man mechanics.
+   Tile coordinates: col 0..27, row 0..30 (31x28 playfield).
+   Entity positions stored in TILE UNITS (1 tile = 1.0). Renderer scales.
+   ===================================================================== */
+(function (root) {
+  'use strict';
+
+  const DIRS = {
+    UP:    { x: 0,  y: -1, name: 'UP' },
+    DOWN:  { x: 0,  y: 1,  name: 'DOWN' },
+    LEFT:  { x: -1, y: 0,  name: 'LEFT' },
+    RIGHT: { x: 1,  y: 0,  name: 'RIGHT' },
+    NONE:  { x: 0,  y: 0,  name: 'NONE' }
+  };
+  const OPP = { UP: 'DOWN', DOWN: 'UP', LEFT: 'RIGHT', RIGHT: 'LEFT', NONE: 'NONE' };
+  const WRAP = c => ((c % 28) + 28) % 28;
+  const key = (c, r) => c + ',' + r;
+
+  const MAZE1 = [
+    "############################",
+    "#............##............#",
+    "#.####.#####.##.#####.####.#",
+    "#@#  #.#   #.##.#   #.#  #@#",
+    "#.####.#####.##.#####.####.#",
+    "#..........................#",
+    "#.####.##.########.##.####.#",
+    "#.####.##.########.##.####.#",
+    "#......##....##....##......#",
+    "######.##### ## #####.######",
+    "     #.##### ## #####.#     ",
+    "     #.##          ##.#     ",
+    "     #.## ###--### ##.#     ",
+    "######.## #      # ##.######",
+    "      .   #      #   .      ",
+    "######.## #      # ##.######",
+    "     #.## ######## ##.#     ",
+    "     #.##          ##.#     ",
+    "     #.## ######## ##.#     ",
+    "######.## ######## ##.######",
+    "#............##............#",
+    "#.####.#####.##.#####.####.#",
+    "#.####.#####.##.#####.####.#",
+    "#@..##.......  .......##..@#",
+    "###.##.##.########.##.##.###",
+    "###.##.##.########.##.##.###",
+    "#......##....##....##......#",
+    "#.##########.##.##########.#",
+    "#.##########.##.##########.#",
+    "#..........................#",
+    "############################"
+  ];
+
+  // Maze data sourced from mazes.js (gen_mazes.js) — classic + 4 authentic
+  // Ms. Pac-Man boards (arcade-verified), with per-maze Pac spawn + colors.
+  let MAZES, MAZE_COLORS, PAC_SPAWNS;
+  try {
+    const md = window.__BB_MAZES__;
+    MAZES = md.MAZES; MAZE_COLORS = md.MAZE_COLORS; PAC_SPAWNS = md.PAC_SPAWNS;
+  } catch (e) {
+    // fallback: classic only
+    MAZES = [MAZE1, MAZE1, MAZE1, MAZE1, MAZE1, MAZE1, MAZE1];
+    MAZE_COLORS = [
+      { wall: '#2121de', wall2: '#4040ff', name: 'BLUE' },
+      { wall: '#ffb8ff', wall2: '#ff60ff', name: 'PINK' },
+      { wall: '#00e0e0', wall2: '#40ffff', name: 'TEAL' },
+      { wall: '#ffb852', wall2: '#ff8020', name: 'ORANGE' },
+      { wall: '#2121de', wall2: '#4040ff', name: 'DBLUE' },
+      { wall: '#a040ff', wall2: '#d060ff', name: 'PURPLE' },
+      { wall: '#ffd000', wall2: '#fff040', name: 'YELLOW' }
+    ];
+    PAC_SPAWNS = MAZES.map(() => ({ c: 13, r: 23 }));
+  }
+
+  class Maze {
+    constructor(layout) {
+      this.grid = layout.map(r => r.split(''));
+      this.rows = this.grid.length;
+      this.cols = this.grid[0].length;
+      this.pellets = new Map();
+      this.doorCells = new Set();
+      this.houseTiles = new Set();   // gate + interior box (non-'#')
+      for (let r = 0; r < this.rows; r++) {
+        for (let c = 0; c < this.cols; c++) {
+          const ch = this.grid[r][c];
+          if (ch === '.') this.pellets.set(key(c, r), 'dot');
+          else if (ch === '@' || ch === 'o') this.pellets.set(key(c, r), 'energizer');
+          else if (ch === '-') this.doorCells.add(key(c, r));
+          if ((ch === ' ' || ch === '-') && r >= 12 && r <= 18 && c >= 10 && c <= 17)
+            this.houseTiles.add(key(c, r));
+        }
+      }
+      this.totalPellets = this.pellets.size;
+      this.pelletsLeft = this.pellets.size;
+      // Fruit/bonus spawn tile: must be a PASSABLE, reachable corridor tile on
+      // every maze. The classic (13,20) spot is a wall on these boards, and the
+      // ghost-house interior (13,17) is unreachable by Pac. (13,23) is the
+      // central Pac corridor — verified reachable on all 7 mazes.
+      this.bonusTile = { col: 13, row: 23 };
+    }
+    isWall(c, r) {                       // raw: '#' and gate '-'
+      c = WRAP(c);
+      if (r < 0 || r >= this.rows) return true;
+      const ch = this.grid[r][c];
+      return ch === '#' || ch === '-';
+    }
+    isGhostWall(c, r) {                 // '#' only (gate passable for ghosts)
+      c = WRAP(c);
+      if (r < 0 || r >= this.rows) return true;
+      return this.grid[r][c] === '#';
+    }
+    isPacWall(c, r) {                   // '#', gate, or house box
+      c = WRAP(c);
+      if (r < 0 || r >= this.rows) return true;
+      const ch = this.grid[r][c];
+      if (ch === '#' || ch === '-') return true;
+      return this.houseTiles.has(key(c, r));
+    }
+    isHouseTile(c, r) { return this.houseTiles.has(key(WRAP(c), r)); }
+    isDoor(c, r) { return this.doorCells.has(key(WRAP(c), r)); }
+    isInBox(c, r) { return c >= 11 && c <= 16 && r >= 13 && r <= 15; }
+    eatPellet(c, r) {
+      const k = key(WRAP(c), r);
+      if (this.pellets.has(k)) {
+        const t = this.pellets.get(k);
+        this.pellets.delete(k);
+        this.pelletsLeft--;
+        return t;
+      }
+      return null;
+    }
+  }
+
+  class Entity {
+    constructor(col, row, dir) {
+      this.col = col; this.row = row; this.dir = dir;
+      this.nextCol = col + dir.x; this.nextRow = row + dir.y;
+      this.progress = 0; this.speed = 8;
+      this.px = col + 0.5; this.py = row + 0.5;
+    }
+    setTile(c, r, dir) {
+      this.col = c; this.row = r; this.dir = dir;
+      this.nextCol = WRAP(c + dir.x); this.nextRow = r + dir.y;
+      this.progress = 0; this.px = c + 0.5; this.py = r + 0.5;
+    }
+  }
+
+  function ghostTarget(g, pac, blinky) {
+    if (g.mode === 'eyes') return { col: 13, row: 14 };
+    // Exit target must be the CORRIDOR tile ABOVE the real gate opening
+    // (cols 14/15 of row 12 are the only passable gap). The classic (13,11)
+    // is a wall here, so targeting it made leaving/returning ghosts
+    // oscillate inside the box — the "anomaly in the pen". (14,11) routes
+    // them cleanly out through the opening column.
+    if (g.inHouse || g.leaving || g.maze.isInBox(g.col, g.row)) return { col: 14, row: 11 };
+    const p = { col: pac.col, row: pac.row }, pd = pac.dir;
+    switch (g.id) {
+      case 'blinky': return p;
+      case 'pinky':  return { col: p.col + pd.x * 4, row: p.row + pd.y * 4 };
+      case 'inky': {
+        const a = { col: p.col + pd.x * 2, row: p.row + pd.y * 2 };
+        return { col: a.col + (a.col - blinky.col), row: a.row + (a.row - blinky.row) };
+      }
+      case 'clyde': {
+        const d = Math.hypot(g.col - p.col, g.row - p.row);
+        return d > 8 ? p : g.scatterCorner;
+      }
+    }
+    return p;
+  }
+
+  function dist2(a, b) { const dx = a.col - b.col, dy = a.row - b.row; return dx * dx + dy * dy; }
+
+  function chooseDir(e, target, isGhost, maze, frightened) {
+    const canEnterHouse = e.mode === 'eyes' || e.leaving || e.inHouse;
+    const opts = [];
+    for (const d of [DIRS.UP, DIRS.LEFT, DIRS.DOWN, DIRS.RIGHT]) {
+      const nc = WRAP(e.col + d.x), nr = e.row + d.y;
+      let blocked;
+      if (isGhost) {
+        blocked = maze.isGhostWall(nc, nr) ||
+          (maze.isHouseTile(nc, nr) && !canEnterHouse);
+      } else blocked = maze.isPacWall(nc, nr);
+      if (blocked) continue;
+      if (d.name === OPP[e.dir.name]) continue;
+      opts.push({ d, nc, nr });
+    }
+    if (opts.length === 0) {
+      const d = DIRS[OPP[e.dir.name]];
+      return { d, nc: WRAP(e.col + d.x), nr: e.row + d.y };
+    }
+    if (frightened) {
+      const pick = opts[Math.floor(Math.random() * opts.length)];
+      return { d: pick.d, nc: pick.nc, nr: pick.nr };
+    }
+    let best = opts[0], bestD = Infinity;
+    for (const o of opts) {
+      const dd = dist2({ col: o.nc, row: o.nr }, target);
+      if (dd < bestD) { bestD = dd; best = o; }
+    }
+    return { d: best.d, nc: best.nc, nr: best.nr };
+  }
+
+  class Game {
+    constructor(opts = {}) {
+      this.onEvent = opts.onEvent || (() => {});
+      this.mazeIndex = 0;
+      this.loadMaze(0);
+      this.score = 0;
+      this.highScore = opts.highScore || 0;
+      this.lives = 3;
+      this.level = 1;
+      this.state = 'title';
+      this.readyTimer = 1.2;
+      // Staggered pen-release schedule. Lives on the Game (NOT rebuilt by
+      // initEntities) so it PERSISTS across deaths/respawn — otherwise a quick
+      // death resets the timers and ghosts get trapped in the pen forever
+      // (the "anomaly in the pen"). After the first death the timers read <=0,
+      // so on every subsequent respawn the penned ghosts re-emerge immediately.
+      this.releaseTimers = { pinky: 0, inky: 1.5, clyde: 3.0 };
+      this.modePhase = 0; this.modeTimer = 0; this.globalMode = 'scatter';
+      this.frightenedTimer = 0; this.ghostCombo = 0;
+      this.extraLifeGiven = false;
+      this.bonus = null; this.bonusTimer = 0; this.bonusStage = 0;
+      this.intermissionTimer = 0; this.deathTimer = 0;
+      this.initEntities();
+    }
+
+    loadMaze(i) { this.maze = new Maze(MAZES[i % MAZES.length]); this.mazeIndex = i % MAZES.length; }
+
+    initEntities() {
+      const m = this.maze;
+      const sp = (PAC_SPAWNS && PAC_SPAWNS[this.mazeIndex]) || { c: 13, r: 23 };
+      this.pac = new Entity(sp.c, sp.r, DIRS.LEFT);
+      this.pac.speed = 8.0; this.pac.queued = DIRS.LEFT;
+      this.pac.dead = false; this.pac.mouth = 0;
+
+      const mk = (id, col, row, dir, color, corner, inHouse) => {
+        const g = new Entity(col, row, dir);
+        g.id = id; g.color = color; g.scatterCorner = corner;
+        g.inHouse = inHouse; g.released = !inHouse;
+        g.mode = 'normal'; g.frightened = false; g.leaving = false;
+        g.speed = 7.5; g.maze = m;
+        return g;
+      };
+      const TR = { col: 25, row: 0 }, TL = { col: 2, row: 0 },
+            BR = { col: 25, row: 30 }, BL = { col: 2, row: 30 };
+      this.ghosts = [
+        // Blinky starts OUTSIDE the pen (on the house ledge) per classic Pac-Man.
+        mk('blinky', 13, 11, DIRS.LEFT, '#ff0000', TR, false),
+        // Penned ghosts occupy DISTINCT tiles so they never overlap/clip:
+        // pinky center, inky left, clyde right of the house.
+        mk('pinky',  13, 14, DIRS.UP,    '#ffb8ff', TL, true),
+        mk('inky',   11, 14, DIRS.DOWN,  '#00ffff', BR, true),
+        mk('clyde',  15, 14, DIRS.DOWN,  '#ffb852', BL, true)
+      ];
+      this.blinky = this.ghosts[0];
+      m.eatPellet(sp.c, sp.r); m.eatPellet(13, 11);
+      this.ghostCombo = 0;
+    }
+
+    setInput(dir) {
+      const d = DIRS[dir]; if (!d) return;
+      const cur = this.pac.dir.name;
+      // Instant 180° reverse (allowed mid-tile, classic Pac-Man feel).
+      if (this.state === 'play' && d.name === OPP[cur] && cur !== 'NONE') {
+        const oc = this.pac.col, or = this.pac.row;
+        this.pac.col = this.pac.nextCol; this.pac.nextRow = this.pac.nextRow;
+        this.pac.nextCol = oc; this.pac.nextRow = or;
+        this.pac.progress = 1 - this.pac.progress;
+        this.pac.dir = d;
+        this.pac.queued = d;
+        return;
+      }
+      // Queue the desired direction. The render-loop caller already ignores
+      // OS key auto-repeat (e.repeat), so a held key won't stomp a freshly
+      // tapped perpendicular turn. Do NOT block re-affirming the current
+      // direction here — bots/AI legitimately re-issue it every frame.
+      this.pac.queued = d;
+    }
+
+    startPlay() { this.state = 'play'; this.readyTimer = 0; this.modePhase = 0; this.modeTimer = 0; this.globalMode = 'scatter'; this.frightenedTimer = 0; }
+
+    // ---- Title / startup screen ----------------------------------------
+    // The game boots into 'title'. Simulation is frozen; ENTER / tap / click
+    // starts a fresh run. After a game over, ENTER returns here (the hub).
+    showTitle() {
+      this.state = 'title';
+      this.readyTimer = 1.2;     // re-used: time spent on READY banner before play
+      this.score = 0; this.lives = 3; this.level = 1;
+      this.loadMaze(0); this.initEntities();
+      this.releaseTimers = { pinky: 0, inky: 1.5, clyde: 3.0 };
+      this.bonus = null; this.bonusStage = 0; this.frightenedTimer = 0; this.ghostCombo = 0;
+      this.extraLifeGiven = false;
+    }
+    startGame() {
+      // Begin a fresh run: reset and drop into the 'ready' banner -> play.
+      this.score = 0; this.lives = 3; this.level = 1;
+      this.loadMaze(0); this.initEntities();
+      this.releaseTimers = { pinky: 0, inky: 1.5, clyde: 3.0 };
+      this.bonus = null; this.bonusStage = 0; this.frightenedTimer = 0; this.ghostCombo = 0;
+      this.extraLifeGiven = false;
+      this.state = 'ready'; this.readyTimer = 1.2;
+      this.onEvent('start');
+    }
+
+    update(dt) {
+      if (this.state === 'title') return;   // frozen until the player starts
+      if (this.state === 'ready') { this.readyTimer -= dt; if (this.readyTimer <= 0) this.startPlay(); return; }
+      if (this.state === 'death') { this.deathTimer -= dt; if (this.deathTimer <= 0) this.respawn(); return; }
+      if (this.state === 'intermission') { this.intermissionTimer -= dt; if (this.intermissionTimer <= 0) this.advanceLevel(); return; }
+      if (this.state !== 'play') return;
+
+      this.updateModeSchedule(dt);
+      if (this.frightenedTimer > 0) { this.frightenedTimer -= dt; if (this.frightenedTimer <= 0) this.endFrighten(); }
+      this.updateReleases(dt);
+      this.updateBonus(dt);
+      this.stepPac(dt);
+      for (const g of this.ghosts) this.stepGhost(g, dt);
+      this.checkCollisions();
+
+      if (this.maze.pelletsLeft <= 0) {
+        if (this.level % 2 === 0 && this.level < 14) this.startIntermission();
+        else this.nextLevel();
+      }
+    }
+
+    updateModeSchedule(dt) {
+      const sched = [['scatter',7],['chase',20],['scatter',7],['chase',20],['scatter',5],['chase',20],['scatter',5],['chase',1e9]];
+      if (this.modePhase >= sched.length) return;
+      const [mode, dur] = sched[this.modePhase];
+      if (this.globalMode !== mode) { this.globalMode = mode; this.modeTimer = dur; }
+      this.modeTimer -= dt;
+      if (this.modeTimer <= 0 && this.modePhase < sched.length - 1) {
+        this.modePhase++;
+        this.globalMode = sched[this.modePhase][0];
+        this.modeTimer = sched[this.modePhase][1];
+        for (const g of this.ghosts) if (g.mode === 'normal') this.reverseGhost(g);
+      }
+    }
+
+    reverseGhost(g) {
+      const oc = g.col, or = g.row;
+      g.col = g.nextCol; g.row = g.nextRow;
+      g.nextCol = oc; g.nextRow = or;
+      g.progress = 1 - g.progress;
+      g.dir = DIRS[OPP[g.dir.name]];
+    }
+
+    updateReleases(dt) {
+      // Only ONE ghost may transit the house exit at a time. Releasing all of
+      // them simultaneously (e.g. right after a respawn, when every release
+      // timer reads <=0) makes them converge on the single 2-wide door and
+      // stack on the same pixel (the "ghosts overlapping in the pen" anomaly).
+      // So a parked ghost may only begin leaving once the shaft is clear. The
+      // flag is kept LIVE inside the loop, so the very frame one ghost starts
+      // leaving, the others are held until it has cleared the box.
+      let someoneLeaving = this.ghosts.some(g => g.leaving);
+      for (const g of this.ghosts) {
+        if (g.released) continue;
+        const t = this.releaseTimers[g.id] || 0;
+        this.releaseTimers[g.id] = t - dt;
+        const eaten = this.maze.totalPellets - this.maze.pelletsLeft;
+        const timerUp = t <= 0 || (g.id === 'clyde' && eaten > 40) || (g.id === 'inky' && eaten > 20);
+        if (timerUp && !someoneLeaving) {
+          g.released = true; g.inHouse = false; g.leaving = true;
+          someoneLeaving = true; // lock the shaft for the rest of this frame
+        }
+      }
+    }
+
+    updateBonus(dt) {
+      if (this.bonus) {
+        this.bonusTimer -= dt;
+        this.bonus.timer = this.bonusTimer; // keep object timer in sync for renderer
+        if (this.bonusTimer <= 0) this.bonus = null;
+      } else if (this.state === 'play' && this.bonusStage < 2) {
+        // Spawn the fruit the first time eaten CROSSES a threshold. Use >= (not
+        // ==) so a fast frame that eats 2+ pellets and jumps PAST the exact
+        // integer (e.g. 80 -> 83, skipping 81) still triggers the fruit. Each
+        // stage fires exactly once via bonusStage, so >= can't double-spawn.
+        const total = this.maze.totalPellets;
+        const eaten = total - this.maze.pelletsLeft;
+        const thresholds = [Math.floor(total / 3), Math.floor(2 * total / 3)];
+        if (eaten >= thresholds[this.bonusStage]) {
+          this.bonus = { col: this.maze.bonusTile.col, row: this.maze.bonusTile.row, type: this.bonusStage, timer: 9 };
+          this.bonusTimer = 9; this.bonusStage++;
+          this.onEvent('bonus');
+        }
+      }
+    }
+
+    stepPac(dt) {
+      const p = this.pac, m = this.maze;
+      // --- Instant perpendicular turns (no grid-lock lag) --------------------
+      // OLD behaviour: a queued perpendicular turn only committed at an exact
+      // tile centre, so for the first half of every tile (progress 0..0.5) the
+      // press was ignored and Pac travelled up to a full tile before turning ->
+      // a 16-83ms "delay between movements" the user kept feeling. v11 only
+      // fixed the LATE press (progress>0.5 corner-cut); the EARLY half was
+      // still dead. Fix: commit a perpendicular turn the instant it is open,
+      // snapping Pac to the NEAREST edge of his current tile and redirecting.
+      // This keeps grid-aligned collisions/eating intact (Pac is still always
+      // exactly on a tile centre when he crosses), it just removes the wait.
+      if (p.dir.name !== 'NONE' && p.queued.name !== 'NONE' && p.queued.name !== p.dir.name) {
+        const turning = !m.isPacWall(WRAP(p.col + p.queued.x), p.row + p.queued.y);
+        if (turning) {
+          // Snap to the nearest tile edge so the redirect is seamless: if Pac is
+          // heading INTO the current tile (progress > 0.5) he's closer to the
+          // next centre, so commit there; otherwise he turns at the tile he's
+          // leaving. Either way the turn is immediate, never a full-tile wait.
+          if (p.progress >= 0.5) {
+            p.progress -= 1;                  // finish arriving at next centre
+            p.col = WRAP(p.nextCol); p.row = p.nextRow;
+          } else {
+            p.progress = 0;                    // already at current centre
+          }
+          p.dir = p.queued;
+          p.nextCol = WRAP(p.col + p.dir.x); p.nextRow = p.row + p.dir.y;
+        }
+      }
+      p.progress += p.speed * dt;
+      let safety = 0;
+      while (p.progress >= 1 && safety++ < 8) {
+        p.progress -= 1;
+        p.col = WRAP(p.nextCol); p.row = p.nextRow;
+        const q = p.queued;
+        const qc = WRAP(p.col + q.x), qr = p.row + q.y;
+        if (q.name !== 'NONE' && !m.isPacWall(qc, qr)) p.dir = q;
+        else if (m.isPacWall(WRAP(p.col + p.dir.x), p.row + p.dir.y)) p.dir = DIRS.NONE;
+        p.nextCol = WRAP(p.col + p.dir.x); p.nextRow = p.row + p.dir.y;
+        if (p.dir.name === 'NONE') { p.progress = 0; p.nextCol = p.col; p.nextRow = p.row; break; }
+      }
+      // --- Eat whatever is on Pac's CURRENT tile (every frame) ----------------
+      // Previously eating only happened inside the tile-crossing loop above, so
+      // a bonus/energizer sitting on the tile Pac is ALREADY on (he reversed
+      // onto it, or parked there) was never consumed -> "pass over it, never
+      // collects". Eating on the current tile every frame fixes that and also
+      // guarantees the energizer always registers the instant Pac reaches it.
+      this.eatAtPacTile();
+      p.px = p.col + 0.5 + (p.nextCol - p.col) * p.progress;
+      p.py = p.row + 0.5 + (p.nextRow - p.row) * p.progress;
+      if (p.px < -0.5) p.px += 28; if (p.px > 28.5) p.px -= 28;
+    }
+
+    eatAtPacTile() {
+      const p = this.pac, m = this.maze;
+      const ate = m.eatPellet(p.col, p.row);
+      if (ate === 'dot') { this.addScore(10); this.onEvent('chomp'); }
+      else if (ate === 'energizer') { this.addScore(50); this.onEvent('chomp'); this.startFrighten(); }
+      if (this.bonus && this.bonus.col === p.col && this.bonus.row === p.row) this.eatBonus();
+    }
+
+    stepGhost(g, dt) {
+      const m = this.maze;
+      if (!g.released) {
+        // Parked in the pen. Each penned ghost sits at its own distinct spawn
+        // tile (cols 11/13/15) so they never stack or clip through each other.
+        // (Classic behavior: ghosts hold position until released, then exit.)
+        g.progress = 0; g.dir = DIRS.UP;
+        g.px = g.col + 0.5;
+        g.py = g.row + 0.5;
+        return;
+      }
+      let spd = g.mode === 'frightened' ? 5.0 : g.mode === 'eyes' ? 14.0 : g.speed;
+      g.progress += spd * dt;
+      let safety = 0;
+      while (g.progress >= 1 && safety++ < 8) {
+        g.progress -= 1;
+        g.col = WRAP(g.nextCol); g.row = g.nextRow;
+        if (g.mode === 'eyes' && g.maze.isInBox(g.col, g.row)) {
+          g.mode = 'normal'; g.frightened = false; g.inHouse = false; g.leaving = true;
+        }
+        // The house door is the 2-wide gate at (cols 13-14, row 12). Once a
+        // leaving ghost reaches the door tile it is clear of the box and
+        // switches to its normal chase/scatter AI (which spreads the ghosts
+        // apart, preventing the stacked-in-the-shaft anomaly).
+        if (g.leaving && g.col >= 13 && g.col <= 14 && g.row === 12) {
+          g.leaving = false; g.inHouse = false;
+        }
+        let target;
+        if (g.mode === 'eyes') target = { col: 13, row: 14 };
+        else if (g.inHouse || g.leaving || g.maze.isInBox(g.col, g.row)) {
+          g.inHouse = g.maze.isInBox(g.col, g.row);
+          // aim for the door tile (center column, row 12) so the ghost goes
+          // straight up out of the box
+          target = { col: 14, row: 12 };
+        } else target = ghostTarget(g, this.pac, this.blinky);
+        const ch = chooseDir(g, target, true, m, g.mode === 'frightened');
+        g.dir = ch.d; g.nextCol = ch.nc; g.nextRow = ch.nr;
+      }
+      g.px = g.col + 0.5 + (g.nextCol - g.col) * g.progress;
+      g.py = g.row + 0.5 + (g.nextRow - g.row) * g.progress;
+      if (g.px < -0.5) g.px += 28; if (g.px > 28.5) g.px -= 28;
+    }
+
+    checkCollisions() {
+      for (const g of this.ghosts) {
+        if (Math.abs(g.px - this.pac.px) < 0.5 && Math.abs(g.py - this.pac.py) < 0.5) {
+          if (g.mode === 'frightened') this.eatGhost(g);
+          else if (g.mode === 'normal') { this.killPac(); return; }
+        }
+      }
+    }
+
+    eatGhost(g) {
+      const pts = [200, 400, 800, 1600][this.ghostCombo % 4] || 1600;
+      this.ghostCombo = (this.ghostCombo || 0) + 1;
+      this.addScore(pts);
+      g.mode = 'eyes'; g.frightened = false;
+      this.onEvent('eatGhost', pts);
+    }
+
+    killPac() {
+      if (this.pac.dead) return;
+      this.pac.dead = true; this.state = 'death'; this.deathTimer = 1.5;
+      this.onEvent('death');
+    }
+
+    eatBonus() {
+      const table = [100, 300, 500, 700, 1000, 2000, 3000, 5000];
+      const pts = table[this.bonus.type % table.length];
+      this.addScore(pts); this.onEvent('bonusEat', pts); this.bonus = null;
+    }
+
+    startFrighten() {
+      this.frightenedTimer = 6.0; this.ghostCombo = 0;
+      for (const g of this.ghosts)
+        if (g.mode === 'normal') { g.mode = 'frightened'; g.frightened = true; this.reverseGhost(g); }
+      this.onEvent('power');
+    }
+    endFrighten() {
+      for (const g of this.ghosts)
+        if (g.mode === 'frightened') { g.mode = 'normal'; g.frightened = false; }
+    }
+
+    addScore(p) {
+      this.score += p;
+      if (!this.extraLifeGiven && this.score >= 10000) { this.extraLifeGiven = true; this.lives++; this.onEvent('extraLife'); }
+      if (this.score > this.highScore) this.highScore = this.score;
+    }
+
+    respawn() {
+      this.lives--;
+      if (this.lives < 0) { this.state = 'gameover'; this.onEvent('gameover'); return; }
+      this.initEntities(); this.state = 'ready'; this.readyTimer = 1.2;
+      // Note: releaseTimers persist (see constructor) so ghosts re-emerge
+      // quickly instead of being re-trapped in the pen.
+    }
+
+    nextLevel() {
+      this.level++; this.loadMaze((this.level - 1) % MAZES.length);
+      this.initEntities(); this.state = 'ready'; this.readyTimer = 1.2;
+    }
+
+    startIntermission() { this.state = 'intermission'; this.intermissionTimer = 6.0; this.onEvent('intermission', this.level); }
+    advanceLevel() { this.nextLevel(); }
+  }
+
+  const BB = { Game, Maze, DIRS, OPP, WRAP, MAZES, MAZE1, MAZE_COLORS, isWall: (m,c,r)=>m.isPacWall(c,r) };
+  if (typeof module !== 'undefined' && module.exports) module.exports = BB;
+  if (root) root.BB = BB;
+})(typeof window !== 'undefined' ? window : null);
+</script>
+
+  <script>/* =====================================================================
+   BIT-BYTE — Canvas Renderer (render layer only; physics in engine.js)
+   Protagonist: classic yellow Pac-Man sprite + waka eating (mouth) animation.
+           Ghosts -> colored "VIRUS" error blocks (glitch in fright).
+           Dots -> data bits (0/1). Energizers -> pulsing antivirus pills.
+           Walls -> PCB / digital-circuit traces.
+   Works in browser (canvas) and headless Node (ctx mock) for testing.
+   ===================================================================== */
+(function (root) {
+  'use strict';
+
+  const BB = (typeof require !== 'undefined')
+    ? require('./engine.js')
+    : (root && root.BB);
+
+  const TILE = 24;            // px per maze tile
+  const DEATH_DUR = 1.5;      // matches engine deathTimer init
+  const ROWS = 31, COLS = 28;
+  const MAZE_W = COLS * TILE, MAZE_H = ROWS * TILE;
+  const HUD_H = 56;
+  const PREPAD = 4;           // top px pad so HUD text fits
+  const CANVAS_W = MAZE_W;
+  const CANVAS_H = MAZE_H + HUD_H + PREPAD;
+
+  // Computer-Upgrade bonus items (fruit reskin), shared by bonus + HUD icon.
+  const FRUIT_ITEMS = ['RAM', 'CPU', 'GPU', 'HDD', 'SSD', 'PSU', 'NIC', 'ROM'];
+  const FRUIT_SCORES = [100, 300, 500, 700, 1000, 2000, 3000, 5000];
+
+  function hexToRgb(h) {
+    h = h.replace('#', '');
+    if (h.length === 3) h = h.split('').map(c => c + c).join('');
+    const n = parseInt(h, 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function rgba(hex, a) { const [r, g, b] = hexToRgb(hex); return `rgba(${r},${g},${b},${a})`; }
+  function lerpColor(a, b, t) {
+    const A = hexToRgb(a), B = hexToRgb(b);
+    return `rgb(${Math.round(A[0] + (B[0] - A[0]) * t)},${Math.round(A[1] + (B[1] - A[1]) * t)},${Math.round(A[2] + (B[2] - A[2]) * t)})`;
+  }
+
+  class Renderer {
+    constructor(canvas, opts = {}) {
+      this.canvas = canvas;
+      if (canvas && canvas.getContext) {
+        this.ctx = canvas.getContext('2d');
+        canvas.width = CANVAS_W;
+        canvas.height = CANVAS_H;
+      }
+      this.scale = opts.scale || 1;
+      this.t = 0;            // animation clock (seconds)
+      this.ghostColors = {
+        blinky: '#ff2b2b', pinky: '#ff9ce0', inky: '#22e0e0', clyde: '#ffae33'
+      };
+      this.frightColor = '#2233ff';
+      this.frightFlash = '#f2f2ff';
+    }
+
+    resize(scale) {
+      if (scale) this.scale = scale;
+      if (this.canvas && this.canvas.style) {
+        this.canvas.style.width = (CANVAS_W * this.scale) + 'px';
+        this.canvas.style.height = (CANVAS_H * this.scale) + 'px';
+      }
+    }
+
+    // ---- main entry --------------------------------------------------
+    draw(game, dt) {
+      if (dt) this.t += dt;
+      const ctx = this.ctx;
+      if (!ctx) return;
+      const colors = BB.MAZE_COLORS[game.mazeIndex % BB.MAZE_COLORS.length];
+      ctx.save();
+      ctx.scale(1, 1);
+      // clear
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+      ctx.translate(0, PREPAD);
+
+      if (game.state === 'gameover') {
+        this.blitMaze(game.maze, colors, game.mazeIndex);
+        this.drawGameOver(ctx);
+        ctx.restore();
+        return;
+      }
+
+      if (game.state === 'title') {
+        this.drawTitle(ctx, game);
+        ctx.restore();
+        return;
+      }
+
+      this.blitMaze(game.maze, colors, game.mazeIndex);
+      this.drawPellets(game.maze, colors);
+      if (game.bonus) this.drawBonus(game.bonus, game.mazeIndex);
+      for (const g of game.ghosts) this.drawGhost(g);
+      if (!game.pac.dead || game.state !== 'death') this.drawPac(game.pac);
+      else this.drawPacDeath(game.pac, game.deathTimer);
+
+      ctx.restore();
+      this.drawHUD(game, ctx, colors);
+
+      if (game.state === 'ready') this.drawCenterBanner(ctx, 'READY!', colors.wall);
+      if (game.state === 'intermission') this.drawIntermission(ctx, game);
+    }
+
+    // Blit the cached maze (offscreen canvas) — cheap per-frame op.
+    // Falls back to immediate-mode drawMaze when offscreen isn't available
+    // (headless Node tests).
+    blitMaze(maze, colors, idx) {
+      const cv = this.getMazeCache(maze, colors, idx);
+      if (cv) this.ctx.drawImage(cv, 0, 0);
+      else this.drawMaze(maze, colors);
+    }
+
+    // Pre-build the offscreen maze cache so the first visible frame never
+    // hitches. Call at startup and whenever the maze/level changes — the
+    // build cost is paid once, hidden behind READY/intermission.
+    prewarmMaze(maze, colors, idx) {
+      this.resetCaches();
+      this.getMazeCache(maze, colors, idx);
+      this.getPelletList(maze);
+    }
+
+    // ---- maze walls (PCB traces) ------------------------------------
+    // The maze is static per level, so we render it ONCE to an offscreen
+    // canvas (getMazeCache) and blit it each frame — avoids repainting all
+    // ~868 wall tiles every frame, which is the main render-side jank source.
+    drawMaze(maze, colors) {
+      const ctx = this.ctx;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      for (let r = 0; r < maze.rows; r++) {
+        for (let c = 0; c < maze.cols; c++) {
+          const ch = maze.grid[r][c];
+          if (ch === '#') this.drawWallTile(ctx, maze, c, r, colors);
+          else if (ch === '-') this.drawGate(ctx, c, r, colors);
+        }
+      }
+    }
+
+    getMazeCache(maze, colors, idx) {
+      const key = idx + ':' + colors.wall;
+      if (this.mazeCanvas && this.mazeKey === key) return this.mazeCanvas;
+      if (typeof document === 'undefined') return null; // Node/test: no offscreen
+      const cv = document.createElement('canvas');
+      cv.width = CANVAS_W; cv.height = MAZE_H;
+      const c2 = cv.getContext('2d');
+      c2.fillStyle = '#000'; c2.fillRect(0, 0, CANVAS_W, MAZE_H);
+      c2.lineCap = 'round'; c2.lineJoin = 'round';
+      for (let r = 0; r < maze.rows; r++) {
+        for (let c = 0; c < maze.cols; c++) {
+          const ch = maze.grid[r][c];
+          if (ch === '#') this.drawWallTile(c2, maze, c, r, colors);
+          else if (ch === '-') this.drawGate(c2, c, r, colors);
+        }
+      }
+      this.mazeCanvas = cv; this.mazeKey = key;
+      return cv;
+    }
+
+    drawWallTile(ctx, maze, c, r, colors) {
+      const x = c * TILE, y = r * TILE;
+      const walls = {
+        U: maze.isWall(c, r - 1),
+        D: maze.isWall(c, r + 1),
+        L: maze.isWall(c - 1, r),
+        R: maze.isWall(c + 1, r)
+      };
+      const open = !(walls.U && walls.D && walls.L && walls.R);
+      // board fill
+      ctx.fillStyle = 'rgba(10,12,24,0.65)';
+      ctx.fillRect(x, y, TILE, TILE);
+
+      const w = open ? 3.2 : 4.2;
+      ctx.strokeStyle = colors.wall;
+      ctx.lineWidth = w;
+      const cx = x + TILE / 2, cy = y + TILE / 2;
+      const half = TILE / 2 - 1;
+      // center node
+      ctx.fillStyle = rgba(colors.wall2, 0.85);
+      ctx.beginPath(); ctx.arc(cx, cy, 2.4, 0, Math.PI * 2); ctx.fill();
+
+      ctx.beginPath();
+      if (walls.U) { ctx.moveTo(cx, cy); ctx.lineTo(cx, y - 1); }
+      if (walls.D) { ctx.moveTo(cx, cy); ctx.lineTo(cx, y + TILE + 1); }
+      if (walls.L) { ctx.moveTo(cx, cy); ctx.lineTo(x - 1, cy); }
+      if (walls.R) { ctx.moveTo(cx, cy); ctx.lineTo(x + TILE + 1, cy); }
+      ctx.stroke();
+
+      // accent trace
+      if (open) {
+        ctx.strokeStyle = rgba(colors.wall2, 0.5);
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        if (walls.U) { ctx.moveTo(cx, cy); ctx.lineTo(cx, y - 1); }
+        if (walls.D) { ctx.moveTo(cx, cy); ctx.lineTo(cx, y + TILE + 1); }
+        if (walls.L) { ctx.moveTo(cx, cy); ctx.lineTo(x - 1, cy); }
+        if (walls.R) { ctx.moveTo(cx, cy); ctx.lineTo(x + TILE + 1, cy); }
+        ctx.stroke();
+      }
+    }
+
+    drawGate(ctx, c, r, colors) {
+      const x = c * TILE, y = r * TILE;
+      ctx.strokeStyle = rgba('#ffffff', 0.45);
+      ctx.setLineDash([3, 3]);
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x + 2, y + TILE / 2); ctx.lineTo(x + TILE - 2, y + TILE / 2); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // ---- pellets ----------------------------------------------------
+    // Dots ("Data Bits") drawn as fast squares via fillRect. Pixel centers are
+    // precomputed once per maze state (getPelletList) so we don't parse string
+    // keys per pellet per frame — avoids per-frame allocation / GC stalls.
+    drawPellets(maze, colors) {
+      const ctx = this.ctx;
+      const ds = TILE * 0.16;
+      const list = this.getPelletList(maze);
+      for (let i = 0; i < list.length; i++) {
+        const p = list[i];
+        const x = p.x, y = p.y;
+        if (p.type === 'dot') {
+          ctx.fillStyle = '#7df9ff';
+          ctx.fillRect(x - ds / 2, y - ds / 2, ds, ds);
+        } else {
+          // antiviral pill: pulsing ring + plus
+          const pulse = 0.5 + 0.5 * Math.sin(this.t * 6 + (p.c + p.r));
+          const rad = TILE * (0.30 + 0.12 * pulse);
+          ctx.strokeStyle = rgba(colors.wall2, 0.6 + 0.4 * pulse);
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(x, y, rad, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = '#ff3b6b';
+          ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fill();
+          // white cross
+          ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(x - 3, y); ctx.lineTo(x + 3, y);
+          ctx.moveTo(x, y - 3); ctx.lineTo(x, y + 3);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Cache pellet pixel centers; rebuild only when the count changes (i.e.
+    // a pellet was eaten) or the maze identity changes.
+    getPelletList(maze) {
+      const n = maze.pellets.size;
+      if (this._pelletList && this._pelletMaze === maze && this._pelletCount === n) {
+        return this._pelletList;
+      }
+      const list = [];
+      for (const [k, type] of maze.pellets) {
+        const [c, r] = k.split(',').map(Number);
+        list.push({ c, r, x: c * TILE + TILE / 2, y: r * TILE + TILE / 2, type });
+      }
+      this._pelletList = list; this._pelletMaze = maze; this._pelletCount = n;
+      return list;
+    }
+
+    // Call when switching mazes so stale caches don't leak.
+    resetCaches() { this._pelletList = null; this._pelletMaze = null; }
+
+    // ---- protagonist: classic yellow Pac-Man + waka animation ------
+    // Draws the iconic yellow pie-shape with an animated mouth that opens
+    // (wide) and closes (closed) as he moves — the "waka-waka" chomp.
+    // `px,py` are tile-center pixel coords; dir sets mouth orientation.
+    drawPacShape(ctx, x, y, dirName, mouthFrac) {
+      // mouthFrac: 0 = closed (full circle), 1 = widest gape (~0.30*PI half-angle)
+      const maxMouth = 0.30 * Math.PI;
+      const mouth = mouthFrac * maxMouth;
+      let rot = 0; // rotation so the mouth points toward travel direction
+      if (dirName === 'LEFT') rot = Math.PI;
+      else if (dirName === 'UP') rot = -Math.PI / 2;
+      else if (dirName === 'DOWN') rot = Math.PI / 2;
+      else rot = 0; // RIGHT / default
+
+      const r = TILE * 0.46;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rot);
+      // body
+      ctx.fillStyle = '#ffe600';
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, r, mouth, Math.PI * 2 - mouth);
+      ctx.closePath();
+      ctx.fill();
+      // subtle darker outline for that arcade look
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(140,110,0,0.35)';
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    drawPac(pac) {
+      const ctx = this.ctx;
+      const x = pac.px * TILE, y = pac.py * TILE;
+      const moving = pac.dir && pac.dir.name && pac.dir.name !== 'NONE';
+      // waka cycle: mouth opens and closes ~7.5 Hz while moving; gently
+      // breathes when idle (never fully closed so he reads as alive).
+      const chomp = moving
+        ? (0.5 + 0.5 * Math.sin(this.t * 15))      // 0..1, full open/close
+        : (0.30 + 0.16 * Math.sin(this.t * 5));    // idle: small mouth
+      const dirName = (moving ? pac.dir.name : 'RIGHT');
+      this.drawPacShape(ctx, x, y, dirName, chomp);
+    }
+
+    // Classic death: the mouth gapes open wider and wider until the disc
+    // shrinks to nothing (the arcade "he vanishes" animation).
+    drawPacDeath(pac, deathTimer) {
+      const ctx = this.ctx;
+      const x = pac.px * TILE, y = pac.py * TILE;
+      const t = (typeof deathTimer === 'number' && deathTimer > 0)
+        ? Math.min(1, 1 - deathTimer / DEATH_DUR)   // 0 -> 1 over the death
+        : Math.min(1, (this.t % 1.5) / 1.5);
+      const mouthFrac = t;                           // 0 closed -> 1 fully open
+      const r = TILE * 0.46 * (1 - t);               // shrink to nothing
+      ctx.save();
+      ctx.translate(x, y);
+      const maxMouth = 0.5 * Math.PI;
+      const mouth = mouthFrac * maxMouth;
+      ctx.fillStyle = '#ffe600';
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, r, mouth, Math.PI * 2 - mouth);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // ---- virus ghosts ----------------------------------------------
+    drawGhost(g) {
+      const ctx = this.ctx;
+      const x = g.px * TILE, y = g.py * TILE;
+      const fright = g.mode === 'frightened';
+      const eyes = g.mode === 'eyes';
+      const col = this.ghostColors[g.id] || '#888';
+
+      // shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.35)';
+      ctx.beginPath(); ctx.ellipse(x, y + TILE * 0.42, TILE * 0.34, TILE * 0.12, 0, 0, Math.PI * 2); ctx.fill();
+
+      if (eyes) {
+        // eyes-only: draw two pupils returning home
+        this.drawGhostEyes(g, x, y, '#9cf', true);
+        return;
+      }
+
+      let body = col;
+      if (fright) {
+        const flash = (this.t * 5 % 1) > 0.5;
+        body = (g.frightened && flash) ? this.frightFlash : this.frightColor;
+      }
+      // glitch jitter when frightened
+      const jx = fright ? (Math.random() - 0.5) * 2.2 : 0;
+      const jy = fright ? (Math.random() - 0.5) * 2.2 : 0;
+      const bx = x + jx, by = y + jy;
+
+      // error-block body (rounded top, jagged bottom = corruption)
+      const w = TILE * 0.78, h = TILE * 0.84;
+      const left = bx - w / 2, top = by - h / 2;
+      ctx.fillStyle = body;
+      ctx.beginPath();
+      ctx.moveTo(left, top + h * 0.45);
+      ctx.arc(bx, top + h * 0.45, w / 2, Math.PI, 0);
+      ctx.lineTo(left + w, by + h / 2);
+      // jagged bottom (data corruption)
+      const teeth = 4;
+      for (let i = teeth; i >= 0; i--) {
+        const tx = left + (w / teeth) * i;
+        const ty = by + h / 2 - ((i % 2 === 0) ? TILE * 0.14 : 0);
+        ctx.lineTo(tx, ty);
+      }
+      ctx.closePath();
+      ctx.fill();
+
+      if (fright) {
+        // scared face: ^ ^ mouth
+        ctx.fillStyle = '#fff';
+        ctx.font = `bold ${Math.floor(TILE * 0.32)}px monospace`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('x x', bx, top + h * 0.42);
+        ctx.fillText('~', bx, top + h * 0.66);
+      } else {
+        this.drawGhostEyes(g, bx, by, '#fff', false);
+        // tiny label: VIRUS tag
+        ctx.fillStyle = rgba('#000000', 0.55);
+        ctx.font = `bold ${Math.floor(TILE * 0.22)}px monospace`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('V', bx, top + h * 0.5);
+      }
+    }
+
+    drawGhostEyes(g, x, y, color, pupilsOnly) {
+      const ctx = this.ctx;
+      const ex = TILE * 0.19, ey = -TILE * 0.06, er = TILE * 0.135;
+      const pd = TILE * 0.07;
+      const dx = (g.dir && g.dir.x) ? g.dir.x * pd : 0;
+      const dy = (g.dir && g.dir.y) ? g.dir.y * pd : 0;
+      for (const sx of [-ex, ex]) {
+        if (!pupilsOnly) {
+          ctx.fillStyle = color;
+          ctx.beginPath(); ctx.arc(x + sx, y + ey, er, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = '#1336ff';
+        ctx.beginPath(); ctx.arc(x + sx + dx, y + ey + dy, er * 0.6, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    // ---- fruit: computer upgrades ----------------------------------
+    drawBonus(bonus, mazeIndex) {
+      const ctx = this.ctx;
+      const x = bonus.col * TILE + TILE / 2, y = bonus.row * TILE + TILE / 2;
+      const icon = FRUIT_ITEMS[bonus.type % FRUIT_ITEMS.length];
+      const val = FRUIT_SCORES[bonus.type % FRUIT_SCORES.length];
+      const col = BB.MAZE_COLORS[mazeIndex % BB.MAZE_COLORS.length].wall2;
+      // spawn pulse (first 0.6s) for visibility
+      const age = 9 - (bonus.timer || 9);
+      const pulse = age < 0.6 ? (0.5 + 0.5 * Math.sin(this.t * 18)) : 1;
+      // glow (cheap — no shadowBlur, which is very slow under software GL)
+      const g = TILE * 0.46;
+      ctx.save();
+      ctx.fillStyle = rgba(col, 0.18 * pulse);
+      ctx.fillRect(x - g, y - g, g * 2, g * 2);
+      ctx.restore();
+      ctx.fillStyle = 'rgba(0,0,0,0.7)';
+      ctx.fillRect(x - TILE * 0.46, y - TILE * 0.46, TILE * 0.92, TILE * 0.92);
+      // chip border (double frame)
+      ctx.strokeStyle = col; ctx.lineWidth = 2;
+      ctx.strokeRect(x - TILE * 0.46, y - TILE * 0.46, TILE * 0.92, TILE * 0.92);
+      ctx.strokeStyle = rgba(col, 0.4); ctx.lineWidth = 1;
+      ctx.strokeRect(x - TILE * 0.40, y - TILE * 0.40, TILE * 0.80, TILE * 0.80);
+      // little chip notch row at top (hardware feel)
+      ctx.fillStyle = col;
+      for (let i = 0; i < 4; i++) ctx.fillRect(x - TILE * 0.30 + i * TILE * 0.20, y - TILE * 0.44, 3, 3);
+      // icon text
+      ctx.fillStyle = '#fff';
+      ctx.font = `bold ${Math.floor(TILE * 0.24)}px monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(icon, x, y - TILE * 0.04);
+      // score value
+      ctx.fillStyle = '#ffe600';
+      ctx.font = `bold ${Math.floor(TILE * 0.18)}px monospace`;
+      ctx.fillText(String(val), x, y + TILE * 0.20);
+    }
+
+    // ---- HUD --------------------------------------------------------
+    drawHUD(game, ctx, colors) {
+      ctx.fillStyle = '#05060f';
+      ctx.fillRect(0, CANVAS_H - HUD_H, CANVAS_W, HUD_H);
+      ctx.fillStyle = colors.wall;
+      ctx.fillRect(0, CANVAS_H - HUD_H, CANVAS_W, 2);
+
+      ctx.textBaseline = 'middle';
+      // SCORE
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('SCORE', 10, CANVAS_H - HUD_H + 14);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 18px monospace';
+      ctx.fillText(String(game.score).padStart(6, '0'), 10, CANVAS_H - HUD_H + 34);
+
+      // HIGH
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('HIGH', CANVAS_W / 2, CANVAS_H - HUD_H + 14);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 18px monospace';
+      ctx.fillText(String(game.highScore).padStart(6, '0'), CANVAS_W / 2, CANVAS_H - HUD_H + 34);
+
+      // LEVEL indicator (per spec: Computer-Upgrade fruit icon, bottom-right)
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('LEVEL', CANVAS_W - 10, CANVAS_H - HUD_H + 14);
+      // draw the current level's Computer-Upgrade fruit icon
+      const fruitIdx = (game.level - 1) % FRUIT_ITEMS.length;
+      this.drawFruitIcon(ctx, CANVAS_W - 24, CANVAS_H - HUD_H + 34, fruitIdx, colors.wall2);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px monospace';
+      ctx.fillText(String(game.level).padStart(2, '0'), CANVAS_W - 40, CANVAS_H - HUD_H + 34);
+
+      // LIVES (per spec: bottom-left)
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('LIVES', 10, CANVAS_H - HUD_H + 14);
+      let lx = 10 + TILE * 0.34;
+      const shown = Math.max(0, game.lives);
+      for (let i = 0; i < shown; i++) {
+        this.drawPacShape(ctx, lx, CANVAS_H - HUD_H + 34, 'LEFT', 0.18);
+        lx += TILE * 0.78;
+      }
+    }
+
+    // Tiny Computer-Upgrade fruit icon for the HUD level indicator.
+    drawFruitIcon(ctx, x, y, idx, col) {
+      const s = TILE * 0.30;
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(x - s, y - s, s * 2, s * 2);
+      ctx.strokeStyle = col; ctx.lineWidth = 1.5;
+      ctx.strokeRect(x - s, y - s, s * 2, s * 2);
+      // chip notch row
+      ctx.fillStyle = col;
+      for (let i = 0; i < 3; i++) ctx.fillRect(x - s + 2 + i * (s * 0.6), y - s, 2, 2);
+      ctx.fillStyle = '#fff';
+      ctx.font = `bold ${Math.floor(TILE * 0.16)}px monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(FRUIT_ITEMS[idx % FRUIT_ITEMS.length], x, y + 1);
+      ctx.restore();
+    }
+
+    // ---- overlays ---------------------------------------------------
+    drawCenterBanner(ctx, text, color) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.fillRect(0, PREPAD + MAZE_H * 0.42, MAZE_W, 40);
+      ctx.fillStyle = color || '#fff';
+      ctx.font = 'bold 26px "Courier New", monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(text, CANVAS_W / 2, PREPAD + MAZE_H * 0.42 + 20);
+      ctx.restore();
+    }
+
+    drawIntermission(ctx, game) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      ctx.fillRect(0, PREPAD, MAZE_W, MAZE_H);
+
+      const cy = PREPAD + MAZE_H / 2 - 8;
+      // animated cutscene: yellow Pac-Man chases a Virus across the maze.
+      const span = MAZE_W - 60;
+      const phase = (this.t * 0.55) % 1;            // 0..1 loop
+      const px = 30 + phase * span;                 // Pac (chaser)
+      const vx = 30 + ((phase + 0.18) % 1) * span;  // Virus (fleeing, ahead)
+      // Pac (always faces RIGHT, mouth animating)
+      this.drawPacShape(ctx, px, cy, 'RIGHT', 0.5 + 0.5 * Math.sin(this.t * 16));
+      // Virus (classic ghost shape, teal) fleeing ahead
+      const vw = TILE * 0.7, vh = TILE * 0.76;
+      ctx.fillStyle = this.ghostColors.inky;
+      ctx.beginPath();
+      ctx.arc(vx, cy - vh * 0.05, vw / 2, Math.PI, 0);
+      ctx.lineTo(vx + vw / 2, cy + vh / 2);
+      const vt = 3;
+      for (let i = vt; i >= 0; i--) {
+        const tx = vx + (vw / vt) * i;
+        const ty = cy + vh / 2 - ((i % 2 === 0) ? TILE * 0.12 : 0);
+        ctx.lineTo(tx, ty);
+      }
+      ctx.closePath(); ctx.fill();
+      this.drawGhostEyes({ dir: BB.DIRS.RIGHT }, vx, cy - vh * 0.05, '#fff', false);
+
+      // titles
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 22px "Courier New", monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('> SYSTEM UPGRADE', CANVAS_W / 2, PREPAD + MAZE_H / 2 + 40);
+      ctx.fillStyle = '#fff';
+      ctx.font = '15px monospace';
+      ctx.fillText('LEVEL ' + game.level + ' COMPLETE — rebooting maze...', CANVAS_W / 2, PREPAD + MAZE_H / 2 + 66);
+      ctx.restore();
+    }
+
+    drawGameOver(ctx) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.7)';
+      ctx.fillRect(0, PREPAD, MAZE_W, MAZE_H);
+      ctx.fillStyle = '#ff3b6b';
+      ctx.font = 'bold 30px "Courier New", monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('FATAL ERROR', CANVAS_W / 2, PREPAD + MAZE_H / 2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px monospace';
+      ctx.fillText('GAME OVER', CANVAS_W / 2, PREPAD + MAZE_H / 2 + 12);
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = '13px monospace';
+      ctx.fillText('press ENTER to reboot', CANVAS_W / 2, PREPAD + MAZE_H / 2 + 40);
+      ctx.restore();
+    }
+
+    // ---- Title / startup screen ---------------------------------------
+    // Shows game identity, how-to-play, controls and a blinking start prompt.
+    // Mirrors the neon-terminal aesthetic of the other overlays.
+    drawTitle(ctx, game) {
+      ctx.save();
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, PREPAD, MAZE_W, MAZE_H);
+
+      const cx = CANVAS_W / 2;
+      const blink = (Math.sin(this.t * 3.2) > -0.6); // on ~85% of the time
+
+      // Title
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#ffe600';
+      ctx.font = 'bold 40px "Courier New", monospace';
+      ctx.fillText('BIT-BYTE.EXE', cx, PREPAD + 56);
+      ctx.fillStyle = '#ff5f1f';
+      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.fillText('// TERMINAL MAZE', cx, PREPAD + 86);
+
+      // Tagline
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = '13px monospace';
+      ctx.fillText('A faithful Pac-Man / Ms. Pac-Man clone', cx, PREPAD + 116);
+
+      // Animated Pac mascot (chomping) beside a fleeing Virus
+      const my = PREPAD + 168;
+      this.drawPacShape(ctx, cx - 46, my, 'RIGHT', 0.5 + 0.5 * Math.sin(this.t * 14));
+      const vw = TILE * 0.7, vh = TILE * 0.76;
+      ctx.fillStyle = this.ghostColors.inky;
+      ctx.beginPath();
+      ctx.arc(cx + 46, my - vh * 0.05, vw / 2, Math.PI, 0);
+      ctx.lineTo(cx + 46 + vw / 2, my + vh / 2);
+      for (let i = 3; i >= 0; i--) {
+        const tx = cx + 46 + (vw / 3) * i;
+        const ty = my + vh / 2 - ((i % 2 === 0) ? TILE * 0.12 : 0);
+        ctx.lineTo(tx, ty);
+      }
+      ctx.closePath(); ctx.fill();
+      this.drawGhostEyes({ dir: BB.DIRS.LEFT }, cx + 46, my - vh * 0.05, '#fff', false);
+
+      // How to play
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px "Courier New", monospace';
+      ctx.fillText('— HOW TO PLAY —', cx, PREPAD + 234);
+      ctx.fillStyle = '#cfe9ff';
+      ctx.font = '12px monospace';
+      const lines = [
+        'Eat DATA BITS (dots) to fill the maze.',
+        'Grab an ANTIVIRUS PILL to frighten the VIRUSES',
+        '  (ghosts) — chase & eat them for big points.',
+        'Collect COMPUTER-UPGRADE bonuses for 100-5000 pts.',
+        'Clear every bit to advance. Don\'t get caught!'
+      ];
+      lines.forEach((t, i) => ctx.fillText(t, cx, PREPAD + 260 + i * 19));
+
+      // Controls
+      ctx.fillStyle = '#7df9ff';
+      ctx.font = 'bold 13px "Courier New", monospace';
+      ctx.fillText('CONTROLS', cx, PREPAD + 384);
+      ctx.fillStyle = '#cfe9ff';
+      ctx.font = '12px monospace';
+      ctx.fillText('ARROWS / WASD  —  move', cx, PREPAD + 406);
+      ctx.fillText('M  —  mute      P  —  pause', cx, PREPAD + 426);
+      ctx.fillText('ENTER / TAP  —  start', cx, PREPAD + 446);
+
+      // High score
+      ctx.fillStyle = '#ffe600';
+      ctx.font = '13px monospace';
+      ctx.fillText('HIGH SCORE  ' + String(game.highScore).padStart(6, '0'), cx, PREPAD + 486);
+
+      // Blinking start prompt (lower, prominent)
+      if (blink) {
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 17px "Courier New", monospace';
+        ctx.fillText('▶ PRESS ENTER OR TAP TO START ◀', cx, PREPAD + MAZE_H - 22);
+      }
+      ctx.restore();
+    }
+  }
+
+  const api = { Renderer, TILE, CANVAS_W, CANVAS_H, HUD_H };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  if (root) root.BBR = api;
+})(typeof window !== 'undefined' ? window : null);
+</script>
+  <script>/* =====================================================================
+   BIT-BYTE — audio.js : WebAudio synth (no external assets)
+   Browser-only. Exposes window.BBAudio.
+   All cues are synthesized: siren, chomp, power, eatGhost, bonus,
+   bonusEat, extraLife, death, intro jingle, intermission sweep.
+   ===================================================================== */
+(function (root) {
+  'use strict';
+
+  function createAudio() {
+    let actx = null, muted = false, master = null;
+    let sirenOsc = null, sirenGain = null, sirenLFO = null;
+    let jingleGuard = 0; // debounce intro jingle
+    let dead = false;    // if audio can never initialize, stay silent forever
+                        // (NEVER throw) — controls must not depend on audio.
+
+    function ensure() {
+      if (actx || dead) return;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) { dead = true; return; }
+        actx = new AC();
+        master = actx.createGain();
+        master.gain.value = 0.18;
+        master.connect(actx.destination);
+      } catch (e) {
+        // Audio is unavailable (blocked autoplay, policy, too many contexts…).
+        // Swallow it: the game must remain fully playable without sound.
+        actx = null; dead = true;
+      }
+    }
+
+    // one-shot tone with envelope
+    function blip(freq, dur, type, vol, when) {
+      if (!actx || muted) return;
+      const t0 = (when || actx.currentTime);
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type || 'square';
+      o.frequency.setValueAtTime(freq, t0);
+      g.gain.setValueAtTime(vol || 0.5, t0);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(master);
+      o.start(t0); o.stop(t0 + dur);
+    }
+
+    // helper: schedule a sequence of [freq, startOffset, dur, type, vol]
+    function seq(notes, base) {
+      if (!actx || muted) return;
+      const t0 = base || actx.currentTime;
+      for (const n of notes) blip(n[0], n[3] || 0.12, n[2] || 'square', n[4] || 0.5, t0 + (n[1] || 0));
+    }
+
+    let wakaToggle = false;
+
+    const api = {
+      unlock() {
+        try {
+          ensure();
+          if (actx && actx.state === 'suspended') actx.resume();
+        } catch (e) { dead = true; }
+      },
+
+      setMuted(m) { muted = m; if (m) api.stopSiren(); },
+      isMuted() { return muted; },
+      canPlay() { return !!actx && !muted; },
+
+      // ---- gameplay cues ----
+      chomp() { wakaToggle = !wakaToggle; blip(wakaToggle ? 320 : 240, 0.07, 'square', 0.4); },
+
+      power() { // descending then ascending fright cue
+        if (!actx || muted) return;
+        blip(420, 0.18, 'sawtooth', 0.4);
+        setTimeout(() => blip(180, 0.22, 'sawtooth', 0.4), 120);
+      },
+
+      eatGhost() {
+        api.stopSiren();
+        seq([[520, 0, 0.09, 'square', 0.5], [700, 0.09, 0.09, 'square', 0.5], [900, 0.18, 0.12, 'square', 0.5]]);
+      },
+
+      bonus() { // fruit spawns
+        if (!actx || muted) return;
+        seq([[660, 0, 0.08, 'triangle', 0.5], [990, 0.08, 0.12, 'triangle', 0.5]]);
+      },
+
+      bonusEat() { // fruit collected — brighter confirmation
+        if (!actx || muted) return;
+        const t0 = actx.currentTime;
+        seq([
+          [784, 0.00, 0.07, 'square', 0.5],
+          [988, 0.07, 0.07, 'square', 0.5],
+          [1319, 0.14, 0.14, 'square', 0.5]
+        ], t0);
+      },
+
+      extraLife() {
+        seq([[523, 0, 0.12, 'triangle', 0.5], [659, 0.09, 0.12, 'triangle', 0.5],
+             [784, 0.18, 0.12, 'triangle', 0.5], [1047, 0.27, 0.16, 'triangle', 0.5]]);
+      },
+
+      death() {
+        api.stopSiren();
+        if (!actx || muted) return;
+        [400, 320, 250, 190, 130].forEach((f, i) => setTimeout(() => blip(f, 0.18, 'sawtooth', 0.5), i * 130));
+      },
+
+      // ---- intro jingle (classic 1-bar arpeggio) ----
+      intro() {
+        if (!actx || muted) return;
+        const now = performance.now();
+        if (now - jingleGuard < 1200) return; // debounce
+        jingleGuard = now;
+        const t0 = actx.currentTime;
+        // E5 G5 E5 C5 G4  (classic-ish ascending/descending motif)
+        seq([
+          [659, 0.00, 0.16, 'square', 0.45],
+          [784, 0.18, 0.16, 'square', 0.45],
+          [659, 0.36, 0.16, 'square', 0.45],
+          [523, 0.54, 0.22, 'square', 0.45],
+          [392, 0.78, 0.30, 'square', 0.45]
+        ], t0);
+      },
+
+      // ---- intermission: rising "system upgrade" sweep ----
+      intermission() {
+        if (!actx || muted) return;
+        const t0 = actx.currentTime;
+        // rising sweep via a glide oscillator
+        const o = actx.createOscillator(), g = actx.createGain();
+        o.type = 'sawtooth';
+        o.frequency.setValueAtTime(180, t0);
+        o.frequency.exponentialRampToValueAtTime(1200, t0 + 1.1);
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.35, t0 + 0.1);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.3);
+        o.connect(g); g.connect(master);
+        o.start(t0); o.stop(t0 + 1.35);
+        // sparkle on top
+        seq([[988, 0.2, 0.1, 'triangle', 0.4], [1319, 0.5, 0.14, 'triangle', 0.4], [1568, 0.85, 0.18, 'triangle', 0.4]], t0);
+      },
+
+      // ---- siren (ambient) ----
+      startSiren() {
+        if (!actx || muted || sirenOsc) return;
+        sirenOsc = actx.createOscillator(); sirenGain = actx.createGain(); sirenLFO = actx.createOscillator();
+        const lfoGain = actx.createGain();
+        sirenOsc.type = 'sine'; sirenOsc.frequency.value = 220;
+        sirenLFO.type = 'sine'; sirenLFO.frequency.value = 0.5; lfoGain.gain.value = 40;
+        sirenGain.gain.value = 0.06;
+        sirenLFO.connect(lfoGain); lfoGain.connect(sirenOsc.frequency);
+        sirenOsc.connect(sirenGain); sirenGain.connect(master);
+        sirenOsc.start(); sirenLFO.start();
+      },
+      stopSiren() {
+        try { if (sirenOsc) sirenOsc.stop(); if (sirenLFO) sirenLFO.stop(); } catch (e) {}
+        sirenOsc = sirenLFO = sirenGain = null;
+      }
+    };
+    return api;
+  }
+
+  const instance = createAudio();
+  if (root) root.BBAudio = instance;
+  if (typeof module !== 'undefined' && module.exports) module.exports = instance;
+})(typeof window !== 'undefined' ? window : null);
+</script>
+  <script>/* =====================================================================
+   BIT-BYTE — main.js : game loop, input, audio (WebAudio synth)
+   Ties engine.js + renderer.js together into a playable browser game.
+   ===================================================================== */
+(function () {
+  'use strict';
+  const BB = window.BB;
+  const { Renderer } = window.BBR;
+  const canvas = document.getElementById('game');
+
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const HIGH_KEY = 'bitbyte.highscore';
+  const highScore = parseInt(localStorage.getItem(HIGH_KEY) || '0', 10) || 0;
+
+  const Audio = window.BBAudio;
+
+  const renderer = new Renderer(canvas, { scale: 1.4 });
+  const game = new BB.Game({ highScore });
+  window.__game = game; // debug hook (harmless): lets QA harnesses assert state
+
+  // Pre-build the offscreen maze cache now (hidden behind the 2s READY), so
+  // the first play frame never hitches building ~868 wall tiles.
+  function prewarm() {
+    if (!renderer || !renderer.prewarmMaze || !game.maze) return; // headless guard
+    const colors = BB.MAZE_COLORS[game.mazeIndex % BB.MAZE_COLORS.length];
+    renderer.prewarmMaze(game.maze, colors, game.mazeIndex);
+  }
+  prewarm();
+
+  // Fit the canvas to the available viewport so nothing is clipped.
+  // On touch devices reserve vertical room for the on-screen D-pad / buttons.
+  function fit() {
+    const vw = Math.min(window.innerWidth, document.documentElement.clientWidth) || window.innerWidth;
+    const touchPad = (isTouch && document.body.classList.contains('touch')) ? 200 : 0;
+    const availW = vw - 24;
+    const availH = window.innerHeight - 110 - touchPad;
+    const s = Math.max(0.4, Math.min(availW / BBR.CANVAS_W, availH / BBR.CANVAS_H));
+    renderer.resize(s);
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // Track the prior state so we can fire one-shot cues on transitions.
+  let prevState = game.state;
+
+  game.onEvent = function (ev, arg) {
+    // Every audio cue is wrapped in safeAudio — exactly like the input path.
+    // An audio fault (uninitialized context, non-finite ramp, blocked autoplay)
+    // MUST NEVER reach the game's update()/frame loop. Swallow and move on.
+    switch (ev) {
+      case 'chomp': safeAudio(() => Audio.chomp()); break;
+      case 'power': safeAudio(() => Audio.power()); break;
+      case 'eatGhost': safeAudio(() => Audio.eatGhost()); break;
+      case 'bonus': safeAudio(() => Audio.bonus()); break;
+      case 'bonusEat': safeAudio(() => Audio.bonusEat()); break;
+      case 'extraLife': safeAudio(() => Audio.extraLife()); break;
+      case 'death': safeAudio(() => Audio.death()); break;
+      case 'intermission': safeAudio(() => { Audio.intermission(); Audio.stopSiren(); }); break;
+    }
+  };
+
+  // ---------- Input ----------
+  const KEYMAP = {
+    ArrowUp: 'UP', ArrowDown: 'DOWN', ArrowLeft: 'LEFT', ArrowRight: 'RIGHT',
+    w: 'UP', s: 'DOWN', a: 'LEFT', d: 'RIGHT', W: 'UP', S: 'DOWN', A: 'LEFT', D: 'RIGHT'
+  };
+  let paused = false;
+  let introPending = true; // play intro once audio is unlocked on first interaction
+  // Audio is fully optional. A failure to initialize AudioContext (blocked
+  // autoplay, browser policy, too many contexts) MUST NOT affect controls.
+  // IMPORTANT: constructing the AudioContext is expensive (~120ms cold) and
+  // must NOT run synchronously on the keypress path — that was the source of
+  // the "control lag" on the first move. We defer the actual unlock to a
+  // macrotask so setInput() (instant) always runs first; the browser still
+  // treats the deferred call as user-activated (sticky gesture).
+  let audioKicked = false;
+  function kickAudio() {
+    if (audioKicked) return;
+    audioKicked = true;
+    setTimeout(() => {
+      safeAudio(() => {
+        Audio.unlock();
+        if (introPending && Audio.canPlay() && game.state === 'ready') { Audio.intro(); introPending = false; }
+      });
+    }, 0);
+  }
+  function safeAudio(fn) { try { fn(); } catch (e) { /* never let audio break input */ } }
+  window.addEventListener('keydown', (e) => {
+    if (KEYMAP[e.key]) {
+      if (!e.repeat) game.setInput(KEYMAP[e.key]);  // input is instant & first
+      kickAudio();                                   // audio unlock deferred
+      e.preventDefault();
+    } else if (e.key === 'Enter') {
+      if (game.state === 'title') { kickAudio(); game.startGame(); }
+      else if (game.state === 'gameover') { kickAudio(); game.showTitle(); }
+    } else if (e.key === ' ') {           // Space also starts / returns to title
+      if (game.state === 'title') { kickAudio(); game.startGame(); }
+      else if (game.state === 'gameover') { kickAudio(); game.showTitle(); }
+      else e.preventDefault();
+    } else if (e.key === 'm' || e.key === 'M') {
+      kickAudio(); safeAudio(() => Audio.setMuted(!Audio.isMuted()));
+    } else if (e.key === 'p' || e.key === 'P') {
+      paused = !paused;
+    }
+  });
+  window.addEventListener('blur', () => { Audio.stopSiren(); });
+
+  // ---- Steering (shared by keyboard, swipe, and D-pad) ----
+  // Buffers a direction during 'ready' so the first swipe/tap pre-steers the
+  // moment play begins (Pac starts stationary, so a tap that's invalid now
+  // would otherwise be lost).
+  let readyBuffer = null;
+  function steer(dir) {
+    kickAudio();                          // deferred; never blocks input
+    if (game.state === 'ready') { readyBuffer = dir; return; }
+    if (game.state === 'play' && readyBuffer) { game.setInput(readyBuffer); readyBuffer = null; }
+    if (game.state === 'play') game.setInput(dir);
+  }
+  // apply buffered steer when play starts
+  const _origUpdate = game.update.bind(game);
+  game.update = function (dt) {
+    if (readyBuffer && game.state === 'play') { game.setInput(readyBuffer); readyBuffer = null; }
+    return _origUpdate(dt);
+  };
+
+  // ---- Touch controls (visible only on touch / small screens) ----
+  if (isTouch) {
+    document.body.classList.add('touch');
+    fit(); // re-fit now that the D-pad reserves vertical space
+  }
+  const canvasEl = canvas;
+  if (isTouch) {
+    let sx = 0, sy = 0, st = 0, tracking = false;
+    const THRESH = 24; // px before a swipe registers
+    canvasEl.addEventListener('touchstart', (e) => {
+      const t = e.changedTouches[0];
+      sx = t.clientX; sy = t.clientY; st = Date.now(); tracking = true;
+      e.preventDefault();
+    }, { passive: false });
+    canvasEl.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < THRESH && Math.abs(dy) < THRESH) return;
+      if (Math.abs(dx) > Math.abs(dy)) steer(dx > 0 ? 'RIGHT' : 'LEFT');
+      else steer(dy > 0 ? 'DOWN' : 'UP');
+      // reset anchor so a continuous drag chains turns
+      sx = t.clientX; sy = t.clientY;
+      e.preventDefault();
+    }, { passive: false });
+    canvasEl.addEventListener('touchend', (e) => {
+      // a quick tap with negligible movement = also unlock audio
+      if (tracking && Date.now() - st < 250 && Math.abs(e.changedTouches[0].clientX - sx) < THRESH && Math.abs(e.changedTouches[0].clientY - sy) < THRESH) {
+        kickAudio();
+      }
+      tracking = false;
+      e.preventDefault();
+    }, { passive: false });
+
+    // D-pad
+    document.querySelectorAll('#dpad button').forEach((btn) => {
+      const handler = (e) => { e.preventDefault(); steer(btn.dataset.dir); };
+      btn.addEventListener('touchstart', handler, { passive: false });
+      btn.addEventListener('click', handler);
+    });
+    // System buttons
+    document.getElementById('btnMute').addEventListener('click', (e) => { e.preventDefault(); Audio.setMuted(!Audio.isMuted()); });
+    document.getElementById('btnPause').addEventListener('click', (e) => { e.preventDefault(); paused = !paused; });
+    document.getElementById('btnReboot').addEventListener('click', (e) => { e.preventDefault(); if (game.state === 'gameover') reboot(); });
+  }
+
+  // ---- Tap / click the canvas to start from the title (mobile-friendly) ----
+  function canvasStart() {
+    if (game.state === 'title') { kickAudio(); game.startGame(); }
+    else if (game.state === 'gameover') { kickAudio(); game.showTitle(); }
+  }
+  canvas.addEventListener('click', canvasStart);
+  canvas.addEventListener('touchend', (e) => { e.preventDefault(); canvasStart(); }, { passive: false });
+
+  function reboot() {
+    const hi = Math.max(highScore, game.highScore);
+    game.mazeIndex = 0;
+    game.score = 0; game.highScore = hi; game.lives = 3; game.level = 1;
+    game.loadMaze(0); game.initEntities();
+    game.state = 'ready'; game.readyTimer = 1.2;
+    // Re-arm the staggered release schedule so a fresh game starts clean
+    // (ghosts emerge promptly instead of carrying over sub-zero timers).
+    game.releaseTimers = { pinky: 0, inky: 1.5, clyde: 3.0 };
+    if (renderer && renderer.resetCaches) renderer.resetCaches();
+    prewarm();
+    readyBuffer = null;
+    introPending = true; // re-arm intro for the reboot
+  }
+
+  // ---------- Game loop (fixed timestep) ----------
+  // The ONLY thing that matters for "never freeze": requestAnimationFrame is
+  // ALWAYS re-armed, even if anything inside the frame throws. So the loop is
+  // wrapped in try/catch and rAF is scheduled in a `finally` — there is no
+  // code path that can permanently stop the animation.
+  const STEP = 1 / 60;
+  const MAX_CATCHUP = 5;   // cap sim sub-steps per frame: prevents the
+                           // death-spiral where one stall triggers many
+                           // catch-up updates (the visible "lag"/stutter).
+  let acc = 0, last = performance.now();
+  let wasSirenOn = false;
+  let loopErrShown = false;
+
+  function frame(now) {
+    let stopped = false;
+    try {
+      let dt = (now - last) / 1000; last = now;
+      if (dt > 0.25) dt = 0.25;   // hard clamp after tab switch / long frame —
+                                  // never fast-forward the simulation
+      if (!paused) {
+        acc += dt;
+        let steps = 0;
+        while (acc >= STEP && steps < MAX_CATCHUP) {
+          game.update(STEP);
+          acc -= STEP; steps++;
+        }
+        if (acc > STEP) acc = 0;   // drop any leftover backlog (anti-spiral)
+      }
+      renderer.draw(game, paused ? 0 : dt);
+
+      // one-shot cues on state transitions (only when audio is actually available;
+      // a deferred jingle fires on first unlock, see keydown handler)
+      if (game.state !== prevState) {
+        if (game.state === 'ready' && prevState !== 'death' && Audio.canPlay()) Audio.intro();
+        prevState = game.state;
+      }
+
+      // manage siren based on mode
+      const wantSiren = (game.state === 'play' || game.state === 'ready') && !Audio.isMuted();
+      if (wantSiren && !wasSirenOn) { Audio.startSiren(); wasSirenOn = true; }
+      else if (!wantSiren && wasSirenOn) { Audio.stopSiren(); wasSirenOn = false; }
+
+      if (game.state === 'gameover' && game.highScore > highScore) {
+        localStorage.setItem(HIGH_KEY, String(game.highScore));
+      }
+    } catch (err) {
+      // An exception here (audio, render, whatever) must NEVER stop the loop.
+      // Log once, keep going.
+      if (!loopErrShown) { console.error('[Bit-Byte] frame error (loop continues):', err); loopErrShown = true; }
+      stopped = true; // something broke; reset loop state defensively
+    } finally {
+      requestAnimationFrame(frame); // <-- ALWAYS re-arm, even on error
+    }
+    if (stopped) { acc = 0; last = performance.now(); }
+  }
+  requestAnimationFrame(frame);
+
+  // exposed for debugging
+  window.__bitbyte = { game, renderer, Audio };
+
+  // allow ?maze=N to start on a specific maze (for visual QA)
+  const qp = new URLSearchParams(location.search);
+  const mq = parseInt(qp.get('maze'), 10);
+  if (!isNaN(mq) && mq >= 0 && mq < BB.MAZE_COLORS.length) {
+    game.mazeIndex = mq; game.loadMaze(mq); game.initEntities();
+    game.state = 'ready'; game.readyTimer = 0.4;
+    prewarm();
+  }
+})();
+</script>
+</body>
+</html>
