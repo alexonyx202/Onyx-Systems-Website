@@ -1,139 +1,50 @@
 {
-  "title": "Words revision",
-  "size": 18,
+  "title": "Power",
+  "size": 5,
   "grid": [
-    "..............h...",
-    "............j.i...",
-    "............a.d...",
-    "...........greedy.",
-    "....s........q.i..",
-    "..p.o........u.v..",
-    "..l.l........a.i.m",
-    "..u.v........t.s.i",
-    "..steal...addition",
-    "......e......o.o.u",
-    "...subtraction.n.s",
-    "......g...........",
-    "wordproblem.......",
-    "..................",
-    "..................",
-    "..................",
-    "..................",
-    ".................."
+    "POWER",
+    "IWA..",
+    "GLR..",
+    ".....",
+    "....."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 4,
-        "col": 12,
-        "len": 6,
-        "answer": "greedy",
-        "clue": "when we want everything for us"
-      },
-      {
-        "num": 9,
-        "row": 9,
-        "col": 3,
-        "len": 5,
-        "answer": "steal",
-        "clue": "to take something that isn't yours"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 11,
-        "len": 8,
-        "answer": "addition",
-        "clue": "math operation in which we add numbers"
-      },
-      {
-        "num": 12,
-        "row": 11,
-        "col": 4,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "math operation in which we use minus"
-      },
-      {
-        "num": 13,
-        "row": 13,
+        "num": 1,
+        "row": 1,
         "col": 1,
-        "len": 11,
-        "answer": "wordproblem",
-        "clue": "math problem that we need to read"
+        "len": 5,
+        "answer": "POWER",
+        "clue": "The energy that runs your machine"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 15,
-        "len": 4,
-        "answer": "hide",
-        "clue": "when we don't want to be found"
+        "col": 1,
+        "len": 3,
+        "answer": "PIG",
+        "clue": "Farm animal that loves mud"
       },
       {
         "num": 2,
-        "row": 2,
-        "col": 13,
+        "row": 1,
+        "col": 2,
         "len": 3,
-        "answer": "jar",
-        "clue": "we put cookies in it"
+        "answer": "OWL",
+        "clue": "Night bird with big eyes"
       },
       {
-        "num": 4,
-        "row": 4,
-        "col": 14,
-        "len": 8,
-        "answer": "equation",
-        "clue": "math problem in which we use only numbers"
-      },
-      {
-        "num": 5,
-        "row": 4,
-        "col": 16,
-        "len": 8,
-        "answer": "division",
-        "clue": "math operation in which we divide numbers"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 5,
-        "len": 5,
-        "answer": "solve",
-        "clue": "to find the answer of a math problem"
-      },
-      {
-        "num": 7,
-        "row": 6,
+        "num": 3,
+        "row": 1,
         "col": 3,
-        "len": 4,
-        "answer": "plus",
-        "clue": "math operator that we use in addition"
-      },
-      {
-        "num": 8,
-        "row": 7,
-        "col": 18,
-        "len": 5,
-        "answer": "minus",
-        "clue": "math operator that subtracts"
-      },
-      {
-        "num": 10,
-        "row": 9,
-        "col": 7,
-        "len": 5,
-        "answer": "letgo",
-        "clue": "to set something free"
+        "len": 3,
+        "answer": "WAR",
+        "clue": "Armed conflict between nations"
       }
     ]
   },
-  "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2023-01-02-22",
-  "slug": "2023-01-02-22",
-  "fetched_at": "2026-07-14T19:10:41.284376+00:00",
   "date": "2026-07-23"
 }
