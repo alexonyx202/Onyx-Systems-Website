@@ -329,6 +329,12 @@ POLLS_EXTRA = [
     {"question": "How do you feel about AI features in your apps?",
      "options": [{"id": "love", "label": "Love them"}, {"id": "wary", "label": "A bit wary"},
                  {"id": "confused", "label": "Confused by them"}, {"id": "off", "label": "Turn them off"}]},
+    {"question": "What's your go-to move when tech acts up?",
+     "options": [{"id": "reboot", "label": "Restart it"}, {"id": "google", "label": "Search the error"},
+                 {"id": "call", "label": "Call a pro"}, {"id": "ignore", "label": "Ignore it"}]},
+    {"question": "How do you prefer to learn a new app or device?",
+     "options": [{"id": "play", "label": "Click around & figure it out"}, {"id": "video", "label": "Watch a quick video"},
+                 {"id": "guide", "label": "Read a step-by-step guide"}, {"id": "help", "label": "Ask someone"}]},
 ]
 
 FLOOR_WORDS = 40

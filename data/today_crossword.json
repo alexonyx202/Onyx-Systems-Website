@@ -1,203 +1,199 @@
 {
-  "title": "Math crossword puzzle",
-  "size": 26,
+  "title": "Math",
+  "size": 22,
   "grid": [
-    "...........w..............",
-    "...........h.C............",
-    "...........o.a............",
-    "......Parallel............",
-    "...........e.c............",
-    ".............u............",
-    ".............l............",
-    "........Subtract..........",
-    "...G......a..t............",
-    "...RectaNgle.o............",
-    "Area....e.a..r............",
-    "...Pentagon...............",
-    "...h..o.a.c..v............",
-    "......t.t.Equation........",
-    "......a.i....r............",
-    "......l.v....i..l.........",
-    "........e...value.........",
-    ".............b..n.........",
-    ".....A.......l..g.........",
-    ".Divide.volume..t.........",
-    ".....d....e.....h.........",
-    "..horizontal..............",
-    ".....t....s...............",
-    ".....i....t...............",
-    ".....o....................",
-    ".....n...................."
+    ".............4........",
+    ".............3........",
+    ".....4.......5........",
+    "...51840.....4........",
+    ".....2.......5........",
+    ".....6.......6........",
+    "...36300.....0........",
+    "4920.0.......0.1......",
+    "..1..41040..3628758...",
+    ".57120.........1......",
+    "..7..0.......7.4......",
+    "..2.....311351040.....",
+    "..8.......4..4.0......",
+    ".40296..9240..........",
+    ".....9...1............",
+    "....967680............",
+    ".......3..............",
+    ".......7..............",
+    ".......5..............",
+    ".......6..............",
+    ".......0..............",
+    ".......0.............."
   ],
   "clues": {
     "across": [
       {
         "num": 3,
         "row": 4,
-        "col": 7,
-        "len": 8,
-        "answer": "Parallel",
-        "clue": "an even line"
+        "col": 4,
+        "len": 5,
+        "answer": "51840",
+        "clue": "6!\u00d76!"
       },
       {
         "num": 4,
-        "row": 8,
-        "col": 9,
-        "len": 8,
-        "answer": "Subtract",
-        "clue": "decrease"
+        "row": 7,
+        "col": 4,
+        "len": 5,
+        "answer": "36300",
+        "clue": "5!+9!"
       },
       {
-        "num": 7,
-        "row": 10,
-        "col": 4,
-        "len": 9,
-        "answer": "RectaNgle",
-        "clue": "square"
+        "num": 5,
+        "row": 8,
+        "col": 1,
+        "len": 4,
+        "answer": "4920",
+        "clue": "5!-7!"
+      },
+      {
+        "num": 8,
+        "row": 9,
+        "col": 6,
+        "len": 5,
+        "answer": "41040",
+        "clue": "8!+6!"
       },
       {
         "num": 9,
-        "row": 11,
-        "col": 1,
-        "len": 4,
-        "answer": "Area",
-        "clue": "Multiply length and width"
+        "row": 9,
+        "col": 13,
+        "len": 7,
+        "answer": "3628758",
+        "clue": "7!\u00f75!-10!"
       },
       {
         "num": 10,
-        "row": 12,
-        "col": 4,
-        "len": 8,
-        "answer": "Pentagon",
-        "clue": "five sided shape"
-      },
-      {
-        "num": 13,
-        "row": 14,
-        "col": 11,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "An ___ includes an equal sign, numbers and operations, and sometimes letters."
-      },
-      {
-        "num": 15,
-        "row": 17,
-        "col": 13,
-        "len": 5,
-        "answer": "value",
-        "clue": "If you have X x 5 , equal fifteen whats the equal of fifteen?"
-      },
-      {
-        "num": 17,
-        "row": 20,
+        "row": 10,
         "col": 2,
-        "len": 6,
-        "answer": "Divide",
-        "clue": "split"
+        "len": 5,
+        "answer": "57120",
+        "clue": "17!\u00f713!"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 9,
+        "len": 9,
+        "answer": "311351040",
+        "clue": "13!\u00f75!\u00d73!"
+      },
+      {
+        "num": 14,
+        "row": 14,
+        "col": 2,
+        "len": 5,
+        "answer": "40296",
+        "clue": "8!-4!"
+      },
+      {
+        "num": 16,
+        "row": 14,
+        "col": 9,
+        "len": 4,
+        "answer": "9240",
+        "clue": "22!\u00f719!"
       },
       {
         "num": 18,
-        "row": 20,
-        "col": 9,
+        "row": 16,
+        "col": 5,
         "len": 6,
-        "answer": "volume",
-        "clue": "full"
-      },
-      {
-        "num": 20,
-        "row": 22,
-        "col": 3,
-        "len": 10,
-        "answer": "horizontal",
-        "clue": "A line left to right"
+        "answer": "967680",
+        "clue": "4!\u00d78!"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 12,
-        "len": 5,
-        "answer": "whole",
-        "clue": "all"
+        "col": 14,
+        "len": 9,
+        "answer": "435456006",
+        "clue": "10!\u00d75!+3!"
       },
       {
         "num": 2,
-        "row": 2,
-        "col": 14,
-        "len": 10,
-        "answer": "Calculator",
-        "clue": "A device used to find math answers"
+        "row": 3,
+        "col": 6,
+        "len": 9,
+        "answer": "482630400",
+        "clue": "10!+12!"
       },
       {
-        "num": 5,
-        "row": 8,
-        "col": 11,
-        "len": 7,
-        "answer": "balancE",
-        "clue": "enough"
+        "num": 4,
+        "row": 7,
+        "col": 4,
+        "len": 2,
+        "answer": "30",
+        "clue": "4!+3!"
       },
       {
         "num": 6,
-        "row": 9,
-        "col": 4,
-        "len": 5,
-        "answer": "GRaPh",
-        "clue": "Chart"
+        "row": 8,
+        "col": 3,
+        "len": 7,
+        "answer": "2177280",
+        "clue": "3!\u00d79!"
       },
       {
-        "num": 8,
-        "row": 10,
-        "col": 9,
-        "len": 8,
-        "answer": "Negative",
-        "clue": "Opposite of positive"
+        "num": 7,
+        "row": 8,
+        "col": 16,
+        "len": 6,
+        "answer": "181440",
+        "clue": "10!\u00f75!\u00d73!"
       },
       {
         "num": 11,
-        "row": 12,
-        "col": 7,
-        "len": 5,
-        "answer": "total",
-        "clue": "sum"
-      },
-      {
-        "num": 12,
-        "row": 13,
+        "row": 11,
         "col": 14,
-        "len": 8,
-        "answer": "variable",
-        "clue": "odd number or letter"
+        "len": 3,
+        "answer": "714",
+        "clue": "6!-3!"
       },
       {
-        "num": 14,
-        "row": 16,
-        "col": 17,
-        "len": 6,
-        "answer": "length",
-        "clue": "long"
+        "num": 13,
+        "row": 12,
+        "col": 11,
+        "len": 3,
+        "answer": "144",
+        "clue": "3!\u00d74!"
       },
       {
-        "num": 16,
-        "row": 19,
+        "num": 15,
+        "row": 14,
         "col": 6,
-        "len": 8,
-        "answer": "Addition",
-        "clue": "increase or more - a math operation"
+        "len": 3,
+        "answer": "696",
+        "clue": "4!-6!"
+      },
+      {
+        "num": 17,
+        "row": 14,
+        "col": 10,
+        "len": 3,
+        "answer": "210",
+        "clue": "15!\u00f713!"
       },
       {
         "num": 19,
-        "row": 20,
-        "col": 11,
-        "len": 5,
-        "answer": "least",
-        "clue": "small"
+        "row": 16,
+        "col": 8,
+        "len": 7,
+        "answer": "6375600",
+        "clue": "25!\u00f720!"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2023-04-12-719",
-  "slug": "2023-04-12-719",
-  "fetched_at": "2026-07-14T19:22:51.834622+00:00",
+  "source_url": "https://crosswordlabs.com/view/2023-02-23-134",
+  "slug": "2023-02-23-134",
+  "fetched_at": "2026-07-14T19:13:26.919408+00:00",
   "date": "2026-07-23"
 }
