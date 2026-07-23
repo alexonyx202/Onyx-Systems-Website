@@ -1,169 +1,139 @@
 {
-  "title": "Math",
-  "size": 34,
+  "title": "Words revision",
+  "size": 18,
   "grid": [
-    ".....................v............",
-    "...............s.....a............",
-    "...............c.....r............",
-    "...............i.....i............",
-    "...............e.....a............",
-    "..........percent....b............",
-    "...............t.....l............",
-    ".............principle............",
-    "...............f..................",
-    "algebraic-equation................",
-    "...............c..................",
-    "...............-..................",
-    "..............integers............",
-    "...............o...........e......",
-    "...............t..........exponent",
-    "...............a...i....r..p......",
-    "...............t.denominator......",
-    "...............i...t.o..d..e......",
-    "..............volume.n..i..s......",
-    "...............n...r.o..u..s......",
-    "...............slope.m..s..i......",
-    "...................s.i.....o......",
-    "............quadrant.a.....n......",
-    ".....................l............",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    "..................................",
-    ".................................."
+    "..............h...",
+    "............j.i...",
+    "............a.d...",
+    "...........greedy.",
+    "....s........q.i..",
+    "..p.o........u.v..",
+    "..l.l........a.i.m",
+    "..u.v........t.s.i",
+    "..steal...addition",
+    "......e......o.o.u",
+    "...subtraction.n.s",
+    "......g...........",
+    "wordproblem.......",
+    "..................",
+    "..................",
+    "..................",
+    "..................",
+    ".................."
   ],
   "clues": {
     "across": [
       {
         "num": 3,
-        "row": 6,
-        "col": 11,
-        "len": 7,
-        "answer": "percent",
-        "clue": "Its to show a part of a whole (not fractions)"
+        "row": 4,
+        "col": 12,
+        "len": 6,
+        "answer": "greedy",
+        "clue": "when we want everything for us"
       },
       {
-        "num": 4,
-        "row": 8,
-        "col": 14,
-        "len": 9,
-        "answer": "principle",
-        "clue": "Another word for money at the start of the equation"
-      },
-      {
-        "num": 5,
-        "row": 10,
-        "col": 1,
-        "len": 18,
-        "answer": "algebraic-equation",
-        "clue": "To find X you use a..."
-      },
-      {
-        "num": 6,
-        "row": 13,
-        "col": 15,
-        "len": 8,
-        "answer": "integers",
-        "clue": "A whole number"
-      },
-      {
-        "num": 8,
-        "row": 15,
-        "col": 27,
-        "len": 8,
-        "answer": "exponent",
-        "clue": "To the power of"
+        "num": 9,
+        "row": 9,
+        "col": 3,
+        "len": 5,
+        "answer": "steal",
+        "clue": "to take something that isn't yours"
       },
       {
         "num": 11,
-        "row": 17,
-        "col": 18,
+        "row": 9,
+        "col": 11,
+        "len": 8,
+        "answer": "addition",
+        "clue": "math operation in which we add numbers"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 4,
         "len": 11,
-        "answer": "denominator",
-        "clue": "To multiply a fraction you have to find a common..."
+        "answer": "subtraction",
+        "clue": "math operation in which we use minus"
       },
       {
         "num": 13,
-        "row": 19,
-        "col": 15,
-        "len": 6,
-        "answer": "volume",
-        "clue": "The area inside a 3D object"
-      },
-      {
-        "num": 14,
-        "row": 21,
-        "col": 16,
-        "len": 5,
-        "answer": "slope",
-        "clue": "The skew of a line"
-      },
-      {
-        "num": 15,
-        "row": 23,
-        "col": 13,
-        "len": 8,
-        "answer": "quadrant",
-        "clue": "4 parts of a linear graph are called..."
+        "row": 13,
+        "col": 1,
+        "len": 11,
+        "answer": "wordproblem",
+        "clue": "math problem that we need to read"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 22,
-        "len": 8,
-        "answer": "variable",
-        "clue": "The unknown in an equation"
+        "col": 15,
+        "len": 4,
+        "answer": "hide",
+        "clue": "when we don't want to be found"
       },
       {
         "num": 2,
         "row": 2,
+        "col": 13,
+        "len": 3,
+        "answer": "jar",
+        "clue": "we put cookies in it"
+      },
+      {
+        "num": 4,
+        "row": 4,
+        "col": 14,
+        "len": 8,
+        "answer": "equation",
+        "clue": "math problem in which we use only numbers"
+      },
+      {
+        "num": 5,
+        "row": 4,
         "col": 16,
-        "len": 20,
-        "answer": "scientific-notations",
-        "clue": "To multiply a number by another number like 10^3"
+        "len": 8,
+        "answer": "division",
+        "clue": "math operation in which we divide numbers"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 5,
+        "len": 5,
+        "answer": "solve",
+        "clue": "to find the answer of a math problem"
       },
       {
         "num": 7,
-        "row": 14,
-        "col": 28,
-        "len": 10,
-        "answer": "expression",
-        "clue": "An algebraic term without a equal sign"
+        "row": 6,
+        "col": 3,
+        "len": 4,
+        "answer": "plus",
+        "clue": "math operator that we use in addition"
       },
       {
-        "num": 9,
-        "row": 16,
-        "col": 20,
-        "len": 8,
-        "answer": "interest",
-        "clue": "The money added yearly to savings"
+        "num": 8,
+        "row": 7,
+        "col": 18,
+        "len": 5,
+        "answer": "minus",
+        "clue": "math operator that subtracts"
       },
       {
         "num": 10,
-        "row": 16,
-        "col": 25,
-        "len": 6,
-        "answer": "radius",
-        "clue": "Half the length of a circle"
-      },
-      {
-        "num": 12,
-        "row": 17,
-        "col": 22,
-        "len": 8,
-        "answer": "monomial",
-        "clue": "An algebraic expression with only 1 term"
+        "row": 9,
+        "col": 7,
+        "len": 5,
+        "answer": "letgo",
+        "clue": "to set something free"
       }
     ]
   },
-  "date": "2026-07-22",
   "category": "math",
-  "slug": "math-10915"
+  "source_url": "https://crosswordlabs.com/view/2023-01-02-22",
+  "slug": "2023-01-02-22",
+  "fetched_at": "2026-07-14T19:10:41.284376+00:00",
+  "date": "2026-07-23"
 }

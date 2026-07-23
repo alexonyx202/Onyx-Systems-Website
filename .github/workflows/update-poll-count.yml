@@ -1,0 +1,84 @@
+name: Update poll_counts.json on dispatch
+
+# This workflow updates data/poll_counts.json when it receives a
+# repository_dispatch event with new vote counts.
+# It is intended to be triggered by an external service (e.g. Cloudflare Workers,
+# a simple Node/Express server, or any HTTP endpoint) that aggregates votes
+# and sends them in the payload.
+
+on:
+  repository_dispatch:
+    types: [update-poll-counts]
+
+jobs:
+  update-counts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # needed for git push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Pull the payload from GitHub
+      - name: Get payload
+        id: payload
+        run: |
+          echo "payload=${{ toJson(github.event.client_payload) }}" >> $GITHUB_OUTPUT
+
+      # Extract and validate the counts object
+      - name: Validate and extract counts
+        id: extract
+        run: |
+          counts=$(jq -r '.counts // empty' <<< '${{ steps.payload.outputs.payload }}')
+          if [ -z "$counts" ]; then
+            echo "❌ No 'counts' object in payload"
+            exit 1
+          fi
+          echo "counts=$counts" >> $GITHUB_OUTPUT
+
+      # Check if there are changes vs current file
+      - name: Check for changes
+        id: diff
+        run: |
+          file=data/poll_counts.json
+          if [ ! -f "$file" ]; then
+            echo "📝 $file does not exist yet"
+            echo "diff=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          old=$(jq -c . < "$file" 2>/dev/null || echo "{}")
+          new=$(jq -c . <<< '${{ steps.extract.outputs.counts }}')
+          if [ "$old" != "$new" ]; then
+            echo "🔄 Changes detected"
+            echo "diff=true" >> $GITHUB_OUTPUT
+          else
+            echo "✅ No changes"
+            echo "diff=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Commit and push if there are changes
+      - name: Commit and push
+        if: steps.diff.outputs.diff == 'true'
+        env:
+          # We need a personal access token stored in GitHub secrets as GH_PUSH_TOKEN
+          # Format: ghp_[...]
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898247+github-actions[bot]@users.noreply.github.com"
+          GIT_COMMITTER_NAME: "github-actions[bot]"
+          GIT_COMMITTER_EMAIL: "41898247+github-actions[bot]@users.noreply.github.com"
+        run: |
+          # The PAT should be in the environment variable GH_PUSH_TOKEN (set via repo secrets)
+          git config --local user.name "$GIT_AUTHOR_NAME"
+          git config --local user.email "$GIT_AUTHOR_EMAIL"
+          git add data/poll_counts.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update poll_counts.json with new counts"
+            git push https://$GH_PUSH_TOKEN@github.com/alexonyx202/Onyx-Systems-Website.git HEAD:${{ github.ref }}
+          else
+            echo "No staged changes to commit"
+          fi

@@ -1,6 +1,40 @@
 {
-  "updated": "2026-07-20",
+  "updated": "2026-07-23",
   "items": [
+    {
+      "id": "n-2026-07-23",
+      "type": "newsletter",
+      "date": "2026-07-23",
+      "title": "Tech Support Scams: The Phone Call That Costs You Everything",
+      "tag": "Daily Brief",
+      "summary": "title: \"Tech Support Scams: The Phone Call That Costs You Everything\"",
+      "comic": "Newsletter - 2026-07-23-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-23-1",
+      "type": "tech-note",
+      "date": "2026-07-23",
+      "title": "uBlock Origin MV3 migration complete — Firefox keeps full blocking power",
+      "tag": "Privacy",
+      "summary": "uBlock Origin has finished its Manifest V3 migration. On Firefox, you lose nothing — full cosmetic filtering, dynamic rules, and network blocking all work. Chrome users should consider switching to Firefox or accept uBlock Origin Lite with reduced capabilities. I install Firefox + uBlock Origin as the default browser on every ONYX SYSTEMS build.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-07-23-2",
+      "type": "tech-note",
+      "date": "2026-07-23",
+      "title": "Kill Windows telemetry in 30 seconds with O&O ShutUp10++",
+      "tag": "Tip",
+      "summary": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry and data-collection switches with one click. Run it, click 'Apply recommended,' reboot. Done. Most debloat scripts break updates — ShutUp10++ is maintained, safe, and reversible. I run it on every Windows machine that leaves ONYX SYSTEMS.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-07-20",
       "type": "newsletter",
@@ -80,42 +114,6 @@
       "title": "Encrypt a lost USB stick so it can't expose your tax files — VeraCrypt is the free tool (veracrypt.fr)",
       "tag": "Tech Note",
       "summary": "Download VeraCrypt free from veracrypt.fr to create an encrypted container or encrypt a whole USB drive. Free, open-source, audited.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-19-3",
-      "type": "tech-note",
-      "date": "2026-07-19",
-      "title": "Make AI art and run 100+ AI tools on your own PC free — Pinokio installs them with one click (pinokio.computer)",
-      "tag": "Tech Note",
-      "summary": "Get Pinokio free from pinokio.computer for Windows, Mac, or Linux. It installs Stable Diffusion and other AI apps locally with one click.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-19-4",
-      "type": "tech-note",
-      "date": "2026-07-19",
-      "title": "That video file won't open in Windows? VLC plays every format free (videolan.org)",
-      "tag": "Tech Note",
-      "summary": "Download VLC free from videolan.org. It plays MP4, MKV, AVI, DVD, and the codecs Windows lacks — no codec packs.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-19-5",
-      "type": "tech-note",
-      "date": "2026-07-19",
-      "title": "Multi-gig Xfinity internet is coming to Lake County by Fall 2026 — check if it's at your address (xfinity.com)",
-      "tag": "Tech Note",
-      "summary": "Visit xfinity.com or call Xfinity to see if multi-gig internet is available at your Lake City address by Fall 2026.",
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"

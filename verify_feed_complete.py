@@ -93,6 +93,8 @@ def check_entry(fname, eid, headline, body):
         "loaded with junk", "came loaded", "trialware", "debloat",
         # Extended 2026-07-18: FTC-impersonation scam brief is a security alert (exempt).
         "ftc",
+        # Extended 2026-07-23: tech support scam alert is a security alert (exempt).
+        "scam", "tech support",
     ]
     if any(s in low for s in SKIP):
         return fails

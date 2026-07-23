@@ -22,8 +22,10 @@ VAULT = "/home/ai/Documents/Obsidian Vault/Daily"
 REPO = "/home/ai/onyx-systems-website"
 DATA = os.path.join(REPO, "data")
 
+
 def today_iso():
     return datetime.date.today().isoformat()
+
 
 def resolve_md(date_str):
     ptr = os.path.join(VAULT, "last_sent_newsletter.json")
@@ -36,10 +38,25 @@ def resolve_md(date_str):
         except Exception:
             pass
     # fallback: newest Newsletter - <DATE>.md
-    cands = sorted([f for f in os.listdir(VAULT) if f.startswith("Newsletter - ") and f.endswith(".md") and date_str in f])
+    cands = sorted([f for f in os.listdir(VAULT)
+                   if f.startswith("Newsletter - ") and f.endswith(".md") and date_str in f])
     if cands:
         return os.path.join(VAULT, cands[-1]), date_str
     return None, date_str
+
+
+def extract_comic_caption(md):
+    """Extract the Far Side comic caption from markdown.
+    Looks for the ![Far Side comic: "caption"](farside_...) pattern."""
+    m = re.search(r'!\[Far Side comic:\s*"([^"]+)"\]\(farside[^)]*\)', md)
+    if m:
+        return m.group(1).strip()
+    # Fallback: any Far Side reference
+    m = re.search(r'Far Side.*?"([^"]+)"', md)
+    if m:
+        return m.group(1).strip()
+    return "The Far Side &mdash; your daily laugh."
+
 
 def find_section(md, marker_prefix):
     """Return the TEXT BODY after a `━━━ <marker_prefix> ... ━━━` header line.
@@ -69,13 +86,15 @@ def find_section(md, marker_prefix):
         seg_lines.append(ln)
     seg = "\n".join(seg_lines).strip()
     # strip the comic markdown line (![...](farside...)) if it leaked in
-    seg = re.sub(r"!\[[^]]*\]\([^)]*farside[^]]*\)", "", seg)
+    seg = re.sub(r"!\[[^]]*\]\([^)]*farside[^)]*\)", "", seg)
     seg = re.sub(r"\n{2,}", "\n", seg).strip()
     return title, seg
+
 
 def bullets(md):
     items = re.findall(r"^\s*[-•*]\s+(.+)$", md, re.MULTILINE)
     return [i.strip() for i in items if i.strip()]
+
 
 def main():
     date_str = sys.argv[1] if len(sys.argv) > 1 else today_iso()
@@ -97,6 +116,7 @@ def main():
     ordinal = f"{day}{'th' if 11<=day<=13 else {1:'st',2:'nd',3:'rd'}.get(day%10,'th')}"
     comic = f"assets/img/news/{date_str}-farside.jpg"
     comic_alt = f"The Far Side comic for {weekday}, {month} {ordinal}, {d.year}"
+    comic_caption = extract_comic_caption(md)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -134,7 +154,7 @@ def main():
   <div class="mast"><span class="brand">ONYX SYSTEMS</span><span class="date">{weekday}, {month} {ordinal}, {d.year}</span></div>
   <h1>Your Daily Computer Brief</h1>
   <div class="section alert">
-    <h2>{alert_title}</h2>
+    <h2>🔴 ALERT</h2>
     <p>{alert_body}</p>
   </div>
   <div class="section">
@@ -151,10 +171,10 @@ def main():
   </div>
   <div class="comic">
     <img src="{comic}" alt="{comic_alt}">
-    <div class="cap">The Far Side &mdash; your daily laugh.</div>
+    <div class="cap">{comic_caption}</div>
   </div>
 </article>
-<div class="foot">ONYX SYSTEMS &mdash; Computer Care Center &middot; Lake City, FL &middot; (386) 755-7772</div>
+<div class="foot">— John @ ONYX SYSTEMS ✌️</div>
 </body>
 </html>
 """
@@ -163,6 +183,7 @@ def main():
         f.write(html)
     print(f"OK wrote {out} from {os.path.basename(md_path)}")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
