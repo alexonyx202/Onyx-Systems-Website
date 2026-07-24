@@ -16,7 +16,7 @@ and writes a clean, themed newsletter.html in the site repo.
 
 Run:  python3 scripts/build_newsletter_html.py [DATE]
 """
-import os, re, json, datetime, sys
+import os, re, json, datetime, sys, shutil
 
 VAULT = "/home/ai/Documents/Obsidian Vault/Daily"
 REPO = "/home/ai/onyx-systems-website"
@@ -241,6 +241,18 @@ def main():
 </body>
 </html>
 """
+    # Copy brand assets to site root so newsletter.html references work
+    brand_src = os.path.join(REPO, "assets", "img", "brand")
+    for asset_name in ("header.png", "business-card.png"):
+        src = os.path.join(brand_src, asset_name)
+        dst_name = "onyxsystems-header.png" if asset_name == "header.png" else "Onyx_Card.png"
+        dst = os.path.join(REPO, dst_name)
+        if os.path.exists(src):
+            shutil.copy2(src, dst)
+            print(f"Copied {src} -> {dst}")
+        else:
+            print(f"WARNING: brand asset not found: {src}", file=sys.stderr)
+
     out = os.path.join(REPO, "newsletter.html")
     with open(out, "w") as f:
         f.write(html)
