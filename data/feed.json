@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-07-23",
     "social": {
@@ -100,127 +100,182 @@
   ],
   "news": [
     {
+      "date": "2026-07-24",
+      "title": "\ud83d\udd34 ALERT \u2014 16 Billion Stolen Passwords: Check If Yours Are Out There",
+      "excerpt": "A massive database of 16 billion stolen usernames and passwords is circulating on hacker forums \u2014 a compilation of breaches from LinkedIn, Adobe, MySpace, and hundreds of other sites going back years. If you've reused a password anywhere, it's in there. Go to haveibeenpwned.com and type in your email. It'll tell you which breaches caught you. Then change the password on every account that used the same one. Use a different password for each site. A password manager makes this painless \u2014 Bitwarden, 1Password, or the one built into your browser.",
+      "image": "assets/img/news/2026-07-24-composite.jpg",
+      "comic": "assets/img/news/2026-07-24-comic-square.jpg",
+      "read_more": ""
+    },
+    {
       "date": "2026-07-23",
-      "title": "🔴 ALERT — Tech Support Scams: The Phone Call That Costs You Everything",
-      "excerpt": "Scammers pose as Microsoft Support, claim they detected a virus, and demand remote access. Once inside they steal files, drain bank accounts, or lock you out. Microsoft, Apple, and Google NEVER call you out of the blue. Hang up immediately. If worried about your computer, call someone you trust or bring it to the shop. Tech support phone scams cost Americans over $500M last year — average loss $400–$600.",
+      "title": "\ud83d\udd34 ALERT \u2014 Tech Support Scams: The Phone Call That Costs You Everything",
+      "excerpt": "Scammers pose as Microsoft Support, claim they detected a virus, and demand remote access. Once inside they steal files, drain bank accounts, or lock you out. Microsoft, Apple, and Google NEVER call you out of the blue. Hang up immediately. If worried about your computer, call someone you trust or bring it to the shop. Tech support phone scams cost Americans over $500M last year \u2014 average loss $400\u2013$600.",
       "image": "assets/img/news/2026-07-23-composite.jpg",
       "comic": "assets/img/news/2026-07-23-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-20",
-      "title": "🔴 ALERT — Update Firefox & Chrome Now — Exploit Code Is Public",
-      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu → Help → About Google Chrome to force the update now — don't wait for the slow auto-rollout.",
+      "title": "\ud83d\udd34 ALERT \u2014 Update Firefox & Chrome Now \u2014 Exploit Code Is Public",
+      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu \u2192 Help \u2192 About Google Chrome to force the update now \u2014 don't wait for the slow auto-rollout.",
       "image": "assets/img/news/2026-07-20-composite.jpg",
       "comic": "assets/img/news/2026-07-20-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-19",
-      "title": "🔴 ALERT — New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
-      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails — type the web address in yourself.",
+      "title": "\ud83d\udd34 ALERT \u2014 New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
+      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails \u2014 type the web address in yourself.",
       "image": "assets/img/news/2026-07-19-composite.jpg",
       "comic": "assets/img/news/2026-07-19-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-18",
-      "title": "🔴 ALERT — New FTC Text Scam Sends a Fake Photo ID",
-      "excerpt": "Scammers are texting folks pretending to be FTC employees — and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
+      "title": "\ud83d\udd34 ALERT \u2014 New FTC Text Scam Sends a Fake Photo ID",
+      "excerpt": "Scammers are texting folks pretending to be FTC employees \u2014 and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
       "image": "assets/img/news/2026-07-18-composite.jpg",
       "comic": "assets/img/news/2026-07-18-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-17",
-      "title": "🔴 ALERT — 7-Zip Just Patched a Dangerous Flaw — Update Now",
-      "excerpt": "A serious security hole (CVE-2026-14266) was disclosed in 7-Zip, the free file compressor many folks use. Opening a malicious .7z file or a bad webpage could let an attacker run code on your PC — even drop ransomware. The fix is simple: update 7-Zip to version 26.02 (open 7-Zip, click Help, then Check for Updates).",
+      "title": "\ud83d\udd34 ALERT \u2014 7-Zip Just Patched a Dangerous Flaw \u2014 Update Now",
+      "excerpt": "A serious security hole (CVE-2026-14266) was disclosed in 7-Zip, the free file compressor many folks use. Opening a malicious .7z file or a bad webpage could let an attacker run code on your PC \u2014 even drop ransomware. The fix is simple: update 7-Zip to version 26.02 (open 7-Zip, click Help, then Check for Updates).",
       "image": "assets/img/news/2026-07-17-composite.jpg",
       "comic": "assets/img/news/2026-07-17-comic-square.jpg",
-      "read_more": ""
-    },
-    {
-      "date": "2026-07-16",
-      "title": "🔴 ALERT — CISA Warns: Hackers Are Actively Exploiting On-Prem SharePoint — Patch Now",
-      "excerpt": "CISA added a critical on-prem SharePoint flaw (CVE-2026-56164) to its exploited-vulnerabilities catalog after active attacks. If your org runs SharePoint on its own servers, patch now and rotate machine keys — or pull outside access until you can.",
-      "image": "assets/img/news/2026-07-16-composite.jpg",
-      "comic": "assets/img/news/2026-07-16-comic-square.jpg",
       "read_more": ""
     }
   ],
   "posts": [
     {
+      "type": "tip",
+      "headline": "Clone any SSD in 15 minutes with Macrium Reflect Trial \u2014 free, fast, and boot-verifiable",
+      "tip": "Macrium Reflect 8 Trial (free at macrium.com/reflect-free) clones drives sector-by-sector with intelligent sector copy, verifies the clone boots before you swap drives, and supports NVMe, SATA, and USB enclosures. Download the Trial, create rescue media on a USB stick, boot from it, clone old drive to new SSD, verify boot, done.",
+      "truth": "I've cloned hundreds of drives. Clonezilla is powerful but scares clients. Macrium's GUI shows progress, verifies the result, and the rescue media works on any hardware. ONYX SYSTEMS keeps a bootable Macrium USB on every bench \u2014 it's the only cloning tool I trust with client data.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SSDUpgrade",
+        "#MacriumReflect"
+      ],
+      "date": "2026-07-24",
+      "id": "t-2026-07-24-1"
+    },
+    {
       "type": "news",
-      "headline": "ONYX SYSTEMS Daily Brief — 2026-07-23: LibreOffice 24.8.4 patches critical RCE + Proton VPN drops WireGuard on Linux",
-      "tip": "LibreOffice 24.8.4 fixes CVE-2026-41234 (critical RCE via malicious .odt). Update now at libreoffice.org. Proton VPN's Linux app dropped WireGuard support — use the CLI client or NetworkManager with official WireGuard configs from your Proton account.",
+      "headline": "Firefox 153.0 lands with HDR video, PDF editing, QR sharing, and stronger privacy controls",
+      "tip": "Firefox 153.0 released July 21, 2026 adds HDR video playback on Windows, built-in PDF editing (annotate, fill forms), QR code sharing from the address bar, expanded JPEG XL support, and new anti-fingerprinting and permission controls. Update via Firefox menu > Help > About Firefox or download from mozilla.org/firefox.",
+      "truth": "Firefox remains the only browser where uBlock Origin runs at full Manifest V2 power. ONYX SYSTEMS standardizes on Firefox for every build \u2014 Chrome lives in a VM for compatibility testing only.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Privacy"
+      ],
+      "date": "2026-07-24",
+      "id": "n-2026-07-24-2"
+    },
+    {
+      "type": "news",
+      "headline": "DAILY BRIEF \u2014 Microsoft July 2026 Patch Tuesday fixes record 622 vulnerabilities including 3 zero-days",
+      "tip": "Microsoft's July 2026 Patch Tuesday (KB5101650 for Windows 11 24H2/25H2, KB5099414 for 23H2) addresses 622 CVEs \u2014 the largest single release ever. Two zero-days were actively exploited (SharePoint Server RCE, AD FS elevation of privilege) and one BitLocker bypass was publicly disclosed. Update immediately via Windows Update or the Microsoft Update Catalog.",
+      "truth": "This is the biggest Patch Tuesday in history. Most shops wait \u2014 we don't. Every ONYX SYSTEMS managed machine gets these patches the same day they drop. The Kerberos RC4 enforcement alone breaks legacy auth if you're not ready.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#PatchTuesday",
+        "#SecurityUpdate"
+      ],
+      "date": "2026-07-24",
+      "id": "n-2026-07-24-1"
+    },
+    {
+      "type": "news",
+      "headline": "ONYX SYSTEMS Daily Brief \u2014 2026-07-23: LibreOffice 24.8.4 patches critical RCE + Proton VPN drops WireGuard on Linux",
+      "tip": "LibreOffice 24.8.4 fixes CVE-2026-41234 (critical RCE via malicious .odt). Update now at libreoffice.org. Proton VPN's Linux app dropped WireGuard support \u2014 use the CLI client or NetworkManager with official WireGuard configs from your Proton account.",
       "truth": "People treat office suites as boring background apps, but an unpatched LibreOffice is an open door for anyone sending you a document. Vendors love to break workflows in the name of simplification. The CLI gives you back control without the GUI bloat.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#SecurityAlert", "#LibreOffice", "#ProtonVPN", "#WireGuard", "#Linux"],
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SecurityAlert",
+        "#LibreOffice",
+        "#ProtonVPN",
+        "#WireGuard",
+        "#Linux"
+      ],
       "date": "2026-07-23",
       "id": "n-2026-07-23-1"
     },
     {
       "type": "news",
-      "headline": "uBlock Origin MV3 migration complete — Firefox keeps full blocking power",
-      "tip": "uBlock Origin has finished its Manifest V3 migration. On Firefox, you lose nothing — full cosmetic filtering, dynamic rules, and network blocking all work. Chrome users should consider switching to Firefox or accept uBlock Origin Lite with reduced capabilities. I install Firefox + uBlock Origin as the default browser on every ONYX SYSTEMS build.",
+      "headline": "uBlock Origin MV3 migration complete \u2014 Firefox keeps full blocking power",
+      "tip": "uBlock Origin has finished its Manifest V3 migration. On Firefox, you lose nothing \u2014 full cosmetic filtering, dynamic rules, and network blocking all work. Chrome users should consider switching to Firefox or accept uBlock Origin Lite with reduced capabilities. I install Firefox + uBlock Origin as the default browser on every ONYX SYSTEMS build.",
       "truth": "Google killed the open web's best ad blocker on Chrome. Firefox is now the only browser where uBlock Origin runs at full strength.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#uBlockOrigin", "#Firefox", "#ManifestV3", "#Privacy", "#AdBlocking"],
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#uBlockOrigin",
+        "#Firefox",
+        "#ManifestV3",
+        "#Privacy",
+        "#AdBlocking"
+      ],
       "date": "2026-07-23",
       "id": "n-2026-07-23-2"
     },
     {
       "type": "tip",
       "headline": "Kill Windows telemetry in 30 seconds with O&O ShutUp10++",
-      "tip": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry and data-collection switches with one click. Run it, click \"Apply recommended,\" reboot. Done. Most debloat scripts break updates — ShutUp10++ is maintained, safe, and reversible. I run it on every Windows machine that leaves ONYX SYSTEMS.",
-      "truth": "Windows 11 phones home more than a teenager. Most \"debloat\" scripts break updates — ShutUp10++ is maintained, safe, and reversible.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#Windows11", "#Privacy", "#Telemetry", "#ShutUp10", "#OOSoftware"],
+      "tip": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry and data-collection switches with one click. Run it, click \"Apply recommended,\" reboot. Done. Most debloat scripts break updates \u2014 ShutUp10++ is maintained, safe, and reversible. I run it on every Windows machine that leaves ONYX SYSTEMS.",
+      "truth": "Windows 11 phones home more than a teenager. Most \"debloat\" scripts break updates \u2014 ShutUp10++ is maintained, safe, and reversible.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#Privacy",
+        "#Telemetry",
+        "#ShutUp10",
+        "#OOSoftware"
+      ],
       "date": "2026-07-23",
       "id": "t-2026-07-23-1"
     },
     {
       "type": "tip",
-      "headline": "Stop fighting codecs — VLC plays any video or audio file free at videolan.org",
-      "tip": "Download VLC free at videolan.org. It opens every video and music format — MP4, MKV, AVI, FLAC — without hunting for a 'codec pack.' No ads, no popups.",
+      "headline": "Stop fighting codecs \u2014 VLC plays any video or audio file free at videolan.org",
+      "tip": "Download VLC free at videolan.org. It opens every video and music format \u2014 MP4, MKV, AVI, FLAC \u2014 without hunting for a 'codec pack.' No ads, no popups.",
       "truth": "People pay for a media player or Google 'why won't this file play' for an hour. The honest answer is one free app handles all of it, always has, and never pops an ad.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#VLC"],
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VLC"
+      ],
       "date": "2026-07-20",
       "id": "t-2026-07-20-5"
     },
     {
       "type": "tip",
-      "headline": "Chat with AI privately in your own browser — Open WebUI is the free local tool at openwebui.com",
+      "headline": "Chat with AI privately in your own browser \u2014 Open WebUI is the free local tool at openwebui.com",
       "tip": "Install Open WebUI free from openwebui.com (or run 'pip install open-webui') and pair it with Ollama to run AI models on your own PC so your chats never leave the house. No subscription, no cloud.",
-      "truth": "Folks worry AI is shipping their documents off to some cloud. The honest answer is you can run the exact same models at home — your data never leaves the drive, and there's no monthly fee.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#OpenWebUI"],
+      "truth": "Folks worry AI is shipping their documents off to some cloud. The honest answer is you can run the exact same models at home \u2014 your data never leaves the drive, and there's no monthly fee.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#OpenWebUI"
+      ],
       "date": "2026-07-20",
       "id": "t-2026-07-20-4"
-    },
-    {
-      "type": "tip",
-      "headline": "A $35 Raspberry Pi 5 is a real desktop and project computer that fits in your palm",
-      "tip": "Buy a Raspberry Pi 5 for $35 at raspberrypi.com or Amazon and boot Raspberry Pi OS from a microSD card. It runs a full Linux desktop — perfect for a kid's first PC, a retro game box, or a smart-home hub.",
-      "truth": "Everyone assumes a 'real computer' costs $600 or more. The honest answer is a $35 board plus the keyboard and TV you already own gets a student online for schoolwork and coding — no Windows tax, no bloat.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#RaspberryPi"],
-      "date": "2026-07-20",
-      "id": "t-2026-07-20-3"
-    },
-    {
-      "type": "tip",
-      "headline": "Signal is the free messaging app that encrypts every text and call — get it at signal.org",
-      "tip": "Install Signal free from signal.org or your phone's app store. It's open-source and end-to-end encrypts your texts, calls, and photos so not even Signal can read them.",
-      "truth": "People tell me 'nobody's reading my texts.' The honest answer is every big messenger scans your messages to sell you ads. Signal literally can't — that's the whole design, and it costs you nothing.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#Signal"],
-      "date": "2026-07-20",
-      "id": "t-2026-07-20-2"
-    },
-    {
-      "type": "news",
-      "headline": "Firefox 152 puts an AI assistant and one-tap site shortcuts in your browser — free at firefox.com",
-      "tip": "Update free at firefox.com or via the in-app updater (Menu > Help > About Firefox). Firefox 152's new 'Smart Window' summarizes and explains any text you select using a built-in assistant, and the New Tab shows a row of shortcuts back to your favorite sites.",
-      "truth": "Most people think they're stuck with whatever browser shipped on the machine. The honest answer is you can switch today and keep every password and bookmark — Firefox imports them in two clicks, and it tracks you a whole lot less than the default.",
-      "tags": ["#OnyxSystems", "#LakeCityFL", "#ComputerRepair", "#Firefox"],
-      "date": "2026-07-20",
-      "id": "t-2026-07-20-1"
     }
   ],
-  "updated": "2026-07-23"
+  "updated": "2026-07-24"
 }

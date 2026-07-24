@@ -95,6 +95,8 @@ def check_entry(fname, eid, headline, body):
         "ftc",
         # Extended 2026-07-23: tech support scam alert is a security alert (exempt).
         "scam", "tech support",
+        # Extended 2026-07-24: massive credential leak alert is a security alert (exempt).
+        "stolen", "password", "credential", "pwned",
     ]
     if any(s in low for s in SKIP):
         return fails
