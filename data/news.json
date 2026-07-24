@@ -44,6 +44,22 @@
       }
     },
     {
+      "id": "t-2026-07-24-4",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Run a private ChatGPT alternative on your own PC — Ollama + Open WebUI is free, offline, and no account needed",
+      "tag": "Tech Note",
+      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run `ollama run llama3.2` — that's a local model. For a chat UI, run `docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main` and open localhost:3000. Your prompts never leave your m"
+    },
+    {
+      "id": "t-2026-07-24-5",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Florida storm season: make a Windows recovery drive NOW — it's the only way back if the power surge kills your OS",
+      "tag": "Tech Tip",
+      "summary": "Plug in a 16GB+ USB stick. Press Win key, type \"recovery drive\", check \"Back up system files to the recovery drive\", click Next → Create. It takes 20-40 minutes. Label it \"Windows recovery drive - [PC Name] - [Date]\" and store it in a ziplock bag. If Windows won't boot after a st"
+    },
+    {
       "id": "n-2026-07-23",
       "type": "newsletter",
       "date": "2026-07-23",
@@ -106,22 +122,6 @@
       "title": "Firefox 152 puts an AI assistant and one-tap site shortcuts in your browser — free at firefox.com",
       "tag": "Browser",
       "summary": "Update free at firefox.com or via the in-app updater (Menu > Help > About Firefox). Firefox 152's new 'Smart Window' summarizes and explains any text you select using a built-in assistant."
-    },
-    {
-      "id": "t-2026-07-20-2",
-      "type": "tech-note",
-      "date": "2026-07-20",
-      "title": "Signal is the free messaging app that encrypts every text and call — get it at signal.org",
-      "tag": "Privacy",
-      "summary": "Install Signal free from signal.org or your phone's app store. It's open-source and end-to-end encrypts your texts, calls, and photos so not even Signal can read them."
-    },
-    {
-      "id": "t-2026-07-20-3",
-      "type": "tech-note",
-      "date": "2026-07-20",
-      "title": "A 5 Raspberry Pi 5 is a real desktop and project computer that fits in your palm",
-      "tag": "Hardware",
-      "summary": "Buy a Raspberry Pi 5 for 5 at raspberrypi.com or Amazon and boot Raspberry Pi OS from a microSD card. It runs a full Linux desktop — perfect for a kid's first PC or smart-home hub."
     }
   ]
 }
