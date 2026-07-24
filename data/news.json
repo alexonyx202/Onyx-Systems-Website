@@ -60,6 +60,46 @@
       "summary": "Plug in a 16GB+ USB stick. Press Win key, type \"recovery drive\", check \"Back up system files to the recovery drive\", click Next → Create. It takes 20-40 minutes. Label it \"Windows recovery drive - [PC Name] - [Date]\" and store it in a ziplock bag. If Windows won't boot after a st"
     },
     {
+      "id": "t-2026-07-24-1-2026-07-24-175545",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Your NVMe SSD is silently failing — smartctl reads its health free at the terminal",
+      "tag": "Privacy",
+      "summary": "Run `smartctl -a /dev/nvme0` (Linux) or install CrystalDiskInfo free at crystalmark.info (Windows) to see your SSD's real health — percentage used, temperature, and power-on hours. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings."
+    },
+    {
+      "id": "t-2026-07-24-2-2026-07-24-175545",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Stop mixing work and personal in one browser — Firefox Containers keeps them walled off free",
+      "tag": "Tech Tip",
+      "summary": "Open Firefox, type `about:preferences#containers` in the address bar, enable \"Container Tabs\", then right-click any link → \"Open in New Container Tab\" → pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking — Google in your Wo"
+    },
+    {
+      "id": "t-2026-07-24-3-2026-07-24-175545",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Windows can stop ransomware from encrypting your files — Controlled Folder Access is free and already installed",
+      "tag": "Security Alert",
+      "summary": "Open Windows Security → Virus & threat protection → Manage ransomware protection → turn on Controlled Folder Access. Then click \"Protected folders\" and add your Documents, Pictures, and any work folders. Only whitelisted apps (Office, your editor, browser) can write there — ranso"
+    },
+    {
+      "id": "t-2026-07-24-4-2026-07-24-175545",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Run a private ChatGPT alternative on your own PC — Ollama + Open WebUI is free, offline, and no account needed",
+      "tag": "Privacy",
+      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run `ollama run llama3.2` — that's a local model. For a chat UI, run `docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main` and open localhost:3000. Your prompts never leave your m"
+    },
+    {
+      "id": "t-2026-07-24-5-2026-07-24-175545",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "Florida storm season: make a Windows recovery drive NOW — it's the only way back if the power surge kills your OS",
+      "tag": "Storm Prep",
+      "summary": "Plug in a 16GB+ USB stick. Press Win key, type \"recovery drive\", check \"Back up system files to the recovery drive\", click Next → Create. It takes 20-40 minutes. Label it \"Windows recovery drive - [PC Name] - [Date]\" and store it in a ziplock bag. If Windows won't boot after a st"
+    },
+    {
       "id": "n-2026-07-23",
       "type": "newsletter",
       "date": "2026-07-23",
@@ -68,60 +108,6 @@
       "summary": "title: \"Tech Support Scams: The Phone Call That Costs You Everything\"",
       "comic": "Newsletter - 2026-07-23-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-23-1",
-      "type": "tech-note",
-      "date": "2026-07-23",
-      "title": "uBlock Origin MV3 migration complete — Firefox keeps full blocking power",
-      "tag": "Privacy",
-      "summary": "uBlock Origin has finished its Manifest V3 migration. On Firefox, you lose nothing — full cosmetic filtering, dynamic rules, and network blocking all work. Chrome users should consider switching to Firefox or accept uBlock Origin Lite with reduced capabilities. I install Firefox + uBlock Origin as the default browser on every ONYX SYSTEMS build.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-23-2",
-      "type": "tech-note",
-      "date": "2026-07-23",
-      "title": "Kill Windows telemetry in 30 seconds with O&O ShutUp10++",
-      "tag": "Tip",
-      "summary": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry and data-collection switches with one click. Run it, click 'Apply recommended,' reboot. Done. Most debloat scripts break updates — ShutUp10++ is maintained, safe, and reversible. I run it on every Windows machine that leaves ONYX SYSTEMS.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-23-3",
-      "type": "tech-note",
-      "date": "2026-07-23",
-      "title": "Kill Windows telemetry in 30 seconds with O&O ShutUp10++",
-      "tag": "Tip",
-      "summary": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry, telemetry, and data-collection switches with one click. Run it, click 'Apply recommended,' reboot. Done.",
-      "cta": {
-        "label": "Download ShutUp10++",
-        "href": "https://oo-software.com"
-      }
-    },
-    {
-      "id": "n-2026-07-20",
-      "type": "newsletter",
-      "date": "2026-07-20",
-      "title": "Update Firefox & Chrome Now — Exploit Code Is Public",
-      "tag": "Daily Brief",
-      "summary": "title: \"Update Firefox & Chrome Now — Exploit Code Is Public\"",
-      "comic": "2026-07-20-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-20-1",
-      "type": "tech-note",
-      "date": "2026-07-20",
-      "title": "Firefox 152 puts an AI assistant and one-tap site shortcuts in your browser — free at firefox.com",
-      "tag": "Browser",
-      "summary": "Update free at firefox.com or via the in-app updater (Menu > Help > About Firefox). Firefox 152's new 'Smart Window' summarizes and explains any text you select using a built-in assistant."
     }
   ]
 }
