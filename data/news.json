@@ -12,6 +12,38 @@
       "readMore": "https://onyxpc.us/#contact"
     },
     {
+      "id": "t-2026-07-24-1",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: SECURITY ALERT — Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day",
+      "tag": "Security Alert",
+      "summary": "Microsoft SharePoint Server zero-day CVE-2026-56164 is under active exploitation. Apply patches immediately via Windows Update, WSUS, Microsoft Update Catalog, or MECM.",
+      "cta": {
+        "label": "Call (386) 755-7772 for emergency patching",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-07-24-2",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released — ksmbd, KVM AMD SEV, Hyper-V, NFS, MIPS Fixes",
+      "tag": "Tech Note",
+      "summary": "Linux kernel 7.1.3 brings security and stability fixes for ksmbd (SMB3), KVM AMD SEV-SNP, Hyper-V, NFS, and MIPS. Available from kernel.org or distro updates."
+    },
+    {
+      "id": "t-2026-07-24-3",
+      "type": "tech-note",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: TECH TIP — Harden Linux Kernel via sysctl: Set kptr_restrict=2, dmesg_restrict=1, mmap_rnd_bits=32",
+      "tag": "Tech Tip",
+      "summary": "Three sysctl knobs harden kernel info leaks and ASLR. Create /etc/sysctl.d/99-onx-hardening.conf with the three lines, run sudo sysctl --system. No reboot.",
+      "cta": {
+        "label": "Call (386) 755-7772 for Linux hardening help",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "n-2026-07-23",
       "type": "newsletter",
       "date": "2026-07-23",
@@ -90,32 +122,6 @@
       "title": "A 5 Raspberry Pi 5 is a real desktop and project computer that fits in your palm",
       "tag": "Hardware",
       "summary": "Buy a Raspberry Pi 5 for 5 at raspberrypi.com or Amazon and boot Raspberry Pi OS from a microSD card. It runs a full Linux desktop — perfect for a kid's first PC or smart-home hub."
-    },
-    {
-      "id": "t-2026-07-20-4",
-      "type": "tech-note",
-      "date": "2026-07-20",
-      "title": "Chat with AI privately in your own browser — Open WebUI is the free local tool at openwebui.com",
-      "tag": "AI",
-      "summary": "Install Open WebUI free from openwebui.com and pair it with Ollama to run AI models on your own PC so your chats never leave the house. No subscription, no cloud."
-    },
-    {
-      "id": "t-2026-07-20-5",
-      "type": "tech-note",
-      "date": "2026-07-20",
-      "title": "Stop fighting codecs — VLC plays any video or audio file free at videolan.org",
-      "tag": "Media",
-      "summary": "Download VLC free at videolan.org. It opens every video and music format — MP4, MKV, AVI, FLAC — without hunting for a 'codec pack.' No ads, no popups."
-    },
-    {
-      "id": "n-2026-07-19",
-      "type": "newsletter",
-      "date": "2026-07-19",
-      "title": "🔴 ALERT — New \"Avalon\" Malware Is Spreading Through Phishing Emails",
-      "tag": "Daily Brief",
-      "summary": "title: \"New \\\"Avalon\\\" Malware Is Spreading Through Phishing Emails\"",
-      "comic": "2026-07-19-comic-square.jpg",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }

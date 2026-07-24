@@ -100,12 +100,15 @@
   ],
   "news": [
     {
+      "id": "news-2026-07-24",
+      "type": "newsletter",
       "date": "2026-07-24",
-      "title": "\ud83d\udd34 ALERT \u2014 16 Billion Stolen Passwords: Check If Yours Are Out There",
-      "excerpt": "A massive database of 16 billion stolen usernames and passwords is circulating on hacker forums \u2014 a compilation of breaches from LinkedIn, Adobe, MySpace, and hundreds of other sites going back years. If you've reused a password anywhere, it's in there. Go to haveibeenpwned.com and type in your email. It'll tell you which breaches caught you. Then change the password on every account that used the same one. Use a different password for each site. A password manager makes this painless \u2014 Bitwarden, 1Password, or the one built into your browser.",
+      "title": "16 Billion Stolen Passwords: Check If Yours Are Out There",
+      "tag": "Security Alert",
+      "excerpt": "A massive database of 16 billion stolen usernames and passwords is circulating. Check haveibeenpwned.com and change reused passwords immediately. Use a password manager like Bitwarden.",
       "image": "assets/img/news/2026-07-24-composite.jpg",
       "comic": "assets/img/news/2026-07-24-comic-square.jpg",
-      "read_more": ""
+      "read_more": "#contact"
     },
     {
       "date": "2026-07-23",
@@ -150,49 +153,49 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-07-24-security-alert-001",
+      "type": "news",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: SECURITY ALERT \u2014 Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day \u2014 Patch via Microsoft Update Catalog",
+      "tag": "Security Alert",
+      "summary": "Microsoft Patch Tuesday July 2026 patches 622 vulnerabilities including two actively exploited zero-days. CVE-2026-56164 in on-premises Microsoft SharePoint Server allows unauthenticated remote privilege escalation; CVE-2026-56155 in Active Directory Federation Services allows authenticated local privilege escalation. Both under active attack.",
+      "truth": "OBTAIN FIXES: Apply via Windows Update, WSUS, Microsoft Update Catalog (catalog.update.microsoft.com), or Microsoft Endpoint Configuration Manager. For SharePoint Server 2016/2019 with no ESU path, plan immediate migration to SharePoint Server Subscription Edition or Microsoft 365. Enable AMSI Full Mode via Group Policy (Computer Configuration \u2192 Administrative Templates \u2192 Windows Components \u2192 Antimalware Scan Interface) as a mitigation for SharePoint.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": "Apply July 2026 Patch Tuesday updates immediately via Microsoft Update Catalog \u2014 prioritize SharePoint Server and AD FS servers."
+    },
+    {
+      "id": "onyx-2026-07-24-news-001",
+      "type": "news",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released \u2014 Security Patches for ksmbd, KVM AMD SEV, Hyper-V, NFS Fixes \u2014 Obtain via kernel.org or Distro Updates",
+      "tag": "",
+      "summary": "Linux Kernel 7.1.3 released July 4, 2026 by Greg Kroah-Hartman. Security fixes for ksmbd out-of-bounds heap read (SMB), KVM AMD SEV page overflow, Hyper-V nested virtualization bounds check. NFS server fixes for ACL leaks and state races. MIPS PREEMPT_RT reboot hang resolved for OpenWrt routers.",
+      "truth": "OBTAIN: Download source from kernel.org (https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.3.tar.xz) with PGP signature. Build: make olddefconfig && make -j$(nproc) && sudo make modules_install install. Or wait for distribution kernel updates (typically within 1 week for Arch/Fedora/openSUSE Tumbleweed; LTS backports for Ubuntu/Debian/RHEL derivatives).",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": "Update production NFS servers, KVM/AMD SEV hosts, Hyper-V nested guests, and ksmbd/SMB file servers to 7.1.3 or distro backport immediately."
+    },
+    {
+      "id": "onyx-2026-07-24-tip-001",
       "type": "tip",
-      "headline": "Clone any SSD in 15 minutes with Macrium Reflect Trial \u2014 free, fast, and boot-verifiable",
-      "tip": "Macrium Reflect 8 Trial (free at macrium.com/reflect-free) clones drives sector-by-sector with intelligent sector copy, verifies the clone boots before you swap drives, and supports NVMe, SATA, and USB enclosures. Download the Trial, create rescue media on a USB stick, boot from it, clone old drive to new SSD, verify boot, done.",
-      "truth": "I've cloned hundreds of drives. Clonezilla is powerful but scares clients. Macrium's GUI shows progress, verifies the result, and the rescue media works on any hardware. ONYX SYSTEMS keeps a bootable Macrium USB on every bench \u2014 it's the only cloning tool I trust with client data.",
+      "date": "2026-07-24",
+      "title": "ONYX SYSTEMS: TECH TIP \u2014 Harden Linux Kernel via sysctl: Set kernel.kptr_restrict=2, kernel.dmesg_restrict=1, vm.mmap_rnd_bits=32 \u2014 Apply via /etc/sysctl.d/99-hardening.conf",
+      "tag": "Tech Tip",
+      "summary": "Three high-impact sysctl hardening knobs prevent kernel address leaks, restrict dmesg to root, and maximize ASLR entropy for mmap. Apply persistently via drop-in file and reload with sysctl --system. No reboot required.",
+      "truth": "OBTAIN: Create the file via: sudo tee /etc/sysctl.d/99-onx-hardening.conf <<'EOF'\nkernel.kptr_restrict=2\nkernel.dmesg_restrict=1\nvm.mmap_rnd_bits=32\nEOF\nThen: sudo sysctl --system",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#SSDUpgrade",
-        "#MacriumReflect"
+        "#ComputerRepair"
       ],
-      "date": "2026-07-24",
-      "id": "t-2026-07-24-1"
-    },
-    {
-      "type": "news",
-      "headline": "Firefox 153.0 lands with HDR video, PDF editing, QR sharing, and stronger privacy controls",
-      "tip": "Firefox 153.0 released July 21, 2026 adds HDR video playback on Windows, built-in PDF editing (annotate, fill forms), QR code sharing from the address bar, expanded JPEG XL support, and new anti-fingerprinting and permission controls. Update via Firefox menu > Help > About Firefox or download from mozilla.org/firefox.",
-      "truth": "Firefox remains the only browser where uBlock Origin runs at full Manifest V2 power. ONYX SYSTEMS standardizes on Firefox for every build \u2014 Chrome lives in a VM for compatibility testing only.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox",
-        "#Privacy"
-      ],
-      "date": "2026-07-24",
-      "id": "n-2026-07-24-2"
-    },
-    {
-      "type": "news",
-      "headline": "DAILY BRIEF \u2014 Microsoft July 2026 Patch Tuesday fixes record 622 vulnerabilities including 3 zero-days",
-      "tip": "Microsoft's July 2026 Patch Tuesday (KB5101650 for Windows 11 24H2/25H2, KB5099414 for 23H2) addresses 622 CVEs \u2014 the largest single release ever. Two zero-days were actively exploited (SharePoint Server RCE, AD FS elevation of privilege) and one BitLocker bypass was publicly disclosed. Update immediately via Windows Update or the Microsoft Update Catalog.",
-      "truth": "This is the biggest Patch Tuesday in history. Most shops wait \u2014 we don't. Every ONYX SYSTEMS managed machine gets these patches the same day they drop. The Kerberos RC4 enforcement alone breaks legacy auth if you're not ready.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#PatchTuesday",
-        "#SecurityUpdate"
-      ],
-      "date": "2026-07-24",
-      "id": "n-2026-07-24-1"
+      "cta": "Create /etc/sysctl.d/99-onx-hardening.conf with the three knobs above and run sudo sysctl --system. Verify with sysctl -a | grep -E 'kptr_restrict|dmesg_restrict|mmap_rnd_bits'."
     },
     {
       "type": "news",

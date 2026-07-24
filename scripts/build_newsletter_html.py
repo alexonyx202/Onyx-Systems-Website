@@ -95,6 +95,13 @@ def clean_tip_body(tip_body):
         cleaned.append(ln)
     return '\n'.join(cleaned).strip()
 
+def extract_comedy_break_title(md):
+    """Extract the COMEDY BREAK section title from markdown."""
+    m = re.search(r'━━━\s*😄\s*(COMEDY BREAK)\s*━━━', md)
+    if m:
+        return m.group(1).strip()
+    return "COMEDY BREAK"
+
 
 def find_section(md, marker_prefix):
     """Return the TEXT BODY after a `━━━ <marker_prefix> ... ━━━` header line.
@@ -158,6 +165,7 @@ def main():
     header_logo = extract_header_logo(md)
     tagline = extract_tagline(md)
     business_card = extract_business_card(md)
+    comedy_break_title = extract_comedy_break_title(md)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -218,9 +226,12 @@ def main():
     <h2>Daily Tip</h2>
     <p>{tip_body}</p>
   </div>
-  <div class="comic">
-    <img src="{comic}" alt="{comic_alt}">
-    <div class="cap">{comic_caption}</div>
+  <div class="section">
+    <h2>😄 {comedy_break_title}</h2>
+    <div class="comic">
+      <img src="{comic}" alt="{comic_alt}">
+      <div class="cap">{comic_caption}</div>
+    </div>
   </div>
   <div class="card">
     <img src="{business_card}" alt="ONYX SYSTEMS business card">

@@ -63,6 +63,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-07-20: real products named in today's Onyx Tech Notes
     # (named + obtain method stated — legit, not teasers; do NOT weaken headlines).
     "signal", "raspberry", "open webui", "openwebui", "firefox",
+    # Extended 2026-07-24: real products named in today's Onyx Tech Notes
+    # Linux Kernel (named product) + sysctl (kernel hardening tool, real obtain method).
+    "linux kernel", "sysctl",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.

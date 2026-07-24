@@ -1,203 +1,156 @@
 {
-  "title": "Math crossword puzzle",
-  "size": 26,
+  "title": "MATH",
+  "size": 22,
   "grid": [
-    "...........w..............",
-    "...........h.C............",
-    "...........o.a............",
-    "......Parallel............",
-    "...........e.c............",
-    ".............u............",
-    ".............l............",
-    "........Subtract..........",
-    "...G......a..t............",
-    "...RectaNgle.o............",
-    "Area....e.a..r............",
-    "...Pentagon...............",
-    "...h..o.a.c..v............",
-    "......t.t.Equation........",
-    "......a.i....r............",
-    "......l.v....i..l.........",
-    "........e...value.........",
-    ".............b..n.........",
-    ".....A.......l..g.........",
-    ".Divide.volume..t.........",
-    ".....d....e.....h.........",
-    "..horizontal..............",
-    ".....t....s...............",
-    ".....i....t...............",
-    ".....o....................",
-    ".....n...................."
+    "...I..................",
+    "...r..................",
+    ".M.r...D..............",
+    "Parabola..............",
+    ".t.t...t...F..........",
+    ".h.i..Maximum.........",
+    "Zero.......n..........",
+    ".m.n.......c..........",
+    ".a.a.Substitute.......",
+    ".t.l.......i...C......",
+    ".i........BoxPlot.....",
+    ".c.........n.i.r......",
+    ".s.............r......",
+    "............Algebra...",
+    "...............l...G..",
+    "...............a...r..",
+    "..............Standard",
+    "...............i...p..",
+    "...............o...h..",
+    "............Change....",
+    "......................",
+    "......................"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
+        "num": 4,
         "row": 4,
-        "col": 7,
+        "col": 1,
         "len": 8,
-        "answer": "Parallel",
-        "clue": "an even line"
+        "answer": "Parabola",
+        "clue": "Has a vertex, is symmetrical, and may have y int"
       },
       {
-        "num": 4,
-        "row": 8,
-        "col": 9,
-        "len": 8,
-        "answer": "Subtract",
-        "clue": "decrease"
+        "num": 6,
+        "row": 6,
+        "col": 7,
+        "len": 7,
+        "answer": "Maximum",
+        "clue": "The largest amount of something"
       },
       {
         "num": 7,
-        "row": 10,
-        "col": 4,
-        "len": 9,
-        "answer": "RectaNgle",
-        "clue": "square"
-      },
-      {
-        "num": 9,
-        "row": 11,
+        "row": 7,
         "col": 1,
         "len": 4,
-        "answer": "Area",
-        "clue": "Multiply length and width"
+        "answer": "Zero",
+        "clue": "There is none"
+      },
+      {
+        "num": 8,
+        "row": 9,
+        "col": 6,
+        "len": 10,
+        "answer": "Substitute",
+        "clue": "When the teacher is sick"
       },
       {
         "num": 10,
-        "row": 12,
-        "col": 4,
-        "len": 8,
-        "answer": "Pentagon",
-        "clue": "five sided shape"
+        "row": 11,
+        "col": 11,
+        "len": 7,
+        "answer": "BoxPlot",
+        "clue": "Displays the 5 number summary of data (2wds)"
       },
       {
-        "num": 13,
+        "num": 12,
         "row": 14,
-        "col": 11,
+        "col": 13,
+        "len": 7,
+        "answer": "Algebra",
+        "clue": "It's not just numbers anymore"
+      },
+      {
+        "num": 14,
+        "row": 17,
+        "col": 15,
         "len": 8,
-        "answer": "Equation",
-        "clue": "An ___ includes an equal sign, numbers and operations, and sometimes letters."
+        "answer": "Standard",
+        "clue": "Ax^2+bx+C"
       },
       {
         "num": 15,
-        "row": 17,
+        "row": 20,
         "col": 13,
-        "len": 5,
-        "answer": "value",
-        "clue": "If you have X x 5 , equal fifteen whats the equal of fifteen?"
-      },
-      {
-        "num": 17,
-        "row": 20,
-        "col": 2,
         "len": 6,
-        "answer": "Divide",
-        "clue": "split"
-      },
-      {
-        "num": 18,
-        "row": 20,
-        "col": 9,
-        "len": 6,
-        "answer": "volume",
-        "clue": "full"
-      },
-      {
-        "num": 20,
-        "row": 22,
-        "col": 3,
-        "len": 10,
-        "answer": "horizontal",
-        "clue": "A line left to right"
+        "answer": "Change",
+        "clue": "Average Rate of _______"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 12,
-        "len": 5,
-        "answer": "whole",
-        "clue": "all"
+        "col": 4,
+        "len": 10,
+        "answer": "Irrational",
+        "clue": "Not logistical"
       },
       {
         "num": 2,
-        "row": 2,
-        "col": 14,
-        "len": 10,
-        "answer": "Calculator",
-        "clue": "A device used to find math answers"
+        "row": 3,
+        "col": 2,
+        "len": 11,
+        "answer": "Mathematics",
+        "clue": "A fancy way of saying math"
+      },
+      {
+        "num": 3,
+        "row": 3,
+        "col": 8,
+        "len": 4,
+        "answer": "Data",
+        "clue": "Facts and statistics gathered for analysis"
       },
       {
         "num": 5,
-        "row": 8,
-        "col": 11,
-        "len": 7,
-        "answer": "balancE",
-        "clue": "enough"
-      },
-      {
-        "num": 6,
-        "row": 9,
-        "col": 4,
-        "len": 5,
-        "answer": "GRaPh",
-        "clue": "Chart"
-      },
-      {
-        "num": 8,
-        "row": 10,
-        "col": 9,
+        "row": 5,
+        "col": 12,
         "len": 8,
-        "answer": "Negative",
-        "clue": "Opposite of positive"
+        "answer": "Function",
+        "clue": "Use the vertical line test"
+      },
+      {
+        "num": 9,
+        "row": 10,
+        "col": 16,
+        "len": 11,
+        "answer": "Correlation",
+        "clue": "Nicholas Cage does not CAUSE drowning"
       },
       {
         "num": 11,
-        "row": 12,
-        "col": 7,
-        "len": 5,
-        "answer": "total",
-        "clue": "sum"
-      },
-      {
-        "num": 12,
-        "row": 13,
+        "row": 11,
         "col": 14,
-        "len": 8,
-        "answer": "variable",
-        "clue": "odd number or letter"
+        "len": 2,
+        "answer": "Pi",
+        "clue": "Dessert but math"
       },
       {
-        "num": 14,
-        "row": 16,
-        "col": 17,
-        "len": 6,
-        "answer": "length",
-        "clue": "long"
-      },
-      {
-        "num": 16,
-        "row": 19,
-        "col": 6,
-        "len": 8,
-        "answer": "Addition",
-        "clue": "increase or more - a math operation"
-      },
-      {
-        "num": 19,
-        "row": 20,
-        "col": 11,
+        "num": 13,
+        "row": 15,
+        "col": 20,
         "len": 5,
-        "answer": "least",
-        "clue": "small"
+        "answer": "Graph",
+        "clue": "A way of presenting data"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2023-04-12-719",
-  "slug": "2023-04-12-719",
-  "fetched_at": "2026-07-14T19:22:51.834622+00:00",
   "date": "2026-07-24"
 }
