@@ -1,143 +1,218 @@
 {
-  "title": "Math Check For Knowledge",
-  "size": 22,
+  "title": "Math Class Crossword",
+  "size": 25,
   "grid": [
-    "........No............",
-    "....M...d.............",
-    "Pythagoras............",
-    "....t...g....J........",
-    "....h...u....o........",
-    "........b....s....A...",
-    ".......HaPpinesS..l...",
-    ".........o...p.a..g...",
-    ".........l...h.d..e...",
-    ".........y.....Numbers",
-    ".........n.....e..r...",
-    "........Sound..s..a...",
-    ".........m.....s......",
-    "......VariablE........",
-    ".........a...u........",
-    ".........l...c........",
-    ".............l........",
-    ".............i........",
-    ".............d........",
-    "......................",
-    "......................",
-    "......................"
+    ".....Alex.F..............",
+    ".....n....i..............",
+    ".....d....m..............",
+    ".....RyAn.b..............",
+    "...S.e.l..l..R...R.......",
+    "Josh.s.e.Henry...i..C....",
+    "...a...Xia...AlExander...",
+    "..DeVika.t...n.n.n..c....",
+    "....a....e..V..m.n..i....",
+    "....n....m..e.Dana.Alexy.",
+    "............r..n....i....",
+    "............o..u....Asher",
+    "............Novak........",
+    "............i..l.........",
+    "............c............",
+    "............a............",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    "........................."
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 2,
-        "answer": "No",
-        "clue": "describe Joseph"
+        "col": 6,
+        "len": 4,
+        "answer": "Alex",
+        "clue": "Senior"
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 1,
-        "len": 10,
-        "answer": "Pythagoras",
-        "clue": "Triangle theorem"
+        "row": 4,
+        "col": 6,
+        "len": 4,
+        "answer": "RyAn",
+        "clue": "Not 5'5"
       },
       {
-        "num": 6,
-        "row": 7,
-        "col": 8,
-        "len": 9,
-        "answer": "HaPpinesS",
-        "clue": "Emotion of math"
+        "num": 8,
+        "row": 6,
+        "col": 1,
+        "len": 4,
+        "answer": "Josh",
+        "clue": "Always wears a scarf"
       },
       {
         "num": 9,
-        "row": 10,
-        "col": 16,
-        "len": 7,
-        "answer": "Numbers",
-        "clue": "Tools of math"
-      },
-      {
-        "num": 10,
-        "row": 12,
-        "col": 9,
+        "row": 6,
+        "col": 10,
         "len": 5,
-        "answer": "Sound",
-        "clue": "Doppler Effect"
+        "answer": "Henry",
+        "clue": "The guy who dressed like a cat"
       },
       {
         "num": 11,
-        "row": 14,
-        "col": 7,
-        "len": 8,
-        "answer": "VariablE",
-        "clue": "Solve for x"
+        "row": 7,
+        "col": 8,
+        "len": 3,
+        "answer": "Xia",
+        "clue": "The impostor"
+      },
+      {
+        "num": 12,
+        "row": 7,
+        "col": 14,
+        "len": 9,
+        "answer": "AlExander",
+        "clue": "Sophomore"
+      },
+      {
+        "num": 14,
+        "row": 8,
+        "col": 3,
+        "len": 6,
+        "answer": "DeVika",
+        "clue": "\"Twin where have you been?...\""
+      },
+      {
+        "num": 17,
+        "row": 10,
+        "col": 15,
+        "len": 4,
+        "answer": "Dana",
+        "clue": "Wears multicolored shoes"
+      },
+      {
+        "num": 18,
+        "row": 10,
+        "col": 20,
+        "len": 5,
+        "answer": "Alexy",
+        "clue": "Not Eryk or Christyan"
+      },
+      {
+        "num": 19,
+        "row": 12,
+        "col": 21,
+        "len": 5,
+        "answer": "Asher",
+        "clue": "Silent genius"
+      },
+      {
+        "num": 20,
+        "row": 13,
+        "col": 13,
+        "len": 5,
+        "answer": "Novak",
+        "clue": "Not 6'4"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 7,
-        "answer": "Ndaguba",
-        "clue": "Last name math boy"
+        "col": 6,
+        "len": 6,
+        "answer": "AndRes",
+        "clue": "Not Alejandro"
       },
       {
         "num": 2,
-        "row": 2,
-        "col": 5,
-        "len": 4,
-        "answer": "Math",
-        "clue": "Fundamental universe"
+        "row": 1,
+        "col": 11,
+        "len": 6,
+        "answer": "Fimble",
+        "clue": "Most likely to give a pop quiz"
       },
       {
         "num": 4,
         "row": 4,
-        "col": 14,
-        "len": 6,
-        "answer": "Joseph",
-        "clue": "First name math boy"
+        "col": 8,
+        "len": 5,
+        "answer": "AleXa",
+        "clue": "Gives side eyes"
       },
       {
         "num": 5,
-        "row": 6,
-        "col": 19,
-        "len": 7,
-        "answer": "Algebra",
-        "clue": "Study of the unknown"
+        "row": 5,
+        "col": 4,
+        "len": 4,
+        "answer": "Shae",
+        "clue": "Lifegaurd"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 14,
+        "len": 4,
+        "answer": "RyAn",
+        "clue": "Not Reagan or Kendall"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 10,
-        "len": 10,
-        "answer": "Polynomial",
-        "clue": "Polynomial Theory of Physical Dimensions (made by Joseph Loyal Ndaguba)"
+        "row": 5,
+        "col": 18,
+        "len": 6,
+        "answer": "Rianna",
+        "clue": "Longest curliest hair"
       },
       {
-        "num": 8,
+        "num": 9,
+        "row": 6,
+        "col": 10,
+        "len": 5,
+        "answer": "Hatem",
+        "clue": "Doesn't talk"
+      },
+      {
+        "num": 10,
+        "row": 6,
+        "col": 21,
+        "len": 7,
+        "answer": "CeciliA",
+        "clue": "Always wearing a grey hoodie"
+      },
+      {
+        "num": 13,
         "row": 7,
         "col": 16,
-        "len": 7,
-        "answer": "SadNess",
-        "clue": "Emotion of no math"
+        "len": 8,
+        "answer": "Enmanual",
+        "clue": "Easily excited about math"
       },
       {
-        "num": 12,
-        "row": 14,
-        "col": 14,
-        "len": 6,
-        "answer": "Euclid",
-        "clue": "Euclidean geometry"
+        "num": 15,
+        "row": 8,
+        "col": 5,
+        "len": 3,
+        "answer": "Van",
+        "clue": "Always carried by his table"
+      },
+      {
+        "num": 16,
+        "row": 9,
+        "col": 13,
+        "len": 8,
+        "answer": "VeroNica",
+        "clue": "Took pictures of peoples feet for their math project"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2024-01-07-334",
-  "slug": "2024-01-07-334",
-  "fetched_at": "2026-07-14T19:10:33.143097+00:00",
+  "source_url": "https://crosswordlabs.com/view/2024-02-28-728",
+  "slug": "2024-02-28-728",
+  "fetched_at": "2026-07-14T19:22:44.912902+00:00",
   "date": "2026-07-25"
 }
