@@ -1,7 +1,7 @@
 {
-  "word": "Hash",
+  "word": "Packet",
   "pos": "noun",
-  "definition": "A fixed-length fingerprint of data, so even a tiny change makes a totally different hash.",
-  "example": "The download's hash proved the file wasn't tampered with.",
+  "definition": "A small chunk of data wrapped with an address and sent across a network.",
+  "example": "Lost packets are why a video call freezes for a second.",
   "date": "2026-07-25"
 }
