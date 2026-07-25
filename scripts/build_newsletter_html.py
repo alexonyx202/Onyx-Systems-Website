@@ -236,7 +236,7 @@ def main():
 <body>
 <article class="wrap doc">
   <div class="mast">
-    <div class="brand"><img src="{header_logo}" alt="ONYX SYSTEMS"> ONYX SYSTEMS</div>
+    <div class="brand"><img src="{header_logo}" alt="ONYX SYSTEMS"></div>
     <div class="tagline">{tagline}</div>
     <div class="date">{weekday}, {month} {ordinal}, {d.year}</div>
   </div>
