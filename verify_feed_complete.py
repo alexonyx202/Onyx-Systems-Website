@@ -71,8 +71,8 @@ KNOWN_PRODUCTS = [
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
 OBTAIN = [
     "http", ".com", ".org", ".io", ".net", "download", "install", "get ",
-    "open settings", "settings >", "settings app", "app store", "microsoft store",
-    "search ", "command", "visit", "sign in", "switch to", "enable",
+    "open ", "open settings", "settings >", "settings app", "app store", "microsoft store",
+    "search ", "command", "visit ", "sign in", "switch to", "enable",
     "set up", "set-up", "turn on", "use ", "try ", "upload", "roll back",
     "rollback", "patch", "update", "isolate", "fix ", "book", "call",
     "text ", "tether", "connect", "configure", "add ", "create",

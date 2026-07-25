@@ -1,6 +1,52 @@
 {
-  "updated": "2026-07-24",
+  "updated": "2026-07-25",
   "items": [
+    {
+      "id": "n-2026-07-25",
+      "type": "newsletter",
+      "date": "2026-07-25",
+      "title": "The FTC Is Not Calling You — It's a Scam",
+      "tag": "Daily Brief",
+      "summary": "title: \"The FTC Is Not Calling You — It's a Scam\"",
+      "comic": "Newsletter - 2026-07-25-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-25-1",
+      "type": "tech-note",
+      "date": "2026-07-25",
+      "title": "FTC scam alert — fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
+      "tag": "Security Alert",
+      "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
+      "cta": {
+        "label": "Call FTC",
+        "href": "tel:+18773824357"
+      }
+    },
+    {
+      "id": "t-2026-07-25-2",
+      "type": "tech-note",
+      "date": "2026-07-25",
+      "title": "Firefox 153 ships Containers by default — separate Work, Personal, Banking, Shopping in one window free",
+      "tag": "Tech Note",
+      "summary": "Open Firefox 153+, click the menu -> New Container Tab -> pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking - Google in your Work Container cannot see your Personal YouTube history. No extension needed; it is built in.",
+      "cta": {
+        "label": "Get Firefox 153",
+        "href": "https://mozilla.org/firefox"
+      }
+    },
+    {
+      "id": "t-2026-07-25-3",
+      "type": "tech-note",
+      "date": "2026-07-25",
+      "title": "Run Llama 3.3 8B locally on 8GB RAM — Ollama + Open WebUI is free, offline, no account needed",
+      "tag": "Tech Note",
+      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run 'ollama run llama3.3:8b' - that is a local model. For a chat UI, run 'docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main' and open localhost:3000. Your prompts never leave your machine.",
+      "cta": {
+        "label": "Get Ollama",
+        "href": "https://ollama.com"
+      }
+    },
     {
       "id": "n-2026-07-24",
       "type": "newsletter",
@@ -74,40 +120,6 @@
       "title": "Stop mixing work and personal in one browser — Firefox Containers keeps them walled off free",
       "tag": "Tech Tip",
       "summary": "Open Firefox, type `about:preferences#containers` in the address bar, enable \"Container Tabs\", then right-click any link → \"Open in New Container Tab\" → pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking — Google in your Wo"
-    },
-    {
-      "id": "t-2026-07-24-3-2026-07-24-175545",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Windows can stop ransomware from encrypting your files — Controlled Folder Access is free and already installed",
-      "tag": "Security Alert",
-      "summary": "Open Windows Security → Virus & threat protection → Manage ransomware protection → turn on Controlled Folder Access. Then click \"Protected folders\" and add your Documents, Pictures, and any work folders. Only whitelisted apps (Office, your editor, browser) can write there — ranso"
-    },
-    {
-      "id": "t-2026-07-24-4-2026-07-24-175545",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Run a private ChatGPT alternative on your own PC — Ollama + Open WebUI is free, offline, and no account needed",
-      "tag": "Privacy",
-      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run `ollama run llama3.2` — that's a local model. For a chat UI, run `docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main` and open localhost:3000. Your prompts never leave your m"
-    },
-    {
-      "id": "t-2026-07-24-5-2026-07-24-175545",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Florida storm season: make a Windows recovery drive NOW — it's the only way back if the power surge kills your OS",
-      "tag": "Storm Prep",
-      "summary": "Plug in a 16GB+ USB stick. Press Win key, type \"recovery drive\", check \"Back up system files to the recovery drive\", click Next → Create. It takes 20-40 minutes. Label it \"Windows recovery drive - [PC Name] - [Date]\" and store it in a ziplock bag. If Windows won't boot after a st"
-    },
-    {
-      "id": "n-2026-07-23",
-      "type": "newsletter",
-      "date": "2026-07-23",
-      "title": "Tech Support Scams: The Phone Call That Costs You Everything",
-      "tag": "Daily Brief",
-      "summary": "title: \"Tech Support Scams: The Phone Call That Costs You Everything\"",
-      "comic": "Newsletter - 2026-07-23-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }

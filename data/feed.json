@@ -100,6 +100,17 @@
   ],
   "news": [
     {
+      "id": "news-2026-07-25",
+      "type": "newsletter",
+      "date": "2026-07-25",
+      "title": "FTC scam alert: fake agents call demanding payment \u2014 hang up, call 1-877-FTC-HELP",
+      "tag": "Security Alert",
+      "excerpt": "Your caller ID says \"FTC.\" The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, demand gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
+      "image": "assets/img/news/2026-07-25-composite.jpg",
+      "comic": "assets/img/news/2026-07-25-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "news-2026-07-24",
       "type": "newsletter",
       "date": "2026-07-24",
@@ -141,17 +152,60 @@
       "image": "assets/img/news/2026-07-18-composite.jpg",
       "comic": "assets/img/news/2026-07-18-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-17",
-      "title": "\ud83d\udd34 ALERT \u2014 7-Zip Just Patched a Dangerous Flaw \u2014 Update Now",
-      "excerpt": "A serious security hole (CVE-2026-14266) was disclosed in 7-Zip, the free file compressor many folks use. Opening a malicious .7z file or a bad webpage could let an attacker run code on your PC \u2014 even drop ransomware. The fix is simple: update 7-Zip to version 26.02 (open 7-Zip, click Help, then Check for Updates).",
-      "image": "assets/img/news/2026-07-17-composite.jpg",
-      "comic": "assets/img/news/2026-07-17-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-07-25-daily-brief-001",
+      "type": "news",
+      "date": "2026-07-25",
+      "title": "ONYX SYSTEMS: FTC scam alert \u2014 fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
+      "tag": "Security Alert",
+      "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
+      "truth": "I have gotten the FTC is calling scam myself \u2014 twice this year. The urgency in their voice is designed to make you panic before you think. Real government agencies do not pressure you to act instantly \u2014 scammers do. The FTC has warned repeatedly that anyone claiming to be an FTC agent with a badge number is lying.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ScamAlert",
+        "#DailyBrief"
+      ],
+      "cta": "Call the FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov if you got this call."
+    },
+    {
+      "id": "onyx-2026-07-25-news-001",
+      "type": "news",
+      "date": "2026-07-25",
+      "title": "ONYX SYSTEMS: Firefox 153 ships Containers by default \u2014 separate Work, Personal, Banking, Shopping in one window free",
+      "tag": "",
+      "summary": "Open Firefox 153+, click the menu -> New Container Tab -> pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking - Google in your Work Container cannot see your Personal YouTube history. No extension needed; it is built in.",
+      "truth": "Most people use Chrome profiles or incognito and think they are separated. They are not - Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it is the single best privacy upgrade that costs zero dollars.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Privacy"
+      ],
+      "cta": "Download Firefox 153+ at mozilla.org/firefox and open Menu -> New Container Tab to start."
+    },
+    {
+      "id": "onyx-2026-07-25-tip-001",
+      "type": "tip",
+      "date": "2026-07-25",
+      "title": "ONYX SYSTEMS: TECH TIP \u2014 Run Llama 3.3 8B locally on 8GB RAM \u2014 Ollama + Open WebUI is free, offline, no account needed",
+      "tag": "Tech Tip",
+      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run ollama run llama3.3:8b - that is a local model. For a chat UI, run docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main and open localhost:3000. Your prompts never leave your machine.",
+      "truth": "Customers ask me which AI should I pay for. The honest answer: if your PC has 8GB+ RAM, you already own a better private AI than any 0/month cloud subscription. I run Llama 3.3 8B on a 5-year-old Dell and it codes, summarizes, and writes emails offline. Cloud AI is convenient; local AI is yours.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#LocalAI",
+        "#Ollama"
+      ],
+      "cta": "Download Ollama at ollama.com, then run ollama run llama3.3:8b. For the web UI, run the Docker command above."
+    },
     {
       "id": "onyx-2026-07-24-security-alert-001",
       "type": "news",
@@ -232,53 +286,7 @@
       ],
       "date": "2026-07-23",
       "id": "n-2026-07-23-2"
-    },
-    {
-      "type": "tip",
-      "headline": "Kill Windows telemetry in 30 seconds with O&O ShutUp10++",
-      "tip": "O&O ShutUp10++ (free at oo-software.com) disables 200+ Windows telemetry and data-collection switches with one click. Run it, click \"Apply recommended,\" reboot. Done. Most debloat scripts break updates \u2014 ShutUp10++ is maintained, safe, and reversible. I run it on every Windows machine that leaves ONYX SYSTEMS.",
-      "truth": "Windows 11 phones home more than a teenager. Most \"debloat\" scripts break updates \u2014 ShutUp10++ is maintained, safe, and reversible.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Privacy",
-        "#Telemetry",
-        "#ShutUp10",
-        "#OOSoftware"
-      ],
-      "date": "2026-07-23",
-      "id": "t-2026-07-23-1"
-    },
-    {
-      "type": "tip",
-      "headline": "Stop fighting codecs \u2014 VLC plays any video or audio file free at videolan.org",
-      "tip": "Download VLC free at videolan.org. It opens every video and music format \u2014 MP4, MKV, AVI, FLAC \u2014 without hunting for a 'codec pack.' No ads, no popups.",
-      "truth": "People pay for a media player or Google 'why won't this file play' for an hour. The honest answer is one free app handles all of it, always has, and never pops an ad.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VLC"
-      ],
-      "date": "2026-07-20",
-      "id": "t-2026-07-20-5"
-    },
-    {
-      "type": "tip",
-      "headline": "Chat with AI privately in your own browser \u2014 Open WebUI is the free local tool at openwebui.com",
-      "tip": "Install Open WebUI free from openwebui.com (or run 'pip install open-webui') and pair it with Ollama to run AI models on your own PC so your chats never leave the house. No subscription, no cloud.",
-      "truth": "Folks worry AI is shipping their documents off to some cloud. The honest answer is you can run the exact same models at home \u2014 your data never leaves the drive, and there's no monthly fee.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#OpenWebUI"
-      ],
-      "date": "2026-07-20",
-      "id": "t-2026-07-20-4"
     }
   ],
-  "updated": "2026-07-24"
+  "updated": "2026-07-25"
 }
