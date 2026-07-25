@@ -1,250 +1,143 @@
 {
-  "title": "Math",
-  "size": 41,
+  "title": "Math Check For Knowledge",
+  "size": 22,
   "grid": [
-    "......................................o..",
-    "......................................b..",
-    "......................................s..",
-    "......................................e..",
-    "...............................bias...r..",
-    "..................................y...v..",
-    "..............n...................s...a..",
-    "..........Randomvariable..........t...t..",
-    "..............r..............sample...i..",
-    "..............m...........c.......m...o..",
-    "..............a...........o..simulation..",
-    "..unbiasedsample..........n.......t...a..",
-    "..............d...........v.......i...l..",
-    ".........invalidsample....i.c.....c...s..",
-    "..............s....a......n.l.....s...t..",
-    ".......normalstandarddistribution.a...u..",
-    ".......o......r....a......e.s.....m...d..",
-    "s..expirement.u....m......n.t.....p...y..",
-    "u......m......b.s.selfselectedsample.....",
-    "randomsample..u.t..t......e.r.....e......",
-    "v......l......t.e..e......s.s............",
-    "e......c......i.p..r......a.a............",
-    "y......u......o.s.........m.m............",
-    ".......r......n.o.........population.....",
-    ".......v........f.........l.l............",
-    ".hypothesis.....s.........e.e............",
-    "..........t.....t........................",
-    "..........a.....a........................",
-    "..........t.....t........................",
-    "....probabilitydistribution..............",
-    "..........s.....s........................",
-    ".........stratiatedsample................",
-    "..........i.....i........................",
-    "..........c.....c........................",
-    "................a........................",
-    "................l........................",
-    "................s........................",
-    "................t........................",
-    "................u........................",
-    "................d........................",
-    "................y........................"
+    "........No............",
+    "....M...d.............",
+    "Pythagoras............",
+    "....t...g....J........",
+    "....h...u....o........",
+    "........b....s....A...",
+    ".......HaPpinesS..l...",
+    ".........o...p.a..g...",
+    ".........l...h.d..e...",
+    ".........y.....Numbers",
+    ".........n.....e..r...",
+    "........Sound..s..a...",
+    ".........m.....s......",
+    "......VariablE........",
+    ".........a...u........",
+    ".........l...c........",
+    ".............l........",
+    ".............i........",
+    ".............d........",
+    "......................",
+    "......................",
+    "......................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 5,
-        "col": 32,
-        "len": 4,
-        "answer": "bias",
-        "clue": "an error that results in a misrepresentation of a population"
+        "num": 1,
+        "row": 1,
+        "col": 9,
+        "len": 2,
+        "answer": "No",
+        "clue": "describe Joseph"
       },
       {
-        "num": 5,
-        "row": 8,
-        "col": 11,
-        "len": 14,
-        "answer": "Randomvariable",
-        "clue": "a variable whose value is determined by the outcomes of a probability expirement"
+        "num": 3,
+        "row": 3,
+        "col": 1,
+        "len": 10,
+        "answer": "Pythagoras",
+        "clue": "Triangle theorem"
       },
       {
         "num": 6,
-        "row": 9,
-        "col": 30,
-        "len": 6,
-        "answer": "sample",
-        "clue": "a subset of a population"
-      },
-      {
-        "num": 8,
-        "row": 11,
-        "col": 30,
-        "len": 10,
-        "answer": "simulation",
-        "clue": "uses a model to reproduce the conditions of a process"
+        "row": 7,
+        "col": 8,
+        "len": 9,
+        "answer": "HaPpinesS",
+        "clue": "Emotion of math"
       },
       {
         "num": 9,
-        "row": 12,
-        "col": 3,
-        "len": 14,
-        "answer": "unbiasedsample",
-        "clue": "representativeof the population"
+        "row": 10,
+        "col": 16,
+        "len": 7,
+        "answer": "Numbers",
+        "clue": "Tools of math"
       },
       {
         "num": 10,
+        "row": 12,
+        "col": 9,
+        "len": 5,
+        "answer": "Sound",
+        "clue": "Doppler Effect"
+      },
+      {
+        "num": 11,
         "row": 14,
-        "col": 10,
-        "len": 13,
-        "answer": "invalidsample",
-        "clue": "a sample drawn from a population deviates somewhat from the true population"
-      },
-      {
-        "num": 13,
-        "row": 16,
-        "col": 8,
-        "len": 26,
-        "answer": "normalstandarddistribution",
-        "clue": "the normal distribution with mean 0 and standard deviation"
-      },
-      {
-        "num": 15,
-        "row": 18,
-        "col": 4,
-        "len": 10,
-        "answer": "expirement",
-        "clue": "imposes a treatment"
-      },
-      {
-        "num": 17,
-        "row": 19,
-        "col": 19,
-        "len": 18,
-        "answer": "selfselectedsample",
-        "clue": "people volenteer for the sample"
-      },
-      {
-        "num": 18,
-        "row": 20,
-        "col": 1,
-        "len": 12,
-        "answer": "randomsample",
-        "clue": "people are randomly selected"
-      },
-      {
-        "num": 19,
-        "row": 24,
-        "col": 27,
-        "len": 10,
-        "answer": "population",
-        "clue": "the collection of all the data that you want info about"
-      },
-      {
-        "num": 20,
-        "row": 26,
-        "col": 2,
-        "len": 10,
-        "answer": "hypothesis",
-        "clue": "a claim about a characteristic of a population"
-      },
-      {
-        "num": 22,
-        "row": 30,
-        "col": 5,
-        "len": 23,
-        "answer": "probabilitydistribution",
-        "clue": "a function that gives the probabilty of each possible value of a random variable"
-      },
-      {
-        "num": 23,
-        "row": 32,
-        "col": 10,
-        "len": 16,
-        "answer": "stratiatedsample",
-        "clue": "group people then pick from each group"
+        "col": 7,
+        "len": 8,
+        "answer": "VariablE",
+        "clue": "Solve for x"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 39,
-        "len": 18,
-        "answer": "observationalstudy",
-        "clue": "observes without controlling"
+        "col": 9,
+        "len": 7,
+        "answer": "Ndaguba",
+        "clue": "Last name math boy"
       },
       {
-        "num": 3,
-        "row": 5,
-        "col": 35,
-        "len": 16,
-        "answer": "systematicsample",
-        "clue": "sample is based on rule"
+        "num": 2,
+        "row": 2,
+        "col": 5,
+        "len": 4,
+        "answer": "Math",
+        "clue": "Fundamental universe"
       },
       {
         "num": 4,
-        "row": 7,
-        "col": 15,
-        "len": 18,
-        "answer": "normaldistrubution",
-        "clue": "a bell shaped curve"
+        "row": 4,
+        "col": 14,
+        "len": 6,
+        "answer": "Joseph",
+        "clue": "First name math boy"
+      },
+      {
+        "num": 5,
+        "row": 6,
+        "col": 19,
+        "len": 7,
+        "answer": "Algebra",
+        "clue": "Study of the unknown"
       },
       {
         "num": 7,
-        "row": 10,
-        "col": 27,
-        "len": 17,
-        "answer": "conviniencesample",
-        "clue": "sample those who are convenient"
+        "row": 7,
+        "col": 10,
+        "len": 10,
+        "answer": "Polynomial",
+        "clue": "Polynomial Theory of Physical Dimensions (made by Joseph Loyal Ndaguba)"
       },
       {
-        "num": 11,
-        "row": 14,
-        "col": 20,
-        "len": 9,
-        "answer": "parameter",
-        "clue": "a numerical description of a population"
+        "num": 8,
+        "row": 7,
+        "col": 16,
+        "len": 7,
+        "answer": "SadNess",
+        "clue": "Emotion of no math"
       },
       {
         "num": 12,
         "row": 14,
-        "col": 29,
-        "len": 13,
-        "answer": "clustersample",
-        "clue": "group people then pick one whole group"
-      },
-      {
-        "num": 13,
-        "row": 16,
-        "col": 8,
-        "len": 11,
-        "answer": "normalcurve",
-        "clue": "symmetric about the mean"
-      },
-      {
-        "num": 14,
-        "row": 18,
-        "col": 1,
+        "col": 14,
         "len": 6,
-        "answer": "survey",
-        "clue": "every member of sample is asked questions"
-      },
-      {
-        "num": 16,
-        "row": 19,
-        "col": 17,
-        "len": 23,
-        "answer": "stepsofstatisticalstudy",
-        "clue": "collecting and analyzing large volumes of data to find trends and develop insights"
-      },
-      {
-        "num": 21,
-        "row": 26,
-        "col": 11,
-        "len": 9,
-        "answer": "statistic",
-        "clue": "a numerical representation of a sample"
+        "answer": "Euclid",
+        "clue": "Euclidean geometry"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2023-11-07-822",
-  "slug": "2023-11-07-822",
-  "fetched_at": "2026-07-14T19:13:12.297583+00:00",
+  "source_url": "https://crosswordlabs.com/view/2024-01-07-334",
+  "slug": "2024-01-07-334",
+  "fetched_at": "2026-07-14T19:10:33.143097+00:00",
   "date": "2026-07-25"
 }
