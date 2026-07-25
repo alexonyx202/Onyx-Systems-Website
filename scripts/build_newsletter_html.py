@@ -137,8 +137,39 @@ def find_section(md, marker_prefix):
 
 
 def bullets(md):
-    items = re.findall(r"^\s*[-•*]\s+(.+)$", md, re.MULTILINE)
-    return [i.strip() for i in items if i.strip()]
+    """Extract bullet items, including multi-line continuations.
+    A bullet starts with [-•*] at line start. Continuation lines are indented
+    or have no bullet and follow immediately. Stop at blank line or next section."""
+    lines = md.split('\n')
+    items = []
+    current = None
+    for ln in lines:
+        m = re.match(r'^\s*([-•*])\s+(.+)$', ln)
+        if m:
+            # Save previous bullet
+            if current is not None:
+                items.append(current.strip())
+            current = m.group(2)
+        elif current is not None:
+            # Check if this is a continuation line (indented or no bullet, not blank)
+            if ln.strip() == '':
+                # Blank line ends the current bullet
+                items.append(current.strip())
+                current = None
+            elif re.match(r'^\s*[-•*]', ln):
+                # New bullet starts
+                items.append(current.strip())
+                current = None
+                # Re-process this line as a new bullet
+                m2 = re.match(r'^\s*([-•*])\s+(.+)$', ln)
+                if m2:
+                    current = m2.group(2)
+            else:
+                # Continuation line - append with space
+                current = (current + ' ' + ln.strip())
+    if current is not None:
+        items.append(current.strip())
+    return [i for i in items if i.strip()]
 
 
 def main():
@@ -232,9 +263,6 @@ def main():
       <img src="{comic}" alt="{comic_alt}">
       <div class="cap">{comic_caption}</div>
     </div>
-  </div>
-  <div class="card">
-    <img src="{business_card}" alt="ONYX SYSTEMS business card">
   </div>
 </article>
 <div class="foot">— John @ ONYX SYSTEMS ✌️</div>
