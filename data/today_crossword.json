@@ -1,201 +1,260 @@
 {
-  "title": "Math",
-  "size": 24,
+  "title": "math",
+  "size": 35,
   "grid": [
-    ".......H................",
-    ".......i................",
-    ".H.....s.TErm...........",
-    ".y.....t..x.............",
-    "Operation.p.............",
-    ".o.....g.Mode...........",
-    ".t.....r..n.............",
-    ".e.....AlgebRa..........",
-    ".n.....m..n.a...........",
-    ".u........t.n...........",
-    ".s.......Q..g...F.......",
-    ".e.......u.SecTor.......",
-    ".....Ratio.y..r.e.......",
-    ".........t.m..a.q.......",
-    ".........i.m..p.u.......",
-    ".........e.e..e.e.V.....",
-    "........Unit..z.n.o..P..",
-    ".........t.r..o.Calculus",
-    "...........y.Pi.y.u..a..",
-    "..............d...m..n..",
-    ".................Vertex.",
-    "........................",
-    "........................",
-    "........................"
+    "..N................................",
+    "..a....P......................D....",
+    "..t....a......................i....",
+    "..u....l................I.....r....",
+    "..r....i...E......CounTingNumbers..",
+    "Fraction...v..........w.t.....c....",
+    "..l....d...e.....L....i.e.....t....",
+    "..N....r...n.....C....n.g.....e....",
+    "..u....o...N.....Multiple.....d....",
+    "..m....m...u..........r.r.....N....",
+    "..b....i...m..C..B....i.......u....",
+    "..e....c...b..u..OddNumber..Symbols",
+    "..r....N...e..b..d..a.e.......b....",
+    ".......u..PrImeNumbers...BracketS..",
+    ".......m....n....a..c.........r.q..",
+    ".......b....d....s..i.........s.u..",
+    "....CubeNumbers.....s......H....a..",
+    ".......r....x.......s......C....r..",
+    "............N...SignificantFigure..",
+    "............o.......t...........N..",
+    "....PrimeFactors....i...........u..",
+    "............a.......c...........m..",
+    "......FactorTree....N...........b..",
+    "............i.......u...........e..",
+    "............o.....CompositeNumbers.",
+    "............n.......b...........s..",
+    "....................e..............",
+    "....................RoundingNumbers",
+    "...................................",
+    "...................................",
+    "...................................",
+    "...................................",
+    "...................................",
+    "...................................",
+    "..................................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 3,
-        "col": 10,
-        "len": 4,
-        "answer": "TErm",
-        "clue": "Piece of an algebraic equation"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 1,
-        "len": 9,
-        "answer": "Operation",
-        "clue": "Refers to addition, subtraction, multiplication, or division."
-      },
-      {
         "num": 6,
+        "row": 5,
+        "col": 19,
+        "len": 15,
+        "answer": "CounTingNumbers",
+        "clue": "any whole number without zero"
+      },
+      {
+        "num": 8,
         "row": 6,
-        "col": 10,
-        "len": 4,
-        "answer": "Mode",
-        "clue": "The __ in a list of numbers are the values that occur most frequently"
+        "col": 1,
+        "len": 8,
+        "answer": "Fraction",
+        "clue": "a number representing parts of a whole number"
       },
       {
-        "num": 7,
-        "row": 8,
-        "col": 8,
-        "len": 7,
-        "answer": "AlgebRa",
-        "clue": "The branch of mathematics that substitutes letters for numbers to solve for unknown values"
-      },
-      {
-        "num": 11,
-        "row": 12,
-        "col": 12,
-        "len": 6,
-        "answer": "SecTor",
-        "clue": "The area between an arc and two radii of a circle"
+        "num": 10,
+        "row": 9,
+        "col": 18,
+        "len": 8,
+        "answer": "Multiple",
+        "clue": "found when you multiply a number by a positive integer"
       },
       {
         "num": 13,
-        "row": 13,
-        "col": 6,
-        "len": 5,
-        "answer": "Ratio",
-        "clue": "The relationship between two quantities."
+        "row": 12,
+        "col": 18,
+        "len": 9,
+        "answer": "OddNumber",
+        "clue": "a number that can't be divided by two exactly"
       },
       {
         "num": 15,
-        "row": 17,
-        "col": 9,
-        "len": 4,
-        "answer": "Unit",
-        "clue": "A standard quantity used in measurement."
+        "row": 12,
+        "col": 29,
+        "len": 7,
+        "answer": "Symbols",
+        "clue": "used to write mathemathical information in the shortest clearest way"
       },
       {
-        "num": 17,
-        "row": 18,
-        "col": 17,
-        "len": 8,
-        "answer": "Calculus",
-        "clue": "The branch of mathematics involving derivatives and integrals"
+        "num": 16,
+        "row": 14,
+        "col": 11,
+        "len": 12,
+        "answer": "PrImeNumbers",
+        "clue": "has two factors only"
       },
       {
         "num": 18,
-        "row": 19,
-        "col": 14,
-        "len": 2,
-        "answer": "Pi",
-        "clue": "__ is used to represent the ratio of the circumference of a circle to its diameter"
+        "row": 14,
+        "col": 26,
+        "len": 8,
+        "answer": "BracketS",
+        "clue": "the most common grouping symbols in mathematics"
       },
       {
-        "num": 19,
+        "num": 20,
+        "row": 17,
+        "col": 5,
+        "len": 11,
+        "answer": "CubeNumbers",
+        "clue": "can be arrange to form a solid cube shape"
+      },
+      {
+        "num": 22,
+        "row": 19,
+        "col": 17,
+        "len": 17,
+        "answer": "SignificantFigure",
+        "clue": "To reflect the degree of accuracy"
+      },
+      {
+        "num": 23,
         "row": 21,
-        "col": 18,
-        "len": 6,
-        "answer": "Vertex",
-        "clue": "The point of intersection between two or more rays, often called a corner"
+        "col": 5,
+        "len": 12,
+        "answer": "PrimeFactors",
+        "clue": "a factor of a number that are also prime numbers"
+      },
+      {
+        "num": 24,
+        "row": 23,
+        "col": 7,
+        "len": 10,
+        "answer": "FactorTree",
+        "clue": "a diagram that is used to find all the factors"
+      },
+      {
+        "num": 25,
+        "row": 25,
+        "col": 19,
+        "len": 16,
+        "answer": "CompositeNumbers",
+        "clue": "a number that has two or more factors"
+      },
+      {
+        "num": 26,
+        "row": 28,
+        "col": 21,
+        "len": 15,
+        "answer": "RoundingNumbers",
+        "clue": "adjusting the digits of a number in such a way that it gives an approximate value"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 8,
-        "len": 9,
-        "answer": "HistogrAm",
-        "clue": "A graph that uses bars that equal ranges of values."
+        "col": 3,
+        "len": 13,
+        "answer": "NaturalNumber",
+        "clue": "Any whole number from 1 to infinite (0 not included)"
       },
       {
         "num": 2,
-        "row": 3,
-        "col": 2,
-        "len": 10,
-        "answer": "Hypotenuse",
-        "clue": "The longest side of a right-angled triangle, always opposite to the right angle itself."
+        "row": 2,
+        "col": 8,
+        "len": 17,
+        "answer": "PalindromicNumber",
+        "clue": "numbers when flipped is the same number"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 31,
+        "len": 15,
+        "answer": "DirectedNumbers",
+        "clue": "When numbers are used to process real life instruction"
       },
       {
         "num": 4,
-        "row": 3,
-        "col": 11,
-        "len": 8,
-        "answer": "Exponent",
-        "clue": "The number that denotes repeated multiplication of a term"
+        "row": 4,
+        "col": 25,
+        "len": 7,
+        "answer": "Integer",
+        "clue": "both positive and negative including zero"
       },
       {
-        "num": 8,
-        "row": 8,
-        "col": 13,
-        "len": 5,
-        "answer": "Range",
-        "clue": "The difference between the maximum and minimum in a set of data"
+        "num": 5,
+        "row": 5,
+        "col": 12,
+        "len": 10,
+        "answer": "EvenNumber",
+        "clue": "a number that can be divided by two exactly"
+      },
+      {
+        "num": 7,
+        "row": 5,
+        "col": 23,
+        "len": 9,
+        "answer": "Twinprime",
+        "clue": "pairs of prime numbers that differ by two"
       },
       {
         "num": 9,
-        "row": 11,
-        "col": 10,
-        "len": 8,
-        "answer": "Quotient",
-        "clue": "The solution to a division problem."
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 17,
-        "len": 9,
-        "answer": "FrequenCy",
-        "clue": "The number of times an event can happen in a given period of time"
+        "row": 7,
+        "col": 18,
+        "len": 3,
+        "answer": "LCM",
+        "clue": "the lowest number that is a multiple"
       },
       {
         "num": 11,
-        "row": 12,
-        "col": 12,
-        "len": 8,
-        "answer": "Symmetry",
-        "clue": "Two halves that match perfectly and are identical across an axis."
+        "row": 11,
+        "col": 15,
+        "len": 4,
+        "answer": "Cube",
+        "clue": "the result of multiply that number by itself three times"
       },
       {
         "num": 12,
-        "row": 12,
-        "col": 15,
-        "len": 9,
-        "answer": "Trapezoid",
-        "clue": "A quadrilateral with exactly two parallel sides"
+        "row": 11,
+        "col": 18,
+        "len": 6,
+        "answer": "BOdmas",
+        "clue": "to represent the order of operation"
       },
       {
         "num": 14,
-        "row": 16,
-        "col": 19,
-        "len": 6,
-        "answer": "Volume",
-        "clue": "A unit of measure describing how much space a substance occupies or the capacity of a container,"
+        "row": 12,
+        "col": 21,
+        "len": 17,
+        "answer": "NarcissiticNumbeR",
+        "clue": "one that is the sum of its own digit each raised to the power of the number of digits"
       },
       {
-        "num": 16,
+        "num": 17,
+        "row": 14,
+        "col": 13,
+        "len": 13,
+        "answer": "IndexNotaTion",
+        "clue": "Way of representing numbers and variables that has been multiplied by themself"
+      },
+      {
+        "num": 19,
+        "row": 14,
+        "col": 33,
+        "len": 13,
+        "answer": "SquareNumbers",
+        "clue": "can be arrange to form a square"
+      },
+      {
+        "num": 21,
         "row": 17,
-        "col": 22,
-        "len": 5,
-        "answer": "Plane",
-        "clue": "When a set of points join together to form a flat surface that extends in all directions"
+        "col": 28,
+        "len": 3,
+        "answer": "HCF",
+        "clue": "the highest number that is a factor"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2024-06-25-192",
-  "slug": "2024-06-25-192",
-  "fetched_at": "2026-07-14T19:16:07.089848+00:00",
+  "source_url": "https://crosswordlabs.com/view/2024-11-13-243",
+  "slug": "2024-11-13-243",
+  "fetched_at": "2026-07-14T19:16:11.179849+00:00",
   "date": "2026-07-25"
 }
