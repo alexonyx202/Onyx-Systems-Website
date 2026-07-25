@@ -1,156 +1,217 @@
 {
-  "title": "MATH",
-  "size": 22,
+  "title": "Math & Trigo Crossword Puzzle",
+  "size": 40,
   "grid": [
-    "...I..................",
-    "...r..................",
-    ".M.r...D..............",
-    "Parabola..............",
-    ".t.t...t...F..........",
-    ".h.i..Maximum.........",
-    "Zero.......n..........",
-    ".m.n.......c..........",
-    ".a.a.Substitute.......",
-    ".t.l.......i...C......",
-    ".i........BoxPlot.....",
-    ".c.........n.i.r......",
-    ".s.............r......",
-    "............Algebra...",
-    "...............l...G..",
-    "...............a...r..",
-    "..............Standard",
-    "...............i...p..",
-    "...............o...h..",
-    "............Change....",
-    "......................",
-    "......................"
+    "........................C...............",
+    "........................o...............",
+    "........................m...............",
+    "........................m...............",
+    "........................o...............",
+    "..................Adjacent..............",
+    "........................D...............",
+    "........................i...............",
+    "..........S.............f....P..........",
+    ".......Acute............f....a..........",
+    "..........r............GeometricSequence",
+    "..........a...R.........r....t..........",
+    "..........i...i.........e....i..........",
+    "..........g...g....Harmonicmeans........",
+    "..........h...h.........c....l..........",
+    ".......AritHmeticSequence....S..........",
+    "...........a.................u..........",
+    ".....GoldenRatioFormula......m..........",
+    "...........m.................s..........",
+    "...........o.....H......................",
+    "...........n.....y......................",
+    ".....P..Series...p......................",
+    ".....l.....c.....Obtuse.................",
+    ".....a.....S.....t......................",
+    ".FibonacciSequence......................",
+    ".....e.....q.....n......................",
+    ".....T.....u.....u......................",
+    ".....r.....e.....s......................",
+    ".....i.JohannMuller.....................",
+    ".....g.....c............................",
+    ".....o.....e............................",
+    ".....n..................................",
+    ".....OppositeSide.......................",
+    ".....m..................................",
+    ".....e....R.............................",
+    "GeometricSeries.........................",
+    ".....r....f.............................",
+    ".....y....l.............................",
+    "..........e.............................",
+    "..........x............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 4,
-        "col": 1,
+        "num": 2,
+        "row": 6,
+        "col": 19,
         "len": 8,
-        "answer": "Parabola",
-        "clue": "Has a vertex, is symmetrical, and may have y int"
+        "answer": "Adjacent",
+        "clue": "The side is other than the opposite side. (Trigo)"
+      },
+      {
+        "num": 5,
+        "row": 10,
+        "col": 8,
+        "len": 5,
+        "answer": "Acute",
+        "clue": "An angle less than 90 degrees. (Trigo)"
       },
       {
         "num": 6,
-        "row": 6,
-        "col": 7,
-        "len": 7,
-        "answer": "Maximum",
-        "clue": "The largest amount of something"
-      },
-      {
-        "num": 7,
-        "row": 7,
-        "col": 1,
-        "len": 4,
-        "answer": "Zero",
-        "clue": "There is none"
+        "row": 11,
+        "col": 24,
+        "len": 17,
+        "answer": "GeometricSequence",
+        "clue": "A sequence where each term is a multiple of the previous term. (Math)"
       },
       {
         "num": 8,
-        "row": 9,
-        "col": 6,
-        "len": 10,
-        "answer": "Substitute",
-        "clue": "When the teacher is sick"
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 11,
-        "len": 7,
-        "answer": "BoxPlot",
-        "clue": "Displays the 5 number summary of data (2wds)"
-      },
-      {
-        "num": 12,
         "row": 14,
-        "col": 13,
-        "len": 7,
-        "answer": "Algebra",
-        "clue": "It's not just numbers anymore"
+        "col": 20,
+        "len": 13,
+        "answer": "Harmonicmeans",
+        "clue": "Terms between two terms of a geometric sequence. (Math)"
+      },
+      {
+        "num": 9,
+        "row": 16,
+        "col": 8,
+        "len": 18,
+        "answer": "AritHmeticSequence",
+        "clue": "A sequence of numbers such that the difference between two consecutive terms is a constant. (Math)"
+      },
+      {
+        "num": 11,
+        "row": 18,
+        "col": 6,
+        "len": 18,
+        "answer": "GoldenRatioFormula",
+        "clue": "Used to determine the values of the terms in the Fibonacci sequence. (Math)"
       },
       {
         "num": 14,
-        "row": 17,
-        "col": 15,
-        "len": 8,
-        "answer": "Standard",
-        "clue": "Ax^2+bx+C"
+        "row": 22,
+        "col": 9,
+        "len": 6,
+        "answer": "Series",
+        "clue": "The sum of its first n terms. (Math)"
       },
       {
         "num": 15,
-        "row": 20,
-        "col": 13,
+        "row": 23,
+        "col": 18,
         "len": 6,
-        "answer": "Change",
-        "clue": "Average Rate of _______"
+        "answer": "Obtuse",
+        "clue": "An angle of more than 90 degrees, but less than 180 degrees. (Trigo)"
+      },
+      {
+        "num": 16,
+        "row": 25,
+        "col": 2,
+        "len": 17,
+        "answer": "FibonacciSequence",
+        "clue": "A sequence whose first two terms are and the succeeding terms are formed by adding the preceding two terms.(Math)"
+      },
+      {
+        "num": 17,
+        "row": 29,
+        "col": 8,
+        "len": 12,
+        "answer": "JohannMuller",
+        "clue": "Translated the \"Almagest\". (Trigo)"
+      },
+      {
+        "num": 18,
+        "row": 33,
+        "col": 6,
+        "len": 12,
+        "answer": "OppositeSide",
+        "clue": "The side opposite of the given angle. (Trigo)"
+      },
+      {
+        "num": 20,
+        "row": 36,
+        "col": 1,
+        "len": 15,
+        "answer": "GeometricSeries",
+        "clue": "The sum of the terms of a geometric sequence. (Math)"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 4,
-        "len": 10,
-        "answer": "Irrational",
-        "clue": "Not logistical"
-      },
-      {
-        "num": 2,
-        "row": 3,
-        "col": 2,
-        "len": 11,
-        "answer": "Mathematics",
-        "clue": "A fancy way of saying math"
+        "col": 25,
+        "len": 16,
+        "answer": "CommonDifference",
+        "clue": "The constant number for the difference between two consecutive terms. (Math)"
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 8,
-        "len": 4,
-        "answer": "Data",
-        "clue": "Facts and statistics gathered for analysis"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 12,
+        "row": 9,
+        "col": 11,
         "len": 8,
-        "answer": "Function",
-        "clue": "Use the vertical line test"
+        "answer": "Straight",
+        "clue": "An angle of exactly 180 degrees. (Trigo)"
       },
       {
-        "num": 9,
-        "row": 10,
-        "col": 16,
+        "num": 4,
+        "row": 9,
+        "col": 30,
         "len": 11,
-        "answer": "Correlation",
-        "clue": "Nicholas Cage does not CAUSE drowning"
+        "answer": "PartialSums",
+        "clue": "are obtained by finding the sum of the first n terms of an infinite series. (Math)"
       },
       {
-        "num": 11,
-        "row": 11,
-        "col": 14,
-        "len": 2,
-        "answer": "Pi",
-        "clue": "Dessert but math"
+        "num": 7,
+        "row": 12,
+        "col": 15,
+        "len": 5,
+        "answer": "Right",
+        "clue": "An angle of exactly 90 degrees. (Trigo)"
+      },
+      {
+        "num": 10,
+        "row": 16,
+        "col": 12,
+        "len": 16,
+        "answer": "HaRmonicSequence",
+        "clue": "A sequence of numbers whose terms are just the reciprocals of an arithmetic sequence. (Math)"
+      },
+      {
+        "num": 12,
+        "row": 20,
+        "col": 18,
+        "len": 10,
+        "answer": "HypOtenuse",
+        "clue": "The side opposite of the right angle. (Trigo)"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 20,
-        "len": 5,
-        "answer": "Graph",
-        "clue": "A way of presenting data"
+        "row": 22,
+        "col": 6,
+        "len": 17,
+        "answer": "PlaneTrigonOmetry",
+        "clue": "Studies the properties of a triangle in a plane and its two-dimensional. (Trigo)"
+      },
+      {
+        "num": 19,
+        "row": 35,
+        "col": 11,
+        "len": 6,
+        "answer": "Reflex",
+        "clue": "An angle of more than 180 degrees, but less than 360 degrees (Trigo)"
       }
     ]
   },
   "category": "math",
-  "date": "2026-07-24"
+  "source_url": "https://crosswordlabs.com/view/2023-11-07-245",
+  "slug": "2023-11-07-245",
+  "fetched_at": "2026-07-14T19:10:08.290833+00:00",
+  "date": "2026-07-25"
 }
