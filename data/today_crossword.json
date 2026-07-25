@@ -1,217 +1,250 @@
 {
-  "title": "Math & Trigo Crossword Puzzle",
-  "size": 40,
+  "title": "Math",
+  "size": 41,
   "grid": [
-    "........................C...............",
-    "........................o...............",
-    "........................m...............",
-    "........................m...............",
-    "........................o...............",
-    "..................Adjacent..............",
-    "........................D...............",
-    "........................i...............",
-    "..........S.............f....P..........",
-    ".......Acute............f....a..........",
-    "..........r............GeometricSequence",
-    "..........a...R.........r....t..........",
-    "..........i...i.........e....i..........",
-    "..........g...g....Harmonicmeans........",
-    "..........h...h.........c....l..........",
-    ".......AritHmeticSequence....S..........",
-    "...........a.................u..........",
-    ".....GoldenRatioFormula......m..........",
-    "...........m.................s..........",
-    "...........o.....H......................",
-    "...........n.....y......................",
-    ".....P..Series...p......................",
-    ".....l.....c.....Obtuse.................",
-    ".....a.....S.....t......................",
-    ".FibonacciSequence......................",
-    ".....e.....q.....n......................",
-    ".....T.....u.....u......................",
-    ".....r.....e.....s......................",
-    ".....i.JohannMuller.....................",
-    ".....g.....c............................",
-    ".....o.....e............................",
-    ".....n..................................",
-    ".....OppositeSide.......................",
-    ".....m..................................",
-    ".....e....R.............................",
-    "GeometricSeries.........................",
-    ".....r....f.............................",
-    ".....y....l.............................",
-    "..........e.............................",
-    "..........x............................."
+    "......................................o..",
+    "......................................b..",
+    "......................................s..",
+    "......................................e..",
+    "...............................bias...r..",
+    "..................................y...v..",
+    "..............n...................s...a..",
+    "..........Randomvariable..........t...t..",
+    "..............r..............sample...i..",
+    "..............m...........c.......m...o..",
+    "..............a...........o..simulation..",
+    "..unbiasedsample..........n.......t...a..",
+    "..............d...........v.......i...l..",
+    ".........invalidsample....i.c.....c...s..",
+    "..............s....a......n.l.....s...t..",
+    ".......normalstandarddistribution.a...u..",
+    ".......o......r....a......e.s.....m...d..",
+    "s..expirement.u....m......n.t.....p...y..",
+    "u......m......b.s.selfselectedsample.....",
+    "randomsample..u.t..t......e.r.....e......",
+    "v......l......t.e..e......s.s............",
+    "e......c......i.p..r......a.a............",
+    "y......u......o.s.........m.m............",
+    ".......r......n.o.........population.....",
+    ".......v........f.........l.l............",
+    ".hypothesis.....s.........e.e............",
+    "..........t.....t........................",
+    "..........a.....a........................",
+    "..........t.....t........................",
+    "....probabilitydistribution..............",
+    "..........s.....s........................",
+    ".........stratiatedsample................",
+    "..........i.....i........................",
+    "..........c.....c........................",
+    "................a........................",
+    "................l........................",
+    "................s........................",
+    "................t........................",
+    "................u........................",
+    "................d........................",
+    "................y........................"
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 6,
-        "col": 19,
-        "len": 8,
-        "answer": "Adjacent",
-        "clue": "The side is other than the opposite side. (Trigo)"
+        "row": 5,
+        "col": 32,
+        "len": 4,
+        "answer": "bias",
+        "clue": "an error that results in a misrepresentation of a population"
       },
       {
         "num": 5,
-        "row": 10,
-        "col": 8,
-        "len": 5,
-        "answer": "Acute",
-        "clue": "An angle less than 90 degrees. (Trigo)"
+        "row": 8,
+        "col": 11,
+        "len": 14,
+        "answer": "Randomvariable",
+        "clue": "a variable whose value is determined by the outcomes of a probability expirement"
       },
       {
         "num": 6,
-        "row": 11,
-        "col": 24,
-        "len": 17,
-        "answer": "GeometricSequence",
-        "clue": "A sequence where each term is a multiple of the previous term. (Math)"
+        "row": 9,
+        "col": 30,
+        "len": 6,
+        "answer": "sample",
+        "clue": "a subset of a population"
       },
       {
         "num": 8,
-        "row": 14,
-        "col": 20,
-        "len": 13,
-        "answer": "Harmonicmeans",
-        "clue": "Terms between two terms of a geometric sequence. (Math)"
+        "row": 11,
+        "col": 30,
+        "len": 10,
+        "answer": "simulation",
+        "clue": "uses a model to reproduce the conditions of a process"
       },
       {
         "num": 9,
+        "row": 12,
+        "col": 3,
+        "len": 14,
+        "answer": "unbiasedsample",
+        "clue": "representativeof the population"
+      },
+      {
+        "num": 10,
+        "row": 14,
+        "col": 10,
+        "len": 13,
+        "answer": "invalidsample",
+        "clue": "a sample drawn from a population deviates somewhat from the true population"
+      },
+      {
+        "num": 13,
         "row": 16,
         "col": 8,
-        "len": 18,
-        "answer": "AritHmeticSequence",
-        "clue": "A sequence of numbers such that the difference between two consecutive terms is a constant. (Math)"
-      },
-      {
-        "num": 11,
-        "row": 18,
-        "col": 6,
-        "len": 18,
-        "answer": "GoldenRatioFormula",
-        "clue": "Used to determine the values of the terms in the Fibonacci sequence. (Math)"
-      },
-      {
-        "num": 14,
-        "row": 22,
-        "col": 9,
-        "len": 6,
-        "answer": "Series",
-        "clue": "The sum of its first n terms. (Math)"
+        "len": 26,
+        "answer": "normalstandarddistribution",
+        "clue": "the normal distribution with mean 0 and standard deviation"
       },
       {
         "num": 15,
-        "row": 23,
-        "col": 18,
-        "len": 6,
-        "answer": "Obtuse",
-        "clue": "An angle of more than 90 degrees, but less than 180 degrees. (Trigo)"
-      },
-      {
-        "num": 16,
-        "row": 25,
-        "col": 2,
-        "len": 17,
-        "answer": "FibonacciSequence",
-        "clue": "A sequence whose first two terms are and the succeeding terms are formed by adding the preceding two terms.(Math)"
+        "row": 18,
+        "col": 4,
+        "len": 10,
+        "answer": "expirement",
+        "clue": "imposes a treatment"
       },
       {
         "num": 17,
-        "row": 29,
-        "col": 8,
-        "len": 12,
-        "answer": "JohannMuller",
-        "clue": "Translated the \"Almagest\". (Trigo)"
+        "row": 19,
+        "col": 19,
+        "len": 18,
+        "answer": "selfselectedsample",
+        "clue": "people volenteer for the sample"
       },
       {
         "num": 18,
-        "row": 33,
-        "col": 6,
+        "row": 20,
+        "col": 1,
         "len": 12,
-        "answer": "OppositeSide",
-        "clue": "The side opposite of the given angle. (Trigo)"
+        "answer": "randomsample",
+        "clue": "people are randomly selected"
+      },
+      {
+        "num": 19,
+        "row": 24,
+        "col": 27,
+        "len": 10,
+        "answer": "population",
+        "clue": "the collection of all the data that you want info about"
       },
       {
         "num": 20,
-        "row": 36,
-        "col": 1,
-        "len": 15,
-        "answer": "GeometricSeries",
-        "clue": "The sum of the terms of a geometric sequence. (Math)"
+        "row": 26,
+        "col": 2,
+        "len": 10,
+        "answer": "hypothesis",
+        "clue": "a claim about a characteristic of a population"
+      },
+      {
+        "num": 22,
+        "row": 30,
+        "col": 5,
+        "len": 23,
+        "answer": "probabilitydistribution",
+        "clue": "a function that gives the probabilty of each possible value of a random variable"
+      },
+      {
+        "num": 23,
+        "row": 32,
+        "col": 10,
+        "len": 16,
+        "answer": "stratiatedsample",
+        "clue": "group people then pick from each group"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 25,
-        "len": 16,
-        "answer": "CommonDifference",
-        "clue": "The constant number for the difference between two consecutive terms. (Math)"
+        "col": 39,
+        "len": 18,
+        "answer": "observationalstudy",
+        "clue": "observes without controlling"
       },
       {
         "num": 3,
-        "row": 9,
-        "col": 11,
-        "len": 8,
-        "answer": "Straight",
-        "clue": "An angle of exactly 180 degrees. (Trigo)"
+        "row": 5,
+        "col": 35,
+        "len": 16,
+        "answer": "systematicsample",
+        "clue": "sample is based on rule"
       },
       {
         "num": 4,
-        "row": 9,
-        "col": 30,
-        "len": 11,
-        "answer": "PartialSums",
-        "clue": "are obtained by finding the sum of the first n terms of an infinite series. (Math)"
+        "row": 7,
+        "col": 15,
+        "len": 18,
+        "answer": "normaldistrubution",
+        "clue": "a bell shaped curve"
       },
       {
         "num": 7,
-        "row": 12,
-        "col": 15,
-        "len": 5,
-        "answer": "Right",
-        "clue": "An angle of exactly 90 degrees. (Trigo)"
+        "row": 10,
+        "col": 27,
+        "len": 17,
+        "answer": "conviniencesample",
+        "clue": "sample those who are convenient"
       },
       {
-        "num": 10,
-        "row": 16,
-        "col": 12,
-        "len": 16,
-        "answer": "HaRmonicSequence",
-        "clue": "A sequence of numbers whose terms are just the reciprocals of an arithmetic sequence. (Math)"
+        "num": 11,
+        "row": 14,
+        "col": 20,
+        "len": 9,
+        "answer": "parameter",
+        "clue": "a numerical description of a population"
       },
       {
         "num": 12,
-        "row": 20,
-        "col": 18,
-        "len": 10,
-        "answer": "HypOtenuse",
-        "clue": "The side opposite of the right angle. (Trigo)"
+        "row": 14,
+        "col": 29,
+        "len": 13,
+        "answer": "clustersample",
+        "clue": "group people then pick one whole group"
       },
       {
         "num": 13,
-        "row": 22,
-        "col": 6,
-        "len": 17,
-        "answer": "PlaneTrigonOmetry",
-        "clue": "Studies the properties of a triangle in a plane and its two-dimensional. (Trigo)"
+        "row": 16,
+        "col": 8,
+        "len": 11,
+        "answer": "normalcurve",
+        "clue": "symmetric about the mean"
       },
       {
-        "num": 19,
-        "row": 35,
-        "col": 11,
+        "num": 14,
+        "row": 18,
+        "col": 1,
         "len": 6,
-        "answer": "Reflex",
-        "clue": "An angle of more than 180 degrees, but less than 360 degrees (Trigo)"
+        "answer": "survey",
+        "clue": "every member of sample is asked questions"
+      },
+      {
+        "num": 16,
+        "row": 19,
+        "col": 17,
+        "len": 23,
+        "answer": "stepsofstatisticalstudy",
+        "clue": "collecting and analyzing large volumes of data to find trends and develop insights"
+      },
+      {
+        "num": 21,
+        "row": 26,
+        "col": 11,
+        "len": 9,
+        "answer": "statistic",
+        "clue": "a numerical representation of a sample"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2023-11-07-245",
-  "slug": "2023-11-07-245",
-  "fetched_at": "2026-07-14T19:10:08.290833+00:00",
+  "source_url": "https://crosswordlabs.com/view/2023-11-07-822",
+  "slug": "2023-11-07-822",
+  "fetched_at": "2026-07-14T19:13:12.297583+00:00",
   "date": "2026-07-25"
 }
