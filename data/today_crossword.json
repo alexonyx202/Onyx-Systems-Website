@@ -1,218 +1,209 @@
 {
-  "title": "Math Class Crossword",
-  "size": 25,
+  "title": "math",
+  "size": 32,
   "grid": [
-    ".....Alex.F..............",
-    ".....n....i..............",
-    ".....d....m..............",
-    ".....RyAn.b..............",
-    "...S.e.l..l..R...R.......",
-    "Josh.s.e.Henry...i..C....",
-    "...a...Xia...AlExander...",
-    "..DeVika.t...n.n.n..c....",
-    "....a....e..V..m.n..i....",
-    "....n....m..e.Dana.Alexy.",
-    "............r..n....i....",
-    "............o..u....Asher",
-    "............Novak........",
-    "............i..l.........",
-    "............c............",
-    "............a............",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    "........................."
+    ".......................P........",
+    ".......................y........",
+    ".......................t........",
+    ".......................h........",
+    ".....................scatterplot",
+    ".......................g........",
+    "................i...h..o...t....",
+    "..........p.sphere..y..r...r....",
+    "......square....r...p..e...e....",
+    "......l...i...transformation....",
+    "function..m.....t...t..n...d....",
+    "......p..refLection.e......l....",
+    "...cone.....e.y.o...n.dilation..",
+    "............g.l.n...u......n....",
+    "............s.i.a...s..intrest..",
+    "..............n.l...e...........",
+    "..............d.................",
+    "..............e.................",
+    "..........lateral...............",
+    "............o...................",
+    "............t...................",
+    "..........translation...........",
+    "............l...................",
+    "............s...................",
+    "............u...................",
+    "............r...................",
+    "............f...................",
+    "............a...................",
+    "............c...................",
+    "............e...................",
+    "................................",
+    "................................"
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 6,
-        "len": 4,
-        "answer": "Alex",
-        "clue": "Senior"
+        "num": 2,
+        "row": 5,
+        "col": 22,
+        "len": 11,
+        "answer": "scatterplot",
+        "clue": "graph that shows the relationship of something by using dots"
       },
       {
-        "num": 3,
-        "row": 4,
-        "col": 6,
-        "len": 4,
-        "answer": "RyAn",
-        "clue": "Not 5'5"
+        "num": 7,
+        "row": 8,
+        "col": 13,
+        "len": 6,
+        "answer": "sphere",
+        "clue": "V=4/3r3"
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 1,
-        "len": 4,
-        "answer": "Josh",
-        "clue": "Always wears a scarf"
+        "row": 9,
+        "col": 7,
+        "len": 6,
+        "answer": "square",
+        "clue": "root    a number multiplied by the same number"
       },
       {
         "num": 9,
-        "row": 6,
-        "col": 10,
-        "len": 5,
-        "answer": "Henry",
-        "clue": "The guy who dressed like a cat"
+        "row": 10,
+        "col": 15,
+        "len": 14,
+        "answer": "transformation",
+        "clue": "any type of figure moves in any way."
+      },
+      {
+        "num": 10,
+        "row": 11,
+        "col": 1,
+        "len": 8,
+        "answer": "function",
+        "clue": "when no y values repeat"
       },
       {
         "num": 11,
-        "row": 7,
-        "col": 8,
-        "len": 3,
-        "answer": "Xia",
-        "clue": "The impostor"
-      },
-      {
-        "num": 12,
-        "row": 7,
-        "col": 14,
-        "len": 9,
-        "answer": "AlExander",
-        "clue": "Sophomore"
+        "row": 12,
+        "col": 10,
+        "len": 10,
+        "answer": "refLection",
+        "clue": "figure flips across the x/y axis"
       },
       {
         "num": 14,
-        "row": 8,
-        "col": 3,
-        "len": 6,
-        "answer": "DeVika",
-        "clue": "\"Twin where have you been?...\""
+        "row": 13,
+        "col": 4,
+        "len": 4,
+        "answer": "cone",
+        "clue": "V=1/3Bh"
+      },
+      {
+        "num": 15,
+        "row": 13,
+        "col": 23,
+        "len": 8,
+        "answer": "dilation",
+        "clue": "figure changes size"
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 24,
+        "len": 7,
+        "answer": "intrest",
+        "clue": "borrowing money"
       },
       {
         "num": 17,
-        "row": 10,
-        "col": 15,
-        "len": 4,
-        "answer": "Dana",
-        "clue": "Wears multicolored shoes"
-      },
-      {
-        "num": 18,
-        "row": 10,
-        "col": 20,
-        "len": 5,
-        "answer": "Alexy",
-        "clue": "Not Eryk or Christyan"
+        "row": 19,
+        "col": 11,
+        "len": 7,
+        "answer": "lateral",
+        "clue": "formula= ph"
       },
       {
         "num": 19,
-        "row": 12,
-        "col": 21,
-        "len": 5,
-        "answer": "Asher",
-        "clue": "Silent genius"
-      },
-      {
-        "num": 20,
-        "row": 13,
-        "col": 13,
-        "len": 5,
-        "answer": "Novak",
-        "clue": "Not 6'4"
+        "row": 22,
+        "col": 11,
+        "len": 11,
+        "answer": "translation",
+        "clue": "figure slides"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 6,
-        "len": 6,
-        "answer": "AndRes",
-        "clue": "Not Alejandro"
+        "col": 24,
+        "len": 11,
+        "answer": "Pythagorean",
+        "clue": "a2+b2+c2"
       },
       {
-        "num": 2,
-        "row": 1,
-        "col": 11,
-        "len": 6,
-        "answer": "Fimble",
-        "clue": "Most likely to give a pop quiz"
+        "num": 3,
+        "row": 7,
+        "col": 17,
+        "len": 10,
+        "answer": "irrational",
+        "clue": "number  number that cannot be identified as rational"
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 8,
-        "len": 5,
-        "answer": "AleXa",
-        "clue": "Gives side eyes"
+        "row": 7,
+        "col": 21,
+        "len": 10,
+        "answer": "hypotenuse",
+        "clue": "the largest side on a triangle"
       },
       {
         "num": 5,
-        "row": 5,
-        "col": 4,
-        "len": 4,
-        "answer": "Shae",
-        "clue": "Lifegaurd"
+        "row": 7,
+        "col": 28,
+        "len": 9,
+        "answer": "trendline",
+        "clue": "a line on a scatter plot that goes across at least 2 dots"
       },
       {
         "num": 6,
-        "row": 5,
-        "col": 14,
-        "len": 4,
-        "answer": "RyAn",
-        "clue": "Not Reagan or Kendall"
-      },
-      {
-        "num": 7,
-        "row": 5,
-        "col": 18,
-        "len": 6,
-        "answer": "Rianna",
-        "clue": "Longest curliest hair"
-      },
-      {
-        "num": 9,
-        "row": 6,
-        "col": 10,
+        "row": 8,
+        "col": 11,
         "len": 5,
-        "answer": "Hatem",
-        "clue": "Doesn't talk"
+        "answer": "prime",
+        "clue": "a symbol used to see the after imagine"
       },
       {
-        "num": 10,
-        "row": 6,
-        "col": 21,
-        "len": 7,
-        "answer": "CeciliA",
-        "clue": "Always wearing a grey hoodie"
+        "num": 8,
+        "row": 9,
+        "col": 7,
+        "len": 5,
+        "answer": "slope",
+        "clue": "the graphs steepness"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 13,
+        "len": 4,
+        "answer": "Legs",
+        "clue": "the 2 smallest sides on a triangle"
       },
       {
         "num": 13,
-        "row": 7,
-        "col": 16,
+        "row": 12,
+        "col": 15,
         "len": 8,
-        "answer": "Enmanual",
-        "clue": "Easily excited about math"
+        "answer": "cylinder",
+        "clue": "V=Bh"
       },
       {
-        "num": 15,
-        "row": 8,
-        "col": 5,
-        "len": 3,
-        "answer": "Van",
-        "clue": "Always carried by his table"
-      },
-      {
-        "num": 16,
-        "row": 9,
+        "num": 18,
+        "row": 19,
         "col": 13,
-        "len": 8,
-        "answer": "VeroNica",
-        "clue": "Took pictures of peoples feet for their math project"
+        "len": 12,
+        "answer": "totalsurface",
+        "clue": "formula=ph+2B"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2024-02-28-728",
-  "slug": "2024-02-28-728",
-  "fetched_at": "2026-07-14T19:22:44.912902+00:00",
+  "source_url": "https://crosswordlabs.com/view/2024-05-17-297",
+  "slug": "2024-05-17-297",
+  "fetched_at": "2026-07-14T19:16:00.136396+00:00",
   "date": "2026-07-25"
 }
