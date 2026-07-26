@@ -183,6 +183,7 @@
       "title": "Check your SSD health free — and why your Windows warnings lie",
       "tag": "Tech Note",
       "summary": "On Windows, install CrystalDiskInfo free from crystalmark.info. It shows your SSD's real health — percentage used, temperature, hours powered on. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings. Check it once a month.",
+      "truth": "Windows' \"drive is healthy\" means almost nothing — it only checks the filesystem, not the NAND wear. I've pulled SMART data off drives Windows called perfect that had 2% spare blocks left. The honest answer: if smartctl shows \"Percentage Used\" over 80, budget for a replacement this quarter.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -215,6 +216,7 @@
       "title": "FTC scam alert: fake agents call demanding payment — hang up and call 1-877-FTC-HELP",
       "tag": "Security Alert",
       "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee's name, claims your identity was stolen — or that they've recovered money you lost. They need you to verify info or pay a \"processing fee.\" The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call the FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
+      "truth": "Scammers spoof caller ID, use real employee names from public records, and exploit panic about identity theft. They'll ask for gift cards, crypto, wire transfers, or gold — none of which the FTC ever requests. The FTC has no \"agents\" with badges; that's a made-up authority. If you're unsure, hang up and call 1-877-FTC-HELP yourself. I tell every customer: if someone calls demanding money for a government agency, it's a scam — 100% of the time.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
