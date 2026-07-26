@@ -7,10 +7,10 @@ Exits non-zero if ANY post/news/headline is INCOMPLETE per the canonical
 "perfect" completeness standard (the same one the Google Posts pipeline enforces):
 
   1. NAMES THE PRODUCT  — headline/title names the specific product/tool
-                             (LibreOffice, Pixlr, uBlock Origin, Proton VPN,
-                              Bitwarden, Ente Auth, OBS Studio, PDF24, BalenaEtcher,
-                              LocalSend…), NOT vague teasing ("this free suite",
-                             "a free tool", "one free app", "the free alternative").
+                           (LibreOffice, Pixlr, uBlock Origin, Proton VPN,
+                            Bitwarden, Ente Auth, OBS Studio, PDF24, BalenaEtcher,
+                            LocalSend…), NOT vague teasing ("this free suite",
+                           "a free tool", "one free app", "the free alternative").
   2. STATES HOW TO OBTAIN — the body/tip/summary states the exact obtain method:
                              a real URL (.com/.org/.io), an app/command name, a
                              Settings path, or (for news/alerts) the concrete action
@@ -66,6 +66,8 @@ KNOWN_PRODUCTS = [
     # Extended 2026-07-24: real products named in today's Onyx Tech Notes
     # Linux Kernel (named product) + sysctl (kernel hardening tool, real obtain method).
     "linux kernel", "sysctl",
+    # Extended 2026-07-25: Ollama (local AI runtime) — real product named + obtain method stated.
+    "ollama",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
@@ -76,9 +78,10 @@ OBTAIN = [
     "set up", "set-up", "turn on", "use ", "try ", "upload", "roll back",
     "rollback", "patch", "update", "isolate", "fix ", "book", "call",
     "text ", "tether", "connect", "configure", "add ", "create",
+    "sysctl",
 ]
 
-def check_entry(fname, eid, headline, body):
+def check_entry(fname, eid, headline, body, entry_type=None):
     """Return list of failure reasons (empty = pass)."""
     fails = []
     hl = (headline or "").strip()
@@ -130,8 +133,13 @@ def scan_file(path, arrays=("posts", "news")):
         for e in data.get(arr, []):
             eid = e.get("id") or e.get("date") or "?"
             hl = e.get("headline") or e.get("title") or ""
-            body = e.get("tip") or e.get("truth") or e.get("summary") or ""
-            fails += check_entry(fname, eid, hl, body)
+            # Pick the right body field based on entry type
+            etype = e.get("type", "")
+            if etype == "tip":
+                body = e.get("summary") or e.get("tip") or e.get("truth") or ""
+            else:
+                body = e.get("tip") or e.get("truth") or e.get("summary") or ""
+            fails += check_entry(fname, eid, hl, body, etype)
     return fails
 
 def main():

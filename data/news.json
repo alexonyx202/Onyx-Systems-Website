@@ -1,6 +1,52 @@
 {
-  "updated": "2026-07-25",
+  "updated": "2026-07-26",
   "items": [
+    {
+      "id": "n-2026-07-26",
+      "type": "newsletter",
+      "date": "2026-07-26",
+      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+      "tag": "Daily Brief",
+      "summary": "title: \"FTC Warns: Fake CAPTCHA Scams Hijack Your Computer\"",
+      "comic": "Newsletter - 2026-07-26-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-26",
+      "type": "tech-note",
+      "date": "2026-07-26",
+      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+      "tag": "Security Alert",
+      "summary": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "cta": {
+        "label": "Report to FTC",
+        "href": "https://reportfraud.ftc.gov"
+      }
+    },
+    {
+      "id": "t-2026-07-26-news-001",
+      "type": "tech-note",
+      "date": "2026-07-26",
+      "title": "Microsoft Fixes 622 Security Flaws — Biggest Patch Tuesday Ever",
+      "tag": "Tech Note",
+      "summary": "July 2026 Patch Tuesday addresses 622 vulnerabilities including 6 critical remote code execution flaws and starts mandatory Kerberos RC4 enforcement. Open Settings → Windows Update → Check for updates, install, and restart. Network admins: test Kerberos AES compatibility.",
+      "cta": {
+        "label": "Check for Updates",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "t-2026-07-26-tip-001",
+      "type": "tech-note",
+      "date": "2026-07-26",
+      "title": "Storage Sense — Windows' Free Cleanup Tool Runs Automatically",
+      "tag": "Tech Tip",
+      "summary": "Press Start and type \"Storage Sense\", turn it On. Click Configure Storage Sense and choose how often to run (daily/weekly/monthly). Set Delete files in Recycle Bin after to 30 days. Set Delete files in Downloads folder after to 60 days (or Never if you keep installers). Automatically frees 10-50 GB of temp files and junk — no extra software needed. Works on Windows 10 and 11.",
+      "cta": {
+        "label": "Open Storage Sense",
+        "href": "ms-settings:storagesense"
+      }
+    },
     {
       "id": "n-2026-07-25",
       "type": "newsletter",
@@ -88,38 +134,6 @@
         "label": "Call (386) 755-7772 for Linux hardening help",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "t-2026-07-24-4",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Run a private ChatGPT alternative on your own PC — Ollama + Open WebUI is free, offline, and no account needed",
-      "tag": "Tech Note",
-      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run `ollama run llama3.2` — that's a local model. For a chat UI, run `docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main` and open localhost:3000. Your prompts never leave your m"
-    },
-    {
-      "id": "t-2026-07-24-5",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Florida storm season: make a Windows recovery drive NOW — it's the only way back if the power surge kills your OS",
-      "tag": "Tech Tip",
-      "summary": "Plug in a 16GB+ USB stick. Press Win key, type \"recovery drive\", check \"Back up system files to the recovery drive\", click Next → Create. It takes 20-40 minutes. Label it \"Windows recovery drive - [PC Name] - [Date]\" and store it in a ziplock bag. If Windows won't boot after a st"
-    },
-    {
-      "id": "t-2026-07-24-1-2026-07-24-175545",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Your NVMe SSD is silently failing — smartctl reads its health free at the terminal",
-      "tag": "Privacy",
-      "summary": "Run `smartctl -a /dev/nvme0` (Linux) or install CrystalDiskInfo free at crystalmark.info (Windows) to see your SSD's real health — percentage used, temperature, and power-on hours. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings."
-    },
-    {
-      "id": "t-2026-07-24-2-2026-07-24-175545",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "Stop mixing work and personal in one browser — Firefox Containers keeps them walled off free",
-      "tag": "Tech Tip",
-      "summary": "Open Firefox, type `about:preferences#containers` in the address bar, enable \"Container Tabs\", then right-click any link → \"Open in New Container Tab\" → pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking — Google in your Wo"
     }
   ]
 }

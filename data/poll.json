@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-07-19",
-    "question": "How do you back up your photos and files?",
+    "weekOf": "2026-07-26",
+    "question": "Which upgrade would help you most?",
     "options": [
       {
-        "id": "auto",
-        "label": "Automatic cloud backup"
+        "id": "ssd",
+        "label": "Faster SSD"
       },
       {
-        "id": "drive",
-        "label": "External drive"
+        "id": "ram",
+        "label": "More RAM"
       },
       {
-        "id": "none",
-        "label": "I don't (yet)"
+        "id": "net",
+        "label": "Better Wi-Fi"
       },
       {
-        "id": "unsure",
-        "label": "Not sure how"
+        "id": "clean",
+        "label": "A good cleanup"
       }
     ]
   }

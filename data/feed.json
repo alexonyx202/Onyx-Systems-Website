@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-25",
+    "last_updated": "2026-07-26",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,17 @@
   ],
   "news": [
     {
+      "id": "news-2026-07-26",
+      "type": "newsletter",
+      "date": "2026-07-26",
+      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+      "tag": "Security Alert",
+      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "image": "assets/img/news/2026-07-26-composite.jpg",
+      "comic": "assets/img/news/2026-07-26-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "news-2026-07-24",
       "type": "newsletter",
       "date": "2026-07-24",
@@ -144,6 +155,53 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-07-26-daily-brief-001",
+      "type": "news",
+      "date": "2026-07-26",
+      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+      "tag": "Security Alert",
+      "summary": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ScamAlert",
+        "#DailyBrief"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-26-news-001",
+      "type": "news",
+      "date": "2026-07-26",
+      "title": "Microsoft Fixes 622 Security Flaws — Biggest Patch Tuesday Ever",
+      "tag": "Tech Note",
+      "summary": "July 2026 Patch Tuesday addresses 622 vulnerabilities including 6 critical remote code execution flaws and starts mandatory Kerberos RC4 enforcement. Open Settings → Windows Update → Check for updates, install, and restart. Network admins: test Kerberos AES compatibility.",
+      "truth": "This is the largest Microsoft security update on record. The Kerberos change alone affects every Windows domain. ONYX SYSTEMS can help test and deploy these updates safely.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#TechNews",
+        "#Security"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-26-tip-001",
+      "type": "tip",
+      "date": "2026-07-26",
+      "title": "Storage Sense — Windows' Free Cleanup Tool Runs Automatically",
+      "tag": "Tech Tip",
+      "summary": "Press Start and type \"Storage Sense\", turn it On. Click Configure Storage Sense and choose how often to run (daily/weekly/monthly). Set Delete files in Recycle Bin after to 30 days. Set Delete files in Downloads folder after to 60 days (or Never if you keep installers). Automatically frees 10-50 GB of temp files and junk — no extra software needed. Works on Windows 10 and 11.",
+      "truth": "Customers pay for \"PC tune-up\" software that does exactly what Storage Sense does for free. ONYX SYSTEMS shows you how to enable it in 2 minutes.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#TechTip",
+        "#Windows"
+      ]
+    },
     {
       "id": "onyx-2026-07-25-tip-003",
       "type": "tip",
@@ -196,7 +254,7 @@
       "id": "onyx-2026-07-25-tip-001",
       "type": "tip",
       "date": "2026-07-25",
-      "title": "Run a private AI chatbot on your own computer — free, offline, no account needed",
+      "title": "Ollama — run a private AI chatbot on your own computer free, offline, no account needed",
       "tag": "Tech Tip",
       "summary": "Go to ollama.com and download Ollama (Windows, Mac, or Linux). Open a terminal and type: ollama run llama3.3:8b. That's it — you now have a ChatGPT-like AI running entirely on your computer. For a web interface, install Docker and run: docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main, then open localhost:3000 in your browser.",
       "truth": "Customers ask which AI they should pay for. The honest answer: if your computer has 8GB+ RAM, you already own a better private AI than any $20/month cloud subscription. I run this on a 5-year-old Dell and it codes, summarizes, and writes emails offline. Cloud AI is convenient; local AI is yours — your prompts never leave your machine.",
@@ -272,5 +330,5 @@
       "cta": "Create /etc/sysctl.d/99-onx-hardening.conf with the three knobs above and run sudo sysctl --system. Verify with sysctl -a | grep -E 'kptr_restrict|dmesg_restrict|mmap_rnd_bits'."
     }
   ],
-  "updated": "2026-07-25"
+  "updated": "2026-07-26"
 }
