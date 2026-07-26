@@ -1565,17 +1565,45 @@ var FEED_FALLBACK={
     {type:'tip',headline:'Stop emailing yourself files — LocalSend is free',tip:'Download LocalSend free from localsend.org or your app store; it sends files straight between your devices over your own Wi-Fi — no cloud, no account.',tags:['#FreeTools','#Privacy','#LocalSend']}]
 };
 function renderAll(d){
-  var posts=(d.posts||[]).slice().sort(function(a,b){
+  // Combine news[] and posts[] arrays (both have type 'news' or 'tip')
+  var newsItems = (d.news||[]).map(function(n){
+    return {
+      id: n.id,
+      type: 'news',
+      date: n.date,
+      title: n.title,
+      tag: n.tag,
+      summary: n.excerpt,  // news uses 'excerpt'
+      truth: n.excerpt,    // for "Why it matters:" display
+      tags: n.tags || [],
+      image: n.image,
+      comic: n.comic,
+      readMore: n.read_more
+    };
+  });
+  var postsItems = (d.posts||[]).map(function(p){
+    return {
+      id: p.id,
+      type: p.type,  // 'news' or 'tip'
+      date: p.date,
+      title: p.title,
+      tag: p.tag,
+      summary: p.summary,
+      truth: p.truth,
+      tags: p.tags || [],
+      cta: p.cta
+    };
+  });
+  var allItems = newsItems.concat(postsItems).slice().sort(function(a,b){
     var an=(a.type==='news')?-1:1, bn=(b.type==='news')?-1:1;
     return an-bn;
   });
   var grid=document.getElementById('newsTipsGrid');
   if(grid){
-    if(!posts.length)posts=FEED_FALLBACK.posts;
-    grid.innerHTML=posts.map(function(p){
+    if(!allItems.length)allItems=FEED_FALLBACK.posts;
+    grid.innerHTML=allItems.map(function(p){
       var isNews=(p.type==='news');
       var tag=isNews?'News':'Tip';
-      // feed.json uses 'title' (not 'headline') and 'summary' (not 'tip')
       var headline = p.title || p.headline || '';
       var tipText = p.summary || p.tip || '';
       var body=isNews
