@@ -1,260 +1,212 @@
 {
-  "title": "math",
-  "size": 35,
+  "title": "Math",
+  "size": 27,
   "grid": [
-    "..N................................",
-    "..a....P......................D....",
-    "..t....a......................i....",
-    "..u....l................I.....r....",
-    "..r....i...E......CounTingNumbers..",
-    "Fraction...v..........w.t.....c....",
-    "..l....d...e.....L....i.e.....t....",
-    "..N....r...n.....C....n.g.....e....",
-    "..u....o...N.....Multiple.....d....",
-    "..m....m...u..........r.r.....N....",
-    "..b....i...m..C..B....i.......u....",
-    "..e....c...b..u..OddNumber..Symbols",
-    "..r....N...e..b..d..a.e.......b....",
-    ".......u..PrImeNumbers...BracketS..",
-    ".......m....n....a..c.........r.q..",
-    ".......b....d....s..i.........s.u..",
-    "....CubeNumbers.....s......H....a..",
-    ".......r....x.......s......C....r..",
-    "............N...SignificantFigure..",
-    "............o.......t...........N..",
-    "....PrimeFactors....i...........u..",
-    "............a.......c...........m..",
-    "......FactorTree....N...........b..",
-    "............i.......u...........e..",
-    "............o.....CompositeNumbers.",
-    "............n.......b...........s..",
-    "....................e..............",
-    "....................RoundingNumbers",
-    "...................................",
-    "...................................",
-    "...................................",
-    "...................................",
-    "...................................",
-    "...................................",
-    "..................................."
+    ".......I....R.....L........",
+    "..C..Discrete.DOmain..Solve",
+    "..o....o....l..u..t...l....",
+    "S.n....l....a..t..e...o....",
+    "t.t....a....t..p..r.Input..",
+    "Arithmetic..i..u..a...e....",
+    "n.n....e...Point-slope-form",
+    "d.u.........n.........i....",
+    "a.o...................n....",
+    "r.u..IntercePt........t....",
+    "d.s.........a.........e....",
+    "-.........Perpendicular....",
+    "f...........a.........c....",
+    "o...........l.....Slope....",
+    "r...........l.....e...p....",
+    "m...........e.....q.S.t....",
+    "............l.....u.y.-....",
+    "..................e.s.f....",
+    "................Function...",
+    "..................c.e.r....",
+    "..............Range.m.m....",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "..........................."
   ],
   "clues": {
     "across": [
       {
+        "num": 5,
+        "row": 2,
+        "col": 6,
+        "len": 8,
+        "answer": "Discrete",
+        "clue": "A domain that consists only of whole numbers."
+      },
+      {
         "num": 6,
-        "row": 5,
-        "col": 19,
-        "len": 15,
-        "answer": "CounTingNumbers",
-        "clue": "any whole number without zero"
+        "row": 2,
+        "col": 15,
+        "len": 6,
+        "answer": "DOmain",
+        "clue": "Synonymous with input, x \u2014 values."
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 1,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "a number representing parts of a whole number"
+        "row": 2,
+        "col": 23,
+        "len": 5,
+        "answer": "Solve",
+        "clue": "To answer a math problem"
       },
       {
         "num": 10,
-        "row": 9,
-        "col": 18,
-        "len": 8,
-        "answer": "Multiple",
-        "clue": "found when you multiply a number by a positive integer"
+        "row": 5,
+        "col": 21,
+        "len": 5,
+        "answer": "Input",
+        "clue": "The independent variable, x Value"
+      },
+      {
+        "num": 11,
+        "row": 6,
+        "col": 1,
+        "len": 10,
+        "answer": "Arithmetic",
+        "clue": "Sequence the difference between terms is constant Common Difference  the constant difference between terms"
+      },
+      {
+        "num": 12,
+        "row": 7,
+        "col": 12,
+        "len": 16,
+        "answer": "Point-slope-form",
+        "clue": "y-y1=m(x-x1)"
       },
       {
         "num": 13,
-        "row": 12,
-        "col": 18,
+        "row": 10,
+        "col": 6,
         "len": 9,
-        "answer": "OddNumber",
-        "clue": "a number that can't be divided by two exactly"
+        "answer": "IntercePt",
+        "clue": "a point on the y-axis, through which the slope of the line passes."
       },
       {
         "num": 15,
         "row": 12,
-        "col": 29,
-        "len": 7,
-        "answer": "Symbols",
-        "clue": "used to write mathemathical information in the shortest clearest way"
+        "col": 11,
+        "len": 13,
+        "answer": "Perpendicular",
+        "clue": "Lines Slopes are opposite reciprocals product -1 Integer a number that is not a fraction, a whole number."
       },
       {
         "num": 16,
         "row": 14,
-        "col": 11,
-        "len": 12,
-        "answer": "PrImeNumbers",
-        "clue": "has two factors only"
+        "col": 19,
+        "len": 5,
+        "answer": "Slope",
+        "clue": "Constant rate of change"
       },
       {
         "num": 18,
-        "row": 14,
-        "col": 26,
-        "len": 8,
-        "answer": "BracketS",
-        "clue": "the most common grouping symbols in mathematics"
-      },
-      {
-        "num": 20,
-        "row": 17,
-        "col": 5,
-        "len": 11,
-        "answer": "CubeNumbers",
-        "clue": "can be arrange to form a solid cube shape"
-      },
-      {
-        "num": 22,
         "row": 19,
         "col": 17,
-        "len": 17,
-        "answer": "SignificantFigure",
-        "clue": "To reflect the degree of accuracy"
+        "len": 8,
+        "answer": "Function",
+        "clue": "A relation where each input has exactly one output."
       },
       {
-        "num": 23,
+        "num": 19,
         "row": 21,
-        "col": 5,
-        "len": 12,
-        "answer": "PrimeFactors",
-        "clue": "a factor of a number that are also prime numbers"
-      },
-      {
-        "num": 24,
-        "row": 23,
-        "col": 7,
-        "len": 10,
-        "answer": "FactorTree",
-        "clue": "a diagram that is used to find all the factors"
-      },
-      {
-        "num": 25,
-        "row": 25,
-        "col": 19,
-        "len": 16,
-        "answer": "CompositeNumbers",
-        "clue": "a number that has two or more factors"
-      },
-      {
-        "num": 26,
-        "row": 28,
-        "col": 21,
-        "len": 15,
-        "answer": "RoundingNumbers",
-        "clue": "adjusting the digits of a number in such a way that it gives an approximate value"
+        "col": 15,
+        "len": 5,
+        "answer": "Range",
+        "clue": "Synonymous with output, y \u2014 values."
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 3,
-        "len": 13,
-        "answer": "NaturalNumber",
-        "clue": "Any whole number from 1 to infinite (0 not included)"
+        "col": 8,
+        "len": 7,
+        "answer": "Isolate",
+        "clue": "Variable by itself on one side of the equation."
       },
       {
         "num": 2,
-        "row": 2,
-        "col": 8,
-        "len": 17,
-        "answer": "PalindromicNumber",
-        "clue": "numbers when flipped is the same number"
+        "row": 1,
+        "col": 13,
+        "len": 8,
+        "answer": "Relation",
+        "clue": "Any set of ordered pairs, (x, y)"
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 31,
-        "len": 15,
-        "answer": "DirectedNumbers",
-        "clue": "When numbers are used to process real life instruction"
+        "row": 1,
+        "col": 19,
+        "len": 7,
+        "answer": "Literal",
+        "clue": "Equation An equation where the variable is known values."
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 25,
-        "len": 7,
-        "answer": "Integer",
-        "clue": "both positive and negative including zero"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 12,
+        "row": 2,
+        "col": 3,
         "len": 10,
-        "answer": "EvenNumber",
-        "clue": "a number that can be divided by two exactly"
+        "answer": "Continuous",
+        "clue": "A domain that consists of all real numbers"
       },
       {
         "num": 7,
-        "row": 5,
+        "row": 2,
+        "col": 16,
+        "len": 6,
+        "answer": "Output",
+        "clue": "The dependent variable, y\u2014 values"
+      },
+      {
+        "num": 8,
+        "row": 2,
         "col": 23,
-        "len": 9,
-        "answer": "Twinprime",
-        "clue": "pairs of prime numbers that differ by two"
+        "len": 20,
+        "answer": "Slope-intercept-form",
+        "clue": "y=mx+b"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 18,
-        "len": 3,
-        "answer": "LCM",
-        "clue": "the lowest number that is a multiple"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 15,
-        "len": 4,
-        "answer": "Cube",
-        "clue": "the result of multiply that number by itself three times"
-      },
-      {
-        "num": 12,
-        "row": 11,
-        "col": 18,
-        "len": 6,
-        "answer": "BOdmas",
-        "clue": "to represent the order of operation"
+        "row": 4,
+        "col": 1,
+        "len": 13,
+        "answer": "StAndard-form",
+        "clue": "Ax+By=C"
       },
       {
         "num": 14,
-        "row": 12,
-        "col": 21,
-        "len": 17,
-        "answer": "NarcissiticNumbeR",
-        "clue": "one that is the sum of its own digit each raised to the power of the number of digits"
+        "row": 10,
+        "col": 13,
+        "len": 8,
+        "answer": "Parallel",
+        "clue": "Lines Same slope, different y-intercepts Do not intersect"
+      },
+      {
+        "num": 16,
+        "row": 14,
+        "col": 19,
+        "len": 8,
+        "answer": "Sequence",
+        "clue": "an ordered list that often forms a pattern."
       },
       {
         "num": 17,
-        "row": 14,
-        "col": 13,
-        "len": 13,
-        "answer": "IndexNotaTion",
-        "clue": "Way of representing numbers and variables that has been multiplied by themself"
-      },
-      {
-        "num": 19,
-        "row": 14,
-        "col": 33,
-        "len": 13,
-        "answer": "SquareNumbers",
-        "clue": "can be arrange to form a square"
-      },
-      {
-        "num": 21,
-        "row": 17,
-        "col": 28,
-        "len": 3,
-        "answer": "HCF",
-        "clue": "the highest number that is a factor"
+        "row": 16,
+        "col": 21,
+        "len": 6,
+        "answer": "System",
+        "clue": "Two or more equation that share the same variables"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2024-11-13-243",
-  "slug": "2024-11-13-243",
-  "fetched_at": "2026-07-14T19:16:11.179849+00:00",
-  "date": "2026-07-25"
+  "source_url": "https://crosswordlabs.com/view/2024-12-15-451",
+  "slug": "2024-12-15-451",
+  "fetched_at": "2026-07-14T19:16:12.354000+00:00",
+  "date": "2026-07-26"
 }
