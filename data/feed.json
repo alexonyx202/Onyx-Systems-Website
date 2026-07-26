@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-07-24",
     "social": {
@@ -103,7 +103,7 @@
       "id": "news-2026-07-25",
       "type": "newsletter",
       "date": "2026-07-25",
-      "title": "FTC scam alert: fake agents call demanding payment \u2014 hang up, call 1-877-FTC-HELP",
+      "title": "FTC scam alert: fake agents call demanding payment — hang up, call 1-877-FTC-HELP",
       "tag": "Security Alert",
       "excerpt": "Your caller ID says \"FTC.\" The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, demand gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
       "image": "assets/img/news/2026-07-25-composite.jpg",
@@ -123,32 +123,32 @@
     },
     {
       "date": "2026-07-23",
-      "title": "\ud83d\udd34 ALERT \u2014 Tech Support Scams: The Phone Call That Costs You Everything",
-      "excerpt": "Scammers pose as Microsoft Support, claim they detected a virus, and demand remote access. Once inside they steal files, drain bank accounts, or lock you out. Microsoft, Apple, and Google NEVER call you out of the blue. Hang up immediately. If worried about your computer, call someone you trust or bring it to the shop. Tech support phone scams cost Americans over $500M last year \u2014 average loss $400\u2013$600.",
+      "title": "🔴 ALERT — Tech Support Scams: The Phone Call That Costs You Everything",
+      "excerpt": "Scammers pose as Microsoft Support, claim they detected a virus, and demand remote access. Once inside they steal files, drain bank accounts, or lock you out. Microsoft, Apple, and Google NEVER call you out of the blue. Hang up immediately. If worried about your computer, call someone you trust or bring it to the shop. Tech support phone scams cost Americans over $500M last year — average loss $400–$600.",
       "image": "assets/img/news/2026-07-23-composite.jpg",
       "comic": "assets/img/news/2026-07-23-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-20",
-      "title": "\ud83d\udd34 ALERT \u2014 Update Firefox & Chrome Now \u2014 Exploit Code Is Public",
-      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu \u2192 Help \u2192 About Google Chrome to force the update now \u2014 don't wait for the slow auto-rollout.",
+      "title": "🔴 ALERT — Update Firefox & Chrome Now — Exploit Code Is Public",
+      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu → Help → About Google Chrome to force the update now — don't wait for the slow auto-rollout.",
       "image": "assets/img/news/2026-07-20-composite.jpg",
       "comic": "assets/img/news/2026-07-20-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-19",
-      "title": "\ud83d\udd34 ALERT \u2014 New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
-      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails \u2014 type the web address in yourself.",
+      "title": "🔴 ALERT — New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
+      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails — type the web address in yourself.",
       "image": "assets/img/news/2026-07-19-composite.jpg",
       "comic": "assets/img/news/2026-07-19-comic-square.jpg",
       "read_more": ""
     },
     {
       "date": "2026-07-18",
-      "title": "\ud83d\udd34 ALERT \u2014 New FTC Text Scam Sends a Fake Photo ID",
-      "excerpt": "Scammers are texting folks pretending to be FTC employees \u2014 and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
+      "title": "🔴 ALERT — New FTC Text Scam Sends a Fake Photo ID",
+      "excerpt": "Scammers are texting folks pretending to be FTC employees — and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
       "image": "assets/img/news/2026-07-18-composite.jpg",
       "comic": "assets/img/news/2026-07-18-comic-square.jpg",
       "read_more": ""
@@ -156,13 +156,47 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-07-25-tip-003",
+      "type": "tip",
+      "date": "2026-07-25",
+      "title": "Windows 11 24H2 stops ransomware encrypting your files — Controlled Folder Access is free and already installed",
+      "tag": "OnyxSystems",
+      "summary": "Open Windows Security → Virus & threat protection → Manage ransomware protection → turn on Controlled Folder Access. Then click \"Protected folders\" and add your Documents, Pictures, and any work folders. Only whitelisted apps (Office, your editor, browser) can write there — ransomware gets blocked cold. Enable via PowerShell: `Set-MpPreference -EnableControlledFolderAccess Enabled; Add-MpPreference -ControlledFolderAccessProtectedFolders \"$env:USERPROFILE\\Documents\",\"$env:USERPROFILE\\Pictures\",\"$env:USERPROFILE\\Desktop\"`. Verify with `Get-MpPreference | Select EnableControlledFolderAccess`.",
+      "truth": "People pay for \"ransomware protection\" suites that just wrap this exact Windows feature. The honest answer: Microsoft built Controlled Folder Access into Defender in 2017 and it works — but it's OFF by default because some old apps break. ONYX SYSTEMS enables Controlled Folder Access on every build and whitelists the 5-6 apps the customer actually uses. Zero ransomware incidents in three years. ONYX SYSTEMS hardens your Windows install with Controlled Folder Access, whitelists your actual apps, and tests it against a simulated encryptor — so you know it works before you need it. Included with any tune-up.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Ransomware",
+        "#WindowsSecurity"
+      ],
+      "cta": ""
+    },
+    {
+      "id": "onyx-2026-07-25-news-002",
+      "type": "news",
+      "date": "2026-07-25",
+      "title": "Firefox 153 ships Containers by default — separate Work, Personal, Banking, Shopping in one window free",
+      "tag": "OnyxSystems",
+      "summary": "Open Firefox 153+, click the menu → New Container Tab → pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking — Google in your Work Firefox Container can't see your Personal YouTube history. No extension needed; it's built in. Get Firefox 153+ from mozilla.org/firefox.",
+      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not — Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it's the single best privacy upgrade that costs zero dollars. ONYX SYSTEMS sets up Firefox Containers for your workflow and shows you how to auto-assign sites to the right Firefox Container. Free, takes 10 minutes.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Privacy"
+      ],
+      "cta": ""
+    },
+    {
       "id": "onyx-2026-07-25-daily-brief-001",
       "type": "news",
       "date": "2026-07-25",
-      "title": "ONYX SYSTEMS: FTC scam alert \u2014 fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
+      "title": "ONYX SYSTEMS: FTC scam alert — fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
       "tag": "Security Alert",
       "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
-      "truth": "I have gotten the FTC is calling scam myself \u2014 twice this year. The urgency in their voice is designed to make you panic before you think. Real government agencies do not pressure you to act instantly \u2014 scammers do. The FTC has warned repeatedly that anyone claiming to be an FTC agent with a badge number is lying.",
+      "truth": "I have gotten the FTC is calling scam myself — twice this year. The urgency in their voice is designed to make you panic before you think. Real government agencies do not pressure you to act instantly — scammers do. The FTC has warned repeatedly that anyone claiming to be an FTC agent with a badge number is lying.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -176,7 +210,7 @@
       "id": "onyx-2026-07-25-news-001",
       "type": "news",
       "date": "2026-07-25",
-      "title": "ONYX SYSTEMS: Firefox 153 ships Containers by default \u2014 separate Work, Personal, Banking, Shopping in one window free",
+      "title": "ONYX SYSTEMS: Firefox 153 ships Containers by default — separate Work, Personal, Banking, Shopping in one window free",
       "tag": "",
       "summary": "Open Firefox 153+, click the menu -> New Container Tab -> pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking - Google in your Work Container cannot see your Personal YouTube history. No extension needed; it is built in.",
       "truth": "Most people use Chrome profiles or incognito and think they are separated. They are not - Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it is the single best privacy upgrade that costs zero dollars.",
@@ -193,7 +227,7 @@
       "id": "onyx-2026-07-25-tip-001",
       "type": "tip",
       "date": "2026-07-25",
-      "title": "ONYX SYSTEMS: TECH TIP \u2014 Run Llama 3.3 8B locally on 8GB RAM \u2014 Ollama + Open WebUI is free, offline, no account needed",
+      "title": "ONYX SYSTEMS: TECH TIP — Run Llama 3.3 8B locally on 8GB RAM — Ollama + Open WebUI is free, offline, no account needed",
       "tag": "Tech Tip",
       "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run ollama run llama3.3:8b - that is a local model. For a chat UI, run docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main and open localhost:3000. Your prompts never leave your machine.",
       "truth": "Customers ask me which AI should I pay for. The honest answer: if your PC has 8GB+ RAM, you already own a better private AI than any 0/month cloud subscription. I run Llama 3.3 8B on a 5-year-old Dell and it codes, summarizes, and writes emails offline. Cloud AI is convenient; local AI is yours.",
@@ -210,22 +244,22 @@
       "id": "onyx-2026-07-24-security-alert-001",
       "type": "news",
       "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: SECURITY ALERT \u2014 Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day \u2014 Patch via Microsoft Update Catalog",
+      "title": "ONYX SYSTEMS: SECURITY ALERT — Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day — Patch via Microsoft Update Catalog",
       "tag": "Security Alert",
       "summary": "Microsoft Patch Tuesday July 2026 patches 622 vulnerabilities including two actively exploited zero-days. CVE-2026-56164 in on-premises Microsoft SharePoint Server allows unauthenticated remote privilege escalation; CVE-2026-56155 in Active Directory Federation Services allows authenticated local privilege escalation. Both under active attack.",
-      "truth": "OBTAIN FIXES: Apply via Windows Update, WSUS, Microsoft Update Catalog (catalog.update.microsoft.com), or Microsoft Endpoint Configuration Manager. For SharePoint Server 2016/2019 with no ESU path, plan immediate migration to SharePoint Server Subscription Edition or Microsoft 365. Enable AMSI Full Mode via Group Policy (Computer Configuration \u2192 Administrative Templates \u2192 Windows Components \u2192 Antimalware Scan Interface) as a mitigation for SharePoint.",
+      "truth": "OBTAIN FIXES: Apply via Windows Update, WSUS, Microsoft Update Catalog (catalog.update.microsoft.com), or Microsoft Endpoint Configuration Manager. For SharePoint Server 2016/2019 with no ESU path, plan immediate migration to SharePoint Server Subscription Edition or Microsoft 365. Enable AMSI Full Mode via Group Policy (Computer Configuration → Administrative Templates → Windows Components → Antimalware Scan Interface) as a mitigation for SharePoint.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair"
       ],
-      "cta": "Apply July 2026 Patch Tuesday updates immediately via Microsoft Update Catalog \u2014 prioritize SharePoint Server and AD FS servers."
+      "cta": "Apply July 2026 Patch Tuesday updates immediately via Microsoft Update Catalog — prioritize SharePoint Server and AD FS servers."
     },
     {
       "id": "onyx-2026-07-24-news-001",
       "type": "news",
       "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released \u2014 Security Patches for ksmbd, KVM AMD SEV, Hyper-V, NFS Fixes \u2014 Obtain via kernel.org or Distro Updates",
+      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released — Security Patches for ksmbd, KVM AMD SEV, Hyper-V, NFS Fixes — Obtain via kernel.org or Distro Updates",
       "tag": "",
       "summary": "Linux Kernel 7.1.3 released July 4, 2026 by Greg Kroah-Hartman. Security fixes for ksmbd out-of-bounds heap read (SMB), KVM AMD SEV page overflow, Hyper-V nested virtualization bounds check. NFS server fixes for ACL leaks and state races. MIPS PREEMPT_RT reboot hang resolved for OpenWrt routers.",
       "truth": "OBTAIN: Download source from kernel.org (https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.3.tar.xz) with PGP signature. Build: make olddefconfig && make -j$(nproc) && sudo make modules_install install. Or wait for distribution kernel updates (typically within 1 week for Arch/Fedora/openSUSE Tumbleweed; LTS backports for Ubuntu/Debian/RHEL derivatives).",
@@ -240,7 +274,7 @@
       "id": "onyx-2026-07-24-tip-001",
       "type": "tip",
       "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: TECH TIP \u2014 Harden Linux Kernel via sysctl: Set kernel.kptr_restrict=2, kernel.dmesg_restrict=1, vm.mmap_rnd_bits=32 \u2014 Apply via /etc/sysctl.d/99-hardening.conf",
+      "title": "ONYX SYSTEMS: TECH TIP — Harden Linux Kernel via sysctl: Set kernel.kptr_restrict=2, kernel.dmesg_restrict=1, vm.mmap_rnd_bits=32 — Apply via /etc/sysctl.d/99-hardening.conf",
       "tag": "Tech Tip",
       "summary": "Three high-impact sysctl hardening knobs prevent kernel address leaks, restrict dmesg to root, and maximize ASLR entropy for mmap. Apply persistently via drop-in file and reload with sysctl --system. No reboot required.",
       "truth": "OBTAIN: Create the file via: sudo tee /etc/sysctl.d/99-onx-hardening.conf <<'EOF'\nkernel.kptr_restrict=2\nkernel.dmesg_restrict=1\nvm.mmap_rnd_bits=32\nEOF\nThen: sudo sysctl --system",
@@ -250,42 +284,6 @@
         "#ComputerRepair"
       ],
       "cta": "Create /etc/sysctl.d/99-onx-hardening.conf with the three knobs above and run sudo sysctl --system. Verify with sysctl -a | grep -E 'kptr_restrict|dmesg_restrict|mmap_rnd_bits'."
-    },
-    {
-      "type": "news",
-      "headline": "ONYX SYSTEMS Daily Brief \u2014 2026-07-23: LibreOffice 24.8.4 patches critical RCE + Proton VPN drops WireGuard on Linux",
-      "tip": "LibreOffice 24.8.4 fixes CVE-2026-41234 (critical RCE via malicious .odt). Update now at libreoffice.org. Proton VPN's Linux app dropped WireGuard support \u2014 use the CLI client or NetworkManager with official WireGuard configs from your Proton account.",
-      "truth": "People treat office suites as boring background apps, but an unpatched LibreOffice is an open door for anyone sending you a document. Vendors love to break workflows in the name of simplification. The CLI gives you back control without the GUI bloat.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SecurityAlert",
-        "#LibreOffice",
-        "#ProtonVPN",
-        "#WireGuard",
-        "#Linux"
-      ],
-      "date": "2026-07-23",
-      "id": "n-2026-07-23-1"
-    },
-    {
-      "type": "news",
-      "headline": "uBlock Origin MV3 migration complete \u2014 Firefox keeps full blocking power",
-      "tip": "uBlock Origin has finished its Manifest V3 migration. On Firefox, you lose nothing \u2014 full cosmetic filtering, dynamic rules, and network blocking all work. Chrome users should consider switching to Firefox or accept uBlock Origin Lite with reduced capabilities. I install Firefox + uBlock Origin as the default browser on every ONYX SYSTEMS build.",
-      "truth": "Google killed the open web's best ad blocker on Chrome. Firefox is now the only browser where uBlock Origin runs at full strength.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#uBlockOrigin",
-        "#Firefox",
-        "#ManifestV3",
-        "#Privacy",
-        "#AdBlocking"
-      ],
-      "date": "2026-07-23",
-      "id": "n-2026-07-23-2"
     }
   ],
   "updated": "2026-07-25"

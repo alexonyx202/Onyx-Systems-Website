@@ -1,94 +1,114 @@
 #!/usr/bin/env python3
-"""Daily crossword rotation for onyxpc.us.
+"""Daily crossword rotation for onyxpc.us — FAST version.
 
-Keeps data/crosswords.json a rolling window of exactly WINDOW puzzles (default 30).
-Each run, if a fresh on-brand 15x15 puzzle can be generated within BUDGET seconds,
-it is appended and the oldest is dropped -> content stays fresh while the window
-size (and therefore the engine's day-rotation modulus) never changes.
-
-If generation fails or times out, the existing window is left untouched (idempotent).
-
-The engine (assets/js/crossword.js) reads p.size / p.title / p.grid / p.clues,
-so generated puzzles are adapted to that schema (gen_crossword.to_puzzle emits a
-nested 'meta' but not a top-level 'size'/'title').
-
-Usage: python3 scripts/rotate_crosswords.py [--window 30] [--budget 60]
+Updates data/crosswords.json with a rolling window of puzzles from the
+validated bank (/home/ai/Documents/Obsidian Vault/Games/Crosswords/).
+No generation, no timeouts — just copies curated puzzles into the site's
+fallback pool. The daily_fun.py script handles today_crossword.json with
+its own no-repeat cursor; this just keeps the fallback pool fresh & sized.
 """
-import argparse, json, os, sys, time, shutil, datetime
+import argparse, json, os, sys, glob, datetime, shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
-BANK = os.path.join(REPO, "data", "crosswords.json")
+BANK_DIR = "/home/ai/Documents/Obsidian Vault/Games/Crosswords"
+BANK_TECH_DIRS = ["tech", "computer", "technology"]
 WINDOW = 30
-BUDGET = 60  # seconds to allow generation before giving up (keep cron cheap)
+BANK_FILE = os.path.join(REPO, "data", "crosswords.json")
 
 
-def gen_one(budget):
-    """Return a schema-correct puzzle dict, or None if it can't be made in time."""
-    sys.path.insert(0, HERE)
-    import gen_crossword as g
-    import signal
-
-    class _Timeout(Exception):
-        pass
-
-    def _handler(signum, frame):
-        raise _Timeout()
-
-    signal.signal(signal.SIGALRM, _handler)
-    signal.alarm(int(budget))
+def _bank_valid(p):
+    """Mirror the converter's validate(): every clue reads back, no orphans."""
+    raw = p.get("grid")
+    if not isinstance(raw, list) or not raw:
+        return False
     try:
-        seed = int(datetime.date.today().strftime("%Y%m%d"))
-        mask, sol, clues, bylen = g.generate(seed_base=seed, attempts=400)
-        puz = g.to_puzzle(mask, sol, clues)
-    finally:
-        signal.alarm(0)
-    # Adapt to engine schema: top-level size/title are required by crossword.js
-    size = puz["meta"]["size"]
-    title = "Onyx Daily Puzzle %s" % datetime.date.today().isoformat()
-    return {
-        "title": title,
-        "size": size,
-        "grid": puz["grid"],
-        "clues": puz["clues"],
-        "category": "general",
-        "source_url": "",
-        "slug": "onyx-%s" % datetime.date.today().isoformat(),
-        "fetched_at": datetime.datetime.now().isoformat(timespec="seconds"),
-    }
+        rows = ["".join(row) if isinstance(row, list) else str(row) for row in raw]
+    except Exception:
+        return False
+    n = p.get("size") or len(rows)
+    if n != len(rows):
+        return False
+    width = min(len(r) for r in rows)
+    if width != max(len(r) for r in rows):
+        return False
+    grid = rows
+    for dirn in ("across", "down"):
+        for cl in p.get("clues", {}).get(dirn, []):
+            if not all(k in cl for k in ("num", "row", "col", "len", "answer", "clue")):
+                return False
+            r, c = cl["row"] - 1, cl["col"] - 1
+            if r < 0 or c < 0 or r >= n or c >= width:
+                return False
+            try:
+                got = "".join(grid[r][c + i] if dirn == "across" else grid[r + i][c]
+                              for i in range(cl["len"]))
+            except Exception:
+                return False
+            if got != cl["answer"]:
+                return False
+    return True
+
+
+def _load_bank_puzzles():
+    cand_dirs = []
+    for d in BANK_TECH_DIRS:
+        pp = os.path.join(BANK_DIR, d)
+        if os.path.isdir(pp):
+            cand_dirs.append(pp)
+    if not cand_dirs:
+        cand_dirs = [os.path.join(BANK_DIR, d) for d in sorted(os.listdir(BANK_DIR))
+                     if os.path.isdir(os.path.join(BANK_DIR, d))]
+    puzzles = []
+    for d in cand_dirs:
+        for fp in sorted(glob.glob(os.path.join(d, "*.json"))):
+            if os.path.basename(fp) in ("index.json", "Crosswords.md"):
+                continue
+            try:
+                pz = json.load(open(fp))
+            except Exception:
+                continue
+            if not _bank_valid(pz):
+                continue
+            if len(pz.get("clues", {}).get("across", [])) < 2:
+                continue
+            puzzles.append(pz)
+    # stable de-dup by slug/title+size
+    seen, out = set(), []
+    for pz in puzzles:
+        key = (pz.get("slug") or pz.get("title"), pz.get("size"))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(pz)
+    return out
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--window", type=int, default=WINDOW)
-    ap.add_argument("--budget", type=int, default=BUDGET)
     args = ap.parse_args()
 
-    bank = json.load(open(BANK))
+    bank = json.load(open(BANK_FILE))
     puzzles = bank.get("puzzles", [])
     if len(puzzles) == 0:
         print("EMPTY bank - aborting (would destroy content)")
         return 1
 
-    t0 = time.time()
-    try:
-        fresh = gen_one(args.budget)
-    except Exception as ex:
-        print("GEN_SKIP: %s (keeping existing %d-puzzle window)" % (ex, len(puzzles)))
-        return 0  # no-op; window intact
-    dt = time.time() - t0
-    if fresh is None:
-        print("GEN_TIMEOUT after %.0fs - keeping existing %d-puzzle window" % (dt, len(puzzles)))
-        return 0
+    fresh_pool = _load_bank_puzzles()
+    if len(fresh_pool) < 12:
+        raise RuntimeError(f"bank pool too small: {len(fresh_pool)}")
 
-    roll = puzzles[1:] + [fresh]  # drop oldest, append newest -> same length
+    # Keep the existing window but inject a fresh puzzle at the front
+    # (so the daily rotation modulus stays stable, content just refreshes)
+    fresh = fresh_pool[datetime.date.today().toordinal() % len(fresh_pool)]
+    roll = [fresh] + puzzles[:args.window - 1]
     roll = roll[-args.window:]
-    # atomic write
-    tmp = BANK + ".tmp"
+
+    tmp = BANK_FILE + ".tmp"
     json.dump({"puzzles": roll}, open(tmp, "w"), separators=(",", ":"))
-    os.replace(tmp, BANK)
-    print("ROTATED: %d -> %d puzzles in %.0fs (oldest dropped, fresh added: %s)"
-          % (len(puzzles), len(roll), dt, fresh["title"]))
+    os.replace(tmp, BANK_FILE)
+    print(f"ROTATED: {len(puzzles)} -> {len(roll)} puzzles (fresh: {fresh['title']})")
     return 0
 
 
