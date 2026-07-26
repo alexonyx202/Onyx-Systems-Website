@@ -1564,6 +1564,17 @@ var FEED_FALLBACK={
     {type:'news',headline:'Windows 11 24H2 Is Breaking Things',truth:'The 24H2 update breaks some older drivers (audio/Wi-Fi) and can reset defaults. Check sound and network after updating.',tip:'After the 24H2 update, check sound and Wi-Fi. Roll back drivers in Device Manager if they break.',tags:['#Windows11']},
     {type:'tip',headline:'Stop emailing yourself files — LocalSend is free',tip:'Download LocalSend free from localsend.org or your app store; it sends files straight between your devices over your own Wi-Fi — no cloud, no account.',tags:['#FreeTools','#Privacy','#LocalSend']}]
 };
+// Clean title by removing common prefixes that shouldn't appear in display
+function cleanTitle(t){
+  if(!t) return '';
+  return String(t)
+    .replace(/^🔴\s*ALERT\s*[—–-]\s*/i, '')
+    .replace(/^DAILY\s+BRIEF\s*[—–-]\s*/i, '')
+    .replace(/^ONYX\s+SYSTEMS:\s*TECH\s+TIP\s*[—–-]\s*/i, '')
+    .replace(/^ONYX\s+SYSTEMS:\s*/i, '')
+    .replace(/^ONYX\s+SYSTEMS\s*[—–-]\s*/i, '')
+    .trim();
+}
 function renderAll(d){
   // Combine news[] and posts[] arrays (both have type 'news' or 'tip')
   var newsItems = (d.news||[]).map(function(n){
@@ -1604,7 +1615,7 @@ function renderAll(d){
     grid.innerHTML=allItems.map(function(p){
       var isNews=(p.type==='news');
       var tag=isNews?'News':'Tip';
-      var headline = p.title || p.headline || '';
+      var headline = cleanTitle(p.title || p.headline || '');
       var tipText = p.summary || p.tip || '';
       var body=isNews
         ? (p.truth?'<div class="tip"><b>Why it matters:</b> '+esc(p.truth)+'</div>':'')
