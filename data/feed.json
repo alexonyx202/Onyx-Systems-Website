@@ -100,17 +100,6 @@
   ],
   "news": [
     {
-      "id": "news-2026-07-25",
-      "type": "newsletter",
-      "date": "2026-07-25",
-      "title": "FTC scam alert: fake agents call demanding payment \u2014 hang up, call 1-877-FTC-HELP",
-      "tag": "Security Alert",
-      "excerpt": "Your caller ID says \"FTC.\" The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, demand gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
-      "image": "assets/img/news/2026-07-25-composite.jpg",
-      "comic": "assets/img/news/2026-07-25-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
       "id": "news-2026-07-24",
       "type": "newsletter",
       "date": "2026-07-24",
@@ -156,6 +145,53 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-07-25-tip-003",
+      "type": "tip",
+      "date": "2026-07-25",
+      "title": "Windows 11 24H2 stops ransomware encrypting your files \u2014 Controlled Folder Access is free and already installed",
+      "tag": "Tech Tip",
+      "summary": "Open Windows Security \u2192 Virus & threat protection \u2192 Manage ransomware protection \u2192 turn on Controlled Folder Access. Then click \"Protected folders\" and add your Documents, Pictures, and any work folders. Only whitelisted apps (Office, your editor, browser) can write there \u2014 ransomware gets blocked cold. Enable via PowerShell: `Set-MpPreference -EnableControlledFolderAccess Enabled; Add-MpPreference -ControlledFolderAccessProtectedFolders \"$env:USERPROFILE\\Documents\",\"$env:USERPROFILE\\Pictures\",\"$env:USERPROFILE\\Desktop\"`. Verify with `Get-MpPreference | Select EnableControlledFolderAccess`.",
+      "truth": "People pay for \"ransomware protection\" suites that just wrap this exact Windows feature. The honest answer: Microsoft built Controlled Folder Access into Defender in 2017 and it works \u2014 but it's OFF by default because some old apps break. ONYX SYSTEMS enables Controlled Folder Access on every build and whitelists the 5-6 apps the customer actually uses. Zero ransomware incidents in three years. ONYX SYSTEMS hardens your Windows install with Controlled Folder Access, whitelists your actual apps, and tests it against a simulated encryptor \u2014 so you know it works before you need it. Included with any tune-up.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Ransomware",
+        "#WindowsSecurity"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-25-news-002",
+      "type": "news",
+      "date": "2026-07-25",
+      "title": "Firefox 153 ships Containers by default \u2014 separate Work, Personal, Banking, Shopping in one window free",
+      "tag": "Tech Note",
+      "summary": "Open Firefox 153+, click the menu \u2192 New Container Tab \u2192 pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking \u2014 Google in your Work Firefox Container can't see your Personal YouTube history. No extension needed; it's built in. Get Firefox 153+ from mozilla.org/firefox.",
+      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not \u2014 Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it's the single best privacy upgrade that costs zero dollars. ONYX SYSTEMS sets up Firefox Containers for your workflow and shows you how to auto-assign sites to the right Firefox Container. Free, takes 10 minutes.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Privacy"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-25-news-001",
+      "type": "news",
+      "date": "2026-07-25",
+      "title": "DAILY BRIEF \u2014 NVMe health checks free, Firefox Containers now built-in, local Llama 3.3 runs on 8GB",
+      "tag": "Tech Note",
+      "summary": "Run `smartctl -a /dev/nvme0` (Linux) or install CrystalDiskInfo free at crystalmark.info (Windows) to read your NVMe SSD's real health \u2014 percentage used, temperature, power-on hours. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SSD",
+        "#DailyBrief"
+      ]
+    },
+    {
       "id": "onyx-2026-07-25-tip-001",
       "type": "tip",
       "date": "2026-07-25",
@@ -173,47 +209,12 @@
       "cta": "Download Ollama at ollama.com, then run ollama run llama3.3:8b. For the web UI, run the Docker command above."
     },
     {
-      "id": "onyx-2026-07-25-news-002",
-      "type": "news",
-      "date": "2026-07-25",
-      "title": "Firefox 153 ships Containers by default \u2014 separate Work, Personal, Banking, Shopping in one window free",
-      "tag": "OnyxSystems",
-      "summary": "Open Firefox 153+, click the menu \u2192 New Container Tab \u2192 pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking \u2014 Google in your Work Firefox Container can't see your Personal YouTube history. No extension needed; it's built in. Get Firefox 153+ from mozilla.org/firefox.",
-      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not \u2014 Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it's the single best privacy upgrade that costs zero dollars. ONYX SYSTEMS sets up Firefox Containers for your workflow and shows you how to auto-assign sites to the right Firefox Container. Free, takes 10 minutes.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox",
-        "#Privacy"
-      ],
-      "cta": ""
-    },
-    {
-      "id": "onyx-2026-07-25-tip-003",
-      "type": "tip",
-      "date": "2026-07-25",
-      "title": "Windows 11 24H2 stops ransomware encrypting your files \u2014 Controlled Folder Access is free and already installed",
-      "tag": "OnyxSystems",
-      "summary": "Open Windows Security \u2192 Virus & threat protection \u2192 Manage ransomware protection \u2192 turn on Controlled Folder Access. Then click \"Protected folders\" and add your Documents, Pictures, and any work folders. Only whitelisted apps (Office, your editor, browser) can write there \u2014 ransomware gets blocked cold. Enable via PowerShell: `Set-MpPreference -EnableControlledFolderAccess Enabled; Add-MpPreference -ControlledFolderAccessProtectedFolders \"$env:USERPROFILE\\Documents\",\"$env:USERPROFILE\\Pictures\",\"$env:USERPROFILE\\Desktop\"`. Verify with `Get-MpPreference | Select EnableControlledFolderAccess`.",
-      "truth": "People pay for \"ransomware protection\" suites that just wrap this exact Windows feature. The honest answer: Microsoft built Controlled Folder Access into Defender in 2017 and it works \u2014 but it's OFF by default because some old apps break. ONYX SYSTEMS enables Controlled Folder Access on every build and whitelists the 5-6 apps the customer actually uses. Zero ransomware incidents in three years. ONYX SYSTEMS hardens your Windows install with Controlled Folder Access, whitelists your actual apps, and tests it against a simulated encryptor \u2014 so you know it works before you need it. Included with any tune-up.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Ransomware",
-        "#WindowsSecurity"
-      ],
-      "cta": ""
-    },
-    {
       "id": "onyx-2026-07-25-daily-brief-001",
       "type": "news",
       "date": "2026-07-25",
       "title": "ONYX SYSTEMS: FTC scam alert \u2014 fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
       "tag": "Security Alert",
       "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
-      "truth": "I have gotten the FTC is calling scam myself \u2014 twice this year. The urgency in their voice is designed to make you panic before you think. Real government agencies do not pressure you to act instantly \u2014 scammers do. The FTC has warned repeatedly that anyone claiming to be an FTC agent with a badge number is lying.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -222,23 +223,6 @@
         "#DailyBrief"
       ],
       "cta": "Call the FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov if you got this call."
-    },
-    {
-      "id": "onyx-2026-07-25-news-001",
-      "type": "news",
-      "date": "2026-07-25",
-      "title": "ONYX SYSTEMS: Firefox 153 ships Containers by default \u2014 separate Work, Personal, Banking, Shopping in one window free",
-      "tag": "",
-      "summary": "Open Firefox 153+, click the menu -> New Container Tab -> pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking - Google in your Work Container cannot see your Personal YouTube history. No extension needed; it is built in.",
-      "truth": "Most people use Chrome profiles or incognito and think they are separated. They are not - Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four Firefox Containers daily and it is the single best privacy upgrade that costs zero dollars.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox",
-        "#Privacy"
-      ],
-      "cta": "Download Firefox 153+ at mozilla.org/firefox and open Menu -> New Container Tab to start."
     },
     {
       "id": "onyx-2026-07-24-security-alert-001",
