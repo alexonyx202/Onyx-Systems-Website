@@ -1575,12 +1575,15 @@ function renderAll(d){
     grid.innerHTML=posts.map(function(p){
       var isNews=(p.type==='news');
       var tag=isNews?'News':'Tip';
+      // feed.json uses 'title' (not 'headline') and 'summary' (not 'tip')
+      var headline = p.title || p.headline || '';
+      var tipText = p.summary || p.tip || '';
       var body=isNews
         ? (p.truth?'<div class="tip"><b>Why it matters:</b> '+esc(p.truth)+'</div>':'')
-        : '<div class="tip"><b>Try this:</b> '+esc(p.tip||'')+'</div>';
+        : '<div class="tip"><b>Try this:</b> '+esc(tipText)+'</div>';
       return '<div class="post-card '+(isNews?'post-news':'post-tip')+'">'+
         '<span class="ntag '+(isNews?'ntag-news':'ntag-tip')+'">'+tag+'</span>'+
-        '<h4>'+esc(p.headline)+'</h4>'+body+
+        '<h4>'+esc(headline)+'</h4>'+body+
         (p.tags?'<div class="tags">'+esc(p.tags.join(' '))+'</div>':'')+'</div>';
     }).join('');
   }
