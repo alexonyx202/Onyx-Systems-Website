@@ -268,9 +268,15 @@
   .svc-row p{margin:0;font-size:13px;line-height:1.45;color:var(--text-2)}
   .panel-body .svc-row:hover .svc-ic{filter:drop-shadow(0 0 6px rgba(194,112,61,.5));opacity:1}
 
+  /* Tighter service rows for flyout panel (per SERVICES_FLYOUT_FIX_PROMPT.md) */
+  .panel-body .svc-row{margin:12px 0 4px;gap:10px}
+  .panel-body .svc-row:first-of-type{margin-top:0}
+  .panel-body .svc-row h3{margin:0 0 4px;font-size:17px}
+  .panel-body .svc-row p{margin:0;font-size:13.5px;line-height:1.45}
+
   /* Tighter chips in panel */
-  .panel-body .chip-row{margin:8px 0 0;gap:5px}
-  .panel-body .chip{padding:4px 10px;font-size:11.5px}
+  .panel-body .chip-row{margin:12px 0 0;gap:6px}
+  .panel-body .chip{padding:5px 12px;font-size:12.5px}
 
   /* ===== FLYOUT PANEL ===== */
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
