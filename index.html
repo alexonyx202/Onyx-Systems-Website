@@ -268,15 +268,57 @@
   .svc-row p{margin:0;font-size:13px;line-height:1.45;color:var(--text-2)}
   .panel-body .svc-row:hover .svc-ic{filter:drop-shadow(0 0 6px rgba(194,112,61,.5));opacity:1}
 
-  /* Tighter service rows for flyout panel (per SERVICES_FLYOUT_FIX_PROMPT.md) */
-  .panel-body .svc-row{margin:12px 0 4px;gap:10px}
+  /* ===== FLYOUT PANEL — Stacked icon + text layout (icons above, max readability) ===== */
+  .panel-body .svc-row{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin:10px 0 6px;
+    gap:6px;
+  }
   .panel-body .svc-row:first-of-type{margin-top:0}
-  .panel-body .svc-row h3{margin:0 0 4px;font-size:17px}
-  .panel-body .svc-row p{margin:0;font-size:13.5px;line-height:1.45}
+  .panel-body .svc-ic{
+    flex:0 0 auto;
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    transition:.2s;
+    opacity:.95;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  }
+  .panel-body .svc-row:hover .svc-ic{
+    filter:drop-shadow(0 0 8px rgba(194,112,61,.6)) drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    opacity:1;
+    transform:scale(1.05);
+  }
+  .panel-body .svc-row > div{width:100%;min-width:0}
+  .panel-body .svc-row h3{
+    margin:0;
+    font-size:15px;
+    line-height:1.25;
+    color:var(--text);
+    font-weight:600;
+  }
+  .panel-body .svc-row p{
+    margin:0;
+    font-size:13px;
+    line-height:1.4;
+    color:var(--text-2);
+    max-width:100%;
+  }
 
   /* Tighter chips in panel */
-  .panel-body .chip-row{margin:12px 0 0;gap:6px}
-  .panel-body .chip{padding:5px 12px;font-size:12.5px}
+  .panel-body .chip-row{margin:14px 0 0;gap:5px;justify-content:center}
+  .panel-body .chip{
+    padding:4px 10px;
+    font-size:11.5px;
+    border-radius:var(--r-pill);
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    color:var(--text);
+    white-space:nowrap;
+  }
 
   /* ===== FLYOUT PANEL ===== */
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
