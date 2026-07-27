@@ -103,6 +103,8 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "scam", "tech support",
         # Extended 2026-07-24: massive credential leak alert is a security alert (exempt).
         "stolen", "password", "credential", "pwned",
+        # Extended 2026-07-27: AI voice-cloning grandparent scam alert is a security alert (exempt).
+        "grandma", "grandparent", "voice-clon", "voice clon", "ai fake",
     ]
     if any(s in low for s in SKIP):
         return fails

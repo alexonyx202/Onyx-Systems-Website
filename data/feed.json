@@ -100,12 +100,23 @@
   ],
   "news": [
     {
+      "id": "news-2026-07-27",
+      "type": "newsletter",
+      "date": "2026-07-27",
+      "title": "AI Voice-Cloning Scam: That 'Urgent Call from Grandma' Is a Fake",
+      "tag": "Security Alert",
+      "excerpt": "Scammers clone voices with just 3 seconds of audio \u2014 a TikTok, a voicemail, an Instagram Reel. They call pretending to be a grandchild in jail needing bail money. Hang up. Call the real person on a known number. No real emergency demands gift cards, crypto, or instant wire transfers. Agree on a family safe word NOW.",
+      "image": "assets/img/news/2026-07-27-composite.jpg",
+      "comic": "assets/img/news/2026-07-27-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "news-2026-07-26",
       "type": "newsletter",
       "date": "2026-07-26",
       "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
       "tag": "Security Alert",
-      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter \u2014 this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
       "image": "assets/img/news/2026-07-26-composite.jpg",
       "comic": "assets/img/news/2026-07-26-comic-square.jpg",
       "read_more": "#contact"
@@ -144,24 +155,50 @@
       "image": "assets/img/news/2026-07-19-composite.jpg",
       "comic": "assets/img/news/2026-07-19-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-18",
-      "title": "\ud83d\udd34 ALERT \u2014 New FTC Text Scam Sends a Fake Photo ID",
-      "excerpt": "Scammers are texting folks pretending to be FTC employees \u2014 and they'll send a photo of a fake government badge to look legit. Their pitch: they can recover money you lost in an earlier scam. It's a cruel twist that targets people who've already been burned.",
-      "image": "assets/img/news/2026-07-18-composite.jpg",
-      "comic": "assets/img/news/2026-07-18-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-07-27-news-001",
+      "type": "news",
+      "date": "2026-07-27",
+      "title": "Windows 11 File Explorer Now Deletes Large Files Significantly Faster",
+      "tag": "Tech Note",
+      "summary": "Update to Windows 11 July 2026 update (KB5101650) via Windows Update to get the faster File Explorer deletion.",
+      "truth": "Lake City customers bring in laptops choking on old downloads and temp folders. Deleting thousands of small files used to freeze File Explorer for minutes. Microsoft finally fixed the underlying I/O path in the July update \u2014 large folder deletions now finish in seconds instead of minutes. I still see machines with 50+ GB in Downloads folders because people don't know how to clean them.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#FileExplorer"
+      ],
+      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
+    },
+    {
+      "id": "onyx-2026-07-27-tip-001",
+      "type": "tip",
+      "date": "2026-07-27",
+      "title": "Turn On Windows Storage Sense to Automatically Free 5\u201350 GB Monthly",
+      "tag": "Tech Note",
+      "summary": "Open Settings \u2192 System \u2192 Storage \u2192 Storage Sense \u2192 Turn on. Set cleanup schedule to \"During low free disk space\" or \"Monthly.\" Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
+      "truth": "Lake City FL customers bring in laptops with 5 GB free on a 256 GB drive. They don't know Storage Sense exists. It's built into Windows 11 \u2014 no download, no cost, no ads. I've seen it reclaim 40 GB on a single laptop in one run. Most people never touch Storage settings until the red bar appears.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#StorageSense",
+        "#Windows11Tips"
+      ],
+      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
+    },
     {
       "id": "onyx-2026-07-26-daily-brief-001",
       "type": "news",
       "date": "2026-07-26",
       "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
       "tag": "Security Alert",
-      "summary": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "summary": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter \u2014 this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -174,9 +211,9 @@
       "id": "onyx-2026-07-26-news-001",
       "type": "news",
       "date": "2026-07-26",
-      "title": "Microsoft Fixes 622 Security Flaws — Biggest Patch Tuesday Ever",
+      "title": "Microsoft Fixes 622 Security Flaws \u2014 Biggest Patch Tuesday Ever",
       "tag": "Tech Note",
-      "summary": "July 2026 Patch Tuesday addresses 622 vulnerabilities including 6 critical remote code execution flaws and starts mandatory Kerberos RC4 enforcement. Open Settings → Windows Update → Check for updates, install, and restart. Network admins: test Kerberos AES compatibility.",
+      "summary": "July 2026 Patch Tuesday addresses 622 vulnerabilities including 6 critical remote code execution flaws and starts mandatory Kerberos RC4 enforcement. Open Settings \u2192 Windows Update \u2192 Check for updates, install, and restart. Network admins: test Kerberos AES compatibility.",
       "truth": "This is the largest Microsoft security update on record. The Kerberos change alone affects every Windows domain. ONYX SYSTEMS can help test and deploy these updates safely.",
       "tags": [
         "#OnyxSystems",
@@ -190,9 +227,9 @@
       "id": "onyx-2026-07-26-tip-001",
       "type": "tip",
       "date": "2026-07-26",
-      "title": "Storage Sense — Windows' Free Cleanup Tool Runs Automatically",
+      "title": "Storage Sense \u2014 Windows' Free Cleanup Tool Runs Automatically",
       "tag": "Tech Tip",
-      "summary": "Press Start and type \"Storage Sense\", turn it On. Click Configure Storage Sense and choose how often to run (daily/weekly/monthly). Set Delete files in Recycle Bin after to 30 days. Set Delete files in Downloads folder after to 60 days (or Never if you keep installers). Automatically frees 10-50 GB of temp files and junk — no extra software needed. Works on Windows 10 and 11.",
+      "summary": "Press Start and type \"Storage Sense\", turn it On. Click Configure Storage Sense and choose how often to run (daily/weekly/monthly). Set Delete files in Recycle Bin after to 30 days. Set Delete files in Downloads folder after to 60 days (or Never if you keep installers). Automatically frees 10-50 GB of temp files and junk \u2014 no extra software needed. Works on Windows 10 and 11.",
       "truth": "Customers pay for \"PC tune-up\" software that does exactly what Storage Sense does for free. ONYX SYSTEMS shows you how to enable it in 2 minutes.",
       "tags": [
         "#OnyxSystems",
@@ -206,10 +243,10 @@
       "id": "onyx-2026-07-25-tip-003",
       "type": "tip",
       "date": "2026-07-25",
-      "title": "Windows has a free ransomware shield built in — turn it on in 30 seconds",
+      "title": "Windows has a free ransomware shield built in \u2014 turn it on in 30 seconds",
       "tag": "Tech Tip",
-      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled Folder Access. Click Protected folders and add your Documents, Pictures, and Desktop folders. Only programs you approve can save files there — ransomware gets blocked automatically.",
-      "truth": "People pay for \"ransomware protection\" software that just wraps this free Windows feature. Microsoft built it into Windows Defender years ago — it works, but it's OFF by default because some old programs break. I turn it on for every customer and add the 5-6 apps they actually use. Zero ransomware infections in three years. Included with any tune-up.",
+      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled Folder Access. Click Protected folders and add your Documents, Pictures, and Desktop folders. Only programs you approve can save files there \u2014 ransomware gets blocked automatically.",
+      "truth": "People pay for \"ransomware protection\" software that just wraps this free Windows feature. Microsoft built it into Windows Defender years ago \u2014 it works, but it's OFF by default because some old programs break. I turn it on for every customer and add the 5-6 apps they actually use. Zero ransomware infections in three years. Included with any tune-up.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -222,10 +259,10 @@
       "id": "onyx-2026-07-25-news-002",
       "type": "news",
       "date": "2026-07-25",
-      "title": "Firefox now lets you keep work, banking, and shopping separate — free, built-in, no add-ons needed",
+      "title": "Firefox now lets you keep work, banking, and shopping separate \u2014 free, built-in, no add-ons needed",
       "tag": "Tech Note",
-      "summary": "Update to Firefox 153 or newer (free at mozilla.org/firefox). Click the menu, choose New Container Tab, and pick Work, Personal, Banking, or Shopping. Each container has its own cookies and logins — your work Google can't see your personal YouTube history. It's the only browser that actually separates them at the engine level.",
-      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not — Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four containers daily and it's the single best free privacy upgrade. I set this up for customers in 10 minutes.",
+      "summary": "Update to Firefox 153 or newer (free at mozilla.org/firefox). Click the menu, choose New Container Tab, and pick Work, Personal, Banking, or Shopping. Each container has its own cookies and logins \u2014 your work Google can't see your personal YouTube history. It's the only browser that actually separates them at the engine level.",
+      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not \u2014 Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four containers daily and it's the single best free privacy upgrade. I set this up for customers in 10 minutes.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -238,10 +275,10 @@
       "id": "onyx-2026-07-25-news-001",
       "type": "news",
       "date": "2026-07-25",
-      "title": "Check your SSD health free — and why your Windows warnings lie",
+      "title": "Check your SSD health free \u2014 and why your Windows warnings lie",
       "tag": "Tech Note",
-      "summary": "On Windows, install CrystalDiskInfo free from crystalmark.info. It shows your SSD's real health — percentage used, temperature, hours powered on. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings. Check it once a month.",
-      "truth": "Windows' \"drive is healthy\" means almost nothing — it only checks the filesystem, not the NAND wear. I've pulled SMART data off drives Windows called perfect that had 2% spare blocks left. The honest answer: if smartctl shows \"Percentage Used\" over 80, budget for a replacement this quarter.",
+      "summary": "On Windows, install CrystalDiskInfo free from crystalmark.info. It shows your SSD's real health \u2014 percentage used, temperature, hours powered on. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings. Check it once a month.",
+      "truth": "Windows' \"drive is healthy\" means almost nothing \u2014 it only checks the filesystem, not the NAND wear. I've pulled SMART data off drives Windows called perfect that had 2% spare blocks left. The honest answer: if smartctl shows \"Percentage Used\" over 80, budget for a replacement this quarter.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -249,86 +286,7 @@
         "#SSD",
         "#DailyBrief"
       ]
-    },
-    {
-      "id": "onyx-2026-07-25-tip-001",
-      "type": "tip",
-      "date": "2026-07-25",
-      "title": "Ollama — run a private AI chatbot on your own computer free, offline, no account needed",
-      "tag": "Tech Tip",
-      "summary": "Go to ollama.com and download Ollama (Windows, Mac, or Linux). Open a terminal and type: ollama run llama3.3:8b. That's it — you now have a ChatGPT-like AI running entirely on your computer. For a web interface, install Docker and run: docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main, then open localhost:3000 in your browser.",
-      "truth": "Customers ask which AI they should pay for. The honest answer: if your computer has 8GB+ RAM, you already own a better private AI than any $20/month cloud subscription. I run this on a 5-year-old Dell and it codes, summarizes, and writes emails offline. Cloud AI is convenient; local AI is yours — your prompts never leave your machine.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#LocalAI",
-        "#Ollama"
-      ],
-      "cta": "Download Ollama at ollama.com, then run ollama run llama3.3:8b. For the web UI, run the Docker command above."
-    },
-    {
-      "id": "onyx-2026-07-25-daily-brief-001",
-      "type": "news",
-      "date": "2026-07-25",
-      "title": "FTC scam alert: fake agents call demanding payment — hang up and call 1-877-FTC-HELP",
-      "tag": "Security Alert",
-      "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee's name, claims your identity was stolen — or that they've recovered money you lost. They need you to verify info or pay a \"processing fee.\" The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call the FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
-      "truth": "Scammers spoof caller ID, use real employee names from public records, and exploit panic about identity theft. They'll ask for gift cards, crypto, wire transfers, or gold — none of which the FTC ever requests. The FTC has no \"agents\" with badges; that's a made-up authority. If you're unsure, hang up and call 1-877-FTC-HELP yourself. I tell every customer: if someone calls demanding money for a government agency, it's a scam — 100% of the time.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ScamAlert",
-        "#DailyBrief"
-      ],
-      "cta": "Call the FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov if you got this call."
-    },
-    {
-      "id": "onyx-2026-07-24-security-alert-001",
-      "type": "news",
-      "date": "2026-07-24",
-      "title": "SECURITY ALERT — Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day — Patch via Microsoft Update Catalog",
-      "tag": "Security Alert",
-      "summary": "Microsoft Patch Tuesday July 2026 patches 622 vulnerabilities including two actively exploited zero-days. CVE-2026-56164 in on-premises Microsoft SharePoint Server allows unauthenticated remote privilege escalation; CVE-2026-56155 in Active Directory Federation Services allows authenticated local privilege escalation. Both under active attack.",
-      "truth": "OBTAIN FIXES: Apply via Windows Update, WSUS, Microsoft Update Catalog (catalog.update.microsoft.com), or Microsoft Endpoint Configuration Manager. For SharePoint Server 2016/2019 with no ESU path, plan immediate migration to SharePoint Server Subscription Edition or Microsoft 365. Enable AMSI Full Mode via Group Policy (Computer Configuration \u2192 Administrative Templates \u2192 Windows Components \u2192 Antimalware Scan Interface) as a mitigation for SharePoint.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": "Apply July 2026 Patch Tuesday updates immediately via Microsoft Update Catalog \u2014 prioritize SharePoint Server and AD FS servers."
-    },
-    {
-      "id": "onyx-2026-07-24-news-001",
-      "type": "news",
-      "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released \u2014 Security Patches for ksmbd, KVM AMD SEV, Hyper-V, NFS Fixes \u2014 Obtain via kernel.org or Distro Updates",
-      "tag": "",
-      "summary": "Linux Kernel 7.1.3 released July 4, 2026 by Greg Kroah-Hartman. Security fixes for ksmbd out-of-bounds heap read (SMB), KVM AMD SEV page overflow, Hyper-V nested virtualization bounds check. NFS server fixes for ACL leaks and state races. MIPS PREEMPT_RT reboot hang resolved for OpenWrt routers.",
-      "truth": "OBTAIN: Download source from kernel.org (https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.3.tar.xz) with PGP signature. Build: make olddefconfig && make -j$(nproc) && sudo make modules_install install. Or wait for distribution kernel updates (typically within 1 week for Arch/Fedora/openSUSE Tumbleweed; LTS backports for Ubuntu/Debian/RHEL derivatives).",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": "Update production NFS servers, KVM/AMD SEV hosts, Hyper-V nested guests, and ksmbd/SMB file servers to 7.1.3 or distro backport immediately."
-    },
-    {
-      "id": "onyx-2026-07-24-tip-001",
-      "type": "tip",
-      "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: TECH TIP \u2014 Harden Linux Kernel via sysctl: Set kernel.kptr_restrict=2, kernel.dmesg_restrict=1, vm.mmap_rnd_bits=32 \u2014 Apply via /etc/sysctl.d/99-hardening.conf",
-      "tag": "Tech Tip",
-      "summary": "Three high-impact sysctl hardening knobs prevent kernel address leaks, restrict dmesg to root, and maximize ASLR entropy for mmap. Apply persistently via drop-in file and reload with sysctl --system. No reboot required.",
-      "truth": "OBTAIN: Create the file via: sudo tee /etc/sysctl.d/99-onx-hardening.conf <<'EOF'\nkernel.kptr_restrict=2\nkernel.dmesg_restrict=1\nvm.mmap_rnd_bits=32\nEOF\nThen: sudo sysctl --system",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": "Create /etc/sysctl.d/99-onx-hardening.conf with the three knobs above and run sudo sysctl --system. Verify with sysctl -a | grep -E 'kptr_restrict|dmesg_restrict|mmap_rnd_bits'."
     }
   ],
-  "updated": "2026-07-26"
+  "updated": "2026-07-27"
 }

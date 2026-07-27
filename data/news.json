@@ -1,6 +1,40 @@
 {
-  "updated": "2026-07-26",
+  "updated": "2026-07-27",
   "items": [
+    {
+      "id": "n-2026-07-27",
+      "type": "newsletter",
+      "date": "2026-07-27",
+      "title": "That 'Urgent Call from Grandma' Is an AI Fake",
+      "tag": "Daily Brief",
+      "summary": "title: \"That 'Urgent Call from Grandma' Is an AI Fake\"",
+      "comic": "/home/ai/Documents/Obsidian Vault/Daily/Newsletter - 2026-07-27-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-07-27-news-001",
+      "type": "tech-note",
+      "date": "2026-07-27",
+      "title": "Windows 11 File Explorer Now Deletes Large Files Significantly Faster",
+      "tag": "Tech Note",
+      "summary": "Update to Windows 11 July 2026 update (KB5101650) via Windows Update to get the faster File Explorer deletion.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-07-27-tip-001",
+      "type": "tech-note",
+      "date": "2026-07-27",
+      "title": "Turn On Windows Storage Sense to Automatically Free 5-50 GB Monthly",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > Storage > Storage Sense > Turn on. Set cleanup schedule to 'During low free disk space' or 'Monthly'. Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-07-26",
       "type": "newsletter",
@@ -102,38 +136,6 @@
       "summary": "title: \"16 Billion Stolen Passwords: Check If Yours Are Out There\"",
       "comic": "Newsletter - 2026-07-24-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-24-1",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: SECURITY ALERT — Microsoft SharePoint Server CVE-2026-56164 Actively Exploited Zero-Day",
-      "tag": "Security Alert",
-      "summary": "Microsoft SharePoint Server zero-day CVE-2026-56164 is under active exploitation. Apply patches immediately via Windows Update, WSUS, Microsoft Update Catalog, or MECM.",
-      "cta": {
-        "label": "Call (386) 755-7772 for emergency patching",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-07-24-2",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: Linux Kernel 7.1.3 Released — ksmbd, KVM AMD SEV, Hyper-V, NFS, MIPS Fixes",
-      "tag": "Tech Note",
-      "summary": "Linux kernel 7.1.3 brings security and stability fixes for ksmbd (SMB3), KVM AMD SEV-SNP, Hyper-V, NFS, and MIPS. Available from kernel.org or distro updates."
-    },
-    {
-      "id": "t-2026-07-24-3",
-      "type": "tech-note",
-      "date": "2026-07-24",
-      "title": "ONYX SYSTEMS: TECH TIP — Harden Linux Kernel via sysctl: Set kptr_restrict=2, dmesg_restrict=1, mmap_rnd_bits=32",
-      "tag": "Tech Tip",
-      "summary": "Three sysctl knobs harden kernel info leaks and ASLR. Create /etc/sysctl.d/99-onx-hardening.conf with the three lines, run sudo sysctl --system. No reboot.",
-      "cta": {
-        "label": "Call (386) 755-7772 for Linux hardening help",
-        "href": "tel:+13867557772"
-      }
     }
   ]
 }
