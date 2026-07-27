@@ -1,199 +1,124 @@
 {
-  "title": "math",
-  "size": 22,
+  "title": "Math Words Crossword",
+  "size": 19,
   "grid": [
-    "..............positive",
-    "....a...........u.....",
-    "....v...........b.....",
-    "...percent......t.....",
-    "....r...........r...d.",
-    "....a.........a.angle.",
-    "....g.........r.c...c.",
-    "....equal.range.t...i.",
-    ".......d..a.e.a.i...m.",
-    ".......d..d.g...o...a.",
-    "...multiplication...l.",
-    ".......t..u.t.........",
-    ".......i..s.i.........",
-    ".....s.o....v.........",
-    "fraction...mean.......",
-    ".....m.....e.....w....",
-    ".....p.....d.....h....",
-    ".....l.....i.....o....",
-    "division...a.....l....",
-    ".....f....unitrate....",
-    ".....y................",
-    "......................"
+    "..................M",
+    "..................u",
+    "..................l",
+    "..................t",
+    "..................i",
+    "......P...........p",
+    "......a...........l",
+    "......r...........i",
+    "......Equation....c",
+    "......n...........a",
+    "....Math......A...t",
+    "..S...h.A.....d...i",
+    "..y...e.l.....d...o",
+    "Numbers.g..Division",
+    "..b...e.e.....t....",
+    "..o...Subtraction..",
+    "..l.....r.....o....",
+    "..s.....a.Exponents",
+    "..................."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 15,
+        "num": 3,
+        "row": 9,
+        "col": 7,
         "len": 8,
-        "answer": "positive",
-        "clue": "any number that is greater than zero,"
+        "answer": "Equation",
+        "clue": "A set of two equivalent values using an ="
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 4,
-        "len": 7,
-        "answer": "percent",
-        "clue": "one part in every hundred."
-      },
-      {
-        "num": 7,
-        "row": 6,
-        "col": 17,
-        "len": 5,
-        "answer": "angle",
-        "clue": "the measured space in degrees"
+        "row": 11,
+        "col": 5,
+        "len": 4,
+        "answer": "Math",
+        "clue": "The study of symbols, shapes, numbers, and patterns"
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 5,
-        "len": 5,
-        "answer": "equal",
-        "clue": "being the same"
+        "row": 14,
+        "col": 1,
+        "len": 7,
+        "answer": "Numbers",
+        "clue": "The way we count"
+      },
+      {
+        "num": 9,
+        "row": 14,
+        "col": 12,
+        "len": 8,
+        "answer": "Division",
+        "clue": "The math process representing breaking something into equal pieces using a \u00f7 or / symbol"
       },
       {
         "num": 10,
-        "row": 8,
+        "row": 16,
+        "col": 7,
+        "len": 11,
+        "answer": "Subtraction",
+        "clue": "Removing one number from another, represented using the -- symbol"
+      },
+      {
+        "num": 11,
+        "row": 18,
         "col": 11,
-        "len": 5,
-        "answer": "range",
-        "clue": "the middle number, when in order"
-      },
-      {
-        "num": 12,
-        "row": 11,
-        "col": 4,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "the process or skill of multiplying."
-      },
-      {
-        "num": 14,
-        "row": 15,
-        "col": 1,
-        "len": 8,
-        "answer": "fraction",
-        "clue": "a numerical quantity that is not a whole number"
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 12,
-        "len": 4,
-        "answer": "mean",
-        "clue": "a measure of central tendency calculated by summing all the values in a dataset and then dividing by the total number of values."
-      },
-      {
-        "num": 17,
-        "row": 19,
-        "col": 1,
-        "len": 8,
-        "answer": "division",
-        "clue": "the action of separating something into parts or the process of being separated."
-      },
-      {
-        "num": 18,
-        "row": 20,
-        "col": 11,
-        "len": 8,
-        "answer": "unitrate",
-        "clue": "a ratio that compares two quantities where the second quantity is one unit"
+        "len": 9,
+        "answer": "Exponents",
+        "clue": "The little number meaning repeated multiplication"
       }
     ],
     "down": [
       {
-        "num": 2,
+        "num": 1,
         "row": 1,
-        "col": 17,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "the process or skill of taking one number or amount away from another."
+        "col": 19,
+        "len": 14,
+        "answer": "Multiplication",
+        "clue": "The math process representing repeated addition using a x or * symbol"
       },
       {
-        "num": 3,
-        "row": 2,
-        "col": 5,
-        "len": 7,
-        "answer": "average",
-        "clue": "a number expressing the central or typical value in a set of data, in particular the mode, median, or (most commonly) the mean, which is calculated by dividing the sum of the values in the set by their number"
+        "num": 2,
+        "row": 6,
+        "col": 7,
+        "len": 11,
+        "answer": "ParEntheseS",
+        "clue": "( )"
       },
       {
         "num": 5,
-        "row": 5,
-        "col": 21,
-        "len": 7,
-        "answer": "decimal",
-        "clue": "a fraction whose denominator is a power of ten and whose numerator is expressed by figures placed to the right of a decimal point."
+        "row": 11,
+        "col": 15,
+        "len": 8,
+        "answer": "Addition",
+        "clue": "Combining two numbers, represented using the + symbol"
       },
       {
         "num": 6,
-        "row": 6,
-        "col": 15,
-        "len": 4,
-        "answer": "area",
-        "clue": "the extent or measurement of a surface or piece of land."
+        "row": 12,
+        "col": 3,
+        "len": 7,
+        "answer": "Symbols",
+        "clue": "Things used to represent other things"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 8,
-        "len": 8,
-        "answer": "addition",
-        "clue": "the action or process of adding something to something else."
-      },
-      {
-        "num": 10,
-        "row": 8,
-        "col": 11,
-        "len": 6,
-        "answer": "radius",
-        "clue": "the distance from its center to any point on its circumference"
-      },
-      {
-        "num": 11,
-        "row": 8,
-        "col": 13,
-        "len": 8,
-        "answer": "negative",
-        "clue": "any real number that is less than zero,"
-      },
-      {
-        "num": 13,
-        "row": 14,
-        "col": 6,
-        "len": 8,
-        "answer": "simplify",
-        "clue": "makes (something) simpler or easier to do or understand."
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 12,
-        "len": 6,
-        "answer": "median",
-        "clue": "the middle value in a sorted list of numbers"
-      },
-      {
-        "num": 16,
-        "row": 16,
-        "col": 18,
-        "len": 5,
-        "answer": "whole",
-        "clue": "positive numbers, including zero, without any decimal or fractional parts."
+        "num": 7,
+        "row": 12,
+        "col": 9,
+        "len": 7,
+        "answer": "Algebra",
+        "clue": "A type of math"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2025-03-24-370",
-  "slug": "2025-03-24-370",
-  "fetched_at": "2026-07-14T19:18:12.777759+00:00",
+  "source_url": "https://crosswordlabs.com/view/2025-09-24-835",
+  "slug": "2025-09-24-835",
+  "fetched_at": "2026-07-14T19:24:13.568689+00:00",
   "date": "2026-07-27"
 }
