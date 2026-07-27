@@ -1,212 +1,245 @@
 {
   "title": "Math",
-  "size": 27,
+  "size": 44,
   "grid": [
-    ".......I....R.....L........",
-    "..C..Discrete.DOmain..Solve",
-    "..o....o....l..u..t...l....",
-    "S.n....l....a..t..e...o....",
-    "t.t....a....t..p..r.Input..",
-    "Arithmetic..i..u..a...e....",
-    "n.n....e...Point-slope-form",
-    "d.u.........n.........i....",
-    "a.o...................n....",
-    "r.u..IntercePt........t....",
-    "d.s.........a.........e....",
-    "-.........Perpendicular....",
-    "f...........a.........c....",
-    "o...........l.....Slope....",
-    "r...........l.....e...p....",
-    "m...........e.....q.S.t....",
-    "............l.....u.y.-....",
-    "..................e.s.f....",
-    "................Function...",
-    "..................c.e.r....",
-    "..............Range.m.m....",
-    "...........................",
-    "...........................",
-    "...........................",
-    "...........................",
-    "...........................",
-    "..........................."
+    "......................V.....................",
+    "......................a.....................",
+    "...GreatestCommonFactor.....................",
+    "......................i.....................",
+    "......................a.....................",
+    "......................b.....................",
+    "........Lessthanorequal.....................",
+    "......................e.....................",
+    "......................E.....................",
+    "......................x.....................",
+    "......................p......N..............",
+    "......................r......u..............",
+    "......................e......m..............",
+    "......................s......e..............",
+    "......................s......r..............",
+    "............I.........i......i..............",
+    "............n....P....o......c..............",
+    "............v...Constant....Base............",
+    "............e....s...........l..............",
+    "......Integer....i...........Exponent.......",
+    "............s....t.....E.....x..............",
+    "............e....i.....v.....p..............",
+    "EquatioN....O....v.....a.....r..D...........",
+    ".......e....p....e.....l.....e..i...........",
+    "..N....Greaterthan.....u.....s..s...........",
+    "..e....a....r....u.....a.....s..t...........",
+    "..g....t....a....m.....t.....i..r...........",
+    ".Factoring..t....b.....e.....o..i...........",
+    "..t....v....i.OrderofOperatIons.b...........",
+    "..i....e.L..o....r.....x...n....u...........",
+    "..v....n.e..n..........p...e....t...........",
+    "..e....u.s.............r...q....i...........",
+    "..n....m.s.............e...u....v...........",
+    "..u....b.t..C..........s...a....e...........",
+    "..m....e.h..o..........s...l....P...........",
+    "..b..Variable....Combiningliketerms.........",
+    "..e......n..f..........o...t....o...........",
+    "..r.........f..........n...i....p...........",
+    "............i..........s...e....e...........",
+    "............c..............s....r...........",
+    "............i...................t...........",
+    "............e...................y...........",
+    "............n...............................",
+    "............t..............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 5,
-        "row": 2,
-        "col": 6,
-        "len": 8,
-        "answer": "Discrete",
-        "clue": "A domain that consists only of whole numbers."
+        "num": 2,
+        "row": 3,
+        "col": 4,
+        "len": 20,
+        "answer": "GreatestCommonFactor",
+        "clue": "The biggest factor in all of the selected numbers"
       },
       {
-        "num": 6,
-        "row": 2,
-        "col": 15,
-        "len": 6,
-        "answer": "DOmain",
-        "clue": "Synonymous with input, x \u2014 values."
+        "num": 3,
+        "row": 7,
+        "col": 9,
+        "len": 15,
+        "answer": "Lessthanorequal",
+        "clue": "< or ="
+      },
+      {
+        "num": 7,
+        "row": 18,
+        "col": 17,
+        "len": 8,
+        "answer": "Constant",
+        "clue": "Not next to a variable"
       },
       {
         "num": 8,
-        "row": 2,
-        "col": 23,
-        "len": 5,
-        "answer": "Solve",
-        "clue": "To answer a math problem"
+        "row": 18,
+        "col": 29,
+        "len": 4,
+        "answer": "Base",
+        "clue": "The bigger number in an exponent"
+      },
+      {
+        "num": 9,
+        "row": 20,
+        "col": 7,
+        "len": 7,
+        "answer": "Integer",
+        "clue": "A number that can be positive or negative"
       },
       {
         "num": 10,
-        "row": 5,
-        "col": 21,
-        "len": 5,
-        "answer": "Input",
-        "clue": "The independent variable, x Value"
-      },
-      {
-        "num": 11,
-        "row": 6,
-        "col": 1,
-        "len": 10,
-        "answer": "Arithmetic",
-        "clue": "Sequence the difference between terms is constant Common Difference  the constant difference between terms"
+        "row": 20,
+        "col": 30,
+        "len": 8,
+        "answer": "Exponent",
+        "clue": "How many times a number multiplies itself by itself.Small number in the corner"
       },
       {
         "num": 12,
-        "row": 7,
-        "col": 12,
-        "len": 16,
-        "answer": "Point-slope-form",
-        "clue": "y-y1=m(x-x1)"
-      },
-      {
-        "num": 13,
-        "row": 10,
-        "col": 6,
-        "len": 9,
-        "answer": "IntercePt",
-        "clue": "a point on the y-axis, through which the slope of the line passes."
-      },
-      {
-        "num": 15,
-        "row": 12,
-        "col": 11,
-        "len": 13,
-        "answer": "Perpendicular",
-        "clue": "Lines Slopes are opposite reciprocals product -1 Integer a number that is not a fraction, a whole number."
+        "row": 23,
+        "col": 1,
+        "len": 8,
+        "answer": "EquatioN",
+        "clue": "Has an equal sign"
       },
       {
         "num": 16,
-        "row": 14,
-        "col": 19,
-        "len": 5,
-        "answer": "Slope",
-        "clue": "Constant rate of change"
+        "row": 25,
+        "col": 8,
+        "len": 11,
+        "answer": "Greaterthan",
+        "clue": ">"
+      },
+      {
+        "num": 17,
+        "row": 28,
+        "col": 2,
+        "len": 9,
+        "answer": "Factoring",
+        "clue": "Like multiplying"
       },
       {
         "num": 18,
-        "row": 19,
-        "col": 17,
-        "len": 8,
-        "answer": "Function",
-        "clue": "A relation where each input has exactly one output."
+        "row": 29,
+        "col": 15,
+        "len": 17,
+        "answer": "OrderofOperatIons",
+        "clue": "PEMDAS"
       },
       {
-        "num": 19,
-        "row": 21,
-        "col": 15,
-        "len": 5,
-        "answer": "Range",
-        "clue": "Synonymous with output, y \u2014 values."
+        "num": 22,
+        "row": 36,
+        "col": 6,
+        "len": 8,
+        "answer": "Variable",
+        "clue": "A place holder for unknowns, like X"
+      },
+      {
+        "num": 23,
+        "row": 36,
+        "col": 18,
+        "len": 18,
+        "answer": "Combiningliketerms",
+        "clue": "Combine all similar integers or variables on one side of an equation"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 8,
-        "len": 7,
-        "answer": "Isolate",
-        "clue": "Variable by itself on one side of the equation."
-      },
-      {
-        "num": 2,
-        "row": 1,
-        "col": 13,
-        "len": 8,
-        "answer": "Relation",
-        "clue": "Any set of ordered pairs, (x, y)"
-      },
-      {
-        "num": 3,
-        "row": 1,
-        "col": 19,
-        "len": 7,
-        "answer": "Literal",
-        "clue": "Equation An equation where the variable is known values."
+        "col": 23,
+        "len": 18,
+        "answer": "VariableExpression",
+        "clue": "An expression with a letter, usually X"
       },
       {
         "num": 4,
-        "row": 2,
-        "col": 3,
-        "len": 10,
-        "answer": "Continuous",
-        "clue": "A domain that consists of all real numbers"
+        "row": 11,
+        "col": 30,
+        "len": 19,
+        "answer": "NumericalExpression",
+        "clue": "An expression with numbers"
       },
       {
-        "num": 7,
-        "row": 2,
-        "col": 16,
-        "len": 6,
-        "answer": "Output",
-        "clue": "The dependent variable, y\u2014 values"
+        "num": 5,
+        "row": 16,
+        "col": 13,
+        "len": 16,
+        "answer": "InverseOperation",
+        "clue": "You do the opposite of another operation"
       },
       {
-        "num": 8,
-        "row": 2,
-        "col": 23,
-        "len": 20,
-        "answer": "Slope-intercept-form",
-        "clue": "y=mx+b"
+        "num": 6,
+        "row": 17,
+        "col": 18,
+        "len": 14,
+        "answer": "Positivenumber",
+        "clue": "A number that has no \u201c-\u201d sign in front of it."
       },
       {
-        "num": 9,
-        "row": 4,
-        "col": 1,
-        "len": 13,
-        "answer": "StAndard-form",
-        "clue": "Ax+By=C"
+        "num": 11,
+        "row": 21,
+        "col": 24,
+        "len": 19,
+        "answer": "Evaluateexpressions",
+        "clue": "Replacing numbers with variables"
+      },
+      {
+        "num": 13,
+        "row": 23,
+        "col": 8,
+        "len": 14,
+        "answer": "NeGativenumber",
+        "clue": "A number with a \u201c-\u201d sign in front of it"
       },
       {
         "num": 14,
-        "row": 10,
+        "row": 23,
+        "col": 33,
+        "len": 20,
+        "answer": "DistributiveProperty",
+        "clue": "Multiplying with the GFC and parenthesis"
+      },
+      {
+        "num": 15,
+        "row": 25,
+        "col": 3,
+        "len": 14,
+        "answer": "Negativenumber",
+        "clue": "A number with a \u201c-\u201d sign in front of it"
+      },
+      {
+        "num": 19,
+        "row": 29,
+        "col": 28,
+        "len": 12,
+        "answer": "Inequalities",
+        "clue": "There\u2019s no equal sign."
+      },
+      {
+        "num": 20,
+        "row": 30,
+        "col": 10,
+        "len": 8,
+        "answer": "Lessthan",
+        "clue": "<"
+      },
+      {
+        "num": 21,
+        "row": 34,
         "col": 13,
-        "len": 8,
-        "answer": "Parallel",
-        "clue": "Lines Same slope, different y-intercepts Do not intersect"
-      },
-      {
-        "num": 16,
-        "row": 14,
-        "col": 19,
-        "len": 8,
-        "answer": "Sequence",
-        "clue": "an ordered list that often forms a pattern."
-      },
-      {
-        "num": 17,
-        "row": 16,
-        "col": 21,
-        "len": 6,
-        "answer": "System",
-        "clue": "Two or more equation that share the same variables"
+        "len": 11,
+        "answer": "Coefficient",
+        "clue": "The number next to a variable"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2024-12-15-451",
-  "slug": "2024-12-15-451",
-  "fetched_at": "2026-07-14T19:16:12.354000+00:00",
-  "date": "2026-07-26"
+  "source_url": "https://crosswordlabs.com/view/2025-02-03-746",
+  "slug": "2025-02-03-746",
+  "fetched_at": "2026-07-14T19:13:38.030108+00:00",
+  "date": "2026-07-27"
 }
