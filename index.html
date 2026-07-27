@@ -268,52 +268,50 @@
   .svc-row p{margin:0;font-size:13px;line-height:1.45;color:var(--text-2)}
   .panel-body .svc-row:hover .svc-ic{filter:drop-shadow(0 0 6px rgba(194,112,61,.5));opacity:1}
 
-  /* ===== FLYOUT PANEL — Compact side-by-side, pro density, max scanability ===== */
+  /* ===== FLYOUT PANEL — Stacked icon above text, max readability, zero scroll ===== */
   .panel-body .svc-row{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:10px;
-    margin:6px 0;
-    padding:2px 0;
+    text-align:center;
+    margin:8px 0 4px;
+    gap:4px;
   }
   .panel-body .svc-row:first-of-type{margin-top:0}
   .panel-body .svc-ic{
-    flex:0 0 20px;
-    width:20px;
-    height:20px;
+    flex:0 0 auto;
+    width:26px;
+    height:26px;
     object-fit:contain;
     transition:.15s;
-    opacity:.9;
-    filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));
+    opacity:.95;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));
   }
   .panel-body .svc-row:hover .svc-ic{
-    filter:drop-shadow(0 0 6px rgba(194,112,61,.5)) drop-shadow(0 1px 1px rgba(0,0,0,.25));
+    filter:drop-shadow(0 0 8px rgba(194,112,61,.55)) drop-shadow(0 1px 2px rgba(0,0,0,.25));
     opacity:1;
+    transform:scale(1.05);
   }
-  .panel-body .svc-row > div{min-width:0}
+  .panel-body .svc-row > div{width:100%;min-width:0}
   .panel-body .svc-row h3{
     margin:0;
-    font-size:14px;
+    font-size:15px;
     line-height:1.25;
     color:var(--text);
     font-weight:600;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
   }
   .panel-body .svc-row p{
     margin:0;
-    font-size:12.5px;
-    line-height:1.35;
+    font-size:13px;
+    line-height:1.4;
     color:var(--text-2);
-    max-width:100%;
   }
 
   /* Tighter chips in panel */
-  .panel-body .chip-row{margin:10px 0 0;gap:5px;justify-content:center}
+  .panel-body .chip-row{margin:12px 0 0;gap:5px;justify-content:center}
   .panel-body .chip{
-    padding:3px 9px;
-    font-size:11px;
+    padding:4px 10px;
+    font-size:11.5px;
     border-radius:var(--r-pill);
     background:var(--surface-2);
     border:1px solid var(--line);
