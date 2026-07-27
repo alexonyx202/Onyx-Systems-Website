@@ -260,11 +260,17 @@
   .tile .go{margin-left:auto;color:var(--copper-deep);font-size:22px;font-weight:800}
 
   /* Services flyout sub-item icons (on-brand copper style, reuse palette tokens) ICONS-2026-07-15 */
-  .svc-row{display:flex;align-items:center;gap:12px;margin:18px 0 6px}
+  .svc-row{display:flex;align-items:flex-start;gap:10px;margin:12px 0 4px}
   .svc-row:first-of-type{margin-top:0}
-  .svc-ic{flex:0 0 26px;width:26px;height:26px;object-fit:contain;transition:.2s}
-  .svc-row h3{margin:0}
+  .svc-ic{flex:0 0 26px;width:26px;height:26px;object-fit:contain;transition:.2s;margin-top:2px}
+  .svc-row > div{flex:1;min-width:0}
+  .svc-row h3{margin:0 0 2px;font-size:17px}
+  .svc-row p{margin:0;font-size:13.5px;line-height:1.45;color:var(--text-2)}
   .panel-body .svc-row:hover .svc-ic{filter:drop-shadow(0 0 6px rgba(194,112,61,.5))}
+
+  /* Tighter chips in panel */
+  .panel-body .chip-row{margin:10px 0 0;gap:6px}
+  .panel-body .chip{padding:5px 12px;font-size:12.5px}
 
   /* ===== FLYOUT PANEL ===== */
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:50}
@@ -1305,13 +1311,14 @@ document.addEventListener('DOMContentLoaded',function(){
 /* ---------- Section content ---------- */
 var SECTIONS={
   services:{eyebrow:'What I do',title:'Services',icon:'assets/img/cartoon/computer-fix.svg',html:
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/computer-fix.svg" alt="Computer and laptop repair icon"><h3>Computer &amp; Laptop Repair</h3></div><p>Cracked screens, dead batteries, slow machines, hardware faults — diagnosed and fixed right.</p>'+
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/virus.svg" alt="Virus and malware removal icon"><h3>Virus &amp; Malware Removal</h3></div><p>Clean infections, lock things down, and get you back online safely.</p>'+
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/data.svg" alt="Data recovery icon"><h3>Data Recovery</h3></div><p>Photos, documents, and drives recovered from failed or corrupted storage.</p>'+
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/upgrade.svg" alt="Upgrades and custom builds icon"><h3>Upgrades &amp; Custom Builds</h3></div><p>More speed, more storage, or a new PC built to your needs and budget.</p>'+
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/os.svg" alt="All operating systems icon"><h3>All Operating Systems</h3></div><p>Windows, macOS, Linux, and ChromeOS — setup, tuning, and fixes across the board.</p>'+
-    '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/network.svg" alt="On-site IT and networks icon"><h3>On-Site IT &amp; Networks</h3></div><p>Wi-Fi, wiring, and small-business support at your home or office.</p>'+
-    '<div class="chip-row"><span class="chip">Virus removal</span><span class="chip">SSD upgrades</span><span class="chip">Screen repair</span><span class="chip">Mac &amp; Linux</span><span class="chip">Backups</span><span class="chip">Wi-Fi</span><span class="chip">Tuning</span></div>'},
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/computer-fix.svg" alt=""><div><h3>Computer Repair & Diagnostics</h3><p>Desktops, laptops, Macs — hardware & software faults found and fixed.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/virus.svg" alt=""><div><h3>Virus, Malware & Security</h3><p>Complete cleanup, system hardening, and ransomware recovery.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/data.svg" alt=""><div><h3>Data Recovery & Backups</h3><p>Drive recovery, cloning, migration, and automated backup setup.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/upgrade.svg" alt=""><div><h3>Upgrades & Custom Builds</h3><p>SSD, RAM, GPU upgrades; custom PCs built to your needs and budget.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/os.svg" alt=""><div><h3>All Operating Systems</h3><p>Windows, macOS, Linux, ChromeOS — install, repair, debloat, migrate.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/network.svg" alt=""><div><h3>On-Site IT & Networks</h3><p>Home/small business visits by appointment — Wi-Fi, wiring, setup.</p></div></div>' +
+      '<div class="svc-row"><img class="svc-ic" src="assets/img/cartoon/gear.svg" alt=""><div><h3>Consulting, Sales & Advice</h3><p>Tech purchasing guidance, refurbished systems, honest recommendations.</p></div></div>' +
+      '<div class="chip-row"><span class="chip">All computers</span><span class="chip">All operating systems</span><span class="chip">Hardware & software</span><span class="chip">Custom builds</span><span class="chip">Data & backups</span><span class="chip">On-site service</span><span class="chip">Consulting & sales</span></div>'},
   process:{eyebrow:'How it works',title:'Three Simple Steps',icon:'assets/img/cartoon/gear.svg',html:
     '<h3>1 · Call first</h3><p>Give me a ring so I know I\'m in the shop. A 30-second call saves you a wasted trip.</p>'+
     '<h3>2 · We diagnose — free of pressure</h3><p>I tell you straight what\'s wrong, what it\'ll take, and whether it\'s worth fixing. No upsell, ever.</p>'+
