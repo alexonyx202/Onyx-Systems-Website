@@ -1,245 +1,199 @@
 {
-  "title": "Math",
-  "size": 44,
+  "title": "math",
+  "size": 22,
   "grid": [
-    "......................V.....................",
-    "......................a.....................",
-    "...GreatestCommonFactor.....................",
-    "......................i.....................",
-    "......................a.....................",
-    "......................b.....................",
-    "........Lessthanorequal.....................",
-    "......................e.....................",
-    "......................E.....................",
-    "......................x.....................",
-    "......................p......N..............",
-    "......................r......u..............",
-    "......................e......m..............",
-    "......................s......e..............",
-    "......................s......r..............",
-    "............I.........i......i..............",
-    "............n....P....o......c..............",
-    "............v...Constant....Base............",
-    "............e....s...........l..............",
-    "......Integer....i...........Exponent.......",
-    "............s....t.....E.....x..............",
-    "............e....i.....v.....p..............",
-    "EquatioN....O....v.....a.....r..D...........",
-    ".......e....p....e.....l.....e..i...........",
-    "..N....Greaterthan.....u.....s..s...........",
-    "..e....a....r....u.....a.....s..t...........",
-    "..g....t....a....m.....t.....i..r...........",
-    ".Factoring..t....b.....e.....o..i...........",
-    "..t....v....i.OrderofOperatIons.b...........",
-    "..i....e.L..o....r.....x...n....u...........",
-    "..v....n.e..n..........p...e....t...........",
-    "..e....u.s.............r...q....i...........",
-    "..n....m.s.............e...u....v...........",
-    "..u....b.t..C..........s...a....e...........",
-    "..m....e.h..o..........s...l....P...........",
-    "..b..Variable....Combiningliketerms.........",
-    "..e......n..f..........o...t....o...........",
-    "..r.........f..........n...i....p...........",
-    "............i..........s...e....e...........",
-    "............c..............s....r...........",
-    "............i...................t...........",
-    "............e...................y...........",
-    "............n...............................",
-    "............t..............................."
+    "..............positive",
+    "....a...........u.....",
+    "....v...........b.....",
+    "...percent......t.....",
+    "....r...........r...d.",
+    "....a.........a.angle.",
+    "....g.........r.c...c.",
+    "....equal.range.t...i.",
+    ".......d..a.e.a.i...m.",
+    ".......d..d.g...o...a.",
+    "...multiplication...l.",
+    ".......t..u.t.........",
+    ".......i..s.i.........",
+    ".....s.o....v.........",
+    "fraction...mean.......",
+    ".....m.....e.....w....",
+    ".....p.....d.....h....",
+    ".....l.....i.....o....",
+    "division...a.....l....",
+    ".....f....unitrate....",
+    ".....y................",
+    "......................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 4,
-        "len": 20,
-        "answer": "GreatestCommonFactor",
-        "clue": "The biggest factor in all of the selected numbers"
+        "num": 1,
+        "row": 1,
+        "col": 15,
+        "len": 8,
+        "answer": "positive",
+        "clue": "any number that is greater than zero,"
       },
       {
-        "num": 3,
-        "row": 7,
-        "col": 9,
-        "len": 15,
-        "answer": "Lessthanorequal",
-        "clue": "< or ="
+        "num": 4,
+        "row": 4,
+        "col": 4,
+        "len": 7,
+        "answer": "percent",
+        "clue": "one part in every hundred."
       },
       {
         "num": 7,
-        "row": 18,
+        "row": 6,
         "col": 17,
-        "len": 8,
-        "answer": "Constant",
-        "clue": "Not next to a variable"
+        "len": 5,
+        "answer": "angle",
+        "clue": "the measured space in degrees"
       },
       {
         "num": 8,
-        "row": 18,
-        "col": 29,
-        "len": 4,
-        "answer": "Base",
-        "clue": "The bigger number in an exponent"
-      },
-      {
-        "num": 9,
-        "row": 20,
-        "col": 7,
-        "len": 7,
-        "answer": "Integer",
-        "clue": "A number that can be positive or negative"
+        "row": 8,
+        "col": 5,
+        "len": 5,
+        "answer": "equal",
+        "clue": "being the same"
       },
       {
         "num": 10,
-        "row": 20,
-        "col": 30,
-        "len": 8,
-        "answer": "Exponent",
-        "clue": "How many times a number multiplies itself by itself.Small number in the corner"
+        "row": 8,
+        "col": 11,
+        "len": 5,
+        "answer": "range",
+        "clue": "the middle number, when in order"
       },
       {
         "num": 12,
-        "row": 23,
-        "col": 1,
-        "len": 8,
-        "answer": "EquatioN",
-        "clue": "Has an equal sign"
+        "row": 11,
+        "col": 4,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "the process or skill of multiplying."
       },
       {
-        "num": 16,
-        "row": 25,
-        "col": 8,
-        "len": 11,
-        "answer": "Greaterthan",
-        "clue": ">"
+        "num": 14,
+        "row": 15,
+        "col": 1,
+        "len": 8,
+        "answer": "fraction",
+        "clue": "a numerical quantity that is not a whole number"
+      },
+      {
+        "num": 15,
+        "row": 15,
+        "col": 12,
+        "len": 4,
+        "answer": "mean",
+        "clue": "a measure of central tendency calculated by summing all the values in a dataset and then dividing by the total number of values."
       },
       {
         "num": 17,
-        "row": 28,
-        "col": 2,
-        "len": 9,
-        "answer": "Factoring",
-        "clue": "Like multiplying"
+        "row": 19,
+        "col": 1,
+        "len": 8,
+        "answer": "division",
+        "clue": "the action of separating something into parts or the process of being separated."
       },
       {
         "num": 18,
-        "row": 29,
-        "col": 15,
-        "len": 17,
-        "answer": "OrderofOperatIons",
-        "clue": "PEMDAS"
-      },
-      {
-        "num": 22,
-        "row": 36,
-        "col": 6,
+        "row": 20,
+        "col": 11,
         "len": 8,
-        "answer": "Variable",
-        "clue": "A place holder for unknowns, like X"
-      },
-      {
-        "num": 23,
-        "row": 36,
-        "col": 18,
-        "len": 18,
-        "answer": "Combiningliketerms",
-        "clue": "Combine all similar integers or variables on one side of an equation"
+        "answer": "unitrate",
+        "clue": "a ratio that compares two quantities where the second quantity is one unit"
       }
     ],
     "down": [
       {
-        "num": 1,
+        "num": 2,
         "row": 1,
-        "col": 23,
-        "len": 18,
-        "answer": "VariableExpression",
-        "clue": "An expression with a letter, usually X"
+        "col": 17,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "the process or skill of taking one number or amount away from another."
       },
       {
-        "num": 4,
-        "row": 11,
-        "col": 30,
-        "len": 19,
-        "answer": "NumericalExpression",
-        "clue": "An expression with numbers"
+        "num": 3,
+        "row": 2,
+        "col": 5,
+        "len": 7,
+        "answer": "average",
+        "clue": "a number expressing the central or typical value in a set of data, in particular the mode, median, or (most commonly) the mean, which is calculated by dividing the sum of the values in the set by their number"
       },
       {
         "num": 5,
-        "row": 16,
-        "col": 13,
-        "len": 16,
-        "answer": "InverseOperation",
-        "clue": "You do the opposite of another operation"
+        "row": 5,
+        "col": 21,
+        "len": 7,
+        "answer": "decimal",
+        "clue": "a fraction whose denominator is a power of ten and whose numerator is expressed by figures placed to the right of a decimal point."
       },
       {
         "num": 6,
-        "row": 17,
-        "col": 18,
-        "len": 14,
-        "answer": "Positivenumber",
-        "clue": "A number that has no \u201c-\u201d sign in front of it."
+        "row": 6,
+        "col": 15,
+        "len": 4,
+        "answer": "area",
+        "clue": "the extent or measurement of a surface or piece of land."
+      },
+      {
+        "num": 9,
+        "row": 8,
+        "col": 8,
+        "len": 8,
+        "answer": "addition",
+        "clue": "the action or process of adding something to something else."
+      },
+      {
+        "num": 10,
+        "row": 8,
+        "col": 11,
+        "len": 6,
+        "answer": "radius",
+        "clue": "the distance from its center to any point on its circumference"
       },
       {
         "num": 11,
-        "row": 21,
-        "col": 24,
-        "len": 19,
-        "answer": "Evaluateexpressions",
-        "clue": "Replacing numbers with variables"
+        "row": 8,
+        "col": 13,
+        "len": 8,
+        "answer": "negative",
+        "clue": "any real number that is less than zero,"
       },
       {
         "num": 13,
-        "row": 23,
-        "col": 8,
-        "len": 14,
-        "answer": "NeGativenumber",
-        "clue": "A number with a \u201c-\u201d sign in front of it"
-      },
-      {
-        "num": 14,
-        "row": 23,
-        "col": 33,
-        "len": 20,
-        "answer": "DistributiveProperty",
-        "clue": "Multiplying with the GFC and parenthesis"
+        "row": 14,
+        "col": 6,
+        "len": 8,
+        "answer": "simplify",
+        "clue": "makes (something) simpler or easier to do or understand."
       },
       {
         "num": 15,
-        "row": 25,
-        "col": 3,
-        "len": 14,
-        "answer": "Negativenumber",
-        "clue": "A number with a \u201c-\u201d sign in front of it"
+        "row": 15,
+        "col": 12,
+        "len": 6,
+        "answer": "median",
+        "clue": "the middle value in a sorted list of numbers"
       },
       {
-        "num": 19,
-        "row": 29,
-        "col": 28,
-        "len": 12,
-        "answer": "Inequalities",
-        "clue": "There\u2019s no equal sign."
-      },
-      {
-        "num": 20,
-        "row": 30,
-        "col": 10,
-        "len": 8,
-        "answer": "Lessthan",
-        "clue": "<"
-      },
-      {
-        "num": 21,
-        "row": 34,
-        "col": 13,
-        "len": 11,
-        "answer": "Coefficient",
-        "clue": "The number next to a variable"
+        "num": 16,
+        "row": 16,
+        "col": 18,
+        "len": 5,
+        "answer": "whole",
+        "clue": "positive numbers, including zero, without any decimal or fractional parts."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2025-02-03-746",
-  "slug": "2025-02-03-746",
-  "fetched_at": "2026-07-14T19:13:38.030108+00:00",
+  "source_url": "https://crosswordlabs.com/view/2025-03-24-370",
+  "slug": "2025-03-24-370",
+  "fetched_at": "2026-07-14T19:18:12.777759+00:00",
   "date": "2026-07-27"
 }
