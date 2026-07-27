@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-26",
+    "last_updated": "2026-07-27",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -99,28 +99,28 @@
     }
   ],
   "news": [
-    {
-      "id": "news-2026-07-27",
-      "type": "newsletter",
-      "date": "2026-07-27",
-      "title": "AI Voice-Cloning Scam: That 'Urgent Call from Grandma' Is a Fake",
-      "tag": "Security Alert",
-      "excerpt": "Scammers clone voices with just 3 seconds of audio \u2014 a TikTok, a voicemail, an Instagram Reel. They call pretending to be a grandchild in jail needing bail money. Hang up. Call the real person on a known number. No real emergency demands gift cards, crypto, or instant wire transfers. Agree on a family safe word NOW.",
-      "image": "assets/img/news/2026-07-27-composite.jpg",
-      "comic": "assets/img/news/2026-07-27-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "news-2026-07-26",
-      "type": "newsletter",
-      "date": "2026-07-26",
-      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
-      "tag": "Security Alert",
-      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter \u2014 this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
-      "image": "assets/img/news/2026-07-26-composite.jpg",
-      "comic": "assets/img/news/2026-07-26-comic-square.jpg",
-      "read_more": "#contact"
-    },
+      {
+        "id": "news-2026-07-27",
+        "type": "newsletter",
+        "date": "2026-07-27",
+        "title": "Major Password Breaches: 85 Million Records Exposed — Check Yours Now",
+        "tag": "Security Alert",
+        "excerpt": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com — if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
+        "image": "assets/img/news/2026-07-27-composite.jpg",
+        "comic": "assets/img/news/2026-07-27-comic-square.jpg",
+        "read_more": "#contact"
+      },
+      {
+        "id": "news-2026-07-26",
+        "type": "newsletter",
+        "date": "2026-07-26",
+        "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+        "tag": "Security Alert",
+        "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+        "image": "assets/img/news/2026-07-26-composite.jpg",
+        "comic": "assets/img/news/2026-07-26-comic-square.jpg",
+        "read_more": "#contact"
+      },
     {
       "id": "news-2026-07-24",
       "type": "newsletter",
@@ -160,38 +160,38 @@
   "posts": [
     {
       "id": "onyx-2026-07-27-news-001",
-      "type": "news",
-      "date": "2026-07-27",
-      "title": "Windows 11 File Explorer Now Deletes Large Files Significantly Faster",
-      "tag": "Tech Note",
-      "summary": "Update to Windows 11 July 2026 update (KB5101650) via Windows Update to get the faster File Explorer deletion.",
-      "truth": "Lake City customers bring in laptops choking on old downloads and temp folders. Deleting thousands of small files used to freeze File Explorer for minutes. Microsoft finally fixed the underlying I/O path in the July update \u2014 large folder deletions now finish in seconds instead of minutes. I still see machines with 50+ GB in Downloads folders because people don't know how to clean them.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#FileExplorer"
-      ],
-      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
-    },
-    {
-      "id": "onyx-2026-07-27-tip-001",
-      "type": "tip",
-      "date": "2026-07-27",
-      "title": "Turn On Windows Storage Sense to Automatically Free 5\u201350 GB Monthly",
-      "tag": "Tech Note",
-      "summary": "Open Settings \u2192 System \u2192 Storage \u2192 Storage Sense \u2192 Turn on. Set cleanup schedule to \"During low free disk space\" or \"Monthly.\" Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
-      "truth": "Lake City FL customers bring in laptops with 5 GB free on a 256 GB drive. They don't know Storage Sense exists. It's built into Windows 11 \u2014 no download, no cost, no ads. I've seen it reclaim 40 GB on a single laptop in one run. Most people never touch Storage settings until the red bar appears.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#StorageSense",
-        "#Windows11Tips"
-      ],
-      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
-    },
+        "type": "news",
+        "date": "2026-07-27",
+        "title": "Major Password Breaches: 85 Million Records Exposed — Check Yours Now",
+        "tag": "Security Alert",
+        "summary": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com — if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
+        "truth": "Credential stuffing attacks are automated. Bots try your leaked email/password combo on thousands of sites in minutes. One reused password = open door. ONYX SYSTEMS helps customers check and secure their accounts.",
+        "tags": [
+          "#OnyxSystems",
+          "#LakeCityFL",
+          "#ComputerRepair",
+          "#Security",
+          "#DailyBrief"
+        ],
+        "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
+      },
+      {
+        "id": "onyx-2026-07-27-tip-001",
+        "type": "tip",
+        "date": "2026-07-27",
+        "title": "Fix a Spotty Wi-Fi Connection in 3 Minutes",
+        "tag": "Tech Tip",
+        "summary": "Unplug your router's power cord, wait 30 full seconds, plug it back in. Wait two minutes for all lights to settle. This clears stuck connections and memory leaks that slow things down. If it's still slow, move the router off the floor, away from thick walls and the microwave — signals travel better with breathing room.",
+        "truth": "Lake City customers bring in 'slow internet' that's actually just a router that hasn't been rebooted in months. A power cycle fixes 70% of cases. The other 30% need repositioning — I've seen routers in closets, behind TVs, next to microwaves. ONYX SYSTEMS optimizes home Wi-Fi in one visit.",
+        "tags": [
+          "#OnyxSystems",
+          "#LakeCityFL",
+          "#ComputerRepair",
+          "#WiFi",
+          "#Router"
+        ],
+        "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
+      },
     {
       "id": "onyx-2026-07-26-daily-brief-001",
       "type": "news",

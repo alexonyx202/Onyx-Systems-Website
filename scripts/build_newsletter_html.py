@@ -95,6 +95,7 @@ def clean_tip_body(tip_body):
         cleaned.append(ln)
     return '\n'.join(cleaned).strip()
 
+
 def extract_comedy_break_title(md):
     """Extract the COMEDY BREAK section title from markdown."""
     m = re.search(r'━━━\s*😄\s*(COMEDY BREAK)\s*━━━', md)

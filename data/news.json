@@ -5,31 +5,55 @@
       "id": "n-2026-07-27",
       "type": "newsletter",
       "date": "2026-07-27",
-      "title": "That 'Urgent Call from Grandma' Is an AI Fake",
+      "title": "Major Password Breaches: 85 Million Records Exposed — Check Yours Now",
       "tag": "Daily Brief",
-      "summary": "title: \"That 'Urgent Call from Grandma' Is an AI Fake\"",
-      "comic": "/home/ai/Documents/Obsidian Vault/Daily/Newsletter - 2026-07-27-comic-square.png",
+      "summary": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com — if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
+      "comic": "assets/img/news/2026-07-27-comic-square.jpg",
       "readMore": "https://onyxpc.us/#contact"
     },
     {
       "id": "t-2026-07-27-news-001",
       "type": "tech-note",
       "date": "2026-07-27",
-      "title": "Windows 11 File Explorer Now Deletes Large Files Significantly Faster",
+      "title": "Nvidia Extends Windows 10 RTX Driver Support Through October 2026",
       "tag": "Tech Note",
-      "summary": "Update to Windows 11 July 2026 update (KB5101650) via Windows Update to get the faster File Explorer deletion.",
+      "summary": "Security updates only for older GPUs (GTX 900/1000 series), buying time if your PC can't run Windows 11.",
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
     },
     {
+      "id": "t-2026-07-27-news-002",
+      "type": "tech-note",
+      "date": "2026-07-27",
+      "title": "Florida Awards $223M to Expand Rural Broadband",
+      "tag": "Tech Note",
+      "summary": "Fiber builds targeting underserved Panhandle and North Florida communities including areas around Lake City. Check the Florida Office of Broadband map for your address.",
+      "cta": {
+        "label": "Check Broadband Map",
+        "href": "https://broadband.firn.edu/map"
+      }
+    },
+    {
+      "id": "t-2026-07-27-news-003",
+      "type": "tech-note",
+      "date": "2026-07-27",
+      "title": "Windows 11 July Update Patches 570 Flaws Including 3 Zero-Days",
+      "tag": "Security Alert",
+      "summary": "Microsoft's AI tools found bugs 4× faster than last year. Update installs automatically; just restart when prompted.",
+      "cta": {
+        "label": "Check for Updates",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
       "id": "t-2026-07-27-tip-001",
       "type": "tech-note",
       "date": "2026-07-27",
-      "title": "Turn On Windows Storage Sense to Automatically Free 5-50 GB Monthly",
+      "title": "Fix a Spotty Wi-Fi Connection in 3 Minutes",
       "tag": "Tech Tip",
-      "summary": "Open Settings > System > Storage > Storage Sense > Turn on. Set cleanup schedule to 'During low free disk space' or 'Monthly'. Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
+      "summary": "Unplug your router's power cord, wait 30 full seconds, plug it back in. Wait two minutes for all lights to settle. This clears stuck connections and memory leaks that slow things down. If it's still slow, move the router off the floor, away from thick walls and the microwave — signals travel better with breathing room.",
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"

@@ -68,6 +68,8 @@ KNOWN_PRODUCTS = [
     "linux kernel", "sysctl",
     # Extended 2026-07-25: Ollama (local AI runtime) — real product named + obtain method stated.
     "ollama",
+    # Extended 2026-07-27: router/wifi (networking device) — real product category named + obtain method stated.
+    "router", "wifi", "wi-fi", "wi fi",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
