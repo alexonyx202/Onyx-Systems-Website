@@ -1,124 +1,191 @@
 {
-  "title": "Math Words Crossword",
-  "size": 19,
+  "title": "MATH",
+  "size": 14,
   "grid": [
-    "..................M",
-    "..................u",
-    "..................l",
-    "..................t",
-    "..................i",
-    "......P...........p",
-    "......a...........l",
-    "......r...........i",
-    "......Equation....c",
-    "......n...........a",
-    "....Math......A...t",
-    "..S...h.A.....d...i",
-    "..y...e.l.....d...o",
-    "Numbers.g..Division",
-    "..b...e.e.....t....",
-    "..o...Subtraction..",
-    "..l.....r.....o....",
-    "..s.....a.Exponents",
-    "..................."
+    ".............8",
+    "........1287.4",
+    ".........7.210",
+    ".......330.0..",
+    "......15.7....",
+    "....1.2..24...",
+    ".1..120.35....",
+    ".3024..56.....",
+    ".2..0.........",
+    "60............",
+    "7.............",
+    "24............",
+    "0.............",
+    ".............."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 9,
-        "col": 7,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "A set of two equivalent values using an ="
-      },
-      {
-        "num": 4,
-        "row": 11,
-        "col": 5,
+        "num": 2,
+        "row": 2,
+        "col": 9,
         "len": 4,
-        "answer": "Math",
-        "clue": "The study of symbols, shapes, numbers, and patterns"
+        "answer": "1287",
+        "clue": "13C5"
       },
       {
-        "num": 8,
-        "row": 14,
-        "col": 1,
-        "len": 7,
-        "answer": "Numbers",
-        "clue": "The way we count"
+        "num": 5,
+        "row": 3,
+        "col": 12,
+        "len": 3,
+        "answer": "210",
+        "clue": "7P3"
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 8,
+        "len": 3,
+        "answer": "330",
+        "clue": "11C4"
+      },
+      {
+        "num": 7,
+        "row": 5,
+        "col": 7,
+        "len": 2,
+        "answer": "15",
+        "clue": "6C2"
       },
       {
         "num": 9,
-        "row": 14,
-        "col": 12,
-        "len": 8,
-        "answer": "Division",
-        "clue": "The math process representing breaking something into equal pieces using a \u00f7 or / symbol"
-      },
-      {
-        "num": 10,
-        "row": 16,
-        "col": 7,
-        "len": 11,
-        "answer": "Subtraction",
-        "clue": "Removing one number from another, represented using the -- symbol"
+        "row": 6,
+        "col": 10,
+        "len": 2,
+        "answer": "24",
+        "clue": "4!"
       },
       {
         "num": 11,
-        "row": 18,
-        "col": 11,
-        "len": 9,
-        "answer": "Exponents",
-        "clue": "The little number meaning repeated multiplication"
+        "row": 7,
+        "col": 5,
+        "len": 3,
+        "answer": "120",
+        "clue": "10C3"
+      },
+      {
+        "num": 12,
+        "row": 7,
+        "col": 9,
+        "len": 2,
+        "answer": "35",
+        "clue": "7C3"
+      },
+      {
+        "num": 13,
+        "row": 8,
+        "col": 2,
+        "len": 4,
+        "answer": "3024",
+        "clue": "9P4"
+      },
+      {
+        "num": 14,
+        "row": 8,
+        "col": 8,
+        "len": 2,
+        "answer": "56",
+        "clue": "8C5"
+      },
+      {
+        "num": 15,
+        "row": 10,
+        "col": 1,
+        "len": 2,
+        "answer": "60",
+        "clue": "5P3"
+      },
+      {
+        "num": 16,
+        "row": 12,
+        "col": 1,
+        "len": 2,
+        "answer": "24",
+        "clue": "4!"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 19,
-        "len": 14,
-        "answer": "Multiplication",
-        "clue": "The math process representing repeated addition using a x or * symbol"
+        "col": 14,
+        "len": 3,
+        "answer": "840",
+        "clue": "7P4"
       },
       {
-        "num": 2,
-        "row": 6,
-        "col": 7,
-        "len": 11,
-        "answer": "ParEntheseS",
-        "clue": "( )"
+        "num": 3,
+        "row": 2,
+        "col": 10,
+        "len": 6,
+        "answer": "270725",
+        "clue": "52C4"
       },
       {
-        "num": 5,
-        "row": 11,
-        "col": 15,
-        "len": 8,
-        "answer": "Addition",
-        "clue": "Combining two numbers, represented using the + symbol"
+        "num": 4,
+        "row": 2,
+        "col": 12,
+        "len": 3,
+        "answer": "720",
+        "clue": "6!"
       },
       {
         "num": 6,
-        "row": 12,
-        "col": 3,
-        "len": 7,
-        "answer": "Symbols",
-        "clue": "Things used to represent other things"
+        "row": 4,
+        "col": 8,
+        "len": 2,
+        "answer": "35",
+        "clue": "7C4"
       },
       {
         "num": 7,
-        "row": 12,
+        "row": 5,
+        "col": 7,
+        "len": 3,
+        "answer": "120",
+        "clue": "5!"
+      },
+      {
+        "num": 8,
+        "row": 6,
+        "col": 5,
+        "len": 4,
+        "answer": "1140",
+        "clue": "20C3"
+      },
+      {
+        "num": 10,
+        "row": 7,
+        "col": 2,
+        "len": 4,
+        "answer": "1320",
+        "clue": "12P3"
+      },
+      {
+        "num": 12,
+        "row": 7,
         "col": 9,
-        "len": 7,
-        "answer": "Algebra",
-        "clue": "A type of math"
+        "len": 2,
+        "answer": "36",
+        "clue": "9C2"
+      },
+      {
+        "num": 15,
+        "row": 10,
+        "col": 1,
+        "len": 4,
+        "answer": "6720",
+        "clue": "8P5"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2025-09-24-835",
-  "slug": "2025-09-24-835",
-  "fetched_at": "2026-07-14T19:24:13.568689+00:00",
-  "date": "2026-07-27"
+  "source_url": "https://crosswordlabs.com/view/2025-10-20-148",
+  "slug": "2025-10-20-148",
+  "fetched_at": "2026-07-14T19:21:36.100518+00:00",
+  "date": "2026-07-28"
 }
