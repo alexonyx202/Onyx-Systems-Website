@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-27",
+    "last_updated": "2026-07-28",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -99,28 +99,50 @@
     }
   ],
   "news": [
-      {
-        "id": "news-2026-07-27",
-        "type": "newsletter",
-        "date": "2026-07-27",
-        "title": "Major Password Breaches: 85 Million Records Exposed — Check Yours Now",
-        "tag": "Security Alert",
-        "excerpt": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com — if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
-        "image": "assets/img/news/2026-07-27-composite.jpg",
-        "comic": "assets/img/news/2026-07-27-comic-square.jpg",
-        "read_more": "#contact"
-      },
-      {
-        "id": "news-2026-07-26",
-        "type": "newsletter",
-        "date": "2026-07-26",
-        "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
-        "tag": "Security Alert",
-        "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter — this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
-        "image": "assets/img/news/2026-07-26-composite.jpg",
-        "comic": "assets/img/news/2026-07-26-comic-square.jpg",
-        "read_more": "#contact"
-      },
+    {
+      "id": "news-2026-07-28",
+      "type": "newsletter",
+      "date": "2026-07-28",
+      "title": "RAM and SSD prices are surging 300\u2013500% \u2014 here is why and what to do instead",
+      "tag": "Daily Brief",
+      "excerpt": "RAM and SSD prices have jumped 300\u2013500% in 2026 because AI data centers are buying all the memory chips. If you were planning a memory upgrade, wait \u2014 prices may not drop until 2027\u20132028. Or buy a refurbished business laptop with 16\u201332 GB RAM already installed \u2014 search \"refurbished ThinkPad T14\" on eBay.com or backmarket.com.",
+      "image": "assets/img/news/2026-07-28-composite.jpg",
+      "comic": "assets/img/news/2026-07-28-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#ONYXSYSTEMS",
+        "#LAKECITYFL",
+        "#COMPUTERREPAIR",
+        "#HARDWAREPRICES",
+        "#REFURBISHEDLAPTOPS"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-27-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-07-27",
+      "title": "Windows 11 July 2026 Update (KB5101650) Fixes 570 Vulnerabilities, Adds Point-in-Time Restore",
+      "tag": "Daily Brief",
+      "excerpt": "Get the update via Settings \u2192 Windows Update \u2192 Check for updates, or download KB5101650 manually from the Microsoft Update Catalog.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#PatchTuesday"
+      ]
+    },
+    {
+      "id": "news-2026-07-26",
+      "type": "newsletter",
+      "date": "2026-07-26",
+      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
+      "tag": "Security Alert",
+      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter \u2014 this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
+      "image": "assets/img/news/2026-07-26-composite.jpg",
+      "comic": "assets/img/news/2026-07-26-comic-square.jpg",
+      "read_more": "#contact"
+    },
     {
       "id": "news-2026-07-24",
       "type": "newsletter",
@@ -139,59 +161,74 @@
       "image": "assets/img/news/2026-07-23-composite.jpg",
       "comic": "assets/img/news/2026-07-23-comic-square.jpg",
       "read_more": ""
-    },
-    {
-      "date": "2026-07-20",
-      "title": "\ud83d\udd34 ALERT \u2014 Update Firefox & Chrome Now \u2014 Exploit Code Is Public",
-      "excerpt": "Mozilla confirmed public exploit code now exists for two critical Firefox flaws (CVE-2026-15718 and CVE-2026-15719); Chrome also shipped emergency fixes for 15 bugs, two critical. Fully close Firefox to install 152.0.6, and in Chrome click Menu \u2192 Help \u2192 About Google Chrome to force the update now \u2014 don't wait for the slow auto-rollout.",
-      "image": "assets/img/news/2026-07-20-composite.jpg",
-      "comic": "assets/img/news/2026-07-20-comic-square.jpg",
-      "read_more": ""
-    },
-    {
-      "date": "2026-07-19",
-      "title": "\ud83d\udd34 ALERT \u2014 New \"Avalon\" Malware Framework Is Spreading Through Phishing Emails",
-      "excerpt": "A dangerous new malware framework named Avalon is spreading through plain-looking phishing emails, packaged with CrownX ransomware. Once opened it can steal passwords, move through your home network, and lock your files for ransom. Never open attachments or click links in unexpected emails \u2014 type the web address in yourself.",
-      "image": "assets/img/news/2026-07-19-composite.jpg",
-      "comic": "assets/img/news/2026-07-19-comic-square.jpg",
-      "read_more": ""
     }
   ],
   "posts": [
     {
+      "id": "post-2026-07-28-news",
+      "type": "news",
+      "date": "2026-07-28",
+      "title": "Firefox adds HDR video, QR code sharing, and PDF merging \u2014 free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox (released July 21, 2026) adds HDR video playback on Windows, QR code sharing from any page (right-click \u2192 Share \u2192 Generate QR Code), and drag-and-drop PDF merging in the built-in PDF editor. Download free at firefox.com or update via Menu \u2192 Help \u2192 About Firefox.",
+      "truth": "Most people don't realize their browser can do more than show web pages. Firefox's PDF editor now lets you combine multiple PDFs by dragging one into the sidebar of another — no Adobe Acrobat subscription needed. The QR code trick is handy for sending a page from your computer to your phone without emailing yourself. And HDR video means movies and YouTube actually look right on an HDR screen. Download free at firefox.com or update via Menu → Help → About Firefox.",
+      "tags": [
+        "#ONYXSYSTEMS",
+        "#LAKECITYFL",
+        "#COMPUTERREPAIR",
+        "#FIREFOX",
+        "#FREETOOLS"
+      ]
+    },
+    {
+      "id": "post-2026-07-28-tip",
+      "type": "tip",
+      "date": "2026-07-28",
+      "title": "Run your own private AI chatbot offline free \u2014 Jan.ai installs in minutes at jan.ai",
+      "tag": "Tech Tip",
+      "summary": "Jan.ai is a free, open-source app that runs AI models entirely on your PC \u2014 no internet, no account, no data leaves your machine. Download at jan.ai or github.com/janhq/jan/releases. Needs 8 GB+ RAM; works on Windows, Mac, and Linux.",
+      "truth": "I get asked about AI all the time. People want to try it but don't want their questions sent to some company's server. Jan.ai solves that \u2014 it downloads a model and runs it locally. Your chats stay on your computer. It's not as polished as ChatGPT, but for drafting emails, summarizing PDFs, or brainstorming, it's genuinely useful and costs nothing.",
+      "tags": [
+        "#ONYXSYSTEMS",
+        "#LAKECITYFL",
+        "#COMPUTERREPAIR",
+        "#PRIVATEAI",
+        "#JANAI"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-27-news-8",
+      "type": "news",
+      "date": "2026-07-27",
+      "title": "Windows 11 File Explorer Now Deletes Large Files Significantly Faster",
+      "tag": "Tech Note",
+      "summary": "Update to Windows 11 July 2026 update (KB5101650) via Windows Update to get the faster File Explorer deletion.",
+      "truth": "Lake City customers bring in laptops choking on old downloads and temp folders. Deleting thousands of small files used to freeze File Explorer for minutes. Microsoft finally fixed the underlying I/O path in the July update \u2014 large folder deletions now finish in seconds instead of minutes. I still see machines with 50+ GB in Downloads folders because people don't know how to clean them.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#FileExplorer"
+      ]
+    },
+    {
       "id": "onyx-2026-07-27-news-001",
-        "type": "news",
-        "date": "2026-07-27",
-        "title": "Major Password Breaches: 85 Million Records Exposed — Check Yours Now",
-        "tag": "Security Alert",
-        "summary": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com — if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
-        "truth": "Credential stuffing attacks are automated. Bots try your leaked email/password combo on thousands of sites in minutes. One reused password = open door. ONYX SYSTEMS helps customers check and secure their accounts.",
-        "tags": [
-          "#OnyxSystems",
-          "#LakeCityFL",
-          "#ComputerRepair",
-          "#Security",
-          "#DailyBrief"
-        ],
-        "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
-      },
-      {
-        "id": "onyx-2026-07-27-tip-001",
-        "type": "tip",
-        "date": "2026-07-27",
-        "title": "Fix a Spotty Wi-Fi Connection in 3 Minutes",
-        "tag": "Tech Tip",
-        "summary": "Unplug your router's power cord, wait 30 full seconds, plug it back in. Wait two minutes for all lights to settle. This clears stuck connections and memory leaks that slow things down. If it's still slow, move the router off the floor, away from thick walls and the microwave — signals travel better with breathing room.",
-        "truth": "Lake City customers bring in 'slow internet' that's actually just a router that hasn't been rebooted in months. A power cycle fixes 70% of cases. The other 30% need repositioning — I've seen routers in closets, behind TVs, next to microwaves. ONYX SYSTEMS optimizes home Wi-Fi in one visit.",
-        "tags": [
-          "#OnyxSystems",
-          "#LakeCityFL",
-          "#ComputerRepair",
-          "#WiFi",
-          "#Router"
-        ],
-        "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
-      },
+      "type": "news",
+      "date": "2026-07-27",
+      "title": "Major Password Breaches: 85 Million Records Exposed \u2014 Check Yours Now",
+      "tag": "Security Alert",
+      "summary": "Two massive breaches hit this month: Abbott Labs lost 30M+ cancer records (SSNs, medical histories, insurance). Suno AI leaked 55M users' names, emails, and partial payment data. If you reused a password anywhere, criminals are testing it on banks, email, and shopping sites. Go to HaveIBeenPwned.com \u2014 if your email shows, change that password everywhere. Use unique passwords per account (Bitwarden/1Password/KeePass) and enable 2FA on email and banking today.",
+      "truth": "Credential stuffing attacks are automated. Bots try your leaked email/password combo on thousands of sites in minutes. One reused password = open door. ONYX SYSTEMS helps customers check and secure their accounts.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Security",
+        "#DailyBrief"
+      ],
+      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
+    },
     {
       "id": "onyx-2026-07-26-daily-brief-001",
       "type": "news",
@@ -208,85 +245,38 @@
       ]
     },
     {
-      "id": "onyx-2026-07-26-news-001",
-      "type": "news",
-      "date": "2026-07-26",
-      "title": "Microsoft Fixes 622 Security Flaws \u2014 Biggest Patch Tuesday Ever",
-      "tag": "Tech Note",
-      "summary": "July 2026 Patch Tuesday addresses 622 vulnerabilities including 6 critical remote code execution flaws and starts mandatory Kerberos RC4 enforcement. Open Settings \u2192 Windows Update \u2192 Check for updates, install, and restart. Network admins: test Kerberos AES compatibility.",
-      "truth": "This is the largest Microsoft security update on record. The Kerberos change alone affects every Windows domain. ONYX SYSTEMS can help test and deploy these updates safely.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#TechNews",
-        "#Security"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-26-tip-001",
+      "id": "onyx-2026-07-27-tip-6",
       "type": "tip",
-      "date": "2026-07-26",
-      "title": "Storage Sense \u2014 Windows' Free Cleanup Tool Runs Automatically",
+      "date": "2026-07-27",
+      "title": "Turn On Windows Storage Sense to Automatically Free 5\u201350 GB Monthly",
       "tag": "Tech Tip",
-      "summary": "Press Start and type \"Storage Sense\", turn it On. Click Configure Storage Sense and choose how often to run (daily/weekly/monthly). Set Delete files in Recycle Bin after to 30 days. Set Delete files in Downloads folder after to 60 days (or Never if you keep installers). Automatically frees 10-50 GB of temp files and junk \u2014 no extra software needed. Works on Windows 10 and 11.",
-      "truth": "Customers pay for \"PC tune-up\" software that does exactly what Storage Sense does for free. ONYX SYSTEMS shows you how to enable it in 2 minutes.",
+      "summary": "Open Settings \u2192 System \u2192 Storage \u2192 Storage Sense \u2192 Turn on. Set cleanup schedule to \"During low free disk space\" or \"Monthly.\" Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
+      "truth": "Lake City FL customers bring in laptops with 5 GB free on a 256 GB drive. They don't know Storage Sense exists. It's built into Windows 11 \u2014 no download, no cost, no ads. I've seen it reclaim 40 GB on a single laptop in one run. Most people never touch Storage settings until the red bar appears.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#TechTip",
-        "#Windows"
+        "#StorageSense",
+        "#Windows11Tips"
       ]
     },
     {
-      "id": "onyx-2026-07-25-tip-003",
+      "id": "onyx-2026-07-27-tip-001",
       "type": "tip",
-      "date": "2026-07-25",
-      "title": "Windows has a free ransomware shield built in \u2014 turn it on in 30 seconds",
+      "date": "2026-07-27",
+      "title": "Fix a Spotty Wi-Fi Connection in 3 Minutes",
       "tag": "Tech Tip",
-      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled Folder Access. Click Protected folders and add your Documents, Pictures, and Desktop folders. Only programs you approve can save files there \u2014 ransomware gets blocked automatically.",
-      "truth": "People pay for \"ransomware protection\" software that just wraps this free Windows feature. Microsoft built it into Windows Defender years ago \u2014 it works, but it's OFF by default because some old programs break. I turn it on for every customer and add the 5-6 apps they actually use. Zero ransomware infections in three years. Included with any tune-up.",
+      "summary": "Unplug your router's power cord, wait 30 full seconds, plug it back in. Wait two minutes for all lights to settle. This clears stuck connections and memory leaks that slow things down. If it's still slow, move the router off the floor, away from thick walls and the microwave \u2014 signals travel better with breathing room.",
+      "truth": "Lake City customers bring in 'slow internet' that's actually just a router that hasn't been rebooted in months. A power cycle fixes 70% of cases. The other 30% need repositioning \u2014 I've seen routers in closets, behind TVs, next to microwaves. ONYX SYSTEMS optimizes home Wi-Fi in one visit.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Ransomware",
-        "#WindowsSecurity"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-25-news-002",
-      "type": "news",
-      "date": "2026-07-25",
-      "title": "Firefox now lets you keep work, banking, and shopping separate \u2014 free, built-in, no add-ons needed",
-      "tag": "Tech Note",
-      "summary": "Update to Firefox 153 or newer (free at mozilla.org/firefox). Click the menu, choose New Container Tab, and pick Work, Personal, Banking, or Shopping. Each container has its own cookies and logins \u2014 your work Google can't see your personal YouTube history. It's the only browser that actually separates them at the engine level.",
-      "truth": "Most people use Chrome profiles or incognito and think they're separated. They're not \u2014 Google still links them by IP and fingerprint. Firefox Containers is the only mainstream browser feature that actually isolates cookie jars at the engine level. I run four containers daily and it's the single best free privacy upgrade. I set this up for customers in 10 minutes.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox",
-        "#Privacy"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-25-news-001",
-      "type": "news",
-      "date": "2026-07-25",
-      "title": "Check your SSD health free \u2014 and why your Windows warnings lie",
-      "tag": "Tech Note",
-      "summary": "On Windows, install CrystalDiskInfo free from crystalmark.info. It shows your SSD's real health \u2014 percentage used, temperature, hours powered on. Most drives warn at 80% life used; I've seen drives die at 95% with zero Windows warnings. Check it once a month.",
-      "truth": "Windows' \"drive is healthy\" means almost nothing \u2014 it only checks the filesystem, not the NAND wear. I've pulled SMART data off drives Windows called perfect that had 2% spare blocks left. The honest answer: if smartctl shows \"Percentage Used\" over 80, budget for a replacement this quarter.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SSD",
-        "#DailyBrief"
-      ]
+        "#WiFi",
+        "#Router"
+      ],
+      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
     }
   ],
-  "updated": "2026-07-27"
+  "updated": "2026-07-28"
 }

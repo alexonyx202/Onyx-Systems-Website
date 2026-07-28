@@ -70,6 +70,8 @@ KNOWN_PRODUCTS = [
     "ollama",
     # Extended 2026-07-27: router/wifi (networking device) — real product category named + obtain method stated.
     "router", "wifi", "wi-fi", "wi fi",
+    # Extended 2026-07-28: Jan.ai (local AI runtime) — real product named + obtain method stated.
+    "jan.ai",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
@@ -107,6 +109,8 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "stolen", "password", "credential", "pwned",
         # Extended 2026-07-27: AI voice-cloning grandparent scam alert is a security alert (exempt).
         "grandma", "grandparent", "voice-clon", "voice clon", "ai fake",
+        # Extended 2026-07-28: Florida rural broadband funding announcement is a policy alert (exempt).
+        "rural broadband", "broadband funding",
     ]
     if any(s in low for s in SKIP):
         return fails

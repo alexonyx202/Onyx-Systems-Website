@@ -1,6 +1,32 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "items": [
+    {
+          "id": "n-2026-07-28",
+          "type": "newsletter",
+          "date": "2026-07-28",
+          "title": "70+ Fake Windows App Sites Pushing Malware Right Now",
+          "tag": "Daily Brief",
+          "summary": "Searching Google for a Windows app? The first result might be a trap. Security researchers found over 70 fake websites impersonating popular Windows programs — VLC (videolan.org), Notepad++ (notepad-plus-plus.org), 7-Zip (7-zip.org), WinRAR (win-rar.com). They buy Google ads so they appear above the real site. Click \"Download\" and you get malware that steals passwords, mines crypto, or locks your files. Bookmark the real sites or get apps from the Microsoft Store. If a download page asks you to run an .exe from a suspicious domain, close the tab immediately.",
+          "comic": "assets/img/news/2026-07-28-comic-square.jpg",
+          "readMore": "https://onyxpc.us/#contact"
+        },
+    {
+      "id": "t-2026-07-28-news",
+      "type": "tech-note",
+      "date": "2026-07-28",
+      "title": "Firefox adds HDR video, QR code sharing, and PDF merging — free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox (released July 21, 2026) adds HDR video playback on Windows, QR code sharing from any page (right-click → Share → Generate QR Code), and drag-and-drop PDF merging in the built-in PDF editor. Download free at firefox.com or update via Menu → Help → About Firefox."
+    },
+    {
+      "id": "t-2026-07-28-tip",
+      "type": "tech-note",
+      "date": "2026-07-28",
+      "title": "Run your own private AI chatbot offline free — Jan.ai installs in minutes at jan.ai",
+      "tag": "Tech Tip",
+      "summary": "Jan.ai is a free, open-source app that runs AI models entirely on your PC — no internet, no account, no data leaves your machine. Download at jan.ai or github.com/janhq/jan/releases. Needs 8 GB+ RAM; works on Windows, Mac, and Linux."
+    },
     {
       "id": "n-2026-07-27",
       "type": "newsletter",
@@ -104,62 +130,6 @@
         "label": "Open Storage Sense",
         "href": "ms-settings:storagesense"
       }
-    },
-    {
-      "id": "n-2026-07-25",
-      "type": "newsletter",
-      "date": "2026-07-25",
-      "title": "The FTC Is Not Calling You — It's a Scam",
-      "tag": "Daily Brief",
-      "summary": "title: \"The FTC Is Not Calling You — It's a Scam\"",
-      "comic": "Newsletter - 2026-07-25-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-25-1",
-      "type": "tech-note",
-      "date": "2026-07-25",
-      "title": "FTC scam alert — fake agents call demanding payment, hang up and call 1-877-FTC-HELP",
-      "tag": "Security Alert",
-      "summary": "Your caller ID says FTC. The voice sounds official, uses a real employee name, claims identity theft or recovered money. They need verification or a fee. The FTC does NOT cold-call, never demands gift cards/crypto/wire/gold, and has no badge agents. Hang up. Share nothing. If concerned, call FTC yourself at 1-877-FTC-HELP or visit ReportFraud.ftc.gov.",
-      "cta": {
-        "label": "Call FTC",
-        "href": "tel:+18773824357"
-      }
-    },
-    {
-      "id": "t-2026-07-25-2",
-      "type": "tech-note",
-      "date": "2026-07-25",
-      "title": "Firefox 153 ships Containers by default — separate Work, Personal, Banking, Shopping in one window free",
-      "tag": "Tech Note",
-      "summary": "Open Firefox 153+, click the menu -> New Container Tab -> pick Work, Personal, Banking, or Shopping. Each Firefox Container has its own cookies, logins, and tracking - Google in your Work Container cannot see your Personal YouTube history. No extension needed; it is built in.",
-      "cta": {
-        "label": "Get Firefox 153",
-        "href": "https://mozilla.org/firefox"
-      }
-    },
-    {
-      "id": "t-2026-07-25-3",
-      "type": "tech-note",
-      "date": "2026-07-25",
-      "title": "Run Llama 3.3 8B locally on 8GB RAM — Ollama + Open WebUI is free, offline, no account needed",
-      "tag": "Tech Note",
-      "summary": "Install Ollama from ollama.com (Windows/macOS/Linux), then run 'ollama run llama3.3:8b' - that is a local model. For a chat UI, run 'docker run -d -p 3000:8080 -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:main' and open localhost:3000. Your prompts never leave your machine.",
-      "cta": {
-        "label": "Get Ollama",
-        "href": "https://ollama.com"
-      }
-    },
-    {
-      "id": "n-2026-07-24",
-      "type": "newsletter",
-      "date": "2026-07-24",
-      "title": "16 Billion Stolen Passwords: Check If Yours Are Out There",
-      "tag": "Daily Brief",
-      "summary": "title: \"16 Billion Stolen Passwords: Check If Yours Are Out There\"",
-      "comic": "Newsletter - 2026-07-24-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }

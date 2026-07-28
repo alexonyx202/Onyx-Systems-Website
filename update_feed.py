@@ -43,35 +43,82 @@ def main():
 
     # ---- Add S2 posts (news + tip) ----
     for p in s2_posts:
-        # Remove any existing with same id
-        feed['posts'] = [x for x in feed['posts'] if x.get('id') != p.get('id')]
-        # Build entry from S2 format (type, headline, tip/truth/summary, tags)
-        entry = {
-            "id": p.get("id", f"onyx-{d}-{p.get('type', 'news')}-auto"),
-            "type": p.get("type", "news"),
-            "date": d,
-        }
-        if p.get("type") == "news":
-            entry["title"] = p.get("headline") or p.get("title") or ""
-            entry["tag"] = p.get("tag") or "Tech Note"
-            entry["summary"] = p.get("tip") or p.get("summary") or ""
-            entry["truth"] = p.get("truth") or ""
-        elif p.get("type") == "tip":
-            entry["title"] = p.get("headline") or p.get("title") or ""
-            entry["tag"] = p.get("tag") or "Tech Tip"
-            entry["summary"] = p.get("tip") or p.get("summary") or ""
-            entry["truth"] = p.get("truth") or ""
-        if p.get("tags"):
-            entry["tags"] = p.get("tags")
-        if p.get("cta"):
-            entry["cta"] = p.get("cta")
-        feed['posts'].insert(0, entry)
+        ptype = p.get("type", "news")
+        target = p.get("target_array", "posts")
+        
+        # Remove any existing with same id (if provided)
+        pid = p.get("id")
+        if pid:
+            if target == "news":
+                feed['news'] = [x for x in feed['news'] if x.get('id') != pid]
+            else:
+                feed['posts'] = [x for x in feed['posts'] if x.get('id') != pid]
+        
+        # Also deduplicate by headline/title (content-based, in case IDs differ but content is same)
+        headline = p.get("headline") or p.get("title") or ""
+        if headline:
+            if target == "news":
+                feed['news'] = [x for x in feed['news'] if x.get('title') != headline]
+            else:
+                feed['posts'] = [x for x in feed['posts'] if x.get('title') != headline]
+        
+        # Build entry from S2 format
+        entry = {}
+        if ptype == "newsletter":
+            # Daily-Brief summary post -> goes to news[]
+            entry = {
+                "id": pid or f"onyx-{d}-daily-brief-auto",
+                "type": "newsletter",
+                "date": d,
+                "title": p.get("headline") or p.get("title") or "",
+                "tag": p.get("tag") or "Daily Brief",
+                "excerpt": p.get("tip") or p.get("summary") or "",
+            }
+            if p.get("tags"):
+                entry["tags"] = p.get("tags")
+            if p.get("cta"):
+                entry["cta"] = p.get("cta")
+            feed['news'].insert(0, entry)
+        elif ptype == "news":
+            # Tech note news -> goes to posts[]
+            entry = {
+                "id": pid or f"onyx-{d}-news-{len(feed['posts'])+1}",
+                "type": "news",
+                "date": d,
+                "title": p.get("headline") or p.get("title") or "",
+                "tag": p.get("tag") or "Tech Note",
+                "summary": p.get("tip") or p.get("summary") or "",
+                "truth": p.get("truth") or "",
+            }
+            if p.get("tags"):
+                entry["tags"] = p.get("tags")
+            if p.get("cta"):
+                entry["cta"] = p.get("cta")
+            feed['posts'].insert(0, entry)
+        elif ptype == "tip":
+            # Tech tip -> goes to posts[]
+            entry = {
+                "id": pid or f"onyx-{d}-tip-{len(feed['posts'])+1}",
+                "type": "tip",
+                "date": d,
+                "title": p.get("headline") or p.get("title") or "",
+                "tag": p.get("tag") or "Tech Tip",
+                "summary": p.get("tip") or p.get("summary") or "",
+                "truth": p.get("truth") or "",
+            }
+            if p.get("tags"):
+                entry["tags"] = p.get("tags")
+            if p.get("cta"):
+                entry["cta"] = p.get("cta")
+            feed['posts'].insert(0, entry)
 
-    # Cap posts to 8
-    feed['posts'] = feed['posts'][:8]
+    # Cap news to 5 (newest first - already sorted by insert(0))
+    feed['news'] = feed['news'][:5]
 
-    # Cap news to 6
-    feed['news'] = feed['news'][:6]
+    # Cap posts by type: 5 news + 5 tips = 10 max
+    news_posts = [p for p in feed['posts'] if p.get('type') == 'news']
+    tip_posts = [p for p in feed['posts'] if p.get('type') == 'tip']
+    feed['posts'] = news_posts[:5] + tip_posts[:5]
 
     # Update timestamp
     feed['updated'] = d

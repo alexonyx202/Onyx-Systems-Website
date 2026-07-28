@@ -1,191 +1,216 @@
 {
-  "title": "MATH",
-  "size": 14,
+  "title": "Math Vocab",
+  "size": 31,
   "grid": [
-    ".............8",
-    "........1287.4",
-    ".........7.210",
-    ".......330.0..",
-    "......15.7....",
-    "....1.2..24...",
-    ".1..120.35....",
-    ".3024..56.....",
-    ".2..0.........",
-    "60............",
-    "7.............",
-    "24............",
-    "0.............",
-    ".............."
+    "......E........................",
+    "......q........................",
+    "......u.....Solve..............",
+    "......a.....o..................",
+    "......t.....l..G...............",
+    "......i.Q...u..r...............",
+    "....Product.t..e...............",
+    "......n.o...i..a...............",
+    "........t.L.o..t......D.InVerse",
+    "...Coefficient.ExpreSsion.a....",
+    "........e.k....r....u.f.e.r....",
+    ".O......n.e....T....m.f.q.i....",
+    ".p..Substitute.h......e.u.a....",
+    ".e........e....a......r.a.b....",
+    "OrdErofOperationS.....e.l.l....",
+    ".a.q......m.....i.....n.i.e....",
+    ".t.u...LessThan.m.....c.t......",
+    ".i.a............p.....e.y......",
+    ".o.l..........Balance..........",
+    ".n..............i..............",
+    "................f..............",
+    "................y..............",
+    "...............................",
+    "...............................",
+    "...............................",
+    "...............................",
+    "...............................",
+    "...............................",
+    "...............................",
+    "...............................",
+    "..............................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 2,
-        "col": 9,
-        "len": 4,
-        "answer": "1287",
-        "clue": "13C5"
+        "row": 3,
+        "col": 13,
+        "len": 5,
+        "answer": "Solve",
+        "clue": "To find the value that makes an equation true"
       },
       {
         "num": 5,
-        "row": 3,
-        "col": 12,
-        "len": 3,
-        "answer": "210",
-        "clue": "7P3"
+        "row": 7,
+        "col": 5,
+        "len": 7,
+        "answer": "Product",
+        "clue": "The answer to a multiplication problem"
       },
       {
-        "num": 6,
-        "row": 4,
-        "col": 8,
-        "len": 3,
-        "answer": "330",
-        "clue": "11C4"
+        "num": 8,
+        "row": 9,
+        "col": 25,
+        "len": 7,
+        "answer": "InVerse",
+        "clue": "An operation that undoes another"
       },
       {
-        "num": 7,
-        "row": 5,
-        "col": 7,
-        "len": 2,
-        "answer": "15",
-        "clue": "6C2"
-      },
-      {
-        "num": 9,
-        "row": 6,
-        "col": 10,
-        "len": 2,
-        "answer": "24",
-        "clue": "4!"
+        "num": 10,
+        "row": 10,
+        "col": 4,
+        "len": 11,
+        "answer": "Coefficient",
+        "clue": "The number multiplied by a variable"
       },
       {
         "num": 11,
-        "row": 7,
-        "col": 5,
-        "len": 3,
-        "answer": "120",
-        "clue": "10C3"
-      },
-      {
-        "num": 12,
-        "row": 7,
-        "col": 9,
-        "len": 2,
-        "answer": "35",
-        "clue": "7C3"
-      },
-      {
-        "num": 13,
-        "row": 8,
-        "col": 2,
-        "len": 4,
-        "answer": "3024",
-        "clue": "9P4"
+        "row": 10,
+        "col": 16,
+        "len": 10,
+        "answer": "ExpreSsion",
+        "clue": "Math words and symbols without an equals sign"
       },
       {
         "num": 14,
-        "row": 8,
-        "col": 8,
-        "len": 2,
-        "answer": "56",
-        "clue": "8C5"
+        "row": 13,
+        "col": 5,
+        "len": 10,
+        "answer": "Substitute",
+        "clue": "To replace a variable with a number"
       },
       {
         "num": 15,
-        "row": 10,
+        "row": 15,
         "col": 1,
-        "len": 2,
-        "answer": "60",
-        "clue": "5P3"
+        "len": 17,
+        "answer": "OrdErofOperationS",
+        "clue": "Rules for which math to do first"
       },
       {
-        "num": 16,
-        "row": 12,
-        "col": 1,
-        "len": 2,
-        "answer": "24",
-        "clue": "4!"
+        "num": 18,
+        "row": 17,
+        "col": 8,
+        "len": 8,
+        "answer": "LessThan",
+        "clue": "A symbol (<) meaning smaller"
+      },
+      {
+        "num": 19,
+        "row": 19,
+        "col": 15,
+        "len": 7,
+        "answer": "Balance",
+        "clue": "Keeping both sides of an equation equal"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 14,
-        "len": 3,
-        "answer": "840",
-        "clue": "7P4"
+        "col": 7,
+        "len": 8,
+        "answer": "Equation",
+        "clue": "A math sentence with an equals sign"
+      },
+      {
+        "num": 2,
+        "row": 3,
+        "col": 13,
+        "len": 8,
+        "answer": "Solution",
+        "clue": "The answer that makes an equation true"
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 10,
-        "len": 6,
-        "answer": "270725",
-        "clue": "52C4"
+        "row": 5,
+        "col": 16,
+        "len": 11,
+        "answer": "GreatErThan",
+        "clue": "A symbol (>) meaning larger"
       },
       {
         "num": 4,
-        "row": 2,
-        "col": 12,
-        "len": 3,
-        "answer": "720",
-        "clue": "6!"
+        "row": 6,
+        "col": 9,
+        "len": 8,
+        "answer": "Quotient",
+        "clue": "The answer to a division problem"
       },
       {
         "num": 6,
-        "row": 4,
-        "col": 8,
-        "len": 2,
-        "answer": "35",
-        "clue": "7C4"
+        "row": 9,
+        "col": 11,
+        "len": 9,
+        "answer": "Liketerms",
+        "clue": "Terms with the same variable and power"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 7,
-        "len": 3,
-        "answer": "120",
-        "clue": "5!"
+        "row": 9,
+        "col": 23,
+        "len": 10,
+        "answer": "Difference",
+        "clue": "The answer to a subtraction problem"
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 5,
-        "len": 4,
-        "answer": "1140",
-        "clue": "20C3"
+        "row": 9,
+        "col": 25,
+        "len": 10,
+        "answer": "Inequality",
+        "clue": "A math sentence that compares values"
       },
       {
-        "num": 10,
-        "row": 7,
-        "col": 2,
-        "len": 4,
-        "answer": "1320",
-        "clue": "12P3"
+        "num": 9,
+        "row": 9,
+        "col": 27,
+        "len": 8,
+        "answer": "Variable",
+        "clue": "A letter that stands for a number"
       },
       {
         "num": 12,
-        "row": 7,
-        "col": 9,
-        "len": 2,
-        "answer": "36",
-        "clue": "9C2"
+        "row": 10,
+        "col": 21,
+        "len": 3,
+        "answer": "Sum",
+        "clue": "The answer to an addition problem"
       },
       {
-        "num": 15,
-        "row": 10,
-        "col": 1,
-        "len": 4,
-        "answer": "6720",
-        "clue": "8P5"
+        "num": 13,
+        "row": 12,
+        "col": 2,
+        "len": 9,
+        "answer": "Operation",
+        "clue": "A math action like add or multiply"
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 4,
+        "len": 5,
+        "answer": "Equal",
+        "clue": "Having the same value"
+      },
+      {
+        "num": 17,
+        "row": 15,
+        "col": 17,
+        "len": 8,
+        "answer": "Simplify",
+        "clue": "To make an expression easier to understand"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2025-10-20-148",
-  "slug": "2025-10-20-148",
-  "fetched_at": "2026-07-14T19:21:36.100518+00:00",
+  "source_url": "https://crosswordlabs.com/view/2025-12-15-633",
+  "slug": "2025-12-15-633",
+  "fetched_at": "2026-07-14T19:10:41.860443+00:00",
   "date": "2026-07-28"
 }

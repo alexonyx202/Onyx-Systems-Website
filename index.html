@@ -1656,10 +1656,12 @@ function renderAll(d){
       cta: p.cta
     };
   });
-  var allItems = newsItems.concat(postsItems).slice().sort(function(a,b){
-    var an=(a.type==='news')?-1:1, bn=(b.type==='news')?-1:1;
-    return an-bn;
-  });
+  
+  // Separate by type and cap at 5 each (newest first since feed.json is already sorted newest first)
+  var newsOnly = newsItems.concat(postsItems.filter(function(p){ return p.type === 'news'; })).slice(0, 5);
+  var tipsOnly = postsItems.filter(function(p){ return p.type === 'tip'; }).slice(0, 5);
+  var allItems = newsOnly.concat(tipsOnly);
+  
   var grid=document.getElementById('newsTipsGrid');
   if(grid){
     if(!allItems.length)allItems=FEED_FALLBACK.posts;
