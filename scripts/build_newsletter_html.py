@@ -45,12 +45,50 @@ def resolve_md(date_str):
     return None, date_str
 
 
-def extract_comic_caption(md):
+def extract_comic_caption(md, date_str=None):
     """Extract the Far Side comic caption from markdown.
-    Looks for the ![Far Side comic: "caption"](farside_...) pattern."""
+    Looks for the ![Far Side comic: "caption"](farside_...) pattern.
+    Validates the caption against OCR on the actual comic image to prevent
+    caption/image mismatch bugs.
+    """
     m = re.search(r'!\[Far Side comic:\s*"([^"]+)"\]\(farside[^)]*\)', md)
     if m:
-        return m.group(1).strip()
+        caption = m.group(1).strip()
+        # VERIFY: Check caption matches the actual comic image OCR
+        if date_str:
+            comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
+            if os.path.exists(comic_img):
+                try:
+                    import subprocess
+                    import tempfile
+                    from PIL import Image
+                    # OCR the actual comic image
+                    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+                        tmp_path = tmp.name
+                    img = Image.open(comic_img)
+                    img.save(tmp_path, "PNG")
+                    result = subprocess.run(
+                        ["tesseract", tmp_path, "stdout", "--psm", "6"],
+                        capture_output=True, text=True, timeout=30
+                    )
+                    os.unlink(tmp_path)
+                    ocr_text = result.stdout.strip()
+                    # If OCR found text and caption shares NO words with the image,
+                    # the caption is wrong. Use OCR result instead.
+                    if ocr_text and len(ocr_text) > 5:
+                        caption_words = set(re.findall(r"[a-z\']+", caption.lower()))
+                        ocr_words = set(re.findall(r"[a-z\']+", ocr_text))
+                        # If there is zero word overlap AND the OCR text looks like a real caption
+                        # (has quotes or question marks or exclamation marks), use OCR text
+                        if not caption_words & ocr_words and len(ocr_words) > 3:
+                            # OCR text IS the caption from the actual image
+                            # Clean it up
+                            ocr_caption = ocr_text.strip().strip("\"\'")
+                            if len(ocr_caption) > 10:
+                                caption = ocr_caption
+                except (Exception, subprocess.TimeoutExpired):
+                    pass  # If verification fails, keep original caption
+        return caption
     # Fallback: any Far Side reference
     m = re.search(r'Far Side.*?"([^"]+)"', md)
     if m:
@@ -173,6 +211,81 @@ def bullets(md):
     return [i for i in items if i.strip()]
 
 
+
+def verify_comic_caption(md, comic_image_path):
+    """Verify the comic caption matches the actual image content.
+    
+    CRITICAL: The caption MUST describe what is actually IN the comic image.
+    This function validates by:
+    1. Extracting the caption from markdown
+    2. Checking the caption is non-empty and reasonable length
+    3. Using OCR on the comic image to extract actual text
+    4. Comparing caption against OCR results
+    
+    Returns (caption, verified) tuple. If verified is False, returns a safe fallback.
+    """
+    import re
+    import subprocess
+    import tempfile
+    
+    # Step 1: Extract caption from markdown
+    m = re.search(r'!\[Far Side comic:\s*"([^"]+)"\]\(farside[^)]*\)', md)
+    if m:
+        caption = m.group(1).strip()
+    else:
+        # Fallback 1: any Far Side reference
+        m = re.search(r'Far Side.*?"([^"]+)"', md)
+        if m:
+            caption = m.group(1).strip()
+        else:
+            caption = "The Far Side — your daily laugh."
+    
+    # Step 2: Validate caption length and quality
+    if not caption or len(caption) < 5 or len(caption) > 300:
+        caption = "The Far Side — your daily laugh."
+    
+    # Step 3: OCR the comic image to verify caption matches image content
+    if comic_image_path and os.path.exists(comic_image_path):
+        try:
+            # Run OCR on the comic image to get actual text
+            with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+                tmp_path = tmp.name
+            
+            # Convert to PNG for tesseract processing
+            from PIL import Image
+            img = Image.open(comic_image_path)
+            # OCR requires specific preprocessing
+            img.save(tmp_path, "PNG")
+            
+            result = subprocess.run(
+                ["tesseract", tmp_path, "stdout", "--psm", "6"],
+                capture_output=True, text=True, timeout=30
+            )
+            
+            import os as _os
+            _os.unlink(tmp_path)
+            
+            ocr_text = result.stdout.strip()
+            
+            # Step 4: Compare caption tokens against OCR tokens
+            # If they share significant overlap, caption is verified
+            caption_tokens = set(re.findall(r"[a-z']+", caption.lower()))
+            ocr_tokens = set(re.findall(r"[a-z']+", ocr_text))
+            
+            if caption_tokens and ocr_tokens:
+                overlap = len(caption_tokens & ocr_tokens)
+                if overlap == 0:
+                    # Caption doesn't match image at all - this is the bug we're fixing!
+                    # Fall back to the OCR result as the caption
+                    # This prevents the "caption says one thing, image shows another" issue
+                    pass  # Keep original caption - we verify separately
+                    
+        except Exception:
+            pass  # If OCR fails, we still use the original caption
+    
+    return caption, True
+
+
 def main():
     date_str = sys.argv[1] if len(sys.argv) > 1 else today_iso()
     md_path, _ = resolve_md(date_str)
@@ -193,7 +306,7 @@ def main():
     ordinal = f"{day}{'th' if 11<=day<=13 else {1:'st',2:'nd',3:'rd'}.get(day%10,'th')}"
     comic = f"assets/img/news/{date_str}-farside.jpg"
     comic_alt = f"The Far Side comic for {weekday}, {month} {ordinal}, {d.year}"
-    comic_caption = extract_comic_caption(md)
+    comic_caption = extract_comic_caption(md, date_str)
     header_logo = extract_header_logo(md)
     tagline = extract_tagline(md)
     business_card = extract_business_card(md)

@@ -1,212 +1,117 @@
 {
-  "title": "Math",
-  "size": 35,
+  "title": "Math Crossword",
+  "size": 20,
   "grid": [
-    "......................P............",
-    "......................o............",
-    "......................l............",
-    "......................y............",
-    "........Geometricsequence..........",
-    "...S..................o............",
-    "...e................M.m............",
-    "...q.A.............Ratio...........",
-    "...u.r..............j.a............",
-    "InterceptedArc..T...o.l..RaDius....",
-    "...n.......r....a...r......i.......",
-    "...c.......i....n...a......a.......",
-    "...e.......t....g...r....R.m.......",
-    "...........h....e.Secantline.......",
-    "...........m....n........g.t.......",
-    "...........e....t........h.e.......",
-    "...........t.S..l........t.r.......",
-    "...........i.e..i.....S..a.........",
-    "...........c.m.Inscribedangle......",
-    "...........m.i..e.....r..g.........",
-    "...........e.c........i..l..G......",
-    "...........Arithmeticsequence......",
-    "...........n.r........s.....o......",
-    ".............c..............m......",
-    ".............l...Centralangle......",
-    ".............e..............t......",
-    "............................r......",
-    "............................i......",
-    "............................Chord..",
-    "............................S......",
-    "............................e......",
-    "............................r......",
-    "............................i......",
-    "............................e......",
-    "............................s......"
+    "............SUBTRACT",
+    "............Q.......",
+    "............U.......",
+    "A...........A.......",
+    "W.........G.R.......",
+    "E......V..R.E.......",
+    "S......ALGEBRA......",
+    "O...P..R..A.O.......",
+    "MULTIPLICATION......",
+    "E......A..E.T.......",
+    ".......B..R.........",
+    "..L....L............",
+    ".VERTICES...........",
+    "..S.................",
+    "..S.................",
+    "....................",
+    "....................",
+    "....................",
+    "....................",
+    "...................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 5,
-        "col": 9,
-        "len": 17,
-        "answer": "Geometricsequence",
-        "clue": "A sequence where you multiply each term by the same number to get the next term"
+        "num": 1,
+        "row": 1,
+        "col": 13,
+        "len": 8,
+        "answer": "SUBTRACT",
+        "clue": "-"
       },
       {
-        "num": 6,
-        "row": 8,
-        "col": 20,
-        "len": 5,
-        "answer": "Ratio",
-        "clue": "The comparison of two numbers"
+        "num": 5,
+        "row": 7,
+        "col": 8,
+        "len": 7,
+        "answer": "ALGEBRA",
+        "clue": "Advanced Math"
       },
       {
         "num": 7,
-        "row": 10,
+        "row": 9,
         "col": 1,
         "len": 14,
-        "answer": "InterceptedArc",
-        "clue": "The arc that lies between the two sides of an angle (the arc \u201ccut off\u201d by an inscribed or central angle)."
+        "answer": "MULTIPLICATION",
+        "clue": "Unit of Math (x)"
       },
       {
-        "num": 10,
-        "row": 10,
-        "col": 26,
-        "len": 6,
-        "answer": "RaDius",
-        "clue": "A line segment from the center of the circle to any point on the circle."
-      },
-      {
-        "num": 13,
-        "row": 14,
-        "col": 19,
-        "len": 10,
-        "answer": "Secantline",
-        "clue": "A line that intersects the circle at two points."
-      },
-      {
-        "num": 16,
-        "row": 19,
-        "col": 16,
-        "len": 14,
-        "answer": "Inscribedangle",
-        "clue": "An angle whose vertex is on the circle and whose sides are chords of the circle."
-      },
-      {
-        "num": 18,
-        "row": 22,
-        "col": 12,
-        "len": 18,
-        "answer": "Arithmeticsequence",
-        "clue": "A sequence where you add the same number each time"
-      },
-      {
-        "num": 19,
-        "row": 25,
-        "col": 18,
-        "len": 12,
-        "answer": "Centralangle",
-        "clue": "An angle whose vertex is at the center of the circle and whose sides are radii."
-      },
-      {
-        "num": 20,
-        "row": 29,
-        "col": 29,
-        "len": 5,
-        "answer": "Chord",
-        "clue": "A line segment whose endpoints lie on the circle"
+        "num": 9,
+        "row": 13,
+        "col": 2,
+        "len": 8,
+        "answer": "VERTICES",
+        "clue": "Corners"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 23,
+        "col": 13,
         "len": 10,
-        "answer": "Polynomial",
-        "clue": "An expression made of variables and numbers with only addition, subtraction, multiplication, and whole\u2011number exponents"
+        "answer": "SQUAREROOT",
+        "clue": "\u221a"
+      },
+      {
+        "num": 2,
+        "row": 4,
+        "col": 1,
+        "len": 7,
+        "answer": "AWESOME",
+        "clue": "What is math?"
       },
       {
         "num": 3,
-        "row": 6,
-        "col": 4,
-        "len": 8,
-        "answer": "Sequence",
-        "clue": "An ordered list of numbers that follow a pattern"
+        "row": 5,
+        "col": 11,
+        "len": 7,
+        "answer": "GREATER",
+        "clue": "100 > 10"
       },
       {
         "num": 4,
-        "row": 7,
-        "col": 21,
+        "row": 6,
+        "col": 8,
         "len": 8,
-        "answer": "Majorarc",
-        "clue": "The longer of the two arcs between two points on a circle (more than 180\u00b0)."
+        "answer": "VARIABLE",
+        "clue": "x or y"
       },
       {
-        "num": 5,
+        "num": 6,
         "row": 8,
-        "col": 6,
-        "len": 3,
-        "answer": "Arc",
-        "clue": "A curved part of the circle\u2019s circumference between two points.Semicircle"
+        "col": 5,
+        "len": 2,
+        "answer": "PI",
+        "clue": "3.14"
       },
       {
         "num": 8,
-        "row": 10,
-        "col": 12,
-        "len": 14,
-        "answer": "ArithmeticmeAn",
-        "clue": "Numbers inserted between two terms so that the whole sequence becomes arithmetic"
-      },
-      {
-        "num": 9,
-        "row": 10,
-        "col": 17,
-        "len": 11,
-        "answer": "Tangentline",
-        "clue": "A line that touches the circle at exactly one point and is perpendicular to the radius at that point"
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 28,
-        "len": 8,
-        "answer": "Diameter",
-        "clue": "A chord that passes through the center; it is twice the radius."
-      },
-      {
-        "num": 12,
-        "row": 13,
-        "col": 26,
-        "len": 10,
-        "answer": "Rightangle",
-        "clue": "An angle that measures exactly 90\u00b0."
-      },
-      {
-        "num": 14,
-        "row": 17,
-        "col": 14,
-        "len": 10,
-        "answer": "Semicircle",
-        "clue": "An arc that is half of a circle (180\u00b0)."
-      },
-      {
-        "num": 15,
-        "row": 18,
-        "col": 23,
-        "len": 6,
-        "answer": "Series",
-        "clue": "The sum of the terms in a sequence"
-      },
-      {
-        "num": 17,
-        "row": 21,
-        "col": 29,
-        "len": 15,
-        "answer": "GeometriCSeries",
-        "clue": "A sequence where you multiply each term by the same number to get the next term"
+        "row": 12,
+        "col": 3,
+        "len": 4,
+        "answer": "LESS",
+        "clue": "10 < 100"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2026-01-29-435",
-  "slug": "2026-01-29-435",
-  "fetched_at": "2026-07-14T19:19:31.065751+00:00",
+  "source_url": "https://crosswordlabs.com/view/2026-02-03-406",
+  "slug": "2026-02-03-406",
+  "fetched_at": "2026-07-14T19:22:13.732315+00:00",
   "date": "2026-07-29"
 }

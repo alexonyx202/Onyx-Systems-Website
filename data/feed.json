@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-28",
+    "last_updated": "2026-07-29",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,17 @@
   ],
   "news": [
     {
+      "id": "news-2026-07-29",
+      "type": "newsletter",
+      "date": "2026-07-29",
+      "title": "FBI Warns: Scammers Impersonating IC3 to Re-Victimize You",
+      "tag": "Security Alert",
+      "excerpt": "Scammers Are Pretending to Be the FBI's Internet Crime Center to Steal From You \u2014 Again. You get a message: \"We recovered your stolen money. Click here to claim it.\" The sender claims to be from the IC3 \u2014 the FBI's Internet Crime Complaint Center. They might even have an AI-generated video of an FBI official \"confirming\" it's real. It's a lie. The IC3 never contacts victims through social media, email, or phone. They never recover funds for you. They never ask for payment to release money. This is a re-victimization scam targeting people who've already been scammed once. What to do: Type www.ic3.gov directly into your browser \u2014 never click a link. If someone says they're from IC3 and wants money or info, it's a scam. Report it at the real IC3 site. *Source: FBI IC3 PSA \u2014 July 2026*",
+      "image": "assets/img/news/2026-07-29-composite.jpg",
+      "comic": "assets/img/news/2026-07-29-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "news-2026-07-28",
       "type": "newsletter",
       "date": "2026-07-28",
@@ -165,13 +176,61 @@
   ],
   "posts": [
     {
+      "id": "post-2026-07-29-daily-brief",
+      "type": "news",
+      "date": "2026-07-29",
+      "title": "ONYX SYSTEMS Daily Brief 2026-07-29: FBI IC3 Impersonation Scam Alert + HaveIBeenPwned Breach Check",
+      "tag": "Daily Brief Summary",
+      "summary": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov \u2014 type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
+      "truth": "This mirrors today's Daily Computer Brief alert and tip. The FBI IC3 impersonation scam re-victimizes people who already lost money \u2014 a cruel twist. Checking haveibeenpwned.com takes 30 seconds and shows exactly which breaches exposed your credentials.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#FBI-IC3-Scam",
+        "#HaveIBeenPwned"
+      ]
+    },
+    {
+      "id": "post-2026-07-29-news",
+      "type": "news",
+      "date": "2026-07-29",
+      "title": "ONYX SYSTEMS: Microsoft Windows July 2026 Patch Tuesday Fixes Record 570 Vulnerabilities Including 3 Zero-Days",
+      "tag": "Tech Note",
+      "summary": "Microsoft released its largest Patch Tuesday ever on July 14, 2026, patching 570 vulnerabilities across Windows, Office, SharePoint, Exchange, and Azure. Two zero-days were actively exploited: CVE-2026-56155 (AD FS elevation of privilege) and CVE-2026-56164 (SharePoint Server authentication bypass). A third, CVE-2026-50661 (BitLocker bypass with physical access), was publicly disclosed. Critical RCEs include CVE-2026-58644 (SharePoint), CVE-2026-58608 (Print Spooler), and CVE-2026-58631 (Windows Admin Center). Obtain via Windows Update (Settings > Update & Security) or Microsoft Update Catalog (catalog.update.microsoft.com). Enterprises should prioritize AD FS, SharePoint, and internet-facing servers immediately.",
+      "truth": "Microsoft July 2026 Patch Tuesday released July 14, 2026 per MSRC release notes; 570 CVEs confirmed via Microsoft Security Update Guide. Two exploited zero-days (CVE-2026-56155, CVE-2026-56164) confirmed in Microsoft Security Response Center blog and CISA KEV catalog. CVE-2026-50661 BitLocker bypass publicly disclosed. Critical RCE CVEs listed in official advisory.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Microsoft-Patch-Tuesday",
+        "#Zero-Day-Exploits"
+      ]
+    },
+    {
+      "id": "post-2026-07-29-tip",
+      "type": "tip",
+      "date": "2026-07-29",
+      "title": "ONYX SYSTEMS Tip: Check Have I Been Pwned (haveibeenpwned.com) for June 2026 Stealer Logs Breach (56M Emails, 124M Passwords)",
+      "tag": "Tech Tip",
+      "summary": "The June 2026 Stealer Logs breach added 56 million unique email addresses and 124 million unique passwords to Have I Been Pwned on June 15, 2026. Stealer logs capture credentials from infostealer malware \u2014 meaning passwords were actively stolen from infected machines, not just leaked from a database. Visit haveibeenpwned.com, enter your email, and check the 'Stealer Logs' section of your dashboard. If found: immediately change that password everywhere you reused it, enable 2FA on all affected accounts, and use a password manager (1Password, Bitwarden) to generate unique passwords. Obtain method: Free web lookup at haveibeenpwned.com or domain monitoring via HIBP API v3.",
+      "truth": "Have I Been Pwned added June 2026 Stealer Logs breach on June 15, 2026 per HIBP breach page. 56M unique emails and 124M unique passwords confirmed in breach overview. Stealer logs indicate active malware credential theft per HIBP FAQ. Free email lookup and Pwned Passwords search available at haveibeenpwned.com. Domain monitoring via HIBP API v3.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#HaveIBeenPwned",
+        "#Stealer-Logs-Breach"
+      ]
+    },
+    {
       "id": "post-2026-07-28-news",
       "type": "news",
       "date": "2026-07-28",
       "title": "Firefox adds HDR video, QR code sharing, and PDF merging \u2014 free at firefox.com",
       "tag": "Tech Note",
       "summary": "Firefox (released July 21, 2026) adds HDR video playback on Windows, QR code sharing from any page (right-click \u2192 Share \u2192 Generate QR Code), and drag-and-drop PDF merging in the built-in PDF editor. Download free at firefox.com or update via Menu \u2192 Help \u2192 About Firefox.",
-      "truth": "Most people don't realize their browser can do more than show web pages. Firefox's PDF editor now lets you combine multiple PDFs by dragging one into the sidebar of another — no Adobe Acrobat subscription needed. The QR code trick is handy for sending a page from your computer to your phone without emailing yourself. And HDR video means movies and YouTube actually look right on an HDR screen. Download free at firefox.com or update via Menu → Help → About Firefox.",
+      "truth": "Most people don't realize their browser can do more than show web pages. Firefox's PDF editor now lets you combine multiple PDFs by dragging one into the sidebar of another \u2014 no Adobe Acrobat subscription needed. The QR code trick is handy for sending a page from your computer to your phone without emailing yourself. And HDR video means movies and YouTube actually look right on an HDR screen. Download free at firefox.com or update via Menu \u2192 Help \u2192 About Firefox.",
       "tags": [
         "#ONYXSYSTEMS",
         "#LAKECITYFL",
@@ -243,40 +302,7 @@
         "#ScamAlert",
         "#DailyBrief"
       ]
-    },
-    {
-      "id": "onyx-2026-07-27-tip-6",
-      "type": "tip",
-      "date": "2026-07-27",
-      "title": "Turn On Windows Storage Sense to Automatically Free 5\u201350 GB Monthly",
-      "tag": "Tech Tip",
-      "summary": "Open Settings \u2192 System \u2192 Storage \u2192 Storage Sense \u2192 Turn on. Set cleanup schedule to \"During low free disk space\" or \"Monthly.\" Configure cleanup schedules for temp files, Recycle Bin (30 days), and Downloads folder (60 days).",
-      "truth": "Lake City FL customers bring in laptops with 5 GB free on a 256 GB drive. They don't know Storage Sense exists. It's built into Windows 11 \u2014 no download, no cost, no ads. I've seen it reclaim 40 GB on a single laptop in one run. Most people never touch Storage settings until the red bar appears.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#StorageSense",
-        "#Windows11Tips"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-27-tip-001",
-      "type": "tip",
-      "date": "2026-07-27",
-      "title": "Fix a Spotty Wi-Fi Connection in 3 Minutes",
-      "tag": "Tech Tip",
-      "summary": "Unplug your router's power cord, wait 30 full seconds, plug it back in. Wait two minutes for all lights to settle. This clears stuck connections and memory leaks that slow things down. If it's still slow, move the router off the floor, away from thick walls and the microwave \u2014 signals travel better with breathing room.",
-      "truth": "Lake City customers bring in 'slow internet' that's actually just a router that hasn't been rebooted in months. A power cycle fixes 70% of cases. The other 30% need repositioning \u2014 I've seen routers in closets, behind TVs, next to microwaves. ONYX SYSTEMS optimizes home Wi-Fi in one visit.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WiFi",
-        "#Router"
-      ],
-      "cta": "Bring your device to ONYX SYSTEMS or call (386) 755-7772 for help."
     }
   ],
-  "updated": "2026-07-28"
+  "updated": "2026-07-29"
 }
