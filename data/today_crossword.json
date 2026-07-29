@@ -1,216 +1,212 @@
 {
-  "title": "Math Vocab",
-  "size": 31,
+  "title": "Math",
+  "size": 35,
   "grid": [
-    "......E........................",
-    "......q........................",
-    "......u.....Solve..............",
-    "......a.....o..................",
-    "......t.....l..G...............",
-    "......i.Q...u..r...............",
-    "....Product.t..e...............",
-    "......n.o...i..a...............",
-    "........t.L.o..t......D.InVerse",
-    "...Coefficient.ExpreSsion.a....",
-    "........e.k....r....u.f.e.r....",
-    ".O......n.e....T....m.f.q.i....",
-    ".p..Substitute.h......e.u.a....",
-    ".e........e....a......r.a.b....",
-    "OrdErofOperationS.....e.l.l....",
-    ".a.q......m.....i.....n.i.e....",
-    ".t.u...LessThan.m.....c.t......",
-    ".i.a............p.....e.y......",
-    ".o.l..........Balance..........",
-    ".n..............i..............",
-    "................f..............",
-    "................y..............",
-    "...............................",
-    "...............................",
-    "...............................",
-    "...............................",
-    "...............................",
-    "...............................",
-    "...............................",
-    "...............................",
-    "..............................."
+    "......................P............",
+    "......................o............",
+    "......................l............",
+    "......................y............",
+    "........Geometricsequence..........",
+    "...S..................o............",
+    "...e................M.m............",
+    "...q.A.............Ratio...........",
+    "...u.r..............j.a............",
+    "InterceptedArc..T...o.l..RaDius....",
+    "...n.......r....a...r......i.......",
+    "...c.......i....n...a......a.......",
+    "...e.......t....g...r....R.m.......",
+    "...........h....e.Secantline.......",
+    "...........m....n........g.t.......",
+    "...........e....t........h.e.......",
+    "...........t.S..l........t.r.......",
+    "...........i.e..i.....S..a.........",
+    "...........c.m.Inscribedangle......",
+    "...........m.i..e.....r..g.........",
+    "...........e.c........i..l..G......",
+    "...........Arithmeticsequence......",
+    "...........n.r........s.....o......",
+    ".............c..............m......",
+    ".............l...Centralangle......",
+    ".............e..............t......",
+    "............................r......",
+    "............................i......",
+    "............................Chord..",
+    "............................S......",
+    "............................e......",
+    "............................r......",
+    "............................i......",
+    "............................e......",
+    "............................s......"
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 3,
-        "col": 13,
+        "row": 5,
+        "col": 9,
+        "len": 17,
+        "answer": "Geometricsequence",
+        "clue": "A sequence where you multiply each term by the same number to get the next term"
+      },
+      {
+        "num": 6,
+        "row": 8,
+        "col": 20,
         "len": 5,
-        "answer": "Solve",
-        "clue": "To find the value that makes an equation true"
+        "answer": "Ratio",
+        "clue": "The comparison of two numbers"
       },
       {
-        "num": 5,
-        "row": 7,
-        "col": 5,
-        "len": 7,
-        "answer": "Product",
-        "clue": "The answer to a multiplication problem"
-      },
-      {
-        "num": 8,
-        "row": 9,
-        "col": 25,
-        "len": 7,
-        "answer": "InVerse",
-        "clue": "An operation that undoes another"
+        "num": 7,
+        "row": 10,
+        "col": 1,
+        "len": 14,
+        "answer": "InterceptedArc",
+        "clue": "The arc that lies between the two sides of an angle (the arc \u201ccut off\u201d by an inscribed or central angle)."
       },
       {
         "num": 10,
         "row": 10,
-        "col": 4,
-        "len": 11,
-        "answer": "Coefficient",
-        "clue": "The number multiplied by a variable"
+        "col": 26,
+        "len": 6,
+        "answer": "RaDius",
+        "clue": "A line segment from the center of the circle to any point on the circle."
       },
       {
-        "num": 11,
-        "row": 10,
+        "num": 13,
+        "row": 14,
+        "col": 19,
+        "len": 10,
+        "answer": "Secantline",
+        "clue": "A line that intersects the circle at two points."
+      },
+      {
+        "num": 16,
+        "row": 19,
         "col": 16,
-        "len": 10,
-        "answer": "ExpreSsion",
-        "clue": "Math words and symbols without an equals sign"
-      },
-      {
-        "num": 14,
-        "row": 13,
-        "col": 5,
-        "len": 10,
-        "answer": "Substitute",
-        "clue": "To replace a variable with a number"
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 1,
-        "len": 17,
-        "answer": "OrdErofOperationS",
-        "clue": "Rules for which math to do first"
+        "len": 14,
+        "answer": "Inscribedangle",
+        "clue": "An angle whose vertex is on the circle and whose sides are chords of the circle."
       },
       {
         "num": 18,
-        "row": 17,
-        "col": 8,
-        "len": 8,
-        "answer": "LessThan",
-        "clue": "A symbol (<) meaning smaller"
+        "row": 22,
+        "col": 12,
+        "len": 18,
+        "answer": "Arithmeticsequence",
+        "clue": "A sequence where you add the same number each time"
       },
       {
         "num": 19,
-        "row": 19,
-        "col": 15,
-        "len": 7,
-        "answer": "Balance",
-        "clue": "Keeping both sides of an equation equal"
+        "row": 25,
+        "col": 18,
+        "len": 12,
+        "answer": "Centralangle",
+        "clue": "An angle whose vertex is at the center of the circle and whose sides are radii."
+      },
+      {
+        "num": 20,
+        "row": 29,
+        "col": 29,
+        "len": 5,
+        "answer": "Chord",
+        "clue": "A line segment whose endpoints lie on the circle"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 7,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "A math sentence with an equals sign"
-      },
-      {
-        "num": 2,
-        "row": 3,
-        "col": 13,
-        "len": 8,
-        "answer": "Solution",
-        "clue": "The answer that makes an equation true"
+        "col": 23,
+        "len": 10,
+        "answer": "Polynomial",
+        "clue": "An expression made of variables and numbers with only addition, subtraction, multiplication, and whole\u2011number exponents"
       },
       {
         "num": 3,
-        "row": 5,
-        "col": 16,
-        "len": 11,
-        "answer": "GreatErThan",
-        "clue": "A symbol (>) meaning larger"
+        "row": 6,
+        "col": 4,
+        "len": 8,
+        "answer": "Sequence",
+        "clue": "An ordered list of numbers that follow a pattern"
       },
       {
         "num": 4,
-        "row": 6,
-        "col": 9,
+        "row": 7,
+        "col": 21,
         "len": 8,
-        "answer": "Quotient",
-        "clue": "The answer to a division problem"
+        "answer": "Majorarc",
+        "clue": "The longer of the two arcs between two points on a circle (more than 180\u00b0)."
       },
       {
-        "num": 6,
-        "row": 9,
-        "col": 11,
-        "len": 9,
-        "answer": "Liketerms",
-        "clue": "Terms with the same variable and power"
-      },
-      {
-        "num": 7,
-        "row": 9,
-        "col": 23,
-        "len": 10,
-        "answer": "Difference",
-        "clue": "The answer to a subtraction problem"
+        "num": 5,
+        "row": 8,
+        "col": 6,
+        "len": 3,
+        "answer": "Arc",
+        "clue": "A curved part of the circle\u2019s circumference between two points.Semicircle"
       },
       {
         "num": 8,
-        "row": 9,
-        "col": 25,
-        "len": 10,
-        "answer": "Inequality",
-        "clue": "A math sentence that compares values"
+        "row": 10,
+        "col": 12,
+        "len": 14,
+        "answer": "ArithmeticmeAn",
+        "clue": "Numbers inserted between two terms so that the whole sequence becomes arithmetic"
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 27,
+        "row": 10,
+        "col": 17,
+        "len": 11,
+        "answer": "Tangentline",
+        "clue": "A line that touches the circle at exactly one point and is perpendicular to the radius at that point"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 28,
         "len": 8,
-        "answer": "Variable",
-        "clue": "A letter that stands for a number"
+        "answer": "Diameter",
+        "clue": "A chord that passes through the center; it is twice the radius."
       },
       {
         "num": 12,
-        "row": 10,
-        "col": 21,
-        "len": 3,
-        "answer": "Sum",
-        "clue": "The answer to an addition problem"
+        "row": 13,
+        "col": 26,
+        "len": 10,
+        "answer": "Rightangle",
+        "clue": "An angle that measures exactly 90\u00b0."
       },
       {
-        "num": 13,
-        "row": 12,
-        "col": 2,
-        "len": 9,
-        "answer": "Operation",
-        "clue": "A math action like add or multiply"
+        "num": 14,
+        "row": 17,
+        "col": 14,
+        "len": 10,
+        "answer": "Semicircle",
+        "clue": "An arc that is half of a circle (180\u00b0)."
       },
       {
-        "num": 16,
-        "row": 15,
-        "col": 4,
-        "len": 5,
-        "answer": "Equal",
-        "clue": "Having the same value"
+        "num": 15,
+        "row": 18,
+        "col": 23,
+        "len": 6,
+        "answer": "Series",
+        "clue": "The sum of the terms in a sequence"
       },
       {
         "num": 17,
-        "row": 15,
-        "col": 17,
-        "len": 8,
-        "answer": "Simplify",
-        "clue": "To make an expression easier to understand"
+        "row": 21,
+        "col": 29,
+        "len": 15,
+        "answer": "GeometriCSeries",
+        "clue": "A sequence where you multiply each term by the same number to get the next term"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2025-12-15-633",
-  "slug": "2025-12-15-633",
-  "fetched_at": "2026-07-14T19:10:41.860443+00:00",
-  "date": "2026-07-28"
+  "source_url": "https://crosswordlabs.com/view/2026-01-29-435",
+  "slug": "2026-01-29-435",
+  "fetched_at": "2026-07-14T19:19:31.065751+00:00",
+  "date": "2026-07-29"
 }
