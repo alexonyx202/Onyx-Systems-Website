@@ -1,117 +1,179 @@
 {
-  "title": "Math Crossword",
-  "size": 20,
+  "title": "MATH",
+  "size": 18,
   "grid": [
-    "............SUBTRACT",
-    "............Q.......",
-    "............U.......",
-    "A...........A.......",
-    "W.........G.R.......",
-    "E......V..R.E.......",
-    "S......ALGEBRA......",
-    "O...P..R..A.O.......",
-    "MULTIPLICATION......",
-    "E......A..E.T.......",
-    ".......B..R.........",
-    "..L....L............",
-    ".VERTICES...........",
-    "..S.................",
-    "..S.................",
-    "....................",
-    "....................",
-    "....................",
-    "....................",
-    "...................."
+    ".................V",
+    ".................o",
+    ".........RadiuS..l",
+    "......P.......u..u",
+    "......Edge.D.Prism",
+    "......r....i..f..e",
+    "....Height.Area...",
+    "......m....m..c...",
+    "......e...Vertex..",
+    "....F.t....t......",
+    "....a.e....e......",
+    ".S..CircuLar......",
+    ".q..e....a........",
+    ".u...Slant.B......",
+    ".a.......e.a......",
+    "Triangular.s......",
+    ".e.......Apex.....",
+    ".........l........"
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 13,
-        "len": 8,
-        "answer": "SUBTRACT",
-        "clue": "-"
+        "num": 2,
+        "row": 3,
+        "col": 10,
+        "len": 6,
+        "answer": "RadiuS",
+        "clue": "\u2013 Half of diameter"
       },
       {
         "num": 5,
-        "row": 7,
-        "col": 8,
-        "len": 7,
-        "answer": "ALGEBRA",
-        "clue": "Advanced Math"
+        "row": 5,
+        "col": 7,
+        "len": 4,
+        "answer": "Edge",
+        "clue": "\u2013 Line where two faces meet"
       },
       {
         "num": 7,
-        "row": 9,
-        "col": 1,
-        "len": 14,
-        "answer": "MULTIPLICATION",
-        "clue": "Unit of Math (x)"
+        "row": 5,
+        "col": 14,
+        "len": 5,
+        "answer": "Prism",
+        "clue": "\u2013 Solid with two identical faces"
+      },
+      {
+        "num": 8,
+        "row": 7,
+        "col": 5,
+        "len": 6,
+        "answer": "Height",
+        "clue": "\u2013 Vertical distance"
       },
       {
         "num": 9,
-        "row": 13,
-        "col": 2,
+        "row": 7,
+        "col": 12,
+        "len": 4,
+        "answer": "Area",
+        "clue": "\u2013 Measure of a surface"
+      },
+      {
+        "num": 10,
+        "row": 9,
+        "col": 11,
+        "len": 6,
+        "answer": "Vertex",
+        "clue": "\u2013 Corner of a shape"
+      },
+      {
+        "num": 13,
+        "row": 12,
+        "col": 5,
         "len": 8,
-        "answer": "VERTICES",
-        "clue": "Corners"
+        "answer": "CircuLar",
+        "clue": "\u2013 Round base or face"
+      },
+      {
+        "num": 15,
+        "row": 14,
+        "col": 6,
+        "len": 5,
+        "answer": "Slant",
+        "clue": "\u2013 Inclined side of a cone"
+      },
+      {
+        "num": 17,
+        "row": 16,
+        "col": 1,
+        "len": 10,
+        "answer": "Triangular",
+        "clue": "\u2013 3-sided base"
+      },
+      {
+        "num": 18,
+        "row": 17,
+        "col": 10,
+        "len": 4,
+        "answer": "Apex",
+        "clue": "\u2013 Top point of a pyramid"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 13,
-        "len": 10,
-        "answer": "SQUAREROOT",
-        "clue": "\u221a"
-      },
-      {
-        "num": 2,
-        "row": 4,
-        "col": 1,
-        "len": 7,
-        "answer": "AWESOME",
-        "clue": "What is math?"
+        "col": 18,
+        "len": 6,
+        "answer": "Volume",
+        "clue": "\u2013 Capacity of a solid"
       },
       {
         "num": 3,
-        "row": 5,
-        "col": 11,
+        "row": 3,
+        "col": 15,
         "len": 7,
-        "answer": "GREATER",
-        "clue": "100 > 10"
+        "answer": "Surface",
+        "clue": "\u2013 Outer layer"
       },
       {
         "num": 4,
-        "row": 6,
-        "col": 8,
-        "len": 8,
-        "answer": "VARIABLE",
-        "clue": "x or y"
+        "row": 4,
+        "col": 7,
+        "len": 9,
+        "answer": "PErimeter",
+        "clue": "\u2013Boundary around a shape"
       },
       {
         "num": 6,
-        "row": 8,
-        "col": 5,
-        "len": 2,
-        "answer": "PI",
-        "clue": "3.14"
+        "row": 5,
+        "col": 12,
+        "len": 8,
+        "answer": "DiAmeter",
+        "clue": "\u2013 Across a circle"
       },
       {
-        "num": 8,
-        "row": 12,
-        "col": 3,
+        "num": 11,
+        "row": 10,
+        "col": 5,
         "len": 4,
-        "answer": "LESS",
-        "clue": "10 < 100"
+        "answer": "FaCe",
+        "clue": "\u2013 Flat surface"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 2,
+        "len": 6,
+        "answer": "Square",
+        "clue": "\u2013 4-sided base"
+      },
+      {
+        "num": 14,
+        "row": 12,
+        "col": 10,
+        "len": 7,
+        "answer": "LaterAl",
+        "clue": "\u2013 Side surface"
+      },
+      {
+        "num": 16,
+        "row": 14,
+        "col": 12,
+        "len": 4,
+        "answer": "Base",
+        "clue": "\u2013 Bottom of a solid"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2026-02-03-406",
-  "slug": "2026-02-03-406",
-  "fetched_at": "2026-07-14T19:22:13.732315+00:00",
+  "source_url": "https://crosswordlabs.com/view/2026-03-16-993",
+  "slug": "2026-03-16-993",
+  "fetched_at": "2026-07-14T19:20:16.355743+00:00",
   "date": "2026-07-29"
 }
