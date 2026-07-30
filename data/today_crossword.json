@@ -1,179 +1,158 @@
 {
-  "title": "MATH",
-  "size": 18,
+  "title": "math",
+  "size": 21,
   "grid": [
-    ".................V",
-    ".................o",
-    ".........RadiuS..l",
-    "......P.......u..u",
-    "......Edge.D.Prism",
-    "......r....i..f..e",
-    "....Height.Area...",
-    "......m....m..c...",
-    "......e...Vertex..",
-    "....F.t....t......",
-    "....a.e....e......",
-    ".S..CircuLar......",
-    ".q..e....a........",
-    ".u...Slant.B......",
-    ".a.......e.a......",
-    "Triangular.s......",
-    ".e.......Apex.....",
-    ".........l........"
+    "................m....",
+    "............d...a....",
+    ".........zeros..x....",
+    "............m...i....",
+    "........median..m....",
+    "............i...u.m..",
+    "..........minimum.e..",
+    ".........m.r......a..",
+    "factor...o.relation..",
+    ".....a...d.a.........",
+    "....interest.s.......",
+    ".....g.....i.c.......",
+    ".....e.rational......",
+    "...........n.t.......",
+    ".........fraction....",
+    "...........l.e.......",
+    ".............r.......",
+    ".............p.......",
+    ".............l.......",
+    ".............o.......",
+    ".............t......."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
+        "num": 3,
         "row": 3,
         "col": 10,
-        "len": 6,
-        "answer": "RadiuS",
-        "clue": "\u2013 Half of diameter"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 7,
-        "len": 4,
-        "answer": "Edge",
-        "clue": "\u2013 Line where two faces meet"
-      },
-      {
-        "num": 7,
-        "row": 5,
-        "col": 14,
         "len": 5,
-        "answer": "Prism",
-        "clue": "\u2013 Solid with two identical faces"
+        "answer": "zeros",
+        "clue": "an integer representing the quantity of \"nothing\" or an empty set"
       },
       {
-        "num": 8,
-        "row": 7,
-        "col": 5,
+        "num": 4,
+        "row": 5,
+        "col": 9,
         "len": 6,
-        "answer": "Height",
-        "clue": "\u2013 Vertical distance"
+        "answer": "median",
+        "clue": "the middle value in the ordered dataset"
+      },
+      {
+        "num": 6,
+        "row": 7,
+        "col": 11,
+        "len": 7,
+        "answer": "minimum",
+        "clue": "the smallest value the function contains"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 12,
-        "len": 4,
-        "answer": "Area",
-        "clue": "\u2013 Measure of a surface"
-      },
-      {
-        "num": 10,
         "row": 9,
-        "col": 11,
+        "col": 1,
         "len": 6,
-        "answer": "Vertex",
-        "clue": "\u2013 Corner of a shape"
+        "answer": "factor",
+        "clue": "a whole number that divides into another number exactly, without leaving a remainder"
       },
       {
-        "num": 13,
-        "row": 12,
+        "num": 11,
+        "row": 9,
+        "col": 12,
+        "len": 8,
+        "answer": "relation",
+        "clue": "a set of ordered pairs that have a realation to eachother"
+      },
+      {
+        "num": 12,
+        "row": 11,
         "col": 5,
         "len": 8,
-        "answer": "CircuLar",
-        "clue": "\u2013 Round base or face"
+        "answer": "interest",
+        "clue": "the cost from borrowing money or the profit from investing it"
+      },
+      {
+        "num": 14,
+        "row": 13,
+        "col": 8,
+        "len": 8,
+        "answer": "rational",
+        "clue": "number that can be expressed by a fraction"
       },
       {
         "num": 15,
-        "row": 14,
-        "col": 6,
-        "len": 5,
-        "answer": "Slant",
-        "clue": "\u2013 Inclined side of a cone"
-      },
-      {
-        "num": 17,
-        "row": 16,
-        "col": 1,
-        "len": 10,
-        "answer": "Triangular",
-        "clue": "\u2013 3-sided base"
-      },
-      {
-        "num": 18,
-        "row": 17,
+        "row": 15,
         "col": 10,
-        "len": 4,
-        "answer": "Apex",
-        "clue": "\u2013 Top point of a pyramid"
+        "len": 8,
+        "answer": "fraction",
+        "clue": "a part of a whole or any number of equal parts, consisting of a numerator (top) and a denominator (bottom)"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 18,
-        "len": 6,
-        "answer": "Volume",
-        "clue": "\u2013 Capacity of a solid"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 15,
+        "col": 17,
         "len": 7,
-        "answer": "Surface",
-        "clue": "\u2013 Outer layer"
+        "answer": "maximum",
+        "clue": "the largest value the fuction contains"
       },
       {
-        "num": 4,
-        "row": 4,
-        "col": 7,
-        "len": 9,
-        "answer": "PErimeter",
-        "clue": "\u2013Boundary around a shape"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 12,
-        "len": 8,
-        "answer": "DiAmeter",
-        "clue": "\u2013 Across a circle"
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 5,
-        "len": 4,
-        "answer": "FaCe",
-        "clue": "\u2013 Flat surface"
-      },
-      {
-        "num": 12,
-        "row": 12,
-        "col": 2,
+        "num": 2,
+        "row": 2,
+        "col": 13,
         "len": 6,
-        "answer": "Square",
-        "clue": "\u2013 4-sided base"
+        "answer": "domain",
+        "clue": "a specified area of knowledge, control, influence, or activity"
       },
       {
-        "num": 14,
-        "row": 12,
+        "num": 5,
+        "row": 6,
+        "col": 19,
+        "len": 4,
+        "answer": "mean",
+        "clue": "the average set of numbers"
+      },
+      {
+        "num": 7,
+        "row": 7,
+        "col": 12,
+        "len": 10,
+        "answer": "irrational",
+        "clue": "number that can not be expressed by a fraction"
+      },
+      {
+        "num": 8,
+        "row": 8,
         "col": 10,
-        "len": 7,
-        "answer": "LaterAl",
-        "clue": "\u2013 Side surface"
+        "len": 4,
+        "answer": "mode",
+        "clue": "value that appears most frequently in a data set roots a value that, when multiplied by itself a specified number of times, produces a given number"
       },
       {
-        "num": 16,
-        "row": 14,
-        "col": 12,
-        "len": 4,
-        "answer": "Base",
-        "clue": "\u2013 Bottom of a solid"
+        "num": 10,
+        "row": 9,
+        "col": 6,
+        "len": 5,
+        "answer": "range",
+        "clue": "the range spread of the data set"
+      },
+      {
+        "num": 13,
+        "row": 11,
+        "col": 14,
+        "len": 11,
+        "answer": "scatterplot",
+        "clue": "a Cartesian coordinate graph that displays values for two quantitative variables as dots to show relationships or trends"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/2026-03-16-993",
-  "slug": "2026-03-16-993",
-  "fetched_at": "2026-07-14T19:20:16.355743+00:00",
-  "date": "2026-07-29"
+  "source_url": "https://crosswordlabs.com/view/2026-05-04-420",
+  "slug": "2026-05-04-420",
+  "fetched_at": "2026-07-14T19:24:57.614046+00:00",
+  "date": "2026-07-30"
 }
