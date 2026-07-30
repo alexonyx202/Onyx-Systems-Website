@@ -100,6 +100,21 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-07-30-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-07-30",
+      "title": "Daily Brief 2026-07-30: FBI IC3 Impersonation Scam Alert + HaveIBeenPwned Breach Check",
+      "tag": "Daily Brief",
+      "excerpt": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov \u2014 type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#FBI-IC3-Scam",
+        "#HaveIBeenPwned"
+      ]
+    },
+    {
       "id": "news-2026-07-29",
       "type": "newsletter",
       "date": "2026-07-29",
@@ -153,20 +168,41 @@
       "image": "assets/img/news/2026-07-26-composite.jpg",
       "comic": "assets/img/news/2026-07-26-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "news-2026-07-24",
-      "type": "newsletter",
-      "date": "2026-07-24",
-      "title": "16 Billion Stolen Passwords: Check If Yours Are Out There",
-      "tag": "Security Alert",
-      "excerpt": "A massive database of 16 billion stolen usernames and passwords is circulating. Check haveibeenpwned.com and change reused passwords immediately. Use a password manager like Bitwarden.",
-      "image": "assets/img/news/2026-07-24-composite.jpg",
-      "comic": "assets/img/news/2026-07-24-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-07-30-news-8",
+      "type": "news",
+      "date": "2026-07-30",
+      "title": "Find any file instantly \u2014 Everything Search indexes your whole drive in seconds at voidtools.com",
+      "tag": "Tech Note",
+      "summary": "Everything by voidtools is a tiny free program that indexes every filename on your Windows drive in about one second and shows results as you type. Download the installer at voidtools.com (choose 64-bit for modern PCs).",
+      "truth": "Windows Search is slow because it reads file contents, not just names. Everything only reads the file table \u2014 it's the difference between reading every book in the library versus just checking the card catalog. Customers tell me \"I can never find my stuff\" and five minutes later they're typing \"tax 2024\" and seeing the PDF instantly.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#EverythingSearch",
+        "#Voidtools"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-30-news-6",
+      "type": "news",
+      "date": "2026-07-30",
+      "title": "Microsoft Edge July 2026 security update patches 7 critical flaws \u2014 update at edge://settings/help",
+      "tag": "Tech Note",
+      "summary": "Microsoft Edge 150.0.4078.83 fixes seven vulnerabilities including remote code execution bugs. Open Edge, go to edge://settings/help and it will check and install automatically.",
+      "truth": "I see this all the time \u2014 customers come in with a \"slow computer\" and it's actually a browser that hasn't been patched in months. The bad guys know most people ignore browser updates. Edge updates itself in the background, but only if you let it. Closing and reopening Edge once a week is the easiest security habit you can build.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#MicrosoftEdge",
+        "#BrowserSecurity"
+      ]
+    },
     {
       "id": "post-2026-07-29-daily-brief",
       "type": "news",
@@ -213,6 +249,38 @@
         "#COMPUTERREPAIR",
         "#FIREFOX",
         "#FREETOOLS"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-30-tip-9",
+      "type": "tip",
+      "date": "2026-07-30",
+      "title": "Florida lightning kills electronics \u2014 an APC SurgeArrest power strip stops the surge for $30 at Home Depot or Lowes",
+      "tag": "Tech Tip",
+      "summary": "Florida leads the nation in lightning strikes. A real surge protector (not a power strip) like the APC SurgeArrest P11U2 or P12U2 gives you 11\u201312 protected outlets, 2 USB ports, and a $300,000 connected-equipment warranty. Buy at Home Depot, Lowes, or Amazon \u2014 look for \"SurgeArrest\" on the box.",
+      "truth": "I've replaced more motherboards fried by lightning than I can count. The $10 power strip from the drugstore has a light that glows but zero protection \u2014 it's just an extension cord with a switch. A real surge protector has a joule rating (look for 2,000+) and a warranty that pays for your gear if it fails. In Lake City, that's not optional.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SurgeProtection",
+        "#APC"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-30-tip-7",
+      "type": "tip",
+      "date": "2026-07-30",
+      "title": "Stop the trackers following you \u2014 Privacy Badger learns and blocks them free at privacybadger.org",
+      "tag": "Tech Tip",
+      "summary": "Privacy Badger is a free browser extension from the Electronic Frontier Foundation that automatically learns which companies are tracking you across sites and blocks them. Install it at privacybadger.org (Chrome, Firefox, Edge, Opera).",
+      "truth": "Most people don't realize that when they visit a news site, a recipe blog, and their bank in the same hour, a dozen invisible companies just stitched together a profile of everything they did. Privacy Badger doesn't need you to configure lists or rules \u2014 it watches behavior and blocks the trackers that act sneaky. Install once, forget it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#PrivacyBadger",
+        "#EFF"
       ]
     },
     {
