@@ -48,42 +48,33 @@ def resolve_md(date_str):
 def extract_comic_caption(md, date_str=None):
     """Extract the Far Side comic caption from markdown.
     Looks for the ![Far Side comic: "caption"](farside_...) pattern.
-    Validates the caption against OCR on the actual comic image to prevent
-    caption/image mismatch bugs.
+    Validates the caption using the specialized farside_caption.py tool which
+    properly extracts just the caption band from Far Side archive images.
     """
     m = re.search(r'!\[Far Side comic:\s*"([^"]+)"\]\(farside[^)]*\)', md)
     if m:
         caption = m.group(1).strip()
-        # VERIFY: Check caption matches the actual comic image OCR
+        # VERIFY: Check caption matches the actual comic image using farside_caption.py
         if date_str:
             comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
             if os.path.exists(comic_img):
                 try:
                     import subprocess
-                    import tempfile
-                    from PIL import Image
-                    # OCR the actual comic image
-                    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
-                        tmp_path = tmp.name
-                    img = Image.open(comic_img)
-                    img.save(tmp_path, "PNG")
+                    # Use the specialized farside_caption.py which properly extracts
+                    # just the caption area (not the full comic panel)
                     result = subprocess.run(
-                        ["tesseract", tmp_path, "stdout", "--psm", "6"],
+                        ["python3", "/home/ai/farside_caption.py", comic_img],
                         capture_output=True, text=True, timeout=30
                     )
-                    os.unlink(tmp_path)
                     ocr_text = result.stdout.strip()
-                    # If OCR found text and caption shares NO words with the image,
-                    # the caption is wrong. Use OCR result instead.
-                    if ocr_text and len(ocr_text) > 5:
-                        caption_words = set(re.findall(r"[a-z\']+", caption.lower()))
-                        ocr_words = set(re.findall(r"[a-z\']+", ocr_text))
-                        # If there is zero word overlap AND the OCR text looks like a real caption
-                        # (has quotes or question marks or exclamation marks), use OCR text
+                    if ocr_text and ocr_text != "NO_USABLE_CAPTION" and len(ocr_text) > 5:
+                        caption_words = set(re.findall(r"[a-z']+", caption.lower()))
+                        ocr_words = set(re.findall(r"[a-z']+", ocr_text))
+                        # If caption shares NO words with OCR but OCR found valid text,
+                        # the caption is wrong - use the OCR result instead
                         if not caption_words & ocr_words and len(ocr_words) > 3:
                             # OCR text IS the caption from the actual image
-                            # Clean it up
-                            ocr_caption = ocr_text.strip().strip("\"\'")
+                            ocr_caption = ocr_text.strip().strip('"\'')
                             if len(ocr_caption) > 10:
                                 caption = ocr_caption
                 except (Exception, subprocess.TimeoutExpired):
