@@ -200,22 +200,6 @@
       ]
     },
     {
-      "id": "post-2026-07-29-tip",
-      "type": "tip",
-      "date": "2026-07-29",
-      "title": "Tip: Check Have I Been Pwned (haveibeenpwned.com) for June 2026 Stealer Logs Breach (56M Emails, 124M Passwords)",
-      "tag": "Tech Tip",
-      "summary": "The June 2026 Stealer Logs breach added 56 million unique email addresses and 124 million unique passwords to Have I Been Pwned on June 15, 2026. Stealer logs capture credentials from infostealer malware \u2014 meaning passwords were actively stolen from infected machines, not just leaked from a database. Visit haveibeenpwned.com, enter your email, and check the 'Stealer Logs' section of your dashboard. If found: immediately change that password everywhere you reused it, enable 2FA on all affected accounts, and use a password manager (1Password, Bitwarden) to generate unique passwords. Obtain method: Free web lookup at haveibeenpwned.com or domain monitoring via HIBP API v3.",
-      "truth": "Have I Been Pwned added June 2026 Stealer Logs breach on June 15, 2026 per HIBP breach page. 56M unique emails and 124M unique passwords confirmed in breach overview. Stealer logs indicate active malware credential theft per HIBP FAQ. Free email lookup and Pwned Passwords search available at haveibeenpwned.com. Domain monitoring via HIBP API v3.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#HaveIBeenPwned",
-        "#Stealer-Logs-Breach"
-      ]
-    },
-    {
       "id": "post-2026-07-28-news",
       "type": "news",
       "date": "2026-07-28",
@@ -229,6 +213,22 @@
         "#COMPUTERREPAIR",
         "#FIREFOX",
         "#FREETOOLS"
+      ]
+    },
+    {
+      "id": "post-2026-07-29-tip",
+      "type": "tip",
+      "date": "2026-07-29",
+      "title": "Tip: Check Have I Been Pwned (haveibeenpwned.com) for June 2026 Stealer Logs Breach (56M Emails, 124M Passwords)",
+      "tag": "Tech Tip",
+      "summary": "The June 2026 Stealer Logs breach added 56 million unique email addresses and 124 million unique passwords to Have I Been Pwned on June 15, 2026. Stealer logs capture credentials from infostealer malware \u2014 meaning passwords were actively stolen from infected machines, not just leaked from a database. Visit haveibeenpwned.com, enter your email, and check the 'Stealer Logs' section of your dashboard. If found: immediately change that password everywhere you reused it, enable 2FA on all affected accounts, and use a password manager (1Password, Bitwarden) to generate unique passwords. Obtain method: Free web lookup at haveibeenpwned.com or domain monitoring via HIBP API v3.",
+      "truth": "Have I Been Pwned added June 2026 Stealer Logs breach on June 15, 2026 per HIBP breach page. 56M unique emails and 124M unique passwords confirmed in breach overview. Stealer logs indicate active malware credential theft per HIBP FAQ. Free email lookup and Pwned Passwords search available at haveibeenpwned.com. Domain monitoring via HIBP API v3.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#HaveIBeenPwned",
+        "#Stealer-Logs-Breach"
       ]
     },
     {
@@ -248,5 +248,5 @@
       ]
     }
   ],
-  "updated": "2026-07-29"
+  "updated": "2026-07-30"
 }

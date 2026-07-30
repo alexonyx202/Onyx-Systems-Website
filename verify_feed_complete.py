@@ -72,6 +72,8 @@ KNOWN_PRODUCTS = [
     "router", "wifi", "wi-fi", "wi fi",
     # Extended 2026-07-28: Jan.ai (local AI runtime) — real product named + obtain method stated.
     "jan.ai",
+    # Extended 2026-07-30: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "microsoft edge", "edge://settings/help", "privacy badger", "privacybadger.org", "everything", "voidtools.com", "apc", "surgearrest", "rufus", "rufus.ie",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
