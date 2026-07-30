@@ -316,5 +316,244 @@
       ]
     }
   ],
-  "updated": "2026-07-30"
+  "updated": "2026-07-30",
+  "today_word": {
+    "word": "Phishing",
+    "pos": "noun",
+    "definition": "A scam that tricks you into handing over passwords or card numbers by pretending to be a trusted source.",
+    "example": "The email looked like it was from the bank, but it was phishing.",
+    "date": "2026-07-30"
+  },
+  "today_crossword": {
+    "title": "Math Vocabulary",
+    "size": 28,
+    "grid": [
+      "...............PRobability..",
+      "................e...........",
+      "................c...........",
+      "...........CoEfficient......",
+      ".............q..p...........",
+      ".............u..r...........",
+      "DIameter....Ratio...........",
+      ".n...........t..c...........",
+      ".t........Rational..........",
+      ".e....D......o..l...........",
+      ".g....Irrational............",
+      ".e....s..........V..........",
+      "Proportion.......a..........",
+      "......r..........r..........",
+      "......i..........i..........",
+      "......b........M.a..........",
+      "..Radius.......e.b..........",
+      "......t........a.l..........",
+      "..I..CircUmference..........",
+      "..n...v..n..................",
+      "..Expression................",
+      "..q......t..................",
+      "..u.........................",
+      "..Absolute..................",
+      "..l.........................",
+      "..i.........................",
+      "..t.........................",
+      "..y........................."
+    ],
+    "clues": {
+      "across": [
+        {
+          "num": 1,
+          "row": 1,
+          "col": 16,
+          "len": 11,
+          "answer": "PRobability",
+          "clue": "The chance something will happen"
+        },
+        {
+          "num": 3,
+          "row": 4,
+          "col": 12,
+          "len": 11,
+          "answer": "CoEfficient",
+          "clue": "The number in front of a variable"
+        },
+        {
+          "num": 5,
+          "row": 7,
+          "col": 1,
+          "len": 8,
+          "answer": "DIameter",
+          "clue": "Distance across a circle through the center"
+        },
+        {
+          "num": 7,
+          "row": 7,
+          "col": 13,
+          "len": 5,
+          "answer": "Ratio",
+          "clue": "A comparison of two numbers"
+        },
+        {
+          "num": 8,
+          "row": 9,
+          "col": 11,
+          "len": 8,
+          "answer": "Rational",
+          "clue": "A value that can be written as a fraction"
+        },
+        {
+          "num": 10,
+          "row": 11,
+          "col": 7,
+          "len": 10,
+          "answer": "Irrational",
+          "clue": "A decimal that never ends or repeats"
+        },
+        {
+          "num": 12,
+          "row": 13,
+          "col": 1,
+          "len": 10,
+          "answer": "Proportion",
+          "clue": "Two equal ratios"
+        },
+        {
+          "num": 14,
+          "row": 17,
+          "col": 3,
+          "len": 6,
+          "answer": "Radius",
+          "clue": "Distance from the center to the edge of a circle"
+        },
+        {
+          "num": 16,
+          "row": 19,
+          "col": 6,
+          "len": 13,
+          "answer": "CircUmference",
+          "clue": "Distance around a circle"
+        },
+        {
+          "num": 18,
+          "row": 21,
+          "col": 3,
+          "len": 10,
+          "answer": "Expression",
+          "clue": "A math phrase with numbers and symbols"
+        },
+        {
+          "num": 19,
+          "row": 24,
+          "col": 3,
+          "len": 8,
+          "answer": "Absolute",
+          "clue": "_____ value means distance from zero"
+        }
+      ],
+      "down": [
+        {
+          "num": 2,
+          "row": 1,
+          "col": 17,
+          "len": 10,
+          "answer": "Reciprocal",
+          "clue": "The flipped form of a fraction"
+        },
+        {
+          "num": 4,
+          "row": 4,
+          "col": 14,
+          "len": 8,
+          "answer": "Equation",
+          "clue": "A math sentence with an equal sign"
+        },
+        {
+          "num": 6,
+          "row": 7,
+          "col": 2,
+          "len": 7,
+          "answer": "Integer",
+          "clue": "A positive or negative whole number"
+        },
+        {
+          "num": 9,
+          "row": 10,
+          "col": 7,
+          "len": 12,
+          "answer": "DIstributive",
+          "clue": "The _____ property multiplies outside parentheses"
+        },
+        {
+          "num": 11,
+          "row": 12,
+          "col": 18,
+          "len": 8,
+          "answer": "Variable",
+          "clue": "A letter that stands for a number"
+        },
+        {
+          "num": 13,
+          "row": 16,
+          "col": 16,
+          "len": 4,
+          "answer": "Mean",
+          "clue": "The average of a set of numbers"
+        },
+        {
+          "num": 15,
+          "row": 19,
+          "col": 3,
+          "len": 10,
+          "answer": "InEquAlity",
+          "clue": "A math sentence using <, >, \u2264, or \u2265"
+        },
+        {
+          "num": 17,
+          "row": 19,
+          "col": 10,
+          "len": 4,
+          "answer": "Unit",
+          "clue": "A _____ rate has 1 in the denominator"
+        }
+      ]
+    },
+    "category": "math",
+    "source_url": "https://crosswordlabs.com/view/2026-05-18-498",
+    "slug": "2026-05-18-498",
+    "fetched_at": "2026-07-14T19:22:13.160640+00:00",
+    "date": "2026-07-30"
+  },
+  "today_trivia": {
+    "q": "What does 'SSL/TLS' protect?",
+    "a": "The encrypted channel between your browser and a site, shown by the padlock icon.",
+    "category": "Security",
+    "date": "2026-07-30"
+  },
+  "today_joke": {
+    "q": "What did the laptop say to the power outlet?",
+    "a": "I'm feeling drained, can you charge me up?",
+    "date": "2026-07-30"
+  },
+  "poll": {
+    "poll": {
+      "weekOf": "2026-07-26",
+      "question": "Which upgrade would help you most?",
+      "options": [
+        {
+          "id": "ssd",
+          "label": "Faster SSD"
+        },
+        {
+          "id": "ram",
+          "label": "More RAM"
+        },
+        {
+          "id": "net",
+          "label": "Better Wi-Fi"
+        },
+        {
+          "id": "clean",
+          "label": "A good cleanup"
+        }
+      ]
+    }
+  }
 }
