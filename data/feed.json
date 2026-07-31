@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-29",
+    "last_updated": "2026-07-31",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-07-31-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-07-31",
+      "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement \u2014 July 20, 2026*",
+      "image": "assets/img/news/2026-07-31-composite.jpg",
+      "comic": "assets/img/news/2026-07-31-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#FBI-IC3-Scam",
+        "#SecurityAlert"
+      ]
+    },
+    {
       "id": "onyx-2026-07-30-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-07-30",
@@ -171,6 +189,38 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-07-31-news-1",
+      "type": "news",
+      "date": "2026-07-31",
+      "title": "Chrome 127 Adds Real-Time Anti-Tracking, Site-Level Ad Controls, On-Device Processing \u2014 Free Update at chrome://settings/help",
+      "tag": "Tech Note",
+      "summary": "Google Chrome 127 introduced three privacy features: real-time anti-tracking that blocks third-party cookies and tracking pixels before they load, site-level ad controls for per-site ad personalization settings, and on-device data processing that keeps sensitive information on your computer instead of Google's servers. Update free at chrome://settings/help or download at google.com/chrome.",
+      "truth": "Most people don't realize Chrome has been sending a surprising amount of browsing data to Google by default \u2014 every site visited, every click, every scroll. The new version changes that equation. Real-time anti-tracking means the tracker script never even loads. Site-level ad controls let you tell Amazon \"no personalized ads\" while keeping them on a news site you want to support. On-device processing means when Chrome analyzes a page for phishing or malware, the analysis happens on your laptop, not in the cloud. It's the biggest privacy shift Chrome has made since Incognito mode. And it's free \u2014 you just have to update.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Chrome127",
+        "#PrivacyTools"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-31-tip-1",
+      "type": "tip",
+      "date": "2026-07-31",
+      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis \u2014 Free at sourceforge.net/projects/visipics",
+      "tag": "Tech Tip",
+      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis \u2014 not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
+      "truth": "I see this all the time \u2014 a customer brings in a \"slow\" laptop with a nearly full drive, and half the space is the same vacation photo saved five times from WhatsApp, email, iCloud, and Google Photos. Windows doesn't have a built-in duplicate photo finder that understands \"similar but not identical.\" VisiPics does. It looks at the actual image content, so it catches the cropped version, the filtered version, the lower-resolution copy. Most people don't realize how much space duplicates eat until they run a scan. I've seen 20+ GB freed on a single machine.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VisiPics",
+        "#DuplicatePhotos"
+      ]
+    },
     {
       "id": "onyx-2026-07-30-news-8",
       "type": "news",
@@ -266,271 +316,119 @@
         "#SurgeProtection",
         "#APC"
       ]
-    },
-    {
-      "id": "onyx-2026-07-30-tip-7",
-      "type": "tip",
-      "date": "2026-07-30",
-      "title": "Stop the trackers following you \u2014 Privacy Badger learns and blocks them free at privacybadger.org",
-      "tag": "Tech Tip",
-      "summary": "Privacy Badger is a free browser extension from the Electronic Frontier Foundation that automatically learns which companies are tracking you across sites and blocks them. Install it at privacybadger.org (Chrome, Firefox, Edge, Opera).",
-      "truth": "Most people don't realize that when they visit a news site, a recipe blog, and their bank in the same hour, a dozen invisible companies just stitched together a profile of everything they did. Privacy Badger doesn't need you to configure lists or rules \u2014 it watches behavior and blocks the trackers that act sneaky. Install once, forget it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#PrivacyBadger",
-        "#EFF"
-      ]
-    },
-    {
-      "id": "post-2026-07-29-tip",
-      "type": "tip",
-      "date": "2026-07-29",
-      "title": "Tip: Check Have I Been Pwned (haveibeenpwned.com) for June 2026 Stealer Logs Breach (56M Emails, 124M Passwords)",
-      "tag": "Tech Tip",
-      "summary": "The June 2026 Stealer Logs breach added 56 million unique email addresses and 124 million unique passwords to Have I Been Pwned on June 15, 2026. Stealer logs capture credentials from infostealer malware \u2014 meaning passwords were actively stolen from infected machines, not just leaked from a database. Visit haveibeenpwned.com, enter your email, and check the 'Stealer Logs' section of your dashboard. If found: immediately change that password everywhere you reused it, enable 2FA on all affected accounts, and use a password manager (1Password, Bitwarden) to generate unique passwords. Obtain method: Free web lookup at haveibeenpwned.com or domain monitoring via HIBP API v3.",
-      "truth": "Have I Been Pwned added June 2026 Stealer Logs breach on June 15, 2026 per HIBP breach page. 56M unique emails and 124M unique passwords confirmed in breach overview. Stealer logs indicate active malware credential theft per HIBP FAQ. Free email lookup and Pwned Passwords search available at haveibeenpwned.com. Domain monitoring via HIBP API v3.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#HaveIBeenPwned",
-        "#Stealer-Logs-Breach"
-      ]
-    },
-    {
-      "id": "post-2026-07-28-tip",
-      "type": "tip",
-      "date": "2026-07-28",
-      "title": "Run your own private AI chatbot offline free \u2014 Jan.ai installs in minutes at jan.ai",
-      "tag": "Tech Tip",
-      "summary": "Jan.ai is a free, open-source app that runs AI models entirely on your PC \u2014 no internet, no account, no data leaves your machine. Download at jan.ai or github.com/janhq/jan/releases. Needs 8 GB+ RAM; works on Windows, Mac, and Linux.",
-      "truth": "I get asked about AI all the time. People want to try it but don't want their questions sent to some company's server. Jan.ai solves that \u2014 it downloads a model and runs it locally. Your chats stay on your computer. It's not as polished as ChatGPT, but for drafting emails, summarizing PDFs, or brainstorming, it's genuinely useful and costs nothing.",
-      "tags": [
-        "#ONYXSYSTEMS",
-        "#LAKECITYFL",
-        "#COMPUTERREPAIR",
-        "#PRIVATEAI",
-        "#JANAI"
-      ]
     }
   ],
   "updated": "2026-07-30",
   "today_word": {
-    "word": "Phishing",
+    "word": "Firmware",
     "pos": "noun",
-    "definition": "A scam that tricks you into handing over passwords or card numbers by pretending to be a trusted source.",
-    "example": "The email looked like it was from the bank, but it was phishing.",
-    "date": "2026-07-30"
+    "definition": "The low-level software baked into a device that tells its hardware how to boot and behave.",
+    "example": "A firmware update made the printer print faster.",
+    "date": "2026-07-31"
   },
   "today_crossword": {
-    "title": "Math Vocabulary",
-    "size": 28,
+    "title": "23.",
+    "size": 15,
     "grid": [
-      "...............PRobability..",
-      "................e...........",
-      "................c...........",
-      "...........CoEfficient......",
-      ".............q..p...........",
-      ".............u..r...........",
-      "DIameter....Ratio...........",
-      ".n...........t..c...........",
-      ".t........Rational..........",
-      ".e....D......o..l...........",
-      ".g....Irrational............",
-      ".e....s..........V..........",
-      "Proportion.......a..........",
-      "......r..........r..........",
-      "......i..........i..........",
-      "......b........M.a..........",
-      "..Radius.......e.b..........",
-      "......t........a.l..........",
-      "..I..CircUmference..........",
-      "..n...v..n..................",
-      "..Expression................",
-      "..q......t..................",
-      "..u.........................",
-      "..Absolute..................",
-      "..l.........................",
-      "..i.........................",
-      "..t.........................",
-      "..y........................."
+      "....girlsthrice",
+      ".........o.....",
+      ".........r.....",
+      ".........a.....",
+      ".........t.....",
+      ".........r.....",
+      "......v..isto..",
+      ".....qed.p.....",
+      "......n..l.....",
+      "acuteangle.....",
+      "....u....d.....",
+      "....l..........",
+      "....e..........",
+      "...orig........",
+      "..............."
     ],
     "clues": {
       "across": [
         {
           "num": 1,
           "row": 1,
-          "col": 16,
+          "col": 5,
           "len": 11,
-          "answer": "PRobability",
-          "clue": "The chance something will happen"
+          "answer": "girlsthrice",
+          "clue": "1962 Presley film (do the math)"
         },
         {
-          "num": 3,
-          "row": 4,
-          "col": 12,
-          "len": 11,
-          "answer": "CoEfficient",
-          "clue": "The number in front of a variable"
+          "num": 4,
+          "row": 7,
+          "col": 10,
+          "len": 4,
+          "answer": "isto",
+          "clue": ":, in math"
         },
         {
           "num": 5,
-          "row": 7,
-          "col": 1,
-          "len": 8,
-          "answer": "DIameter",
-          "clue": "Distance across a circle through the center"
+          "row": 8,
+          "col": 6,
+          "len": 3,
+          "answer": "qed",
+          "clue": "Abbr. in a math textbook"
         },
         {
-          "num": 7,
-          "row": 7,
-          "col": 13,
-          "len": 5,
-          "answer": "Ratio",
-          "clue": "A comparison of two numbers"
+          "num": 6,
+          "row": 10,
+          "col": 1,
+          "len": 10,
+          "answer": "acuteangle",
+          "clue": "A in math"
         },
         {
           "num": 8,
-          "row": 9,
-          "col": 11,
-          "len": 8,
-          "answer": "Rational",
-          "clue": "A value that can be written as a fraction"
-        },
-        {
-          "num": 10,
-          "row": 11,
-          "col": 7,
-          "len": 10,
-          "answer": "Irrational",
-          "clue": "A decimal that never ends or repeats"
-        },
-        {
-          "num": 12,
-          "row": 13,
-          "col": 1,
-          "len": 10,
-          "answer": "Proportion",
-          "clue": "Two equal ratios"
-        },
-        {
-          "num": 14,
-          "row": 17,
-          "col": 3,
-          "len": 6,
-          "answer": "Radius",
-          "clue": "Distance from the center to the edge of a circle"
-        },
-        {
-          "num": 16,
-          "row": 19,
-          "col": 6,
-          "len": 13,
-          "answer": "CircUmference",
-          "clue": "Distance around a circle"
-        },
-        {
-          "num": 18,
-          "row": 21,
-          "col": 3,
-          "len": 10,
-          "answer": "Expression",
-          "clue": "A math phrase with numbers and symbols"
-        },
-        {
-          "num": 19,
-          "row": 24,
-          "col": 3,
-          "len": 8,
-          "answer": "Absolute",
-          "clue": "_____ value means distance from zero"
+          "row": 14,
+          "col": 4,
+          "len": 4,
+          "answer": "orig",
+          "clue": "(0,0), in math: abbr."
         }
       ],
       "down": [
         {
           "num": 2,
           "row": 1,
-          "col": 17,
-          "len": 10,
-          "answer": "Reciprocal",
-          "clue": "The flipped form of a fraction"
-        },
-        {
-          "num": 4,
-          "row": 4,
-          "col": 14,
-          "len": 8,
-          "answer": "Equation",
-          "clue": "A math sentence with an equal sign"
-        },
-        {
-          "num": 6,
-          "row": 7,
-          "col": 2,
-          "len": 7,
-          "answer": "Integer",
-          "clue": "A positive or negative whole number"
-        },
-        {
-          "num": 9,
-          "row": 10,
-          "col": 7,
-          "len": 12,
-          "answer": "DIstributive",
-          "clue": "The _____ property multiplies outside parentheses"
-        },
-        {
-          "num": 11,
-          "row": 12,
-          "col": 18,
-          "len": 8,
-          "answer": "Variable",
-          "clue": "A letter that stands for a number"
-        },
-        {
-          "num": 13,
-          "row": 16,
-          "col": 16,
-          "len": 4,
-          "answer": "Mean",
-          "clue": "The average of a set of numbers"
-        },
-        {
-          "num": 15,
-          "row": 19,
-          "col": 3,
-          "len": 10,
-          "answer": "InEquAlity",
-          "clue": "A math sentence using <, >, \u2264, or \u2265"
-        },
-        {
-          "num": 17,
-          "row": 19,
           "col": 10,
+          "len": 11,
+          "answer": "toratripled",
+          "clue": "1970 war film (do the math)"
+        },
+        {
+          "num": 3,
+          "row": 7,
+          "col": 7,
           "len": 4,
-          "answer": "Unit",
-          "clue": "A _____ rate has 1 in the denominator"
+          "answer": "venn",
+          "clue": "-- diagram (math graph)"
+        },
+        {
+          "num": 7,
+          "row": 10,
+          "col": 5,
+          "len": 5,
+          "answer": "euler",
+          "clue": "18th-century Swiss math great"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/2026-05-18-498",
-    "slug": "2026-05-18-498",
-    "fetched_at": "2026-07-14T19:22:13.160640+00:00",
-    "date": "2026-07-30"
+    "date": "2026-07-31"
   },
   "today_trivia": {
-    "q": "What does 'SSL/TLS' protect?",
-    "a": "The encrypted channel between your browser and a site, shown by the padlock icon.",
-    "category": "Security",
-    "date": "2026-07-30"
+    "q": "What is 'virtual memory'?",
+    "a": "Using disk space as extra RAM when physical memory runs low.",
+    "category": "Software",
+    "date": "2026-07-31"
   },
   "today_joke": {
-    "q": "What did the laptop say to the power outlet?",
-    "a": "I'm feeling drained, can you charge me up?",
-    "date": "2026-07-30"
+    "q": "How does a computer sneeze?",
+    "a": "Achoo.exe",
+    "date": "2026-07-31"
   },
   "poll": {
     "poll": {
@@ -555,5 +453,27 @@
         }
       ]
     }
+  },
+  "today_poll": {
+    "weekOf": "2026-07-26",
+    "question": "Which upgrade would help you most?",
+    "options": [
+      {
+        "id": "ssd",
+        "label": "Faster SSD"
+      },
+      {
+        "id": "ram",
+        "label": "More RAM"
+      },
+      {
+        "id": "net",
+        "label": "Better Wi-Fi"
+      },
+      {
+        "id": "clean",
+        "label": "A good cleanup"
+      }
+    ]
   }
 }

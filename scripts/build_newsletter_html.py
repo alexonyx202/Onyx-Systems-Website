@@ -67,16 +67,25 @@ def extract_comic_caption(md, date_str=None):
                         capture_output=True, text=True, timeout=30
                     )
                     ocr_text = result.stdout.strip()
-                    if ocr_text and ocr_text != "NO_USABLE_CAPTION" and len(ocr_text) > 5:
+                    # Only trust OCR if it looks like clean human-readable English
+                    # (reasonable word count, contains common English words, not garbled)
+                    if (ocr_text and ocr_text != "NO_USABLE_CAPTION" 
+                        and len(ocr_text) > 10 
+                        and len(ocr_text) < 300
+                        and _looks_like_valid_caption(ocr_text)):
                         caption_words = set(re.findall(r"[a-z']+", caption.lower()))
-                        ocr_words = set(re.findall(r"[a-z']+", ocr_text))
-                        # If caption shares NO words with OCR but OCR found valid text,
-                        # the caption is wrong - use the OCR result instead
-                        if not caption_words & ocr_words and len(ocr_words) > 3:
-                            # OCR text IS the caption from the actual image
+                        ocr_words = set(re.findall(r"[a-z']+", ocr_text.lower()))
+                        # If caption shares significant words with OCR, keep markdown caption
+                        # (they agree). If they share NO words but OCR looks valid,
+                        # the markdown caption might be wrong - use OCR.
+                        if caption_words & ocr_words:
+                            pass  # They agree, keep markdown caption
+                        elif not caption_words & ocr_words and len(ocr_words) > 5:
+                            # OCR text IS the caption from the actual image, and looks valid
                             ocr_caption = ocr_text.strip().strip('"\'')
                             if len(ocr_caption) > 10:
                                 caption = ocr_caption
+                    # If OCR is garbage, keep the markdown caption (don't corrupt it)
                 except (Exception, subprocess.TimeoutExpired):
                     pass  # If verification fails, keep original caption
         return caption
@@ -85,6 +94,49 @@ def extract_comic_caption(md, date_str=None):
     if m:
         return m.group(1).strip()
     return "The Far Side &mdash; your daily laugh."
+
+
+def _looks_like_valid_caption(text: str) -> bool:
+    """Heuristic: does this OCR text look like a valid Far Side caption vs garbage?"""
+    if not text or len(text) < 8:
+        return False
+    
+    # Count recognizable English words
+    words = re.findall(r"[a-zA-Z]{2,}", text.lower())
+    if len(words) < 3:
+        return False
+    
+    # Common English words that should appear in a real caption
+    common_words = {
+        'the', 'and', 'or', 'but', 'if', 'then', 'when', 'where', 'why', 'how',
+        'to', 'of', 'in', 'on', 'for', 'with', 'at', 'by', 'from', 'up', 'down',
+        'out', 'off', 'over', 'under', 'again', 'once', 'just', 'not', 'no', 'yes',
+        'well', 'oh', 'hey', 'wait', 'stop', 'help', 'please', 'thank', 'thanks',
+        'sorry', 'excuse', 'pardon', 'so', 'what', 'who', 'this', 'that', 'there',
+        'here', 'my', 'your', 'his', 'her', 'our', 'their', 'i', 'we', 'you', 'he',
+        'she', 'it', 'they', 'me', 'us', 'him', 'them', 'a', 'an', 'is', 'are',
+        'was', 'were', 'am', 'do', 'does', 'did', 'can', 'could', 'would', 'should',
+        'will', 'have', 'has', 'had', 'say', 'said', 'tell', 'told', 'think', 'thought',
+        'know', 'knew', 'see', 'saw', 'look', 'looked', 'get', 'got', 'give', 'gave',
+        'take', 'took', 'make', 'made', 'go', 'went', 'come', 'came', 'want', 'wanted',
+        'need', 'needed', 'like', 'liked', 'love', 'loved', 'hate', 'hated'
+    }
+    
+    word_matches = sum(1 for w in words if w in common_words)
+    # At least 30% of words should be common English words
+    if word_matches / max(len(words), 1) < 0.3:
+        return False
+    
+    # Reject if too many non-alphanumeric chars (garbage)
+    alnum_ratio = sum(c.isalnum() or c.isspace() for c in text) / len(text)
+    if alnum_ratio < 0.7:
+        return False
+    
+    # Reject if it's mostly repeated characters (OCR noise)
+    if len(set(text.lower())) < 15:
+        return False
+    
+    return True
 
 
 def extract_header_logo(md):

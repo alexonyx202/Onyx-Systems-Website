@@ -74,6 +74,8 @@ KNOWN_PRODUCTS = [
     "jan.ai",
     # Extended 2026-07-30: Today's Onyx Tech Notes real products (named + obtain method stated).
     "microsoft edge", "edge://settings/help", "privacy badger", "privacybadger.org", "everything", "voidtools.com", "apc", "surgearrest", "rufus", "rufus.ie",
+    # Extended 2026-07-31: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "visipics",
 ]
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
