@@ -1,96 +1,249 @@
 {
-  "title": "23.",
-  "size": 15,
+  "title": "24",
+  "size": 32,
   "grid": [
-    "....girlsthrice",
-    ".........o.....",
-    ".........r.....",
-    ".........a.....",
-    ".........t.....",
-    ".........r.....",
-    "......v..isto..",
-    ".....qed.p.....",
-    "......n..l.....",
-    "acuteangle.....",
-    "....u....d.....",
-    "....l..........",
-    "....e..........",
-    "...orig........",
-    "..............."
+    ".............P..........M.......",
+    ".............Y..........E.......",
+    ".............T.....V....D.......",
+    ".............H.....A....I.......",
+    ".....GLOBALIZATION.C..EUCLID....",
+    ".............G.....C....I.N.....",
+    ".............O.HOSPITAL.N.V.....",
+    ".............R...C.N....E.EULER.",
+    ".............ARCHIMEDES...N.....",
+    ".............S...E..I.....T.....",
+    "................INDUSTRIALISM...",
+    "...........Q.....C..C.....O.....",
+    "...........U...G.E..O.....N.....",
+    "...C.......A...A....V...........",
+    "...O..MERCURY..U.P..E...........",
+    "...B.......A...SHAKUR...S.......",
+    "URBANIZATION.B.S.N..Y...U.......",
+    "...I.......T.I...D...B..R.......",
+    "...N.......I.G..TECHNOLOGY......",
+    "...........N.G...M...W..E.......",
+    "...........EPIDEMIC..I.MORTALITY",
+    ".............E...C...E..N.......",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "................................"
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 5,
-        "len": 11,
-        "answer": "girlsthrice",
-        "clue": "1962 Presley film (do the math)"
-      },
-      {
         "num": 4,
-        "row": 7,
-        "col": 10,
-        "len": 4,
-        "answer": "isto",
-        "clue": ":, in math"
+        "row": 5,
+        "col": 6,
+        "len": 13,
+        "answer": "GLOBALIZATION",
+        "clue": "World connection"
       },
       {
         "num": 5,
+        "row": 5,
+        "col": 23,
+        "len": 6,
+        "answer": "EUCLID",
+        "clue": "Geometry father"
+      },
+      {
+        "num": 7,
+        "row": 7,
+        "col": 16,
+        "len": 8,
+        "answer": "HOSPITAL",
+        "clue": "Care building"
+      },
+      {
+        "num": 9,
         "row": 8,
-        "col": 6,
-        "len": 3,
-        "answer": "qed",
-        "clue": "Abbr. in a math textbook"
+        "col": 27,
+        "len": 5,
+        "answer": "EULER",
+        "clue": "Math genius"
       },
       {
-        "num": 6,
-        "row": 10,
-        "col": 1,
+        "num": 10,
+        "row": 9,
+        "col": 14,
         "len": 10,
-        "answer": "acuteangle",
-        "clue": "A in math"
+        "answer": "ARCHIMEDES",
+        "clue": "Eureka man"
       },
       {
-        "num": 8,
-        "row": 14,
-        "col": 4,
-        "len": 4,
-        "answer": "orig",
-        "clue": "(0,0), in math: abbr."
+        "num": 12,
+        "row": 11,
+        "col": 17,
+        "len": 13,
+        "answer": "INDUSTRIALISM",
+        "clue": "Machine based production"
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 7,
+        "len": 7,
+        "answer": "MERCURY",
+        "clue": "Queen singer"
+      },
+      {
+        "num": 18,
+        "row": 16,
+        "col": 16,
+        "len": 6,
+        "answer": "SHAKUR",
+        "clue": "Rap legend"
+      },
+      {
+        "num": 20,
+        "row": 17,
+        "col": 1,
+        "len": 12,
+        "answer": "URBANIZATION",
+        "clue": "Growth of cities"
+      },
+      {
+        "num": 23,
+        "row": 19,
+        "col": 17,
+        "len": 10,
+        "answer": "TECHNOLOGY",
+        "clue": "Applied science"
+      },
+      {
+        "num": 24,
+        "row": 21,
+        "col": 12,
+        "len": 8,
+        "answer": "EPIDEMIC",
+        "clue": "Disease spread"
+      },
+      {
+        "num": 25,
+        "row": 21,
+        "col": 24,
+        "len": 9,
+        "answer": "MORTALITY",
+        "clue": "Death rate"
       }
     ],
     "down": [
       {
+        "num": 1,
+        "row": 1,
+        "col": 14,
+        "len": 10,
+        "answer": "PYTHAGORAS",
+        "clue": "Triangle man"
+      },
+      {
         "num": 2,
         "row": 1,
-        "col": 10,
-        "len": 11,
-        "answer": "toratripled",
-        "clue": "1970 war film (do the math)"
+        "col": 25,
+        "len": 8,
+        "answer": "MEDICINE",
+        "clue": "Healing science"
       },
       {
         "num": 3,
-        "row": 7,
-        "col": 7,
-        "len": 4,
-        "answer": "venn",
-        "clue": "-- diagram (math graph)"
+        "row": 3,
+        "col": 20,
+        "len": 7,
+        "answer": "VACCINE",
+        "clue": "Disease prevention"
       },
       {
-        "num": 7,
-        "row": 10,
-        "col": 5,
+        "num": 6,
+        "row": 5,
+        "col": 27,
+        "len": 9,
+        "answer": "INVENTION",
+        "clue": "New creation"
+      },
+      {
+        "num": 8,
+        "row": 7,
+        "col": 18,
+        "len": 7,
+        "answer": "SCIENCE",
+        "clue": "Knowledge system"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 21,
+        "len": 9,
+        "answer": "DISCOVERY",
+        "clue": "Finding something new"
+      },
+      {
+        "num": 13,
+        "row": 12,
+        "col": 12,
+        "len": 10,
+        "answer": "QUARANTINE",
+        "clue": "Isolation to stop disease"
+      },
+      {
+        "num": 14,
+        "row": 13,
+        "col": 16,
         "len": 5,
-        "answer": "euler",
-        "clue": "18th-century Swiss math great"
+        "answer": "GAUSS",
+        "clue": "Math prince"
+      },
+      {
+        "num": 15,
+        "row": 14,
+        "col": 4,
+        "len": 6,
+        "answer": "COBAIN",
+        "clue": "Grunge icon"
+      },
+      {
+        "num": 17,
+        "row": 15,
+        "col": 18,
+        "len": 8,
+        "answer": "PANDEMIC",
+        "clue": "Global disease spread"
+      },
+      {
+        "num": 19,
+        "row": 16,
+        "col": 25,
+        "len": 7,
+        "answer": "SURGEON",
+        "clue": "Medical operator"
+      },
+      {
+        "num": 21,
+        "row": 17,
+        "col": 14,
+        "len": 6,
+        "answer": "BIGGIE",
+        "clue": "Notorious"
+      },
+      {
+        "num": 22,
+        "row": 18,
+        "col": 22,
+        "len": 5,
+        "answer": "BOWIE",
+        "clue": "Ziggy Stardust"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/23-508",
-  "slug": "23-508",
-  "fetched_at": "2026-07-14T19:22:03.861771+00:00",
-  "date": "2026-07-31"
+  "source_url": "https://crosswordlabs.com/view/24-1832",
+  "slug": "24-1832",
+  "fetched_at": "2026-07-14T19:21:13.545720+00:00",
+  "date": "2026-08-01"
 }
