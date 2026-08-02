@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-07-31",
+    "last_updated": "2026-08-02",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-02-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-02",
+      "title": "Daily Brief: Router Default Password Alert + Chrome Zero-Day CVE-2026-2441 Patched",
+      "tag": "Daily Brief",
+      "excerpt": "Change all router default credentials immediately; update Chrome to 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux) via Settings > About Chrome",
+      "image": "assets/img/news/2026-08-02-composite.jpg",
+      "comic": "assets/img/news/2026-08-02-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Cybersecurity",
+        "#RouterSecurity"
+      ]
+    },
+    {
       "id": "onyx-2026-07-31-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-07-31",
@@ -175,20 +193,41 @@
         "#Windows11",
         "#PatchTuesday"
       ]
-    },
-    {
-      "id": "news-2026-07-26",
-      "type": "newsletter",
-      "date": "2026-07-26",
-      "title": "FTC Warns: Fake CAPTCHA Scams Hijack Your Computer",
-      "tag": "Security Alert",
-      "excerpt": "Scammers use fake CAPTCHAs that tell you to press Windows+R, paste, and Enter \u2014 this runs malicious code. Real CAPTCHAs never ask for keyboard commands. Close the tab immediately if a verification asks you to open Run or paste anything.",
-      "image": "assets/img/news/2026-07-26-composite.jpg",
-      "comic": "assets/img/news/2026-07-26-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-02-news-1",
+      "type": "news",
+      "date": "2026-08-02",
+      "title": "Google Chrome 145 Patches Actively Exploited Zero-Day CVE-2026-2441",
+      "tag": "Tech Note",
+      "summary": "Update Chrome now via Settings > About Chrome; restart browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux)",
+      "truth": "Google released an emergency Chrome update February 13, 2026 fixing CVE-2026-2441, a high-severity use-after-free vulnerability in the CSS component. Researcher Shaheen Fazim reported the flaw February 11. The vulnerability allows arbitrary code execution within the browser sandbox via malicious websites. No sandbox escape has been confirmed. This is the first actively exploited Chrome zero-day of 2026. Microsoft Edge and other Chromium-based browsers will receive downstream patches.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#BrowserSecurity",
+        "#ZeroDay"
+      ]
+    },
+    {
+      "id": "onyx-2026-08-02-tip-2",
+      "type": "tip",
+      "date": "2026-08-02",
+      "title": "Monitor NVMe SSD Health with CrystalDiskInfo to Prevent Silent Data Loss",
+      "tag": "Tech Tip",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly \u2014 blue status = good, yellow = warning, red = backup immediately and replace drive",
+      "truth": "SSDs fail without warning unlike mechanical drives. Heat, write amplification, and low free space accelerate NAND wear. CrystalDiskInfo reads S.M.A.R.T. data showing total data written, temperature, error counts, spare blocks, and health percentage. NVMe drives should stay 40-70\u00b0C; SATA 25-55\u00b0C. Enable TRIM in Windows (enabled by default). Keep 15-20% free space for garbage collection. PCIe 4.0/5.0 drives need heatsinks for sustained workloads.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SSDMaintenance",
+        "#DataProtection"
+      ]
+    },
     {
       "id": "onyx-2026-07-31-news-1",
       "type": "news",
@@ -284,195 +323,165 @@
         "#Microsoft-Patch-Tuesday",
         "#Zero-Day-Exploits"
       ]
-    },
-    {
-      "id": "post-2026-07-28-news",
-      "type": "news",
-      "date": "2026-07-28",
-      "title": "Firefox adds HDR video, QR code sharing, and PDF merging \u2014 free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox (released July 21, 2026) adds HDR video playback on Windows, QR code sharing from any page (right-click \u2192 Share \u2192 Generate QR Code), and drag-and-drop PDF merging in the built-in PDF editor. Download free at firefox.com or update via Menu \u2192 Help \u2192 About Firefox.",
-      "truth": "Most people don't realize their browser can do more than show web pages. Firefox's PDF editor now lets you combine multiple PDFs by dragging one into the sidebar of another \u2014 no Adobe Acrobat subscription needed. The QR code trick is handy for sending a page from your computer to your phone without emailing yourself. And HDR video means movies and YouTube actually look right on an HDR screen. Download free at firefox.com or update via Menu \u2192 Help \u2192 About Firefox.",
-      "tags": [
-        "#ONYXSYSTEMS",
-        "#LAKECITYFL",
-        "#COMPUTERREPAIR",
-        "#FIREFOX",
-        "#FREETOOLS"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-30-tip-9",
-      "type": "tip",
-      "date": "2026-07-30",
-      "title": "Florida lightning kills electronics \u2014 an APC SurgeArrest power strip stops the surge for $30 at Home Depot or Lowes",
-      "tag": "Tech Tip",
-      "summary": "Florida leads the nation in lightning strikes. A real surge protector (not a power strip) like the APC SurgeArrest P11U2 or P12U2 gives you 11\u201312 protected outlets, 2 USB ports, and a $300,000 connected-equipment warranty. Buy at Home Depot, Lowes, or Amazon \u2014 look for \"SurgeArrest\" on the box.",
-      "truth": "I've replaced more motherboards fried by lightning than I can count. The $10 power strip from the drugstore has a light that glows but zero protection \u2014 it's just an extension cord with a switch. A real surge protector has a joule rating (look for 2,000+) and a warranty that pays for your gear if it fails. In Lake City, that's not optional.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SurgeProtection",
-        "#APC"
-      ]
     }
   ],
-  "updated": "2026-07-30",
+  "updated": "2026-08-02",
   "today_word": {
-    "word": "Firmware",
+    "word": "Latency",
     "pos": "noun",
-    "definition": "The low-level software baked into a device that tells its hardware how to boot and behave.",
-    "example": "A firmware update made the printer print faster.",
-    "date": "2026-07-31"
+    "definition": "The delay between an action and its response \u2014 low latency means snappy, high latency means laggy.",
+    "example": "Gamers chase the lowest possible latency.",
+    "date": "2026-08-02"
   },
   "today_crossword": {
-    "title": "23.",
-    "size": 15,
+    "title": "24.",
+    "size": 14,
     "grid": [
-      "....girlsthrice",
-      ".........o.....",
-      ".........r.....",
-      ".........a.....",
-      ".........t.....",
-      ".........r.....",
-      "......v..isto..",
-      ".....qed.p.....",
-      "......n..l.....",
-      "acuteangle.....",
-      "....u....d.....",
-      "....l..........",
-      "....e..........",
-      "...orig........",
-      "..............."
+      "...l..........",
+      "...e..........",
+      "...m..........",
+      "...m..........",
+      "...areas......",
+      ".....l........",
+      "...theta......",
+      ".....c.r......",
+      ".....trig.....",
+      ".....i.t......",
+      ".c...v.h......",
+      "radixes.......",
+      ".l............",
+      ".c............"
     ],
     "clues": {
       "across": [
         {
-          "num": 1,
-          "row": 1,
-          "col": 5,
-          "len": 11,
-          "answer": "girlsthrice",
-          "clue": "1962 Presley film (do the math)"
+          "num": 2,
+          "row": 5,
+          "col": 4,
+          "len": 5,
+          "answer": "areas",
+          "clue": "Architect's math"
         },
         {
           "num": 4,
           "row": 7,
-          "col": 10,
-          "len": 4,
-          "answer": "isto",
-          "clue": ":, in math"
-        },
-        {
-          "num": 5,
-          "row": 8,
-          "col": 6,
-          "len": 3,
-          "answer": "qed",
-          "clue": "Abbr. in a math textbook"
+          "col": 4,
+          "len": 5,
+          "answer": "theta",
+          "clue": "Angle denoter, in math"
         },
         {
           "num": 6,
-          "row": 10,
-          "col": 1,
-          "len": 10,
-          "answer": "acuteangle",
-          "clue": "A in math"
+          "row": 9,
+          "col": 6,
+          "len": 4,
+          "answer": "trig",
+          "clue": "Adv. math course"
         },
         {
           "num": 8,
-          "row": 14,
-          "col": 4,
-          "len": 4,
-          "answer": "orig",
-          "clue": "(0,0), in math: abbr."
+          "row": 12,
+          "col": 1,
+          "len": 7,
+          "answer": "radixes",
+          "clue": "Base numbers, in math"
         }
       ],
       "down": [
         {
-          "num": 2,
+          "num": 1,
           "row": 1,
-          "col": 10,
-          "len": 11,
-          "answer": "toratripled",
-          "clue": "1970 war film (do the math)"
+          "col": 4,
+          "len": 5,
+          "answer": "lemma",
+          "clue": "Auxiliary proposition, in math"
         },
         {
           "num": 3,
+          "row": 5,
+          "col": 6,
+          "len": 8,
+          "answer": "elective",
+          "clue": "Art history, to a math major"
+        },
+        {
+          "num": 5,
           "row": 7,
-          "col": 7,
-          "len": 4,
-          "answer": "venn",
-          "clue": "-- diagram (math graph)"
+          "col": 8,
+          "len": 5,
+          "answer": "arith",
+          "clue": "Basic math."
         },
         {
           "num": 7,
-          "row": 10,
-          "col": 5,
-          "len": 5,
-          "answer": "euler",
-          "clue": "18th-century Swiss math great"
+          "row": 11,
+          "col": 2,
+          "len": 4,
+          "answer": "calc",
+          "clue": "AP math subject"
         }
       ]
     },
     "category": "math",
-    "date": "2026-07-31"
+    "source_url": "https://crosswordlabs.com/view/24-468",
+    "slug": "24-468",
+    "fetched_at": "2026-07-14T19:21:32.037943+00:00",
+    "date": "2026-08-02"
   },
   "today_trivia": {
-    "q": "What is 'virtual memory'?",
-    "a": "Using disk space as extra RAM when physical memory runs low.",
+    "q": "What is a 'daemon'?",
+    "a": "A background process that quietly handles printing, updates, or network tasks.",
     "category": "Software",
-    "date": "2026-07-31"
+    "date": "2026-08-02"
   },
   "today_joke": {
-    "q": "How does a computer sneeze?",
-    "a": "Achoo.exe",
-    "date": "2026-07-31"
+    "q": "Why did the software engineer get fired from the keyboard factory?",
+    "a": "He wouldn't stop pressing everyone's buttons.",
+    "date": "2026-08-02"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-07-26",
-      "question": "Which upgrade would help you most?",
+      "weekOf": "2026-08-02",
+      "question": "How old is your main computer?",
       "options": [
         {
-          "id": "ssd",
-          "label": "Faster SSD"
+          "id": "lt1",
+          "label": "Under 1 year"
         },
         {
-          "id": "ram",
-          "label": "More RAM"
+          "id": "1to3",
+          "label": "1\u20133 years"
         },
         {
-          "id": "net",
-          "label": "Better Wi-Fi"
+          "id": "3to5",
+          "label": "3\u20135 years"
         },
         {
-          "id": "clean",
-          "label": "A good cleanup"
+          "id": "gt5",
+          "label": "5+ years"
         }
       ]
     }
   },
   "today_poll": {
-    "weekOf": "2026-07-26",
-    "question": "Which upgrade would help you most?",
+    "weekOf": "2026-08-02",
+    "question": "How old is your main computer?",
     "options": [
       {
-        "id": "ssd",
-        "label": "Faster SSD"
+        "id": "lt1",
+        "label": "Under 1 year"
       },
       {
-        "id": "ram",
-        "label": "More RAM"
+        "id": "1to3",
+        "label": "1\u20133 years"
       },
       {
-        "id": "net",
-        "label": "Better Wi-Fi"
+        "id": "3to5",
+        "label": "3\u20135 years"
       },
       {
-        "id": "clean",
-        "label": "A good cleanup"
+        "id": "gt5",
+        "label": "5+ years"
       }
     ]
   }

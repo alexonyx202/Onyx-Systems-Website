@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-07-26",
-    "question": "Which upgrade would help you most?",
+    "weekOf": "2026-08-02",
+    "question": "How old is your main computer?",
     "options": [
       {
-        "id": "ssd",
-        "label": "Faster SSD"
+        "id": "lt1",
+        "label": "Under 1 year"
       },
       {
-        "id": "ram",
-        "label": "More RAM"
+        "id": "1to3",
+        "label": "1\u20133 years"
       },
       {
-        "id": "net",
-        "label": "Better Wi-Fi"
+        "id": "3to5",
+        "label": "3\u20135 years"
       },
       {
-        "id": "clean",
-        "label": "A good cleanup"
+        "id": "gt5",
+        "label": "5+ years"
       }
     ]
   }

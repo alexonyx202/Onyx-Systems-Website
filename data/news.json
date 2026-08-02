@@ -1,6 +1,40 @@
 {
-  "updated": "2026-07-31",
+  "updated": "2026-08-02",
   "items": [
+    {
+      "id": "n-2026-08-02",
+      "type": "newsletter",
+      "date": "2026-08-02",
+      "title": "Your Router Is the Front Door \u2014 Is It Locked?",
+      "tag": "Daily Brief",
+      "summary": "Change all router default credentials immediately via 192.168.1.1 or 192.168.0.1 in your browser. Daily tip: Unplug both modem and router, wait 30 seconds, plug modem first (wait for solid lights), then router. Source: CISA.gov \u2014 Secure Your Home Network (updated 2026)",
+      "comic": "Newsletter - 2026-08-02-0800-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-02-1",
+      "type": "tech-note",
+      "date": "2026-08-02",
+      "title": "Google Chrome 145 Patches Actively Exploited Zero-Day CVE-2026-2441",
+      "tag": "Security Alert",
+      "summary": "Update Chrome now via Settings > About Chrome; restart browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux)",
+      "cta": {
+        "label": "Update Chrome",
+        "href": "https://www.google.com/chrome/"
+      }
+    },
+    {
+      "id": "t-2026-08-02-2",
+      "type": "tech-note",
+      "date": "2026-08-02",
+      "title": "Monitor NVMe SSD Health with CrystalDiskInfo to Prevent Silent Data Loss",
+      "tag": "Maintenance",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly \u2014 blue status = good, yellow = warning, red = backup immediately and replace drive",
+      "cta": {
+        "label": "Get CrystalDiskInfo",
+        "href": "https://crystalmark.info/en/software/crystaldiskinfo/"
+      }
+    },
     {
       "id": "n-2026-07-31",
       "type": "newsletter",

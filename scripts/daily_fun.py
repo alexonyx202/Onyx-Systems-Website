@@ -328,6 +328,12 @@ POLLS_EXTRA = [
     {"question": "How do you feel about AI features in your apps?",
      "options": [{"id": "love", "label": "Love them"}, {"id": "wary", "label": "A bit wary"},
                  {"id": "confused", "label": "Confused by them"}, {"id": "off", "label": "Turn them off"}]},
+    {"question": "Which AI tool do you use most for everyday questions? (Stack Overflow 2024: ChatGPT 82%, Copilot 41%, Gemini 24%)",
+     "options": [{"id": "chatgpt", "label": "ChatGPT"}, {"id": "copilot", "label": "GitHub Copilot"},
+                 {"id": "gemini", "label": "Google Gemini"}, {"id": "other", "label": "Another / none"}]},
+    {"question": "What's your main OS for personal use? (Stack Overflow 2024: Windows 59%, macOS 32%, Linux 28%+)",
+     "options": [{"id": "win", "label": "Windows"}, {"id": "mac", "label": "macOS"},
+                 {"id": "linux", "label": "Linux (Ubuntu, etc.)"}, {"id": "other", "label": "ChromeOS / other"}]},
 ]
 
 FLOOR_WORDS = 40
