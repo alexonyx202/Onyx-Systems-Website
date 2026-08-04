@@ -1,13 +1,37 @@
 {
-  "updated": "2026-08-02",
+  "updated": "2026-08-04",
   "items": [
+    {
+      "id": "t-2026-08-04-news1",
+      "type": "tech-note",
+      "date": "2026-08-04",
+      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator — Arrives August 11",
+      "tag": "Tech Note",
+      "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
+      "cta": {
+        "label": "Open Windows Update",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "t-2026-08-04-tip1",
+      "type": "tech-note",
+      "date": "2026-08-04",
+      "title": "Restart Your Computer Once a Week — Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
+      "tag": "Tech Tip",
+      "summary": "Leave your computer on for weeks and it gets sluggish — memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start → Power → Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
+      "cta": {
+        "label": "Restart Now",
+        "href": "ms-settings:recovery"
+      }
+    },
     {
       "id": "n-2026-08-02",
       "type": "newsletter",
       "date": "2026-08-02",
-      "title": "Your Router Is the Front Door \u2014 Is It Locked?",
+      "title": "Your Router Is the Front Door — Is It Locked?",
       "tag": "Daily Brief",
-      "summary": "Change all router default credentials immediately via 192.168.1.1 or 192.168.0.1 in your browser. Daily tip: Unplug both modem and router, wait 30 seconds, plug modem first (wait for solid lights), then router. Source: CISA.gov \u2014 Secure Your Home Network (updated 2026)",
+      "summary": "Change all router default credentials immediately via 192.168.1.1 or 192.168.0.1 in your browser. Daily tip: Unplug both modem and router, wait 30 seconds, plug modem first (wait for solid lights), then router. Source: CISA.gov — Secure Your Home Network (updated 2026)",
       "comic": "Newsletter - 2026-08-02-0800-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     },
@@ -29,7 +53,7 @@
       "date": "2026-08-02",
       "title": "Monitor NVMe SSD Health with CrystalDiskInfo to Prevent Silent Data Loss",
       "tag": "Maintenance",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly \u2014 blue status = good, yellow = warning, red = backup immediately and replace drive",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly — blue status = good, yellow = warning, red = backup immediately and replace drive",
       "cta": {
         "label": "Get CrystalDiskInfo",
         "href": "https://crystalmark.info/en/software/crystaldiskinfo/"
@@ -41,7 +65,7 @@
       "date": "2026-07-31",
       "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
       "tag": "Daily Brief",
-      "summary": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement \u2014 July 20, 2026*",
+      "summary": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
       "comic": "Newsletter - 2026-07-31-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     },
@@ -49,7 +73,7 @@
       "id": "t-2026-07-31-1",
       "type": "tech-note",
       "date": "2026-07-31",
-      "title": "Chrome 127 Adds Real-Time Anti-Tracking, Site-Level Ad Controls, On-Device Processing \u2014 Free Update at chrome://settings/help",
+      "title": "Chrome 127 Adds Real-Time Anti-Tracking, Site-Level Ad Controls, On-Device Processing — Free Update at chrome://settings/help",
       "tag": "Tech Note",
       "summary": "Google Chrome 127 introduced three privacy features: real-time anti-tracking that blocks third-party cookies and tracking pixels before they load, site-level ad controls for per-site ad personalization settings, and on-device data processing that keeps sensitive information on your computer instead of Google's servers. Update free at chrome://settings/help or download at google.com/chrome.",
       "cta": {
@@ -61,9 +85,9 @@
       "id": "t-2026-07-31-2",
       "type": "tech-note",
       "date": "2026-07-31",
-      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis \u2014 Free at sourceforge.net/projects/visipics",
+      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis — Free at sourceforge.net/projects/visipics",
       "tag": "Tech Tip",
-      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis \u2014 not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
+      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis — not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
       "cta": {
         "label": "Call us",
         "href": "tel:+13867557772"
@@ -83,7 +107,7 @@
       "id": "t-2026-07-30-1",
       "type": "tech-note",
       "date": "2026-07-30",
-      "title": "Microsoft Edge July 2026 security update patches 7 critical flaws \u2014 update at edge://settings/help",
+      "title": "Microsoft Edge July 2026 security update patches 7 critical flaws — update at edge://settings/help",
       "tag": "Tech Note",
       "summary": "Microsoft Edge 150.0.4078.83 fixes seven vulnerabilities including remote code execution bugs. Open Edge, go to edge://settings/help and it will check and install automatically.",
       "cta": {
@@ -95,7 +119,7 @@
       "id": "t-2026-07-30-2",
       "type": "tech-note",
       "date": "2026-07-30",
-      "title": "Privacy Badger \u2014 free browser extension from EFF blocks trackers automatically at privacybadger.org",
+      "title": "Privacy Badger — free browser extension from EFF blocks trackers automatically at privacybadger.org",
       "tag": "Tech Note",
       "summary": "Privacy Badger is a free browser extension from the Electronic Frontier Foundation that automatically learns which companies are tracking you across sites and blocks them. Install it at privacybadger.org (Chrome, Firefox, Edge, Opera).",
       "cta": {
@@ -107,24 +131,12 @@
       "id": "t-2026-07-30-3",
       "type": "tech-note",
       "date": "2026-07-30",
-      "title": "Everything Search \u2014 free tool indexes every filename on Windows in seconds at voidtools.com",
+      "title": "Everything Search — free tool indexes every filename on Windows in seconds at voidtools.com",
       "tag": "Tech Note",
       "summary": "Everything by voidtools is a tiny free program that indexes every filename on your Windows drive in about one second and shows results as you type. Download the installer at voidtools.com (choose 64-bit for modern PCs).",
       "cta": {
         "label": "Call us",
         "href": "tel:+138****7772"
-      }
-    },
-    {
-      "id": "t-2026-07-30-4",
-      "type": "tech-note",
-      "date": "2026-07-30",
-      "title": "Florida lightning kills electronics \u2014 an APC SurgeArrest power strip stops the surge for 0 at Home Depot or Lowes",
-      "tag": "Tech Note",
-      "summary": "Florida leads the nation in lightning strikes. A real surge protector (not a power strip) like the APC SurgeArrest P11U2 or P12U2 gives you 11\u201312 protected outlets, 2 USB ports, and a 00,000 connected-equipment warranty. Buy at Home Depot, Lowes, or Amazon \u2014 look for \"SurgeArrest\" on the box.",
-      "cta": {
-        "label": "Call us",
-        "href": "tel:+13867557772"
       }
     }
   ]

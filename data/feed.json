@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-04-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-04",
+      "title": "ClickFix \"Verify You're Human\" Scam Tricks You Into Running Malware Commands \u2014 Close the Tab Immediately",
+      "tag": "Daily Brief",
+      "excerpt": "A fake \"Verify you're human\" CAPTCHA pops up and tells you to press Win+R, then Ctrl+V, then Enter. This is ClickFix malware \u2014 the command pastes a hidden malicious script into Windows Run dialog that...",
+      "image": "assets/img/news/2026-08-04-composite.jpg",
+      "comic": "assets/img/news/2026-08-04-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ClickFix",
+        "#Cybersecurity"
+      ]
+    },
+    {
       "id": "onyx-2026-08-02-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-02",
@@ -196,6 +214,38 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-04-news-1",
+      "type": "news",
+      "date": "2026-08-04",
+      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator \u2014 Arrives August 11",
+      "tag": "Tech Note",
+      "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
+      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful \u2014 I've had customers buy external readers that didn't work with Windows Hello before.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#KB5101684"
+      ]
+    },
+    {
+      "id": "onyx-2026-08-04-tip-1",
+      "type": "tip",
+      "date": "2026-08-04",
+      "title": "Restart Your Computer Once a Week \u2014 Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
+      "tag": "Tech Tip",
+      "summary": "Leave your computer on for weeks and it gets sluggish \u2014 memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start \u2192 Power \u2192 Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
+      "truth": "I see this constantly \u2014 a customer brings in a \"slow computer\" and uptime shows 27 days. One restart and it's snappy again. Windows updates especially need a restart to fully apply; until you restart, the security patches aren't active.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Maintenance",
+        "#SpeedTip"
+      ]
+    },
     {
       "id": "onyx-2026-08-02-news-1",
       "type": "news",
@@ -325,119 +375,392 @@
       ]
     }
   ],
-  "updated": "2026-08-02",
+  "updated": "2026-08-04",
   "today_word": {
-    "word": "Latency",
+    "word": "Backup",
     "pos": "noun",
-    "definition": "The delay between an action and its response \u2014 low latency means snappy, high latency means laggy.",
-    "example": "Gamers chase the lowest possible latency.",
-    "date": "2026-08-02"
+    "definition": "A second copy of your files kept separate from the originals so a crash isn't a catastrophe.",
+    "example": "Her photos survived the flood because of a real backup.",
+    "date": "2026-08-04"
   },
   "today_crossword": {
-    "title": "24.",
-    "size": 14,
+    "title": "25-26 Staff",
+    "size": 39,
     "grid": [
-      "...l..........",
-      "...e..........",
-      "...m..........",
-      "...m..........",
-      "...areas......",
-      ".....l........",
-      "...theta......",
-      ".....c.r......",
-      ".....trig.....",
-      ".....i.t......",
-      ".c...v.h......",
-      "radixes.......",
-      ".l............",
-      ".c............"
+      "...........................W...........",
+      "...........................h...........",
+      "...........................i...........",
+      "...........................t...........",
+      ".......................LamMers.........",
+      "..........................a............",
+      "..........................l...M........",
+      ".......................L..a...e........",
+      ".......................e..Bintliff.....",
+      "...............Burke...i..a...i........",
+      "...............r.....B.k..n...n........",
+      ".............Paul..P.o.e..a...d........",
+      "...............n...a.Warden...a........",
+      "...............Krystle.................",
+      "...................t.RhodeS............",
+      "...............Steve.m....t............",
+      "...................RoacH..o............",
+      "...........M.......m.n.a..k............",
+      "..........ParriS...a...y..e............",
+      "...........l...k...n...s..s............",
+      "...........o..HinTon...................",
+      "...........t...l.J.....................",
+      "...........t.Auld......................",
+      "....W..........e.......................",
+      "Darnell...MCMurray.....................",
+      "....i......l...n.......................",
+      "..M.s......a...........................",
+      "..a.f..McGougH..W......................",
+      ".Chris.....s.a..i......................",
+      "..a.e......e.Raynsford.................",
+      "..McLaughLin.t..a......................",
+      "..u.d....i......n......................",
+      "..d......ZamKov.Somers.................",
+      "............i..........................",
+      "............n..........................",
+      "............d..........................",
+      "............r..........................",
+      "............e..........................",
+      "............d.........................."
     ],
     "clues": {
       "across": [
         {
           "num": 2,
           "row": 5,
-          "col": 4,
-          "len": 5,
-          "answer": "areas",
-          "clue": "Architect's math"
-        },
-        {
-          "num": 4,
-          "row": 7,
-          "col": 4,
-          "len": 5,
-          "answer": "theta",
-          "clue": "Angle denoter, in math"
+          "col": 24,
+          "len": 7,
+          "answer": "LamMers",
+          "clue": "7th Science"
         },
         {
           "num": 6,
           "row": 9,
-          "col": 6,
-          "len": 4,
-          "answer": "trig",
-          "clue": "Adv. math course"
+          "col": 27,
+          "len": 8,
+          "answer": "Bintliff",
+          "clue": "8th Science"
         },
         {
-          "num": 8,
+          "num": 7,
+          "row": 10,
+          "col": 16,
+          "len": 5,
+          "answer": "Burke",
+          "clue": "7th and 8th Math and Math Lab"
+        },
+        {
+          "num": 9,
           "row": 12,
+          "col": 14,
+          "len": 4,
+          "answer": "Paul",
+          "clue": "Paraprofessional (works with Mr. Roach and Ms. McLaughlin)"
+        },
+        {
+          "num": 11,
+          "row": 13,
+          "col": 22,
+          "len": 6,
+          "answer": "Warden",
+          "clue": "7th and 8th ELA, 7th Honors ELA"
+        },
+        {
+          "num": 12,
+          "row": 14,
+          "col": 16,
+          "len": 7,
+          "answer": "Krystle",
+          "clue": "Paraprofessional (Works with Mr. Clausen)"
+        },
+        {
+          "num": 13,
+          "row": 15,
+          "col": 22,
+          "len": 6,
+          "answer": "RhodeS",
+          "clue": "8th Grade Administrator"
+        },
+        {
+          "num": 15,
+          "row": 16,
+          "col": 16,
+          "len": 5,
+          "answer": "Steve",
+          "clue": "Security #1"
+        },
+        {
+          "num": 16,
+          "row": 17,
+          "col": 20,
+          "len": 5,
+          "answer": "RoacH",
+          "clue": "6th and 7th Learning Support"
+        },
+        {
+          "num": 19,
+          "row": 19,
+          "col": 11,
+          "len": 6,
+          "answer": "ParriS",
+          "clue": "Sub for 6th and 7th Math"
+        },
+        {
+          "num": 21,
+          "row": 21,
+          "col": 15,
+          "len": 6,
+          "answer": "HinTon",
+          "clue": "8th Social Studies"
+        },
+        {
+          "num": 23,
+          "row": 23,
+          "col": 14,
+          "len": 4,
+          "answer": "Auld",
+          "clue": "Lifeskills and PE"
+        },
+        {
+          "num": 25,
+          "row": 25,
           "col": 1,
           "len": 7,
-          "answer": "radixes",
-          "clue": "Base numbers, in math"
+          "answer": "Darnell",
+          "clue": "7th Grade Administrator"
+        },
+        {
+          "num": 26,
+          "row": 25,
+          "col": 11,
+          "len": 8,
+          "answer": "MCMurray",
+          "clue": "7th and 8th Math, Pre-algebra"
+        },
+        {
+          "num": 29,
+          "row": 28,
+          "col": 8,
+          "len": 7,
+          "answer": "McGougH",
+          "clue": "ELD Teacher"
+        },
+        {
+          "num": 32,
+          "row": 29,
+          "col": 2,
+          "len": 5,
+          "answer": "Chris",
+          "clue": "Maintenance"
+        },
+        {
+          "num": 33,
+          "row": 30,
+          "col": 14,
+          "len": 9,
+          "answer": "Raynsford",
+          "clue": "Choir and Theater"
+        },
+        {
+          "num": 34,
+          "row": 31,
+          "col": 3,
+          "len": 10,
+          "answer": "McLaughLin",
+          "clue": "8th Learning Support"
+        },
+        {
+          "num": 36,
+          "row": 33,
+          "col": 10,
+          "len": 6,
+          "answer": "ZamKov",
+          "clue": "7th Social Studies"
+        },
+        {
+          "num": 38,
+          "row": 33,
+          "col": 17,
+          "len": 6,
+          "answer": "Somers",
+          "clue": "Algebra and Gifted-and-Talented"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 4,
+          "col": 28,
           "len": 5,
-          "answer": "lemma",
-          "clue": "Auxiliary proposition, in math"
+          "answer": "White",
+          "clue": "6th and 7th ELA, Yearbook"
         },
         {
           "num": 3,
           "row": 5,
-          "col": 6,
-          "len": 8,
-          "answer": "elective",
-          "clue": "Art history, to a math major"
+          "col": 27,
+          "len": 9,
+          "answer": "MalaBanan",
+          "clue": "School Psychologist"
+        },
+        {
+          "num": 4,
+          "row": 7,
+          "col": 31,
+          "len": 7,
+          "answer": "Melinda",
+          "clue": "Security #2"
         },
         {
           "num": 5,
-          "row": 7,
-          "col": 8,
-          "len": 5,
-          "answer": "arith",
-          "clue": "Basic math."
+          "row": 8,
+          "col": 24,
+          "len": 6,
+          "answer": "Leiker",
+          "clue": "PE"
         },
         {
           "num": 7,
+          "row": 10,
+          "col": 16,
+          "len": 5,
+          "answer": "BrunK",
+          "clue": "6th and 7th Science"
+        },
+        {
+          "num": 8,
           "row": 11,
-          "col": 2,
+          "col": 22,
+          "len": 8,
+          "answer": "BoWeRman",
+          "clue": "7th and 8th ELA, 8th Honors ELA"
+        },
+        {
+          "num": 10,
+          "row": 12,
+          "col": 20,
+          "len": 10,
+          "answer": "PatteRmann",
+          "clue": "6th, 7th, and Honors Social Studies"
+        },
+        {
+          "num": 14,
+          "row": 15,
+          "col": 27,
+          "len": 6,
+          "answer": "Stokes",
+          "clue": "Band #2"
+        },
+        {
+          "num": 17,
+          "row": 17,
+          "col": 24,
           "len": 4,
-          "answer": "calc",
-          "clue": "AP math subject"
+          "answer": "Hays",
+          "clue": "Spanish"
+        },
+        {
+          "num": 18,
+          "row": 18,
+          "col": 12,
+          "len": 6,
+          "answer": "Malott",
+          "clue": "Band #1"
+        },
+        {
+          "num": 20,
+          "row": 19,
+          "col": 16,
+          "len": 8,
+          "answer": "Skillern",
+          "clue": "Runs the Coffee Cart"
+        },
+        {
+          "num": 22,
+          "row": 21,
+          "col": 18,
+          "len": 2,
+          "answer": "TJ",
+          "clue": "Security #3"
+        },
+        {
+          "num": 24,
+          "row": 24,
+          "col": 5,
+          "len": 9,
+          "answer": "WeisfieLd",
+          "clue": "STEAM"
+        },
+        {
+          "num": 27,
+          "row": 25,
+          "col": 12,
+          "len": 7,
+          "answer": "Clausen",
+          "clue": "Coaches Girls Soccer"
+        },
+        {
+          "num": 28,
+          "row": 27,
+          "col": 3,
+          "len": 7,
+          "answer": "MahaMud",
+          "clue": "Paraprofessional (works with Mr. Clausen)"
+        },
+        {
+          "num": 30,
+          "row": 28,
+          "col": 14,
+          "len": 4,
+          "answer": "HaRt",
+          "clue": "Principal"
+        },
+        {
+          "num": 31,
+          "row": 28,
+          "col": 17,
+          "len": 6,
+          "answer": "WinanS",
+          "clue": "Art"
+        },
+        {
+          "num": 35,
+          "row": 31,
+          "col": 10,
+          "len": 3,
+          "answer": "LiZ",
+          "clue": "Speech Language Pathologist"
+        },
+        {
+          "num": 37,
+          "row": 33,
+          "col": 13,
+          "len": 7,
+          "answer": "Kindred",
+          "clue": "Occupational Therapist"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/24-468",
-    "slug": "24-468",
-    "fetched_at": "2026-07-14T19:21:32.037943+00:00",
-    "date": "2026-08-02"
+    "source_url": "https://crosswordlabs.com/view/25-26-staff",
+    "slug": "25-26-staff",
+    "fetched_at": "2026-07-14T19:12:16.640040+00:00",
+    "date": "2026-08-04"
   },
   "today_trivia": {
-    "q": "What is a 'daemon'?",
-    "a": "A background process that quietly handles printing, updates, or network tasks.",
-    "category": "Software",
-    "date": "2026-08-02"
+    "q": "What does 'ping' test?",
+    "a": "Whether a device is reachable on the network and how long the round trip takes.",
+    "category": "Network",
+    "date": "2026-08-04"
   },
   "today_joke": {
-    "q": "Why did the software engineer get fired from the keyboard factory?",
-    "a": "He wouldn't stop pressing everyone's buttons.",
-    "date": "2026-08-02"
+    "q": "Why did the function go to school?",
+    "a": "To get a little class.",
+    "date": "2026-08-04"
   },
   "poll": {
     "poll": {

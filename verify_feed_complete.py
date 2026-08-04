@@ -115,6 +115,8 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "grandma", "grandparent", "voice-clon", "voice clon", "ai fake",
         # Extended 2026-07-28: Florida rural broadband funding announcement is a policy alert (exempt).
         "rural broadband", "broadband funding",
+        # Extended 2026-08-04: how-to process tips (restart, maintenance, cleanup) are exempt per master prompt.
+        "restart", "maintenance", "cleanup", "disk cleanup", "clear temporary",
     ]
     if any(s in low for s in SKIP):
         return fails
