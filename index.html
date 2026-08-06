@@ -522,6 +522,47 @@
   .arcade-sec .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('assets/img/arcade/bg-wireframe.jpg')}
   .arcade-sec::after{content:"";position:absolute;left:-50%;right:-50%;bottom:-10%;height:55%;z-index:0;opacity:.5;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(68deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
+  /* NEW GAMES alert animation - subtle but attention-grabbing */
+  @keyframes newGamesPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.02); }
+  }
+  @keyframes newGamesGlow {
+    0%, 100% { box-shadow: 0 0 4px var(--copper), 0 0 8px var(--copper); }
+    50% { box-shadow: 0 0 8px var(--copper), 0 0 16px var(--copper), 0 0 24px rgba(194,112,61,0.4); }
+  }
+  .new-games-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--copper), var(--copper-2));
+    color: #1a0f05;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 0 8px var(--copper), 0 0 16px var(--copper);
+    animation: newGamesGlow 2s ease-in-out infinite;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+  .new-games-badge::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: newGamesPulse 1.2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .new-games-badge,
+    .new-games-badge::before {
+      animation: none !important;
+    }
+  }
   .arcade-sec .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
   .arcade-sec .wrap{position:relative;z-index:2;width:100%;max-width:none;padding:0;margin:0 auto}
   .arcade-sec .sec-head{text-align:center;position:relative;max-width:760px;margin-left:auto;margin-right:auto}
@@ -532,7 +573,7 @@
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;display:inline-block;vertical-align:middle;margin-right:16px;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
   /* ---- ARCADE cabinet cards (v5): cabinet composite on TOP, tagline + Play BELOW (no overlap) ---- */
   /* Main-page teaser = same design as the arcade page, but SMALLER (.game-card max-width is the only size knob). */
-  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
+  .arcade-sec .games-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
   .arcade-sec .game-card{
     position:relative;display:flex;flex-direction:column;
     border:0;                                /* neutralize generic .game-card cream border (line ~527) */
@@ -1142,9 +1183,68 @@
           <span class="gbtn">▶ Play</span>
         </span>
       </a>
+      <a class="game-card" href="games/data-break.html" target="_blank" rel="noopener">
+        <span class="gcab-wrap">
+          <img class="gcab" src="games/assets/cabinet-data-break.webp" alt="DATA BREAK" loading="lazy">
+          <span class="hover-panel">
+            <span class="hp-title">DATA BREAK</span>
+            <span class="hp-desc">A fast-paced tech-themed brick breaker. Pilot a maintenance ship, launch Data Scrubbers, and purge corrupted data from an overloaded system. Eight corrupted bosses, multiple ships, power-ups, and endless mode. No downloads.</span>
+            <span class="hp-tag">Pilot a tech ship. Purge the system.</span>
+          </span>
+        </span>
+        <span class="gfoot">
+          <span class="gtag">Pilot a tech ship. Purge the system.</span>
+          <span class="gbtn">▶ Play</span>
+        </span>
+      </a>
+      <a class="game-card" href="games/bug-swarm.html" target="_blank" rel="noopener">
+        <span class="gcab-wrap">
+          <img class="gcab" src="games/assets/cabinet-bug-swarm.webp" alt="BUG SWARM" loading="lazy">
+          <span class="hover-panel">
+            <span class="hp-title">BUG SWARM</span>
+            <span class="hp-desc">A Galaga-style fixed shooter. Defend the core from waves of viruses, rootkits, and tractor-beam spiders. CRT filter, retro scaling, adaptive boss AI, and high-score table. No downloads.</span>
+            <span class="hp-tag">Mainframe defense. Wipe the pests.</span>
+          </span>
+        </span>
+        <span class="gfoot">
+          <span class="gtag">Mainframe defense. Wipe the pests.</span>
+          <span class="gbtn">▶ Play</span>
+        </span>
+      </a>
+      <a class="game-card" href="games/neon-pilot.html" target="_blank" rel="noopener">
+        <span class="gcab-wrap">
+          <img class="gcab" src="games/assets/cabinet-neon-pilot.webp" alt="NEON PILOT" loading="lazy">
+          <span class="hover-panel">
+            <span class="hp-title">NEON PILOT</span>
+            <span class="hp-desc">A retro arcade side-scroller spanning 5 neon eras (1984-3001). Switch between Neon glow and Vector wireframe styles. 8-way movement, tracer bullets, formations, hidden targets, bosses, and adaptive AI demo mode. No downloads.</span>
+            <span class="hp-tag">5 eras. 2 visual styles. Pure arcade.</span>
+          </span>
+        </span>
+        <span class="gfoot">
+          <span class="gtag">5 eras. 2 visual styles. Pure arcade.</span>
+          <span class="gbtn">▶ Play</span>
+        </span>
+      </a>
+      <a class="game-card" href="games/technobonk.html" target="_blank" rel="noopener">
+        <span class="gcab-wrap">
+          <img class="gcab" src="games/assets/cabinet-technobonk.webp" alt="TECHNOBONK" loading="lazy">
+          <span class="hover-panel">
+            <span class="hp-title">TECHNOBONK</span>
+            <span class="hp-desc">A Vampire Survivors-style auto-attack survival game. 4 unique classes, 15+ upgrades, procedurally scaling waves, boss encounters, persistent stats/achievements, minimap radar, and synthwave soundtrack. No downloads.</span>
+            <span class="hp-tag">Survive. Evolve. Bonk.</span>
+          </span>
+        </span>
+        <span class="gfoot">
+          <span class="gtag">Survive. Evolve. Bonk.</span>
+          <span class="gbtn">▶ Play</span>
+        </span>
+      </a>
     </div>
     <div class="games-foot reveal">
-      <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep)">🎮 Enter the full ARCADE →</a>
+      <a class="btn btn-ghost" href="games/" target="_blank" rel="noopener" style="border-color:var(--copper-2);color:var(--copper-deep);display:inline-flex;align-items:center;gap:8px;">
+        🎮 Enter the full ARCADE →
+        <span class="new-games-badge">NEW GAMES</span>
+      </a>
     </div>
   </div>
 </section>

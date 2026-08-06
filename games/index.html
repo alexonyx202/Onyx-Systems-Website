@@ -56,6 +56,47 @@
     linear-gradient(180deg,#120726,#1a0b2e 55%,#06030d)}
   body::after{content:"";position:fixed;left:-50%;right:-50%;top:-10%;bottom:-10%;height:auto;z-index:-1;opacity:.55;background-image:linear-gradient(90deg,rgba(194,112,61,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(120,80,255,.4) 1px,transparent 1px);background-size:46px 46px;transform:perspective(320px) rotateX(60deg);transform-origin:50% 100%;animation:arcadeGrid 6s linear infinite;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   @keyframes arcadeGrid{from{background-position:0 0}to{background-position:0 46px}}
+  /* NEW GAMES alert animation - subtle but attention-grabbing */
+  @keyframes newGamesPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.02); }
+  }
+  @keyframes newGamesGlow {
+    0%, 100% { box-shadow: 0 0 4px var(--copper), 0 0 8px var(--copper); }
+    50% { box-shadow: 0 0 8px var(--copper), 0 0 16px var(--copper), 0 0 24px rgba(194,112,61,0.4); }
+  }
+  .new-games-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--copper), var(--copper-2));
+    color: #1a0f05;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 0 8px var(--copper), 0 0 16px var(--copper);
+    animation: newGamesGlow 2s ease-in-out infinite;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+  .new-games-badge::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: newGamesPulse 1.2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .new-games-badge,
+    .new-games-badge::before {
+      animation: none !important;
+    }
+  }
   .arcade-hub{position:relative;z-index:2;width:100%;max-width:1480px;margin:64px auto;min-height:88vh;display:flex;flex-direction:column;background:#0a0612;overflow:hidden;border:1.5px solid rgba(194,112,61,.55);border-radius:var(--r-lg);box-shadow:var(--shadow),0 0 0 1px rgba(194,112,61,.30) inset,0 0 22px 2px rgba(194,112,61,.30),0 0 40px 6px rgba(194,112,61,.16);padding:48px clamp(20px,4vw,56px)}
   .arcade-hub .arcade-bg{position:absolute;inset:0;z-index:0;opacity:.3;background-size:cover;background-position:center;mix-blend-mode:screen;background-image:url('../assets/img/arcade/bg-wireframe.jpg')}
   .arcade-hub .wrap{position:relative;z-index:2}
@@ -67,7 +108,7 @@
   .arcade-hub .sec-head h1{display:flex;align-items:center;justify-content:center;gap:16px;color:#fff;font-family:var(--brand-font);font-style:normal;font-weight:700;font-size:clamp(34px,6vw,56px);letter-spacing:.04em;text-shadow:0 0 1px #0a0612,0 0 2px #0a0612,0 3px 10px rgba(0,0,0,.85),0 0 18px rgba(194,112,61,.55)}
   .arcade-hub .sec-head p{color:#f1e9df;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.85);max-width:640px;margin:12px auto 0}
   .arcade-logo{height:clamp(52px,9vw,72px);width:clamp(52px,9vw,72px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(194,112,61,.7))}
-  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
+  .arcade-hub .games-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;max-width:1480px;width:100%;margin:18px auto 0;padding:0}
   /* ---- ARCADE cabinet cards (v5): full cabinet image on TOP, tagline + Play BELOW (no overlap) ---- */
   .arcade-hub .game-card{
     position:relative;display:flex;flex-direction:column;      /* image block + footer stacked in normal flow */
@@ -149,7 +190,7 @@
   <div class="scanlines"></div>
   <div class="sec-head">
     <div class="eyebrow">Onyx Arena presents</div>
-    <h1><img class="arcade-logo" src="../assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE</h1>
+    <h1><img class="arcade-logo" src="../assets/img/brand/onyx-arena-logo.jpg" alt="Onyx Arena">ARCADE<span class="new-games-badge">NEW GAMES</span></h1>
     <p>No downloads. No installs. No accounts. Just press start and play — a little something to break up your day while you're here.</p>
   </div>
   <div class="games-grid" id="gameGrid"></div>

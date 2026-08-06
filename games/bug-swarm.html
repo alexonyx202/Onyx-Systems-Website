@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#03060d">
+<title>BUG SWARM — Mainframe Defense</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030a08'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%235cff5c'/%3E%3Ccircle cx='12' cy='13' r='2.4' fill='%23030a08'/%3E%3Ccircle cx='20' cy='13' r='2.4' fill='%23030a08'/%3E%3Ccircle cx='16' cy='19' r='2' fill='%23030a08'/%3E%3Cpath d='M5 16H0M32 16h-5' stroke='%235cff5c' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bug-swarm-style.css">
+</head>
+<body>
+
+<div id="crt">
+  <div id="screen" class="flicker">
+    <canvas id="game" width="300" height="400"></canvas>
+    <div class="scanlines"></div>
+    <div class="aperture"></div>
+    <div class="vignette"></div>
+
+    <!-- ============ TOUCH CONTROLS (mobile) ============ -->
+    <div id="touch-controls">
+      <div class="pad">
+        <button id="tc-left" class="tbtn" aria-label="Move left">◀</button>
+        <button id="tc-right" class="tbtn" aria-label="Move right">▶</button>
+      </div>
+      <button id="tc-fire" class="tbtn fire" aria-label="Fire">FIRE</button>
+    </div>
+
+    <!-- ============ TITLE SCREEN ============ -->
+    <div id="screen-title" class="overlay active">
+      <div class="logo">BUG<span class="swarm">&nbsp;SWARM</span></div>
+      <div class="subtitle">MAINFRAME DEFENSE PROTOCOL // TERMINAL 7</div>
+
+      <button id="btn-start" class="btn primary">▶ START MISSION</button>
+      <button id="btn-quick" class="btn quick-start">⚡ QUICK START <span id="quick-diff">NORMAL</span></button>
+      <div class="hint">PRESS ENTER</div>
+
+      <div class="panel">
+        <h3>▸ DIFFICULTY</h3>
+        <div class="diff-row">
+          <button class="diff-btn" data-diff="easy">EASY</button>
+          <button class="diff-btn active" data-diff="normal">NORMAL</button>
+          <button class="diff-btn" data-diff="hard">HARD</button>
+        </div>
+        <div class="instr dim">NORMAL = +10% TOUGHER • BOSSES UNAFFECTED</div>
+      </div>
+
+      <div class="panel">
+        <h3>▸ DISPLAY</h3>
+        <button id="btn-retro" class="retro-btn">RETRO SCALE — OFF</button>
+        <div class="instr dim">FULL-SIZE SPRITES • DENSE 26×21 GRID</div>
+        <canvas id="sprite-compare" width="276" height="56" aria-label="Modern vs retro sprite size comparison"></canvas>
+        <button id="btn-crt" class="crt-btn">CRT FILTER — ON</button>
+        <div class="instr dim">SCANLINES • APERTURE • VIGNETTE</div>
+        <button id="btn-fair" class="fair-btn">FAIR HITS — OFF</button>
+        <div class="instr dim">HITBOXES MATCH FULL-SIZE SPRITES</div>
+      </div>
+
+      <div class="panel">
+        <h3>▸ MISSION BRIEFING</h3>
+        <div class="instr">
+          A rogue swarm of digital pests has breached the core.<br>
+          Wipe out the <b>BUG SWARM</b> before they root the system.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>▸ CONTROLS</h3>
+        <div class="instr">
+          <span class="k">← →</span> / <span class="k">A D</span>&nbsp; MOVE&nbsp;&nbsp;|&nbsp;&nbsp;<span class="k">SPACE</span>&nbsp; FIRE (hold)<br>
+          <span class="k">P</span>/<span class="k">ESC</span>&nbsp; PAUSE&nbsp;&nbsp;|&nbsp;&nbsp;<span class="k">M</span>&nbsp; MUTE&nbsp;&nbsp;|&nbsp;&nbsp;<span class="k">H</span>&nbsp; HAPTICS<br>
+          <span class="k">PAD</span>&nbsp; STICK/D-PAD MOVE • <span class="k">A/B</span> FIRE • <span class="k">START</span> PAUSE<br>
+          <span class="dim">TOUCH: d-pad + FIRE button (or drag to move)</span><br>
+          <span id="mute-indicator" class="mute-ind">SOUND: ON</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>▸ FIELD MANUAL</h3>
+        <div class="legend">
+          <div class="row"><span class="dot" style="background:#5cff5c;color:#5cff5c"></span>ROOTKIT KING ........... 5000 PTS <span class="k">⚠ BOSS!</span></div>
+          <div class="row"><span class="dot" style="background:#5cff5c;color:#5cff5c"></span>ROOTKIT BOSS ............ 400 PTS (2 HITS)</div>
+          <div class="row"><span class="dot" style="background:#ff5a5a;color:#ff5a5a"></span>RED VIRUS ................ 200 PTS</div>
+          <div class="row"><span class="dot" style="background:#ffb347;color:#ffb347"></span>TRACTOR SPIDER .......... 200 PTS <span class="k">⚠ BEAM!</span></div>
+          <div class="row"><span class="dot" style="background:#4f8dff;color:#4f8dff"></span>LADYBUG ................. 100 PTS</div>
+          <div class="row"><span class="dot" style="background:#41e0ff;color:#41e0ff"></span>DATA WORM ............... 100 PTS</div>
+          <div class="warn">⚠ TRACTOR BEAMS CAPTURE YOUR SHIP — A FRESH FIGHTER LAUNCHES AT NO COST. THE CARRIER FLIES YOUR SHIP INTO THE FORMATION, THEN DIVES AGAIN WITH IT — SHOOT THE CARRIER AT ANY TIME (DIVING, CLIMBING, OR PARKED) TO FREE YOUR SHIP, THEN CATCH IT AS IT FALLS FOR THE DUAL-CORE FIGHTER. YOU ONLY LOSE THE LIFE IF THE RESCUE SHIP FLIES OFF UNCAUGHT!<br>⚠ SCRIPTED DIVE WAVES — EACH WAVE RUNS ONE SIGNATURE PATTERN: STRAIGHT · LOOP · ZIGZAG · SWOOP, ROTATING WITH THE WAVE NUMBER (SEE THE WAVE BANNER).<br>⚠ EVERY 5TH WAVE: THE ROOTKIT KING DESCENDS — BREAK ITS ARMOR ACROSS 3 PHASES!<br>⚠ BONUS STAGES — RACK UP 500 PTS PER BUG DOWNED; BUGS STILL CROSSING THE FIELD AT TIME-UP PAY 100 PTS EACH.<br>⚠ CLEAR EVERY BONUS BUG FOR A +1000 PERFECT BONUS!<br>⚠ PERFECT WAVES — CLEAR A WAVE WITH ZERO ESCAPES FOR AN ESCALATING BONUS (500 × STREAK); LET A BUG SLIP OFF-SCREEN AND THE STREAK RESETS!<br>⚠ THE KING ADAPTS — DROP HIM FAST AND THE NEXT KING TANKS UP (MORE HP, FASTER VOLLEYS, ±15% PER KILL); A SLOW FIGHT EASES HIM BACK DOWN!<br>⚠ DIFFICULTY SELECTOR — EASY / NORMAL (+10%) / HARD; THE KING IGNORES IT, HIS ADAPTIVE CORE TUNES ITSELF ALONE.<br>⚠ RETRO SCALE — FLIP THE DISPLAY TOGGLE FOR FULL-SIZE SPRITES + THE DENSE 26×21 GRID, JUST LIKE THE 1981 ARCADE.<br>⚠ CRT FILTER — FLIP THE SECOND DISPLAY TOGGLE TO STRIP THE SCANLINES / APERTURE / VIGNETTE FOR A CLEAN, CRISP IMAGE.<br>⚠ FAIR HITS — THIRD DISPLAY TOGGLE: WITH RETRO SCALE ON, ENLARGES HITBOXES TO MATCH THE FULL-SIZE SPRITES SO SHOTS LAND WHERE YOU AIM.</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>▸ HIGH SCORES — TOP 5</h3>
+        <div id="score-list" class="scoreboard"></div>
+      </div>
+    </div>
+
+    <!-- ============ PAUSE SCREEN ============ -->
+    <div id="screen-pause" class="overlay">
+      <h2 class="pause-title">PAUSED</h2>
+      <div class="scores">SYSTEM HALTED — SIGNAL SUSPENDED</div>
+      <div class="btn-col">
+        <button id="btn-resume" class="btn primary">▶ RESUME</button>
+        <button id="btn-restart" class="btn ghost">↺ RESTART</button>
+        <button id="btn-menu" class="btn ghost">⌂ MAIN MENU</button>
+      </div>
+      <div class="hint">P / ESC TO RESUME</div>
+    </div>
+
+    <!-- ============ INITIALS ENTRY ============ -->
+    <div id="screen-initials" class="overlay">
+      <h2 class="record-title">★ HIGH SCORE ★</h2>
+      <div class="scores dim" style="font-size:7px">ENTER YOUR CALLSIGN</div>
+      <div class="scores">FINAL SCORE</div>
+      <div class="big" id="initials-score">000000</div>
+      <div class="initials">
+        <span class="slot" id="slot-0">A</span>
+        <span class="slot" id="slot-1">A</span>
+        <span class="slot" id="slot-2">A</span>
+      </div>
+      <div id="alpha-grid" class="alpha-grid"></div>
+      <div class="btn-row">
+        <button id="btn-initials-del" class="btn ghost small">⌫</button>
+        <button id="btn-initials-ok" class="btn primary small">SAVE</button>
+      </div>
+      <div class="hint">← → PICK&nbsp;&nbsp;•&nbsp;&nbsp;TYPE LETTERS&nbsp;&nbsp;•&nbsp;&nbsp;ENTER SAVE</div>
+    </div>
+
+    <!-- ============ GAME OVER ============ -->
+    <div id="screen-over" class="overlay">
+      <h2 class="over-title">GAME OVER</h2>
+      <div id="new-record" class="record">★ NEW HIGH SCORE ★</div>
+      <div class="scores">
+        <div>FINAL SCORE</div>
+        <div class="big" id="over-score">000000</div>
+        <div style="margin-top:10px">HI-SCORE</div>
+        <div class="big" id="over-hi" style="color:#ffd27a">000000</div>
+      </div>
+      <div class="scoreboard" id="over-board"></div>
+      <div class="btn-col">
+        <button id="btn-restart2" class="btn primary">↺ RESTART</button>
+        <button id="btn-menu2" class="btn ghost">⌂ MAIN MENU</button>
+      </div>
+      <div class="hint">PRESS ENTER</div>
+    </div>
+
+    <!-- floating system buttons -->
+    <div id="crt-buttons">
+      <button id="btn-pause" class="iconbtn" title="Pause (P)">⏸</button>
+      <button id="btn-mute" class="iconbtn" title="Mute (M)">🔊</button>
+      <button id="btn-haptic" class="iconbtn" title="Haptics (H)">📳</button>
+      <button id="btn-fs" class="iconbtn" title="Fullscreen (F)">⛶</button>
+    </div>
+  </div>
+
+  <div class="bezel-bar">
+    <span><span class="led"></span>BUG SWARM v1.47.0</span>
+    <span>SCAN: OK&nbsp;&nbsp;//&nbsp;&nbsp;CRT-7</span>
+  </div>
+</div>
+
+<script src="js/bug-swarm-audio.js?v=1.47.0"></script>
+<script src="js/bug-swarm-bugs.js?v=1.47.0"></script>
+<script src="js/bug-swarm-game.js?v=1.47.0"></script>
+</body>
+</html>

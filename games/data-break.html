@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>DATA BREAK — System Purge Protocol</title>
+<meta name="description" content="A fast-paced tech-themed brick breaker. Pilot a maintenance ship, launch Data Scrubbers, and purge corrupted data from an overloaded system.">
+<meta name="theme-color" content="#050a14">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="game" aria-label="Data Break playfield"></canvas>
+
+<!-- DOM HUD -->
+<button id="btn-pause" class="hud-btn" aria-label="Pause game">&#10073;&#10073;</button>
+<div id="toasts" aria-live="polite"></div>
+<div id="rotate-hint">Rotate device for best experience &#8630;</div>
+
+<!-- Screens -->
+<div id="screens" class="hidden">
+
+  <!-- LOADING -->
+  <section id="screen-loading" class="screen">
+    <div class="boot-box">
+      <div class="logo-mini">DATA BREAK</div>
+      <div class="boot-line">Initializing purge protocol<span class="boot-dots">...</span></div>
+      <div class="progress-track"><div class="progress-fill" id="boot-progress"></div></div>
+    </div>
+  </section>
+
+  <!-- TITLE -->
+  <section id="screen-title" class="screen hidden">
+    <div class="title-wrap">
+      <div class="logo">
+        <div class="logo-title">DATA BREAK</div>
+        <div class="logo-sub">S Y S T E M &nbsp; P U R G E &nbsp; P R O T O C O L</div>
+      </div>
+      <nav class="menu" id="title-menu"></nav>
+      <div class="title-stats" id="title-stats"></div>
+      <div class="title-version">v1.0.0 &middot; an original tech-cleaning arcade game</div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="screen-story" class="screen hidden">
+    <div class="panel story-panel">
+      <h2 class="panel-title">System Status: CRITICAL</h2>
+      <div class="story-text">
+        <p>Deep inside the orbital server plexus, something has gone terribly wrong. Corrupted files multiply in the dark, cache tables choke on junk, and a swarm of hostile data &mdash; viruses, malware, logic bombs &mdash; has overrun the core.</p>
+        <p>You are a <b>System Technician</b>, last engineer on the line. Piloting a <b>Tech Maintenance Ship</b>, you must fire <b>Data Scrubbers</b> into the corrupted grids, shatter every overloaded block, and restore system integrity before the whole network collapses.</p>
+        <p>Eight corrupted bosses guard the deepest sectors. Purge them all and reboot the system.</p>
+        <p class="story-cta">Sector by sector. Block by block. <b>Clean it all.</b></p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" data-action="begin">Begin Purge</button>
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFICULTY -->
+  <section id="screen-difficulty" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title">Select Protocol</h2>
+      <div class="diff-cards" id="diff-cards"></div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" data-action="confirm-diff">Continue</button>
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHIP SELECT -->
+  <section id="screen-ships" class="screen hidden">
+    <div class="panel panel-wide">
+      <h2 class="panel-title">Choose Maintenance Ship</h2>
+      <div class="ship-grid" id="ship-grid"></div>
+      <h3 class="panel-sub">Choose Data Scrubber</h3>
+      <div class="ball-row" id="ball-row"></div>
+      <div class="theme-preview" id="theme-preview" aria-label="Upcoming sector palette">
+        <canvas id="tp-canvas" width="430" height="140" aria-hidden="true"></canvas>
+        <div class="tp-meta">
+          <div class="tp-sector" id="tp-sector"></div>
+          <div class="tp-name" id="tp-name"></div>
+          <div class="tp-scheme" id="tp-scheme"></div>
+          <div class="tp-note" id="tp-note"></div>
+        </div>
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" data-action="start-mission">Start Mission</button>
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section id="screen-help" class="screen hidden">
+    <div class="panel panel-wide help-panel">
+      <h2 class="panel-title">How to Play</h2>
+      <div class="help-grid">
+        <div class="help-col">
+          <h3>Controls</h3>
+          <ul>
+            <li><b>Mouse / Touch:</b> move ship, tap to launch</li>
+            <li><b>Arrows / A-D:</b> move ship</li>
+            <li><b>Space:</b> launch / fire</li>
+            <li><b>P / Esc:</b> pause</li>
+            <li><b>M:</b> music &nbsp; <b>N:</b> sfx</li>
+            <li><b>Gamepad:</b> supported</li>
+          </ul>
+        </div>
+        <div class="help-col">
+          <h3>Blocks</h3>
+          <ul id="help-blocks"></ul>
+        </div>
+        <div class="help-col">
+          <h3>Power-Ups</h3>
+          <ul id="help-powerups"></ul>
+        </div>
+        <div class="help-col">
+          <h3>Tips</h3>
+          <ul>
+            <li>Hitting the ship at the edges launches steep angles &mdash; aim with the edges.</li>
+            <li>Chain hits without dropping a ball to raise your <b>combo multiplier</b>.</li>
+            <li>Virus blocks and logic bombs are dangerous &mdash; purge them fast.</li>
+            <li>Don't let the ball fall: a lost ball resets your combo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="screen-settings" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title">Settings</h2>
+      <div class="settings-list" id="settings-list"></div>
+      <div class="panel-actions">
+        <button class="btn btn-danger" data-action="reset-save">Reset All Data</button>
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGH SCORES -->
+  <section id="screen-scores" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title">Top Technicians</h2>
+      <div id="scores-table"></div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="screen-achievements" class="screen hidden">
+    <div class="panel panel-wide">
+      <h2 class="panel-title">Achievements</h2>
+      <div id="ach-grid"></div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDITS -->
+  <section id="screen-credits" class="screen hidden">
+    <div class="panel credits-panel">
+      <h2 class="panel-title">Credits</h2>
+      <div class="credits-text">
+        <p><b>DATA BREAK</b> &mdash; System Purge Protocol</p>
+        <p>An original arcade brick-breaker. All code, art, audio and level designs are procedurally generated originals.</p>
+        <p>Engine: vanilla ES6 Canvas. Audio: Web Audio API synthesis. Persistence: localStorage.</p>
+        <p>Inspired by the classic &ldquo;break the blocks&rdquo; genre. No copyrighted assets were used.</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost" data-action="back-title">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME OVER -->
+  <section id="screen-gameover" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title title-red">SYSTEM FAILURE</h2>
+      <div id="gameover-stats" class="go-stats"></div>
+      <div id="initials-box" class="hidden">
+        <p class="go-prompt">New high score! Enter your callsign:</p>
+        <div class="initials-row">
+          <input id="initials-input" maxlength="3" value="ACE" autocomplete="off" spellcheck="false" aria-label="Initials">
+          <button class="btn btn-primary" data-action="save-score">Save</button>
+        </div>
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" data-action="retry">Retry</button>
+        <button class="btn btn-ghost" data-action="back-ships">Ships</button>
+        <button class="btn btn-ghost" data-action="back-title">Title</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VICTORY -->
+  <section id="screen-victory" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title title-green">SYSTEM RESTORED</h2>
+      <div id="victory-stats" class="go-stats"></div>
+      <div class="panel-actions">
+        <button class="btn btn-primary" data-action="continue-endless">Continue (Endless)</button>
+        <button class="btn btn-ghost" data-action="back-title">Title</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAUSE -->
+  <section id="screen-pause" class="screen hidden">
+    <div class="panel">
+      <h2 class="panel-title">Paused</h2>
+      <div class="menu-stack">
+        <button class="btn btn-primary" data-action="resume">Resume</button>
+        <button class="btn btn-ghost" data-action="restart-level">Restart Level</button>
+        <button class="btn btn-ghost" data-action="settings-pause">Settings</button>
+        <button class="btn btn-ghost" data-action="quit-run">Quit Run</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="crt-overlay" class="hidden" aria-hidden="true"></div>
+<noscript><p class="noscript">DATA BREAK requires JavaScript.</p></noscript>
+
+<!-- Cache-busting: every game script carries ?v= so a release (bump the
+     number in BOTH places: here and js/main.js DR_VERSION) invalidates the
+     browser HTTP cache &mdash; the same way the service-worker registration URL
+     does. Without it, stale JS can be served even after the SW cache clears. -->
+<script src="js/config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/save.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/art.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/background.js"></script>
+<script src="js/ships.js"></script>
+<script src="js/scrubbers.js"></script>
+<script src="js/bricks.js"></script>
+<script src="js/powerups.js"></script>
+<script src="js/hazards.js"></script>
+<script src="js/boss.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/demo_ai.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
