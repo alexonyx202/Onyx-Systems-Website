@@ -1,0 +1,14 @@
+{
+  "name": "DATA BREAK — System Purge Protocol",
+  "short_name": "DATA BREAK",
+  "description": "A fast-paced tech-themed brick breaker. Pilot a maintenance ship, launch Data Scrubbers, and purge corrupted data from an overloaded system.",
+  "start_url": "./data-break.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#04070f",
+  "theme_color": "#04070f",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

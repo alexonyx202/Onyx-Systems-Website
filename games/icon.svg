@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0a1a30"/>
+      <stop offset="100%" stop-color="#04070f"/>
+    </radialGradient>
+    <radialGradient id="ball" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- circuit lines -->
+  <g stroke="#60a5fa" stroke-opacity="0.25" stroke-width="4" fill="none">
+    <path d="M60 150 H180 L220 190 V260"/>
+    <path d="M452 360 H330 L290 320 V250"/>
+    <path d="M452 130 H380 L340 170"/>
+  </g>
+  <!-- data blocks -->
+  <g>
+    <rect x="96" y="120" width="100" height="56" rx="10" fill="#0e7490" stroke="#22d3ee" stroke-width="5"/>
+    <rect x="316" y="120" width="100" height="56" rx="10" fill="#1e3a8a" stroke="#60a5fa" stroke-width="5"/>
+    <rect x="96" y="200" width="100" height="56" rx="10" fill="#7c2d12" stroke="#fb923c" stroke-width="5"/>
+    <rect x="316" y="200" width="100" height="56" rx="10" fill="#9f1239" stroke="#fb7185" stroke-width="5"/>
+    <rect x="206" y="120" width="100" height="56" rx="10" fill="#065f46" stroke="#34d399" stroke-width="5"/>
+    <rect x="206" y="200" width="100" height="56" rx="10" fill="#6d28d9" stroke="#c084fc" stroke-width="5"/>
+  </g>
+  <!-- data scrubber ball -->
+  <circle cx="256" cy="316" r="72" fill="url(#ball)" stroke="#67e8f9" stroke-width="6"/>
+  <circle cx="236" cy="296" r="20" fill="#ffffff" fill-opacity="0.7"/>
+  <!-- maintenance ship -->
+  <g>
+    <path d="M256 408 L200 452 L238 442 L256 420 L274 442 L312 452 Z" fill="#0284c7"/>
+    <rect x="226" y="384" width="60" height="26" rx="13" fill="#eaf6ff"/>
+    <rect x="236" y="392" width="40" height="10" rx="5" fill="#38bdf8"/>
+    <ellipse cx="240" cy="424" rx="9" ry="14" fill="#7dd3fc"/>
+    <ellipse cx="272" cy="424" rx="9" ry="14" fill="#7dd3fc"/>
+  </g>
+</svg>
