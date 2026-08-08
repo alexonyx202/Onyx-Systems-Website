@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Computer Chaos 7</title>
+<style>
+/* Portrait-first on mobile: this is a vertical falling-parts game — the layout
+   (HUD top, canvas, tray, controls) stacks naturally in portrait and is played
+   one-thumbed. No rotate prompt: a phone held normally just plays. */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:#0b0e1a; font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:#e2e8f0; overscroll-behavior:none; }  /* no pull-to-refresh / rubber-band chaining */
+  body { touch-action:manipulation; }   /* no double-tap zoom anywhere; inner scrollables keep scrolling */
+  html.game-locked, body.game-locked { overflow:hidden; }  /* mid-shift: the page can't scroll under your thumb (inner lists still scroll) */
+  #game-wrap { user-select:none; padding:1rem 0; max-width:520px; margin:0 auto;
+    padding:max(1rem,env(safe-area-inset-top)) max(env(safe-area-inset-right),0px) max(1rem,env(safe-area-inset-bottom)) max(env(safe-area-inset-left),0px); }  /* notch/Home-Indicator clearance (env()=0 without a notch) */
+  #ui-bar { display:flex; justify-content:space-between; align-items:center; max-width:520px; margin:0 auto 8px; gap:6px; flex-wrap:wrap; }
+  .stat { font-size:14px; font-weight:600; color:#e2e8f0; background:#161b2e; border:1px solid #2a3358; border-radius:10px; padding:4px 10px; white-space:nowrap; }
+  .stat span { color:#22d3ee; }
+  .stat.hi span { color:#facc15; }
+  .stat.low { border-color:#ef4444; color:#fca5a5; animation:lowpulse 0.7s ease-in-out infinite; }
+  @keyframes lowpulse { 50% { box-shadow:0 0 10px rgba(239,68,68,0.5); } }
+  #combo-box { max-width:520px; margin:6px auto 0; height:18px; display:flex; align-items:center; gap:8px; }
+  .stat.ot { color:#facc15; animation:otpulse 0.7s ease-in-out infinite; }
+  .stat.grace { border-color:#7dd3fc; box-shadow:0 0 12px rgba(125,211,252,0.45); }
+  @keyframes otpulse { 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.22) } }
+  @media (prefers-reduced-motion: reduce){ .stat.ot { animation:none; } }
+  #combo-bar { flex:1; height:8px; background:#161b2e; border-radius:6px; overflow:hidden; border:1px solid #2a3358; transition:box-shadow .2s; }
+  #combo-bar.hot { box-shadow:0 0 12px rgba(168,85,247,0.8); }
+  #combo-bar.expiring { box-shadow:0 0 12px rgba(239,68,68,0.85); animation:combowarn 0.35s ease-in-out infinite; }
+  @keyframes combowarn { 0%,100%{ transform:scale(1); filter:brightness(1); } 50%{ transform:scale(1.06); filter:brightness(1.5); } }
+  @media (prefers-reduced-motion: reduce){ #combo-bar.expiring { animation:none; } }
+  #combo-fill { height:100%; width:0%; background:linear-gradient(90deg,#a855f7,#22d3ee); transition:width 0.15s; }
+  #combo-bar.expiring #combo-fill { background:linear-gradient(90deg,#ef4444,#a855f7); }
+  #combo-num { font-size:12px; font-weight:800; color:#facc15; min-width:34px; text-align:right; }
+  #order-box { max-width:520px; margin:8px auto 0; background:#161b2e; border-radius:12px; border:1px solid #2a3358; padding:8px 12px; display:flex; flex-direction:column; gap:4px; }
+  #order-items { display:flex; flex-direction:column; gap:4px; }
+  .order-row { display:flex; align-items:center; gap:8px; }
+  .order-patron { font-size:20px; line-height:1; width:24px; text-align:center; flex:none; }
+  .order-mood { font-size:13px; width:20px; text-align:center; flex:none; }
+  .order-patience { width:56px; height:9px; background:#0f1424; border:1px solid #2a3358; border-radius:5px; overflow:hidden; flex:none; }
+  .order-patience i { display:block; height:100%; border-radius:4px; transition:width .25s, background .25s; }
+  .order-items { display:flex; gap:4px; flex-wrap:nowrap; overflow-x:auto; }
+  .order-item { width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; border:2px solid #3b4a7a; background:#1b2240; transition:all 0.2s; flex:none; }
+  .order-item.done { border-color:#22c55e; background:#14321f; transform:scale(0.92); }
+  .order-item.locked { border-color:#f59e0b; box-shadow:0 0 8px rgba(245,158,11,0.5); }
+  #canvas-container { position:relative; width:100%; max-width:520px; margin:0 auto; }
+  canvas { display:block; width:100%; border-radius:14px; border:2px solid #22d3ee; touch-action:none; box-shadow:0 0 24px rgba(34,211,238,0.25), inset 0 0 60px rgba(10,14,26,0.6); }
+  /* ---- 🎓 first-run tutorial: wordless, skippable, reduced-motion gated ---- */
+  #tut-card { position:absolute; top:8px; left:50%; transform:translateX(-50%); z-index:4;
+    display:none; align-items:center; gap:9px; max-width:calc(100% - 108px);
+    background:rgba(11,15,28,0.93); border:1px solid #2a3358; border-radius:12px;
+    padding:6px 8px 6px 10px; box-shadow:0 6px 22px rgba(0,0,0,0.5); cursor:pointer;
+    user-select:none; -webkit-user-select:none; }
+  .tut-stage { position:relative; width:100px; height:48px; flex:0 0 auto; overflow:hidden;
+    border-radius:8px; background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.09); }
+  .tut-tray { position:absolute; bottom:4px; left:50%; transform:translateX(-50%); width:54px; height:5px;
+    border-radius:3px; background:#22d3ee; box-shadow:0 0 10px rgba(34,211,238,0.7); }
+  .tut-fall { position:absolute; top:-4px; left:50%; margin-left:-10px; font-size:20px; animation:tut-fall 1.5s ease-in infinite; }
+  .tut-slide { position:absolute; bottom:9px; left:50%; margin-left:-11px; font-size:19px; animation:tut-slide 1.5s ease-in-out infinite; }
+  .tut-x { position:absolute; top:4px; left:50%; margin-left:-8px; font-size:17px; color:#f87171; animation:tut-x 1.5s ease-in-out infinite; }
+  .tut-dodge { position:absolute; bottom:4px; left:50%; width:54px; height:5px; border-radius:3px;
+    background:#22d3ee; box-shadow:0 0 10px rgba(34,211,238,0.7); animation:tut-dodge 1.5s ease-in-out infinite; }
+  .tut-ring { position:absolute; top:4px; right:2px; width:30px; height:30px; border-radius:50%;
+    border:2px solid #a855f7; animation:tut-ring 1.1s ease-out infinite; }
+  .tut-wrench { position:absolute; top:8px; right:6px; font-size:24px; filter:drop-shadow(0 0 7px rgba(168,85,247,0.9)); animation:tut-wrench 1.1s ease-in-out infinite; }
+  .tut-tap { position:absolute; bottom:9px; font-size:19px; animation:tut-tap 1.1s ease-in-out infinite; }
+  .tut-tap2 { left:16px; animation-delay:0.22s; }
+  .tut-side { display:flex; flex-direction:column; align-items:center; gap:5px; }
+  .tut-dots { display:flex; gap:4px; }
+  .tut-dot { width:6px; height:6px; border-radius:50%; background:#334155; transition:background .25s, transform .25s; }
+  .tut-dot.on { background:#22d3ee; transform:scale(1.3); box-shadow:0 0 7px rgba(34,211,238,0.85); }
+  #tut-skip { background:rgba(255,255,255,0.06); border:1px solid #334155; color:#94a3b8; font-size:15px;
+    border-radius:8px; padding:1px 8px; cursor:pointer; line-height:1.5; transition:all .2s; }
+  #tut-skip:hover { border-color:#22d3ee; color:#e2e8f0; }
+  @keyframes tut-fall { 0%{ transform:translateY(-4px); opacity:0; } 12%{ opacity:1; } 88%{ opacity:1; } 100%{ transform:translateY(36px); opacity:0.4; } }
+  @keyframes tut-slide { 0%,100%{ transform:translateX(-17px); } 50%{ transform:translateX(17px); } }
+  @keyframes tut-x { 0%,52%{ transform:scale(0.4); opacity:0; } 68%,100%{ transform:scale(1.2); opacity:1; } }
+  @keyframes tut-dodge { 0%,100%{ transform:translateX(17px); } 50%{ transform:translateX(-17px); } }
+  @keyframes tut-tap { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
+  @keyframes tut-wrench { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.15); } }
+  @keyframes tut-ring { 0%{ transform:scale(0.45); opacity:0.9; } 100%{ transform:scale(1.3); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ #tut-card .tut-anim { animation:none !important; } }
+  #pause-btn, #mute-btn, #music-btn { position:absolute; z-index:6; background:rgba(22,27,46,0.8); color:#94a3b8; border:1px solid #2a3358; border-radius:11px; width:44px; height:44px; cursor:pointer; font-size:17px; line-height:1; }
+  #pause-btn { top:8px; left:8px; display:none; }
+  #mute-btn { top:8px; right:8px; }
+  #music-btn { top:60px; right:8px; }
+  #pause-btn:hover, #mute-btn:hover, #music-btn:hover { color:#e2e8f0; border-color:#22d3ee; }
+  #msg-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; border-radius:14px; background:rgba(11,14,26,0.92); z-index:5; text-align:center; padding:18px; overflow:auto; }
+  #ov-wrap { margin:auto; width:100%; display:flex; flex-direction:column; align-items:center; }  /* auto margins: centers when short, scrolls from top when tall */
+  #msg-title { font-size:30px; font-weight:800; color:#22d3ee; margin-bottom:8px; text-shadow:0 0 18px rgba(34,211,238,0.6); }
+  #msg-sub { font-size:14px; color:#94a3b8; margin-bottom:16px; padding:0 8px; line-height:1.5; }
+  #msg-stats { font-size:15px; color:#e2e8f0; margin-bottom:6px; font-weight:700; }
+  #msg-stats2 { font-size:13px; color:#94a3b8; margin-bottom:14px; }
+  #new-best { display:none; font-size:15px; font-weight:800; color:#facc15; margin-bottom:10px; letter-spacing:1px; text-shadow:0 0 14px rgba(250,204,21,0.7); animation:bestpop 0.5s ease-out infinite alternate; }
+  @keyframes bestpop { from{transform:scale(1)} to{transform:scale(1.08)} }
+  /* ===== title screen hero ===== */
+  .menu-hero { width:100%; display:flex; flex-direction:column; align-items:center; margin-bottom:6px; }
+  .hero-field { position:relative; width:100%; height:86px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-emoji { position:absolute; top:-18px; font-size:20px; opacity:0; animation:menu-fall linear infinite; pointer-events:none; z-index:0; }
+  @keyframes menu-fall { 0%{ transform:translateY(0) rotate(-8deg); opacity:0 } 14%{ opacity:0.34 } 82%{ opacity:0.34 } 100%{ transform:translateY(110px) rotate(10deg); opacity:0 } }
+  @media (prefers-reduced-motion: reduce){ .hero-emoji { display:none; } }
+  .wordmark { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; line-height:1.02; }
+  .wm-top { font-size:16px; font-weight:800; color:#a78bfa; letter-spacing:9px; padding-left:9px; text-shadow:0 0 14px rgba(167,139,250,0.5); }
+  .wm-bot { font-size:52px; font-weight:900; letter-spacing:3px; padding-left:3px; color:#22d3ee;
+    background:linear-gradient(180deg,#a5f3fc 0%,#22d3ee 55%,#a855f7 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 16px rgba(34,211,238,0.55)); }
+  .tagline { font-size:12px; color:#7c8db5; letter-spacing:2px; text-transform:uppercase; margin-top:2px; }
+
+  /* ===== mode cards — the three ways to play (one-tap launch, Fitts-friendly) ===== */
+  #mode-cards { display:flex; gap:10px; margin:8px 0 2px; width:min(340px,92%); }
+  .mode-card { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    background:#12172b; border:1.5px solid #2a3358; border-radius:16px; padding:10px 4px 9px; cursor:pointer;
+    transition:all .18s; min-width:0; }
+  .mode-card:hover { border-color:#22d3ee; transform:translateY(-2px); box-shadow:0 6px 18px rgba(34,211,238,0.22); }
+  .mode-card:active { transform:translateY(0) scale(0.97); }
+  .mode-card.active { border-color:transparent; background:linear-gradient(160deg,#1b2a52,#12172b 70%);
+    box-shadow:0 0 0 1.5px #22d3ee, 0 6px 22px rgba(34,211,238,0.35); }
+  .mc-emoji { font-size:26px; line-height:1.15; }
+  .mc-name { font-size:13px; font-weight:800; color:#e2e8f0; letter-spacing:0.3px; }
+  .mc-tag { font-size:9.5px; font-weight:700; color:#7c8db5; letter-spacing:0.3px; text-align:center; line-height:1.25; }
+  .mc-best { font-size:9px; font-weight:800; color:#facc15; letter-spacing:0.3px; margin-top:1px;
+    background:rgba(250,204,21,0.10); border:1px solid rgba(250,204,21,0.28); border-radius:999px; padding:1px 8px; line-height:1.5; }
+  .mc-best.zero { color:#5b6b92; background:rgba(91,107,146,0.10); border-color:rgba(91,107,146,0.28); }
+  .mode-card.active .mc-name { color:#a5f3fc; }
+  .mode-card.active .mc-tag { color:#94a3b8; }
+  .mode-card.active .mc-best { color:#fde68a; border-color:rgba(250,204,21,0.45); }
+  .mc-play { position:absolute; top:-8px; right:-8px; font-size:12px; background:#22d3ee; color:#06121a;
+    border-radius:999px; padding:2px 7px; font-weight:900; box-shadow:0 2px 8px rgba(34,211,238,0.5); }
+  .mode-hint { font-size:10.5px; color:#5b6b92; letter-spacing:1.2px; text-transform:uppercase; margin:3px 0 0; }
+
+  /* ===== 🎚️ per-mode difficulty — Gentle / Standard / Challenging (menu row + per-card badge) ===== */
+  #diff-row { display:flex; align-items:center; gap:8px; margin:4px 0 2px; width:min(340px,92%); }
+  .diff-seg { display:flex; background:#0d1224; border:1px solid #2a3358; border-radius:999px; padding:2px; flex:1; min-width:0; }
+  .diff-seg-btn { flex:1; font-size:10px; font-weight:800; color:#7c8db5; background:transparent; border:0;
+    border-radius:999px; padding:5px 4px; cursor:pointer; transition:all .15s; letter-spacing:0.3px; }
+  .diff-seg-btn:hover { color:#e2e8f0; }
+  .diff-seg-btn.active { background:#22d3ee; color:#06121a; box-shadow:0 2px 8px rgba(34,211,238,0.35); }
+  .diff-for { font-size:9.5px; font-weight:700; color:#5b6b92; white-space:nowrap; }
+  .mc-diff { margin-top:2px; font-size:8px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; line-height:1.5;
+    background:rgba(126,231,168,0.12); border:1px solid rgba(126,231,168,0.30); color:#7ee7a8; border-radius:999px;
+    padding:1px 7px; cursor:pointer; transition:all .15s; }
+  .mc-diff:hover { transform:translateY(-1px); box-shadow:0 2px 8px rgba(126,231,168,0.25); }
+  .mc-diff.d-standard { background:rgba(34,211,238,0.12); border-color:rgba(34,211,238,0.30); color:#7dd3fc; }
+  .mc-diff.d-standard:hover { box-shadow:0 2px 8px rgba(34,211,238,0.25); }
+  .mc-diff.d-hard { background:rgba(251,146,60,0.12); border-color:rgba(251,146,60,0.32); color:#fdba74; }
+  .mc-diff.d-hard:hover { box-shadow:0 2px 8px rgba(251,146,60,0.25); }
+  .order-row.arcade-row { justify-content:center; }
+  .order-row.arcade-row .order-items { width:auto; }
+  #ctrl-row { display:flex; gap:8px; margin:0 0 14px; }
+  .ctrl-btn { background:#161b2e; color:#cbd5e1; border:1px solid #2a3358; border-radius:10px; padding:11px 16px; font-size:13px; font-weight:700; cursor:pointer; min-height:42px; }
+  .ctrl-btn.active { background:linear-gradient(135deg,#22d3ee,#a855f7); color:#06121a; border-color:transparent; }
+  #lift-row { width:100%; max-width:300px; margin:0 0 14px; display:flex; align-items:center; gap:10px; transition:opacity .25s; }
+  #lift-row.off { opacity:0.45; }
+  #lift-label { font-size:12px; color:#94a3b8; white-space:nowrap; }
+  #lift-val { color:#facc15; font-weight:800; margin-left:4px; }
+  #lift-slider { flex:1; -webkit-appearance:none; appearance:none; height:6px; border-radius:3px; background:#2a3358; outline:none; cursor:pointer; }
+  #lift-slider::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#22d3ee,#a855f7); border:2px solid #06121a; cursor:pointer; }
+  #lift-slider::-moz-range-thumb { width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#22d3ee,#a855f7); border:2px solid #06121a; cursor:pointer; }
+  #daily-row { width:min(300px,88%); margin:10px 0 0; }
+  #daily-btn { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; background:linear-gradient(135deg,#f59e0b,#ef4444); color:#1a0d00; border:none; border-radius:14px; padding:10px 16px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 4px 16px rgba(245,158,11,0.35); transition:filter .15s, transform .15s; }
+  #daily-btn:hover { filter:brightness(1.08); transform:translateY(-1px); }
+  .db-badge { background:rgba(0,0,0,0.20); color:#fff; border-radius:999px; padding:3px 11px; font-size:11px; font-weight:800; letter-spacing:0.4px; }
+  #daily-sub { font-size:11px; color:#fbbf24; margin-top:6px; letter-spacing:0.3px; }
+  #daily-sub.done { color:#22c55e; }
+  #trophy-row { display:flex; gap:5px; flex-wrap:wrap; justify-content:center; margin-bottom:16px; max-width:340px; }
+  .trophy { font-size:20px; opacity:1; filter:none; transition:all .3s; }
+  .trophy.locked { opacity:0.18; filter:grayscale(1); }
+  #msg-btn { background:#161b2e; color:#e2e8f0; border:1px solid #2a3358; border-radius:12px; padding:12px 30px; font-size:15px; font-weight:800; cursor:pointer; transition:border-color .15s, transform .15s; }
+  #msg-btn:hover { border-color:#22d3ee; transform:translateY(-1px); }
+  #msg-btn.primary-btn { background:linear-gradient(135deg,#22d3ee,#a855f7); color:#06121a; border:none; box-shadow:0 4px 18px rgba(34,211,238,0.4); }
+  #msg-btn.primary-btn:hover { filter:brightness(1.1); }
+  .ghost-btn { background:transparent; color:#94a3b8; border:1px solid #2a3358; border-radius:12px; padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer; transition:color .15s, border-color .15s; }
+  .ghost-btn:hover { color:#e2e8f0; border-color:#22d3ee; }
+  /* mode cards are the play buttons — the one-tap CTAs (breathing glow on the active card) */
+  @keyframes cta-breathe { 0%,100%{ transform:scale(1); box-shadow:0 0 0 1.5px #22d3ee, 0 6px 22px rgba(34,211,238,0.35) } 50%{ transform:scale(1.02); box-shadow:0 0 0 1.5px #22d3ee, 0 6px 30px rgba(34,211,238,0.6) } }
+  .mode-card.active { animation:cta-breathe 2.2s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .mode-card.active { animation:none; } }
+  .stat-strip { margin:9px 0 6px; font-size:12px; color:#94a3b8; letter-spacing:0.4px; }
+  .stat-strip b { color:#facc15; }
+  .tool-row { display:flex; gap:8px; margin-top:2px; flex-wrap:wrap; justify-content:center; }   /* 5th tool (⚙️ Settings) wraps gracefully on narrow phones */
+  .tool-btn { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; width:66px; height:54px; background:#161b2e; color:#94a3b8; border:1px solid #2a3358; border-radius:14px; font-size:20px; cursor:pointer; transition:all .15s; }
+  .tool-btn span { font-size:10px; font-weight:800; color:#7c8db5; letter-spacing:0.5px; }
+  .tool-btn:hover { border-color:#22d3ee; color:#e2e8f0; transform:translateY(-2px); box-shadow:0 4px 14px rgba(34,211,238,0.2); }
+  .tool-btn:hover span { color:#e2e8f0; }
+  /* ===== trophies screen ===== */
+  .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; width:min(330px,92%); margin:0 0 14px; }
+  .trophy-cell { display:flex; flex-direction:column; align-items:center; gap:3px; background:#161b2e; border:1px solid #2a3358; border-radius:10px; padding:5px 4px 4px; }
+  .trophy-cell .tc-emoji { font-size:20px; }
+  .trophy-cell .tc-name { font-size:8.5px; color:#cbd5e1; text-align:center; line-height:1.25; }
+  .trophy-cell.locked { opacity:0.35; filter:grayscale(1); }
+  .trophy-cell.locked .tc-name { color:#64748b; }
+  /* ===== career screen ===== */
+  .career-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; width:min(300px,92%); margin:0 0 12px; }
+  .career-cell { display:flex; flex-direction:column; align-items:center; gap:1px; background:#161b2e; border:1px solid #2a3358; border-radius:10px; padding:7px 4px 6px; }
+  .career-cell .cc-em { font-size:18px; line-height:1.2; }
+  .career-cell .cc-val { font-size:16px; font-weight:800; color:#facc15; line-height:1.15; }
+  .career-cell .cc-name { font-size:8.5px; color:#7c8db5; letter-spacing:0.4px; text-align:center; }
+  .rank-box { width:min(300px,92%); background:#161b2e; border:1px solid #2a3358; border-radius:12px; padding:8px 12px 9px; margin:0 0 10px; }
+  .rank-line { display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+  .rank-em { font-size:20px; line-height:1; }
+  .rank-name { font-size:14px; font-weight:800; color:#e2e8f0; }
+  .rank-next { margin-left:auto; font-size:9.5px; color:#5b6b92; text-align:right; }
+  .rank-bar { height:10px; background:#0f1424; border:1px solid #2a3358; border-radius:6px; overflow:hidden; }
+  .rank-fill { height:100%; background:linear-gradient(90deg,#a855f7,#22d3ee); border-radius:6px; }
+  .rank-sub { font-size:10px; color:#64748b; margin-top:4px; }
+  .boss-row { display:flex; align-items:center; justify-content:center; gap:10px; width:min(300px,92%); margin:0 0 10px; }
+  .boss-chip { font-size:26px; line-height:1; opacity:1; filter:none; transition:all .3s; }
+  .boss-chip.locked { opacity:0.18; filter:grayscale(1); }
+  .boss-count { font-size:11px; font-weight:800; color:#94a3b8; }
+  .pm-row { display:flex; gap:6px; width:min(300px,92%); margin:0 0 12px; }
+  .pm-cell { flex:1; display:flex; flex-direction:column; align-items:center; gap:1px; background:#161b2e; border:1px solid #2a3358; border-radius:10px; padding:6px 2px 5px; min-width:0; }
+  .pm-em { font-size:16px; line-height:1.2; }
+  .pm-val { font-size:13px; font-weight:800; color:#facc15; }
+  .career-line { font-size:11px; color:#94a3b8; margin:0 0 14px; text-align:center; }
+  /* ===== seed codes screen ===== */
+  #seed-input { width:min(280px,92%); background:#0f1424; border:2px solid #2a3358; border-radius:10px; color:#a5f3fc; font-size:18px; font-weight:800; letter-spacing:2px; text-align:center; padding:11px 10px; margin:0 0 8px; outline:none; transition:border-color .2s, box-shadow .2s; }
+  #seed-input:focus { border-color:#22d3ee; box-shadow:0 0 12px rgba(34,211,238,0.35); }
+  #seed-input::placeholder { color:#3b4a7a; font-weight:600; letter-spacing:1px; font-size:14px; }
+  #seed-msg { min-height:20px; margin:0 0 10px; }
+  #seed-msg.bad { color:#fca5a5; }
+  #seed-msg.good { color:#4ade80; }
+  #seed-row { display:flex; align-items:center; justify-content:center; gap:10px; margin:0 0 12px; font-size:14px; font-weight:800; color:#a5f3fc; letter-spacing:1px; }
+  #copy-seed { background:#161b2e; color:#94a3b8; border:1px solid #2a3358; border-radius:8px; padding:4px 12px; font-size:12px; font-weight:800; cursor:pointer; transition:all .15s; }
+  #copy-seed:hover { border-color:#22d3ee; color:#e2e8f0; }
+  #copy-seed.copied { color:#4ade80; border-color:#22c55e; }
+  #key-list { width:100%; max-width:300px; display:flex; flex-direction:column; gap:8px; margin:0 0 16px; }
+  .key-btn { display:flex; justify-content:space-between; align-items:center; gap:10px; background:#161b2e; color:#cbd5e1; border:1px solid #2a3358; border-radius:10px; padding:11px 14px; font-size:13px; font-weight:700; cursor:pointer; min-height:42px; text-align:left; }
+  .key-btn:hover { border-color:#22d3ee; color:#e2e8f0; }
+  .key-btn.capturing { border-color:#facc15; color:#facc15; animation:lowpulse 0.7s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .key-btn.capturing { animation:none; } }
+  .key-cap { color:#22d3ee; font-weight:600; white-space:nowrap; }
+  .ctrl-for { width:100%; font-size:11px; color:#64748b; text-align:center; margin-top:2px; }
+  #controls-hint { max-width:520px; margin:8px auto 0; font-size:12px; color:#64748b; text-align:center; line-height:1.6; }
+  kbd { background:#161b2e; border:1px solid #2a3358; border-radius:4px; padding:0 5px; font-family:inherit; font-size:11px; }
+  /* ---- landscape / short-window compact layout: the vertical stack must fit a ~360–430px-tall
+     viewport without clipping (the playfield shrinks by height, overlays hug the canvas) ---- */
+  @media (max-height: 500px){
+    #game-wrap { padding:4px 0;
+      padding:max(4px,env(safe-area-inset-top)) max(env(safe-area-inset-right),0px) max(4px,env(safe-area-inset-bottom)) max(env(safe-area-inset-left),0px); }
+    #ui-bar { gap:4px; margin-bottom:4px; }
+    #ui-bar .stat { font-size:11px; padding:2px 7px; }
+    #combo-box { margin-top:3px; height:8px; }
+    #combo-bar { height:6px; }
+    #combo-num { font-size:10px; min-width:26px; }
+    #order-box { margin-top:5px; padding:4px 8px; gap:2px; max-height:84px; overflow-y:auto; }
+    .order-patron { font-size:16px; width:18px; }
+    .order-mood { font-size:11px; width:16px; }
+    .order-patience { width:40px; height:7px; }
+    .order-item { width:24px; height:24px; }
+    #canvas-container { width:fit-content; max-width:100%; margin:0 auto; }   /* container hugs the canvas so overlays stay aligned */
+    /* 114px = measured chrome budget around the canvas in compact mode (one-row HUD + slim orders + legend);
+       the whole stack must end inside the viewport — no clipped legend, no page scroll on a landscape phone */
+    #canvas-container canvas { width:auto; height:calc(100vh - 114px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); max-width:100%; }
+    #controls-hint { margin-top:4px; font-size:10px; line-height:1.35; }
+    /* ---- compact title screen for short viewports: the menu is a full-viewport modal in landscape,
+       so the hero, mode cards, Daily, stats AND all five nav buttons fit without any scrolling ---- */
+    #msg-overlay { position:fixed; inset:0; border-radius:0; padding:12px 14px; }
+    #pause-btn { position:fixed; top:max(8px,env(safe-area-inset-top)); left:max(8px,env(safe-area-inset-left)); }   /* pause is left-anchored: clear the left safe band too */
+    #mute-btn { position:fixed; top:max(8px,env(safe-area-inset-top)); right:max(8px,env(safe-area-inset-right)); }  /* 🔊/🎵 are right-anchored; music stacks 52px below mute (44px button + 8px gap) */
+    #music-btn { position:fixed; top:calc(max(8px,env(safe-area-inset-top)) + 52px); right:max(8px,env(safe-area-inset-right)); }
+    .menu-hero { margin-bottom:2px; }
+    .hero-field { height:44px; }
+    .wm-top { font-size:11px; letter-spacing:7px; padding-left:7px; }
+    .wm-bot { font-size:32px; letter-spacing:2px; padding-left:2px; }
+    .tagline { font-size:9px; margin-top:1px; }
+    #mode-cards { gap:8px; margin:4px 0 1px; }
+    .mode-card { padding:5px 3px 5px; border-radius:12px; gap:1px; }
+    .mc-emoji { font-size:20px; line-height:1.1; }
+    .mc-name { font-size:12px; }
+    .mc-tag { font-size:8.5px; line-height:1.15; }
+    .mc-best { font-size:8px; margin-top:0; padding:0 6px; }
+    .mode-hint { font-size:9px; margin:2px 0 0; }
+    #daily-row { margin:4px 0 0; }
+    #daily-btn { padding:6px 12px; font-size:12.5px; border-radius:11px; }
+    #daily-sub { font-size:10px; margin-top:3px; }
+    .stat-strip { margin:4px 0 3px; font-size:10.5px; }
+    .tool-row { gap:6px; margin-top:1px; }
+    .tool-btn { width:58px; height:44px; font-size:17px; }
+    .tool-btn span { font-size:9px; }
+    #diff-row { gap:6px; margin:2px 0 1px; }
+    .diff-for { display:none; }
+    .diff-seg-btn { padding:4px 2px; font-size:9px; }
+    .mc-diff { display:none; }
+  }
+</style>
+</head>
+<body>
+<div id="game-wrap">
+  <div id="ui-bar">
+    <div class="stat">💰 <span id="score-val">0</span></div>
+    <div class="stat">📦 <span id="orders-val">0</span></div>
+    <div class="stat">⚙️ <span id="level-val">1</span></div>
+    <div class="stat">⏱ <span id="time-val">60</span></div>
+    <div class="stat" id="lives-pill">❤️ <span id="lives-val">❤️❤️❤️❤️❤️</span></div>
+    <div class="stat hi">🏆 <span id="best-val">0</span></div>
+  </div>
+  <div id="combo-box">
+    <div id="combo-bar"><div id="combo-fill"></div></div>
+    <div id="combo-num"></div>
+  </div>
+  <div id="order-box"><div id="order-items"></div></div>
+  <div id="canvas-container">
+    <canvas id="game"></canvas>
+    <button id="pause-btn" title="Pause (P)">⏸</button>
+    <button id="mute-btn" title="Mute (M)">🔊</button>
+    <button id="music-btn" title="Music (N)">🎵</button>
+    <div id="msg-overlay"></div>
+    <div id="tut-card"></div>
+  </div>
+  <div id="controls-hint"><kbd>←</kbd><kbd>→</kbd> or <kbd>A</kbd><kbd>D</kbd> move · ✋ drag / 👆 tap · 2nd finger 🔧 skip · 🎮 stick · ⌨️ remap · catch parts · dodge junk · <kbd>P</kbd> pause · <kbd>M</kbd> mute · <kbd>N</kbd> music</div>
+</div>
+<script>
+(function(){
+'use strict';
+/* =====================================================================
+   COMPUTER CHAOS 6 — single-file arcade release build
+   wordless emoji catch-and-sort · dt-based sim · pooled FX · procedural
+   audio + music · pause/auto-pause · achievements · ranks · modes
+   ===================================================================== */
+
+/* ---------------- CONFIG & CONSTANTS ---------------- */
+var W=520, H=440, STEP=1/60;
+var CATCH_X=14, CATCH_Y=30;          // generous catch window (game feel)
+var TRAY_Y=H-60;                     // catch line (logical y)
+var GAME_TIME=60;                    // seconds per shift
+var LIVES=5;
+var POWER_KEYS={coffee:6, magnet:6, wrench:3}; // seconds (wrench: catch = instant skip; stays hot for a 2nd-finger bonus skip)
+var DRAG_LERP=28;                    // tray follow smoothing (higher = snappier)
+var LIFT_MIN=60;                     // ☝️ lift mode: tray can't float above this Y (stays on-screen)
+var HOLD_DRAG=10;                     // ✊ hold: pointer travel before the tray starts following again
+var GRACE_SEC=3;                        // 🛡️ no-fail grace: shield seconds after every hit (+ at shift start)
+
+/* 📊 BALANCE: the four level-scaling curves live in one table — tune numbers here,
+   never in gameplay code. Values are the pre-existing curves, byte-identical. */
+var BALANCE={
+  junkBase:0.08, junkPerLevel:0.006, junkCap:0.20,      // junk drop chance vs level (cap: 26%→20% gentler ceiling; base+ramp cut so early shifts stay fair)
+  speedRand:1.0, speedBaseMul:60, speedPerLevel:7, speedPlateau:15,  // fall speed vs level (plateau: 110px dodge window stays fair)
+  spawnBase:0.67, spawnPerLevel:0.024, spawnFloor:0.3,  // spawn interval vs level (floor 0.3s keeps the line readable)
+  patienceBase:1.4, patiencePerDiff:0.7                 // patience drain vs order difficulty
+};
+function graceOn(){ return lsGet('cc7_grace','0')==='1'; }   // Settings → 🛡️ No-fail grace
+
+var JUNK=['🍌','🧦','🐱','📎','🪲'];
+var POWERUPS=['☕','🔧','🧲'];
+var MAX_VIS_ITEMS=12;   // 🚦 readability: soft density cap — the bench stays readable (research: 5–8 objects ideal; the 42 hard cap stays as the engine safety net)
+var GOOD_BG='#ede9fe', GOOD_BORDER='#7c3aed';
+var JUNK_BG='#ffedd5', JUNK_BORDER='#ea580c';
+var POW_BG='#fef9c3', POW_BORDER='#ca8a04';
+var CONTAM_BG='#fee2e2', CONTAM_BORDER='#dc2626';   // 🫗 mystery-liquid / 📦 out-of-stock styling
+
+/* ============ CONTENT BRIEF DATA — 24/25-part catalog, 10 order templates,
+   8 patron archetypes, 10 chaos events, 3 boss waves (all wordless in-game) ============ */
+/* [code, emoji, group, spawnWeight, rarity] — brief 1A/1B/1C (25 listed rows) */
+var PARTS=[
+  ['cpu','🧠','core',10,'common'], ['gpu','🎮','core',8,'uncommon'], ['ram','🟩','core',12,'common'],
+  ['psu','🔌','core',8,'uncommon'], ['mobo','🟦','core',6,'rare'],   ['ssd','💾','core',12,'common'],
+  ['hdd','💿','core',9,'common'],   ['fan','🌀','core',11,'common'], ['cable','🔗','core',14,'common'],
+  ['paste','🥛','core',7,'uncommon'],['heatsink','❄️','core',7,'uncommon'],['wifi','📡','core',7,'uncommon'],
+  ['keyboard','⌨️','periph',14,'common'],['mouse','🖱️','periph',14,'common'],['monitor','🖥️','periph',9,'common'],
+  ['screen','📺','periph',7,'uncommon'],['webcam','📷','periph',6,'uncommon'],['headset','🎧','periph',6,'uncommon'],
+  ['battery','🔋','periph',9,'common'],['floppy','💽','periph',6,'common'],['avusb','🛡️','periph',5,'rare'],
+  ['screw','🔩','consum',16,'common'],['pad','🟫','consum',8,'uncommon'],['wipe','🧻','consum',9,'common'],
+  ['label','🏷️','consum',8,'common']
+];
+var PART={};                                    // code -> {emoji, group, weight, rarity}
+var PART_EMOJI={}, PART_CODES=[], PART_WEIGHTED=[];
+var PART_WEIGHT_TOTAL=0;
+PARTS.forEach(function(p){
+  PART[p[0]]={emoji:p[1], group:p[2], weight:p[3], rarity:p[4]};
+  PART_EMOJI[p[0]]=p[1]; PART_CODES.push(p[0]);
+  PART_WEIGHTED.push(p[3]); PART_WEIGHT_TOTAL+=p[3];
+});
+/* brief §2 repair order templates (parts may repeat: catch it twice) */
+var ORDER_TEMPLATES=[
+  {id:'ord_ram',   parts:['ram','screw'],                              diff:1, reward:100},
+  {id:'ord_virus', parts:['avusb','ssd'],                              diff:1, reward:120},
+  {id:'ord_psu',   parts:['psu','cable','screw'],                      diff:2, reward:180},
+  {id:'ord_screen',parts:['screen','screw','wipe'],                    diff:2, reward:200},
+  {id:'ord_clean', parts:['fan','wipe','paste','heatsink'],            diff:2, reward:220},
+  {id:'ord_wifi',  parts:['wifi','screw','cable'],                     diff:2, reward:180},
+  {id:'ord_data',  parts:['hdd','cable','avusb','label'],              diff:3, reward:280},
+  {id:'ord_build', parts:['cpu','gpu','ram','psu','mobo','ssd','fan'], diff:4, reward:500},
+  {id:'ord_laptop',parts:['battery','ssd','fan','screw','wipe','paste'],diff:4, reward:420},
+  {id:'ord_server',parts:['cpu','ram','ram','hdd','psu','mobo','cable','fan'], diff:5, reward:600}
+];
+/* ⚡ arcade keeps the V5 spirit: small jobs made only of the 5 classic parts */
+var ARCADE_TEMPLATES=[
+  {id:'ard_key',  parts:['keyboard','mouse'],                diff:1, reward:100},
+  {id:'ard_desk', parts:['monitor','keyboard'],              diff:1, reward:110},
+  {id:'ard_boot', parts:['battery','ssd'],                   diff:1, reward:120},
+  {id:'ard_rig',  parts:['keyboard','monitor','mouse'],      diff:2, reward:180},
+  {id:'ard_work', parts:['monitor','keyboard','battery'],    diff:2, reward:190},
+  {id:'ard_lan',  parts:['keyboard','mouse','ssd'],          diff:2, reward:200}
+];
+/* 🧘 relaxed keeps the shop's depth but on a curated 12-part catalog — all-common,
+   easy-to-spot parts (the 5 arcade classics carry over), so recognition is effortless */
+var RELAXED_TEMPLATES=[
+  {id:'rlx_key',  parts:['keyboard','mouse'],              diff:1, reward:100},
+  {id:'rlx_desk', parts:['monitor','keyboard'],            diff:1, reward:110},
+  {id:'rlx_boot', parts:['battery','ssd'],                 diff:1, reward:120},
+  {id:'rlx_clean',parts:['fan','wipe'],                    diff:1, reward:120},
+  {id:'rlx_plug', parts:['cable','screw'],                 diff:1, reward:110},
+  {id:'rlx_rig',  parts:['keyboard','monitor','mouse'],    diff:2, reward:180},
+  {id:'rlx_work', parts:['monitor','keyboard','battery'],  diff:2, reward:190},
+  {id:'rlx_lan',  parts:['keyboard','mouse','ssd'],        diff:2, reward:200},
+  {id:'rlx_cool', parts:['fan','hdd','cable'],             diff:2, reward:180},
+  {id:'rlx_build',parts:['cpu','ram','ssd','fan'],         diff:2, reward:240}
+];
+function pickOrderTemplate(s){
+  var rules=modeRules(s);
+  var set=rules.tpl==='arcade'?ARCADE_TEMPLATES:(rules.tpl==='relaxed'?RELAXED_TEMPLATES:null);  // ⚡ arcade: 5 classics · 🧘 relaxed: curated 12 (small jobs, easy-to-spot parts)
+  if(set){  // curated modes: friendly small jobs, capped at the same gentle diff curve
+    var ap=[];
+    for(var k=0;k<set.length;k++){ if(set[k].diff<=Math.min(2,1+Math.floor(s.level/2))) ap.push(set[k]); }
+    return ap[Math.floor(Math.random()*ap.length)];
+  }
+  /* 🛠️ pro / 🌞 daily: difficulty pool grows with level; bosses bias toward their theme */
+  var maxDiff=Math.min(5,1+Math.floor(s.level/2));
+  if(s.boss&&s.boss.def.easyOrders) maxDiff=Math.min(maxDiff,2);
+  if(s.boss&&s.boss.def.id==='melt') maxDiff=5;   // 🌡️ meltdown demands long server-style orders
+  var pool=[];
+  for(var i=0;i<ORDER_TEMPLATES.length;i++){ if(ORDER_TEMPLATES[i].diff<=maxDiff) pool.push(ORDER_TEMPLATES[i]); }
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+/* brief §4A patron archetypes — wordless: avatar emoji + mood emoji, patience bar */
+var PATRON_AVATARS=[['🧑','😊'],['🦹','😠'],['🧓','🙂'],['👨‍💻','😰'],['👩‍🎓','😐'],['🧒','😌'],['👨‍🍳','😱'],['🧑‍🎤','🤩']];
+function freshPatron(){
+  var p=PATRON_AVATARS[Math.floor(Math.random()*PATRON_AVATARS.length)];
+  return {av:p[0], mood:p[1], pat:80+Math.floor(Math.random()*20)};   // patience 80–100
+}
+function patronMood(p){
+  if(p.pat<=20) return '💢'; if(p.pat<=45) return '😠'; if(p.pat<=70) return '😐'; return p.mood;
+}
+/* brief §3 — all 10 chaos events (4 originals + 6 new), fx tag drives the effect */
+var CHAOS_DEF={
+  coffee:  {emoji:'☕', dur:8,  color:'#b45309', name:'Spilled coffee',   fx:'smudge'},
+  static:  {emoji:'🥶', dur:1.2,color:'#7dd3fc', name:'Static shock',    fx:'freeze'},
+  wrongpart:{emoji:'🔄',dur:0,  color:'#f472b6', name:'Wrong part',      fx:'reset'},
+  angry:   {emoji:'😡', dur:0,  color:'#fb7185', name:'Angry customer',  fx:'patience'},
+  surge:   {emoji:'⚡', dur:6,  color:'#fb923c', name:'Power surge',     fx:'flip'},
+  cat:     {emoji:'🐱', dur:7,  color:'#fbbf24', name:'Cat on keyboard', fx:'reverse'},
+  deadpsu: {emoji:'🔌', dur:9,  color:'#94a3b8', name:'Dead PSU',        fx:'flicker'},
+  bios:    {emoji:'🔔', dur:5,  color:'#f87171', name:'BIOS beep hell',  fx:'bios'},
+  liquid:  {emoji:'🫗', dur:4,  color:'#34d399', name:'Mystery liquid',  fx:'liquid'},
+  cable:   {emoji:'🔀', dur:6,  color:'#60a5fa', name:'Cable spaghetti', fx:'cable'}
+};
+/* brief §5 — three boss waves, cycled every 12 orders */
+var BOSSES=[
+  /* wave defs re-tuned for the 60s shift (they run ~15–20s now, not the old unreachable 35s) */
+  {id:'rush',  emoji:'🛒', orders:3, speedMul:1.3, patienceMul:1.75,junkAdd:0.13, bias:['angry','cat'],  gimmick:'queue', heat:false, coreOnly:false, easyOrders:false},
+  {id:'melt',  emoji:'🌡️',orders:2, speedMul:1.15,patienceMul:1.35,junkAdd:0.05, bias:['deadpsu','bios','surge'], gimmick:'heat', heat:true, coreOnly:true,  easyOrders:false},
+  {id:'school',emoji:'🎒', orders:2, speedMul:1.1, patienceMul:1.2, junkAdd:0.08, bias:['coffee','liquid','cable'], gimmick:'stock', heat:false, coreOnly:false, easyOrders:true}
+];
+function bossFor(){   // 🛒🌡️🎒 wave pick: a boss you haven't cleared yet first (career collection), then any
+  if(FORCE_BOSS){ for(var fi=0;fi<BOSSES.length;fi++){ if(BOSSES[fi].id===FORCE_BOSS){ FORCE_BOSS=null; return BOSSES[fi]; } } FORCE_BOSS=null; }
+  var unseen=[]; for(var bi=0;bi<BOSSES.length;bi++){ if(!BOSSCLEAR[BOSSES[bi].id]) unseen.push(BOSSES[bi]); }
+  var pool=unseen.length?unseen:BOSSES;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+/* Achievements (wordless trophies; names shown only on menu) */
+var ACH=[
+  ['first','🏆','First order'],
+  ['c5','🔥','5× combo'],
+  ['c10','💥','10× combo'],
+  ['s1k','💯','Score 1,000+'],
+  ['o8','🛠️','8 orders in a shift'],
+  ['chaos','⚡','Survive a chaos event'],
+  ['coffee','☕','Use slow-mo coffee'],
+  ['magnet','🧲','Use the magnet'],
+  ['wrench','🔧','Use the wrench'],
+  ['flush','❤️','Finish with full lives'],
+  ['lv5','🚀','Reach level 5'],
+  ['best','🏅','Set a new best score'],
+  ['daily','🌞','Beat the daily target'],
+  ['d3','🎯','3-day daily streak'],
+  ['d7','💫','7-day daily streak'],
+  ['boss','🛒','Survive a boss wave'],
+  ['boss3','👑','Beat all three bosses']
+];
+
+/* ---------------- CANVAS / DPR ---------------- */
+var canvas=document.getElementById('game');
+var ctx=canvas.getContext('2d');
+var DPR=Math.min(2, window.devicePixelRatio||1);
+canvas.width=W*DPR; canvas.height=H*DPR; ctx.scale(DPR,DPR);
+
+var REDUCED=!!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+/* ---------------- DOM REFS ---------------- */
+var el={};
+['score-val','orders-val','level-val','time-val','lives-val','best-val','combo-fill','combo-num','combo-bar',
+ 'order-items','msg-overlay','pause-btn','mute-btn','music-btn','lives-pill','msg-btn','msg-btn2',
+ 'new-best','msg-title','msg-sub','msg-stats','msg-stats2','mode-row','trophy-row','tut-card']
+.forEach(function(id){ el[id]=document.getElementById(id); });
+
+/* ---------------- PERSISTENCE ---------------- */
+var LS={};
+try{ LS=window.localStorage; }catch(e){}
+function lsGet(k,d){ try{ var v=LS.getItem(k); return v==null?d:v; }catch(e){ return d; } }
+function lsSet(k,v){ try{ LS.setItem(k, String(v)); }catch(e){} }
+
+var bestScore=parseInt(lsGet('cc7_best',''),10)||parseInt(lsGet('cc4_best','0'),10)||0; // migrate V4 best
+function bestForMode(m){   /* 🏅 per-mode ladders: each way to play keeps its own best */
+  if(m==='daily') return parseInt(lsGet('cc7_daily_best','0'),10)||0;
+  return parseInt(lsGet('cc7_best_'+m,'0'),10)||0;
+}
+if(bestScore>0&&lsGet('cc7_best_pro','')==='') lsSet('cc7_best_pro',bestScore);   // legacy best was earned under full-game (pro) rules
+var bestCombo=parseInt(lsGet('cc7_bestcombo','0'),10)||0;
+var totalOrders=parseInt(lsGet('cc7_total','0'),10)||0;
+var runsPlayed=parseInt(lsGet('cc7_runs','0'),10)||0;
+var unlocked={};
+try{ JSON.parse(lsGet('cc7_ach','[]')||'[]').forEach(function(c){ unlocked[c]=true; }); }catch(e){}
+var BOSSCLEAR={};   // 👑 career-wide boss collection (persists across runs; each wave whose full order quota is completed adds its boss)
+try{ JSON.parse(lsGet('cc7_bosses','[]')||'[]').forEach(function(c){ BOSSCLEAR[c]=true; }); }catch(e){}
+var FORCE_BOSS=null;   // harness-only: force the next wave's boss (deterministic tests)
+var musicOn=lsGet('cc7_music','1')!=='0';
+/* ---- V7: one game, multiple ways to play ----
+   ⚡ Arcade  = V5's classic loop (5 parts, 4 chaos, single order, no patrons/bosses)
+   🛠️ Pro     = V6's full sim (25 parts, 10 chaos, patrons+tips, bosses, multi-order)
+   🧘 Relaxed = zen (curated 12-part catalog, zero chaos, rare junk, patient patrons, slower)
+   🌞 Daily   = seeded daily challenge (pro rules + world target + streak)         */
+var MODE_DEF={
+  arcade:{
+    label:'⚡ Arcade', tag:'fast · classic parts',
+    catalog:['keyboard','monitor','mouse','battery','ssd'],  // V5's 5 classics
+    chaos:['cat','surge','coffee','static'],                 // V5's 4 chaos events
+    patrons:false, bosses:false, queueCap:1, tpl:'arcade',
+    speedMul:1.2, junkMul:1.45, timer:60, spawnMul:0.94, earlyEase:0.3, overtime:10   // ⚡ fast: 6% snappier line (density cap keeps it fair); junk +45% (rebalance target 5-12% death); 🛹 early-shift grace; ⏱️ post-bell grace
+  },
+  pro:{
+    label:'🛠️ Pro', tag:'patrons · bosses · 25 parts',
+    catalog:null, chaos:null,                               // full catalog + all chaos
+    patrons:true, bosses:true, queueCap:'level',
+    speedMul:1.15, junkMul:1.18, timer:60                   // 60s shift; boss wave at order 6 — defeat its order quota to end it (rebalance target 25-35% death)
+  },
+  daily:{                                                  // 🌞 = seeded pro, but ALWAYS 60s (uniform world target)
+    label:'🌞 Daily Challenge', tag:'beat the world target',
+    catalog:null, chaos:null,
+    patrons:true, bosses:true, queueCap:'level',
+    speedMul:1.1, junkMul:1.0, timer:60                     // keeps the pre-rebalance pro pace — daily's uniform world target stays stable (its boss waves share the BOSSES table, so they carry the hotter wave patience)
+  },
+  relaxed:{
+    label:'🧘 Relaxed', tag:'zen · no chaos',
+    catalog:['keyboard','monitor','mouse','battery','ssd','cpu','ram','hdd','fan','cable','screw','wipe'],  // 🧘 curated 12: all-common, easy-to-spot (5 arcade classics carry over)
+    chaos:[], tpl:'relaxed',
+    patrons:true, bosses:false, queueCap:'level',
+    speedMul:0.7, junkMul:0.2, timer:60, spawnMul:1.6, levelDiv:6, patienceMul:0.7   // 🧘 zen: slow fall, rare junk, calm line + curve; patrons 30% more patient (decay ×0.7)
+  }
+};
+var mode=lsGet('cc7_mode','pro');
+if(!MODE_DEF[mode]) mode='pro';                 // migrate legacy 'classic' save → pro
+
+/* 🎚️ per-mode difficulty — Gentle / Standard / Challenging scale the MODE_DEF knobs at the
+   modeRules chokepoint, so every system (fall speed, junk share, spawn line, level curve,
+   patron patience) follows without touching its call site. Standard is the identity (×1) and
+   takes a fast path that returns the live table untouched. 🌞 Daily (uniform world target) and
+   🔗 seeded replays always play Standard so scores stay comparable and a CC-XXXXX code replays
+   identically for everyone. */
+var DIFF_SCALE={
+  gentle:{ speed:0.85, junk:0.5,  spawn:1.3,  level:1.5, patience:0.8 },    // 🌱 slower fall · rarer junk · calmer line · gentler curve · patient patrons
+  standard:{ speed:1, junk:1, spawn:1, level:1, patience:1 },
+  challenging:{ speed:1.15, junk:1.5, spawn:0.82, level:0.7, patience:1.3 } // 🔥 faster fall · denser junk · snappier line · steeper curve · impatient patrons
+};
+function diffKey(m){ return 'cc7_diff_'+(m||mode); }
+function diffFor(m){ var v=lsGet(diffKey(m),'standard'); return (v==='gentle'||v==='challenging')?v:'standard'; }
+var difficulty=diffFor(mode);                       // the active mode's setting (reloaded on every mode switch)
+function setDifficulty(d){ if(d!=='gentle'&&d!=='standard'&&d!=='challenging') d='standard'; if(d===difficulty) return; difficulty=d; lsSet(diffKey(mode),d); }
+function difficultyFor(s){ return (s&&(s.daily||s.seedCode))?'standard':difficulty; }   // 🌞 daily + 🔗 seeded runs are always Standard
+var modeRules=function(s){
+  var r=MODE_DEF[s&&s.daily?'daily':mode]||MODE_DEF.pro;
+  var sc=DIFF_SCALE[difficultyFor(s)]||DIFF_SCALE.standard;
+  if(sc===DIFF_SCALE.standard) return r;            // 🎚️ Standard = the live table, exactly (zero drift)
+  var o={}; for(var k in r) o[k]=r[k];              // shallow copy — the live table is never mutated (no compounding)
+  o.speedMul=(r.speedMul||1)*sc.speed;
+  o.junkMul=(r.junkMul||1)*sc.junk;
+  o.spawnMul=(r.spawnMul||1)*sc.spawn;
+  o.levelDiv=Math.max(2,Math.round((r.levelDiv||3)*sc.level));
+  o.patienceMul=(r.patienceMul||1)*sc.patience;
+  return o;
+};
+/* Control prefs are remembered PER GAME MODE (⚡ Arcade / 🛠️ Pro / 🧘 Relaxed / 🌞 Daily):
+   each keeps its own Drag/Snap/Lift + lift height, persisted as cc7_ctrl_<mode> /
+   cc7_lift_<mode>. Legacy cc7_ctrl / cc7_drag / cc7_lift keys seed every profile. */
+var PROFILE_KEY={arcade:1, pro:1, relaxed:1, daily:1};
+var PROFILE_NAME={arcade:'⚡ Arcade', pro:'🛠️ Pro', relaxed:'🧘 Relaxed', daily:'🌞 Daily'};
+var CTRL_EMOJI={drag:'✋', snap:'👆', lift:'☝️', lifthold:'✊'};
+function legacyCtrl(){
+  var c=lsGet('cc7_ctrl','');
+  if(c==='snap'||c==='lift') return c;
+  return lsGet('cc7_drag','1')==='0'?'snap':'drag';  // migrate V5.1 control key
+}
+function readCtrl(p){
+  var c=lsGet('cc7_ctrl_'+p,'');
+  if(c==='snap'||c==='lift'||c==='lifthold'||c==='drag') return c;
+  return legacyCtrl();
+}
+function readLift(p){
+  var v=parseInt(lsGet('cc7_lift_'+p,''),10);
+  if(isNaN(v)) v=parseInt(lsGet('cc7_lift','70'),10);   // migrate legacy height
+  if(isNaN(v)) v=70;
+  return Math.max(0,Math.min(180,v));
+}
+var curProfile=PROFILE_KEY[mode]?mode:'pro';  // which mode's controls are live
+var ctrlMode=readCtrl(curProfile);                       // ✋ drag-follow (default) · 👆 tap-snap · ☝️ lift
+var liftOffset=readLift(curProfile);                     // ☝️ lift height (px)
+function loadProfile(p){ if(!PROFILE_KEY[p]) return; curProfile=p; ctrlMode=readCtrl(p); liftOffset=readLift(p); }
+function saveCtrl(m){ lsSet('cc7_ctrl_'+curProfile,m); }
+function saveLift(v){ lsSet('cc7_lift_'+curProfile,v); }
+/* one-time migration: seed every profile from the legacy keys so an upgraded save
+   is explicit (a future "clear legacy keys" can't silently reset all three modes) */
+(function seedProfiles(){
+  var lc=lsGet('cc7_ctrl','')||(lsGet('cc7_drag','1')==='0'?'snap':'');
+  if(lc){ var any=false;
+    for(var p in PROFILE_KEY){ if(lsGet('cc7_ctrl_'+p,'')!==''){ any=true; break; } }
+    if(!any){ for(var q in PROFILE_KEY) lsSet('cc7_ctrl_'+q, legacyCtrl()); } }
+  var lv=parseInt(lsGet('cc7_lift',''),10);
+  if(!isNaN(lv)){ var any2=false;
+    for(var r in PROFILE_KEY){ if(lsGet('cc7_lift_'+r,'')!==''){ any2=true; break; } }
+    if(!any2){ for(var s in PROFILE_KEY) lsSet('cc7_lift_'+s,lv); } }
+})();
+
+/* ---------------- DAILY SHIFT (seeded per calendar day) ---------------- */
+var _todayOverride=null;                  // test hook (harness only)
+function dateKey(d){ var m=('0'+(d.getMonth()+1)).slice(-2), day=('0'+d.getDate()).slice(-2); return d.getFullYear()+'-'+m+'-'+day; }
+function todayKey(){ return dateKey(_todayOverride?new Date(_todayOverride+'T12:00:00'):new Date()); }
+function yesterdayKey(){ var d=_todayOverride?new Date(_todayOverride+'T12:00:00'):new Date(); d.setDate(d.getDate()-1); return dateKey(d); }
+function hashStr(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function planForDay(){
+  var rng=mulberry32(hashStr('cc7daily-'+todayKey()));
+  var target=500+Math.floor(rng()*13)*50;   // 🌍 world target 500..1100 (steps of 50)
+  /* only TIMED chaos in the daily plan (instant events would flash and vanish) */
+  var keys=Object.keys(CHAOS_DEF).filter(function(k){ return CHAOS_DEF[k].dur>0; }), i, j;
+  for(i=keys.length-1;i>0;i--){ j=Math.floor(rng()*(i+1)); var t=keys[i]; keys[i]=keys[j]; keys[j]=t; }
+  var picks=keys.slice(0,3);                // 3 unique chaos patterns, seeded per day
+  var times=[14+rng()*8, 30+rng()*8, 46+rng()*8].sort(function(a,b){ return a-b; });
+  var seq=[];
+  for(i=0;i<3;i++) seq.push({at:Math.round(times[i]), chaos:picks[i]});
+  return {target:target, seq:seq};
+}
+function dailyStreak(){ return parseInt(lsGet('cc7_daily_streak','0'),10)||0; }
+function updateDailyStreak(beaten){
+  if(!beaten) return dailyStreak();
+  var today=todayKey();
+  if(lsGet('cc7_daily_last','')===today) return dailyStreak(); // already counted today
+  var streak=(lsGet('cc7_daily_last','')===yesterdayKey())?dailyStreak()+1:1;
+  lsSet('cc7_daily_streak',streak); lsSet('cc7_daily_last',today);
+  var best=parseInt(lsGet('cc7_daily_beststreak','0'),10)||0;
+  if(streak>best) lsSet('cc7_daily_beststreak',streak);
+  return streak;
+}
+
+/* ---------------- SEED CODES (shareable deterministic runs) ----------------
+   Any run can be a seed code: CC-XXXXX encodes mode + seed. Pasted into the 🔗 Seeds
+   screen (or the end screen), it replays that EXACT shift — same chaos, same spawns,
+   same bosses — for everyone. Determinism = a mulberry32 stream swapped in as
+   Math.random for the run's duration (captured at boot, restored on end), so every
+   existing Math.random() call site participates without being touched. */
+var _hostRandom=Math.random;                       // the host RNG at boot (native in a browser; the harness LCG in tests)
+var _seedRng=null;                                 // active seeded stream during a seeded run, else null
+var SEED_ALPH='0123456789ABCDEFGHJKMNPQRSTVWXYZ';   // Crockford base32: 32 unambiguous chars (no I/L/O/U)
+var SEED_MODES=['arcade','pro','relaxed'];         // 🌞 daily stays date-seeded (its date IS the code)
+function encodeSeedCode(mode,seed){
+  var m=SEED_MODES.indexOf(mode); if(m<0) return null;
+  var s=((seed|0)%32768+32768)%32768;              // 3 chars of seed → 32^3 = 32768 unique runs per mode
+  var v=[m,(s>>10)&31,(s>>5)&31,s&31];
+  var c=(v[0]+2*v[1]+3*v[2]+4*v[3])%32;            // weighted checksum — also catches transposed chars when pasting
+  return 'CC-'+SEED_ALPH.charAt(m)+SEED_ALPH.charAt(v[1])+SEED_ALPH.charAt(v[2])+SEED_ALPH.charAt(v[3])+SEED_ALPH.charAt(c);
+}
+function parseSeedCode(code){
+  if(!code) return null;
+  var s=String(code).toUpperCase().replace(/[^A-Z0-9]/g,'');
+  if(s.slice(0,2)==='CC') s=s.slice(2);
+  if(s.length!==5) return null;
+  var v=[];
+  for(var i=0;i<5;i++){ var p=SEED_ALPH.indexOf(s.charAt(i)); if(p<0) return null; v.push(p); }
+  if((v[0]+2*v[1]+3*v[2]+4*v[3])%32!==v[4]) return null; // weighted checksum mismatch → typo or transposition
+  if(v[0]>=SEED_MODES.length) return null;
+  return {mode:SEED_MODES[v[0]], seed:(v[1]<<10)|(v[2]<<5)|v[3]};
+}
+function seedStream(seed){ return mulberry32(hashStr('cc7seed-'+seed)); }
+function setSeedRng(seed){ _seedRng=seedStream(seed); Math.random=function(){ return _seedRng(); }; }
+function clearSeedRng(){ _seedRng=null; Math.random=_hostRandom; }
+function copyText(t,btn){
+  /* feedback first, then copy — the async clipboard API may hang on a permission prompt,
+     so the UI must never wait on it (and a sync textarea fallback always runs) */
+  if(btn){ btn.textContent='copied ✓'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent='copy'; btn.classList.remove('copied'); },1400); }
+  var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+  try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t); }catch(e){}
+}
+var RANKS=[[0,'🛠️','Apprentice'],[8,'🔧','Technician'],[20,'⚙️','Engineer'],[40,'💻','Senior Tech'],[75,'🖥️','Master Tech'],[150,'🏆','Legend']];
+function rankFor(n){ var r=RANKS[0]; for(var i=0;i<RANKS.length;i++){ if(n>=RANKS[i][0]) r=RANKS[i]; } return r; }
+
+/* ---------------- PRERENDERED BACKGROUND ---------------- */
+var bgCanvas=document.createElement('canvas'); bgCanvas.width=W; bgCanvas.height=H;
+(function(){
+  var b=bgCanvas.getContext('2d');
+  var g=b.createLinearGradient(0,0,0,H); g.addColorStop(0,'#0b1020'); g.addColorStop(1,'#101732');
+  b.fillStyle=g; b.fillRect(0,0,W,H);
+  b.fillStyle='#1b2238';
+  for(var x=22;x<W;x+=44) for(var y=22;y<H;y+=44){ b.beginPath(); b.arc(x,y,2,0,Math.PI*2); b.fill(); }
+  b.fillStyle='#1b2238'; b.fillRect(0,H-40,W,40);
+  b.strokeStyle='#22d3ee'; b.lineWidth=2.5; b.beginPath(); b.moveTo(0,H-40); b.lineTo(W,H-40); b.stroke();
+  b.fillStyle='rgba(34,197,94,0.12)'; for(var t=10;t<W;t+=24) b.fillRect(t,H-38,12,2);
+})();
+/* subtle screen-space vignette: prerendered ONCE, blitted each frame (a single drawImage,
+   zero per-frame allocation) — darkens the edges so the eye settles on the bench */
+var vigCanvas=document.createElement('canvas'); vigCanvas.width=W; vigCanvas.height=H;
+(function(){
+  var v=vigCanvas.getContext('2d');
+  var g=v.createRadialGradient(W/2,H*0.45,60,W/2,H*0.45,Math.max(W,H)*0.78);
+  g.addColorStop(0,'rgba(4,7,16,0)');
+  g.addColorStop(0.75,'rgba(4,7,16,0.12)');
+  g.addColorStop(1,'rgba(4,7,16,0.32)');
+  v.fillStyle=g; v.fillRect(0,0,W,H);
+})();
+
+/* ---------------- AUDIO ENGINE (procedural, no files) ---------------- */
+var AC=null, master=null, sfxGain=null;
+var muted=false, musicTimer=null, musicStep=0, musicLastNote=0;
+var BG_SEQ=[220,277,330,277,196,247,294,247]; // A-minor-ish arpeggio
+function audioInit(){
+  if(AC) return;
+  try{
+    AC=new (window.AudioContext||window.webkitAudioContext)();
+    master=AC.createGain(); master.gain.value=0.35; master.connect(AC.destination);
+    sfxGain=AC.createGain(); sfxGain.gain.value=1; sfxGain.connect(master);
+  }catch(e){}
+  if(AC&&AC.state==='suspended') AC.resume();
+}
+var SFX={
+  /* the three audio primitives live ON SFX (the engine namespace). The SFX bodies keep
+     calling the bare tone/noise/schedule names, which are thin aliases below — so no
+     call site changes and the pinned fanfare/thud strings stay byte-identical. */
+  tone:function(freq,dur,type,vol,slideTo,delay){
+    if(!AC||muted) return;
+    var t0=AC.currentTime+(delay||0);
+    var o=AC.createOscillator(), g=AC.createGain();
+    o.type=type||'sine'; o.frequency.setValueAtTime(freq,t0);
+    if(slideTo) o.frequency.exponentialRampToValueAtTime(slideTo,t0+dur);
+    g.gain.setValueAtTime(vol||0.18,t0);
+    g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+    o.connect(g); g.connect(sfxGain);
+    o.start(t0); o.stop(t0+dur+0.03);
+  },
+  noise:function(dur,vol,freq,type){
+    if(!AC||muted) return;
+    var t=AC.currentTime, n=Math.floor(AC.sampleRate*(dur||0.18));
+    var buf=AC.createBuffer(1,n,AC.sampleRate), d=buf.getChannelData(0);
+    for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*(1-i/n);
+    var src=AC.createBufferSource(); src.buffer=buf;
+    var f=AC.createBiquadFilter(); f.type=type||'bandpass'; f.frequency.value=freq||1000;
+    var g=AC.createGain(); g.gain.setValueAtTime(vol||0.22,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    src.connect(f); f.connect(g); g.connect(sfxGain);
+    src.start(t); src.stop(t+dur+0.03);
+  },
+  schedule:function(freqs,delay,dur,type,vol,slide){
+    for(var i=0;i<freqs.length;i++){
+      (function(f,d){ setTimeout(function(){ tone(f,dur,type,vol,slide,d); }, d*1000); })(freqs[i],(delay||0)+i*0.07);
+    }
+  },
+  catchGood:function(combo){ var base=440+Math.min(combo,12)*40; tone(base,0.12,'triangle',0.22,base*1.5); },
+  wrong:function(){ tone(180,0.18,'sawtooth',0.18,90); },
+  junk:function(){ noise(0.2,0.2,260,'lowpass'); tone(90,0.22,'sine',0.15,48); },   // weighty muffled thud — losing a life must HURT (still soft, not harsh)
+  power:function(){ tone(660,0.1,'square',0.18); setTimeout(function(){ tone(990,0.15,'square',0.18); },90); },
+  order:function(){ schedule([523,659,784,1047],0,0.18,'triangle',0.22); },
+  level:function(){ schedule([392,523,659,784,1047,1319],0,0.1,'square',0.22); },   // bright 6-note level-up fanfare
+  chaos:function(){ tone(300,0.4,'sawtooth',0.22,80); noise(0.3,0.16); },
+  ach:function(){ schedule([659,880,1175],0,0.16,'triangle',0.22); },
+  newbest:function(){ schedule([523,659,784,1047,1319],0,0.2,'square',0.2); },
+  gameover:function(){ schedule([392,330,262,196],0,0.3,'sine',0.22,0.7); },
+  start:function(){ schedule([392,523,659],0,0.12,'square',0.2); },
+  tick:function(){ tone(880,0.06,'square',0.15); },
+  go:function(){ tone(660,0.1,'square',0.2); tone(990,0.16,'square',0.2,0,0.09); },
+  boss:function(id){   // 🛒🌡️🎒 each wave gets its own voice
+    if(id==='melt'){ schedule([440,523,659,880,1047],0,0.14,'sawtooth',0.18); tone(600,0.45,'sawtooth',0.15,1600); }   // 🌡️ searing alarm, rising
+    else if(id==='school'){ schedule([330,262,220,175,131],0,0.18,'triangle',0.22); tone(120,0.3,'sine',0.16,60); }   // 🎒 hollow empty-aisle, sinking
+    else { schedule([392,523,466,622,523,699],0,0.08,'square',0.18); noise(0.25,0.15,900,'bandpass'); }   // 🛒 frantic staccato bustle
+  },
+  bios:function(){ for(var i=0;i<5;i++){ tone(1200,0.05,'square',0.15,(i%2?900:1400),i*0.09); } },
+  tip:function(){ schedule([880,1175],0,0.14,'triangle',0.22); },
+  shield:function(){ tone(720,0.1,'triangle',0.12,560); }   // 🛡️ soft "ting" when the no-fail shield absorbs a hit
+};
+/* thin audio aliases — every existing call site (SFX bodies, startMusic, game flow) is unchanged */
+function tone(freq,dur,type,vol,slideTo,delay){ return SFX.tone(freq,dur,type,vol,slideTo,delay); }
+function noise(dur,vol,freq,type){ return SFX.noise(dur,vol,freq,type); }
+function schedule(freqs,delay,dur,type,vol,slide){ return SFX.schedule(freqs,delay,dur,type,vol,slide); }
+function startMusic(){
+  if(!AC||musicTimer||!musicOn||muted) return;
+  musicTimer=setInterval(function(){
+    if(!AC||muted){ return; }
+    tone(BG_SEQ[musicStep%BG_SEQ.length],0.22,'triangle',0.09);   // soft bed — audible but under the SFX
+    musicStep++;
+  },260);
+}
+function stopMusic(){ if(musicTimer){ clearInterval(musicTimer); musicTimer=null; } }
+function toggleMute(){
+  muted=!muted;
+  el['mute-btn'].textContent=muted?'🔇':'🔊';
+  if(muted) stopMusic(); else if(musicOn) startMusic();
+}
+function toggleMusic(){
+  musicOn=!musicOn; lsSet('cc7_music',musicOn?1:0);
+  el['music-btn'].style.opacity=musicOn?'1':'0.35';
+  if(musicOn&&!muted) startMusic(); else stopMusic();
+}
+
+/* ---------------- FX subsystem (pools + screen fx, no per-frame allocation) ----------------
+   All pooled effects + screen-fx state live behind one object; FX.reset() clears them
+   in one call (startGame no longer hand-rolls per-pool loops). The bare function names
+   below are thin aliases so no call site changes. */
+var FX={
+  particles:[], popups:[], rings:[], dust:[], trailPts:[],   // the pools (module aliases below)
+  /* screen-fx state lives in the module vars below (trauma/hitStop/flashTimer/flashColor/trailHead/trailLen)
+     — draw() reads them every frame, so FX methods mutate them in place (primitive aliases can't stay in sync) */
+  reset:function(){
+    for(var i=0;i<MAX_P;i++) FX.particles[i].active=false;
+    for(i=0;i<MAX_POP;i++) FX.popups[i].active=false;
+    for(i=0;i<MAX_RING;i++) FX.rings[i].active=false;
+    trauma=0; hitStop=0; flashTimer=0; trailHead=0; trailLen=0;
+  },
+  spawnParticle:function(x,y,vx,vy,color,r,life){
+    for(var i=0;i<MAX_P;i++){ var p=FX.particles[i]; if(!p.active){ p.active=true; p.x=x; p.y=y; p.vx=vx; p.vy=vy; p.color=color; p.r=r; p.life=life; p.max=life; return; } }
+  },
+  burst:function(x,y,color,n){
+    if(REDUCED) n=Math.min(n,5);
+    for(var i=0;i<n;i++){ var a=Math.random()*Math.PI*2, sp=40+Math.random()*160;
+      FX.spawnParticle(x,y,Math.cos(a)*sp,Math.sin(a)*sp-30,color,2+Math.random()*3,0.35+Math.random()*0.35); }
+  },
+  popup:function(x,y,txt,color){
+    for(var i=0;i<MAX_POP;i++){ var p=FX.popups[i]; if(!p.active){ p.active=true; p.x=x; p.y=y; p.txt=txt; p.color=color; p.life=1; p.max=1; p.scale=0.4; return; } }
+  },
+  ring:function(x,y,color){
+    for(var i=0;i<MAX_RING;i++){ var r=FX.rings[i]; if(!r.active){ r.active=true; r.x=x; r.y=y; r.r=6; r.vr=220; r.life=0.5; r.max=0.5; r.color=color; return; } }
+  },
+  addTrauma:function(a){ if(REDUCED) return; trauma=Math.min(1,trauma+a); },
+  addHitStop:function(s){ if(!REDUCED) hitStop=Math.max(hitStop,s); },
+  addFlash:function(color,t){ if(REDUCED) t=Math.min(t,0.12); flashColor=color; flashTimer=Math.max(flashTimer,t); },
+  trailPush:function(x,y){
+    var p=FX.trailPts[trailHead]; p.x=x; p.y=y;
+    trailHead=(trailHead+1)%MAX_TRAIL;
+    if(trailLen<MAX_TRAIL) trailLen++;
+  },
+  trailClear:function(){ trailHead=0; trailLen=0; }
+};
+var PARTICLES=FX.particles; var MAX_P=260;
+for(var i=0;i<MAX_P;i++) PARTICLES.push({active:false,x:0,y:0,vx:0,vy:0,life:0,max:1,r:2,color:'#fff'});
+var POPUPS=FX.popups; var MAX_POP=28;
+for(i=0;i<MAX_POP;i++) POPUPS.push({active:false,x:0,y:0,txt:'',color:'',life:0,max:1,scale:0});
+var RINGS=FX.rings; var MAX_RING=8;
+for(i=0;i<MAX_RING;i++) RINGS.push({active:false,x:0,y:0,r:0,vr:0,life:0,max:1,color:'#fff',lw:3});
+var dust=FX.dust; var MAX_DUST=26;
+var RIM_GLOW=null;   // static rim-glow gradient cached once (created per-frame before was pure waste)
+for(i=0;i<MAX_DUST;i++) dust.push({x:Math.random()*W,y:Math.random()*H,s:0.4+Math.random()*0.7,ph:Math.random()*6.28});
+var TRAIL_PTS=FX.trailPts; var MAX_TRAIL=16, trailHead=0, trailLen=0;
+for(var _t=0;_t<MAX_TRAIL;_t++) TRAIL_PTS.push({x:0,y:0});
+var trauma=0, hitStop=0, flashTimer=0, flashColor='#22d3ee';
+/* thin aliases — every existing call site keeps working unchanged */
+function spawnParticle(x,y,vx,vy,color,r,life){ return FX.spawnParticle(x,y,vx,vy,color,r,life); }
+function burst(x,y,color,n){ return FX.burst(x,y,color,n); }
+function popup(x,y,txt,color){ return FX.popup(x,y,txt,color); }
+function ring(x,y,color){ return FX.ring(x,y,color); }
+function addTrauma(a){ return FX.addTrauma(a); }
+function addHitStop(s){ return FX.addHitStop(s); }
+function addFlash(color,t){ return FX.addFlash(color,t); }
+function trailPush(x,y){ return FX.trailPush(x,y); }
+function trailClear(){ return FX.trailClear(); }
+
+/* ---------------- GAME STATE ---------------- */
+var S=null, raf=null, timerInt=null, last=0, acc=0;
+function freshState(){
+  return {
+    phase:'menu', paused:false, count:0,
+    player:{x:W/2,y:TRAY_Y,w:64,h:38,speed:380,sx:1,sy:1,targetX:null,targetY:null},
+    items:[], score:0, lives:LIVES, orders:0, timeLeft:GAME_TIME, level:1,
+    queue:[], keys:{},                        // active repair orders (each: p/c/patron/reward/diff)
+    powerup:null, powerupTimer:0,
+    chaos:null, chaosTimer:0, chaosCooldown:0,
+    boss:null, bossTimer:0,                   // 🛒🌡️🎒 active boss wave + seconds left
+    bossTotal:0,                             // orders completed during the CURRENT wave (reset at each wave start)
+    wavesFought:0,                           // 🛒🌡️🎒 waves started this run (quota scaling: later waves demand more)
+    wavesCleared:0,                          // 🛒🌡️🎒 waves DEFEATED this run (end-screen stat)
+    contam:null, contamTimer:0,               // 🫗 mystery liquid: a part code is toxic
+    cableLock:null, cableTimer:0,             // 🔀 cable spaghetti: {oi,si} slot locked
+    heat:0, heatLevel:0, heatRamp:0,          // 🌡️ meltdown cooling bar + speed ramp
+    stock:null, stockTimer:0,                 // 🎒 supply shortage: a part is out of stock
+    flashColor:'#22d3ee', flashTimer:0,
+    combo:0, comboTimer:0,
+    spawnTimer:0.5, noNeeded:0, lastPart:null, lastJunk:null,
+    inputFreeze:0, smudge:null, newBest:false, best:bestForMode(mode), wrenchHint:0, padSmooth:0,
+    overtime:false, oTimer:0,               // ⏱️ post-bell grace period (arcade)
+    graceTimer:0,                            // 🛡️ no-fail grace shield (Settings → No-fail grace)
+    holdActive:false, holdUnparked:false, holdX:0, holdY:0,   // ✊ hold: parked until a real drag
+    touchX:null, touchY:null,   // ☝️ tether: live primary-finger canvas position (null = up)
+    achRun:{}, achList:[], bestComboRun:0, goFlash:0, _patT:0, _ordersDirty:true
+  };
+}
+
+/* ---------------- PERSISTENCE HELPERS ---------------- */
+function unlock(c){
+  if(unlocked[c]) return false;
+  unlocked[c]=true;
+  try{ lsSet('cc7_ach', JSON.stringify(Object.keys(unlocked))); }catch(e){}
+  return true;
+}
+function persistEnd(s){
+  if(s.persisted) return;   // guard: only once per game (accumulator may call update repeatedly)
+  s.persisted=true;
+  /* 🛒🌡️🎒 no end-screen boss logic: a wave's clear bonus + celebration fire the moment
+     it is DEFEATED mid-run (defeatBossIfReady → endBoss). The end screen only reports the
+     event that ended the shift. */
+  if(s.daily){
+    /* daily shift keeps its own ladder: best + streak, separate from classic stats */
+    var prev=parseInt(lsGet('cc7_daily_best','0'),10)||0;
+    if(s.score>prev){ lsSet('cc7_daily_best',s.score); s.newBest=true; }
+    updateDailyStreak(s.score>=s.dailyTarget);
+    if(s.score>=s.dailyTarget) checkAch(s,'daily');
+    var st=dailyStreak();
+    if(st>=3) checkAch(s,'d3');
+    if(st>=7) checkAch(s,'d7');
+    return;
+  }
+  var ladder=s.mode||mode;                       // this run's own ladder (arcade/pro/relaxed)
+  var pm=parseInt(lsGet('cc7_best_'+ladder,'0'),10)||0;
+  if(s.score>pm){ lsSet('cc7_best_'+ladder,s.score); s.newBest=true; }   // 🏅 per-mode best
+  totalOrders+=s.orders; runsPlayed++;
+  bestCombo=Math.max(bestCombo,s.bestComboRun);
+  lsSet('cc7_total',totalOrders); lsSet('cc7_runs',runsPlayed); lsSet('cc7_bestcombo',bestCombo);
+  if(s.score>bestScore){ bestScore=s.score; lsSet('cc7_best',bestScore); }   // overall best stays the max across all modes
+}
+
+/* ---------------- ORDER SYSTEM (multi-order queue + patrons) ---------------- */
+function queueCap(s){   /* how many orders are on the bench at once */
+  var rules=modeRules(s);
+  if(rules.queueCap!=='level') return rules.queueCap;   // ⚡ arcade: always a single order
+  if(s.boss) return s.boss.def.orders;
+  return s.level>=9?2:1;
+}
+function fillQueue(s){
+  while(s.queue.length<queueCap(s)){
+    var t=pickOrderTemplate(s);
+    var o={p:t.parts.slice(), c:[], patron:freshPatron(), reward:t.reward, diff:t.diff};
+    /* 🌡️ meltdown: heat-relevant parts cool the bar (fan/paste/heatsink) */
+    o.coolParts=t.parts.filter(function(x){ return x==='fan'||x==='paste'||x==='heatsink'; }).length>0;
+    s.queue.push(o);
+  }
+  s._ordersDirty=true;
+}
+function nextNeeded(s){
+  for(var i=0;i<s.queue.length;i++){ var q=s.queue[i]; if(q.c.length<q.p.length) return q.p[q.c.length]; }
+  return null;
+}
+function nextNeededOf(q){ return q.c.length<q.p.length?q.p[q.c.length]:null; }
+function orderForCode(s,code){
+  /* first order whose next needed part matches (skipping a 🔀-locked slot) */
+  for(var i=0;i<s.queue.length;i++){ var q=s.queue[i];
+    var n=nextNeededOf(q);
+    if(n===code&&!(s.cableLock&&s.cableLock.oi===i&&s.cableLock.si===q.c.length)) return q;
+  }
+  return null;
+}
+function patienceBonus(q,amount){
+  q.patron.pat=Math.max(0,Math.min(100,q.patron.pat+amount));
+}
+function tipFor(q){ return q.patron.pat>80?q.reward:(q.patron.pat>50?Math.floor(q.reward/2):0); }
+function levelFor(s){ return 1+Math.floor(s.orders/(modeRules(s).levelDiv||3)); }   // 🧘 relaxed: 5 orders/level — gentler curve
+function shieldHit(s,x,y){
+  /* 🛡️ no-fail grace: absorb the hit — fresh shield, no life loss, no combo reset */
+  s.graceTimer=GRACE_SEC;
+  burst(x,y,'#7dd3fc',10); popup(x,y-24,'🛡️','#7dd3fc'); ring(x,y,'#7dd3fc'); SFX.shield();
+}
+function renderOrders(s){
+  var h='';
+  var patrons=modeRules(s).patrons;
+  for(var i=0;i<s.queue.length;i++){
+    var q=s.queue[i], n=nextNeededOf(q);
+    var bar=q.patron.pat>60?'#22c55e':(q.patron.pat>30?'#facc15':'#ef4444');
+    var mood=patronMood(q.patron);
+    var locked=s.cableLock&&s.cableLock.oi===i?s.cableLock.si:-1;
+    var items='';
+    for(var k=0;k<q.p.length;k++){
+      var cls='order-item'+(k<q.c.length?' done':'')+(k===locked?' locked':'');
+      items+='<div class="'+cls+'"'+(k===locked?' title="🔒"':'')+'>'+
+        '<span style="font-size:16px;line-height:1">'+(k===locked?'🔒':PART_EMOJI[q.p[k]])+'</span></div>';
+    }
+    /* ⚡ arcade: a bare job row — the order itself, no patron personality */
+    if(!patrons){
+      h+='<div class="order-row arcade-row"><div class="order-items">'+items+'</div></div>';
+      continue;
+    }
+    h+='<div class="order-row">'+
+      '<span class="order-patron">'+q.patron.av+'</span>'+
+      '<span class="order-mood">'+mood+'</span>'+
+      '<div class="order-patience"><i style="width:'+Math.round(q.patron.pat)+'%;background:'+bar+'"></i></div>'+
+      '<div class="order-items">'+items+'</div>'+
+      '</div>';
+  }
+  el['order-items'].innerHTML=h;
+}
+function completeOrder(s,oi){
+  var q=s.queue[oi];
+  var rules=modeRules(s);
+  var reward=q.reward*Math.max(1,1+Math.floor((s.level-1)/3));   // reward scales with level bands
+  var tip=rules.patrons?tipFor(q):0;                              // ⚡ arcade: flat reward, no tips
+  var total=reward+tip;
+  s.score+=total;
+  s.orders++; s.level=levelFor(s);
+  var py=TRAY_Y-20;
+  if(tip>=q.reward){ popup(W/2,py-30,'💖 +'+total,'#f472b6'); burst(W/2,py,'#f472b6',16); }
+  else popup(W/2,py-30,'+'+total,'#22d3ee');
+  ring(W/2,py,'#22d3ee'); burst(W/2,py,'#22d3ee',20);
+  addFlash(tip>0?'#f472b6':'#22c55e',0.22); addHitStop(0.06); addTrauma(0.3);
+  SFX.order();
+  if(tip>0) SFX.tip();   // 💖 generous tip has its OWN chime (trophy fanfare stays special)
+  s.queue.splice(oi,1);
+  checkAch(s,'first');
+  if(s.orders>=8) checkAch(s,'o8');
+  if(s.level!==1&&(s.orders%3===0)){
+    addFlash('#22d3ee',0.3); popup(W/2,H/2-70,'LEVEL '+s.level,'#a855f7');
+    if(s.orders%6!==0) SFX.level();   // 🔕 on a boss beat the wave stinger owns the moment (level jingle would stack)
+    addTrauma(0.2);
+    if(s.level>=5) checkAch(s,'lv5');
+  }
+  if(s.boss){ s.bossTotal++; defeatBossIfReady(s); }
+  else if(modeRules(s).bosses&&s.orders%6===0) startBoss(s);    // 🛒🌡️🎒 wave every 6 orders — fires ~45s in, leaving real runway before the bell
+  if(s.overtime){ /* shift's over — finish this order, then clock out (no refill) */ }
+  else fillQueue(s);
+}
+
+/* ---------------- ITEMS ---------------- */
+function weightedPartCode(s){
+  var rules=modeRules(s);
+  var list=PARTS, total=PART_WEIGHT_TOTAL;
+  if(rules.catalog){  // ⚡ arcade / 🧘 relaxed: weighted over the curated catalog only
+    var wt=0, subset=[];
+    for(var a=0;a<PARTS.length;a++){ if(rules.catalog.indexOf(PARTS[a][0])>=0){ subset.push(PARTS[a]); wt+=PARTS[a][3]; } }
+    list=subset; total=wt;
+  }
+  /* 🎒 supply shortage: the stocked-out code never drops */
+  /* 🌡️ meltdown: only core parts drop */
+  var r=Math.random()*total;
+  for(var i=0;i<list.length;i++){
+    var c=list[i][0];
+    if(s.stock===c) continue;
+    if(s.boss&&s.boss.def.coreOnly&&list[i][2]!=='core') continue;
+    r-=list[i][3];
+    if(r<=0) return c;
+  }
+  return list.length?list[0][0]:'screw';
+}
+function orderPool(s){
+  /* 🎯 order-gated drops: the ONLY good parts that fall are ones the current queue
+     can actually use (union of all orders' remaining parts). No more useless
+     duplicates — every good catch is progress on an open order (Overcooked model). */
+  var pool=[], seen={};
+  for(var oi=0;oi<s.queue.length;oi++){
+    var q=s.queue[oi];
+    for(var pi=q.c.length;pi<q.p.length;pi++){
+      var c=q.p[pi];
+      if(!seen[c]){ seen[c]=1; pool.push(c); }
+    }
+  }
+  return pool;
+}
+function pickDistinct(list,last){
+  /* bag-style no-repeat: prefer any entry that isn't the last one drawn */
+  if(!list.length) return null;
+  var alt=list.filter(function(x){ return x!==last; });
+  return (alt.length?alt:list)[Math.floor(Math.random()*(alt.length?alt.length:list.length))];
+}
+function earlyEase(s){
+  /* 🛹 early-shift grace (arcade-only): fewer junk + a slower line for the first levels,
+     fading out by level 6 — keeps slow/novice players under the 15% death floor without
+     touching mid/late pacing. Pro/daily/relaxed don't set it → ease 1. */
+  var e=modeRules(s).earlyEase||0;
+  if(!e) return 1;
+  return 1 - e*Math.max(0,(6-s.level))/5;   // level 1 → 1−e … level ≥6 → exactly 1.0
+}
+function spawnItem(s){
+  var rules=modeRules(s);
+  /* 🚦 readability: when the bench is already full, skip the spawn this tick — the
+     field stays readable (5–8 objects ideal; the 42 hard cap is the engine safety net) */
+  if(s.items.length>=MAX_VIS_ITEMS) return;
+  var needed=nextNeeded(s);
+  var junkOn=0; for(var jx=0;jx<s.items.length;jx++){ if(s.items[jx].type==='junk') junkOn++; }
+  var junkP=Math.min(BALANCE.junkCap, BALANCE.junkBase+s.level*BALANCE.junkPerLevel)+(s.boss?s.boss.def.junkAdd:0);   // 📊 BALANCE table: gentler junk ceiling (26%→20%)
+  if(junkOn>=3) junkP=0;                                // never more than ~3 junk on screen at once
+  junkP*=rules.junkMul;                      // relaxed: rare junk; daily is uniform
+  junkP*=earlyEase(s);                        // 🛹 arcade early grace: fewer junk at the start (fades by level 6)
+  var isPow=Math.random()<0.06;
+  var isBad=!isPow&&Math.random()<junkP;
+  var isNeeded=!isPow&&!isBad&&(Math.random()<0.72||s.noNeeded>=5);   // needed-part pity: never drought past ~5 good drops
+  s.noNeeded=isNeeded?0:(s.noNeeded+1);
+  var emoji,type,code;
+  if(isPow){ emoji=pickDistinct(POWERUPS,s.lastJunk); type='powerup'; code=null; s.lastJunk=emoji; }
+  else if(isBad){ emoji=pickDistinct(JUNK,s.lastJunk); type='junk'; code=null; s.lastJunk=emoji; }
+  else if(isNeeded&&needed&&needed!==s.stock){ code=needed; emoji=PART_EMOJI[needed]; type='good'; s.lastPart=code; }
+  else {
+    /* 🎯 order-gated pool: a good drop is a part some open order still needs.
+       Light = parts on screen <2×; when everything's already doubled we still
+       drop from the pool (a 3rd copy stays useful for orders that need a part
+       twice) — the catalog fallback only fires when the pool is empty. */
+    var pool=orderPool(s);
+    if(pool.length){
+      /* 🌡️ meltdown coreOnly: filler drops are core-only (the needed part still
+         falls — orders may legitimately ask for anything, same as before) */
+      if(s.boss&&s.boss.def.coreOnly) pool=pool.filter(function(c){ return PART[c].group==='core'; });
+      var onScreen={};
+      for(var cx=0;cx<s.items.length;cx++){ var it=s.items[cx]; if(it.type==='good'&&it.code) onScreen[it.code]=(onScreen[it.code]||0)+1; }
+      var light=pool.filter(function(c){ return (onScreen[c]||0)<2; });
+      code=pickDistinct(light.length?light:pool, s.lastPart);
+    }
+    if(!code) code=weightedPartCode(s);
+    emoji=PART_EMOJI[code]; type='good'; s.lastPart=code;
+  }
+  if(s.items.length>42) s.items.shift(); // hard cap
+  var speed=(1.5+Math.random()*BALANCE.speedRand)*BALANCE.speedBaseMul*rules.speedMul+Math.min(s.level,BALANCE.speedPlateau)*BALANCE.speedPerLevel;   // 📊 BALANCE table: speed plateau at level 15 — the 110px dodge window must stay ≥ a human reaction+travel budget (~445ms) in any longer mode
+  if(s.chaos==='deadpsu') speed*=1.25;                       // 🔌 dead PSU: everything falls faster
+  if(s.boss) speed*=s.boss.def.speedMul;                      // boss wave pacing
+  if(s.heatLevel>0) speed*=(1+0.12*s.heatLevel);              // 🌡️ cooling failure ramp
+  s.items.push({x:28+Math.random()*(W-56), y:-34, emoji:emoji, type:type, code:code,
+    speed:speed, scale:0.2, rot:(Math.random()-0.5)*0.4});
+}
+function spawnInterval(s){
+  var iv=Math.max(BALANCE.spawnFloor, BALANCE.spawnBase-s.level*BALANCE.spawnPerLevel);
+  iv*=modeRules(s).spawnMul||1;         // per-mode pacing: arcade 0.94 fast · pro/daily 1.0 (probe-fairest) · relaxed 1.4 zen
+  iv*=(1+(1-earlyEase(s))*0.5);         // 🛹 arcade early grace: gentler line at the start (half the junk strength)
+  if(s.chaos==='coffee') iv*=1.25;      // spilled coffee slows the line
+  if(s.boss&&s.boss.def.id==='school') iv*=0.72;   // 🎒 back-to-school: high part volume
+  return iv;
+}
+
+/* ---------------- CHAOS (all 10 events; instant ones fire and clear) ---------------- */
+function chaosPick(s,forced){
+  if(forced) return forced;
+  var rules=modeRules(s);
+  if(s.boss){ var b=s.boss.def.bias; return b[Math.floor(Math.random()*b.length)]; }   // boss chaos bias
+  var keys=rules.chaos||Object.keys(CHAOS_DEF);   // ⚡ arcade: only its 4 classics · 🧘 relaxed: none
+  if(!keys.length) return null;
+  return keys[Math.floor(Math.random()*keys.length)];
+}
+function applyChaosEffect(s,pick){
+  var cd=CHAOS_DEF[pick];
+  s.inputFreeze=(pick==='static')?cd.dur:0;
+  s.smudge=(pick==='coffee')?{x1:60+Math.random()*200,y1:60+Math.random()*160,r1:50+Math.random()*40,
+    x2:300+Math.random()*160,y2:120+Math.random()*140,r2:40+Math.random()*40}:null;
+  if(pick==='wrongpart'){
+    /* 🔄 wrong part installed: every order's caught progress resets to 0 */
+    for(var i=0;i<s.queue.length;i++) s.queue[i].c=[];
+    s.cableLock=null; s.cableTimer=0;   // a reset invalidates any 🔀 locked slot
+    popup(W/2,H/2-60,'🔄','#f472b6'); ring(W/2,H/2-30,'#f472b6'); burst(W/2,H/2-30,'#f472b6',16);
+    addFlash('#f472b6',0.28); addTrauma(0.4); SFX.wrong();
+  }
+  if(pick==='angry'){
+    /* 😡 angry customer: -40% of remaining patience, all patrons */
+    for(var j=0;j<s.queue.length;j++) s.queue[j].patron.pat=Math.floor(s.queue[j].patron.pat*0.6);
+    popup(W/2,H/2-60,'💢','#fb7185'); addFlash('#fb7185',0.25); addTrauma(0.3); SFX.junk();
+  }
+  if(pick==='bios'){
+    /* 🔔 BIOS beep hell: rapid beeps + shake */
+    SFX.bios(); addTrauma(0.6);
+  }
+  if(pick==='liquid'){
+    /* 🫗 mystery liquid: a random GOOD code is toxic for the event's duration */
+    var pool=s.queue.length?nextNeeded(s):PART_CODES[Math.floor(Math.random()*PART_CODES.length)];
+    s.contam=pool||'screw'; s.contamTimer=cd.dur;
+    popup(W/2,H/2-60,'🫗','#34d399'); addFlash('#34d399',0.2); SFX.power();
+  }
+  if(pick==='cable'){
+    /* 🔀 cable spaghetti: one next-needed slot is locked (can't deposit) */
+    if(s.queue.length){
+      var oi=Math.floor(Math.random()*s.queue.length), q=s.queue[oi];
+      if(nextNeededOf(q)!=null){ s.cableLock={oi:oi, si:q.c.length}; s.cableTimer=cd.dur; }
+    }
+    popup(W/2,H/2-60,'🔀','#60a5fa'); addFlash('#60a5fa',0.2); SFX.wrong();
+  }
+}
+function triggerChaos(s,key){
+  var rules=modeRules(s);
+  if(rules.chaos&&rules.chaos.indexOf(key)<0) return;   // forced chaos is still mode-gated
+  var pick=chaosPick(s,key);
+  if(!pick||!CHAOS_DEF[pick]) return;      // 🧘 relaxed never rolls chaos; arcade only its 4
+  var cd=CHAOS_DEF[pick];
+  s.chaosCooldown=s.boss?5:7;
+  if(cd.dur>0){
+    s.chaos=pick; s.chaosTimer=cd.dur;                 // timed event
+  }
+  applyChaosEffect(s,pick);
+  if(cd.dur>0){ popup(W/2,H/2-60,cd.emoji,cd.color); ring(W/2,H/2-30,cd.color); }   // timed events announce at center too
+  addFlash('#facc15',0.3); addTrauma(0.5);
+  if(pick!=='bios') SFX.chaos();
+}
+
+/* ---------------- BOSS WAVES (every 6 orders; unseen boss picked first) ---------------- */
+function defeatBossIfReady(s){
+  /* 🛒🌡️🎒 completing the wave's scaled order quota (s.boss.quota) DEFEATS the boss:
+     the wave ends on the spot (banner/gimmicks stop, normal pacing resumes) with the
+     clear bonus, celebration, career credit and trophies landing live at the defeat.
+     The end screen is left to report the shift event — never a boss headline. */
+  if(!s.boss) return;
+  if(s.bossTotal>=s.boss.quota){
+    if(!BOSSCLEAR[s.boss.def.id]){ BOSSCLEAR[s.boss.def.id]=true; try{ lsSet('cc7_bosses',JSON.stringify(Object.keys(BOSSCLEAR))); }catch(e){} }
+    endBoss(s);   // defeat: clear bonus + celebration + wave ends
+  }
+}
+function startBoss(s){
+  var def=bossFor();
+  s.wavesFought++;                                   // this run's wave number (1, 2, 3…)
+  var quota=def.orders+Math.min(s.wavesFought-1,3);  // 🛒🌡️🎒 later waves demand MORE completions (+1 per wave, cap +3); the clear bonus (300+100×quota) grows with it
+  s.boss={def:def, quota:quota}; s.bossTimer=0; s.bossTotal=0;    // a discrete fight: complete the (scaled) quota to defeat it (no separate timer)
+  s.heat=0; s.heatLevel=0; s.stockTimer=1; s.stock=null;
+  /* clear any stale chaos and start the wave clean */
+  s.chaos=null; s.chaosTimer=0; s.smudge=null; s.inputFreeze=0; s.contam=null; s.cableLock=null;
+  popup(W/2,H/2-104,def.emoji,'#fb923c');   // above the LEVEL popup (boss fires on a level-up order)
+  ring(W/2,H/2-30,'#fb923c'); burst(W/2,H/2-30,'#fb923c',24);
+  addFlash('#fb923c',0.3); addHitStop(0.08); addTrauma(0.5);
+  SFX.boss(def.id);
+  /* 🌡️ meltdown: deadpsu flicker is CONSTANT (boss-inherent) + bios beeps on top */
+  if(def.id==='melt'){ triggerChaos(s,'bios'); }
+  else triggerChaos(s,def.bias[0]);
+  fillQueue(s);
+}
+function endBoss(s){
+  if(!s.boss) return;
+  var bonus=300+100*s.bossTotal;
+  s.score+=bonus;
+  s.wavesCleared++;                         // 🛒 one more wave defeated this run
+  popup(W/2,H/2-70,'Boss ✓ +'+bonus,'#facc15');
+  ring(W/2,H/2-30,'#facc15'); burst(W/2,H/2-30,'#facc15',26);
+  addFlash('#facc15',0.3); addTrauma(0.4); SFX.newbest();
+  checkAch(s,'boss');
+  if(BOSSCLEAR['rush']&&BOSSCLEAR['melt']&&BOSSCLEAR['school']) checkAch(s,'boss3');
+  s.boss=null; s.bossTimer=0; s.bossTotal=0; s.heat=0; s.heatLevel=0; s.stock=null; s.cableLock=null; s.contam=null;
+  s.chaos=null; s.chaosTimer=0; s.smudge=null;
+  fillQueue(s);
+}
+
+/* ---------------- SCORING / ACHIEVEMENTS ---------------- */
+function checkAch(s,code){
+  if(unlocked[code]) return;
+  if(s.achRun[code]) return;
+  s.achRun[code]=true; s.achList.push(code);
+  if(unlock(code)){
+    popup(W/2,H/2-40, ACH_TROPHY[code],'#facc15');
+    SFX.ach();
+  }
+}
+var ACH_TROPHY={};
+ACH.forEach(function(a){ ACH_TROPHY[a[0]]=a[1]; });
+
+/* ---------------- INPUT ---------------- */
+/* Dual-touch: the FIRST pointer down controls the tray; any additional pointer
+   (2nd finger anywhere on the board, or right-click on desktop) fires the
+   active 🔧 wrench skip. Roles are tracked per pointerId so fingers never
+   fight each other. */
+var pointerRoles={};            // pointerId -> 'primary' | 'secondary'
+function pointerCount(){ var n=0; for(var k in pointerRoles) n++; return n; }
+function clearPointers(){ pointerRoles={}; }
+function primaryId(){
+  for(var k in pointerRoles){ if(pointerRoles[k]==='primary') return k; }
+  return null;
+}
+/* ---------------- REMAPPABLE KEYBOARD (persisted cc7_keys) ---------------- */
+var KEY_DEFAULTS={
+  left:['ArrowLeft','a','A'],
+  right:['ArrowRight','d','D'],
+  pause:['p','P','Escape'],
+  mute:['m','M'],
+  music:['n','N'],
+  start:[' ','Enter']
+};
+var KEY_LABELS={left:'⬅️ Move left', right:'➡️ Move right', pause:'⏸ Pause', mute:'🔇 Mute', music:'🎵 Music', start:'▶️ Start'};
+var keymap={}, keyCapture=null;   // keyCapture: action being remapped on the Keys screen
+(function loadKeymap(){
+  var saved=null;
+  try{ saved=JSON.parse(lsGet('cc7_keys','')||'null'); }catch(e){}
+  for(var a in KEY_DEFAULTS){
+    keymap[a]=(saved&&Array.isArray(saved[a])&&saved[a].length)?saved[a].filter(function(k){ return typeof k==='string'&&k; }):KEY_DEFAULTS[a].slice();
+    if(!keymap[a].length) keymap[a]=KEY_DEFAULTS[a].slice();
+  }
+})();
+function saveKeymap(){ try{ lsSet('cc7_keys', JSON.stringify(keymap)); }catch(e){} }
+function setKey(act,k){ if(!KEY_DEFAULTS[act]||typeof k!=='string'||!k) return; keymap[act]=[k]; saveKeymap(); }
+function resetKeys(){ for(var a in KEY_DEFAULTS) keymap[a]=KEY_DEFAULTS[a].slice(); saveKeymap(); }
+function keyAction(k){
+  for(var a in keymap){ var arr=keymap[a];
+    for(var i=0;i<arr.length;i++){ var b=arr[i];
+      if(k===b||(k&&k.length===1&&b&&b.length===1&&k.toLowerCase()===b.toLowerCase())) return a;  // letters: case-insensitive
+    }
+  }
+  return null;
+}
+function handleKeyDown(e){
+  var k=e.key;
+  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' ','a','A','d','D'].indexOf(k)>=0) e.preventDefault();
+  audioInit();
+  if(e.repeat) return;
+  if(!S) return;
+  if(keyCapture!==null){                 /* Keys screen: capture the next key press */
+    e.preventDefault();
+    setKey(keyCapture,k);
+    keyCapture=null;
+    showKeys();
+    return;
+  }
+  var act=keyAction(k);
+  if(act==='mute'){ toggleMute(); return; }
+  if(act==='music'){ toggleMusic(); return; }
+  if(act==='pause'){ togglePause(); return; }
+  if(S.phase==='menu'&&act==='start'){ startGame(); return; }
+  if(S.phase==='end'&&act==='start'){ startGame(S.daily); return; }
+  if(act==='left'||act==='right') S.keys[act]=true;
+}
+function handleKeyUp(e){ var act=keyAction(e.key); if(S&&(act==='left'||act==='right')) S.keys[act]=false; }
+function clampLiftY(y){ return Math.max(LIFT_MIN, Math.min(TRAY_Y, y)); }
+function useWrench(s,py){
+  /* shared 🔧 skip: instant-completes the FRONT order (no tip — it was rushed) */
+  var q=s.queue[0];
+  var bonus2=20*s.level+(q?q.reward:0);
+  s.score+=bonus2; s.orders++; s.level=levelFor(s);
+  s.powerup=null; s.powerupTimer=0; s.wrenchHint=0;
+  checkAch(s,'wrench');
+  popup(W/2,py-44,'ORDER +'+bonus2,'#a855f7');
+  ring(W/2,py,'#a855f7'); burst(W/2,py,'#a855f7',18);
+  addFlash('#a855f7',0.22); addHitStop(0.06); addTrauma(0.25);
+  SFX.order();
+  if(s.queue.length) s.queue.splice(0,1);
+  if(s.boss){ s.bossTotal++; defeatBossIfReady(s); }
+  else if(modeRules(s).bosses&&s.orders%6===0) startBoss(s);    // wave milestone matches completeOrder (order 6)
+  if(s.overtime){ /* shift's over — the skip finished it; clock out (no refill) */ }
+  else fillQueue(s);
+  if(s.orders>=8) checkAch(s,'o8');
+  if(s.level!==1&&(s.orders%3===0)){
+    addFlash('#22d3ee',0.3); popup(W/2,H/2-70,'LEVEL '+s.level,'#a855f7');
+    if(s.orders%6!==0) SFX.level();   // 🔕 boss beat → wave stinger only (useWrench path: boss already fired above)
+    if(s.level>=5) checkAch(s,'lv5');
+  }
+}
+function fireSecondFinger(x,y,rect){
+  /* 2nd finger anywhere fires the active power-up. ☕/🧲 are passive buffs —
+     only the 🔧 (instant use) can be triggered, right where the finger lands. */
+  if(!S||S.phase!=='play'||S.paused||S.powerup!=='wrench') return;
+  useWrench(S,S.player.y);   // tray line for the ORDER popup/ring
+  if(TUT_ON&&tutStep===2) advanceTut();   // 🎓 lesson 3 done: 2nd finger fired the 🔧
+  if(rect){
+    var px=Math.max(30,Math.min(W-30,(x-rect.left)/rect.width*W));
+    var pxy=Math.max(30,Math.min(H-30,(y-rect.top)/rect.height*H));
+    popup(px,pxy-24,'🔧','#a855f7'); burst(px,pxy,'#a855f7',10);
+  }
+}
+function handlePointer(clientX,clientY,isDown,pointerId){
+  if(!S||S.phase!=='play'||S.paused||S.inputFreeze>0) return; // static chaos freezes the tray too
+  // (during a freeze any stale targetX/targetY is intentional: on thaw the tray glides
+  //   to the last finger position until the next pointermove)
+  var rect=canvas.getBoundingClientRect();   // single layout read per pointer event
+  var px=(clientX-rect.left)/rect.width*W;
+  var py=(clientY-rect.top)/rect.height*H;
+  S.touchX=px; S.touchY=py;   // ☝️ tether anchor: the primary finger's live position
+  var x=Math.max(S.player.w/2, Math.min(W-S.player.w/2, px));
+  if(ctrlMode==='drag'){
+    if(isDown) S.player.x=x;   // ✋ instant grab on touch-down (1:1 tap)
+    S.player.targetX=x;        // tray target tracks the finger 1:1; x eases after it
+  } else if(ctrlMode==='lift'||ctrlMode==='lifthold'){
+    var ly=clampLiftY(py-liftOffset);  // ☝️ tray floats offset above the finger
+    if(isDown){
+      S.player.x=x; S.player.y=ly;     // instant grab (x + height)
+      S.player.targetX=x; S.player.targetY=ly;
+      S.holdActive=true; S.holdUnparked=false; S.holdX=px; S.holdY=py;  // ✊ parked until a real drag
+    } else if(ctrlMode==='lifthold'&&S.holdActive&&!S.holdUnparked){
+      if(Math.abs(px-S.holdX)+Math.abs(py-S.holdY)>HOLD_DRAG){ S.holdUnparked=true; S.player.targetX=x; S.player.targetY=ly; }
+      /* else: parked — small jitter doesn't move the tray (one-handed rest) */
+    } else {
+      S.player.targetX=x; S.player.targetY=ly;
+    }
+  } else {
+    S.player.x=x;              // 👆 snap mode: instant placement
+  }
+}
+
+window.addEventListener('keydown',handleKeyDown);
+window.addEventListener('keyup',handleKeyUp);
+canvas.addEventListener('pointermove',function(e){
+  /* only the primary finger steers the tray — 2nd fingers never fight it */
+  if(pointerRoles[e.pointerId]!=='primary') return;
+  handlePointer(e.clientX,e.clientY,false,e.pointerId);
+});
+canvas.addEventListener('pointerdown',function(e){
+  audioInit();
+  if(pointerRoles[e.pointerId]) return;            // already tracked (safety)
+  if(!primaryId()){
+    pointerRoles[e.pointerId]='primary';           // first finger = tray
+    try{ if(canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId); }catch(err){}
+    handlePointer(e.clientX,e.clientY,true,e.pointerId);
+  } else {
+    pointerRoles[e.pointerId]='secondary';         // any extra finger = 🔧 wrench
+    var r2=canvas.getBoundingClientRect();
+    fireSecondFinger(e.clientX,e.clientY,r2);
+  }
+});
+function promoteNextPointer(){
+  /* if a second finger is still down, promote it to tray control */
+  for(var k in pointerRoles){ pointerRoles[k]='primary'; break; }
+}
+canvas.addEventListener('pointerup',function(e){
+  if(pointerRoles[e.pointerId]!=='primary'){ delete pointerRoles[e.pointerId]; return; }
+  delete pointerRoles[e.pointerId];
+  if(S){ S.holdActive=false; S.touchX=null; S.touchY=null; }    // ✊ release ends the parked hold + tether
+  promoteNextPointer();
+});
+canvas.addEventListener('pointercancel',function(e){
+  if(S){ S.holdActive=false; S.touchX=null; S.touchY=null; }
+  if(pointerRoles[e.pointerId]==='primary'){ delete pointerRoles[e.pointerId]; promoteNextPointer(); }
+  else delete pointerRoles[e.pointerId];
+});
+canvas.addEventListener('contextmenu',function(e){ if(S&&S.phase==='play'&&!S.paused) e.preventDefault(); });
+
+/* ---------------- GAMEPAD (polled once per frame; left stick = analog tray) ---------------- */
+var padState=null, padStartPrev=false, padOverride=null, padGraceUntil=performance.now()+1000;  // padOverride: debug/test hook; grace: held Start at boot won't skip the menu
+function pollGamepad(){
+  if(padOverride){ padState=padOverride; return; }   // injected pad wins (harness/live debug)
+  var gp=null;
+  try{ if(navigator&&navigator.getGamepads){ var gps=navigator.getGamepads(); if(gps&&gps[0]) gp=gps[0]; } }catch(e){}
+  padState=gp;
+}
+function padBtn(i){
+  return !!(padState&&padState.buttons&&padState.buttons[i]&&padState.buttons[i].pressed);
+}
+function padX(){
+  if(!padState||!padState.axes) return 0;
+  var ax=padState.axes[0];
+  if(typeof ax!=='number') return 0;
+  if(Math.abs(ax)<0.2) return 0;                         // deadzone: ignore stick drift
+  return (ax<0?-1:1)*Math.min(1,(Math.abs(ax)-0.2)/0.8); // scale 0.2..1 → 0..1 (analog)
+}
+
+function togglePause(){
+  if(!S||S.phase!=='play') return;
+  S.paused=!S.paused;
+  if(S.paused){ stopMusic(); showPause(); }
+  else { startMusic(); hideOverlay(); last=performance.now(); if(TUT_ON) scheduleTutAdvance(); }
+}
+/* auto-pause when tab hidden / window blurred */
+function autoPause(){
+  if(S&&S.phase==='play'&&!S.paused){ S.paused=true; stopMusic(); showPause(); }
+}
+document.addEventListener('visibilitychange',function(){ if(document.hidden) autoPause(); });
+window.addEventListener('blur',autoPause);
+
+/* ---------------- OVERLAY / HUD ---------------- */
+function hideOverlay(){ el['msg-overlay'].style.display='none'; }
+
+/* ---------------- 🎓 FIRST-RUN TUTORIAL (wordless · skippable · one-time) ---------------- */
+/* Three animated lessons over the first shift: 👆 catch a part, 🧦 dodge junk,
+   👆👆 2nd finger fires the 🔧. Advances on the taught action, a card tap, or ~8s;
+   ⏭ skips forever. Flag: cc7_tut. Reduced-motion: static demos via CSS. */
+var TUT_ON=false, tutStep=0, tutTimer=null, TUT_SEC=8;
+function tutStageHtml(k){
+  if(k===2) return '<span class="tut-anim tut-fall">🧦</span><span class="tut-anim tut-x">✖</span><span class="tut-anim tut-dodge"></span>';
+  if(k===3) return '<span class="tut-anim tut-fall" style="left:32%">🔧</span><span class="tut-anim tut-ring"></span><span class="tut-anim tut-wrench" style="right:2px">🔧</span><span class="tut-anim tut-tap" style="left:2px">👆</span><span class="tut-anim tut-tap tut-tap2">👆</span>';
+  return '<span class="tut-anim tut-fall" id="tut-part">⌨️</span><span class="tut-anim tut-slide">👆</span><span class="tut-tray"></span>';
+}
+function renderTut(step){
+  var dots=''; for(var i=0;i<3;i++) dots+='<span class="tut-dot'+(i===step?' on':'')+'"></span>';
+  el['tut-card'].innerHTML='<div class="tut-stage">'+tutStageHtml(step+1)+'</div>'+
+    '<div class="tut-side"><div class="tut-dots">'+dots+'</div>'+
+    '<button id="tut-skip" title="Skip the intro">⏭</button></div>';
+  el['tut-card'].style.display='flex';
+  if(step===0){ var tp=document.getElementById('tut-part'); if(tp){ var nc=S&&S.queue[0]?nextNeededOf(S.queue[0]):null; tp.textContent=PART_EMOJI[nc]||'⌨️'; } }   // demo the LIVE needed part
+  scheduleTutAdvance();
+  document.getElementById('tut-skip').addEventListener('click',function(ev){ ev.stopPropagation(); endTut(); });
+}
+function scheduleTutAdvance(){ clearTutTimer(); tutTimer=setTimeout(function(){ if(TUT_ON) advanceTut(); },TUT_SEC*1000); }
+function advanceTut(){ if(!TUT_ON) return; if(tutStep<2){ tutStep++; renderTut(tutStep); } else endTut(); }
+function clearTutTimer(){ if(tutTimer){ clearTimeout(tutTimer); tutTimer=null; } }
+function endTut(){ TUT_ON=false; clearTutTimer(); el['tut-card'].style.display='none'; try{ lsSet('cc7_tut','1'); }catch(e){} }
+function maybeStartTut(){
+  if(lsGet('cc7_tut','0')==='1'){ TUT_ON=false; el['tut-card'].style.display='none'; return; }
+  TUT_ON=true; renderTut(tutStep);   // resumes from the lesson they were on (survives menu trips)
+}
+el['tut-card'].onclick=function(){ advanceTut(); };   // tap anywhere on the card = next
+function ctrlRowHtml(){
+  return '<div id="ctrl-row">'+
+    '<button class="ctrl-btn'+(ctrlMode==='drag'?' active':'')+'" data-ctrl="drag">✋ Drag</button>'+
+    '<button class="ctrl-btn'+(ctrlMode==='snap'?' active':'')+'" data-ctrl="snap">👆 Snap</button>'+
+    '<button class="ctrl-btn'+(ctrlMode==='lift'?' active':'')+'" data-ctrl="lift">☝️ Lift</button>'+
+    '<button class="ctrl-btn'+(ctrlMode==='lifthold'?' active':'')+'" data-ctrl="lifthold">✊ Hold</button>'+
+    '<div class="ctrl-for">'+PROFILE_NAME[curProfile]+' · saved per mode</div>'+
+  '</div>';
+}
+function wireCtrlRow(root){
+  root.querySelectorAll('.ctrl-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      ctrlMode=b.getAttribute('data-ctrl');
+      saveCtrl(ctrlMode);   // persists to the CURRENT mode's profile
+      if(S){ S.player.targetX=null; S.player.targetY=null; }  // drop stale drag/lift targets
+      root.querySelectorAll('.ctrl-btn').forEach(function(x){ x.classList.toggle('active',x===b); });
+      var lrs=root.querySelectorAll('#lift-row'), lr=lrs&&lrs[0]; if(lr) lr.classList.toggle('off',ctrlMode!=='lift'&&ctrlMode!=='lifthold');
+    });
+  });
+}
+function liftRowHtml(){
+  return '<div id="lift-row"'+((ctrlMode==='lift'||ctrlMode==='lifthold')?'':' class="off"')+'>'+
+    '<label id="lift-label" for="lift-slider">☝️ Height <span id="lift-val">'+liftOffset+'</span></label>'+
+    '<input type="range" id="lift-slider" min="0" max="180" step="10" value="'+liftOffset+'">'+
+  '</div>';
+}
+function wireLiftRow(root){
+  var slds=root.querySelectorAll('#lift-slider'), sld=slds&&slds[0]; if(!sld) return;
+  var vals=root.querySelectorAll('#lift-val'), val=vals&&vals[0];
+  sld.addEventListener('input',function(){
+    liftOffset=Math.max(0,Math.min(180,parseInt(sld.value,10)||0));
+    saveLift(liftOffset);   // persists to the CURRENT mode's profile
+    if(val) val.textContent=liftOffset;
+  });
+}
+function heroEmojiField(){
+  /* the game's own falling parts behind the wordmark (reduced-motion gated in CSS) */
+  var seq=[['7%',0,'⌨️'],['22%',1.1,'🖥️'],['37%',0.5,'🔧'],['53%',1.6,'🍌'],['68%',0.8,'💾'],['83%',1.3,'🐱'],['94%',2.0,'☕']];
+  var h='';
+  for(var i=0;i<seq.length;i++){
+    h+='<span class="hero-emoji" style="left:'+seq[i][0]+';animation-delay:'+seq[i][1]+'s;animation-duration:'+(3.4+(i%3)*0.35)+'s">'+seq[i][2]+'</span>';
+  }
+  return h;
+}
+function diffSegHtml(){
+  var s='';
+  ['gentle','standard','challenging'].forEach(function(d){
+    s+='<button class="diff-seg-btn'+(difficulty===d?' active':'')+'" data-diff="'+d+'">'+d.charAt(0).toUpperCase()+d.slice(1)+'</button>';
+  });
+  return s;
+}
+function launchMode(m){   // one-tap card launch — also reloads THIS mode's saved difficulty (the global may hold another mode's)
+  if(!MODE_DEF[m]) return;
+  mode=m; lsSet('cc7_mode',m);
+  loadProfile(m);          // swap to this mode's saved controls
+  difficulty=diffFor(mode);
+  audioInit(); startGame();
+}
+function cycleDiff(m){   // 🎚️ tap a card's badge to cycle THAT mode's difficulty (one-tap launch still works on the card body)
+  var cur=diffFor(m);
+  var next=cur==='gentle'?'standard':(cur==='standard'?'challenging':'gentle');
+  lsSet(diffKey(m),next);
+  if(m===mode) difficulty=next;   // keep the menu row in sync when cycling the active mode
+  showMenu();
+}
+function modeCardHtml(m){
+  var d=MODE_DEF[m];
+  var e=d.label.split(' ')[0], name=d.label.split(' ').slice(1).join(' ');
+  var b=bestForMode(m);   // 🏅 this mode's own ladder best
+  var df=diffFor(m);
+  return '<button class="mode-card'+(mode===m?' active':'')+'" data-mode="'+m+'">'+
+    (mode===m?'<span class="mc-play">▶</span>':'')+
+    '<span class="mc-emoji">'+e+'</span>'+
+    '<span class="mc-name">'+name+'</span>'+
+    '<span class="mc-tag">'+d.tag+'</span>'+
+    '<span class="mc-best'+(b>0?'':' zero')+'">🏅 <b>'+b+'</b></span>'+
+    '<span class="mc-diff d-'+(df==='challenging'?'hard':df)+'" data-diffmode="'+m+'" title="'+name+' difficulty — tap to cycle">'+df+'</span>'+
+    '</button>';
+}
+function showMenu(){
+  setBodyLock(false);
+  clearSeedRng();   // 🔗 a seeded run is over — normal randomness resumes on the menu
+  difficulty=diffFor(mode);   // 🎚️ menu always reflects the ACTIVE mode's saved difficulty (covers seed-code mode switches too)
+  TUT_ON=false; clearTutTimer(); el['tut-card'].style.display='none';   // 🎓 park the tutorial (resumes next run)
+  loadProfile(mode);          // menu always shows the selected mode's saved controls
+  var rank=rankFor(totalOrders);
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div class="menu-hero">'+
+      '<div class="hero-field">'+heroEmojiField()+
+        '<div class="wordmark"><span class="wm-top">Computer</span><span class="wm-bot">Chaos</span></div>'+
+      '</div>'+
+      '<div class="tagline">catch · fix · survive</div>'+
+    '</div>'+
+    '<div id="mode-cards">'+modeCardHtml('arcade')+modeCardHtml('pro')+modeCardHtml('relaxed')+'</div>'+
+    '<div class="mode-hint">pick your shift · tap to play</div>'+
+    '<div id="diff-row">'+
+      '<div class="diff-seg">'+diffSegHtml()+'</div>'+
+      '<span class="diff-for">🎚️ for '+MODE_DEF[mode].label+'</span>'+
+    '</div>'+
+    dailyRowHtml()+
+    '<div class="stat-strip">🏆 Best <b>'+bestScore+'</b> · '+rank[1]+' '+rank[2]+' · '+
+      (runsPlayed>0?(runsPlayed+' shift'+(runsPlayed===1?'':'s')+' clocked'):'ready for your first shift')+'</div>'+
+    '<div class="tool-row">'+
+      '<button class="tool-btn" id="msg-btn4">✋<span>Controls</span></button>'+
+      '<button class="tool-btn" id="msg-btn2">🔧<span>Tips</span></button>'+
+      '<button class="tool-btn" id="msg-btn3">⌨️<span>Keys</span></button>'+
+      '<button class="tool-btn" id="msg-btn5">🏆<span>Trophies</span></button>'+
+      '<button class="tool-btn" id="msg-btn7">📊<span>Career</span></button>'+
+      '<button class="tool-btn" id="msg-btn8">🔗<span>Seeds</span></button>'+
+      '<button class="tool-btn" id="msg-btn6">⚙️<span>Settings</span></button>'+
+    '</div>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  /* one-tap launch: tapping a mode card starts that mode immediately */
+  el['msg-overlay'].querySelectorAll('.mode-card').forEach(function(b){
+    b.addEventListener('click',function(ev){
+      var badge=ev&&ev.target&&ev.target.closest?ev.target.closest('.mc-diff'):null;   // 🎚️ badge tap = cycle that mode's difficulty (no launch)
+      if(badge){ cycleDiff(badge.getAttribute('data-diffmode')||b.getAttribute('data-mode')); return; }
+      launchMode(b.getAttribute('data-mode'));
+    });
+  });
+  /* 🎚️ difficulty row: tunes the ACTIVE mode (per-mode, saved under cc7_diff_<mode>) */
+  el['msg-overlay'].querySelectorAll('.diff-seg-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      setDifficulty(b.getAttribute('data-diff'));
+      showMenu();             // re-render so the active pill + every card badge follow
+    });
+  });
+  document.getElementById('daily-btn').addEventListener('click',function(){ audioInit(); startGame(true); });
+  document.getElementById('msg-btn2').addEventListener('click',showTips);
+  document.getElementById('msg-btn3').addEventListener('click',showKeys);
+  document.getElementById('msg-btn4').addEventListener('click',showControls);
+  document.getElementById('msg-btn5').addEventListener('click',showTrophies);
+  document.getElementById('msg-btn7').addEventListener('click',showCareer);
+  document.getElementById('msg-btn8').addEventListener('click',showSeeds);
+  document.getElementById('msg-btn6').addEventListener('click',showSettings);
+}
+function showControls(){
+  /* progressive disclosure: the tray control style + lift height live behind a tap */
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Controls</div>'+
+    '<div id="msg-sub">How the tray moves with you.<br>Each game mode keeps its own setup ('+PROFILE_NAME[curProfile]+').</div>'+
+    ctrlRowHtml()+
+    liftRowHtml()+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  wireCtrlRow(el['msg-overlay']);
+  wireLiftRow(el['msg-overlay']);
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function showSettings(){
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Settings</div>'+
+    '<div id="msg-sub">Tweaks for how the game treats you — kept on this device.</div>'+
+    '<button class="key-btn" id="grace-btn"><span>🛡️ No-fail grace</span><span class="key-cap">'+(graceOn()?'ON':'OFF')+'</span></button>'+
+    '<div class="ctrl-for">A 3-second shield after every hit — and at the start of each shift.<br>While it\'s up, junk and storming-off patrons won\'t cost a life. Built for 🧘 zen sessions.</div>'+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  document.getElementById('grace-btn').addEventListener('click',function(){ lsSet('cc7_grace', graceOn()?'0':'1'); showSettings(); });
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function showTrophies(){
+  var n=0; ACH.forEach(function(a){ if(unlocked[a[0]]) n++; });
+  var g='<div class="trophy-grid">';
+  ACH.forEach(function(a){
+    g+='<div class="trophy-cell'+(unlocked[a[0]]?'':' locked')+'"><span class="tc-emoji">'+ACH_TROPHY[a[0]]+'</span><span class="tc-name">'+a[2]+'</span></div>';
+  });
+  g+='</div>';
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Trophies</div>'+
+    '<div id="msg-sub">'+n+' of '+ACH.length+' — keep fixing to unlock the rest.</div>'+
+    g+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function showSeeds(){
+  /* 🔗 paste-to-play: any CC-XXXXX code replays its exact shift (same chaos, spawns, bosses) */
+  var mm=SEED_MODES.indexOf(mode)>=0?mode:SEED_MODES[1];   // daily's date is its own code; seeds use the 3 selectable modes
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Seed Codes</div>'+
+    '<div id="msg-sub">Every shift gets a shareable code — paste one to replay that exact run.<br>Same chaos, same spawns, same bosses. Everyone plays the same shift.</div>'+
+    '<input id="seed-input" type="text" placeholder="CC-XXXXX" maxlength="8" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">'+
+    '<div id="seed-msg" class="ctrl-for"></div>'+
+    '<button class="key-btn" id="seed-play-btn"><span>▶ Play this code</span></button>'+
+    '<button class="key-btn" id="seed-rand-btn"><span>🎲 Random code for '+MODE_DEF[mm].label+'</span></button>'+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  var inp=document.getElementById('seed-input'), msg=document.getElementById('seed-msg');
+  inp.focus();
+  function playCode(){
+    var p=parseSeedCode(inp.value);
+    if(!p){ msg.className='ctrl-for bad'; msg.textContent='That doesn\'t look like a valid code — check the format (CC-XXXXX).'; return; }
+    msg.className='ctrl-for good'; msg.textContent='Playing '+MODE_DEF[p.mode].label+' — '+encodeSeedCode(p.mode,p.seed);
+    audioInit(); startGame(false, encodeSeedCode(p.mode,p.seed));
+  }
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter') playCode(); });
+  document.getElementById('seed-play-btn').addEventListener('click',playCode);
+  document.getElementById('seed-rand-btn').addEventListener('click',function(){
+    var c=encodeSeedCode(mm, Math.floor(Math.random()*32768));
+    inp.value=c; msg.className='ctrl-for good'; msg.textContent='Your code: '+c+' — play it, share it, or paste someone else\'s.';
+  });
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function showCareer(){
+  /* 💼 lifetime stats — a live read of the already-persisted cc7_* keys, no new saves */
+  var to=parseInt(lsGet('cc7_total','0'),10)||0;
+  var rp=parseInt(lsGet('cc7_runs','0'),10)||0;
+  var bc=parseInt(lsGet('cc7_bestcombo','0'),10)||0;
+  var bs=parseInt(lsGet('cc7_best',''),10)||parseInt(lsGet('cc4_best','0'),10)||0;
+  var cleared={}; try{ JSON.parse(lsGet('cc7_bosses','[]')||'[]').forEach(function(c){ cleared[c]=true; }); }catch(e){}
+  var have={}; try{ JSON.parse(lsGet('cc7_ach','[]')||'[]').forEach(function(c){ have[c]=true; }); }catch(e){}
+  var cur=rankFor(to), nxt=null, pct=100;
+  for(var i=0;i<RANKS.length-1;i++){
+    if(to<RANKS[i+1][0]){
+      nxt=RANKS[i+1];
+      pct=Math.max(0,Math.min(100,Math.round(100*(to-RANKS[i][0])/(RANKS[i+1][0]-RANKS[i][0]))));
+      break;
+    }
+  }
+  var bClear=0, bossRow='';
+  BOSSES.forEach(function(b){ if(cleared[b.id]) bClear++; bossRow+='<span class="boss-chip'+(cleared[b.id]?'':' locked')+'" title="'+(cleared[b.id]?'cleared':'not yet')+'">'+b.emoji+'</span>'; });
+  var nAch=0; ACH.forEach(function(a){ if(have[a[0]]) nAch++; });
+  var st=dailyStreak(), bestSt=parseInt(lsGet('cc7_daily_beststreak','0'),10)||0;
+  var pm=[['⚡ Arcade','arcade'],['🛠️ Pro','pro'],['🧘 Relaxed','relaxed'],['🌞 Daily','daily']].map(function(p){
+    return '<div class="pm-cell"><span class="pm-em">'+p[0].split(' ')[0]+'</span><span class="pm-val">'+bestForMode(p[1])+'</span></div>';
+  }).join('');
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Career</div>'+
+    '<div id="msg-sub">Your lifetime behind the bench.</div>'+
+    '<div class="career-grid">'+
+      '<div class="career-cell"><span class="cc-em">💰</span><span class="cc-val">'+bs+'</span><span class="cc-name">best score</span></div>'+
+      '<div class="career-cell"><span class="cc-em">📦</span><span class="cc-val">'+to+'</span><span class="cc-name">orders fixed</span></div>'+
+      '<div class="career-cell"><span class="cc-em">⏱</span><span class="cc-val">'+rp+'</span><span class="cc-name">shifts clocked</span></div>'+
+      '<div class="career-cell"><span class="cc-em">💥</span><span class="cc-val">×'+bc+'</span><span class="cc-name">best combo</span></div>'+
+    '</div>'+
+    '<div class="rank-box">'+
+      '<div class="rank-line"><span class="rank-em">'+cur[1]+'</span><span class="rank-name">'+cur[2]+'</span>'+
+      '<span class="rank-next">'+(nxt?(nxt[1]+' '+nxt[2]):'max rank!')+'</span></div>'+
+      '<div class="rank-bar"><div class="rank-fill" style="width:'+pct+'%"></div></div>'+
+      (nxt?'<div class="rank-sub">'+to+' / '+nxt[0]+' orders to '+nxt[2]+'</div>':'<div class="rank-sub">'+to+' orders · nothing left to climb</div>')+
+    '</div>'+
+    '<div class="boss-row">'+bossRow+'<span class="boss-count">'+bClear+'/3 cleared</span></div>'+
+    '<div class="pm-row">'+pm+'</div>'+
+    '<div class="career-line">🏆 '+nAch+'/'+ACH.length+' trophies · 🔥 '+st+' day streak'+(bestSt>0?(' · best '+bestSt):'')+'</div>'+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function keysRowHtml(){
+  var h='';
+  for(var a in KEY_LABELS){
+    h+='<button class="key-btn'+(keyCapture===a?' capturing':'')+'" data-act="'+a+'">'+
+      '<span>'+KEY_LABELS[a]+'</span><span class="key-cap">'+
+      keymap[a].map(function(k){ return k===' '?'Space':k; }).join(' / ')+'</span></button>';
+  }
+  return h;
+}
+function showKeys(keepCapture){
+  if(!keepCapture) keyCapture=null;   // row clicks keep the capture target across the re-render
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Keys</div>'+
+    '<div id="msg-sub">Pick an action, then hit the key you want.<br>🎮 Gamepad: left stick moves · start = play/pause.</div>'+
+    '<div id="key-list">'+keysRowHtml()+'</div>'+
+    '<button id="msg-btn">↺ Reset</button>'+
+    '<button id="msg-btn2" class="ghost-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  el['msg-overlay'].querySelectorAll('.key-btn').forEach(function(b){
+    b.addEventListener('click',function(){ keyCapture=b.getAttribute('data-act'); showKeys(true); });
+  });
+  document.getElementById('msg-btn').addEventListener('click',function(){ resetKeys(); showKeys(); });
+  document.getElementById('msg-btn2').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function dailyRowHtml(){
+  var plan=planForDay();
+  var st=dailyStreak();
+  var done=lsGet('cc7_daily_last','')===todayKey();
+  return '<div id="daily-row">'+
+    '<button id="daily-btn"><span>🌞 Daily Challenge</span><span class="db-badge">'+(st>0?('🔥 '+st+(done?' ✓':'')):'NEW')+'</span></button>'+
+    '<div id="daily-sub"'+(done?' class="done"':'')+'>🌍 '+plan.target+' · '+plan.seq.map(function(e){ return CHAOS_DEF[e.chaos].emoji; }).join(' ')+' · controls '+CTRL_EMOJI[readCtrl('daily')]+' · 🏅 '+bestForMode('daily')+(done?' · done ✓':'')+'</div>'+
+  '</div>';
+}
+function showTips(){
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Tips</div>'+
+    '<div id="msg-sub" style="text-align:left">'+
+      '🖐️ Catch parts in <b>order</b> — the tracker shows what\'s next.<br>'+
+      '⛔ Wrong part: −5 pts. <b>Junk</b>: lose a life!<br>'+
+      '🔥 Catch fast and keep the chain alive — big <b>combos</b>, big points.<br>'+
+      '☕ Coffee = slow-mo · 🔧 Wrench = skip order · 🧲 Magnet = pull parts.<br>'+
+      '🐱⚡☕🥶 Chaos hits without warning — watch the corner icon &amp; ride it out.<br>'+
+      '✋ <b>Drag</b>: tray follows your finger · 👆 <b>Snap</b>: tap to jump.<br>'+
+      '✊ <b>Hold</b>: tap to park the tray · drag to move (one hand).<br>'+
+      '🖐️ <b>2nd finger</b> anywhere (or right-click) fires the active 🔧.<br>'+
+      '🛡️ <b>No-fail grace</b> (Settings): a 3-second shield after every hit.<br>'+
+      '🎮 Gamepad: left stick moves · D-pad steps · start = play/pause.<br>'+
+      '⌨️ Not a fan of the keys? Rebind them in <b>Keys</b>.<br>'+
+      '🏆 Clear shifts to earn trophies and climb the ranks.<br>'+
+      '<kbd>P</kbd> pause · <kbd>M</kbd> mute · <kbd>N</kbd> music</div>'+
+    '<button class="ghost-btn" id="back-btn">Back</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+}
+function showEnd(s,reason){
+  var rank=rankFor(totalOrders);
+  var achHtml=s.achList.length
+    ? '<div id="trophy-row">'+s.achList.map(function(c){ return '<span class="trophy" title="'+(ACH_TROPHY[c])+'">'+ACH_TROPHY[c]+'</span>'; }).join('')+'</div>'
+    : '<div id="msg-stats2" style="margin:0 0 10px">No trophies this shift — yet!</div>';
+  var title=s.lives<=0?'Out of lives':'Shift over!';   // the end screen always reports the END EVENT — a wave defeat is celebrated live, mid-run, never as a headline
+  var statsLine='<div id="msg-stats">Score '+s.score+' · Best '+s.best+'</div>';
+  var wc=s.wavesCleared>0?(' · 🛒 Waves cleared: '+s.wavesCleared):'';   // only boss modes can beat waves
+  var stats2='<div id="msg-stats2">Orders '+s.orders+' · Best combo ×'+s.bestComboRun+wc+' · '+rank[1]+' '+rank[2]+'</div>';
+  if(s.daily){
+    title='Daily Challenge';
+    var beaten=s.score>=s.dailyTarget;
+    var st=dailyStreak();
+    stats2='<div id="msg-stats2">🌍 Target '+s.dailyTarget+' — '+(beaten?'✓ Beaten!':'Missed by '+(s.dailyTarget-s.score))+(st>0?(' · 🔥 '+st+' day streak'):'')+wc+'</div>';
+  }
+  var seedRow=s.seedCode
+    ? '<div id="seed-row"><span>🔗 '+s.seedCode+'</span><button id="copy-seed">copy</button></div>'
+    : '<div id="seed-row" class="make" style="display:none"></div>';
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">'+title+'</div>'+
+    '<div id="msg-sub">'+reason+'</div>'+
+    (s.newBest?'<div id="new-best" style="display:block">🏆 NEW BEST!</div>':'')+
+    statsLine+
+    stats2+
+    seedRow+
+    achHtml+
+    '<button id="msg-btn">Play Again</button>'+
+    '<button id="msg-btn2">Menu</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  document.getElementById('msg-btn').addEventListener('click',function(){ audioInit(); startGame(s.daily, s.seedCode); });
+  document.getElementById('msg-btn2').addEventListener('click',function(){ audioInit(); S.phase='menu'; showMenu(); });
+  var cs=document.getElementById('copy-seed');
+  if(cs){ cs.addEventListener('click',function(){ copyText(s.seedCode,cs); }); }
+}
+function showPause(){
+  clearTutTimer();   // 🎓 freeze the tutorial for ANY pause (manual or auto) — resume re-arms it
+  loadProfile(S.daily?'daily':mode);   // pause shows the CURRENT run's saved controls
+  el['msg-overlay'].innerHTML=
+    '<div id="ov-wrap">'+
+    '<div id="msg-title">Paused</div>'+
+    '<div id="msg-sub">Take five, tech.<br>The shift clock is on hold.</div>'+
+    ctrlRowHtml()+
+    liftRowHtml()+
+    '<button id="msg-btn" class="primary-btn">Resume</button>'+
+    '</div>';
+  el['msg-overlay'].style.display='flex';
+  wireCtrlRow(el['msg-overlay']);
+  wireLiftRow(el['msg-overlay']);
+  document.getElementById('msg-btn').addEventListener('click',function(){ togglePause(); });
+}
+function syncHud(s){
+  if(el['score-val'].textContent!=s.score) el['score-val'].textContent=s.score;
+  if(el['orders-val'].textContent!=s.orders) el['orders-val'].textContent=s.orders;
+  if(el['level-val'].textContent!=s.level) el['level-val'].textContent=s.level;
+  var t=Math.ceil(Math.max(0,s.timeLeft));
+  if(el['time-val'].textContent!=t) el['time-val'].textContent=t;
+  var lowTime=s.timeLeft<=10&&s.timeLeft>0;
+  if(s._lowTime!==lowTime){ s._lowTime=lowTime; el['time-val'].parentNode.classList.toggle('low', lowTime); }
+  if(s._ot!==!!s.overtime){ s._ot=!!s.overtime; el['time-val'].parentNode.classList.toggle('ot', !!s.overtime); }
+  var hearts='❤️'.repeat(Math.max(0,s.lives))||'·';
+  if(el['lives-val'].textContent!==hearts) el['lives-val'].textContent=hearts;
+  if(s._lowLives!==(s.lives===1)){ s._lowLives=(s.lives===1); el['lives-pill'].classList.toggle('low', s.lives===1); }
+  var grace=s.graceTimer>0&&s.lives>1;   // 🛡️ shield active: pill glows cyan (the 1-life red urgency wins)
+  if(s._grace!==grace){ s._grace=grace; el['lives-pill'].classList.toggle('grace', grace); }
+  if(el['best-val'].textContent!=s.best) el['best-val'].textContent=s.best;
+  var cmax=Math.min(1,s.combo/20);
+  var w=Math.round(cmax*100);
+  if(s._comboW!==w){ s._comboW=w; el['combo-fill'].style.width=w+'%'; }
+  var hot=s.combo>=5;
+  if(s._hot!==hot){ s._hot=hot; el['combo-bar'].classList.toggle('hot', hot); }
+  var exp=s.combo>0&&s.comboTimer<0.75;   // ⚠️ chain about to drop: bar pulses so you know to catch NOW
+  if(s._exp!==exp){ s._exp=exp; el['combo-bar'].classList.toggle('expiring', exp); }
+  var cn=s.combo>1?('×'+Math.min(s.combo,20)):'';   // multiplier display caps at ×20 to match the bar + scoring
+  if(el['combo-num'].textContent!==cn) el['combo-num'].textContent=cn;
+}
+
+/* ---------------- UPDATE (dt-based, 60 Hz fixed step) ---------------- */
+function update(s,dt){
+  if(s.paused) return;
+  if(s.phase==='countdown'){
+    s.count-=dt;
+    if(s.count>0){
+      var n=Math.ceil(s.count/0.7);
+      if(n!==s._lastCount){ s._lastCount=n; SFX.tick(); }
+      return;
+    }
+    s.phase='play'; SFX.go(); addFlash('#22d3ee',0.25);
+    return;
+  }
+  if(s.phase!=='play') return;
+
+  /* end conditions (top of update: stop the sim immediately once the shift is over) */
+  if(s.lives<=0){ persistEnd(s); return; }
+  /* ⏱️ post-bell overtime (arcade only): finish the order already on the bench, up to 10s */
+  if(s.timeLeft<=0){
+    if(modeRules(s).overtime){
+      if(s.queue.length===0){ persistEnd(s); s.overtime=false; return; }   // nothing left to finish — clock out now
+      if(!s.overtime){
+        s.overtime=true; s.oTimer=modeRules(s).overtime;
+        popup(W/2,H/2-84,'⏱️','#facc15'); addFlash('#facc15',0.25); SFX.ach();
+      } else {
+        s.oTimer-=dt;
+        if(s.oTimer<=0){ persistEnd(s); s.overtime=false; return; }   // grace ran out
+      }
+    } else {
+      persistEnd(s); return;
+    }
+  }
+
+  if(hitStop>0){ hitStop-=dt; return; }
+
+  /* timers */
+  if(s.powerupTimer>0){
+    s.powerupTimer-=dt;
+    if(s.powerupTimer<=0){ s.powerup=null; s.wrenchHint=0; }   // hot 🔧 window ends quietly — NEVER auto-fires (can't eat an order)
+  }
+  if(s.wrenchHint>0) s.wrenchHint-=dt;
+  if(s.chaosTimer>0){ s.chaosTimer-=dt;
+    if(s.chaosTimer<=0){ s.chaos=null; s.smudge=null; s.inputFreeze=0; s.contam=null; s.contamTimer=0; s.cableLock=null; s.cableTimer=0; } }
+  if(s.contamTimer>0){ s.contamTimer-=dt; if(s.contamTimer<=0){ s.contam=null; } }
+  if(s.cableTimer>0){ s.cableTimer-=dt; if(s.cableTimer<=0){ s.cableLock=null; } }
+  if(s.chaosCooldown>0) s.chaosCooldown-=dt;
+
+  /* 🎒 supply shortage: the stocked-out code rotates while the boss is active */
+  if(s.boss&&s.boss.def.gimmick==='stock'){
+    s.stockTimer-=dt;
+    if(s.stockTimer<=0){
+      s.stock=PART_CODES[Math.floor(Math.random()*PART_CODES.length)];
+      s.stockTimer=8;
+    }
+  } else if(!s.boss){ s.stock=null; }
+
+  /* 🌡️ meltdown heat bar — climbs for the whole wave (active until the wave is defeated) */
+  if(s.boss&&s.boss.def.gimmick==='heat'){
+    s.heat+=4.5*dt;
+    if(s.heat>=100){ s.heatLevel++; s.heat=0; popup(W/2,H/2-80,'🌡️ HOT','#ef4444'); SFX.chaos(); addTrauma(0.4); }
+  }
+
+  /* patron patience meters — decay faster for harder orders + impatient bosses */
+  if(modeRules(s).patrons) for(var qi=0;qi<s.queue.length;qi++){
+    var qo=s.queue[qi];
+    var dec=(BALANCE.patienceBase+qo.diff*BALANCE.patiencePerDiff)*(s.boss?s.boss.def.patienceMul:1)*(modeRules(s).patienceMul||1)*dt;   // 🧘 relaxed: patrons 30% more patient (decay ×0.7)
+    qo.patron.pat=Math.max(0,qo.patron.pat-dec);
+    if(qo.patron.pat<=0){
+      /* patron storms off: -1 life, the order is lost (🛡️ absorbed under no-fail grace) */
+      if(s.graceTimer>0){ shieldHit(s,W/2,H/2-70); }
+      else {
+        s.lives--; s.combo=0;
+        popup(W/2,H/2-70,'💨','#94a3b8'); burst(W/2,H/2-30,'#94a3b8',14);
+        addFlash('#ef4444',0.28); addHitStop(0.07); addTrauma(0.45); SFX.junk();
+      }
+      s.queue.splice(qi,1); qi--;
+      if(s.boss&&s.boss.def.gimmick==='queue'){ fillQueue(s); fillQueue(s); }   // 🛒 queue overflow: refill hard to the wave's 3-order cap
+      else fillQueue(s);
+      s._ordersDirty=true;
+      if(s.lives<=0){ persistEnd(s); return; }
+    }
+  }
+  /* refresh patience bars/moods ~4×/sec (live drain without per-frame DOM churn) */
+  s._patT+=dt;
+  if(s._patT>=0.25){ s._patT=0; s._ordersDirty=true; }
+  if(s.comboTimer>0){ s.comboTimer-=dt; if(s.comboTimer<=0) s.combo=0; }
+  if(s.graceTimer>0) s.graceTimer-=dt;    // 🛡️ shield countdown (absorbed hits refresh it)
+  if(s.flashTimer>0) s.flashTimer-=dt;
+  if(s.goFlash>0) s.goFlash-=dt;
+  trauma=Math.max(0,trauma-dt*1.4);
+  if(s.inputFreeze>0) s.inputFreeze-=dt;
+
+  /* daily shift: scheduled chaos (deterministic per day, no RNG) */
+  if(s.daily&&s.dailySeq&&s.dailySeq.length){
+    var elapsed=GAME_TIME-s.timeLeft;
+    if(elapsed>=s.dailySeq[0].at){ triggerChaos(s,s.dailySeq.shift().chaos); }
+  }
+
+  /* movement */
+  var spd=s.player.speed*(s.powerup==='coffee'?0.45:1);
+  var dir=0;
+  if(s.keys['left']) dir=-1;               // remappable keys (KEY_DEFAULTS)
+  if(s.keys['right']) dir=1;
+  if(padBtn(14)) dir=-1;                   // 🎮 D-pad left — crisp, like keys
+  if(padBtn(15)) dir=1;                    // 🎮 D-pad right
+  if(s.chaos==='cat') dir*=-1;
+  var gx=padX();                           // 🎮 left stick, -1..1 (deadzone + scaled)
+  if(s.inputFreeze<=0){
+    if(dir!==0){ s.player.targetX=null; s.player.targetY=null; /* keys/D-pad: crisp, no lag */
+      s.player.x=Math.max(s.player.w/2, Math.min(W-s.player.w/2, s.player.x+dir*spd*dt));
+      if(ctrlMode==='lift'||ctrlMode==='lifthold') s.player.y+=(TRAY_Y-s.player.y)*Math.min(1,dt*DRAG_LERP); /* tray back to the bench */
+      s.padSmooth=0;
+    }
+    else if(gx!==0){ /* 🎮 left stick: analog, same drag-style lag smoothing */
+      s.player.targetX=null; s.player.targetY=null;   /* stick wins over stale finger targets */
+      s.padSmooth+=(gx-s.padSmooth)*Math.min(1,dt*DRAG_LERP);
+      s.player.x=Math.max(s.player.w/2, Math.min(W-s.player.w/2, s.player.x+s.padSmooth*spd*dt));
+      if(ctrlMode==='lift'||ctrlMode==='lifthold') s.player.y+=(TRAY_Y-s.player.y)*Math.min(1,dt*DRAG_LERP);
+    }
+    else if(Math.abs(s.padSmooth)>0.001&&s.player.targetX==null){ /* released stick glides to a stop (a fresh finger grab wins) */
+      s.padSmooth+=(0-s.padSmooth)*Math.min(1,dt*DRAG_LERP);
+      s.player.x=Math.max(s.player.w/2, Math.min(W-s.player.w/2, s.player.x+s.padSmooth*spd*dt));
+      if(ctrlMode==='lift'||ctrlMode==='lifthold') s.player.y+=(TRAY_Y-s.player.y)*Math.min(1,dt*DRAG_LERP);
+    }
+    else if(ctrlMode==='drag'||ctrlMode==='lift'||ctrlMode==='lifthold'){ /* ✋/☝️/✊ follow: 1:1 target, slight lag smoothing */
+      if(s.player.targetX!=null) s.player.x+=(s.player.targetX-s.player.x)*Math.min(1,dt*DRAG_LERP);
+      if((ctrlMode==='lift'||ctrlMode==='lifthold')&&s.player.targetY!=null) s.player.y+=(s.player.targetY-s.player.y)*Math.min(1,dt*DRAG_LERP);
+    }
+  }
+  s.player.sx+=(1-s.player.sx)*0.14; s.player.sy+=(1-s.player.sy)*0.14;
+
+  /* drag-aid trail history (aiming aid; skipped under reduced motion) */
+  if(!REDUCED&&(ctrlMode==='drag'||ctrlMode==='lift'||ctrlMode==='lifthold')&&s.player.targetX!=null) trailPush(s.player.x,s.player.y);
+  else trailClear();
+
+  /* spawning */
+  s.spawnTimer-=dt;
+  if(s.spawnTimer<=0){
+    spawnItem(s);
+    if(s.level>=4&&Math.random()<0.25) spawnItem(s);
+    s.spawnTimer=spawnInterval(s);
+  }
+
+  /* magnet pulls needed parts toward the tray */
+  if(s.powerup==='magnet'){
+    var need=nextNeeded(s);
+    for(var i=0;i<s.items.length;i++){ var mi=s.items[i];
+      if(mi.type==='good'&&mi.code===need){
+        var dx=s.player.x-mi.x; mi.x+=Math.max(-140,Math.min(140,dx*2.2))*dt;
+      } }
+  }
+
+  var py=s.player.y;
+  for(i=s.items.length-1;i>=0;i--){
+    var it=s.items[i];
+    it.y+=it.speed*dt;
+    it.scale=Math.min(1,it.scale+dt*4);
+    var hit=Math.abs(it.x-s.player.x)<s.player.w/2+CATCH_X && Math.abs(it.y-py)<CATCH_Y;
+    if(hit){
+      s.items.splice(i,1);
+      var contaminated=s.contam&&it.type==='good'&&it.code===s.contam;      // 🫗 toxic part
+      var stockedOut=s.stock&&it.type==='good'&&it.code===s.stock;           // 🎒 out of stock
+      /* 🌡️ meltdown: ANY caught cooling part pushes the heat bar down (correct or not) */
+      if(s.boss&&s.boss.def.gimmick==='heat'&&(it.code==='fan'||it.code==='paste'||it.code==='heatsink')){
+        s.heat=Math.max(0,s.heat-22);
+        popup(it.x,py-24,'❄️','#7dd3fc');
+      }
+      if(it.type==='good'&&!contaminated&&!stockedOut){
+        var q=orderForCode(s,it.code);
+        if(q){
+          /* correct part — deposit into the matching order */
+          q.c.push(it.code);
+          patienceBonus(q,8);                    // happy patron: +8 patience
+          var gained=10*s.level+Math.min(s.combo,20)*5;   // ×20 is the max multiplier (bar, display, AND score all agree)
+          s.score+=gained;
+          s.combo++; s.comboTimer=2.5;
+          s.bestComboRun=Math.max(s.bestComboRun,s.combo);
+          burst(it.x,py,'#22c55e',14); popup(it.x,py-24,'+'+gained+(s.combo>1?' ×'+Math.min(s.combo,20):''),'#4ade80');   // ×N shows WHY it pays more (capped at the ×20 max)
+          s.player.sx=1.28; s.player.sy=0.74; addTrauma(0.08);
+          SFX.catchGood(s.combo);
+          if(TUT_ON&&tutStep===0) advanceTut();   // 🎓 lesson 1 done: caught a part
+          if(s.combo===5) checkAch(s,'c5');
+          if(s.combo===10){ checkAch(s,'c10'); popup(W/2,H/2-60,'🔥','#fb923c'); }
+          s._ordersDirty=true;
+          if(q.c.length===q.p.length){
+            var oi=-1;
+            for(var oi2=0;oi2<s.queue.length;oi2++){ if(s.queue[oi2]===q){ oi=oi2; break; } }
+            completeOrder(s,oi);
+          }
+        } else {
+          /* wrong part — score penalty only (fair, V1 rules) */
+          s.score=Math.max(0,s.score-5);
+          s.combo=0;
+          burst(it.x,py,'#ef4444',10); popup(it.x,py-24,'−5','#f87171');
+          s.player.sx=1.22; s.player.sy=0.8; addTrauma(0.2);
+          SFX.wrong();
+          if(!s.daily&&!s.chaos&&!TUT_ON&&s.chaosCooldown<=0&&Math.random()<0.22) triggerChaos(s);   // 🎓 no chaos while the tutorial is coaching
+        }
+      } else if(it.type==='junk'||contaminated){
+        /* 🛡️ no-fail grace absorbs the hit — no life loss, no combo reset, soft feedback */
+        if(s.graceTimer>0){ shieldHit(s,it.x,py); }
+        else {
+          s.lives--; s.combo=0;
+          for(var pj=0;pj<s.queue.length;pj++) patienceBonus(s.queue[pj],-10);   // disappointed patrons
+          burst(it.x,py,'#ea580c',16); popup(it.x,py-24,'💥','#fb923c');
+          addFlash('#ea580c',0.28); addHitStop(0.08); addTrauma(0.5);
+          SFX.junk();
+          if(!s.daily&&!s.chaos&&!TUT_ON&&s.chaosCooldown<=0&&Math.random()<0.3) triggerChaos(s);   // 🎓 calm first shift (absorbed hits never escalate)
+        }
+        if(s.lives<=0){ persistEnd(s); return; }
+      } else if(stockedOut){
+        /* 🎒 out of stock: the part can't be used — gentle rejection, no life loss */
+        s.combo=0;
+        burst(it.x,py,'#94a3b8',8); popup(it.x,py-24,'🎒','#94a3b8');
+        addTrauma(0.1); SFX.wrong();
+      } else {
+        /* powerup */
+        if(it.emoji==='☕'){
+          s.powerup='coffee'; s.powerupTimer=POWER_KEYS.coffee; checkAch(s,'coffee');
+          popup(it.x,py-24,'SLOW','#fbbf24');
+          burst(it.x,py,'#facc15',12); addTrauma(0.15); SFX.power();
+        } else if(it.emoji==='🧲'){
+          s.powerup='magnet'; s.powerupTimer=POWER_KEYS.magnet; checkAch(s,'magnet');
+          popup(it.x,py-24,'PULL','#7dd3fc');
+          burst(it.x,py,'#facc15',12); addTrauma(0.15); SFX.power();
+        } else {
+          /* 🔧 wrench: catching it SKIPS the front order instantly — the order
+             resets the moment it lands (no dead wait). It then stays HOT for a
+             short window: a 2nd finger (or right-click) skips ONE more order.
+             The window never auto-fires, so it can't eat an order you're
+             actively filling. */
+          SFX.power();                 // pickup chime leads, then the skip's order chime
+          useWrench(s,py);
+          if(s.queue.length){ s.powerup='wrench'; s.powerupTimer=POWER_KEYS.wrench; s.wrenchHint=POWER_KEYS.wrench; }
+          burst(it.x,py,'#facc15',12); addTrauma(0.15);
+        }
+      }
+    } else if(it.y>H+40){ s.items.splice(i,1); }
+  }
+
+  /* particles / popups / rings */
+  for(i=0;i<MAX_P;i++){ var p=PARTICLES[i]; if(!p.active) continue;
+    p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=120*dt; p.life-=dt; if(p.life<=0) p.active=false; }
+  for(i=0;i<MAX_POP;i++){ var po=POPUPS[i]; if(!po.active) continue;
+    po.y-=36*dt; po.life-=dt; po.scale=Math.min(1,po.scale+dt*6); if(po.life<=0) po.active=false; }
+  for(i=0;i<MAX_RING;i++){ var rg=RINGS[i]; if(!rg.active) continue;
+    rg.r+=rg.vr*dt; rg.life-=dt; if(rg.life<=0) rg.active=false; }
+
+  /* achievements for score/lives */
+  if(s.score>=1000) checkAch(s,'s1k');
+  if(s.daily&&!s._dailyReached&&s.score>=s.dailyTarget){   // 🌍 world target reached!
+    s._dailyReached=true;
+    popup(W/2,H/2-90,'🌍 TARGET!','#22c55e');
+    ring(W/2,H/2-40,'#22c55e'); burst(W/2,H/2-40,'#22c55e',20);
+    addFlash('#22c55e',0.25); addTrauma(0.3); SFX.newbest();
+  }
+  if(s.chaos&&s.chaosTimer>0&&!s._chaosSurvived){ s._chaosSurvived=s.chaos; }
+  if(!s.chaos&&s._chaosSurvived){ checkAch(s,'chaos'); s._chaosSurvived=null; }
+
+  /* last-5-seconds urgency ticks */
+  if(s.timeLeft<=5.5&&s.timeLeft>0){
+    var whole=Math.ceil(s.timeLeft);
+    if(whole!==s._lastTick){ s._lastTick=whole; SFX.tick(); addFlash('#ef4444',0.1); }
+  }
+
+}
+
+/* ---------------- RENDER ---------------- */
+function hexA(hex,a){
+  var n=parseInt(hex.slice(1),16); var r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  return 'rgba('+r+','+g+','+b+','+a+')';
+}
+function drawBadge(x,y,emoji,bg,border,scale){
+  var r=22*scale;
+  ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+  ctx.fillStyle=bg; ctx.fill();
+  ctx.strokeStyle=border; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.font=(24*scale)+'px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",serif';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(emoji,x,y+1*scale);
+}
+function rr(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function rrect(c,x,y,w,h,r){ if(c.roundRect){ c.roundRect(x,y,w,h,r); } else { c.rect(x,y,w,h); } }
+function draw(s){
+  var now=performance.now();   // one clock read per frame — animations share it (low-end friendly)
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  /* trauma shake (positional + slight rotation) */
+  var ox=0,oy=0,rot=0;
+  if(trauma>0&&!REDUCED){
+    var t=trauma*trauma;
+    ox=(Math.random()*2-1)*10*t; oy=(Math.random()*2-1)*10*t; rot=(Math.random()*2-1)*0.02*t;
+  }
+  ctx.save();
+  ctx.translate(W/2+ox,H/2+oy); ctx.rotate(rot); ctx.translate(-W/2,-H/2);
+
+  var flip=s.chaos==='surge';
+  if(flip){ ctx.translate(0,H); ctx.scale(1,-1); }
+
+  ctx.drawImage(bgCanvas,0,0,W,H);
+
+  /* ambient dust (wordless background life) */
+  if(!REDUCED){
+    ctx.fillStyle='rgba(103,232,249,0.5)';
+    for(var d=0;d<MAX_DUST;d++){
+      var du=dust[d];
+      var y=(du.y+now*0.01*du.s)%H;
+      var x=(du.x+Math.sin(now*0.0004+du.ph)*14+W)%W;
+      ctx.globalAlpha=0.08+0.08*Math.sin(now*0.001+du.ph);
+      ctx.fillRect(x,y,2,2);
+    }
+    ctx.globalAlpha=1;
+  }
+
+  /* coffee chaos smudge (vision obscured) */
+  if(s.smudge){
+    ctx.fillStyle='rgba(120,80,30,0.16)'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(120,80,30,0.22)';
+    ctx.beginPath(); ctx.arc(s.smudge.x1,s.smudge.y1,s.smudge.r1,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(s.smudge.x2,s.smudge.y2,s.smudge.r2,0,Math.PI*2); ctx.fill();
+  }
+
+  /* items with spawn pop-in + soft shadows; catchable parts wear a halo (the primary
+     target pulses strongest) and truly wrong parts sit slightly dim, so the eye
+     locks onto what to catch — in multi-order modes every open slot is catchable */
+  var needNow=nextNeeded(s);
+  var catchable={};
+  for(var qi=0;qi<s.queue.length;qi++){ var cq=s.queue[qi]; var cn=nextNeededOf(cq); if(cn) catchable[cn]=1; }
+  for(var i=0;i<s.items.length;i++){
+    var it=s.items[i];
+    ctx.globalAlpha=Math.min(1,it.scale+0.25);
+    ctx.fillStyle='rgba(0,0,0,0.18)';
+    ctx.beginPath(); ctx.ellipse(it.x,it.y+18*it.scale,12*it.scale,4*it.scale,0,0,Math.PI*2); ctx.fill();
+    var bg,br;
+    var bad=it.type==='good'&&(it.code===s.contam||it.code===s.stock);   // 🫗 toxic / 🎒 out of stock
+    var isNeed=it.type==='good'&&it.code===needNow&&!bad;                 // 🎯 the primary catch target
+    var isCat=it.type==='good'&&catchable[it.code]&&!bad&&!isNeed;        // an open order's slot
+    if(bad){ bg=CONTAM_BG; br=CONTAM_BORDER; }
+    else if(it.type==='good'){ bg=GOOD_BG; br=isNeed?'#22d3ee':(isCat?'#67e8f9':GOOD_BORDER); }
+    else if(it.type==='junk'){ bg=JUNK_BG; br=JUNK_BORDER; }
+    else { bg=POW_BG; br=POW_BORDER; }
+    if(isNeed){   // pulsing halo ring on the primary target (static under reduced motion)
+      var hp=REDUCED?0.55:(0.45+0.35*Math.abs(Math.sin(now/130)));   // stronger pulse: 0.45→0.80 so the target pops mid-action
+      ctx.fillStyle='rgba(34,211,238,'+hp+')';
+      ctx.beginPath(); ctx.arc(it.x,it.y,30*it.scale,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.arc(it.x,it.y,26*it.scale,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle='rgba(34,211,238,'+hp+')';
+      ctx.beginPath(); ctx.arc(it.x,it.y,22*it.scale,0,Math.PI*2); ctx.stroke();
+    }
+    else if(isCat){   // secondary slots: a steady soft ring, no pulse
+      ctx.strokeStyle='rgba(103,232,249,0.8)'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(it.x,it.y,24*it.scale,0,Math.PI*2); ctx.stroke();
+    }
+    else if(it.type==='junk'){   // 🚫 hazard glow so the dodge reads instantly (static under reduced motion)
+      var jp=REDUCED?0.16:(0.12+0.10*Math.abs(Math.sin(now/90)));
+      ctx.fillStyle='rgba(234,88,12,'+jp+')';
+      ctx.beginPath(); ctx.arc(it.x,it.y,30*it.scale,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='rgba(234,88,12,0.6)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(it.x,it.y,27*it.scale,0,Math.PI*2); ctx.stroke();
+    }
+    if(it.type==='good'&&!bad&&!isNeed&&!isCat) ctx.globalAlpha*=0.62;   // truly wrong parts recede harder (clearer 'not now'); hazards (bad) stay full-alpha like junk
+    drawBadge(it.x,it.y,it.emoji,bg,br,it.scale);
+    if(bad){   // tiny warning marker so a bad part is unmistakable
+      ctx.fillStyle='#ef4444';
+      ctx.beginPath(); ctx.arc(it.x+16*it.scale,it.y-14*it.scale,4*it.scale,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(it.x+16*it.scale,it.y-14*it.scale,4*it.scale,0,Math.PI*2); ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+  }
+
+  /* 🔌 dead PSU: lights flicker (dark pulses over the whole bench) — constant during 🌡️ meltdown */
+  if(s.chaos==='deadpsu'||(s.boss&&s.boss.def.id==='melt')){
+    var flick=(REDUCED)?0.12:(0.12+0.16*Math.abs(Math.sin(now/70)));
+    ctx.fillStyle='rgba(5,8,18,'+flick+')'; ctx.fillRect(0,0,W,H);
+  }
+
+  /* 🛒🌡️🎒 boss wave banner: emoji + defeat progress (wordless) — the bar fills as the
+     wave's order quota (s.boss.quota) is completed; gold pulse on the final order */
+  if(s.boss){
+    var bf=Math.max(0,Math.min(1,s.bossTotal/s.boss.quota));   // wave defeat progress: quota completed
+    var bUrg=bf>=1-1/s.boss.quota&&!REDUCED;   // one order away: gold pulse — finish it for the clear bonus
+    ctx.fillStyle='rgba(11,14,26,0.78)'; rr(W/2-96,8,192,28,13); ctx.fill();
+    ctx.strokeStyle=bUrg?(Math.sin(now*0.02)>0?'#facc15':'#fb923c'):'#fb923c';
+    ctx.lineWidth=bUrg?2:1.5; rr(W/2-96,8,192,28,13); ctx.stroke();
+    ctx.font='bold 15px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle=bUrg?(Math.sin(now*0.02)>0?'#fde68a':'#fdba74'):'#fdba74';
+    ctx.fillText(s.boss.def.emoji+' WAVE '+s.bossTotal+'/'+s.boss.quota,W/2,22);
+    ctx.fillStyle='#2a3358'; ctx.fillRect(W/2-76,42,152,8);
+    ctx.fillStyle=bUrg?(Math.sin(now*0.02)>0?'#facc15':'#fb923c'):'#fb923c';
+    ctx.fillRect(W/2-76,42,Math.round(152*bf),8);
+    /* 🌡️ meltdown cooling bar (left side — keeps clear of the chaos chip) */
+    if(s.boss.def.gimmick==='heat'){
+      ctx.fillStyle='rgba(11,14,26,0.78)'; rr(8,44,96,20,10); ctx.fill();
+      ctx.font='12px system-ui'; ctx.fillStyle='#fca5a5';
+      ctx.fillText('🌡️ '+Math.round(s.heat),60,54);
+      ctx.fillStyle='#7f1d1d'; ctx.fillRect(16,60,80,5);
+      ctx.fillStyle='#ef4444'; ctx.fillRect(16,60,Math.round(80*Math.min(1,s.heat/100)),5);
+    }
+    /* 🎒 supply shortage chip */
+    if(s.boss.def.gimmick==='stock'&&s.stock){
+      ctx.fillStyle='rgba(11,14,26,0.78)'; rr(8,70,96,20,10); ctx.fill();
+      ctx.font='12px system-ui'; ctx.fillStyle='#fbbf24';
+      ctx.fillText('📦 '+PART_EMOJI[s.stock],60,80);
+    }
+  }
+
+  /* ☝️ lift tether: faint vertical line from the touch point up to the floating tray
+     (reduced-motion gated) — anchored at the FINGER's column (s.touchX, which tracks the
+     raw pointer even while the tray lags it), so it always reads as coming from the touch */
+  if(!REDUCED&&(ctrlMode==='lift'||ctrlMode==='lifthold')&&s.touchY!=null){
+    ctx.strokeStyle='rgba(34,211,238,0.16)'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(s.touchX,s.player.y); ctx.lineTo(s.touchX,s.touchY); ctx.stroke();
+    /* small anchor dot at the touch point */
+    ctx.fillStyle='rgba(34,211,238,0.25)';
+    ctx.beginPath(); ctx.arc(s.touchX,s.touchY,3,0,Math.PI*2); ctx.fill();
+  }
+
+  /* drag-aid: faint vertical guide under the finger + fading tray trail (reduced-motion gated) */
+  if(!REDUCED&&(ctrlMode==='drag'||ctrlMode==='lift'||ctrlMode==='lifthold')){
+    if(s.player.targetX!=null){
+      var gx=s.player.targetX;
+      ctx.strokeStyle='rgba(34,211,238,0.14)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,s.player.y); ctx.stroke();
+      /* catch-point marker where the guide meets the tray (aiming aid) */
+      ctx.fillStyle='rgba(34,211,238,0.22)';
+      ctx.beginPath(); ctx.arc(gx,s.player.y,3,0,Math.PI*2); ctx.fill();
+    }
+    if(trailLen>1){
+      ctx.strokeStyle='#22d3ee'; ctx.lineWidth=1.5;
+      for(var tk=1;tk<trailLen;tk++){
+        ctx.globalAlpha=0.24*(tk/trailLen);
+        var i0=(trailHead-trailLen+tk-1+MAX_TRAIL)%MAX_TRAIL;
+        var i1=(trailHead-trailLen+tk+MAX_TRAIL)%MAX_TRAIL;
+        ctx.beginPath(); ctx.moveTo(TRAIL_PTS[i0].x,TRAIL_PTS[i0].y); ctx.lineTo(TRAIL_PTS[i1].x,TRAIL_PTS[i1].y); ctx.stroke();
+      }
+      ctx.globalAlpha=1;
+    }
+  }
+
+  /* ⏱️ overtime marker — pulsing clock above the bench while the grace period runs */
+  if(s.overtime){
+    ctx.globalAlpha=REDUCED?0.55:(0.4+0.35*Math.sin(now/140));
+    ctx.font='26px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",serif';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('⏱️',W/2,26);
+    ctx.globalAlpha=1;
+  }
+
+  /* ===== the tech: workbench tray that leans into the catch (fun, high-quality rig) ===== */
+  var px=s.player.x, py=s.player.y;
+  var TPH='"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",serif';
+  /* the nearest in-flight part (drives the lean + anticipation glow) */
+  var ni=null, niD=1e9;
+  for(i=0;i<s.items.length;i++){ var ci=s.items[i];
+    if(ci.y>py-110&&ci.y<py+14){
+      var dd=Math.abs(ci.x-px);
+      if(dd<niD){ niD=dd; ni=ci; } } }
+  var near=!!ni;
+  /* lean: tilt toward the catch target, plus a nudge into motion (reads as reaching) */
+  var lean=0;
+  if(ni&&ni.y>py-60) lean+=Math.max(-1,Math.min(1,(ni.x-px)/42))*0.18;
+  var mvx=s.player.x-(s.player._lx!=null?s.player._lx:s.player.x);
+  s.player._lx=s.player.x;
+  lean+=Math.max(-1,Math.min(1,mvx/46))*0.05;
+  /* idle bob — a tiny breathing hop (none under reduced motion) */
+  var bob=REDUCED?0:Math.sin(now/340)*1.7;
+  /* anticipation glow under the bench when a part is close (steady under reduced motion) */
+  var pulse=REDUCED?0.16:(0.12+0.10*Math.sin(now/160));
+  if(near){
+    var g=ctx.createRadialGradient(px,py+4,4,px,py+4,56);
+    g.addColorStop(0,'rgba(34,211,238,'+pulse+')');
+    g.addColorStop(1,'rgba(34,211,238,0)');
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.ellipse(px,py+4,56,16,0,0,Math.PI*2); ctx.fill();
+  }
+  /* soft drop-shadow below the tray — sinks as the tray floats higher above the bench,
+     so ☝️/✊ lift reads as genuinely hovering. Drawn OUTSIDE the squash transform so it
+     stays stable while the tray body squashes on a catch. */
+  var hover=Math.max(0,TRAY_Y-py);
+  var shOff=9+Math.min(10,hover*0.05);
+  ctx.fillStyle='rgba(0,0,0,0.22)';
+  ctx.beginPath(); ctx.ellipse(px,py+shOff,s.player.w/2+9,5.5,0,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle='rgba(0,0,0,0.12)';
+  ctx.beginPath(); ctx.ellipse(px,py+shOff-3,s.player.w/2+3,4,0,0,Math.PI*2); ctx.fill();
+  ctx.save();
+  ctx.translate(px,py+bob);
+  ctx.rotate(lean);
+  ctx.scale(s.player.sx,s.player.sy);
+  /* rim glow behind the tech so he pops off the playfield (gradient cached — it's static) */
+  if(!RIM_GLOW){ RIM_GLOW=ctx.createRadialGradient(0,-22,2,0,-22,34);
+    RIM_GLOW.addColorStop(0,'rgba(165,180,203,0.38)'); RIM_GLOW.addColorStop(1,'rgba(165,180,203,0)'); }
+  ctx.fillStyle=RIM_GLOW;
+  ctx.beginPath(); ctx.arc(0,-22,34,0,Math.PI*2); ctx.fill();
+  ctx.font='30px '+TPH;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('🧑\u200d🔧',0,-22);
+  /* twin sparks orbiting the tech — a lively 'powered' read (none under reduced motion) */
+  if(!REDUCED){
+    var tS=now/230;
+    ctx.fillStyle='rgba(103,232,249,0.85)';
+    for(var kS=0;kS<2;kS++){
+      var aS=tS+kS*Math.PI;
+      ctx.beginPath(); ctx.arc(Math.cos(aS)*23,Math.sin(aS)*7-9,1.7,0,Math.PI*2); ctx.fill();
+    }
+    ctx.fillStyle='rgba(250,204,21,0.7)';
+    ctx.beginPath(); ctx.arc(Math.cos(-tS*1.3)*18,Math.sin(-tS*1.3)*5-6,1.2,0,Math.PI*2); ctx.fill();
+  }
+  /* workbench tray: rounded metallic bench with a glowing cyan rail */
+  var w2=s.player.w/2;
+  var lg=ctx.createLinearGradient(0,-10,0,10);
+  lg.addColorStop(0,'#6b7d9e'); lg.addColorStop(0.45,'#45577a'); lg.addColorStop(1,'#2a3a5c');
+  ctx.fillStyle=lg;
+  rrect(ctx,-w2,-10,s.player.w,20,8);
+  ctx.fill();
+  ctx.strokeStyle='rgba(165,180,203,0.45)'; ctx.lineWidth=1.4;
+  rrect(ctx,-w2+0.7,-10+0.7,s.player.w-1.4,20-1.4,8);
+  ctx.stroke();
+  /* rim light along the catching surface */
+  ctx.fillStyle='rgba(203,213,225,0.6)';
+  rrect(ctx,-w2+3,-10,s.player.w-6,2.6,2);
+  ctx.fill();
+  /* soft glow bed under the LED rail */
+  ctx.fillStyle='rgba(103,232,249,'+(near?0.28:0.13)+')';
+  rrect(ctx,-w2+3,3.6,s.player.w-6,5.4,3);
+  ctx.fill();
+  /* front LED rail — brightens as a part nears */
+  ctx.fillStyle=near?'#a5f3fc':'#22d3ee';
+  rrect(ctx,-w2+5,4.6,s.player.w-10,3,1.5);
+  ctx.fill();
+  /* end caps + screw dots */
+  ctx.fillStyle='#111d38';
+  rrect(ctx,-w2+1,-9,4.5,18,2.2);
+  ctx.fill();
+  rrect(ctx,w2-5.5,-9,4.5,18,2.2);
+  ctx.fill();
+  ctx.fillStyle='rgba(226,232,240,0.6)';
+  ctx.beginPath(); ctx.arc(-w2+8.5,0,1.3,0,Math.PI*2); ctx.arc(w2-8.5,0,1.3,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+
+  /* ×N combo counter beside the bench — the chain is readable right where your eyes are
+     (the HUD pill stays, this is the on-playfield read). Pops on each catch via the
+     comboTimer reset (2.5s → ~2.3s); static under reduced motion. */
+  if(s.combo>1&&s.phase==='play'){
+    var cp=REDUCED?0:Math.max(0,(s.comboTimer-2.2)/0.3);   // fresh-catch pop: 1 → 0 as the timer settles
+    var cs=1+0.3*cp, cxB=px+w2+20, cyB=py-8;
+    if(cxB+26>W-4) cxB=px-w2-20;                             // flip to the other side near the right wall
+    ctx.save(); ctx.translate(cxB,cyB); ctx.scale(cs,cs);
+    ctx.globalAlpha=0.9;
+    ctx.fillStyle='rgba(11,14,26,0.78)';
+    rrect(ctx,-20,-13,40,26,8); ctx.fill();
+    ctx.strokeStyle='rgba(250,204,21,0.55)'; ctx.lineWidth=1.2;
+    rrect(ctx,-20,-13,40,26,8); ctx.stroke();
+    ctx.font='bold 15px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle='#facc15'; ctx.fillText('×'+Math.min(s.combo,20),0,1);   // bench ×N also caps at the ×20 max
+    ctx.restore();
+  }
+
+  /* 🛡️ no-fail grace: a cyan countdown halo around the tech (static ring under reduced motion) */
+  if(s.graceTimer>0&&s.phase==='play'){
+    ctx.strokeStyle='rgba(125,211,252,0.16)'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.arc(px,py+2,34,0,Math.PI*2); ctx.stroke();
+    if(!REDUCED){
+      ctx.strokeStyle='rgba(125,211,252,0.85)';
+      ctx.beginPath(); ctx.arc(px,py+2,34,-Math.PI/2,-Math.PI/2+Math.max(0,Math.min(1,s.graceTimer/GRACE_SEC))*Math.PI*2); ctx.stroke();
+    }
+  }
+
+  /* particles */
+  for(i=0;i<MAX_P;i++){ var p=PARTICLES[i]; if(!p.active) continue;
+    ctx.globalAlpha=Math.max(0,p.life/p.max);
+    ctx.fillStyle=p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); }
+  ctx.globalAlpha=1;
+
+  /* score popups */
+  for(i=0;i<MAX_POP;i++){ var po=POPUPS[i]; if(!po.active) continue;
+    ctx.globalAlpha=Math.max(0,po.life/po.max);
+    ctx.font='bold '+(15+9*po.scale)+'px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle='rgba(0,0,0,0.55)'; ctx.fillText(po.txt,po.x+1,po.y+1);
+    ctx.fillStyle=po.color; ctx.fillText(po.txt,po.x,po.y);
+    ctx.globalAlpha=1; }
+
+  /* rings */
+  for(i=0;i<MAX_RING;i++){ var rg=RINGS[i]; if(!rg.active) continue;
+    ctx.globalAlpha=Math.max(0,rg.life/rg.max);
+    ctx.strokeStyle=rg.color; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.arc(rg.x,rg.y,rg.r,0,Math.PI*2); ctx.stroke(); }
+  ctx.globalAlpha=1;
+
+  if(flip) ctx.restore(); // undo surge flip
+  ctx.restore();          // undo shake
+
+  /* countdown numbers */
+  if(s.phase==='countdown'){
+    var n=Math.ceil(s.count/0.7);
+    var frac=(s.count%0.7)/0.7;
+    ctx.font='bold 64px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle='rgba(0,0,0,0.6)';
+    ctx.fillText(String(n),W/2+3,H/2+3);
+    ctx.fillStyle='#22d3ee';
+    ctx.globalAlpha=0.5+0.5*(1-frac);
+    ctx.fillText(String(n),W/2,H/2);
+    ctx.globalAlpha=1;
+  }
+
+  /* daily shift world target (🌍) with live progress — hidden during a boss wave */
+  if(s.daily&&!s.boss){
+    var df=Math.min(1,s.score/s.dailyTarget);
+    var reached=s.score>=s.dailyTarget;
+    ctx.fillStyle='rgba(11,14,26,0.72)'; rr(W/2-76,8,152,28,14); ctx.fill();
+    ctx.font='bold 13px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle=reached?'#22c55e':'#facc15';
+    ctx.fillText('🌍 '+s.dailyTarget+(reached?' ✓':''),W/2,22);
+    ctx.fillStyle='#2a3358'; ctx.fillRect(W/2-60,40,120,5);
+    ctx.fillStyle=reached?'#22c55e':'#facc15'; ctx.fillRect(W/2-60,40,Math.round(120*df),5);
+  }
+
+  /* powerup indicator (wordless) */
+  if(s.powerup&&s.powerupTimer>0){
+    var icon=s.powerup==='coffee'?'☕':'🧲';
+    var frac2=Math.max(0,s.powerupTimer/POWER_KEYS[s.powerup]);
+    ctx.fillStyle='rgba(11,14,26,0.7)'; ctx.beginPath(); ctx.arc(30,H-30,16,0,Math.PI*2); ctx.fill();
+    ctx.font='16px serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(icon,30,H-30);
+    ctx.strokeStyle='#334155'; ctx.lineWidth=4; ctx.beginPath(); ctx.arc(30,H-30,22,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle='#facc15'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.arc(30,H-30,22,-Math.PI/2,-Math.PI/2+Math.PI*2*frac2); ctx.stroke();
+  }
+
+  /* dual-touch teaching chip: a 2nd finger fires the armed 🔧 (pulses while fresh) */
+  if(s.wrenchHint>0&&s.powerup==='wrench'&&!s.paused){
+    var hf=Math.max(0,Math.min(1,s.wrenchHint/POWER_KEYS.wrench));
+    var pulse=REDUCED?1:(0.5+0.5*Math.sin(now/150));  // reduced motion: steady, no pulse
+    ctx.globalAlpha=(0.55+0.3*pulse)*Math.min(1,hf*2+0.2);
+    ctx.fillStyle='#161b2e'; ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(W/2-64,H-104,128,24,12); else ctx.rect(W/2-64,H-104,128,24);
+    ctx.fill();
+    ctx.strokeStyle='#a855f7'; ctx.lineWidth=1.5; ctx.stroke();
+    ctx.font='bold 13px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle='#e9d5ff'; ctx.fillText('🖐️ 2nd finger 🔧',W/2,H-92);
+    ctx.globalAlpha=1;
+  }
+
+  /* chaos indicator chip (wordless) */
+  if(s.chaos){
+    var cd=CHAOS_DEF[s.chaos];
+    var cfrac=Math.max(0,s.chaosTimer/cd.dur);
+    ctx.fillStyle='rgba(11,14,26,0.75)';
+    ctx.beginPath(); ctx.arc(W-30,44,18,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#334155'; ctx.lineWidth=4; ctx.beginPath(); ctx.arc(W-30,44,24,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle=cd.color; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.arc(W-30,44,24,Math.PI/2,Math.PI/2+Math.PI*2*cfrac); ctx.stroke();
+    ctx.font='16px serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(cd.emoji,W-30,44);
+    ctx.strokeStyle=hexA(cd.color,0.5+0.3*Math.sin(now*0.008));
+    ctx.lineWidth=3; ctx.strokeRect(3,3,W-6,H-6);
+    ctx.fillStyle=hexA(cd.color,0.05); ctx.fillRect(0,0,W,H);
+  }
+
+  /* screen-space vignette: subtle edge darkening, one prerendered blit */
+  ctx.drawImage(vigCanvas,0,0);
+
+  /* flash tint */
+  if(s.flashTimer>0){
+    ctx.fillStyle=hexA(s.flashColor,Math.min(0.45,(s.flashTimer/0.4)*0.45));
+    ctx.fillRect(0,0,W,H);
+  }
+}
+
+/* ---------------- LOOP (fixed timestep accumulator) ---------------- */
+function frame(now){
+  raf=requestAnimationFrame(frame);
+  if(!S) return;
+  pollGamepad();                                // 🎮 read the pad once per frame
+  var st=padBtn(9);                             // Start: begin shift / pause / replay
+  if(st&&!padStartPrev&&performance.now()>=padGraceUntil){
+    if(S.phase==='menu') startGame();
+    else if(S.phase==='end') startGame(S.daily);
+    else togglePause();
+  }
+  padStartPrev=st;
+  if(S.paused){ last=now; draw(S); return; }
+  var dt=now-last; last=now;
+  if(dt>250) dt=250;                 // tab was backgrounded — don't spiral
+  acc+=dt;
+  var steps=0;
+  while(acc>=STEP*1000&&steps<4){ update(S,STEP); acc-=STEP*1000; steps++; }
+  if(steps===4) acc=0;
+  if(S._ordersDirty){ S._ordersDirty=false; renderOrders(S); }   // 🧾 dirty-flag flush: one DOM write per frame, not per update step (queue only mutates in update, which doesn't run while paused)
+  draw(S);
+  syncHud(S);
+  if(S.phase==='play'){
+    if(S.lives<=0) return endGame(S,'The bench eats another tech.');
+    if(S.timeLeft<=0&&!S.overtime) return endGame(S,'Shift complete — clock out!');   // ⏱️ overtime holds the end
+  }
+}
+function loop(){ last=performance.now(); raf=requestAnimationFrame(frame); }
+
+/* ---------------- GAME FLOW ---------------- */
+function startGame(daily,seedCode){
+  audioInit();
+  var sp=seedCode?parseSeedCode(seedCode):null;
+  if(sp){ mode=sp.mode; lsSet('cc7_mode',mode); clearSeedRng(); setSeedRng(sp.seed); } else clearSeedRng();
+  if(timerInt) clearInterval(timerInt);
+  if(raf) cancelAnimationFrame(raf);
+  loadProfile(daily?'daily':mode);  // each game mode keeps its own control prefs
+  clearPointers();              // stale fingers from a previous shift must not steer the new tray
+  S=freshState();
+  if(graceOn()) S.graceTimer=GRACE_SEC;    // 🛡️ shift-start protection when the grace setting is on
+  setBodyLock(true);
+  S.phase='countdown'; S.count=2.1; S._lastCount=0;
+  S.mode=daily?'daily':mode;   // the ladder this run reports into
+  S.seedCode=sp?encodeSeedCode(sp.mode,sp.seed):null;   // 🔗 shareable code — Play Again replays the exact same shift
+  if(daily){
+    var p=planForDay();
+    S.daily=true; S.dailyTarget=p.target; S.dailySeq=p.seq.slice(); S._dailyReached=false;
+    S.best=bestForMode('daily');
+  }
+  S.timeLeft=modeRules(S).timer;   // ⚡ arcade / 🛠️ pro / 🧘 relaxed / daily: 60s (daily set first)
+  fillQueue(S);
+  for(var i=0;i<4;i++){ spawnItem(S); S.items[S.items.length-1].y=-34-i*90; }
+  FX.reset();   // 🎆 one call clears every FX pool + screen-fx state (was hand-rolled loops)
+  el['pause-btn'].style.display='block';
+  hideOverlay();
+  maybeStartTut();   // 🎓 first-run tutorial rides along on the first shift
+  SFX.start();
+  if(musicOn&&!muted) startMusic();
+  timerInt=setInterval(function(){
+    if(S&&S.phase==='play'&&!S.paused){ S.timeLeft-=1; if(S.timeLeft<=0) S.timeLeft=0; }
+  },1000);
+  last=performance.now(); acc=0;
+  loop();
+}
+function endGame(s,reason){
+  if(S.phase!=='play') return;
+  clearSeedRng();   // 🔗 seeded runs: hand Math.random back to the host so normal play is fresh again
+  S.phase='end';
+  setBodyLock(false);
+  if(s.timeLeft<=0&&s.lives>=LIVES&&!graceOn()) checkAch(s,'flush');   // 🛡️ the no-fail assist doesn't earn the flawless-life trophy
+  if(s.newBest&&!s.daily) checkAch(s,'best');   // 'best' trophy = any mode's ladder beaten (each ladder is its own best)
+  if(timerInt){ clearInterval(timerInt); timerInt=null; }
+  stopMusic();
+  el['pause-btn'].style.display='none';
+  s.timeLeft=Math.max(0,s.timeLeft);
+  if(s.score>s.best) s.best=s.score;
+  if(s.newBest) SFX.newbest(); else SFX.gameover();
+  showEnd(s,reason);
+}
+
+/* ---------------- BOOT ---------------- */
+window.CC7={ get phase(){ return S?S.phase:null; }, get paused(){ return S?S.paused:null; },
+  get score(){ return S?S.score:0; }, get lives(){ return S?S.lives:0; },
+  get orders(){ return S?S.orders:0; }, get level(){ return S?S.level:0; },
+  get timeLeft(){ return S?Math.ceil(S.timeLeft):0; }, get queueCap(){ return S?queueCap(S):0; },
+  get items(){ return S?S.items.length:0; }, get combo(){ return S?S.combo:0; },
+  get graceTimer(){ return S?Math.round(S.graceTimer*10)/10:0; }, get graceSetting(){ return graceOn(); },
+  get mode(){ return mode; }, get seed(){ return S&&S.seedCode?S.seedCode:null; },
+  get itemsX(){ return S?S.items.map(function(i){ return {x:Math.round(i.x),y:Math.round(i.y),code:i.code,type:i.type}; }):[]; },
+  get chaos(){ return S?S.chaos:null; },
+  get queue(){ return S?S.queue.map(function(q){ return {need:nextNeededOf(q),got:q.c.length,needLen:q.p.length,pat:Math.round(q.patron.pat),mood:patronMood(q.patron)}; }):[]; },
+  get patrons(){ return S?S.queue.map(function(q){ return Math.round(q.patron.pat); }):[]; },
+  get boss(){ return S&&S.boss?S.boss.def.id:null; },
+  get bossTimer(){ return S?S.bossTimer:0; },
+  get bossCleared(){ return Object.keys(BOSSCLEAR); },   // career-wide boss collection
+  get bossTotal(){ return S?S.bossTotal:0; },             // orders completed during the current wave (reset at each wave start)
+  get bossQuota(){ return S&&S.boss?S.boss.quota:0; },    // current wave's defeat quota (def.orders + scaling, capped at +3)
+  get wavesCleared(){ return S?S.wavesCleared:0; },       // waves defeated this run (end-screen stat)
+  get trophies(){ return Object.keys(unlocked); },
+  get heat(){ return S?Math.round(S.heat):0; },
+  get heatLevel(){ return S?S.heatLevel:0; },
+  get contam(){ return S?S.contam:null; },
+  get stock(){ return S?S.stock:null; },
+  get cableLock(){ return S&&S.cableLock?S.cableLock.oi+'/'+S.cableLock.si:null; },
+  _setMode:function(m){ if(MODE_DEF[m]){ mode=m; lsSet('cc7_mode',m); loadProfile(m); difficulty=diffFor(m); } },
+  _launchMode:launchMode,   // one-tap card launch (mode + its saved difficulty) — the harness drives this instead of a DOM click
+  startGame:function(){ audioInit(); startGame(false); },
+  get rules(){ return modeRules(S); },
+  get difficulty(){ return difficulty; },          // 🎚️ active mode's setting
+  _setDifficulty:function(d){ setDifficulty(d); },
+  get diffScales(){ return DIFF_SCALE; },
+  _fireBoss:function(){ if(S&&S.phase==='play'&&!S.boss) startBoss(S); },
+  _endBoss:function(){ if(S&&S.boss) endBoss(S); },
+  _setPatience:function(oi,v){ if(S&&S.queue[oi]) S.queue[oi].patron.pat=Math.max(0,Math.min(100,v)); },
+  _setHeat:function(v){ if(S){ S.heat=Math.max(0,Math.min(100,v)); } },
+  _setStock:function(c){ if(S){ S.stock=c; S.stockTimer=99; } },
+  _setContam:function(c){ if(S){ S.contam=c; S.contamTimer=99; } },
+  _setCable:function(oi,si){ if(S){ S.cableLock={oi:oi,si:si}; S.cableTimer=99; } },
+  _dropItem:function(code){ if(S&&S.phase==='play'){ S.items.push({x:S.player.x, y:S.player.y-24, emoji:PART_EMOJI[code], type:'good', code:code, speed:0, scale:1, rot:0}); } },
+  _dropPowerup:function(emoji){ if(S&&S.phase==='play'){ S.items.push({x:S.player.x, y:S.player.y-24, emoji:emoji, type:'powerup', code:null, speed:0, scale:1, rot:0}); } },
+  _setOrders:function(n){ if(S) S.orders=n; },
+  _setScore:function(v){ if(S) S.score=v; },
+  _setTimeLeft:function(v){ if(S) S.timeLeft=v; },   // sim clock (headless: no real setInterval)
+  _setBossClear:function(id){ BOSSCLEAR[id]=true; },   // harness: mark a boss 'cleared' (career collection)
+  _clearBosses:function(){ for(var k in BOSSCLEAR) delete BOSSCLEAR[k]; },   // harness: reset collection
+  _forceBoss:function(id){ FORCE_BOSS=id; },   // harness: force the next wave's boss
+  _arcadeEaseAt:function(level){ return earlyEase({level:level}); },   // harness: arcade's early-shift ease at a level — set mode to arcade first (modeRules reads the global mode)
+  _setLives:function(v){ if(S) S.lives=v; },   // harness: keep the sim alive through deterministic tests
+  _setTargetX:function(x){ if(S) S.player.targetX=Math.max(S.player.w/2,Math.min(W-S.player.w/2,x)); },
+  _setGrace:function(on){ lsSet('cc7_grace', on?'1':'0'); },   // harness/test: toggle the 🛡️ no-fail grace setting
+  _endNow:function(){ if(S&&S.phase==='play'){ persistEnd(S); endGame(S,'Ended by dev tools'); } },   // dev-only: end a shift programmatically — neutral reason so it's never mistaken for a bug
+  _showMenu:function(){ showMenu(); },
+  _resetTut:function(){ TUT_ON=false; tutStep=0; clearTutTimer(); el['tut-card'].style.display='none'; },   // harness: force the tutorial state
+  _fireChaos:function(k){ if(S&&S.phase==='play') triggerChaos(S,k); },
+  _dropJunk:function(){ if(S&&S.phase==='play'){ S.items.push({x:S.player.x, y:S.player.y-24, emoji:JUNK[0], type:'junk', code:null, speed:0, scale:1, rot:0}); } },
+  get playerX(){ return S?Math.round(S.player.x):0; },
+  get targetX(){ return S&&S.player.targetX!=null?Math.round(S.player.targetX):null; },
+  get dragMode(){ return ctrlMode!=='snap'; },  // compat: drag-like follow (drag or lift)
+  get ctrlMode(){ return ctrlMode; },
+  get liftOffset(){ return liftOffset; },
+  get profile(){ return curProfile; },
+  get profiles(){ return {arcade:readCtrl('arcade'), pro:readCtrl('pro'), relaxed:readCtrl('relaxed'), daily:readCtrl('daily')}; },
+  get liftProfiles(){ return {arcade:readLift('arcade'), pro:readLift('pro'), relaxed:readLift('relaxed'), daily:readLift('daily')}; },
+  _loadProfile:function(p){ loadProfile(p); },
+  get trayY(){ return S?Math.round(S.player.y):0; },
+  get trayTargetY(){ return S&&S.player.targetY!=null?Math.round(S.player.targetY):null; },
+  setCtrl:function(m){ ctrlMode=(m==='snap'||m==='lift'||m==='lifthold')?m:'drag'; saveCtrl(ctrlMode); if(S){ S.player.targetX=null; S.player.targetY=null; S.holdActive=false; S.holdUnparked=false; } },
+  setLift:function(v){ liftOffset=Math.max(0,Math.min(180,parseInt(v,10)||0)); saveLift(liftOffset); },
+  resetTray:function(){ if(S){ S.player.x=W/2; S.player.y=TRAY_Y; S.player.targetX=null; S.player.targetY=null; } },
+  get inputFreeze(){ return S?S.inputFreeze:0; },
+  get trailLen(){ return trailLen; },
+  get pointerCount(){ return pointerCount(); },
+  get hasPrimary(){ return primaryId()!=null; },
+  get wrenchHint(){ return S?S.wrenchHint:0; },
+  get powerup(){ return S?S.powerup:null; },
+  get holdParked(){ return S?!!(S.holdActive&&!S.holdUnparked):false; },
+  get touchX(){ return S?S.touchX:null; },
+  get touchY(){ return S?S.touchY:null; },
+  _setPowerup:function(p){ if(S){ S.powerup=p; S.powerupTimer=POWER_KEYS[p]||0; S.wrenchHint=(p==='wrench')?POWER_KEYS.wrench:0; } },
+  _fireSecondFinger:function(x,y){ fireSecondFinger(x,y,canvas.getBoundingClientRect()); },
+  _clearPointers:function(){ clearPointers(); if(S){ S.holdActive=false; S.holdUnparked=false; S.touchX=null; S.touchY=null; } },
+  get padX(){ return padX(); },
+  _setPad:function(gp){ padOverride=gp; padState=gp; },
+  _padBtn:function(i){ return padBtn(i); },
+  _setKey:function(act,k){ setKey(act,k); },
+  _resetKeys:function(){ resetKeys(); },
+  get keys(){ return keymap; },
+  _keyAction:function(k){ return keyAction(k); },
+  _keyDown:function(k){ handleKeyDown({key:k, repeat:false, preventDefault:function(){}}); },
+  _keyUp:function(k){ handleKeyUp({key:k}); },
+  setReduced:function(v){ REDUCED=!!v; },
+  setToday:function(k){ _todayOverride=k; },
+  get dailyTarget(){ return S&&S.daily?S.dailyTarget:0; },
+  get dailyLeft(){ return S&&S.daily&&S.dailySeq?S.dailySeq.length:0; },
+  get dailyPlan(){ return planForDay(); },
+  startDaily:function(){ startGame(true); },
+  _updateStreak:function(beaten){ return updateDailyStreak(beaten); },
+  _fireNextChaos:function(){ if(S&&S.daily&&S.dailySeq&&S.dailySeq.length){ var e=S.dailySeq.shift(); triggerChaos(S,e.chaos); return e.chaos; } return null; },
+  /* 🔗 seed-code debug surface (harness): deterministic shareable runs */
+  _seedCode:function(m,s){ return encodeSeedCode(m,s); },
+  _parseSeed:function(c){ return parseSeedCode(c); },
+  _seedStream:function(seed,n){ var r=seedStream(seed),a=[]; for(var i=0;i<(n||5);i++) a.push(r()); return a; },
+  _playSeed:function(code){ var p=parseSeedCode(code); if(!p) return null; mode=p.mode; lsSet('cc7_mode',mode); startGame(false, code); return p; },
+  get seedActive(){ return !!_seedRng; },
+  /* 🎆 FX probe: live active counts (harness proves the pools really fill during play) */
+  _fxProbe:function(){ return { p:FX.particles.filter(function(x){ return x.active; }).length, pop:FX.popups.filter(function(x){ return x.active; }).length, r:FX.rings.filter(function(x){ return x.active; }).length }; } };
+/* ---- touch-safety: iOS pinch-zoom guard + mid-shift scroll lock ---- */
+function setBodyLock(on){ try{ document.documentElement.classList.toggle('game-locked',on); document.body.classList.toggle('game-locked',on); }catch(e){} }
+/* If the frame loop ever throws mid-shift, release the scroll lock so the page
+   can't stay permanently stuck overflow:hidden (the end screen then still shows). */
+try{ window.addEventListener('error',function(){ setBodyLock(false); clearSeedRng(); });
+     window.addEventListener('unhandledrejection',function(){ setBodyLock(false); clearSeedRng(); }); }catch(e){}
+try{ document.addEventListener('gesturestart',function(e){ e.preventDefault(); }); }catch(e){}
+try{ document.addEventListener('gesturechange',function(e){ e.preventDefault(); }); }catch(e){}
+el['mute-btn'].addEventListener('click',function(){ audioInit(); toggleMute(); });
+el['music-btn'].addEventListener('click',function(){ audioInit(); toggleMusic(); });
+el['pause-btn'].addEventListener('click',function(){ togglePause(); });
+el['music-btn'].style.opacity=musicOn?'1':'0.35';
+el['mute-btn'].textContent=muted?'🔇':'🔊';
+S=freshState();
+el['best-val'].textContent=bestForMode(mode);   // top-bar 🏆 shows the selected mode's own ladder
+showMenu();
+loop();
+})();
+</script>
+</body>
+</html>

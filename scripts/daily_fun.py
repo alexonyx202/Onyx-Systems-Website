@@ -334,6 +334,9 @@ POLLS_EXTRA = [
     {"question": "What's your main OS for personal use? (Stack Overflow 2024: Windows 59%, macOS 32%, Linux 28%+)",
      "options": [{"id": "win", "label": "Windows"}, {"id": "mac", "label": "macOS"},
                  {"id": "linux", "label": "Linux (Ubuntu, etc.)"}, {"id": "other", "label": "ChromeOS / other"}]},
+    {"question": "How concerned are you about data privacy with AI tools? (Deloitte 2024: 67% worried about tracking, 50%+ had security incidents)",
+     "options": [{"id": "very", "label": "Very concerned — I limit what I share"}, {"id": "somewhat", "label": "Somewhat — I'm careful but use them"},
+                 {"id": "notmuch", "label": "Not much — benefits outweigh risks"}, {"id": "unaware", "label": "Wasn't aware this was an issue"}]},
 ]
 
 FLOOR_WORDS = 40
