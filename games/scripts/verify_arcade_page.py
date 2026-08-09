@@ -112,14 +112,16 @@ def verify_local_render():
             if pattern not in html:
                 raise ValueError(f"Missing '{pattern}' ({name}) in rendered page")
         
-        # Verify MANIFEST has 10 games
+        # Verify MANIFEST matches games.json count
+        with open('games/games.json') as f:
+            expected_count = len(json.load(f)['games'])
         match = re.search(r'var MANIFEST=(\[.*?\]);', html, re.DOTALL)
         if match:
             manifest_games = json.loads(match.group(1))
-            if len(manifest_games) != 10:
-                raise ValueError(f"MANIFEST has {len(manifest_games)} games, expected 10")
+            if len(manifest_games) != expected_count:
+                raise ValueError(f"MANIFEST has {len(manifest_games)} games, expected {expected_count}")
         
-        print(f'✓ Local render: all static elements present, MANIFEST has 10 games')
+        print(f'✓ Local render: all static elements present, MANIFEST has {expected_count} games')
         
     finally:
         proc.terminate()
@@ -154,12 +156,12 @@ def verify_live():
             raise ValueError(f"Live: Missing '{pattern}' ({name})")
     print('✓ Live arcade page: all static elements present')
     
-    # Verify MANIFEST has 10 games (not truncated)
+    # Verify MANIFEST matches games.json count (not truncated)
     match = re.search(r'var MANIFEST=(\[.*?\]);', html, re.DOTALL)
     if match:
         manifest_games = json.loads(match.group(1))
-        if len(manifest_games) != 10:
-            raise ValueError(f"Live MANIFEST has {len(manifest_games)} games, expected 10")
+        if len(manifest_games) != len(live_games):
+            raise ValueError(f"Live MANIFEST has {len(manifest_games)} games, expected {len(live_games)}")
         print(f'✓ Live MANIFEST: {len(manifest_games)} games (not truncated)')
     else:
         raise ValueError("Live: MANIFEST not found")

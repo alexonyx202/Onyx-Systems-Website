@@ -27,8 +27,10 @@ def regenerate_manifest():
         content = f.read()
     
     # Replace the MANIFEST line - it spans from "var MANIFEST=[" to the next "];"
+    # Use a function replacement so backslash sequences in entries (e.g. a
+    # literal \u2014) are never interpreted as re escape codes.
     pattern = r'var MANIFEST=\[.*?\];'
-    new_content = re.sub(pattern, manifest_content, content, flags=re.DOTALL)
+    new_content = re.sub(pattern, lambda m: manifest_content, content, flags=re.DOTALL)
     
     if new_content == content:
         raise ValueError("MANIFEST pattern not found in games/index.html - no replacement made")
