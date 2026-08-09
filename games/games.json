@@ -1,6 +1,96 @@
 {
   "games": [
     {
+      "file": "wargames-v3.html",
+      "title": "WarGames: Missile Defense",
+      "tagline": "Defend NORAD, Moscow & Beijing from incoming ICBMs.",
+      "desc": "A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.",
+      "thumb": "assets/wargames-thumbnail.webp",
+      "cabinet": "assets/cabinet-wargames.webp",
+      "featured": true
+    },
+    {
+      "file": "disk-defrag.html",
+      "title": "Disk Defrag",
+      "tagline": "The ultimate sector clean-up.",
+      "desc": "A puzzle game about rearranging data blocks. Clear the disk before the system crashes.",
+      "thumb": "assets/disk-defrag-thumb.webp",
+      "cabinet": "assets/cabinet-disk-defrag.webp",
+      "featured": false
+    },
+    {
+      "file": "drone-hunt.html",
+      "title": "Drone Hunt",
+      "tagline": "Sectors must be cleared.",
+      "desc": "An arcade shooter where you hunt down rogue drones in a neon cityscape.",
+      "thumb": "assets/drone-hunt-thumb.webp",
+      "cabinet": "assets/cabinet-drone-hunt.webp",
+      "featured": false
+    },
+    {
+      "file": "computer-chaos.html",
+      "title": "Computer Chaos",
+      "tagline": "Pure digital mayhem.",
+      "desc": "A fast-paced arcade survival game. Evade system errors and clear the waves.",
+      "thumb": "assets/computer-chaos-thumb.webp",
+      "cabinet": "assets/cabinet-computer-chaos.webp",
+      "featured": false
+    },
+    {
+      "file": "skydrift.html",
+      "title": "SKYDRIFT",
+      "tagline": "High-altitude racing.",
+      "desc": "A neon racing game where you drift through the clouds at supersonic speeds.",
+      "thumb": "assets/skydrift-thumb.webp",
+      "cabinet": "assets/cabinet-skydrift.webp",
+      "featured": false
+    },
+    {
+      "file": "bit-byte.html",
+      "title": "BIT-BYTE",
+      "tagline": "The maze of data.",
+      "desc": "Navigate the complex data mazes and collect bytes while avoiding the system guards.",
+      "thumb": "assets/cabinet-bit-byte.webp",
+      "cabinet": "assets/cabinet-bit-byte.webp",
+      "featured": false
+    },
+    {
+      "file": "algo-chaser.html",
+      "title": "ALGO CHASER",
+      "tagline": "Chase the logic.",
+      "desc": "A puzzle-action game based on algorithmic movement patterns.",
+      "thumb": "assets/cabinet-algo-chaser.webp",
+      "cabinet": "assets/cabinet-algo-chaser.webp",
+      "featured": false
+    },
+    {
+      "file": "de-flock.html",
+      "title": "DE-FLOCK",
+      "tagline": "Scatter the swarm.",
+      "desc": "A frantic arcade game where you must separate the digital flocks.",
+      "thumb": "assets/cabinet-de-flock.webp",
+      "cabinet": "assets/cabinet-de-flock.webp",
+      "featured": false
+    },
+    {
+      "file": "whack-a-troll.html",
+      "title": "WHACK-A-TROLL",
+      "tagline": "Troll hunting season.",
+      "desc": "A classic whacking game with a modern, glitchy twist.",
+      "thumb": "assets/cabinet-whack-a-troll.webp",
+      "cabinet": "assets/cabinet-whack-a-troll.webp",
+      "featured": false
+    },
+    {
+      "file": "signal-noise.html",
+      "title": "SIGNAL NOISE",
+      "tagline": "Tune into the truth.",
+      "desc": "A frequency-matching puzzle game set in a cold-war radio station.",
+      "thumb": "assets/cabinet-signal-noise.webp",
+      "cabinet": "assets/cabinet-signal-noise.webp",
+      "featured": false
+    },
+    {
       "file": "stack-overflow.html",
       "title": "STACK OVERFLOW",
       "tagline": "System Stack Climber",
