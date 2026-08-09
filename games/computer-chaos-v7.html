@@ -86,8 +86,53 @@
   #mute-btn { top:8px; right:8px; }
   #music-btn { top:60px; right:8px; }
   #pause-btn:hover, #mute-btn:hover, #music-btn:hover { color:#e2e8f0; border-color:#22d3ee; }
-  #msg-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; border-radius:14px; background:rgba(11,14,26,0.92); z-index:5; text-align:center; padding:18px; overflow:auto; }
-  #ov-wrap { margin:auto; width:100%; display:flex; flex-direction:column; align-items:center; }  /* auto margins: centers when short, scrolls from top when tall */
+  /* full-viewport modal on EVERY screen (not just landscape): the canvas is 520×440 on desktop and
+     scales to ~300px tall on portrait phones, which would crush the title screen into a tiny scrolly
+     window. fixed + inset:0 gives every overlay the whole window; #ov-wrap's auto margins center the
+     content when short and scroll it from the top when tall. */
+  #msg-overlay { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; border-radius:0;
+    background:radial-gradient(ellipse 130% 100% at 50% 18%, #141a33 0%, #0b0e1a 52%, #070910 100%); z-index:5; text-align:center; padding:18px; overflow:auto; }
+  #ov-wrap { margin:auto; width:100%; max-width:560px; display:flex; flex-direction:column; align-items:center; z-index:1; }  /* auto margins: centers when short, scrolls from top when tall; 560px cap keeps the full-screen modal a tidy centered column on desktop; z-index:1 (flex-item stacking) lifts the content above the ambient starfield/aurora layers below */
+  /* ambient backdrop: a slow-drifting starfield + breathing aurora behind every overlay.
+     Pure CSS, transform/opacity only (compositor-friendly, never adds scrollable overflow),
+     reduced-motion-gated. The pseudos paint above the overlay's own gradient but below
+     #ov-wrap (z-index:1), so every menu and sub-screen sits on the same quiet night sky. */
+  #msg-overlay::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(circle 1px at 23px 41px, rgba(165,243,252,0.95), transparent),
+      radial-gradient(circle 1px at 87px 19px, rgba(226,232,255,0.75), transparent),
+      radial-gradient(circle 1.5px at 141px 93px, rgba(125,211,252,0.55), transparent),
+      radial-gradient(circle 1px at 181px 47px, rgba(226,232,255,0.65), transparent),
+      radial-gradient(circle 1px at 58px 128px, rgba(255,255,255,0.5), transparent),
+      radial-gradient(circle 1px at 217px 136px, rgba(165,243,252,0.5), transparent),
+      radial-gradient(circle 1px at 121px 165px, rgba(226,232,255,0.45), transparent),
+      radial-gradient(circle 1px at 249px 79px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(circle 1px at 305px 121px, rgba(125,211,252,0.5), transparent),
+      radial-gradient(circle 1px at 333px 41px, rgba(226,232,255,0.6), transparent),
+      radial-gradient(circle 1.5px at 273px 201px, rgba(165,243,252,0.45), transparent),
+      radial-gradient(circle 1px at 23px 209px, rgba(226,232,255,0.55), transparent),
+      radial-gradient(circle 1px at 159px 241px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(circle 1px at 346px 177px, rgba(125,211,252,0.5), transparent);
+    background-size: 380px 270px;
+    opacity:.55;
+    animation: stars-drift 16s ease-in-out infinite alternate;
+  }
+  #msg-overlay::after {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse 65% 50% at 16% 10%, rgba(56,189,248,0.12), transparent 72%),
+      radial-gradient(ellipse 60% 45% at 84% 80%, rgba(168,85,247,0.12), transparent 72%),
+      radial-gradient(ellipse 50% 40% at 68% 28%, rgba(34,211,238,0.08), transparent 70%);
+    animation: aurora-drift 34s ease-in-out infinite alternate;
+  }
+  @keyframes stars-drift { from { opacity:.35; transform:translate(0,0); } to { opacity:.75; transform:translate(-16px,-10px); } }
+  @keyframes aurora-drift { from { transform:translate(0,0) scale(1); } to { transform:translate(2.5%,-1.5%) scale(1.05); } }
+  @media (prefers-reduced-motion: reduce){
+    #msg-overlay::before, #msg-overlay::after { animation:none; }
+    #msg-overlay::before { opacity:.5; }
+    #msg-overlay::after { opacity:.13; }
+  }
   #msg-title { font-size:30px; font-weight:800; color:#22d3ee; margin-bottom:8px; text-shadow:0 0 18px rgba(34,211,238,0.6); }
   #msg-sub { font-size:14px; color:#94a3b8; margin-bottom:16px; padding:0 8px; line-height:1.5; }
   #msg-stats { font-size:15px; color:#e2e8f0; margin-bottom:6px; font-weight:700; }
@@ -128,6 +173,10 @@
   .mode-card.active .mc-best { color:#fde68a; border-color:rgba(250,204,21,0.45); }
   .mc-play { position:absolute; top:-8px; right:-8px; font-size:12px; background:#22d3ee; color:#06121a;
     border-radius:999px; padding:2px 7px; font-weight:900; box-shadow:0 2px 8px rgba(34,211,238,0.5); }
+  .mc-pro-new { position:absolute; top:-8px; left:-8px; font-size:9px; font-weight:900; letter-spacing:0.5px;
+    background:linear-gradient(135deg,#f59e0b,#ef4444); color:#fff; border-radius:999px; padding:2px 8px;
+    box-shadow:0 2px 8px rgba(245,158,11,0.5); animation:bestpop 0.5s ease-out infinite alternate; }
+  @media (prefers-reduced-motion: reduce){ .mc-pro-new { animation:none; } }
   .mode-hint { font-size:10.5px; color:#5b6b92; letter-spacing:1.2px; text-transform:uppercase; margin:3px 0 0; }
 
   /* ===== 🎚️ per-mode difficulty — Gentle / Standard / Challenging (menu row + per-card badge) ===== */
@@ -158,6 +207,24 @@
   #lift-slider { flex:1; -webkit-appearance:none; appearance:none; height:6px; border-radius:3px; background:#2a3358; outline:none; cursor:pointer; }
   #lift-slider::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#22d3ee,#a855f7); border:2px solid #06121a; cursor:pointer; }
   #lift-slider::-moz-range-thumb { width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#22d3ee,#a855f7); border:2px solid #06121a; cursor:pointer; }
+  /* ===== controls screen — grouped like the Tips screen (Tray move / Lift height) ===== */
+  .ctrl-group { width:100%; max-width:430px; margin:0 0 12px; }
+  .ctrl-head { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase;
+    color:#22d3ee; margin-bottom:6px; }
+  .ctrl-head::after { content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(34,211,238,0.4), transparent); }
+  .ctrl-head.ch-move { color:#a78bfa; } .ctrl-head.ch-move::after { background:linear-gradient(90deg, rgba(167,139,250,0.4), transparent); }
+  .ctrl-head.ch-lift { color:#fbbf24; } .ctrl-head.ch-lift::after { background:linear-gradient(90deg, rgba(251,191,36,0.4), transparent); }
+  .ctrl-row-tip { display:flex; align-items:flex-start; gap:8px; background:#12172b; border:1px solid #2a3358; border-left:3px solid #f59e0b;
+    border-radius:10px; padding:7px 10px; margin:0 0 12px; text-align:left; transition:border-color .15s, transform .15s, background .15s; }
+  .ctrl-row-tip:hover { border-color:#f59e0b; background:#161c33; transform:translateY(-1px); }
+  .ctrl-row-tip .t-emoji { font-size:16px; line-height:1.3; flex:none; }
+  .ctrl-row-tip .t-txt { font-size:11.5px; line-height:1.4; color:#cbd5e1; }
+  .ctrl-row-tip .t-txt b { color:#e2e8f0; }
+  #ctrl-footer { display:flex; align-items:center; justify-content:center; gap:10px; font-size:11px; color:#64748b;
+    margin:0 0 12px; letter-spacing:0.3px; }
+  #ctrl-footer .sep { opacity:0.5; }
+  #ctrl-footer a { color:#7dd3fc; text-decoration:none; font-weight:700; cursor:pointer; transition:color .15s; }
+  #ctrl-footer a:hover { color:#22d3ee; text-decoration:underline; }
   #daily-row { width:min(300px,88%); margin:10px 0 0; }
   #daily-btn { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; background:linear-gradient(135deg,#f59e0b,#ef4444); color:#1a0d00; border:none; border-radius:14px; padding:10px 16px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 4px 16px rgba(245,158,11,0.35); transition:filter .15s, transform .15s; }
   #daily-btn:hover { filter:brightness(1.08); transform:translateY(-1px); }
@@ -184,6 +251,33 @@
   .tool-btn span { font-size:10px; font-weight:800; color:#7c8db5; letter-spacing:0.5px; }
   .tool-btn:hover { border-color:#22d3ee; color:#e2e8f0; transform:translateY(-2px); box-shadow:0 4px 14px rgba(34,211,238,0.2); }
   .tool-btn:hover span { color:#e2e8f0; }
+  /* ===== tips screen — grouped, scannable rows (The Basics / Power-ups / Controls / Survive) ===== */
+  #tips-sub { font-size:13px; color:#94a3b8; margin:-6px 0 12px; line-height:1.5; padding:0 10px; }
+  .tip-group { width:100%; max-width:430px; margin:0 0 11px; }
+  .tip-head { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase;
+    color:#22d3ee; margin-bottom:6px; }
+  .tip-head::after { content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(34,211,238,0.4), transparent); }
+  .tip-head.tg-good { color:#7ee7a8; } .tip-head.tg-good::after { background:linear-gradient(90deg, rgba(126,231,168,0.4), transparent); }
+  .tip-head.tg-hot  { color:#fbbf24; } .tip-head.tg-hot::after { background:linear-gradient(90deg, rgba(251,191,36,0.4), transparent); }
+  .tip-head.tg-move { color:#a78bfa; } .tip-head.tg-move::after { background:linear-gradient(90deg, rgba(167,139,250,0.4), transparent); }
+  .tip-head.tg-safe { color:#f472b6; } .tip-head.tg-safe::after { background:linear-gradient(90deg, rgba(244,114,182,0.4), transparent); }
+  #tip-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 8px; width:100%; max-width:430px; margin:0 0 4px; }
+  .tip-row { display:flex; align-items:flex-start; gap:8px; background:#12172b; border:1px solid #2a3358; border-left:3px solid #22d3ee;
+    border-radius:10px; padding:7px 10px; text-align:left; transition:border-color .15s, transform .15s, background .15s; }
+  .tip-row:hover { border-color:#22d3ee; background:#161c33; transform:translateY(-1px); }
+  .tip-row .t-emoji { font-size:16px; line-height:1.3; flex:none; }
+  .tip-row .t-txt { font-size:11.5px; line-height:1.4; color:#cbd5e1; }
+  .tip-row .t-txt b { color:#e2e8f0; }
+  .tip-row .t-txt .hot { color:#fbbf24; }
+  .tip-row.tg-good { border-left-color:#22c55e; } .tip-row.tg-good:hover { border-color:#22c55e; }
+  .tip-row.tg-hot  { border-left-color:#f59e0b; } .tip-row.tg-hot:hover { border-color:#f59e0b; }
+  .tip-row.tg-move { border-left-color:#a78bfa; } .tip-row.tg-move:hover { border-color:#a78bfa; }
+  .tip-row.tg-safe { border-left-color:#ec4899; } .tip-row.tg-safe:hover { border-color:#ec4899; }
+  #tips-footer { display:flex; align-items:center; justify-content:center; gap:12px; font-size:11px; color:#64748b;
+    margin:2px 0 12px; letter-spacing:0.3px; }
+  #tips-footer .sep { opacity:0.5; }
+  #tips-footer a { color:#7dd3fc; text-decoration:none; font-weight:700; cursor:pointer; transition:color .15s; }
+  #tips-footer a:hover { color:#22d3ee; text-decoration:underline; }
   /* ===== trophies screen ===== */
   .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; width:min(330px,92%); margin:0 0 14px; }
   .trophy-cell { display:flex; flex-direction:column; align-items:center; gap:3px; background:#161b2e; border:1px solid #2a3358; border-radius:10px; padding:5px 4px 4px; }
@@ -234,6 +328,111 @@
   .ctrl-for { width:100%; font-size:11px; color:#64748b; text-align:center; margin-top:2px; }
   #controls-hint { max-width:520px; margin:8px auto 0; font-size:12px; color:#64748b; text-align:center; line-height:1.6; }
   kbd { background:#161b2e; border:1px solid #2a3358; border-radius:4px; padding:0 5px; font-family:inherit; font-size:11px; }
+  /* ---- mid-height compact tier (SE-class phones + short desktop windows): the menu must fit a
+     ~560px-tall viewport with zero scrolling, and the in-game stack (measured 630px tall) must fit
+     windows down to 600px — so the page never scrolls mid-shift. Canvas is untouched, so there's
+     no aspect distortion; the landscape tier below compresses everything further for ≤500px. ---- */
+  @media (max-height: 760px){
+    #msg-overlay { padding:12px 14px; }
+    /* in-game chrome: trim the stack by ~40px so a 600px-tall window fits end-to-end */
+    #game-wrap { padding:8px 0;
+      padding:max(8px,env(safe-area-inset-top)) max(env(safe-area-inset-right),0px) max(8px,env(safe-area-inset-bottom)) max(env(safe-area-inset-left),0px); }
+    #ui-bar { margin-bottom:4px; gap:4px; }
+    #ui-bar .stat { font-size:12px; padding:3px 8px; }
+    #combo-box { margin-top:3px; }
+    #order-box { margin-top:5px; padding:5px 10px; gap:3px; max-height:80px; overflow-y:auto; }
+    #controls-hint { margin-top:5px; font-size:11px; line-height:1.45; }
+    .menu-hero { margin-bottom:2px; }
+    .hero-field { height:54px; }
+    .wm-top { font-size:13px; letter-spacing:8px; padding-left:8px; }
+    .wm-bot { font-size:40px; letter-spacing:2px; padding-left:2px; }
+    .tagline { font-size:10px; margin-top:1px; }
+    #mode-cards { gap:8px; margin:5px 0 1px; }
+    .mode-card { padding:6px 3px 6px; border-radius:13px; gap:1px; }
+    .mc-emoji { font-size:22px; line-height:1.1; }
+    .mc-name { font-size:12px; }
+    .mc-tag { font-size:8.5px; line-height:1.15; }
+    .mc-best { font-size:8px; margin-top:0; padding:0 6px; }
+    .mode-hint { font-size:9px; margin:2px 0 0; }
+    #diff-row { gap:6px; margin:3px 0 1px; }
+    .diff-seg-btn { padding:4px 2px; font-size:9px; }
+    .diff-for { font-size:8.5px; }
+    #daily-row { margin:5px 0 0; }
+    #daily-btn { padding:7px 12px; font-size:12.5px; border-radius:12px; }
+    #daily-sub { font-size:10px; margin-top:3px; }
+    .stat-strip { margin:5px 0 4px; font-size:10.5px; }
+    .tool-row { gap:6px; margin-top:1px; }
+    .tool-btn { width:58px; height:46px; font-size:17px; }
+    .tool-btn span { font-size:9px; }
+    /* shared overlay chrome: every sub-screen (tips/keys/trophies/career/seeds/settings/end/pause)
+       inherits this compaction so it fits short windows too — the Tips wall of text was 55px over
+       on 320×568, and all sub-screens overflowed landscape before this tier existed */
+    #msg-title { font-size:24px; margin-bottom:4px; }
+    #msg-sub { font-size:12px; line-height:1.45; margin-bottom:10px; }
+    #msg-stats { margin-bottom:3px; }
+    #msg-stats2 { margin-bottom:8px; }
+    #new-best { margin-bottom:5px; font-size:13px; }
+    #seed-input { padding:8px 10px; font-size:16px; margin-bottom:6px; }
+    #seed-msg { margin-bottom:6px; }
+    .key-btn { min-height:36px; padding:8px 12px; font-size:12px; }
+    #key-list { gap:6px; }
+    #tips-sub { font-size:11.5px; margin:-3px 0 8px; }
+    .tip-group { margin-bottom:7px; }
+    .tip-head { font-size:9.5px; letter-spacing:1.3px; margin-bottom:4px; gap:6px; }
+    #tip-grid { gap:4px 7px; }
+    .tip-row { padding:5px 8px; gap:6px; border-radius:8px; }
+    .tip-row .t-emoji { font-size:14px; }
+    .tip-row .t-txt { font-size:10.5px; line-height:1.35; }
+    #tips-footer { font-size:10px; margin:0 0 8px; gap:8px; }
+    #trophy-row { margin-bottom:8px; }
+    .trophy-grid { gap:4px; margin-bottom:8px; }
+    .trophy-cell { padding:4px 4px 3px; gap:2px; }
+    .trophy-cell .tc-emoji { font-size:16px; }
+    .trophy-cell .tc-name { font-size:7.5px; }
+    .rank-box, .career-grid, .boss-row, .pm-row, .career-line { margin-bottom:6px; }
+    .career-cell { padding:5px 4px 4px; gap:1px; }
+    .career-cell .cc-em { font-size:15px; }
+    .career-cell .cc-val { font-size:14px; }
+    .ghost-btn, #msg-btn { padding:10px 22px; font-size:13px; }
+    #ctrl-row { margin-bottom:8px; }
+    .ctrl-btn { min-height:38px; padding:9px 14px; font-size:12.5px; }
+    #lift-row { margin-bottom:8px; }
+    .ctrl-group { margin-bottom:7px; }
+    .ctrl-head { font-size:9.5px; letter-spacing:1.3px; margin-bottom:4px; gap:6px; }
+    .ctrl-row-tip { padding:5px 8px; gap:6px; margin-bottom:8px; }
+    .ctrl-row-tip .t-emoji { font-size:14px; }
+    .ctrl-row-tip .t-txt { font-size:10.5px; line-height:1.35; }
+    #ctrl-footer { font-size:10px; margin:0 0 8px; gap:8px; }
+  }
+
+  /* ---- the 501–586px window-height gap (WIDE windows only): the 760px-tier in-game stack
+     measures 587px tall, so a window ≥520px wide (canvas at its intrinsic 440px) that is shorter
+     than that clipped the legend mid-shift. This tier compacts the chrome to the landscape 114px
+     budget and shrinks the canvas BY HEIGHT — min-capped at its intrinsic 440px so it only ever
+     shrinks, never stretches (width:auto keeps the aspect) — making the whole stack exactly
+     min(vh, 554): end-to-end fit at every height in the band. Narrow windows (<520px) are already
+     fine: their canvas is width-scaled below 440px, so the 760px tier alone fits them. ---- */
+  @media (max-height: 587px) and (min-width: 520px){
+    /* chrome values below mirror the max-height:500px tier (that block is the source of truth
+       for these; this tier deliberately does NOT copy its menu/corner-button rules) */
+    #game-wrap { padding:4px 0;
+      padding:max(4px,env(safe-area-inset-top)) max(env(safe-area-inset-right),0px) max(4px,env(safe-area-inset-bottom)) max(env(safe-area-inset-left),0px); }
+    #ui-bar { gap:4px; margin-bottom:4px; }
+    #ui-bar .stat { font-size:11px; padding:2px 7px; }
+    #combo-box { margin-top:3px; height:8px; }
+    #combo-bar { height:6px; }
+    #combo-num { font-size:10px; min-width:26px; }
+    #order-box { margin-top:5px; padding:4px 8px; gap:2px; max-height:84px; overflow-y:auto; }
+    .order-patron { font-size:16px; width:18px; }
+    .order-mood { font-size:11px; width:16px; }
+    .order-patience { width:40px; height:7px; }
+    .order-item { width:24px; height:24px; }
+    #canvas-container { width:fit-content; max-width:100%; margin:0 auto; }
+    /* 114px = the landscape chrome budget; min(...,440px) caps at the intrinsic canvas height */
+    #canvas-container canvas { width:auto; height:min(calc(100vh - 114px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), 440px); max-width:100%; }
+    #controls-hint { margin-top:4px; font-size:10px; line-height:1.35; }
+  }
+
   /* ---- landscape / short-window compact layout: the vertical stack must fit a ~360–430px-tall
      viewport without clipping (the playfield shrinks by height, overlays hug the canvas) ---- */
   @media (max-height: 500px){
@@ -283,6 +482,27 @@
     .diff-for { display:none; }
     .diff-seg-btn { padding:4px 2px; font-size:9px; }
     .mc-diff { display:none; }
+    /* sub-screens in landscape: key list goes 2-column, trophy grid 5-across, career grid
+       4-across — the whole screen then fits a ~360px-tall window with zero scrolling */
+    #key-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 10px; max-width:min(430px,92%); }
+    #key-list .key-btn { min-height:32px; }
+    .trophy-grid { grid-template-columns:repeat(5,1fr); width:min(430px,92%); }
+    .career-grid { grid-template-columns:repeat(4,1fr); width:min(430px,92%); }
+    #msg-title { font-size:20px; }
+    /* tips in landscape: keep the 2-up grid at the standard width (a narrow 340px grid would
+       wrap every row to two lines; at 430px each column stays wide enough for one-line rows) */
+    #tip-grid { grid-template-columns:1fr 1fr; gap:4px 8px; max-width:400px; }
+    .tip-group { margin-bottom:5px; }
+    .tip-head { margin-bottom:3px; }
+    .tip-row { padding:4px 8px; }
+    #tips-sub { display:none; }
+    #tips-footer { display:none; }
+    /* controls in landscape: the footer link and the extra tip row go away — just modes + slider */
+    #ctrl-footer { display:none; }
+    .ctrl-row-tip { display:none; }
+    .ctrl-group { margin-bottom:5px; }
+    .ctrl-head { margin-bottom:3px; }
+    #ov-wrap .ghost-btn { padding:6px 18px; font-size:12px; }
   }
 </style>
 </head>
@@ -1540,7 +1760,16 @@ function launchMode(m){   // one-tap card launch — also reloads THIS mode's sa
   mode=m; lsSet('cc7_mode',m);
   loadProfile(m);          // swap to this mode's saved controls
   difficulty=diffFor(mode);
-  audioInit(); startGame();
+  audioInit();
+  if(m==='pro'&&lsGet('cc7_pro_tips','0')!=='1'){
+    /* 🛠️ first Pro shift: show the Tips screen BEFORE the shift — Pro adds patrons,
+       chaos, and boss waves, so a brand-new player reads the playbook first, taps
+       Back to the menu, and taps Pro again to actually start (flag set → next tap plays). */
+    lsSet('cc7_pro_tips','1');
+    showTips(true);   // true = gate mode: Back returns to the menu, no shift starts
+    return;
+  }
+  startGame();
 }
 function cycleDiff(m){   // 🎚️ tap a card's badge to cycle THAT mode's difficulty (one-tap launch still works on the card body)
   var cur=diffFor(m);
@@ -1554,8 +1783,10 @@ function modeCardHtml(m){
   var e=d.label.split(' ')[0], name=d.label.split(' ').slice(1).join(' ');
   var b=bestForMode(m);   // 🏅 this mode's own ladder best
   var df=diffFor(m);
+  var proNew=(m==='pro'&&lsGet('cc7_pro_tips','0')!=='1');   // 🛠️ first-run: NEW badge until the tips are seen
   return '<button class="mode-card'+(mode===m?' active':'')+'" data-mode="'+m+'">'+
     (mode===m?'<span class="mc-play">▶</span>':'')+
+    (proNew?'<span class="mc-pro-new">NEW</span>':'')+
     '<span class="mc-emoji">'+e+'</span>'+
     '<span class="mc-name">'+name+'</span>'+
     '<span class="mc-tag">'+d.tag+'</span>'+
@@ -1623,19 +1854,26 @@ function showMenu(){
   document.getElementById('msg-btn6').addEventListener('click',showSettings);
 }
 function showControls(){
-  /* progressive disclosure: the tray control style + lift height live behind a tap */
+  /* progressive disclosure: the tray control style + lift height live behind a tap.
+     Grouped like the Tips screen — a Tray-move section (the 4 modes), a Lift section
+     (height + one-line tip), and a footer link to the full Tips screen. */
   el['msg-overlay'].innerHTML=
     '<div id="ov-wrap">'+
     '<div id="msg-title">Controls</div>'+
     '<div id="msg-sub">How the tray moves with you.<br>Each game mode keeps its own setup ('+PROFILE_NAME[curProfile]+').</div>'+
-    ctrlRowHtml()+
-    liftRowHtml()+
+    '<div class="ctrl-group"><div class="ctrl-head ch-move">✋ Tray Move</div>'+ctrlRowHtml()+'</div>'+
+    '<div class="ctrl-group"><div class="ctrl-head ch-lift">📏 Lift Height</div>'+liftRowHtml()+
+      '<div class="ctrl-row-tip"><span class="t-emoji">✊</span><span class="t-txt"><b>Hold</b> mode: tap to park the tray, drag to follow — one-hand friendly.</span></div>'+
+    '</div>'+
+    '<div id="ctrl-footer"><span>More moves?</span> <a id="ctrl-tips-link">Full tips</a></div>'+
     '<button class="ghost-btn" id="back-btn">Back</button>'+
     '</div>';
   el['msg-overlay'].style.display='flex';
   wireCtrlRow(el['msg-overlay']);
   wireLiftRow(el['msg-overlay']);
   document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+  var tipsLink=document.getElementById('ctrl-tips-link');
+  if(tipsLink){ tipsLink.addEventListener('click',function(){ showTips(); }); }
 }
 function showSettings(){
   el['msg-overlay'].innerHTML=
@@ -1779,28 +2017,41 @@ function dailyRowHtml(){
     '<div id="daily-sub"'+(done?' class="done"':'')+'>🌍 '+plan.target+' · '+plan.seq.map(function(e){ return CHAOS_DEF[e.chaos].emoji; }).join(' ')+' · controls '+CTRL_EMOJI[readCtrl('daily')]+' · 🏅 '+bestForMode('daily')+(done?' · done ✓':'')+'</div>'+
   '</div>';
 }
-function showTips(){
+function showTips(gated){
+  /* gated = the first-Pro-shift flow (launchMode): the player sees this before their
+     first 🛠️ shift and taps Back to the menu — re-tapping Pro then starts the game. */
   el['msg-overlay'].innerHTML=
     '<div id="ov-wrap">'+
     '<div id="msg-title">Tips</div>'+
-    '<div id="msg-sub" style="text-align:left">'+
-      '🖐️ Catch parts in <b>order</b> — the tracker shows what\'s next.<br>'+
-      '⛔ Wrong part: −5 pts. <b>Junk</b>: lose a life!<br>'+
-      '🔥 Catch fast and keep the chain alive — big <b>combos</b>, big points.<br>'+
-      '☕ Coffee = slow-mo · 🔧 Wrench = skip order · 🧲 Magnet = pull parts.<br>'+
-      '🐱⚡☕🥶 Chaos hits without warning — watch the corner icon &amp; ride it out.<br>'+
-      '✋ <b>Drag</b>: tray follows your finger · 👆 <b>Snap</b>: tap to jump.<br>'+
-      '✊ <b>Hold</b>: tap to park the tray · drag to move (one hand).<br>'+
-      '🖐️ <b>2nd finger</b> anywhere (or right-click) fires the active 🔧.<br>'+
-      '🛡️ <b>No-fail grace</b> (Settings): a 3-second shield after every hit.<br>'+
-      '🎮 Gamepad: left stick moves · D-pad steps · start = play/pause.<br>'+
-      '⌨️ Not a fan of the keys? Rebind them in <b>Keys</b>.<br>'+
-      '🏆 Clear shifts to earn trophies and climb the ranks.<br>'+
-      '<kbd>P</kbd> pause · <kbd>M</kbd> mute · <kbd>N</kbd> music</div>'+
+    '<div id="tips-sub">Everything you need to nail your first shift.</div>'+
+    '<div id="tip-grid">'+
+      '<div class="tip-group"><div class="tip-head tg-good">🧰 The Basics</div>'+
+        '<div class="tip-row tg-good"><span class="t-emoji">🖐️</span><span class="t-txt">Catch parts in <b>order</b> — the tracker shows what\'s next.</span></div>'+
+        '<div class="tip-row tg-good"><span class="t-emoji">⛔</span><span class="t-txt">Wrong part: −5 pts. <b>Junk</b>: lose a life!</span></div>'+
+        '<div class="tip-row tg-good"><span class="t-emoji">🔥</span><span class="t-txt">Catch fast to keep the chain — <b>big combos</b>, big points.</span></div>'+
+      '</div>'+
+      '<div class="tip-group"><div class="tip-head tg-hot">⚡ Power-ups</div>'+
+        '<div class="tip-row tg-hot"><span class="t-emoji">☕</span><span class="t-txt">Coffee = <b class="hot">slow-mo</b> · 🔧 wrench = <b class="hot">skip</b> · 🧲 magnet = <b class="hot">pull</b>.</span></div>'+
+        '<div class="tip-row tg-hot"><span class="t-emoji">🖐️</span><span class="t-txt"><b>2nd finger</b> anywhere (or right-click) fires the active 🔧.</span></div>'+
+      '</div>'+
+      '<div class="tip-group"><div class="tip-head tg-move">✋ Controls</div>'+
+        '<div class="tip-row tg-move"><span class="t-emoji">👆</span><span class="t-txt"><b>Snap</b>: tap where you want the tray.</span></div>'+
+        '<div class="tip-row tg-move"><span class="t-emoji">✋</span><span class="t-txt"><b>Drag</b>: tray follows your finger.</span></div>'+
+        '<div class="tip-row tg-move"><span class="t-emoji">✊</span><span class="t-txt"><b>Hold</b>: tap to park · drag to move.</span></div>'+
+      '</div>'+
+      '<div class="tip-group"><div class="tip-head tg-safe">🛟 Survive &amp; Progress</div>'+
+        '<div class="tip-row tg-safe"><span class="t-emoji">🐱</span><span class="t-txt">Chaos hits without warning — watch the corner icon &amp; ride it out.</span></div>'+
+        '<div class="tip-row tg-safe"><span class="t-emoji">🛡️</span><span class="t-txt"><b>No-fail grace</b> (Settings): a 3-second shield after hits.</span></div>'+
+        '<div class="tip-row tg-safe"><span class="t-emoji">🏆</span><span class="t-txt">Clear shifts to earn <b>trophies</b> and climb the <b>ranks</b>.</span></div>'+
+      '</div>'+
+    '</div>'+
+    '<div id="tips-footer"><kbd>P</kbd> pause <span class="sep">·</span> <kbd>M</kbd> mute <span class="sep">·</span> <kbd>N</kbd> music <span class="sep">·</span> <a id="tips-keys-link">Keys &amp; gamepad</a></div>'+
     '<button class="ghost-btn" id="back-btn">Back</button>'+
     '</div>';
   el['msg-overlay'].style.display='flex';
-  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });
+  document.getElementById('back-btn').addEventListener('click',function(){ audioInit(); showMenu(); });   // gated or not, Back lands on the menu
+  var keysLink=document.getElementById('tips-keys-link');
+  if(keysLink){ keysLink.addEventListener('click',function(){ showKeys(); }); }
 }
 function showEnd(s,reason){
   var rank=rankFor(totalOrders);
@@ -2681,6 +2932,7 @@ window.CC7={ get phase(){ return S?S.phase:null; }, get paused(){ return S?S.pau
   _setGrace:function(on){ lsSet('cc7_grace', on?'1':'0'); },   // harness/test: toggle the 🛡️ no-fail grace setting
   _endNow:function(){ if(S&&S.phase==='play'){ persistEnd(S); endGame(S,'Ended by dev tools'); } },   // dev-only: end a shift programmatically — neutral reason so it's never mistaken for a bug
   _showMenu:function(){ showMenu(); },
+  _showTips:function(){ showTips(); },   // harness/console: open the Tips screen (the runtime pin renders + asserts it)
   _resetTut:function(){ TUT_ON=false; tutStep=0; clearTutTimer(); el['tut-card'].style.display='none'; },   // harness: force the tutorial state
   _fireChaos:function(k){ if(S&&S.phase==='play') triggerChaos(S,k); },
   _dropJunk:function(){ if(S&&S.phase==='play'){ S.items.push({x:S.player.x, y:S.player.y-24, emoji:JUNK[0], type:'junk', code:null, speed:0, scale:1, rot:0}); } },

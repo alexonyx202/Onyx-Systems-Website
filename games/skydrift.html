@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#05050f">
-<title>SKYDRIFT — Retro Arcade Shooter (V68)</title>
+<link rel="icon" href="data:,">   <!-- V91: the browser otherwise auto-requests /favicon.ico on first load per profile — a 404 in the console every fresh session. An empty data: favicon satisfies the request with zero bytes and keeps the single-file, offline guarantee. -->
+<title>SKYDRIFT — Retro Arcade Shooter (V103)</title>
 <style>
+@font-face{font-family:'Anton';font-style:normal;font-weight:100 900;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2');}
+/* V76: Anton by Vernon Adams (SIL OFL 1.1, bundled per the license's terms) rides in as a data-URI so the SKYDRIFT marquee and the canvas banners render in the same heavy condensed display face on EVERY machine — no Impact, no network: the file stays single-file and offline. The face is declared as a weight range (100 900) so the 900 logo and the canvas 'bold' (700) requests all match the single face with NO faux-bold synthesis (the V70–V72 sharpness arc must not be re-fuzzed); glyphs the latin subset lacks (⚠) fall back per-glyph down the stack. */
+
 /* === Mobile landscape rotate prompt (portrait touch only) === */
 #rotate-prompt{display:none;position:fixed;inset:0;z-index:99999;background:#05050f;color:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px;font-family:'Courier New',monospace}
 #rotate-prompt .icon{font-size:60px;animation:rot-hint 2s ease-in-out infinite}
@@ -21,64 +25,67 @@
 html,body{width:100%;height:100%;overflow:hidden;background:#05050f;overscroll-behavior:none}
 body{font-family:'Courier New',monospace;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;color:#fff}
 canvas{display:block;cursor:crosshair;touch-action:none}
-#hud{position:fixed;top:0;left:0;right:0;padding:6px calc(14px + env(safe-area-inset-right)) 6px calc(14px + env(safe-area-inset-left));display:flex;justify-content:space-between;color:#fff;font-size:13px;z-index:10;pointer-events:none;text-shadow:0 0 6px currentColor,1px 1px 2px #000}
+#hud{position:fixed;top:0;left:0;right:0;padding:6px calc(14px + env(safe-area-inset-right)) 6px calc(14px + env(safe-area-inset-left));display:flex;justify-content:space-between;color:#fff;font-size:13px;z-index:10;pointer-events:none;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,1px 1px 2px #000}   /* V70: the HUD keeps contrast with a SHARP 1px black outline — the 6px color glow that fuzzed it is gone */
 #hud span{margin:0 8px}
 .hi{color:#ffcc44}.hw{color:#44ffaa}.hl{color:#ff5577}.hb{color:#55aaff}.hp{color:#ff88ff}.hwpn{color:#ffee44;font-size:10px;letter-spacing:2px;min-width:52px;display:inline-block;text-align:right}
-.hvr{color:#ff8866;font-size:10px;letter-spacing:1px;text-shadow:0 0 6px rgba(255,80,60,.8)}   /* V31: the BOSS RUSH HUD badge */
-.hchg{color:#7df2ff;font-size:10px;letter-spacing:1px;text-shadow:0 0 8px rgba(125,242,255,.7)}
-.hchg.ready{color:#ffd75e;text-shadow:0 0 8px rgba(255,215,94,.85)}   /* V29: gauge >=75% — the OVERDRIVE tier is armed */
-.hchg.full{color:#ffcc44;animation:bl .5s steps(2,start) infinite;text-shadow:0 0 10px rgba(255,204,68,.95)}
+.hwk{color:#9fc2e0;font-size:9px;letter-spacing:1px;margin-left:8px}   /* V100: the DESTROY k/n readout — dimmer than the wave number so the wave stays the headline; the number ticks up per kill */
+.hvr{color:#ff8866;font-size:10px;letter-spacing:1px}   /* V31: the BOSS RUSH HUD badge · V70: no glow — the badge inherits the HUD's sharp outline */
+.hchg{color:#7df2ff;font-size:10px;letter-spacing:1px}
+.hchg.ready{color:#ffd75e}   /* V29: gauge >=75% — the OVERDRIVE tier is armed · V70: color alone carries the tier, no glow */
+.hchg.full{color:#ffcc44;animation:bl .5s steps(2,start) infinite}   /* V70: the full-gauge blink stays — the 10px glow is gone */
 #hud .hv{color:#55aaff;display:none}
 #hud .hv.on{display:inline}
 
 /* Boss health bar */
 #bossbar{position:fixed;top:44px;left:50%;transform:translateX(-50%);width:min(520px,72vw);z-index:11;display:none;pointer-events:none}
-#bossbar .bbn{text-align:center;font-size:10px;letter-spacing:4px;color:#ff88aa;margin-bottom:3px;text-shadow:0 0 8px rgba(255,80,120,.8);animation:bl 0.8s steps(2,start) infinite}
+#bossbar .bbn{text-align:center;font-size:10px;letter-spacing:4px;color:#ff88aa;margin-bottom:3px;animation:bl 0.8s steps(2,start) infinite}   /* V70: boss-name glow removed — the blink still reads as a warning */
 .bbw{height:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,120,160,.35);border-radius:4px;overflow:hidden}
 #bbf{height:100%;width:100%;background:linear-gradient(90deg,#ff4466,#ffcc44);box-shadow:0 0 10px rgba(255,80,100,.7);transition:width .12s linear}
 
 /* CRT scanline + vignette overlay */
 #crt{position:fixed;inset:0;pointer-events:none;z-index:90;mix-blend-mode:overlay;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0px,rgba(0,0,0,.22) 1px,transparent 2px,transparent 3px);}
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0px,rgba(0,0,0,.12) 1px,transparent 2px,transparent 3px);}   /* V71: scanlines halved (.22→.12) — over large text the 3px stripes shimmered into perceived blur; the texture stays, the moiré goes */
 #crt::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);mix-blend-mode:normal}
 
-#overlay{position:fixed;inset:0;background:rgba(5,5,16,.9);display:none;flex-direction:column;align-items:center;z-index:100;color:#fff;text-align:center;padding:20px;overflow:auto}
+#overlay{position:fixed;inset:0;background:rgba(5,5,16,.9);display:none;flex-direction:column;align-items:center;z-index:100;color:#fff;text-align:center;padding:12px;overflow:auto}   /* V71 review: 20→12px — the new menu card ate the zero-overflow headroom on desktop */
 #overlay::before,#overlay::after{content:"";display:block;margin:auto}   /* center when short, but never clip the top when content overflows (flex-center + overflow bug) */
 #overlay.show{display:flex}
 #overlay.title{background:rgba(4,4,14,.46)}   /* V44: lighter dim so the attract-mode demo gameplay shows through — the arcade look */
 #overlay.over{background:rgba(5,5,16,.93)}
 #overlay.pause{background:rgba(5,5,16,.8)}
-#overlay h1{font-size:min(11vw,72px);letter-spacing:8px;margin-bottom:2px;line-height:1}
-.tg{color:#ffcc44;text-shadow:3px 0 #ff2a6d,-3px 0 #05d9e8,0 0 30px rgba(255,200,60,.5);animation:tgp 3.2s ease-in-out infinite}   /* V44: the logo gently floats + the neon glow breathes — arcade marquee feel */
-@keyframes tgp{0%,100%{text-shadow:3px 0 #ff2a6d,-3px 0 #05d9e8,0 0 30px rgba(255,200,60,.5);transform:translateY(0)}50%{text-shadow:5px 0 #ff2a6d,-5px 0 #05d9e8,0 0 54px rgba(255,200,60,.95);transform:translateY(-3px)}}
-.tr{color:#ff3355;text-shadow:3px 0 #ff2a6d,-3px 0 #ff8800,0 0 30px rgba(255,50,50,.6)}
-#overlay h2{font-size:13px;color:#55aaff;letter-spacing:5px;margin-bottom:14px;text-shadow:0 0 10px rgba(85,170,255,.5)}
-#overlay .ver{font-size:10px;color:#556677;letter-spacing:3px;margin-top:10px}
-#overlay .seed{font-size:11px;color:#ffd75e;letter-spacing:2px;margin-top:6px;text-shadow:0 0 12px rgba(255,215,94,.5)}   /* V43: the daily-challenge seed everyone shares today */
-.streak{font-size:12px;color:#ff8844;letter-spacing:2px;margin-top:5px;text-shadow:0 0 12px rgba(255,136,68,.7);animation:bl 1.6s steps(2,start) infinite}   /* V55: the daily-streak flame on the title — shown at 2+ days running */
-.setrow{display:flex;gap:8px;justify-content:center;margin:6px 0 2px;flex-wrap:wrap}   /* V55: the settings row — CRT toggle + SOUND TEST */
+#overlay h1{font-size:clamp(28px,6vw,56px);letter-spacing:5px;margin-bottom:16px;line-height:1}   /* V69: clamp() keeps the header proportional and stops the 72px billboard · V78: the cap rises to 56px — the logo is the hero of a title screen — and margin-bottom:16px clears the V77 slab's 12px diagonal extrusion (the slab was overlapping the subtitle) */
+.tg{color:#ffd64d;font-family:'Anton',Impact,'Arial Black','DejaVu Sans','Liberation Sans','Noto Sans',sans-serif;font-weight:900;text-transform:uppercase;-webkit-text-stroke:1px rgba(255,248,220,.9);text-shadow:-2px -2px 0 rgba(6,6,18,.92),2px -2px 0 rgba(6,6,18,.92),-2px 2px 0 rgba(6,6,18,.92),2px 2px 0 rgba(6,6,18,.92),1px 2px 0 #2a1e0c,2px 4px 0 #251a0a,3px 6px 0 #201609,4px 8px 0 #1b1207,5px 10px 0 #160e05,6px 12px 0 #120b04;animation:tgp 3.2s ease-in-out infinite;position:relative}   /* V77: the marquee is a TRUE 3D block — the pinned 2px outline stays, but the two timid depth layers become a 6-step DIAGONAL slab (x grows with y: 1,2 → 6,12) shading #2a1e0c→#120b04, so the extrusion reads as the block's side face, not a drop-shadow bar; a 1px light inner rim (-webkit-text-stroke) makes the front face read lit from above. All 0-blur, transform-only float — the V70 sharpness arc survives. · V79: position:relative anchors the ::after shine layer. */
+@keyframes tgp{0%,100%{transform:translateY(0) scaleX(.9)}50%{transform:translateY(-2px) scaleX(.9)}}   /* V72: the float condenses the glyphs 10% (Impact-like silhouette) — still transform-only, so it never blurs */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){.tg::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;color:transparent;background:linear-gradient(105deg,transparent 0%,transparent 47%,rgba(255,246,205,.85) 50%,transparent 53%,transparent 100%);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;animation:tgs 5s ease-in-out infinite}}   /* V79: the marquee shimmer — a soft warm band sweeps the GLYPH FACES ONLY (background-clip:text clips to the ::after's own text, so the slab and outline stay on the parent), riding a 280%-wide gradient animated purely on background-position: 0-blur, transform-free, the tgp float still drives all motion. @supports guards the degradation path: no clip support = no shine layer, never a transparent-text rectangle. */
+@keyframes tgs{0%{background-position:130% 0}60%,100%{background-position:-40% 0}}   /* V79: the sweep crosses the full title then rests ~2s — slow, arcade-marquee, no strobing */
+@media (prefers-reduced-motion:reduce){.tg::after,.tg,.ps,.streak,.dlycta,.br,.ag,.nv,.dl,.newhi{animation:none}}   /* V79: motion-sick players see a static gold title — the shine AND the float freeze (the blink is opacity-only, motion-safe, and stays) */
+.tr{color:#ff3355;font-family:'Anton',Impact,'Arial Black','DejaVu Sans','Liberation Sans','Noto Sans',sans-serif;font-weight:900;text-transform:uppercase;-webkit-text-stroke:1px rgba(255,180,195,.35);text-shadow:-1px -1px 0 rgba(6,6,18,.9),1px -1px 0 rgba(6,6,18,.9),-1px 1px 0 rgba(6,6,18,.9),1px 1px 0 rgba(6,6,18,.9),1px 2px 0 #3a0a12,2px 4px 0 #32080f,3px 6px 0 #2a060c,4px 8px 0 #22050a}   /* V77: GAME OVER joins the 3D-block treatment — same diagonal-slab recipe as the logo, scaled to its 1px outline (deep red → near-black, the boss-run red against the slate) */
+#overlay.pause .tg{text-shadow:-2px -2px 0 rgba(6,6,18,.92),2px -2px 0 rgba(6,6,18,.92),-2px 2px 0 rgba(6,6,18,.92),2px 2px 0 rgba(6,6,18,.92),1px 2px 0 #2a1e0c,2px 4px 0 #251a0a,3px 6px 0 #201609,4px 8px 0 #1b1207,5px 10px 0 #160e05,6px 12px 0 #120b04}   /* V80: PAUSED keeps the FULL 12px slab on every screen — its inline 44-52px font overrides the compact clamp, so the ≤900px compact 6px slab made the glyphs look flat; the full slab matches the real size, same as the title */
+#overlay.pause h1{margin-bottom:16px}   /* V80: and the full slab needs the full 16px margin even on compact screens — the compact 8px would collide (higher specificity than the media-query h1 rule) */
+#overlay h2{font-size:clamp(10px,1.2vw,12px);color:#55aaff;letter-spacing:4px;margin-bottom:5px}   /* V69: the subtitle scales with the header · V70: no glow — small text stays sharp · V85: bottom margin 10→8→6 · V89: 6→5 — fold budget */
+#overlay .ver{font-size:10px;color:#7a8ba3;letter-spacing:3px;margin-top:10px}   /* V71: brightened for the dark plate */
+#overlay .seed{font-size:10px;color:#ffd75e;letter-spacing:2px;margin-top:2px;font-weight:bold}   /* V43: the daily-challenge seed everyone shares today · V70: glow removed · V85: top margin 6→4→3 · V86: bold — the small title-column lines match the V82 small-text weight · V94: 11→10px + margin 3→2 — the streak+empty-board title state was −15px over at desktop in V86; base trim funds headroom (the ≤430 compact rules re-tighten below, and the seed line still reads at the same weight) */
+.streak{font-size:9px;color:#ff8844;letter-spacing:1px;margin-top:1px;font-weight:bold;animation:br 2.8s ease-in-out infinite}   /* V55: the daily-streak flame on the title — shown at 2+ days running · V70: glow removed · V86: bold · V89: 12→10px + margin 5→2 · V94: 10→9px + margin 2→1 — the streak row's own footprint drops to ~10px so every title state clears the fold with air (desktop streak+CTA was the tightest state at +7px) */
+.setrow{display:flex;gap:8px;justify-content:center;margin:0 0 1px;flex-wrap:wrap}   /* V55: the settings row — CRT toggle + SOUND TEST · V71 review: margin 6→4 · V85: 4→2→0 · V89: 2→1 — fold budget */
 .ss{padding:6px 14px;font-size:10px;border-radius:4px;letter-spacing:2px;background:rgba(255,255,255,.07);color:#88aacc;box-shadow:0 3px 0 rgba(0,0,0,.4)}   /* V55: small settings button */
 .ss:hover{color:#ffcc44}
-.share{margin:6px 0 2px}   /* V55: the game-over SHARE RUN row */
-.bs{background:linear-gradient(180deg,#44cc88,#228855);color:#fff;box-shadow:0 3px 0 #145530,0 4px 14px rgba(60,220,140,.35)}   /* V55: share button — green, a ready-to-copy action */
-.bs.copied{background:linear-gradient(180deg,#7df2ff,#2a7fb8);color:#032a44;box-shadow:0 3px 0 #14456a}   /* V55: copied state — cyan confirmation */
 .box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:14px 22px;margin:8px 0;max-width:480px;text-align:left;font-size:11px;line-height:2;color:#9fc2e0}
 .box b{color:#ffcc44}
-.mission{font-size:11px;color:#9fc2e0;letter-spacing:1px;margin:2px 0 6px;text-shadow:0 0 8px rgba(159,194,224,.25)}
+.mission{font-size:11px;color:#9fc2e0;letter-spacing:1px;margin:0 0 2px}   /* V70: glow removed — the copy reads clean · V85: 2/4→0/4 · V89: 4→2 — fold budget */
 .mission b{color:#ffcc44}
-.k{display:inline-block;background:rgba(255,200,60,.15);padding:1px 7px;border-radius:3px;color:#ffcc44;font-weight:bold;font-size:10px}
+.k{display:inline-block;background:rgba(255,200,60,.15);padding:1px 6px;border-radius:3px;color:#ffcc44;font-weight:bold;font-size:10px}   /* V98: chip padding 7→6px — the CONTROLS sheet's key chips feed the two-column width budget */
 .panels{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
 .hs{background:rgba(255,255,255,.04);border:1px solid rgba(255,200,60,.18);border-radius:8px;padding:12px 18px;margin:8px 0;min-width:240px}
-.hs h3{color:#ffaa33;font-size:12px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 0 8px rgba(255,170,50,.5)}
+.hs h3{color:#ffaa33;font-size:12px;letter-spacing:3px;margin-bottom:8px}   /* V70: TOP SCORES header — sharp, no glow */
 .hsrow{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dashed rgba(255,255,255,.07)}
 .hsrow .rk{color:#55aaff;width:24px}.hsrow .nm{color:#fff;width:44px}.hsrow .sc{color:#ffcc44;font-weight:bold}.hsrow .wv{color:#88aacc;font-size:10px}.hsrow .dt{color:#556677;font-size:10px}
 .hscur{background:rgba(255,200,60,.14);border-radius:3px}
 .dh{border-color:rgba(255,215,94,.35)}   /* V46: the daily leaderboard panel — sun-gold border to match the DAILY identity */
-.dh h3{color:#ffd75e;text-shadow:0 0 8px rgba(255,215,94,.5)}
+.dh h3{color:#ffd75e}   /* V70: DAILY TOP header — sharp, no glow */
 .empty{color:#556688;font-style:italic;font-size:11px}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px 16px;margin:6px 0 8px;min-width:320px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:6px 0 6px;min-width:0;width:min(100%,640px)}   /* V69: six tiles always flow 2 rows of 3 — balanced on a phone and a desktop alike, no more 320px min that cramped a 360px screen · V84: bottom margin 8→6px — 2px reclaimed to fund the over-screen button-ring clearance below */
 .fleet{background:rgba(255,255,255,.04);border:1px solid rgba(196,107,255,.22);border-radius:8px;padding:10px 18px;margin:6px 0;min-width:320px}
-.fleet h3{font-size:11px;color:#c46bff;letter-spacing:2px;margin:0 0 6px;text-shadow:0 0 8px rgba(196,107,255,.5)}
+.fleet h3{font-size:11px;color:#c46bff;letter-spacing:2px;margin:0 0 6px}   /* V70: FLEET LADDER header — sharp, no glow */
 .flr{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:1px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .flr:last-child{border-bottom:none}
 .fln{font-weight:bold;min-width:118px}
@@ -90,52 +97,91 @@ canvas{display:block;cursor:crosshair;touch-action:none}
 .sl{color:#556677;font-size:9px;text-transform:uppercase;letter-spacing:1px}
 .sv{color:#ffcc44;font-size:20px;font-weight:bold}
 .sg{color:#44ff88}
-.grade{font-size:54px;font-weight:bold;letter-spacing:4px;line-height:1;margin:4px 0 10px;text-shadow:0 0 26px currentColor}
+.grade{font-size:clamp(30px,7vw,46px);font-weight:900;font-family:'Anton',Impact,'Arial Black','DejaVu Sans','Liberation Sans','Noto Sans',sans-serif;letter-spacing:4px;line-height:1;margin:4px 0 10px;text-transform:uppercase;-webkit-text-stroke:1px rgba(255,250,220,.25);text-shadow:-1px -1px 0 rgba(6,6,18,.9),1px -1px 0 rgba(6,6,18,.9),-1px 1px 0 rgba(6,6,18,.9),1px 1px 0 rgba(6,6,18,.9),1px 2px 0 #262140,2px 4px 0 #201c38,3px 6px 0 #1a1730,4px 8px 0 #141127}   /* V69: the RANK letter breathes · V70: no glow · V80: joins the block identity — Anton 900 + the same diagonal-slab recipe as .tg/.tr, in a neutral slate so the extrusion reads under every grade color (S gold / A green / B blue / C purple / D grey), plus a faint warm rim */
 .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
-button{padding:11px 30px;font-size:13px;font-family:'Courier New',monospace;border:none;border-radius:4px;font-weight:bold;cursor:pointer;letter-spacing:2px;transition:transform .1s,filter .1s,box-shadow .2s;touch-action:manipulation}
+button{padding:9px 28px;font-size:13px;font-family:'Courier New',monospace;border:none;border-radius:4px;font-weight:bold;cursor:pointer;letter-spacing:2px;transition:transform .1s,filter .1s,box-shadow .2s;touch-action:manipulation}   /* V85: padding 11/30→9/28 — the title menu is the tallest column on the card, and the four mode buttons were the biggest single chunk of its height; the fold now fits 720p */
 button:hover{filter:brightness(1.15)}
 button:active{transform:scale(.96)}
-.hero{padding:16px 48px;font-size:17px;box-shadow:0 4px 0 #996600,0 6px 26px rgba(255,136,0,.45);animation:hp 1.6s ease-in-out infinite}   /* V44: START GAME is the biggest, warmest action — the primary arcade button */
+.hero{padding:16px 48px;font-size:17px;box-shadow:0 4px 0 #996600,0 5px 14px rgba(255,136,0,.28);animation:hp 1.6s ease-in-out infinite}   /* V44: START GAME is the biggest, warmest action · V83: the 26px@.45 bloom washed over the first description — the hard 4px shadow stays, the glow shortens to 14px and dims to .28 so it reads as warmth, not bleed */
 @keyframes hp{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22)}}   /* brightness (not box-shadow) so the .kf focus glow still shows on the hero */
-button.kf{outline:2px solid #fff;outline-offset:2px;filter:brightness(1.3);box-shadow:0 0 20px rgba(255,255,255,.4)}   /* V44: keyboard menu focus ring — arrow keys move it like an arcade cabinet */
+button.kf{outline:2px solid #fff;outline-offset:2px;filter:brightness(1.3);box-shadow:0 0 20px rgba(255,255,255,.4)}   /* V44: keyboard menu focus ring — arrow keys move it like an arcade cabinet (4px extent; the ≤430 block compacts it to 1px+1px where the fold can't afford 4px of clearance — V87) */
 .bg{background:linear-gradient(180deg,#ffcc44,#ee8800);color:#1a0800;box-shadow:0 3px 0 #996600,0 4px 16px rgba(255,136,0,.35)}
 .bn{background:linear-gradient(180deg,#5a7fb0,#335588);color:#eef;box-shadow:0 3px 0 #224466}
-.br{background:linear-gradient(180deg,#ff8866,#cc2244);color:#fff;box-shadow:0 3px 0 #7a1030,0 4px 16px rgba(255,60,60,.35);animation:bl .8s steps(2,start) infinite}   /* V31: BOSS RUSH — the practice-mode button pulses crimson */
-.ag{background:linear-gradient(180deg,#88e0ff,#2a7fb8);color:#032a44;box-shadow:0 3px 0 #14456a,0 4px 16px rgba(60,180,255,.35);animation:bl .8s steps(2,start) infinite}   /* V33: APEX GAUNTLET — the hardest-boss practice button pulses ice-blue */
-.nv{background:linear-gradient(180deg,#ffffff,#ff5ce8);color:#2a0a24;box-shadow:0 3px 0 #8a1a5f,0 4px 16px rgba(255,92,232,.4);animation:bl .8s steps(2,start) infinite}   /* V42: NOVA RUSH — the endgame practice button pulses white-hot magenta */
-.dl{background:linear-gradient(180deg,#ffe98a,#ff9d2e);color:#3a2200;box-shadow:0 3px 0 #a35b00,0 4px 16px rgba(255,190,60,.4);animation:bl .8s steps(2,start) infinite}   /* V43: DAILY CHALLENGE — the shared-seed button pulses sun-gold */
+.br{background:linear-gradient(180deg,#ff8866,#cc2244);color:#fff;box-shadow:0 3px 0 #7a1030,0 4px 16px rgba(255,60,60,.35);animation:br 2.6s ease-in-out infinite}   /* V31: BOSS RUSH — the practice-mode button pulses crimson */
+.ag{background:linear-gradient(180deg,#88e0ff,#2a7fb8);color:#032a44;box-shadow:0 3px 0 #14456a,0 4px 16px rgba(60,180,255,.35);animation:br 2.6s ease-in-out infinite}   /* V33: APEX GAUNTLET — the hardest-boss practice button pulses ice-blue */
+.nv{background:linear-gradient(180deg,#ffffff,#ff5ce8);color:#2a0a24;box-shadow:0 3px 0 #8a1a5f,0 4px 16px rgba(255,92,232,.4);animation:br 2.6s ease-in-out infinite}   /* V42: NOVA RUSH — the endgame practice button pulses white-hot magenta */
+.dl{background:linear-gradient(180deg,#ffe98a,#ff9d2e);color:#3a2200;box-shadow:0 3px 0 #a35b00,0 4px 16px rgba(255,190,60,.4);animation:br 2.6s ease-in-out infinite}   /* V43: DAILY CHALLENGE — the shared-seed button pulses sun-gold */
 .br{background:linear-gradient(180deg,#ff5577,#cc2244);color:#fff;box-shadow:0 3px 0 #771122}
-.dif{display:flex;gap:8px;justify-content:center;margin:10px 0 2px}
+.dif{display:flex;gap:8px;justify-content:center;margin:2px 0 6px}   /* V71 review: margin 10→6 · V85: 6→4→2 — fold budget · V87: bottom 2→6 — the difficulty pills' focus ring (4px) was eating the settings row below (2px gap); 6px gives it 2px of air, V82/V84-style */
 .dif button{padding:8px 16px;font-size:11px;border-radius:4px;letter-spacing:2px}
 .dif .on{background:linear-gradient(180deg,#ffcc44,#ee8800);color:#1a0800;box-shadow:0 3px 0 #996600}
 .dif .off{background:rgba(255,255,255,.07);color:#88aacc;box-shadow:0 3px 0 rgba(0,0,0,.4)}
-.ps{font-size:22px;color:#7CFC00;letter-spacing:5px;margin-top:10px;text-shadow:0 0 18px rgba(124,252,0,.85);animation:bl 1s steps(2,start) infinite}   /* V44: the arcade PRESS START beacon */
-.modes{margin-top:10px;max-width:520px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 18px}   /* V49: the MODES panel — one human row per mode instead of a caption blob */
-.dlycta{font-size:12px;color:#ffd75e;letter-spacing:2px;margin-top:5px;text-shadow:0 0 12px rgba(255,215,94,.7);animation:bl 1.6s steps(2,start) infinite}   /* V50: the empty-board nudge — PLAY TODAY'S RUN in human words, pulsing like an arcade INSERT COIN */
-.mhead{font-size:10px;color:#8899aa;letter-spacing:4px;margin-bottom:8px}
-.mrow{display:flex;align-items:baseline;gap:10px;font-size:11px;color:#9fc2e0;line-height:2;text-align:left}
-.mtag{min-width:112px;font-weight:bold;letter-spacing:1px}
-.mdesc{flex:1}
-.pshint{font-size:9px;color:#667788;letter-spacing:2px;margin:2px 0 8px}   /* V44: the fine print under PRESS START */
-.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px 20px;margin-top:6px}   /* V44: controls as a compact two-column grid (one column on narrow screens) */
-.crow{display:flex;gap:8px;align-items:baseline;font-size:11px;color:#9fc2e0;line-height:2}
-.pickleg{font-size:10px;color:#9fc2e0;margin-top:8px;line-height:1.9}
+.ps{font-size:24px;color:#6EE200;letter-spacing:5px;margin-top:6px;font-family:'Anton',Impact,'Arial Black','DejaVu Sans','Liberation Sans','Noto Sans',sans-serif;font-weight:900;text-shadow:-2px -2px 0 rgba(6,6,18,.95),2px -2px 0 rgba(6,6,18,.95),-2px 2px 0 rgba(6,6,18,.95),2px 2px 0 rgba(6,6,18,.95);animation:br 2.8s ease-in-out infinite}   /* V44: the arcade PRESS START beacon · V70: no glow · V78: 1px outline · V81: the green deepens a notch (#6EE200) and the outline thickens to a fully-opaque 2px — the skill's 2px contrast floor, so the beacon stays razor-crisp at full brightness on any panel; the 1↔0 blink becomes a slow 2.8s breathing dim (never disappears) */
+.dlycta{font-size:12px;color:#ffd75e;letter-spacing:2px;margin-top:2px;font-weight:bold;animation:br 2.8s ease-in-out infinite}   /* V50: the empty-board nudge — PLAY TODAY'S RUN in human words, pulsing like an arcade INSERT COIN · V70: glow removed · V85: 5→4→3 · V86: bold — matches the seed line above it · V94: margin 3→2 — base trim funds the streak+CTA state */
+.pshint{font-size:9px;color:#7d90aa;letter-spacing:2px;margin:0 0 2px;font-weight:bold}   /* V44: the fine print under PRESS START · V71: brightened · V82: bold for readability at 9px · V85: 2/5→0/3 · V89: 3→2 — fold budget */
+.ccols{display:grid;grid-template-columns:1fr 1fr;gap:1px 14px;margin-top:3px;align-items:start}   /* V98: column gap 26→14px and top margin 6→3px — at 390–400px the two 1fr columns each gain ~6px, keeping the long key chips (← → ↑ ↓ / WASD) on one line so the sheet doesn't wrap taller */   /* V88: the control sheet is two side-by-side tables — KEYBOARD left, GAMEPAD right — so the sheet scans like a real arcade control card instead of one long wall of rows. align-items:start: the 5-row GAMEPAD table must not stretch to the 10-row KEYBOARD's height (the default stretch left ~140px of dead space under GAMEPAD) */
+.cgrid{display:grid;grid-template-columns:max-content 1fr;gap:0 10px;align-items:baseline}   /* V98: row gap 1px→0 (the chips are the visual separator) and key→desc gap 14→10px */   /* V88: key→action table — the key chip is a fixed first column, every description starts at the same x (was an auto-fit wall where nothing lined up) */
+.crow{display:contents}   /* V88: the row div is a semantic marker only — its key/desc spans become the two aligned table columns */
+.cgrid .k{justify-self:start}
+.tpanel .crow > span:last-child{font-size:11px;line-height:1.3}   /* V98: the description column compacts — 11px/1.3 vs the inherited ~12px/1.4 — so the 18-row sheet fits the reopened panel at 390–646px band widths with headroom instead of filling it edge-to-edge */   /* V88: chips hug their text instead of stretching across the key column */
+.csec{grid-column:1/-1;font-size:9px;letter-spacing:3px;color:#ffcc44;text-transform:uppercase;margin:4px 0 1px;padding-bottom:1px;border-bottom:1px solid rgba(255,200,60,.25)}   /* V98: section margins 7/2→4/1 — four headers (KEYBOARD/GAMEPAD/CHARGED SHOTS/PICKUPS) × 3px saved */   /* V88: section headers — KEYBOARD / GAMEPAD / CHARGED SHOTS / PICKUPS group the sheet */
+.pickleg{display:flex;flex-wrap:wrap;gap:2px 16px;align-items:center;font-size:10px;color:#9fc2e0;margin-top:4px;line-height:1.55}   /* V98: legend margin 8→4px, line-height 1.9→1.55 */   /* V88: the pickup legend becomes a tile strip — each pickup shows its shape glyph + color + name */
+.pl{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}   /* V88: one legend unit = glyph + label, never separated by a wrap */
+.tile{display:inline-block;width:9px;height:9px;flex:none}   /* V88: the legend glyphs are CSS-drawn to match the V65 in-game tile silhouettes exactly — Courier New has no hexagon (⬡ renders as a tofu box), so the shapes that can't be font glyphs are drawn */
+.tile.sh{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}   /* shield: the hexagon tile */
+.tile.sp{clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}   /* graze: the four-point sparkle the V59 graze bursts draw */
+.pnote{font-size:9px;color:#7f9fbe;margin-top:2px;letter-spacing:.5px;line-height:1.5}   /* V98: rule margin 4→2px, line-height 1.8→1.5 */   /* V88: the weapon-crystal rule gets its own quiet line under the legend */
+/* ============ V69: TITLE OVERHAUL — menu column + tabbed info rail ============
+   Research: shmup titles (R-Type, Gradius, Ikaruga) keep the first screen to
+   logo → menu → footer and push reference content (controls, boards) behind it.
+   V69 splits the title into a compact menu column (logo, PRESS START, mode stack)
+   and a tabbed info rail (SCORES / DAILY / CONTROLS) that sits beside it on
+   desktop and below it on phones — no more one-mile scroll, no lost info. */
+.t-shell{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:clamp(14px,3vw,34px);width:min(1120px,100%);align-items:start;text-align:center}
+.t-main{display:flex;flex-direction:column;align-items:center;min-width:0;background:rgba(4,4,14,.62);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 20px 6px}   /* V71: a dark backing plate gives the gold/cyan title text a consistent floor — it no longer fights the bright attract-demo pixels behind it (high-contrast backgrounds were blurring small text) · V71 review: 18/14→12/10 · V85: 12/10→8/6 — fold budget (the 720p card was ~48px over and the shell's clip was hiding it) */
+.t-menu{display:flex;flex-direction:column;align-items:stretch;gap:3px;margin:2px 0 2px;width:min(100%,380px)}   /* V71 review: margin 8→5 to hold the zero-overflow fit · V85: gap 6→4 and margin 5→3 · V89: gap 4→3 (between cells — the ring is absorbed by each cell's own sub) and margin 3→2 — fold budget */
+.t-menu button{width:100%;padding:12px 26px;font-size:15px}   /* V69: one vertical stack of full-width mode buttons — the arcade 1P/2P/OPTIONS column, touch-friendly 40px+ targets · V89: 13→12 — fold budget (the ring is absorbed by each cell's sub, not the button padding) */
+.t-menu .mwrap:first-child button{padding:14px 32px;font-size:16px}   /* V69 review: the hero keeps real size — START GAME reads as the primary action even in the stack (the old .hero padding was overridden by the uniform stack rule) · V89: 15→14 — fold budget */
+.mwrap{display:flex;flex-direction:column;align-items:center;gap:6px}   /* V82: the focus ring (2px outline + 2px offset) extends ~4px below each button — the old 2px gap let the white ring overlap the description text; 8px cleared it with air · V85: 8→6 (2px air) — the menu is the card's tallest column and 10px of its gap budget buys real fold headroom */
+.msub{font-size:10px;color:#8fa3bd;letter-spacing:1px;line-height:1.3;font-weight:bold}   /* V69: one human line under each mode button · V71: brightened · V82: bold — the small mode descriptions carry more weight for easier reading */
+.t-rail{display:flex;flex-direction:column;min-width:0;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 16px 14px}
+/* V74: the two-zone shell is ONE composed card, not two floating boxes. The outer
+   panel carries the chrome; the action column is a darker inner zone split from the
+   reference rail by a hairline divider; the rail's inner boards lose their own box
+   chrome so nothing reads nested/doubled. The base .t-shell/.t-main declarations stay
+   untouched (harness-pinned) — these overrides layer the composition on top. */
+#overlay .t-shell{background:rgba(10,10,26,.5);border:1px solid rgba(255,255,255,.1);border-radius:14px;gap:0;padding:0;overflow:hidden;align-items:stretch;flex-shrink:0}   /* V85: flex-shrink:0 — the shell is a flex item of the fixed-height overlay, and its own overflow:hidden zeroed its automatic minimum size, so when content outgrew the viewport the shell SHRANK and silently clipped the bottom (the version footer and the rail's boards were cut at 720p) while the overlay's scroll metrics stayed at "fits". With flex-shrink:0 a future overflow scrolls instead of clipping — and the layout QA can finally measure the truth. */
+#overlay .t-main{background:rgba(3,3,12,.55);border:0;border-radius:0;border-right:1px solid rgba(255,255,255,.09)}
+#overlay .t-rail{background:transparent;border:0;border-radius:0;padding:18px 22px}
+#overlay .hs{background:transparent;border:0;padding:0;margin:0;min-width:0}
+#overlay .t-rail .box{background:transparent;border:0;padding:0;margin:0;max-width:none}
+#overlay .t-main .ver{margin-top:auto}   /* V74 review: the zones stretch to one card height — the SURVIVED / version footer pins to the zone bottom so the space reads as deliberate breathing room, not empty darkness */
+#overlay.over .btns{margin:4px 0 8px}   /* V84: the keyboard focus ring (2px outline + 2px offset) extends ~4px below the PLAY AGAIN / MENU / INFO row — but the over screen's SURVIVED footer sits flush below at content height (0 slack, the auto-margin collapses), so the ring was eating the footer text. The row now funds its own clearance, V82-style: 8px below (4px air), with the top margin 8→4px and 2px each reclaimed from .stats/.share above — the card stays exactly the same height. */
+@media (max-width:900px){#overlay .t-main{border-right:0}#overlay .t-rail{border-top:1px solid rgba(255,255,255,.09);padding:14px 16px}}   /* V74 review: stacked, the divider moves to the RAIL's top edge — when the short-screen rules hide the rail, the line vanishes with it (a t-main border-bottom would have left a stray double-line at the card edge) */
+.tabs{display:flex;gap:6px;justify-content:center;margin:0 0 10px;flex-wrap:wrap}
+.tb{padding:7px 18px;font-size:10px;letter-spacing:2px;border-radius:4px;background:rgba(255,255,255,.07);color:#88aacc;box-shadow:0 3px 0 rgba(0,0,0,.4)}
+.tb.on{background:linear-gradient(180deg,#ffcc44,#ee8800);color:#1a0800;box-shadow:0 3px 0 #996600}
+.tpanel{display:none}
+.tpanel.show{display:block}
+#infoBtn{display:none}
+@media (max-width:900px){.t-shell{grid-template-columns:1fr}}   /* V69: phones stack the rail under the menu; desktop keeps the side-by-side */
 @keyframes bl{50%{opacity:0}}
-.newhi{color:#ffcc44;font-size:18px;font-weight:bold;letter-spacing:3px;margin-bottom:6px;text-shadow:0 0 18px rgba(255,200,60,.8);animation:bl 0.5s steps(2,start) infinite}
+@keyframes br{0%,100%{opacity:1}50%{opacity:.55}}   /* V81: the breathing dim — title-screen items slow-breathe between full and 55% opacity instead of the hard 1↔0 steps blink; nothing ever disappears, nothing strob (the in-game alarms keep `bl` — a warning blink is communication) */
+.newhi{color:#ffcc44;font-size:18px;font-weight:bold;letter-spacing:3px;margin-bottom:6px;animation:br 1.8s ease-in-out infinite}   /* V70: NEW HIGH SCORE — the 18px glow is gone · V81 review: the 0.5s hard strobe was the harshest blink in the game, on a screen the player stares at — it breathes now too (1.8s, never disappears); it's a celebration, not a warning */
 /* initials entry */
 .ie{background:rgba(255,255,255,.05);border:1px solid rgba(255,200,60,.35);border-radius:8px;padding:10px 18px 14px;margin:8px 0}
-.iel{color:#ffcc44;font-size:11px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 0 8px rgba(255,200,60,.6)}
+.iel{color:#ffcc44;font-size:11px;letter-spacing:3px;margin-bottom:8px}   /* V70: initials label — sharp */
 .islots{display:flex;gap:10px;justify-content:center;align-items:center;margin-bottom:8px}
-.islot{display:flex;flex-direction:column;align-items:center;gap:3px}
-.islot .ln{font-size:30px;font-weight:bold;color:#fff;width:44px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.2);border-radius:6px;background:rgba(0,0,0,.4);text-shadow:0 0 10px rgba(255,200,60,.7)}
+.islot{display:flex;flex-direction:column;align-items:center;gap:5px}   /* V87: gap 3→5 — the ▲▼ stepper buttons' focus ring (4px) was overlapping the ▼ below by 1px; 5px clears with 1px air (and with the ≤430 2px ring it has 3px) */
+.islot .ln{font-size:30px;font-weight:bold;color:#fff;width:44px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.2);border-radius:6px;background:rgba(0,0,0,.4)}   /* V70: the initial letters are clean — the 10px glow is gone */
 .islot.sel .ln{border-color:#ffcc44;box-shadow:0 0 14px rgba(255,200,60,.55)}
 .islot button{width:44px;padding:4px 0;font-size:12px;background:rgba(255,200,60,.12);color:#ffcc44;box-shadow:none;border:1px solid rgba(255,200,60,.25);border-radius:4px}
 .iekeys{font-size:9px;color:#667788;letter-spacing:1px;margin-bottom:7px;text-shadow:none}
 @media (hover:none) and (pointer:coarse){.iekeys{display:none}}   /* touch players use the ▲▼ buttons — no keyboard hints */
 #msgs{position:fixed;left:50%;top:50px;transform:translateX(-50%);z-index:20;pointer-events:none;text-align:center}
-.m{padding:3px 12px;font-size:13px;font-weight:bold;margin-bottom:4px;animation:mf 1.2s forwards;white-space:nowrap}   /* V59: the banner fade matches the 1.2s removal — no words linger */
+.m{padding:3px 12px;font-size:13px;font-weight:bold;margin-bottom:4px;animation:mf 1.2s forwards;white-space:nowrap;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}   /* V59: the banner fade matches the 1.2s removal — no words linger · V70 review: transient messages keep the HUD's sharp 1px outline — no glow, but readable over any explosion */
 @keyframes mf{0%{opacity:1;transform:scale(1)}70%{opacity:1}100%{opacity:0;transform:scale(.9) translateY(-10px)}}
-.mw{color:#ff4444;text-shadow:0 0 8px #ff0000}.mb{color:#ffcc44;text-shadow:0 0 8px #ff8800}.mi{color:#55aaff;text-shadow:0 0 8px #0066ff}.mg{color:#44ff88;text-shadow:0 0 8px #00aa44}
+.mw{color:#ff4444}.mb{color:#ffcc44}.mi{color:#55aaff}.mg{color:#44ff88}   /* V70: banner words are pure color — no glow wash */
 
 /* ============ TOUCH CONTROLS (mobile only) ============ */
 #touch{position:fixed;inset:0;z-index:80;pointer-events:none;display:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}   /* notch/home-bar insets: absolute touch controls are positioned from the padding box */
@@ -153,14 +199,22 @@ body.touch.playing #touch{display:block}
 /* === V20: compact overlays for short landscape screens (≤430px tall) === */
 @media (max-height:430px){
   #overlay{padding:8px}
-  .modes{padding:6px 10px;margin-top:4px}
-  .dlycta{font-size:10px;margin-top:2px}
-  .mtag{min-width:84px;font-size:10px}
-  .mrow{font-size:10px;line-height:1.7}
-  #overlay h1{font-size:min(11vw,34px);letter-spacing:5px}
+  .t-main{padding:6px 10px 4px;border-radius:10px}   /* V71 review: the card compacts on short screens so the phone menu still fits */
+  .dlycta{font-size:10px;margin-top:1px}   /* V91: 2→1 — funds the pill touch-target bump */
+  .setrow{margin:0 0 2px}   /* V89: the base setrow/mission/t-menu trims fund the DESKTOP fold; at ≤430 they'd push fresh past the tight 0..<8 guard, so the phone keeps its own values (the compact mission line below is the original ≤430 rule) */
+  .t-menu{gap:4px;margin:3px 0 2px}
+  .streak{display:none}   /* V89: the streak flame folds away on short screens — the 740×360 fold has ~3px slack and can't hold the row; the streak state then reads exactly like fresh (the V73 rail-fold philosophy: what can't fit, folds) */
+  #overlay h1{font-size:clamp(17px,4.5vw,24px);letter-spacing:4px;margin-bottom:8px}   /* V78: on short screens the compact slab is only 6px deep — 8px clears it and reclaims the vertical budget */
+  .tg{text-shadow:-1px -1px 0 rgba(6,6,18,.92),1px -1px 0 rgba(6,6,18,.92),-1px 1px 0 rgba(6,6,18,.92),1px 1px 0 rgba(6,6,18,.92),1px 2px 0 #2a1e0c,2px 4px 0 #251a0a,3px 6px 0 #201609}   /* V77: the slab compacts with the screen — 1px outline + a 3-step 6px diagonal bar, still a third of a 17px glyph */
+  .t-menu button{padding:8px 18px;font-size:12px}
+  .mwrap{gap:6px}   /* V82: narrow screens keep the ring clear with less vertical spend */
+  .msub{font-size:8px}
   #overlay h2{font-size:11px;letter-spacing:4px;margin-bottom:6px}
   .box{padding:7px 12px;margin:5px 0;font-size:10px;line-height:1.7}
   .k{font-size:9px;padding:0 5px}
+  .ccols{gap:2px 16px}   /* V88: the two control tables keep their side-by-side, just tighter */
+  .cgrid{gap:0 10px}
+  .csec{font-size:8px;margin:5px 0 1px;letter-spacing:2px}
   .mission{font-size:10px;margin:0 0 2px}
   .panels{gap:10px}
   .hs{padding:6px 10px;margin:5px 0;min-width:210px}
@@ -176,20 +230,68 @@ body.touch.playing #touch{display:block}
   .islot .ln{font-size:20px;width:32px;height:28px}
   .islot button{width:32px;padding:2px 0;font-size:10px}
   .islots{gap:6px}
-  .iekeys{font-size:8px}
-  .dif{margin:4px 0 0}
-  .dif button{padding:6px 12px;font-size:10px}
+  .iekeys{display:none;font-size:8px}   /* V73: keyboard hints fold on short screens whatever the pointer — they were the last 7px on the over screen's initials row */
+  .dif{margin:4px 0 4px}   /* V87: bottom 0→4 — the pills' ring clears the settings row (0px air at ≤900-only heights, tight but never touching) */
+  .dif button{padding:8px 12px;font-size:10px}   /* V91: touch-target audit — 6px padding made the pills 23px tall at 740×360, far under the 44px guideline for a touch game; 8px brings them to 27px. The +4px spend is offset by the ps/dlycta/ver trims below (−3px): net −1px of fold, measured slack 5→3px (still inside the tight 0..<8 guard) */
   .btns{margin-top:2px}
+  #overlay.over .btns{margin-top:2px;margin-bottom:8px}   /* V84: stacked, the over screen keeps its ring clearance — the compact top survives, the 8px bottom stays (the rail's stretch slack absorbs it) */
   button{padding:8px 18px;font-size:12px}
   .hero{padding:11px 30px;font-size:15px}
-  .ps{font-size:16px;margin-top:4px}
+  .ps{font-size:16px;margin-top:4px;text-shadow:-1px -1px 0 rgba(6,6,18,.95),1px -1px 0 rgba(6,6,18,.95),-1px 1px 0 rgba(6,6,18,.95),1px 1px 0 rgba(6,6,18,.95)}   /* V81 review: at 16px the base 2px outline would choke Anton's counters — small text gets the skill's 1px floor */
   .pshint{font-size:8px;margin:1px 0 5px}
-  .ver{margin-top:2px;font-size:9px}
+  .ver{margin-top:1px;font-size:9px}   /* V91: 2→1 — funds the pill touch-target bump */
 }
-/* Short touch screens: keyboard hints / over-screen leaderboard are irrelevant there — keep the fold tight */
-@media (max-height:430px) and (hover:none) and (pointer:coarse){
+.rclose{display:none;position:absolute;bottom:8px;right:10px;padding:2px 8px;font-size:10px;border-radius:4px;background:rgba(8,8,22,.9);color:#9db4d0;border:1px solid rgba(255,255,255,.18);z-index:7}   /* V93: the reopened-rail close button — hidden everywhere except the ≤430 full-viewport panel (the rail's absolute positioning is its containing block). Bottom-right: the tabs row owns the panel top, so a top-anchored ✕ overlapped it by 10px. The panel's 44px bottom padding keeps scrolled content clear of it; CONTROLS fits the panel today (no scroll). */
+.rclose:hover{background:rgba(255,255,255,.16);color:#fff}
+/* Short screens (≤430px tall, touch or not): the rail/boards collapse behind ℹ INFO so the menu and stats always fit the fold — V73 widened this from touch-only to height-only (a 360px-tall mouse window was overflowing 279px; the touch keyboard-hint rule below stays pointer-scoped) */
+@media (max-height:430px){
   #overlay.title .box{display:none}
   #overlay.over .hs{display:none}
+  #overlay.title .t-rail{display:none}        /* V69: short touch screens collapse the info rail to keep the menu in the fold — the ℹ INFO button opens it */
+  #overlay.over .t-rail{display:none}          /* V69: and the over screen's reference rail (fleet + boards) hides too — rank, stats and actions stay in the fold; its ℹ INFO button reopens it */
+  #infoBtn{display:inline-block}
+  #overlay.title .t-rail.show{display:block}
+  #overlay.over .t-rail.show{display:block}
+  /* V93: the phone-ls reopened rail CANNOT stack below the menu — the menu alone is 341px of a 344px fold (0 slack at rest). So the reopened rail becomes a full-viewport panel, absolutely positioned over the menu (its containing block is the fixed #overlay, OUTSIDE the shell's overflow:hidden, so it can't be clipped) and scrolls inside itself. The shell never grows — the info-open state now reads the same ~3px slack as rest. The rail's own ✕ CLOSE button (added to both the title and over markup) dismisses it, since the menu's ℹ INFO button is covered underneath. */
+  #overlay .t-rail.show{position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;overflow-y:auto;background:rgba(8,8,22,.97);padding:14px 16px 44px;border-top:0}   /* V93 review: bottom padding 16→44px — scrolled content must clear the floating bottom-right ✕ CLOSE (z:7), not hide behind it */
+  #overlay .t-rail.show .rclose{display:inline-block}   /* V93: the close button only appears on the REOPENED full-viewport panel at ≤430px (hidden at base — desktop's always-visible rail must not carry it) */
+  #overlay .t-rail.show .tabs{position:sticky;top:0;z-index:5;background:rgba(8,8,22,.98);padding:2px 0 8px;margin-bottom:2px}   /* V93 review: the tabs stay pinned at the panel top while CONTROLS scrolls beneath them */
+  #overlay.title .mission,#overlay.title .pshint,#overlay.over .ver{display:none}   /* V69: fine print folds away on tiny landscape — the menu and the stats are the point */
+  #overlay.over .stats{grid-template-columns:repeat(6,1fr)}   /* V69: on landscape phones the six stat tiles go one row deep — the over screen keeps its actions in the fold */
+  #overlay.over .btns{margin-top:2px;margin-bottom:0}   /* V84: on tiny landscape the SURVIVED footer is folded away — no ring to clear, so the bottom margin drops to keep the fold tight */
+  .t-main{padding:4px 10px 0}   /* V71 review: the last few px — a 360px-tall phone sees the whole menu, no scroll · V85: bottom 2→0 — the honest content slack was -5px here; this closes it */
+  .ps{margin-top:2px}   /* V91: 3→2 — funds the pill touch-target bump */
+  .dif{margin:2px 0 3px}   /* V85: 3→2 — fold budget · V87: bottom 0→3 — with the ≤430 2px ring, 3px gap = 1px air */
+  .setrow{margin:0}   /* V85: 2→0 — fold budget */
+  .t-menu{gap:3px;display:grid;grid-template-columns:1fr 1fr;width:min(100%,560px)}   /* V69: on tiny landscape the mode stack becomes a 2-up grid — hero spans the row, four modes fill two columns, the menu fits 360px-tall screens · V85: 4→3 — fold budget */
+  .t-menu .mwrap:nth-child(1){grid-column:1/-1}
+  .mwrap{gap:5px}   /* V82: short screens — the tightest, still clearing the 4px ring */
+  .t-menu button{padding:7px 14px;font-size:12px}
+  .msub{font-size:7px;line-height:1.25}
+  button.kf{outline-width:1px;outline-offset:1px}   /* V87: the fold is too tight at ≤430px to give every ring 4px of clearance, so the ring itself compacts — 1px outline + 1px offset = 2px extent (the skill's small-screen rule), keeping the 20px glow. This frees the SHARE RUN → buttons gap (4px → 2px air), the ▲▼ steppers, and the settings-row ring with zero spacing cost. */
+}
+/* V92: narrow portrait windows (taller than wide) fold the rail too — the V73 "what can't fit, folds" rule extended to portrait aspect. At 500×700 the title already overflowed the fold by 21px with the rail visible, and every portrait over screen overflowed by 113–124px (the stats card + 268px reference rail simply cannot share a 700–844px tall column). The rail folds behind ℹ INFO exactly like the short-screen rule; real portrait phones never see this (the touch rotate-prompt covers them) — this serves desktop windows and tablets held in portrait. V97 widens the fold from ≤520px to ≤900px so ANY tall screen under 900px wide folds (768×1024 iPad portrait included): the 520<w≤900 portrait band was untested QA territory — at 646×700 the CONTROLS panel overflowed the fold by −459px, reachable only by scrolling the whole overlay (menu scrolls away with it). The reopened rail stays the same full-viewport panel; landscape phone-ls (740×360) and desktop/tablet (≥900 wide) are untouched. */
+@media (max-width:900px) and (orientation:portrait){
+  #overlay.title .t-rail{display:none}
+  #overlay.over .t-rail{display:none}
+  #infoBtn{display:inline-block}
+  #overlay.title .t-rail.show{display:block}
+  #overlay.over .t-rail.show{display:block}
+  /* V95: the portrait OVER-screen reopened rail cannot stack below the stats card — at 400–500px wide the card + 268px reference rail overflow the 700–844px fold by −113/−124/−152px. Same V93 treatment: the reopened rail becomes a full-viewport panel, absolutely positioned over the card (its containing block is the fixed #overlay, OUTSIDE the shell's overflow:hidden, so it can't be clipped) and scrolls inside itself. The shell never grows — the over info-open state now reads the same positive slack as rest. The over rail's own ✕ CLOSE (bottom-right) dismisses it, since the card's ℹ INFO button is covered underneath. The TITLE rail at portrait stays KNOWN (the tall full-size menu can't share the column — a separate follow-up). */
+  #overlay.over .t-rail.show{position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;overflow-y:auto;background:rgba(8,8,22,.97);padding:14px 16px 44px;border-top:0}   /* V95: same panel recipe as V93 — 44px bottom padding keeps scrolled content clear of the floating ✕ (z:7) */
+  #overlay.over .t-rail.show .rclose{display:inline-block}   /* V95: the close button appears on the REOPENED portrait over panel (hidden at base — desktop's always-visible rail must not carry it) */
+  /* V96: the portrait TITLE reopened rail gets the same panel — the last KNOWN
+  overflow (info-open −692/−648/−541px at 400×800/390×844/500×700: the tall
+  full-size menu can't share the column with the rail either). Same V93 recipe:
+  the reopened rail becomes a full-viewport panel over the menu (absolute, its
+  own scroll, near-opaque backdrop, ✕ CLOSE — the menu's ℹ INFO is covered
+  underneath), with the tabs sticky at the panel top. The shell never grows, so
+  the title info-open now reads the same positive slack as rest — and
+  INFO_OPEN_FLOORS flips from KNOWN baselines to real exact pins (joining the
+  over dict and the qa-drift.py guard). */
+  #overlay.title .t-rail.show{position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;overflow-y:auto;background:rgba(8,8,22,.97);padding:14px 16px 44px;border-top:0}   /* V96: same panel recipe as V93/V95 */
+  #overlay.title .t-rail.show .rclose{display:inline-block}   /* V96: the close button appears on the REOPENED portrait title panel */
+  #overlay.title .t-rail.show .tabs{position:sticky;top:0;z-index:5;background:rgba(8,8,22,.98);padding:2px 0 8px;margin-bottom:2px}   /* V96: the title rail HAS tabs (SCORES/DAILY/CONTROLS) — sticky at the panel top while the CONTROLS panel scrolls, exactly like V93's ≤430 panel */
 }
 /* Very short screens (≤360px tall): shrink the touch buttons so they never crowd the play field */
 @media (max-height:360px){
@@ -210,8 +312,8 @@ body.touch.playing #touch{display:block}
 </div>
 <canvas id="C"></canvas>
 <div id="hud">
-  <div><span class="hi" id="sc">000000</span><span class="hv" id="grz">✧0</span></div>
-  <div><span class="hw" id="wv">1</span><span class="hvr" id="rushTag"></span></div>
+  <div><span class="hi" id="sc">000000</span><span class="hv" id="grz">⚝0</span></div>   <!-- V88: the graze glyph was ✧ (U+2727), which Courier New doesn't ship — it rendered as a tofu box on the HUD. ⚝ (U+269D, outlined star) is in the face and reads as a sparkle. V90: this note was a bare // comment in the HTML BODY — HTML doesn't treat // as a comment, so it leaked onto the HUD as visible text; now a proper HTML comment. -->
+  <div><span class="hw" id="wv">1</span><span class="hwk" id="wk"></span><span class="hvr" id="rushTag"></span></div>   <!-- V100: the wave-kills readout — DESTROY k/n makes the majority gate legible (hidden on boss waves, where the boss bar takes over) -->
   <div><span class="hl" id="lv">♥♥♥</span></div>
   <div><span class="hb" id="bm">★★</span></div>
   <div><span class="hwpn" id="wpn">VULCAN</span><span class="hp" id="pw">░░░░░</span><span class="hchg" id="chg">░░░░░</span></div>
@@ -266,6 +368,7 @@ var RARITY={power:1,shield:1.25,w:1.25,bomb:1.75,life:1.75,mystery:2};   // V68:
    mid-fast-band forfeits rate until the 75% line. That's the commitment pressure: tap-release
    early for a quick efficient burst, or commit to the 75% line for the heavy fill-scaled hit. */
 var OD_BURST={vul:[46,46,92,184,212,272],laser:[6.5,6.5,10,13.5,19.5,24.5],missile:[3,3,4.6,13.3,18,23.3],spreader:[30,30,60,110,140,170]};
+var OD_DREAD=2;   // V99: the vul OVERDRIVE tier (release >= 75%) doubles its center-cannon damage while a DREADNOUGHT-type boss is alive. The cannon is the designed boss-killer, but at stock power a full overdrive (46) against the 271-HP w5 dread was ~6 full charge cycles of grind — ×2 brings it to ~2.5–3 overdrives: decisive. Scoped hard: the FAST tier, the wings' 7% ratio, the other weapons, and VORTEX/MOTHER fights (every fleet) are untouched.
 /* V30 SPREADER balance constants: SPR_BOLT is the per-bolt damage table of the lock-on fan
    (N=[1,2,3,3,4,4] bolts at 130ms fire rate — the all-rounder's single-target hold DPS is
    measured to sit between missile and vul so the weakest hold gun keeps the boss-killer
@@ -318,6 +421,11 @@ function unlockAudio(){   // V47: web-audio needs a user gesture; the first key/
   initAudio();
   if(MUS.on)musicWant('title');
 }
+
+function warmFont(){   // V76: preload the bundled display face so the very first canvas banner renders in Anton (data-URI loads in a frame; document.fonts is absent headless — guarded). The weight-range face means one load warms every weight, so no try/catch needed (V76 review).
+  if(document&&document.fonts&&document.fonts.load)document.fonts.load('900 48px Anton');
+}
+warmFont();
 addEventListener('pointerdown',function(){unlockAudio();},{passive:true});   // unlocks before the click that starts the game, so the whoosh is audible on the very first press
 function musicTick(){
   if(!MUS.on||!AC)return;
@@ -396,9 +504,9 @@ function musicShim(dt){   // shield about to break: RISING filter shimmer (wobbl
   }
 }
 function musicShimReset(){MUS.shim=0;MUS._shimOn=false;if(MUS.musicFilt&&AC){MUS.musicFilt.Q.setValueAtTime(0,AC.currentTime);MUS.musicFilt.frequency.linearRampToValueAtTime(MUS.low?22000:7000,AC.currentTime+.3);}}
-function sfx(t){
+function sfx(t,at){   // V75: optional at = the audio-clock time the stinger's downbeat should land (bannerFire passes the next beat boundary) — every note of the multi-note stingers counts from it; without it the stinger starts immediately at AC.currentTime (V57 behavior, unchanged)
   if(!AC)return;if(G&&G.muted)return;
-  var n=AC.currentTime,out=MUS.master||AC.destination;
+  var n=(typeof at==='number'&&at>=AC.currentTime)?at:AC.currentTime,out=MUS.master||AC.destination;
   function tone(type,f0,f1,dur,v,ramp){
     var o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.setValueAtTime(f0,n);
     if(ramp==='exp')o.frequency.exponentialRampToValueAtTime(f1,n+dur);else o.frequency.linearRampToValueAtTime(f1,n+dur);
@@ -538,6 +646,7 @@ var FORMATIONS=[
   {id:'dive',    name:'DIVE SWEEP',  tp:[1,4],  spd:1.2,  mt:'straight'},
   {id:'shield',  name:'SHIELD WALL', tp:[2,5],  spd:.55,  mt:'straight'}];
 var DIFFS={E:{hp:.8,bs:.85,sp:.9,density:1.15,fr:1.25,br:1.3,rank:1.15,label:'EASY'},N:{hp:1,bs:1,sp:1,density:1,fr:1,br:1,rank:1,label:'NORMAL'},H:{hp:1.35,bs:1.15,sp:1.1,density:.9,fr:.85,br:.8,rank:.9,label:'HARD'}};
+var KILL_FRAC=.6;   // V100: the wave-clear policy — dodging alone must NOT reach the boss. A formation wave advances only when you have DESTROYED a 60% majority of it (wNeed = ceil(waveTarget×KILL_FRAC)); passing enemies still escape (they never count), but if the field empties short of the majority the FLEET REGROUPS — the deficit re-spawns (eSpawned resets to wKills) and the banner tells you how many more to destroy, so the gate can never soft-lock. Score/rank stay the reward for over-achieving; the wave bonus is now earned.
 
 /* Boss fleet — one variant every 5 waves, rotating: DREADNOUGHT (heavy cruiser), VORTEX (rotating
    ring-weapon, spiral sprays), MOTHER (carrier that releases dive-bombing droids). */
@@ -589,10 +698,11 @@ var G={
   waveT:0,wavePause:0,eSpawned:0,waveTarget:11,fmt:null,fmtSeq:0,fmtSet:false,fmtY:0,
   enemies:[],bullets:[],eBullets:[],particles:[],powerups:[],stars:[],asteroids:[],trail:[],shockwaves:[],popups:[],flashes:[],banner:null,neb:0,
   keys:{},lastShot:-1e9,
-  graze:0,grazeT:0,grazeMax:0,nextLife:30000,shots:0,kills:0,startT:0,
+  graze:0,grazeT:0,grazeMax:0,grazeTot:0,grazeMile:0,nextLife:30000,shots:0,kills:0,wKills:0,wRegr:0,startT:0,   // V100: wKills = kills this wave (the clear gate's majority), wRegr = regroup count (telemetry + harness) · V103: grazeTot = run-cumulative grazes (never chain-decays), grazeMile = shields granted so far (every 50 grazes)
+
   hbT:0,hbEnv:0,hbLow:0,hbDub:false,_hbStep:-1,_hbLiveT:-1e9,_vig:null,_vigW:0,_vigH:0,
-  dif:'N',muted:false,showHit:false,crt:true,_shared:false,boss:null,_pend:null,_committed:false,_curId:null,_lastPrep:null,_ini:null,_iniIdx:0,_lastName:'AAA',demo:null,   // V55: showHit (H-key hitbox) + crt (scanline overlay) are settings prefs; _shared marks the share-card copied state
-  _hs:-1,_hl:-1,_hw:-1,_hb:-1,_hp:-1,_hwt:null,
+  dif:'N',muted:false,showHit:false,crt:true,boss:null,_pend:null,_committed:false,_curId:null,_lastPrep:null,_ini:null,_iniIdx:0,_lastName:'AAA',demo:null,   // V55: showHit (H-key hitbox) + crt (scanline overlay) are settings prefs
+  _hs:-1,_hl:-1,_hw:-1,_hb:-1,_hp:-1,_hwt:null,_hwk:null,
 
   get difx(){return DIFFS[this.dif]||DIFFS.N;},
 
@@ -626,12 +736,12 @@ var G={
     this._bossOrder=null;this.dropTable=null;this.dropIdx=0;   // V42: campaign keeps the fixed rotation; practice reshuffles below. V43: DAILY gets a shared date-derived rotation + drop layout
     if(this.rush||this.apex||this.nova){this.wave=this.nova?100:(this.apex?50:25);this.lives=5;this.bombs=5;this.wp={vul:5,laser:5,missile:5,spreader:5};this.power=5;this.shuffleBosses();}   // V31/V33/V42 practice modes: maxed loadout straight into the (elite/APEX/NOVA) fleet, with a fresh boss order per run
     if(this.daily){this._dailySeed=this.dailySeed();this._bossOrder=this.shuffleBosses(this._dailySeed);this.dropTable=this.buildDropTable(this.runSeedOf(this._dailySeed));this.touchStreak();}   // V43: the daily challenge — date-derived seeds give EVERY player the same boss order + power-up layout today (a real run: wave 1, 3 lives, score-qualifying) · V55: a played daily attempt touches the streak
-    this.shield=0;this.inv=2000;this.combo=1;this.comboT=0;this.maxCombo=1;    this.shake=0;this.flash=0;this.hitStop=0;this._acc=0;this.chg=0;this._hc=-1;this._hr='';this._shared=false;   // V58: a fresh run starts with a zeroed step accumulator (V55: unshared share card)
+    this.shield=0;this.inv=2000;this.combo=1;this.comboT=0;this.maxCombo=1;    this.shake=0;this.flash=0;this.hitStop=0;this._acc=0;this.chg=0;this._hc=-1;this._hr='';   // V58: a fresh run starts with a zeroed step accumulator
     this.px=120;this.py=H/2;this.pvx=0;this.pvy=0;this.pDead=false;this.pRespT=0;this.pVis=true;
     this.enemies=[];this.bullets=[];this.eBullets=[];this.particles=[];this.powerups=[];this.trail=[];this.shockwaves=[];this.popups=[];this.flashes=[];this.beams=[];this.missiles=[];this.chains=[];this.shards=[];
-    this.waveT=0;this.wavePause=0;this.eSpawned=0;this.waveTarget=Math.floor(10+this.wave*1.8);this.neb=0;
+    this.waveT=0;this.wavePause=0;this.eSpawned=0;this.waveTarget=Math.floor(10+this.wave*1.8);this.wKills=0;this.wRegr=0;this.wNeed=Math.ceil(this.waveTarget*KILL_FRAC);this.neb=0;   // V100: wNeed = the majority the clear gate demands
     this.fmtSeq=0;this.fmtSet=false;this.fmtY=0;this.fmt=this.assignFormation();   // wave 1 = V; assignFormation advances the rotation so wave 2 ≠ wave 1
-    this.graze=0;this.grazeT=0;this.grazeMax=0;this.nextLife=30000;this.shots=0;this.kills=0;this.startT=performance.now();this._pausedAt=0;
+    this.graze=0;this.grazeT=0;this.grazeMax=0;this.grazeTot=0;this.grazeMile=0;this.nextLife=30000;this.shots=0;this.kills=0;this.startT=performance.now();this._pausedAt=0;
     var _fk={};for(var _fi=1;_fi<=BOSS_PALETTES.length;_fi++)_fk[_fi]=0;this.fleetKills=_fk;   // V37: per-fleet boss kills for this run (the fleet-ladder panel; fleet count follows the config)
     this.boss=null;this._pend=null;this._pendDaily=null;this._committed=false;this._curId=null;this._curDailyId=null;
     this._hs=-1;this._hl=-1;this._hw=-1;this._hb=-1;this._hp=-1;this._hr2=-1;
@@ -697,54 +807,85 @@ var G={
     var difb='';var keys2=['E','N','H'];
     for(var i=0;i<3;i++){difb+='<button class="'+(this.dif===keys2[i]?'on':'off')+'" onclick="G.setDif(\''+keys2[i]+'\')">'+DIFFS[keys2[i]].label+'</button>';}
     var o=document.getElementById('overlay');o.className='show title';
-    o.innerHTML='<h1 class="tg">'+GAME_TITLE+'</h1><h2>◆ RETRO ARCADE SHOOTER ◆</h2>'+
+    if(typeof this._infoTab!=='number')this._infoTab=0;   // V69: the info rail remembers its tab across title renders (default SCORES)
+    if(typeof this._infoOpen!=='boolean')this._infoOpen=false;   // V69 review: the INFO toggle state survives re-renders too
+    o.innerHTML='<div class="t-shell">'+   // V69: the title is now two zones — the menu column up front, a tabbed info rail beside it
+      '<div class="t-main">'+
+      '<h1 class="tg" data-text="'+GAME_TITLE+'">'+GAME_TITLE+'</h1><h2>◆ RETRO ARCADE SHOOTER ◆</h2>'+   // V79: data-text mirrors the title so the ::after shine layer can clip a gradient to the same glyphs
       '<div class="mission">🎯 <b>MISSION:</b> Destroy the drones · take their power · kill the boss</div>'+   // V48: arcade mission copy — short, imperative, no marketing fluff
       '<div class="ps">▶ PRESS START ◀</div>'+
       '<div class="pshint">ENTER to begin · TAP anywhere · ← → to pick a mode</div>'+   // V48: precise hint — you tap the screen, not the title
-      '<div class="btns">'+
-      '<button id="mbtn0" class="bg hero" onclick="G.start()">▶ START GAME</button>'+
-      '<button id="mbtn1" class="dl" onclick="G.startDaily()">DAILY</button>'+
-      '<button id="mbtn2" class="br" onclick="G.startRush()">BOSS RUSH</button>'+
-      '<button id="mbtn3" class="ag" onclick="G.startApex()">APEX GAUNTLET</button>'+
-      '<button id="mbtn4" class="nv" onclick="G.startNova()">NOVA RUSH</button>'+
+      '<div class="btns t-menu">'+   // V69: one vertical mode stack — the arcade 1P/2P/OPTIONS column, each button carrying its one-line description
+      '<div class="mwrap"><button id="mbtn0" class="bg hero" onclick="G.start()">▶ START GAME</button><div class="msub">The full game — all five fleets. Scores count.</div></div>'+
+      '<div class="mwrap"><button id="mbtn1" class="dl" onclick="G.startDaily()">DAILY</button><div class="msub">Today\'s run — the same for every player. Scores count.</div></div>'+
+      '<div class="mwrap"><button id="mbtn2" class="br" onclick="G.startRush()">BOSS RUSH</button><div class="msub">Elite bosses, back to back. Practice — no scores.</div></div>'+
+      '<div class="mwrap"><button id="mbtn3" class="ag" onclick="G.startApex()">APEX GAUNTLET</button><div class="msub">Wave 50, the apex fleet. Practice — no scores.</div></div>'+
+      '<div class="mwrap"><button id="mbtn4" class="nv" onclick="G.startNova()">NOVA RUSH</button><div class="msub">Wave 100, the endgame. Practice — no scores.</div></div>'+
       '</div>'+
       '<div class="dif">'+difb+'</div>'+
       '<div class="setrow">'+
       '<button class="ss" onclick="G.toggleCrt()">CRT: '+(this.crt?'ON':'OFF')+' (C)</button>'+
       '<button class="ss" onclick="G.soundTest()">SOUND TEST</button>'+
+      '<button class="ss" id="infoBtn" onclick="G.toggleInfo()">ℹ INFO</button>'+   // V69: short touch screens hide the rail; this reopens it
       '</div>'+   // V55: the settings row — CRT overlay toggle + a tour of the SFX bank
       '<div class="seed">☀ TODAY\'S RUN '+this.seedDate(this.dailySeed())+' — BOSSES: '+this.dailyOrderNames(this.dailySeed()).join(' → ')+'</div>'+   // V49: players read TODAY'S RUN + a real date, not a SEED code
       this.streakHtml()+   // V55: the daily-streak flame (2+ days running) sits right under the today line
       (this.dailyBoardEmpty()?this.dlyCtaHtml():'')+   // V50: when today's board is empty, nudge a human PLAY TODAY'S RUN — INSERT COIN style
-      '<div class="modes"><div class="mhead">◆ MODES ◆</div>'+
-      '<div class="mrow"><span class="mtag" style="color:#ffcc44">START</span><span class="mdesc">The full game — all five fleets. Scores count.</span></div>'+
-      '<div class="mrow"><span class="mtag" style="color:#ffd75e">DAILY</span><span class="mdesc">Today\'s run — the same for every player. Scores count.</span></div>'+
-      '<div class="mrow"><span class="mtag" style="color:#ff8866">BOSS RUSH</span><span class="mdesc">Elite bosses, back to back. Practice — no scores.</span></div>'+   // V49: practice = no leaderboard entry, said in human words
-      '<div class="mrow"><span class="mtag" style="color:#88e0ff">APEX</span><span class="mdesc">Wave 50, the apex fleet. Practice — no scores.</span></div>'+
-      '<div class="mrow"><span class="mtag" style="color:#ff9ae8">NOVA</span><span class="mdesc">Wave 100, the endgame. Practice — no scores.</span></div>'+
+      '<div class="ver">SKYDRIFT V103.0 • DIFFICULTY: '+DIFFS[this.dif].label+' • SOUND: '+(this.muted?'OFF':'ON')+'</div>'+
       '</div>'+
-      '<div class="panels">'+
-      '<div class="box"><b>⚡ CONTROLS</b><div class="cgrid">'+
-      '<div class="crow"><span class="k">←→↑↓ / WASD</span><span>Move</span></div>'+
+      '<div class="t-rail'+(this._infoOpen?' show':'')+'" id="tRail">'+   // V69: the info rail — tabs keep reference content one tap away instead of a mile of scroll
+      '<button class="rclose" onclick="G.toggleInfo()">✕ CLOSE</button>'+   // V93: at ≤430px the reopened rail is a full-viewport panel covering the menu — its own close button dismisses it (the menu's ℹ INFO is underneath)
+      '<div class="tabs">'+
+      '<button class="tb'+(this._infoTab===0?' on':'')+'" id="tbt0" onclick="G.infoTab(0)">SCORES</button>'+
+      '<button class="tb'+(this._infoTab===1?' on':'')+'" id="tbt1" onclick="G.infoTab(1)">DAILY</button>'+
+      '<button class="tb'+(this._infoTab===2?' on':'')+'" id="tbt2" onclick="G.infoTab(2)">CONTROLS</button>'+
+      '</div>'+
+      '<div class="tpanel'+(this._infoTab===0?' show':'')+'" id="tp0">'+   // the board first — the "chase the score" culture of shmups
+      '<div class="hs"><h3>★ TOP SCORES ★</h3>'+rows+'</div>'+
+      '</div>'+
+      '<div class="tpanel'+(this._infoTab===1?' show':'')+'" id="tp1">'+this.dailyBoardHtml()+'</div>'+   // V46: today's board lives one tab over, not at the bottom of the page
+      '<div class="tpanel'+(this._infoTab===2?' show':'')+'" id="tp2">'+
+      '<div class="box"><b>⚡ CONTROLS</b><div class="ccols">'+
+      '<div class="cgrid"><div class="csec">Keyboard</div>'+
+      '<div class="crow"><span class="k">← → ↑ ↓ / WASD</span><span>Move</span></div>'+
       '<div class="crow"><span class="k">SPACE / Z</span><span>Fire — hold to charge</span></div>'+
       '<div class="crow"><span class="k">X</span><span>Bomb</span></div>'+
-      '<div class="crow"><span class="k">Q / TAB</span><span>Switch weapon</span></div>'+
+      '<div class="crow"><span class="k">Q / TAB · E</span><span>Switch weapon</span></div>'+
       '<div class="crow"><span class="k">P</span><span>Pause</span></div>'+
-      '<div class="crow"><span class="k">M / ESC</span><span>Sound / Menu</span></div>'+
+      '<div class="crow"><span class="k">M</span><span>Sound on / off</span></div>'+
       '<div class="crow"><span class="k">H</span><span>Hitbox toggle</span></div>'+
-      '<div class="crow"><span class="k">C</span><span>CRT on/off</span></div>'+   // V55: the new settings keys join the controls grid
-      '<div class="crow"><span class="k">🎮 STICK / DPAD</span><span>Move</span></div>'+
-      '<div class="crow"><span class="k">🎮 A · B · LB/RB · START</span><span>Fire/Charge · Bomb · Weapon · Pause</span></div>'+
-      '<div class="crow"><span class="k">HOLD → 50–74%</span><span style="color:#7dff9e">FAST BURST</span></div>'+
-      '<div class="crow"><span class="k">HOLD → 75%+</span><span style="color:#7df2ff">OVERDRIVE</span></div>'+
-      '<div class="crow"><span class="k">SPREADER</span><span style="color:#7dff9e">🔗 lock-on fan · overdrive ⚡ CHAIN LIGHTNING</span></div>'+
+      '<div class="crow"><span class="k">C</span><span>CRT on/off</span></div>'+
+      '<div class="crow"><span class="k">ESC</span><span>Back to title</span></div>'+
+      '<div class="crow"><span class="k">R</span><span>Restart (from pause)</span></div>'+
       '</div>'+
-      '<div class="pickleg"><span style="color:#ff8844">●</span> Power &nbsp;<span style="color:#44ff88">●</span> Weapon &nbsp;<span style="color:#55aaff">●</span> Shield &nbsp;<span style="color:#ff5577">●</span> Bomb &nbsp;<span style="color:#ffcc44">●</span> Life &nbsp;·&nbsp; <span style="color:#7CFC00">✧</span> Graze = bonus points</div>'+
+      '<div class="cgrid"><div class="csec">Gamepad</div>'+
+      '<div class="crow"><span class="k">🎮 Stick / D-pad</span><span>Move</span></div>'+
+      '<div class="crow"><span class="k">🎮 A</span><span>Fire — hold to charge</span></div>'+
+      '<div class="crow"><span class="k">🎮 B</span><span>Bomb</span></div>'+
+      '<div class="crow"><span class="k">🎮 LB / RB</span><span>Switch weapon</span></div>'+
+      '<div class="crow"><span class="k">🎮 START</span><span>Pause / confirm</span></div>'+
       '</div>'+
-      '<div class="hs"><h3>★ TOP SCORES ★</h3>'+rows+'</div>'+
-      this.dailyBoardHtml()+
+      '</div>'+   // ccols closes — the charged-shots table below spans full width
+      '<div class="cgrid"><div class="csec">Charged shots</div>'+
+      '<div class="crow"><span class="k">HOLD FIRE → 50–74%</span><span style="color:#7dff9e">FAST BURST — rapid volley</span></div>'+
+      '<div class="crow"><span class="k">HOLD FIRE → 75%+</span><span style="color:#7df2ff">OVERDRIVE — the mega-shot</span></div>'+
+      '<div class="crow"><span class="k">SPREADER 100%</span><span style="color:#7dff9e">⚡ CHAIN LIGHTNING</span></div>'+   // V98: copy trimmed — the desc no longer wraps at ≤400px
       '</div>'+
-      '<div class="ver">SKYDRIFT V68.0 • DIFFICULTY: '+DIFFS[this.dif].label+' • SOUND: '+(this.muted?'OFF':'ON')+'</div>';
+      '<div class="csec">Pickups</div>'+
+      '<div class="pickleg">'+
+      '<span class="pl"><span style="color:#ff8844">■</span>Power</span>'+
+      '<span class="pl"><span style="color:#44ff88">◆</span>Weapon</span>'+
+      '<span class="pl"><span class="tile sh" style="background:#55aaff"></span>Shield</span>'+
+      '<span class="pl"><span style="color:#ff5577">●</span>Bomb</span>'+
+      '<span class="pl"><span style="color:#ffcc44">♥</span>Life</span>'+
+      '<span class="pl"><span style="color:#ffd23f">★</span>Mystery</span>'+
+      '<span class="pl"><span class="tile sp" style="background:#7CFC00"></span>Graze = bonus points</span>'+
+      '</div>'+
+      '<div class="pnote">◆ Weapon — crystal color = weapon (cyan LASER · amber MISSILE · green SPREADER)</div>'+   // V98: copy trimmed (drops "it grants")
+      '</div>'+
+      '</div>'+
+      '</div>'+
+      '</div>';
     this._menuActions=[function(){G.start();},function(){G.startDaily();},function(){G.startRush();},function(){G.startApex();},function(){G.startNova();}];
     this._menuN=this._menuActions.length;this._menuIdx=0;this._menuMoved=false;   // V44: the title menu starts focused on START GAME; arrows move the focus, Enter activates (count derived from the action list so they can't drift)
     this.menuFocus();
@@ -766,6 +907,17 @@ var G={
   menuActivate:function(){   // V44: Enter runs the focused mode (START / DAILY / BOSS RUSH / APEX / NOVA)
     var a=this._menuActions&&this._menuActions[this._menuIdx];
     if(typeof a==='function')a();
+  },
+  infoTab:function(i){   // V69: the title's info-rail tabs — SCORES / DAILY / CONTROLS, one panel at a time (the leaderboard first, the shmup way)
+    this._infoTab=i;
+    for(var k=0;k<3;k++){
+      var b=document.getElementById('tbt'+k);if(b)b.className='tb'+(k===i?' on':'');
+      var p=document.getElementById('tp'+k);if(p)p.className='tpanel'+(k===i?' show':'');
+    }
+  },
+  toggleInfo:function(){   // V69: the short-screen INFO toggle — touch players collapse the rail to keep the menu in the fold; this reopens it
+    this._infoOpen=!this._infoOpen;
+    var r=document.getElementById('tRail');if(r)r.className='t-rail'+(this._infoOpen?' show':'');
   },
 
   showOver:function(){
@@ -796,7 +948,9 @@ var G={
     }
     var o=document.getElementById('overlay');o.className='show over';
     var gmode=this.rush?' — BOSS RUSH':(this.apex?' — APEX GAUNTLET':(this.nova?' — NOVA RUSH':(this.daily?' — DAILY CHALLENGE':'')));   // V54: the pause header names the mode (V52) — the game-over header now matches so every overlay tells you where you are
-    o.innerHTML='<h1 class="tr">GAME OVER'+gmode+'</h1>'+
+    o.innerHTML='<div class="t-shell">'+   // V69: the over screen mirrors the title — actions left, reference content right, so a 720p desktop sees it all without scrolling
+      '<div class="t-main">'+
+      '<h1 class="tr">GAME OVER'+gmode+'</h1>'+
       newhi+
       '<div class="grade" style="color:'+gc+'">RANK '+grade+'</div>'+
       iniUI+
@@ -808,12 +962,18 @@ var G={
       '<div class="st"><div class="sl">Kills</div><div class="sv">'+this.kills+'</div></div>'+
       '<div class="st"><div class="sl">Accuracy</div><div class="sv">'+acc+'%</div></div>'+
       '</div>'+
+      '<div class="btns"><button class="bg" onclick="G.'+(this.daily?'startDaily':(this.rush?'startRush':(this.apex?'startApex':(this.nova?'startNova':'start'))))+'()">PLAY AGAIN (ENTER)</button><button class="bn" onclick="G.toTitle()">MENU (ESC)</button><button class="ss" id="infoBtn" onclick="G.toggleInfo()">ℹ INFO</button></div>'+   // V33/V42/V43: PLAY AGAIN re-enters the practice/daily mode after a run — the loop must not dump you into a normal game · V51: key hints match the pause screen's RESUME (P)/MENU (ESC) pattern · V69 review: the over screen's short-touch rail gets its own INFO reopen
+      '<div class="ver">SURVIVED '+mm+':'+ss+' • '+this.kills+' DRONES DESTROYED</div>'+
+      '</div>'+
+      '<div class="t-rail" id="tRail">'+   // V69: the fleet ladder + both boards live in the right rail — reference content beside the action, not below it
+      '<button class="rclose" onclick="G.toggleInfo()">✕ CLOSE</button>'+   // V93: same full-viewport panel + close affordance as the title rail at ≤430px
       this.fleetLadderHtml()+
+      '<div class="panels">'+   // V69: the two boards sit side by side within the rail on wide screens
       '<div class="hs"><h3>★ TOP SCORES ★</h3>'+rows+'</div>'+
       this.dailyBoardHtml()+
-      '<div class="share"><button class="bs'+(this._shared?' copied':'')+'" onclick="G.shareRun()">'+(this._shared?'✓ COPIED!':'📋 SHARE RUN')+'</button></div>'+   // V55: the share card — one tap copies today's run summary
-      '<div class="btns"><button class="bg" onclick="G.'+(this.daily?'startDaily':(this.rush?'startRush':(this.apex?'startApex':(this.nova?'startNova':'start'))))+'()">PLAY AGAIN (ENTER)</button><button class="bn" onclick="G.toTitle()">MENU (ESC)</button></div>'+   // V33/V42/V43: PLAY AGAIN re-enters the practice/daily mode after a run — the loop must not dump you into a normal game · V51: key hints match the pause screen's RESUME (P)/MENU (ESC) pattern
-      '<div class="ver">SURVIVED '+mm+':'+ss+' • '+this.kills+' DRONES DESTROYED</div>';
+      '</div>'+
+      '</div>'+
+      '</div>';
   },
 
   renderIni:function(){
@@ -892,39 +1052,12 @@ var G={
     if(o.d!==today&&o.d!==this.yesterdayOf(today))return '';
     return '<div class="streak">🔥 '+o.n+'-DAY STREAK — PLAY TODAY TO KEEP IT</div>';
   },
-  shareText:function(){   // V55: the game-over share summary — the daily line names the day + boss order (a human share card)
-    var mode=this.rush?'BOSS RUSH':(this.apex?'APEX GAUNTLET':(this.nova?'NOVA RUSH':(this.daily?'DAILY':'SKYDRIFT')));
-    var head=this.daily?('SKYDRIFT DAILY '+this.seedDate(this._dailySeed||this.dailySeed())):mode;
-    var s='🛸 '+head+' — '+this.score.toLocaleString()+' pts · WAVE '+this.wave+' · RANK '+this.rankGrade();
-    if(this.daily)s+=' — bosses: '+this.dailyOrderNames(this._dailySeed||this.dailySeed()).join(' → ');   // the run's own seed (V46 midnight rule) — not a fresh today seed
-    return s;
-  },
-  shareRun:function(){   // V55: copy the share card — the button flips to COPIED only when the copy actually lands; a blocked clipboard falls back to a select-all textarea (iframes!) and only then gives up
-    var self=this,t;
-    try{t=this.shareText();}catch(e){return;}
-    function mark(){self._shared=true;if(self.state==='OVER')self.showOver();else self.msg('COPIED!','mi');}
-    function fallback(){
-      try{
-        var ta=document.createElement('textarea');ta.value=t;
-        var ok=false;
-        if(document.body&&document.body.appendChild){document.body.appendChild(ta);ta.select();if(document.execCommand)ok=document.execCommand('copy');if(ta.remove)ta.remove();}
-        if(ok)mark();else sfx('dmg');   // no false confirmation — the button stays SHARE RUN
-      }catch(e){sfx('dmg');}
-    }
-    try{
-      if(navigator.clipboard&&navigator.clipboard.writeText){
-        var pr=navigator.clipboard.writeText(t);
-        if(pr&&pr.then)pr.then(mark,fallback);else mark();   // resolve → COPIED; reject → textarea fallback
-      }else fallback();
-    }catch(e){fallback();}
-  },
-
   pause:function(){if(this.state!=='PLAY')return;this.state='PAUSE';this._pausedAt=performance.now();this.showPause();if(MUS.music)MUS.music.gain.value=0;},
   resume:function(){if(this.state!=='PAUSE')return;this.state='PLAY';if(this._pausedAt){this.startT+=performance.now()-this._pausedAt;this._pausedAt=0;}this.hideOverlay();if(MUS.music)MUS.music.gain.value=musicGain();},   // pause time must not count toward the game-over SURVIVED clock
   showPause:function(){
     var o=document.getElementById('overlay');o.className='show pause';
     var pmode=this.rush?' — BOSS RUSH':(this.apex?' — APEX GAUNTLET':(this.nova?' — NOVA RUSH':(this.daily?' — DAILY CHALLENGE':'')));   // V52: the HUD mode tag hides under the overlay — the pause header names the mode so a paused rush/gauntlet/nova/daily reads clearly
-    o.innerHTML='<h1 class="tg" style="font-size:'+(pmode?'min(8vw,44px)':'min(9vw,52px)')+'">PAUSED'+pmode+'</h1>'+   // V52: the mode suffix lengthens the header — cap it a notch so PAUSED — DAILY CHALLENGE fits small landscape phones
+    o.innerHTML='<h1 class="tg" data-text="PAUSED'+pmode+'" style="font-size:'+(pmode?'min(8vw,44px)':'min(9vw,52px)')+'">PAUSED'+pmode+'</h1>'+   // V52: the mode suffix lengthens the header — cap it a notch so PAUSED — DAILY CHALLENGE fits small landscape phones · V79: data-text feeds the ::after shine
       '<div class="stats" style="min-width:280px">'+
       '<div class="st"><div class="sl">Score</div><div class="sv">'+this.score.toLocaleString()+'</div></div>'+
       '<div class="st"><div class="sl">Wave</div><div class="sv sg">'+this.wave+'</div></div>'+
@@ -944,6 +1077,8 @@ var G={
     if(this.score!==this._hs){this._hs=this.score;document.getElementById('sc').textContent=String(this.score).padStart(6,'0');}
     if(this.lives!==this._hl){this._hl=this.lives;var s='';for(var i=0;i<this.lives;i++)s+='♥';document.getElementById('lv').textContent=s||'—';}
     if(this.wave!==this._hw){this._hw=this.wave;document.getElementById('wv').textContent=this.wave;}
+    var wkEl=document.getElementById('wk');   // V100: the majority readout — DESTROY k/n on formation waves, hidden once the boss bar owns the HUD
+    if(wkEl){var wkTxt=(this.boss||this.wave%5===0)?'':'DESTROY '+this.wKills+'/'+this.wNeed;if(wkTxt!==this._hwk){this._hwk=wkTxt;wkEl.textContent=wkTxt;}}
     var tagTxt=this.rush?' RUSH':(this.apex?' APEX':(this.nova?' NOVA':(this.daily?' DAILY':'')));
     if(tagTxt!==this._hr2){this._hr2=tagTxt;var rt=document.getElementById('rushTag');if(rt){rt.textContent=tagTxt;rt.style.color=this.nova?'#ff5ce8':(this.apex?'#88e0ff':(this.daily?'#ffd75e':'#ff8866'));}}
     if(this.bombs!==this._hb){this._hb=this.bombs;var s='';for(var i=0;i<this.bombs;i++)s+='★';document.getElementById('bm').textContent=s||'—';}
@@ -951,7 +1086,7 @@ var G={
     var wpn=document.getElementById('wpn');
     if(wpn){var wl=this.wlbl[this.wtype];if(wpn.textContent!==wl)wpn.textContent=wl;wpn.style.color=this.wcol[this.wtype];}
     var gz=document.getElementById('grz');
-    if(gz){var gv='✧'+this.grazeMax;if(gz.textContent!==gv&&this.grazeMax>0)gz.textContent=gv;gz.className='hv'+(this.grazeMax>0?' on':'');}
+    if(gz){var gv='⚝'+this.grazeMax;if(gz.textContent!==gv&&this.grazeMax>0)gz.textContent=gv;gz.className='hv'+(this.grazeMax>0?' on':'');}   // V88: ⚝ (U+269D) renders in Courier New — ✧ was tofu
     var bb=document.getElementById('bossbar');
     if(bb){
       if(this.boss&&!this.boss.dead){bb.style.display='block';var bbn=document.getElementById('bbn');bbn.textContent=this.boss.name;bbn.style.color=(this.boss.pal&&this.boss.pal.bul)?(Array.isArray(this.boss.pal.bul)?this.boss.pal.bul[0]:this.boss.pal.bul):'#ff88aa';document.getElementById('bbf').style.width=Math.max(0,this.boss.hp/this.boss.mhp*100)+'%';}
@@ -1033,10 +1168,22 @@ var G={
       out+='<div class="flr" style="color:'+col+'"><span class="fln">'+nm+' · '+tier+'</span><span class="flw">'+w+'</span><span class="flk">'+(this.fleetKills[f]||0)+' kills</span><span class="flb">'+(fb[f]&&fb[f][dk]?this.fmtTime(fb[f][dk]):'—')+'</span></div>';
     }
     return '<div class="fleet"><h3>★ FLEET LADDER ★</h3><div class="fld">BEST · '+DIFFS[dk].label+'</div>'+out+'</div>';
+  },  bannerTint:function(fl){return {5:'#ffd9fa',4:'#c46bff',3:'#aae8ff',2:'#ffd75e'}[fl]||'#ffcc44';},   // V34/35/39: wave-ahead banner colors (test seam) — NOVA reads pale-magenta
+  bannerGlow:function(fl){return {5:'#ff5ce8',4:'#a855f7',3:'#33ccff',2:'#ff2244'}[fl]||'#ff8800';},   // V34/35/39: per-fleet glow colors — kept as the harness's test seam (V70 no longer renders a glow, but the V34 checks pin the palette)
+  bannerFire:function(b,st){   // V75: banners fire on the AUDIO CLOCK — while the music scheduler runs, the announcement snaps to the next 16th-note boundary of the beat grid (the V57 stinger grid) and the fanfare's downbeat lands on that same beat; without a live grid (muted / no audio / harness / suspended context) it fires immediately. The wait is stored as b._at in sim-ms, which the V56 accumulator locks to real time (1.0x), so the banner reveals exactly when the scheduled notes sound.
+    var n=(typeof AC!=='undefined'&&AC)?AC.currentTime:0;
+    var at=n;
+    if(MUS.on&&MUS.music&&MUS.timer&&MUS.tempo>0&&n>0){   // snap only while the scheduler is live AND the audio clock is demonstrably advancing — a suspended context (currentTime frozen at 0, autoplay policy) has no grid to hit, so its announcements fire instantly (V75 review)
+      var step=60/MUS.tempo/4,nxt=MUS.nextT||0;   // the scheduler steps sixteenths: 60/tempo/4
+      var gap=((nxt-n)%step+step)%step;
+      if(gap>0.004)at=n+gap;   // don't snap for a sub-4ms sliver
+    }
+    if(st)sfx(st,at);
+    b._at=Math.max(0,(at-n)*1000);   // sim-ms until the downbeat (the update loop counts it down; render holds the banner until it clears)
+    b._atAbs=at;   // V75 review: the absolute audio-clock beat — update promotes on whichever clears first, so a throttled tab (WebAudio keeps playing) still reveals the banner WITH the fanfare instead of trailing it
+    this.banner=b;
+    return b;
   },
-
-  bannerTint:function(fl){return {5:'#ffd9fa',4:'#c46bff',3:'#aae8ff',2:'#ffd75e'}[fl]||'#ffcc44';},   // V34/35/39: wave-ahead banner colors (test seam) — NOVA reads pale-magenta
-  bannerGlow:function(fl){return {5:'#ff5ce8',4:'#a855f7',3:'#33ccff',2:'#ff2244'}[fl]||'#ff8800';},   // V34/35/39: glow color per fleet
 
   bossAt:function(w){var ti=Math.floor(w/5)-1,idx=((ti%3)+3)%3;if(this._bossOrder)idx=this._bossOrder[idx];return BOSS_TYPES[idx];},   // V34/V42: the 5/10/15 rotation, single-sourced — practice modes shuffle it via _bossOrder (campaign keeps the fixed order)
   makeRng:function(seed){   // V43: a mulberry32-style seeded LCG — the shared engine behind the daily seeds (deterministic in tests, and identical for every player on the same day)
@@ -1069,9 +1216,9 @@ var G={
     var fl=this.bossFleet(),F=BOSS_PALETTES[fl-1],pal=F[T.id];
     var hp=Math.floor((105+this.wave*32+this.wave*this.wave*.25)*this.difx.hp*T.hp*F.hp);   // 271@w5 / 641@w15 on NORMAL, x1.4 for the elite fleet (F.hp)
     this.boss={x:W+120,y:H*.5,vx:-1.4,hp:hp,mhp:hp,type:T.id,fleet:fl,pal:pal,rot:0,sp:0,at:0,t:0,tp:0,pat:0,in:true,flash:0,dead:false,deadt:0,downPlayed:false,name:T.name+F.suf+' MK'+(Math.floor(this.wave/5)),stT:performance.now()};   // V35: name suffix comes from the palette row (F.suf); V37: stT = boss-spawn clock for the ladder's best-clear time
-    this.banner={text:F.tag?('⚠ '+F.tag+' ⚠'):'⚠ WARNING ⚠',t:1600,sub:F.tier?(F.tier+' '+T.name+' APPROACHING'):'BOSS APPROACHING',fl:fl};   // V34/35: banner text/tier come from the palette row; tints to its fleet too
+    this.bannerFire({text:F.tag?('⚠ '+F.tag+' ⚠'):'⚠ WARNING ⚠',t:1600,sub:F.tier?(F.tier+' '+T.name+' APPROACHING'):'BOSS APPROACHING',fl:fl},'warn');   // V34/35: banner text/tier come from the palette row; tints to its fleet too · V75: fired on the audio clock so the warn stinger's downbeat and the banner land on the same beat
     this.msg(F.tag?F.tag+'!':'BOSS!','mw');
-    sfx('warn');this.shake=8;musicWant('boss');
+    this.shake=8;musicWant('boss');
     musicTier(0);if(MUS.music){MUS.music.gain.value=.08;setTimeout(function(){if(!MUS.music)return;if(G&&G.state!=='PAUSE')MUS.music.gain.value=musicGain();},1500);}   // duck under the stinger, then full boss theme
   },
 
@@ -1165,12 +1312,12 @@ var G={
       var ts=['power','shield','bomb','life','power'];
       this.powerups.push({x:W*.72,y:H*.5+(i-2)*40,vx:-.5,vy:0,type:ts[i],ph:0});
     }
-    this.wave+=(this.rush||this.apex||this.nova?5:1);this.waveT=0;this.wavePause=1300;this.eSpawned=0;   // rush/apex/nova: +5 so 25→30→35… (50→55→60…, 100→105→110…) stays on boss waves (formation waves never run)
-    this.waveTarget=Math.floor(10+this.wave*1.8);
+    this.wave+=(this.rush||this.apex||this.nova?5:1);this.waveT=0;this.wavePause=1300;this.eSpawned=0;this.wKills=0;this.wRegr=0;   // rush/apex/nova: +5 so 25→30→35… (50→55→60…, 100→105→110…) stays on boss waves (formation waves never run)
+    this.waveTarget=Math.floor(10+this.wave*1.8);this.wNeed=Math.ceil(this.waveTarget*KILL_FRAC);
     this.fmtSet=false;   // next wave picks up the rotation fresh — assign now so the banner can announce it
     if(this.wave%5!==0)this.fmt=this.assignFormation();
-    this.banner={text:'BOSS DESTROYED!',t:1400,sub:this.wave%5!==0?'FORMATION: '+this.fmt.name:''};   // same announcement shape as waveClear
-    sfx('clear');musicWant('play');this.hud();musicPlayTier(playIntensity());
+    this.bannerFire({text:'BOSS DESTROYED!',t:1400,sub:this.wave%5!==0?'FORMATION: '+this.fmt.name:''},'clear');   // same announcement shape as waveClear · V75: the clear fanfare and the banner share the beat
+    musicWant('play');this.hud();musicPlayTier(playIntensity());
   },
 
   shoot:function(){
@@ -1252,7 +1399,8 @@ var G={
     sfx(fast?'fast':'charge');   // V59: the beam visuals + stinger carry the mode — no text
     var sx=Math.min(this.px,W-80),sp=fast?1.32:1;   // clamp spawn x (right-edge charges aren't wasted); fast-tier bolts fly 32% quicker
     if(this.wtype==='vul'){            // TIGHT fan: a center cannon (the whole identity — boss-killer) + four small finisher wings
-      var cd=Math.round(base*fill),wd=Math.max(3,Math.round(cd*.07));
+      var dreadBoss=this.boss&&!this.boss.dead&&this.boss.type==='dread';   // V99: the cannon over-penetrates DREADNOUGHT armor — only the OVERDRIVE tier, only while a dread-type boss is up
+      var cd=Math.round(base*fill*(!fast&&dreadBoss?OD_DREAD:1)),wd=Math.max(3,Math.round(cd*.07));
       for(var k=-2;k<=2;k++)this.bullets.push({x:sx+30,y:this.py,vx:27*sp,vy:k*2.2,d:k===0?cd:wd,c:k===0?'#fff2b0':'#ffcc44',big:true});
     }else if(this.wtype==='laser'){    // one colossal piercing beam — damage per frame it overlaps a target
       this.beams.push({x:sx+30,y:this.py,vx:34*sp,len:300+pw*50,hw:10+pw*2,dmg:base*fill,t:320});
@@ -1314,7 +1462,7 @@ var G={
 
   killEnemy:function(e,i){
     var pts=e.sc*this.combo;
-    this.score+=pts;this.kills++;
+    this.score+=pts;this.kills++;this.wKills++;   // V100: the wave's majority counter — only DESTROYED enemies count (passers never do)
     this.combo=Math.min(this.combo+1,10);this.comboT=3000;
     if(this.combo===5||this.combo===10)sfx('combo');   // V59: the combo meter + kill flash carry it — no words
     this.boom(e.x,e.y,e.c,26,5);this.boom(e.x,e.y,'#ffcc44',10,3);   // V59: the double-burst + shake + flash replace the +pts float
@@ -1409,7 +1557,13 @@ var G={
     if(this.grazeT>0){this.grazeT-=dt;if(this.grazeT<=0)this.graze=0;}
     if(this.shake>0)this.shake=Math.max(0,this.shake-dt*.06);if(this.flash>0)this.flash=Math.max(0,this.flash-dt*.004);
     if(this.inv>0&&!this.pDead)this.pVis=Math.floor(this.inv/80)%2===0;else if(!this.pDead)this.pVis=true;
-    if(this.banner){this.banner.t-=dt;if(this.banner.t<=0)this.banner=null;}
+    if(this.banner){   // V75: the banner's beat-wait (_at) counts down first — the display clock (t) only starts once the announcement lands on the grid
+      if(this.banner._at>0){
+        if(AC&&AC.currentTime>=this.banner._atAbs)this.banner._at=0;   // V75 review: the audio clock already reached the beat (throttled tab) — promote now so the reveal rides the fanfare, not the lagging sim
+        else{this.banner._at-=dt;if(this.banner._at<=0)this.banner._at=0;}
+      }
+      else{this.banner.t-=dt;if(this.banner.t<=0)this.banner=null;}
+    }
     this.neb+=dt*.0002;
     for(var i=0;i<this.stars.length;i++){var s=this.stars[i];s.x-=s.sp*dn;s.ph+=dt*.002;if(s.x<-5)s.x=W+5;}
     for(var i=0;i<this.asteroids.length;i++){var s=this.asteroids[i];s.x-=s.sp*dn*Math.min(2.5,1+this.wave*.05);s.rot+=s.vr*dn;if(s.x<-60)s.x=W+60;}
@@ -1424,7 +1578,10 @@ var G={
         var si=Math.max(360,(1350-this.wave*38)*this.difx.density);
         var me=Math.min(7+this.wave*2,28);
         if(this.waveT>=si&&this.eSpawned<this.waveTarget&&this.enemies.length<me){this.waveT=0;this.spawnBurst();}
-        if(this.eSpawned>=this.waveTarget&&this.enemies.length===0){this.waveClear();}
+        if(this.eSpawned>=this.waveTarget&&this.enemies.length===0){   // V100: the kill-gated clear — see KILL_FRAC. Passing enemies escape (they never count toward the majority), so a 100% gate could soft-lock once one got away; the majority + regroup keeps the requirement real AND unfixable-proof.
+          if(this.wKills>=this.wNeed){this.waveClear();}
+          else{var _deficit=this.wNeed-this.wKills;this.eSpawned=this.wKills;this.wRegr++;this.bannerFire({text:'THE FLEET REGROUPS',t:1400,sub:'DESTROY '+_deficit+' MORE TO ADVANCE'},'warn');}   // the deficit re-spawns (eSpawned=wKills makes the spawner resume) — the wave can't end until the majority is destroyed, but it can never hang
+        }
       }
     }
 
@@ -1543,8 +1700,11 @@ var G={
           b.g=1;this.graze++;this.grazeT=1500;
           if(this.graze>this.grazeMax)this.grazeMax=this.graze;
           this.comboT=Math.max(this.comboT,1500);   // grazing keeps your combo chain alive
-          var gp=15*(1+Math.floor(this.graze/10));
-          this.score+=gp;
+          // V103: the graze MILESTONE — every 50 grazes in the run grants a shield (8000ms, the pickup's value). This is the near-miss mastery reward that replaces the V101-removed score award: never score, never an extra life (that would inflate the run), and it can't be spammed — 50 grazes is genuinely earned. The double ring + cyan flash + pow chime + the shield bubble carry it (V59: no words).
+          this.grazeTot++;
+          var gm=Math.floor(this.grazeTot/50);
+          if(gm>this.grazeMile){this.grazeMile=gm;this.shield=8000;this.boom(this.px,this.py,'#55aaff',18,4);this.ring(this.px,this.py,'#55aaff');this.ring(this.px,this.py,'#7df2ff');this.flash=Math.max(this.flash,.12);this.fc='#7df2ff';sfx('pow');}
+          // V101: a graze awards NO score — score comes only from kills (no enemies shot, no points). Grazing still keeps the combo alive, the ⚝ counter, and the sparkles; the old +15×(1+floor(graze/10)) award is gone.
           // V59: graze sparkles + the HUD counter carry it — no text
           if(this.graze%5===0)sfx('graze');
           this.particles.push({x:(this.px+b.x)/2,y:(this.py+b.y)/2,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2,life:.5,decay:.03,size:2,color:'#7CFC00'});
@@ -1627,9 +1787,9 @@ var G={
     var bonus=400*this.wave;
     this.score+=bonus;
     this.pop(W*.5,H*.4,'WAVE CLEAR +'+bonus,'#44ff88',true);
-    sfx('clear');this.shake=4;
-    this.wave++;this.waveT=0;this.wavePause=900;this.eSpawned=0;
-    this.waveTarget=Math.floor(10+this.wave*1.8);
+    this.shake=4;   // V75: the clear fanfare now fires inside bannerFire, scheduled on the same beat the WAVE banner lands
+    this.wave++;this.waveT=0;this.wavePause=900;this.eSpawned=0;this.wKills=0;this.wRegr=0;
+    this.waveTarget=Math.floor(10+this.wave*1.8);this.wNeed=Math.ceil(this.waveTarget*KILL_FRAC);
     this.fmtSet=false;
     var bfl=this.wave%5===0?this.bossFleet():0;   // V34/35: the warning carries its fleet for the banner tint (V42: config-driven via bossFleet)
     var bF=bfl?BOSS_PALETTES[bfl-1]:null;   // V35: fleet presentation (tag/suf) comes from the palette row
@@ -1638,7 +1798,7 @@ var G={
     if(bfl){var T=this.bossAt(this.wave);bName=T.name+(bF?bF.suf:'');}   // V34: reveal which boss is coming next
     // V34: the reveal is deliberately brief — the boss spawns ~900ms later (wavePause) and its own
     // banner (with the 'APPROACHING' sub) takes over, so the warning names the boss, then the spawn confirms it
-    this.banner={text:'WAVE '+this.wave,t:bfl?1600:1300,sub:sub,fl:bfl,name:bName};
+    this.bannerFire({text:'WAVE '+this.wave,t:bfl?1600:1300,sub:sub,fl:bfl,name:bName},'clear');   // V75: beat-synced with the clear fanfare (the WAVE toast below is deliberately instant — a ≤106ms flash before the reveal, cosmetic)
     this.msg('WAVE '+this.wave,'mi');
     musicWant('play');this.hud();musicPlayTier(playIntensity());
   },
@@ -1721,15 +1881,17 @@ var G={
       X.fillStyle='rgba(255,255,255,.5)';X.fillRect(this.px-1,this.py-1,2,2);
     }
 
-    // banner
-    if(this.banner){
+    // banner (V75: held off-screen until its beat-wait clears — the announcement and the stinger downbeat land together)
+    if(this.banner&&!this.banner._at){
       var ba=this.banner.t>200?1:this.banner.t/200;
       X.globalAlpha=Math.max(0,ba);X.textAlign='center';X.textBaseline='middle';
       var bc=this.bannerTint(this.banner.fl||0);   // V34: FLEET 3 warnings glow ice-blue, FLEET 2 gold, everything else stock gold
-      X.fillStyle=bc;X.font='bold '+Math.floor(Math.min(9,H*.09))+'px Courier New';X.shadowColor=this.bannerGlow(this.banner.fl||0);X.shadowBlur=20;
-      X.fillText(this.banner.text,W/2,H*.3);X.shadowBlur=0;
-      if(this.banner.sub){X.fillStyle=this.banner.fl?bc:(this.banner.sub.indexOf('BOSS')>=0?'#ff5577':'#55aaff');X.font='bold 16px Courier New';X.fillText(this.banner.sub,W/2,H*.3+Math.min(34,H*.06));}
-      if(this.banner.name){X.fillStyle=bc;X.font='bold '+Math.floor(Math.min(22,H*.05))+'px Courier New';X.fillText('» '+this.banner.name+' «',W/2,H*.3+Math.min(66,H*.11));}   // V34: the boss-name reveal under the warning (ASCII-safe decorators)
+      var bf=Math.floor(Math.min(90,H*.09,W*.06)),sff=Math.floor(Math.min(30,H*.045,W*.04)),nff=Math.floor(Math.min(34,H*.055,W*.055));   // V73: the old min(9,H*.09) cap was a typo that locked banners at 9px — they now scale up to 90px so WAVE/FLEET announcements loom; the W guards only bite in narrow-tall windows (main ≈ 20 glyphs at .6em, the longest sub TODAY'S RUN … ~42 glyphs, boss names ≈ 15) so nothing clips and the sub can never render wider than the main; sub/name fonts and their stacking offsets scale with bf so the stack stays proportional and clear
+      X.fillStyle=bc;X.font='bold '+bf+'px Anton,Impact,sans-serif';
+      X.strokeStyle='rgba(2,2,12,.92)';X.lineWidth=Math.max(2,Math.floor(bf*.1));X.strokeText(this.banner.text,W/2,H*.3);   // V70: crisp outlined banner — the 20px glow wash is gone, a thin dark outline (scaled to the font, V70 review, rebalanced for the larger glyphs in V73) keeps it readable over any sky
+      X.fillText(this.banner.text,W/2,H*.3);
+      if(this.banner.sub){X.fillStyle=this.banner.fl?bc:(this.banner.sub.indexOf('BOSS')>=0?'#ff5577':'#55aaff');X.font='bold '+sff+'px Anton,Impact,sans-serif';X.strokeStyle='rgba(2,2,12,.9)';X.lineWidth=Math.max(1.5,Math.floor(sff*.15));X.strokeText(this.banner.sub,W/2,H*.3+Math.floor(bf*.9));X.fillText(this.banner.sub,W/2,H*.3+Math.floor(bf*.9));}
+      if(this.banner.name){X.fillStyle=bc;X.font='bold '+nff+'px Anton,Impact,sans-serif';X.strokeStyle='rgba(2,2,12,.9)';X.lineWidth=Math.max(1.5,Math.floor(nff*.15));X.strokeText('» '+this.banner.name+' «',W/2,H*.3+Math.floor(bf*.9)+Math.floor(sff*1.2)+Math.floor(nff*.55));X.fillText('» '+this.banner.name+' «',W/2,H*.3+Math.floor(bf*.9)+Math.floor(sff*1.2)+Math.floor(nff*.55));}   // V34: the boss-name reveal under the warning (ASCII-safe decorators), V73: scales with the banner, stacks below the sub, and carries its own outline state (review: never borrow the sub block's strokeStyle/lineWidth)
       X.globalAlpha=1;X.textBaseline='alphabetic';
     }
 
@@ -1740,14 +1902,14 @@ var G={
       X.fillStyle='rgba(255,204,68,.25)';X.fillRect(cx,cy,cw*f,ch);
       X.fillStyle=this.combo>=10?'#ffcc44':'#ff8844';X.fillRect(cx,cy,cw*f,ch*0.55);
       X.textAlign='left';X.font='bold 13px Courier New';X.fillStyle=this.combo>=10?'#ffcc44':'#ffaa44';
-      X.shadowColor='#ff8800';X.shadowBlur=8;X.fillText('COMBO x'+this.combo,cx,cy-8);X.shadowBlur=0;X.globalAlpha=1;
+      X.strokeStyle='rgba(0,0,0,.75)';X.lineWidth=3;X.strokeText('COMBO x'+this.combo,cx,cy-8);X.fillText('COMBO x'+this.combo,cx,cy-8);X.globalAlpha=1;   // V70: sharp — no 8px glow, a thin dark outline instead
     }
 
     // score popups
     for(var i=0;i<this.popups.length;i++){
       var p=this.popups[i];X.globalAlpha=Math.max(0,p.t);X.textAlign='center';X.textBaseline='middle';
       X.font='bold '+(12*p.big)+'px Courier New';
-      X.shadowColor=p.c;X.shadowBlur=10;X.fillStyle=p.c;X.fillText(p.txt,p.x,p.y);X.shadowBlur=0;
+      X.fillStyle=p.c;X.strokeStyle='rgba(2,2,12,.85)';X.lineWidth=3;X.strokeText(p.txt,p.x,p.y);X.fillText(p.txt,p.x,p.y);   // V70: crisp popups — the 10px glow is gone, a thin outline keeps them readable
     }
     X.globalAlpha=1;X.textBaseline='alphabetic';
     X.restore();
@@ -2657,14 +2819,14 @@ window.__GB={
   toggleCrt:function(){G.toggleCrt();},
   get crt(){return G.crt;},
   soundTest:function(){G.soundTest();},
-  shareRun:function(){G.shareRun();},
-  shareText:function(){return G.shareText();},
   touchStreak:function(d){return G.touchStreak(d);},
   loadStreak:function(){return G.loadStreak();},
   get streak(){return G.loadStreak();},
   todayStr:function(){return G.todayStr();},
   streakHtml:function(){return G.streakHtml();},
   get graze(){return G.graze;},
+  get grazeTot(){return G.grazeTot;},
+  get grazeMile(){return G.grazeMile;},
   get boss(){return G.boss;},
   get dif(){return G.dif;},
   get MUS(){return MUS;},
