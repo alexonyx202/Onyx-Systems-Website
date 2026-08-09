@@ -76,7 +76,41 @@ KNOWN_PRODUCTS = [
     "microsoft edge", "edge://settings/help", "privacy badger", "privacybadger.org", "everything", "voidtools.com", "apc", "surgearrest", "rufus", "rufus.ie",
     # Extended 2026-07-31: Today's Onyx Tech Notes real products (named + obtain method stated).
     "visipics",
+    # Extended 2026-08-08: Today's Onyx Tech Notes real products
+    "crystaldiskinfo", "crystalmark.info",
 ]
+
+# Jargon / Grandma Test signals — forbidden in customer-facing text
+# Using word boundaries to avoid false positives like "arch" in "search" or "sev" in "server"
+import re
+JARGON_PATTERNS = [
+    r"\bcve\b", r"\bcve-\b",
+    r"\bv\d+\.\b",
+    r"\bregistry\b", r"\bregedit\b", r"\bhkey_\b", r"\bhklm\b", r"\bhkcu\b",
+    r"\bpowershell\b", r"\bbash\b", r"\bcmd\.exe\b", r"\bcommand prompt\b", r"\bterminal\b", r"\bshell\b",
+    r"\bsysctl\b", r"\bkernel\b", r"\bdistro\b", r"\bubuntu\b", r"\bdebian\b", r"\barch\b", r"\bfedora\b", r"\bnixos\b",
+    r"\bdocker\b", r"\bcontainer\b", r"\bkubernetes\b", r"\bpodman\b",
+    r"\btls\b", r"\bssl\b", r"\bsmb\b", r"\bnfs\b", r"\bgpo\b", r"\bad fs\b", r"\badfs\b", r"\bamsi\b", r"\besu\b", r"\bpreempt_rt\b",
+    r"\bopenssl\b", r"\bpgp\b", r"\bgpg\b", r"\bsignature\b",
+    r"\bmake\b", r"\bnproc\b", r"\bolddefconfig\b", r"\bmodule_install\b",
+    r"\bcompile\b", r"\bcompiler\b", r"\bgcc\b", r"\bclang\b", r"\brustc\b",
+    r"\bbenchmark\b", r"\bscore\b", r"\bfps\b", r"\btflops\b",
+    r"\bnvme\b", r"\bram\b", r"\bddr[345]\b", r"\bgpu\b", r"\bcpu\b",
+    r"\bsharepoint\b", r"\bexchange\b", r"\bwsus\b", r"\bhyper-v\b", r"\bkvm\b", r"\bhyperv\b",
+    r"\bmiprs\b", r"\bksmbd\b", r"\bnfs\b", r"\bacl\b", r"\bsev\b",
+    r"\bvirtio\b", r"\bnested virtualization\b", r"\bpage overflow\b", r"\bbounds check\b",
+    r"\bheap read\b", r"\bstate race\b", r"\bmips\b",
+]
+
+def has_jargon(text):
+    """Check if text contains forbidden jargon (case-insensitive, word boundaries)."""
+    if not text:
+        return False, None
+    low = text.lower()
+    for pattern in JARGON_PATTERNS:
+        if re.search(pattern, low):
+            return True, pattern
+    return False, None
 
 # Obtain-method signals (lowercased scan of the body). URLs + verbs + app/command names.
 OBTAIN = [
@@ -134,6 +168,14 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         has_method = any(k in b for k in OBTAIN)
         if not has_method:
             fails.append(f"[{fname} {eid}] NO obtain method in body for: \"{hl}\"")
+    # Rule 4: Grandma Test — no jargon in customer-facing fields (headline, tip/summary)
+    # Only check for product/tool posts (not SKIP entries)
+    has_j, pattern = has_jargon(hl)
+    if has_j:
+        fails.append(f"[{fname} {eid}] JARGON in headline (fails Grandma Test): \"{hl}\" — found '{pattern}'")
+    has_j, pattern = has_jargon(b)
+    if has_j:
+        fails.append(f"[{fname} {eid}] JARGON in body (fails Grandma Test): '{pattern}'")
     return fails
 
 def scan_file(path, arrays=("posts", "news")):
