@@ -1,6 +1,40 @@
 {
-  "updated": "2026-08-08",
+  "updated": "2026-08-09",
   "items": [
+    {
+      "id": "n-2026-08-09",
+      "type": "newsletter",
+      "date": "2026-08-09",
+      "title": "Fake Virus Popups Still the #1 Scam I See",
+      "tag": "Daily Brief",
+      "summary": "title: \"Fake Virus Popups Still the #1 Scam I See\"",
+      "comic": "Newsletter - 2026-08-09-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-09-news1",
+      "type": "tech-note",
+      "date": "2026-08-09",
+      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation — get it in Settings > Windows Update",
+      "tag": "Tech Note",
+      "summary": "The August Windows 11 update adds an AI Components page where Copilot+ PC owners can uninstall the Image Generation model to reclaim storage. It also adds Voice Isolation to Voice Access for better background noise filtering, and extends Windows Hello security to USB fingerprint readers. Get it at Settings > Windows Update > Check for updates.",
+      "cta": {
+        "label": "Check for Updates",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "t-2026-08-09-tip1",
+      "type": "tech-note",
+      "date": "2026-08-09",
+      "title": "Your router's default admin password is public — change it in your router's settings",
+      "tag": "Tech Tip",
+      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page — look for Administration or Security settings. Eero and Google Nest use your account password instead.",
+      "cta": {
+        "label": "Router Settings",
+        "href": "https://router.network"
+      }
+    },
     {
       "id": "n-2026-08-08",
       "type": "newsletter",
@@ -101,40 +135,6 @@
       "tag": "Daily Brief",
       "summary": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
       "comic": "Newsletter - 2026-07-31-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-07-31-1",
-      "type": "tech-note",
-      "date": "2026-07-31",
-      "title": "Chrome 127 adds real-time anti-tracking and site-level ad controls — free update",
-      "tag": "Tech Note",
-      "summary": "Google Chrome 127 introduced three privacy features: real-time anti-tracking that blocks third-party cookies and tracking pixels before they load, site-level ad controls for per-site ad personalization settings, and on-device data processing that keeps sensitive information on your computer instead of Google's servers. Update free at chrome://settings/help or download at google.com/chrome.",
-      "cta": {
-        "label": "Call us",
-        "href": "tel:+138****7772"
-      }
-    },
-    {
-      "id": "t-2026-07-31-2",
-      "type": "tech-note",
-      "date": "2026-07-31",
-      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis — Free at sourceforge.net/projects/visipics",
-      "tag": "Tech Tip",
-      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis — not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
-      "cta": {
-        "label": "Call us",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "n-2026-07-30",
-      "type": "newsletter",
-      "date": "2026-07-30",
-      "title": "FBI Warns: Scammers Impersonating IC3 to Re-Victimize You",
-      "tag": "Daily Brief",
-      "summary": "title: \"FBI Warns: Scammers Impersonating IC3 to Re-Victimize You\"",
-      "comic": "Newsletter - 2026-07-30-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     }
   ]

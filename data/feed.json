@@ -7,9 +7,9 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-08-08",
+    "last_updated": "2026-08-09",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,12 +100,30 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-09-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-09",
+      "title": "Chrome patches 41 security holes including 6 critical \u2014 update in Chrome settings",
+      "tag": "Daily Brief",
+      "excerpt": "Chrome's latest update closes 41 security flaws with 6 rated critical. Most are use-after-free bugs attackers can exploit to run code on your machine. Update now in Chrome's settings (click the three-dot menu \u2192 Help \u2192 About Chrome) or wait for auto-update.",
+      "image": "assets/img/news/2026-08-09-composite.jpg",
+      "comic": "assets/img/news/2026-08-09-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ChromeUpdate",
+        "#Security"
+      ]
+    },
+    {
       "id": "onyx-2026-08-08-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-08",
-      "title": "Chrome 151 patches 41 security holes — update now at chrome://settings/help",
+      "title": "Chrome 151 patches 41 security holes \u2014 update now at chrome://settings/help",
       "tag": "Daily Brief",
-      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings → About Chrome. The browser will check, download, and ask you to relaunch.",
+      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings \u2192 About Chrome. The browser will check, download, and ask you to relaunch.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -118,9 +136,9 @@
       "id": "onyx-2026-08-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-04",
-      "title": "ClickFix \"Verify You're Human\" Scam Tricks You Into Running Malware Commands — Close the Tab Immediately",
+      "title": "ClickFix \"Verify You're Human\" Scam Tricks You Into Running Malware Commands \u2014 Close the Tab Immediately",
       "tag": "Daily Brief",
-      "excerpt": "A fake \"Verify you're human\" CAPTCHA pops up and tells you to press Win+R, then Ctrl+V, then Enter. This is ClickFix malware — the command pastes a hidden malicious script into Windows Run dialog that...",
+      "excerpt": "A fake \"Verify you're human\" CAPTCHA pops up and tells you to press Win+R, then Ctrl+V, then Enter. This is ClickFix malware \u2014 the command pastes a hidden malicious script into Windows Run dialog that...",
       "image": "assets/img/news/2026-08-04-composite.jpg",
       "comic": "assets/img/news/2026-08-04-comic-square.jpg",
       "read_more": "#contact",
@@ -156,7 +174,7 @@
       "date": "2026-07-31",
       "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
       "tag": "Daily Brief",
-      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
+      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement \u2014 July 20, 2026*",
       "image": "assets/img/news/2026-07-31-composite.jpg",
       "comic": "assets/img/news/2026-07-31-comic-square.jpg",
       "read_more": "#contact",
@@ -174,7 +192,7 @@
       "date": "2026-07-30",
       "title": "Daily Brief 2026-07-30: FBI IC3 Impersonation Scam Alert + HaveIBeenPwned Breach Check",
       "tag": "Daily Brief",
-      "excerpt": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov — type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
+      "excerpt": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov \u2014 type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -186,13 +204,45 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-08-09-post-2",
+      "type": "news",
+      "date": "2026-08-09",
+      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation \u2014 get it in Settings > Windows Update",
+      "tag": "Tech Note",
+      "summary": "The August Windows 11 update adds an AI Components page where Copilot+ PC owners can uninstall the Image Generation model to reclaim storage. It also adds Voice Isolation to Voice Access for better background noise filtering, and extends Windows Hello security to USB fingerprint readers. Get it at Settings > Windows Update > Check for updates.",
+      "truth": "Microsoft has been stuffing AI features into Windows whether you want them or not. This update is the first time they've given you a real off switch for one of them. Most people don't realize: those on-device AI models aren't free \u2014 they eat gigabytes of storage and sit in memory even when you're not using them. If you bought a Copilot+ PC and never generate AI images, that space has been wasted for months. Now you can get it back.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#WindowsUpdate",
+        "#AIPrivacy"
+      ]
+    },
+    {
+      "id": "onyx-2026-08-09-post-3",
+      "type": "tip",
+      "date": "2026-08-09",
+      "title": "Your router's default admin password is public \u2014 change it in your router's settings",
+      "tag": "Tech Tip",
+      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page \u2014 look for Administration or Security settings. Eero and Google Nest use your account password instead.",
+      "truth": "This is the single most important router security step, and almost nobody does it. I've seen home networks where the admin password was still \"admin\" or \"password\" years after install. Automated scanners hit home routers constantly looking for default logins. Changing the admin password blocks nearly all of them. It takes under five minutes and costs nothing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#RouterSecurity",
+        "#HomeNetwork"
+      ]
+    },
+    {
       "id": "onyx-2026-08-08-news-11",
       "type": "news",
       "date": "2026-08-08",
-      "title": "CISA warns: Three vulnerabilities actively exploited right now — patch your software",
+      "title": "CISA warns: Three vulnerabilities actively exploited right now \u2014 patch your software",
       "tag": "Tech Note",
       "summary": "CISA added three actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog: CVE-2026-9198 (IBM Langflow code injection), CVE-2026-18556 (N-able N-central authentication bypass), and CVE-2026-34486 (Apache Tomcat missing encryption). Update today if you use these products. Check vendor advisories at ibm.com, n-able.com, and tomcat.apache.org.",
-      "truth": "Most people don't realize that the software running their business — remote monitoring tools, web servers, automation platforms — can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
+      "truth": "Most people don't realize that the software running their business \u2014 remote monitoring tools, web servers, automation platforms \u2014 can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -205,10 +255,10 @@
       "id": "onyx-2026-08-04-news-1",
       "type": "news",
       "date": "2026-08-04",
-      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator — Arrives August 11",
+      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator \u2014 Arrives August 11",
       "tag": "Tech Note",
       "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
-      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful — I've had customers buy external readers that didn't work with Windows Hello before.",
+      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful \u2014 I've had customers buy external readers that didn't work with Windows Hello before.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -221,7 +271,7 @@
       "id": "onyx-2026-08-02-news-1",
       "type": "news",
       "date": "2026-08-02",
-      "title": "Google Chrome patches actively exploited zero-day — update now",
+      "title": "Google Chrome patches actively exploited zero-day \u2014 update now",
       "tag": "Tech Note",
       "summary": "Google released an emergency Chrome update fixing a high-severity flaw that hackers are already using. Update Chrome now via Settings > About Chrome. Restart the browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux).",
       "truth": "Google released an emergency Chrome update February 13, 2026 fixing a high-severity use-after-free vulnerability in the CSS component. Researcher Shaheen Fazim reported the flaw February 11. The vulnerability allows arbitrary code execution within the browser sandbox via malicious websites. No sandbox escape has been confirmed. This is the first actively exploited Chrome zero-day of 2026. Microsoft Edge and other Chromium-based browsers will receive downstream patches.",
@@ -237,10 +287,10 @@
       "id": "onyx-2026-07-31-news-1",
       "type": "news",
       "date": "2026-07-31",
-      "title": "Chrome 127 adds real-time anti-tracking and site-level ad controls — free update",
+      "title": "Chrome 127 adds real-time anti-tracking and site-level ad controls \u2014 free update",
       "tag": "Tech Note",
       "summary": "Google Chrome 127 introduced three privacy features: real-time anti-tracking that blocks third-party cookies and tracking pixels before they load, site-level ad controls for per-site ad personalization settings, and on-device data processing that keeps sensitive information on your computer instead of Google's servers. Update free at chrome://settings/help or download at google.com/chrome.",
-      "truth": "Most people don't realize Chrome has been sending a surprising amount of browsing data to Google by default — every site visited, every click, every scroll. The new version changes that equation. Real-time anti-tracking means the tracker script never even loads. Site-level ad controls let you tell Amazon \"no personalized ads\" while keeping them on a news site you want to support. On-device processing means when Chrome analyzes a page for phishing or malware, the analysis happens on your laptop, not in the cloud. It's the biggest privacy shift Chrome has made since Incognito mode. And it's free — you just have to update.",
+      "truth": "Most people don't realize Chrome has been sending a surprising amount of browsing data to Google by default \u2014 every site visited, every click, every scroll. The new version changes that equation. Real-time anti-tracking means the tracker script never even loads. Site-level ad controls let you tell Amazon \"no personalized ads\" while keeping them on a news site you want to support. On-device processing means when Chrome analyzes a page for phishing or malware, the analysis happens on your laptop, not in the cloud. It's the biggest privacy shift Chrome has made since Incognito mode. And it's free \u2014 you just have to update.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -253,10 +303,10 @@
       "id": "onyx-2026-07-30-news-8",
       "type": "news",
       "date": "2026-07-30",
-      "title": "Find any file instantly — Everything Search indexes your whole drive in seconds",
+      "title": "Find any file instantly \u2014 Everything Search indexes your whole drive in seconds",
       "tag": "Tech Note",
       "summary": "Everything by voidtools is a tiny free program that indexes every filename on your Windows drive in about one second and shows results as you type. Download the installer at voidtools.com (choose 64-bit for modern PCs).",
-      "truth": "Windows Search is slow because it reads file contents, not just names. Everything only reads the file table — it's the difference between reading every book in the library versus just checking the card catalog. Customers tell me \"I can never find my stuff\" and five minutes later they're typing \"tax 2024\" and seeing the PDF instantly.",
+      "truth": "Windows Search is slow because it reads file contents, not just names. Everything only reads the file table \u2014 it's the difference between reading every book in the library versus just checking the card catalog. Customers tell me \"I can never find my stuff\" and five minutes later they're typing \"tax 2024\" and seeing the PDF instantly.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -269,10 +319,10 @@
       "id": "onyx-2026-08-08-tip-12",
       "type": "tip",
       "date": "2026-08-08",
-      "title": "Windows 11 Recall is watching — here is how to turn it off at Settings > Privacy & security > Recall",
+      "title": "Windows 11 Recall is watching \u2014 here is how to turn it off at Settings > Privacy & security > Recall",
       "tag": "Tech Tip",
-      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings → Privacy & security → Recall & snapshots → turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" → \"Delete all\" to wipe existing data.",
-      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots — including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
+      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings \u2192 Privacy & security \u2192 Recall & snapshots \u2192 turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" \u2192 \"Delete all\" to wipe existing data.",
+      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots \u2014 including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -280,350 +330,292 @@
         "#Windows11",
         "#Privacy"
       ]
-    },
-    {
-      "id": "onyx-2026-08-04-tip-1",
-      "type": "tip",
-      "date": "2026-08-04",
-      "title": "Restart Your Computer Once a Week — Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
-      "tag": "Tech Tip",
-      "summary": "Leave your computer on for weeks and it gets sluggish — memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start → Power → Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
-      "truth": "I see this constantly — a customer brings in a \"slow computer\" and uptime shows 27 days. One restart and it's snappy again. Windows updates especially need a restart to fully apply; until you restart, the security patches aren't active.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Maintenance",
-        "#SpeedTip"
-      ]
-    },
-    {
-      "id": "onyx-2026-08-02-tip-2",
-      "type": "tip",
-      "date": "2026-08-02",
-      "title": "Check your solid-state drive health with CrystalDiskInfo — free tool",
-      "tag": "Tech Tip",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly — blue status = good, yellow = warning, red = backup immediately and replace drive",
-      "truth": "SSDs fail without warning unlike mechanical drives. Heat, write amplification, and low free space accelerate wear. CrystalDiskInfo reads the drive's health data showing total data written, temperature, error counts, spare blocks, and health percentage. Drives should stay 40-70°C (NVMe) or 25-55°C (SATA). Enable TRIM in Windows (enabled by default). Keep 15-20% free space for garbage collection. PCIe 4.0/5.0 drives need heatsinks for heavy workloads.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SSDMaintenance",
-        "#DataProtection"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-31-tip-1",
-      "type": "tip",
-      "date": "2026-07-31",
-      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis — Free at sourceforge.net/projects/visipics",
-      "tag": "Tech Tip",
-      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis — not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
-      "truth": "I see this all the time — a customer brings in a \"slow\" laptop with a nearly full drive, and half the space is the same vacation photo saved five times from WhatsApp, email, iCloud, and Google Photos. Windows doesn't have a built-in duplicate photo finder that understands \"similar but not identical.\" VisiPics does. It looks at the actual image content, so it catches the cropped version, the filtered version, the lower-resolution copy. Most people don't realize how much space duplicates eat until they run a scan. I've seen 20+ GB freed on a single machine.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VisiPics",
-        "#DuplicatePhotos"
-      ]
     }
   ],
   "updated": "2026-08-08",
   "today_word": {
-    "word": "Sandbox",
+    "word": "Driver",
     "pos": "noun",
-    "definition": "An isolated space where untrusted software can run without touching the rest of your system.",
-    "example": "The browser opens downloads in a sandbox.",
-    "date": "2026-08-08"
+    "definition": "A small program that lets the operating system talk to a piece of hardware like a printer or GPU.",
+    "example": "A missing driver left the webcam dark.",
+    "date": "2026-08-09"
   },
   "today_crossword": {
-    "title": "4-Letter Crossword: June Holidays",
-    "size": 19,
+    "title": "40 Handshapes Vocab",
+    "size": 25,
     "grid": [
-      "........baby.......",
-      ".....roll.o.j......",
-      "........u.drug.....",
-      ".....hope.y.n......",
-      "...........nest....",
-      ".............w.....",
-      "...........l.i.....",
-      "........b..army....",
-      "........iron..o....",
-      ".....i..k..e..yell.",
-      "...m.cake.....o.o..",
-      "..name.......f..v..",
-      ".k.t.duck....life..",
-      "wish....i....i.....",
-      ".n......s.leap.....",
-      ".g....west.........",
-      "......o............",
-      "...beer............",
-      "......k............"
+      "................math.....",
+      "..................o......",
+      "..................m.s....",
+      "..............e.s.o.u..c.",
+      "..............m.q.r.n..a.",
+      "......b.o.g...e.u.r.r..n.",
+      ".....either.c.r.ironic.d.",
+      "......g.i.e.a.g.r.w.s..l.",
+      "........sweetheart.tease.",
+      ".....m..e.n...n.e........",
+      "....nephew....c.l........",
+      ".....a....candy..........",
+      ".....train...............",
+      ".......w.................",
+      "...c.b.k...p.............",
+      ".p.u.o.w...a.............",
+      "yesterday..p.............",
+      ".r.e.i.r...e.............",
+      ".f...n.department........",
+      ".e...g.........e.........",
+      ".c.............w.........",
+      ".t.......library.........",
+      "...............o.........",
+      "..............brown......",
+      "...............k........."
     ],
     "clues": {
       "across": [
         {
           "num": 1,
           "row": 1,
-          "col": 9,
-          "len": 4,
-          "answer": "baby",
-          "clue": "baby"
-        },
-        {
-          "num": 3,
-          "row": 2,
-          "col": 6,
-          "len": 4,
-          "answer": "roll",
-          "clue": "roll"
-        },
-        {
-          "num": 5,
-          "row": 3,
-          "col": 11,
-          "len": 4,
-          "answer": "drug",
-          "clue": "drug"
-        },
-        {
-          "num": 6,
-          "row": 4,
-          "col": 6,
-          "len": 4,
-          "answer": "hope",
-          "clue": "hope"
-        },
-        {
-          "num": 7,
-          "row": 5,
-          "col": 12,
-          "len": 4,
-          "answer": "nest",
-          "clue": "nest"
-        },
-        {
-          "num": 11,
-          "row": 8,
-          "col": 12,
-          "len": 4,
-          "answer": "army",
-          "clue": "army"
-        },
-        {
-          "num": 13,
-          "row": 9,
-          "col": 9,
-          "len": 4,
-          "answer": "iron",
-          "clue": "iron"
-        },
-        {
-          "num": 15,
-          "row": 10,
-          "col": 15,
-          "len": 4,
-          "answer": "yell",
-          "clue": "yell"
-        },
-        {
-          "num": 18,
-          "row": 11,
-          "col": 6,
-          "len": 4,
-          "answer": "cake",
-          "clue": "cake"
-        },
-        {
-          "num": 19,
-          "row": 12,
-          "col": 3,
-          "len": 4,
-          "answer": "name",
-          "clue": "name"
-        },
-        {
-          "num": 22,
-          "row": 13,
-          "col": 6,
-          "len": 4,
-          "answer": "duck",
-          "clue": "duck"
-        },
-        {
-          "num": 24,
-          "row": 13,
-          "col": 14,
-          "len": 4,
-          "answer": "life",
-          "clue": "life"
-        },
-        {
-          "num": 25,
-          "row": 14,
-          "col": 1,
-          "len": 4,
-          "answer": "wish",
-          "clue": "wish"
-        },
-        {
-          "num": 26,
-          "row": 15,
-          "col": 11,
-          "len": 4,
-          "answer": "leap",
-          "clue": "leap"
-        },
-        {
-          "num": 27,
-          "row": 16,
-          "col": 7,
-          "len": 4,
-          "answer": "west",
-          "clue": "west"
-        },
-        {
-          "num": 28,
-          "row": 18,
-          "col": 4,
-          "len": 4,
-          "answer": "beer",
-          "clue": "beer"
-        }
-      ],
-      "down": [
-        {
-          "num": 1,
-          "row": 1,
-          "col": 9,
-          "len": 4,
-          "answer": "blue",
-          "clue": "blue"
-        },
-        {
-          "num": 2,
-          "row": 1,
-          "col": 11,
-          "len": 4,
-          "answer": "body",
-          "clue": "body"
-        },
-        {
-          "num": 4,
-          "row": 2,
-          "col": 13,
-          "len": 4,
-          "answer": "june",
-          "clue": "june"
-        },
-        {
-          "num": 8,
-          "row": 5,
-          "col": 14,
-          "len": 4,
-          "answer": "swim",
-          "clue": "swim"
-        },
-        {
-          "num": 9,
-          "row": 7,
-          "col": 12,
-          "len": 4,
-          "answer": "lane",
-          "clue": "lane"
-        },
-        {
-          "num": 10,
-          "row": 8,
-          "col": 9,
-          "len": 4,
-          "answer": "bike",
-          "clue": "bike"
-        },
-        {
-          "num": 12,
-          "row": 8,
-          "col": 15,
-          "len": 4,
-          "answer": "yoyo",
-          "clue": "yoyo"
-        },
-        {
-          "num": 14,
-          "row": 10,
-          "col": 6,
-          "len": 4,
-          "answer": "iced",
-          "clue": "iced"
-        },
-        {
-          "num": 16,
-          "row": 10,
           "col": 17,
-          "len": 4,
-          "answer": "love",
-          "clue": "love"
-        },
-        {
-          "num": 17,
-          "row": 11,
-          "col": 4,
           "len": 4,
           "answer": "math",
           "clue": "math"
         },
         {
-          "num": 20,
-          "row": 12,
-          "col": 14,
-          "len": 4,
-          "answer": "flip",
-          "clue": "flip"
+          "num": 10,
+          "row": 7,
+          "col": 6,
+          "len": 6,
+          "answer": "either",
+          "clue": "either"
         },
         {
-          "num": 21,
-          "row": 13,
-          "col": 2,
-          "len": 4,
-          "answer": "king",
-          "clue": "king"
+          "num": 12,
+          "row": 7,
+          "col": 17,
+          "len": 6,
+          "answer": "ironic",
+          "clue": "ironic"
         },
         {
-          "num": 23,
-          "row": 13,
+          "num": 13,
+          "row": 9,
           "col": 9,
-          "len": 4,
-          "answer": "kiss",
-          "clue": "kiss"
+          "len": 10,
+          "answer": "sweetheart",
+          "clue": "sweetheart"
+        },
+        {
+          "num": 14,
+          "row": 9,
+          "col": 20,
+          "len": 5,
+          "answer": "tease",
+          "clue": "tease"
+        },
+        {
+          "num": 16,
+          "row": 11,
+          "col": 5,
+          "len": 6,
+          "answer": "nephew",
+          "clue": "nephew"
+        },
+        {
+          "num": 17,
+          "row": 12,
+          "col": 11,
+          "len": 5,
+          "answer": "candy",
+          "clue": "candy"
+        },
+        {
+          "num": 18,
+          "row": 13,
+          "col": 6,
+          "len": 5,
+          "answer": "train",
+          "clue": "train"
+        },
+        {
+          "num": 24,
+          "row": 17,
+          "col": 1,
+          "len": 9,
+          "answer": "yesterday",
+          "clue": "yesterday"
+        },
+        {
+          "num": 25,
+          "row": 19,
+          "col": 8,
+          "len": 10,
+          "answer": "department",
+          "clue": "department"
         },
         {
           "num": 27,
-          "row": 16,
+          "row": 22,
+          "col": 10,
+          "len": 7,
+          "answer": "library",
+          "clue": "library"
+        },
+        {
+          "num": 28,
+          "row": 24,
+          "col": 15,
+          "len": 5,
+          "answer": "brown",
+          "clue": "brown"
+        }
+      ],
+      "down": [
+        {
+          "num": 2,
+          "row": 1,
+          "col": 19,
+          "len": 8,
+          "answer": "tomorrow",
+          "clue": "tomorrow"
+        },
+        {
+          "num": 3,
+          "row": 3,
+          "col": 21,
+          "len": 7,
+          "answer": "sunrise",
+          "clue": "sunrise"
+        },
+        {
+          "num": 4,
+          "row": 4,
+          "col": 15,
+          "len": 9,
+          "answer": "emergency",
+          "clue": "emergency"
+        },
+        {
+          "num": 5,
+          "row": 4,
+          "col": 17,
+          "len": 8,
+          "answer": "squirrel",
+          "clue": "squirrel"
+        },
+        {
+          "num": 6,
+          "row": 4,
+          "col": 24,
+          "len": 6,
+          "answer": "candle",
+          "clue": "candle"
+        },
+        {
+          "num": 7,
+          "row": 6,
           "col": 7,
+          "len": 3,
+          "answer": "big",
+          "clue": "big"
+        },
+        {
+          "num": 8,
+          "row": 6,
+          "col": 9,
+          "len": 6,
+          "answer": "ohisee",
+          "clue": "ohisee"
+        },
+        {
+          "num": 9,
+          "row": 6,
+          "col": 11,
+          "len": 5,
+          "answer": "green",
+          "clue": "green"
+        },
+        {
+          "num": 11,
+          "row": 7,
+          "col": 13,
+          "len": 3,
+          "answer": "cat",
+          "clue": "cat"
+        },
+        {
+          "num": 15,
+          "row": 10,
+          "col": 6,
           "len": 4,
-          "answer": "work",
-          "clue": "work"
+          "answer": "meat",
+          "clue": "meat"
+        },
+        {
+          "num": 19,
+          "row": 13,
+          "col": 8,
+          "len": 7,
+          "answer": "awkward",
+          "clue": "awkward"
+        },
+        {
+          "num": 20,
+          "row": 15,
+          "col": 4,
+          "len": 4,
+          "answer": "cute",
+          "clue": "cute"
+        },
+        {
+          "num": 21,
+          "row": 15,
+          "col": 6,
+          "len": 6,
+          "answer": "boring",
+          "clue": "boring"
+        },
+        {
+          "num": 22,
+          "row": 15,
+          "col": 12,
+          "len": 5,
+          "answer": "paper",
+          "clue": "paper"
+        },
+        {
+          "num": 23,
+          "row": 16,
+          "col": 2,
+          "len": 7,
+          "answer": "perfect",
+          "clue": "perfect"
+        },
+        {
+          "num": 26,
+          "row": 19,
+          "col": 16,
+          "len": 7,
+          "answer": "newyork",
+          "clue": "newyork"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/4-letter-crossword-june-holidays",
-    "slug": "4-letter-crossword-june-holidays",
-    "fetched_at": "2026-07-14T19:12:28.215701+00:00",
-    "date": "2026-08-08"
+    "source_url": "https://crosswordlabs.com/view/40-handshapes-vocab",
+    "slug": "40-handshapes-vocab",
+    "fetched_at": "2026-07-14T19:12:05.644411+00:00",
+    "date": "2026-08-09"
   },
   "today_trivia": {
-    "q": "What does 'RAM' stand for, and why is it called that?",
-    "a": "Random Access Memory — any byte can be reached in roughly the same time, unlike tape you'd fast-forward.",
+    "q": "What does 'GPU' stand for?",
+    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
     "category": "Hardware",
-    "date": "2026-08-08"
+    "date": "2026-08-09"
   },
   "today_joke": {
-    "q": "Why did the programmer get a pet snake?",
-    "a": "To learn Python.",
-    "date": "2026-08-08"
+    "q": "What do you call a fake computer chip?",
+    "a": "A microprocessor impostor.",
+    "date": "2026-08-09"
   },
   "poll": {
     "poll": {
@@ -636,11 +628,11 @@
         },
         {
           "id": "1to3",
-          "label": "1–3 years"
+          "label": "1\u20133 years"
         },
         {
           "id": "3to5",
-          "label": "3–5 years"
+          "label": "3\u20135 years"
         },
         {
           "id": "gt5",
@@ -650,25 +642,27 @@
     }
   },
   "today_poll": {
-    "weekOf": "2026-08-02",
-    "question": "How old is your main computer?",
-    "options": [
-      {
-        "id": "lt1",
-        "label": "Under 1 year"
-      },
-      {
-        "id": "1to3",
-        "label": "1–3 years"
-      },
-      {
-        "id": "3to5",
-        "label": "3–5 years"
-      },
-      {
-        "id": "gt5",
-        "label": "5+ years"
-      }
-    ]
+    "poll": {
+      "weekOf": "2026-08-09",
+      "question": "What do you mostly use your computer for?",
+      "options": [
+        {
+          "id": "email",
+          "label": "Email & web"
+        },
+        {
+          "id": "work",
+          "label": "Work / school"
+        },
+        {
+          "id": "photo",
+          "label": "Photos & videos"
+        },
+        {
+          "id": "game",
+          "label": "Gaming"
+        }
+      ]
+    }
   }
 }

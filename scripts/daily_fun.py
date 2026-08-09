@@ -337,7 +337,15 @@ POLLS_EXTRA = [
     {"question": "How concerned are you about data privacy with AI tools? (Deloitte 2024: 67% worried about tracking, 50%+ had security incidents)",
      "options": [{"id": "very", "label": "Very concerned — I limit what I share"}, {"id": "somewhat", "label": "Somewhat — I'm careful but use them"},
                  {"id": "notmuch", "label": "Not much — benefits outweigh risks"}, {"id": "unaware", "label": "Wasn't aware this was an issue"}]},
-]
+    {"question": "How willing are you to share personal data for AI features? (Deloitte 2025: 58% unwilling to share sensitive data even for better features)",
+     "options": [{"id": "very", "label": "Very willing"}, {"id": "somewhat", "label": "Somewhat willing"},
+                 {"id": "unwilling", "label": "Unwilling"}, {"id": "never", "label": "Never — never share"}]},
+    {"question": "How often do you use AI chatbots? (Deloitte 2025: 42% of Gen Z/Millennial GenAI users use it daily)",
+     "options": [{"id": "daily", "label": "Daily"}, {"id": "weekly", "label": "Weekly"},
+                 {"id": "rarely", "label": "Rarely"}, {"id": "never", "label": "Never"}]},
+    {"question": "Do you trust AI chatbots with personal info? (Deloitte 2025: 68% fear being fooled by AI content)",
+     "options": [{"id": "trust", "label": "Trust them"}, {"id": "verify", "label": "Verify everything"},
+                 {"id": "minimal", "label": "Share minimal info"}, {"id": "never", "label": "Never share personal info"}]}],
 
 FLOOR_WORDS = 40
 FLOOR_TRIVIA = 40

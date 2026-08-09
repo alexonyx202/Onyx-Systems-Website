@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-08-02",
-    "question": "How old is your main computer?",
+    "weekOf": "2026-08-09",
+    "question": "What do you mostly use your computer for?",
     "options": [
       {
-        "id": "lt1",
-        "label": "Under 1 year"
+        "id": "email",
+        "label": "Email & web"
       },
       {
-        "id": "1to3",
-        "label": "1\u20133 years"
+        "id": "work",
+        "label": "Work / school"
       },
       {
-        "id": "3to5",
-        "label": "3\u20135 years"
+        "id": "photo",
+        "label": "Photos & videos"
       },
       {
-        "id": "gt5",
-        "label": "5+ years"
+        "id": "game",
+        "label": "Gaming"
       }
     ]
   }
