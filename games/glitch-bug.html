@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="GLITCH BUG — a Centipede/Millipede remix arcade game. A retro computer-themed bug hunt. Play free in your browser.">
+<meta name="theme-color" content="#05070d">
+<title>GLITCH BUG — Centipede/Millipede Remix</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2305070d'/%3E%3Cpath d='M2 8h4l2 2 2-6 2 4h2' stroke='%2339ff14' stroke-width='1.5' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=24">
+</head>
+<body>
+
+<div id="cabinet">
+  <div class="cab-top">
+    <span class="cab-brand">SYNTHESIS&nbsp;CORP.</span>
+    <span class="cab-brand right">MODEL&nbsp;GB-2000</span>
+  </div>
+
+  <div id="bezel">
+    <div id="screen">
+      <canvas id="game" width="320" height="256"></canvas>
+
+      <!-- CRT FX overlays -->
+      <div class="crt crt-scanlines"></div>
+      <div class="crt crt-vignette"></div>
+      <div class="crt crt-rgb"></div>
+      <div class="crt crt-flicker"></div>
+
+      <!-- mid-run theme toast: confirms a manual tint change without the pause menu -->
+      <div id="themeToast" class="toast" aria-live="polite">THEME: EMERALD</div>
+
+      <!-- ===================== BOOT ===================== -->
+      <div id="bootPanel" class="panel boot">
+        <pre id="bootLog"></pre>
+        <div id="bootDisplay" class="boot-display hidden">DISPLAY: CLASSIC</div>
+        <div class="boot-hint">[C] CYCLES CABINET COLOR · [F] FULLSCREEN</div>
+        <div id="bootPadHint" class="boot-hint pad hidden">[SELECT] CYCLES CABINET COLOR · HOLD: PAUSE</div>
+        <div id="bootPrompt" class="boot-prompt hidden">PRESS ANY KEY OR CLICK TO BOOT</div>
+      </div>
+
+      <!-- ===================== MAIN MENU ===================== -->
+      <div id="menuPanel" class="panel menu hidden">
+        <div class="stars" aria-hidden="true">
+          <span style="--x:12%; --y:10%; --s:2px; --d:0s"></span>
+          <span style="--x:78%; --y:8%;  --s:2px; --d:.4s"></span>
+          <span style="--x:62%; --y:16%; --s:1px; --d:.9s"></span>
+          <span style="--x:28%; --y:23%; --s:1px; --d:1.4s"></span>
+          <span style="--x:89%; --y:27%; --s:2px; --d:1.9s"></span>
+          <span style="--x:7%;  --y:40%; --s:1px; --d:.6s"></span>
+          <span style="--x:94%; --y:55%; --s:2px; --d:1.1s"></span>
+          <span style="--x:17%; --y:60%; --s:1px; --d:1.6s"></span>
+          <span style="--x:58%; --y:74%; --s:2px; --d:.2s"></span>
+          <span style="--x:36%; --y:88%; --s:1px; --d:1.2s"></span>
+          <span style="--x:84%; --y:90%; --s:1px; --d:2s"></span>
+          <span style="--x:48%; --y:47%; --s:1px; --d:2.3s"></span>
+        </div>
+
+        <div class="menu-marquee">
+          <div class="corner tl" aria-hidden="true"></div>
+          <div class="corner tr" aria-hidden="true"></div>
+          <div class="corner bl" aria-hidden="true"></div>
+          <div class="corner br" aria-hidden="true"></div>
+          <div class="marquee-shade" aria-hidden="true"></div>
+
+          <div class="spider-mascot" aria-hidden="true">
+            <div class="thread"></div>
+            <div class="sp-body"></div>
+          </div>
+
+          <div class="title-block">
+            <div class="mascot" aria-hidden="true">
+              <div class="bug-seg" style="--i:0"></div>
+              <div class="bug-seg" style="--i:1"></div>
+              <div class="bug-seg" style="--i:2"></div>
+              <div class="bug-seg" style="--i:3"></div>
+              <div class="bug-seg" style="--i:4"></div>
+              <div class="bug-seg" style="--i:5"></div>
+              <div class="bug-seg head" style="--i:6"><span class="eye"></span></div>
+            </div>
+            <h1 class="glitch-title" data-text="GLITCH BUG">GLITCH&nbsp;BUG</h1>
+            <div class="subtitle"><span class="rule"></span>A CENTIPEDE / MILLIPEDE REMIX<span class="rule"></span></div>
+            <div class="tagline">THE DATA FIELD IS INFESTED · EXTERMINATE EVERY BUG</div>
+          </div>
+
+          <div id="tipCrawl" class="tip-crawl" aria-hidden="true"><span id="tipCrawlText">INSERT COIN</span></div>
+
+          <nav id="mainMenu" class="menu-nav">
+            <button class="menu-btn primary" data-action="play"><span class="coin-blink">▶ INSERT COIN</span><span class="coin-sub">/ PLAY</span></button>
+            <button class="menu-btn" data-action="difficulty">DIFFICULTY</button>
+          <button class="menu-btn" data-action="sound">SOUND</button>
+          <button class="menu-btn" data-action="controls">CONTROLS</button>
+          <button class="menu-btn" data-action="scores">HIGH SCORES</button>
+          <button class="menu-btn" data-action="help">HOW TO PLAY</button>
+          </nav>
+
+          <button type="button" class="gear-btn" data-action="controls" title="QUICK CONTROLS" aria-label="QUICK CONTROLS">&#9881;&#65038;</button>
+          <button type="button" class="gear-btn fs-btn" id="fsBtn" data-action="fullscreen" title="FULLSCREEN [F]" aria-label="FULLSCREEN [F]">&#9974;</button>
+
+          <div class="menu-footer">
+            <button type="button" id="hiScoreFooter" class="blink-slow" data-action="sound" title="QUICK SOUND SETTINGS" aria-label="QUICK SOUND SETTINGS">HI-SCORE: 000000</button>
+            <span class="version">v2.1.0 · © 1981-2026 SYNTHESIS CORP.</span>
+          </div>
+
+          <div class="mushrow" aria-hidden="true">
+            <span class="mush" style="--mc:#39ff14; --s:.85"></span>
+            <span class="mush" style="--mc:#00e5ff; --s:1"></span>
+            <span class="mush" style="--mc:#9dff3a; --s:.7"></span>
+            <span class="mush" style="--mc:#2fd8a0; --s:.95"></span>
+            <span class="mush" style="--mc:#ff2d95; --s:.75"></span>
+            <span class="mush" style="--mc:#00e5ff; --s:1.05"></span>
+            <span class="mush" style="--mc:#39ff14; --s:.9"></span>
+            <span class="mush" style="--mc:#9dff3a; --s:.65"></span>
+            <span class="mush" style="--mc:#2fd8a0; --s:.8"></span>
+          </div>
+        </div>
+
+        <div class="attract-prompt" id="attractPrompt"><span>PRESS ANY KEY</span></div>
+      </div>
+
+      <!-- ===================== DIFFICULTY ===================== -->
+      <div id="diffPanel" class="panel sub hidden">
+        <h2 class="panel-title">DIFFICULTY</h2>
+        <div id="diffList" class="option-list"></div>
+        <button class="menu-btn back-btn" data-action="back">◀ BACK</button>
+      </div>
+
+      <!-- ===================== SOUND ===================== -->
+      <div id="soundPanel" class="panel sub hidden">
+        <h2 class="panel-title">SOUND</h2>
+        <div class="option-list">
+          <button class="option-row" data-toggle="music"><span class="opt-label">MUSIC</span><span class="opt-value" id="musicVal">ON</span></button>
+          <button class="option-row" data-toggle="sfx"><span class="opt-label">SOUND FX</span><span class="opt-value" id="sfxVal">ON</span></button>
+          <button class="option-row" data-toggle="volume"><span class="opt-label">VOLUME</span><span class="opt-value" id="volumeVal">70%</span></button>
+          <button class="option-row" data-toggle="theme" title="CYCLE CABINET COLOR"><span class="opt-label">CABINET</span><span class="opt-value" id="themeVal">CLASSIC</span></button>
+          <button class="option-row" data-toggle="theme-mode" title="AUTO ROLLS A FRESH TINT EVERY LEVEL"><span class="opt-label">THEME MODE</span><span class="opt-value" id="themeModeVal">FIXED</span></button>
+        </div>
+        <button class="menu-btn back-btn" data-action="back">◀ BACK</button>
+      </div>
+
+      <!-- ===================== CONTROLS ===================== -->
+      <div id="controlsPanel" class="panel sub hidden">
+        <h2 class="panel-title">CONTROLS</h2>
+        <div class="option-list" id="controlsList"></div>
+        <div class="controls-hint" id="controlsHint">CLICK TO ADD · TAP ✕ TO REMOVE · ESC CANCELS</div>
+        <div class="gamepad-note" id="gamepadStatus">NO GAMEPAD · STICK/D-PAD MOVE · A FIRE · B BOMB · X MISSILE · START PAUSE · SELECT THEME · HOLD: PAUSE · MENUS: A/START OK · B BACK</div>
+        <div class="controls-actions">
+          <button class="menu-btn back-btn" data-action="reset-controls">↺ RESET DEFAULTS</button>
+          <button class="menu-btn back-btn" data-action="back">◀ BACK</button>
+        </div>
+      </div>
+
+      <!-- ===================== HIGH SCORES ===================== -->
+      <div id="scoresPanel" class="panel sub hidden">
+        <h2 class="panel-title">HIGH SCORES</h2>
+        <div id="scoresTable" class="scores-table"></div>
+        <button class="menu-btn back-btn" data-action="back">◀ BACK</button>
+      </div>
+
+      <!-- ===================== HELP ===================== -->
+      <div id="helpPanel" class="panel sub scrollable hidden">
+        <h2 class="panel-title">HOW TO PLAY</h2>
+        <div class="help-body">
+          <p class="help-intro">THE BUG GRID IS OVERRUN. PILOT THE <b>GLITCH DART</b> AND CLEAR THE FIELD.</p>
+
+          <div class="help-section">
+            <div class="help-head">CONTROLS</div>
+            <table class="help-table">
+              <tr><td>MOVE</td><td id="helpMove">← → ↑ ↓ / WASD / MOUSE / TOUCH-DRAG</td></tr>
+              <tr><td>FIRE</td><td id="helpFire">SPACE / J</td></tr>
+              <tr><td>SMART MISSILE</td><td id="helpMissile">SHIFT / K</td></tr>
+              <tr><td>DETONATE BOMB</td><td id="helpBomb">B / X</td></tr>
+              <tr><td>PAUSE</td><td id="helpPause">P / ESC</td></tr>
+              <tr><td>MUTE</td><td>M</td></tr>
+              <tr><td>FULLSCREEN</td><td>F</td></tr>
+              <tr><td>GAMEPAD</td><td>STICK / D-PAD MOVE · A FIRE · B BOMB · X MISSILE · START PAUSE · SELECT THEME · HOLD: PAUSE · MENUS: A/START OK · B BACK</td></tr>
+            </table>
+          </div>
+
+          <div class="help-section">
+            <div class="help-head">THE BUGS</div>
+            <table class="help-table bugs">
+              <tr><td class="swatch sw-cent"></td><td>Snakes down the field. Hits a wall, drops a row. Pop a segment — the swarm splits and speeds up.</td></tr>
+              <tr><td class="swatch sw-milli"></td><td>Longer, faster, meaner. Leaves poison data behind. Shows up at higher levels.</td></tr>
+              <tr><td class="swatch sw-spider"></td><td>Bounces through the lower field, eating mushrooms. Worth more the lower it dives.</td></tr>
+              <tr><td class="swatch sw-flea"></td><td>Dives straight down, planting mushrooms as it goes.</td></tr>
+              <tr><td class="swatch sw-scorp"></td><td>Poisons every mushroom it touches. A <span class="poison">poisoned</span> mushroom kills you on contact.</td></tr>
+              <tr><td class="swatch sw-virus"></td><td>Hatches from poison data and hunts you down.</td></tr>
+              <tr><td class="swatch sw-queen"></td><td><b>BUG QUEEN</b> — every <b>10th level</b> she takes the field. Armor shrugs off bullets: hit her <b>eyes</b> or use <b>SMART MISSILES</b>. <b>FREEZE</b> opens her core — then <b>BOMB</b> her egg sacs before they hatch.</td></tr>
+              <tr><td class="swatch sw-bonus"></td><td><b>BONUS ROUND</b> — every <b>5th level</b>. Beat the clock: pop the whole maze for <b>50 pts</b> a mushroom. Golden <b>swarm</b> bugs pay <b>500</b> a segment, <b>2500</b> for the head. Clear it all for a huge bonus. From <b>15</b>: double walls. From <b>25</b>: one-cell gaps — and every crossing <b>RE-ARRANGES THE HOLES</b>.</td></tr>
+            </table>
+            <p class="help-tip poison-tip">A <span class="poison">MAGENTA</span> (FLASHING) MUSHROOM IS POISONED. DON'T TOUCH IT — SHOOT IT FOR <b>100 PTS</b>.</p>
+            <p class="help-tip">QUEEN TIP: HER VENOM AND GOO POISON THE FIELD. SAVE A <b>FREEZE</b> FOR HER ENRAGED PHASE — A FROZEN QUEEN IS A DEAD QUEEN.</p>
+          </div>
+
+          <div class="help-section">
+            <div class="help-head">POWER-UPS <span class="dim">(drop from destroyed bugs)</span></div>
+            <table class="help-table">
+              <tr><td class="pu">W</td><td>WEAPON CYCLE: spread → laser → twin cannons</td></tr>
+              <tr><td class="pu">S</td><td>SHIELD: blocks one hit, blasts nearby mushrooms</td></tr>
+              <tr><td class="pu">O</td><td>OVERCLOCK: 2.5× fire rate</td></tr>
+              <tr><td class="pu">F</td><td>FREEZE: bugs slow to 25% speed</td></tr>
+              <tr><td class="pu">M</td><td>2× SCORE for a short burst</td></tr>
+              <tr><td class="pu">B</td><td>+1 BOMB: clears the whole grid</td></tr>
+              <tr><td class="pu">R</td><td>SMART MISSILE: locks onto the nearest bug</td></tr>
+              <tr><td class="pu">1UP</td><td>EXTRA LIFE</td></tr>
+              <tr><td class="pu">G</td><td>DATA GEM: +500 points</td></tr>
+            </table>
+            <p class="help-tip">TIP: EXTRA LIFE AT 10K AND 30K. BOMBS CARRY BETWEEN LIVES. STUCK? FREEZE, THEN BOMB.</p>
+          </div>
+        </div>
+        <button class="menu-btn back-btn" data-action="back">◀ BACK</button>
+      </div>
+
+      <!-- ===================== PAUSE ===================== -->
+      <div id="pausePanel" class="panel pause hidden">
+        <h2 class="panel-title glitch-title small" data-text="PAUSED">PAUSED</h2>
+        <div class="pause-stats" id="pauseStats"></div>
+        <div class="pause-bindings" id="pauseBindings"></div>
+        <nav class="menu-nav">
+          <button class="menu-btn primary" data-action="resume">▶ RESUME</button>
+          <button class="menu-btn" data-action="restart">↻ RESTART</button>
+          <button class="menu-btn" data-action="quit">◀ QUIT TO MENU</button>
+          <button class="menu-btn fs-panel-btn" data-action="fullscreen" title="FULLSCREEN [F]"><span class="fs-glyph">&#9974;</span> <span class="fs-panel-label">FULLSCREEN</span></button>
+        </nav>
+      </div>
+
+      <!-- ===================== GAME OVER ===================== -->
+      <div id="gameoverPanel" class="panel sub hidden">
+        <h2 class="panel-title glitch-title" data-text="GAME OVER">GAME OVER</h2>
+        <div class="go-stats">
+          <div class="go-score-label">FINAL SCORE</div>
+          <div class="go-score" id="goScore">000000</div>
+          <div class="go-level" id="goLevel">REACHED LEVEL 1</div>
+        </div>
+        <div id="initialsWrap" class="initials hidden">
+          <div class="initials-title">★ NEW HIGH SCORE — ENTER CALLSIGN ★</div>
+          <div class="initials-input">
+            <span id="initialsBox">A A A</span>
+            <div class="initials-hint">↑/↓ SELECT · ←/→ MOVE · ENTER CONFIRM</div>
+          </div>
+        </div>
+        <div id="goTable" class="scores-table compact"></div>
+        <nav class="menu-nav">
+          <button class="menu-btn primary" data-action="playagain">▶ PLAY AGAIN</button>
+          <button class="menu-btn" data-action="menu">◀ MAIN MENU</button>
+          <button class="menu-btn fs-panel-btn" data-action="fullscreen" title="FULLSCREEN [F]"><span class="fs-glyph">&#9974;</span> <span class="fs-panel-label">FULLSCREEN</span></button>
+        </nav>
+      </div>
+
+      <div id="touchHint" class="touch-hint hidden">TOUCH TO MOVE · AUTO-FIRE ON</div>
+    </div>
+  </div>
+
+  <div class="cab-bottom">
+    <div class="credit">© 2026 GLITCH BUG · SYNTHESIS CORP.</div>
+  </div>
+</div>
+
+<script src="js/utils.js?v=25"></script>
+<script src="js/audio.js?v=25"></script>
+<script src="js/input.js?v=25"></script>
+<script src="js/particles.js?v=25"></script>
+<script src="js/entities.js?v=29"></script>
+<script src="js/game.js?v=25"></script>
+<script src="js/ui.js?v=27"></script>
+</body>
+</html>

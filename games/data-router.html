@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="DATA ROUTER — a retro arcade game. Hop a lone data packet across busy traffic and bus lanes to the CPU cores before the clock runs out.">
+<meta name="theme-color" content="#05070d">
+<title>DATA ROUTER — Retro Arcade</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050a12'/%3E%3Crect x='7' y='7' width='18' height='18' rx='4' fill='none' stroke='%2322d3ee' stroke-width='3'/%3E%3Ctext x='16' y='23' font-size='15' font-family='monospace' font-weight='bold' fill='%2322d3ee' text-anchor='middle'%3E@%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DATA ROUTER — retro arcade stylesheet
+   ============================================================ */
+:root{
+  --bg:#05070d;
+  --panel:rgba(6,11,22,.86);
+  --cyan:#22d3ee;
+  --magenta:#e879f9;
+  --green:#4ade80;
+  --yellow:#facc15;
+  --red:#fb7185;
+  --blue:#60a5fa;
+  --text:#b8e6f5;
+  --dim:#64849a; /* WCAG AA: #5b7a8c was ~4.2-4.4:1 on the darkest panels; this clears 4.5:1 and stays a muted secondary tone */
+  --pix:'Press Start 2P', 'Courier New', monospace;
+}
+*{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{ height:100%; }
+body{
+  background:
+    radial-gradient(1200px 700px at 50% -10%, #0d1830 0%, transparent 60%),
+    radial-gradient(900px 600px at 85% 110%, rgba(120,40,160,.18) 0%, transparent 55%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--pix);
+  overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  user-select:none; -webkit-user-select:none;
+}
+body::before{ /* faint grid backdrop */
+  content:''; position:fixed; inset:0; pointer-events:none; opacity:.5;
+  background-image:
+    linear-gradient(rgba(34,211,238,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,.045) 1px, transparent 1px);
+  background-size:44px 44px;
+}
+
+#wrap{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+
+/* ---------- cabinet frame ---------- */
+#frame{
+  position:relative;
+  display:flex; flex-direction:column;
+  background:#04060c;
+  border:2px solid rgba(34,211,238,.4);
+  border-radius:10px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.9), 0 0 26px rgba(34,211,238,.22), inset 0 0 40px rgba(0,0,0,.7);
+  overflow:hidden;
+}
+#game{ display:block; width:100%; touch-action:none; image-rendering:pixelated; }
+/* keyboard a11y: skip straight to the board, arcade style */
+.skip-link{ position:absolute; left:-9999px; top:auto; z-index:99; }
+.skip-link:focus{ left:8px; top:8px; font-family:var(--pix); font-size:9px; color:#05070d; background:var(--cyan); padding:6px 10px; border-radius:3px; box-shadow:0 0 14px rgba(34,211,238,.8); }
+/* visually hidden but still announced: booster-state updates for screen readers */
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* ---------- CRT overlays ---------- */
+#frame{ --crt:.22; }
+/* Soft scanlines: light enough that small pixel text stays crisp and readable. */
+#scanlines{
+  position:absolute; inset:0; pointer-events:none; z-index:40;
+  background:repeating-linear-gradient(to bottom, rgba(0,0,0,.14) 0px, rgba(0,0,0,.14) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode:multiply;
+  opacity:var(--crt);
+  transition:opacity .08s linear;
+}
+#aperture{
+  position:absolute; inset:0; pointer-events:none; z-index:41;
+  background:radial-gradient(ellipse at center, transparent 62%, rgba(0,0,0,.42) 100%);
+  opacity:var(--crt);
+  transition:opacity .08s linear;
+}
+/* CRT scan wipe between screens: a gentle low-light roll, no bright band */
+#wipe{
+  position:absolute; left:0; right:0; top:0; height:100%; z-index:44; pointer-events:none;
+  background:linear-gradient(to bottom, transparent 0%, rgba(34,211,238,.02) 44%, rgba(165,243,252,.1) 50%, rgba(34,211,238,.02) 56%, transparent 100%);
+  opacity:0;
+}
+#wipe.go{ animation:wipe .3s ease-out; }
+@keyframes wipe{ 0%{ transform:translateY(-102%); opacity:1 } 100%{ transform:translateY(102%); opacity:0 } }
+
+/* sound test */
+#st-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; width:min(340px,94%); }
+.st-btn{
+  font-family:var(--pix); font-size:6.5px; letter-spacing:1px; color:var(--text);
+  background:rgba(10,20,36,.5); border:1.5px solid rgba(34,211,238,.25); border-radius:3px;
+  padding:8px 4px; cursor:pointer; transition:all .1s; outline:none; text-align:center;
+}
+.st-btn:hover{ background:rgba(34,211,238,.15); border-color:var(--cyan); color:#fff; }
+.st-btn:active{ transform:scale(.95); box-shadow:0 0 10px rgba(34,211,238,.5); }
+.st-btn.sel{ background:rgba(232,121,249,.18); border-color:var(--magenta); box-shadow:0 0 10px rgba(232,121,249,.4); }
+.st-btn.playing{ animation:stPlaying .45s ease-in-out infinite alternate; border-color:var(--cyan); color:#fff; text-shadow:0 0 3px rgba(34,211,238,.85); }
+@keyframes stPlaying{ from{ box-shadow:0 0 2px rgba(34,211,238,.35); } to{ box-shadow:0 0 12px rgba(34,211,238,.9); } }
+
+/* ---------- HUD ---------- */
+#hud{
+  position:relative; flex-shrink:0; width:100%; height:58px;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:0 12px;
+  background:linear-gradient(to bottom, rgba(4,8,16,.92), rgba(4,8,16,.55));
+  border-bottom:2px solid rgba(34,211,238,.28);
+  font-size:9px; letter-spacing:1px;
+  color:var(--text);
+  text-shadow:0 0 2px rgba(34,211,238,.55);
+}
+#hud.hidden{ visibility:hidden; }
+.hud-col{ display:flex; flex-direction:column; gap:5px; }
+.hud-label{ color:var(--dim); font-size:6.5px; letter-spacing:2px; }
+.hud-value{ color:var(--cyan); }
+#hud .right{ align-items:flex-end; }
+#lives-icons{ display:flex; gap:3px; }
+.life-pkt{ width:11px; height:11px; border:1.5px solid var(--green); border-radius:2px; display:flex; align-items:center; justify-content:center; color:var(--green); box-shadow:0 0 6px rgba(74,222,128,.35) inset; }
+#timebar-wrap{
+  width:130px; height:8px; border:1px solid rgba(255,255,255,.25); border-radius:4px;
+  background:rgba(0,0,0,.5); overflow:hidden;
+}
+#timebar{ height:100%; width:100%; border-radius:3px; transition:width .1s linear; }
+#timebar.ok{ background:linear-gradient(90deg,#15803d,var(--green)); box-shadow:0 0 8px rgba(74,222,128,.7); }
+#timebar.warn{ background:linear-gradient(90deg,#b45309,var(--yellow)); box-shadow:0 0 10px rgba(250,204,21,.8); }
+#timebar.crit{ background:linear-gradient(90deg,#b91c1c,var(--red)); box-shadow:0 0 12px rgba(251,113,133,.9); animation:pulse .5s infinite alternate; }
+@keyframes pulse{ from{filter:brightness(1)} to{filter:brightness(1.7)} }
+#fx-icons{ display:flex; gap:4px; min-height:12px; }
+.fx-ico{ font-size:8px; padding:1px 3px; border:1px solid; border-radius:2px; animation:pulse 1s infinite alternate; display:inline-flex; align-items:center; justify-content:center; line-height:0; }
+.fx-shield{ color:var(--cyan); border-color:var(--cyan); }
+.fx-boost{ color:var(--yellow); border-color:var(--yellow); }
+.fx-burst{ color:var(--magenta); border-color:var(--magenta); }
+.fx-throttle{ color:var(--blue); border-color:var(--blue); }
+.fx-demo{ color:var(--green); border-color:var(--green); animation:blink 1s steps(2) infinite; }
+.fx-classic{ color:var(--magenta); border-color:var(--magenta); } /* strict-mode timer badge */
+
+/* ---------- overlay + screens ---------- */
+#overlay{ position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at center, rgba(5,9,20,.82) 0%, rgba(5,9,20,.55) 62%, rgba(5,9,20,.26) 100%); }
+#overlay.hidden{ display:none; }
+.screen{ display:none; flex-direction:column; align-items:center; gap:14px; width:100%; padding:18px; text-align:center; }
+#scr-menu{ gap:6px; padding:10px 18px; }
+.screen.on{ display:flex; }
+.screen h2{
+  color:var(--cyan); font-size:13px; letter-spacing:3px;
+  text-shadow:0 0 5px rgba(34,211,238,.85);
+  display:flex; align-items:center; justify-content:center; gap:12px;
+}
+.screen h2::before, .screen h2::after{ content:''; width:38px; height:2px; flex-shrink:0; }
+.screen h2::before{ background:linear-gradient(90deg, transparent, rgba(34,211,238,.55)); }
+.screen h2::after{ background:linear-gradient(90deg, rgba(34,211,238,.55), transparent); }
+.screen h2 .acc{ color:var(--magenta); text-shadow:0 0 5px rgba(232,121,249,.85); }
+.screen.on{ animation:screenIn .2s ease-out both; }
+@keyframes screenIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+.screen .sub{ font-size:7px; color:var(--dim); letter-spacing:2px; line-height:1.8; }
+
+/* title */
+.logo{
+  font-size:28px; letter-spacing:2px; line-height:1.15; margin-top:2px;
+  color:#f6fdff;
+  /* Press Start 2P has no bold weight, so the logo is thickened with a hard
+     dark outline (8-direction shadows) + a strong neon glow. The fill is
+     white-dominant (see the marquee gradient below) so every phase of the
+     sheen keeps high contrast on the dark board. */
+  text-shadow:
+    1px 0 0 rgba(4,16,32,1), -1px 0 0 rgba(4,16,32,1),
+    0 1px 0 rgba(4,16,32,1), 0 -1px 0 rgba(4,16,32,1),
+    1px 1px 0 rgba(4,16,32,1), -1px -1px 0 rgba(4,16,32,1),
+    1px -1px 0 rgba(4,16,32,1), -1px 1px 0 rgba(4,16,32,1),
+    0 0 8px rgba(34,211,238,1), 0 0 22px rgba(34,211,238,.75),
+    0 4px 0 rgba(6,30,50,1);
+  animation:logoPulse 2.6s ease-in-out infinite;
+}
+.logo .row2{ color:var(--magenta); text-shadow:
+    1px 0 0 rgba(26,6,40,1), -1px 0 0 rgba(26,6,40,1),
+    0 1px 0 rgba(26,6,40,1), 0 -1px 0 rgba(26,6,40,1),
+    1px 1px 0 rgba(26,6,40,1), -1px -1px 0 rgba(26,6,40,1),
+    1px -1px 0 rgba(26,6,40,1), -1px 1px 0 rgba(26,6,40,1),
+    0 0 8px rgba(232,121,249,1), 0 0 22px rgba(232,121,249,.7),
+    0 4px 0 rgba(44,10,54,1); animation:logoPulse2 2.6s ease-in-out infinite; }
+@keyframes logoPulse{ 0%,100%{ filter:brightness(1)} 50%{ filter:brightness(1.12)} }
+@keyframes logoPulse2{ 0%,100%{ filter:brightness(1.12)} 50%{ filter:brightness(1)} }
+/* marquee lettering: gradient-clipped text with a travelling sheen */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .logo .lg{
+    color:transparent;
+    background-image:linear-gradient(90deg,#e9fcff 0%,#ffffff 30%,#f2feff 50%,#ffffff 70%,#e9fcff 100%);
+    background-size:200% 100%; background-repeat:repeat-x;
+    -webkit-background-clip:text; background-clip:text;
+    animation:logoSheen 3.6s linear infinite;
+  }
+  .logo .row2{
+    background-image:linear-gradient(90deg,#ffd8fb 0%,#ffffff 30%,#ffb8f7 50%,#ffffff 70%,#ffd8fb 100%);
+  }
+}
+@keyframes logoSheen{ 0%{ background-position:0% 0; } 100%{ background-position:-200% 0; } }
+.tagline{ font-size:8px; color:#d9f2fc; letter-spacing:4px; text-shadow:0 1px 0 rgba(4,10,20,.9), 0 0 6px rgba(6,20,40,.85); }
+/* attract splash line: cycles one-liner captions under the logo */
+#splash-line.swap{ animation:splashSwap .4s ease-out; }
+@keyframes splashSwap{ from{ opacity:0; transform:translateY(3px); } to{ opacity:1; transform:none; } }
+#splash-line.start{ color:var(--yellow); text-shadow:0 1px 0 rgba(4,10,20,.9), 0 0 6px rgba(6,20,40,.5), 0 0 3px rgba(250,204,21,.75); animation:pressPulse 1.25s ease-in-out infinite; letter-spacing:5px; }
+
+/* title screen intro sequence */
+#scr-menu.intro .logo{ animation:logoDrop .5s cubic-bezier(.2,1.4,.3,1) both, logoPulse 2.6s ease-in-out 1.1s infinite; }
+#scr-menu.intro .tagline{ animation:fadeUp .5s ease-out .25s both; }
+#scr-menu.intro .title-board{ animation:fadeUp .5s ease-out .45s both; }
+#scr-menu.intro #menu-main{ animation:fadeUp .5s ease-out .6s both; }
+#scr-menu.intro .hint{ animation:fadeUp .5s ease-out .8s both; }
+@keyframes logoDrop{ 0%{ transform:scale(1.6); opacity:0; filter:brightness(1.35); } 100%{ transform:scale(1); opacity:1; filter:brightness(1); } }
+@keyframes fadeUp{ 0%{ transform:translateY(12px); opacity:0; } 100%{ transform:none; opacity:1; } }
+
+/* title leaderboard strip */
+.title-board{
+  width:min(268px,86%); margin-top:-2px;
+  border:1px solid rgba(34,211,238,.18); border-radius:4px;
+  background:rgba(6,12,24,.5); padding:4px 10px;
+}
+.title-board .tb-head{ font-size:6px; color:var(--dim); letter-spacing:2.5px; margin-bottom:3px; }
+.title-board .tb-head b{ color:var(--cyan); letter-spacing:1.5px; }
+.title-board table{ width:100%; border-collapse:collapse; }
+.title-board td{ font-size:6.5px; padding:2px 0; color:var(--text); letter-spacing:1px; }
+.title-board td:first-child{ width:16px; text-align:left; color:var(--dim); }
+.title-board td:nth-child(2){ text-align:left; }
+.title-board td:last-child{ text-align:right; color:var(--cyan); }
+.title-board tr.best td{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.65); }
+.title-board tr.best td:first-child{ color:var(--yellow); }
+.title-board tr.rk1 td:first-child{ color:var(--yellow); }
+.title-board tr.rk2 td:first-child{ color:#d9dde3; }
+.title-board tr.rk3 td:first-child{ color:#d9a06b; }
+.title-board .tb-empty{ font-size:6.5px; color:var(--dim); letter-spacing:1px; padding:6px 0; }
+.copy{ font-size:5.5px; color:rgba(91,122,140,.55); letter-spacing:1px; margin-top:2px; }
+/* attract marquee ticker */
+.ticker{
+  width:min(300px,88%); overflow:hidden; margin-top:1px;
+  border-top:1px solid rgba(34,211,238,.14); border-bottom:1px solid rgba(34,211,238,.14);
+  padding:3px 0;
+}
+.ticker-track{
+  display:inline-block; white-space:nowrap; will-change:transform;
+  font-size:5.5px; letter-spacing:2px; color:rgba(91,122,140,.85);
+  animation:tickerScroll 26s linear infinite;
+}
+.ticker-track b{ color:var(--cyan); font-weight:normal; text-shadow:0 0 2px rgba(34,211,238,.5); }
+.ticker-track .accent{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.55); }
+.ticker:hover .ticker-track{ animation-play-state:paused; }
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{ animation:none; }
+  #splash-line.swap{ animation:none; }   /* splash swaps are instant, no fade-rise */
+  #splash-line.start{ animation:none; }   /* PRESS START sits static, no pulse */
+  .st-btn.playing{ animation:none; }      /* AUDITION flash is a static highlight */
+  #wipe.go{ animation:none; }             /* screen roll is instant, no CRT band */
+  .screen.on{ animation:none; }           /* screen fades are instant */
+  #banner.on{ animation:none; }           /* banner pops are instant */
+}
+@keyframes tickerScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+.blink{ animation:blink 1s steps(2) infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+/* smooth press-start pulse on the title */
+.hint.blink{ animation:pressPulse 1.25s ease-in-out infinite; }
+@keyframes pressPulse{ 0%,100%{ opacity:1 } 50%{ opacity:.28 } }
+
+/* menu lists */
+.menu{ display:flex; flex-direction:column; gap:5px; width:min(280px, 88%); margin-top:2px; }
+.mbtn{
+  font-family:var(--pix); font-size:9px; letter-spacing:2px; color:var(--text);
+  background:rgba(10,20,36,.55); border:2px solid rgba(34,211,238,.18);
+  border-radius:4px; padding:6px 14px; cursor:pointer; text-align:left;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  transition:all .12s ease; outline:none;
+}
+.mbtn .lbl{ flex:1; }
+.mbtn .val{ color:var(--dim); font-size:8px; }
+.mbtn:hover{ background:rgba(34,211,238,.14); border-color:rgba(34,211,238,.7); box-shadow:0 0 12px rgba(34,211,238,.22); }
+.foot-hint{ font-size:6px; color:rgba(91,122,140,.8); letter-spacing:2px; line-height:1.9; margin-top:2px; }
+.mbtn:active{ transform:scale(.98); }
+.mbtn.sel{
+  background:rgba(34,211,238,.16); border-color:var(--cyan);
+  box-shadow:0 0 14px rgba(34,211,238,.35), inset 0 0 10px rgba(34,211,238,.15);
+  color:#fff;
+}
+.mbtn.sel::before{ content:'▸'; color:var(--cyan); text-shadow:0 0 3px var(--cyan); }
+.mbtn.sel .val{ color:var(--cyan); }
+.mbtn[data-act="back"]{ color:var(--dim); font-size:8px; justify-content:center; border-style:dashed; }
+.mbtn[data-act="back"].sel{ color:var(--text); }
+/* CLASSIC RULES toggle: magenta when armed — distinct from the cyan keyboard-focus .sel */
+
+.hint{ font-size:6.5px; color:var(--dim); letter-spacing:1.5px; line-height:1.7; margin-top:3px; }
+.version{ position:absolute; bottom:6px; right:10px; font-size:6px; color:rgba(91,122,140,.6); letter-spacing:1px; }
+
+/* diff picker */
+.diff-grid{ display:flex; flex-wrap:wrap; gap:10px; width:min(430px,92%); }
+.diff-card{
+  flex:1; padding:14px 10px; border:2px solid rgba(34,211,238,.2); border-radius:6px;
+  background:rgba(10,20,36,.5); cursor:pointer; transition:all .12s;
+}
+.diff-card h3{ font-size:11px; letter-spacing:2px; margin-bottom:8px; }
+.diff-card p{ font-size:6px; color:var(--dim); line-height:1.9; min-height:52px; }
+.diff-card .stats{ font-size:7px; color:var(--yellow); margin-top:8px; letter-spacing:1px; }
+.diff-card.sel{ border-color:var(--cyan); box-shadow:0 0 16px rgba(34,211,238,.4); background:rgba(34,211,238,.1); }
+.diff-card.sel h3{ color:var(--cyan); text-shadow:0 0 3px var(--cyan); }
+/* CLASSIC is its own full-width mode card, accented magenta to match the strict-Frogger hint it replaces */
+.diff-card.wide{ flex:0 0 100%; border-color:rgba(232,121,249,.3); }
+.diff-card.wide.sel{ border-color:var(--magenta); box-shadow:0 0 16px rgba(232,121,249,.4); background:rgba(232,121,249,.1); }
+.diff-card.wide.sel h3{ color:var(--magenta); text-shadow:0 0 3px var(--magenta); }
+
+/* daily challenge */
+.daily-head{ font-size:10px; color:var(--cyan); letter-spacing:2px; text-shadow:0 0 4px rgba(34,211,238,.7); }
+.daily-cfg{ font-size:6.5px; color:var(--dim); letter-spacing:1px; }
+.daily-tip{ font-size:8px; color:var(--yellow); letter-spacing:1px; text-shadow:0 0 3px rgba(250,204,21,.65); min-height:12px; }
+#daily-board{ width:min(300px,92%); }
+/* operator stats / achievements */
+.ach-count{ font-size:7px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 3px rgba(250,204,21,.65); }
+.ach-stats{ width:min(290px,92%); }
+.ach-stats td:last-child{ text-align:right; color:var(--cyan); }
+.ach-list{ width:min(340px,94%); max-height:252px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; padding:2px 6px 2px 2px; }
+.ach-list::-webkit-scrollbar{ width:6px; }
+.ach-list::-webkit-scrollbar-thumb{ background:rgba(34,211,238,.35); border-radius:3px; }
+.ach-item{ display:flex; align-items:center; gap:10px; padding:8px 10px; border:1px solid rgba(34,211,238,.15); border-radius:4px; background:rgba(10,20,36,.4); text-align:left; }
+.ach-item.on{ border-color:rgba(250,204,21,.55); background:rgba(250,204,21,.06); box-shadow:0 0 10px rgba(250,204,21,.15); }
+.ach-ico{ font-size:12px; color:var(--dim); width:18px; text-align:center; flex-shrink:0; }
+.ach-item.on .ach-ico{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.85); }
+.ach-n{ font-size:7.5px; letter-spacing:1px; color:var(--text); }
+.ach-item.on .ach-n{ color:#fff; }
+.ach-d{ font-size:6px; color:var(--dim); line-height:1.6; margin-top:3px; }
+/* unlock toasts */
+#toasts{ position:absolute; top:70px; right:10px; z-index:45; display:flex; flex-direction:column; align-items:flex-end; gap:8px; pointer-events:none; }
+.toast{
+  width:250px; padding:10px 12px; text-align:left;
+  background:rgba(6,14,26,.95); border:2px solid var(--yellow); border-radius:6px;
+  box-shadow:0 0 18px rgba(250,204,21,.45), inset 0 0 12px rgba(250,204,21,.12);
+  transform:translateX(120%); opacity:0; transition:transform .28s cubic-bezier(.2,.9,.3,1.2), opacity .28s;
+}
+.toast.in{ transform:none; opacity:1; }
+.toast.out{ transform:translateX(120%); opacity:0; }
+.toast-h{ font-size:6px; color:var(--
+
+... [OUTPUT TRUNCATED - 184,223 chars omitted out of 234,148 total] ...
+
+ ['passes','violations','incomplete'].forEach(function(k){
+        (res[k]||[]).forEach(function(r){
+          if(!r||!r.id) return;
+          if(!m[r.id]) m[r.id]={ tags:(r.tags||[]).slice(), regs:{hud:0,banner:0,toasts:0,game:0}, mid:0 };
+          (r.nodes||[]).forEach(function(nd){
+            var t=(nd.target&&nd.target[0])||'';
+            for(var ri=0;ri<MID_REGIONS.length;ri++){
+              if(MID_REGS[MID_REGIONS[ri]].test(t)){ m[r.id].regs[MID_REGIONS[ri]]++; m[r.id].mid++; break; }
+            }
+          });
+        });
+      });
+      return m;
+    }
+    function mergeCov(dst,src){
+      for(var id in src){
+        if(dst[id]){
+          for(var ri=0;ri<MID_REGIONS.length;ri++) dst[id].regs[MID_REGIONS[ri]]+=src[id].regs[MID_REGIONS[ri]];
+          dst[id].mid+=src[id].mid;
+        } else {
+          dst[id]={ tags:(src[id].tags||[]).slice(), regs:{hud:src[id].regs.hud,banner:src[id].regs.banner,toasts:src[id].regs.toasts,game:src[id].regs.game}, mid:src[id].mid };
+        }
+      }
+      return dst;
+    }
+    function covEntry(c){
+      /* one state's coverage row: rule count, rule ids, and which rules touched mid-game regions */
+      var ids=Object.keys(c).sort(), midRules=[], midNodes=0;
+      ids.forEach(function(id){ if(c[id].mid>0){ midRules.push(id); midNodes+=c[id].mid; } });
+      return { count:ids.length, rules:ids, midRules:midRules, midNodes:midNodes };
+    }
+    function wcagOf(cov){
+      var s={};
+      for(var id in cov){ (cov[id].tags||[]).forEach(function(t){ if(WCAG_RE.test(t)) s[t]=1; }); }
+      return Object.keys(s).sort();
+    }
+    function filt(res){
+      return res.violations.filter(function(x){ return (baseline[x.id]||0)<x.nodes.length; })
+        .map(function(x){ return { id:x.id, impact:x.impact, nodes:x.nodes.length, help:x.help.slice(0,70) }; });
+    }
+    /* live-gameplay pass ({live:true}): plays a REAL level-1 run so axe can scan the true
+       mid-game states the menu can't reach — the play HUD + banner, the achievement toasts,
+       and the genuine intermission card. The packet is parked on the bank under each socket,
+       then a genuine tryMove hop fires into the core (onArrive fills the goal and starts the
+       return flight, exactly like a human run). Side-effect-free: the pre-run meta snapshot
+       (achievement unlocks, games played) and the boot world are restored on the way out. */
+    async function liveGameplayPass(filt){
+      var pOut={}, pFails=[], pTotal=0;
+      var settle=function(ms){ return new Promise(function(r){ setTimeout(r,ms); }); };
+      var waitFor=function(fn,ms){ return new Promise(function(res){
+        var t0=Date.now();
+        (function poll(){ if(fn()) return res(true); if(Date.now()-t0>ms) return res(false); setTimeout(poll,40); })();
+      }); };
+      var pCov={}; /* per-state exercised rules (returned for the coverage report) */
+      var scan=async function(tag,ms){
+        await settle(ms||200); /* default outlasts the CRT wipe + banner/toast settle; mid-game states like the death slow-mo pass a shorter settle (no wipe in play) */
+        var res=await axe.run(document, {});
+        var c=covOf(res);
+        pCov[tag]=c; /* the full covOf map: rule ids + per-region mid-game node counts for the report */
+        mergeCov(liveCov,c); /* closure: the live-pass merged rule set, diffed vs menuCov for the report */
+        pOut[tag]=filt(res);
+        if(pOut[tag].length){ pFails.push({ screen:tag, violations:pOut[tag] }); pTotal+=pOut[tag].length; }
+      };
+      var metaSnap=JSON.stringify(meta);
+      try{
+        /* force the first_core toast to fire even on a profile that already has it */
+        meta.ach=meta.ach||{}; delete meta.ach.first_core;
+        newGame(); /* menu → level-1 run: mode 'ready', 'LEVEL 1 / ROUTE THE PACKET' banner up */
+        await settle(250);
+        await scan('game'); /* the play HUD + banner, live */
+        if(!(await waitFor(function(){ return world.mode==='play'; }, 5000))) throw new Error('ready timer never flipped to play');
+        var cols=world.sockets||GOAL_COLS, p=world.player;
+        /* genuine death pass: park the packet dead-center on an on-screen truck (no invuln, no
+           shield, no burst, powerups cleared) so checkCrash fires a REAL 'crash' — then scan
+           the slow-mo shatter, and the 'PACKET FRAGMENTED!' banner + respawn HUD once the
+           aftermath lands. The run then continues and still clears the level. */
+        world.lives=3; /* keep the run alive on any difficulty so the level can still clear */
+        world.powerups.length=0; world.powerSpawnT=9999; /* a shield/burst pickup at the parking spot would 'save' the packet and skip the death — clear the field AND stop new spawns (the socket loop never crosses lanes, so the run loses nothing) */
+        var crashed=false;
+        for(var ti=0;ti<world.lanesH.length&&!crashed;ti++){
+          var tLane=world.lanesH[ti];
+          for(var vj=0;vj<tLane.vehicles.length&&!crashed;vj++){
+            var tv=tLane.vehicles[vj];
+            if(tv.x>60&&tv.x+tv.w<W-60){ /* comfortably on-screen: it can't drift past an edge before the hit */
+              p.px=tv.x+tv.w/2; p.py=tLane.row*TILE+TILE/2;
+              p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1); p.ty=tLane.row;
+              p.moving=false; p.invuln=0; p.shield=false; p.burst=0; p.returnT=-1; p.trail.length=0;
+              crashed=true;
+            }
+          }
+        }
+        if(!crashed) throw new Error('no on-screen vehicle found to force a crash');
+        if(!(await waitFor(function(){ return world.player.dead===1; }, 2000))) throw new Error('forced crash never fired');
+        await scan('death',30); /* slow-mo shatter state: lives down, banner not yet up — the 0.4s window is tight, so settle minimally (if axe is slow the scan may straddle into the aftermath edge; the respawn scan right after owns the banner either way) */
+        if(!(await waitFor(function(){ return world.player.dead===0&&world.deathT<=0; }, 3000))) throw new Error('respawn never fired');
+        await settle(150);
+        await scan('respawn'); /* 'PACKET FRAGMENTED!' banner + post-respawn HUD */
+        for(var g=0;g<cols.length;g++){
+          /* wait out the previous core's return flight so the packet is home before we move it */
+          if(p.returnT>=0&&!(await waitFor(function(){ return world.player.returnT<0; }, 4000))) throw new Error('return flight stalled at core '+(g+1));
+          p.px=cols[g]*TILE+TILE/2; p.py=TILE+TILE/2; p.tx=cols[g]; p.ty=1;
+          p.moving=false; p.returnT=-1; p.landT=0; p.trail.length=0; p.invuln=3;
+          if(!tryMove(0)) throw new Error('socket hop rejected at core '+(g+1)); /* a REAL hop up into the socket — a silent false (mode race) would otherwise surface as a 3s timeout */
+          if(!(await waitFor(function(){ return world.goals[g]===true; }, 3000))) throw new Error('socket hop never landed core '+(g+1));
+          if(g===0) await scan('toasts'); /* first core → the first_core achievement toast is up */
+        }
+        if(world.mode==='levelclear'){ await scan('inter'); } /* the GENUINE intermission, painted by levelClear */
+        else throw new Error('level clear never fired');
+      }catch(e){
+        pFails.push({ screen:'live', violations:[{ id:'live-run', impact:'critical', nodes:1, help:'live gameplay pass aborted: '+(e&&e.message||e) }] });
+        pTotal+=1;
+      }
+      /* restore the pre-run profile and the boot attract world — the gate must be side-effect-free */
+      meta=JSON.parse(metaSnap); store.set(META_KEY, meta);
+      newWorld(2,'attract'); world.attractDemo=true; world.demoGoal=0; resetDemo();
+      banner.classList.remove('on'); banner.classList.remove('green'); banner.innerHTML=''; /* a fresh newWorld zeroes bannerT, so the run's last banner would otherwise stick on the menu forever */
+      showScreen('menu');
+      return { screens:pOut, failures:pFails, total:pTotal, cov:pCov };
+    }
+    for(var i=0;i<screens.length;i++){
+      showScreen(screens[i]);
+      await new Promise(function(r){ setTimeout(r,100); }); /* outlast the CRT screenWipe so contrast rules see the real colors */
+      var res=await axe.run(document, {});
+      var c=covOf(res);
+      covPer[screens[i]]=covEntry(c);
+      mergeCov(menuCov,c);
+      var v=filt(res);
+      out[screens[i]]=v;
+      if(v.length){ fails.push({ screen:screens[i], violations:v }); total+=v.length; }
+    }
+    var covReport=null;
+    if(o.live){
+      var live=await liveGameplayPass(filt);
+      for(var k in live.screens) out['live-'+k]=live.screens[k];
+      for(var fi=0;fi<live.failures.length;fi++) fails.push(live.failures[fi]);
+      total+=live.total;
+      /* coverage report: rules & WCAG criteria the live pass reaches that no menu screen does */
+      for(var lk in live.cov) covPer['live-'+lk]=covEntry(live.cov[lk]);
+      var liveOnlyIds=[], liveOnly={}, liveOnlyWcag={};
+      var midOnly=[], hudOnly=[], hudNodes=0, midOnlyWcag={};
+      for(var rid in liveCov){
+        if(!menuCov[rid]){
+          liveOnlyIds.push(rid);
+          liveOnly[rid]=liveCov[rid];
+          (liveCov[rid].tags||[]).forEach(function(t){ if(WCAG_RE.test(t)) liveOnlyWcag[t]=1; });
+        }
+        /* mid-game region reach: did the live pass evaluate nodes there that NO menu screen did?
+           No break here — a rule can touch several live-only regions (e.g. banner AND hud). */
+        for(var mi=0;mi<MID_REGIONS.length;mi++){
+          var rg=MID_REGIONS[mi];
+          if(liveCov[rid].regs[rg]>0&&(!menuCov[rid]||menuCov[rid].regs[rg]===0)){
+            midOnly.push({ id:rid, region:rg, nodes:liveCov[rid].regs[rg] });
+            (liveCov[rid].tags||[]).forEach(function(t){ if(WCAG_RE.test(t)) midOnlyWcag[t]=1; });
+            if(rg==='hud'){ hudOnly.push(rid); hudNodes+=liveCov[rid].regs[rg]; } /* hud is one iteration, so this stays duplicate-free */
+          }
+        }
+      }
+      liveOnlyIds.sort(); hudOnly.sort();
+      var liveOnlyWcagArr=Object.keys(liveOnlyWcag).sort();
+      covReport={
+        screens: covPer,
+        menu: { rules:Object.keys(menuCov).sort(), wcag:wcagOf(menuCov),
+                midRules:Object.keys(menuCov).filter(function(id){ return menuCov[id].mid>0; }).sort(),
+                midNodes:Object.keys(menuCov).reduce(function(a,id){ return a+menuCov[id].mid; },0) },
+        live: { rules:Object.keys(liveCov).sort(), wcag:wcagOf(liveCov),
+                midRules:Object.keys(liveCov).filter(function(id){ return liveCov[id].mid>0; }).sort(),
+                midNodes:Object.keys(liveCov).reduce(function(a,id){ return a+liveCov[id].mid; },0) },
+        liveOnly: {
+          rules: liveOnlyIds.map(function(id){ return { id:id, wcag:(liveOnly[id].tags||[]).filter(function(t){ return WCAG_RE.test(t); }) }; }),
+          wcag: liveOnlyWcagArr,
+          midgame: midOnly,
+          hudRules: hudOnly,
+          hudNodes: hudNodes,
+          wcagMidgame: Object.keys(midOnlyWcag).sort()
+        }
+      };
+      if(liveOnlyIds.length){
+        console.log('[a11yScan] live pass exercises '+liveOnlyIds.length+' axe rule(s) the 11 menu screens never do: '+liveOnlyIds.join(', '));
+        if(liveOnlyWcagArr.length) console.log('[a11yScan]   → WCAG criteria reached only by the live pass: '+liveOnlyWcagArr.join(', '));
+      } else if(midOnly.length){
+        console.log('[a11yScan] live pass adds no NEW rules beyond the menu screens — its value is node-level reach (next line)');
+      } else {
+        console.log('[a11yScan] live pass adds no new rules and no new mid-game node reach');
+      }
+      if(hudOnly.length){
+        console.log('[a11yScan] these rules evaluate in-game #hud nodes ONLY in the live pass: '+hudOnly.join(', ')+' ('+hudNodes+' node checks)');
+      }
+      var midOther=midOnly.filter(function(x){ return x.region!=='hud'; });
+      if(midOther.length){
+        console.log('[a11yScan] mid-game regions only the live pass reaches: '+midOther.map(function(x){ return x.id+'@'+x.region+'('+x.nodes+')'; }).join(', '));
+      }
+    }
+    showScreen('menu'); /* always leave a clean state */
+    return { pass: total===0, total: total, screens: out, failures: fails, coverage: covReport };
+  }
+};
+
+/* ---------------- boot ---------------- */
+newWorld(2,'attract');
+world.attractDemo=true; world.demoGoal=0; resetDemo();
+menuIntroNext=true;
+showScreen('menu');
+refreshMenuMeta();
+paintDiff();
+requestAnimationFrame(loop);
+
+/* auto-pause when tab hidden (always: a hidden tab throttles the loop anyway) */
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden&&curScreen==='game'&&(world.mode==='play'||world.mode==='ready')){
+    saveMeta();
+    world.priorMode=world.mode;
+    togglePause();
+  }
+});
+/* auto-pause when the window loses focus: optional (SOUND & DISPLAY → PAUSE ON BLUR).
+   Blur fires even when the page stays visible (e.g. headless capture panels), so
+   headless runs can disable it via settings.pauseOnBlur. */
+window.addEventListener('blur',function(){
+  if(settings.pauseOnBlur&&curScreen==='game'&&(world.mode==='play'||world.mode==='ready')){
+    saveMeta();
+    world.priorMode=world.mode;
+    togglePause();
+  }
+});
+})();
+</script>
+<script>
+/* ==== TEMP-BOT: careful-player playtest harness (from bot-test.js). REMOVE BEFORE SHIP ==== */
+(function(){
+  if (window.__B && window.__B.installed) return;
+  var B = window.__B = window.__B || {};
+  B.installed = true;
+  B.armed = false;
+  B.diff = (__DR__.settings && __DR__.settings.difficulty) || '?';
+  B.report = { diff: B.diff, attempts: [], deaths: [], clears: 0, ts: Date.now() };
+  B.lastWorld = null;
+  B.attempt = null;
+  B.deathSeen = false;
+  B.goPressed = false;
+
+  var TILE = 40, W = 480;
+  var KEYN = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'];
+  var HOP_N = 0.095, HOP_O = 0.055;
+  var HOME_X = 5 * TILE + TILE / 2; /* origin column (START_COL=5): crossing near the center leaves room to dodge both ways and avoids board-edge dead-ends */
+
+  function mod(a, n){ return ((a % n) + n) % n; }
+  function ww(){ return __DR__.world; }
+
+  B.mult = function(){
+    var w = ww();
+    var m = (w.throttleT > 0) ? 0.35 : 1;
+    /* warning counts as rush: traffic is still 1x NOW but the surge can start
+       mid-crossing, so windows verified at 1x are unsafe. Assume 2x during both. */
+    if (w.rushPhase === 'rush' || w.rushPhase === 'warning') m *= 2;
+    return m;
+  };
+  B.hopT = function(){ var p = ww().player; return (p.overclock > 0) ? HOP_O : HOP_N; };
+
+  B.press = function(dir){
+    var p = ww().player;
+    B.lastPress = { t: Math.round(ww().worldTime * 100) / 100, ty: p.ty, px: Math.round(p.px), dir: dir };
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: KEYN[dir] }));
+    setTimeout(function(){ window.dispatchEvent(new KeyboardEvent('keyup', { key: KEYN[dir] })); }, 55);
+  };
+
+  B.futX = function(v, t){
+    return v.min + mod(v.x - v.min + v.v * B.mult() * t, v.span);
+  };
+
+  /* vehicle hitbox padded by PAD so razor-thin boundary grazes (the 0.1-3px clips
+     that killed the old bot) count as blocked; samples every 0.02s so even a 2x-rush
+     ping (~5.8px/step) can't skip the pad. */
+  B.cellClear = function(row, cx, t0, wd){
+    var lane = null;
+    for (var i = 0; i < ww().lanesH.length; i++) if (ww().lanesH[i].row === row){ lane = ww().lanesH[i]; break; }
+    if (!lane) return true;
+    var vs = lane.vehicles, steps = Math.max(2, Math.ceil(wd / 0.02)), PAD = 6;
+    for (var k = 0; k < vs.length; k++){
+      var v = vs[k];
+      for (var s = 0; s <= steps; s++){
+        var x = B.futX(v, t0 + wd * s / steps);
+        if (x + 3 - PAD < cx + 10 && x + v.w - 6 + PAD > cx - 10) return false;
+      }
+    }
+    return true;
+  };
+
+  B.curBus = function(row, px){
+    var lane = ww().lanesB[row - 2];
+    if (!lane) return null;
+    for (var i = 0; i < lane.buses.length; i++){
+      var b = lane.buses[i];
+      for (var k = -1; k <= 1; k++){
+        var bx = b.x + k * lane.period;
+        if (px >= bx && px <= bx + b.w) return b;
+      }
+    }
+    return null;
+  };
+
+  B.busAt = function(row, px, t, minSafe, pad){
+    var lane = ww().lanesB[row - 2];
+    if (!lane) return null;
+    var p = pad || 0, best = null, bestSafe = -1;
+    for (var i = 0; i < lane.buses.length; i++){
+      var b = lane.buses[i];
+      var bx0 = mod(b.x + b.v * B.mult() * t, lane.period);
+      for (var k = -1; k <= 1; k++){
+        var bx = bx0 + k * lane.period;
+        /* pad: the landing point must land well INSIDE the bus, not within p px of
+           an edge — execution lag (~1 frame) shifts the landing ~5px, and a landing
+           that clips the edge drops the player into the gap (instant SHORT CIRCUIT). */
+        if (px >= bx + p && px <= bx + b.w - p){
+          var safeT = (!b.sink) ? 999 : (b.sinkT - t);
+          if (safeT >= minSafe && safeT > bestSafe){ best = b; bestSafe = safeT; }
+        }
+      }
+    }
+    return best;
+  };
+
+  /* a bus on `row` that covers landX at time t (with 6px inside-pad so lag can't
+     drop the hop into a gap), stays on-board long enough to ride (minRide s), and
+     won't sink within minSafe s — else null. */
+  B.safeRide = function(row, landX, t, minSafe, minRide){
+    var b = B.busAt(row, landX, t, minSafe, 6);
+    if (!b) return null;
+    var ride = b.v > 0 ? (W + 12 - landX) / b.v : (landX + 12) / -b.v;
+    return ride >= minRide ? b : null;
+  };
+  /* seconds until the current bus carries the player off the board edge */
+  B.timeToEdge = function(){
+    var p = ww().player;
+    if (p.ty < 2 || p.ty > 4) return 999;
+    var bus = B.curBus(p.ty, p.px);
+    if (!bus) return 999;
+    return bus.v > 0 ? (W + 12 - p.px) / bus.v : (p.px + 12) / -bus.v;
+  };
+  /* last-ditch sinking/edge escape: hop sideways to a safe same-row bus */
+  B.sideEscape = function(row, px, curBus){
+    var H = B.hopT();
+    var dirs = (curBus.v > 0) ? [3, 1] : [1, 3];
+    for (var i = 0; i < dirs.length; i++){
+      var d = dirs[i], landX = px + (d === 1 ? TILE : -TILE) + curBus.v * H;
+      if (landX < 4 || landX > W - 4) continue;
+      if (B.safeRide(row, landX, H, 2.0, 1.5)){ B.press(d); return true; }
+    }
+    return false;
+  };
+
+  B.chainUp = function(px){
+    var p = ww().player, H = B.hopT();
+    var rows = [];
+    for (var rr = p.ty - 1; rr >= 5; rr--) rows.push(rr);
+    var arrive = 0;
+    for (var i = 0; i < rows.length; i++){
+      var rr = rows[i];
+      var entry = (i === 0) ? 0 : arrive + 0.05;
+      arrive = entry + H;
+      var checkFrom = arrive - (i === 0 ? 0.05 : 0.045);
+      var holdUntil = (i === rows.length - 1) ? arrive + 0.9 : arrive + 0.05 + H + 0.02;
+      if (!B.cellClear(rr, px, checkFrom, holdUntil - checkFrom)) return false;
+    }
+    return true;
+  };
+
+  /* seconds until any vehicle on traffic row `row` enters the padded column band
+     at cx (0 if one is already overlapping). Lets the bot wait inside a lane's gap
+     for the next lane to open instead of retreating at the first blocked tick.
+     The band matches cellClear's padded hitbox (PAD=6): a right-mover becomes
+     blocking when its rear crosses the player's left edge (x > cx-10-v.w), a
+     left-mover when its front crosses the player's right edge (x < cx+13). Each
+     vehicle is checked at every ring copy (k*span) so a wrapped vehicle that has
+     already passed the column still reports its next lap. */
+  B.timeToVehicle = function(row, cx){
+    var lane = null;
+    for (var i = 0; i < ww().lanesH.length; i++) if (ww().lanesH[i].row === row){ lane = ww().lanesH[i]; break; }
+    if (!lane) return 999;
+    var min = 999, m = B.mult();
+    for (var k = 0; k < lane.vehicles.length; k++){
+      var v = lane.vehicles[k], x = B.futX(v, 0), sp = v.v * m, span = v.span;
+      var E = cx - 10 - v.w, X = cx + 13; /* padded band [E, X] */
+      for (var c = -1; c <= 1; c++){
+        var xc = x + c * span, t;
+        if (sp > 0){
+          if (xc > E && xc < X) t = 0;         /* already in the band */
+          else if (xc <= E) t = (E - xc) / sp; /* approaching from the left */
+          else continue;                       /* past — the -span copy laps it */
+        } else {
+          if (xc > E && xc < X) t = 0;         /* already in the band */
+          else if (xc >= X) t = (xc - X) / -sp; /* approaching from the right */
+          else continue;                       /* past — the +span copy laps it */
+        }
+        if (t < min) min = t;
+      }
+    }
+    return min;
+  };
+
+  B.hopUpSafe = function(px){
+    var p = ww().player, r = p.ty, H = B.hopT();
+    if (r <= 0) return false;
+    if (!B.cellClear(r, px, 0, 0.14)) return false;        /* transit out of current row */
+    /* clock-pressure ladder: with time to spare the bot requires a full verified
+       escape; as the clock dies it relaxes and gambles rather than starve on the
+       bank. depth=3 full chain, depth=2 medium, depth=1 landing-row-only gamble. */
+    var tl = ww().time;
+    var depth = tl < 12 ? 1 : (tl < 25 ? 2 : 3);
+    var stand = tl < 12 ? 0.3 : (tl < 25 ? 0.35 : 0.4);
+    var land = H - 0.05;                                    /* landing window start */
+    if (!B.cellClear(r - 1, px, land, stand)) return false; /* landing row standing window */
+    var L = r - 1;
+    if (L >= 6 && L <= 9){
+      /* Escape-guarantee: every hop onto a traffic row must have a verified way off.
+         Up-chain: the rows above must be clear at their hop-out times (trap-free).
+         OR retreat: the row below (the row we're leaving) clear at retreat time —
+         that's what real Frogger lane-by-lane play does, and it lets the bot enter
+         a row while row 9 is open instead of waiting for the whole chain. Row 9
+         from the bank always retreats to the bank. */
+      var upOK = true;
+      for (var d = 1; d < depth && L - d >= 6; d++){
+        if (!B.cellClear(L - d, px, land + d * H, stand)){ upOK = false; break; }
+      }
+      if (upOK) return true;
+      if (depth >= 2){
+        if (r >= 10) return true;                     /* retreat to the bank: always safe */
+        if (B.cellClear(r, px, land + 2 * H, 0.25)) return true; /* row below clear at retreat */
+      }
+      return false;
+    }
+    return true;
+  };
+
+  B.retreatSafe = function(px){
+    var p = ww().player, r = p.ty, H = B.hopT();
+    if (r >= 11) return false;
+    if (!B.cellClear(r, px, 0, 0.14)) return false;
+    /* landing window 0.25s: just enough for a 45ms re-eval + 95ms hop out, so the
+       retreat ladder (8->9->bank) works instead of stranding the bot on a dead-end
+       row because the landing lane only had a brief gap. */
+    if (!B.cellClear(r + 1, px, H - 0.05, 0.25)) return false;
+    return true;
+  };
+
+  /* last-ditch escape on a traffic row when BOTH the up-window and the retreat are
+     closed: hop sideways to an adjacent column whose cell stays clear through the
+     hop, the way a careful human steps aside instead of standing in the vehicle's
+     path. Old column must stay clear while we cross out of it (~0.08s); the new
+     column from the moment the hitbox enters it through landing + a re-eval stand. */
+  B.sideDodge = function(r, px){
+    var H = B.hopT();
+    /* prefer the direction back toward the center so dodging can't corner the bot
+       at a board edge where only one dodge direction remains */
+    var dirs = (px < HOME_X) ? [1, 3] : (px > HOME_X ? [3, 1] : [1, 3]);
+    for (var i = 0; i < dirs.length; i++){
+      var d = dirs[i], nx = px + (d === 1 ? TILE : -TILE);
+      if (nx < TILE / 2 || nx > W - TILE / 2) continue;
+      if (!B.cellClear(r, px, 0, 0.08)) continue;
+      if (!B.cellClear(r, nx, 0.03, H + 0.15)) continue;
+      B.press(d);
+      return true;
+    }
+    return false;
+  };
+
+  B.cores = function(){
+    var g = ww().goals, n = 0;
+    for (var i = 0; i < g.length; i++) if (g[i]) n++;
+    return n;
+  };
+  B.nextGoal = function(){
+    var cols = ww().sockets || [1, 3, 5, 7, 9];
+    for (var i = 0; i < cols.length; i++) if (!ww().goals[i]) return cols[i];
+    return cols[0];
+  };
+
+  B.tick = function(){
+    var w = ww();
+    if (!w || !B.armed) return;
+    var p = w.player;
+
+    if (w.deathT > 0 && w.deathMsg && !B.deathSeen){
+      B.deathSeen = true;
+      var d = { msg: w.deathMsg, ty: p.ty, px: Math.round(p.px), t: Math.round(w.worldTime * 10) / 10,
+                cores: B.cores(), lives: w.lives };
+      B.report.deaths.push(d);
+      if (B.attempt) B.attempt.deaths.push(d);
+    }
+    if (w.deathT <= 0) B.deathSeen = false;
+    if (B.attempt) B.attempt.cores = B.cores();
+
+    if (B.lastWorld !== w){
+      B.lastWorld = w;
+      if (w.mode === 'play' || w.mode === 'ready'){
+        B.attempt = { deaths: [], cores: 0, outcome: 'running' };
+        B.report.attempts.push(B.attempt);
+      }
+    }
+
+    if (w.mode === 'gameover'){
+      if (!B.goPressed){
+        B.goPressed = true;
+        if (B.attempt && B.attempt.outcome === 'running') B.attempt.outcome = 'gameover';
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+        setTimeout(function(){
+          window.dispatchEvent(new KeyboardEvent('keydown', { key: 'r' }));
+          setTimeout(function(){ window.dispatchEvent(new KeyboardEvent('keyup', { key: 'r' })); }, 50);
+        }, 180);
+        setTimeout(function(){ B.goPressed = false; }, 900);
+      }
+      return;
+    }
+    if (w.mode === 'levelclear'){
+      if (B.attempt && B.attempt.outcome === 'running'){ B.attempt.outcome = 'clear'; B.report.clears++; }
+      return;
+    }
+    if (w.mode !== 'play') return;
+    if (p.dead || p.moving || p.returnT >= 0 || w.deathT > 0) return;
+
+    var goal = B.nextGoal(), goalC = goal * TILE + TILE / 2, r = p.ty;
+
+    if (r >= 10){
+      /* prefer the full-chain rush when all lanes open at once; otherwise enter
+         lane-by-lane like a careful human: single hop onto row 9, then the
+         r>=6 logic hops up / retreats with per-lane safety. */
+      if (B.chainUp(p.px)) B.press(0);
+      else if (B.hopUpSafe(p.px)) B.press(0);
+      /* idle on the bank: drift toward the center column — the bank is safe, and
+         waiting at the center avoids edge columns (where a dodge can strand the
+         bot) and keeps both dodge directions open. */
+      else if (Math.abs(HOME_X - p.px) > 30) B.press(HOME_X > p.px ? 1 : 3);
+      return;
+    }
+    if (r >= 6){
+      /* retreat only once a vehicle is genuinely approaching (ttv < 0.45) — that leaves
+         the retreat-safe window wide enough (~0.3s, 6-7 re-eval ticks) to catch a gap in
+         the landing row below, instead of firing at 0.25s when the transit check is
+         already shutting and the landing row is often still busy. */
+      if (B.hopUpSafe(p.px)) B.press(0);
+      else if (B.retreatSafe(p.px) && B.timeToVehicle(r, p.px) < 0.45) B.press(2);
+      /* trapped: up-window closed and the retreat landing is blocked — step aside
+         into an adjacent gap instead of standing in the vehicle's path. */
+      else if (B.timeToVehicle(r, p.px) < 0.45 && B.sideDodge(r, p.px)) return;
+      /* else: the lane's gap is still open — WAIT for the up-window instead of
+         abandoning the row (this is how a careful human crosses: stand in the gap,
+         hop up when the next lane opens). */
+      return;
+    }
+    /* median (5): board a safe bus on row 4 that stays on-board; if none is
+       available, drift toward the center column — the median is safe, and waiting
+       at the center avoids the board-edge dead-ends (row 4 carries right, so a bus
+       at the right edge can never be boarded; row 3 carries left) and samples
+       other bus phases. The grass row aligns the final approach to the goal. */
+    if (r === 5){
+      if (B.safeRide(4, p.px, B.hopT(), 2.0, 0.8)) B.press(0);
+      else if (Math.abs(HOME_X - p.px) > 20) B.press(HOME_X > p.px ? 1 : 3);
+      return;
+    }
+    if (r >= 2 && r <= 4){
+      var bus = B.curBus(r, p.px);
+      var escape = (bus && bus.sink && bus.sinkT < 2.5) || B.timeToEdge() < 0.7;
+      if (!bus){
+        /* somehow in a gap (fatal on the next frame): leave immediately */
+        if (r === 2) B.press(0);                                      /* up to grass, always safe */
+        else if (r === 3){ if (B.safeRide(2, p.px, B.hopT(), 1.0, 1.0)) B.press(0); }
+        else if (r === 4 && B.retreatSafe(p.px)) B.press(2);          /* back to the median */
+        return;
+      }
+      var arrivePx = p.px + bus.v * B.hopT(); /* hop endpoints drift with the current bus */
+      if (r === 2){
+        /* grass above is always safe: hop up when aligned, sinking, near the edge,
+           or the bus is carrying us away from the goal */
+        var away = (bus.v > 0 && goalC < p.px - 8) || (bus.v < 0 && goalC > p.px + 8);
+        if (escape || away || Math.abs(p.px - goalC) < 24) B.press(0);
+        return;
+      }
+      /* rows 3-4: hop up when a safe bus on the row above covers the arrival column */
+      var hopUp = function(minSafe){
+        return B.safeRide(r - 1, arrivePx, B.hopT(), minSafe, 0.8);
+      };
+      if (escape){
+        if (hopUp(1.5)) B.press(0);
+        else if (r === 4 && B.retreatSafe(p.px)) B.press(2);          /* row 4 -> median, always safe */
+        else if (B.sideEscape(r, p.px, bus)) return;                  /* sideways to a safe bus */
+        else if (hopUp(0.25)) B.press(0);                             /* last resort: any bus above */
+        return;
+      }
+      if (hopUp(2.0)) B.press(0);
+      return;
+    }
+    if (r === 1){
+      /* grass landings can be off-grid (bus drift), so align to the socket band
+         [goalC-20, goalC+20): hop toward the goal only while outside it, then up. */
+      var dx = goalC - p.px;
+      if (dx > 20) B.press(1);
+      else if (dx <= -20) B.press(3);
+      else B.press(0);
+      return;
+    }
+  };
+
+  setInterval(B.tick, 45);
+})();
+/* ==== END TEMP-BOT ==== */
+</script>
+</body>
+</html>

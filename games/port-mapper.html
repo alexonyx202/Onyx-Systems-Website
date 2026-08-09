@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PORT MAPPER — OPEN EVERY PORT</title>
+  <meta name="description" content="Hop across an isometric pyramid of network ports, flipping them from CLOSED to OPEN while dodging malicious packet loops. A retro arcade tribute to Q*Bert.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23050916'/><rect x='4' y='3' width='8' height='8' fill='%233fd4ff'/><rect x='2' y='12' width='12' height='2' fill='%233fe08a'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Cache-busting: bump ?v= on every release so players never get stale files -->
+  <link rel="stylesheet" href="css/style.css?v=1.4.65">
+</head>
+<body>
+  <div id="app">
+
+    <canvas id="game"></canvas>
+
+    <!-- ============ HUD ============ -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="hud-stat"><span class="hud-label">SCORE</span><span id="hud-score" class="hud-value">000000</span></div>
+        <div class="hud-stat"><span class="hud-label">HI-SCORE</span><span id="hud-hi" class="hud-value">000000</span></div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-stat"><span class="hud-label">LEVEL</span><span id="hud-level" class="hud-value">1</span></div>
+        <div class="hud-stat"><span class="hud-label">DIFF</span><span id="hud-diff" class="hud-value">NORM</span></div>
+        <div class="hud-stat"><span class="hud-label">LIVES</span><span id="hud-lives" class="hud-value"></span></div>
+        <div class="hud-stat hud-quick hidden" id="hud-quick-wrap" title="Consecutive quick re-secures escalate: 150 → 200 → … → 400 (cap grows +50 per level)">
+          <span class="hud-label">QUICK</span>
+          <span id="hud-quick" class="hud-value">×0</span>
+        </div>
+      </div>
+      <div id="hud-mute" title="M — mute audio">♪</div>
+    </div>
+
+    <!-- ============ Touch pad (mobile) ============ -->
+    <div id="touch-pad" class="hidden">
+      <button class="tbtn" data-dir="UL" style="--tx:-64px;--ty:-46px" aria-label="hop up-left">↖</button>
+      <button class="tbtn" data-dir="UR" style="--tx:64px;--ty:-46px" aria-label="hop up-right">↗</button>
+      <button class="tbtn" data-dir="DL" style="--tx:-64px;--ty:46px" aria-label="hop down-left">↙</button>
+      <button class="tbtn" data-dir="DR" style="--tx:64px;--ty:46px" aria-label="hop down-right">↘</button>
+    </div>
+
+    <!-- ============ Screens ============ -->
+    <div id="screens">
+
+      <section id="screen-menu" class="screen active">
+        <div class="title-stage">
+
+          <!-- corner brackets + scanline beam -->
+          <span class="corner corner-tl" aria-hidden="true"></span>
+          <span class="corner corner-tr" aria-hidden="true"></span>
+          <span class="corner corner-bl" aria-hidden="true"></span>
+          <span class="corner corner-br" aria-hidden="true"></span>
+          <div class="scanbeam" aria-hidden="true"></div>
+
+          <!-- status LED strip -->
+          <div class="title-leds" aria-hidden="true">
+            <span class="led l1"></span><span class="led l2"></span><span class="led l3"></span>
+            <span class="led l4"></span><span class="led l5"></span><span class="led l6"></span>
+            <span class="led l7"></span><span class="led l8"></span><span class="led l9"></span>
+            <span class="led l10"></span><span class="led l11"></span><span class="led l12"></span>
+          </div>
+
+          <!-- brand bar -->
+          <div class="brand-bar">
+            <span class="bb-line"></span>
+            <span class="bb-text">PORT MAPPER NETWORKS</span>
+            <span class="bb-line"></span>
+          </div>
+
+          <!-- logo stack -->
+          <div class="logo-wrap rgb-logo">
+            <div class="logo-glint" aria-hidden="true"></div>
+            <h1 class="logo">
+              <span class="logo-line logo-a">PORT</span>
+              <span class="logo-line logo-b">MAPPER</span>
+            </h1>
+            <div class="logo-echo" aria-hidden="true"><span>PORT</span><span>MAPPER</span></div>
+          </div>
+
+          <div class="tagline">A Q*BERT TRIBUTE · OPEN EVERY PORT</div>
+
+          <!-- HI-SCORE marquee -->
+          <div class="hi-marquee">
+            <span class="hi-label">HI-SCORE</span>
+            <span class="hi-value" id="title-hi">000000</span>
+            <span class="hi-blink" aria-hidden="true"></span>
+          </div>
+
+          <!-- rolling attract marquee: cycles INSERT COIN / GAME OVER / top scores -->
+          <div class="attract-marquee" aria-hidden="true">
+            <div class="am-window">
+              <div class="am-track" id="am-track"></div>
+            </div>
+          </div>
+
+          <!-- main menu -->
+          <nav class="menu" role="menu">
+            <button class="btn" data-action="start"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="menu.start">START GAME</span></button>
+            <button class="btn" data-action="difficulty"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="menu.difficulty">DIFFICULTY</span></button>
+            <button class="btn" data-action="sound"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="menu.sound">SOUND</span></button>
+            <button class="btn" data-action="scores"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="menu.highScores">HIGH SCORES</span></button>
+            <button class="btn" data-action="help"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="menu.howToPlay">HOW TO PLAY</span></button>
+          </nav>
+
+          <!-- attract prompt -->
+          <div class="press-start"><span class="ps-text" data-i18n="pressStartBlink">PRESS START</span></div>
+
+          <!-- footer -->
+          <div class="title-foot">
+            <span data-i18n="footer.brand">© 2026 PORT MAPPER SYSTEMS</span>
+            <span class="foot-sep">·</span>
+            <span data-i18n="footer.insertCoin">INSERT COIN</span>
+            <span class="foot-sep">·</span>
+            <span data-i18n="footer.controls">▲▼ SELECT · ENTER CONFIRM</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="screen-difficulty" class="screen">
+        <div class="panel">
+          <h2 class="title" data-i18n="screenTitles.difficulty">SELECT THREAT LEVEL</h2>
+          <nav class="menu" id="difficulty-menu" role="menu"></nav>
+          <button class="btn back" data-action="back-menu">← <span data-i18n="back">BACK</span></button>
+        </div>
+      </section>
+
+      <section id="screen-sound" class="screen">
+        <div class="panel small">
+          <h2 class="title" data-i18n="screenTitles.sound">SOUND SETTINGS</h2>
+          <nav class="menu" id="sound-menu" role="menu"></nav>
+          <button class="btn back" data-action="back-menu">← <span data-i18n="back">BACK</span></button>
+          <div class="hint" data-i18n="soundHint">M MUTES EVERYTHING ANYWHERE</div>
+        </div>
+      </section>
+
+      <section id="screen-scores" class="screen">
+        <div class="panel small">
+          <h2 class="title" data-i18n="screenTitles.scores">HIGH SCORES</h2>
+          <div id="scores-table"></div>
+          <nav class="menu row">
+            <button class="btn back" data-action="back-menu">← <span data-i18n="back">BACK</span></button>
+            <button class="btn" data-action="clear-scores" data-i18n="clearScores">CLEAR</button>
+          </nav>
+        </div>
+      </section>
+
+      <section id="screen-help" class="screen">
+        <div class="panel wide">
+          <h2 class="title" data-i18n="screenTitles.help">HOW TO PLAY</h2>
+          <div class="help-grid">
+
+            <div class="help-block controls">
+              <h3 class="help-h" data-i18n="help.controlsH">▸ CONTROLS</h3>
+              <div class="keys-row">
+                <div class="keys-group">
+                  <div class="keys-diamond">
+                    <span class="kcap" style="--x:-92px;--y:-62px">W<span class="k-sub">↖</span></span>
+                    <span class="kcap" style="--x:92px;--y:-62px">E<span class="k-sub">↗</span></span>
+                    <span class="kcap" style="--x:-92px;--y:62px">A<span class="k-sub">↙</span></span>
+                    <span class="kcap" style="--x:92px;--y:62px">D<span class="k-sub">↘</span></span>
+                  </div>
+                  <div class="keys-label" data-i18n="help.keysDiamond">DIAMOND KEYS</div>
+                </div>
+                <div class="keys-group">
+                  <div class="keys-diamond">
+                    <span class="kcap" style="--x:-92px;--y:-62px">←<span class="k-sub">↖</span></span>
+                    <span class="kcap" style="--x:92px;--y:-62px">↑<span class="k-sub">↗</span></span>
+                    <span class="kcap" style="--x:-92px;--y:62px">↓<span class="k-sub">↙</span></span>
+                    <span class="kcap" style="--x:92px;--y:62px">→<span class="k-sub">↘</span></span>
+                  </div>
+                  <div class="keys-label" data-i18n="help.keysArrows">ARROW KEYS</div>
+                </div>
+              </div>
+              <div data-i18n-html="help.controlsHint"></div>
+              <div class="syskeys">
+                <span class="syskey"><b>P</b><span data-i18n="help.sysPause">PAUSE</span></span>
+                <span class="syskey"><b>M</b><span data-i18n="help.sysMute">MUTE</span></span>
+                <span class="syskey"><b>F1</b><span data-i18n="help.sysTitle">TITLE</span></span>
+                <span class="syskey"><b>ESC</b><span data-i18n="help.sysBack">BACK</span></span>
+                <span class="syskey"><b>ENTER</b><span data-i18n="help.sysConfirm">CONFIRM</span></span>
+              </div>
+            </div>
+
+            <div class="help-block">
+              <h3 class="help-h" data-i18n="help.objectiveH">▸ OBJECTIVE</h3>
+              <div data-i18n-html="help.objective"></div>
+            </div>
+
+            <div class="help-block">
+              <h3 class="help-h" data-i18n="help.hostileH">▸ HOSTILE TRAFFIC</h3>
+              <div data-i18n-html="help.hostile"></div>
+            </div>
+
+            <div class="help-block">
+              <h3 class="help-h" data-i18n="help.pickupsH">▸ SERVICE PACKS &amp; PICKUPS</h3>
+              <div data-i18n-html="help.pickups"></div>
+            </div>
+
+            <div class="help-block">
+              <h3 class="help-h" data-i18n="help.scoringH">▸ SCORING</h3>
+              <div data-i18n-html="help.scoring"></div>
+            </div>
+
+            <div class="help-block notes">
+              <h3 class="help-h" data-i18n="help.notesH">▸ FIELD NOTES</h3>
+              <div data-i18n-html="help.notes"></div>
+            </div>
+
+          </div>
+          <button class="btn back" data-action="back-menu">← <span data-i18n="back">BACK</span></button>
+        </div>
+      </section>
+
+      <section id="screen-pause" class="screen">
+        <div class="panel small">
+          <h2 class="title" data-i18n="pause.title">PAUSED</h2>
+          <nav class="menu" role="menu">
+            <button class="btn" data-action="resume">▶ <span data-i18n="pause.resume">RESUME</span></button>
+            <button class="btn" data-action="restart">↻ <span data-i18n="pause.restart">RESTART</span></button>
+            <button class="btn" data-action="quit">✕ <span data-i18n="pause.quit">QUIT TO MENU</span></button>
+            <button class="btn" data-action="mute"><span>SOUND: ON</span></button>
+          </nav>
+          <div class="hint" data-i18n="pause.resumeHint">P OR ESC TO RESUME</div>
+        </div>
+      </section>
+
+      <section id="screen-gameover" class="screen">
+        <div class="go-stage">
+
+          <!-- corner brackets + scanline beam -->
+          <span class="corner corner-tl" aria-hidden="true"></span>
+          <span class="corner corner-tr" aria-hidden="true"></span>
+          <span class="corner corner-bl" aria-hidden="true"></span>
+          <span class="corner corner-br" aria-hidden="true"></span>
+          <div class="scanbeam" aria-hidden="true"></div>
+
+          <!-- danger LED strip -->
+          <div class="go-leds" aria-hidden="true">
+            <span class="led l1"></span><span class="led l2"></span><span class="led l3"></span>
+            <span class="led l4"></span><span class="led l5"></span><span class="led l6"></span>
+            <span class="led l7"></span><span class="led l8"></span><span class="led l9"></span>
+            <span class="led l10"></span><span class="led l11"></span><span class="led l12"></span>
+          </div>
+
+          <!-- flashing GAME OVER banner -->
+          <div class="go-banner">
+            <h2 id="go-title" class="go-title" data-i18n="gameover.title">GAME OVER</h2>
+          </div>
+          <div class="go-brand" data-i18n="footer.brand">PORT MAPPER SYSTEMS</div>
+
+          <!-- arcade stats panel -->
+          <div class="go-stats">
+            <div class="go-row"><span data-i18n="gameover.score">SCORE</span><b id="go-score">000000</b></div>
+            <div class="go-row"><span data-i18n="gameover.level">LEVEL</span><b id="go-level">1</b></div>
+            <div class="go-row"><span data-i18n="gameover.difficulty">DIFFICULTY</span><b id="go-diff">NORMAL</b></div>
+          </div>
+
+          <!-- round report (filled by JS from world.stats) -->
+          <div class="go-report" id="go-report"></div>
+
+          <!-- initials entry (filled by JS) -->
+          <div id="go-entry"></div>
+
+          <nav class="menu" role="menu">
+            <button class="btn" data-action="restart"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="gameover.playAgain">PLAY AGAIN</span></button>
+            <button class="btn" data-action="scores"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="gameover.highScores">HIGH SCORES</span></button>
+            <button class="btn" data-action="menu"><span class="btn-ptr" aria-hidden="true">></span><span data-i18n="gameover.menu">MENU</span></button>
+          </nav>
+
+          <!-- press-start prompt -->
+          <div class="press-start go-press" data-i18n="pressStartBlink">PRESS START</div>
+
+          <div class="go-foot">
+            <span data-i18n="footer.brand">© 2026 PORT MAPPER SYSTEMS</span>
+            <span class="foot-sep">·</span>
+            <span data-i18n="footer.insertCoin">INSERT COIN</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- in-canvas title cards (READY / LEVEL n CLEAR) are drawn by the renderer -->
+
+    <!-- ============ CRT overlays ============ -->
+    <div id="crt"></div>
+    <div id="vignette"></div>
+
+  </div>
+
+  <script src="js/strings.js?v=1.4.65"></script>
+  <script src="js/rng.js?v=1.4.65"></script>
+  <script src="js/config.js?v=1.4.65"></script>
+  <script src="js/storage.js?v=1.4.65"></script>
+  <script src="js/audio.js?v=1.4.65"></script>
+  <script src="js/input.js?v=1.4.65"></script>
+  <script src="js/render.js?v=1.4.65"></script>
+  <script src="js/game.js?v=1.4.65"></script>
+  <script src="js/ui.js?v=1.4.65"></script>
+  <!-- translator tooling: ?debug=1 watches js/strings.js and reloads on edit -->
+  <script src="js/debug-reload.js?v=1.4.65"></script>
+  <script>
+    window.addEventListener('load', function () {
+      PM.Render.init(document.getElementById('game'));
+      PM.Game.init();
+      PM.UI.init();
+    });
+  </script>
+</body>
+</html>

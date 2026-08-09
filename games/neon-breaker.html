@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>NEON BREAKER — Retro Arcade Remix</title>
+<meta name="description" content="A classic Breakout x Arkanoid remix. Neon, juicy, addictive.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;height:100%;height:100dvh;background:#02030a;overflow:hidden;
+    font-family:'Press Start 2P','Courier New',monospace;touch-action:manipulation;
+    -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
+    overscroll-behavior:none;}
+  #wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
+  canvas{display:block;border-radius:8px;background:#05060f;touch-action:none;cursor:crosshair;
+    box-shadow:0 0 0 2px #101d36,0 0 30px rgba(41,216,255,.22),0 0 80px rgba(41,216,255,.10),
+      0 24px 60px rgba(0,0,0,.8);}
+  .hint{position:fixed;left:0;right:0;bottom:6px;text-align:center;font-size:9px;color:#3d4a6b;
+    letter-spacing:2px;pointer-events:none;font-family:'Orbitron',monospace;}
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="game" role="img" aria-label="Neon Breaker: a Breakout and Arkanoid remix arcade game"></canvas></div>
+<div class="hint" id="hint">MOUSE / TOUCH / ARROWS &nbsp;•&nbsp; SPACE LAUNCH &nbsp;•&nbsp; P PAUSE &nbsp;•&nbsp; GAMEPAD OK</div>
+<script>
+'use strict';
+/* ═══════════════════════════════════════════════════════════
+   NEON BREAKER — a Breakout × Arkanoid remix
+   Single-file HTML5 arcade game. All graphics procedural.
+   ═══════════════════════════════════════════════════════════ */
+/* Adaptive layout: landscape uses the classic 960x720 design space; portrait
+   (phones) uses a taller playfield. Gameplay geometry is derived in applyLayout(). */
+const DW = 960, DH = 720, TAU = Math.PI * 2;
+let W = 960, H = 720, HUD = 64, PORTRAIT = false, MENU_S = 1;
+let BRICK_W = 68, BRICK_H = 26, PITCH_X = 72, PITCH_Y = 30, BX0 = 48, BY0 = 86;
+let PADDLE_Y = 686, PADDLE_H = 14, BALL_R = 7.5, WALL_TOP = 68, CAP_S = 16;
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d', { alpha: false });
+
+/* ---------- utilities ---------- */
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const lerp = (a, b, t) => a + (b - a) * t;
+const rand = (a, b) => a + Math.random() * (b - a);
+const randi = (a, b) => Math.floor(rand(a, b + 1));
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('nb_' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('nb_' + k, JSON.stringify(v)); } catch (e) {} },
+  del(k) { try { localStorage.removeItem('nb_' + k); } catch (e) {} }
+};
+
+/* ---------- config ---------- */
+const DIFFS = [
+  { name: 'EASY',   ball: 360, paddle: 140, lives: 5, mult: 0.8 },
+  { name: 'NORMAL', ball: 430, paddle: 118, lives: 4, mult: 1.0 },
+  { name: 'HARD',   ball: 500, paddle: 104, lives: 3, mult: 1.25 },
+  { name: 'INSANE', ball: 570, paddle: 92,  lives: 2, mult: 1.6 }
+];
+const OPTS = Object.assign({ sound: true, music: true, crt: true, legend: true, checklist: true, autopause: true, keys: true, feast: false, layout: 'CLASSIC' }, store.get('opts', {}));
+if (typeof OPTS.feast === 'boolean') OPTS.feast = { CLASSIC: false, ARKANOID: OPTS.feast, REMIX: OPTS.feast, CH: false };
+if (typeof OPTS.keys === 'boolean') OPTS.keys = { CLASSIC: OPTS.keys, ARKANOID: OPTS.keys, REMIX: OPTS.keys, CH: OPTS.keys };
+if (typeof OPTS.autopause === 'boolean') OPTS.autopause = { CLASSIC: OPTS.autopause, ARKANOID: OPTS.autopause, REMIX: OPTS.autopause, CH: OPTS.autopause };
+if (typeof OPTS.sound === 'boolean') OPTS.sound = { CLASSIC: OPTS.sound, ARKANOID: OPTS.sound, REMIX: OPTS.sound, CH: OPTS.sound };
+if (typeof OPTS.music === 'boolean') OPTS.music = { CLASSIC: OPTS.music, ARKANOID: OPTS.music, REMIX: OPTS.music, CH: OPTS.music };
+if (typeof OPTS.crt === 'boolean') OPTS.crt = { CLASSIC: OPTS.crt, ARKANOID: OPTS.crt, REMIX: OPTS.crt, CH: OPTS.crt };
+const saveOpts = () => store.set('opts', OPTS);
+
+/* ---------- controls: remappable keyboard + gamepad bindings (per-mode) ---------- */
+const KEY_ACTIONS = ['moveL', 'moveR', 'launch', 'pause', 'confirm', 'back'];
+const PAD_ACTIONS = ['launch', 'confirm', 'pause', 'back'];
+const MODE_IDS = ['CLASSIC', 'ARKANOID', 'REMIX', 'CH'];
+const DEFAULT_BINDS = {
+  moveL: ['ArrowLeft', 'KeyA'], moveR: ['ArrowRight', 'KeyD'],
+  launch: ['Space'], pause: ['KeyP', 'Escape'],
+  confirm: ['Enter', 'NumpadEnter'], back: ['Escape', 'Backspace']
+};
+const DEFAULT_PADB = { launch: [0], confirm: [0], pause: [9], back: [1, 8] }; // A / A / START / B+VIEW
+const KEY_NAMES = {
+  moveL: 'MOVE LEFT', moveR: 'MOVE RIGHT', launch: 'LAUNCH BALL',
+  pause: 'PAUSE', confirm: 'CONFIRM', back: 'BACK'
+};
+const PAD_LABELS = ['A', 'B', 'X', 'Y', 'LB', 'RB', 'LT', 'RT', 'VIEW', 'START', 'LS', 'RS', 'D-UP', 'D-DOWN', 'D-LEFT', 'D-RIGHT'];
+const QUICK_KEYS = ['KeyM', 'KeyS', 'KeyC']; // fixed quick toggles — never rebindable
+/* Keyboard layout presets. Bindings use physical key codes (event.code), so AZERTY
+   keeps the same physical keys as QWERTY — only the on-screen labels change. */
+const KEY_LAYOUTS = {
+  CLASSIC: { name: 'QWERTY', binds: DEFAULT_BINDS },
+  LEFTY: {
+    name: 'LEFT-HANDED',
+    binds: {
+      moveL: ['ArrowLeft', 'Comma'], moveR: ['ArrowRight', 'Period'],
+      launch: ['Enter', 'Space'], pause: ['KeyP', 'Escape'],
+      confirm: ['Enter'], back: ['Escape', 'Backspace']
+    }
+  },
+  AZERTY: { name: 'AZERTY', binds: DEFAULT_BINDS, azerty: true }
+};
+/* physical key -> AZERTY legend, so the HUD/how-to show what the player sees on the key */
+const AZERTY_LABELS = { KeyA: 'Q', KeyQ: 'A', KeyW: 'Z', KeyZ: 'W', KeyM: ',', Comma: '?', Period: ';', Semicolon: 'M', Quote: '%', BracketLeft: '^', BracketRight: '$', Backslash: '*', Slash: '!', Digit1: '&', Digit2: 'É', Digit3: '"', Digit4: "'", Digit5: '(', Digit6: '-', Digit7: 'È', Digit8: '_', Digit9: 'Ç', Digit0: 'À' };
+/* each mode keeps its own layout preset, so ARKANOID can be LEFT-HANDED while REMIX is AZERTY */
+if (typeof OPTS.layout === 'string') OPTS.layout = { CLASSIC: OPTS.layout, ARKANOID: OPTS.layout, REMIX: OPTS.layout, CH: OPTS.layout };
+function layoutOf(m) { return OPTS.layout[(m || Game.mode)] || 'CLASSIC'; }
+function layoutName(m) { return (KEY_LAYOUTS[layoutOf(m)] || KEY_LAYOUTS.CLASSIC).name; }
+/* cycle mode `m`'s layout preset (dir +1 / -1) and apply it, overwriting that mode's binds */
+function cycleLayout(m, dir) {
+  const ids = ['CLASSIC', 'LEFTY', 'AZERTY'];
+  let i = ids.indexOf(OPTS.layout[m]);
+  if (i === -1) i = 0;
+  OPTS.layout[m] = ids[(i + dir + ids.length) % ids.length];
+  const L = KEY_LAYOUTS[OPTS.layout[m]];
+  for (const k in DEFAULT_BINDS) BINDS[m][k] = (L.binds[k] || DEFAULT_BINDS[k]).slice();
+  saveOpts(); saveBinds();
+}
+/* BINDS / PADB are per-mode objects; legacy flat saves migrate to every mode */
+let BINDS = {}, PADB = {};
+{
+  const sb = store.get('binds', {}), sp = store.get('padb', {});
+  for (const m of MODE_IDS) {
+    BINDS[m] = {}; PADB[m] = {};
+    const src = (sb[m] && typeof sb[m] === 'object' && !Array.isArray(sb[m])) ? sb[m] : sb;
+    const pSrc = (sp[m] && typeof sp[m] === 'object' && !Array.isArray(sp[m])) ? sp[m] : sp;
+    for (const k in DEFAULT_BINDS) BINDS[m][k] = (Array.isArray(src[k]) && src[k].length) ? src[k].slice() : DEFAULT_BINDS[k].slice();
+    for (const k in DEFAULT_PADB) PADB[m][k] = (Array.isArray(pSrc[k]) && pSrc[k].length) ? pSrc[k].slice() : DEFAULT_PADB[k].slice();
+  }
+}
+const saveBinds = () => { store.set('binds', BINDS); store.set('padb', PADB); refreshHint(); };
+/* the current (or last-played) mode's bindings */
+const curBinds = () => BINDS[Game.mode] || BINDS.CLASSIC;
+const curPadb = () => PADB[Game.mode] || PADB.CLASSIC;
+/* every keyboard action a key currently maps to (shared keys -> multiple actions) */
+function actionsFor(code) { const b = curBinds(); return KEY_ACTIONS.filter(a => b[a].includes(code)); }
+/* is any bound key for action `a` held right now? (paddle movement) */
+function held(a) { const b = curBinds(); return b[a].some(k => keys[k]); }
+/* short display label for a key code or pad button number (mode picks the layout) */
+function keyLabel(code, mode) {
+  if (typeof code === 'number') return PAD_LABELS[code] || 'BTN' + code;
+  if (layoutOf(mode) === 'AZERTY' && AZERTY_LABELS[code]) return AZERTY_LABELS[code];
+  const m = { ArrowLeft: '←', ArrowRight: '→', ArrowUp: '↑', ArrowDown: '↓', Space: 'SPACE', Enter: 'ENTER', NumpadEnter: 'ENTER', Escape: 'ESC', Backspace: 'BKSP', Tab: 'TAB', ShiftLeft: 'SHIFT', ControlLeft: 'CTRL', AltLeft: 'ALT', Backquote: '`', Minus: '-', Equal: '=', BracketLeft: '[', BracketRight: ']', Backslash: '\\', Semicolon: ';', Quote: "'", Comma: ',', Period: '.', Slash: '/' };
+  if (m[code]) return m[code];
+  if (code.startsWith('Key')) return code.slice(3);
+  if (code.startsWith('Digit')) return code.slice(5);
+  if (code.startsWith('Numpad')) return 'NUM' + code.slice(6);
+  return code;
+}
+/* reset one mode's binds (or every mode when m is omitted) to the stock defaults */
+function resetBinds(m) {
+  const modes = m ? [m] : MODE_IDS;
+  for (const mm of modes) {
+    for (const k in DEFAULT_BINDS) BINDS[mm][k] = DEFAULT_BINDS[k].slice();
+    for (const k in DEFAULT_PADB) PADB[mm][k] = DEFAULT_PADB[k].slice();
+  }
+  saveBinds(); refreshHint(); playSfx('uiSel');
+}
+/* Keep the title-screen hint in sync with the live bindings. */
+function refreshHint() {
+  const h = document.getElementById('hint');
+  if (!h) return;
+  const b = curBinds();
+  h.innerHTML = 'MOUSE / TOUCH / ' + keyLabel(b.moveL[0]) + ' ' + keyLabel(b.moveR[0]) +
+    ' &nbsp;•&nbsp; ' + keyLabel(b.launch[0]) + ' LAUNCH &nbsp;•&nbsp; ' +
+    keyLabel(b.pause[0]) + ' PAUSE &nbsp;•&nbsp; GAMEPAD OK';
+}
+/* Every OPTIONS toggle is per-mode now, so each can be on for ARKANOID but off
+   for REMIX; the helpers read the current (or last-played) mode's setting. */
+const feastOn = () => !!(OPTS.feast && OPTS.feast[Game.mode]);
+const keysOn = () => !!(OPTS.keys && OPTS.keys[Game.mode]);
+const autoPauseOn = () => !!(OPTS.autopause && OPTS.autopause[Game.mode]);
+const soundOn = () => !!(OPTS.sound && OPTS.sound[Game.mode]);
+const musicOn = () => !!(OPTS.music && OPTS.music[Game.mode]);
+const crtOn = () => !!(OPTS.crt && OPTS.crt[Game.mode]);
+
+/* ---------- adaptive layout ---------- */
+function applyLayout(forcePortrait) {
+  PORTRAIT = forcePortrait !== undefined ? !!forcePortrait : (window.innerHeight > window.innerWidth);
+  W = PORTRAIT ? 540 : DW;
+  H = PORTRAIT ? 960 : DH;
+  HUD = PORTRAIT ? 84 : 64;
+  const mx = W * 0.05;
+  PITCH_X = (W - mx * 2) / COLS;
+  BRICK_W = PITCH_X - 4;
+  PITCH_Y = PORTRAIT ? 34 : 30;
+  BRICK_H = PITCH_Y - 4;
+  BX0 = mx;
+  BY0 = HUD + 20;
+  PADDLE_Y = H - 34;
+  PADDLE_H = PORTRAIT ? 18 : 14;
+  BALL_R = PORTRAIT ? 9.5 : 7.5;
+  WALL_TOP = HUD + 4;
+  CAP_S = PORTRAIT ? 20 : 16;
+  MENU_S = W / DW;
+  if (Game && Game.paddle) { Game.paddle.y = PADDLE_Y; Game.paddle.h = PADDLE_H; }
+  if (Object.keys(BRICK_GRADS).length) for (const k in BRICK_GRADS) delete BRICK_GRADS[k];
+}
+/* Draw menu screens in the 960x720 design space, scaled + centered to the
+   current canvas. Identity in landscape, so desktop rendering is unchanged. */
+function menuView(fn) {
+  Bg.draw(ctx, perfT);
+  const rw = W, rh = H;
+  W = DW; H = DH;
+  ctx.save();
+  ctx.translate(rw / 2, rh / 2);
+  ctx.scale(MENU_S, MENU_S);
+  ctx.translate(-DW / 2, -DH / 2);
+  fn();
+  ctx.restore();
+  W = rw; H = rh;
+}
+function toDesign(p) {
+  return { x: (p.x - W / 2) / MENU_S + DW / 2, y: (p.y - H / 2) / MENU_S + DH / 2 };
+}
+
+/* ---------- input ---------- */
+const keys = {};
+/* transient one-line message on menu screens (e.g. the P-key party toggle) */
+let menuMsg = null;
+const ptr = { x: W / 2, y: H - 60, down: false, moved: false };
+/* last input driving the paddle: 'key' | 'pad' | 'ptr' | 'none'.
+   Pointer hover only takes over when the pointer is the active input, so a
+   keyboard player never gets yanked toward the cursor. */
+let paddleInput = 'none';
+function ptrToCanvas(e) {
+  const r = canvas.getBoundingClientRect();
+  return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height };
+}
+window.addEventListener('keydown', e => {
+  keys[e.code] = true;
+  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space'].includes(e.code) || actionsFor(e.code).length) e.preventDefault();
+  unlockAudio();
+  onKeyDown(e.code, e.repeat);
+});
+window.addEventListener('keyup', e => { keys[e.code] = false; });
+window.addEventListener('pointermove', e => {
+  lastInputT = perfT;
+  const p = ptrToCanvas(e); ptr.x = p.x; ptr.y = p.y; ptr.moved = true; paddleInput = 'ptr';
+});
+window.addEventListener('pointerdown', e => {
+  unlockAudio();
+  const p = ptrToCanvas(e); ptr.x = p.x; ptr.y = p.y; ptr.down = true; paddleInput = 'ptr';
+  onPointerDown();
+});
+window.addEventListener('pointerup', () => { ptr.down = false; });
+window.addEventListener('blur', () => { if (Game.screen === 'playing' && autoPauseOn()) pauseGame(); });
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+window.addEventListener('orientationchange', () => setTimeout(resize, 120));
+
+/* ---------- gamepad ---------- */
+const Gamepad = { idx: null, active: false, prev: {} };
+let padDir = 0;
+let fakePad = null; // test hook: { buttons:[{pressed}], axes:[x,y] }
+window.addEventListener('gamepadconnected', e => { Gamepad.idx = e.gamepad.index; Gamepad.active = true; });
+window.addEventListener('gamepaddisconnected', e => { if (e.gamepad.index === Gamepad.idx) { Gamepad.active = false; Gamepad.idx = null; } });
+function pollGamepad() {
+  let gp = fakePad;
+  if (!gp) {
+    if (Gamepad.active) gp = (navigator.getGamepads && navigator.getGamepads()[Gamepad.idx]) || null;
+    if (!gp) {
+      const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+      for (let i = 0; i < pads.length; i++) {
+        if (pads[i] && pads[i].connected) { Gamepad.idx = i; Gamepad.active = true; gp = pads[i]; break; }
+      }
+    }
+  }
+  if (!gp || !gp.buttons || !gp.buttons.length) return;
+  const b = gp.buttons;
+  /* bind-capture mode: keyboard rows ignore the pad, pad rows grab the next button */
+  if (Ctl.bind) {
+    if (!Ctl.bind.pad) return;
+    for (let btn = 0; btn < 18; btn++) {
+      const pressed = !!(b[btn] && b[btn].pressed);
+      const was = !!Gamepad.prev['c' + btn];
+      if (pressed && !was) capturePad(btn);
+      Gamepad.prev['c' + btn] = pressed;
+    }
+    return;
+  }
+  /* attract mode: any pad button press ends the demo */
+  if (Demo.active) {
+    for (let btn = 0; btn < 18; btn++) {
+      const pressed = !!(b[btn] && b[btn].pressed);
+      const was = !!Gamepad.prev['dm' + btn];
+      if (pressed && !was && Demo.phase === 'playing') startDemoFade();
+      Gamepad.prev['dm' + btn] = pressed;
+    }
+    return;
+  }
+  // stick with hysteresis: engages past 0.45, stays engaged until back under 0.22 (no flicker)
+  const ax = gp.axes ? gp.axes[0] : 0;
+  const padL = (ax < -0.45 || (Gamepad.axL && ax < -0.22)) || (b[14] && b[14].pressed);
+  const padR = (ax > 0.45 || (Gamepad.axR && ax > 0.22)) || (b[15] && b[15].pressed);
+  Gamepad.axL = ax < -0.45; Gamepad.axR = ax > 0.45;
+  padDir = (padR ? 1 : 0) - (padL ? 1 : 0);
+  /* remappable pad actions: launch / confirm / pause / back */
+  const pb = curPadb();
+  for (const act of PAD_ACTIONS) {
+    for (const btn of pb[act]) {
+      const pressed = !!(b[btn] && b[btn].pressed);
+      const was = !!Gamepad.prev[act + ':' + btn];
+      // on mode-select the X/Y/B buttons are the fixed quick-toggle shortcuts, not actions
+      if (pressed && !was && !(Game.screen === 'modeselect' && (btn === 1 || btn === 2 || btn === 3))) handleAction([act], null, false, true);
+      Gamepad.prev[act + ':' + btn] = pressed;
+    }
+  }
+  /* fixed d-pad navigation (menus) */
+  for (const [btn, code] of [[12, 'ArrowUp'], [13, 'ArrowDown'], [14, 'ArrowLeft'], [15, 'ArrowRight']]) {
+    const pressed = !!(b[btn] && b[btn].pressed);
+    const was = !!Gamepad.prev['d' + btn];
+    if (pressed && !was) onKeyDown(code, false);
+    Gamepad.prev['d' + btn] = pressed;
+  }
+  /* options + controls: LB/RB switch the mode tab (bumpers = category navigation) */
+  if (Game.screen === 'options' || Game.screen === 'controls') {
+    const lbEdge = !!(b[4] && b[4].pressed) && !Gamepad.prev['o4'];
+    const rbEdge = !!(b[5] && b[5].pressed) && !Gamepad.prev['o5'];
+    const xEdge = !!(b[2] && b[2].pressed) && !Gamepad.prev['ox'];
+    Gamepad.prev['o4'] = !!(b[4] && b[4].pressed);
+    Gamepad.prev['o5'] = !!(b[5] && b[5].pressed);
+    Gamepad.prev['ox'] = !!(b[2] && b[2].pressed);
+    if (lbEdge) onKeyDown('ArrowLeft', false);
+    if (rbEdge) onKeyDown('ArrowRight', false);
+    if (xEdge && Game.screen === 'options') onKeyDown('KeyX', false); // X clears the tab's mode
+  }
+  /* title shortcut: Y opens CONTROLS so pad players can remap before starting */
+  if (Game.screen === 'title') {
+    const yEdge = !!(b[3] && b[3].pressed) && !Gamepad.prev['t3'];
+    Gamepad.prev['t3'] = !!(b[3] && b[3].pressed);
+    if (yEdge) onKeyDown('KeyC', false);
+  }
+  /* mode-select shortcuts: X = KEYS, Y = PARTY, B = AUTO-PAUSE, Y+X/B = RESET */
+  if (Game.screen === 'modeselect') {
+    const yHeld = !!(b[3] && b[3].pressed);
+    const xEdge = !!(b[2] && b[2].pressed) && !Gamepad.prev['m2'];
+    const bEdge = !!(b[1] && b[1].pressed) && !Gamepad.prev['m1'];
+    const yEdge = !!(b[3] && b[3].pressed) && !Gamepad.prev['m3'];
+    const rbEdge = !!(b[5] && b[5].pressed) && !Gamepad.prev['m5'];
+    Gamepad.prev['m1'] = !!(b[1] && b[1].pressed);
+    Gamepad.prev['m2'] = !!(b[2] && b[2].pressed);
+    Gamepad.prev['m3'] = !!(b[3] && b[3].pressed);
+    Gamepad.prev['m5'] = !!(b[5] && b[5].pressed);
+    if (xEdge && yHeld) onKeyDown('PadReset', false);
+    else if (xEdge) onKeyDown('KeyK', false);
+    if (bEdge && yHeld) onKeyDown('PadReset', false);
+    else if (bEdge) onKeyDown('KeyA', false);
+    if (yEdge) onKeyDown('KeyP', false);
+    if (rbEdge) onKeyDown('KeyR', false);
+    const lbEdge = !!(b[4] && b[4].pressed) && !Gamepad.prev['m4'];
+    Gamepad.prev['m4'] = !!(b[4] && b[4].pressed);
+    if (lbEdge && Menu.sel === 1) onKeyDown('KeyS', false);
+  }
+}
+
+/* ---------- audio engine ---------- */
+let AC = null, masterGain = null, sfxGain = null, musicGain = null, musicFilt = null, noiseBuf = null;
+function initAudio() {
+  if (AC) return;
+  try {
+    AC = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = AC.createGain(); masterGain.gain.value = 0.5; masterGain.connect(AC.destination);
+    sfxGain = AC.createGain(); sfxGain.gain.value = 0.9; sfxGain.connect(masterGain);
+    musicGain = AC.createGain(); musicGain.gain.value = 0.5; musicGain.connect(masterGain);
+    musicFilt = AC.createBiquadFilter(); musicFilt.type = 'lowpass'; musicFilt.frequency.value = 18000; musicFilt.connect(musicGain);
+    const len = AC.sampleRate * 1;
+    noiseBuf = AC.createBuffer(1, len, AC.sampleRate);
+    const d = noiseBuf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  } catch (e) { AC = null; }
+}
+function unlockAudio() { initAudio(); if (AC && AC.state === 'suspended') AC.resume(); }
+function tone(f, dur, type, vol, slide, delay, dest) {
+  if (!AC || !soundOn()) return;
+  try {
+    const t0 = AC.currentTime + (delay || 0);
+    const o = AC.createOscillator(), g = AC.createGain();
+    o.type = type || 'square';
+    o.frequency.setValueAtTime(f, t0);
+    if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(28, slide), t0 + dur);
+    g.gain.setVa
+
+... [OUTPUT TRUNCATED - 153,124 chars omitted out of 203,049 total] ...
+
+' : 'KEY') + ' TO ASSIGN  ·  ESC TO CANCEL', W / 2, yb + 48, 9, '#ffd23b', { glow: 6 });
+  }
+}
+
+/* ---------- screen: challenges ---------- */
+function drawChallenges() {
+  drawText('CHALLENGES', W / 2, 80, 22, '#c77dff', { glow: 14 });
+  drawText('EARN BRONZE, SILVER OR GOLD — SHOW OFF!', W / 2, 118, 9, '#5d7bb0', {});
+  Menu.draw();
+  drawText('GOLD x10  -  SILVER x5  -  BRONZE x2 (MULTIPLIER APPLIES)', W / 2, 640, 8, '#3d4a6b', {});
+}
+
+/* ---------- screen: score menu ---------- */
+function drawScoreMenu() {
+  drawText('HALL OF FAME', W / 2, 80, 22, '#ffd23b', { glow: 14 });
+  Menu.draw();
+  const sb = curBinds();
+  drawText(keyLabel(sb.confirm[0]) + ' TO PICK  -  ' + keyLabel(sb.back[0]) + ' BACK', W / 2, 640, 8, '#3d4a6b', {});
+}
+
+/* ---------- screen: scores ---------- */
+function drawScores() {
+  const v = Game.viewScores;
+  drawText(v === 'ACH' ? 'ACHIEVEMENTS' : v === 'CH' ? 'CHALLENGE MEDALS' : v + ' — BEST RUNS', W / 2, 60, 18, '#ffd23b', { glow: 12 });
+  if (v === 'ACH') {
+    const cols = 5, cw = 176, chh = 74;
+    ACHS.forEach((a, i) => {
+      const x = 24 + (i % cols) * cw, y = 100 + Math.floor(i / cols) * chh;
+      const got = ACH_UNLOCKED.has(a.id);
+      ctx.fillStyle = got ? 'rgba(255,210,59,0.08)' : 'rgba(8,12,28,0.8)';
+      rr(x, y, cw - 8, chh - 8, 8); ctx.fill();
+      ctx.strokeStyle = got ? 'rgba(255,210,59,0.8)' : 'rgba(60,80,130,0.4)'; ctx.lineWidth = 1.5;
+      rr(x, y, cw - 8, chh - 8, 8); ctx.stroke();
+      if (a.icon) {
+        // brick-type reference gets its matching symbol (same icons as the how-to legend)
+        drawBrickIcon(a.icon, x + 8, y + 6, 40, 26);
+        drawText(got ? '* ' + a.name : '???', x + 54, y + 20, 7, got ? '#ffd23b' : '#4a5a8c', { align: 'left', glow: got ? 8 : 0 });
+        drawText(got ? a.desc : 'LOCKED', x + 8, y + 48, 7, got ? '#8fb6ff' : '#3d4a6b', { align: 'left' });
+      } else {
+        ctx.fillStyle = got ? '#ffd23b' : '#4a5a8c';
+        drawText(got ? '* ' + a.name : '???', x + (cw - 8) / 2, y + 22, 8, ctx.fillStyle, { glow: got ? 8 : 0 });
+        ctx.fillStyle = got ? '#8fb6ff' : '#3d4a6b';
+        drawText(got ? a.desc : 'LOCKED', x + (cw - 8) / 2, y + 46, 7, ctx.fillStyle, {});
+      }
+    });
+    drawText(ACH_UNLOCKED.size + ' OF ' + ACHS.length + ' EARNED', W / 2, 600, 10, '#ffd23b', { glow: 6 });
+  } else if (v === 'CH') {
+    CHALLENGES.forEach((c, i) => {
+      const best = store.get('best_ch' + i, null);
+      const y = 120 + i * 62;
+      const medal = best ? best.medal : null;
+      ctx.fillStyle = 'rgba(8,12,28,0.8)';
+      rr(120, y, 720, 52, 8); ctx.fill();
+      ctx.strokeStyle = medal === 'G' ? 'rgba(255,210,59,0.8)' : 'rgba(60,80,130,0.5)';
+      rr(120, y, 720, 52, 8); ctx.stroke();
+      const tx = c.icon ? 184 : 150;
+      if (c.icon) drawBrickIcon(c.icon, 128, y + 13, 40, 26);
+      drawText((i + 1) + '. ' + c.name, tx, y + 18, 10, medal === 'G' ? '#ffd23b' : '#ffffff', { align: 'left', glow: medal === 'G' ? 8 : 0 });
+      drawText(c.desc, tx, y + 40, 7, '#5d7bb0', { align: 'left' });
+      if (medal) drawText(medal === 'G' ? 'GOLD' : medal === 'S' ? 'SILVER' : 'BRONZE', 700, y + 18, 10, medal === 'G' ? '#ffd23b' : '#8fb6ff', { align: 'right' });
+      if (best) drawText('BEST ' + best.score, 700, y + 40, 8, '#ffffff', { align: 'right' });
+      else drawText('NOT YET, CHAMP!', 700, y + 40, 8, '#4a5a8c', { align: 'right' });
+    });
+  } else {
+    const arr = getScores(v);
+    if (!arr.length) {
+      drawText('NO SCORES YET — GO EARN SOME!', W / 2, 300, 14, '#4a5a8c', {});
+    } else {
+      arr.forEach((s, i) => {
+        const y = 130 + i * 48;
+        const col = i === 0 ? '#ffd23b' : i === 1 ? '#c0d4ff' : i === 2 ? '#ff9a3d' : '#8fb6ff';
+        drawText(String(i + 1).padStart(2, '0'), 200, y, 12, col, { align: 'left' });
+        drawText(s.name || 'AAA', 280, y, 12, '#ffffff', { align: 'left' });
+        drawText(String(s.score).padStart(7, '0'), 640, y, 12, col, { align: 'right' });
+        drawText('LV ' + (s.level || 1), 720, y, 10, '#5d7bb0', { align: 'right' });
+      });
+    }
+  }
+  drawText('ENTER / ESC TO GO BACK', W / 2, 668, 8, '#3d4a6b', {});
+}
+
+/* ---------- pause / game over / victory ---------- */
+function pauseGame() {
+  setScreen('paused');
+  syncMusicDuck();
+  playSfx('uiBack');
+  /* live resume keys: the pause bindings plus the confirm key, deduped */
+  const rb = curBinds();
+  const resumeKeys = [...rb.pause, rb.confirm[0]].filter((k, i, a) => a.indexOf(k) === i).slice(0, 3).map(keyLabel).join(' · ');
+  Menu.open([
+    { label: 'BACK IN THE GAME', help: 'Resume the action', sub: resumeKeys, subCol: '#8fb6ff', fn: resumeGame },
+    { label: 'REMATCH', help: 'Start this run over', fn: retryGame },
+    { label: 'MAIN MENU', help: 'Head back to mode select', fn: quitToMenu }
+  ], W / 2 - 220, 380, 440);
+  Menu.sel = 0;
+}
+function resumeGame() { setScreen('playing'); syncMusicDuck(); playSfx('uiMove'); }
+function retryGame() {
+  startRun();
+  if (Game.stageRun > 0) { Game.level = Game.stageRun; startLevel(); } // stage replay: restart the stage, not the campaign
+  setScreen('playing');
+  syncMusicDuck();
+}
+function quitToMenu() { setScreen('modeselect'); syncMusicDuck(); }
+/* The timed powers currently in play, for the pause-menu checklist. Timers are
+   frozen while paused, so these show exactly what the player returns to. */
+function activePowers() {
+  const p = Game.paddle;
+  const list = [];
+  if (Game.fireT > 0) list.push({ id: 'P', name: 'PIERCE', col: '#ff5a5a', time: Game.fireT });
+  if (Game.megaT > 0) list.push({ id: 'M', name: 'MEGA', col: '#ff9a3d', time: Game.megaT });
+  if (Game.x2T > 0) list.push({ id: '2', name: '2X', col: '#ffd23b', time: Game.x2T });
+  if (Game.slowT > 0) list.push({ id: 'W', name: 'SLOW', col: '#8fb6ff', time: Game.slowT });
+  if (Game.fastT > 0) list.push({ id: 'F', name: 'FAST', col: '#ff6a3d', time: Game.fastT });
+  if (Game.disruptT > 0) list.push({ id: 'D', name: 'JOLT', col: '#ff3d9e', time: Game.disruptT });
+  if (p.catchT > 0) list.push({ id: 'C', name: 'CATCH', col: '#8fb6ff', time: p.catchT });
+  if (Game.laserAmmo > 0) list.push({ id: 'L', name: 'LASER', col: '#29d8ff', ammo: Game.laserAmmo });
+  return list;
+}
+function drawPaused() {
+  drawGameplay();
+  ctx.fillStyle = 'rgba(2,3,10,0.72)';
+  ctx.fillRect(0, 0, W, H);
+  menuView(() => {
+    drawText('TIME OUT!', W / 2, 300, 34, '#29d8ff', { glow: 18 });
+    // active power-up checklist — plan your comeback (toggle in OPTIONS)
+    const pw = activePowers();
+    if (pw.length && OPTS.checklist) {
+      const rowsN = Math.ceil(pw.length / 4);
+      const slot = 122, bh = 36 + (rowsN - 1) * 21;
+      drawText('ACTIVE POWER-UPS', W / 2, 319, 9, '#ffd23b', {});
+      ctx.fillStyle = 'rgba(5,8,22,0.55)';
+      rr(W / 2 - 260, 307, 520, bh, 8); ctx.fill();
+      ctx.strokeStyle = 'rgba(41,216,255,0.3)'; ctx.lineWidth = 1;
+      rr(W / 2 - 260, 307, 520, bh, 8); ctx.stroke();
+      for (let i = 0; i < pw.length; i++) {
+        const it = pw[i];
+        const row = Math.floor(i / 4);
+        const inRow = Math.min(4, pw.length - row * 4);
+        const cx = W / 2 - (inRow - 1) * slot / 2 + (i % 4) * slot;
+        const cy = 337 + row * 19;
+        drawCapIcon(it.id, cx - slot / 2 + 8, cy, 13, it.col);
+        ctx.fillStyle = it.col; ctx.font = '7px ' + FONT;
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText(it.name, cx - slot / 2 + 19, cy - 1);
+        const t = it.ammo ? 'x' + it.ammo : it.time.toFixed(1) + 's';
+        drawText(t, cx - slot / 2 + 19 + it.name.length * 7 + 6, cy + 1, 8, '#ffffff', { align: 'left' });
+      }
+    }
+    Menu.draw();
+    // brick-symbol legend strip — learn the bricks without leaving the action (toggle in OPTIONS)
+    const rb2 = curBinds();
+    const backIn = keyLabel(rb2.pause[0]) + ' / ' + keyLabel(rb2.pause[1] || rb2.back[0]) + ' TO GET BACK IN';
+    if (!OPTS.legend) { drawText(backIn, W / 2, 620, 8, '#3d4a6b', {}); return; }
+    const bs = [['C', 'COLORS'], ['S', 'STEEL'], ['T', 'TITAN'], ['X', 'GOLD'], ['b', 'BOMB'], ['?', 'MYSTERY'], ['D', 'DIAMOND']];
+    const bw = 820, bx = W / 2 - bw / 2, by = 636, bh = 56;
+    ctx.fillStyle = 'rgba(5,8,22,0.55)';
+    rr(bx, by, bw, bh, 8); ctx.fill();
+    ctx.strokeStyle = 'rgba(41,216,255,0.3)'; ctx.lineWidth = 1;
+    rr(bx, by, bw, bh, 8); ctx.stroke();
+    drawText('BRICK SYMBOLS', W / 2, by + 13, 8, '#ffd23b', {});
+    const slot = bw / bs.length;
+    bs.forEach((b, i) => {
+      const cx = bx + slot * i + slot / 2;
+      drawBrickIcon(b[0], cx - slot / 2 + 4, by + 24, 30, 20);
+      drawText(b[1], cx - slot / 2 + 38, by + 35, 7, '#8fb6ff', { align: 'left' });
+    });
+    drawText(backIn, W / 2, 620, 8, '#3d4a6b', {});
+  });
+}
+function fmtTime(s) { const m = Math.floor(s / 60); return m + ':' + String(Math.floor(s % 60)).padStart(2, '0'); }
+function drawStats(cx, cy) {
+  const rows = [
+    ['SCORE', String(Game.score).padStart(7, '0')], ['BEST SCORE', String(Game.hi).padStart(7, '0')],
+    ['LEVELS DEEP', String(Game.level)], ['BRICKS SMASHED', String(Game.stats.bricks)],
+    ['BIGGEST COMBO', String(Game.maxCombo)], ['LONGEST CHAIN', String(Game.stats.bestChain)],
+    ['DIAMONDS FOUND', String(Game.stats.gems)], ['TIME ON THE CLOCK', fmtTime(Game.time)]
+  ];
+  rows.forEach((r, i) => {
+    drawText(r[0], cx - 170, cy + i * 24, 9, '#5d7bb0', { align: 'left' });
+    drawText(r[1], cx + 170, cy + i * 24, 9, r[0] === 'SCORE' ? '#ffd23b' : '#ffffff', { align: 'right', glow: r[0] === 'SCORE' ? 8 : 0 });
+  });
+}
+const medalRank = m => (m === 'G' ? 3 : m === 'S' ? 2 : m === 'B' ? 1 : 0);
+function showGameOver() {
+  setScreen('gameover');
+  playSfx('gameover');
+  Flash.set(0.55, '#ff3d5e');
+  Slowmo.set(0.7, 0.3);
+  Init.saved = false;
+  if (qualifies(Game.score)) openInitials(); else Init.active = false;
+  Menu.open([
+    { label: 'ONE MORE GO', help: 'Same mode, same difficulty', fn: retryGame },
+    { label: 'MAIN MENU', help: 'Head back to mode select', fn: quitToMenu }
+  ], W / 2 - 220, 560, 440);
+  Menu.sel = 0;
+}
+function showVictory() {
+  setScreen('victory');
+  playSfx('win');
+  unlockAchievement('victory');
+  if (Game.mode === 'CH') {
+    const c = CHALLENGES[Game.challengeIdx], sc = Game.score;
+    let medal = null;
+    if (sc >= c.med[2]) medal = 'G'; else if (sc >= c.med[1]) medal = 'S'; else if (sc >= c.med[0]) medal = 'B';
+    const prev = store.get('best_ch' + Game.challengeIdx, null);
+    if (!prev || sc > prev.score) store.set('best_ch' + Game.challengeIdx, { score: sc, medal: medal || 'B' });
+    else if (medal && medalRank(medal) > medalRank(prev.medal)) { prev.medal = medal; store.set('best_ch' + Game.challengeIdx, prev); }
+    if (medal === 'G') unlockAchievement('medal');
+  }
+  Init.saved = false;
+  if (qualifies(Game.score)) openInitials(); else Init.active = false;
+  Menu.open([
+    { label: 'RUN IT BACK', help: 'One more go?', fn: retryGame },
+    { label: 'MAIN MENU', help: 'Head back to mode select', fn: quitToMenu }
+  ], W / 2 - 220, 560, 440);
+  Menu.sel = 0;
+}
+function drawEndCommon(title, titleColor) {
+  if (Game.screen === 'victory' && Math.random() < 0.15 && Particles.list.length < 100) {
+    Particles.confetti(rand(0, W), rand(-40, 30), 12);
+  }
+  drawText(title, W / 2, 96, 30, titleColor, { glow: 18 });
+  drawPanel(W / 2 - 380, 150, 760, 330);
+  drawStats(W / 2, 200);
+  if (Init.active) drawInitials();
+  else Menu.draw();
+  drawText('ESC = BAIL OUT TO THE MENU ANYTIME', W / 2, 660, 8, '#3d4a6b', {});
+}
+function drawGameOver() { drawEndCommon('GAME OVER, CHAMP', '#ff3d5e'); }
+function drawVictory() {
+  if (Game.mode === 'CH') drawEndCommon('CHALLENGE BEATEN!', '#ffd23b');
+  else drawEndCommon('YOU RULE! ALL CLEARED!', '#3dff8f');
+}
+
+/* ---------- achievement toast ---------- */
+function drawAchToast() {
+  if (AchToast.t <= 0) return;
+  const a = AchToast.item;
+  const alpha = clamp(Math.min(AchToast.t / 0.5, (3.2 - AchToast.t) / 0.3), 0, 1);
+  ctx.globalAlpha = alpha;
+  const tw = Math.min(W - 40, 560);
+  ctx.fillStyle = 'rgba(10,14,30,0.94)';
+  rr(W / 2 - tw / 2, 612, tw, 48, 10); ctx.fill();
+  ctx.strokeStyle = '#ffd23b'; ctx.lineWidth = 1.5; rr(W / 2 - tw / 2, 612, tw, 48, 10); ctx.stroke();
+  drawText(a.unlock ? 'SECRET UNLOCKED!' : '* ACHIEVEMENT UNLOCKED!', W / 2, 628, 9, '#ffd23b', { glow: 8 });
+  drawText(a.name + ' — ' + a.desc, W / 2, 648, 8, '#ffffff', {});
+  ctx.globalAlpha = 1;
+}
+
+/* ---------- capsule cheat sheet reveal ---------- */
+function drawCheatReveal() {
+  if (CheatReveal.t <= 0) return;
+  const TOTAL = 4.2;
+  const alpha = clamp(Math.min(CheatReveal.t / 0.35, (TOTAL - CheatReveal.t) / 0.4), 0, 1);
+  // confetti keeps raining for the whole reveal
+  if (Math.random() < 0.55) Particles.confetti(rand(0, W), -12, 6);
+  // gameplay screens already draw particles inside drawGameplay
+  if (Game.screen !== 'playing' && Game.screen !== 'paused') Particles.draw(ctx);
+  const cx = W / 2, cy = H * 0.42;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  drawText('CAPSULE CHEAT SHEET!', cx, cy - 42, Math.min(32, W / 21), '#ffd23b', { glow: 22 });
+  drawText('ALL 13 COLLECTED - HOW-TO NOTES UNLOCKED!', cx, cy + 4, 10, '#fff2b0', { glow: 8 });
+  // capsule parade: all 13 glyph icons marching across, bobbing like a ticker
+  const N = CAPSULE_INFO.length, size = 24, gap = 34;
+  const span = N * gap;
+  const off = ((TOTAL - CheatReveal.t) * 64) % span;
+  for (let i = 0; i < N; i++) {
+    const c = CAPSULE_INFO[i];
+    let px = cx + i * gap - off - span / 2 + gap / 2;
+    px = ((px - (cx - span / 2)) % span + span) % span + (cx - span / 2);
+    const bob = Math.sin((TOTAL - CheatReveal.t) * 7 + i * 0.85) * 5;
+    ctx.save();
+    ctx.translate(px, cy + 58 + bob);
+    ctx.shadowColor = c.color; ctx.shadowBlur = 12;
+    ctx.fillStyle = '#0c1226';
+    rr(-size / 2, -size / 2, size, size, 6); ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = c.color; ctx.lineWidth = 2;
+    rr(-size / 2, -size / 2, size, size, 6); ctx.stroke();
+    drawCapIcon(c.id, 0, 0, size * 0.95, c.color);
+    ctx.restore();
+  }
+  ctx.restore();
+}
+
+/* ---------- input dispatch ---------- */
+let musicStarted = false;
+/* Quick-flip one per-mode setting for the highlighted mode row (P/K/A keys).
+   `explain` appends a one-line what-it-does to the ON toast, so e.g. PARTY
+   tells players what it actually is the moment they flip it. */
+function flipMode(key, label, cols, sfxOn, explain) {
+  const m = MODE_INFO[Menu.sel].id;
+  OPTS[key][m] = !OPTS[key][m];
+  const on = OPTS[key][m];
+  saveOpts();
+  playSfx(on ? sfxOn : 'uiBack');
+  menuMsg = { text: m + ': ' + label + ' ' + (on ? 'ON!' : 'OFF') + (on && explain ? ' — ' + explain : ''), col: on ? cols.on : cols.off, until: perfT + 1.6 };
+}
+/* Reset a highlighted mode's three quick toggles to defaults: PARTY off, KEYS on, PAUSE on.
+   Triggered by HOLD P + K/A on the keyboard (Y + X/B on the pad). */
+function resetModeDefaults() {
+  const m = MODE_INFO[Menu.sel].id;
+  OPTS.feast[m] = false; OPTS.keys[m] = true; OPTS.autopause[m] = true;
+  saveOpts();
+  playSfx('uiSel');
+  menuMsg = { text: m + ': DEFAULTS SET!', col: '#3dff8f', until: perfT + 1.6 };
+}
+/* Reset a highlighted mode's CONTROLS — keyboard + pad binds and the layout
+   preset — back to stock, the counterpart to the CUSTOM tag. R on the keyboard,
+   RB on the pad. Only offered when the mode actually carries custom controls. */
+function resetModeControls() {
+  const m = MODE_INFO[Menu.sel].id;
+  resetBinds(m); // restores BINDS[m] + PADB[m], saves + refreshes the hint
+  OPTS.layout[m] = 'CLASSIC';
+  saveOpts();
+  menuMsg = { text: m + ': CONTROLS RESET!', col: '#3dff8f', until: perfT + 1.6 };
+}
+/* Screen-level dispatch. `acts` is the list of actions the pressed key maps to
+   (a shared key like ESC can be pause AND back); `fromPad` marks pad input so
+   the pad's START confirms in menus while the keyboard's ESC still backs out. */
+function handleAction(acts, code, rep, fromPad) {
+  const has = n => acts.includes(n);
+  switch (Game.screen) {
+    case 'title':
+      if (has('confirm') || has('launch') || (fromPad && has('pause'))) { playSfx('uiSel'); startModeSelect(); }
+      else if (code === 'KeyC') { playSfx('uiSel'); openControls('title'); }
+      break;
+    case 'modeselect':
+      if (code === 'ArrowUp') { Menu.move(-1); if (Menu.sel <= 2) Game.selMode = Menu.sel; }
+      else if (code === 'ArrowDown') { Menu.move(1); if (Menu.sel <= 2) Game.selMode = Menu.sel; }
+      else if (code === 'ArrowLeft' || code === 'ArrowRight') {
+        if (Menu.sel <= 2) { Game.diff = clamp(Game.diff + (code === 'ArrowRight' ? 1 : -1), 0, 3); playSfx('uiMove'); }
+      }
+      else if ((code === 'KeyK' || code === 'KeyA') && Menu.sel <= 2 && keys.KeyP && !rep) resetModeDefaults();
+      else if (code === 'KeyP' && Menu.sel <= 2 && !rep) flipMode('feast', 'PARTY', { on: '#ffd23b', off: '#8fb6ff' }, 'cap', 'WILD DROPS');
+      else if (code === 'KeyK' && Menu.sel <= 2 && !rep) flipMode('keys', 'KEYS', { on: '#3dff8f', off: '#8fb6ff' }, 'uiSel');
+      else if (code === 'KeyA' && Menu.sel <= 2 && !rep) flipMode('autopause', 'AUTO-PAUSE', { on: '#29d8ff', off: '#8fb6ff' }, 'uiSel');
+      else if (code === 'PadReset' && Menu.sel <= 2) resetModeDefaults();
+      else if (code === 'KeyR' && Menu.sel <= 2 && !rep && modeCustom(MODE_INFO[Menu.sel].id)) resetModeControls();
+      else if (code === 'KeyS' && Menu.sel === 1 && !rep) openStages();
+      else if (has('confirm') || (fromPad && has('pause'))) Menu.enter();
+      else if (has('back') || has('pause')) setScreen('title');
+      break;
+    case 'stages':
+      if (code === 'ArrowUp') stageMove(0, -1);
+      else if (code === 'ArrowDown') stageMove(0, 1);
+      else if (code === 'ArrowLeft') stageMove(-1, 0);
+      else if (code === 'ArrowRight') stageMove(1, 0);
+      else if (has('confirm') || has('launch') || (fromPad && has('pause'))) playStage(StageSel.cursor + 1);
+      else if (has('back') || has('pause')) setScreen('modeselect');
+      break;
+    case 'challenges': case 'scoremenu':
+      if (code === 'ArrowUp') Menu.move(-1);
+      else if (code === 'ArrowDown') Menu.move(1);
+      else if (code === 'ArrowLeft' || code === 'ArrowRight' || has('confirm') || (fromPad && has('pause'))) Menu.enter();
+      else if (has('back') || has('pause')) setScreen('modeselect');
+      break;
+    case 'options':
+      if (code === 'ArrowUp') Menu.move(-1);
+      else if (code === 'ArrowDown') Menu.move(1);
+      else if (code === 'ArrowLeft' || code === 'ArrowRight') {
+        // switch the mode tab — every per-mode row refreshes to the new mode
+        optTab = (optTab + (code === 'ArrowRight' ? 1 : -1) + MODE_META.length) % MODE_META.length;
+        Menu.items.forEach(i => { if (i && i.refresh) i.refresh(); });
+        playSfx('uiMove');
+      }
+      else if (code === 'KeyR') {
+        const it = Menu.items[Menu.sel];
+        if (it && it.resetAll) { it.resetAll(); saveOpts(); playSfx('uiBack'); } // zero every mode for this row
+      }
+      else if (code === 'KeyX' && !has('confirm') && !has('back')) clearModeCustom(); // wipe the tab's mode
+      else if (has('confirm') || (fromPad && has('pause'))) Menu.enter();
+      else if (has('back') || has('pause')) setScreen('modeselect');
+      break;
+    case 'controls':
+      if (Ctl.bind) return; // capture mode handled in onKeyDown / pollGamepad
+      if (code === 'ArrowUp') Ctl.move(-1);
+      else if (code === 'ArrowDown') Ctl.move(1);
+      else if ((code === 'ArrowLeft' || code === 'ArrowRight') && !has('confirm') && !has('back')) {
+        const cr = Ctl.rows[Ctl.sel];
+        if (cr && cr.copy) {
+          // on the COPY row, < > picks the source mode instead of the tab
+          const opts = MODE_META.map(m => m.id).filter(id => id !== ctlMode());
+          const i = opts.indexOf(cr.src);
+          cr.src = opts[(i + (code === 'ArrowRight' ? 1 : -1) + opts.length) % opts.length];
+        } else {
+          // switch which mode's bindings you're editing (skip when the key is confirm/back)
+          ctlTab = (ctlTab + (code === 'ArrowRight' ? 1 : -1) + MODE_META.length) % MODE_META.length;
+          const cpy = Ctl.rows.find(x => x.copy);
+          if (cpy) { const o2 = MODE_META.map(m => m.id).filter(id => id !== ctlMode()); if (o2.indexOf(cpy.src) < 0) cpy.src = o2[0]; }
+        }
+        playSfx('uiMove');
+      }
+      else if (code === 'KeyR') resetBinds(ctlMode());
+      else if (has('confirm') || (fromPad && has('pause'))) Ctl.enter();
+      else if (has('back') || has('pause')) setScreen(Ctl.from === 'title' ? 'title' : 'options');
+      break;
+    case 'scores':
+      if (has('back') || has('pause') || has('confirm')) setScreen('scoremenu');
+      break;
+    case 'howto':
+      if (has('back') || has('pause') || has('confirm') || has('launch')) setScreen('modeselect');
+      break;
+    case 'playing':
+      if (has('pause') || has('back')) pauseGame();
+      else if (has('launch') || has('confirm')) Game.balls.forEach(b => { if (b.serve) launchBall(b); });
+      else if (code === 'KeyM') { OPTS.music[Game.mode] = !OPTS.music[Game.mode]; saveOpts(); refreshMusic(); }
+      else if (code === 'KeyS') { OPTS.sound[Game.mode] = !OPTS.sound[Game.mode]; saveOpts(); if (OPTS.sound[Game.mode]) playSfx('uiSel'); }
+      else if (code === 'KeyC') { OPTS.crt[Game.mode] = !OPTS.crt[Game.mode]; saveOpts(); playSfx('uiMove'); }
+      break;
+    case 'paused':
+      if (has('pause') || has('back')) resumeGame();
+      else if (code === 'KeyM') { OPTS.music[Game.mode] = !OPTS.music[Game.mode]; saveOpts(); refreshMusic(); }
+      else if (code === 'KeyS') { OPTS.sound[Game.mode] = !OPTS.sound[Game.mode]; saveOpts(); if (OPTS.sound[Game.mode]) playSfx('uiSel'); }
+      else if (code === 'KeyC') { OPTS.crt[Game.mode] = !OPTS.crt[Game.mode]; saveOpts(); playSfx('uiMove'); }
+      else if (code === 'ArrowUp') Menu.move(-1);
+      else if (code === 'ArrowDown') Menu.move(1);
+      else if (has('confirm') || has('launch') || (fromPad && has('pause'))) Menu.enter();
+      break;
+    case 'gameover': case 'victory':
+      if (code === 'ArrowUp') Menu.move(-1);
+      else if (code === 'ArrowDown') Menu.move(1);
+      else if (has('confirm') || has('launch') || (fromPad && has('pause'))) Menu.enter();
+      break;
+  }
+}
+function onKeyDown(code, rep) {
+  if (!musicStarted) { musicStarted = true; refreshMusic(); }
+  lastInputT = perfT;
+  if (Demo.active) { if (Demo.phase === 'playing') startDemoFade(); return; }
+  if (Ctl.bind) { captureKey(code, rep); return; }
+  if (Init.active) { initialsKey(code); return; }
+  handleAction(actionsFor(code), code, rep, false);
+}
+function onPointerDown() {
+  if (!musicStarted) { musicStarted = true; refreshMusic(); }
+  lastInputT = perfT;
+  if (Demo.active) { if (Demo.phase === 'playing') startDemoFade(); return; }
+  if (Init.active) return;
+  switch (Game.screen) {
+    case 'title': playSfx('uiSel'); startModeSelect(); break;
+    case 'modeselect': {
+      const d = toDesign(ptr);
+      const dy = 150 + 7 * 46 + 50;
+      if (d.y > dy - 20 && d.y < dy + 18 && d.x > DW / 2 - 190 && d.x < DW / 2 + 190) {
+        if (d.x < DW / 2) { Game.diff = clamp(Game.diff - 1, 0, 3); playSfx('uiMove'); }
+        else { Game.diff = clamp(Game.diff + 1, 0, 3); playSfx('uiMove'); }
+        return;
+      }
+      if (Menu.sel === 1 && d.y > 596 && d.y < 656) { openStages(); return; } // stage map tap -> stage select
+      Menu.hover(); Menu.enter();
+      break;
+    }
+    case 'stages': {
+      const d = toDesign(ptr);
+      const c = stageHit(d.x, d.y);
+      if (c >= 0) playStage(c + 1);
+      break;
+    }
+    case 'challenges': case 'options': case 'scoremenu': case 'paused': case 'gameover': case 'victory':
+      Menu.hover(); Menu.enter();
+      break;
+    case 'scores': setScreen('scoremenu'); break;
+    case 'howto': setScreen('modeselect'); break;
+    case 'playing':
+      if (ptr.x > W - 48 && ptr.y < HUD) { pauseGame(); break; }
+      Game.balls.forEach(b => { if (b.serve) launchBall(b); });
+      break;
+  }
+}
+
+/* ---------- main loop ---------- */
+let last = performance.now();
+function loop(now) {
+  requestAnimationFrame(loop);
+  realDt = clamp((now - last) / 1000, 0.001, 0.05);
+  last = now;
+  perfT += realDt;
+  pollGamepad();
+  const dt = realDt * timeScale();
+  Particles.update(dt);
+  Texts.update(dt);
+  Flash.update(realDt);
+  /* attract mode: idle countdown on the title, play clock + exit while live */
+  if (Game.screen === 'title' && !Demo.active) {
+    if (perfT - lastInputT < 2) Demo.t = 0;
+    else { Demo.t += realDt; if (Demo.t >= DEMO_IDLE) startDemo(); }
+  } else if (Game.screen === 'demo' && Demo.phase === 'playing') {
+    Demo.playT += realDt;
+    if (Demo.playT >= DEMO_MAX) startDemoFade();
+  }
+  if (Game.screen === 'playing' || (Game.screen === 'demo' && Demo.phase === 'playing')) updateGameplay(dt);
+  if (MENU_SCREENS.includes(Game.screen)) Menu.hover();
+  if (Init.active) updateInitials(dt);
+  if (AchToast.t > 0) AchToast.t -= realDt;
+  if (CheatReveal.t > 0) CheatReveal.t -= realDt;
+  if (++lastResizeCheck > 90) { lastResizeCheck = 0; if (!canvas.style.width || canvas.style.width === '0px') resize(); }
+  ctx.save();
+  switch (Game.screen) {
+    case 'title': menuView(() => drawTitle()); break;
+    case 'modeselect': menuView(() => drawModeSelect()); break;
+    case 'stages': menuView(() => drawStages()); break;
+    case 'challenges': menuView(() => drawChallenges()); break;
+    case 'howto': menuView(() => drawHowTo()); break;
+    case 'options': menuView(() => drawOptions()); break;
+    case 'controls': menuView(() => drawControls()); break;
+    case 'scoremenu': menuView(() => drawScoreMenu()); break;
+    case 'scores': menuView(() => drawScores()); break;
+    case 'playing': drawGameplay(); break;
+    case 'demo': drawGameplay(); break;
+    case 'paused': drawPaused(); break;
+    case 'gameover': menuView(() => drawGameOver()); break;
+    case 'victory': menuView(() => drawVictory()); break;
+  }
+  /* attract mode: black fade out of the demo, then the title returns */
+  if (Game.screen === 'demo' && Demo.phase === 'fading') {
+    Demo.fadeT += realDt;
+    ctx.fillStyle = 'rgba(0,0,0,' + Math.min(Demo.fadeT / DEMO_FADE, 1).toFixed(3) + ')';
+    ctx.fillRect(0, 0, W, H);
+    if (Demo.fadeT >= DEMO_FADE) endDemo();
+  }
+  ctx.restore();
+  if (crtOn() && Game.screen !== 'playing') CRT.draw(ctx, perfT);
+  drawAchToast();
+  drawCheatReveal();
+}
+
+/* ---------- resize & init ---------- */
+let lastResizeCheck = 0;
+let builtW = 0, builtH = 0;
+function resize(forcePortrait) {
+  const prevPortrait = PORTRAIT;
+  applyLayout(forcePortrait);
+  const flipped = PORTRAIT !== prevPortrait;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (W !== builtW || H !== builtH) { Bg.build(); CRT.build(); builtW = W; builtH = H; }
+  const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+  if (!(s > 0)) return;
+  canvas.style.width = (W * s) + 'px';
+  canvas.style.height = (H * s) + 'px';
+  if (flipped && (Game.screen === 'playing' || Game.screen === 'paused')) startLevel();
+}
+function init() {
+  const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (rm) { for (const k in OPTS.crt) OPTS.crt[k] = false; }
+  resize();
+  const his = [store.get('hi_CLASSIC', 0), store.get('hi_ARKANOID', 0), store.get('hi_REMIX', 0), store.get('hi_CH', 0)];
+  for (let i = 0; i < 6; i++) { const b = store.get('best_ch' + i, null); if (b) his.push(b.score); }
+  Game.hi = Math.max(0, ...his);
+  Game.selMode = 0;
+  refreshHint();
+  setScreen('title');
+  requestAnimationFrame(loop);
+}
+window.addEventListener('resize', () => resize());
+window.addEventListener('load', () => resize());
+
+/* ---------- debug / test API ---------- */
+window.NB = {
+  get state() { return { screen: Game.screen, score: Game.score, lives: Game.lives, level: Game.level, mode: Game.mode, combo: Game.combo, mult: Game.mult }; },
+  screen: s => setScreen(s),
+  start: m => { Game.mode = m; Game.challengeIdx = 0; startRun(); setScreen('playing'); },
+  launch: () => Game.balls.forEach(b => { if (b.serve) launchBall(b); }),
+  cheat: () => { Game.lives = 99; },
+  clear: () => { for (const b of Game.bricks.slice()) if (!b.dead && b.type !== 'X') { b.hp = 0; destroyBrick(b, 1); } },
+  ptr: (x, y, type) => {
+    const r = canvas.getBoundingClientRect();
+    window.dispatchEvent(new PointerEvent(type || 'pointerdown', {
+      clientX: r.left + x * r.width / W, clientY: r.top + y * r.height / H, bubbles: true
+    }));
+  },
+  key: c => onKeyDown(c),
+  die: () => { Game.lives = 0; Game.balls = []; loseLife(); },
+  cap: id => { const info = CAPSULE_INFO.find(c => c.id === id); if (info) Game.capsules.push({ x: Game.paddle.x, y: PADDLE_Y - 30, id, color: info.color, name: info.name, good: info.good, vy: 300, seed: randi(0, 999) }); },
+  probe: () => ({ capsules: Game.capsules.length, bolts: Game.bolts.length, fireT: Game.fireT, megaT: Game.megaT, disruptT: Game.disruptT, slowT: Game.slowT, catchT: Game.paddle.catchT, laserAmmo: Game.laserAmmo, clearing: Game.clearing, chainT: Game.chainT, pending: Game.clearPending, lives: Game.lives, level: Game.level, mode: Game.mode, top: Game.classicTopRow, rows: Game.classicRows, bricks: Game.bricks.length, score: Game.score, mult: Game.mult, combo: Game.combo, balls: Game.balls.length }),
+  portrait: p => { resize(!!p); return { W, H, portrait: PORTRAIT }; },
+  layout: () => ({ W, H, portrait: PORTRAIT, menuS: MENU_S, paddleY: PADDLE_Y, ballR: BALL_R }),
+  pad: (buttons, axes) => {
+    const b = new Array(16).fill(null);
+    (buttons || []).forEach(i => { b[i] = { pressed: true }; });
+    fakePad = { buttons: b, axes: axes || [0, 0] };
+    pollGamepad();
+    return { padDir, screen: Game.screen };
+  }
+};
+init();
+</script>
+</body>
+</html>

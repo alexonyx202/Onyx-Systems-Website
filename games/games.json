@@ -1,102 +1,66 @@
 {
   "games": [
     {
-      "file": "wargames-v3.html",
-      "title": "WarGames: Missile Defense",
-      "tagline": "Defend NORAD, Moscow & Beijing from incoming ICBMs.",
-      "desc": "A retro Missile Command clone inspired by the 1983 film. Pick your threat level, read the defense briefing, then survive 12 escalating waves with radar sweep and WebAudio sound \u2014 no downloads.",
-      "thumb": "assets/wargames-thumbnail.webp",
-      "cabinet": "assets/cabinet-wargames.webp",
-      "featured": true
-    },
-    {
-      "file": "disk-defrag.html",
-      "title": "Disk Defrag",
-      "tagline": "Defragment the drive. Clear the lines.",
-      "desc": "A puzzle where colorful blocks slide down from the top and you twist them to fill the empty spaces at the bottom. Complete a full row and the whole line clears \u2014 clear several at once for a bigger score. Easy to pick up, tough to stop, with a local high-score table and a sound toggle. No downloads.",
-      "thumb": "assets/disk-defrag-thumb.webp",
-      "cabinet": "assets/cabinet-disk-defrag.webp",
-      "featured": false
-    },
-    {
-      "file": "drone-hunt-v4.html",
-      "title": "Drone Hunt",
-      "tagline": "Laser rifle. Drones. Don't hit the birds.",
-      "desc": "A top-down laser-rifle shooter. Click to fire a green beam from your rifle, destroy inbound drones, protect the birds, and down the boss drone every 5th wave. No downloads.",
-      "thumb": "assets/drone-hunt-thumb.webp",
-      "cabinet": "assets/cabinet-drone-hunt.webp",
-      "featured": false
-    },
-    {
-          "file": "computer-chaos-v7.html",
-          "title": "Computer Chaos",
-          "tagline": "Catch the parts. Fill the orders. Beat the clock.",
-          "desc": "A catch-and-sort repair-tech game. Catch good parts to fill orders, dodge junk, survive chaos events \u2014 5 lives, 60-second rounds. No downloads.",
-          "thumb": "assets/computer-chaos-thumb.webp",
-          "cabinet": "assets/cabinet-computer-chaos.webp",
-          "featured": false
-        },
-    {
-      "file": "skydrift.html",
-      "title": "SKYDRIFT",
-      "tagline": "Neon bolts, drones and a high-score table.",
-      "desc": "A neon retro arcade side-scroller. Fly an 8-direction ship, power-scaled bolt patterns, bombs, 6 drone types, combo x10, and a top-5 high-score table. No downloads.",
-      "thumb": "assets/skydrift-thumb.webp",
-      "cabinet": "assets/cabinet-skydrift.webp",
-      "featured": false
-    },
-    {
-      "file": "bit-byte.html",
-      "title": "Bit-Byte",
-      "tagline": "Chomp the bits. Outrun the viruses.",
-      "desc": "A classic maze chase. Gobble the dots, grab a glowing power pill to turn the tables and hunt the four chasers, and clear all 7 mazes to win. Simple to play, tricky to master. No downloads.",
-      "thumb": "assets/cabinet-bit-byte.webp",
-      "cabinet": "assets/cabinet-bit-byte.webp",
-      "featured": false
-    },
-    {
-      "file": "data-break.html",
-      "title": "DATA BREAK",
-      "tagline": "Pilot a tech ship. Shatter corrupted data blocks. Purge the system.",
-      "desc": "A fast-paced tech-themed brick breaker. Pilot a maintenance ship, launch Data Scrubbers, and purge corrupted data from an overloaded system. Eight corrupted bosses, multiple ships, power-ups, and endless mode. No downloads.",
-      "thumb": "assets/cabinet-data-break.webp",
-      "cabinet": "assets/cabinet-data-break.webp",
-      "featured": false
-    },
-    {
-      "file": "bug-swarm.html",
-      "title": "BUG SWARM",
-      "tagline": "Mainframe defense. Wipe out the digital pest infestation.",
-      "desc": "A Galaga-style fixed shooter. Defend the core from waves of viruses, rootkits, and tractor-beam spiders. CRT filter, retro scaling, adaptive boss AI, and high-score table. No downloads.",
-      "thumb": "assets/cabinet-bug-swarm.webp",
-      "cabinet": "assets/cabinet-bug-swarm.webp",
-      "featured": false
-    },
-    {
-      "file": "neon-pilot.html",
-      "title": "NEON PILOT",
-      "tagline": "Further into the neon world. 5 eras. 2 visual styles.",
-      "desc": "A retro arcade side-scroller spanning 5 neon eras (1984-3001). Switch between Neon glow and Vector wireframe styles. 8-way movement, tracer bullets, formations, hidden targets, bosses, and adaptive AI demo mode. No downloads.",
-      "thumb": "assets/cabinet-neon-pilot.webp",
-      "cabinet": "assets/cabinet-neon-pilot.webp",
-      "featured": false
-    },
-    {
-      "file": "technobonk.html",
-      "title": "TECHNOBONK",
-      "tagline": "Survive. Evolve. Bonk. Neon-drenched arcade survival.",
-      "desc": "A Vampire Survivors-style auto-attack survival game. 4 unique classes, 15+ upgrades, procedurally scaling waves, boss encounters, persistent stats/achievements, minimap radar, and synthwave soundtrack. No downloads.",
-      "thumb": "assets/cabinet-technobonk.webp",
-      "cabinet": "assets/cabinet-technobonk.webp",
-      "featured": false
-    },
-    {
-      "file": "stack-overflow-v2.html",
+      "file": "stack-overflow.html",
       "title": "STACK OVERFLOW",
-      "tagline": "Climb the stack. Patch the bug. Reach the RETURN portal.",
-      "desc": "A retro arcade platformer. The program is crashing \u2014 climb 9 stack frames, stomp bugs from above, collect memory bits, and reach the RETURN portal before the stack overflows. Hold jump to rise higher, chain stomp combos, and beat your best time on every frame. No downloads.",
-      "thumb": "assets/stack-overflow-thumb.webp",
+      "tagline": "System Stack Climber",
+      "desc": "Scale the system stack in this high-intensity climber. Dodge overflows and reach the peak.",
+      "thumb": "assets/cabinet-stack-overflow.webp",
       "cabinet": "assets/cabinet-stack-overflow.webp",
+      "featured": false
+    },
+    {
+      "file": "cyber-dash.html",
+      "title": "CYBER DASH",
+      "tagline": "Outrun the Mainframe",
+      "desc": "An endless synthwave runner. Outrun the mainframe, slide under laser gates, and harvest the grid.",
+      "thumb": "assets/cabinet-cyber-dash.webp",
+      "cabinet": "assets/cabinet-cyber-dash.webp",
+      "featured": false
+    },
+    {
+      "file": "neon-breaker.html",
+      "title": "NEON BREAKER",
+      "tagline": "Retro Arcade Remix",
+      "desc": "A classic Breakout x Arkanoid remix. Neon, juicy, and addictive block-shattering action.",
+      "thumb": "assets/cabinet-neon-breaker.webp",
+      "cabinet": "assets/cabinet-neon-breaker.webp",
+      "featured": false
+    },
+    {
+      "file": "byte-bird.html",
+      "title": "BYTE BIRD",
+      "tagline": "Cartoon Tech Arcade",
+      "desc": "Fly a little bot through the server maze. Grab batteries, dodge viruses, and chase the high score.",
+      "thumb": "assets/cabinet-byte-bird.webp",
+      "cabinet": "assets/cabinet-byte-bird.webp",
+      "featured": false
+    },
+    {
+      "file": "glitch-bug.html",
+      "title": "GLITCH BUG",
+      "tagline": "Retro Bug Hunt",
+      "desc": "A Centipede/Millipede remix. Exterminate the digital pest infestation in the data field.",
+      "thumb": "assets/cabinet-glitch-bug.webp",
+      "cabinet": "assets/cabinet-glitch-bug.webp",
+      "featured": false
+    },
+    {
+      "file": "data-router.html",
+      "title": "DATA ROUTER",
+      "tagline": "Route the Packet",
+      "desc": "Hop a lone data packet across busy traffic and bus lanes to the CPU cores before time runs out.",
+      "thumb": "assets/cabinet-data-router.webp",
+      "cabinet": "assets/cabinet-data-router.webp",
+      "featured": false
+    },
+    {
+      "file": "port-mapper.html",
+      "title": "PORT MAPPER",
+      "tagline": "Open Every Port",
+      "desc": "Hop across an isometric pyramid of network ports and flip them to OPEN.",
+      "thumb": "assets/cabinet-port-mapper.webp",
+      "cabinet": "assets/cabinet-port-mapper.webp",
       "featured": false
     }
   ]
