@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Computer Brief — Friday, August 7th, 2026 | ONYX SYSTEMS</title>
-<meta name="description" content="ONYX SYSTEMS Daily Computer Brief for Friday, August 7th, 2026.">
+<title>Daily Computer Brief — Saturday, August 8th, 2026 | ONYX SYSTEMS</title>
+<meta name="description" content="ONYX SYSTEMS Daily Computer Brief for Saturday, August 8th, 2026.">
 <style>
   :root{--paper:#F7F4EF;--ink:#23201C;--muted:#6B635A;--accent:#C2703D;--line:#E4DED3;--shadow:0 6px 24px rgba(0,0,0,.08)}
   body{margin:0;background:#EDE8DF;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6}
@@ -38,34 +38,31 @@
   <div class="mast">
     <div class="brand"><img src="onyxsystems-header.png" alt="ONYX SYSTEMS"></div>
     <div class="tagline">Serving Lake City & North Florida</div>
-    <div class="date">Friday, August 7th, 2026</div>
+    <div class="date">Saturday, August 8th, 2026</div>
   </div>
   <h1>Your Daily Computer Brief</h1>
   <div class="section alert">
     <h2>🔴 ALERT</h2>
-    <p>That "Invoice Attached" Email Is a Trap.
-You get an email that looks like it's from a vendor, DocuSign, or even a colleague: "Invoice #12345 attached — please review and pay." The attachment is a PDF or Word doc. You open it, and nothing seems to happen. But in the background, a script downloads malware from Discord's CDN or a fake login page steals your credentials.
-This campaign has been running since late 2025 and hits businesses and individuals alike. The emails use real branding, spoofed sender addresses, and urgent language ("past due," "final notice").
-What to do: Don't open unexpected invoice attachments. If you weren't expecting an invoice, call the sender at a known number — not one in the email. Hover over links to see the real URL. Report phishing to your IT person or forward to reportphishing@apwg.org.
-*Source: BleepingComputer, MalwareTips, GridinSoft — July 2026*</p>
+    <p>A critical **Metabase SQL injection zero-day** (CVSS 10.0) is being actively exploited right now. Attackers hit Metabase Cloud and self-hosted instances (versions 1.58+) — stealing customer data from Framework, Tally, and others. The flaw lets unauthenticated remote attackers gain admin access, steal database credentials, and export all connected data. If you run Metabase, **upgrade immediately** to patched versions (0.58.24, 0.59.21, 0.60.17, 0.61.11, 0.62.9, 0.63.5 or newer). Can't upgrade yet? Block access to `/api/session/reset_password` endpoint. Check logs for POST to that endpoint returning 400 followed by successful GET to `/api/user/current` — that's the attack signature.
+*Source: BleepingComputer — August 7, 2026; Metabase Security Advisory GHSA-vwf4-m7j8-wcjf*</p>
   </div>
   <div class="section">
     <h2>Today in Tech</h2>
     <ul>
-      <li>Microsoft's July Patch Tuesday fixed a record 570 vulnerabilities, including two actively exploited zero-days. Run Windows Update now — this is the biggest patch month ever. (Source: BleepingComputer — July 2026)</li>
-      <li>Nvidia and Microsoft launched RTX Spark, a new "superchip" putting 1 petaflop of AI power into thin Windows laptops from Dell, HP, Lenovo, ASUS, MSI, and Surface — arriving fall 2026. (Source: NVIDIA Newsroom, Windows Blog — May 2026)</li>
-      <li>Citrus Broadband is building 800+ miles of redundant fiber across 12 North Florida counties including Columbia, Baker, and Alachua — bringing carrier-grade internet to rural businesses and homes. (Source: Citrus Broadband — 2026)</li>
+      <li>Metabase SQLi zero-day (CVSS 10.0) actively exploited — Framework and Tally confirm customer data stolen; self-hosted instances must upgrade now. (Source: BleepingComputer — August 7, 2026)</li>
+      <li>Healthcare software vendor Unlimited Technology Systems discloses breach impacting **3.8 million people** — SSNs, medical records, driver's licenses exposed in October 2025 attack. (Source: BleepingComputer — August 7, 2026)</li>
+      <li>North Carolina Ports cyberattack disrupts operations at Wilmington, Morehead City, and Charlotte Inland Port — gates delayed, systems still recovering. (Source: BleepingComputer — August 7, 2026)</li>
     </ul>
   </div>
   <div class="section tip">
     <h2>Daily Tip</h2>
-    <p>Every open program eats memory and slows your computer down. Look at your taskbar (bottom of screen) — see those little dots under the icons? Each one is a running program. Right-click any you're not using right now and choose "Close window." Your computer will feel snappier instantly, especially if you only have 8GB of RAM or less.</p>
+    <p>Accidentally closed a tab? Press **Ctrl+Shift+T** (Windows) or **Cmd+Shift+T** (Mac) to reopen it instantly. Works in Chrome, Edge, Firefox, and Safari. Repeat to reopen multiple tabs in reverse order. Takes one second — saves the frustration of digging through history.</p>
   </div>
   <div class="section">
     <h2>😄 COMEDY BREAK</h2>
     <div class="comic">
-      <img src="assets/img/news/2026-08-07-farside.jpg" alt="The Far Side comic for Friday, August 7th, 2026">
-      <div class="cap">Hey! What's going on here? ... We're losing the visual!</div>
+      <img src="assets/img/news/2026-08-08-farside.jpg" alt="The Far Side comic for Saturday, August 8th, 2026">
+      <div class="cap">Give me a hand here, boys! … It's young Will Hawkins! … Dang fool tried to ride into the sunset!</div>
     </div>
   </div>
 </article>

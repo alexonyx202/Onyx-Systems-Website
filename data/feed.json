@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-08-02",
+    "last_updated": "2026-08-08",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -100,6 +100,21 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-08-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-08",
+      "title": "Chrome 151 patches 41 security holes \u2014 update now at chrome://settings/help",
+      "tag": "Daily Brief",
+      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings \u2192 About Chrome. The browser will check, download, and ask you to relaunch.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Chrome151",
+        "#SecurityUpdate"
+      ]
+    },
+    {
       "id": "onyx-2026-08-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-04",
@@ -167,53 +182,25 @@
         "#FBI-IC3-Scam",
         "#HaveIBeenPwned"
       ]
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "news-2026-07-29",
-      "type": "newsletter",
-      "date": "2026-07-29",
-      "title": "FBI Warns: Scammers Impersonating IC3 to Re-Victimize You",
-      "tag": "Security Alert",
-      "excerpt": "Scammers Are Pretending to Be the FBI's Internet Crime Center to Steal From You \u2014 Again. You get a message: \"We recovered your stolen money. Click here to claim it.\" The sender claims to be from the IC3 \u2014 the FBI's Internet Crime Complaint Center. They might even have an AI-generated video of an FBI official \"confirming\" it's real. It's a lie. The IC3 never contacts victims through social media, email, or phone. They never recover funds for you. They never ask for payment to release money. This is a re-victimization scam targeting people who've already been scammed once. What to do: Type www.ic3.gov directly into your browser \u2014 never click a link. If someone says they're from IC3 and wants money or info, it's a scam. Report it at the real IC3 site. *Source: FBI IC3 PSA \u2014 July 2026*",
-      "image": "assets/img/news/2026-07-29-composite.jpg",
-      "comic": "assets/img/news/2026-07-29-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "news-2026-07-28",
-      "type": "newsletter",
-      "date": "2026-07-28",
-      "title": "RAM and SSD prices are surging 300\u2013500% \u2014 here is why and what to do instead",
-      "tag": "Daily Brief",
-      "excerpt": "RAM and SSD prices have jumped 300\u2013500% in 2026 because AI data centers are buying all the memory chips. If you were planning a memory upgrade, wait \u2014 prices may not drop until 2027\u20132028. Or buy a refurbished business laptop with 16\u201332 GB RAM already installed \u2014 search \"refurbished ThinkPad T14\" on eBay.com or backmarket.com.",
-      "image": "assets/img/news/2026-07-28-composite.jpg",
-      "comic": "assets/img/news/2026-07-28-comic-square.jpg",
-      "read_more": "#contact",
-      "tags": [
-        "#ONYXSYSTEMS",
-        "#LAKECITYFL",
-        "#COMPUTERREPAIR",
-        "#HARDWAREPRICES",
-        "#REFURBISHEDLAPTOPS"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-27-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-07-27",
-      "title": "Windows 11 July 2026 Update (KB5101650) Fixes 570 Vulnerabilities, Adds Point-in-Time Restore",
-      "tag": "Daily Brief",
-      "excerpt": "Get the update via Settings \u2192 Windows Update \u2192 Check for updates, or download KB5101650 manually from the Microsoft Update Catalog.",
+      "id": "onyx-2026-08-08-news-11",
+      "type": "news",
+      "date": "2026-08-08",
+      "title": "CISA warns: Three vulnerabilities actively exploited right now \u2014 patch your software",
+      "tag": "Tech Note",
+      "summary": "CISA added three actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog: CVE-2026-9198 (IBM Langflow code injection), CVE-2026-18556 (N-able N-central authentication bypass), and CVE-2026-34486 (Apache Tomcat missing encryption). Update today if you use these products. Check vendor advisories at ibm.com, n-able.com, and tomcat.apache.org.",
+      "truth": "Most people don't realize that the software running their business \u2014 remote monitoring tools, web servers, automation platforms \u2014 can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Windows11",
-        "#PatchTuesday"
+        "#CISA",
+        "#VulnerabilityAlert"
       ]
-    }
-  ],
-  "posts": [
+    },
     {
       "id": "onyx-2026-08-04-news-1",
       "type": "news",
@@ -228,22 +215,6 @@
         "#ComputerRepair",
         "#Windows11",
         "#KB5101684"
-      ]
-    },
-    {
-      "id": "onyx-2026-08-04-tip-1",
-      "type": "tip",
-      "date": "2026-08-04",
-      "title": "Restart Your Computer Once a Week \u2014 Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
-      "tag": "Tech Tip",
-      "summary": "Leave your computer on for weeks and it gets sluggish \u2014 memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start \u2192 Power \u2192 Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
-      "truth": "I see this constantly \u2014 a customer brings in a \"slow computer\" and uptime shows 27 days. One restart and it's snappy again. Windows updates especially need a restart to fully apply; until you restart, the security patches aren't active.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Maintenance",
-        "#SpeedTip"
       ]
     },
     {
@@ -263,22 +234,6 @@
       ]
     },
     {
-      "id": "onyx-2026-08-02-tip-2",
-      "type": "tip",
-      "date": "2026-08-02",
-      "title": "Monitor NVMe SSD Health with CrystalDiskInfo to Prevent Silent Data Loss",
-      "tag": "Tech Tip",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly \u2014 blue status = good, yellow = warning, red = backup immediately and replace drive",
-      "truth": "SSDs fail without warning unlike mechanical drives. Heat, write amplification, and low free space accelerate NAND wear. CrystalDiskInfo reads S.M.A.R.T. data showing total data written, temperature, error counts, spare blocks, and health percentage. NVMe drives should stay 40-70\u00b0C; SATA 25-55\u00b0C. Enable TRIM in Windows (enabled by default). Keep 15-20% free space for garbage collection. PCIe 4.0/5.0 drives need heatsinks for sustained workloads.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SSDMaintenance",
-        "#DataProtection"
-      ]
-    },
-    {
       "id": "onyx-2026-07-31-news-1",
       "type": "news",
       "date": "2026-07-31",
@@ -292,22 +247,6 @@
         "#ComputerRepair",
         "#Chrome127",
         "#PrivacyTools"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-31-tip-1",
-      "type": "tip",
-      "date": "2026-07-31",
-      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis \u2014 Free at sourceforge.net/projects/visipics",
-      "tag": "Tech Tip",
-      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis \u2014 not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
-      "truth": "I see this all the time \u2014 a customer brings in a \"slow\" laptop with a nearly full drive, and half the space is the same vacation photo saved five times from WhatsApp, email, iCloud, and Google Photos. Windows doesn't have a built-in duplicate photo finder that understands \"similar but not identical.\" VisiPics does. It looks at the actual image content, so it catches the cropped version, the filtered version, the lower-resolution copy. Most people don't realize how much space duplicates eat until they run a scan. I've seen 20+ GB freed on a single machine.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VisiPics",
-        "#DuplicatePhotos"
       ]
     },
     {
@@ -327,440 +266,364 @@
       ]
     },
     {
-      "id": "onyx-2026-07-30-news-6",
-      "type": "news",
-      "date": "2026-07-30",
-      "title": "Microsoft Edge July 2026 security update patches 7 critical flaws \u2014 update at edge://settings/help",
-      "tag": "Tech Note",
-      "summary": "Microsoft Edge 150.0.4078.83 fixes seven vulnerabilities including remote code execution bugs. Open Edge, go to edge://settings/help and it will check and install automatically.",
-      "truth": "I see this all the time \u2014 customers come in with a \"slow computer\" and it's actually a browser that hasn't been patched in months. The bad guys know most people ignore browser updates. Edge updates itself in the background, but only if you let it. Closing and reopening Edge once a week is the easiest security habit you can build.",
+      "id": "onyx-2026-08-08-tip-12",
+      "type": "tip",
+      "date": "2026-08-08",
+      "title": "Windows 11 Recall is watching \u2014 here is how to turn it off at Settings > Privacy & security > Recall",
+      "tag": "Tech Tip",
+      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings \u2192 Privacy & security \u2192 Recall & snapshots \u2192 turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" \u2192 \"Delete all\" to wipe existing data.",
+      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots \u2014 including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#MicrosoftEdge",
-        "#BrowserSecurity"
+        "#Windows11",
+        "#Privacy"
       ]
     },
     {
-      "id": "post-2026-07-29-daily-brief",
-      "type": "news",
-      "date": "2026-07-29",
-      "title": "Daily Brief 2026-07-29: FBI IC3 Impersonation Scam Alert + HaveIBeenPwned Breach Check",
-      "tag": "Daily Brief Summary",
-      "summary": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov \u2014 type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
-      "truth": "This mirrors today's Daily Computer Brief alert and tip. The FBI IC3 impersonation scam re-victimizes people who already lost money \u2014 a cruel twist. Checking haveibeenpwned.com takes 30 seconds and shows exactly which breaches exposed your credentials.",
+      "id": "onyx-2026-08-04-tip-1",
+      "type": "tip",
+      "date": "2026-08-04",
+      "title": "Restart Your Computer Once a Week \u2014 Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
+      "tag": "Tech Tip",
+      "summary": "Leave your computer on for weeks and it gets sluggish \u2014 memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start \u2192 Power \u2192 Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
+      "truth": "I see this constantly \u2014 a customer brings in a \"slow computer\" and uptime shows 27 days. One restart and it's snappy again. Windows updates especially need a restart to fully apply; until you restart, the security patches aren't active.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#FBI-IC3-Scam",
-        "#HaveIBeenPwned"
+        "#Maintenance",
+        "#SpeedTip"
       ]
     },
     {
-      "id": "post-2026-07-29-news",
-      "type": "news",
-      "date": "2026-07-29",
-      "title": "Microsoft Windows July 2026 Patch Tuesday Fixes Record 570 Vulnerabilities Including 3 Zero-Days",
-      "tag": "Tech Note",
-      "summary": "Microsoft released its largest Patch Tuesday ever on July 14, 2026, patching 570 vulnerabilities across Windows, Office, SharePoint, Exchange, and Azure. Two zero-days were actively exploited: CVE-2026-56155 (AD FS elevation of privilege) and CVE-2026-56164 (SharePoint Server authentication bypass). A third, CVE-2026-50661 (BitLocker bypass with physical access), was publicly disclosed. Critical RCEs include CVE-2026-58644 (SharePoint), CVE-2026-58608 (Print Spooler), and CVE-2026-58631 (Windows Admin Center). Obtain via Windows Update (Settings > Update & Security) or Microsoft Update Catalog (catalog.update.microsoft.com). Enterprises should prioritize AD FS, SharePoint, and internet-facing servers immediately.",
-      "truth": "Microsoft July 2026 Patch Tuesday released July 14, 2026 per MSRC release notes; 570 CVEs confirmed via Microsoft Security Update Guide. Two exploited zero-days (CVE-2026-56155, CVE-2026-56164) confirmed in Microsoft Security Response Center blog and CISA KEV catalog. CVE-2026-50661 BitLocker bypass publicly disclosed. Critical RCE CVEs listed in official advisory.",
+      "id": "onyx-2026-08-02-tip-2",
+      "type": "tip",
+      "date": "2026-08-02",
+      "title": "Monitor NVMe SSD Health with CrystalDiskInfo to Prevent Silent Data Loss",
+      "tag": "Tech Tip",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly \u2014 blue status = good, yellow = warning, red = backup immediately and replace drive",
+      "truth": "SSDs fail without warning unlike mechanical drives. Heat, write amplification, and low free space accelerate NAND wear. CrystalDiskInfo reads S.M.A.R.T. data showing total data written, temperature, error counts, spare blocks, and health percentage. NVMe drives should stay 40-70\u00b0C; SATA 25-55\u00b0C. Enable TRIM in Windows (enabled by default). Keep 15-20% free space for garbage collection. PCIe 4.0/5.0 drives need heatsinks for sustained workloads.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Microsoft-Patch-Tuesday",
-        "#Zero-Day-Exploits"
+        "#SSDMaintenance",
+        "#DataProtection"
+      ]
+    },
+    {
+      "id": "onyx-2026-07-31-tip-1",
+      "type": "tip",
+      "date": "2026-07-31",
+      "title": "VisiPics Finds and Removes Duplicate Photos by Visual Analysis \u2014 Free at sourceforge.net/projects/visipics",
+      "tag": "Tech Tip",
+      "summary": "VisiPics is a free Windows tool that finds duplicate and similar photos by visual analysis \u2014 not just file names or sizes. It spots rotated, resized, or slightly edited copies that other tools miss. Download at sourceforge.net/projects/visipics, install, add your Pictures folder (or any folder), hit Scan, then review and delete duplicates.",
+      "truth": "I see this all the time \u2014 a customer brings in a \"slow\" laptop with a nearly full drive, and half the space is the same vacation photo saved five times from WhatsApp, email, iCloud, and Google Photos. Windows doesn't have a built-in duplicate photo finder that understands \"similar but not identical.\" VisiPics does. It looks at the actual image content, so it catches the cropped version, the filtered version, the lower-resolution copy. Most people don't realize how much space duplicates eat until they run a scan. I've seen 20+ GB freed on a single machine.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VisiPics",
+        "#DuplicatePhotos"
       ]
     }
   ],
-  "updated": "2026-08-04",
+  "updated": "2026-08-08",
   "today_word": {
-    "word": "Backup",
+    "word": "Sandbox",
     "pos": "noun",
-    "definition": "A second copy of your files kept separate from the originals so a crash isn't a catastrophe.",
-    "example": "Her photos survived the flood because of a real backup.",
-    "date": "2026-08-04"
+    "definition": "An isolated space where untrusted software can run without touching the rest of your system.",
+    "example": "The browser opens downloads in a sandbox.",
+    "date": "2026-08-08"
   },
   "today_crossword": {
-    "title": "25-26 Staff",
-    "size": 39,
+    "title": "4-Letter Crossword: June Holidays",
+    "size": 19,
     "grid": [
-      "...........................W...........",
-      "...........................h...........",
-      "...........................i...........",
-      "...........................t...........",
-      ".......................LamMers.........",
-      "..........................a............",
-      "..........................l...M........",
-      ".......................L..a...e........",
-      ".......................e..Bintliff.....",
-      "...............Burke...i..a...i........",
-      "...............r.....B.k..n...n........",
-      ".............Paul..P.o.e..a...d........",
-      "...............n...a.Warden...a........",
-      "...............Krystle.................",
-      "...................t.RhodeS............",
-      "...............Steve.m....t............",
-      "...................RoacH..o............",
-      "...........M.......m.n.a..k............",
-      "..........ParriS...a...y..e............",
-      "...........l...k...n...s..s............",
-      "...........o..HinTon...................",
-      "...........t...l.J.....................",
-      "...........t.Auld......................",
-      "....W..........e.......................",
-      "Darnell...MCMurray.....................",
-      "....i......l...n.......................",
-      "..M.s......a...........................",
-      "..a.f..McGougH..W......................",
-      ".Chris.....s.a..i......................",
-      "..a.e......e.Raynsford.................",
-      "..McLaughLin.t..a......................",
-      "..u.d....i......n......................",
-      "..d......ZamKov.Somers.................",
-      "............i..........................",
-      "............n..........................",
-      "............d..........................",
-      "............r..........................",
-      "............e..........................",
-      "............d.........................."
+      "........baby.......",
+      ".....roll.o.j......",
+      "........u.drug.....",
+      ".....hope.y.n......",
+      "...........nest....",
+      ".............w.....",
+      "...........l.i.....",
+      "........b..army....",
+      "........iron..o....",
+      ".....i..k..e..yell.",
+      "...m.cake.....o.o..",
+      "..name.......f..v..",
+      ".k.t.duck....life..",
+      "wish....i....i.....",
+      ".n......s.leap.....",
+      ".g....west.........",
+      "......o............",
+      "...beer............",
+      "......k............"
     ],
     "clues": {
       "across": [
         {
-          "num": 2,
-          "row": 5,
-          "col": 24,
-          "len": 7,
-          "answer": "LamMers",
-          "clue": "7th Science"
+          "num": 1,
+          "row": 1,
+          "col": 9,
+          "len": 4,
+          "answer": "baby",
+          "clue": "baby"
+        },
+        {
+          "num": 3,
+          "row": 2,
+          "col": 6,
+          "len": 4,
+          "answer": "roll",
+          "clue": "roll"
+        },
+        {
+          "num": 5,
+          "row": 3,
+          "col": 11,
+          "len": 4,
+          "answer": "drug",
+          "clue": "drug"
         },
         {
           "num": 6,
-          "row": 9,
-          "col": 27,
-          "len": 8,
-          "answer": "Bintliff",
-          "clue": "8th Science"
+          "row": 4,
+          "col": 6,
+          "len": 4,
+          "answer": "hope",
+          "clue": "hope"
         },
         {
           "num": 7,
-          "row": 10,
-          "col": 16,
-          "len": 5,
-          "answer": "Burke",
-          "clue": "7th and 8th Math and Math Lab"
-        },
-        {
-          "num": 9,
-          "row": 12,
-          "col": 14,
+          "row": 5,
+          "col": 12,
           "len": 4,
-          "answer": "Paul",
-          "clue": "Paraprofessional (works with Mr. Roach and Ms. McLaughlin)"
+          "answer": "nest",
+          "clue": "nest"
         },
         {
           "num": 11,
-          "row": 13,
-          "col": 22,
-          "len": 6,
-          "answer": "Warden",
-          "clue": "7th and 8th ELA, 7th Honors ELA"
-        },
-        {
-          "num": 12,
-          "row": 14,
-          "col": 16,
-          "len": 7,
-          "answer": "Krystle",
-          "clue": "Paraprofessional (Works with Mr. Clausen)"
+          "row": 8,
+          "col": 12,
+          "len": 4,
+          "answer": "army",
+          "clue": "army"
         },
         {
           "num": 13,
-          "row": 15,
-          "col": 22,
-          "len": 6,
-          "answer": "RhodeS",
-          "clue": "8th Grade Administrator"
+          "row": 9,
+          "col": 9,
+          "len": 4,
+          "answer": "iron",
+          "clue": "iron"
         },
         {
           "num": 15,
-          "row": 16,
-          "col": 16,
-          "len": 5,
-          "answer": "Steve",
-          "clue": "Security #1"
+          "row": 10,
+          "col": 15,
+          "len": 4,
+          "answer": "yell",
+          "clue": "yell"
         },
         {
-          "num": 16,
-          "row": 17,
-          "col": 20,
-          "len": 5,
-          "answer": "RoacH",
-          "clue": "6th and 7th Learning Support"
+          "num": 18,
+          "row": 11,
+          "col": 6,
+          "len": 4,
+          "answer": "cake",
+          "clue": "cake"
         },
         {
           "num": 19,
-          "row": 19,
-          "col": 11,
-          "len": 6,
-          "answer": "ParriS",
-          "clue": "Sub for 6th and 7th Math"
+          "row": 12,
+          "col": 3,
+          "len": 4,
+          "answer": "name",
+          "clue": "name"
         },
         {
-          "num": 21,
-          "row": 21,
-          "col": 15,
-          "len": 6,
-          "answer": "HinTon",
-          "clue": "8th Social Studies"
+          "num": 22,
+          "row": 13,
+          "col": 6,
+          "len": 4,
+          "answer": "duck",
+          "clue": "duck"
         },
         {
-          "num": 23,
-          "row": 23,
+          "num": 24,
+          "row": 13,
           "col": 14,
           "len": 4,
-          "answer": "Auld",
-          "clue": "Lifeskills and PE"
+          "answer": "life",
+          "clue": "life"
         },
         {
           "num": 25,
-          "row": 25,
+          "row": 14,
           "col": 1,
-          "len": 7,
-          "answer": "Darnell",
-          "clue": "7th Grade Administrator"
+          "len": 4,
+          "answer": "wish",
+          "clue": "wish"
         },
         {
           "num": 26,
-          "row": 25,
+          "row": 15,
           "col": 11,
-          "len": 8,
-          "answer": "MCMurray",
-          "clue": "7th and 8th Math, Pre-algebra"
+          "len": 4,
+          "answer": "leap",
+          "clue": "leap"
         },
         {
-          "num": 29,
-          "row": 28,
-          "col": 8,
-          "len": 7,
-          "answer": "McGougH",
-          "clue": "ELD Teacher"
+          "num": 27,
+          "row": 16,
+          "col": 7,
+          "len": 4,
+          "answer": "west",
+          "clue": "west"
         },
         {
-          "num": 32,
-          "row": 29,
-          "col": 2,
-          "len": 5,
-          "answer": "Chris",
-          "clue": "Maintenance"
-        },
-        {
-          "num": 33,
-          "row": 30,
-          "col": 14,
-          "len": 9,
-          "answer": "Raynsford",
-          "clue": "Choir and Theater"
-        },
-        {
-          "num": 34,
-          "row": 31,
-          "col": 3,
-          "len": 10,
-          "answer": "McLaughLin",
-          "clue": "8th Learning Support"
-        },
-        {
-          "num": 36,
-          "row": 33,
-          "col": 10,
-          "len": 6,
-          "answer": "ZamKov",
-          "clue": "7th Social Studies"
-        },
-        {
-          "num": 38,
-          "row": 33,
-          "col": 17,
-          "len": 6,
-          "answer": "Somers",
-          "clue": "Algebra and Gifted-and-Talented"
+          "num": 28,
+          "row": 18,
+          "col": 4,
+          "len": 4,
+          "answer": "beer",
+          "clue": "beer"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 28,
-          "len": 5,
-          "answer": "White",
-          "clue": "6th and 7th ELA, Yearbook"
+          "col": 9,
+          "len": 4,
+          "answer": "blue",
+          "clue": "blue"
         },
         {
-          "num": 3,
-          "row": 5,
-          "col": 27,
-          "len": 9,
-          "answer": "MalaBanan",
-          "clue": "School Psychologist"
+          "num": 2,
+          "row": 1,
+          "col": 11,
+          "len": 4,
+          "answer": "body",
+          "clue": "body"
         },
         {
           "num": 4,
-          "row": 7,
-          "col": 31,
-          "len": 7,
-          "answer": "Melinda",
-          "clue": "Security #2"
-        },
-        {
-          "num": 5,
-          "row": 8,
-          "col": 24,
-          "len": 6,
-          "answer": "Leiker",
-          "clue": "PE"
-        },
-        {
-          "num": 7,
-          "row": 10,
-          "col": 16,
-          "len": 5,
-          "answer": "BrunK",
-          "clue": "6th and 7th Science"
+          "row": 2,
+          "col": 13,
+          "len": 4,
+          "answer": "june",
+          "clue": "june"
         },
         {
           "num": 8,
-          "row": 11,
-          "col": 22,
-          "len": 8,
-          "answer": "BoWeRman",
-          "clue": "7th and 8th ELA, 8th Honors ELA"
+          "row": 5,
+          "col": 14,
+          "len": 4,
+          "answer": "swim",
+          "clue": "swim"
+        },
+        {
+          "num": 9,
+          "row": 7,
+          "col": 12,
+          "len": 4,
+          "answer": "lane",
+          "clue": "lane"
         },
         {
           "num": 10,
-          "row": 12,
-          "col": 20,
-          "len": 10,
-          "answer": "PatteRmann",
-          "clue": "6th, 7th, and Honors Social Studies"
+          "row": 8,
+          "col": 9,
+          "len": 4,
+          "answer": "bike",
+          "clue": "bike"
+        },
+        {
+          "num": 12,
+          "row": 8,
+          "col": 15,
+          "len": 4,
+          "answer": "yoyo",
+          "clue": "yoyo"
         },
         {
           "num": 14,
-          "row": 15,
-          "col": 27,
-          "len": 6,
-          "answer": "Stokes",
-          "clue": "Band #2"
+          "row": 10,
+          "col": 6,
+          "len": 4,
+          "answer": "iced",
+          "clue": "iced"
+        },
+        {
+          "num": 16,
+          "row": 10,
+          "col": 17,
+          "len": 4,
+          "answer": "love",
+          "clue": "love"
         },
         {
           "num": 17,
-          "row": 17,
-          "col": 24,
+          "row": 11,
+          "col": 4,
           "len": 4,
-          "answer": "Hays",
-          "clue": "Spanish"
-        },
-        {
-          "num": 18,
-          "row": 18,
-          "col": 12,
-          "len": 6,
-          "answer": "Malott",
-          "clue": "Band #1"
+          "answer": "math",
+          "clue": "math"
         },
         {
           "num": 20,
-          "row": 19,
-          "col": 16,
-          "len": 8,
-          "answer": "Skillern",
-          "clue": "Runs the Coffee Cart"
+          "row": 12,
+          "col": 14,
+          "len": 4,
+          "answer": "flip",
+          "clue": "flip"
         },
         {
-          "num": 22,
-          "row": 21,
-          "col": 18,
-          "len": 2,
-          "answer": "TJ",
-          "clue": "Security #3"
+          "num": 21,
+          "row": 13,
+          "col": 2,
+          "len": 4,
+          "answer": "king",
+          "clue": "king"
         },
         {
-          "num": 24,
-          "row": 24,
-          "col": 5,
-          "len": 9,
-          "answer": "WeisfieLd",
-          "clue": "STEAM"
+          "num": 23,
+          "row": 13,
+          "col": 9,
+          "len": 4,
+          "answer": "kiss",
+          "clue": "kiss"
         },
         {
           "num": 27,
-          "row": 25,
-          "col": 12,
-          "len": 7,
-          "answer": "Clausen",
-          "clue": "Coaches Girls Soccer"
-        },
-        {
-          "num": 28,
-          "row": 27,
-          "col": 3,
-          "len": 7,
-          "answer": "MahaMud",
-          "clue": "Paraprofessional (works with Mr. Clausen)"
-        },
-        {
-          "num": 30,
-          "row": 28,
-          "col": 14,
+          "row": 16,
+          "col": 7,
           "len": 4,
-          "answer": "HaRt",
-          "clue": "Principal"
-        },
-        {
-          "num": 31,
-          "row": 28,
-          "col": 17,
-          "len": 6,
-          "answer": "WinanS",
-          "clue": "Art"
-        },
-        {
-          "num": 35,
-          "row": 31,
-          "col": 10,
-          "len": 3,
-          "answer": "LiZ",
-          "clue": "Speech Language Pathologist"
-        },
-        {
-          "num": 37,
-          "row": 33,
-          "col": 13,
-          "len": 7,
-          "answer": "Kindred",
-          "clue": "Occupational Therapist"
+          "answer": "work",
+          "clue": "work"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/25-26-staff",
-    "slug": "25-26-staff",
-    "fetched_at": "2026-07-14T19:12:16.640040+00:00",
-    "date": "2026-08-04"
+    "source_url": "https://crosswordlabs.com/view/4-letter-crossword-june-holidays",
+    "slug": "4-letter-crossword-june-holidays",
+    "fetched_at": "2026-07-14T19:12:28.215701+00:00",
+    "date": "2026-08-08"
   },
   "today_trivia": {
-    "q": "What does 'ping' test?",
-    "a": "Whether a device is reachable on the network and how long the round trip takes.",
-    "category": "Network",
-    "date": "2026-08-04"
+    "q": "What does 'RAM' stand for, and why is it called that?",
+    "a": "Random Access Memory \u2014 any byte can be reached in roughly the same time, unlike tape you'd fast-forward.",
+    "category": "Hardware",
+    "date": "2026-08-08"
   },
   "today_joke": {
-    "q": "Why did the function go to school?",
-    "a": "To get a little class.",
-    "date": "2026-08-04"
+    "q": "Why did the monitor blush?",
+    "a": "It saw the computer's desktop background.",
+    "date": "2026-08-08"
   },
   "poll": {
     "poll": {
