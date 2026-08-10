@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>NEON BREAKER — Retro Arcade Remix</title>
@@ -387,11 +376,3201 @@ function tone(f, dur, type, vol, slide, delay, dest) {
     o.type = type || 'square';
     o.frequency.setValueAtTime(f, t0);
     if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(28, slide), t0 + dur);
-    g.gain.setVa
+    g.gain.setValueAtTime(vol || 0.12, t0);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(dest || sfxGain);
+    o.start(t0); o.stop(t0 + dur + 0.03);
+  } catch (e) {}
+}
+function noiseHit(dur, vol, freq, delay, q) {
+  if (!AC || !soundOn() || !noiseBuf) return;
+  try {
+    const t0 = AC.currentTime + (delay || 0);
+    const s = AC.createBufferSource(); s.buffer = noiseBuf;
+    const flt = AC.createBiquadFilter(); flt.type = 'lowpass'; flt.frequency.value = freq || 1000; flt.Q.value = q || 0.8;
+    const g = AC.createGain();
+    g.gain.setValueAtTime(vol || 0.2, t0);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    s.connect(flt); flt.connect(g); g.connect(sfxGain);
+    s.start(t0); s.stop(t0 + dur + 0.03);
+  } catch (e) {}
+}
+function playSfx(name) {
+  if (!AC || !soundOn()) return;
+  switch (name) {
+    case 'uiMove': tone(660, 0.05, 'square', 0.06); break;
+    case 'uiSel': tone(880, 0.06, 'square', 0.09); tone(1320, 0.09, 'square', 0.09, null, 0.06); break;
+    case 'uiBack': tone(520, 0.08, 'square', 0.08, 300); break;
+    case 'wall': tone(200, 0.04, 'square', 0.06, 150); break;
+    case 'bounce': tone(240, 0.06, 'square', 0.12, 190); break;
+    case 'break': {
+      const c = clamp(Game.combo, 0, 24);
+      tone(320 + c * 14, 0.09, 'square', 0.16, 90);
+      tone(160, 0.12, 'triangle', 0.18, 60);
+      break;
+    }
+    case 'steel': tone(150, 0.1, 'sawtooth', 0.13, 70); noiseHit(0.05, 0.08, 2500); break;
+    case 'gold': tone(540, 0.06, 'square', 0.07, 800); noiseHit(0.03, 0.05, 4000); break;
+    case 'gem': tone(880, 0.08, 'square', 0.14); tone(1320, 0.12, 'square', 0.12, null, 0.07); break;
+    case 'bomb': noiseHit(0.4, 0.32, 700); tone(95, 0.34, 'sine', 0.3, 38); break;
+    case 'chain': noiseHit(0.2, 0.2, 900, 0.06); break;
+    case 'cap': tone(600, 0.06, 'square', 0.11); tone(800, 0.06, 'square', 0.11, null, 0.06); tone(1000, 0.1, 'square', 0.11, null, 0.12); break;
+    case 'badcap': tone(420, 0.2, 'sawtooth', 0.16, 110); break;
+    case 'laser': tone(950, 0.1, 'sawtooth', 0.09, 320); break;
+    case 'catch': tone(500, 0.08, 'triangle', 0.14, 700); break;
+    case 'life': tone(240, 0.26, 'sawtooth', 0.18, 70); noiseHit(0.3, 0.2, 500); break;
+    case 'extra': [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.12, 'square', 0.12, null, i * 0.08)); break;
+    case 'levelup': [392, 523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, 0.13, 'square', 0.13, null, i * 0.07)); break;
+    case 'win': [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, 0.16, 'square', 0.13, null, i * 0.09)); break;
+    case 'gameover': [659, 523, 392, 262, 196].forEach((f, i) => tone(f, 0.24, 'sawtooth', 0.16, f * 0.6, i * 0.16)); break;
+    case 'ach': tone(784, 0.09, 'square', 0.12); tone(1175, 0.16, 'square', 0.12, null, 0.09); break;
+    case 'warp': // hidden warp: rising portal sweep
+      noiseHit(0.5, 0.16, 3500, 0.02);
+      [196, 262, 392, 523, 784, 1047].forEach((f, i) => tone(f, 0.14, 'sine', 0.12, 300, i * 0.05));
+      break;
+    case 'cheat': // capsule cheat sheet fanfare
+      [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => tone(f, 0.18, 'square', 0.13, null, i * 0.08));
+      [262, 330, 392, 523].forEach((f, i) => tone(f, 0.14, 'triangle', 0.11, null, 0.04 + i * 0.08));
+      noiseHit(0.6, 0.12, 5000, 0.02);
+      break;
+    case 'fire': noiseHit(0.4, 0.2, 600); tone(300, 0.35, 'sawtooth', 0.1, 120); break;
+    case 'count': tone(440, 0.07, 'square', 0.1); break;
+    case 'go': tone(880, 0.14, 'square', 0.14); break;
+    case 'warn': tone(700, 0.1, 'sine', 0.07, 500); tone(1050, 0.14, 'sine', 0.08, null, 0.1); break;
+    case 'zap': noiseHit(0.2, 0.22, 2600); tone(120, 0.26, 'sawtooth', 0.2, 40); break;
+  }
+}
 
-... [OUTPUT TRUNCATED - 153,124 chars omitted out of 203,049 total] ...
+/* ---------- chiptune music sequencer ---------- */
+const Music = {
+  playing: false, step: 0, bar: 0, nextT: 0, timer: null, bpm: 140, pitch: 0,
+  roots: [45, 41, 48, 43], scale: [0, 2, 3, 5, 7, 9, 10, 12, 14, 15, 17, 19, 21, 22, 24, 26],
+  pat: [0, 3, 7, 10, 12, 10, 7, 3, 0, 3, 7, 10, 12, 15, 12, 10],
+  /* DOH enrage loop: when the boss is wounded the music leaps to a faster,
+     darker, driving cycle (Am-F-G-E with an 8th-note bass and a 16th-note
+     saw riff) and drops back to the level tempo the moment it dies. */
+  enraged: false, baseBpm: 0, enrageAt: 0,
+  rageRoots: [45, 41, 43, 40], ragePat: [0, 3, 5, 7, 8, 7, 5, 3, 0, 3, 5, 7, 10, 8, 7, 5],
+  start() {
+    if (!AC || this.playing || !musicOn()) return;
+    this.playing = true; this.step = 0; this.bar = 0; this.nextT = AC.currentTime + 0.08;
+    this.timer = setInterval(() => this.schedule(), 90);
+  },
+  stop() { this.playing = false; if (this.timer) { clearInterval(this.timer); this.timer = null; } },
+  mtof(m) { return 440 * Math.pow(2, (m - 69) / 12); },
+  schedule() {
+    if (!AC || !this.playing) return;
+    /* the enrage sting arms a delayed switch: the aggressive loop drops in a
+       beat after the riser, so the drum fill leads into it */
+    if (this.enrageAt && AC.currentTime >= this.enrageAt) {
+      this.enrageAt = 0;
+      this.bpm = clamp((this.baseBpm || 140) + 28, 100, 210);
+      this.enraged = true;
+    }
+    const spb = 60 / this.bpm / 4; // 16th notes
+    const en = this.enraged;
+    const roots = en ? this.rageRoots : this.roots;
+    const pat = en ? this.ragePat : this.pat;
+    while (this.nextT < AC.currentTime + 0.18) {
+      const s = this.step, bar = this.bar % 4, root = roots[bar];
+      const t = this.nextT;
+      if (s % 2 === 0 || en) {
+        // bass: on the beat — plus a staccato sawtooth stab on every off-beat when enraged
+        const off = en && s % 2 === 1;
+        const bassM = root + this.pitch - 12;
+        const o = AC.createOscillator(), g = AC.createGain();
+        o.type = off ? 'sawtooth' : 'triangle';
+        o.frequency.value = this.mtof(bassM);
+        g.gain.setValueAtTime(0.001, t);
+        g.gain.exponentialRampToValueAtTime(off ? 0.12 : 0.16, t + 0.015);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + (off ? spb * 0.4 : spb * 1.7));
+        o.connect(g); g.connect(musicFilt || musicGain); o.start(t); o.stop(t + spb * 2);
+      }
+      if (en || s % 2 === 1) {
+        // melody: a driving 16th-note riff when enraged, harsher and staccato
+        const note = this.scale[pat[s]] + root + 12 + this.pitch;
+        const o = AC.createOscillator(), g = AC.createGain();
+        o.type = en ? 'sawtooth' : 'square';
+        o.frequency.value = this.mtof(note);
+        const v = en ? 0.07 : 0.05 + (pat[s] === 12 ? 0.02 : 0);
+        g.gain.setValueAtTime(0.001, t);
+        g.gain.exponentialRampToValueAtTime(v, t + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + spb * (en ? 0.5 : 0.9));
+        o.connect(g); g.connect(musicFilt || musicGain); o.start(t); o.stop(t + spb);
+      }
+      if ((en ? s % 2 === 0 : s % 4 === 2) && noiseBuf) {
+        // hats: a steadier, brighter pulse when enraged
+        const snd = AC.createBufferSource(); snd.buffer = noiseBuf;
+        const g = AC.createGain(); g.gain.setValueAtTime(en ? 0.032 : 0.022, t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+        const flt = AC.createBiquadFilter(); flt.type = 'highpass'; flt.frequency.value = 6000;
+        snd.connect(flt); flt.connect(g); g.connect(musicFilt || musicGain);
+        snd.start(t); snd.stop(t + 0.05);
+      }
+      this.step = (this.step + 1) % 16;
+      if (this.step === 0) this.bar++;
+      this.nextT += spb;
+    }
+  },
+  setBpm(b) { this.bpm = clamp(b, 100, 210); this.enraged = false; this.enrageAt = 0; },
+  setPitch(n) { this.pitch = clamp(n, -5, 9); },
+  /* Low-pass duck: when the game pauses or the player is on their last life
+     the music pulls back behind a muffling filter sweep, then opens back up. */
+  duck(on) {
+    if (!musicFilt || !AC) return;
+    const t = AC.currentTime;
+    musicFilt.frequency.cancelScheduledValues(t);
+    musicFilt.frequency.setValueAtTime(musicFilt.frequency.value || 18000, t);
+    musicFilt.frequency.exponentialRampToValueAtTime(on ? 750 : 18000, t + 0.4);
+  },
+  enrage(on) {
+    if (on && !this.enraged) { this.baseBpm = this.bpm; this.bpm = clamp(this.bpm + 28, 100, 210); this.enraged = true; }
+    else if (!on) {
+      this.enrageAt = 0; // a riser that hasn't landed yet is cancelled too
+      if (this.enraged) { this.bpm = this.baseBpm || 140; this.enraged = false; }
+    }
+  },
+  /* The wound sting: a rising noise sweep with an accelerating snare fill,
+     resolving into a kick as the aggressive loop drops in. The loop switch is
+     armed on the scheduler clock so it lands a beat after the fill. */
+  sting() {
+    if (!AC) return;
+    if (!this.enraged) this.baseBpm = this.bpm;
+    const riser = 0.55, t0 = AC.currentTime + 0.02;
+    this.enrageAt = t0 + riser;
+    if (!musicOn() || !this.playing) return;
+    if (noiseBuf) {
+      const snd = AC.createBufferSource(); snd.buffer = noiseBuf;
+      const flt = AC.createBiquadFilter(); flt.type = 'bandpass'; flt.Q.value = 1.4;
+      flt.frequency.setValueAtTime(350, t0);
+      flt.frequency.exponentialRampToValueAtTime(5200, t0 + riser);
+      const g = AC.createGain();
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.12, t0 + riser * 0.8);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + riser + 0.1);
+      snd.connect(flt); flt.connect(g); g.connect(musicFilt || musicGain);
+      snd.start(t0); snd.stop(t0 + riser + 0.15);
+      const hits = [0, 0.12, 0.22, 0.3, 0.36, 0.41, 0.45, 0.49];
+      hits.forEach((dt, i) => {
+        const t = t0 + dt;
+        const s2 = AC.createBufferSource(); s2.buffer = noiseBuf;
+        const f2 = AC.createBiquadFilter(); f2.type = 'highpass'; f2.frequency.value = 3200;
+        const g2 = AC.createGain();
+        g2.gain.setValueAtTime(0.03 + (i / hits.length) * 0.1, t);
+        g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.055);
+        s2.connect(f2); f2.connect(g2); g2.connect(musicFilt || musicGain);
+        s2.start(t); s2.stop(t + 0.07);
+      });
+    }
+    // kick: a thump right as the aggressive loop lands
+    const k = AC.createOscillator(); k.type = 'sine';
+    k.frequency.setValueAtTime(160, t0 + riser);
+    k.frequency.exponentialRampToValueAtTime(50, t0 + riser + 0.14);
+    const kg = AC.createGain();
+    kg.gain.setValueAtTime(0.0001, t0 + riser);
+    kg.gain.exponentialRampToValueAtTime(0.32, t0 + riser + 0.02);
+    kg.gain.exponentialRampToValueAtTime(0.0001, t0 + riser + 0.22);
+    k.connect(kg); kg.connect(musicFilt || musicGain);
+    k.start(t0 + riser); k.stop(t0 + riser + 0.25);
+  }
+};
+function refreshMusic() {
+  if (!musicOn()) Music.stop();
+  else if (AC && !Music.playing) Music.start();
+}
+/* Keep the music duck in sync with the moment: muffled while paused or on the
+   last life, open everywhere else. */
+function syncMusicDuck() {
+  Music.duck(Game.screen === 'paused' || (Game.screen === 'playing' && Game.lives === 0));
+}
 
-' : 'KEY') + ' TO ASSIGN  ·  ESC TO CANCEL', W / 2, yb + 48, 9, '#ffd23b', { glow: 6 });
+/* ---------- particles ---------- */
+const Particles = { list: [], max: 420,
+  spawn(o) {
+    if (this.list.length > this.max) this.list.shift();
+    this.list.push(Object.assign({ x: 0, y: 0, vx: 0, vy: 0, g: 0, life: 1, max: 1, size: 3, color: '#fff', shape: 'rect', rot: 0, vr: 0, fade: true }, o));
+  },
+  burst(x, y, color, n, spd) {
+    for (let i = 0; i < n; i++) {
+      const a = rand(0, TAU), v = rand(spd * 0.25, spd);
+      this.spawn({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - rand(0, 40), g: 320, life: rand(0.4, 0.9), max: 0.9, size: rand(2, 5), color, shape: 'rect', rot: rand(0, TAU), vr: rand(-8, 8) });
+    }
+  },
+  spark(x, y, color, n) {
+    for (let i = 0; i < n; i++) {
+      const a = rand(0, TAU), v = rand(40, 220);
+      this.spawn({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: 0, life: rand(0.2, 0.5), max: 0.5, size: rand(1.5, 3), color, shape: 'spark' });
+    }
+  },
+  ring(x, y, color, size) {
+    this.spawn({ x, y, vx: 0, vy: 0, g: 0, life: 0.45, max: 0.45, size, color, shape: 'ring' });
+  },
+  confetti(x, y, n) {
+    const cols = ['#29d8ff', '#ff3d5e', '#ffd23d', '#3dff8f', '#c77dff'];
+    for (let i = 0; i < n; i++) {
+      const a = rand(-Math.PI, 0), v = rand(120, 380);
+      this.spawn({ x: x + rand(-30, 30), y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: 420, life: rand(1, 2.2), max: 2.2, size: rand(3, 6), color: pick(cols), shape: 'rect', rot: rand(0, TAU), vr: rand(-10, 10) });
+    }
+  },
+  update(dt) {
+    for (let i = this.list.length - 1; i >= 0; i--) {
+      const p = this.list[i];
+      p.life -= dt;
+      if (p.life <= 0) { this.list.splice(i, 1); continue; }
+      p.vy += p.g * dt;
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      if (p.shape === 'rect') p.rot += p.vr * dt;
+    }
+  },
+  draw(ctx) {
+    for (const p of this.list) {
+      const a = p.fade ? clamp(p.life / p.max, 0, 1) : 1;
+      ctx.globalAlpha = a;
+      if (p.shape === 'rect') {
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.color; ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        ctx.restore();
+      } else if (p.shape === 'spark') {
+        ctx.strokeStyle = p.color; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx * 0.03, p.y - p.vy * 0.03); ctx.stroke();
+      } else if (p.shape === 'ring') {
+        ctx.strokeStyle = p.color; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size * (1 - p.life / p.max) + 2, 0, TAU); ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+};
+
+/* ---------- floating texts ---------- */
+const Texts = { list: [],
+  add(x, y, text, color, size, opts) {
+    this.list.push(Object.assign({ x, y, text, color, size: size || 14, life: 1.1, max: 1.1, vy: -46 }, opts || {}));
+  },
+  update(dt) {
+    for (let i = this.list.length - 1; i >= 0; i--) {
+      const t = this.list[i];
+      t.life -= dt; t.y += t.vy * dt;
+      if (t.life <= 0) this.list.splice(i, 1);
+    }
+  },
+  draw(ctx) {
+    ctx.textAlign = 'center';
+    for (const t of this.list) {
+      const a = clamp(t.life / t.max, 0, 1);
+      ctx.globalAlpha = a;
+      ctx.font = t.size + 'px "Press Start 2P","Courier New",monospace';
+      ctx.fillStyle = t.color;
+      if (t.glow) { ctx.shadowColor = t.color; ctx.shadowBlur = 12; }
+      ctx.fillText(t.text, t.x, t.y);
+      ctx.shadowBlur = 0;
+    }
+    ctx.globalAlpha = 1;
+  }
+};
+
+/* ---------- juice: hitstop / flash / slowmo ---------- */
+const Hitstop = { t: 0, scale: 1, dur: 0,
+  trigger(dur) { this.t = dur; this.dur = dur; },
+  update(realDt) {
+    if (this.t > 0) { this.t -= realDt; this.scale = 0.04; } else { this.scale = 1; }
+  }
+};
+const Flash = { v: 0, color: '#ffffff',
+  set(a, color) { this.v = Math.max(this.v, a); this.color = color || '#ffffff'; },
+  update(dt) { this.v = Math.max(0, this.v - dt * 3.2); }
+};
+const Slowmo = { t: 0, target: 1,
+  set(dur, factor) { this.t = dur; this.target = factor; },
+  update(realDt) {
+    if (this.t > 0) { this.t -= realDt; return this.target; }
+    return 1;
+  }
+};
+function timeScale() {
+  if (Hitstop.t > 0) return Hitstop.scale;
+  return Slowmo.update(realDt);
+}
+
+/* ---------- background (pre-rendered) ---------- */
+const Bg = { img: null, starsA: [], starsB: [],
+  build() {
+    this.img = document.createElement('canvas');
+    this.img.width = W; this.img.height = H;
+    const g = this.img.getContext('2d');
+    const grad = g.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, '#05060f'); grad.addColorStop(0.55, '#0a0f26'); grad.addColorStop(1, '#04050d');
+    g.fillStyle = grad; g.fillRect(0, 0, W, H);
+    // neon grid
+    g.strokeStyle = 'rgba(60,110,255,0.05)'; g.lineWidth = 1;
+    for (let x = 0; x <= W; x += 48) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+    for (let y = 0; y <= H; y += 48) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+    // glow horizon
+    const glow = g.createRadialGradient(W / 2, H * 0.3, 40, W / 2, H * 0.3, 460);
+    glow.addColorStop(0, 'rgba(41,216,255,0.05)'); glow.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = glow; g.fillRect(0, 0, W, H);
+    for (let i = 0; i < 90; i++) this.starsA.push({ x: rand(0, W), y: rand(0, H), r: rand(0.6, 1.8), ph: rand(0, TAU) });
+    for (let i = 0; i < 50; i++) this.starsB.push({ x: rand(0, W), y: rand(0, H), r: rand(0.8, 2.4), ph: rand(0, TAU) });
+  },
+  draw(ctx, t) {
+    if (this.img) ctx.drawImage(this.img, 0, 0);
+    ctx.fillStyle = '#cfe9ff';
+    for (const s of this.starsA) {
+      const x = (s.x - t * 6) % W, y = (s.y + t * 2) % H;
+      ctx.globalAlpha = 0.25 + 0.3 * Math.sin(t * 1.8 + s.ph);
+      ctx.fillRect(((x + W) % W), ((y + H) % H), s.r, s.r);
+    }
+    for (const s of this.starsB) {
+      const x = (s.x - t * 14) % W;
+      ctx.globalAlpha = 0.3 + 0.35 * Math.sin(t * 2.6 + s.ph);
+      ctx.fillRect(((x + W) % W), s.y, s.r, s.r);
+    }
+    ctx.globalAlpha = 1;
+  }
+};
+
+/* ---------- CRT overlay (pre-rendered) ---------- */
+const CRT = { img: null,
+  build() {
+    this.img = document.createElement('canvas');
+    this.img.width = W; this.img.height = H;
+    const g = this.img.getContext('2d');
+    const vig = g.createRadialGradient(W / 2, H / 2, H * 0.32, W / 2, H / 2, H * 0.78);
+    vig.addColorStop(0, 'rgba(0,0,0,0)'); vig.addColorStop(1, 'rgba(0,0,10,0.5)');
+    g.fillStyle = vig; g.fillRect(0, 0, W, H);
+    const tint = g.createRadialGradient(W / 2, H / 2, 200, W / 2, H / 2, 700);
+    tint.addColorStop(0, 'rgba(255,0,80,0.012)'); tint.addColorStop(1, 'rgba(0,80,255,0.02)');
+    g.fillStyle = tint; g.fillRect(0, 0, W, H);
+  },
+  draw(ctx) {
+    if (this.img) ctx.drawImage(this.img, 0, 0);
+  }
+};
+
+/* ---------- shared drawing helpers ---------- */
+const FONT = '"Press Start 2P","Courier New",monospace';
+const FONT2 = '"Orbitron","Arial Black",sans-serif';
+function drawText(text, x, y, size, color, opts) {
+  opts = opts || {};
+  ctx.font = (opts.font || 'pixel') === 'pixel' ? size + 'px ' + FONT : size + 'px ' + FONT2;
+  ctx.textAlign = opts.align || 'center';
+  ctx.textBaseline = opts.baseline || 'middle';
+  if (opts.glow) { ctx.shadowColor = color; ctx.shadowBlur = opts.glow === true ? 14 : opts.glow; }
+  if (opts.stroke) { ctx.strokeStyle = opts.stroke; ctx.lineWidth = opts.lineW || size / 8; ctx.strokeText(text, x, y); }
+  ctx.fillStyle = color;
+  ctx.fillText(text, x, y);
+  ctx.shadowBlur = 0;
+}
+function rr(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+function drawPanel(x, y, w, h, title) {
+  ctx.fillStyle = 'rgba(5,8,22,0.88)';
+  rr(x, y, w, h, 10); ctx.fill();
+  ctx.strokeStyle = 'rgba(41,216,255,0.5)'; ctx.lineWidth = 2;
+  rr(x, y, w, h, 10); ctx.stroke();
+  ctx.strokeStyle = 'rgba(41,216,255,0.15)'; ctx.lineWidth = 6;
+  rr(x + 4, y + 4, w - 8, h - 8, 8); ctx.stroke();
+  if (title) {
+    drawText(title, x + w / 2, y - 22, 15, '#29d8ff', { glow: 12 });
+  }
+}
+function drawKeyCap(label, x, y, w, h, active) {
+  ctx.fillStyle = active ? '#29d8ff' : '#111a33';
+  rr(x, y, w, h, 6); ctx.fill();
+  ctx.strokeStyle = active ? '#aef3ff' : '#3d5a9c'; ctx.lineWidth = 1.5;
+  rr(x, y, w, h, 6); ctx.stroke();
+  ctx.fillStyle = active ? '#04121a' : '#8fb6ff';
+  drawText(label, x + w / 2, y + h / 2 + 1, Math.min(10, w / (label.length + 1)), ctx.fillStyle, {});
+}
+function drawBrickIcon(type, x, y, w, h) {
+  const colors = { C: '#29d8ff', B: '#3d7bff', G: '#3dff8f', Y: '#ffd23d', O: '#ff9a3d', R: '#ff3d5e', S: '#8f9bb3', T: '#5b6b8c', X: '#ffd23d', b: '#ff4d4d', '?': '#c77dff', D: '#b7f7ff' };
+  ctx.fillStyle = colors[type] || '#fff';
+  ctx.fillRect(x + 2, y + 2, w - 4, h - 4);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.fillRect(x + 2, y + 2, w - 4, 3);
+  // draw the real in-game symbol so the legend matches the bricks
+  const s = w / 68, cx = x + 2 + 32 * s, cy = y + 2 + 11;
+  if (type === 'X') { // gold V emblem — indestructible
+    ctx.fillStyle = '#4a3100';
+    ctx.strokeStyle = 'rgba(255,243,199,0.92)';
+    ctx.lineWidth = 1.5 * s;
+    ctx.beginPath();
+    ctx.moveTo(cx - 10.5 * s, cy - 3.5); ctx.lineTo(cx, cy + 9.5); ctx.lineTo(cx + 10.5 * s, cy - 3.5);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  } else if (type === 'S' || type === 'T') { // damage chevrons — extra hits
+    ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+    ctx.lineWidth = 2 * s;
+    ctx.beginPath();
+    if (type === 'S') { ctx.moveTo(cx - 24 * s, cy - 5); ctx.lineTo(cx - 14 * s, cy + 1); ctx.lineTo(cx - 4 * s, cy - 4); }
+    else {
+      ctx.moveTo(cx - 26 * s, cy - 4); ctx.lineTo(cx - 16 * s, cy + 2); ctx.lineTo(cx - 6 * s, cy - 4);
+      ctx.moveTo(cx + 4 * s, cy + 4); ctx.lineTo(cx + 14 * s, cy - 1); ctx.lineTo(cx + 24 * s, cy + 5);
+    }
+    ctx.stroke();
+  } else if (type === 'b') { // bomb fuse
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx, cy, 6 * s, 0, TAU); ctx.fill();
+    ctx.strokeStyle = '#111'; ctx.lineWidth = 2 * s; ctx.beginPath(); ctx.arc(cx, cy, 3.4 * s, 0, TAU); ctx.stroke();
+    ctx.strokeStyle = '#111'; ctx.beginPath(); ctx.moveTo(cx + s, cy - 7); ctx.lineTo(cx + 4.5 * s, cy - 1); ctx.stroke();
+  } else if (type === '?') { // mystery mark
+    ctx.font = 'bold ' + Math.round(17 * s) + 'px ' + FONT;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.strokeStyle = 'rgba(30,12,60,0.9)'; ctx.lineWidth = 2.5 * s;
+    ctx.strokeText('?', cx, cy);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText('?', cx, cy);
+  } else if (type === 'D') { // diamond gem
+    ctx.fillStyle = '#0e2f5c';
+    ctx.strokeStyle = 'rgba(190,235,255,0.95)'; ctx.lineWidth = 1.3 * s;
+    ctx.beginPath();
+    for (let i = 0; i < 4; i++) {
+      const a = i * Math.PI / 2;
+      ctx.lineTo(cx + Math.cos(a) * 6 * s, cy + Math.sin(a) * 6 * s);
+      ctx.lineTo(cx + Math.cos(a + Math.PI / 4) * 2.4 * s, cy + Math.sin(a + Math.PI / 4) * 2.4 * s);
+    }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+}
+/* Gold (indestructible) brick emblem: a bold 'V' with a dark bronze body and a
+   bright edge, so it stays readable through the gold flash. */
+function drawGoldEmblem(bs) {
+  ctx.save();
+  ctx.translate(BRICK_W / 2, BRICK_H / 2);
+  ctx.fillStyle = '#4a3100';
+  ctx.strokeStyle = 'rgba(255,243,199,0.92)';
+  ctx.lineWidth = 1.5 * bs;
+  ctx.beginPath();
+  ctx.moveTo(-10.5 * bs, -3.5 * bs);
+  ctx.lineTo(0, 9.5 * bs);
+  ctx.lineTo(10.5 * bs, -3.5 * bs);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+}
+
+/* ---------- power-up glyph icons ---------- */
+/* Every capsule gets a vector glyph that reads as its effect, drawn the same
+   way in-game, in the how-to legend, and on HUD chips so they always match. */
+function capArrow(x1, y1, x2, y2, headEnd) {
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  const a = Math.atan2(y2 - y1, x2 - x1);
+  const tipX = headEnd ? x2 : x1, tipY = headEnd ? y2 : y1;
+  const hl = ctx.lineWidth * 2.4;
+  ctx.beginPath();
+  ctx.moveTo(tipX, tipY);
+  ctx.lineTo(tipX - Math.cos(a - 0.45) * hl, tipY - Math.sin(a - 0.45) * hl);
+  ctx.lineTo(tipX - Math.cos(a + 0.45) * hl, tipY - Math.sin(a + 0.45) * hl);
+  ctx.closePath(); ctx.fill();
+}
+function capHeart(r) {
+  ctx.beginPath();
+  ctx.moveTo(0, 0.9 * r);
+  ctx.bezierCurveTo(-1.35 * r, 0.05 * r, -0.85 * r, -1.05 * r, 0, -0.4 * r);
+  ctx.bezierCurveTo(0.85 * r, -1.05 * r, 1.35 * r, 0.05 * r, 0, 0.9 * r);
+  ctx.fill();
+}
+function drawCapIcon(id, x, y, s, col) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.strokeStyle = col; ctx.fillStyle = col;
+  ctx.lineWidth = Math.max(1.1, s * 0.09);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const u = s / 12;
+  switch (id) {
+    case 'E': // expand: arrows outward
+      capArrow(-2 * u, 0, -5.2 * u, 0, false); capArrow(2 * u, 0, 5.2 * u, 0, true);
+      break;
+    case 'R': // reduce: arrows inward
+      capArrow(-5.2 * u, 0, -1.8 * u, 0, true); capArrow(5.2 * u, 0, 1.8 * u, 0, true);
+      break;
+    case 'S': // split: one ball becomes three
+      ctx.beginPath(); ctx.arc(0, -1.6 * u, 2.5 * u, 0, TAU); ctx.fill();
+      ctx.beginPath(); ctx.arc(-3.1 * u, 2.6 * u, 1.7 * u, 0, TAU); ctx.fill();
+      ctx.beginPath(); ctx.arc(3.1 * u, 2.6 * u, 1.7 * u, 0, TAU); ctx.fill();
+      break;
+    case 'L': // laser: crosshair over a bolt
+      ctx.beginPath(); ctx.arc(0, 0, 3.3 * u, 0, TAU); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, -2.4 * u); ctx.lineTo(0, 2.4 * u); ctx.moveTo(-2.4 * u, 0); ctx.lineTo(2.4 * u, 0); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, 0, 1 * u, 0, TAU); ctx.fill();
+      break;
+    case 'C': // catch: ball resting on the paddle
+      ctx.fillRect(-4.6 * u, 2.2 * u, 9.2 * u, 2.2 * u);
+      ctx.beginPath(); ctx.arc(0, -0.9 * u, 2.6 * u, 0, TAU); ctx.fill();
+      break;
+    case 'M': // mega ball: big ball with halo
+      ctx.beginPath(); ctx.arc(0, 0, 3.8 * u, 0, TAU); ctx.fill();
+      ctx.globalAlpha = 0.45; ctx.beginPath(); ctx.arc(0, 0, 4.9 * u, 0, TAU); ctx.stroke();
+      ctx.globalAlpha = 1;
+      break;
+    case 'P': // pierce: arrow through the ball
+      ctx.beginPath(); ctx.arc(0, 0, 3 * u, 0, TAU); ctx.fill();
+      capArrow(-5.4 * u, 0, 5.4 * u, 0, true);
+      break;
+    case 'WARP': // warp: spiral portal
+      ctx.beginPath(); ctx.arc(0, 0, 4.6 * u, 0, TAU); ctx.stroke();
+      ctx.beginPath();
+      for (let i = 0; i <= 20; i++) {
+        const a = i / 20 * Math.PI * 2;
+        const r = (1.4 + a * 0.68) * u;
+        const px = Math.cos(a) * r, py = Math.sin(a) * r;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      break;
+    case 'B': // break: explosion star
+      ctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const a = i * Math.PI / 4;
+        const r = i % 2 === 0 ? 4.4 * u : 1.9 * u;
+        const px = Math.cos(a) * r, py = Math.sin(a) * r;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.closePath(); ctx.fill();
+      break;
+    case 'W': // slow: double chevron down
+      ctx.beginPath();
+      ctx.moveTo(-3.2 * u, -2.6 * u); ctx.lineTo(0, 0.4 * u); ctx.lineTo(3.2 * u, -2.6 * u);
+      ctx.moveTo(-3.2 * u, 0.8 * u); ctx.lineTo(0, 3.8 * u); ctx.lineTo(3.2 * u, 0.8 * u);
+      ctx.stroke();
+      break;
+    case '2': // 2x score: two sparkle stars — no numerals, reads as double
+      const spark = (sx, r) => {
+        ctx.beginPath();
+        for (let i = 0; i < 8; i++) {
+          const a = i * Math.PI / 4;
+          const rad = i % 2 === 0 ? r : r * 0.4;
+          const px = sx + Math.cos(a) * rad, py = Math.sin(a) * rad;
+          if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.closePath(); ctx.fill();
+      };
+      spark(-2.5 * u, 2.6 * u); spark(2.5 * u, 2.6 * u);
+      break;
+    case 'I': // 1up: heart
+      capHeart(3.4 * u);
+      break;
+    case 'F': // fast: lightning bolt
+      ctx.beginPath();
+      ctx.moveTo(1.2 * u, -4.6 * u); ctx.lineTo(-1.9 * u, 0.5 * u); ctx.lineTo(-0.3 * u, 0.5 * u);
+      ctx.lineTo(-1.2 * u, 4.6 * u); ctx.lineTo(1.9 * u, -0.5 * u); ctx.lineTo(0.3 * u, -0.5 * u);
+      ctx.closePath(); ctx.fill();
+      break;
+    case 'D': // disrupt: zigzag
+      ctx.beginPath();
+      ctx.moveTo(-4.6 * u, 3.1 * u); ctx.lineTo(-1.6 * u, -1.3 * u);
+      ctx.lineTo(1.2 * u, 1.3 * u); ctx.lineTo(4.6 * u, -3.1 * u);
+      ctx.stroke();
+      break;
+    default:
+      ctx.font = Math.round(s * 0.55) + 'px ' + FONT;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(id, 0, 1);
+      break;
+  }
+  ctx.restore();
+}
+
+/* ═══════════════════ PART B — GAMEPLAY ═══════════════════ */
+const COLS = 12, ROWS = 16;
+
+const BRICK_COLORS = { C: '#29d8ff', B: '#3d7bff', G: '#3dff8f', Y: '#ffd23b', O: '#ff9a3d', R: '#ff3d5e', S: '#8f9bb3', T: '#5b6b8c', X: '#ffd23b', b: '#ff4d4d', '?': '#c77dff', D: '#d9fbff' };
+const BRICK_PTS = { C: 0, B: 0, G: 0, Y: 0, O: 0, R: 0, S: 150, T: 300, X: 0, b: 200, '?': 100, D: 500 };
+const CAPSULE_INFO = [
+  { id: 'E', name: 'EXPAND',   good: true,  color: '#3dff8f' },
+  { id: 'S', name: 'SPLIT',    good: true,  color: '#ffd23b' },
+  { id: 'L', name: 'LASER',    good: true,  color: '#29d8ff' },
+  { id: 'C', name: 'CATCH',    good: true,  color: '#8fb6ff' },
+  { id: 'M', name: 'MEGA BALL', good: true, color: '#ff9a3d' },
+  { id: 'P', name: 'PIERCE',   good: true,  color: '#ff5a5a' },
+  { id: 'B', name: 'BREAK',    good: true,  color: '#c77dff' },
+  { id: 'W', name: 'SLOW',     good: true,  color: '#8fb6ff' },
+  { id: '2', name: '2X SCORE', good: true,  color: '#ffd23b' },
+  { id: 'I', name: '1UP',      good: true,  color: '#3dff8f' },
+  { id: 'R', name: 'REDUCE',   good: false, color: '#ff3d5e' },
+  { id: 'F', name: 'FAST',     good: false, color: '#ff6a3d' },
+  { id: 'D', name: 'DISRUPT',  good: false, color: '#ff3d9e' }
+];
+const CAP_WEIGHTS = { E: 12, S: 9, L: 10, C: 8, M: 6, P: 7, B: 5, W: 7, '2': 7, I: 3, R: 12, F: 10, D: 10 };
+
+/* ---------- capsule cheat sheet (persistent unlock) ---------- */
+/* Collect every capsule once to permanently upgrade the how-to legend: each
+   power-up then shows your personal best combo while its effect was fresh. */
+const ALL_CAPS = CAPSULE_INFO.map(c => c.id);
+const PWR = Object.assign({ caps: {}, best: {}, recent: {}, unlocked: false }, store.get('pwr', {}));
+function savePWR() { store.set('pwr', { caps: PWR.caps, best: PWR.best, unlocked: PWR.unlocked }); }
+const PWR_FRESH = 8; // seconds a just-used power counts toward your best combo
+
+/* ---------- curated level maps (12 wide) ---------- */
+function normMap(m) {
+  const out = [];
+  for (let i = 0; i < ROWS; i++) {
+    const s = (m[i] || '').replace(/\./g, '.');
+    out.push((s + '............').slice(0, COLS));
+  }
+  return out;
+}
+const CLASSIC_MAPS = [
+  normMap([
+    '............', '............', 'CCCCCCCCCCCC', 'BBBBBBBBBBBB',
+    'GGGGGGGGGGGG', 'YYYYYYYYYYYY', 'OOOOOOOOOOOO', 'RRRRRRRRRRRR'
+  ]),
+  normMap([
+    '............', '............', '....CCCC....', '...BBBBBB...',
+    '..GGGGGGGG..', '.YYYYYYYYYY.', 'OOOOOOOOOOOO', '.RRRRRRRRRR.'
+  ]),
+  normMap([
+    'C.B.G.Y.O.R.', '.C.B.G.Y.O.R', 'B.G.Y.O.R.C.', '.B.G.Y.O.R.C',
+    'G.Y.O.R.C.B.', '.G.Y.O.R.C.B', 'Y.O.R.C.B.G.', '.Y.O.R.C.B.G'
+  ]),
+  normMap([
+    '............', '............', '..CCCCCCCC..', '.BBGGGGGGBB.',
+    '.BGYYYYYYGB.', '.BGYYRRYYGB.', '.BGYRRRRYGB.', '.BGYYYYYYGB.',
+    '.BBGGGGGGBB.', '..CCCCCCCC..'
+  ]),
+  normMap([
+    '...........C', '..........CC', '.........CCC', '........CCCC',
+    '.......CCCCC', '......BBBBBB', '.....GGGGGGG', '....YYYYYYYY',
+    '...OOOOOOOOO', '..RRRRRRRRRR', '.RRRRRRRRRRR'
+  ]),
+  normMap([
+    '............', '............', 'CC........CC', '.CC......CC.',
+    '..CC....CC..', '...CC..CC...', '....CCCC....', '.....CC.....'
+  ]),
+  normMap([
+    '.X........X.', '..X......X..', '...X....X...', '....X..X....',
+    '.....CC.....', '....BBBB....', '...GGGGGG...', '..YYYYYYYY..',
+    '.OOOOOOOOOO.', 'RRRRRRRRRRRR', '....X..X....', '...X....X...',
+    '..X......X..', '.X........X.'
+  ]),
+  normMap([
+    '.S.S.S.S.S.S', 'TTTTTTTTTTTT', '.S.S.S.S.S.S', 'XXXXX..XXXXX',
+    'SSSSSSSSSSSS', '.TTTTTTTTTT.', 'R.R.R.R.R.R.', 'OOOOOOOOOOOO',
+    '.X.X.X.X.X.X'
+  ])
+];
+/* ARKANOID — the full 33-stage Taito-style campaign. Hand-crafted walls that
+   escalate: plain colour rows -> shapes -> specials -> bombs & mysteries ->
+   steel/titan armour -> and finally DOH, the gold-armoured boss round.
+   Legend: C/B/G/Y/O/R colours, S steel (2 hits), T titan (3), X gold (solid),
+   b bomb, ? mystery, D diamond. */
+const ARKANOID_MAPS = [
+  normMap([ // 1 — THE FIRST WALL: the classic opening rows
+    '............', '............', 'CCCCCCCCCCCC', 'BBBBBBBBBBBB',
+    'GGGGGGGGGGGG', 'YYYYYYYYYYYY', 'OOOOOOOOOOOO', 'RRRRRRRRRRRR'
+  ]),
+  normMap([ // 2 — STAIRWAY: a growing staircase
+    '............', '............', '...........C', '..........CC', '.........CCC', '........CCCC',
+    '.......CCCCC', '......BBBBBB', '.....GGGGGGG', '....YYYYYYYY', '...OOOOOOOOO', '..RRRRRRRRRR'
+  ]),
+  normMap([ // 3 — CHECKERBOARD
+    '............', '............', 'C.C.C.C.C.C.', '.C.C.C.C.C.C', 'C.C.C.C.C.C.', '.C.C.C.C.C.C',
+    'G.G.G.G.G.G.', '.G.G.G.G.G.G', 'Y.Y.Y.Y.Y.Y.', '.Y.Y.Y.Y.Y.Y'
+  ]),
+  normMap([ // 4 — DIAGONAL STRIPES
+    '............', '............', '......CCCC..', '.....CCCC...', '....BBBB....', '...BBBB.....',
+    '..GGGG......', '.GGGG.......', 'YYYY........', 'YYYY........'
+  ]),
+  normMap([ // 5 — STEEL PILLARS: colour rows braced by steel columns
+    '............', '............', 'S.CCCCCCCC.S', 'S.BBBBBBBB.S', 'S.GGGGGGGG.S', 'S.YYYYYYYY.S',
+    'S.OOOOOOOO.S', 'S.RRRRRRRR.S'
+  ]),
+  normMap([ // 6 — THE BIG DIAMOND
+    '............', '............', '.....CC.....', '....C..C....', '...C....C...', '..C......C..',
+    '.C........C.', 'C..........C', '.C........C.', '..C......C..', '...C....C...', '....C..C....', '.....CC.....'
+  ]),
+  normMap([ // 7 — THE CROSS
+    '............', '............', '.....CC.....', '.....CC.....', '.....CC.....', '.....CC.....',
+    'CCCCCCCCCCCC', 'CCCCCCCCCCCC', '.....CC.....', '.....CC.....', '.....CC.....', '.....CC.....'
+  ]),
+  normMap([ // 8 — CONCENTRIC FRAME
+    '............', '............', 'CCCCCCCCCCCC', 'C..........C', 'C.GGGGGGGG.C', 'C.G......G.C',
+    'C.G.YYYY.G.C', 'C.G.Y..Y.G.C', 'C.G.YYYY.G.C', 'C.G......G.C', 'C.GGGGGGGG.C', 'C..........C', 'CCCCCCCCCCCC'
+  ]),
+  normMap([ // 9 — THE ZIGZAG: crossing diagonals
+    '............', '............', '.CCCCCCCCCC.', '.C........C.', '..C......C..', '...C....C...',
+    '....C..C....', '.....CC.....', '....C..C....', '...C....C...', '..C......C..', '.C........C.'
+  ]),
+  normMap([ // 10 — THE HOURGLASS
+    '............', '............', 'CCCCCCCCCCCC', '.C........C.', '..C......C..', '...C....C...',
+    '....C..C....', '.....CC.....', '....C..C....', '...C....C...', '..C......C..', '.C........C.', 'CCCCCCCCCCCC'
+  ]),
+  normMap([ // 11 — BOMB SCARE: two bombs seeded in the wall
+    '............', '............', 'CCCCCCCCCCCC', '.BBBBBBBBBB.', 'GGGGbGGGGGGG', 'YYYYYYYYYYYY',
+    '.OOOOOOOOOO.', 'RRRRbRRRRRRR'
+  ]),
+  normMap([ // 12 — MYSTERY DIAMOND: a ring of surprise bricks (capsule jackpot)
+    '............', '............', '....????....', '...?....?...', '..?......?..', '.?........?.',
+    '?..........?', '.?........?.', '..?......?..', '...?....?...', '....????....'
+  ]),
+  normMap([ // 13 — DIAMOND MINE: gems inside a blue frame
+    '............', '............', '..BBBBBBBB..', '.B........B.', '.B..DDDD..B.', '.B..D..D..B.',
+    '.B..DDDD..B.', '.B........B.', '..BBBBBBBB..'
+  ]),
+  normMap([ // 14 — DOUBLE ARMOR: two nested steel frames
+    '............', '............', 'SSSSSSSSSSSS', 'S..........S', 'S.CCCCCCCC.S', 'S.C......C.S',
+    'S.C.BBBB.C.S', 'S.C.B..B.C.S', 'S.C.BBBB.C.S', 'S.C......C.S', 'S.CCCCCCCC.S', 'S..........S', 'SSSSSSSSSSSS'
+  ]),
+  normMap([ // 15 — THE SPIRAL: frame inside a frame
+    '............', '............', '.CCCCCCCCCC.', '.C........C.', '.C.GGGGGG.C.', '.C.G....G.C.',
+    '.C.G.YY.G.C.', '.C.G.YY.G.C.', '.C.G....G.C.', '.C.GGGGGG.C.', '.C........C.', '.CCCCCCCCCC.'
+  ]),
+  normMap([ // 16 — THE GATE: gold columns shield the edges
+    '............', '............', 'XCCCCCCCCCCX', 'X.BBBBBBBB.X', 'X.GGGGGGGG.X', 'X.YYYYYYYY.X',
+    'X.OOOOOOOO.X', 'X.RRRRRRRR.X', 'X..........X', 'X..........X'
+  ]),
+  normMap([ // 17 — TITAN FLOOR: the first line of titanium
+    '............', '............', '.CCCCCCCCCC.', '..BBBBBBBB..', '...GGGGGG...', '....YYYY....',
+    '.....OO.....', 'TTTTTTTTTTTT', 'TTTTTTTTTTTT'
+  ]),
+  normMap([ // 18 — PYRAMID ON STEEL
+    '............', '............', '.....CC.....', '....C..C....', '...C....C...', '..C......C..',
+    '.C........C.', 'C..........C', '.C........C.', '..C......C..', '...C....C...', '....C..C....', '.....CC.....', 'SSSSSSSSSSSS'
+  ]),
+  normMap([ // 19 — GOLD CROSS: unbreakable cross through colour quadrants
+    '............', '............', '.....XX.....', '.....XX.....', '..C..XX..C..', '..C..XX..C..',
+    '..C..XX..C..', '..C..XX..C..', 'XXXXXXXXXXXX', 'XXXXXXXXXXXX', '..G..XX..G..', '..G..XX..G..',
+    '..G..XX..G..', '..G..XX..G..'
+  ]),
+  normMap([ // 20 — SMILEY: a friendly face
+    '............', '............', '..CCCCCCCC..', '.C........C.', 'C..B....B..C', 'C..........C',
+    'C.B......B.C', 'C..BBBBBB..C', '.C........C.', '..CCCCCCCC..'
+  ]),
+  normMap([ // 21 — BOMB DIAMOND: a ring of bombs (chain heaven)
+    '............', '............', '.....b.b....', '....b...b...', '...b.....b..', '..b.......b.',
+    '.b.........b', 'b..........b', '.b.........b', '..b.......b.', '...b.....b..', '....b...b...', '.....b.b....'
+  ]),
+  normMap([ // 22 — THE MAZE: steel corridors with gaps
+    '............', '............', 'SSSSS..SSSSS', 'SCCC....CCCC', '..C..S..C...', '..C..S..C...',
+    '..C..S..C...', '..C..S..C...', '..C..S..C...', '..C..S..C...', 'SCCC....CCCC', 'SSSSS..SSSSS'
+  ]),
+  normMap([ // 23 — STEEL CHECKERS
+    '............', '............', 'S.C.S.C.S.C.', '.C.S.C.S.C.S', 'S.C.S.C.S.C.', '.C.S.C.S.C.S',
+    'Y.O.Y.O.Y.O.', '.O.Y.O.Y.O.Y', 'Y.O.Y.O.Y.O.', '.O.Y.O.Y.O.Y'
+  ]),
+  normMap([ // 24 — LIGHTNING: crossing diagonals
+    '............', '............', 'C..........C', '.C........C.', '..C......C..', '...C....C...',
+    '....C..C....', '.....CC.....', '....C..C....', '...C....C...', '..C......C..', '.C........C.', 'C..........C'
+  ]),
+  normMap([ // 25 — FIRST MAYHEM: every special meets the wall
+    '............', '............', 'CSCSCSCSCSCS', 'T?T?T?T?T?T?', 'DbDbDbDbDbDb', 'OYOYOYOYOYOY'
+  ]),
+  normMap([ // 26 — CONCENTRIC SQUARES
+    '............', '............', '..CCCCCCCC..', '.CBBBBBBBB.C', '.CBGGGGGGB.C', '.CBGYYYYGB.C',
+    '.CBGY..YGB.C', '.CBGYYYYGB.C', '.CBGGGGGGB.C', '.CBBBBBBBB.C', '..CCCCCCCC..'
+  ]),
+  normMap([ // 27 — THE CHEVRON: a downward V
+    '............', '............', '......CC....', '.....C..C...', '....C....C..', '...C......C.',
+    '..C........C', '.C........C.', '..C........C', '...C......C.', '....C....C..', '.....C..C...', '......CC....'
+  ]),
+  normMap([ // 28 — MYSTERY CROSS: a cross of surprise bricks
+    '............', '............', '.....??.....', '.....??.....', '.....??.....', '.....??.....',
+    '????????????', '????????????', '.....??.....', '.....??.....', '.....??.....', '.....??.....'
+  ]),
+  normMap([ // 29 — THE ARMORY: thick steel and titanium plates
+    '............', '............', 'SSSSSSSSSSSS', 'TTTTTTTTTTTT', 'S.S.S.S.S.S.', '.T.T.T.T.T.T',
+    'SSSSSSSSSSSS', 'TTTTTTTTTTTT', 'S.S.S.S.S.S.', '.T.T.T.T.T.T'
+  ]),
+  normMap([ // 30 — THE FORTRESS: gold corners around a soft core
+    '............', '............', 'XSSSSSSSSSSX', 'XSTTTTTTTTSX', 'XST.CCCC.TSX', 'XST.C..C.TSX',
+    'XST.CCCC.TSX', 'XSTTTTTTTTSX', 'XSSSSSSSSSSX', 'X..........X'
+  ]),
+  normMap([ // 31 — STEEL HORROR: a full checkerboard of armour
+    '............', '............', 'S.S.S.S.S.S.', '.S.S.S.S.S.S', 'S.S.S.S.S.S.', '.S.S.S.S.S.S',
+    'T.T.T.T.T.T.', '.T.T.T.T.T.T', 'S.S.S.S.S.S.', '.S.S.S.S.S.S'
+  ]),
+  normMap([ // 32 — MAYHEM WALL: everything, dense
+    '............', '............', 'XbXbXbXbXbXb', 'S?S?S?S?S?S?', 'TDTDTDTDTDTD', 'bXbXbXbXbXbX',
+    '?S?S?S?S?S?S', 'DTDTDTDTDTDT'
+  ]),
+  normMap([ // 33 — DOH, THE BOSS: a gold-armoured skull. Steel eyes, a titanium
+    // jaw, and mystery weak points — smash through the armour to win.
+    '............', '............', '..XXXXXXXX..', '.XX......XX.', 'XX.SS..SS.XX', 'XX.SS..SS.XX',
+    'XX........XX', 'XX.TTTTTT.XX', 'XX.TTTTTT.XX', 'XX.?....?.XX', 'XX..T..T..XX', '.XX......XX.', '..XXXXXXXX..'
+  ])
+];
+const CHALLENGE_MAPS = {
+  speed: normMap(['............', '............', '....CCCC....', '...BBBBBB...', '..GGGGGGGG..', '.YYYYYYYYYY.', 'OOOOOOOOOOOO', '.RRRRRRRRRR.']),
+  last: normMap(['............', '............', 'CC........CC', '.CC......CC.', '..CC....CC..', '...CC..CC...', '....CCCC....', '.....CC.....']),
+  glass: normMap(['XX.XXX.XXX.X', '............', 'CCCCCCCCCCCC', 'BBBBBBBBBBBB', 'GGGGGGGGGGGG', 'YYYYYYYYYYYY', 'OOOOOOOOOOOO', 'RRRRRRRRRRRR']),
+  chain: normMap(['..b.b.b.b...', '.b.b.b.b.b.', 'bbbbbbbbbbbb', '.b.b.b.b.b.', '..b.b.b.b...', 'CCCCCCCCCCCC', 'BBBBBBBBBBBB', 'YYYYYYYYYYYY']),
+  iron: normMap(['SSSSSSSSSSSS', 'TTTTTTTTTTTT', 'S.S.S.S.S.S.', '.T.T.T.T.T.T', 'SSSSSSSSSSSS', '.X........X.', 'OOOOOOOOOOOO']),
+  hyper: normMap(['C.B.G.Y.O.R.', 'R.O.Y.G.B.C.', '.C.B.G.Y.O.R', '.R.O.Y.G.B.C', 'CCCCCCCCCCCC', 'YYYYYYYYYYYY'])
+};
+const CHALLENGES = [
+  { id: 'speed', name: 'SPEED DEMON',    desc: 'BEAT THE CLOCK — CLEAR FAST FOR BONUS!', map: 'speed', lives: 3, speedMul: 1.05, timer: 45, powers: false, med: [5000, 9000, 16000] },
+  { id: 'last',  name: 'LAST STAND',     desc: 'ONE BALL. ONE LIFE. MAKE IT COUNT.', map: 'last', lives: 1, speedMul: 1.0, timer: 0, powers: false, med: [5000, 9000, 15000] },
+  { id: 'glass', name: 'GLASS CEILING',  desc: 'A GOLD CEILING — SQUEEZE THROUGH THE GAPS!', map: 'glass', lives: 3, speedMul: 1.1, timer: 0, powers: false, med: [5500, 10000, 17000], icon: 'X' },
+  { id: 'chain', name: 'CHAIN REACTION', desc: 'BOMBS EVERYWHERE — LIGHT THE FUSE!', map: 'chain', lives: 3, speedMul: 1.0, timer: 0, powers: false, med: [6000, 11000, 20000], icon: 'b' },
+  { id: 'iron',  name: 'IRON FORTRESS',  desc: 'STEEL & TITANIUM — BRING THE BIG GUNS', map: 'iron', lives: 3, speedMul: 1.0, timer: 0, powers: false, med: [5500, 10000, 18000], icon: 'S' },
+  { id: 'hyper', name: 'HYPERBALL',      desc: '1.5X BALL SPEED. HANG ON TIGHT!', map: 'hyper', lives: 3, speedMul: 1.5, timer: 0, powers: false, med: [5000, 9000, 16000] }
+];
+
+/* ---------- procedural REMIX generator ---------- */
+function genRemixMap(level) {
+  const rows = Math.min(5 + Math.ceil(level / 1.4), 12);
+  const colors = ['C', 'B', 'G', 'Y', 'O', 'R'];
+  const g = [];
+  for (let i = 0; i < rows; i++) {
+    let row = new Array(COLS).fill('.');
+    const solid = i % 3 === 0;
+    for (let c = 0; c < COLS; c++) {
+      if (!solid && c % 2 === i % 2) continue;
+      row[c] = colors[(i + Math.floor(level / 3)) % colors.length];
+    }
+    if (level >= 3 && Math.random() < Math.min(0.3, (level - 2) * 0.07)) {
+      const c = randi(0, COLS - 1); if (row[c] !== '.') row[c] = 'S';
+    }
+    if (level >= 5 && Math.random() < Math.min(0.25, (level - 4) * 0.06)) {
+      const c = randi(0, COLS - 1); if (row[c] !== '.') row[c] = 'T';
+    }
+    g.push(row.join(''));
+  }
+  if (level >= 5) {
+    const c = randi(0, COLS - 1);
+    for (let i = 0; i < rows; i++) if (g[i][c] === '.') g[i] = g[i].slice(0, c) + 'X' + g[i].slice(c + 1);
+  }
+  if (level >= 4) {
+    const n = Math.min(2 + Math.floor(level / 2), 6);
+    for (let k = 0; k < n; k++) {
+      const r = randi(0, rows - 1), c = randi(0, COLS - 1);
+      if (g[r][c] !== '.') g[r] = g[r].slice(0, c) + 'b' + g[r].slice(c + 1);
+    }
+  }
+  if (level >= 3) {
+    const r = randi(0, rows - 1), c = randi(0, COLS - 1);
+    if (g[r][c] !== '.') g[r] = g[r].slice(0, c) + '?' + g[r].slice(c + 1);
+  }
+  if (level >= 2) {
+    const n = Game.obj && Game.obj.type === 'gems' ? 2 : 1;
+    for (let k = 0; k < n; k++) {
+      const r = randi(0, rows - 1), c = randi(0, COLS - 1);
+      if (g[r][c] !== '.') g[r] = g[r].slice(0, c) + 'D' + g[r].slice(c + 1);
+    }
+  }
+  while (g.length < ROWS) g.push('............');
+  return g;
+}
+
+/* ---------- Game state ---------- */
+const Game = {
+  screen: 'title',
+  mode: 'CLASSIC', diff: 0,
+  score: 0, hi: 0, lives: 4, level: 1,
+  combo: 0, comboT: 0, mult: 1, maxCombo: 0,
+  bricks: [], grid: null, destructible: 0,
+  paddle: { x: W / 2, w: 118, tw: 118, h: PADDLE_H, y: PADDLE_Y, vx: 0, squash: 0, flash: 0 },
+  balls: [], capsules: [], bolts: [],
+  ballSpeed: 430, baseSpeed: 430,
+  fireT: 0, x2T: 0, slowT: 0, fastT: 0, megaT: 0, disruptT: 0, laserAmmo: 0, laserCd: 0,
+  introT: 0, introPhase: 'ready', clearing: 0, chainT: 0, clearPending: false, overT: 0,
+  time: 0, levelTime: 0, challengeTimer: 0, obj: null, objDone: false,
+  stats: { bricks: 0, maxCombo: 0, hits: 0, shots: 0, gems: 0, bestChain: 0 },
+  challengeIdx: 0, extras: 0, ramp: 0, warpT: 0, warpNext: 0, stageStartScore: 0, stageRun: 0, bossTotal: 0, bossWounded: false,
+  bossHearts: 0, bossDead: false, bossCoresLeft: 0, bossBonus: 0, bossBeamY: 0, beams: [], belchCd: 0, belchMax: 0
+};
+
+function brickPts(type, gy) {
+  if (BRICK_PTS[type] > 0) return BRICK_PTS[type];
+  return 50 + (ROWS - 1 - gy) * 12;
+}
+function buildLevel(mapRows) {
+  const g = []; const bricks = [];
+  for (let gy = 0; gy < ROWS; gy++) {
+    g.push([]);
+    const row = mapRows[gy];
+    for (let gx = 0; gx < COLS; gx++) {
+      const ch = row[gx];
+      if (ch === '.' || !ch) { g[gy].push(null); continue; }
+      const b = {
+        gx, gy, x: BX0 + gx * PITCH_X, y: BY0 + gy * PITCH_Y,
+        w: BRICK_W, h: BRICK_H, type: ch, hp: 1, maxHp: 1, dead: false,
+        flash: 0, seed: randi(0, 99), pts: brickPts(ch, gy)
+      };
+      if (ch === 'S') { b.hp = 2; b.maxHp = 2; }
+      else if (ch === 'T') { b.hp = 3; b.maxHp = 3; }
+      else if (ch === 'X') { b.hp = 999; b.maxHp = 999; }
+      else if (ch === '?' && Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length) { b.heart = true; }
+      bricks.push(b); g[gy].push(b);
+    }
+  }
+  Game.bricks = bricks; Game.grid = g;
+  Game.classicTopRow = bricks.length ? Math.min(...bricks.map(b => b.gy)) : 0;
+  Game.classicRows = bricks.length ? Math.max(...bricks.map(b => b.gy)) - Game.classicTopRow + 1 : 1;
+  Game.destructible = bricks.filter(b => b.type !== 'X').length;
+}
+function getBrickAt(gx, gy) {
+  if (gy < 0 || gy >= ROWS || gx < 0 || gx >= COLS) return null;
+  return Game.grid[gy][gx];
+}
+
+/* ---------- balls ---------- */
+function makeBall(serve) {
+  return {
+    x: Game.paddle.x, y: PADDLE_Y - BALL_R * 2.7, vx: 0, vy: 0,
+    serve: true, r: BALL_R, hitBrick: false, hist: [], fire: false, dead: false, seed: randi(0, 99)
+  };
+}
+function launchBall(ball) {
+  const p = Game.paddle;
+  let ang = -Math.PI / 2 + clamp(p.vx * 0.004, -0.85, 0.85);
+  const sp = Game.ballSpeed;
+  ball.vx = Math.cos(ang) * sp; ball.vy = Math.sin(ang) * sp;
+  ball.serve = false;
+  playSfx('go');
+  if (Game.balls.length === 1) Game.stats.shots++;
+}
+
+/* ---------- juice helpers ---------- */
+function breakFeedback(x, y, color, big) {
+  Particles.burst(x, y, color, big ? 26 : 14, big ? 260 : 170);
+  Particles.ring(x, y, color, big ? 46 : 26);
+  if (big) { Hitstop.trigger(0.09); Flash.set(0.5, '#ffffff'); }
+}
+/* Score-based extra ball: the 1986 Taito cabinet granted a bonus Vaus at score
+   milestones; REMIX keeps the looser 50k rhythm. CLASSIC stays authentic —
+   the 1976 original never gave extra balls for points. */
+const UP_THRESH = { CLASSIC: 0, ARKANOID: 30000, REMIX: 50000 };
+function addScore(pts, x, y, color) {
+  const gained = Math.round(pts * Game.mult * (Game.x2T > 0 ? 2 : 1) * DIFFS[Game.diff].mult);
+  Game.score += gained;
+  if (Game.score > Game.hi) Game.hi = Game.score;
+  if (!Game.score100k && Game.score >= 100000) { Game.score100k = true; unlockAchievement('score100k'); }
+  if (x !== undefined) Texts.add(x, y, '+' + gained, color || '#fff', 13, { glow: true });
+  const upTh = UP_THRESH[Game.mode] || 0;
+  if (upTh > 0 && Game.score >= (Game.extras + 1) * upTh) {
+    Game.extras++; Game.lives++;
+    syncMusicDuck(); // an extra ball opens the music back up
+    Texts.add(W / 2, H * 0.35, 'EXTRA BALL!', '#3dff8f', 20, { glow: true });
+    playSfx('extra');
+    unlockAchievement('extra-life');
+  }
+}
+function bumpCombo(x, y) {
+  Game.combo++; Game.comboT = 3;
+  if (Game.combo > Game.maxCombo) Game.maxCombo = Game.combo;
+  // personal best per power: highest combo while that capsule was freshly used
+  if (!Demo.active) {
+    for (const id of Object.keys(PWR.recent)) {
+      if (perfT - PWR.recent[id] >= PWR_FRESH) { delete PWR.recent[id]; continue; }
+      if (Game.combo > (PWR.best[id] || 0)) { PWR.best[id] = Game.combo; savePWR(); }
+    }
+  }
+  const m = Math.min(1 + Math.floor(Game.combo / 5), 8);
+  if (m > Game.mult) {
+    Game.mult = m;
+    /* announce only at milestone multipliers, small and quiet, so a long streak
+       doesn't keep shouting over the playfield — the HUD x-readout tracks the
+       in-between bumps */
+    if (m === 3 || m === 5 || m === 8) {
+      const shout = pick(['ON A ROLL!', 'RAMPAGE!', 'LEGENDARY!', 'BEYOND!']);
+      Texts.add(x, y, 'COMBO x' + m + ' ' + shout, '#8fb6ff', 10, {});
+    }
+  }
+  if (Game.combo === 5) unlockAchievement('combo5');
+  if (Game.combo === 15) unlockAchievement('combo15');
+}
+
+/* ---------- entity drawing ---------- */
+const BRICK_GRADS = {};
+function brickGrad(color) {
+  if (!BRICK_GRADS[color]) {
+    const g = ctx.createLinearGradient(0, 0, 0, BRICK_H);
+    g.addColorStop(0, lighten(color, 0.45));
+    g.addColorStop(0.45, color);
+    g.addColorStop(1, darken(color, 0.45));
+    BRICK_GRADS[color] = g;
+  }
+  return BRICK_GRADS[color];
+}
+function lighten(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  const r = clamp(Math.round(((n >> 16) & 255) + 255 * amt), 0, 255);
+  const g = clamp(Math.round(((n >> 8) & 255) + 255 * amt), 0, 255);
+  const b = clamp(Math.round((n & 255) + 255 * amt), 0, 255);
+  return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+function darken(hex, amt) { return lighten(hex, -amt); }
+const CLASSIC_BANDS = ['#e2352f', '#e2782f', '#3fae4a', '#e8c43c'];
+function classicBrickColor(b) {
+  if (b.type === 'S') return '#9aa3b2';
+  if (b.type === 'T') return '#6a7690';
+  if (b.type === 'X') return '#d8c14a';
+  if (b.type === 'b') return '#c22b28';
+  if (b.type === '?') return '#8a6fb5';
+  if (b.type === 'D') return '#dce9f7';
+  const top = Game.classicTopRow || 0;
+  const rows = Game.classicRows || 1;
+  const band = clamp(Math.floor((b.gy - top) * 4 / rows), 0, 3);
+  return CLASSIC_BANDS[band];
+}
+function drawBrick(b) {
+  const ctx2 = ctx;
+  const bs = BRICK_W / 68;
+  ctx2.save();
+  ctx2.translate(b.x, b.y);
+  if (Game.mode === 'CLASSIC') {
+    const col = b.type === 'X' ? '#d8c14a' : classicBrickColor(b);
+    ctx2.fillStyle = col;
+    ctx2.fillRect(2 * bs, 2 * bs, BRICK_W - 4 * bs, BRICK_H - 4 * bs);
+    ctx2.strokeStyle = 'rgba(0,0,0,0.55)'; ctx2.lineWidth = bs;
+    ctx2.strokeRect(2 * bs, 2 * bs, BRICK_W - 4 * bs, BRICK_H - 4 * bs);
+    if (b.type === 'X') {
+      drawGoldEmblem(bs);
+    } else if (b.maxHp > 1) {
+      ctx2.strokeStyle = 'rgba(0,0,0,0.75)'; ctx2.lineWidth = 1.5 * bs;
+      const hp = b.hp, mx = b.maxHp;
+      ctx2.beginPath();
+      if (mx === 2) { ctx2.moveTo(10 * bs, 8 * bs); ctx2.lineTo(20 * bs, 14 * bs); ctx2.lineTo(30 * bs, 9 * bs); }
+      else if (hp === 3) { ctx2.moveTo(8 * bs, 9 * bs); ctx2.lineTo(18 * bs, 15 * bs); ctx2.lineTo(28 * bs, 9 * bs); ctx2.moveTo(38 * bs, 17 * bs); ctx2.lineTo(48 * bs, 12 * bs); ctx2.lineTo(58 * bs, 18 * bs); }
+      else { ctx2.moveTo(8 * bs, 9 * bs); ctx2.lineTo(18 * bs, 15 * bs); ctx2.lineTo(28 * bs, 9 * bs); }
+      ctx2.stroke();
+    }
+    if (b.type === 'b') {
+      ctx2.fillStyle = '#fff'; ctx2.beginPath(); ctx2.arc(BRICK_W / 2, BRICK_H / 2, 5 * bs, 0, TAU); ctx2.fill();
+      ctx2.strokeStyle = '#111'; ctx2.lineWidth = 1.5 * bs; ctx2.beginPath(); ctx2.arc(BRICK_W / 2, BRICK_H / 2, 3 * bs, 0, TAU); ctx2.stroke();
+    }
+    ctx2.restore();
+    return;
+  }
+  if (Game.bossWounded && b.type !== 'X') {
+    /* wounded boss: the core bricks writhe in place (visual only — the grid
+       collision cells stay put) */
+    const dmg = Game.bossTotal ? 1 - Game.destructible / Game.bossTotal : 1;
+    const amp = 1.6 + dmg * 2.4;
+    ctx2.translate(Math.sin(perfT * 3 + b.seed * 9) * amp, Math.cos(perfT * 2.3 + b.seed * 7) * amp * 0.7);
+  }
+  const color = b.type === 'X' && Math.sin(perfT * 4 + b.seed) > 0.7 ? '#fff2b0' : BRICK_COLORS[b.type];
+  ctx2.fillStyle = brickGrad(color);
+  rr(2 * bs, 2 * bs, BRICK_W - 4 * bs, BRICK_H - 4 * bs, 4 * bs); ctx2.fill();
+  ctx2.fillStyle = 'rgba(255,255,255,0.28)'; rr(2 * bs, 2 * bs, BRICK_W - 4 * bs, 3 * bs, 2 * bs); ctx2.fill();
+  ctx2.strokeStyle = 'rgba(0,0,0,0.35)'; ctx2.lineWidth = bs; rr(2.5 * bs, 2.5 * bs, BRICK_W - 5 * bs, BRICK_H - 5 * bs, 4 * bs); ctx2.stroke();
+  if (b.type === 'X') {
+    drawGoldEmblem(bs);
+  } else if (b.maxHp > 1) {
+    ctx2.strokeStyle = 'rgba(255,255,255,0.85)'; ctx2.lineWidth = 2 * bs;
+    const hp = b.hp, mx = b.maxHp;
+    ctx2.beginPath();
+    if (mx === 2) { ctx2.moveTo(10 * bs, 8 * bs); ctx2.lineTo(20 * bs, 14 * bs); ctx2.lineTo(30 * bs, 9 * bs); }
+    else if (hp === 3) { ctx2.moveTo(8 * bs, 9 * bs); ctx2.lineTo(18 * bs, 15 * bs); ctx2.lineTo(28 * bs, 9 * bs); ctx2.moveTo(38 * bs, 17 * bs); ctx2.lineTo(48 * bs, 12 * bs); ctx2.lineTo(58 * bs, 18 * bs); }
+    else { ctx2.moveTo(8 * bs, 9 * bs); ctx2.lineTo(18 * bs, 15 * bs); ctx2.lineTo(28 * bs, 9 * bs); }
+    ctx2.stroke();
+  }
+  if (b.type === 'b') {
+    ctx2.fillStyle = '#fff'; ctx2.beginPath(); ctx2.arc(BRICK_W / 2, BRICK_H / 2, 6 * bs, 0, TAU); ctx2.fill();
+    ctx2.strokeStyle = '#111'; ctx2.lineWidth = 2 * bs; ctx2.beginPath(); ctx2.arc(BRICK_W / 2, BRICK_H / 2, 3.4 * bs, 0, TAU); ctx2.stroke();
+    ctx2.beginPath(); ctx2.moveTo(BRICK_W / 2 + bs, 6 * bs); ctx2.lineTo(BRICK_W / 2 + 4.5 * bs, 12 * bs); ctx2.stroke();
+  } else if (b.type === '?') {
+    const c = Math.sin(perfT * 10) > 0 ? '#ffffff' : '#ffd23b';
+    ctx2.font = 'bold ' + Math.round(17 * bs) + 'px ' + FONT;
+    ctx2.textAlign = 'center'; ctx2.textBaseline = 'middle';
+    ctx2.strokeStyle = 'rgba(30,12,60,0.9)'; ctx2.lineWidth = 2.5 * bs;
+    ctx2.strokeText('?', BRICK_W / 2, BRICK_H / 2 + bs);
+    ctx2.fillStyle = c;
+    ctx2.fillText('?', BRICK_W / 2, BRICK_H / 2 + bs);
+  } else if (b.type === 'D') {
+    ctx2.save(); ctx2.translate(BRICK_W / 2, BRICK_H / 2); ctx2.rotate(perfT * 2);
+    ctx2.fillStyle = '#0e2f5c';
+    ctx2.strokeStyle = 'rgba(190,235,255,0.95)'; ctx2.lineWidth = 1.3 * bs;
+    ctx2.beginPath();
+    for (let i = 0; i < 4; i++) {
+      const a = i * Math.PI / 2;
+      ctx2.lineTo(Math.cos(a) * 6 * bs, Math.sin(a) * 6 * bs);
+      ctx2.lineTo(Math.cos(a + Math.PI / 4) * 2.4 * bs, Math.sin(a + Math.PI / 4) * 2.4 * bs);
+    }
+    ctx2.closePath(); ctx2.fill(); ctx2.stroke(); ctx2.restore();
+  }
+  if (Game.bossWounded && b.type !== 'X') {
+    /* accelerating red heartbeat across the surviving cores */
+    const dmg = Game.bossTotal ? 1 - Game.destructible / Game.bossTotal : 1;
+    const heart = 0.5 + 0.5 * Math.sin(perfT * (4 + dmg * 6));
+    ctx2.fillStyle = 'rgba(255,61,94,' + (0.14 + 0.2 * heart).toFixed(3) + ')';
+    rr(2 * bs, 2 * bs, BRICK_W - 4 * bs, BRICK_H - 4 * bs, 4 * bs); ctx2.fill();
+  }
+  if (b.flash > 0) {
+    ctx2.fillStyle = 'rgba(255,255,255,' + clamp(b.flash * 2.5, 0, 1) + ')';
+    rr(2 * bs, 2 * bs, BRICK_W - 4 * bs, BRICK_H - 4 * bs, 4 * bs); ctx2.fill();
+  }
+  ctx2.restore();
+}
+function drawPaddle() {
+  const p = Game.paddle;
+  const sq = 1 + p.squash * 0.22;
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.scale(1 / sq, sq);
+  if (Game.mode === 'CLASSIC') {
+    ctx.fillStyle = '#f2f4f8';
+    rr(-p.w / 2, -p.h / 2, p.w, p.h, 2); ctx.fill();
+    ctx.strokeStyle = '#1a1d26'; ctx.lineWidth = 2;
+    rr(-p.w / 2, -p.h / 2, p.w, p.h, 2); ctx.stroke();
+    ctx.restore();
+    return;
+  }
+  if (Game.mode === 'ARKANOID') {
+    // Vaus: white hull with a central core and small wing tips
+    ctx.shadowColor = Game.fireT > 0 || Game.megaT > 0 ? '#ff9a3d' : '#8fd0ff';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#e8ecf4';
+    rr(-p.w / 2, -p.h / 2, p.w, p.h, p.h * 0.6); ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = '#5a6a86'; ctx.lineWidth = 1.5;
+    rr(-p.w / 2, -p.h / 2, p.w, p.h, p.h * 0.6); ctx.stroke();
+    // wing tips
+    ctx.fillStyle = '#c9d2e2';
+    ctx.beginPath();
+    ctx.moveTo(-p.w / 2, -p.h / 2 + 1); ctx.lineTo(-p.w / 2 - 7, -p.h / 2 - 3);
+    ctx.lineTo(-p.w / 2 - 7, p.h / 2 + 3); ctx.lineTo(-p.w / 2, p.h / 2 - 1); ctx.closePath(); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(p.w / 2, -p.h / 2 + 1); ctx.lineTo(p.w / 2 + 7, -p.h / 2 - 3);
+    ctx.lineTo(p.w / 2 + 7, p.h / 2 + 3); ctx.lineTo(p.w / 2, p.h / 2 - 1); ctx.closePath(); ctx.fill();
+    // central core
+    const cg = ctx.createRadialGradient(0, 0, 1, 0, 0, p.h * 0.45);
+    cg.addColorStop(0, '#ffffff'); cg.addColorStop(0.6, '#5ec8ff'); cg.addColorStop(1, '#1a6fd0');
+    ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(0, 0, p.h * 0.42, 0, TAU); ctx.fill();
+    ctx.strokeStyle = '#123a66'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, p.h * 0.42, 0, TAU); ctx.stroke();
+    // core pulse when powered
+    if (Game.fireT > 0 || Game.megaT > 0 || Game.catchT > 0) {
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.4 + 0.3 * Math.sin(perfT * 8)) + ')';
+      ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(0, 0, p.h * 0.42 + 2.5, 0, TAU); ctx.stroke();
+    }
+    if (Game.laserAmmo > 0) {
+      ctx.fillStyle = '#29d8ff'; ctx.fillRect(-p.w / 2 + 2, -p.h / 2 - 3, 5, 9);
+      ctx.fillRect(p.w / 2 - 7, -p.h / 2 - 3, 5, 9);
+    }
+    ctx.restore();
+    return;
+  }
+  ctx.shadowColor = Game.fireT > 0 ? '#ff9a3d' : '#29d8ff';
+  ctx.shadowBlur = 18;
+  const g = ctx.createLinearGradient(0, -p.h / 2, 0, p.h / 2);
+  g.addColorStop(0, '#ffffff'); g.addColorStop(0.4, '#9fd8ff'); g.addColorStop(1, '#3d6fd0');
+  ctx.fillStyle = g;
+  rr(-p.w / 2, -p.h / 2, p.w, p.h, 6); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 1.5;
+  rr(-p.w / 2 + 2, -p.h / 2 + 2, p.w - 4, 3, 2); ctx.stroke();
+  if (Game.laserAmmo > 0) {
+    ctx.fillStyle = '#29d8ff'; ctx.fillRect(-p.w / 2 - 2, -p.h / 2 - 3, 5, 9);
+    ctx.fillRect(p.w / 2 - 3, -p.h / 2 - 3, 5, 9);
+  }
+  ctx.restore();
+}function drawBall(b) {
+  if (Game.mode === 'CLASSIC') {
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, TAU); ctx.fill();
+    ctx.strokeStyle = '#1a1d26'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, TAU); ctx.stroke();
+    ctx.restore();
+    return;
+  }
+  if (Game.mode === 'ARKANOID') {
+    // energy ball: white-hot core with a short comet trail
+    for (let i = 0; i < b.hist.length; i++) {
+      const h = b.hist[i], a = (i / b.hist.length) * 0.5;
+      ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
+      ctx.beginPath(); ctx.arc(h.x, h.y, b.r * (0.3 + 0.7 * i / b.hist.length), 0, TAU); ctx.fill();
+    }
+    ctx.save();
+    ctx.shadowColor = b.fire ? '#ff9a3d' : '#e8f6ff';
+    ctx.shadowBlur = 16;
+    const g = ctx.createRadialGradient(b.x - 1.5, b.y - 1.5, 0.5, b.x, b.y, b.r + (Game.megaT > 0 ? 4 : 0));
+    g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, b.fire ? '#ffd9a8' : '#eaf6ff');
+    g.addColorStop(1, b.fire ? '#ff6a1a' : '#9fd8ff');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r + (Game.megaT > 0 ? 4 : 0), 0, TAU); ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.restore();
+    return;
+  }
+  for (let i = 0; i < b.hist.length; i++) {
+    const h = b.hist[i], a = (i / b.hist.length) * 0.4;
+    ctx.fillStyle = b.fire ? 'rgba(255,154,61,' + a + ')' : 'rgba(41,216,255,' + a + ')';
+    ctx.beginPath(); ctx.arc(h.x, h.y, b.r * (0.4 + 0.6 * i / b.hist.length), 0, TAU); ctx.fill();
+  }
+  ctx.save();
+  ctx.shadowColor = b.fire ? '#ff9a3d' : '#29d8ff';
+  ctx.shadowBlur = 14;
+  const g = ctx.createRadialGradient(b.x - 2, b.y - 2, 1, b.x, b.y, b.r);
+  g.addColorStop(0, '#ffffff'); g.addColorStop(0.5, b.fire ? '#ffc98f' : '#8fdcff');
+  g.addColorStop(1, b.fire ? '#ff6a1a' : '#1a8cff');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, TAU); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.restore();
+}
+function drawCapsule(c) {
+  const bob = Math.sin(perfT * 5 + c.seed) * 2;
+  const h = CAP_S / 2;
+  ctx.save();
+  ctx.translate(c.x, c.y + bob);
+  ctx.shadowColor = c.color; ctx.shadowBlur = 12;
+  ctx.fillStyle = '#0c1226';
+  rr(-h, -h, CAP_S, CAP_S, h / 2); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = c.color; ctx.lineWidth = 2; rr(-h, -h, CAP_S, CAP_S, h / 2); ctx.stroke();
+  // pure feature icon — no letter codes (matches the how-to legend + HUD chips)
+  drawCapIcon(c.id, 0, 0, CAP_S * 0.95, c.color);
+  if (c.warp) {
+    // spinning dashed ring so the secret reads from afar
+    ctx.save();
+    ctx.rotate(perfT * 3 + c.seed);
+    ctx.strokeStyle = 'rgba(199,125,255,0.85)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.arc(0, 0, h + 3.5, 0, TAU); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.restore();
+}
+function drawLaser(l) {
+  ctx.save();
+  ctx.shadowColor = '#29d8ff'; ctx.shadowBlur = 10;
+  ctx.fillStyle = '#aef3ff';
+  ctx.fillRect(l.x - 2, l.y - 14, 4, 14);
+  ctx.shadowBlur = 0;
+  ctx.restore();
+}
+/* Power-up preview: when a capsule gets close to the paddle, a little popup
+   floats above it showing the glyph + name (EXPAND, LASER...) so players learn
+   what each letter does BEFORE it lands. Fades in with proximity; green-tinted
+   panels for good capsules, red-tinted for the trouble ones. */
+function drawCapPreview() {
+  const PROX = 130, SIZE = 10, ICON = 18, PAD = 10, GAP = 7, HGT = 36;
+  for (const c of Game.capsules) {
+    const d = PADDLE_Y - c.y;
+    if (d < -CAP_S || d > PROX) continue;
+    const a = clamp(1 - d / PROX, 0, 1);
+    const pop = 1 + (1 - a) * 0.12;
+    const name = c.name;
+    const textW = name.length * SIZE;
+    const w = PAD * 2 + ICON + GAP + textW;
+    const px = clamp(c.x, w / 2 + 4, W - w / 2 - 4);
+    const py = PADDLE_Y - HGT - 14;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.translate(px, py);
+    ctx.scale(pop, pop);
+    ctx.shadowColor = c.color;
+    ctx.shadowBlur = (10 + 6 * Math.sin(perfT * 5)) * a;
+    ctx.fillStyle = c.good ? 'rgba(5,17,13,0.92)' : 'rgba(20,5,10,0.92)';
+    rr(-w / 2, -HGT / 2, w, HGT, 9); ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = c.color; ctx.lineWidth = 2;
+    rr(-w / 2, -HGT / 2, w, HGT, 9); ctx.stroke();
+    ctx.strokeStyle = c.good ? 'rgba(61,255,143,0.35)' : 'rgba(255,61,94,0.35)'; ctx.lineWidth = 1;
+    rr(-w / 2 + 3, -HGT / 2 + 3, w - 6, HGT - 6, 7); ctx.stroke();
+    drawCapIcon(c.id, -w / 2 + PAD + ICON / 2, 0, ICON, c.color);
+    drawText(name, -w / 2 + PAD + ICON + GAP + textW / 2, 0.5, SIZE, c.good ? '#d9ffe9' : '#ffdce5', {});
+    // chevron pointing down at the landing spot
+    ctx.fillStyle = c.color;
+    ctx.beginPath();
+    ctx.moveTo(-5, HGT / 2 + 3); ctx.lineTo(0, HGT / 2 + 9); ctx.lineTo(5, HGT / 2 + 3);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+}
+
+/* ---------- level flow ---------- */
+function setObjective() {
+  const lv = Game.level;
+  if (Game.mode !== 'REMIX') { Game.obj = null; return; }
+  const r = Math.random();
+  if (lv < 2) Game.obj = null;
+  else if (r < 0.4) Game.obj = { type: 'speed', txt: 'FAST & FURIOUS: CLEAR IN ' + (28 + lv * 2) + 's!', bonus: 2000 };
+  else if (r < 0.7) Game.obj = { type: 'perfect', txt: 'NO DROPPED BALLS!', bonus: 3000 };
+  else Game.obj = { type: 'gems', txt: 'HUNT DOWN 2 DIAMONDS!', bonus: 2500, need: 2 };
+  Game.objDone = false;
+}
+function startLevel() {
+  Game.levelTime = 0; Game.combo = 0; Game.comboT = 0; Game.mult = 1; Game.ramp = 0; Game.warpT = 0;
+  Game.stageStartScore = Game.score;
+  Game.fireT = 0; Game.x2T = 0; Game.slowT = 0; Game.fastT = 0; Game.megaT = 0; Game.disruptT = 0;
+  Game.laserAmmo = 0; Game.laserCd = 0; Game.bolts = []; Game.capsules = []; Game.challengeTimer = 0;
+  Game.capCount = 0;
+  Game.capNext = capQuota();
+  Game.paddle.catchT = 0; Game.paddle.x = W / 2; Game.paddle.vx = 0;
+  Game.paddle.tw = DIFFS[Game.diff].paddle * (Game.mode === 'REMIX' ? clamp(Math.pow(0.96, Math.floor((Game.level - 1) / 4)), 0.74, 1) : 1);
+  Game.paddle.w = Game.paddle.tw;
+  setObjective();
+  let map;
+  if (Game.mode === 'CLASSIC') map = CLASSIC_MAPS[(Game.level - 1) % CLASSIC_MAPS.length];
+  else if (Game.mode === 'ARKANOID') map = ARKANOID_MAPS[(Game.level - 1) % ARKANOID_MAPS.length];
+  else if (Game.mode === 'REMIX') map = genRemixMap(Game.level);
+  else map = CHALLENGE_MAPS[CHALLENGES[Game.challengeIdx].map];
+  buildLevel(map);
+  /* reaching a stage (even via warp) adds it to the stage-select pool */
+  if (Game.mode === 'ARKANOID') {
+    const prog = ARK_PROG();
+    if (Game.level > prog.reached) { prog.reached = Math.min(Game.level, ARKANOID_MAPS.length); saveArkProg(prog); }
+  }
+  /* DOH boss round: remember the core count so the second phase can trigger.
+     The mystery weak points are its hearts — destroy them all to end the fight,
+     and every core still standing pays out on the BOSS DOWN banner. */
+  if (Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length) {
+    Game.bossTotal = Game.destructible; Game.bossWounded = false;
+    Game.bossHearts = Game.bricks.filter(b => b.heart).length;
+    Game.bossDead = false; Game.bossBonus = 0; Game.bossCoresLeft = 0;
+    Game.bossBeamY = Game.bricks.length ? Math.max(...Game.bricks.map(b => b.y + b.h)) : WALL_TOP;
+  } else { Game.bossTotal = 0; Game.bossWounded = false; Game.bossHearts = 0; }
+  Game.beams = [];
+  Game.belchCd = 0;
+  Game.belchMax = 0;
+  Game.baseSpeed = DIFFS[Game.diff].ball * (Game.mode === 'CH' ? CHALLENGES[Game.challengeIdx].speedMul : 1);
+  if (Game.mode === 'REMIX') Game.baseSpeed *= 1 + Math.min((Game.level - 1) * 0.035, 0.62);
+  /* Taito's Arkanoid runs the ball a little faster every level — a gentle ramp
+     that crests at +60% by the 33rd stage, so the campaign escalates to the boss. */
+  if (Game.mode === 'ARKANOID') Game.baseSpeed *= 1 + Math.min((Game.level - 1) * 0.02, 0.6);
+  Game.ballSpeed = Game.baseSpeed;
+  Game.balls = [makeBall(true)];
+  Game.introT = 1.7; Game.introPhase = 'ready';
+  Game.clearing = 0; Game.chainT = 0; Game.clearPending = false; Game.objDone = false;
+  Game.lostThisLevel = false;
+  if (Game.level === 5) unlockAchievement('level5');
+  if (Game.mode === 'CH' && CHALLENGES[Game.challengeIdx].timer > 0) Game.challengeTimer = CHALLENGES[Game.challengeIdx].timer;
+  Music.setBpm(140 + Math.min(Game.level * 3, 40));
+  Music.setPitch(stagePitch());
+}
+/* Per-level pitch: the loop climbs a semitone every four stages so each stage
+   has its own flavor, cresting at a fifth on the final boss. CLASSIC stays put —
+   authentic 1976 Breakout, and its speed never ramps. */
+function stagePitch() {
+  if (Game.mode === 'CLASSIC' || Game.mode === 'CH') return 0;
+  return Math.min(Math.floor((Game.level - 1) / 4), 7);
+}
+function startRun() {
+  Game.score = 0; Game.combo = 0; Game.comboT = 0; Game.mult = 1; Game.maxCombo = 0;
+  Game.extras = 0; Game.level = 1; Game.time = 0;
+  Game.stats = { bricks: 0, maxCombo: 0, hits: 0, shots: 0, gems: 0, bestChain: 0 };
+  Game.score100k = false; Game.lostThisLevel = false;
+  const lives = Game.mode === 'CH' ? CHALLENGES[Game.challengeIdx].lives : DIFFS[Game.diff].lives;
+  Game.lives = lives;
+  Game.hi = store.get('hi_' + Game.mode, 0);
+  startLevel();
+}
+function checkLevelClear() {
+  if (Game.clearing > 0 || Game.destructible > 0 || Game.warpT > 0) return;
+  if (Game.chainT > 0) { Game.clearPending = true; return; }
+  beginClearCelebration();
+}
+function beginClearCelebration() {
+  Game.clearPending = false; Game.chainT = 0;
+  if (!Game.lostThisLevel) unlockAchievement('perfect');
+  if (Game.mode === 'REMIX' && Game.obj && !Game.objDone) {
+    if (Game.obj.type === 'speed') addScore(Game.obj.bonus, W / 2, H * 0.4, '#ffd23b');
+    else addScore(Math.floor(Game.obj.bonus / 2), W / 2, H * 0.4, '#ffd23b');
+    Game.objDone = true;
+  }
+  Game.clearing = 1.1;
+  Game.capsules = [];
+  Game.bolts = [];
+  Game.beams = [];
+  if (Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length) {
+    playSfx('win');
+    unlockAchievement('boss');
+    if (Game.bossBonus > 0) addScore(Game.bossBonus, W / 2, H * 0.42 + 78, '#ffd23b');
+  } else {
+    playSfx('levelup');
+  }
+  Flash.set(0.4);
+}
+/* ARKANOID campaign progress: per-stage best scores (points earned during that
+   stage) and how many stages are unlocked for the stage-select screen. */
+const ARK_PROG = () => store.get('ark_prog', { best: {}, reached: 1 });
+const saveArkProg = p => store.set('ark_prog', p);
+function recordStageClear() {
+  const st = Game.level;
+  const prog = ARK_PROG();
+  const pts = Game.score - Game.stageStartScore;
+  if (pts > (prog.best[st] || 0)) prog.best[st] = pts;
+  if (st >= prog.reached) prog.reached = Math.min(st + 1, ARKANOID_MAPS.length);
+  saveArkProg(prog);
+}
+function finishLevel() {
+  const bonus = Game.lives * 250 + (Game.levelTime < 60 ? Math.floor((60 - Game.levelTime) * 20) : 0);
+  addScore(bonus, W / 2, H * 0.42, '#3dff8f');
+  if (Game.mode === 'CH') { showVictory(); return; }
+  if (Game.mode === 'CLASSIC') {
+    if (Game.level >= CLASSIC_MAPS.length) { showVictory(); return; }
+    Game.level++; startLevel(); return;
+  }
+  if (Game.mode === 'ARKANOID') {
+    recordStageClear();
+    if (Game.level >= ARKANOID_MAPS.length) { showVictory(); return; }
+    Game.level++; startLevel(); return;
+  }
+  Game.level++;
+  startLevel();
+}
+
+/* Let a bomb chain's blast particles (burst life 0.4-0.9s) play out before the
+   LEVEL CLEAR celebration starts, so the banner doesn't cut the chain's climax. */
+const CHAIN_CLEAR_DELAY = 0.8;
+
+/* ---------- power-ups ---------- */
+/* Next capsule quota: kills needed before a capsule pays out. REMIX tightens on
+   HARD/INSANE so high difficulty stays skill-driven; ARKANOID keeps the
+   authentic ~7-13 rhythm on every difficulty. */
+function capQuota() {
+  const diffAdj = Game.mode === 'REMIX' ? (Game.diff >= 2 ? (Game.diff - 1) * 2 : 0) : 0;
+  return Game.mode === 'ARKANOID' ? 7 + randi(0, 6)
+    : Game.mode === 'REMIX' ? 6 + randi(0, 6) + Math.min(4, Math.floor(Game.level / 4)) + diffAdj
+    : 1;
+}
+function dropCapsule(x, y, forced) {
+  if (Game.mode === 'CLASSIC' || Game.mode === 'CH') return;
+  if (feastOn()) {
+    // CAPSULE PARTY: the old generous per-brick odds, no one-at-a-time cap —
+    // a pure arcade power-up feast for casual rounds.
+    const p = forced ? 1 : (Game.mode === 'ARKANOID' ? 0.24 : Math.min(0.2 + Game.level * 0.004, 0.3));
+    if (Math.random() > p) return;
+  } else if (!forced) {
+    // Arkanoid-authentic scarcity: only one capsule may be falling at a time,
+    // and a fresh one only appears after a random run of brick kills (a quota,
+    // like the original), not a flat per-brick chance — so levels never become
+    // power-up storms. Mystery (?) bricks always pay out and ignore the cap.
+    if (Game.capsules.length > 0) return;
+    Game.capCount++;
+    if (Game.capCount < Game.capNext) return;
+    Game.capCount = 0;
+    Game.capNext = capQuota();
+  }
+  /* hidden WARP: a rare portal capsule in ARKANOID / REMIX, mostly from mystery
+     bricks — skips ahead WARP_SKIP levels when caught. It's a secret, not part
+     of the 13-capsule set, so the cheat-sheet collection stays at 13. */
+  if (Game.mode === 'ARKANOID' || Game.mode === 'REMIX') {
+    const warpP = forced ? 0.09 : 0.025;
+    if (Math.random() < warpP) {
+      Game.capsules.push({ x, y, id: 'WARP', warp: true, color: '#c77dff', name: 'WARP', good: true, vy: 150, seed: randi(0, 999) });
+      return;
+    }
+  }
+  let tot = 0; for (const k in CAP_WEIGHTS) tot += CAP_WEIGHTS[k];
+  let r = Math.random() * tot, id = 'E';
+  for (const k in CAP_WEIGHTS) { r -= CAP_WEIGHTS[k]; if (r <= 0) { id = k; break; } }
+  const info = CAPSULE_INFO.find(c => c.id === id);
+  Game.capsules.push({ x, y, id, color: info.color, name: info.name, good: info.good, vy: 150, seed: randi(0, 999) });
+}
+/* Hidden WARP capsule: freezes the action in a portal flash, then jumps ahead
+   WARP_SKIP levels (clamped to the last map in ARKANOID's short campaign). */
+const WARP_SKIP = 3, WARP_TIME = 1.15;
+function triggerWarp(c) {
+  Game.warpT = WARP_TIME;
+  Game.warpNext = Math.min(Game.level + WARP_SKIP, Game.mode === 'ARKANOID' ? ARKANOID_MAPS.length : 9999);
+  Game.capsules = [];
+  Game.bolts = [];
+  Game.beams = [];
+  playSfx('warp');
+  Flash.set(0.7, '#c77dff');
+  Particles.ring(Game.paddle.x, Game.paddle.y - 60, '#c77dff', 70);
+  Particles.confetti(Game.paddle.x, Game.paddle.y - 60, 12);
+  unlockAchievement('warp');
+}
+function applyPower(id) {
+  // capsule cheat sheet tracking — skipped during the attract demo (no real unlocks)
+  if (Demo.active) {
+    PWR.recent[id] = perfT;
+  } else {
+    PWR.caps[id] = (PWR.caps[id] || 0) + 1;
+    PWR.recent[id] = perfT;
+    if (!PWR.unlocked && ALL_CAPS.every(c => PWR.caps[c] > 0)) {
+      PWR.unlocked = true;
+      savePWR();
+      CheatReveal.t = 4.2;
+      playSfx('cheat');
+      Particles.confetti(rand(0, W), rand(-20, 40), 14);
+      Particles.confetti(rand(0, W), rand(-20, 40), 14);
+      Particles.confetti(rand(0, W), rand(-20, 40), 14);
+    } else {
+      savePWR();
+    }
+  }
+  const p = Game.paddle;
+  switch (id) {
+    case 'E': p.tw = clamp(p.tw * 1.35, 70, 220); Texts.add(p.x, p.y - 40, 'BIG PADDLE!', '#3dff8f', 14, { glow: true }); break;
+    case 'R': p.tw = clamp(p.tw * 0.7, 48, 220); Texts.add(p.x, p.y - 40, 'TINY PADDLE!', '#ff3d5e', 14, { glow: true }); break;
+    case 'S': {
+      const src = Game.balls.find(b => !b.serve) || Game.balls[0];
+      const sp = Game.ballSpeed;
+      for (let i = 0; i < 2; i++) {
+        const nb = makeBall(false);
+        nb.x = src.x; nb.y = src.y; nb.serve = false;
+        let a;
+        if (src.serve) a = -Math.PI / 2 + (i === 0 ? -0.5 : 0.5);
+        else a = Math.atan2(src.vy, src.vx) + (i === 0 ? 0.6 : -0.6);
+        nb.vx = Math.cos(a) * sp; nb.vy = Math.sin(a) * sp;
+        Game.balls.push(nb);
+      }
+      if (src.serve) { src.serve = false; src.vx = 0; src.vy = -sp; }
+      Texts.add(p.x, p.y - 40, 'BALL PARTY!', '#ffd23b', 14, { glow: true });
+      unlockAchievement('multiball');
+      break;
+    }
+    case 'L': Game.laserAmmo = Math.max(Game.laserAmmo, 24); Texts.add(p.x, p.y - 40, 'PEW PEW!', '#29d8ff', 14, { glow: true }); unlockAchievement('laser'); break;
+    case 'C': p.catchT = 12; Texts.add(p.x, p.y - 40, 'STICKY!', '#29d8ff', 14, { glow: true }); unlockAchievement('catch'); break;
+    case 'M': Game.megaT = 10; Texts.add(p.x, p.y - 40, 'MEGA BALL!', '#ff9a3d', 14, { glow: true }); playSfx('fire'); break;
+    case 'P': Game.fireT = 8; Game.megaT = 0; Texts.add(p.x, p.y - 40, 'PIERCING!', '#ff5a5a', 14, { glow: true }); unlockAchievement('fireball'); playSfx('fire'); break;
+    case 'B': blastBreak(); break;
+    case 'W': Game.slowT = 10; Game.fastT = 0; Texts.add(p.x, p.y - 40, 'EASY RIDER!', '#8fb6ff', 14, { glow: true }); break;
+    case 'F': Game.fastT = 10; Game.slowT = 0; Game.fireT = 0; Texts.add(p.x, p.y - 40, 'FULL THROTTLE!', '#ff6a3d', 14, { glow: true }); break;
+    case 'D': Game.disruptT = 8; Texts.add(p.x, p.y - 40, 'DISRUPTED!', '#ff3d9e', 14, { glow: true }); playSfx('chain'); break;
+    case '2': Game.x2T = 12; Texts.add(p.x, p.y - 40, 'DOUBLE SCORE!', '#ffd23b', 14, { glow: true }); break;
+    case 'I': Game.lives++; syncMusicDuck(); Texts.add(p.x, p.y - 40, 'EXTRA GUY!', '#3dff8f', 16, { glow: true }); playSfx('extra'); unlockAchievement('extra-life'); break;
+  }
+}
+function blastBreak() {
+  const p = Game.paddle;
+  const rad = PITCH_X * 2.6;
+  let hit = 0;
+  for (const b of Game.bricks.slice()) {
+    if (b.dead || b.type === 'X') continue;
+    const cx = b.x + BRICK_W / 2, cy = b.y + BRICK_H / 2;
+    if (Math.hypot(cx - p.x, cy - (p.y - 140)) < rad) {
+      b.hp = 0; destroyBrick(b, 1); hit++;
+    }
+  }
+  if (hit > 0) {
+    Texts.add(p.x, p.y - 40, 'KABOOM!', '#c77dff', 15, { glow: true });
+    Particles.ring(p.x, p.y - 140, '#c77dff', rad);
+    playSfx('chain'); Flash.set(0.3, '#c77dff');
+  }
+}
+
+/* ---------- brick destruction ---------- */
+/* DOH boss second phase: once half the core bricks are gone the armor cracks —
+   the surviving cores writhe and flash red on a heartbeat that speeds up as the
+   boss takes more damage. Purely visual — grid collisions stay put. */
+function checkBossPhase() {
+  if (Game.mode !== 'ARKANOID' || Game.level !== ARKANOID_MAPS.length || Game.bossWounded || Game.bossTotal <= 0) return;
+  if (Game.destructible <= Game.bossTotal * 0.5) {
+    Game.bossWounded = true;
+    Music.sting(); // riser + drum fill, then the aggressive loop drops in
+    playSfx('bomb');
+    Flash.set(0.5, '#ff3d5e');
+    Texts.add(W / 2, H * 0.35, 'THE BOSS IS WOUNDED!', '#ff3d5e', 18, { glow: 14 });
+  }
+}
+/* DOH's kill switch: its mystery weak points are hearts. Destroy the last heart
+   and the boss falls — the cores still standing shatter on the spot (they
+   become the CORE BONUS tally, not normal brick points), and the celebration
+   pays BOSS_CORE_BONUS per core left standing. */
+function killBoss() {
+  if (Game.bossDead) return;
+  Game.bossDead = true;
+  Music.enrage(false); // the boss falls — the music settles back down
+  Game.bossCoresLeft = Game.destructible;
+  Game.bossBonus = Game.bossCoresLeft * BOSS_CORE_BONUS;
+  Game.beams = [];
+  playSfx('bomb');
+  Flash.set(0.55, '#ff3d5e');
+  Particles.ring(W / 2, H * 0.35, '#ff3d5e', 150);
+  for (let gy = 0; gy < ROWS; gy++) {
+    for (let gx = 0; gx < COLS; gx++) {
+      const b = Game.grid[gy][gx];
+      if (!b || b.dead || b.type === 'X') continue;
+      b.dead = true; Game.grid[gy][gx] = null;
+      Game.destructible--; Game.stats.bricks++;
+      breakFeedback(b.x + BRICK_W / 2, b.y + BRICK_H / 2, BRICK_COLORS[b.type], b.type === 'b' || b.type === 'D');
+    }
+  }
+  checkLevelClear();
+}
+function destroyBrick(b, chainLevel) {
+  if (b.dead) return;
+  b.dead = true; Game.grid[b.gy][b.gx] = null;
+  Game.destructible--; Game.stats.bricks++;
+  checkBossPhase();
+  const col = BRICK_COLORS[b.type];
+  const big = b.type === 'b' || b.type === 'D';
+  breakFeedback(b.x + BRICK_W / 2, b.y + BRICK_H / 2, col, big);
+  let pts = b.pts;
+  if (b.type === 'D') { Game.stats.gems++; pts = 1000; if (Game.obj && Game.obj.type === 'gems' && !Game.objDone) { Game.obj.need--; if (Game.obj.need <= 0) { Game.objDone = true; Texts.add(W / 2, H * 0.4, 'GOAL HIT +' + Game.obj.bonus + '!', '#ffd23b', 15, { glow: true }); } } playSfx('gem'); }
+  else if (b.type === 'b') { playSfx('bomb'); Flash.set(0.4, '#ff5a5a'); explodeBomb(b.gx, b.gy, 1); }
+  else if (b.type === '?') {
+    dropCapsule(b.x + BRICK_W / 2, b.y + BRICK_H / 2, true);
+    playSfx('cap');
+    unlockAchievement('mystery');
+    /* DOH's weak points are its hearts — when the last one dies the boss falls */
+    if (Game.bossHearts > 0) {
+      Game.bossHearts--;
+      if (Game.bossHearts <= 0) killBoss();
+    }
+  }
+  else { playSfx('break'); dropCapsule(b.x + BRICK_W / 2, b.y + BRICK_H / 2, false); }
+  bumpCombo(b.x + BRICK_W / 2, b.y + BRICK_H / 2);
+  addScore(pts, b.x + BRICK_W / 2, b.y + BRICK_H / 2, col);
+  if (chainLevel > 1) Game.stats.bestChain = Math.max(Game.stats.bestChain, chainLevel);
+  checkLevelClear();
+}
+function explodeBomb(gx, gy, depth) {
+  if (depth > 12) return;
+  Game.chainT = Math.max(Game.chainT, CHAIN_CLEAR_DELAY);
+  let exploded = 0;
+  const proc = new Set();
+  const stack = [[gx, gy]];
+  while (stack.length) {
+    const [cx, cy] = stack.pop();
+    const key = cx + ',' + cy;
+    if (proc.has(key)) continue; proc.add(key);
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+      if (!dx && !dy) continue;
+      const nb = getBrickAt(cx + dx, cy + dy);
+      if (!nb || nb.dead || nb.type === 'X') continue;
+      nb.hp--;
+      if (nb.hp <= 0) {
+        nb.dead = true; Game.grid[nb.gy][nb.gx] = null;
+        Game.destructible--; Game.stats.bricks++;
+        checkBossPhase();
+        if (nb.type === '?' && Game.bossHearts > 0) {
+          Game.bossHearts--;
+          if (Game.bossHearts <= 0) killBoss();
+        }
+        exploded++;
+        const col = BRICK_COLORS[nb.type];
+        Particles.burst(nb.x + BRICK_W / 2, nb.y + BRICK_H / 2, col, 12, 180);
+        if (nb.type === 'b') stack.push([nb.gx, nb.gy]);
+        else { playSfx('chain'); dropCapsule(nb.x + BRICK_W / 2, nb.y + BRICK_H / 2, false); }
+        addScore(nb.pts, nb.x + BRICK_W / 2, nb.y + BRICK_H / 2, col);
+        bumpCombo(nb.x + BRICK_W / 2, nb.y + BRICK_H / 2);
+        if (nb.type === 'D') {
+          Game.stats.gems++;
+          addScore(500, nb.x, nb.y);
+          if (Game.obj && Game.obj.type === 'gems' && !Game.objDone) {
+            Game.obj.need--;
+            if (Game.obj.need <= 0) {
+              Game.objDone = true;
+              Texts.add(W / 2, H * 0.4, 'GOAL HIT +' + Game.obj.bonus + '!', '#ffd23b', 15, { glow: true });
+            }
+          }
+        }
+      } else { nb.flash = 0.3; Particles.spark(nb.x + BRICK_W / 2, nb.y + BRICK_H / 2, '#ffffff', 4); }
+    }
+  }
+  if (exploded >= 5) unlockAchievement('chain');
+  checkLevelClear();
+}
+
+/* ---------- ball hit processing ---------- */
+function hitBrick(ball, b) {
+  ball.hitBrick = true;
+  const col = BRICK_COLORS[b.type];
+  if (b.type === 'X') { Particles.spark(ball.x, ball.y, '#ffd23b', 6); playSfx('gold'); return; }
+  if (b.type === '?' && !b.heart && b.hp === 1 && b.maxHp === 1) {
+    const nc = pick(['C', 'B', 'G', 'Y', 'O', 'R']);
+    b.type = nc; b.pts = brickPts(nc, b.gy);
+    b.flash = 0.4; Particles.spark(ball.x, ball.y, '#c77dff', 8); playSfx('steel'); return;
+  }
+  b.hp--; b.flash = 0.25;
+  if (b.hp <= 0) {
+    destroyBrick(b, 1);
+  } else {
+    Particles.spark(ball.x, ball.y, col, 5);
+    playSfx('steel');
+  }
+  Game.stats.hits++;
+}
+
+/* ---------- physics update ---------- */
+let perfT = 0, realDt = 0.016;
+function updatePaddle(dt) {
+  const p = Game.paddle;
+  const kSpeed = 720;
+  let dir = 0, mL = false, mR = false;
+  if (Demo.active) {
+    /* attract-mode AI: track the live ball with a human-ish drift; the shared
+       velocity ramp below keeps the motion smooth like a real player's */
+    const live = Game.balls.find(b => !b.serve) || Game.balls[0];
+    const goal = live.x + Math.sin(perfT * 0.6) * 26 + Math.sin(perfT * 1.9) * 10;
+    if (Math.abs(p.x - goal) > 12) dir = goal > p.x ? 1 : -1;
+  } else {
+    mL = keysOn() && held('moveL'); mR = keysOn() && held('moveR');
+    if (mL) dir -= 1;
+    if (mR) dir += 1;
+    if (padDir < 0) dir -= 1;
+    if (padDir > 0) dir += 1;
+  }
+  const xMin = p.w / 2 + 8, xMax = W - p.w / 2 - 8;
+  if (dir) {
+    /* keyboard / gamepad: velocity ramp integrated per frame — smooth, no teleports */
+    paddleInput = (mL || mR) ? 'key' : 'pad';
+    p.vx = lerp(p.vx, dir * kSpeed, 1 - Math.pow(0.0001, dt));
+    p.x += p.vx * dt;
+  } else if (ptr.down || (ptr.moved && paddleInput === 'ptr')) {
+    /* pointer: near-1:1 tracking, speed-capped so a far cursor glides over a
+       few frames instead of teleporting. vx is the real per-frame motion,
+       which feeds the launch angle. */
+    paddleInput = 'ptr';
+    const nx = clamp(ptr.x, xMin, xMax);
+    const step = clamp(nx - p.x, -2600 * dt, 2600 * dt);
+    p.x += step;
+    p.vx = step / Math.max(dt, 0.001);
+  } else {
+    /* idle: ease the last velocity to zero, stay put — no cursor yank */
+    p.vx = lerp(p.vx, 0, 1 - Math.pow(0.001, dt));
+  }
+  p.x = clamp(p.x, xMin, xMax);
+  p.w = lerp(p.w, p.tw, 1 - Math.pow(0.0005, dt));
+  p.squash = Math.max(0, p.squash - dt * 3);
+  p.flash = Math.max(0, p.flash - dt * 3);
+  p.catchT = Math.max(0, p.catchT - dt);
+}
+/* DOH enrage: once its armor cracks, every paddle hit makes the boss belch a
+   one-brick-wide beam down the board. It telegraphs a glowing column, then
+   sweeps to the floor — stand in its column when it reaches the paddle and you
+   get zapped. Only a couple may be live at once. */
+const BEAM_MAX = 2, BOSS_CORE_BONUS = 500;
+/* Difficulty scales the enrage beam itself: EASY telegraphs long and sweeps
+   slowly, INSANE warns for barely a blink and drops the beam at full speed.
+   Each beam captures its own warn/speed at spawn so nothing drifts mid-flight. */
+const BEAM_DIFF = [
+  { warn: 0.7, speed: 1150 },  // EASY
+  { warn: 0.5, speed: 1500 },  // NORMAL
+  { warn: 0.42, speed: 1750 }, // HARD
+  { warn: 0.35, speed: 2050 }  // INSANE
+];
+/* Mercy rule: at low combo the boss needs a beat between belches, so a
+   struggling player never faces two beams at once. The cooldown eases along a
+   smooth curve — each brick chained at low combo visibly calms the boss, and
+   the decay levels off toward the BEAM_MAX cap on a hot streak. Difficulty
+   scales the whole curve: EASY is gentle, INSANE keeps the pressure on. */
+const BELCH_DIFF_MUL = [1.35, 1.0, 0.8, 0.6];
+function belchCooldown() {
+  const c = Game.combo;
+  return (0.35 + 1.15 * Math.exp(-c / 8.75)) * (BELCH_DIFF_MUL[Game.diff] || 1);
+}
+function bossBelch(hitX) {
+  if (!Game.bossWounded || Game.clearing > 0 || Game.clearPending || Game.warpT > 0 || Game.introT > 0) return;
+  if (Game.belchCd > 0 || Game.beams.length >= BEAM_MAX) return;
+  const x = clamp(hitX + (Math.random() - 0.5) * 60, BX0 + PITCH_X / 2, BX0 + (COLS - 1) * PITCH_X + PITCH_X / 2);
+  const bd = BEAM_DIFF[Game.diff] || BEAM_DIFF[1];
+  Game.beams.push({ x, y: Game.bossBeamY, y0: Game.bossBeamY, w: PITCH_X, warn: bd.warn, warnT: bd.warn, spd: bd.speed, vy: 0, hit: false, seed: randi(0, 999) });
+  Game.belchCd = belchCooldown();
+  Game.belchMax = Game.belchCd;
+  playSfx('warn');
+}
+function updateBeams(dt) {
+  const p = Game.paddle;
+  for (let i = Game.beams.length - 1; i >= 0; i--) {
+    const bm = Game.beams[i];
+    if (bm.warn > 0) {
+      bm.warn -= dt;
+      if (bm.warn <= 0) { bm.warn = 0; bm.vy = bm.spd; playSfx('zap'); }
+      continue;
+    }
+    bm.y += bm.vy * dt;
+    if (!bm.hit && Math.abs(bm.x - p.x) < (bm.w / 2 + p.w / 2) &&
+        bm.y >= p.y - p.h / 2 - 24 && bm.y <= p.y + p.h / 2 + 24) {
+      bm.hit = true;
+      zapPaddle();
+    }
+    if (bm.y > H + 80) Game.beams.splice(i, 1);
+  }
+}
+function zapPaddle() {
+  if (Game.clearing > 0 || Game.clearPending || Game.warpT > 0 || Game.introT > 0 || Demo.active) return;
+  playSfx('zap');
+  Flash.set(0.35, '#29d8ff');
+  Particles.spark(Game.paddle.x, Game.paddle.y - 10, '#29d8ff', 14);
+  Texts.add(Game.paddle.x, Game.paddle.y - 48, 'ZAPPED!', '#29d8ff', 16, { glow: true });
+  loseLife();
+}
+function updateBalls(dt) {
+  const target = Game.ballSpeed;
+  for (const b of Game.balls) {
+    if (b.dead) continue;
+    if (b.serve) {
+      b.x = Game.paddle.x;
+      b.y = PADDLE_Y - BALL_R * 2.7;
+      continue;
+    }
+    const sp = Math.hypot(b.vx, b.vy) || 1;
+    /* trail length tracks ball speed so a fast ball reads visually */
+    b.hist.push({ x: b.x, y: b.y });
+    if (b.hist.length > clamp(6 + Math.floor(sp / 55), 6, 15)) b.hist.shift();
+    const k = lerp(1, target / sp, Math.min(1, dt * 2));
+    b.vx *= k; b.vy *= k;
+    if (Game.disruptT > 0) {
+      const wob = Math.sin(perfT * 6.5 + b.seed * 13) * 0.55;
+      const a = Math.atan2(b.vy, b.vx) + wob * dt * 2.4;
+      b.vx = Math.cos(a) * sp; b.vy = Math.sin(a) * sp;
+    }
+    const steps = clamp(Math.ceil(sp * dt / 7), 1, 5);
+    const sdt = dt / steps;
+    for (let s = 0; s < steps; s++) {
+      b.x += b.vx * sdt; b.y += b.vy * sdt;
+      b.hitBrick = false;
+      // walls
+      if (b.x - b.r < 0) { b.x = b.r; b.vx = Math.abs(b.vx); playSfx('wall'); }
+      if (b.x + b.r > W) { b.x = W - b.r; b.vx = -Math.abs(b.vx); playSfx('wall'); }
+      if (b.y - b.r < WALL_TOP) { b.y = WALL_TOP + b.r; b.vy = Math.abs(b.vy); playSfx('wall'); }
+      // paddle
+      const p = Game.paddle;
+      if (b.vy > 0 && b.y + b.r >= p.y - p.h / 2 && b.y - b.r <= p.y + p.h / 2 + 6 &&
+          Math.abs(b.x - p.x) <= p.w / 2 + b.r) {
+        if (Game.paddle.catchT > 0) {
+          b.serve = true; b.vx = 0; b.vy = 0; b.hist.length = 0;
+          playSfx('catch');
+          continue;
+        }
+        const t = clamp((b.x - p.x) / (p.w / 2), -1, 1);
+        const ang = t * 1.2 - Math.PI / 2;
+        b.vx = Math.cos(ang) * target;
+        b.vy = Math.sin(ang) * target;
+        b.y = p.y - p.h / 2 - b.r;
+        p.squash = 1; p.flash = 0.4;
+        if (Game.mode === 'ARKANOID' || Game.mode === 'REMIX') Game.ramp = Math.min(Game.ramp + 0.008, 0.12);
+        Game.comboT = 3;
+        playSfx('bounce');
+        if (b.fire) Particles.spark(b.x, b.y, '#ff9a3d', 3);
+        bossBelch(b.x);
+      }
+      // bricks
+      if (!b.hitBrick) {
+        const gx = Math.floor((b.x - BX0) / PITCH_X), gy = Math.floor((b.y - BY0) / PITCH_Y);
+        if (gx >= 0 && gx < COLS && gy >= 0 && gy < ROWS) {
+          const bri = Game.grid[gy][gx];
+          if (bri && !bri.dead) {
+            const overlapX = (bri.w / 2 + b.r) - Math.abs(b.x - (bri.x + bri.w / 2));
+            const overlapY = (bri.h / 2 + b.r) - Math.abs(b.y - (bri.y + bri.h / 2));
+            if (overlapX > 0 && overlapY > 0) {
+              if (b.fire) {
+                hitBrick(b, bri);
+              } else if (overlapX < overlapY) {
+                b.vx = b.x < bri.x + bri.w / 2 ? -Math.abs(b.vx) : Math.abs(b.vx);
+                hitBrick(b, bri);
+              } else {
+                b.vy = b.y < bri.y + bri.h / 2 ? -Math.abs(b.vy) : Math.abs(b.vy);
+                hitBrick(b, bri);
+              }
+            }
+          }
+        }
+      }
+      // below screen
+      if (b.y > H + 40) { b.dead = true; break; }
+    }
+  }
+  Game.balls = Game.balls.filter(b => !b.dead);
+  if (!Game.balls.length) {
+    if (Game.clearing > 0 || Game.clearPending || Game.warpT > 0) Game.balls = [makeBall(true)];
+    else loseLife();
+  }
+}
+function updateCapsules(dt) {
+  const p = Game.paddle;
+  for (let i = Game.capsules.length - 1; i >= 0; i--) {
+    const c = Game.capsules[i];
+    c.y += c.vy * dt;
+    if (c.y > H + 20) { Game.capsules.splice(i, 1); continue; }
+    if (c.y + CAP_S / 2 >= p.y - p.h / 2 && c.y - CAP_S / 2 <= p.y + p.h / 2 &&
+        Math.abs(c.x - p.x) <= p.w / 2 + CAP_S / 2) {
+      Game.capsules.splice(i, 1);
+      if (c.warp) { triggerWarp(c); continue; }
+      applyPower(c.id);
+      if (c.good) playSfx('cap'); else playSfx('badcap');
+      Particles.ring(c.x, c.y, c.color, 30);
+    }
+  }
+}
+function updateLasers(dt) {
+  const p = Game.paddle;
+  if (Game.laserAmmo > 0) {
+    Game.laserCd -= dt;
+    if (Game.laserCd <= 0) {
+      Game.laserCd = 0.42;
+      Game.bolts.push({ x: p.x - p.w / 2 + 4, y: p.y - p.h / 2 });
+      Game.bolts.push({ x: p.x + p.w / 2 - 4, y: p.y - p.h / 2 });
+      Game.laserAmmo--;
+      playSfx('laser');
+    }
+  }
+  for (let i = Game.bolts.length - 1; i >= 0; i--) {
+    const l = Game.bolts[i];
+    l.y -= 560 * dt;
+    if (l.y < WALL_TOP - 6) { Game.bolts.splice(i, 1); continue; }
+    const gx = Math.floor((l.x - BX0) / PITCH_X), gy = Math.floor((l.y - BY0) / PITCH_Y);
+    if (gx >= 0 && gx < COLS && gy >= 0 && gy < ROWS) {
+      const b = Game.grid[gy][gx];
+      if (b && !b.dead && b.type !== 'X' && Math.abs(l.x - (b.x + b.w / 2)) < b.w / 2 + 2 &&
+          l.y >= b.y && l.y <= b.y + b.h) {
+        if (b.type === '?' && !b.heart && b.hp === 1 && b.maxHp === 1) { b.type = pick(['C', 'B', 'G', 'Y', 'O', 'R']); b.pts = brickPts(b.type, b.gy); b.flash = 0.4; }
+        else {
+          b.hp--; b.flash = 0.25;
+          if (b.hp <= 0) destroyBrick(b, 1);
+          else Particles.spark(l.x, l.y, '#8fb6ff', 4);
+        }
+        playSfx('steel');
+      }
+    }
+  }
+}
+function updateTimers(dt) {
+  Game.belchCd = Math.max(0, Game.belchCd - dt);
+  Game.fireT = Math.max(0, Game.fireT - dt);
+  Game.x2T = Math.max(0, Game.x2T - dt);
+  Game.slowT = Math.max(0, Game.slowT - dt);
+  Game.fastT = Math.max(0, Game.fastT - dt);
+  Game.megaT = Math.max(0, Game.megaT - dt);
+  Game.disruptT = Math.max(0, Game.disruptT - dt);
+  Game.comboT = Math.max(0, Game.comboT - dt);
+  if (Game.comboT <= 0) { Game.combo = 0; Game.mult = 1; }
+  if (Game.combo > 0 && Game.comboT < 0.5) { /* warn soon */ }
+  const base = Game.baseSpeed;
+  let spd = base;
+  if (Game.slowT > 0) spd *= 0.66;
+  else if (Game.fastT > 0) spd *= 1.32;
+  if (Game.fireT > 0 || Game.megaT > 0) spd *= 1.1;
+  /* In-level tension ramp (the Ricochet / DX-Ball feel): paddle hits creep the
+     ball toward +12% within a level, then reset on a new level or a lost ball.
+     CLASSIC stays constant-speed — authentic 1976 Breakout. */
+  spd *= 1 + Game.ramp;
+  Game.ballSpeed = lerp(Game.ballSpeed, spd, Math.min(1, dt * 3));
+  for (const b of Game.balls) b.fire = Game.fireT > 0 || Game.megaT > 0;
+}
+function loseLife() {
+  if (Demo.active) { startDemoFade(); return; } // attract demo ends instead of game over
+  Game.lives--;
+  syncMusicDuck(); // dropping to the last life pulls the music back
+  Game.lostThisLevel = true;
+  Game.combo = 0; Game.comboT = 0; Game.mult = 1; Game.ramp = 0;
+  Game.balls = [makeBall(true)];
+  if (Game.obj && Game.obj.type === 'perfect') Game.objDone = true;
+  if (Game.lives < 0) {
+    showGameOver();
+    return;
+  }
+  playSfx('life');
+  Hitstop.trigger(0.12); Flash.set(0.5, '#ff3d5e');
+  Slowmo.set(0.5, 0.35);
+  Texts.add(W / 2, H * 0.45, 'OUCH! BALL LOST!', '#ff3d5e', 22, { glow: true });
+}
+
+/* ---------- main gameplay update ---------- */
+function updateGameplay(dt) {
+  if (Game.screen === 'paused' || Game.screen === 'gameover' || Game.screen === 'victory') return;
+  const gdt = dt;
+  Game.time += gdt;
+  Game.levelTime += gdt;
+  if (Game.mode === 'CH' && CHALLENGES[Game.challengeIdx].timer > 0) {
+    Game.challengeTimer -= gdt;
+    if (Game.challengeTimer <= 0 && Game.clearing === 0 && !Game.clearPending) {
+      Game.challengeTimer = 0;
+      Game.lives = -1;
+      showGameOver();
+      return;
+    }
+  }
+  if (Game.introT > 0) {
+    Game.introT -= gdt;
+    if (Game.introT <= 0.85 && Game.introPhase === 'ready') Game.introPhase = 'go';
+    if (Game.introT <= 0) Game.introT = 0;
+  }
+  /* attract mode: auto-launch once READY ends, and re-serve after a catch,
+     with a short beat so it reads as intentional */
+  if (Demo.active && Game.introT <= 0) {
+    Demo.relaunch -= gdt;
+    for (const b of Game.balls) {
+      if (b.serve) {
+        if (Demo.relaunch <= 0) { Demo.relaunch = 0.35; launchBall(b); }
+        break;
+      }
+    }
+  }
+  if (Game.warpT > 0) {
+    /* portal freeze: the action holds while the warp flash plays out */
+    Game.warpT -= gdt;
+    if (Game.warpT <= 0) {
+      Game.warpT = 0;
+      Game.level = Game.warpNext;
+      addScore(WARP_SKIP * 500, W / 2, H * 0.42, '#c77dff');
+      startLevel();
+    }
+  } else {
+    updatePaddle(gdt);
+    updateBalls(gdt);
+    updateCapsules(gdt);
+    updateLasers(gdt);
+    updateBeams(gdt);
+    updateTimers(gdt);
+  }
+  if (Game.chainT > 0 && Game.warpT <= 0) {
+    Game.chainT -= gdt;
+    if (Game.chainT <= 0) {
+      Game.chainT = 0;
+      if (Game.clearPending) { Game.clearPending = false; beginClearCelebration(); }
+    }
+  }
+  if (Game.clearing > 0 && Game.warpT <= 0) {
+    Game.clearing -= gdt;
+    if (Game.clearing <= 0) finishLevel();
+  }
+}
+
+/* ---------- HUD ---------- */
+function drawHUD() {
+  if (Game.mode === 'CLASSIC') {
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, W, HUD);
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 1;
+    ctx.strokeRect(1, HUD - 1, W - 2, 1);
+    drawText('SCORE ' + String(Game.score).padStart(6, '0'), 8, 14, 11, '#ffffff', { align: 'left' });
+    drawText('HI ' + String(Game.hi).padStart(6, '0'), 8, 32, 9, '#ffd23b', { align: 'left' });
+    drawText('LEVEL ' + Game.level, W / 2, 14, 11, '#ffffff', {});
+    ctx.fillStyle = '#ffffff';
+    for (let i = 0; i < Math.max(0, Game.lives); i++) {
+      rr(W - 60 - i * 20, 8, 16, 6, 2); ctx.fill();
+    }
+    if (Game.lives < 0) drawText('0', W - 60, 8, 10, '#ff3d5e', { align: 'right' });
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    rr(W - 24, 6, 18, 14, 3); ctx.fill();
+    ctx.fillStyle = '#000'; ctx.fillRect(W - 20, 9, 3, 8); ctx.fillRect(W - 15, 9, 3, 8);
+    return;
+  }
+  ctx.fillStyle = 'rgba(4,6,16,0.75)';
+  ctx.fillRect(0, 0, W, HUD);
+  ctx.fillStyle = 'rgba(41,216,255,0.22)';
+  ctx.fillRect(0, HUD - 2, W, 2);
+  drawText('SCORE', 20, 15, 9, '#5d7bb0', { align: 'left' });
+  drawText(String(Game.score).padStart(7, '0'), 20, 33, 15, '#ffffff', { align: 'left', glow: Game.mult > 1 ? 8 : 0 });
+  drawText('HI ' + String(Game.hi).padStart(7, '0'), 20, 51, 9, '#ffd23b', { align: 'left' });
+  /* the classic arcade "one more ship" hook — next score 1UP at a glance */
+  const upTh = UP_THRESH[Game.mode] || 0;
+  if (upTh > 0) {
+    const nxt = (Game.extras + 1) * upTh;
+    drawText('NEXT 1UP ' + Math.ceil(Math.max(0, nxt - Game.score) / 100) / 10 + 'K', 20, 64, 8, '#3dff8f', { align: 'left' });
+  }
+  let center = '';
+  if (Game.screen === 'demo') center = 'DEMO // LV ' + Game.level;
+  else if (Game.mode === 'CH') center = CHALLENGES[Game.challengeIdx].name;
+  else if (Game.mode === 'REMIX') center = 'REMNANT // LV ' + Game.level;
+  else center = Game.mode + ' // LV ' + Game.level;
+  drawText(center, W / 2, 20, 10, '#8fb6ff', { glow: 6 });
+  if (Game.mode === 'CH' && CHALLENGES[Game.challengeIdx].timer > 0) {
+    const t = Math.max(0, Game.challengeTimer);
+    drawText('TIME ' + t.toFixed(1), W / 2, 42, 11, t < 10 ? '#ff3d5e' : '#ffd23b', { glow: 8 });
+  }
+  // pause button (touch / mouse friendly)
+  ctx.fillStyle = 'rgba(10,16,36,0.85)';
+  rr(W - 46, 6, 38, 28, 6); ctx.fill();
+  ctx.strokeStyle = 'rgba(41,216,255,0.6)'; ctx.lineWidth = 1.5; rr(W - 46, 6, 38, 28, 6); ctx.stroke();
+  ctx.fillStyle = '#8fb6ff';
+  ctx.fillRect(W - 36, 14, 4, 12); ctx.fillRect(W - 28, 14, 4, 12);
+  // lives
+  drawText('LIVES', W - 60, 15, 9, '#5d7bb0', { align: 'right' });
+  for (let i = 0; i < Math.max(0, Game.lives); i++) {
+    const x = W - 66 - i * 24, y = 36;
+    ctx.fillStyle = '#29d8ff';
+    rr(x - 11, y - 3, 22, 6, 3); ctx.fill();
+  }
+  if (Game.lives < 0) drawText('0', W - 66, 36, 10, '#ff3d5e', { align: 'right' });
+  // CAPSULE PARTY indicator — live capsule count so players see why drops are wild
+  if (feastOn() && Game.mode !== 'CLASSIC' && Game.mode !== 'CH') {
+    const n = Game.capsules.length;
+    const label = 'PARTY' + (n > 0 ? ' x' + n : '');
+    ctx.font = '8px ' + FONT; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ffd23b';
+    ctx.fillText(label, W - 66, 48);
+    const lw = label.length * 8;
+    ctx.fillStyle = '#ffd23b';
+    rr(W - 66 - lw - 18, 41, 13, 13, 3); ctx.fill();
+    ctx.fillStyle = '#0a0e17';
+    rr(W - 66 - lw - 16, 43, 9, 9, 2); ctx.fill();
+    ctx.fillStyle = '#ffd23b';
+    ctx.fillRect(W - 66 - lw - 13, 46.5, 3, 2); ctx.fillRect(W - 66 - lw - 9.5, 46.5, 3, 2);
+  }
+  // multiplier + combo
+  if (Game.mult > 1 || Game.combo >= 3) {
+    drawText('x' + Game.mult, W - 60, 56, 13, '#ffd23b', { align: 'right', glow: 10 });
+    if (Game.combo >= 3) {
+      drawText('COMBO ' + Game.combo, W - 74, 72, 8, '#8fb6ff', { align: 'right' });
+      const wdt = clamp(Game.comboT / 3, 0, 1) * 60;
+      ctx.fillStyle = 'rgba(143,182,255,0.5)'; ctx.fillRect(W - 132, 78, 60, 3);
+      ctx.fillStyle = '#8fb6ff'; ctx.fillRect(W - 132 + 60 - wdt, 78, wdt, 3);
+    }
+  }
+  // power timers
+  let px = 24, py = 76;
+  const powers = [
+    [Game.fireT, 8, 'PIERCE', '#ff5a5a', 'P'], [Game.megaT, 10, 'MEGA', '#ff9a3d', 'M'],
+    [Game.x2T, 12, '2X', '#ffd23b', '2'], [Game.slowT, 10, 'SLOW', '#8fb6ff', 'W'],
+    [Game.fastT, 10, 'FAST', '#ff6a3d', 'F'], [Game.disruptT, 8, 'JOLT', '#ff3d9e', 'D']
+  ];
+  for (const [t, mx, label, col, id] of powers) {
+    if (t > 0) {
+      drawCapIcon(id, px + 6, py, 13, col);
+      ctx.fillStyle = col; ctx.font = '8px ' + FONT; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText(label, px + 15, py);
+      ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.fillRect(px + 15 + label.length * 8 + 6, py - 3, 40, 6);
+      ctx.fillStyle = col; ctx.fillRect(px + 15 + label.length * 8 + 6, py - 3, 40 * clamp(t / mx, 0, 1), 6);
+      py += 15;
+    }
+  }
+  if (Game.laserAmmo > 0) {
+    ctx.fillStyle = '#29d8ff'; ctx.font = '8px ' + FONT; ctx.textAlign = 'left';
+    ctx.fillText('LASER ' + Game.laserAmmo, 24, py);
+  }
+  // DOH boss: remaining core health (pulses red once the boss is wounded)
+  if (Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length && Game.bossTotal > 0) {
+    const frac = clamp(Game.destructible / Game.bossTotal, 0, 1);
+    const bw = 110;
+    drawText('BOSS CORE', W - 24, 90, 8, Game.bossWounded ? '#ff3d5e' : '#ffd23b', { align: 'right' });
+    ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fillRect(W - 24 - bw, 96, bw, 5);
+    ctx.fillStyle = Game.bossWounded ? '#ff3d5e' : '#ffd23b';
+    ctx.fillRect(W - 24 - bw, 96, bw * frac, 5);
+    /* belch reload tick: the thin cyan fill drains when a beam fires and
+       refills as the cooldown eases — full means the next bounce can belch */
+    if (Game.bossWounded) {
+      let cdFrac = 1;
+      if (Game.belchCd > 0) cdFrac = clamp(1 - Game.belchCd / (Game.belchMax || belchCooldown()), 0, 1);
+      const ready = cdFrac >= 1;
+      const alpha = ready ? 0.55 + 0.3 * Math.abs(Math.sin(perfT * 6)) : 0.55;
+      ctx.fillStyle = 'rgba(120,235,255,0.22)';
+      ctx.fillRect(W - 24 - bw, 102, bw, 3);
+      ctx.fillStyle = 'rgba(120,235,255,' + alpha.toFixed(3) + ')';
+      ctx.fillRect(W - 24 - bw, 102, bw * cdFrac, 3);
+    }
+  }
+  // objective
+  if (Game.obj && !Game.objDone) {
+    drawText('* ' + Game.obj.txt, W / 2, 46, 10, '#ffd23b', { glow: 8 });
+  }
+}
+
+/* ---------- gameplay render ---------- */
+/* DOH's enrage beams: a telegraphing column that glows, then an electric sweep
+   that races down the board. Drawn in front of the paddle so being caught under
+   the column is unmistakable. */
+function drawBeams() {
+  for (const bm of Game.beams) {
+    const x0 = bm.x - bm.w / 2, x1 = bm.x + bm.w / 2, py = Game.paddle.y;
+    if (bm.warn > 0) {
+      const a = 0.5 + 0.5 * Math.sin(perfT * 16 + bm.seed);
+      ctx.fillStyle = 'rgba(41,216,255,' + (0.05 + 0.08 * a).toFixed(3) + ')';
+      ctx.fillRect(x0, bm.y0, bm.w, H - bm.y0);
+      ctx.strokeStyle = 'rgba(120,235,255,' + (0.35 + 0.4 * a).toFixed(3) + ')';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([7, 9]);
+      ctx.strokeRect(x0 + 1, bm.y0 + 1, bm.w - 2, H - bm.y0 - 2);
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#ffd23b';
+      ctx.beginPath(); ctx.arc(bm.x, bm.y0 + 12, 5, 0, TAU); ctx.fill();
+      /* paddle-row danger line: a solid glowing bar at the exact row the beam
+         will cross — always visible, pulsing faster as the beam is about to
+         fire so the dodge moment reads at a glance */
+      const wl = bm.warn / (bm.warnT || 0.5);
+      const fa = 0.62 + 0.38 * Math.abs(Math.sin(perfT * (8 + (1 - wl) * 26) + bm.seed * 3));
+      ctx.shadowColor = 'rgba(120,235,255,0.9)'; ctx.shadowBlur = 9;
+      ctx.fillStyle = 'rgba(120,235,255,' + fa.toFixed(3) + ')';
+      ctx.fillRect(x0 - 3, py - 3, bm.w + 6, 6);
+      ctx.fillStyle = 'rgba(230,254,255,' + fa.toFixed(3) + ')';
+      ctx.fillRect(bm.x - 2, py - 5, 4, 10);
+      ctx.shadowBlur = 0;
+    } else {
+      const a = clamp((bm.y - bm.y0) / 240, 0, 1);
+      const grad = ctx.createLinearGradient(0, bm.y0, 0, bm.y);
+      grad.addColorStop(0, 'rgba(41,216,255,0)');
+      grad.addColorStop(1, 'rgba(120,235,255,' + (0.16 + 0.3 * a).toFixed(3) + ')');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x0, bm.y0, bm.w, bm.y - bm.y0);
+      ctx.fillStyle = 'rgba(200,250,255,0.95)';
+      ctx.fillRect(bm.x - 3, bm.y - 22, 6, 22);
+      ctx.strokeStyle = 'rgba(190,250,255,0.95)';
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x0, bm.y); ctx.lineTo(x1, bm.y); ctx.stroke();
+      ctx.strokeStyle = 'rgba(180,245,255,' + (0.25 + 0.25 * Math.sin(perfT * 40 + bm.seed)).toFixed(2) + ')';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i <= 6; i++) {
+        const yy = bm.y0 + (bm.y - bm.y0) * (i / 6);
+        const xx = bm.x + Math.sin(perfT * 60 + bm.seed + i * 2.2) * (i % 2 ? 8 : -8);
+        if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+      }
+      ctx.stroke();
+      /* as the leading edge closes on the paddle, the row line flashes hard —
+         the exact dodge moment at a glance */
+      const d = py - bm.y;
+      if (d > -14 && d < 130) {
+        const close = 1 - clamp(d / 130, 0, 1);
+        const fa2 = 0.5 + 0.5 * clamp(0.35 + close * 0.65, 0, 1) * Math.abs(Math.sin(perfT * 30 + bm.seed));
+        ctx.shadowColor = 'rgba(120,235,255,0.9)'; ctx.shadowBlur = 9;
+        ctx.fillStyle = 'rgba(120,235,255,' + fa2.toFixed(3) + ')';
+        ctx.fillRect(x0 - 3, py - 3, bm.w + 6, 6);
+        ctx.fillStyle = 'rgba(230,254,255,' + fa2.toFixed(3) + ')';
+        ctx.fillRect(bm.x - 2, py - 5, 4, 10);
+        ctx.shadowBlur = 0;
+      }
+    }
+  }
+}
+function drawGameplay() {
+  if (Game.mode === 'CLASSIC') {
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+    ctx.strokeRect(2, WALL_TOP - 2, W - 4, H - WALL_TOP - 2);
+  } else {
+    Bg.draw(ctx, perfT);
+  }
+  for (const b of Game.bricks) if (!b.dead) drawBrick(b);
+  for (const c of Game.capsules) drawCapsule(c);
+  for (const l of Game.bolts) drawLaser(l);
+  drawPaddle();
+  for (const b of Game.balls) drawBall(b);
+  drawBeams();
+  drawCapPreview();
+  Particles.draw(ctx);
+  Texts.draw(ctx);
+  drawHUD();
+  // intro banner
+  if (Game.introT > 0) {
+    const a = Game.introT > 1.3 ? (1.7 - Game.introT) / 0.4 : clamp(Game.introT / 0.5, 0, 1);
+    ctx.fillStyle = 'rgba(3,5,14,' + a * 0.55 + ')';
+    ctx.fillRect(0, 0, W, H);
+    const txt = Game.introPhase === 'ready' ? 'READY' : 'GO!';
+    const scale = Game.introPhase === 'go' ? 1 + (1 - clamp(Game.introT / 0.85, 0, 1)) * 0.5 : 1;
+    ctx.save(); ctx.translate(W / 2, H * 0.42); ctx.scale(scale, scale);
+    drawText(txt, 0, 0, 54, Game.introPhase === 'go' ? '#3dff8f' : '#29d8ff', { glow: 20 });
+    ctx.restore();
+    if (Game.introPhase === 'ready') {
+      if (Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length) {
+        drawText('DOH — THE BOSS!', W / 2, H * 0.42 + 60, 17, '#ff3d5e', { glow: 16 });
+        drawText('AIM FOR THE MYSTERY WEAK POINTS!', W / 2, H * 0.42 + 90, 10, '#ffd23b', { glow: 8 });
+        drawText('CORES LEFT STANDING = BONUS POINTS', W / 2, H * 0.42 + 112, 10, '#3dff8f', { glow: 8 });
+      } else {
+        drawText('LEVEL ' + Game.level, W / 2, H * 0.42 + 60, 15, '#ffffff', { glow: 10 });
+        if (Game.obj && !Game.objDone) drawText(Game.obj.txt, W / 2, H * 0.42 + 90, 11, '#ffd23b', { glow: 8 });
+      }
+    }
+  }
+  // WARP portal: swirling ring + banner while the warp plays out
+  if (Game.warpT > 0) {
+    const wt = 1 - Game.warpT / WARP_TIME;
+    const wcx = Game.paddle.x, wcy = Game.paddle.y - 46;
+    ctx.save();
+    ctx.translate(wcx, wcy);
+    ctx.rotate(perfT * 3 + wt * 6);
+    ctx.strokeStyle = 'rgba(199,125,255,' + (0.5 + 0.3 * Math.sin(perfT * 9)) + ')';
+    ctx.lineWidth = 3;
+    for (let k = 0; k < 3; k++) {
+      ctx.beginPath(); ctx.arc(0, 0, 20 + k * 11 + Math.sin(perfT * 6 + k) * 2, 0, TAU); ctx.stroke();
+    }
+    ctx.beginPath();
+    for (let i = 0; i <= 26; i++) {
+      const aa = i / 26 * Math.PI * 2;
+      const r2 = 9 + aa * 1.5;
+      const px = Math.cos(aa) * r2, py = Math.sin(aa) * r2;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    ctx.restore();
+    ctx.save(); ctx.translate(W / 2, H * 0.4); ctx.scale(1 + wt * 0.25, 1 + wt * 0.25);
+    drawText('WARP AHEAD!', 0, 0, 40, '#c77dff', { glow: 26 });
+    ctx.restore();
+    drawText('SKIPPING ' + WARP_SKIP + ' LEVELS', W / 2, H * 0.4 + 52, 12, '#ffffff', { glow: 8 });
+  }
+  // level clear banner
+  if (Game.clearing > 0) {
+    const a = clamp(Game.clearing / 0.4, 0, 1);
+    const isBoss = Game.mode === 'ARKANOID' && Game.level === ARKANOID_MAPS.length;
+    ctx.save(); ctx.translate(W / 2, H * 0.42); ctx.scale(1.15, 1.15);
+    ctx.globalAlpha = a;
+    drawText(isBoss ? 'BOSS DOWN!' : 'LEVEL DOWN!', 0, 0, 40, isBoss ? '#ff3d5e' : '#3dff8f', { glow: isBoss ? 30 : 24 });
+    /* boss payout: a quick count-up tally of the cores-left-standing bonus */
+    if (isBoss && Game.bossBonus > 0) {
+      const p = clamp(1 - Game.clearing / 1.1, 0, 1);
+      const shown = Math.round(Game.bossBonus * (1 - Math.pow(1 - p, 3)));
+      drawText('CORE BONUS', 0, 46, 13, '#ffd23b', { glow: 10 });
+      drawText('+' + shown.toLocaleString('en-US'), 0, 70, 24, '#3dff8f', { glow: 14 });
+      drawText(Game.bossCoresLeft + ' CORES LEFT STANDING × ' + BOSS_CORE_BONUS, 0, 94, 10, '#ffffff', { glow: 6 });
+    }
+    ctx.globalAlpha = 1; ctx.restore();
+  }
+  // red danger edge on last life
+  if (Game.lives === 0 && Game.screen === 'playing') {
+    const a = 0.16 + 0.1 * Math.sin(perfT * 6);
+    const g = ctx.createLinearGradient(0, H - 90, 0, H);
+    g.addColorStop(0, 'rgba(255,61,94,0)'); g.addColorStop(1, 'rgba(255,61,94,' + a + ')');
+    ctx.fillStyle = g; ctx.fillRect(0, H - 90, W, 90);
+  }
+  // flash + CRT
+  if (Flash.v > 0) { ctx.fillStyle = Flash.color; ctx.globalAlpha = Flash.v; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  if (crtOn()) CRT.draw(ctx, perfT);
+}
+
+/* ═══════════════════ PART C — SCREENS & FLOW ═══════════════════ */
+const MENU_SCREENS = ['modeselect', 'challenges', 'options', 'controls', 'scoremenu', 'paused', 'gameover', 'victory'];
+function setScreen(s) {
+  Game.screen = s;
+  if (s === 'title' && !Demo.active) Demo.t = 0; // fresh idle countdown on the title
+}
+/* ---------- attract mode ---------- */
+/* After 20s idle on the title the game plays itself — a REMIX showcase driven
+   by an AI paddle — then fades back to the menu. Any key, click, or pad button
+   ends the demo (the fade completes, then the title returns). */
+const Demo = { t: 0, active: false, phase: 'idle', fadeT: 0, playT: 0, relaunch: 0 };
+const DEMO_IDLE = 20, DEMO_MAX = 45, DEMO_FADE = 0.6;
+let lastInputT = 0;
+function startDemo() {
+  Demo.active = true; Demo.phase = 'playing'; Demo.playT = 0; Demo.relaunch = 0;
+  Game.mode = 'REMIX'; Game.diff = 1; // the fullest showcase: power-ups, objectives, endless walls
+  startRun();
+  Game.screen = 'demo';
+}
+function startDemoFade() {
+  if (Demo.phase !== 'playing') return;
+  Demo.phase = 'fading'; Demo.fadeT = 0;
+}
+function endDemo() {
+  Demo.active = false; Demo.phase = 'idle'; Demo.playT = 0;
+  setScreen('title');
+}
+
+/* ---------- achievements ---------- */
+const ACHS = [
+  { id: 'first', name: 'FIRST POP', desc: 'Break your very first brick' },
+  { id: 'combo5', name: 'ON A ROLL', desc: 'Chain up a 5-hit combo' },
+  { id: 'combo15', name: 'LEGENDARY STREAK', desc: 'Chain up a 15-hit combo' },
+  { id: 'multiball', name: 'BALL PARTY', desc: 'Catch a SPLIT capsule' },
+  { id: 'laser', name: 'PEW PEW PEW', desc: 'Snag the LASER and let fly' },
+  { id: 'fireball', name: 'BURNING UP', desc: 'Make the ball PIERCE through bricks' },
+  { id: 'catch', name: 'STICKY FINGERS', desc: 'Catch the ball with CATCH' },
+  { id: 'extra-life', name: 'EXTRA GUY!', desc: 'Earn an extra life' },
+  { id: 'chain', name: 'DOMINO EFFECT', desc: 'Chain 5 bomb explosions', icon: 'b' },
+  { id: 'mystery', name: 'JACKPOT!', desc: 'Crack open a mystery brick', icon: '?' },
+  { id: 'warp', name: 'WORMHOLE', desc: 'Catch a hidden WARP capsule' },
+  { id: 'boss', name: 'BOSS SLAYER', desc: 'Beat the DOH boss round' },
+  { id: 'perfect', name: 'FLAWLESS RUN', desc: 'Clear a level without losing a ball' },
+  { id: 'level5', name: 'DEEP END', desc: 'Reach level 5' },
+  { id: 'score100k', name: 'SIX FIGURES', desc: 'Bank 100,000 points in one run' },
+  { id: 'victory', name: 'CHAMPION', desc: 'Clear a whole mode' },
+  { id: 'medal', name: 'SHOW-OFF', desc: 'Earn a GOLD medal in a challenge' }
+];
+const ACH_UNLOCKED = new Set(store.get('ach', []));
+const AchToast = { item: null, t: 0 };
+/* Fancy one-time reveal for the capsule cheat sheet unlock: confetti rain, a
+   parade of all 13 capsule icons, and a fanfare — instead of the standard toast. */
+const CheatReveal = { t: 0 };
+function unlockAchievement(id) {
+  if (Demo.active) return; // the attract demo never earns real achievements
+  if (ACH_UNLOCKED.has(id)) return;
+  ACH_UNLOCKED.add(id);
+  store.set('ach', Array.from(ACH_UNLOCKED));
+  const a = ACHS.find(x => x.id === id);
+  if (a) { AchToast.item = a; AchToast.t = 3.2; playSfx('ach'); }
+}
+
+/* ---------- high scores ---------- */
+const SCORE_LIMIT = 8;
+const scoreKey = mode => mode === 'CH' ? 'scores_ch' + Game.challengeIdx : 'scores_' + mode;
+function getScores(mode) { return store.get(scoreKey(mode), []); }
+function qualifies(score) { if (score <= 0) return false; const arr = getScores(Game.mode); if (arr.length < SCORE_LIMIT) return true; return score > arr[arr.length - 1].score; }
+function saveScore(name, score) {
+  const mode = Game.mode;
+  const arr = getScores(mode);
+  arr.push({ name, score, level: Game.level });
+  arr.sort((a, b) => b.score - a.score);
+  if (arr.length > SCORE_LIMIT) arr.length = SCORE_LIMIT;
+  store.set(scoreKey(mode), arr);
+  Game.hi = arr[0].score;
+  store.set('hi_' + mode, Game.hi);
+}
+
+/* ---------- initials entry ---------- */
+const Init = { active: false, chars: [65, 65, 65], pos: 0, blink: 0, saved: false };
+function openInitials() { Init.active = true; Init.chars = [65, 65, 65]; Init.pos = 0; Init.blink = 0; Init.saved = false; }
+function closeInitials() { Init.active = false; }
+function confirmInitials() {
+  const name = String.fromCharCode(...Init.chars);
+  saveScore(name, Game.score);
+  Init.saved = true;
+  Init.active = false;
+  playSfx('levelup');
+}
+function updateInitials(dt) { Init.blink += dt; }
+function drawInitials() {
+  const cx = W / 2, cy = H / 2 + 40;
+  drawText('NEW HIGH SCORE!', cx, cy - 96, 18, '#ffd23b', { glow: 16 });
+  drawText('SIGN YOUR NAME, LEGEND', cx, cy - 62, 10, '#8fb6ff', {});
+  for (let i = 0; i < 3; i++) {
+    const x = cx - 60 + i * 60;
+    const active = Init.pos === i;
+    ctx.fillStyle = active ? 'rgba(41,216,255,0.25)' : 'rgba(10,16,36,0.9)';
+    rr(x - 24, cy - 26, 48, 52, 6); ctx.fill();
+    ctx.strokeStyle = active ? '#29d8ff' : '#3d5a9c'; ctx.lineWidth = 2;
+    rr(x - 24, cy - 26, 48, 52, 6); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    drawText(String.fromCharCode(Init.chars[i]), x, cy + 2, 24, '#ffffff', { glow: active ? 12 : 0 });
+    if (active && Math.sin(Init.blink * 8) > 0) {
+      ctx.fillStyle = '#29d8ff'; ctx.fillRect(x - 14, cy + 26, 28, 3);
+    }
+  }
+  drawText('ARROWS MOVE  •  ENTER LOCKS IT IN', cx, cy + 52, 8, '#5d7bb0', {});
+}
+function initialsKey(code) {
+  if (code === 'ArrowLeft') { Init.pos = Math.max(0, Init.pos - 1); playSfx('uiMove'); }
+  else if (code === 'ArrowRight') { Init.pos = Math.min(2, Init.pos + 1); playSfx('uiMove'); }
+  else if (code === 'ArrowUp') { Init.chars[Init.pos] = Init.chars[Init.pos] === 90 ? 65 : Init.chars[Init.pos] + 1; playSfx('uiMove'); }
+  else if (code === 'ArrowDown') { Init.chars[Init.pos] = Init.chars[Init.pos] === 65 ? 90 : Init.chars[Init.pos] - 1; playSfx('uiMove'); }
+  else if (code === 'Enter' || code === 'NumpadEnter') { confirmInitials(); }
+}
+
+/* ---------- generic menu ---------- */
+const Menu = {
+  items: [], sel: 0, x: 0, y: 0, w: 0, rowH: 46,
+  open(items, x, y, w, sel, rowH) {
+    const keep = this.owner === Game.screen && this.items.length;
+    this.items = items; this.owner = Game.screen; this.x = x; this.y = y; this.w = w;
+    this.rowH = rowH || 46;
+    this.sel = keep ? Math.min(this.sel, items.length - 1) : (sel || 0);
+  },
+  move(d) { if (!this.items.length) return; this.sel = (this.sel + d + this.items.length) % this.items.length; playSfx('uiMove'); },
+  enter() { const it = this.items[this.sel]; if (it && it.fn) { playSfx('uiSel'); it.fn(it); } },
+  hover() {
+    if (!this.items.length) return;
+    const px = (ptr.x - W / 2) / MENU_S + DW / 2;
+    const py = (ptr.y - H / 2) / MENU_S + DH / 2;
+    for (let i = 0; i < this.items.length; i++) {
+      const y = this.y + i * this.rowH - 14;
+      if (py > y && py < y + this.rowH && px > this.x - 40 && px < this.x + this.w + 40) {
+        if (this.sel !== i) { this.sel = i; }
+        return;
+      }
+    }
+  },
+  draw() {
+    for (let i = 0; i < this.items.length; i++) {
+      const it = this.items[i];
+      const y = this.y + i * this.rowH;
+      const sel = i === this.sel;
+      if (it.icon) drawBrickIcon(it.icon, this.x + 14, y - 13, 40, 26);
+      const lx = it.lalign ? this.x + 16 : this.x + this.w / 2;
+      const la = it.lalign ? 'left' : 'center';
+      if (sel) {
+        const pulse = 1 + 0.04 * Math.sin(perfT * 7);
+        ctx.save();
+        ctx.fillStyle = 'rgba(41,216,255,0.13)';
+        rr(this.x - 60, y - 16, this.w + 120, this.rowH - 6, 8); ctx.fill();
+        ctx.strokeStyle = 'rgba(41,216,255,0.55)'; ctx.lineWidth = 1.5;
+        rr(this.x - 60, y - 16, this.w + 120, this.rowH - 6, 8); ctx.stroke();
+        ctx.save(); ctx.translate(lx, y); ctx.scale(pulse, pulse);
+        drawText(it.label, 0, 0, it.size || 15, it.color || '#ffffff', { glow: 14, align: la });
+        ctx.restore(); ctx.restore();
+      } else {
+        ctx.save(); ctx.translate(lx, y);
+        if (it.dim) ctx.globalAlpha = 0.35;
+        drawText(it.label, 0, 0, it.size || 14, it.color || '#7f9ad0', { align: la });
+        ctx.restore(); ctx.globalAlpha = 1;
+      }
+      if (it.subCol) {
+        // pre-colored sub (e.g. live key bindings on the pause RESUME row)
+        ctx.font = '8px ' + FONT;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = it.subCol;
+        ctx.fillText(it.sub, this.x + this.w / 2, y + this.rowH * 0.62);
+      } else if (it.subParts) {
+        ctx.font = '8px ' + FONT;
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        let tw = 0;
+        for (const sp of it.subParts) tw += ctx.measureText(sp.t).width;
+        let cx = this.x + this.w / 2 - tw / 2;
+        const sy = y + this.rowH * 0.62;
+        for (const sp of it.subParts) {
+          ctx.fillStyle = sp.col || '#4a6a9c';
+          ctx.fillText(sp.t, cx, sy);
+          if (sp.u) ctx.fillRect(cx, sy + 5, ctx.measureText(sp.t).width, 1);
+          cx += ctx.measureText(sp.t).width;
+        }
+      } else if (it.sub) {
+        drawText(it.sub, this.x + this.w / 2, y + this.rowH * 0.62, 8, '#4a6a9c', {});
+      }
+      if (it.val !== undefined) {
+        // right-aligned ON/OFF switch — knob position + text, never colour alone
+        const vw = 52, vh = 20, vx = this.x + this.w - 18, vy = y - vh / 2;
+        const on = !!it.val;
+        const col = it.valCol || '#3dff8f';
+        ctx.save();
+        ctx.fillStyle = on ? col : 'rgba(16,24,48,0.95)';
+        rr(vx - vw, vy, vw, vh, vh / 2); ctx.fill();
+        ctx.strokeStyle = on ? col : '#3d5a9c'; ctx.lineWidth = 1.5;
+        rr(vx - vw, vy, vw, vh, vh / 2); ctx.stroke();
+        const kx = on ? vx - vh / 2 : vx - vw + vh / 2;
+        ctx.fillStyle = on ? '#ffffff' : '#6a7fb0';
+        ctx.beginPath(); ctx.arc(kx, vy + vh / 2, vh / 2 - 3.5, 0, TAU); ctx.fill();
+        ctx.font = '7px ' + FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = on ? 'rgba(2,6,16,0.85)' : '#6a7fb0';
+        ctx.fillText(on ? 'ON' : 'OFF', vx - vw / 2, vy + vh / 2 + 0.5);
+        ctx.restore();
+      } else if (it.valText) {
+        // right-aligned text value (e.g. keyboard layout preset)
+        ctx.font = '9px ' + FONT; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = it.valTextCol || '#29d8ff';
+        ctx.fillText(it.valText, this.x + this.w - 18, y);
+      }
+      if (it.tag || (it.tags && it.tags.length)) {
+        // status pills beside the label — a row can carry several (CUSTOM CONTROLS,
+        // CUSTOM SETTINGS…), drawn one after another
+        const ls = it.size || (sel ? 15 : 14);
+        ctx.font = '7px ' + FONT;
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        const pills = it.tags && it.tags.length ? it.tags : [{ t: it.tag, col: it.tagCol || '#ff9a3d', bg: it.tagBg }];
+        let tx = this.x + this.w / 2 + it.label.length * ls / 2 + 10, ty = y - 6;
+        for (const tg of pills) {
+          const tw2 = ctx.measureText(tg.t).width;
+          ctx.fillStyle = tg.bg || 'rgba(255,154,61,0.16)';
+          rr(tx - 5, ty - 7, tw2 + 10, 14, 4); ctx.fill();
+          ctx.strokeStyle = tg.col || '#ff9a3d'; ctx.lineWidth = 1;
+          rr(tx - 5, ty - 7, tw2 + 10, 14, 4); ctx.stroke();
+          ctx.fillStyle = tg.col || '#ff9a3d';
+          ctx.fillText(tg.t, tx, ty);
+          tx += tw2 + 18;
+        }
+      }
+      if (it.badges) {
+        // status tags: mini icon + word per toggle, bright when on, grey when off
+        ctx.font = '7px ' + FONT;
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        let total = 0;
+        for (const bd of it.badges) total += (bd.kind === 'keys' ? 8 : bd.kind === 'pause' ? 6 : 9) + bd.word.length * 7 + 4;
+        let cx = this.x + this.w / 2 - total / 2;
+        const by = y + this.rowH * 0.58;
+        for (const bd of it.badges) {
+          ctx.fillStyle = bd.on ? (bd.col || '#29d8ff') : 'rgba(110,130,175,0.55)';
+          if (bd.kind === 'keys') {
+            ctx.beginPath(); ctx.moveTo(cx, by); ctx.lineTo(cx + 2.5, by - 2.5); ctx.lineTo(cx + 2.5, by + 2.5); ctx.closePath(); ctx.fill();
+            ctx.beginPath(); ctx.moveTo(cx + 4.5, by); ctx.lineTo(cx + 7, by - 2.5); ctx.lineTo(cx + 7, by + 2.5); ctx.closePath(); ctx.fill();
+            cx += 8;
+          } else if (bd.kind === 'pause') {
+            ctx.fillRect(cx, by - 3, 2, 6); ctx.fillRect(cx + 3, by - 3, 2, 6);
+            cx += 6;
+          } else if (bd.kind === 'party') {
+            // mini capsule matching the HUD chip: gold shell, dark core, sparkles
+            rr(cx - 1, by - 3.5, 8, 7, 2.5); ctx.fill();
+            ctx.fillStyle = '#0a0e17';
+            rr(cx + 0.4, by - 2, 5.2, 4, 1.5); ctx.fill();
+            ctx.fillStyle = bd.on ? (bd.col || '#ffd23b') : 'rgba(110,130,175,0.55)';
+            ctx.fillRect(cx + 1.2, by - 0.8, 1.6, 1.6); ctx.fillRect(cx + 3.2, by - 0.8, 1.6, 1.6);
+            cx += 9;
+          }
+          ctx.fillText(bd.word, cx, by);
+          cx += bd.word.length * 7 + 4;
+        }
+      }
+    }
+    const cur = this.items[this.sel];
+    if (cur && cur.help) {
+      drawText(cur.help, W / 2, this.y + this.items.length * this.rowH + 30, 9, '#5d7bb0', {});
+    }
+  }
+};
+
+/* ---------- screen: title ---------- */
+function drawTitle() {
+  const bob = Math.sin(perfT * 1.6) * 6;
+  ctx.save();
+  ctx.translate(W / 2, 190 + bob);
+  ctx.shadowColor = '#29d8ff'; ctx.shadowBlur = 30;
+  ctx.fillStyle = '#29d8ff';
+  ctx.font = '900 92px ' + FONT2; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('NEON', 0, -40);
+  ctx.shadowColor = '#ff3d5e'; ctx.shadowBlur = 30;
+  ctx.fillStyle = '#ff3d5e';
+  ctx.fillText('BREAKER', 0, 46);
+  ctx.shadowBlur = 0;
+  ctx.restore();
+  drawText('THE BEST OF BOTH — BREAKOUT x ARKANOID', W / 2, 300, 10, '#8fb6ff', { glow: 8 });
+  // decorative frame
+  ctx.strokeStyle = 'rgba(41,216,255,0.25)'; ctx.lineWidth = 2;
+  rr(40, 80, W - 80, 250, 12); ctx.stroke();
+  drawText('INSERT COIN — FREE TO PLAY', W / 2, 350, 11, '#5d7bb0', {});
+  if (Math.sin(perfT * 4) > -0.3) {
+    drawText('HIT ENTER OR CLICK TO PLAY', W / 2, 420, 16, '#ffffff', { glow: 14 });
+  }
+  drawText('BEST SCORE  ' + String(Game.hi).padStart(7, '0'), W / 2, 470, 10, '#ffd23b', { glow: 6 });
+  const achN = ACH_UNLOCKED.size, achT = ACHS.length;
+  drawText(achN + ' OF ' + achT + ' EARNED', W / 2, 500, 9, '#5d7bb0', {});
+  // bouncing demo ball
+  const bx = W / 2 + Math.sin(perfT * 2.4) * 220, by = 560 + Math.abs(Math.sin(perfT * 1.1)) * 30;
+  ctx.shadowColor = '#29d8ff'; ctx.shadowBlur = 14;
+  const g = ctx.createRadialGradient(bx - 2, by - 2, 1, bx, by, 8);
+  g.addColorStop(0, '#fff'); g.addColorStop(1, '#1a8cff');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(bx, by, 8, 0, TAU); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = '#29d8ff';
+  rr(bx - 46, 585, 92, 12, 5); ctx.fill();
+  drawText('M MUSIC  ·  C CONTROLS  ·  MORE IN OPTIONS', W / 2, 630, 8, '#3d4a6b', {});
+  drawText('(C) 2026 NEON ARCADE', W / 2, 660, 8, '#3d4a6b', {});
+}
+
+/* ---------- screen: mode select ---------- */
+const MODE_INFO = [
+  { id: 'CLASSIC', name: 'CLASSIC', desc: 'OLD-SCHOOL BREAKOUT. 8 HAND-BUILT WALLS. NO POWER-UPS, ALL SKILL.' },
+  { id: 'ARKANOID', name: 'ARKANOID', desc: '33 STAGES, CAPSULES, LASERS, CATCH & A FINAL BOSS.' },
+  { id: 'REMIX', name: 'REMNANT REMIX', desc: 'ENDLESS PROCEDURAL WALLS WITH GOALS. EVERYTHING ON.' }
+];
+function startModeSelect() { setScreen('modeselect'); }
+function openChallenges() {
+  const items = CHALLENGES.map((c, i) => {
+    const best = store.get('best_ch' + i, null);
+    const medal = best ? best.medal : null;
+    const mS = medal ? { B: 'BRONZE', S: 'SILVER', G: 'GOLD' }[medal] : '';
+    return {
+      label: c.name, color: medal === 'G' ? '#ffd23b' : medal ? '#8fb6ff' : '#7f9ad0',
+      sub: mS + (best ? '  SCORE ' + best.score : '  UNSOLVED'),
+      help: c.desc,
+      icon: c.icon,
+      fn: () => {
+        Game.mode = 'CH'; Game.challengeIdx = i;
+        startRun(); setScreen('playing');
+        Music.setBpm(140);
+      }
+    };
+  });
+  items.push({ label: 'BACK', help: 'Return to menu', fn: () => { setScreen('modeselect'); } });
+  setScreen('challenges');
+  Menu.open(items, W / 2 - 220, 210, 440, 0);
+}
+/* ---------- screen: ARKANOID stage select ---------- */
+const StageSel = { cursor: 0 };
+const STAGE_COLS = 6, STAGE_ROWS = Math.ceil(ARKANOID_MAPS.length / STAGE_COLS), STAGE_W = 74, STAGE_H = 66, STAGE_GAP = 10;
+function openStages() {
+  Game.selMode = 1; // ARKANOID stays highlighted on return
+  StageSel.cursor = Math.min(ARK_PROG().reached, ARKANOID_MAPS.length) - 1;
+  setScreen('stages');
+  playSfx('uiSel');
+}
+function playStage(n) {
+  Game.mode = 'ARKANOID'; Game.challengeIdx = 0;
+  Game.stageRun = n;
+  startRun();
+  Game.level = n;
+  startLevel();
+  setScreen('playing');
+}
+function stageCellRect(i) {
+  const totalW = STAGE_COLS * STAGE_W + (STAGE_COLS - 1) * STAGE_GAP;
+  const x0 = (W - totalW) / 2, y0 = 148;
+  const r = Math.floor(i / STAGE_COLS), c = i % STAGE_COLS;
+  return { x: x0 + c * (STAGE_W + STAGE_GAP), y: y0 + r * (STAGE_H + STAGE_GAP), w: STAGE_W, h: STAGE_H };
+}
+function stageHit(x, y) {
+  for (let i = 0; i < ARKANOID_MAPS.length; i++) {
+    const r = stageCellRect(i);
+    if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) return i;
+  }
+  return -1;
+}
+function stageMove(dx, dy) {
+  let c = StageSel.cursor % STAGE_COLS, r = Math.floor(StageSel.cursor / STAGE_COLS);
+  c = (c + dx + STAGE_COLS) % STAGE_COLS;
+  r = (r + dy + STAGE_ROWS) % STAGE_ROWS;
+  let idx = r * STAGE_COLS + c;
+  if (idx > ARKANOID_MAPS.length - 1) idx = 0; // past the short last row -> wrap to the start
+  StageSel.cursor = idx;
+  playSfx('uiMove');
+}
+function drawStages() {
+  const prog = ARK_PROG();
+  drawText('STAGE SELECT', W / 2, 66, 22, '#29d8ff', { glow: 14 });
+  const cleared = Object.keys(prog.best).length;
+  drawText('ARKANOID CAMPAIGN  ·  ' + Math.min(prog.reached, ARKANOID_MAPS.length) + ' / ' + ARKANOID_MAPS.length + ' REACHED  ·  ' + cleared + ' CLEARED', W / 2, 96, 9, '#8fb6ff', {});
+  const palette = ['#29d8ff', '#3d7bff', '#3dff8f', '#ffd23b', '#ff9a3d', '#ff4d4d'];
+  for (let i = 0; i < ARKANOID_MAPS.length; i++) {
+    const n = i + 1;
+    const locked = n > prog.reached;
+    const col = locked ? '#3d4a6b' : (n === ARKANOID_MAPS.length ? '#ff3d5e' : palette[i % palette.length]);
+    const r = stageCellRect(i);
+    const sel = i === StageSel.cursor;
+    ctx.save();
+    ctx.fillStyle = locked ? 'rgba(18,24,42,0.85)' : (sel ? 'rgba(10,20,40,0.95)' : 'rgba(12,18,38,0.9)');
+    rr(r.x, r.y, r.w, r.h, 8); ctx.fill();
+    ctx.strokeStyle = sel ? '#ffffff' : col;
+    ctx.lineWidth = sel ? 2.5 : 1.5;
+    if (sel) ctx.shadowColor = col;
+    ctx.shadowBlur = sel ? 12 : 0;
+    rr(r.x, r.y, r.w, r.h, 8); ctx.stroke();
+    ctx.shadowBlur = 0;
+    if (locked) {
+      ctx.strokeStyle = '#5d7bb0'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(r.x + r.w / 2, r.y + r.h / 2 + 4, 6, Math.PI, 0); ctx.stroke();
+      ctx.fillStyle = '#5d7bb0';
+      ctx.fillRect(r.x + r.w / 2 - 7, r.y + r.h / 2 + 2, 14, 11);
+    } else {
+      drawText(n === ARKANOID_MAPS.length ? 'DOH' : String(n), r.x + r.w / 2, r.y + 24, n === ARKANOID_MAPS.length ? 12 : 16, col, { glow: sel ? 8 : 0 });
+      const best = prog.best[n] || 0;
+      drawText(best > 0 ? 'BEST ' + (best >= 10000 ? (best / 1000).toFixed(1) + 'K' : best) : '—', r.x + r.w / 2, r.y + 46, 8, best > 0 ? '#8fb6ff' : '#3d4a6b', {});
+    }
+    ctx.restore();
+  }
+  drawText('ARROWS MOVE  ·  ENTER / CLICK PLAYS THE STAGE  ·  ESC BACK', W / 2, 642, 9, '#5d7bb0', {});
+  drawText('EVERY STAGE CLEARED RECORDS YOUR BEST SCORE ON THAT STAGE', W / 2, 664, 8, '#3d4a6b', {});
+}
+function openHowTo() { setScreen('howto'); }
+/* OPTIONS: per-mode settings keep a value per mode. A tab bar at the top picks
+   whose settings you're editing — CLASSIC / ARKANOID / REMIX — so every row is a
+   plain ON/OFF switch. < > (or LB/RB) switches the tab, ENTER flips the value,
+   R zeroes every mode for the row. No letter codes, no legend to learn. */
+const MODE_META = [
+  { id: 'CLASSIC', col: '#3dff8f' },
+  { id: 'ARKANOID', col: '#29d8ff' },
+  { id: 'REMIX', col: '#ffd23b' }
+];
+let optTab = 0; // which MODE_META entry the options rows are editing
+function optMode() { return MODE_META[optTab].id; }
+/* a per-mode toggle row (SOUND, MUSIC, ...): shows ON/OFF for the tab's mode */
+function optRow(label, key, help, after) {
+  const it = {
+    label, key, lalign: true, size: 14,
+    help: help || '< > picks the mode · ENTER flips it · R zeroes every mode',
+    refresh() { it.val = !!OPTS[key][optMode()]; it.valCol = MODE_META[optTab].col; },
+    resetAll() { for (const m of MODE_IDS) OPTS[key][m] = false; it.refresh(); },
+    fn() { OPTS[key][optMode()] = !OPTS[key][optMode()]; it.refresh(); saveOpts(); if (after) after(); else playSfx('uiMove'); }
+  };
+  it.refresh();
+  return it;
+}
+/* a global toggle row (pause-screen extras): same switch, same value for every mode */
+function plainToggle(label, key, help) {
+  const it = {
+    label, key, lalign: true, size: 14, help,
+    refresh() { it.val = !!OPTS[key]; },
+    fn() { OPTS[key] = !OPTS[key]; it.refresh(); saveOpts(); playSfx('uiMove'); }
+  };
+  it.refresh();
+  return it;
+}
+/* One-press "clear this mode's customization": wipe the TAB's mode back to stock —
+   controls (keyboard + pad binds and the layout preset) and every per-mode setting,
+   so both customization dots disappear. X on the keyboard, X on the pad. */
+function clearModeCustom() {
+  const m = optMode();
+  if (!modeCustom(m) && !modeSettingsCustom(m)) return; // nothing dotted — silent no-op
+  resetBinds(m); // keyboard + pad binds to defaults (saves + refreshes the hint)
+  OPTS.layout[m] = 'CLASSIC';
+  OPTS.sound[m] = true; OPTS.music[m] = true; OPTS.crt[m] = true;
+  OPTS.autopause[m] = true; OPTS.keys[m] = true; OPTS.feast[m] = false;
+  saveOpts();
+  Menu.items.forEach(i => { if (i && i.refresh) i.refresh(); });
+  menuMsg = { text: m + ': BACK TO STOCK!', col: '#3dff8f', until: perfT + 1.6 };
+}
+/* KEYBOARD LAYOUT row: text value per tab's mode, ENTER cycles its preset */
+function optLayoutRow() {
+  const it = {
+    label: 'KEYBOARD LAYOUT', key: 'layout', lalign: true, size: 14,
+    help: 'QWERTY · LEFT-HANDED · AZERTY presets · ENTER cycles · overwrites custom binds',
+    refresh() { it.valText = layoutName(optMode()); it.valTextCol = MODE_META[optTab].col; },
+    resetAll() { for (const m of MODE_IDS) OPTS.layout[m] = 'CLASSIC'; it.refresh(); },
+    fn() { cycleLayout(optMode(), 1); it.refresh(); }
+  };
+  it.refresh();
+  return it;
+}
+function openOptions() {
+  const selId = MODE_INFO[Game.selMode] ? MODE_INFO[Game.selMode].id : Game.mode;
+  optTab = Math.max(0, MODE_META.findIndex(m => m.id === selId));
+  const items = [
+    optRow('SOUND', 'sound', 'Game sounds — hits, power-ups and menu blips', () => { if (OPTS.sound[optMode()]) playSfx('uiSel'); }),
+    optRow('MUSIC', 'music', 'The synth loop behind the mayhem', () => refreshMusic()),
+    optRow('RETRO VIBE', 'crt', 'CRT scanlines & glow for the old-school feel'),
+    plainToggle('PAUSE BRICK LEGEND', 'legend', 'Show the brick-symbol strip while paused'),
+    plainToggle('PAUSE POWER CHECKLIST', 'checklist', 'Show active power-ups while paused'),
+    optRow('AUTO-PAUSE ON BLUR', 'autopause', 'Pause when you tab away — handy on phones'),
+    optRow('ARROW KEYS', 'keys', '← → move the paddle (WASD always works)'),
+    optRow('CAPSULE PARTY', 'feast', 'WILD DROPS: every brick may drop a capsule — pure arcade mayhem'),
+    optLayoutRow(),
+    { label: 'CONTROLS', lalign: true, size: 14, color: '#29d8ff', help: 'Rebind keys & pad buttons to your liking', fn: () => openControls() },
+    { label: 'RESET SAVES', lalign: true, size: 14, color: '#ff3d5e', help: 'Wipe scores, medals and options',    fn: () => { ['ach', 'opts', 'ark_prog'].forEach(k => store.del(k)); store.del('hi_CLASSIC'); store.del('hi_ARKANOID'); store.del('hi_REMIX'); for (let i = 0; i < 6; i++) { store.del('scores_ch' + i); store.del('best_ch' + i); } ACH_UNLOCKED.clear(); Game.hi = 0; playSfx('uiBack'); } },
+    { label: 'BACK', lalign: true, size: 14, help: 'Return to mode select', fn: () => { setScreen('modeselect'); } }
+  ];
+  setScreen('options');
+  Menu.open(items, W / 2 - 220, 134, 440, 0, 40);
+}
+function openScores() {
+  const items = [
+    { label: 'VIEW CLASSIC SCORES', fn: () => { Game.viewScores = 'CLASSIC'; setScreen('scores'); } },
+    { label: 'VIEW ARKANOID SCORES', fn: () => { Game.viewScores = 'ARKANOID'; setScreen('scores'); } },
+    { label: 'VIEW REMIX SCORES', fn: () => { Game.viewScores = 'REMIX'; setScreen('scores'); } },
+    { label: 'CHALLENGE MEDALS', fn: () => { Game.viewScores = 'CH'; setScreen('scores'); } },
+    { label: 'ACHIEVEMENTS', fn: () => { Game.viewScores = 'ACH'; setScreen('scores'); } },
+    { label: 'BACK', fn: () => { setScreen('modeselect'); } }
+  ];
+  setScreen('scoremenu');
+  Menu.open(items, W / 2 - 220, 190, 440, 0);
+}
+/* does mode `m` carry any player-made control changes? non-default keyboard or pad
+   bindings, or a non-default layout preset. Lets the mode-select show CUSTOM tags. */
+function modeCustom(m) {
+  if ((OPTS.layout[m] || 'CLASSIC') !== 'CLASSIC') return true;
+  const b = BINDS[m], pb = PADB[m];
+  for (const k in DEFAULT_BINDS) {
+    const a = b[k], d = DEFAULT_BINDS[k];
+    if (!a || a.length !== d.length || a.some((v, i) => v !== d[i])) return true;
+  }
+  for (const k in DEFAULT_PADB) {
+    const a = pb[k], d = DEFAULT_PADB[k];
+    if (!a || a.length !== d.length || a.some((v, i) => v !== d[i])) return true;
+  }
+  return false;
+}
+/* does mode `m` have any per-mode SETTINGS tweaked away from their defaults
+   (SOUND / MUSIC / RETRO VIBE / AUTO-PAUSE / ARROW KEYS / CAPSULE PARTY)?
+   Only explicit deviations count — missing keys are treated as stock. */
+function modeSettingsCustom(m) {
+  return OPTS.sound[m] === false || OPTS.music[m] === false || OPTS.crt[m] === false ||
+    OPTS.autopause[m] === false || OPTS.keys[m] === false || OPTS.feast[m] === true;
+}
+function drawModeSelect() {
+  drawText('PICK YOUR MODE', W / 2, 90, 22, '#29d8ff', { glow: 14 });
+  drawText('TAGS UNDER EACH MODE:  KEYS · PAUSE · PARTY — PARTY = WILD DROPS · GREY = OFF · ORANGE = CUSTOM CONTROLS · PURPLE = CUSTOM SETTINGS', W / 2, 112, 8, '#4a6a9c', {});
+  const mi = Game.selMode || 0;
+  const info = MODE_INFO[mi];
+  const items = MODE_INFO.map(m => ({
+    label: m.name, color: m.id === 'CLASSIC' ? '#3dff8f' : m.id === 'ARKANOID' ? '#29d8ff' : '#ffd23b',
+    tags: [...(modeCustom(m.id) ? [{ t: 'CUSTOM CONTROLS', col: '#ff9a3d', bg: 'rgba(255,154,61,0.16)' }] : []), ...(modeSettingsCustom(m.id) ? [{ t: 'CUSTOM SETTINGS', col: '#c77dff', bg: 'rgba(199,125,255,0.16)' }] : [])],
+    help: m.desc + '  ·  P PARTY · K KEYS · A PAUSE · R RESET CONTROLS · HOLD P + K RESETS' + (m.id === 'ARKANOID' ? ' · S STAGES' : ''),
+    badges: [
+      { kind: 'keys', word: 'KEYS', on: OPTS.keys[m.id], col: '#3dff8f' },
+      { kind: 'pause', word: 'PAUSE', on: OPTS.autopause[m.id], col: '#29d8ff' },
+      { kind: 'party', word: 'PARTY', on: OPTS.feast[m.id], col: '#ffd23b' }
+    ],
+    fn: () => { Game.mode = m.id; Game.challengeIdx = 0; Game.stageRun = 0; startRun(); setScreen('playing'); Music.setBpm(140); }
+  }));
+  items.push({ label: 'CHALLENGES', color: '#c77dff', help: 'Six wild scenarios, medals up for grabs', fn: openChallenges });
+  items.push({ label: 'HOW TO PLAY', help: 'Controls, bricks and power-ups', fn: openHowTo });
+  items.push({ label: 'OPTIONS', help: 'Tweak sound, music and effects', fn: openOptions });
+  items.push({ label: 'HIGH SCORES', help: 'Hall of fame & bragging rights', fn: openScores });
+  Menu.open(items, W / 2 - 240, 150, 480, 0);
+  Menu.draw();
+  // difficulty selector below menu
+  const dy = 150 + items.length * 46 + 50;
+  drawText('HOW TOUGH?', W / 2 - 190, dy, 10, '#5d7bb0', { align: 'left' });
+  ctx.fillStyle = 'rgba(10,16,36,0.85)';
+  rr(W / 2 - 190, dy - 16, 380, 30, 6); ctx.fill();
+  ctx.strokeStyle = 'rgba(41,216,255,0.4)'; rr(W / 2 - 190, dy - 16, 380, 30, 6); ctx.stroke();
+  drawText('<', W / 2 - 170, dy, 14, '#8fb6ff', { align: 'left' });
+  const d = DIFFS[Game.diff];
+  drawText(d.name, W / 2, dy, 13, d.mult >= 1.2 ? '#ff3d5e' : d.mult === 1 ? '#ffffff' : '#3dff8f', { glow: 8 });
+  drawText('>', W / 2 + 170, dy, 14, '#8fb6ff', { align: 'right' });
+  drawText('LIVES ' + d.lives + '  -  BALL ' + d.ball + '  -  SCORE x' + d.mult, W / 2, dy + 28, 8, '#4a6a9c', {});
+  drawText('< > PICK YOUR PAIN', W / 2, dy + 56, 8, '#3d4a6b', {});
+  if (Menu.sel <= 2 && Gamepad.active) drawText('Y/X/B FLIP · HOLD Y + X RESETS · RB RESET CONTROLS' + (Menu.sel === 1 ? ' · LB STAGES' : ''), W / 2, dy + 70, 8, '#3d4a6b', {});
+  // ARKANOID campaign progress: 33-dot stage map under the mode row
+  if (Menu.sel === 1) {
+    const prog = ARK_PROG();
+    const sy = 624, sx0 = W / 2 - 360;
+    drawText('ARKANOID CAMPAIGN — ' + Math.min(prog.reached, ARKANOID_MAPS.length) + ' / 33 STAGES', W / 2, sy - 18, 9, '#29d8ff', { glow: 4 });
+    for (let i = 0; i < ARKANOID_MAPS.length; i++) {
+      const n = i + 1;
+      const x = sx0 + i * 22;
+      const reached = n <= prog.reached;
+      const cleared = !!prog.best[n];
+      ctx.fillStyle = !reached ? 'rgba(61,90,156,0.35)' : (n === ARKANOID_MAPS.length ? '#ff3d5e' : (cleared ? '#3dff8f' : '#29d8ff'));
+      ctx.beginPath(); ctx.arc(x, sy, 6, 0, TAU); ctx.fill();
+    }
+    if (ARKANOID_MAPS.length <= prog.reached) {
+      ctx.strokeStyle = '#ff3d5e'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(sx0 + (ARKANOID_MAPS.length - 1) * 22, sy, 9, 0, TAU); ctx.stroke();
+    }
+    drawText('GREEN = CLEARED · BLUE = REACHED · RED = BOSS · CLICK TO PICK A STAGE', W / 2, sy + 20, 8, '#4a6a9c', {});
+  }
+  if (menuMsg && perfT < menuMsg.until) {
+    drawText(menuMsg.text, W / 2, 128, 11, menuMsg.col, { glow: 8 });
+  }
+}
+
+/* ---------- screen: how to play ---------- */
+function drawHowTo() {
+  drawText('HOW TO PLAY', W / 2, 60, 20, '#29d8ff', { glow: 12 });
+  drawText('CONTROLS', W / 2, 110, 11, '#ffd23b', {});
+  const kl = keyLabel;
+  const kb = curBinds(), pb = curPadb();
+  drawKeyCap('MOUSE', 190, 140, 110, 26); drawKeyCap('TOUCH', 360, 140, 100, 26);
+  drawKeyCap(kl(kb.moveL[0] || '?'), 496, 140, 48, 26); drawKeyCap(kl(kb.moveL[1] || '—'), 550, 140, 48, 26);
+  drawKeyCap(kl(kb.moveR[0] || '?'), 604, 140, 48, 26); drawKeyCap(kl(kb.moveR[1] || '—'), 658, 140, 48, 26);
+  drawText('MOVE THE PADDLE', 420, 178, 9, '#8fb6ff', {});
+  drawKeyCap(kl(kb.launch[0] || '?'), 190, 210, 110, 26); drawKeyCap('CLICK', 350, 210, 90, 26);
+  drawText('LAUNCH THE BALL', 415, 248, 9, '#8fb6ff', {});
+  drawKeyCap(kl(kb.pause[0] || '?'), 190, 280, 44, 26); drawKeyCap(kl(kb.pause[1] || kb.back[0]), 242, 280, 60, 26); drawKeyCap('M', 330, 280, 40, 26); drawKeyCap('C', 378, 280, 40, 26);
+  drawText('PAUSE', 420, 294, 9, '#8fb6ff', {}); drawText('MUSIC', 525, 294, 9, '#8fb6ff', {}); drawText('CONTROLS', 610, 294, 9, '#8fb6ff', {});
+  drawText('GAMEPAD: D-PAD / STICK MOVES - ' + kl(pb.launch[0]) + ' FIRES - ' + kl(pb.pause[0]) + ' PAUSES', W / 2, 322, 8, '#8fb6ff', {});
+  drawText('BRICKS', W / 2, 340, 11, '#ffd23b', {});
+  const types = [
+    ['C', '#29d8ff', 'COLORS', '1 HIT'], ['S', '#8f9bb3', 'STEEL', '2 HITS'],
+    ['T', '#5b6b8c', 'TITAN', '3 HITS'], ['X', '#ffd23b', 'GOLD', 'UNBREAKABLE'],
+    ['b', '#ff4d4d', 'BOMB', 'CHAIN BLAST'], ['?', '#c77dff', 'MYSTERY', 'RANDOM CAP'],
+    ['D', '#d9fbff', 'DIAMOND', '+1000 PTS']
+  ];
+  types.forEach((t, i) => {
+    const x = 130 + (i % 4) * 190, y = 370 + Math.floor(i / 4) * 44;
+    drawBrickIcon(t[0], x, y - 13, 40, 26);
+    drawText(t[2], x + 52, y, 8, t[1], { align: 'left' });
+    drawText(t[3], x + 52, y + 14, 7, '#5d7bb0', { align: 'left' });
+  });
+  drawText('PLAIN COLORED BRICKS = 1 HIT - THE SYMBOLS ABOVE MARK THE SPECIAL ONES', W / 2, 452, 8, '#5d7bb0', {});
+  drawText('POWER-UPS', W / 2, 468, 11, '#ffd23b', {});
+  const caps = CAPSULE_INFO;
+  const capCell = (c, i, y, showBest) => {
+    const x = 96 + (i % 5) * 162;
+    ctx.save(); ctx.translate(x, y); ctx.shadowColor = c.color; ctx.shadowBlur = 10;
+    ctx.fillStyle = '#0c1226'; rr(-8, -8, 16, 16, 4); ctx.fill(); ctx.shadowBlur = 0;
+    ctx.strokeStyle = c.color; rr(-8, -8, 16, 16, 4); ctx.stroke();
+    drawCapIcon(c.id, 0, 0, 16, c.color);
+    ctx.restore();
+    drawText(c.name, x + 16, y - (showBest ? 6 : 0), showBest ? 7 : 8, c.color, { align: 'left' });
+    if (showBest) {
+      const b = PWR.best[c.id] || 0;
+      drawText('BEST COMBO ' + (b || '--'), x + 16, y + 8, 7, b ? '#8fb6ff' : '#3d4a6b', { align: 'left' });
+    }
+  };
+  if (PWR.unlocked) {
+    drawText('* CAPSULE CHEAT SHEET - ALL 13 COLLECTED! *', W / 2, 485, 8, '#ffd23b', { glow: 6 });
+    caps.forEach((c, i) => capCell(c, i, 498 + Math.floor(i / 5) * 44, true));
+  } else {
+    caps.forEach((c, i) => capCell(c, i, 496 + Math.floor(i / 5) * 34, false));
+  }
+  drawText('RED / ORANGE CAPSULES ARE TROUBLE — DODGE THEM!', W / 2, 610, 9, '#ff3d5e', {});
+  drawText('CAPSULE PARTY (OPTIONS): WILD DROPS — EVERY BRICK MAY DROP A CAPSULE', W / 2, 624, 8, '#ffd23b', {});
+  drawText('HIT BRICKS BACK-TO-BACK FOR COMBOS — EVERY 5 = +1 MULTIPLIER', W / 2, 638, 8, '#8fb6ff', {});
+  drawText('MYSTERY BRICKS SOMETIMES HIDE A WARP — JUMPS ' + WARP_SKIP + ' LEVELS AHEAD!', W / 2, 652, 8, '#c77dff', {});
+  drawText('DOH: DESTROY ITS HEART WEAK POINTS — CORES LEFT STANDING = BIG BONUS!', W / 2, 666, 8, '#ff3d5e', {});
+  drawText('WOUNDED IT BELCHES BEAMS — EASY: BREATHES BETWEEN, LONG WARN + SLOW · INSANE: NO MERCY, BLINK WARN + FAST', W / 2, 679, 8, '#8fb6ff', {});
+  const goBack = 'PRESS ' + keyLabel(kb.confirm[0]) + ' / ' + keyLabel(kb.back[0]) + ' TO GO BACK';
+  if (PWR.unlocked) {
+    drawText(goBack, W / 2, 694, 9, '#5d7bb0', {});
+  } else {
+    drawText('COLLECT ALL 13 CAPSULES TO UNLOCK THE CHEAT SHEET', W / 2, 688, 8, '#3d4a6b', {});
+    drawText(goBack, W / 2, 706, 9, '#5d7bb0', {});
+  }
+}
+
+/* ---------- screen: options ---------- */
+/* mode tab bar shared by OPTIONS and CONTROLS: whose settings are you editing?
+   full-word tabs, active one filled in its mode colour with a white underline.
+   Dots in the tab corner flag customization (orange = controls, purple = settings).
+   Returns true when a tab tooltip was drawn, so callers can hide their subtitle. */
+function drawModeTabs(ty, th, get) {
+  const tw = 118, gap = 12;
+  const tx0 = W / 2 - (tw * MODE_META.length + gap * (MODE_META.length - 1)) / 2;
+  let hoverTab = -1;
+  MODE_META.forEach((m, i) => {
+    const x = tx0 + i * (tw + gap);
+    const act = i === get();
+    ctx.save();
+    ctx.fillStyle = act ? m.col : 'rgba(10,16,36,0.9)';
+    rr(x, ty, tw, th, 9); ctx.fill();
+    ctx.strokeStyle = act ? m.col : '#3d5a9c'; ctx.lineWidth = 1.5;
+    rr(x, ty, tw, th, 9); ctx.stroke();
+    if (act) { ctx.fillStyle = '#ffffff'; ctx.fillRect(x + 24, ty + th - 3, tw - 48, 2); }
+    ctx.fillStyle = act ? '#04121f' : '#8fb6ff';
+    ctx.font = '10px ' + FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(m.id, x + tw / 2, ty + th / 2 + 0.5);
+    // dots in the tab corner: orange = custom controls, purple = custom settings,
+    // both when a mode carries both. Dark ring keeps each dot readable on any fill.
+    const cCustom = modeCustom(m.id), sCustom = modeSettingsCustom(m.id);
+    if (cCustom || sCustom) {
+      let dx = x + tw - 12;
+      if (cCustom) {
+        ctx.fillStyle = '#0a0e17';
+        ctx.beginPath(); ctx.arc(dx, ty + 10, 6, 0, TAU); ctx.fill();
+        ctx.fillStyle = '#ff9a3d';
+        ctx.beginPath(); ctx.arc(dx, ty + 10, 4.4, 0, TAU); ctx.fill();
+        dx -= 13;
+      }
+      if (sCustom) {
+        ctx.fillStyle = '#0a0e17';
+        ctx.beginPath(); ctx.arc(dx, ty + 10, 6, 0, TAU); ctx.fill();
+        ctx.fillStyle = '#c77dff';
+        ctx.beginPath(); ctx.arc(dx, ty + 10, 4.4, 0, TAU); ctx.fill();
+      }
+    }
+    ctx.restore();
+    // hover detection: convert this tab's design-space rect to canvas space via the
+    // live transform (robust across the menu scaling) and test the pointer against it
+    const tr = ctx.getTransform();
+    const tl = tr.transformPoint({ x, y: ty });
+    const br = tr.transformPoint({ x: x + tw, y: ty + th });
+    if (ptr.x >= tl.x && ptr.x <= br.x && ptr.y >= tl.y && ptr.y <= br.y) hoverTab = i;
+  });
+  // tooltip: hovering a DOTTED tab wins; otherwise the active (focused) tab when dotted
+  const focused = get();
+  let tipMode = -1;
+  if (hoverTab >= 0 && (modeCustom(MODE_META[hoverTab].id) || modeSettingsCustom(MODE_META[hoverTab].id))) tipMode = hoverTab;
+  else if (modeCustom(MODE_META[focused].id) || modeSettingsCustom(MODE_META[focused].id)) tipMode = focused;
+  if (tipMode < 0) return false;
+  // the legend pill itself, tucked right under the tab bar
+  const m = MODE_META[tipMode].id;
+  const c = modeCustom(m), s = modeSettingsCustom(m);
+  const bits = [];
+  if (c) bits.push('ORANGE = CONTROLS');
+  if (s) bits.push('PURPLE = SETTINGS');
+  const tip = m + ': CUSTOM — ' + bits.join(' · ');
+  const ty2 = ty + th + 7;
+  ctx.font = '8px ' + FONT;
+  const w = ctx.measureText(tip).width + 26;
+  ctx.fillStyle = 'rgba(4,8,20,0.94)';
+  rr(W / 2 - w / 2, ty2 - 7, w, 15, 5); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,154,61,0.55)'; ctx.lineWidth = 1;
+  rr(W / 2 - w / 2, ty2 - 7, w, 15, 5); ctx.stroke();
+  drawText(tip, W / 2, ty2, 8, '#ffd23b', {});
+  return true;
+}
+function drawOptions() {
+  drawText('OPTIONS', W / 2, 48, 22, '#29d8ff', { glow: 14 });
+  drawModeTabs(80, 26, () => optTab); // tabs + customization dots + tab tooltip strip
+  Menu.draw();
+  // one-line feedback between the list and the help line (e.g. BACK TO STOCK!)
+  if (menuMsg && perfT < menuMsg.until) drawText(menuMsg.text, W / 2, 626, 10, menuMsg.col, { glow: 6 });
+  // footer — live bound keys so it always matches your remaps
+  const ob = curBinds();
+  drawText('< > / LB·RB MODE  ·  ' + keyLabel(ob.confirm[0]) + ' FLIPS  ·  R ZEROES ROW  ·  X CLEARS TAB MODE  ·  M MUSIC · S SOUND · C RETRO VIBE  ·  ' + keyLabel(ob.back[0]) + ' BACK  ·  DOTS = CUSTOM · ORANGE CONTROLS / PURPLE SETTINGS', W / 2, 660, 8, '#3d4a6b', {});
+}
+
+/* ---------- screen: controls (remap) ---------- */
+let Ctl = { rows: [], sel: 0, bind: null, from: 'options' };
+let ctlTab = 0; // which MODE_META entry the remap screen is editing
+const ctlMode = () => MODE_META[ctlTab].id;
+function openControls(from) {
+  Ctl.from = from || 'options';
+  const selId = MODE_INFO[Game.selMode] ? MODE_INFO[Game.selMode].id : Game.mode;
+  ctlTab = Math.max(0, MODE_META.findIndex(m => m.id === selId));
+  Ctl.rows = [
+    { h: 'KEYBOARD' },
+    { a: 'moveL', label: 'MOVE LEFT' },
+    { a: 'moveR', label: 'MOVE RIGHT' },
+    { a: 'launch', label: 'LAUNCH BALL' },
+    { a: 'pause', label: 'PAUSE' },
+    { a: 'confirm', label: 'CONFIRM' },
+    { a: 'back', label: 'BACK' },
+    { h: 'GAMEPAD' },
+    { a: 'launch', label: 'LAUNCH BALL', pad: true },
+    { a: 'confirm', label: 'CONFIRM', pad: true },
+    { a: 'pause', label: 'PAUSE', pad: true },
+    { a: 'back', label: 'BACK', pad: true },
+    { copy: true, label: 'COPY FROM', color: '#ff9a3d' },
+    { reset: true, label: 'RESET TO DEFAULTS', color: '#ff9a3d' },
+    { back: true, label: 'BACK' }
+  ];
+  Ctl.rows.forEach(r => { if (r.copy) r.src = MODE_META.find(m => m.id !== ctlMode()).id; });
+  Ctl.sel = 1; Ctl.bind = null;
+  setScreen('controls');
+}
+Ctl.move = function (d) {
+  do { this.sel = (this.sel + d + this.rows.length) % this.rows.length; } while (this.rows[this.sel].h);
+  playSfx('uiMove');
+};
+Ctl.enter = function () {
+  const r = this.rows[this.sel];
+  if (!r || r.h) return;
+  if (r.copy) { // clone the source mode's whole mapping into the tab's mode
+    const src = r.src;
+    for (const k of KEY_ACTIONS) BINDS[ctlMode()][k] = BINDS[src][k].slice();
+    for (const k of PAD_ACTIONS) PADB[ctlMode()][k] = PADB[src][k].slice();
+    saveBinds(); refreshHint();
+    playSfx('uiSel');
+    const sc = MODE_META.find(m => m.id === src);
+    menuMsg = { text: 'COPIED ' + src + ' → ' + ctlMode() + '!', col: sc ? sc.col : '#ffd23b', until: perfT + 1.6 };
+    return;
+  }
+  if (r.reset) { resetBinds(ctlMode()); return; } // reset the mode on the tab you're editing
+  if (r.back) { setScreen(Ctl.from === 'title' ? 'title' : 'options'); playSfx('uiSel'); return; }
+  Ctl.bind = r; playSfx('uiSel');
+};
+function captureKey(code, rep) {
+  if (rep) return;
+  const row = Ctl.bind; if (!row) return;
+  if (code === 'Escape' || code === 'Backspace') { Ctl.bind = null; playSfx('uiBack'); return; }
+  if (row.pad) return; // binding a pad row — keyboard ignored
+  if (QUICK_KEYS.includes(code)) { playSfx('uiBack'); return; } // M / S / C stay reserved
+  assignKey(code);
+}
+function capturePad(btn) {
+  const row = Ctl.bind; if (!row || !row.pad) return;
+  assignPad(btn);
+}
+function assignKey(code) {
+  const row = Ctl.bind, a = row.a;
+  const b = BINDS[ctlMode()]; // the mode on the tab being edited
+  if (b[a].includes(code)) { // press a bound key again to drop it
+    b[a] = b[a].filter(k => k !== code);
+  } else { // steal it from other actions, cap at 2, keep the primary binding
+    for (const k of KEY_ACTIONS) if (k !== a) b[k] = b[k].filter(x => x !== code);
+    if (b[a].length >= 2) b[a].pop();
+    b[a].push(code);
+  }
+  saveBinds(); Ctl.bind = null;
+  playSfx('uiSel'); refreshHint();
+}
+function assignPad(btn) {
+  const row = Ctl.bind, a = row.a;
+  const pb = PADB[ctlMode()]; // the mode on the tab being edited
+  if (pb[a].includes(btn)) {
+    pb[a] = pb[a].filter(x => x !== btn);
+  } else {
+    for (const k of PAD_ACTIONS) if (k !== a) pb[k] = pb[k].filter(x => x !== btn);
+    if (pb[a].length >= 2) pb[a].pop();
+    pb[a].push(btn);
+  }
+  saveBinds(); Ctl.bind = null;
+  playSfx('uiSel'); refreshHint();
+}
+function drawControls() {
+  drawText('CONTROLS', W / 2, 40, 22, '#29d8ff', { glow: 14 });
+  const tipShown = drawModeTabs(62, 24, () => ctlTab);
+  // one-line guidance under the tabs — the tab tooltip takes the slot when showing
+  if (!tipShown) {
+    if (menuMsg && perfT < menuMsg.until) drawText(menuMsg.text, W / 2, 96, 9, menuMsg.col, { glow: 6 });
+    else if (Ctl.rows[Ctl.sel] && Ctl.rows[Ctl.sel].copy) drawText('< > PICKS THE SOURCE  ·  ENTER COPIES ITS BINDS INTO ' + ctlMode(), W / 2, 96, 8, '#ff9a3d', {});
+    else drawText('ENTER A ROW  ·  PRESS A KEY / BUTTON TO BIND  ·  PRESS A BOUND ONE TO DROP IT', W / 2, 96, 8, '#4a6a9c', {});
+  }
+  const rowH = 29, y0 = 110;
+  Ctl.rows.forEach((r, i) => {
+    const y = y0 + i * rowH;
+    const sel = i === Ctl.sel;
+    const isBind = Ctl.bind === r;
+    if (r.h) {
+      drawText(r.h, W / 2 - 280, y + 20, 9, '#ffd23b', { align: 'left' });
+      return;
+    }
+    if (sel) {
+      ctx.fillStyle = 'rgba(41,216,255,0.10)';
+      rr(W / 2 - 300, y, 600, rowH - 4, 6); ctx.fill();
+      ctx.strokeStyle = 'rgba(41,216,255,0.5)'; ctx.lineWidth = 1;
+      rr(W / 2 - 300, y, 600, rowH - 4, 6); ctx.stroke();
+    }
+    const col = r.color || (sel ? '#ffffff' : '#8fb6ff');
+    drawText((isBind ? '> ' : '') + r.label, W / 2 - 280, y + 19, 9, isBind ? '#ffd23b' : col, { align: 'left' });
+    if (r.reset) drawText('ENTER OR R', W / 2 + 160, y + 19, 8, '#ff9a3d', { align: 'left' });
+    else if (r.back) drawText('ENTER', W / 2 + 160, y + 19, 8, '#8fb6ff', { align: 'left' });
+    else if (r.copy) {
+      drawText('ENTER COPIES', W / 2 + 160, y + 19, 8, '#ff9a3d', { align: 'left' });
+      const sc = MODE_META.find(m => m.id === r.src);
+      drawText('FROM: ' + r.src, W / 2 + 300, y + 19, 8, sc ? sc.col : '#8fb6ff', { align: 'right' });
+    }
+    else {
+      const list = r.pad ? PADB[ctlMode()][r.a] : BINDS[ctlMode()][r.a];
+      let cx = W / 2 + 100;
+      (list.length ? list : ['?']).forEach(k => {
+        const t = keyLabel(k, ctlMode()); // label per the tab's layout (AZERTY etc.)
+        const w = Math.max(30, 10 + t.length * 8);
+        drawKeyCap(t, cx, y + 5, w, rowH - 10);
+        cx += w + 8;
+      });
+      if (isBind) drawText('PRESS A ' + (r.pad ? 'BUTTON' : 'KEY') + '...', cx + 6, y + 19, 8, '#ffd23b', { align: 'left' });
+    }
+  });
+  const yb = y0 + Ctl.rows.length * rowH + 6;
+  drawText('ARROWS NAVIGATE  ·  < > / LB·RB MODE  ·  R RESETS THIS MODE  ·  ESC CANCELS / BACK', W / 2, yb, 8, '#3d4a6b', {});
+  drawText('M / S / C FIXED  ·  D-PAD MOVES  ·  LAYOUT: ' + layoutName(ctlMode()) + '  ·  DOTS = CUSTOM · ORANGE CONTROLS / PURPLE SETTINGS', W / 2, yb + 16, 8, '#3d4a6b', {});
+  if (Ctl.bind) {
+    ctx.fillStyle = 'rgba(2,3,10,0.72)';
+    rr(W / 2 - 280, yb + 28, 560, 32, 8); ctx.fill();
+    drawText('PRESS ANY ' + (Ctl.bind.pad ? 'BUTTON' : 'KEY') + ' TO ASSIGN  ·  ESC TO CANCEL', W / 2, yb + 48, 9, '#ffd23b', { glow: 6 });
   }
 }
 

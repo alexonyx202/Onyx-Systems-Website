@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="CYBER DASH — an endless synthwave runner. Outrun the mainframe, slide under laser gates, and harvest the grid.">
@@ -867,10 +856,2567 @@ canvas {
       <div>Best<b id="menuBest">0m</b></div>
       <div>Runs<b id="menuRuns">0</b></div>
       <div>Energy<b id="menuCoins">0</b></div>
+    </div>
 
-... [OUTPUT TRUNCATED - 90,480 chars omitted out of 140,406 total] ...
+    <!-- Difficulty -->
+    <div class="diffRow" role="group" aria-label="Difficulty">
+      <button class="diffBtn" data-diff="easy">EASY</button>
+      <button class="diffBtn" data-diff="normal">NORMAL</button>
+      <button class="diffBtn" data-diff="hard">HARD</button>
+    </div>
+    <p class="diffDesc" id="diffDesc">The intended experience</p>
 
- = popups.length - 1; i >= 0; i--) {
+    <button class="btn primary" id="startBtn">▶ START RUN</button>
+
+    <div class="menuGrid">
+      <button class="btn ghost" id="howtoBtn">❓ HOW TO PLAY</button>
+      <button class="btn ghost" id="ctrlsBtn">🎮 CONTROLS</button>
+      <button class="btn ghost" id="optsBtn">⚙️ OPTIONS</button>
+      <button class="btn ghost" id="achBtn">🏆 TROPHIES</button>
+    </div>
+    <button class="btn ghost" id="fullBtn">FULLSCREEN</button>
+  </div>
+
+  <!-- Game over -->
+  <div id="gameover" class="overlay hidden">
+    <div class="vignette"></div>
+    <div class="goCard">
+      <h2>SYSTEM CRASH</h2>
+      <div id="newRecord" class="hidden">★ NEW RECORD ★</div>
+      <div class="goStats">
+        <div>Distance<b id="goDist">0m</b></div>
+        <div>Energy<b id="goCoins">0</b></div>
+        <div class="full">Best<b id="goBest">0m</b></div>
+        <div>Difficulty<b id="goDiff">NORMAL</b></div>
+        <div>Near Misses<b id="goNear">0</b></div>
+        <div class="full">Trophies<b id="goAch">0 / 16</b></div>
+      </div>
+    </div>
+    <button class="btn primary" id="againBtn">RUN AGAIN</button>
+    <button class="btn ghost" id="goAchBtn">🏆 TROPHIES</button>
+    <button class="btn ghost" id="menuBtn">MAIN MENU</button>
+  </div>
+
+  <!-- Pause -->
+  <div id="paused" class="overlay hidden">
+    <div class="vignette"></div>
+    <div class="goCard pauseCard">
+      <h2 class="pauseTitle">PAUSED</h2>
+      <div class="goStats">
+        <div>Distance<b id="pauseDist">0m</b></div>
+        <div>Energy<b id="pauseCoins">0</b></div>
+      </div>
+    </div>
+    <button class="btn primary" id="resumeBtn">RESUME</button>
+    <button class="btn ghost" id="restartBtn">RESTART</button>
+    <div class="menuGrid">
+      <button class="btn ghost" id="pauseAchBtn">🏆 TROPHIES</button>
+      <button class="btn ghost" id="pauseOptsBtn">⚙️ OPTIONS</button>
+    </div>
+    <button class="btn ghost" id="quitBtn">MAIN MENU</button>
+  </div>
+
+  <!-- Achievements -->
+  <div id="ach" class="overlay hidden">
+    <div class="vignette"></div>
+    <h2 class="achTitle">ACHIEVEMENTS</h2>
+    <div class="achCounter" id="achCounter">0 / 16 UNLOCKED</div>
+    <div class="achGrid" id="achGrid"></div>
+    <button class="btn ghost" id="achBackBtn">← BACK</button>
+  </div>
+
+  <!-- How to play -->
+  <div id="howto" class="overlay hidden">
+    <div class="vignette"></div>
+    <h2 class="subTitle">HOW TO PLAY</h2>
+    <div class="panel">
+      <p class="panelText">Run the neon grid as far as you can. The city accelerates — react faster, and don't crash.</p>
+      <div class="obstacleCard"><span class="obIcon server"></span><div><b>SERVER</b> — jump over it (tap again mid-air to double-jump).</div></div>
+      <div class="obstacleCard"><span class="obIcon gate"></span><div><b>LASER GATE</b> — too tall to jump: slide underneath.</div></div>
+      <div class="obstacleCard"><span class="obIcon drone"></span><div><b>DRONE</b> — a hovering sentry. Time your jump to clear it.</div></div>
+      <p class="panelText">⚡ <b>Energy</b> coins add distance — chain them for a combo. Graze an obstacle for a <b>CLOSE CALL</b> bonus. Survive to unlock achievements.</p>
+      <button class="btn primary" id="trainBtn">🎓 START TRAINING</button>
+      <p class="panelText small">Practice is safe — no crashes. Pass all three drills.</p>
+    </div>
+    <button class="btn ghost" id="howtoBack">← BACK</button>
+  </div>
+
+  <!-- Controls -->
+  <div id="ctrls" class="overlay hidden">
+    <div class="vignette"></div>
+    <h2 class="subTitle">CONTROLS</h2>
+    <div class="panel">
+      <div class="ctrlCols">
+        <div class="ctrlCol">
+          <h3>TOUCH</h3>
+          <p><b>Left side</b> — tap / hold / swipe ↑ to jump</p>
+          <p><b>Tap again</b> mid-air — double jump</p>
+          <p><b>Right side</b> — press to slide, release to stand</p>
+          <p><b>Swipe ↓</b> (right side) — slide</p>
+          <p><b>2 fingers ↑ / ↓</b> — jump / slide</p>
+        </div>
+        <div class="ctrlCol">
+          <h3>KEYBOARD</h3>
+          <p><b>Space / ↑</b> — jump</p>
+          <p><b>↓ / S</b> — slide</p>
+          <p><b>P / Esc</b> — pause</p>
+          <p><b>M</b> — mute</p>
+          <p><b>F</b> — fullscreen · <b>R</b> — restart</p>
+        </div>
+      </div>
+    </div>
+    <button class="btn ghost" id="ctrlsBack">← BACK</button>
+  </div>
+
+  <!-- Options -->
+  <div id="opts" class="overlay hidden">
+    <div class="vignette"></div>
+    <h2 class="subTitle">OPTIONS</h2>
+    <div class="panel">
+      <button class="optRow" id="optSound"><span class="optLabel">Sound FX</span><span class="optVal on" id="optSoundVal">ON</span></button>
+      <button class="optRow" id="optMusic"><span class="optLabel">Music</span><span class="optVal on" id="optMusicVal">ON</span></button>
+      <button class="optRow" id="optShake"><span class="optLabel">Screen Shake</span><span class="optVal on" id="optShakeVal">ON</span></button>
+      <button class="optRow" id="optContrast"><span class="optLabel">High Contrast</span><span class="optVal off" id="optContrastVal">OFF</span></button>
+      <button class="optRow" id="optMotion"><span class="optLabel">Reduce Motion</span><span class="optVal off" id="optMotionVal">OFF</span></button>
+    </div>
+    <button class="btn ghost" id="optsBack">← BACK</button>
+  </div>
+</div>
+
+<noscript><div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#050b18;color:#fff;font:16px sans-serif;text-align:center;padding:20px">CYBER DASH needs JavaScript to run.</div></noscript>
+
+<script>
+"use strict";
+
+/* ==========================================================
+   CYBER DASH — endless synthwave runner
+   ----------------------------------------------------------
+   Design pillars (per endless-runner genre research):
+   • Fair, readable difficulty — hand-authored pattern chunks,
+     guaranteed reaction time, smooth capped speed ramp.
+   • Two-axis skill — variable-height jump + double jump over
+     servers, slide under laser gates.
+   • Constant feedback — sound, particles and popups on every
+     action; near-miss and combo rewards for aggressive play.
+   • Juice — trauma-based screen shake, hit-stop + slow-mo on
+     death, squash & stretch, afterimage trails, glows.
+   • Performance — pre-rendered sprites, pooled particles, no
+     per-frame shadowBlur, capped DPR, pause on tab switch.
+   • Accessibility — prefers-reduced-motion, 44px+ targets,
+     readable type, pause + mute.
+========================================================== */
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const game       = document.getElementById("game");
+const scoreEl    = document.getElementById("score");
+const bestEl     = document.getElementById("bestValue");
+const comboEl    = document.getElementById("combo");
+const controlsEl = document.getElementById("controls");
+const toastEl    = document.getElementById("toast");
+const toastText  = document.getElementById("toastText");
+const toastSub   = document.getElementById("toastSub");
+const menuEl     = document.getElementById("menu");
+const gameoverEl = document.getElementById("gameover");
+const pausedEl   = document.getElementById("paused");
+const goDistEl   = document.getElementById("goDist");
+const goCoinsEl  = document.getElementById("goCoins");
+const goBestEl   = document.getElementById("goBest");
+const newRecEl   = document.getElementById("newRecord");
+const menuBestEl = document.getElementById("menuBest");
+const menuRunsEl = document.getElementById("menuRuns");
+const menuCoinsEl= document.getElementById("menuCoins");
+const achEl       = document.getElementById("ach");
+const achGridEl   = document.getElementById("achGrid");
+const achCounterEl= document.getElementById("achCounter");
+const howtoEl     = document.getElementById("howto");
+const ctrlsEl     = document.getElementById("ctrls");
+const optsEl      = document.getElementById("opts");
+const goDiffEl    = document.getElementById("goDiff");
+const goNearEl    = document.getElementById("goNear");
+const goAchEl     = document.getElementById("goAch");
+const pauseDistEl = document.getElementById("pauseDist");
+const pauseCoinsEl= document.getElementById("pauseCoins");
+const diffDescEl  = document.getElementById("diffDesc");
+const muteBtn    = document.getElementById("muteBtn");
+const pauseBtn   = document.getElementById("pauseBtn");
+
+/* ----------------------------------------------------------
+   Config
+---------------------------------------------------------- */
+
+const CFG = {
+  GRAVITY: 1950,
+  JUMP_VY: -755,          // full jump → ~146px peak
+  DOUBLE_VY: -665,
+  JUMP_CUT: 0.45,         // velocity multiplier on release
+  COYOTE: 0.09,           // seconds of grace after leaving ground
+  BUFFER: 0.12,           // jump press stored while airborne
+  SLIDE_BUFFER: 0.3,      // slide press stored while airborne (refreshed while held)
+  FASTFALL: 1100,
+  MAX_SPEED: 900,
+  BASE_SPEED: 320,
+  SPEED_RAMP: 380,        // distance constant for speed curve
+  COMBO_WINDOW: 2.0,
+  NEAR_MISS_PX: 52,       // horizontal clearance for "close call"
+  COIN_R: 9,
+  COIN_PICKUP: 36,        // pickup radius
+  DRONE_R: 20,
+  // Time between the previous chunk's last obstacle passing the player
+  // and the next chunk's first obstacle arriving. Must exceed the jump
+  // airtime (~0.77s) so the player lands before the next chunk arrives.
+  TAIL_GAP_TIME: 1.05,
+};
+
+/* ----------------------------------------------------------
+   State & persistence
+---------------------------------------------------------- */
+
+let state = "menu";       // menu | playing | dying | gameover | paused
+let pausedFrom = "playing";
+
+let W = 600, H = 900, dpr = 1;
+
+let distance = 0;
+let runCoins = 0;
+let runNearMiss = 0;   // close calls this run
+let runTime = 0;    // seconds survived this run (for survive achievements)
+let combo = 0;
+let comboTimer = 0;
+let lastScoreShown = -1;
+let gameOverAt = 0;
+
+let best = Number(localStorage.getItem("cyberDashBest") || 0);
+let totalRuns = Number(localStorage.getItem("cyberDashRuns") || 0);
+let totalCoins = Number(localStorage.getItem("cyberDashCoins") || 0);
+let totalNearMiss = Number(localStorage.getItem("cyberDashNearMiss") || 0);
+let bestCoins = Number(localStorage.getItem("cyberDashBestCoins") || 0);
+let bestTime = Number(localStorage.getItem("cyberDashBestTime") || 0);
+let bestCombo = Number(localStorage.getItem("cyberDashBestCombo") || 0);
+
+let muted = localStorage.getItem("cyberDashMuted") === "1";
+let sfxOn = localStorage.getItem("cyberDashSfx") !== "0";
+let musicOn = localStorage.getItem("cyberDashMusic") !== "0";
+let shakeOn = localStorage.getItem("cyberDashShake") !== "0";
+let highContrast = localStorage.getItem("cyberDashHighContrast") === "1";
+
+const osReduceMotion = window.matchMedia &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let reduceMotionOverride = localStorage.getItem("cyberDashReduceMotion") === "1";
+let reduceMotion = osReduceMotion || reduceMotionOverride;
+
+/* Difficulty presets — tuned around the fairness-gated spawner */
+const DIFFICULTIES = {
+  easy:   { label: "EASY",   rampMult: 1.45, maxMult: 0.82, gapMult: 1.18, coinBonus: 1.5, desc: "Relaxed pace · more room to react" },
+  normal: { label: "NORMAL", rampMult: 1.0,  maxMult: 1.0,  gapMult: 1.0,  coinBonus: 1.0, desc: "The intended experience" },
+  hard:   { label: "HARD",   rampMult: 0.72, maxMult: 1.08, gapMult: 0.82, coinBonus: 1.0, desc: "Fast ramp · tight spacing" },
+};
+let difficulty = localStorage.getItem("cyberDashDiff") || "normal";
+function diff() { return DIFFICULTIES[difficulty] || DIFFICULTIES.normal; }
+
+function setDifficulty(d) {
+  if (!DIFFICULTIES[d]) return;
+  difficulty = d;
+  localStorage.setItem("cyberDashDiff", d);
+  refreshDifficultyUI();
+}
+
+function applyAudioSettings() {
+  if (!ac) return;
+  sfxGain.gain.value = sfxOn ? 0.5 : 0;
+  musicGain.gain.value = musicOn ? 0.12 : 0;
+}
+
+/* Global time (for bobbing drones etc.), unaffected by pause */
+let time = 0;
+let timeScale = 1;
+let hitStop = 0;
+
+/* ----------------------------------------------------------
+   Adaptive quality — holds frame rate on weak devices
+   ----------------------------------------------------------
+   A smoothed frame-time EMA is compared against a 60fps
+   budget. If it misses the budget for DROP_SECS the game drops
+   a quality tier (fewer particles, no glow blits, fewer/zero
+   ghost trails, lower DPR cap); if it runs at full speed for
+   RAISE_SECS it climbs back up. Hysteresis prevents thrash.
+---------------------------------------------------------- */
+
+const QUALITY_TIERS = [
+  { name: "high",   particleScale: 1.0, ghostLimit: 14, ghostAlpha: 0.3, glow: true,  particleGlow: true,  motesCap: 26, streaks: true,  scanlines: true,  dprCap: 2 },
+  { name: "medium", particleScale: 0.55, ghostLimit: 8,  ghostAlpha: 0.2, glow: true,  particleGlow: false, motesCap: 16, streaks: true,  scanlines: true,  dprCap: 1.5 },
+  { name: "low",    particleScale: 0.25, ghostLimit: 0,  ghostAlpha: 0,   glow: false, particleGlow: false, motesCap: 8,  streaks: false, scanlines: false, dprCap: 1 },
+];
+
+const PERF = {
+  TARGET_MS: 20,    // EMA above this (missed vsyncs) → drop a tier
+  GOOD_MS: 17.2,    // EMA at/below this (full 60fps) → raise a tier
+  DROP_SECS: 2,     // sustained before dropping
+  RAISE_SECS: 8,    // sustained before raising (conservative)
+};
+
+let qualityTier = 0;         // index into QUALITY_TIERS
+let perfEMA = 16.7;          // smoothed frame time (ms)
+let perfBad = 0, perfGood = 0, perfTimer = 0;
+let perfNotified = false;
+
+function quality() { return QUALITY_TIERS[qualityTier]; }
+
+function setQuality(tier) {
+  tier = Math.max(0, Math.min(QUALITY_TIERS.length - 1, tier));
+  if (tier === qualityTier) return;
+  const prevDpr = quality().dprCap;
+  qualityTier = tier;
+  perfBad = perfGood = 0;
+
+  // trim the particle pool to the new cap so relief is immediate
+  const cap = particleCap();
+  while (particles.length > cap) particles.shift();
+
+  if (prevDpr !== quality().dprCap) resize();   // re-render at new resolution
+  if (qualityTier >= 2) game.classList.add("perfLow"); else game.classList.remove("perfLow");
+  if (qualityTier >= 2 && !perfNotified) {
+    perfNotified = true;
+    showToast("PERF MODE", "EFFECTS REDUCED · KEEPING IT SMOOTH", 2000);
+  }
+}
+
+/* Feed one real frame interval (ms). Menu + tab-switch gaps are ignored. */
+function sampleFrame(frameMs) {
+  if (state !== "playing" || frameMs <= 0 || frameMs >= 250) return;
+  perfEMA += (frameMs - perfEMA) * 0.06;
+}
+
+/* Called once per second of real time while playing */
+function updateQuality() {
+  perfBad = perfEMA > PERF.TARGET_MS ? perfBad + 1 : 0;
+  perfGood = perfEMA < PERF.GOOD_MS ? perfGood + 1 : 0;
+  if (perfBad >= PERF.DROP_SECS) setQuality(qualityTier + 1);
+  else if (perfGood >= PERF.RAISE_SECS && qualityTier > 0) setQuality(qualityTier - 1);
+}
+
+/* ----------------------------------------------------------
+   Utilities
+---------------------------------------------------------- */
+
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const lerp = (a, b, t) => a + (b - a) * t;
+const rand = (a, b) => a + Math.random() * (b - a);
+
+/* Deterministic pseudo-random for stable scenery */
+function seededRand(seed) {
+  let s = seed >>> 0;
+  return function () {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
+function rr(x, y, w, h, r) {
+  const rad = Math.min(r, w / 2, h / 2);
+  if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, rad); return; }
+  ctx.beginPath();
+  ctx.moveTo(x + rad, y);
+  ctx.arcTo(x + w, y, x + w, y + h, rad);
+  ctx.arcTo(x + w, y + h, x, y + h, rad);
+  ctx.arcTo(x, y + h, x, y, rad);
+  ctx.arcTo(x, y, x + w, y, rad);
+  ctx.closePath();
+}
+
+function makeCanvas(w, h) {
+  const c = document.createElement("canvas");
+  c.width = Math.max(1, Math.round(w));
+  c.height = Math.max(1, Math.round(h));
+  return c;
+}
+
+/* ----------------------------------------------------------
+   Pre-rendered sprites (perf: no shadowBlur in the hot loop)
+---------------------------------------------------------- */
+
+const glowCache = {};
+
+/* Radial gradient glow sprite, cached per color+alpha */
+function glow(color, alpha) {
+  const key = color + ":" + alpha;
+  if (glowCache[key]) return glowCache[key];
+  const size = 128, c = makeCanvas(size, size), g = c.getContext("2d");
+  const grad = g.createRadialGradient(64, 64, 2, 64, 64, 64);
+  grad.addColorStop(0, color);
+  grad.addColorStop(1, "rgba(0,0,0,0)");
+  g.globalAlpha = alpha;
+  g.fillStyle = grad;
+  g.fillRect(0, 0, size, size);
+  glowCache[key] = c;
+  return c;
+}
+
+function drawGlow(x, y, r, color, alpha) {
+  ctx.globalCompositeOperation = "lighter";
+  ctx.drawImage(glow(color, alpha == null ? 0.55 : alpha), x - r, y - r, r * 2, r * 2);
+  ctx.globalCompositeOperation = "source-over";
+}
+
+/* ----------------------------------------------------------
+   Sprites — pre-rendered at 2x source resolution so they stay
+   crisp when the browser downscales them at DPR 1-2.
+---------------------------------------------------------- */
+
+/* Coin — bright gold disc with white highlight + bolt */
+const coinSprite = (function () {
+  const c = makeCanvas(112, 112), g = c.getContext("2d");
+  g.translate(56, 56);
+  // rim (dark bronze edge so it reads against any background)
+  g.beginPath(); g.arc(0, 0, 54, 0, Math.PI * 2);
+  g.fillStyle = "#8a5f0e"; g.fill();
+  // outer glow ring
+  g.beginPath(); g.arc(0, 0, 54, 0, Math.PI * 2);
+  g.strokeStyle = "rgba(255,236,150,0.9)"; g.lineWidth = 3; g.stroke();
+  // face
+  const grad = g.createRadialGradient(-12, -16, 6, 0, 0, 52);
+  grad.addColorStop(0, "#fff3b0");
+  grad.addColorStop(0.55, "#ffd84d");
+  grad.addColorStop(1, "#e09c14");
+  g.beginPath(); g.arc(0, 0, 48, 0, Math.PI * 2);
+  g.fillStyle = grad; g.fill();
+  // inner ring
+  g.beginPath(); g.arc(0, 0, 34, 0, Math.PI * 2);
+  g.strokeStyle = "rgba(170,110,16,0.6)"; g.lineWidth = 4; g.stroke();
+  // gloss highlight
+  g.beginPath(); g.arc(-14, -18, 26, Math.PI * 0.95, Math.PI * 1.55);
+  g.strokeStyle = "rgba(255,255,255,0.65)"; g.lineWidth = 7; g.lineCap = "round"; g.stroke();
+  g.lineCap = "butt";
+  // bolt (dark, high contrast)
+  g.beginPath();
+  g.moveTo(8, -28); g.lineTo(-14, 4); g.lineTo(-2, 4);
+  g.lineTo(-8, 28); g.lineTo(14, -4); g.lineTo(2, -4);
+  g.closePath();
+  g.fillStyle = "#7a4c08"; g.fill();
+  g.strokeStyle = "rgba(255,255,255,0.5)"; g.lineWidth = 2; g.stroke();
+  return c;
+})();
+
+/* Server — tall panel with hazard band, hot cyan rim + LED slots.
+   The bright rim + hazard top make it pop against the dark city. */
+const serverSprite = (function () {
+  const c = makeCanvas(110, 220), g = c.getContext("2d");
+  const r = 16;
+  // silhouette: dark outline so the bright rim reads on light areas too
+  g.beginPath();
+  g.moveTo(r, 0); g.arcTo(110, 0, 110, 220, r); g.arcTo(110, 220, 0, 220, r);
+  g.arcTo(0, 220, 0, 0, r); g.arcTo(0, 0, 110, 0, r);
+  g.closePath();
+  g.fillStyle = "#050e1a"; g.fill();
+  // body with vertical gradient
+  const body = g.createLinearGradient(0, 0, 0, 220);
+  body.addColorStop(0, "#1e3d5e");
+  body.addColorStop(0.5, "#16304b");
+  body.addColorStop(1, "#0e2138");
+  g.beginPath();
+  g.moveTo(r, 0); g.arcTo(110, 0, 110, 220, r); g.arcTo(110, 220, 0, 220, r);
+  g.arcTo(0, 220, 0, 0, r); g.arcTo(0, 0, 110, 0, r);
+  g.closePath();
+  g.fillStyle = body; g.fill();
+  // hot cyan rim (inner edge light)
+  g.strokeStyle = "#7ff3ff"; g.lineWidth = 5;
+  g.beginPath();
+  g.moveTo(r, 2); g.arcTo(108, 2, 108, 220, r - 2); g.arcTo(108, 218, 2, 218, r - 2);
+  g.arcTo(2, 218, 2, 2, r - 2); g.arcTo(2, 2, 108, 2, r - 2);
+  g.closePath();
+  g.stroke();
+  // hazard band across the top (cyan/dark diagonal warning stripes)
+  g.save();
+  g.beginPath();
+  g.moveTo(r, 0); g.arcTo(110, 0, 110, 30, 12); g.lineTo(110, 44); g.lineTo(0, 44); g.lineTo(0, 30);
+  g.closePath();
+  g.clip();
+  g.fillStyle = "#2bd9ee"; g.fillRect(0, 0, 110, 44);
+  g.fillStyle = "#08303f";
+  for (let x = -44; x < 110 + 44; x += 44) {
+    g.beginPath();
+    g.moveTo(x, 0); g.lineTo(x + 22, 0); g.lineTo(x + 44, 44); g.lineTo(x + 22, 44);
+    g.closePath(); g.fill();
+  }
+  g.restore();
+  // bright top edge line
+  g.fillStyle = "#eafdff";
+  g.fillRect(0, 0, 110, 3);
+  // LED slots
+  for (let y = 62; y < 210; y += 54) {
+    g.fillStyle = "#081521";
+    g.fillRect(14, y, 82, 38);
+    g.strokeStyle = "rgba(127,243,255,0.35)"; g.lineWidth = 3;
+    g.strokeRect(14, y, 82, 38);
+    // LED dot (hot cyan with white core)
+    g.fillStyle = "#8ff7ff";
+    g.beginPath(); g.arc(30, y + 19, 7, 0, Math.PI * 2); g.fill();
+    g.fillStyle = "#ffffff";
+    g.beginPath(); g.arc(28, y + 17, 2.5, 0, Math.PI * 2); g.fill();
+    // activity bar (bright green)
+    g.fillStyle = "#6aff9e";
+    g.fillRect(48, y + 14, 36, 6);
+    g.fillStyle = "rgba(255,255,255,0.5)";
+    g.fillRect(48, y + 14, 14, 2);
+  }
+  // energy core line down the middle
+  g.strokeStyle = "rgba(94,234,255,0.5)"; g.lineWidth = 5;
+  g.beginPath(); g.moveTo(55, 48); g.lineTo(55, 214); g.stroke();
+  // vents at the bottom
+  g.fillStyle = "#0a1a2c";
+  for (let x = 20; x < 96; x += 14) g.fillRect(x, 196, 7, 12);
+  return c;
+})();
+
+/* Drone — bright purple hex with hot eye (blades drawn live) */
+const droneSprite = (function () {
+  const c = makeCanvas(128, 128), g = c.getContext("2d");
+  g.translate(64, 64);
+  // outer glow ring
+  g.beginPath(); g.arc(0, 0, 56, 0, Math.PI * 2);
+  g.strokeStyle = "rgba(138,108,255,0.4)"; g.lineWidth = 10; g.stroke();
+  // hull
+  g.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = i / 6 * Math.PI * 2;
+    const px = Math.cos(a) * 40, py = Math.sin(a) * 40;
+    i === 0 ? g.moveTo(px, py) : g.lineTo(px, py);
+  }
+  g.closePath();
+  g.fillStyle = "#11142e"; g.fill();
+  const hull = g.createLinearGradient(0, -40, 0, 40);
+  hull.addColorStop(0, "#3a3f8f");
+  hull.addColorStop(1, "#232755");
+  g.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = i / 6 * Math.PI * 2;
+    const px = Math.cos(a) * 38, py = Math.sin(a) * 38;
+    i === 0 ? g.moveTo(px, py) : g.lineTo(px, py);
+  }
+  g.closePath();
+  g.fillStyle = hull; g.fill();
+  g.strokeStyle = "#b39dff"; g.lineWidth = 6; g.stroke();
+  // inner hex ring
+  g.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = i / 6 * Math.PI * 2 + Math.PI / 6;
+    const px = Math.cos(a) * 24, py = Math.sin(a) * 24;
+    i === 0 ? g.moveTo(px, py) : g.lineTo(px, py);
+  }
+  g.closePath();
+  g.strokeStyle = "rgba(179,157,255,0.6)"; g.lineWidth = 4; g.stroke();
+  // eye — hot core with white glint
+  g.beginPath(); g.arc(0, 0, 17, 0, Math.PI * 2);
+  g.fillStyle = "#ff4d6d"; g.fill();
+  g.beginPath(); g.arc(0, 0, 11, 0, Math.PI * 2);
+  g.fillStyle = "#ffd3dd"; g.fill();
+  g.beginPath(); g.arc(-4, -4, 4, 0, Math.PI * 2);
+  g.fillStyle = "#ffffff"; g.fill();
+  return c;
+})();
+
+/* Buildings for the far skyline — stable, seeded */
+let skylineCanvas = null;
+function buildSkyline() {
+  const c = makeCanvas(W * dpr, H * dpr);
+  const g = c.getContext("2d");
+  g.scale(dpr, dpr);
+  const baseY = ground();
+  const rnd = seededRand(1337);
+
+  // sky gradient — fills the whole background so the canvas is never
+  // left showing stale paint (e.g. the death flash) above the skyline
+  const sky = g.createLinearGradient(0, 0, 0, H);
+  sky.addColorStop(0, "#06152d");
+  sky.addColorStop(0.55, "#102c49");
+  sky.addColorStop(1, "#07111f");
+  g.fillStyle = sky;
+  g.fillRect(0, 0, W, H);
+
+  // far layer — faint silhouettes with a few lights
+  g.fillStyle = "rgba(18,44,72,0.6)";
+  for (let x = -40, i = 0; x < W + 60; i++) {
+    const bw = 46 + rnd() * 42;
+    const h = 150 + rnd() * 200;
+    g.fillRect(x, baseY - h, bw, h);
+    if (rnd() < 0.45) g.fillRect(x + bw / 2 - 1, baseY - h - 12, 2, 12);
+    if (rnd() < 0.25) { g.fillStyle = "rgba(255,180,90,0.5)"; g.fillRect(x + bw * 0.3, baseY - h * 0.5, 3, 3); g.fillStyle = "rgba(18,44,72,0.6)"; }
+    x += bw + 6;
+  }
+
+  // near layer — detailed towers
+  const bw = 62;
+  const n = Math.ceil(W / bw) + 2;
+  for (let i = 0; i < n; i++) {
+    const x = i * bw + rnd() * 20 - 40;
+    const h = 90 + rnd() * 170;
+    // body with vertical gradient
+    const bg = g.createLinearGradient(0, baseY - h, 0, baseY);
+    bg.addColorStop(0, rnd() < 0.5 ? "#16304e" : "#12304a");
+    bg.addColorStop(1, "#0a1c31");
+    g.fillStyle = bg;
+    g.fillRect(x, baseY - h, bw - 8, h);
+    // roof edge light
+    g.fillStyle = "rgba(94,234,255,0.4)";
+    g.fillRect(x, baseY - h, bw - 8, 2);
+    // windows
+    const lit = 0.32 + rnd() * 0.25;
+    for (let wy = baseY - h + 16; wy < baseY - 14; wy += 22) {
+      for (let wx = 0; wx < 2; wx++) {
+        g.fillStyle = rnd() < lit ? "rgba(80,225,245,0.5)" : "rgba(255,210,70,0.22)";
+        g.fillRect(x + 10 + wx * 20, wy, 7, 9);
+      }
+    }
+    // antenna + beacon
+    if (rnd() < 0.45) {
+      g.fillStyle = "#0e2440";
+      g.fillRect(x + (bw - 8) / 2 - 1, baseY - h - 14, 3, 14);
+      g.fillStyle = "#ff5f7d";
+      g.beginPath(); g.arc(x + (bw - 8) / 2, baseY - h - 15, 3, 0, Math.PI * 2); g.fill();
+      g.fillStyle = "#ffd3dd";
+      g.beginPath(); g.arc(x + (bw - 8) / 2 - 1, baseY - h - 16, 1.2, 0, Math.PI * 2); g.fill();
+    }
+    // occasional billboard glow
+    if (rnd() < 0.3) {
+      g.fillStyle = "rgba(255,77,109,0.14)";
+      g.fillRect(x + 12, baseY - h * 0.72, bw - 34, 14);
+    }
+  }
+  skylineCanvas = c;
+}
+
+/* Ground strip + road */
+let groundCanvas = null;
+function buildGround() {
+  const c = makeCanvas(W * dpr, H * dpr);
+  const g = c.getContext("2d");
+  g.scale(dpr, dpr);
+  const baseY = ground();
+  // road fill (brighter so obstacles pop)
+  const road = g.createLinearGradient(0, baseY, 0, H);
+  road.addColorStop(0, "#0d1d33");
+  road.addColorStop(1, "#060d18");
+  g.fillStyle = road;
+  g.fillRect(0, baseY, W, H - baseY);
+  // subtle horizontal grid
+  g.strokeStyle = "rgba(65,220,240,0.07)";
+  g.lineWidth = 1;
+  for (let y = baseY + 14; y < H; y += 28) {
+    g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke();
+  }
+  // perspective lines converging ahead
+  g.strokeStyle = "rgba(65,220,240,0.05)";
+  for (let x = -20; x < W + 40; x += 64) {
+    g.beginPath(); g.moveTo(x, baseY); g.lineTo(x * 0.7 + W * 0.15, H); g.stroke();
+  }
+  groundCanvas = c;
+}
+
+/* ----------------------------------------------------------
+   Resize
+---------------------------------------------------------- */
+
+function resize() {
+  const r = game.getBoundingClientRect();
+  W = Math.max(1, r.width);
+  H = Math.max(1, r.height);
+  dpr = Math.min(window.devicePixelRatio || 1, quality().dprCap);
+
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  buildSkyline();
+  buildGround();
+}
+
+window.addEventListener("resize", resize);
+
+/* ----------------------------------------------------------
+   Audio — procedural synthwave (no assets)
+---------------------------------------------------------- */
+
+let ac = null;
+let masterGain, musicGain, sfxGain, noiseBuf;
+
+function initAudio() {
+  if (ac) { if (ac.state === "suspended") ac.resume(); return; }
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return;
+  ac = new AC();
+  masterGain = ac.createGain();
+  masterGain.gain.value = muted ? 0 : 0.9;
+  masterGain.connect(ac.destination);
+  musicGain = ac.createGain();
+  musicGain.gain.value = 0.12;
+  musicGain.connect(masterGain);
+  sfxGain = ac.createGain();
+  sfxGain.gain.value = sfxOn ? 0.5 : 0;
+  sfxGain.connect(masterGain);
+  musicGain.gain.value = musicOn ? 0.12 : 0;
+  // noise buffer for hats / crashes
+  noiseBuf = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate);
+  const d = noiseBuf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+}
+
+/* Simple tone: freq → endFreq slide, exponential decay envelope */
+function tone(freq, dur, opts) {
+  if (!ac) return;
+  const o = Object.assign({ type: "square", vol: 0.04, endFreq: freq, when: 0 }, opts);
+  const t0 = ac.currentTime + o.when;
+  const osc = ac.createOscillator();
+  const g = ac.createGain();
+  osc.type = o.type;
+  osc.frequency.setValueAtTime(freq, t0);
+  if (o.endFreq !== freq) osc.frequency.exponentialRampToValueAtTime(Math.max(1, o.endFreq), t0 + dur);
+  g.gain.setValueAtTime(o.vol, t0);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  osc.connect(g); g.connect(sfxGain);
+  osc.start(t0); osc.stop(t0 + dur + 0.02);
+}
+
+/* Filtered noise burst */
+function noise(dur, opts) {
+  if (!ac) return;
+  const o = Object.assign({ vol: 0.06, type: "highpass", freq: 4000, when: 0 }, opts);
+  const t0 = ac.currentTime + o.when;
+  const src = ac.createBufferSource();
+  src.buffer = noiseBuf;
+  const f = ac.createBiquadFilter();
+  f.type = o.type; f.frequency.value = o.freq;
+  const g = ac.createGain();
+  g.gain.setValueAtTime(o.vol, t0);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  src.connect(f); f.connect(g); g.connect(sfxGain);
+  src.start(t0); src.stop(t0 + dur + 0.02);
+}
+
+/* SFX */
+const sfx = {
+  jump:      () => tone(340, 0.16, { type: "square", vol: 0.035, endFreq: 640 }),
+  double:    () => tone(520, 0.14, { type: "triangle", vol: 0.05, endFreq: 900 }),
+  land:      (hard) => tone(150, hard ? 0.09 : 0.05, { type: "triangle", vol: hard ? 0.05 : 0.025, endFreq: 80 }),
+  slide:     () => noise(0.22, { vol: 0.05, type: "lowpass", freq: 900 }),
+  coin:      (n) => tone(760 * Math.pow(1.0595, Math.min(n, 14)), 0.09, { type: "triangle", vol: 0.045 }),
+  nearMiss:  () => { noise(0.18, { vol: 0.05, freq: 2500 }); tone(300, 0.18, { type: "sawtooth", vol: 0.03, endFreq: 700 }); },
+  gatePass:  () => { tone(660, 0.08, { type: "triangle", vol: 0.04 }); tone(990, 0.14, { type: "triangle", vol: 0.045, when: 0.06 }); },
+  death:     () => { tone(220, 0.5, { type: "sawtooth", vol: 0.08, endFreq: 42 }); noise(0.4, { vol: 0.09, freq: 800 }); },
+  milestone: () => { tone(523.25, 0.12, { type: "triangle", vol: 0.05 }); tone(659.25, 0.16, { type: "triangle", vol: 0.05, when: 0.09 }); },
+  record:    () => { [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => tone(f, 0.18, { type: "triangle", vol: 0.05, when: i * 0.08 })); },
+  click:     () => tone(900, 0.05, { type: "square", vol: 0.025 }),
+  whoosh:    () => noise(0.12, { vol: 0.04, freq: 5000 }),
+};
+
+/* Music sequencer — A minor synthwave loop, 4 bars */
+const BPM = 138;
+const STEP = 60 / BPM / 2; // 8th notes
+const A2 = 110, F2 = 87.31, C3 = 130.81, G2 = 98;
+const chords = [
+  [220, 261.63, 329.63, 440],    // Am
+  [174.61, 220, 261.63, 349.23], // F
+  [261.63, 329.63, 392, 523.25], // C
+  [196, 246.94, 293.66, 392],    // G
+];
+const bassSeq = [A2, 0, A2, A2, 0, A2, 0, A2,  F2, 0, F2, F2, 0, F2, 0, F2,
+                 C3, 0, C3, C3, 0, C3, 0, C3,  G2, 0, G2, G2, 0, G2, 0, G2];
+const arpPat = [0, 1, 2, 1, 0, 2, 3, 2];
+const hatSeq = [0.5, 0, 0.35, 0, 0.5, 0, 0.7, 0,
+                0.5, 0, 0.35, 0, 0.5, 0, 0.35, 0,
+                0.5, 0, 0.35, 0, 0.5, 0, 0.7, 0,
+                0.5, 0, 0.35, 0, 0.6, 0, 0.35, 0];
+
+let musicStep = 0, nextNoteTime = 0, musicTimer = null;
+
+function playStep(step, t) {
+  const bar = Math.floor(step / 8) % 4;
+  // bass
+  const b = bassSeq[step];
+  if (b) {
+    const osc = ac.createOscillator();
+    const g = ac.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.value = b;
+    const f = ac.createBiquadFilter();
+    f.type = "lowpass"; f.frequency.value = 420;
+    g.gain.setValueAtTime(0.34, t);
+    g.gain.exponentialRampToValueAtTime(0.01, t + 0.22);
+    osc.connect(f); f.connect(g); g.connect(musicGain);
+    osc.start(t); osc.stop(t + 0.24);
+  }
+  // arp
+  const a = arpPat[(step + 4) % 8];
+  const freq = chords[bar][a];
+  const osc2 = ac.createOscillator();
+  const g2 = ac.createGain();
+  osc2.type = "square";
+  osc2.frequency.value = freq;
+  g2.gain.setValueAtTime(0.05, t);
+  g2.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+  osc2.connect(g2); g2.connect(musicGain);
+  osc2.start(t); osc2.stop(t + 0.18);
+  // hat
+  const h = hatSeq[step];
+  if (h) {
+    const src = ac.createBufferSource();
+    src.buffer = noiseBuf;
+    const f2 = ac.createBiquadFilter();
+    f2.type = "highpass"; f2.frequency.value = 7000;
+    const g3 = ac.createGain();
+    g3.gain.setValueAtTime(0.09 * h, t);
+    g3.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+    src.connect(f2); f2.connect(g3); g3.connect(musicGain);
+    src.start(t); src.stop(t + 0.06);
+  }
+}
+
+function scheduleMusic() {
+  if (!ac) return;
+  while (nextNoteTime < ac.currentTime + 0.14) {
+    playStep(musicStep % 32, nextNoteTime);
+    nextNoteTime += STEP;
+    musicStep++;
+  }
+}
+
+function startMusic() {
+  if (musicTimer || !ac) return;
+  nextNoteTime = ac.currentTime + 0.06;
+  musicTimer = setInterval(scheduleMusic, 30);
+}
+
+function setMuted(m) {
+  muted = m;
+  localStorage.setItem("cyberDashMuted", m ? "1" : "0");
+  if (masterGain) masterGain.gain.value = m ? 0 : 0.9;
+  muteBtn.textContent = m ? "🔇" : "🔊";
+}
+
+muteBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  initAudio();
+  setMuted(!muted);
+  if (!muted) sfx.click();
+});
+setMuted(muted); // sync label
+
+/* ----------------------------------------------------------
+   Game entities
+---------------------------------------------------------- */
+
+const ground = () => H * 0.78;
+
+let player = null;
+
+function resetPlayer() {
+  player = {
+    x: W * 0.2,
+    y: ground() - 60,
+    w: 42, h: 60,
+    vy: 0,
+    jumping: false,
+    doubleUsed: false,
+    sliding: false,
+    runAnim: 0,
+    airTime: 0,
+    coyote: 0,
+    jumpBuffer: 0,
+    slideHeld: false,
+    slideBuffer: 0,
+    squashX: 1, squashY: 1,        // squash & stretch targets
+    squashing: 0,
+    lastGrounded: 0,
+    ghostTimer: 0,
+  };
+}
+
+let obstacles = [];
+let coins = [];
+let particles = [];
+let popups = [];
+let ghosts = [];
+let stars = [];
+let motes = [];
+let frameTrace = [];
+
+/* ambient stars */
+for (let i = 0; i < 46; i++) {
+  stars.push({
+    x: Math.random(), y: Math.random() * 0.66,
+    size: Math.random() * 1.8 + 0.6,
+    speed: Math.random() * 0.22 + 0.06,
+    tw: Math.random() * 6.28,
+  });
+}
+
+/* speed streaks at high velocity */
+const streaks = [];
+for (let i = 0; i < 9; i++) {
+  streaks.push({ y: rand(0.1, 0.7), len: rand(40, 110), spd: rand(1.4, 2.2) });
+}
+
+/* ----------------------------------------------------------
+   Pattern spawner — hand-authored chunks, weighted per tier
+---------------------------------------------------------- */
+
+let spawnTimer = 0;
+let spawnIndex = 0; // for sequenced first-chunks
+let spawnTail = null; // last obstacle of the previous chunk (fairness gate)
+const TIERS = [
+  { min: 0,   w: { server: 3, coinArcServer: 2, coinLine: 2 }, gap: [1.15, 1.5] },
+  { min: 40,  w: { server: 2, serverTall: 1.5, laser: 2, serverLaser: 1.5, serverDouble: 1.5, coinArcServer: 2, coinLine: 2, laserDouble: 1 }, gap: [1.0, 1.32] },
+  { min: 150, w: { server: 1.5, serverTall: 1.5, laser: 1.5, serverLaser: 2, laserServer: 1.5, serverDouble: 1.5, drone: 2, laserDouble: 1.5, coinArcServer: 1, coinLine: 1.5, serverGap: 1 }, gap: [0.88, 1.18] },
+  { min: 320, w: { serverTall: 1.5, serverLaser: 2, laserServer: 2, serverDouble: 1.5, serverTrio: 1.5, drone: 1.5, droneServer: 1.5, laserDouble: 2, serverGap: 1.5, serverTower: 1.5, coinLine: 1 }, gap: [0.74, 1.02] },
+];
+
+function currentTier() {
+  let t = 0;
+  for (let i = 0; i < TIERS.length; i++) if (distance >= TIERS[i].min) t = i;
+  return t;
+}
+
+function pickPattern(tier) {
+  const w = TIERS[tier].w;
+  let total = 0;
+  for (const k in w) total += w[k];
+  let r = Math.random() * total;
+  for (const k in w) { r -= w[k]; if (r <= 0) return k; }
+  return "server";
+}
+
+/* Pattern definitions — return {obstacles, coins} relative to start x */
+const PATTERNS = {
+  server(x) {
+    return { obs: [serverOb(x, rand(60, 80))], coins: arcOver(x, 70) };
+  },
+  serverTall(x) {
+    return { obs: [serverOb(x, rand(86, 100))], coins: arcOver(x, 100) };
+  },
+  laser(x) {
+    return { obs: [gateOb(x)] };
+  },
+  serverLaser(x) {
+    return { obs: [serverOb(x, rand(60, 80)), gateOb(x + 330)], coins: arcOver(x, 70) };
+  },
+  laserServer(x) {
+    return { obs: [gateOb(x), serverOb(x + 350, rand(60, 80))] };
+  },
+  serverDouble(x) {
+    return { obs: [serverOb(x, rand(56, 72)), serverOb(x + 300, rand(56, 72))] };
+  },
+  serverTrio(x) {
+    return { obs: [serverOb(x, 62), serverOb(x + 250, 62), serverOb(x + 500, 62)] };
+  },
+  serverGap(x) {
+    return { obs: [serverOb(x, rand(70, 88)), serverOb(x + 540, rand(70, 88))] };
+  },
+  serverTower(x) {
+    return { obs: [serverOb(x, 96), serverOb(x + 300, rand(64, 80))] };
+  },
+  laserDouble(x) {
+    return { obs: [gateOb(x), gateOb(x + 330)] };
+  },
+  drone(x) {
+    return { obs: [droneOb(x)] };
+  },
+  droneServer(x) {
+    return { obs: [droneOb(x), serverOb(x + 380, rand(60, 80))] };
+  },
+  coinArcServer(x) {
+    return { obs: [serverOb(x, rand(60, 80))], coins: arcOver(x, 70) };
+  },
+  coinLine(x) {
+    const list = [];
+    for (let i = 0; i < 6; i++) list.push({ x: x + 40 + i * 46, y: ground() - 26, r: CFG.COIN_R, spin: rand(0, 6), taken: false });
+    return { coins: list };
+  },
+};
+
+let obstacleId = 0;
+
+function serverOb(x, h) {
+  return { id: obstacleId++, x, type: "server", w: 55, h, passed: false, warned: false };
+}
+function gateOb(x) {
+  return { id: obstacleId++, x, type: "gate", w: 46, passed: false, warned: false };
+}
+/* Drone: hovers in the jump zone (bottom ground()-55 ± a purely
+   visual bob of 6px) — always jumpable over, never a run-under/slide
+   trap, and its height is predictable so timing stays fair. */
+function droneOb(x) {
+  return { id: obstacleId++, x, type: "drone", r: CFG.DRONE_R, baseY: ground() - 75, amp: 6, phase: rand(0, 6.28), t: rand(0, 10), passed: false };
+}
+
+function arcOver(x, peak) {
+  const count = 4;
+  const list = [];
+  for (let i = 0; i < count; i++) {
+    const t = i / (count - 1);
+    list.push({
+      x: x + 55 + i * 40,
+      y: ground() - peak - 46 - Math.sin(t * Math.PI) * 52,
+      r: CFG.COIN_R,
+      spin: rand(0, 6),
+      taken: false,
+    });
+  }
+  return list;
+}
+
+function spawnPattern() {
+  const tier = currentTier();
+  let name = pickPattern(tier);
+
+  // First three chunks are always gentle — teach before challenge
+  if (spawnIndex === 0) name = "coinLine";
+  else if (spawnIndex === 1) name = "server";
+  else if (spawnIndex === 2) name = "coinArcServer";
+  spawnIndex++;
+
+  const sx = W + 80;
+  const p = PATTERNS[name](sx);
+  const obs = p.obs || [];
+  for (const o of obs) obstacles.push(o);
+  for (const c of (p.coins || [])) coins.push(c);
+
+  // guided first-run: tag the first server with the JUMP callout
+  if (!tutorial.done && !tutorial.jump) {
+    const srv = obs.find(o => o.type === "server");
+    if (srv) { srv.tut = "jump"; tutorial.jump = true; tutPersist(); }
+  }
+  // guided first-run: tag the first drone with the DOUBLE JUMP callout
+  if (!tutorial.done && !tutorial.drone) {
+    const drn = obs.find(o => o.type === "drone");
+    if (drn) { drn.tut = "drone"; tutorial.drone = true; tutPersist(); }
+  }
+
+  // remember the farthest obstacle of this chunk to gate the next spawn
+  if (obs.length) spawnTail = obs[obs.length - 1];
+}
+
+/* ----------------------------------------------------------
+   Particles / popups / ghosts (pooled arrays, capped)
+---------------------------------------------------------- */
+
+const PARTICLE_CAP = 320;
+function particleCap() { return Math.max(8, Math.round(PARTICLE_CAP * quality().particleScale)); }
+
+/* expanding ring effect (double jump) */
+function drawGlowRing(x, y, color) {
+  particles.push({ x, y, vx: 0, vy: 0, life: 0.28, max: 0.28, size: 5, color, glow: true, grav: 0, ring: true });
+}
+
+function burst(x, y, color, amount, opts) {
+  const o = Object.assign({ speed: 200, up: 0, size: 3, life: 0.6, glow: false }, opts);
+  amount = Math.max(1, Math.round(amount * quality().particleScale));
+  for (let i = 0; i < amount; i++) {
+    if (particles.length >= particleCap()) break;
+    const a = Math.random() * Math.PI * 2;
+    const sp = rand(o.speed * 0.4, o.speed);
+    particles.push({
+      x, y,
+      vx: Math.cos(a) * sp,
+      vy: Math.sin(a) * sp - o.up,
+      life: rand(o.life * 0.6, o.life), max: o.life,
+      size: rand(o.size * 0.6, o.size * 1.3),
+      color, glow: o.glow,
+      grav: 1,
+    });
+  }
+}
+
+/* directional dust for running / landing */
+function dust(x, y, dir, color, n) {
+  n = Math.max(1, Math.round(n * quality().particleScale));
+  for (let i = 0; i < n; i++) {
+    if (particles.length >= particleCap()) break;
+    particles.push({
+      x, y: y + rand(-3, 3),
+      vx: -dir * rand(20, 90),
+      vy: -rand(10, 70),
+      life: rand(0.25, 0.5), max: 0.5,
+      size: rand(2, 4.5),
+      color, glow: false, grav: 0.4,
+    });
+  }
+}
+
+function popup(x, y, text, color, size) {
+  if (popups.length > 22) popups.shift();
+  popups.push({ x, y, text, color, size: size || 18, life: 0.85, max: 0.85 });
+}
+
+function spawnGhost() {
+  const limit = quality().ghostLimit;
+  if (limit === 0) return;   // trails off at low quality
+  ghosts.push({ x: player.x, y: player.y, w: player.w, h: player.h, life: 0.28, max: 0.28 });
+  if (ghosts.length > limit) ghosts.shift();
+}
+
+/* ----------------------------------------------------------
+   Toast (DOM banner)
+---------------------------------------------------------- */
+
+let toastTimer = null;
+function showToast(text, sub, ms) {
+  toastEl.classList.remove("ach");   // normal toasts clear the gold style
+  toastText.textContent = text;
+  toastSub.textContent = sub || "";
+  toastEl.classList.remove("show");
+  void toastEl.offsetWidth; // restart transition
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), ms || 1200);
+}
+
+/* ----------------------------------------------------------
+   Achievements
+   ----------------------------------------------------------
+   Each entry has a `stat` (which persisted stat its progress
+   comes from) and `target`. Unlocks are persisted in
+   localStorage and announced with a gold toast. The TROPHIES
+   screen (menu / game over / pause) lists every badge with a
+   live progress bar.
+---------------------------------------------------------- */
+
+const ACHIEVEMENTS = [
+  { id: "first_run",    name: "FIRST DASH",    desc: "Finish your first run",              icon: "🏁", stat: "runs",          target: 1 },
+  { id: "dash_100",     name: "100 METERS",    desc: "Cover 100m in one run",             icon: "📏", stat: "best",          target: 100 },
+  { id: "dash_500",     name: "500 METERS",    desc: "Cover 500m in one run",             icon: "🚀", stat: "best",          target: 500 },
+  { id: "dash_1000",    name: "1,000M RUN",    desc: "Cover 1,000m in one run",           icon: "🌆", stat: "best",          target: 1000 },
+  { id: "coins_10",     name: "ENERGY SURGE",  desc: "Collect 10 energy in one run",      icon: "⚡", stat: "bestCoins",     target: 10 },
+  { id: "coins_50",     name: "POWER GRID",    desc: "Collect 50 energy in one run",      icon: "💎", stat: "bestCoins",     target: 50 },
+  { id: "coins_total",  name: "HARVESTER",     desc: "Collect 100 energy in total",       icon: "🗃️", stat: "totalCoins",    target: 100 },
+  { id: "combo_5",      name: "COMBO BREAKER", desc: "Reach a ×5 combo",                  icon: "🔗", stat: "bestCombo",     target: 5 },
+  { id: "near_miss_10", name: "CLOSE CALL",    desc: "Earn 10 near-miss bonuses in total", icon: "⚠️", stat: "totalNearMiss", target: 10 },
+  { id: "slide_first",  name: "LOW PROFILE",   desc: "Slide for the first time",          icon: "🛹", stat: null,            target: null },
+  { id: "double_first", name: "AIR ACE",       desc: "Use a double jump",                 icon: "🦅", stat: null,            target: null },
+  { id: "survive_60",   name: "ON THE CLOCK",  desc: "Survive 60 seconds in one run",     icon: "⏱️", stat: "bestTime",      target: 60 },
+  { id: "survive_180",  name: "MARATHON RUN",  desc: "Survive 3 minutes in one run",      icon: "⏳", stat: "bestTime",      target: 180 },
+  { id: "new_record",   name: "NEW RECORD",    desc: "Beat your personal best",           icon: "🏆", stat: null,            target: null },
+  { id: "runs_10",      name: "VETERAN",       desc: "Finish 10 runs",                    icon: "🎮", stat: "runs",          target: 10 },
+  { id: "tutorial_done",name: "FIRST RUN COMPLETE", desc: "Finish all three lessons without skipping", icon: "🎓", stat: null, target: null },
+];
+
+let unlocked = new Set();
+try { unlocked = new Set(JSON.parse(localStorage.getItem("cyberDashAch") || "[]")); } catch (_) { /* fresh save */ }
+let newAchIds = [];   // unlocked since the TROPHIES screen was last opened
+
+function achCur(stat) {
+  switch (stat) {
+    case "best": return best;
+    case "bestCoins": return bestCoins;
+    case "bestTime": return Math.floor(bestTime);
+    case "totalCoins": return totalCoins;
+    case "totalNearMiss": return totalNearMiss;
+    case "bestCombo": return bestCombo;
+    case "runs": return totalRuns;
+    default: return 0;
+  }
+}
+
+function unlockAchievement(id) {
+  if (unlocked.has(id)) return false;
+  unlocked.add(id);
+  localStorage.setItem("cyberDashAch", JSON.stringify([...unlocked]));
+  const a = ACHIEVEMENTS.find(x => x.id === id);
+  if (!a) return true;
+  newAchIds.push(id);
+  if (newAchIds.length > 6) newAchIds.shift();
+  // gold announcement toast
+  showToast(a.icon + "  " + a.name, "ACHIEVEMENT UNLOCKED", 2400);
+  toastEl.classList.add("ach");
+  burst(W / 2, H * 0.24, "#ffd84d", 26, { speed: 260, up: 80, size: 3, life: 0.8, glow: true });
+  sfx.record();
+  return true;
+}
+
+/* In-run checks — cheap, called every frame while playing */
+function checkLiveAchievements() {
+  const m = Math.floor(distance);
+  if (!unlocked.has("dash_100")  && m >= 100)  unlockAchievement("dash_100");
+  if (!unlocked.has("dash_500")  && m >= 500)  unlockAchievement("dash_500");
+  if (!unlocked.has("dash_1000") && m >= 1000) unlockAchievement("dash_1000");
+  if (!unlocked.has("coins_10")  && runCoins >= 10)  unlockAchievement("coins_10");
+  if (!unlocked.has("coins_50")  && runCoins >= 50)  unlockAchievement("coins_50");
+  if (!unlocked.has("coins_total") && totalCoins >= 100) unlockAchievement("coins_total");
+  if (!unlocked.has("combo_5")   && bestCombo >= 5)  unlockAchievement("combo_5");
+  if (!unlocked.has("near_miss_10") && totalNearMiss >= 10) unlockAchievement("near_miss_10");
+  if (!unlocked.has("survive_60")  && runTime >= 60)  unlockAchievement("survive_60");
+  if (!unlocked.has("survive_180") && runTime >= 180) unlockAchievement("survive_180");
+}
+
+/* Overlay sub-screens (how to play / controls / options / trophies).
+   Opening hides the parent overlay; closing reveals it, so BACK always
+   returns to where you were. */
+let overlayReturn = null;
+
+function visibleOverlay() {
+  for (const id of ["menu", "paused", "gameover", "howto", "ctrls", "opts", "ach"]) {
+    const el = document.getElementById(id);
+    if (el && !el.classList.contains("hidden")) return id;
+  }
+  return null;
+}
+
+function openSub(id) {
+  overlayReturn = visibleOverlay();
+  if (overlayReturn && overlayReturn !== id) document.getElementById(overlayReturn).classList.add("hidden");
+  const el = document.getElementById(id);
+  el.classList.remove("hidden");
+  const first = el.querySelector("button");
+  if (first) first.focus();
+}
+
+function closeSub(id) {
+  document.getElementById(id).classList.add("hidden");
+  if (overlayReturn) document.getElementById(overlayReturn).classList.remove("hidden");
+  overlayReturn = null;
+}
+
+/* TROPHIES screen */
+function openAchievements() {
+  buildAchGrid();
+  openSub("ach");
+}
+
+function closeAchievements() {
+  closeSub("ach");
+  newAchIds = [];
+}
+
+/* Difficulty selector */
+function refreshDifficultyUI() {
+  document.querySelectorAll(".diffBtn").forEach(b => {
+    b.classList.toggle("active", b.dataset.diff === difficulty);
+  });
+  if (diffDescEl) diffDescEl.textContent = diff().desc;
+}
+
+document.querySelectorAll(".diffBtn").forEach(b => {
+  b.addEventListener("click", () => {
+    initAudio();
+    sfx.click();
+    setDifficulty(b.dataset.diff);
+  });
+});
+
+/* Options */
+const OPT_GET = {
+  sfx: () => sfxOn, music: () => musicOn, shake: () => shakeOn,
+  contrast: () => highContrast, motion: () => reduceMotionOverride,
+};
+
+function refreshOptionsUI() {
+  const row = (id, val) => {
+    const el = document.getElementById(id);
+    el.textContent = val ? "ON" : "OFF";
+    el.classList.toggle("on", val);
+    el.classList.toggle("off", !val);
+  };
+  row("optSoundVal", sfxOn);
+  row("optMusicVal", musicOn);
+  row("optShakeVal", shakeOn);
+  row("optContrastVal", highContrast);
+  row("optMotionVal", reduceMotionOverride);
+}
+
+function setOption(key, val) {
+  switch (key) {
+    case "sfx": sfxOn = val; localStorage.setItem("cyberDashSfx", val ? "1" : "0"); break;
+    case "music": musicOn = val; localStorage.setItem("cyberDashMusic", val ? "1" : "0"); break;
+    case "shake": shakeOn = val; localStorage.setItem("cyberDashShake", val ? "1" : "0"); break;
+    case "contrast": highContrast = val; localStorage.setItem("cyberDashHighContrast", val ? "1" : "0"); break;
+    case "motion":
+      reduceMotionOverride = val;
+      reduceMotion = osReduceMotion || val;
+      localStorage.setItem("cyberDashReduceMotion", val ? "1" : "0");
+      break;
+  }
+  applyAudioSettings();
+  refreshOptionsUI();
+}
+
+function bindOpt(id, key) {
+  document.getElementById(id).addEventListener("click", () => {
+    initAudio();
+    sfx.click();
+    setOption(key, !OPT_GET[key]());
+  });
+}
+bindOpt("optSound", "sfx");
+bindOpt("optMusic", "music");
+bindOpt("optShake", "shake");
+bindOpt("optContrast", "contrast");
+bindOpt("optMotion", "motion");
+
+/* Arrow-key navigation between the buttons of the visible overlay */
+document.addEventListener("keydown", e => {
+  if (e.code !== "ArrowUp" && e.code !== "ArrowDown") return;
+  if (state === "playing") return;
+  const id = visibleOverlay();
+  if (!id) return;
+  e.preventDefault();
+  const ov = document.getElementById(id);
+  const btns = [...ov.querySelectorAll("button")].filter(b => b.offsetParent !== null);
+  if (!btns.length) return;
+  const idx = btns.indexOf(document.activeElement);
+  const next = idx < 0 ? 0 : (idx + (e.code === "ArrowDown" ? 1 : btns.length - 1)) % btns.length;
+  btns[next].focus();
+});
+
+function buildAchGrid() {
+  const got = ACHIEVEMENTS.filter(a => unlocked.has(a.id)).length;
+  achCounterEl.textContent = got + " / " + ACHIEVEMENTS.length + " UNLOCKED";
+  achGridEl.innerHTML = "";
+  for (const a of ACHIEVEMENTS) {
+    const isUnlocked = unlocked.has(a.id);
+    const card = document.createElement("div");
+    card.className = "achCard " + (isUnlocked ? "unlocked" : "locked");
+    let bar = "";
+    if (isUnlocked) {
+      // completed — always render full (persisted stats can lag a live unlock)
+      bar = `<div class="achBar"><i style="width:100%"></i></div>` +
+            `<span class="achBarLabel">UNLOCKED ✓</span>`;
+    } else if (a.stat) {
+      const cur = Math.min(achCur(a.stat), a.target);
+      const pct = Math.round(cur / a.target * 100);
+      bar = `<div class="achBar"><i style="width:${pct}%"></i></div>` +
+            `<span class="achBarLabel">${cur} / ${a.target}</span>`;
+    } else {
+      bar = `<span class="achBarLabel">—</span>`;
+    }
+    card.innerHTML =
+      (newAchIds.includes(a.id) ? '<span class="achNew">NEW</span>' : "") +
+      `<span class="achIcon">${a.icon}</span>` +
+      `<span class="achName">${a.name}</span>` +
+      `<span class="achDesc">${a.desc}</span>` +
+      bar;
+    achGridEl.appendChild(card);
+  }
+}
+
+/* ----------------------------------------------------------
+   Flow: menu / start / death / restart
+---------------------------------------------------------- */
+
+function startGame() {
+  initAudio();
+  startMusic();
+
+  state = "playing";
+  pausedFrom = "playing";
+  timeScale = 1;
+  hitStop = 0;
+  updateSkipTut();
+
+  distance = 0;
+  runCoins = 0;
+  runNearMiss = 0;
+  runTime = 0;
+  combo = 0;
+  comboTimer = 0;
+  lastScoreShown = -1;
+  speed = CFG.BASE_SPEED;
+  spawnTimer = 0.75;
+  spawnIndex = 0;
+  spawnTail = null;
+  trauma = 0;
+  flash = 0;
+
+  obstacles = [];
+  coins = [];
+  popups = [];
+  ghosts = [];
+
+  resetPlayer();
+
+  menuEl.classList.add("hidden");
+  gameoverEl.classList.add("hidden");
+  pausedEl.classList.add("hidden");
+  achEl.classList.add("hidden");
+  howtoEl.classList.add("hidden");
+  ctrlsEl.classList.add("hidden");
+  optsEl.classList.add("hidden");
+  pauseBtn.style.display = "inline-block";
+  newRecEl.classList.add("hidden");
+  controlsEl.classList.add("dim");
+  lastMilestone = 0;
+  menuScroll = 0;
+  gatePromptShown = false;
+  promptGate = null;
+  hideSlidePrompt();
+
+  updateScore();
+  showToast("GO!", diff().label + " MODE", 700);
+  sfx.whoosh();
+  updateControlsHint();
+}
+
+let deathInfo = null;
+
+function gameOver(killer) {
+  if (state !== "playing") return;
+  state = "dying";
+  hideSlidePrompt();
+  gameOverAt = performance.now();
+  deathInfo = killer ? {
+    dist: Math.floor(distance),
+    type: killer.type,
+    x: Math.round(killer.x),
+    vy: Math.round(player.vy),
+    y: Math.round(player.y),
+    sliding: player.sliding,
+    jumping: player.jumping,
+    trace: frameTrace.slice(-90),
+  } : null;
+
+  hitStop = 0.085;
+  timeScale = 0.32;
+  addTrauma(1);
+  flash = 0.55;
+
+  burst(player.x + player.w / 2, player.y + player.h / 2, "#ff5570", 34, { speed: 340, up: 120, size: 4, life: 0.8, glow: true });
+  burst(player.x + player.w / 2, player.y + player.h / 2, "#ffe35c", 14, { speed: 200, up: 60, size: 3, life: 0.5 });
+  sfx.death();
+
+  totalRuns++;
+  localStorage.setItem("cyberDashRuns", totalRuns);
+}
+
+function showGameOver() {
+  state = "gameover";
+  updateSkipTut();
+  pauseBtn.style.display = "none";
+
+  const final = Math.floor(distance);
+  const isRecord = final > best;
+
+  if (isRecord) {
+    best = final;
+    localStorage.setItem("cyberDashBest", best);
+    bestEl.textContent = best + "m";
+    newRecEl.classList.remove("hidden");
+    sfx.record();
+    // gold confetti rain
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => burst(rand(W * 0.15, W * 0.85), -10, "#ffd84d", 18, { speed: 160, up: -30, size: 3, life: 1.2, glow: true }), i * 160);
+    }
+  }
+
+  goDistEl.textContent = final + "m";
+  goCoinsEl.textContent = runCoins;
+  goBestEl.textContent = best + "m";
+  goDiffEl.textContent = diff().label;
+  goNearEl.textContent = runNearMiss;
+  goAchEl.textContent = ACHIEVEMENTS.filter(a => unlocked.has(a.id)).length + " / " + ACHIEVEMENTS.length;
+
+  menuBestEl.textContent = best + "m";
+  menuRunsEl.textContent = totalRuns;
+  menuCoinsEl.textContent = totalCoins;
+  controlsEl.classList.remove("dim");
+
+  // persist per-run bests + award run-based achievements
+  localStorage.setItem("cyberDashBestCoins", bestCoins);
+  localStorage.setItem("cyberDashBestTime", Math.floor(bestTime));
+  localStorage.setItem("cyberDashBestCombo", bestCombo);
+  if (!unlocked.has("first_run")) unlockAchievement("first_run");
+  if (!unlocked.has("runs_10") && totalRuns >= 10) unlockAchievement("runs_10");
+  if (isRecord && !unlocked.has("new_record")) unlockAchievement("new_record");
+
+  gameoverEl.classList.remove("hidden");
+}
+
+function toMenu() {
+  state = "menu";
+  pausedEl.classList.add("hidden");
+  gameoverEl.classList.add("hidden");
+  achEl.classList.add("hidden");
+  howtoEl.classList.add("hidden");
+  ctrlsEl.classList.add("hidden");
+  optsEl.classList.add("hidden");
+  overlayReturn = null;
+  menuEl.classList.remove("hidden");
+  pauseBtn.style.display = "none";
+  // a mid-run quit still banks the run's bests
+  localStorage.setItem("cyberDashBestCoins", bestCoins);
+  localStorage.setItem("cyberDashBestTime", Math.floor(bestTime));
+  localStorage.setItem("cyberDashBestCombo", bestCombo);
+  controlsEl.classList.remove("dim");
+  hideSlidePrompt();
+  updateSkipTut();
+  obstacles = [];
+  coins = [];
+  popups = [];
+  ghosts = [];
+  resetPlayer();
+  menuScroll = 0;
+}
+
+function pauseGame() {
+  if (state !== "playing" && state !== "practice") return;
+  clearTouches();   // release any in-flight touch so nothing sticks
+  pausedFrom = state;
+  state = "paused";
+  pauseDistEl.textContent = Math.floor(distance) + "m";
+  pauseCoinsEl.textContent = runCoins;
+  pausedEl.classList.remove("hidden");
+  updateSkipTut();
+  if (ac) ac.suspend();
+}
+
+function resumeGame() {
+  if (state !== "paused") return;
+  state = pausedFrom;
+  pausedEl.classList.add("hidden");
+  updateSkipTut();
+  if (ac) ac.resume();
+}
+
+/* ----------------------------------------------------------
+   Player actions
+---------------------------------------------------------- */
+
+function doJump() {
+  if (player.jumping) {
+    // double jump
+    if (!player.doubleUsed) {
+      player.doubleUsed = true;
+      if (state === "practice") practiceUsedDouble = true;
+      if (!unlocked.has("double_first")) unlockAchievement("double_first");
+      // they got it — fade the drone callout once the double jump fires
+      const tutD = obstacles.find(o => o.tut === "drone" && o.tutFade === undefined);
+      if (tutD) tutD.tutFade = 0.3;
+      player.vy = CFG.DOUBLE_VY;
+      burst(player.x + player.w / 2, player.y + player.h, "#5ceaff", 12, { speed: 140, up: 40, size: 3, life: 0.4 });
+      drawGlowRing(player.x + player.w / 2, player.y + player.h, "#5ceaff");
+      sfx.double();
+      squash(0.62, 1.5);
+    }
+    return;
+  }
+
+  if (player.sliding) endSlide();
+  player.slideBuffer = 0;      // jump wins over a buffered slide
+
+  player.vy = CFG.JUMP_VY;
+  player.jumping = true;
+  player.airTime = 0;
+  player.coyote = 0;
+  player.jumpBuffer = 0;
+  // they got the lesson — fade the JUMP callout as soon as they jump
+  const tutOb = obstacles.find(o => o.tut === "jump" && o.tutFade === undefined);
+  if (tutOb) tutOb.tutFade = 0.3;
+  dust(player.x + 4, ground() - 4, 1, "#3f8fae", 8);
+  sfx.jump();
+  squash(0.7, 1.35);
+}
+
+function squash(sx, sy) {
+  player.squashX = sx;
+  player.squashY = sy;
+  player.squashing = 0.16;
+}
+
+function startSlide() {
+  if (player.sliding) return;
+  player.sliding = true;
+  player.h = 38;
+  player.y = ground() - 38;
+  if (!unlocked.has("slide_first")) unlockAchievement("slide_first");
+  totalSlides++;
+  localStorage.setItem("cyberDashSlides", totalSlides);
+  hideSlidePrompt();   // they got it — drop the tutorial the moment they slide
+  sfx.slide();
+  dust(player.x + player.w / 2, ground() - 6, 1, "#3f8fae", 5);
+}
+
+function endSlide() {
+  if (!player.sliding) return;
+  player.sliding = false;
+  player.h = 60;
+  player.y = ground() - 60;
+}
+
+/* Jump input — route by state */
+const jumpLog = [];
+function inputJump() {
+  jumpLog.push({ t: Math.round(performance.now() / 100) / 10, dist: Math.floor(distance) });
+  if (jumpLog.length > 8) jumpLog.shift();
+  initAudio();
+  if (state === "menu") { startGame(); return; }
+  if (state === "gameover") {
+    if (performance.now() - gameOverAt > 420) startGame();
+    return;
+  }
+  if (state === "paused") return;
+  if (state === "dying") return;
+  if (state !== "playing" && state !== "practice") return;
+
+  if (player.jumping) {
+    if (!player.doubleUsed) doJump();
+    return;
+  }
+  if (player.coyote > 0) {
+    doJump();
+  } else {
+    player.jumpBuffer = CFG.BUFFER; // buffer the press
+  }
+}
+
+/* Release jump early → lower jump */
+function inputReleaseJump() {
+  if ((state !== "playing" && state !== "practice") || !player) return;
+  if (player.jumping && player.vy < 0) player.vy *= CFG.JUMP_CUT;
+}
+
+function inputSlideDown() {
+  if ((state !== "playing" && state !== "practice") || !player) return;
+  player.slideHeld = true;
+  if (player.jumping) {
+    // fast-fall now, and auto-slide the moment we land
+    if (player.vy < CFG.FASTFALL) player.vy = CFG.FASTFALL;
+    player.slideBuffer = CFG.SLIDE_BUFFER;
+  } else {
+    startSlide();
+  }
+}
+
+function inputSlideUp() {
+  if ((state !== "playing" && state !== "practice") || !player) return;
+  player.slideHeld = false;
+  endSlide();
+}
+
+/* ----------------------------------------------------------
+   Input: keyboard
+---------------------------------------------------------- */
+
+const JUMP_KEYS = ["Space", "ArrowUp", "KeyW"];
+
+window.addEventListener("keydown", e => {
+  if (JUMP_KEYS.includes(e.code)) {
+    if (!e.repeat) { e.preventDefault(); inputJump(); }
+    return;
+  }
+  if (e.code === "ArrowDown" || e.code === "KeyS") {
+    e.preventDefault();
+    inputSlideDown();
+    return;
+  }
+  if (e.code === "KeyP" || e.code === "Escape") {
+    e.preventDefault();
+    // Esc closes any open sub-screen first
+    const sub = ["howto", "ctrls", "opts", "ach"].find(id => {
+      const el = document.getElementById(id);
+      return el && !el.classList.contains("hidden");
+    });
+    if (sub) { closeSub(sub); return; }
+    if (state === "playing" || state === "practice") pauseGame();
+    else if (state === "paused") resumeGame();
+    return;
+  }
+  if (e.code === "KeyM") {
+    initAudio();
+    setMuted(!muted);
+    return;
+  }
+  if (e.code === "KeyR" && state === "gameover") {
+    startGame();
+    return;
+  }
+  if (e.code === "KeyF") {
+    toggleFullscreen();
+  }
+});
+
+window.addEventListener("keyup", e => {
+  if (JUMP_KEYS.includes(e.code)) inputReleaseJump();
+  if (e.code === "ArrowDown" || e.code === "KeyS") inputSlideUp();
+});
+
+/* ----------------------------------------------------------
+   Input: touch zones + two-finger gestures
+   ----------------------------------------------------------
+   Layout on touch devices:
+
+     ┌───────────────────────────────┐
+     │  top band (~70px) = HUD       │ touches here are ignored
+     ├───────────────┬───────────────┤
+     │  LEFT         │  RIGHT        │
+     │  JUMP zone    │  SLIDE zone   │
+     │  tap = jump   │  swipe ↓ =    │
+     │  swipe ↑ =    │  slide        │
+     │  jump         │  tap = jump   │
+     └───────────────┴───────────────┘
+
+   Single finger:
+     • LEFT zone: tap / hold / swipe ↑ → jump; release cuts jump height
+     • RIGHT zone: press = slide (release = stand), swipe ↓ = slide,
+       swipe ↑ = stand — a real slide button, always responds on press
+     • quick tap (release < 240ms, movement < 40px) → jump (LEFT zone)
+
+   Two fingers (deliberate gesture, anywhere):
+     • swipe up   → jump / double jump
+     • swipe down → slide (lift a finger to stand)
+     • while 2+ fingers are down, taps are suspended — resting
+       thumbs can never fire accidental jumps
+
+   Taps and swipes can never conflict: a tap is decided on quick
+   release with movement under the swipe threshold, a swipe fires
+   the moment movement passes the threshold, and the zones gate
+   which action a single-finger swipe can trigger.
+---------------------------------------------------------- */
+
+const ZONE_JUMP = 0, ZONE_SLIDE = 1;
+
+const TOUCH_CFG = {
+  TAP_MS: 240,     // release within this = a tap
+  SWIPE_DIST: 40,  // movement beyond this = a swipe
+  DEAD_TOP: 70,    // HUD band — touches ignored
+};
+
+const touchTouches = new Map();   // pointerId → state
+let touchHoldTimer = null;        // lone still-press → hold-jump
+let touchGesture = null;          // active two-finger gesture
+
+function touchPos(e) {
+  const r = game.getBoundingClientRect();
+  return { x: e.clientX - r.left, y: e.clientY - r.top };
+}
+
+function clearHoldJump() {
+  if (touchHoldTimer != null) { clearTimeout(touchHoldTimer); touchHoldTimer = null; }
+}
+
+/* A lone still press becomes a jump after TAP_MS (release then cuts it) */
+function armHoldJump(id) {
+  clearHoldJump();
+  touchHoldTimer = setTimeout(() => {
+    const t = touchTouches.get(id);
+    if (!t || t.kind !== "pending" || (state !== "playing" && state !== "practice")) return;
+    t.kind = "held";
+    inputJump();
+  }, TOUCH_CFG.TAP_MS);
+}
+
+/* A second finger landed → the pair becomes one two-finger gesture */
+function formGesture() {
+  const pts = [...touchTouches.values()];
+  let cx = 0, cy = 0;
+  for (const p of pts) { cx += p.x; cy += p.y; }
+  touchGesture = { cx0: cx / pts.length, cy0: cy / pts.length, fired: null };
+  for (const t of pts) if (t.kind === "pending") t.kind = "gesture";
+}
+
+/* Track the two-finger centroid; fire once per direction */
+function updateGesture() {
+  if (!touchGesture) return;
+  const pts = [...touchTouches.values()];
+  if (pts.length < 2) { touchGesture = null; return; }
+  let cx = 0, cy = 0;
+  for (const p of pts) { cx += p.x; cy += p.y; }
+  const dy = cy / pts.length - touchGesture.cy0;
+  const f = touchGesture.fired;
+  if (f === null && Math.abs(dy) >= TOUCH_CFG.SWIPE_DIST) {
+    touchGesture.fired = dy > 0 ? "slide" : "jump";
+    if (dy > 0) inputSlideDown(); else inputJump();
+  } else if (f === "slide" && dy <= -TOUCH_CFG.SWIPE_DIST) {
+    inputSlideUp();               // reverse the gesture → stand
+    touchGesture.fired = "idle";
+  } else if (f === "idle" && dy >= TOUCH_CFG.SWIPE_DIST) {
+    inputSlideDown();
+    touchGesture.fired = "slide";
+  }
+}
+
+/* Release bookkeeping shared by pointerup / pointercancel */
+function releaseTouch(e) {
+  const t = touchTouches.get(e.pointerId);
+  if (!t) return;
+  touchTouches.delete(e.pointerId);
+
+  if (state === "playing" || state === "practice") {
+    if (t.kind === "pending") {
+      // record the release position — the touch state holds the press
+      // position, so without this the movement check would always see 0
+      const p = touchPos(e);
+      t.x = p.x; t.y = p.y;
+      // decide by release movement, not just speed: a still quick tap = jump;
+      // a fast flick that outran pointermove resolves by direction
+      clearHoldJump();
+      const dx = t.x - t.x0, dy = t.y - t.y0;
+      const moved = Math.hypot(dx, dy) >= TOUCH_CFG.SWIPE_DIST;
+      const quick = performance.now() - t.t0 <= TOUCH_CFG.TAP_MS;
+      if (!moved && quick) {
+        inputJump();
+      } else if (moved && Math.abs(dy) > Math.abs(dx) && dy < 0) {
+        inputJump();              // fast up-flick that outran pointermove
+      }
+      // else: horizontal flick, slow release, or a down-move → ignored
+    } else if (t.kind === "held") {
+      inputReleaseJump();         // held jump → jump-cut on release
+    } else if (t.kind === "heldSlide") {
+      inputSlideUp();             // release the slide button → stand
+    } else if (t.kind === "swipe") {
+      inputSlideUp();             // stands after a slide or reverse-up swipe
+    }
+  }
+
+  // two-finger gesture bookkeeping
+  if (touchGesture) {
+    if (touchTouches.size < 2) {
+      if (touchGesture.fired === "slide" || touchGesture.fired === "idle") inputSlideUp();
+      touchGesture = null;
+      for (const [, tt] of touchTouches) if (tt.kind === "gesture") tt.kind = "dead";
+    }
+  }
+}
+
+/* Drop all touch state (pause / death) so nothing sticks */
+function clearTouches() {
+  clearHoldJump();
+  touchGesture = null;
+  for (const id of [...touchTouches.keys()]) touchTouches.delete(id);
+  if (state === "playing" || state === "practice") inputSlideUp();
+}
+
+game.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  initAudio();
+
+  // taps on buttons / overlays never reach the gesture code
+  if (isOverUI(e)) return;
+
+  // menu & game-over restart instantly on press (no gesture latency)
+  if (state === "menu") { startGame(); return; }
+  if (state === "gameover") {
+    if (performance.now() - gameOverAt > 420) startGame();
+    return;
+  }
+  if (state === "paused" || (state !== "playing" && state !== "practice")) return;
+
+  const p = touchPos(e);
+  if (p.y < TOUCH_CFG.DEAD_TOP) return;   // HUD band — ignored
+
+  try { e.target.setPointerCapture(e.pointerId); } catch (_) { /* noop */ }
+
+  const zone = p.x < W / 2 ? ZONE_JUMP : ZONE_SLIDE;
+  const t = {
+    id: e.pointerId,
+    x: p.x, y: p.y, x0: p.x, y0: p.y,
+    t0: performance.now(),
+    zone,
+    kind: zone === ZONE_SLIDE ? "heldSlide" : "pending",
+    // pending → held | swipe | gesture | dead (LEFT zone)
+    // heldSlide → the RIGHT zone's slide button: press = slide
+  };
+  touchTouches.set(e.pointerId, t);
+
+  if (zone === ZONE_SLIDE) {
+    inputSlideDown();     // the button responds the instant it's pressed
+  } else if (touchTouches.size >= 2) {
+    clearHoldJump();
+    formGesture();
+  } else {
+    armHoldJump(t.id);
+  }
+});
+
+game.addEventListener("pointermove", e => {
+  if (state !== "playing" && state !== "practice") return;
+  const t = touchTouches.get(e.pointerId);
+  if (!t || t.kind === "dead") return;
+  const p = touchPos(e);
+  t.x = p.x; t.y = p.y;
+
+  if (touchGesture) { updateGesture(); return; }   // move the centroid
+  if (t.kind === "held") return;                   // hold-jump already fired
+
+  if (t.kind === "heldSlide") {
+    // slide button held — swiping up stands up
+    if (p.y - t.y0 <= -TOUCH_CFG.SWIPE_DIST) {
+      t.kind = "swipe";
+      t.fired = "none";
+      inputSlideUp();
+    }
+  } else if (t.kind === "pending") {
+    const dx = p.x - t.x0, dy = p.y - t.y0;
+    if (Math.hypot(dx, dy) < TOUCH_CFG.SWIPE_DIST) return;
+    clearHoldJump();
+    t.kind = "swipe";
+    // LEFT zone only (RIGHT is never pending) — an up-swipe jumps
+    if (Math.abs(dy) > Math.abs(dx) && dy < 0) {
+      t.fired = "jump";
+      inputJump();
+    } else {
+      t.fired = "none";   // horizontal or down — ignored here
+    }
+  }
+});
+
+window.addEventListener("pointerup", e => releaseTouch(e));
+window.addEventListener("pointercancel", e => releaseTouch(e));
+
+function isOverUI(e) {
+  return e.target.closest(".iconBtn, .btn, #menu, #gameover, #paused, #ach, #howto, #ctrls, #opts, #skipTut");
+}
+
+/* Prevent long-press context menu & text selection */
+game.addEventListener("contextmenu", e => e.preventDefault());
+
+/* ----------------------------------------------------------
+   Speed & difficulty
+---------------------------------------------------------- */
+
+let speed = CFG.BASE_SPEED;
+let flash = 0;
+
+function speedTarget() {
+  const d = diff();
+  return CFG.BASE_SPEED + (CFG.MAX_SPEED * d.maxMult - CFG.BASE_SPEED) * (1 - Math.exp(-distance / (CFG.SPEED_RAMP * d.rampMult)));
+}
+
+function updateSpeed(dt) {
+  const target = speedTarget();
+  speed += (target - speed) * Math.min(1, dt * 0.8);
+}
+
+/* ----------------------------------------------------------
+   Collision helpers
+---------------------------------------------------------- */
+
+function playerBox() {
+  const pad = player.sliding ? 8 : 9;
+  return {
+    x: player.x + pad,
+    y: player.y + (player.sliding ? 2 : 4),
+    w: player.w - pad * 2,
+    h: player.h - (player.sliding ? 4 : 8),
+  };
+}
+
+function rectHit(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+function circleRectHit(cx, cy, r, box) {
+  const nx = clamp(cx, box.x, box.x + box.w);
+  const ny = clamp(cy, box.y, box.y + box.h);
+  const dx = cx - nx, dy = cy - ny;
+  return dx * dx + dy * dy < r * r;
+}
+
+/* ----------------------------------------------------------
+   Update
+---------------------------------------------------------- */
+
+/* Shared player physics — gravity, floor, jump buffer, squash,
+   run dust + ghost trail. Used by both runs and training. */
+function updatePlayerPhysics(dt) {
+  const wasGrounded = player.y >= ground() - player.h - 0.5;
+
+  // a slide press stays live while the button is held, so a press made
+  // mid-air (or a hold through a jump) auto-slides on landing
+  if (player.slideHeld) player.slideBuffer = CFG.SLIDE_BUFFER;
+  else if (player.slideBuffer > 0) player.slideBuffer -= dt;
+
+  player.vy += CFG.GRAVITY * dt;
+  player.y += player.vy * dt;
+
+  if (!player.sliding) player.runAnim += dt * (10 + speed / 55);
+
+  const floorY = ground() - player.h;
+
+  if (player.y >= floorY) {
+    const impact = player.vy;
+    player.y = floorY;
+    player.vy = 0;
+    player.jumping = false;
+    player.doubleUsed = false;
+    player.coyote = CFG.COYOTE;
+    if (!wasGrounded) onLand(impact);
+  } else {
+    player.coyote -= dt;
+    player.airTime += dt;
+  }
+
+  player.jumpBuffer -= dt;
+  if (player.jumpBuffer > 0 && player.y >= floorY - 0.5) {
+    player.jumpBuffer = 0;
+    doJump();
+  }
+
+  // buffered slide fires on landing (jump takes priority — doJump clears it)
+  if (player.slideBuffer > 0 && !player.jumping) {
+    player.slideBuffer = 0;
+    startSlide();
+  }
+
+  /* squash & stretch springs back */
+  if (player.squashing > 0) {
+    player.squashing -= dt;
+    if (player.squashing <= 0) { player.squashX = 1; player.squashY = 1; }
+    else {
+      const k = player.squashing / 0.16;
+      player.squashX = lerp(1, player.squashX, k);
+      player.squashY = lerp(1, player.squashY, k);
+    }
+  }
+
+  /* run dust + high-speed trail */
+  if (!player.jumping && !player.sliding && Math.random() < dt * 12) {
+    dust(player.x + 6, ground() - 4, 1, "rgba(94,234,255,0.5)", 1);
+  }
+  player.ghostTimer -= dt;
+  if (player.ghostTimer <= 0 && speed > 560) {
+    player.ghostTimer = 0.05;
+    spawnGhost();
+  }
+}
+
+function update(dt) {
+  time += dt;
+  trauma = Math.max(0, trauma - 1.7 * dt);
+  if (flash > 0) flash -= dt * 2.2;
+
+  if (state === "playing") {
+    frameTrace.push({
+      f: frameCount,
+      dt: Math.round(dt * 1000),
+      d: Math.floor(distance),
+      y: Math.round(player.y),
+      vy: Math.round(player.vy),
+      h: player.h,
+      s: player.sliding ? 1 : 0,
+      o: obstacles.map(o => Math.round(o.x) + o.type[0] + (o.type === "server" ? Math.round(o.h) : "")).join(","),
+    });
+    if (frameTrace.length > 900) frameTrace.splice(0, 300);
+  }
+
+  updateParticles(dt);
+  updatePopups(dt);
+  updateMotes(dt);
+
+  if (state === "menu") {
+    menuScroll += 90 * dt;
+    player.runAnim += dt * 5;
+    // idle breathing
+    if (player.squashing <= 0) {
+      player.squashX = 1 + Math.sin(time * 2.4) * 0.02;
+      player.squashY = 1 - Math.sin(time * 2.4) * 0.02;
+    }
+    return;
+  }
+
+  if (state === "practice") { updatePractice(dt); return; }
+
+  if (state === "paused") return;
+
+  if (state === "dying") {
+    timeScale += (1 - timeScale) * Math.min(1, dt * 3);
+    if (performance.now() - gameOverAt > 620) showGameOver();
+    return;
+  }
+
+  if (state === "gameover") return;
+
+  /* ------- playing ------- */
+
+  updateSpeed(dt);
+
+  runTime += dt;
+  if (runTime > bestTime) bestTime = runTime;   // in-memory; persisted at run end
+  distance += speed * dt / 100;
+  if (comboTimer > 0) {
+    comboTimer -= dt;
+    if (comboTimer <= 0 && combo >= 2) {
+      combo = 0;
+      comboEl.classList.add("hidden");
+    }
+  }
+
+  updateScore();
+  checkMilestones();
+  checkLiveAchievements();
+
+  updatePlayerPhysics(dt);
+
+  /* spawning — time-gated on the previous chunk's tail: the next chunk
+     cannot spawn until its first obstacle would arrive at least
+     TAIL_GAP_TIME after the previous chunk's last obstacle passed the
+     player, so consecutive chunks can never stack obstacles too close. */
+  spawnTimer -= dt;
+  if (spawnTimer <= 0) {
+    const gateX = W + 80 - CFG.TAIL_GAP_TIME * speed;
+    if (spawnTail && spawnTail.x > gateX) {
+      spawnTimer = Math.max(0.05, (spawnTail.x - gateX) / speed);
+    } else {
+      spawnPattern();
+      const t = currentTier();
+      spawnTimer = rand(TIERS[t].gap[0], TIERS[t].gap[1]) * diff().gapMult;
+    }
+  }
+
+  /* obstacles */
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    const o = obstacles[i];
+    o.x -= speed * dt;
+
+    if (o.type === "drone") {
+      o.t += dt;
+      o.y = o.baseY + Math.sin(o.t * 1.6 + o.phase) * o.amp;
+    }
+
+    // entry highlight timer — one expanding ring when it first appears
+    if (o.enterT === undefined && o.x < W + 30) o.enterT = 0;
+    else if (o.enterT !== undefined) o.enterT += dt;
+
+    // tutorial callout fade-out timer
+    if (o.tutFade !== undefined) {
+      o.tutFade -= dt;
+      if (o.tutFade <= 0) { o.tutFade = undefined; o.tut = undefined; }
+    }
+
+    // off screen → remove
+    if (o.x < -140) { obstacles.splice(i, 1); continue; }
+
+    // guided first-run: announce the first approaching gate with SLIDE!
+    if (o.type === "gate" && !o.warned && o.x < W * 0.7 && !tutorial.done && !tutorial.slide && !gatePromptShown) {
+      o.warned = true;
+      gatePromptShown = true;
+      tutorial.slide = true;
+      tutPersist();
+      promptGate = o;
+      showSlidePrompt();
+    }
+
+    // near-miss / pass
+    if (!o.passed && o.x + (o.w || o.r * 2) < player.x + 8) {
+      o.passed = true;
+      // tutorial callout fades out once its obstacle passes the player
+      if (o.tut && o.tutFade === undefined) o.tutFade = 0.3;
+      // one-shot reward for a clean slide under a laser gate
+      if (o.type === "gate" && player.sliding && !o.slid) {
+        o.slid = true;
+        popup(player.x + player.w / 2, player.y - 30, "SLIDE!", "#7dffc4", 24);
+        burst(o.x + o.w / 2, ground() - 40, "#7dffc4", 12, { speed: 200, up: 60, size: 3, life: 0.5, glow: true });
+        burst(o.x + o.w / 2, ground() - 40, "#ffe35c", 6, { speed: 150, up: 40, size: 2.5, life: 0.4, glow: true });
+        sfx.gatePass();
+      }
+      if (o.type !== "drone") {
+        const box = obstacleBox(o);
+        const pb = playerBox();
+        const clear = player.x + 8 - (o.x + o.w);
+        const verticalClose = pb.y < box.y + box.h + 10 && pb.y + pb.h > box.y - 10;
+        if (clear < CFG.NEAR_MISS_PX && verticalClose) nearMiss(o);
+      }
+    }
+
+    // grind trail: sparks at the beam's contact edge while the slider
+    // is horizontally under the gate (the boxes only touch, so this is
+    // a horizontal-overlap check, not rectHit)
+    if (o.type === "gate" && player.sliding && o.x < player.x + 35 && o.x + o.w > player.x + 7) {
+      sparkGate(o);
+    }
+
+    // tutorial prompt auto-hides once its gate is gone
+    if (promptGate && (promptGate.passed || promptGate.x < -60)) {
+      promptGate = null;
+      hideSlidePrompt();
+    }
+
+    // collision
+    const pb = playerBox();
+    if (o.type === "drone") {
+      if (circleRectHit(o.x, o.y, o.r, pb)) { gameOver(o); return; }
+    } else {
+      const box = obstacleBox(o);
+      if (rectHit(pb, box)) {
+        if (o.type === "gate" && player.sliding) {
+          // safe under the beam — rewards fire from the pass / grind logic
+        } else {
+          gameOver(o);
+          return;
+        }
+      }
+    }
+  }
+
+  /* coins */
+  for (let i = coins.length - 1; i >= 0; i--) {
+    const c = coins[i];
+    c.x -= speed * dt;
+    c.spin += dt * 7;
+    if (c.x < -40 || c.taken) { coins.splice(i, 1); continue; }
+
+    const dx = player.x + player.w / 2 - c.x;
+    const dy = player.y + player.h / 2 - c.y;
+    if (dx * dx + dy * dy < CFG.COIN_PICKUP * CFG.COIN_PICKUP) {
+      c.taken = true;
+      collectCoin(c);
+    }
+  }
+
+  updateGhosts(dt);
+}
+
+function onLand(impact) {
+  const hard = impact > 620;
+  if (hard) {
+    squash(1.28, 0.72);
+    dust(player.x + player.w / 2, ground() - 4, 1, "#6fd8ec", 9);
+    addTrauma(0.14);
+    sfx.land(true);
+  } else {
+    squash(1.16, 0.85);
+    dust(player.x + player.w / 2, ground() - 4, 1, "#3f8fae", 4);
+    sfx.land(false);
+  }
+}
+
+function obstacleBox(o) {
+  if (o.type === "server") return { x: o.x + 5, y: ground() - o.h + 3, w: o.w - 10, h: o.h - 3 };
+  if (o.type === "gate") return { x: o.x + 5, y: ground() - 155, w: o.w - 10, h: 117 };
+  return { x: o.x - o.r, y: o.y - o.r, w: o.r * 2, h: o.r * 2 };
+}
+
+function nearMiss(o) {
+  const bx = obstacleBox(o);
+  const cx = clamp(o.type === "gate" ? o.x + o.w / 2 : o.x + o.w / 2, 0, W);
+  runNearMiss++;
+  totalNearMiss++;
+  localStorage.setItem("cyberDashNearMiss", totalNearMiss);
+  distance += 15;
+  popup(cx, bx.y - 26, "CLOSE! +15", "#5eeaff", 19);
+  burst(o.x + o.w / 2, bx.y, "#5eeaff", 10, { speed: 130, size: 2.5, life: 0.4, glow: true });
+  addTrauma(0.1);
+  sfx.nearMiss();
+}
+
+/* Grind sparks — emitted every frame while sliding under a gate.
+   A bright, backward-flying comet trail at the beam's contact edge
+   (the sliding player's head is at ground()-38, the beam's bottom).
+   Cheap: ~2 particles/frame, capped by the pool. */
+function sparkGate(o) {
+  const n = Math.max(1, Math.round(2 * quality().particleScale));
+  for (let i = 0; i < n; i++) {
+    if (particles.length >= particleCap()) break;
+    particles.push({
+      x: player.x + player.w / 2 + rand(-7, 7),
+      y: ground() - 40 + rand(-2, 5),
+      vx: -rand(70, 270),
+      vy: -rand(0, 140),
+      life: rand(0.14, 0.3), max: 0.3,
+      size: rand(1.5, 3),
+      color: Math.random() < 0.6 ? "#7dffc4" : "#ffe35c",
+      glow: quality().particleGlow,
+      grav: 0.7,
+    });
+  }
+}
+
+function collectCoin(c) {
+  runCoins++;
+  totalCoins++;
+  localStorage.setItem("cyberDashCoins", totalCoins);
+  if (comboTimer > 0) combo++; else combo = 1;
+  if (runCoins > bestCoins) bestCoins = runCoins;      // in-memory; persisted at run end
+  if (combo > bestCombo) bestCombo = combo;
+  comboTimer = CFG.COMBO_WINDOW;
+
+  const bonus = combo >= 3 ? combo : 0;
+  distance += (5 + bonus) * diff().coinBonus;
+
+  if (combo >= 3) {
+    comboEl.textContent = "×" + combo;
+    comboEl.classList.remove("hidden");
+    comboEl.classList.remove("pop");
+    void comboEl.offsetWidth;
+    comboEl.classList.add("pop");
+  }
+
+  popup(c.x, c.y - 16, "+" + (5 + bonus), "#ffd84d", combo >= 3 ? 20 : 16);
+  burst(c.x, c.y, "#ffe35c", 9, { speed: 120, size: 2.5, life: 0.4, glow: true });
+  sfx.coin(combo);
+}
+
+function checkMilestones() {
+  const m = Math.floor(distance);
+  if (m > lastMilestone && m % 100 === 0 && m > 0) {
+    lastMilestone = m;
+    const names = ["ONLINE", "VELOCITY", "TURBO", "HYPER", "OVERDRIVE", "MAXIMUM", "LIGHTSPEED", "WARP", "CYBER RUN", "NIRVANA"];
+    const name = names[Math.min(m / 100 - 1, names.length - 1)];
+    showToast(m + "m", name);
+    burst(W / 2, H * 0.2, "#5eeaff", 22, { speed: 260, up: 60, size: 3, life: 0.7, glow: true });
+    addTrauma(0.22);
+    sfx.milestone();
+  }
+  // unlock toasts
+  if (m >= 40 && !slideShown) { slideShown = true; showToast("SLIDE UNLOCKED", "PRESS / SWIPE ↓ (RIGHT SIDE) · OR 2-FINGER ↓", 1800); }
+  if (m >= 150 && !droneShown) { droneShown = true; showToast("DRONES ONLINE", "TIME YOUR JUMPS", 1500); }
+}
+
+let lastMilestone = 0;
+let slideShown = false, droneShown = false;
+
+/* Guided first-run — one-time overlay callouts that teach the three core
+   skills in the order the game presents them: JUMP on the first server
+   (canvas callout), SLIDE on the first gate (big DOM prompt), and the
+   DOUBLE JUMP on the first drone (two-phase canvas callout). Once all
+   lessons have been delivered they fade out for good (persisted).
+   Established players skip it. */
+const slidePromptEl = document.getElementById("slidePrompt");
+let totalSlides = Number(localStorage.getItem("cyberDashSlides") || 0);
+let gatePromptShown = false;   // per-run
+let promptGate = null;         // gate currently driving the prompt
+
+const tutorial = {
+  done: localStorage.getItem("cyberDashTut") === "1",
+  jump: localStorage.getItem("cyberDashTutJump") === "1",
+  slide: localStorage.getItem("cyberDashTutSlide") === "1",
+  drone: localStorage.getItem("cyberDashTutDrone") === "1",
+  skipped: false,   // in-memory — set only by the SKIP button
+};
+// players who have already played skip the onboarding entirely
+if (!tutorial.done && (best > 0 || totalRuns > 0 || totalSlides > 0)) tutorial.done = true;
+
+function tutPersist() {
+  localStorage.setItem("cyberDashTutJump", tutorial.jump ? "1" : "0");
+  localStorage.setItem("cyberDashTutSlide", tutorial.slide ? "1" : "0");
+  localStorage.setItem("cyberDashTutDrone", tutorial.drone ? "1" : "0");
+  if (tutorial.jump && tutorial.slide && tutorial.drone) {
+    tutorial.done = true;
+    localStorage.setItem("cyberDashTut", "1");
+    updateSkipTut();   // onboarding finished — the skip button disappears
+    // celebrate: the lessons were all delivered without hitting SKIP
+    if (!tutorial.skipped) unlockAchievement("tutorial_done");
+  }
+}
+
+function showSlidePrompt() { slidePromptEl.classList.add("show"); }
+function hideSlidePrompt() { slidePromptEl.classList.remove("show"); }
+
+/* Skip-tutorial button — lets impatient players end the onboarding early.
+   Visible only while a run is active and the tutorial isn't done. */
+const skipTutEl = document.getElementById("skipTut");
+function updateSkipTut() {
+  skipTutEl.classList.toggle("show", state === "playing" && !tutorial.done);
+}
+
+function skipTutorial() {
+  tutorial.skipped = true;    // mark BEFORE tutPersist so the award check sees it
+  tutorial.jump = tutorial.slide = tutorial.drone = true;
+  tutPersist();               // completes + persists everything, hides the button
+  hideSlidePrompt();
+  promptGate = null;
+  gatePromptShown = true;     // never re-trigger the SLIDE prompt this run
+  // clear any live canvas callouts immediately
+  for (const o of obstacles) { o.tut = undefined; o.tutFade = undefined; }
+  showToast("TUTORIAL SKIPPED", "GOOD LUCK OUT THERE", 1400);
+  sfx.click();
+}
+
+skipTutEl.addEventListener("click", e => {
+  e.stopPropagation();
+  skipTutorial();
+  skipTutEl.blur();
+});
+skipTutEl.addEventListener("pointerdown", e => e.stopPropagation());
+skipTutEl.addEventListener("keydown", e => {
+  if (e.code === "Space" || e.code === "Enter") e.stopPropagation();
+});
+
+/* ----------------------------------------------------------
+   Training mode — a replayable, death-free mini-tutorial that
+   walks through the three skills (JUMP → SLIDE → DOUBLE JUMP)
+   on demand from the HOW TO PLAY screen.
+---------------------------------------------------------- */
+
+let practiceStep = 0;         // 0=jump, 1=slide, 2=drone, 3=complete
+let practiceUsedDouble = false;
+let practiceDoneAt = 0;
+const PRACTICE_SPEED = 360;
+const PRACTICE_STEP_NAMES = ["JUMP THE SERVER", "SLIDE THE GATE", "DOUBLE JUMP THE DRONE"];
+
+function startPractice() {
+  initAudio();
+  state = "practice";
+  pausedFrom = "practice";
+  timeScale = 1;
+  hitStop = 0;
+  trauma = 0;
+  flash = 0;
+  distance = 0;
+  speed = PRACTICE_SPEED;
+  practiceStep = 0;
+  practiceUsedDouble = false;
+  obstacles = [];
+  coins = [];
+  popups = [];
+  ghosts = [];
+
+  resetPlayer();
+
+  menuEl.classList.add("hidden");
+  gameoverEl.classList.add("hidden");
+  pausedEl.classList.add("hidden");
+  achEl.classList.add("hidden");
+  howtoEl.classList.add("hidden");
+  ctrlsEl.classList.add("hidden");
+  optsEl.classList.add("hidden");
+  overlayReturn = null;
+  pauseBtn.style.display = "inline-block";
+  updateSkipTut();
+  controlsEl.classList.add("dim");
+
+  practiceSpawnStep();
+  updatePracticeHUD();
+  showToast("TRAINING", "STEP 1 OF 3 — JUMP", 1800);
+  sfx.whoosh();
+}
+
+function practiceSpawnStep() {
+  obstacles = [];
+  coins = [];
+  popups = [];
+  practiceUsedDouble = false;
+  hideSlidePrompt();
+  const sx = W + 100;
+  let o;
+  if (practiceStep === 0) {
+    o = serverOb(sx, 68);
+    o.tut = "jump";
+  } else if (practiceStep === 1) {
+    o = gateOb(sx);
+    showSlidePrompt();
+  } else {
+    o = droneOb(sx);
+    o.tut = "drone";
+  }
+  obstacles.push(o);
+}
+
+function practicePass(o) {
+  if (o.type === "gate") return player.sliding;
+  if (o.type === "drone") return practiceUsedDouble;   // the lesson IS the double jump
+  return true;                                          // server — cleared it
+}
+
+function practiceAdvance() {
+  practiceStep++;
+  if (practiceStep >= 3) {
+    // complete — celebrate, then back to the menu
+    practiceDoneAt = performance.now();
+    obstacles = [];
+    hideSlidePrompt();
+    scoreEl.innerHTML = "<small>DONE!</small>";
+    showToast("TRAINING COMPLETE!", "NOW GO RUN THE GRID", 2000);
+    burst(W / 2, H * 0.3, "#ffd84d", 30, { speed: 300, up: 100, size: 3, life: 0.9, glow: true });
+    burst(W / 2, H * 0.3, "#5eeaff", 20, { speed: 260, up: 80, size: 3, life: 0.8, glow: true });
+    sfx.record();
+    return;
+  }
+  practiceSpawnStep();
+  updatePracticeHUD();
+  showToast("STEP " + (practiceStep + 1) + "/3", PRACTICE_STEP_NAMES[practiceStep], 1600);
+  sfx.whoosh();
+}
+
+function practiceRetry() {
+  practiceSpawnStep();   // fresh obstacle far right — the callout re-teaches
+  popup(player.x + player.w / 2, player.y - 40, "TRY AGAIN", "#ffb35c", 16);
+  sfx.click();
+}
+
+function updatePracticeHUD() {
+  if (state !== "practice") return;
+  scoreEl.innerHTML = "STEP " + (practiceStep + 1) + "/3";
+  bestEl.textContent = "TRAINING";
+}
+
+function updatePractice(dt) {
+  // completion hold → back to menu
+  if (practiceStep >= 3) {
+    if (performance.now() - practiceDoneAt > 1400) toMenu();
+    return;
+  }
+
+  distance += speed * dt / 100;   // background scrolls; never scored in training
+  updatePlayerPhysics(dt);
+  updateGhosts(dt);
+
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    const o = obstacles[i];
+    o.x -= speed * dt;
+
+    if (o.enterT === undefined && o.x < W + 30) o.enterT = 0;
+    else if (o.enterT !== undefined) o.enterT += dt;
+
+    if (o.tutFade !== undefined) {
+      o.tutFade -= dt;
+      if (o.tutFade <= 0) { o.tutFade = undefined; o.tut = undefined; }
+    }
+
+    if (o.x < -140) { obstacles.splice(i, 1); continue; }
+
+    // pass → did they perform the skill? (drones have no `w` — use their diameter)
+    const extent = o.w || o.r * 2;
+    if (!o.passed && o.x + extent < player.x + 8) {
+      o.passed = true;
+      if (practicePass(o)) practiceAdvance();
+      else practiceRetry();
+      return;
+    }
+
+    // collision → harmless, retry the drill
+    const pb = playerBox();
+    const hit = o.type === "drone" ? circleRectHit(o.x, o.y, o.r, pb) : rectHit(pb, obstacleBox(o));
+    if (hit) {
+      practiceRetry();
+      return;
+    }
+  }
+}
+
+/* ----------------------------------------------------------
+   Trauma shake (per game-feel skill: decay, quadratic)
+---------------------------------------------------------- */
+
+let trauma = 0;
+function addTrauma(amount) {
+  if (!shakeOn) return;
+  if (reduceMotion) amount *= 0.25;
+  trauma = Math.min(1, trauma + amount);
+}
+
+function shakeOffset() {
+  const s = trauma * trauma;
+  if (s < 0.001) return { x: 0, y: 0 };
+  return {
+    x: (Math.sin(time * 47.3) + Math.sin(time * 31.7) * 0.5) * 11 * s,
+    y: (Math.sin(time * 41.9 + 1.3) + Math.sin(time * 27.1) * 0.5) * 9 * s,
+  };
+}
+
+/* ----------------------------------------------------------
+   Popups / particles / ghosts / motes update
+---------------------------------------------------------- */
+
+function updateParticles(dt) {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.vy += 340 * p.grav * dt;
+    p.life -= dt;
+    if (p.life <= 0) particles.splice(i, 1);
+  }
+}
+
+function updatePopups(dt) {
+  for (let i = popups.length - 1; i >= 0; i--) {
     const p = popups[i];
     p.y -= 44 * dt;
     p.life -= dt;

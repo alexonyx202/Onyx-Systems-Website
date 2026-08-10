@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="DATA ROUTER — a retro arcade game. Hop a lone data packet across busy traffic and bus lanes to the CPU cores before the clock runs out.">
@@ -350,11 +339,3804 @@ body::before{ /* faint grid backdrop */
 }
 .toast.in{ transform:none; opacity:1; }
 .toast.out{ transform:translateX(120%); opacity:0; }
-.toast-h{ font-size:6px; color:var(--
+.toast-h{ font-size:6px; color:var(--yellow); letter-spacing:2px; margin-bottom:5px; text-shadow:0 0 3px rgba(250,204,21,.7); }
+.toast-n{ font-size:9px; color:#fff; letter-spacing:1px; margin-bottom:4px; }
+.toast-d{ font-size:6px; color:var(--dim); line-height:1.7; }
+/* score table */
+table.scores{ border-collapse:collapse; width:min(320px,92%); font-size:8px; }
+table.scores th{ color:var(--dim); font-size:6.5px; letter-spacing:2px; padding:6px 8px; border-bottom:1px solid rgba(34,211,238,.3); }
+table.scores td{ padding:7px 8px; color:var(--text); letter-spacing:1px; }
+table.scores tr.hl td{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.75); animation:blink 1s steps(2) infinite; }
+table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3; } table.scores tr .rk3{ color:#d9a06b; }
+.empty-note{ font-size:7px; color:var(--dim); line-height:2; padding:10px 0; }
+.tabs{ display:flex; gap:6px; }
+.tab-btn{ font-family:var(--pix); font-size:7px; letter-spacing:1px; color:var(--dim); background:none; border:1px solid rgba(34,211,238,.25); border-radius:3px; padding:6px 9px; cursor:pointer; }
+.tab-btn.sel{ color:var(--cyan); border-color:var(--cyan); box-shadow:0 0 10px rgba(34,211,238,.4); }
 
-... [OUTPUT TRUNCATED - 184,223 chars omitted out of 234,148 total] ...
+/* help */
+.help-body{ font-size:7px; line-height:2.2; color:var(--text); width:min(400px,92%); text-align:left; letter-spacing:1px; }
+.help-body b{ color:var(--cyan); }
+.help-body .k{
+  display:inline-block; border:1px solid rgba(184,230,245,.5); border-radius:2px; padding:0 5px; margin:0 2px;
+  background:rgba(184,230,245,.08); font-size:6.5px; color:#fff;
+}
+.help-body .z{ color:var(--magenta); }
 
- ['passes','violations','incomplete'].forEach(function(k){
+/* pause */
+#pause-title{ color:var(--yellow); text-shadow:0 0 5px rgba(250,204,21,.75); animation:pausePulse 1.7s ease-in-out infinite; }
+@keyframes pausePulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.07); } }
+.pause-stats{
+  width:min(300px,90%); display:grid; grid-template-columns:1fr 1fr; gap:6px 14px;
+  font-size:7px; letter-spacing:1px;
+}
+.pause-stats .ps{
+  display:flex; justify-content:space-between; gap:10px;
+  padding:6px 10px; border:1px solid rgba(34,211,238,.14); border-radius:3px;
+  background:rgba(6,12,24,.5);
+}
+.pause-stats .ps span{ color:var(--dim); }
+.pause-stats .ps b{ color:var(--cyan); text-shadow:0 0 2px rgba(34,211,238,.5); }
+.pause-stats .ps.warn b{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.55); }
+.resume-line{ margin-top:-2px; }
+.resume-hint{
+  font-size:8px; color:var(--green); letter-spacing:2px;
+  text-shadow:0 0 3px rgba(74,222,128,.85); animation:blink 1.1s steps(2) infinite;
+}
+.input-hint{ font-size:6px; color:var(--dim); letter-spacing:2px; margin-top:2px; }
+.input-hint .dev{ color:var(--cyan); }
+
+/* level intermission */
+#scr-inter .inter-card{
+  width:min(300px,88%); border:2px solid rgba(74,222,128,.5); border-radius:8px;
+  background:rgba(6,16,10,.9); padding:16px 14px;
+  box-shadow:0 0 26px rgba(74,222,128,.25), inset 0 0 30px rgba(74,222,128,.06);
+  animation:interIn .55s cubic-bezier(.2,1.3,.3,1) both;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+@keyframes interIn{ from{ transform:translateX(-52px); opacity:0; } to{ transform:none; opacity:1; } }
+#scr-inter .inter-title{ font-size:13px; letter-spacing:3px; color:var(--green);
+  text-shadow:0 0 5px rgba(74,222,128,.9), 0 0 14px rgba(74,222,128,.4); }
+#scr-inter .inter-title::before, #scr-inter .inter-title::after{ background:linear-gradient(90deg, transparent, rgba(74,222,128,.5)); }
+#scr-inter .inter-title::after{ background:linear-gradient(90deg, rgba(74,222,128,.5), transparent); }
+.inter-sub{ font-size:7px; color:var(--dim); letter-spacing:2px; }
+.inter-stats{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:6px 14px; font-size:7px; letter-spacing:1px; }
+.inter-stats .is{ display:flex; justify-content:space-between; gap:8px; padding:5px 8px;
+  border:1px solid rgba(74,222,128,.18); border-radius:3px; background:rgba(4,12,8,.6); }
+.inter-stats .is span{ color:var(--dim); }
+.inter-stats .is b{ color:var(--green); text-shadow:0 0 2px rgba(74,222,128,.5); }
+.inter-score{ font-size:17px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 5px rgba(250,204,21,.75); }
+.inter-count{ font-size:7px; letter-spacing:2px; color:var(--dim); display:flex; align-items:center; gap:8px; }
+.inter-count #inter-count{ font-size:16px; color:var(--green); text-shadow:0 0 5px rgba(74,222,128,.85); animation:blink 1s steps(2) infinite; }
+/* game over */
+.go-stats{ width:min(310px,88%); display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; font-size:7.5px; letter-spacing:1px; }
+.go-stats .gs{ display:flex; justify-content:space-between; gap:8px; padding:4px 6px; border-bottom:1px dotted rgba(34,211,238,.2); }
+.go-stats .gs span{ color:var(--dim); }
+.go-stats .gs b{ color:var(--cyan); }
+.go-rank{ font-size:7px; letter-spacing:1px; color:var(--text); margin-top:2px; }
+.go-rank .rk-num{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.75); }
+.go-title.glitch{ animation:goIn .3s ease-out both, goGlitch .45s steps(2) .32s 1; }
+@keyframes goIn{ from{ transform:scale(1.5); opacity:0 } to{ transform:scale(1); opacity:1 } }
+@keyframes goGlitch{ 0%{ transform:translateX(0) } 20%{ transform:translateX(-3px) skewX(8deg) } 40%{ transform:translateX(3px) } 60%{ transform:translateX(-2px) skewX(-6deg) } 80%{ transform:translateX(2px) } 100%{ transform:none } }
+.no-rank{ font-size:7px; color:var(--red); letter-spacing:1px; text-shadow:0 0 3px rgba(251,113,133,.65); }
+.big-score{ font-size:20px; color:var(--yellow); text-shadow:0 0 6px rgba(250,204,21,.7); margin:4px 0; }
+.new-best{ color:var(--green); font-size:8px; text-shadow:0 0 3px rgba(74,222,128,.85); animation:blink .8s steps(2) infinite; }
+
+/* initials entry */
+#name-entry{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+#name-slots{ display:flex; gap:10px; }
+.name-slot{
+  width:40px; height:46px; border:2px solid rgba(34,211,238,.35); border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; color:var(--cyan); background:rgba(10,20,36,.6); text-shadow:0 0 4px var(--cyan);
+}
+.name-slot.cur{ border-color:var(--yellow); box-shadow:0 0 14px rgba(250,204,21,.5); color:var(--yellow); text-shadow:0 0 4px var(--yellow); }
+
+/* banner */
+#banner{
+  position:absolute; top:38%; left:0; right:0; z-index:35; text-align:center; pointer-events:none;
+  font-size:15px; letter-spacing:3px; color:#fff;
+  text-shadow:0 0 5px rgba(34,211,238,.95), 0 0 14px rgba(34,211,238,.45), 0 3px 0 rgba(8,40,60,1);
+  opacity:0; transform:scale(.7);
+}
+#banner.on{ animation:bannerPop .32s ease-out forwards; }
+#banner.green{ color:#4ade80; text-shadow:0 0 5px rgba(74,222,128,.95), 0 0 14px rgba(74,222,128,.4), 0 3px 0 rgba(8,40,24,1); }
+#banner.sub{ font-size:8px; color:var(--yellow); text-shadow:0 0 4px rgba(250,204,21,.85), 0 3px 0 rgba(60,40,8,1); }
+@keyframes bannerPop{ from{opacity:0; transform:scale(.7)} to{opacity:1; transform:scale(1)} }
+
+/* touch dpad */
+#dpad{ display:none; }
+.vol-row{ display:flex; align-items:center; gap:12px; width:min(280px,88%); font-size:7px; color:var(--dim); letter-spacing:1px; }
+.vol-row span{ width:84px; text-align:left; }
+.vol-row input[type=range]{ -webkit-appearance:none; appearance:none; flex:1; height:6px; background:rgba(34,211,238,.22); border-radius:3px; outline:none; border:1px solid rgba(34,211,238,.3); }
+.vol-row input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; background:var(--cyan); border:2px solid #a5f3fc; border-radius:2px; box-shadow:0 0 10px rgba(34,211,238,.8); cursor:pointer; }
+.vol-row input[type=range]::-moz-range-thumb{ width:12px; height:12px; background:var(--cyan); border:2px solid #a5f3fc; border-radius:2px; cursor:pointer; }
+body.touch #dpad{
+  display:grid; grid-template-columns:repeat(3,64px); grid-template-rows:repeat(2,56px); gap:6px;
+}
+.dbtn{
+  font-size:16px; color:var(--cyan); background:rgba(10,20,36,.7);
+  border:2px solid rgba(34,211,238,.4); border-radius:8px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; touch-action:none;
+  box-shadow:0 0 10px rgba(34,211,238,.15);
+}
+.dbtn:active{ background:rgba(34,211,238,.35); box-shadow:0 0 16px rgba(34,211,238,.6); }
+.dbtn.up{ grid-column:2; grid-row:1; } .dbtn.down{ grid-column:2; grid-row:2; }
+.dbtn.left{ grid-column:1; grid-row:2; } .dbtn.right{ grid-column:3; grid-row:2; }
+
+@media (max-width:520px){
+  .logo{ font-size:24px; }
+  .diff-card p{ min-height:0; }
+}
+</style>
+</head>
+<body>
+<div id="wrap" role="main">
+  <h1 class="sr-only">DATA ROUTER — Retro Arcade</h1>
+
+  <a class="skip-link" href="#game">PLAY THE GAME</a>
+  <div id="frame">
+    <canvas id="game" width="480" height="560" tabindex="-1" aria-label="DATA ROUTER game board"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-col">
+        <div><span class="hud-label">SCORE</span> <span class="hud-value" id="h-score">000000</span></div>
+        <div><span class="hud-label">HI-SCORE</span> <span class="hud-value" id="h-hi">000000</span></div>
+      </div>
+      <div class="hud-col" style="align-items:center">
+        <div id="fx-icons" aria-hidden="true"></div>
+        <div id="timebar-wrap"><div id="timebar" class="ok" role="progressbar" aria-label="Time left" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div></div>
+      </div>
+      <div class="hud-col right">
+        <div><span class="hud-label">LEVEL</span> <span class="hud-value" id="h-level">1</span></div>
+        <div><span class="hud-label">PACKETS</span> <span class="hud-value" id="h-lives"></span></div>
+      </div>
+    </div>
+
+    <div id="overlay">
+      <!-- ============ MAIN MENU / TITLE ============ -->
+      <section id="scr-menu" class="screen on">
+        <div class="logo"><span class="lg">DATA</span><br><span class="lg row2">ROUTER</span></div>
+        <div class="tagline start" id="splash-line">PRESS START</div>
+        <div class="title-board" id="title-board"></div>
+        <nav class="menu" id="menu-main">
+          <button class="mbtn" data-act="start"><span class="lbl">START ROUTE</span><span class="val">ENTER</span></button>
+          <button class="mbtn" data-act="diff"><span class="lbl">DIFFICULTY</span><span class="val" id="menu-diff"></span></button>
+          <button class="mbtn" data-act="sound"><span class="lbl">SOUND</span><span class="val" id="menu-sound"></span></button>
+          <button class="mbtn" data-act="scores"><span class="lbl">HIGH SCORES</span></button>
+          <button class="mbtn" data-act="daily"><span class="lbl">DAILY CHALLENGE</span><span class="val" id="menu-daily"></span></button>
+          <button class="mbtn" data-act="ach"><span class="lbl">OPERATOR STATS</span><span class="val" id="menu-ach"></span></button>
+          <button class="mbtn" data-act="help"><span class="lbl">INSTRUCTIONS</span></button>
+        </nav>
+        <div class="hint blink">PRESS ENTER TO START</div>
+        <div class="hint" id="pad-status" style="display:none">◈ GAMEPAD DETECTED</div>
+        <div class="ticker" id="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+      </section>
+
+      <!-- ============ DIFFICULTY ============ -->
+      <section id="scr-diff" class="screen">
+        <h2>DIFFICULTY</h2>
+        <div class="diff-grid" id="diff-grid">
+          <button class="diff-card" data-act="easy"><h3>EASY</h3><p>Slow traffic and plenty of time. Five packets to learn the ropes.</p><div class="stats">90s · LIGHT TRAFFIC · 5 PKT</div></button>
+          <button class="diff-card" data-act="normal"><h3>NORMAL</h3><p>The real deal. Moving buses, steady traffic, 30 seconds on the clock.</p><div class="stats">30s · CLASSIC · 3 PKT</div></button>
+          <button class="diff-card" data-act="hard"><h3>HARD</h3><p>Wall-to-wall traffic, sinking buses, 45 seconds. Good luck.</p><div class="stats">45s · CHAOS · 3 PKT</div></button>
+          <button class="diff-card wide" data-act="classic"><h3>CLASSIC</h3><p>Strict Frogger rules: 30-second clock, 1981 arcade lane pace, no boosters, one fixed board. Five packets to the cores.</p><div class="stats">30s · ONE BOARD · 5 PKT</div></button>
+        </div>
+        <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        <div class="foot-hint">←→ CHANGE DIFFICULTY · ENTER SELECT · ESC / B BACK</div>
+      </section>
+
+      <!-- ============ SOUND ============ -->
+      <section id="scr-sound" class="screen">
+        <h2><span class="acc">♪</span> SOUND & DISPLAY <span class="acc">♪</span></h2>
+        <nav class="menu">
+          <button class="mbtn" data-act="sfx"><span class="lbl">SFX</span><span class="val" id="v-sfx"></span></button>
+          <button class="mbtn" data-act="music"><span class="lbl">MUSIC</span><span class="val" id="v-music"></span></button>
+          <button class="mbtn" data-act="px"><span class="lbl">PIXEL PERFECT</span><span class="val" id="v-px"></span></button>
+          <button class="mbtn" data-act="announce"><span class="lbl">ALERTS</span><span class="val" id="v-announce"></span></button>
+          <button class="mbtn" data-act="pauseblur"><span class="lbl">PAUSE ON BLUR</span><span class="val" id="v-pauseblur"></span></button>
+          <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        </nav>
+        <div class="vol-row"><span>SFX VOL</span><input type="range" id="vol-sfx" min="0" max="1" step="0.05" value="0.8" aria-label="Sound effects volume"></div>
+        <div class="vol-row"><span>MUSIC VOL</span><input type="range" id="vol-music" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume"></div>
+        <div class="vol-row"><span>CRT INTENSITY</span><input type="range" id="crt-int" min="0" max="1" step="0.05" value="0.18" aria-label="CRT intensity"></div>
+        <div class="hint">M = MUTE · PIXEL PERFECT = CRISP PIXELS · CRT = SCANLINES · ALERT = LOUD WARNINGS · BLUR = AUTO-PAUSE WHEN WINDOW UNFOCUSED</div>
+      </section>
+
+      <!-- ============ SOUND TEST (hidden: hold SELECT / M on main menu) ============ -->
+      <section id="scr-soundtest" class="screen">
+        <h2><span class="acc">♪</span> AUDITION <span class="acc">♪</span></h2>
+        <div class="sub" style="color:var(--dim)">SOUND SAMPLES · PRESS ANY ONE</div>
+        <div id="st-grid"></div>
+        <nav class="menu">
+          <button class="mbtn" data-act="st-music"><span class="lbl">MUSIC LOOP</span><span class="val" id="st-music-val"></span></button>
+          <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        </nav>
+        <div class="vol-row"><span>SFX VOL</span><input type="range" id="st-sfx" min="0" max="1" step="0.05" value="0.8" aria-label="Sound effects volume"></div>
+        <div class="vol-row"><span>MUSIC VOL</span><input type="range" id="st-music" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume"></div>
+        <div class="hint">HIDDEN · HOLD SELECT / M ON THE MAIN MENU TO OPEN</div>
+      </section>
+
+      <!-- ============ HIGH SCORES ============ -->
+      <section id="scr-scores" class="screen">
+        <h2><span class="acc">◈</span> HIGH SCORES <span class="acc">◈</span></h2>
+        <div class="tabs" id="score-tabs"></div>
+        <div id="score-body"></div>
+        <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        <div class="foot-hint">←→ SWITCH TABLE · ESC / B BACK</div>
+      </section>
+
+      <!-- ============ DAILY CHALLENGE ============ -->
+      <section id="scr-daily" class="screen">
+        <h2><span class="acc">☀</span> DAILY CHALLENGE <span class="acc">☀</span></h2>
+        <div class="daily-head" id="daily-date"></div>
+        <div class="daily-cfg" id="daily-cfg"></div>
+        <div class="hint">SAME BOARD ALL DAY · CLEAR ALL 5 CORES FOR THE BONUS</div>
+        <div class="daily-tip" id="daily-tip"></div>
+        <div id="daily-board"></div>
+        <button class="mbtn" data-act="daily-start"><span class="lbl">START DAILY ROUTE</span><span class="val">ENTER</span></button>
+        <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+      </section>
+
+      <!-- ============ OPERATOR STATS / ACHIEVEMENTS ============ -->
+      <section id="scr-ach" class="screen">
+        <h2><span class="acc">◆</span> OPERATOR STATS <span class="acc">◆</span></h2>
+        <div class="ach-count" id="ach-count"></div>
+        <div class="ach-stats" id="ach-stats"></div>
+        <div class="ach-list" id="ach-list" tabindex="0" role="list" aria-label="Achievements list"></div>
+        <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        <div class="foot-hint">ESC / B · BACK</div>
+      </section>
+
+      <!-- ============ INSTRUCTIONS ============ -->
+      <section id="scr-help" class="screen">
+        <h2>INSTRUCTIONS</h2>
+        <div class="help-body">
+          <p><b>MISSION ▸</b> Get the packet from the START square up to the <span class="z">CPU CORES</span> and land it <b>dead-centre in a socket bay</b> — the gaps between ports are open water. Fill all five to move up a level. Beat the clock!</p>
+          <p><b>MOVE ▸</b> <span class="k">↑</span><span class="k">↓</span><span class="k">←</span><span class="k">→</span> or <span class="k">W</span><span class="k">A</span><span class="k">S</span><span class="k">D</span> to hop one tile. Swipe on touch screens.</p>
+          <p><b>THE ROAD ▸</b> Dodge the <span class="z">PINGS</span>, <span class="z">STREAMS</span> and big <span class="z">SERVERS</span>. One hit and your packet is scrap. No free ride after a crash — you're back on the line with no shield.</p>
+          <p><b>BUS LINES ▸</b> Hop on the <span class="z">BUSES</span> to cross the water. Miss one and you're fried. Watch out — some buses <span class="z">SINK</span>!</p>
+          <p><b>BOOSTERS ▸</b> <span class="z">FIREWALL</span> = one free hit · <span class="z">+TIME</span> = more seconds · <span class="z">1UP</span> = extra packet · <span class="z">OVERCLOCK</span> = fast hops · <span class="z">THROTTLE</span> = slow traffic · <span class="z">BURST</span> = smash through cars for +150 each</p>
+          <p><b>COMBOS ▸</b> Dock cores back-to-back to build a combo. Every 25,000 points earns an extra packet.</p>
+          <p><b>PAUSE ▸</b> <span class="k">P</span> / <span class="k">ESC</span> · <b>MUTE ▸</b> <span class="k">M</span></p>
+          <p><b>GAMEPAD ▸</b> <span class="k">D-PAD</span> / stick to hop · <span class="k">A</span> confirm · <span class="k">B</span> back · <span class="k">START</span> pause · <span class="k">SELECT</span> mute</p>
+          <p><b>DAILY ▸</b> A new fixed board every day, seeded from the date. Clear all five cores for the completion bonus and claim your rank on the daily leaderboard.</p>
+          <p><b>RUSH HOUR ▸</b> Every 20 seconds traffic <span class="z">DOUBLES</span> for 6 seconds. Survive the surge for a <span class="z">+250</span> bonus — or pop a THROTTLE and slip through.</p>
+        </div>
+        <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
+        <div class="version">DATA ROUTER v1.0.0 · A FREEBUFF ARCADE RELEASE</div>
+      </section>
+
+      <!-- ============ LEVEL INTERMISSION ============ -->
+      <section id="scr-inter" class="screen">
+        <div class="inter-card">
+          <h2 class="inter-title" id="inter-title">ROUTE SECURED</h2>
+          <div class="inter-sub" id="inter-sub">LEVEL 1 COMPLETE</div>
+          <div class="inter-stats">
+            <div class="is"><span>MODE</span><b id="is-mode"></b></div>
+            <div class="is"><span>CORES SECURED</span><b id="is-cores"></b></div>
+            <div class="is"><span>BEST COMBO</span><b id="is-combo"></b></div>
+            <div class="is"><span>BOOSTERS</span><b id="is-pickups"></b></div>
+            <div class="is"><span>TIME BONUS</span><b id="is-bonus"></b></div>
+          </div>
+          <div class="inter-score" id="inter-score">000000</div>
+          <div class="inter-count"><span class="ic-lbl">NEXT ROUTE IN</span> <span id="inter-count">3</span></div>
+        </div>
+      </section>
+
+      <!-- ============ PAUSE ============ -->
+      <section id="scr-pause" class="screen">
+        <h2 id="pause-title">▮▮ PAUSED</h2>
+        <div class="pause-stats" id="pause-stats"></div>
+        <div class="resume-line"><span class="resume-hint" id="resume-hint">▶ PRESS P TO RESUME</span></div>
+        <nav class="menu">
+          <button class="mbtn" data-act="resume"><span class="lbl">RESUME</span><span class="val" id="resume-key">P</span></button>
+          <button class="mbtn" data-act="restart"><span class="lbl">RESTART RUN</span></button>
+          <button class="mbtn" data-act="sfx"><span class="lbl">SFX</span><span class="val" id="v-sfx2"></span></button>
+          <button class="mbtn" data-act="music"><span class="lbl">MUSIC</span><span class="val" id="v-music2"></span></button>
+          <button class="mbtn" data-act="quality"><span class="lbl">QUALITY</span><span class="val" id="v-quality2"></span></button>
+          <button class="mbtn" data-act="quit"><span class="lbl">QUIT TO MENU</span></button>
+        </nav>
+        <div class="hint">TRAFFIC ON HOLD — TAKE A BREATHER</div>
+        <div class="input-hint" id="input-hint">INPUT: <span class="dev">KEYBOARD</span><span class="dev-name"> — ARROWS / WASD</span></div>
+      </section>
+
+      <!-- ============ GAME OVER ============ -->
+      <section id="scr-go" class="screen">
+        <h2 class="go-title" id="go-title" style="color:var(--red);text-shadow:0 0 5px rgba(251,113,133,.85)">SIGNAL LOST</h2>
+        <div class="big-score" id="go-score">000000</div>
+        <div id="go-newbest"></div>
+        <div class="go-rank" id="go-rank" style="display:none"></div>
+        <div class="go-stats" id="go-stats"></div>
+        <div id="name-entry" style="display:none">
+          <div class="sub" id="name-sub">NEW HIGH SCORE — ENTER OPERATOR INITIALS</div>
+          <div id="name-slots" role="group" aria-label="Enter your initials"></div>
+          <div class="hint"><span class="k">↑↓</span> LETTER · <span class="k">←→</span> SLOT · <span class="k">ENTER</span> OK</div>
+        </div>
+        <div class="no-rank" id="go-norank" style="display:none">✕ DIDN'T MAKE THE BOARD — TRY AGAIN!</div>
+        <nav class="menu">
+          <button class="mbtn" data-act="playagain"><span class="lbl">PLAY AGAIN</span><span class="val">ENTER</span></button>
+          <button class="mbtn" data-act="menu"><span class="lbl">MAIN MENU</span></button>
+        </nav>
+      </section>
+    </div>
+
+    <div id="toasts" aria-live="polite" aria-relevant="additions"></div><!-- stacked toasts: each new toast announced on its own; TTL dismissals stay silent -->
+    <div id="banner" aria-live="polite" aria-atomic="true"></div><!-- one whole-content message per showBanner: always announced as a single unit -->
+    <div id="sr-status" aria-live="polite" class="sr-only"></div><!-- flat state text: defaults (additions text) are right — the rush clear-write needs the empty clear to stay silent -->
+    <div id="scanlines" aria-hidden="true"></div>
+    <div id="aperture" aria-hidden="true"></div>
+    <div id="wipe" aria-hidden="true"></div>
+  </div>
+
+  <div id="dpad">
+    <button class="dbtn up" data-dir="0" aria-label="Hop up">▲</button>
+    <button class="dbtn left" data-dir="3" aria-label="Hop left">◀</button>
+    <button class="dbtn down" data-dir="2" aria-label="Hop down">▼</button>
+    <button class="dbtn right" data-dir="1" aria-label="Hop right">▶</button>
+  </div>
+
+</div>
+<noscript><div style="font-family:monospace;color:#fff;padding:40px;text-align:center">DATA ROUTER needs JavaScript. Turn it on and try again.</div></noscript>
+
+<script>
+(function(){
+'use strict';
+/* ================================================================
+   DATA ROUTER — arcade engine
+   ================================================================ */
+var $ = function(id){ return document.getElementById(id); };
+
+var TILE=40, COLS=12, ROWS=14, W=480, H=560;
+var GOAL_COLS=[1,3,5,7,9];
+var SOCKET_ANIM_T=1.2;
+var SOCKET_LOCK_T=SOCKET_ANIM_T*0.3; /* clamp arms meet at end of phase B */
+var START_COL=5, START_ROW=11;
+var RETURN_FLIGHT_T=0.9; /* core-secured → origin streak (s): the packet flies home along its column */
+/* death beat: brief slow-mo zoom on the fragmentation before the crash UI */
+var DEATH_SLOWMO_T=0.4;      /* real-time slow-mo window (s) */
+var DEATH_SLOWMO_SCALE=0.25; /* world-sim speed during the window */
+var DEATH_ZOOM_MAX=1.35;     /* zoom toward the fragment point */
+var DEATH_ZOOM_RELEASE=0.15; /* ease-back to full view after the window (s) */
+var SFX_LIST=[
+  ['hop','HOP'],['ui','BLIP'],['select','SELECT'],['power','POWER'],['goal','GOAL'],['combo','COMBO'],
+  ['life','1UP'],['clear','LEVEL UP'],['crash','CRASH'],['zap','ZAP'],['timeout','TIMEOUT'],['splash','SPLASH'],
+  ['tick','TICK'],['shieldpop','SHIELD POP'],['bonus','BONUS'],['spawn','SPAWN'],['achieve','ACHIEVEMENT'],
+  ['throttle','THROTTLE'],['burst','BURST'],['bursthit','BURST HIT'],['rushwarn','SIREN'],['rushgo','GO!'],['clunk','DOCK CLUNK'],['over','GAME OVER']
+];
+
+/* ---------------- storage ---------------- */
+var SAVE_KEY='datarouter_save_v2', HS_KEY='datarouter_hs_v1';
+var store={
+  get:function(k,fb){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):fb; }catch(e){ return fb; } },
+  set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+var DEFAULT_SETTINGS={ difficulty:'normal', classic:false, sfx:true, music:true, best:0, sfxVol:0.8, musicVol:0.45, crtIntensity:0.18, pixelPerfect:true, quality:'high', announce:'polite', pauseOnBlur:true };
+var settings=Object.assign({}, DEFAULT_SETTINGS, store.get(SAVE_KEY,{}));
+var scores=Object.assign({easy:[],normal:[],hard:[],classic:[]}, store.get(HS_KEY,{}));
+function persist(){ store.set(SAVE_KEY,settings); store.set(HS_KEY,scores); }
+
+/* ---------------- hazard-warning tuning ---------------- */
+/* named knobs shared by the per-log hazard stripe and the sink chirps. Any
+   difficulty may override a subset via DIFFS[n].hazard;
+   HZ(k) resolves the active value at call time. Defaults = NORMAL feel. */
+var HAZARD={
+  freqMin:2.6,    freqMax:13.0,  /* hazard pulse rate at warn start → sink moment (Hz) */
+  brightMin:0.35, brightMax:1.0, /* stripe intensity ramp (glow/alpha) */
+  unsafeMin:0.92,                /* intensity floor once a log is submerged */
+  pitchMin:320,   pitchMax:1000, /* sink chirp pitch (Hz) */
+  volMin:0.05,    volMax:0.18    /* sink chirp volume */
+};
+function HZ(k){
+  var d=DIFFS&&DIFFS[settings.difficulty]&&DIFFS[settings.difficulty].hazard; /* DIFFS guard: safe even if called before its declaration assigns */
+  return d&&d[k]!==undefined? d[k] : HAZARD[k];
+}
+
+/* ---------------- near-miss tuning ---------------- */
+/* close-call band width (px) + reward (pts). Difficulties may override via DIFFS[n].nearmiss;
+   NM(k) resolves the active value at call time. Defaults = NORMAL feel. */
+var NEARMISS={
+  nearPx:12,   /* how tight the brush must be to count as a close call */
+  nearBonus:10 /* points per near miss */
+};
+function NM(k){
+  var d=DIFFS&&DIFFS[settings.difficulty]&&DIFFS[settings.difficulty].nearmiss;
+  return d&&d[k]!==undefined? d[k] : NEARMISS[k];
+}
+
+/* ---------------- render quality ---------------- */
+/* LOW / MED / HIGH trim the most expensive effects (glow radii via shadowBlur,
+   particle spawn counts) for weaker GPUs. HIGH = full fidelity. Toggled from
+   the pause menu; applies instantly since Q() resolves at draw/spawn time. */
+var QUAL={
+  high:{ label:'HIGH', glow:1.00, part:1.00 },
+  med: { label:'MED',  glow:0.65, part:0.65 },
+  low: { label:'LOW',  glow:0.30, part:0.35 }
+};
+function Q(k){ return (QUAL[settings.quality]||QUAL.high)[k]; }
+function qGlow(v){ return v*Q('glow'); }                             /* scale a shadowBlur radius */
+function qPart(n){ return Math.max(1,Math.round(n*Q('part'))); }    /* scale a particle spawn count */
+/* LOW-tier glow sprites: a pre-rendered soft radial glow per color, drawn with
+   plain drawImage (no shadowBlur at all) so weak GPUs skip the expensive shadow
+   pass entirely. MED/HIGH keep the direct shadowBlur path — measured faster in
+   software rendering, while the sprite path wins on GPU-accelerated browsers,
+   which is exactly the hardware LOW targets. */
+var GLOW_CACHE={};
+function hexRGB(hex){
+  var m=/^#([0-9a-fA-F]{6})$/.exec(hex);
+  return m? [parseInt(m[1].slice(0,2),16), parseInt(m[1].slice(2,4),16), parseInt(m[1].slice(4,6),16)] : null;
+}
+function glowSprite(color){
+  var s=GLOW_CACHE[color];
+  if(s) return s;
+  var rgb=hexRGB(color);
+  if(!rgb) return null;   /* non-hex colors fall back to the shadow path */
+  s=document.createElement('canvas'); s.width=s.height=64;
+  var c=s.getContext('2d');
+  var g=c.createRadialGradient(32,32,1,32,32,32);
+  g.addColorStop(0,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.50)');
+  g.addColorStop(0.4,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.18)');
+  g.addColorStop(1,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0)');
+  c.fillStyle=g; c.fillRect(0,0,64,64);
+  GLOW_CACHE[color]=s; return s;
+}
+/* Apply a glow to the shape about to be drawn. LOW tier draws the cached sprite
+   stretched behind the given rect; MED/HIGH set the direct shadowBlur exactly
+   like the original code. Call where the old shadowColor/shadowBlur setup stood,
+   before the shape's fill/stroke. */
+function glowRect(x,y,w,h,color,r){
+  if(r<=0) return;
+  if(settings.quality==='low'){ var s=glowSprite(color); if(s){ ctx.shadowBlur=0; ctx.drawImage(s,x-r,y-r,w+r*2,h+r*2); return; } }
+  ctx.shadowColor=color; ctx.shadowBlur=qGlow(r);
+}
+
+/* ---------------- cached gradients ---------------- */
+/* static Canvas gradients were re-allocated every frame; build each once and reuse.
+   (Per-entity glow sprites were also trialled, but this environment measures plain
+   shadowBlur at ~1us/op vs ~1.5-2.5us for drawImage — so the original shadowBlur
+   glow stays. The win that survives measurement is the gradient cache.) */
+var GRAD_CACHE={};
+function cachedGrad(key,fn){ if(!GRAD_CACHE[key]) GRAD_CACHE[key]=fn(); return GRAD_CACHE[key]; }
+
+/* ---------------- difficulty ---------------- */
+var DIFFS={
+  easy:  { label:'EASY',   time:90, speed:0.70, density:1.35, lives:5, sinkPeriod:99, busGap:0.85, waypoint:true, desc:'Easy lanes, slow clock. 5 packets.',
+           /* forgiving close calls: wide band, small payout */
+           nearmiss:{ nearPx:16, nearBonus:5 } },
+  normal:{ label:'NORMAL', time:30, speed:0.85, density:1.15, lives:3, sinkPeriod:6.0, busGap:1.0, desc:'The real Frogger feel: 30s clock, 3 packets.' },
+  /* strict-Frogger mode (CLASSIC RULES): 30s clock per packet, one fixed board,
+     no boosters. Lane speeds follow the 1981 arcade profile — calm entry lane,
+     faster middle, dangerous lane at the top (bottom→top multipliers in `lanes`,
+     rows 9,8,7,6) — with wide, steady gaps (density 1.15) so the danger builds
+     as you climb instead of a NORMAL-style rush at the entry lane. */
+  classic:{ label:'CLASSIC', time:30, speed:0.72, density:1.15, lives:3, sinkPeriod:5.5, busGap:1.05, lanes:[1.0,1.5,1.25,2.0], desc:'Strict Frogger: 30s clock, 1981 arcade lane pace, one fixed board.' },
+  hard:  { label:'HARD',   time:45, speed:1.30, density:0.80, lives:3, sinkPeriod:4.2, busGap:1.15, desc:'Crazy traffic, fast buses. 45s. Good luck.',
+           /* harder sink warnings: faster pulse, brighter tape, louder chirps */
+           hazard:{ freqMin:3.4, freqMax:15.5, brightMin:0.45, brightMax:1.0, unsafeMin:0.95,
+                    pitchMin:380, pitchMax:1200, volMin:0.07, volMax:0.22 },
+           /* risk-reward close calls: must thread the needle, pays big */
+           nearmiss:{ nearPx:8, nearBonus:25 } }
+};
+/* sanitize persisted settings (corrupt storage must never break the game) */
+if(!DIFFS[settings.difficulty]) settings.difficulty='normal';
+if(settings.classic&&settings.difficulty!=='classic') settings.difficulty='classic'; /* old toggle users land on the CLASSIC card */
+['easy','normal','hard','classic'].forEach(function(d){ if(!Array.isArray(scores[d])) scores[d]=[]; });
+if(!isFinite(settings.sfxVol)) settings.sfxVol=0.8; settings.sfxVol=Math.max(0,Math.min(1,settings.sfxVol));
+if(!isFinite(settings.musicVol)) settings.musicVol=0.45; settings.musicVol=Math.max(0,Math.min(1,settings.musicVol));
+if(!isFinite(settings.crtIntensity)) settings.crtIntensity=0.18; settings.crtIntensity=Math.max(0,Math.min(1,settings.crtIntensity));
+settings.pixelPerfect=!!settings.pixelPerfect;
+settings.classic=!!settings.classic;
+settings.pauseOnBlur=!!settings.pauseOnBlur; /* default true via DEFAULT_SETTINGS; old saves merge to true */
+if(['low','med','high'].indexOf(settings.quality)<0) settings.quality='high';
+if(['polite','alert'].indexOf(settings.announce)<0) settings.announce='polite';
+
+/* ---------------- audio ---------------- */
+var Snd={
+  ctx:null, sfxG:null, musG:null, master:null,
+  sfxOn:settings.sfx, musicOn:settings.music,
+  musicTimer:null, step:0, nextT:0,
+  ensure:function(){
+    if(this.ctx) return;
+    var AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC) return;
+    try{
+      this.ctx=new AC();
+      this.master=this.ctx.createGain(); this.master.gain.value=0.5; this.master.connect(this.ctx.destination);
+      this.sfxG=this.ctx.createGain(); this.sfxG.connect(this.master);
+      this.musG=this.ctx.createGain(); this.musG.connect(this.master);
+      this.drumG=this.ctx.createGain(); this.drumG.gain.value=0.7; this.drumG.connect(this.musG);
+      this.applyVol();
+      if(this.ctx.state==='suspended') this.ctx.resume();
+    }catch(e){ this.ctx=null; }
+  },
+  applyVol:function(){
+    if(!this.ctx||!this.sfxG) return;
+    this.sfxG.gain.value=Math.max(0,Math.min(1,settings.sfxVol));
+    this.musG.gain.value=Math.max(0,Math.min(1,settings.musicVol));
+  },
+  tone:function(f0,f1,dur,type,vol,when){
+    if(!this.ctx) return;
+    var t=(this.ctx.currentTime)+(when||0);
+    var o=this.ctx.createOscillator(), g=this.ctx.createGain();
+    o.type=type||'square'; o.frequency.setValueAtTime(f0,t);
+    if(f1!==f0) o.frequency.exponentialRampToValueAtTime(Math.max(1,f1),t+dur);
+    g.gain.setValueAtTime(vol||0.2,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(this.sfxG);
+    o.start(t); o.stop(t+dur+0.02);
+  },
+  noise:function(dur,vol,filt){
+    if(!this.ctx) return;
+    var t=this.ctx.currentTime, n=this.ctx.sampleRate*dur;
+    var buf=this.ctx.createBuffer(1,n,this.ctx.sampleRate), d=buf.getChannelData(0);
+    for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*(1-i/n);
+    var src=this.ctx.createBufferSource(); src.buffer=buf;
+    var f=this.ctx.createBiquadFilter(); f.type=filt||'lowpass'; f.frequency.value=1800;
+    var g=this.ctx.createGain(); g.gain.setValueAtTime(vol||0.3,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    src.connect(f); f.connect(g); g.connect(this.sfxG);
+    src.start(t);
+  },
+  play:function(n){
+    if(!this.ctx||!this.sfxOn) return;
+    switch(n){
+      case 'hop':      this.tone(260,520,0.06,'square',0.16); break;
+      case 'ui':       this.tone(720,720,0.05,'square',0.10); break;
+      case 'select':   this.tone(660,990,0.09,'square',0.14); break;
+      case 'splash':   this.noise(0.22,0.25,'lowpass'); this.tone(700,120,0.2,'sine',0.15); break;
+      case 'crash':    this.noise(0.3,0.5,'bandpass'); this.tone(300,60,0.28,'sawtooth',0.3); break;
+      case 'zap':      this.tone(880,70,0.3,'sawtooth',0.28); this.noise(0.2,0.2); break;
+      case 'timeout':  this.tone(500,90,0.5,'square',0.2); this.tone(400,60,0.5,'sawtooth',0.16,0.15); break;
+      case 'goal':     [523,659,784,1047].forEach(function(f,i){ Snd.tone(f,f,0.12,'square',0.18,i*0.07); }); break;
+      case 'combo':    [659,784,1047,1319].forEach(function(f,i){ Snd.tone(f,f,0.09,'square',0.16,i*0.05); }); break;
+      case 'power':    [392,523,659].forEach(function(f,i){ Snd.tone(f,f,0.08,'triangle',0.22,i*0.06); }); break;
+      case 'life':     [523,659,784,1047,1319].forEach(function(f,i){ Snd.tone(f,f,0.1,'triangle',0.2,i*0.07); }); break;
+      case 'clear':    [523,659,784,1047,784,1047,1319].forEach(function(f,i){ Snd.tone(f,f,0.13,'square',0.18,i*0.11); }); break;
+      case 'over':     [392,330,262,196].forEach(function(f,i){ Snd.tone(f,f,0.22,'sawtooth',0.16,i*0.16); }); break;
+      case 'tick':     this.tone(1000,1000,0.04,'square',0.12); break;
+      case 'shieldpop':this.noise(0.15,0.3,'highpass'); this.tone(200,900,0.15,'triangle',0.2); break;
+      case 'bonus':    this.tone(1200,1800,0.09,'triangle',0.18); break;
+      case 'spawn':    this.tone(440,880,0.08,'sine',0.14); break;
+      case 'achieve':  [523,659,784,1047,1319,1568].forEach(function(f,i){ Snd.tone(f,f,0.11,'square',0.16,i*0.06); }); break;
+      case 'throttle': this.tone(880,220,0.4,'square',0.16); this.tone(660,180,0.4,'triangle',0.12,0.05); break;
+      case 'burst':    [392,523,784,1047,1319].forEach(function(f,i){ Snd.tone(f,f,0.09,'sawtooth',0.15,i*0.045); }); break;
+      case 'rushwarn': this.tone(880,880,0.09,'square',0.14); this.tone(880,880,0.09,'square',0.14,0.16); this.tone(660,660,0.12,'square',0.12,0.32); break;
+      case 'rushgo':   this.tone(440,880,0.22,'sawtooth',0.16); this.noise(0.18,0.2,'highpass'); break;
+      case 'bursthit': this.noise(0.12,0.3,'highpass'); this.tone(180,520,0.1,'square',0.18); break;
+      case 'clunk':    this.noise(0.05,0.22,'bandpass'); this.tone(210,75,0.14,'square',0.3); this.tone(430,240,0.07,'triangle',0.16); break;
+      case 'title':    [392,523,659,784].forEach(function(f,i){ Snd.tone(f,f,0.09,'square',0.14,i*0.08); }); Snd.tone(1047,1047,0.25,'triangle',0.12,0.32); break;
+    }
+  },
+  /* --- chiptune: 16-step loop @138bpm in A minor, Am-F-G progression ---
+       Bass pumps octaves on 8ths, drums go kick/snare/hat. */
+  BASS:[45,45,45,57, 45,45,45,57, 41,41,41,53, 43,43,45,45],
+  ARP :[69,0,72,0, 76,0,72,0, 77,0,76,0, 72,0,69,0],
+  scheduleMusic:function(){
+    if(!this.ctx||!this.musicOn) return;
+    var spb=60/138/2; // 8th notes @138bpm
+    // if we fell behind (throttled tab), resync to now instead of scheduling into the past
+    if(this.nextT < this.ctx.currentTime - 0.1){ this.nextT = this.ctx.currentTime + 0.05; this.step = 0; }
+    while(this.nextT < this.ctx.currentTime + 0.22){
+      var s=this.step%16, t=Math.max(0, this.nextT-this.ctx.currentTime);
+      var b=this.BASS[s], a=this.ARP[s];
+      if(b){ this.mtone(b, t, spb*0.85, 'square', 0.16); this.mtone(b+12, t, spb*0.85, 'sawtooth', 0.05); }
+      if(a){ this.mtone(a, t, spb*0.6, 'triangle', 0.08); }
+      /* drums: kick 4-on-floor, snare on 2 & 4, 8th-note hats */
+      if(s%4===0) this.kick(t);
+      if(s%8===4) this.snare(t);
+      this.hat(t, s%2===1?0.15:0.08);
+      this.step++; this.nextT+=spb;
+    }
+  },
+  kick:function(t){
+    if(!this.ctx) return;
+    var o=this.ctx.createOscillator(), g=this.ctx.createGain();
+    o.type='sine';
+    o.frequency.setValueAtTime(150,t);
+    o.frequency.exponentialRampToValueAtTime(45,t+0.11);
+    g.gain.setValueAtTime(0.62,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.12);
+    o.connect(g); g.connect(this.drumG);
+    o.start(this.ctx.currentTime+t); o.stop(this.ctx.currentTime+t+0.14);
+  },
+  snare:function(t){
+    if(!this.ctx) return;
+    var n=this.ctx.sampleRate*0.09, buf=this.ctx.createBuffer(1,n,this.ctx.sampleRate), d=buf.getChannelData(0);
+    for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*(1-i/n);
+    var src=this.ctx.createBufferSource(); src.buffer=buf;
+    var f=this.ctx.createBiquadFilter(); f.type='bandpass'; f.frequency.value=1900; f.Q.value=0.8;
+    var g=this.ctx.createGain(); g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.0001,t+0.09);
+    src.connect(f); f.connect(g); g.connect(this.drumG);
+    src.start(this.ctx.currentTime+t);
+    var o=this.ctx.createOscillator(), g2=this.ctx.createGain();
+    o.type='triangle'; o.frequency.setValueAtTime(190,t); o.frequency.exponentialRampToValueAtTime(120,t+0.07);
+    g2.gain.setValueAtTime(0.22,t); g2.gain.exponentialRampToValueAtTime(0.0001,t+0.07);
+    o.connect(g2); g2.connect(this.drumG);
+    o.start(this.ctx.currentTime+t); o.stop(this.ctx.currentTime+t+0.08);
+  },
+  hat:function(t,vol){
+    if(!this.ctx) return;
+    var n=this.ctx.sampleRate*0.03, buf=this.ctx.createBuffer(1,n,this.ctx.sampleRate), d=buf.getChannelData(0);
+    for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*(1-i/n);
+    var src=this.ctx.createBufferSource(); src.buffer=buf;
+    var f=this.ctx.createBiquadFilter(); f.type='highpass'; f.frequency.value=7000;
+    var g=this.ctx.createGain(); g.gain.setValueAtTime(vol||0.1,t); g.gain.exponentialRampToValueAtTime(0.0001,t+0.03);
+    src.connect(f); f.connect(g); g.connect(this.drumG);
+    src.start(this.ctx.currentTime+t);
+  },
+  mtone:function(midi,t,dur,type,vol){
+    if(!this.ctx) return;
+    var f=440*Math.pow(2,(midi-69)/12);
+    var o=this.ctx.createOscillator(), g=this.ctx.createGain();
+    o.type=type; o.frequency.value=f;
+    g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(this.musG);
+    o.start(this.ctx.currentTime+t); o.stop(this.ctx.currentTime+t+dur+0.02);
+  },
+  startMusic:function(){
+    this.ensure();
+    if(!this.ctx||!this.musicOn||this.musicTimer) return;
+    var self=this; this.step=0; this.nextT=this.ctx.currentTime+0.05;
+    this.musicTimer=setInterval(function(){ self.scheduleMusic(); },90);
+  },
+  stopMusic:function(){ if(this.musicTimer){ clearInterval(this.musicTimer); this.musicTimer=null; } },
+  setSfx:function(b){ this.sfxOn=b; settings.sfx=b; persist(); }
+};
+
+/* ---------------- DOM ---------------- */
+var cv=$('game'), ctx=cv.getContext('2d');
+var frame=$('frame'), overlay=$('overlay'), hud=$('hud'), banner=$('banner');
+var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints||0)>0;
+if(isTouch) document.body.classList.add('touch');
+
+function fit(){
+  var w=window.innerWidth, h=window.innerHeight;
+  var maxS=Math.min((w-28)/480, (h-(58+(isTouch?160:46)))/560, 2.5);
+  var s=Math.max(maxS,0.5);
+  if(settings.pixelPerfect){
+    /* snap to an integer scale, but never exceed the viewport constraints */
+    s=Math.max(0.5,Math.round(s));
+    if(s>maxS&&maxS>=1){ s=Math.floor(maxS); }
+  }
+  frame.style.width=Math.round(480*s)+'px';
+  frame.style.height=Math.round(58+560*s)+'px';
+  cv.style.height=Math.round(560*s)+'px';
+}
+window.addEventListener('resize',fit); fit();
+
+/* ---------------- world ---------------- */
+var world=null;
+function diffCfg(){
+  if(world&&world.cfgKey&&DIFFS[world.cfgKey]) return DIFFS[world.cfgKey]; /* the attract demo can cycle profiles without touching the player's menu pick */
+  if(classicOn()) return DIFFS.classic; /* strict-Frogger mode gets its own pace */
+  return (world&&world.daily&&world.dailyCfg)? world.dailyCfg : DIFFS[settings.difficulty];
+}
+function classicOn(){
+  /* strict-Frogger overlay: 30s clock per packet, no boosters, one fixed 5-core board.
+     Never applies to the attract demo or the fixed daily challenge. */
+  return !!(settings.classic && (!world || (world.mode!=='attract' && !world.attractDemo && !world.daily)));
+}
+function newWorld(level, mode, dailyOpts, cfgKey){
+  var prevRND=RND;
+  if(dailyOpts) RND=mulberry32(dailyOpts.seed);
+  world={
+    mode:mode||'attract', priorMode:'play', level:level||1, daily:!!dailyOpts, classicDone:false,
+    cfgKey:cfgKey||null, sockets:null, demoGoal:0,
+    score:0, lives:3, time:60, timeMax:60,
+    goals:[false,false,false,false,false],
+    socketAnim:[0,0,0,0,0],
+    player:{ px:START_COL*TILE+TILE/2, py:START_ROW*TILE+TILE/2, tx:START_COL, ty:START_ROW,
+             m0:0,m1:0,t:0,moving:false, facing:0, invuln:0, shield:false, overclock:0, burst:0,
+             landT:0, trail:[], returnT:-1, dead:0 },
+    throttleT:0, burstSmash:0, attractDemo:false, demoMode:false,
+    rushT:11, rushPhase:'idle', rushCount:0, rushSurvived:0, rushLives:3,
+    demoCycleT:(mode==='attract'?4.5:999), demoLabel:null,
+    lanesH:[], lanesB:[], powerups:[], particles:[],
+    combo:0, comboTimer:0, maxCombo:0, rowMax:START_ROW,
+    shake:0, flash:0, flashCol:'#fff', hitFlash:0, hitFlashCol:'#ffffff',
+    deathT:0, deathRelease:0, deathX:0, deathY:0, deathMsg:'', deathFinal:'',
+    bannerT:0, readyT:0, clearT:0, bestAnnounced:false, beatBest:false,
+    lastWarn:-1, nextLifeAt:25000,
+    powerSpawnT:4, worldTime:0, stats:{ delivered:0 },
+    hi:Math.max(settings.best, 0)
+  };
+  if(dailyOpts){
+    world.dailySeed=dailyOpts.seed;
+    world.dailyCfg=dailyOpts.cfg;
+    world.afterClear='daily';
+    world.dailyComplete=false;
+  }
+  buildLanes(level);
+  initPowerups();
+  RND=prevRND;
+  /* strict rules: a fixed 30s clock that refills per packet; otherwise difficulty time minus level creep */
+  world.timeMax = classicOn()? 30 : Math.max(30, diffCfg().time-(level-1)*3);
+  world.time=world.timeMax;
+  world.lives = classicOn()? 5 : diffCfg().lives; /* Frogger starts you with five packets */
+}
+function buildLanes(level){
+  var d=diffCfg(), s=1+(level-1)*0.09;
+  var base=78*d.speed*s;
+  /* per-difficulty lane profile (bottom→top: rows 9,8,7,6). CLASSIC carries the
+     1981 arcade shape — entry lane slowest, dangerous lane at the top; everyone
+     else keeps the default highway. Daily cfg carries no lanes → default. */
+  var L=d.lanes||[1.85,0.8,1.5,1.15];
+  world.lanesH=[
+    mkH(6, 1, base*L[3], 3.1*d.density, ['ping','stream']),
+    mkH(7,-1, base*L[2], 3.6*d.density, ['stream','server']),
+    mkH(8, 1, base*L[1], 4.3*d.density, ['server','stream']),
+    mkH(9,-1, base*L[0], 2.9*d.density, ['ping'])
+  ];
+  var sink = d.sinkPeriod<99;
+  /* every trace row can sink now, Frogger-style — each log does so on its own clock */
+  world.lanesB=[
+    mkB(2, 1, base*0.72, 2.7*d.busGap, [3,3,2], sink, d.sinkPeriod),
+    mkB(3,-1, base*1.02, 3.0*d.busGap, [2,2,2], sink, d.sinkPeriod),
+    mkB(4, 1, base*1.3,  3.5*d.busGap, [4,3],   sink, d.sinkPeriod)
+  ];
+}
+function mkH(row,dir,speed,spacingT,types){
+  var spacing=spacingT*TILE, span=W+spacing, lane={row:row,dir:dir,speed:speed,spacing:spacing,vehicles:[],var:row%3};
+  /* Vehicles are spread evenly around the wrap ring (span long) so the lane can never
+     double-up: the old code created ceil(span/spacing)+1 vehicles whose wrapped phase
+     landed on top of the first, and gave every vehicle its own speed so faster traffic
+     permanently bunched into overlapping piles. Even spacing + one shared lane speed
+     keeps the gaps fixed forever. */
+  var n=Math.ceil(span/spacing);
+  var step=span/n;
+  /* The jitter stays small enough that the tightest lane (hard mode, row 7) keeps a
+     minimum gap of step-20=79.2px, safely wider than the 76px servers — so even the
+     worst jitter can never make two vehicles touch. */
+  var JIT=20;
+  var SIZE={ping:26,stream:50,server:76};
+  for(var i=0;i<n;i++){
+    var x=-spacing+i*step+RND()*JIT;
+    var type=types[Math.floor(RND()*types.length)];
+    lane.vehicles.push({ x:x, w:SIZE[type], v:dir*speed, type:type, span:span, min:-spacing });
+  }
+  return lane;
+}
+function mkB(row,dir,speed,gapT,lens,sink,sinkPeriod){
+  /* sink state lives on each LOG now (Frogger-style): every bus runs its own
+     staggered sink clock, so the row never goes under at once. Only some logs
+     sink at all; warnDur/unsafeDur are shared lane timings for the window shape. */
+  var lane={row:row,dir:dir,speed:speed,gap:gapT,lens:lens,buses:[],
+            warnDur:1.15, unsafeDur:0.95};
+  /* The lane layout repeats every full lens cycle. Bus positions are stored as a
+     phase in [0,period) and drawn at every copy (phase +/- k*period) that touches
+     the screen — this guarantees the wrap-around can never drop a bus on top of
+     its neighbour (the old fixed 640px wrap did exactly that, permanently merging
+     logs into oversized double-glow blocks). */
+  var period=0;
+  for(var pi=0;pi<lens.length;pi++) period+=(lens[pi]+gapT)*TILE;
+  lane.period=period;
+  var x=-W*0.5, i=0, seen={}, guard=0;
+  while(guard++<64){
+    var len=lens[i%lens.length];
+    var phase=mod(x,period);
+    if(seen[phase]) break; /* wrapped the ring: every slot is accounted for */
+    seen[phase]=true;
+    var bSink = !!(sink && RND()<0.5); /* Frogger: roughly half the logs are safe forever */
+    var bPeriod = bSink? (sinkPeriod||99)*(1.0+RND()*0.8) : (sinkPeriod||99);
+    lane.buses.push({ x:phase, w:len*TILE, len:len, v:dir*speed, sink:bSink,
+                      sinkPeriod:bPeriod, sinkT:bPeriod*(0.1+RND()*0.8),
+                      warn:false, unsafe:false, warnSnd:false, unsafeSnd:false });
+    x+=(len+gapT)*TILE; i++;
+  }
+  return lane;
+}
+function initPowerups(){
+  world.powerups=[];
+  if(classicOn()) return; /* strict rules: no boosters on the board */
+  spawnPowerup(5); spawnPowerup(5); spawnPowerup(10);
+}
+var PU_TYPES=[{t:'time',w:28},{t:'shield',w:22},{t:'bit',w:15},{t:'overclock',w:16},{t:'life',w:12},{t:'throttle',w:20},{t:'burst',w:17}];
+function spawnPowerup(prefRow, rng){
+  var r=rng||RND;
+  var row = prefRow!=null ? prefRow : (r()<0.6?5:10);
+  var col;
+  do{ col=Math.floor(r()*COLS); }while(col===START_COL&&row===START_ROW);
+  var total=0; PU_TYPES.forEach(function(p){ total+=p.w; });
+  var rr=r()*total, acc=0, type='time';
+  for(var i=0;i<PU_TYPES.length;i++){ acc+=PU_TYPES[i].w; if(rr<acc){ type=PU_TYPES[i].t; break; } }
+  world.powerups.push({ col:col, row:row, type:type });
+}
+
+/* ---------------- utils ---------------- */
+var RND=Math.random; /* swap for a seeded PRNG to build deterministic daily boards */
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function lerp(a,b,k){ return a+(b-a)*k; }
+function ease(k){ return k<0?0:(k>1?1:k*k*(3-2*k)); }
+function rectsOverlap(a,b){ return a.x<b.x+b.w && a.x+a.w>b.x && a.y<b.y+b.h && a.y+a.h>b.y; }
+function mod(a,n){ return ((a%n)+n)%n; }
+function pad6(n){ n=Math.max(0,Math.round(n)); var s=''+n; while(s.length<6)s='0'+s; return s; }
+
+/* ---------------- input ---------------- */
+var keys={ up:false,down:false,left:false,right:false };
+var lastMoveAt=0, moveInterval=175;
+var DXDY=[[0,-1],[1,0],[0,1],[-1,0]];
+function tryMove(dir){
+  if(world.mode!=='play'&&world.mode!=='attract') return false;
+  var p=world.player, dx=DXDY[dir][0], dy=DXDY[dir][1];
+  if(p.moving||p.returnT>=0) return false; /* input locked while the packet flies home */
+  var gx=p.px+dx*TILE, gy=p.py+dy*TILE;
+  if(gx<TILE/2||gx>W-TILE/2) return false;
+  if(gy<TILE/2||gy>START_ROW*TILE+TILE/2) return false;
+  p.m0=p.px; p.m1=gx; p.g0=p.py; p.g1=gy; p.t=0; p.moving=true; p.facing=dir;
+  p.wasDeck=p.ty>=2&&p.ty<=4&&!!busAt(p.ty,p.px); /* capture deck state NOW — the bus may drift during the hop */
+  Snd.play('hop');
+  if(!world.attractDemo){ /* the attract autopilot never touches player stats */
+    meta.stats.hops++;
+    if(meta.stats.hops>=1000) unlock('hops');
+  }
+  return true;
+}
+function handleDir(d){
+  if(tryMove(d)){ lastMoveAt=performance.now(); }
+}
+window.addEventListener('keydown',function(e){
+  var k=e.key;
+  if(nameMode){
+    e.preventDefault();
+    if(k==='Enter') nameEnter();
+    else if(k==='Backspace') nameBack();
+    else if(k==='ArrowUp') nameCycle(1);
+    else if(k==='ArrowDown') nameCycle(-1);
+    else if(k==='ArrowLeft') nameMove(-1);
+    else if(k==='ArrowRight') nameMove(1);
+    else if(k==='Escape') cancelName();
+    else if(/^[a-zA-Z0-9]$/.test(k)) nameType(k.toUpperCase());
+    Snd.ensure(); return;
+  }
+  if(k==='ArrowUp'||k==='w'||k==='W'){ e.preventDefault(); if(curScreen==='game'){ keys.up=true; handleDir(0); } else if(curScreen==='menu'&&world&&world.attractDemo){ enterDemoMode(); keys.up=true; handleDir(0); } }
+  else if(k==='ArrowRight'||k==='d'||k==='D'){ e.preventDefault(); if(curScreen==='game'){ keys.right=true; handleDir(1); } else if(curScreen==='menu'&&world&&world.attractDemo){ enterDemoMode(); keys.right=true; handleDir(1); } }
+  else if(k==='ArrowDown'||k==='s'||k==='S'){ e.preventDefault(); if(curScreen==='game'){ keys.down=true; handleDir(2); } else if(curScreen==='menu'&&world&&world.attractDemo){ enterDemoMode(); keys.down=true; handleDir(2); } }
+  else if(k==='ArrowLeft'||k==='a'||k==='A'){ e.preventDefault(); if(curScreen==='game'){ keys.left=true; handleDir(3); } else if(curScreen==='menu'&&world&&world.attractDemo){ enterDemoMode(); keys.left=true; handleDir(3); } }
+  else if(k==='p'||k==='P'||k==='Escape'){
+    if(curScreen==='game'||curScreen==='pause'){
+      /* shield: synthetic (untrusted) pause keys must never pause a live game.
+         Real keyboard input is always isTrusted; the desktop preview app's stray
+         Escape/P dispatches during capture runs are not, and they were instantly
+         pausing freshly restarted runs. The playtest bot's synthetic ARROW keys
+         are unaffected — only the pause keys are filtered. */
+      if(e.isTrusted) togglePause();
+      e.preventDefault();
+    }
+    else if(curScreen==='diff'||curScreen==='sound'||curScreen==='soundtest'||curScreen==='scores'||curScreen==='daily'||curScreen==='ach'||curScreen==='help'){ onBack(); e.preventDefault(); }
+  }
+  else if(k==='m'||k==='M'){
+    if(curScreen==='menu'){ mHoldAt=performance.now(); }
+    else if(curScreen!=='soundtest'){ toggleMute(); e.preventDefault(); }
+  }
+  else if(k==='r'||k==='R'){
+    /* quick restart: R re-routes from play, pause, or game-over (mirrors RESTART RUN) */
+    if(curScreen==='game'||curScreen==='pause'||curScreen==='go'){
+      if(world&&world.demoMode) togglePause();
+      else if(world&&world.daily) startDaily();
+      else newGame();
+      e.preventDefault();
+    }
+  }
+  Snd.ensure(); if(!Snd.musicTimer) Snd.startMusic();
+});
+window.addEventListener('keyup',function(e){
+  var k=e.key;
+  if(k==='ArrowUp'||k==='w'||k==='W') keys.up=false;
+  else if(k==='ArrowRight'||k==='d'||k==='D') keys.right=false;
+  else if(k==='ArrowDown'||k==='s'||k==='S') keys.down=false;
+  else if(k==='ArrowLeft'||k==='a'||k==='A') keys.left=false;
+  else if(k==='m'||k==='M'){
+    if(curScreen==='menu'){
+      var held=mHoldAt? performance.now()-mHoldAt : 0; mHoldAt=null;
+      if(held>=900) showScreen('soundtest');
+      else toggleMute();
+    }
+    mHoldAt=null;
+  }
+});
+function updateHeld(){
+  if(world.mode!=='play'||world.deathT>0||world.deathRelease>0) return; /* no input during the death beat */
+  var d=null;
+  if(keys.up)d=0; else if(keys.right)d=1; else if(keys.down)d=2; else if(keys.left)d=3;
+  if(d==null&&pad.curDir!=null) d=pad.curDir;
+  if(d!=null && !world.player.moving && performance.now()-lastMoveAt>moveInterval){
+    handleDir(d);
+  }
+}
+/* touch: swipe */
+var touchStart=null;
+cv.addEventListener('touchstart',function(e){
+  touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY}; e.preventDefault();
+},{passive:false});
+cv.addEventListener('touchend',function(e){
+  if(!touchStart) return;
+  var dx=e.changedTouches[0].clientX-touchStart.x, dy=e.changedTouches[0].clientY-touchStart.y;
+  var ax=Math.abs(dx), ay=Math.abs(dy);
+  if(ax<22&&ay<22){ touchStart=null; return; }
+  var d = ax>ay ? (dx>0?1:3) : (dy>0?2:0);
+  handleDir(d); touchStart=null;
+  Snd.ensure(); if(!Snd.musicTimer) Snd.startMusic();
+},{passive:false});
+/* touch: dpad */
+var dpadBtns=document.querySelectorAll('.dbtn');
+dpadBtns.forEach(function(b){
+  b.addEventListener('pointerdown',function(e){
+    e.preventDefault(); handleDir(parseInt(b.getAttribute('data-dir'),10));
+    Snd.ensure(); if(!Snd.musicTimer) Snd.startMusic();
+  });
+});
+document.addEventListener('pointerdown',function(){
+  Snd.ensure(); if(!Snd.musicTimer) Snd.startMusic();
+},{once:false});
+
+/* ---------------- gamepad ---------------- */
+var pad={ connected:false, prev:{}, prevDir:null, curDir:null, lastMenuMove:0, selHoldAt:null, selLongDone:false };
+var mHoldAt=null;
+var getPads=function(){ return (navigator.getGamepads)? navigator.getGamepads() : []; };
+var padStatusEl=null;
+function cleanPadName(id){
+  var n=String(id||'').split('(')[0].trim();
+  if(!n) n='CONTROLLER';
+  if(n.length>22) n=n.slice(0,21).trim()+'…';
+  return n;
+}
+function updateInputHints(){
+  var rh=$('resume-hint');
+  if(rh) rh.textContent = pad.connected ? '▶ PRESS START TO RESUME' : (isTouch ? '▶ TAP RESUME' : '▶ PRESS P TO RESUME');
+  var rk=$('resume-key');
+  if(rk) rk.textContent = pad.connected ? 'START' : 'P';
+  var ih=$('input-hint');
+  if(ih){
+    var dev='KEYBOARD', name='ARROWS / WASD';
+    if(pad.connected){ dev='GAMEPAD'; name=pad.name||'CONTROLLER'; }
+    else if(isTouch){ dev='TOUCH'; name='SWIPE / D-PAD'; }
+    var esc=function(s){ return String(s||'').replace(/[<>&"]/g,function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]; }); };
+    ih.innerHTML='INPUT: <span class="dev">'+esc(dev)+'</span><span class="dev-name"> — '+esc(name)+'</span>';
+  }
+}
+function updatePadStatus(){
+  if(!padStatusEl) padStatusEl=document.getElementById('pad-status');
+  if(padStatusEl) padStatusEl.style.display = pad.connected ? '' : 'none';
+  updateInputHints();
+}
+function rumble(dur, strong, weak){
+  /* mobile browsers have no gamepad: buzz via the Vibration API, but only for strong hits
+     (skips the light countdown tick so phones don't buzz every second) */
+  if(!pad.connected){ if(navigator.vibrate&&strong>=0.4) { try{ navigator.vibrate(dur); }catch(e){} } return; }
+  try{
+    var gps=getPads();
+    for(var i=0;i<gps.length;i++){
+      var g=gps[i];
+      if(g&&g.connected){
+        var act=g.vibrationActuator||g.hapticsActuator;
+        if(act&&act.playEffect){
+          var p=act.playEffect('dual-rumble',{ duration:dur, strongMagnitude:strong, weakMagnitude:weak });
+          if(p&&p.catch) p.catch(function(){});
+          return;
+        }
+      }
+    }
+  }catch(e){}
+}
+function pollGamepad(){
+  var gps=getPads(), gp=null;
+  for(var i=0;i<gps.length;i++){ if(gps[i]&&gps[i].connected){ gp=gps[i]; break; } }
+  if(!gp){
+    if(pad.connected){ pad.connected=false; pad.name=null; updatePadStatus(); }
+    /* SELECT tap released while the pad disconnected: settle the mute toggle */
+    if(pad.selHoldAt&&!pad.selLongDone&&performance.now()-pad.selHoldAt<900) toggleMute();
+    pad.curDir=null; pad.prevDir=null; pad.prev={};
+    pad.selHoldAt=null; pad.selLongDone=false;
+    return;
+  }
+  var gname=cleanPadName(gp.id);
+  if(!pad.connected||pad.name!==gname){ pad.connected=true; pad.name=gname; updatePadStatus(); }
+  var B={}, hadInput=false;
+  for(var j=0;j<gp.buttons.length;j++){ if(gp.buttons[j]&&gp.buttons[j].pressed){ B[j]=true; hadInput=true; } }
+  var ax0=(gp.axes&&gp.axes.length>0)?gp.axes[0]:0, ax1=(gp.axes&&gp.axes.length>1)?gp.axes[1]:0;
+  var dead=0.5, dir=null;
+  if(B[12])dir=0; else if(B[13])dir=1; else if(B[14])dir=2; else if(B[15])dir=3;
+  else if(ax1<-dead)dir=0;
+  else if(ax0>dead)dir=1;
+  else if(ax1>dead)dir=2;
+  else if(ax0<-dead)dir=3;
+  var dirEdge=(dir!==null&&dir!==pad.prevDir);
+  pad.prevDir=dir;
+  if(dir!==null) hadInput=true;
+  var jp=function(b){ return !!B[b]&&!pad.prev[b]; };
+  if(hadInput){ Snd.ensure(); if(!Snd.musicTimer) Snd.startMusic(); }
+  if(nameMode){
+    if(jp(0)) nameEnter();
+    else if(jp(1)) nameBack();
+    else if(dirEdge&&dir===0) nameCycle(1);
+    else if(dirEdge&&dir===2) nameCycle(-1);
+    else if(dirEdge&&dir===1) nameMove(1);
+    else if(dirEdge&&dir===3) nameMove(-1);
+  }
+  else if(curScreen==='game'){
+    if(dirEdge&&dir!==null) handleDir(dir);
+    pad.curDir=dir;
+    if(jp(9)) togglePause();      // START
+    if(jp(8)){ if(curScreen==='game') toggleMute(); }   // SELECT (tap) in game
+  }
+  else if(curScreen==='pause'||curScreen==='menu'||curScreen==='diff'||curScreen==='sound'||curScreen==='soundtest'||curScreen==='scores'||curScreen==='daily'||curScreen==='ach'||curScreen==='help'||curScreen==='go'){
+    /* d-pad on the title screen takes over the attract ghost for free-play */
+    if(curScreen==='menu'&&dirEdge&&dir!==null&&world&&world.attractDemo){
+      enterDemoMode();
+      handleDir(dir);
+      pad.prevDir=dir;
+      return; /* skip menu navigation this frame — we're in free-play now */
+    }
+    /* long-press SELECT on the main menu -> hidden sound test; tap -> mute */
+    if(curScreen==='menu'&&B[8]){
+      if(!pad.selHoldAt) pad.selHoldAt=performance.now();
+      if(!pad.selLongDone&&performance.now()-pad.selHoldAt>=900){ pad.selLongDone=true; showScreen('soundtest'); }
+    } else if(!B[8]){
+      if(pad.selHoldAt&&!pad.selLongDone&&performance.now()-pad.selHoldAt<900) toggleMute();
+      pad.selHoldAt=null; pad.selLongDone=false;
+    }
+    pad.curDir=null;
+    var nowT=performance.now();
+    if(dirEdge){
+      if(dir===0) menuMove(-1);
+      else if(dir===2) menuMove(1);
+      else if(dir===3&&curScreen==='diff') cycleDiff(-1);
+      else if(dir===1&&curScreen==='diff') cycleDiff(1);
+      else if(dir===3&&curScreen==='scores') switchTab(-1);
+      else if(dir===1&&curScreen==='scores') switchTab(1);
+      pad.lastMenuMove=nowT;
+    }
+    else if(dir!==null&&(dir===0||dir===2)&&nowT-pad.lastMenuMove>380){
+      menuMove(dir===0?-1:1);
+      pad.lastMenuMove=nowT;
+    }
+    if(jp(0)) menuActivate();     // A = confirm
+    if(jp(1)){                    // B = back
+      if(curScreen==='pause') togglePause();
+      else if(curScreen!=='menu'&&curScreen!=='go') onBack();
+    }
+    if(jp(9)){                    // START
+      if(curScreen==='menu') doAction('start');
+      else if(curScreen==='pause') togglePause();
+      else if(curScreen!=='go') onBack();
+    }
+  }
+  pad.prev=B;
+}
+
+/* ---------------- CRT display settings ---------------- */
+function applyCrt(){
+  frame.style.setProperty('--crt', String(Math.max(0,Math.min(1,settings.crtIntensity))));
+  frame.classList.toggle('px', !!settings.pixelPerfect);
+  if(settings.pixelPerfect){ cv.style.imageRendering='pixelated'; }
+  else { cv.style.imageRendering='auto'; }
+}
+/* ---------------- volume sliders ---------------- */
+function bindVolSliders(){
+  var vs=document.getElementById('vol-sfx'), vm=document.getElementById('vol-music');
+  if(vs){
+    vs.addEventListener('input',function(){ settings.sfxVol=parseFloat(this.value); Snd.applyVol(); });
+    vs.addEventListener('change',function(){ persist(); });
+  }
+  if(vm){
+    vm.addEventListener('input',function(){ settings.musicVol=parseFloat(this.value); Snd.applyVol(); });
+    vm.addEventListener('change',function(){ persist(); });
+  }
+  var ci=document.getElementById('crt-int');
+  if(ci){
+    ci.addEventListener('input',function(){ settings.crtIntensity=parseFloat(this.value); applyCrt(); });
+    ci.addEventListener('change',function(){ persist(); });
+  }
+  var stS=document.getElementById('st-sfx'), stM=document.getElementById('st-music');
+  if(stS){
+    stS.addEventListener('input',function(){ settings.sfxVol=parseFloat(this.value); Snd.applyVol(); });
+    stS.addEventListener('change',function(){ persist(); refreshSoundLabels(); });
+  }
+  if(stM){
+    stM.addEventListener('input',function(){ settings.musicVol=parseFloat(this.value); Snd.applyVol(); });
+    stM.addEventListener('change',function(){ persist(); refreshSoundLabels(); });
+  }
+}
+var stFlashT=null;
+function flashSndBtn(key){ /* pulse the AUDITION button of the sample that just played */
+  var g=$('st-grid');
+  if(!g) return;
+  var prev=g.querySelector('.playing');
+  if(prev) prev.classList.remove('playing');
+  var b=g.querySelector('[data-key="'+key+'"]');
+  if(!b) return;
+  b.classList.add('playing');
+  clearTimeout(stFlashT);
+  stFlashT=setTimeout(function(){ b.classList.remove('playing'); }, 950);
+}
+function renderSoundTest(){
+  var g=$('st-grid');
+  if(!g||g.children.length) return;
+  SFX_LIST.forEach(function(s){
+    var b=document.createElement('button');
+    b.className='st-btn'; b.textContent=s[1];
+    b.dataset.key=s[0];
+    b.addEventListener('click',function(){ doAction('st-sfx:'+s[0]); });
+    g.appendChild(b);
+  });
+}
+renderSoundTest();
+bindVolSliders();
+applyCrt();
+
+/* ---------------- screens & menus ---------------- */
+var curScreen='menu';
+var nameMode=false;
+var SCREENS=['menu','diff','sound','soundtest','scores','daily','ach','help','inter','pause','go','game'];
+var activeBtns=[], focusIdx=0;
+
+var menuIntroNext=false;
+function renderTitleBoard(){
+  var el=$('title-board');
+  if(!el) return;
+  var list=scores[lbKey()]||[];
+  var top=list.slice(0,5);
+  var best=Math.max(settings.best,0);
+  if(!top.length){
+    el.innerHTML='<div class="tb-head">TOP OPERATORS · '+lbLabel()+'</div><div class="tb-empty">NO SCORES YET — BE THE FIRST</div>';
+    return;
+  }
+  var h='<div class="tb-head">TOP OPERATORS · <b>'+lbLabel()+'</b> · HI <b>'+pad6(best)+'</b></div><table>';
+  var esc=function(s){ return String(s||'').replace(/[<>&"]/g,function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]; }); };
+  top.forEach(function(e,i){
+    var isBest=best>0&&e.score>=best;
+    h+='<tr class="rk'+(i+1)+(isBest?' best':'')+'"><td>'+(i+1)+'</td><td>'+esc(e.name)+'</td><td>'+pad6(e.score)+'</td></tr>';
+  });
+  h+='</table>';
+  el.innerHTML=h;
+}
+function titleIntro(){
+  var sec=$('scr-menu');
+  sec.classList.remove('intro'); void sec.offsetWidth; sec.classList.add('intro');
+  setTimeout(function(){ sec.classList.remove('intro'); },1400);
+  Snd.ensure(); if(Snd.sfxOn) Snd.play('title');
+}
+function screenWipe(){
+  var w=$('wipe');
+  if(!w) return;
+  w.classList.remove('go'); void w.offsetWidth; w.classList.add('go');
+}
+function showScreen(name){
+  var prev=curScreen;
+  curScreen=name;
+  SCREENS.forEach(function(s){
+    var el=$('scr-'+s);
+    if(el) el.classList.toggle('on', s===name);
+  });
+  overlay.classList.toggle('hidden', name==='game');
+  hud.classList.toggle('hidden', !(name==='game'||name==='pause'||name==='inter'));
+  keys.up=keys.down=keys.left=keys.right=false;
+  pad.lastMenuMove=performance.now();
+  if(!(name==='game'&&prev==='pause')) screenWipe(); /* resume is instant; everything else gets the CRT roll */
+  if(name==='menu'){
+    refreshMenuMeta();
+    renderTicker();
+    renderTitleBoard();
+    if(menuIntroNext){ menuIntroNext=false; titleIntro(); }
+  }
+  if(name==='pause'||name==='sound'||name==='soundtest'){ refreshSoundLabels(); refreshQualityLabels(); updateInputHints(); }
+  if(name==='soundtest'){ Snd.ensure(); Snd.stopMusic(); if(Snd.musicOn) Snd.startMusic(); }
+  if(name==='scores'){ renderScores(); }
+  if(name==='daily'){ renderDaily(); }
+  if(name==='ach'){ renderAch(); }
+  if(name==='go'){ renderGameOver(); }
+  buildMenu(name);
+}
+function buildMenu(screenName){
+  var sec=$('scr-'+screenName);
+  if(!sec) return;
+  activeBtns=[].slice.call(sec.querySelectorAll('.mbtn, .diff-card, .tab-btn'));
+  activeBtns=activeBtns.filter(function(b){ return b.offsetParent!==null || !sec.classList.contains('on'); });
+  focusIdx=Math.max(0, activeBtns.indexOf(sec.querySelector('.mbtn[data-act="start"], .mbtn[data-act="resume"], .mbtn[data-act="playagain"], .diff-card, .tab-btn')));
+  paintMenu();
+}
+function paintMenu(){
+  activeBtns.forEach(function(b,i){
+    if(b.classList.contains('tab-btn')) return; /* tabs keep renderScores' selection highlight */
+    b.classList.toggle('sel', i===focusIdx);
+    if(i===focusIdx&&b.scrollIntoView) b.scrollIntoView({block:'nearest'});
+  });
+}
+function menuMove(d){
+  if(!activeBtns.length) return;
+  focusIdx=mod(focusIdx+d, activeBtns.length);
+  Snd.play('ui'); paintMenu();
+}
+function menuActivate(){
+  var b=activeBtns[focusIdx];
+  if(b){ Snd.play('select'); doAction(b.getAttribute('data-act')); }
+}
+document.addEventListener('pointermove',function(e){
+  var t=e.target.closest('.mbtn,.diff-card,.tab-btn');
+  if(t&&activeBtns.indexOf(t)>=0){
+    var i=activeBtns.indexOf(t);
+    if(i!==focusIdx){ focusIdx=i; paintMenu(); }
+  }
+});
+document.addEventListener('click',function(e){
+  var t=e.target.closest('.mbtn,.diff-card,.tab-btn');
+  if(!t) return;
+  var act=t.getAttribute('data-act');
+  if(activeBtns.indexOf(t)>=0) focusIdx=activeBtns.indexOf(t);
+  Snd.play('select'); doAction(act);
+});
+document.addEventListener('keydown',function(e){
+  if(nameMode) return;
+  if(curScreen==='menu'||curScreen==='diff'||curScreen==='sound'||curScreen==='scores'||curScreen==='help'||curScreen==='pause'||curScreen==='go'){
+    if(e.key==='ArrowUp'||e.key==='w'||e.key==='W'){ e.preventDefault(); menuMove(-1); }
+    else if(e.key==='ArrowDown'||e.key==='s'||e.key==='S'){ e.preventDefault(); menuMove(1); }
+    else if(e.key==='Enter'||e.key===' '){ e.preventDefault(); menuActivate(); }
+    else if(e.key==='ArrowLeft'&&(curScreen==='diff')){ cycleDiff(-1); }
+    else if(e.key==='ArrowRight'&&(curScreen==='diff')){ cycleDiff(1); }
+    else if(e.key==='ArrowLeft'&&curScreen==='scores'){ switchTab(-1); }
+    else if(e.key==='ArrowRight'&&curScreen==='scores'){ switchTab(1); }
+  }
+});
+function onBack(){
+  if(curScreen==='pause'){ togglePause(); }
+  else if(curScreen==='menu'||curScreen==='go'){ }
+  else if(curScreen==='scores'||curScreen==='diff'||curScreen==='sound'||curScreen==='soundtest'||curScreen==='daily'||curScreen==='ach'||curScreen==='help'){
+    showScreen('menu');
+  }
+  else if(curScreen==='game'){ togglePause(); }
+}
+function doAction(act){
+  if(!act) return;
+  var p=act.split(':');
+  switch(p[0]){
+    case 'start': case 'playagain': case 'restart':
+      /* demoMode only pauses from live game/pause screens; a stale demo flag must
+         never dead-button PLAY AGAIN on the game-over screen */
+      if(world&&world.demoMode&&(curScreen==='game'||curScreen==='pause')){ togglePause(); }
+      else if(world&&world.daily){ startDaily(); }
+      else { newGame(); }
+      break;
+    case 'menu': quitToMenu(); break;
+    case 'diff': showScreen('diff'); break;
+    case 'sound': showScreen('sound'); break;
+    case 'scores': showScreen('scores'); break;
+    case 'daily': showScreen('daily'); break;
+    case 'daily-start': startDaily(); break;
+    case 'ach': showScreen('ach'); break;
+    case 'help': showScreen('help'); break;
+    case 'back': showScreen('menu'); break;
+    case 'easy': case 'normal': case 'hard':
+      settings.difficulty=p[0]; settings.classic=false; persist(); paintDiff(); refreshMenuMeta(); Snd.play('power'); break;
+    case 'classic':
+      settings.difficulty='classic'; settings.classic=true; persist(); paintDiff(); refreshMenuMeta(); Snd.play('power'); break;
+    case 'sfx': Snd.setSfx(!Snd.sfxOn); Snd.ensure(); refreshSoundLabels(); if(Snd.sfxOn) Snd.play('select'); break;
+    case 'music':
+      Snd.musicOn=!Snd.musicOn; settings.music=Snd.musicOn; persist();
+      if(Snd.musicOn){ Snd.startMusic(); } else { Snd.stopMusic(); }
+      refreshSoundLabels(); break;
+    case 'quality': cycleQuality(1); break;
+    case 'px': settings.pixelPerfect=!settings.pixelPerfect; persist(); applyCrt(); refreshSoundLabels(); Snd.play('ui'); break;
+    case 'announce': settings.announce=(settings.announce==='alert')?'polite':'alert'; persist(); refreshSoundLabels(); Snd.play('ui'); break;
+    case 'pauseblur': settings.pauseOnBlur=!settings.pauseOnBlur; persist(); refreshSoundLabels(); Snd.play('ui'); break;
+    case 'st-music':
+      Snd.musicOn=!Snd.musicOn; settings.music=Snd.musicOn; persist();
+      if(Snd.musicOn){ Snd.startMusic(); } else { Snd.stopMusic(); }
+      refreshSoundLabels(); $('st-music-val').textContent=Snd.musicOn?'ON':'OFF';
+      break;
+    case 'st-sfx':
+      Snd.ensure(); if(Snd.sfxOn){ Snd.play(p[1]); flashSndBtn(p[1]); }
+      break;
+    case 'resume': togglePause(); break;
+    case 'quit': if(world&&world.demoMode){ exitDemoMode(); } else { quitToMenu(); } break;
+    case 'tab': tabSel=p[1]; hlRow=-1; showScreen('scores'); break;
+  }
+}
+function refreshMenuMeta(){
+  $('menu-diff').textContent=DIFFS[settings.difficulty].label+(settings.classic&&settings.difficulty!=='classic'?' · CLASSIC':'');
+  $('menu-sound').textContent=(settings.sfx?'SFX':'--')+' '+(settings.music?'MUS':'--');
+  var el=$('menu-ach');
+  if(el) el.textContent=achCount()+'/'+ACHS.length;
+  var md=$('menu-daily');
+  if(md){
+    var d=new Date();
+    md.textContent=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)+(dailyBoard(dateKey()).length?' · DONE':'');
+  }
+}
+function renderTicker(){
+  var el=$('ticker-track');
+  if(!el) return;
+  var d=new Date();
+  var day=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+  var dailyDone=dailyBoard(dateKey()).length>0;
+  var segs=[
+    '<b>■ INSERT COIN</b>',
+    'PRESS START TO PLAY',
+    'BEST RUN <b>'+pad6(Math.max(0,Math.round(settings.best)))+'</b>',
+    'ACHIEVEMENTS <b class="accent">'+achCount()+'/'+ACHS.length+'</b>',
+    'GAMES PLAYED <b>'+meta.stats.games+'</b>',
+    'CORES SECURED <b>'+meta.stats.cores+'</b>',
+    'PACKETS LOST <b>'+meta.stats.deaths+'</b>',
+    'HOPS <b>'+meta.stats.hops+'</b>',
+    'DAILY CHALLENGE <b>'+day+'</b>'+(dailyDone?' · DONE':''),
+    'NOW PLAYING: <b>'+DIFFS[settings.difficulty].label+'</b>',
+    'ARROWS / WASD / SWIPE MOVE · P PAUSE · M MUTE',
+    '<b class="accent">HOLD SELECT / M FOR AUDITION</b>',
+    '© 2026 FREEBUFF ARCADE · ALL ROUTES RESERVED · v1.0.0'
+  ];
+  var txt=segs.join(' &nbsp;·&nbsp; ');
+  /* each copy carries its own trailing separator so translateX(-50%) lands exactly on the next copy */
+  var a=txt+' <span style="opacity:.4">✦</span> ';
+  el.innerHTML=a+a;
+}
+function refreshSoundLabels(){
+  $('v-sfx').textContent=settings.sfx?'ON':'OFF';
+  $('v-music').textContent=settings.music?'ON':'OFF';
+  $('v-sfx2').textContent=settings.sfx?'ON':'OFF';
+  $('v-music2').textContent=settings.music?'ON':'OFF';
+  var vp=$('v-px');
+  if(vp) vp.textContent=settings.pixelPerfect?'ON':'OFF';
+  var va=$('v-announce');
+  if(va) va.textContent=(settings.announce==='alert')?'ALERT':'POLITE';
+  var vpb=$('v-pauseblur');
+  if(vpb) vpb.textContent=settings.pauseOnBlur?'ON':'OFF';
+  var vs=$('vol-sfx'), vm=$('vol-music'), ci=$('crt-int');
+  if(vs) vs.value=settings.sfxVol;
+  if(vm) vm.value=settings.musicVol;
+  if(ci) ci.value=settings.crtIntensity;
+  var stS=$('st-sfx'), stM=$('st-music'), stv=$('st-music-val');
+  if(stS) stS.value=settings.sfxVol;
+  if(stM) stM.value=settings.musicVol;
+  if(stv) stv.textContent=settings.music?'ON':'OFF';
+}
+function refreshQualityLabels(){
+  var v=$('v-quality2');
+  if(v) v.textContent=(QUAL[settings.quality]||QUAL.high).label;
+}
+function cycleQuality(dir){
+  var qs=['low','med','high'], i=qs.indexOf(settings.quality);
+  if(i<0) i=2;
+  settings.quality=qs[(i+dir+3)%3];
+  persist(); refreshQualityLabels(); Snd.play('ui');
+}
+function paintDiff(){
+  var cards=document.querySelectorAll('.diff-card');
+  cards.forEach(function(c){
+    c.classList.toggle('sel', c.getAttribute('data-act')===settings.difficulty);
+  });
+}
+function cycleDiff(d){
+  var order=['easy','normal','hard','classic'], i=order.indexOf(settings.difficulty);
+  settings.difficulty=order[mod(i+d,4)];
+  settings.classic=(settings.difficulty==='classic'); /* the CLASSIC card owns strict mode */
+  persist(); paintDiff(); Snd.play('ui');
+}
+/* ---------- high scores ---------- */
+function lbKey(){ return settings.classic? 'classic' : settings.difficulty; } /* which table a run belongs to */
+function lbLabel(){ return settings.classic? 'CLASSIC' : DIFFS[settings.difficulty].label; }
+function diffLabel(){
+  /* the mode of the CURRENT run: daily and strict-Frogger runs name themselves,
+     so the pause screen / intermission never show 'NORMAL · CLASSIC'. */
+  if(world&&world.daily) return 'DAILY';
+  if(settings.classic||classicOn()) return 'CLASSIC';
+  return DIFFS[settings.difficulty].label;
+}
+var tabSel=lbKey(), hlRow=-1;
+function qualifies(score){
+  var t=scores[lbKey()];
+  if(score<=0) return false;
+  if(t.length<8) return true;
+  return score>t[t.length-1].score;
+}
+function commitScore(name,score,level){
+  var t=scores[lbKey()];
+  t.push({name:name,score:Math.round(score),level:level});
+  t.sort(function(a,b){ return b.score-a.score; });
+  if(t.length>8) t.length=8;
+  hlRow=t.findIndex(function(e){ return e.name===name&&e.score===Math.round(score); });
+  tabSel=lbKey(); /* open the scores screen on the table this run joined */
+  persist();
+}
+function switchTab(d){
+  var order=['easy','normal','hard','classic'], i=order.indexOf(tabSel);
+  tabSel=order[mod(i+d,4)]; hlRow=-1;
+  showScreen('scores');
+}
+function renderScores(){
+  var tabs=$('score-tabs'); tabs.innerHTML='';
+  ['easy','normal','hard','classic'].forEach(function(d){
+    var b=document.createElement('button');
+    b.className='tab-btn'+(d===tabSel?' sel':'');
+    b.setAttribute('data-act','tab:'+d);
+    b.textContent= d==='classic'? 'CLASSIC' : DIFFS[d].label;
+    tabs.appendChild(b);
+  });
+  var t=scores[tabSel], body=$('score-body');
+  if(!t.length){ body.innerHTML='<div class="empty-note">NO SCORES YET<br>BE THE FIRST</div>'; return; }
+  var html='<table class="scores"><tr><th>#</th><th>OPERATOR</th><th>SCORE</th><th>LVL</th></tr>';
+  t.forEach(function(e,i){
+    html+='<tr'+(i===hlRow?' class="hl"':'')+'><td class="rk'+(i+1)+'">'+(i+1)+'</td><td>'+e.name+'</td><td>'+pad6(e.score)+'</td><td>'+e.level+'</td></tr>';
+  });
+  html+='</table>';
+  body.innerHTML=html;
+}
+/* ---------- name entry ---------- */
+var nameSlots=['A','A','A'], nameCur=0, CHARSET='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+function initNameEntry(){
+  nameSlots=['A','A','A']; nameCur=0; paintName();
+}
+function paintName(){
+  var box=$('name-slots'); box.innerHTML='';
+  nameSlots.forEach(function(ch,i){
+    var d=document.createElement('div');
+    d.className='name-slot'+(i===nameCur?' cur':'');
+    d.textContent=ch; box.appendChild(d);
+  });
+}
+function nameCycle(d){
+  var idx=CHARSET.indexOf(nameSlots[nameCur]);
+  nameSlots[nameCur]=CHARSET[mod(idx+d,CHARSET.length)];
+  Snd.play('ui'); paintName();
+}
+function nameMove(d){ nameCur=mod(nameCur+d,3); Snd.play('ui'); paintName(); }
+function nameType(ch){
+  nameSlots[nameCur]=ch;
+  if(nameCur<2){ nameCur++; Snd.play('ui'); }
+  else Snd.play('select');
+  paintName();
+}
+function nameBack(){
+  if(nameCur>0){ nameCur--; }
+  nameSlots[nameCur]='A'; Snd.play('ui'); paintName();
+}
+function nameEnter(){
+  nameMode=false;
+  $('name-entry').style.display='none'; /* submitted: the initials box must not linger on the re-shown go screen */
+  if(world&&world.daily){
+    var k=dailyKeyNow(), b=dailyBoard(k);
+    var entry={ id:Date.now(), name:nameSlots.join(''), score:Math.round(world.score), time:Math.max(0,Math.round(world.time)), level:world.level };
+    b.push(entry);
+    b.sort(function(x,y){ return y.score-x.score; });
+    if(b.length>8) b.length=8;
+    dailyStore.mine={ key:k, id:entry.id };
+    hlDailyId=entry.id;
+    dailySave();
+    Snd.play('goal');
+    showScreen('daily'); /* the daily board view doubles as its own play-again screen */
+  } else {
+    commitScore(nameSlots.join(''), world.score, world.level);
+    Snd.play('goal');
+    /* land back on the game-over screen, NOT the high-score table: the scores
+       screen's only exits are Back -> menu, which made "PLAY AGAIN" feel like it
+       kicked you to the main menu after entering initials. The go screen keeps
+       PLAY AGAIN focused and re-shows the rank (renderGameOver). */
+    showScreen('go');
+  }
+}
+function cancelName(){
+  nameMode=false;
+  $('name-entry').style.display='none';
+  Snd.play('ui');
+}
+
+/* ---------------- achievements & lifetime stats ---------------- */
+var META_KEY='datarouter_meta_v1';
+var meta=store.get(META_KEY,{});
+if(!meta.ach||typeof meta.ach!=='object'||Array.isArray(meta.ach)) meta.ach={};
+if(!meta.stats||typeof meta.stats!=='object'||Array.isArray(meta.stats)) meta.stats={};
+var DEF_STATS={games:0,cores:0,deaths:0,hops:0,pickups:0,bestCombo:0,maxLevel:1,time:0,bestScore:0};
+meta.stats=Object.assign({}, DEF_STATS, meta.stats);
+Object.keys(DEF_STATS).forEach(function(k){ if(typeof meta.stats[k]!=='number'||!isFinite(meta.stats[k])) meta.stats[k]=DEF_STATS[k]; });
+function saveMeta(){ store.set(META_KEY,meta); }
+var ACHS=[
+  {id:'first_core', n:'FIRST ROUTE', d:'Deliver your first packet to a CPU core.'},
+  {id:'level_clear', n:'ROUTE COMPLETE', d:'Clear your first level.'},
+  {id:'perfect', n:'PERFECT LEVEL', d:'Clear a level without losing a life.'},
+  {id:'flawless', n:'NO-DAMAGE ROUTE', d:'Clear a level without a scratch — no shields, no respawns.'},
+  {id:'combo5', n:'COMBO x5', d:'Chain five sockets in a row.'},
+  {id:'survivor', n:'SURVIVOR', d:'Live for 3 minutes in one run.'},
+  {id:'score50', n:'HALF MEG', d:'Score 50,000 in a single run.'},
+  {id:'score100', n:'MEGABYTE', d:'Score 100,000 in a single run.'},
+  {id:'pickups', n:'PACKET COLLECTOR', d:'Collect 10 boosters in one run.'},
+  {id:'firewall', n:'FIREWALL', d:'Survive a collision using a firewall shield.'},
+  {id:'clone', n:'CLONED', d:'Get the spare packet at the 25,000-point milestone.'},
+  {id:'hops', n:'HOP, HOP', d:'Hop 1,000 tiles in total.'},
+  {id:'depth5', n:'DEPTH 5', d:'Reach level 5.'},
+  {id:'flash', n:'FLASH ROUTE', d:'Clear a level with 30+ seconds to spare.'},
+  {id:'smasher', n:'WRECKING PACKET', d:'Smash 10 vehicles with BURST in a single run.'},
+  {id:'rushsurvive', n:'RUSH HOUR SURVIVOR', d:'Survive a RUSH HOUR surge without losing a packet.'}
+];
+var run={pickups:0,cores:0,time:0};
+var lvl={deaths:0,shieldUse:0,cores:0,bestCombo:0,pickups:0};
+function unlock(id){
+  if(meta.ach[id]) return false;
+  meta.ach[id]=Date.now(); saveMeta();
+  var a=null;
+  for(var i=0;i<ACHS.length;i++) if(ACHS[i].id===id) a=ACHS[i];
+  if(a) queueToast(a);
+  Snd.play('achieve');
+  return true;
+}
+function achCount(){
+  var n=0;
+  for(var k in meta.ach) if(meta.ach[k]) n++;
+  return n;
+}
+function queueToast(a){
+  var box=$('toasts');
+  while(box.children.length>2) box.removeChild(box.firstChild);
+  var t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML='<div class="toast-h">◈ ACHIEVEMENT UNLOCKED</div><div class="toast-n">'+a.n+'</div><div class="toast-d">'+a.d+'</div>';
+  box.appendChild(t);
+  setTimeout(function(){ t.classList.add('in'); },30);
+  setTimeout(function(){ t.classList.add('out'); },3600);
+  setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },4150);
+}
+function fmtTime(s){
+  s=Math.floor(s||0);
+  var m=Math.floor(s/60), ss=s%60;
+  return m+':'+(ss<10?'0':'')+ss;
+}
+function renderAch(){
+  var st=meta.stats, rows=[
+    ['GAMES PLAYED', st.games],
+    ['CORES SECURED', st.cores],
+    ['PACKETS LOST', st.deaths],
+    ['TILES HOPPED', st.hops],
+    ['BOOSTERS TAKEN', st.pickups],
+    ['BEST COMBO', 'x'+st.bestCombo],
+    ['MAX LEVEL', st.maxLevel],
+    ['BEST SCORE', pad6(st.bestScore)],
+    ['TIME PLAYED', fmtTime(st.time)]
+  ];
+  var html='<table class="scores"><tr><th colspan="2">LIFETIME LOG</th></tr>';
+  rows.forEach(function(r){ html+='<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'; });
+  html+='</table>';
+  $('ach-stats').innerHTML=html;
+  var list=$('ach-list'); list.innerHTML='';
+  ACHS.forEach(function(a){
+    var on=!!meta.ach[a.id];
+    var d=document.createElement('div');
+    d.className='ach-item'+(on?' on':'');
+    d.setAttribute('role','listitem');
+    d.innerHTML='<div class="ach-ico">'+(on?'◆':'◇')+'</div><div class="ach-tx"><div class="ach-n">'+a.n+'</div><div class="ach-d">'+a.d+'</div></div>';
+    list.appendChild(d);
+  });
+  $('ach-count').textContent=achCount()+' / '+ACHS.length+' UNLOCKED';
+}
+
+/* ---------------- daily challenge ---------------- */
+var DAILY_KEY='datarouter_daily_v1';
+var dailyStore=store.get(DAILY_KEY,{});
+var hlDailyId=null;
+function dateKey(){
+  var d=new Date();
+  return ''+d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);
+}
+function dailySeed(){ return parseInt(dateKey(),10); }
+function dailyKeyNow(){ return (world&&world.dailyKey)||dateKey(); }
+function dailyCfgFor(seed){
+  var rng=mulberry32(seed);
+  var roll=rng();
+  var baseDiff = roll<0.45?'normal':(roll<0.8?'hard':'easy');
+  var cfg=DIFFS[baseDiff];
+  var timeMod=0.9+rng()*0.3, speedMod=0.92+rng()*0.22, densMod=0.9+rng()*0.25;
+  return {
+    label:'DAILY', baseDiff:baseDiff, level:1+Math.floor(rng()*3),
+    time:Math.max(30,Math.round(cfg.time*timeMod)),
+    speed:cfg.speed*speedMod,
+    density:cfg.density*densMod,
+    sinkPeriod:cfg.sinkPeriod,
+    lives:cfg.lives
+  };
+}
+function dailyBoard(k){
+  if(!Array.isArray(dailyStore[k])) dailyStore[k]=[];
+  return dailyStore[k];
+}
+function dailySave(){
+  var today=parseInt(dateKey(),10);
+  Object.keys(dailyStore).forEach(function(k){
+    if(k==='mine'){ if(!dailyStore.mine.key||parseInt(dailyStore.mine.key,10)<today-40) delete dailyStore.mine; return; }
+    if(parseInt(k,10)<today-40) delete dailyStore[k];
+  });
+  store.set(DAILY_KEY,dailyStore);
+}
+function dailyQualifies(){
+  var b=dailyBoard(dailyKeyNow());
+  if(world.score<=0) return false;
+  if(b.length<8) return true;
+  return world.score>b[b.length-1].score;
+}
+function dailyRankTip(k){
+  var b=dailyBoard(k);
+  if(!b.length) return 'NO SCORES TODAY — SET THE BAR';
+  var mine=dailyStore.mine, idx=-1;
+  if(mine&&mine.key===k){ for(var i=0;i<b.length;i++){ if(b[i].id===mine.id){ idx=i; break; } } }
+  if(idx<0) return 'TOP SCORE: '+pad6(b[0].score)+' · PLAY TO CLAIM YOUR RANK';
+  return 'YOU ARE #'+(idx+1)+' OF '+b.length+' TODAY';
+}
+function renderDaily(){
+  var k=dateKey(), cfg=dailyCfgFor(dailySeed()), b=dailyBoard(k);
+  $('daily-date').textContent='ROUTE #'+k+' · BOARD LVL '+cfg.level;
+  $('daily-cfg').textContent='TODAY: '+cfg.baseDiff.toUpperCase()+' · '+cfg.time+'s CLOCK · TRAFFIC '+Math.round(cfg.speed*cfg.density*100)+'%';
+  $('daily-tip').textContent=dailyRankTip(k);
+  var body=$('daily-board');
+  if(!b.length){ body.innerHTML='<div class="empty-note">NO SCORES TODAY<br>BE THE FIRST TO ROUTE IT</div>'; return; }
+  var html='<table class="scores"><tr><th>#</th><th>OPERATOR</th><th>SCORE</th><th>CLK</th></tr>';
+  b.forEach(function(e,i){
+    html+='<tr'+(hlDailyId===e.id?' class="hl"':'')+'><td class="rk'+(i+1)+'">'+(i+1)+'</td><td>'+e.name+'</td><td>'+pad6(e.score)+'</td><td>'+e.time+'s</td></tr>';
+  });
+  html+='</table>';
+  body.innerHTML=html;
+}
+function startDaily(){
+  nameMode=false; /* daily PLAY AGAIN must also release the keyboard from name entry */
+  run={pickups:0,cores:0,time:0};
+  lvl={deaths:0,shieldUse:0,cores:0,bestCombo:0,pickups:0};
+  meta.stats.games++;
+  var seed=dailySeed();
+  var cfg=dailyCfgFor(seed);
+  newWorld(cfg.level,'ready',{seed:seed, cfg:cfg});
+  world.dailyKey=String(seed);
+  world.dailyRng=mulberry32(seed^0x9E3779B9); /* separate stream: fixed board, seeded booster respawns */
+  world.readyT=1.6;
+  showScreen('game');
+  showBanner('DAILY ROUTE','ROUTE #'+String(seed));
+  Snd.play('spawn');
+}
+
+/* ---------------- game flow ---------------- */
+function enterDemoMode(){
+  if(!world) return;
+  world.demoMode=true; world.attractDemo=false;
+  world.mode='play';
+  world.lives = classicOn()? 5 : diffCfg().lives;
+  world.timeMax = classicOn()? 30 : Math.max(30, diffCfg().time); /* keep the classic clock in demo free-play too */
+  world.time=world.timeMax; world.lastWarn=-1;
+  world.rushPhase='idle'; world.rushT=11; /* a demo surge must never spill into free play */
+  world.demoLabel=null; /* the DEMO HUD badge takes over; a frozen attract tag must not linger */
+  world.player.invuln=0.6; world.player.dead=0;
+  world.deathT=0; world.deathRelease=0; /* defensive: never carry a death beat into free play */
+  showScreen('game');
+  showBanner('DEMO MODE','FREE PLAY — NO SCORE · P / ESC TO EXIT');
+  Snd.play('select');
+}
+function exitDemoMode(){
+  if(!world) return;
+  world.demoMode=false;
+  world.mode='attract';
+  world.attractDemo=true;
+  world.score=0; world.combo=0; world.comboTimer=0;
+  world.throttleT=0; world.player.shield=false; world.player.burst=0; world.player.overclock=0;
+  resetDemo();
+  menuIntroNext=false; /* keep the title calm — no replay sting on exit */
+  showScreen('menu');
+  showBanner('DEMO ENDED','PRESS START FOR A REAL ROUTE');
+  Snd.play('ui');
+}
+function newGame(){
+  nameMode=false; /* leaving the game-over screen must never strand keyboard input in name-entry */
+  run={pickups:0,cores:0,time:0};
+  lvl={deaths:0,shieldUse:0,cores:0,bestCombo:0,pickups:0};
+  meta.stats.games++;
+  newWorld(1,'ready');
+  world.readyT=1.6;
+  showScreen('game');
+  showBanner('LEVEL 1','ROUTE THE PACKET');
+  Snd.play('spawn');
+}
+function quitToMenu(){
+  nameMode=false; /* quitting mid-name-entry must release the keyboard */
+  meta.stats.maxLevel=Math.max(meta.stats.maxLevel, world.level);
+  meta.stats.bestScore=Math.max(meta.stats.bestScore, Math.round(world.score));
+  saveMeta();
+  menuIntroNext=true;
+  newWorld(2,'attract');
+  world.attractDemo=true; world.demoGoal=0; resetDemo();
+  showScreen('menu');
+}
+function refreshPauseStats(){
+  var el=$('pause-stats');
+  if(!el||!world) return;
+  var t=Math.max(0,Math.ceil(world.time));
+  el.innerHTML=
+    '<div class="ps"><span>MODE</span><b>'+diffLabel()+'</b></div>'+
+    '<div class="ps"><span>SCORE</span><b>'+pad6(world.score)+'</b></div>'+
+    '<div class="ps"><span>LEVEL</span><b>'+world.level+'</b></div>'+
+    '<div class="ps'+(t<=10?' warn':'')+'"><span>TIME LEFT</span><b>'+t+'s</b></div>'+
+    '<div class="ps"><span>CORES</span><b>'+world.stats.delivered+'</b></div>'+
+    '<div class="ps"><span>COMBO</span><b>x'+world.combo+'</b></div>'+
+    '<div class="ps"><span>PACKETS</span><b>'+world.lives+'</b></div>';
+}
+function togglePause(){
+  if(curScreen==='game'&&(world.mode==='play'||world.mode==='ready')){
+    world.priorMode=world.mode;
+    world.mode='paused';
+    refreshPauseStats();
+    showScreen('pause');
+    Snd.play('ui');
+  } else if(curScreen==='pause'){
+    world.mode=(world.priorMode==='ready')?'ready':'play';
+    showScreen('game');
+    Snd.play('select');
+    showResumeFlash();
+  }
+  if(curScreen==='pause'){
+    /* demo free-play: label the pause actions honestly */
+    var pt=$('pause-title'), rr=document.querySelector('[data-act="restart"]'), qt=document.querySelector('[data-act="quit"]');
+    if(pt) pt.textContent= world.demoMode? '▮▮ DEMO PAUSED' : '▮▮ PAUSED';
+    if(rr&&rr.querySelector('.lbl')) rr.querySelector('.lbl').textContent= world.demoMode? 'RESUME PLAY' : 'RESTART RUN';
+    if(qt&&qt.querySelector('.lbl')) qt.querySelector('.lbl').textContent= world.demoMode? 'END DEMO — TITLE' : 'QUIT TO MENU';
+  }
+}
+function toggleMute(){
+  var both=Snd.sfxOn||Snd.musicOn;
+  if(both){ Snd.setSfx(false); Snd.musicOn=false; settings.music=false; Snd.stopMusic(); }
+  else{ Snd.setSfx(true); Snd.musicOn=true; settings.music=true; Snd.startMusic(); Snd.play('select'); }
+  persist(); refreshSoundLabels();
+}
+function respawn(){
+  var p=world.player;
+  p.px=START_COL*TILE+TILE/2; p.py=START_ROW*TILE+TILE/2;
+  p.tx=START_COL; p.ty=START_ROW; p.moving=false; p.invuln=0; /* no free pass after death — Frogger-fair */
+  p.landT=0; p.trail.length=0; p.returnT=-1; /* defensive: never strand a flight */
+  p.shield=false; p.overclock=0; p.burst=0; p.dead=0;
+  world.deathT=0; world.deathRelease=0; /* defensive: clear any death-beat state */
+  world.throttleT=0;
+  world.combo=0; world.comboTimer=0; world.rowMax=START_ROW;
+  /* original-Frogger rule: losing a packet refills the route clock, so a timeout
+     costs one packet instead of chain-deathing every remaining life */
+  world.time=world.timeMax;
+  world.lastWarn=-1;
+}
+function die(reason){
+  var p=world.player;
+  if(p.invuln>0||world.mode!=='play'||world.deathT>0) return;
+  var msg={crash:'PACKET FRAGMENTED!',zap:'SHORT CIRCUITED!',timeout:'OUT OF TIME!',off:'OFF THE GRID!',water:'WASHED OUT!'}[reason]||'SIGNAL LOST';
+  if(!world.demoMode){ world.lives--; lvl.deaths++; meta.stats.deaths++; }
+  world.shake=1; world.flash=1;
+  world.flashCol = reason==='zap' ? '#818cf8' : reason==='water' ? '#60a5fa' : reason==='timeout' ? '#facc15' : '#fb7185';
+  world.hitFlash=1;
+  if(reason==='water'){
+    /* drowning reads as drowning: splash + sinking chip, cool-blue tint, soft rumble */
+    world.hitFlashCol='#7dd3fc';
+    waterSink(p.px,p.py);
+    rumble(140,0.7,0.35); /* splash: lighter than the fragment hit */
+  } else {
+    world.hitFlashCol='#ffffff'; /* faint white impact frame */
+    shatter(p.px,p.py,p.facing);
+    chromaStreak(p.px,p.py,p.facing);
+    rumble(260,1.0,0.55); /* fragment: hard hit */
+  }
+  if(reason==='timeout') Snd.play('timeout'); else if(reason==='zap') Snd.play('zap'); else if(reason==='water') Snd.play('splash'); else Snd.play('crash');
+  /* death beat: hide the packet (the shatter or sink is the player now), then
+     slow-mo zoom on the death point for DEATH_SLOWMO_T real seconds before the
+     crash UI (banner + respawn / game over) */
+  p.dead=1;
+  world.deathT=DEATH_SLOWMO_T; world.deathRelease=0;
+  world.deathX=p.px; world.deathY=p.py;
+  world.deathMsg=msg;
+  world.deathFinal = world.demoMode ? 'demo' : (world.lives<=0 ? 'over' : 'respawn');
+}
+function deathAftermath(){
+  var m=world.deathMsg;
+  if(world.deathFinal==='demo'){
+    /* demo free-play: no score, no game over — just shake it off and keep going */
+    world.lives=diffCfg().lives;
+    respawn();
+    showBanner(m,'DEMO — KEEP GOING · P / ESC TO EXIT','alert');
+  } else if(world.deathFinal==='over'){
+    showBanner(m,null,'alert');
+    Snd.play('over');
+    gameOver();
+  } else {
+    respawn();
+    showBanner(m,'PACKET '+world.lives+' REMAINING','alert');
+  }
+}
+function gameOver(){
+  world.mode='gameover';
+  world.newBest = world.beatBest || world.score>settings.best;
+  if(world.newBest){ settings.best=Math.round(world.score); }
+  meta.stats.maxLevel=Math.max(meta.stats.maxLevel, world.level);
+  meta.stats.bestScore=Math.max(meta.stats.bestScore, Math.round(world.score));
+  persist(); saveMeta();
+  world.hi=Math.max(world.hi, world.score);
+  showScreen('go');
+  countUpScore($('go-score'), world.score);
+  var needName = world.daily ? dailyQualifies() : qualifies(world.score);
+  var ne=$('name-entry');
+  var nr=$('go-norank');
+  if(needName){ ne.style.display='flex'; if(nr) nr.style.display='none'; initNameEntry(); nameMode=true; }
+  else {
+    ne.style.display='none'; nameMode=false;
+    if(nr) nr.style.display = (world.daily && world.score>0) ? 'block' : 'none';
+  }
+  var sub=$('name-sub');
+  if(sub) sub.textContent = world.daily ? 'NEW DAILY ROUTE — ENTER OPERATOR INITIALS' : 'NEW HIGH SCORE — ENTER OPERATOR INITIALS';
+}
+function routeRank(){
+  if(!world||world.score<=0) return -1;
+  if(world.daily){
+    var b=dailyBoard(dailyKeyNow());
+    for(var i=0;i<b.length;i++){ if(world.score>b[i].score) return i+1; }
+    return b.length+1;
+  }
+  var t=scores[lbKey()];
+  for(var j=0;j<t.length;j++){ if(world.score>t[j].score) return j+1; }
+  return t.length+1;
+}
+function countUpScore(el,to){
+  if(!el) return;
+  var from=0, dur=0.9, t0=performance.now();
+  (function step(){
+    var k=Math.min(1,(performance.now()-t0)/1000/dur);
+    el.textContent=pad6(Math.round(from+(to-from)*(1-Math.pow(1-k,3))));
+    if(k<1) requestAnimationFrame(step);
+    else Snd.play('bonus');
+  })();
+}
+function renderGameOver(){
+  var gt=$('go-title');
+  if(gt){
+    var done=(world.daily&&world.dailyComplete)||world.classicDone;
+    gt.textContent = done ? (world.classicDone?'CLASSIC COMPLETE':'DAILY COMPLETE') : 'SIGNAL LOST';
+    gt.style.color = done ? '#4ade80' : '#fb7185';
+    gt.style.textShadow = done ? '0 0 12px rgba(74,222,128,.9)' : '0 0 12px rgba(251,113,133,.9)';
+    gt.classList.remove('glitch'); void gt.offsetWidth; gt.classList.add('glitch');
+  }
+  $('go-score').textContent=pad6(world.score);
+  var nb=$('go-newbest');
+  nb.innerHTML = world.newBest ? '<div class="new-best">★ NEW BEST ROUTE ★</div>' : '';
+  var rk=$('go-rank');
+  if(rk){
+    var q=world.daily ? dailyQualifies() : qualifies(world.score);
+    if(q&&world.score>0){
+      rk.style.display='block';
+      rk.innerHTML='ROUTE RANK <b class="rk-num">#'+routeRank()+'</b> ON '+(world.daily?'TODAY\'S BOARD':lbLabel());
+    } else { rk.style.display='none'; }
+  }
+  $('go-stats').innerHTML=
+    '<div class="gs"><span>LEVEL REACHED</span><b>'+world.level+'</b></div>'+
+    '<div class="gs"><span>CORES SECURED</span><b>'+world.stats.delivered+'</b></div>'+
+    '<div class="gs"><span>BEST COMBO</span><b>x'+world.maxCombo+'</b></div>'+
+    '<div class="gs"><span>HI-SCORE</span><b>'+pad6(world.hi)+'</b></div>';
+}
+function nextLevel(){
+  if(classicOn()){ gameOver(); return; } /* strict mode never advances past its one board */
+  world.level++;
+  lvl={deaths:0,shieldUse:0,cores:0,bestCombo:0,pickups:0};
+  meta.stats.maxLevel=Math.max(meta.stats.maxLevel, world.level);
+  if(world.level>=5) unlock('depth5');
+  buildLanes(world.level);
+  world.goals=[false,false,false,false,false];
+  world.socketAnim=[0,0,0,0,0];
+  world.combo=0; world.comboTimer=0;
+  world.timeMax=Math.max(30, diffCfg().time-(world.level-1)*3);
+  world.time=world.timeMax; world.lastWarn=-1;
+  respawn();
+  world.mode='ready'; world.readyT=1.5;
+  showScreen('game'); /* dismiss the intermission card */
+  showBanner('LEVEL '+world.level,'');
+}
+var interLastN=9;
+function showResumeFlash(){
+  if(!world) return;
+  /* green signal-restore flash + short banner; the .green class is cleared with the banner lifecycle */
+  world.flash=0.45; world.flashCol='#4ade80';
+  banner.classList.remove('sub');
+  banner.classList.add('green');
+  banner.setAttribute('aria-live','polite'); /* respawn is an important event — always spoken */
+  banner.textContent='SIGNAL RESTORED';
+  banner.classList.remove('on'); void banner.offsetWidth; banner.classList.add('on');
+  world.bannerT=0.9;
+}
+function updateInterCountdown(){
+  var cd=$('inter-count');
+  if(!cd) return;
+  var n=Math.max(1,Math.min(3,Math.ceil(world.clearT-0.6)));
+  if(n!==interLastN){
+    interLastN=n; Snd.play('tick');
+    if(n===1) rumble(120,0.35,0.2); /* final countdown tick: light nudge */
+  }
+  cd.textContent=n;
+}
+function showBanner(main,sub,mode){
+  /* one DOM write = one screen-reader announcement */
+  /* mode: undefined = polite · false = silent flash · 'alert' = assertive when the ALERTS setting is on */
+  var live=(mode===false||mode==='off')?'off':((mode==='alert'&&settings.announce==='alert')?'assertive':'polite');
+  banner.setAttribute('aria-live', live);
+  banner.classList.remove('sub');
+  var html= sub? main+'<br><span class="sub2" style="font-size:9px;color:var(--yellow);text-shadow:0 0 3px rgba(250,204,21,.8)">'+sub+'</span>' : (main||'');
+  /* identical consecutive banner (back-to-back demo deaths): ATs diff whole content and skip
+     unchanged text — clear first so the rewrite is a content change and gets re-announced.
+     Both writes land in the same frame, so the visible pop-in is unchanged. */
+  if(html!==''&&html===banner.innerHTML) banner.innerHTML='';
+  banner.innerHTML= html;
+  banner.classList.remove('on'); void banner.offsetWidth; banner.classList.add('on');
+  world.bannerT=1.6;
+}
+function burst(x,y,n,col){
+  for(var i=0;i<qPart(n);i++){
+    var a=Math.random()*Math.PI*2, sp=30+Math.random()*150;
+    world.particles.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,g:60,life:0.5+Math.random()*0.4,max:0.9,size:2+Math.random()*3,color:col,shape:Math.random()<0.5?'rect':'spark'});
+  }
+}
+function ring(x,y,col){
+  world.particles.push({x:x,y:y,vx:0,vy:0,g:0,life:0.45,max:0.45,size:6,color:col,shape:'ring',r:6});
+}
+/* floating score text: a tiny rising label, e.g. near-miss feedback */
+function floatText(x,y,str,col){
+  world.particles.push({shape:'txt', x:x, y:y, vx:0, vy:-36, g:0, str:str, color:col||'#67e8f9', life:0.7, max:0.7});
+}
+/* landing dust: a soft puff kicked up when the packet touches down */
+function dust(x,y,n){
+  for(var i=0;i<qPart(n);i++){
+    var a=(Math.random()-0.5)*Math.PI; /* sideways fan */
+    var sp=8+Math.random()*22;
+    world.particles.push({x:x+(Math.random()-0.5)*8,y:y+(Math.random()-0.5)*4,
+      vx:Math.cos(a)*sp,vy:Math.abs(Math.sin(a))*sp*0.5-4,g:80,
+      life:0.24+Math.random()*0.16,max:0.4,size:1.5+Math.random()*1.5,
+      color:'#b6c2cc',shape:'rect'});
+  }
+}
+/* boarding / alighting flourish: a quick pad flash + small expanding ring when the
+   packet hops onto a trace deck (or steps off one) — echoes the dock ports' sparkle */
+function boardFlash(x,y,on){
+  var col= on? '#5eead4' : '#a5f3fc'; /* energize teal / neutral pale cyan */
+  world.particles.push({shape:'pad', x:x, y:y, vx:0, vy:0, g:0, life:0.26, max:0.26, color:col});
+  world.particles.push({shape:'ring', x:x, y:y, life:0.4, max:0.4, color:col, r:8});
+  var a0= on? -Math.PI/2 : Math.PI/2; /* boarding sparks lift, alighting ones settle */
+  for(var i=0;i<qPart(4);i++){
+    var a=a0+(Math.random()-0.5)*1.5;
+    var sp=36+Math.random()*56;
+    world.particles.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,g:0,
+      life:0.28+Math.random()*0.14,max:0.42,size:2,color:col,shape:'rect'});
+  }
+}
+/* screen-shatter: packet fragments fly out biased along the impact direction, spin, and bounce off the board */
+function shatter(x,y,facing){
+  var d={0:[0,-1],1:[1,0],2:[0,1],3:[-1,0]}[facing||0], dx=d[0], dy=d[1];
+  var cols=['#062a38','#0e4b5c','#155e75','#22d3ee','#67e8f9','#d9f7ff'];
+  var base=Math.atan2(dy,dx), cone=Math.PI*0.9;
+  for(var i=0;i<qPart(30);i++){
+    var a=base+(Math.random()-0.5)*cone, sp=70+Math.random()*240;
+    world.particles.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,g:210,
+      life:0.8+Math.random()*0.7,max:1.5,size:2+Math.random()*4,
+      color:cols[Math.floor(Math.random()*cols.length)],
+      shape:'frag',rot:Math.random()*Math.PI*2,vr:(Math.random()-0.5)*14});
+  }
+  /* a few white glints scatter radially for the glass-pop */
+  for(var j=0;j<qPart(8);j++){
+    var a2=Math.random()*Math.PI*2, sp2=140+Math.random()*160;
+    world.particles.push({x:x,y:y,vx:Math.cos(a2)*sp2,vy:Math.sin(a2)*sp2,g:90,
+      life:0.35+Math.random()*0.25,max:0.6,size:1+Math.random()*1.5,
+      color:'#e8fbff',shape:'spark'});
+  }
+}
+/* brief chromatic streak: an RGB-split comet along the direction of impact */
+function chromaStreak(x,y,facing){
+  var d={0:[0,-1],1:[1,0],2:[0,1],3:[-1,0]}[facing||0];
+  world.particles.push({shape:'streak',x:x,y:y,dx:d[0],dy:d[1],len:52,t:0.28,max:0.28});
+}
+
+/* water death: the packet plunges — a droplet crown bursts upward, twin ripples
+   spread across the surface, and the chip itself sinks under with a tumble, so a
+   WASHED OUT reads as drowning instead of the same glass shatter */
+function waterSink(x,y){
+  /* droplet crown: droplets arc up, then gravity pulls them back down */
+  var cols=['#67e8f9','#22d3ee','#a5f3fc','#7dd3fc','#bae6fd'];
+  for(var i=0;i<qPart(20);i++){
+    var a=-Math.PI/2+(Math.random()-0.5)*2.2; /* upward-biased cone */
+    var sp=50+Math.random()*200;
+    world.particles.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,g:330,
+      life:0.45+Math.random()*0.4,max:0.85,size:2+Math.random()*3,
+      color:cols[Math.floor(Math.random()*cols.length)],shape:'drop'});
+  }
+  /* white foam flecks riding the splash crown */
+  for(var j=0;j<qPart(7);j++){
+    var a2=-Math.PI/2+(Math.random()-0.5)*1.6;
+    var sp2=40+Math.random()*90;
+    world.particles.push({x:x,y:y,vx:Math.cos(a2)*sp2,vy:Math.sin(a2)*sp2,g:280,
+      life:0.3+Math.random()*0.25,max:0.55,size:1.5+Math.random()*1.5,color:'#f0fdff',shape:'drop'});
+  }
+  /* expanding ripple rings across the water */
+  world.particles.push({shape:'ring',x:x,y:y,life:0.45,max:0.45,color:'rgba(125,211,252,0.9)',r:6});
+  world.particles.push({shape:'ring',x:x,y:y,life:0.7,max:0.7,color:'rgba(165,243,252,0.45)',r:2});
+  /* the packet itself: a tumbling chip that sinks out of sight */
+  world.particles.push({shape:'sink',x:x,y:y,vx:(Math.random()-0.5)*14,vy:42,vr:(Math.random()-0.5)*3,rot:0,
+    life:0.75,max:0.75});
+}
+
+/* ---------------- update ---------------- */
+function update(dt){
+  if(world.mode!=='paused'){
+    /* death beat: the world crawls while the shatter plays, then the crash UI fires */
+    var realDt=dt;
+    if(world.deathT>0){
+      world.deathT-=realDt;
+      dt*=DEATH_SLOWMO_SCALE;
+      if(world.deathT<=0){
+        world.deathT=0;
+        world.deathRelease=DEATH_ZOOM_RELEASE;
+        deathAftermath();
+      }
+    } else if(world.deathRelease>0){
+      world.deathRelease-=realDt;
+      if(world.deathRelease<0) world.deathRelease=0;
+    }
+    world.worldTime+=dt;
+    updateLanes(dt);
+    if(world.mode==='attract'){ updateAttractDemo(dt); updateAttractCycle(dt); }
+    updatePowerups(dt);
+    updateParticles(dt);
+    if(world.socketAnim){ for(var sa=0;sa<world.socketAnim.length;sa++){ if(world.socketAnim[sa]>0){ var pv=world.socketAnim[sa]; world.socketAnim[sa]-=dt; if(world.socketAnim[sa]<0) world.socketAnim[sa]=0; if(pv>SOCKET_LOCK_T&&world.socketAnim[sa]<=SOCKET_LOCK_T){ Snd.play('clunk'); rumble(90,0.55,0.35); } } } }
+    if(world.bannerT>0){ world.bannerT-=dt; if(world.bannerT<=0){ banner.classList.remove('on'); banner.classList.remove('green'); } }
+    if(world.mode==='ready'){ world.readyT-=dt; if(world.readyT<=0) world.mode='play'; }
+    if(world.mode==='levelclear'){ world.clearT-=dt; if(world.clearT<=0){ if(world.afterClear==='daily') gameOver(); else if(classicOn()) gameOver(); else nextLevel(); } else { updateInterCountdown(); } }
+    world.shake=Math.max(0,world.shake-dt*2.4);
+    world.flash=Math.max(0,world.flash-dt*2.2);
+    world.hitFlash=Math.max(0,world.hitFlash-dt*7);
+  }
+  if(world.mode==='play'||world.mode==='ready'||world.mode==='attract'){ updatePlayer(dt); }
+  if(world.mode==='play'){
+    if(!world.demoMode) updateTime(dt); /* demo free-play: the clock stays full */
+    if(world.combo>0){ world.comboTimer-=dt; if(world.comboTimer<=0) world.combo=0; }
+    if(world.player.overclock>0) world.player.overclock-=dt;
+    if(world.throttleT>0){ world.throttleT-=dt; if(world.throttleT<=0) world.throttleT=0; }
+    if(world.player.burst>0){ world.player.burst-=dt; if(world.player.burst<=0) world.player.burst=0; }
+    if(!world.demoMode) updateRush(dt);
+    meta.stats.time+=dt;
+    run.time+=dt;
+    if(run.time>=180) unlock('survivor');
+    if(world.score>=50000) unlock('score50');
+    if(world.score>=100000) unlock('score100');
+    /* mid-run celebration: the first moment this run tops the all-time best */
+    if(!world.demoMode&&!world.bestAnnounced&&world.score>settings.best&&world.score>0){
+      world.bestAnnounced=true; world.beatBest=true;
+      showBanner('NEW HIGH SCORE!','BEAT YOUR OWN RECORD');
+      Snd.play('bonus');
+      world.flash=0.35; world.flashCol='#facc15';
+    }
+    checkExtraLife();
+  }
+  updateHeld();
+}
+function updateRush(dt){
+  if(classicOn()) return; /* strict Frogger traffic never surges */
+  if(world.mode!=='play'||world.daily&&world.dailyComplete) return;
+  world.rushT-=dt;
+  if(world.rushT<=0){
+    if(world.rushPhase==='idle'){
+      world.rushPhase='warning'; world.rushT=3;
+      Snd.play('rushwarn');
+      world.flash=0.5; world.flashCol='#fb7185';
+    } else if(world.rushPhase==='warning'){
+      world.rushPhase='rush'; world.rushT=6; world.rushCount++; world.rushLives=world.lives;
+      Snd.play('rushgo');
+      showBanner('RUSH HOUR','TRAFFIC ×2 — HOLD THE LINE','alert');
+      /* spoken escalation: the surge is announced even mid-announcement. Two layers make
+         back-to-back rushes with identical text always re-announce: the canonical aria-live
+         off-toggle (detach → reflow) resets the AT's announced-content memory, and the clear
+         happens WHILE detached (guaranteed silent, and re-attach finds nothing stale to read)
+         before the write guarantees a real content mutation (an identical textContent
+         assignment is a no-op and would never reach the AT). ALERT mode re-attaches assertively
+         (true cut-in) then restores polite 150ms later. */
+      var sr=$('sr-status'), urgent=settings.announce==='alert';
+      sr.setAttribute('aria-live','off'); void sr.offsetWidth;
+      sr.textContent=''; /* clear while detached: unannounceable empty, no stale read on re-attach */
+      sr.setAttribute('aria-live', urgent?'assertive':'polite');
+      sr.textContent='RUSH HOUR — double traffic';
+      if(urgent) setTimeout(function(){ sr.setAttribute('aria-live','polite'); },150);
+    } else {
+      /* rush over */
+      world.rushPhase='idle'; world.rushT=11;
+      if(world.lives>=world.rushLives){
+        world.score+=250;
+        world.rushSurvived++;
+        unlock('rushsurvive');
+        Snd.play('bonus');
+        showBanner('SURVIVED RUSH HOUR','+250 BONUS');
+      } else {
+        Snd.play('rushwarn');
+      }
+    }
+  }
+}
+function updateLanes(dt){
+  var rush= world.rushPhase==='rush' ? 2 : 1;
+  var mult= world.throttleT>0 ? 0.35 : 1; /* THROTTLE slows every lane */
+  mult*=rush; /* RUSH HOUR doubles every lane */
+  world.lanesH.forEach(function(lane){
+    lane.vehicles.forEach(function(v){ v.x=v.min+mod(v.x-v.min+v.v*mult*dt,v.span); });
+  });
+  world.lanesB.forEach(function(lane){
+    lane.buses.forEach(function(b){
+      b.x=mod(b.x+b.v*mult*dt,lane.period);
+      if(b.sink){
+        b.sinkT-=dt;
+        if(b.sinkT<=0) b.sinkT=b.sinkPeriod;
+        var tLeft=b.sinkT;
+        b.warn=tLeft<lane.warnDur;
+        b.unsafe=tLeft<lane.unsafeDur;
+        /* one-shot sink chirps per log (replaces the continuous lane alarm): a soft
+           blip when a log enters its window, an urgent tone the instant it drops */
+        if(b.warn&&!b.warnSnd&&(world.mode==='play'||world.mode==='ready')){
+          b.warnSnd=true;
+          if(Snd.ctx&&Snd.sfxOn) Snd.tone(HZ('pitchMin'),HZ('pitchMin')*1.4,0.055,'sine',Math.max(0.02,HZ('volMin')*0.6));
+        }
+        if(!b.warn) b.warnSnd=false;
+        if(b.unsafe&&!b.unsafeSnd&&(world.mode==='play'||world.mode==='ready')){
+          b.unsafeSnd=true;
+          if(Snd.ctx&&Snd.sfxOn) Snd.tone(HZ('pitchMax'),HZ('pitchMax')*1.3,0.09,'square',HZ('volMax')*0.7);
+        }
+        if(!b.unsafe) b.unsafeSnd=false;
+      }
+    });
+  });
+}
+/* sink audio now fires as one-shot chirps from updateLanes (per-log warn/unsafe
+   edge transitions), so the old continuous whole-lane alarm is gone — with every
+   log on its own clock a constant beep wall would never stop. */
+function updatePowerups(dt){
+  if(classicOn()){ world.powerups=[]; return; } /* strict rules: boosters never exist */
+  world.powerSpawnT-=dt;
+  if(world.powerSpawnT<=0&&world.powerups.length<3){
+    world.powerSpawnT=7;
+    spawnPowerup(null, world.daily? world.dailyRng : null);
+  }
+  world.powerups.forEach(function(pu){ pu.blink=(Math.sin(world.worldTime*6+pu.col)>0); });
+}
+function updateParticles(dt){
+  var ps=world.particles;
+  for(var i=ps.length-1;i>=0;i--){
+    var p=ps[i];
+    if(p.shape==='ring'){ p.r+=130*dt; p.life-=dt; if(p.life<=0) ps.splice(i,1); continue; }
+    if(p.shape==='streak'){ p.t-=dt; if(p.t<=0) ps.splice(i,1); continue; }
+    if(p.shape==='sink'){
+      /* drowning chip: drifts down with a tumble, dimming as it goes under */
+      p.rot+=p.vr*dt; p.vy+=26*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.life-=dt;
+      if(p.life<=0) ps.splice(i,1);
+      continue;
+    }
+    if(p.shape==='frag'){
+      p.rot+=p.vr*dt; p.vy+=p.g*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.life-=dt;
+      var hs=p.size*0.5;
+      if(p.x<hs){ p.x=hs; p.vx=Math.abs(p.vx)*0.5; p.vr*=-0.6; }
+      else if(p.x>W-hs){ p.x=W-hs; p.vx=-Math.abs(p.vx)*0.5; p.vr*=-0.6; }
+      if(p.y<hs){ p.y=hs; p.vy=Math.abs(p.vy)*0.5; p.vr*=-0.6; }
+      else if(p.y>H-hs){ p.y=H-hs; p.vy=-Math.abs(p.vy)*0.5; p.vr*=-0.6; }
+      p.vx*=0.992; p.vy*=0.992;
+      if(p.life<=0) ps.splice(i,1);
+      continue;
+    }
+    p.vy+=p.g*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.life-=dt;
+    if(p.life<=0) ps.splice(i,1);
+  }
+  if(ps.length>220) ps.splice(0,ps.length-220);
+}
+/* ---------------- attract mode: demo autopilot ---------------- */
+function resetDemo(){
+  var p=world.player;
+  p.px=START_COL*TILE+TILE/2; p.py=START_ROW*TILE+TILE/2;
+  p.tx=START_COL; p.ty=START_ROW; p.moving=false; p.invuln=1;
+  p.landT=0; p.trail.length=0;
+}
+function busUnderHere(p){
+  var b=busAt(p.ty,p.px);
+  if(b) return !b.unsafe; /* a sinking log is not safe to stand on (autoplay avoids it) */
+  if(p.ty<=4&&p.ty>=2){
+    var lane=world.lanesB[p.ty-2];
+    for(var i=0;i<lane.buses.length;i++){
+      var bu=lane.buses[i];
+      for(var k=-1;k<=1;k++){
+        var bx=bu.x+k*lane.period;
+        /* is this bus moving toward (and about to cross) the player's column? */
+        if(lane.dir>0&&bx>p.px-10&&bx<p.px+30) return true;
+        if(lane.dir<0&&bx+bu.w>p.px-30&&bx+bu.w<p.px+10) return true;
+      }
+    }
+  }
+  return false;
+}
+function laneClear(lane,row,cellX){
+  if(!lane) return true;
+  var c0=cellX-16, c1=cellX+16; /* the landing cell window */
+  for(var i=0;i<lane.vehicles.length;i++){
+    var v=lane.vehicles[i];
+    if(v.x>W||v.x+v.w<0) continue;
+    if(v.x+v.w>c0&&v.x<c1) return false;
+  }
+  return true;
+}
+function updateAttractDemo(dt){
+  var p=world.player;
+  if(p.invuln>0) p.invuln-=dt;
+  if(p.moving||world.mode!=='attract') return;
+  /* weave: if the ghost is overlapping a vehicle on the highway, bloom and restart */
+  if(p.ty>=6&&p.ty<=9){
+    var lane=world.lanesH[p.ty-6];
+    var hb={x:p.px-10,y:p.py-10,w:20,h:20};
+    for(var i=0;i<lane.vehicles.length;i++){
+      var v=lane.vehicles[i];
+      if(v.x>W||v.x+v.w<0) continue;
+      if(rectsOverlap(hb,{x:v.x+3,y:lane.row*TILE+4,w:v.w-6,h:TILE-8})){
+        burst(p.px,p.py,14,'#e879f9');
+        world.demoGoal=((world.demoGoal||0)+1)%(world.sockets||GOAL_COLS).length;
+        resetDemo();
+        return;
+      }
+    }
+  }
+  var cols=world.sockets||GOAL_COLS;
+  var tx=p.tx, ty=p.ty, target=cols[world.demoGoal||0];
+  if(ty===0){
+    /* reached a socket: bloom, pick a new goal, restart */
+    burst(p.px,p.py,18,'#4ade80');
+    ring(p.px,p.py,'#4ade80');
+    world.demoGoal=((world.demoGoal||0)+1)%cols.length;
+    resetDemo();
+    return;
+  }
+  if(ty>=2&&ty<=4){
+    /* bus rows: hop onto an oncoming bus (predictive) */
+    if(tx!==target) tryMove(tx<target?1:3);
+    else if(busUnderHere(p)) tryMove(0);
+    else tryMove(1); /* shuffle a tile while waiting — keeps the demo alive on the ride lanes */
+    return;
+  }
+  if(ty===1){ if(tx!==target) tryMove(tx<target?1:3); else tryMove(0); return; } /* bank above the buses: keep climbing */
+  if(ty<=9){
+    /* highway: hop only into a clear landing cell */
+    if(tx!==target&&laneClear(world.lanesH[ty],ty,p.px+(tx<target?1:-1)*TILE)) tryMove(tx<target?1:3);
+    else if(tx===target&&laneClear(world.lanesH[ty-1],ty-1,p.px)) tryMove(0);
+    return;
+  }
+  /* origin banks */
+  if(tx!==target) tryMove(tx<target?1:3);
+  else tryMove(0);
+}
+
+/* ---------------- attract cycle: difficulty + socket patterns + rush showcase ---------------- */
+var DEMO_PATTERNS=[
+  [1,3,5,7,9], /* classic spread */
+  [2,4,6,8,3], /* right-leaning */
+  [0,2,4,6,8], /* left-leaning */
+  [1,5,9,2,8]  /* split wide */
+];
+function updateAttractCycle(dt){
+  /* visual-only RUSH HOUR surge behind the title (no sound, no banner, no rewards) */
+  if(world.rushPhase!=='idle'){
+    world.rushT-=dt;
+    if(world.rushT<=0){
+      if(world.rushPhase==='warning'){ world.rushPhase='rush'; world.rushT=6; }
+      else { world.rushPhase='idle'; world.rushT=11; }
+    }
+  }
+  if(world.demoLabel){ world.demoLabel.t-=dt; if(world.demoLabel.t<=0) world.demoLabel=null; }
+  world.demoCycleT-=dt;
+  if(world.demoCycleT<=0){
+    if(world.rushPhase!=='idle'){ world.demoCycleT=2.5; return; } /* let the surge play out before switching profiles */
+    world.demoCycleT=6+Math.random()*3;
+    cycleAttractProfile();
+  }
+}
+function cycleAttractProfile(){
+  if(!world||world.mode!=='attract'||!world.attractDemo) return;
+  var order=['easy','normal','hard'];
+  var cur=order.indexOf(world.cfgKey);
+  if(cur<0) cur=order.indexOf(settings.difficulty);
+  if(cur<0) cur=0;
+  var next=order[(cur+1)%order.length];
+  var pat=DEMO_PATTERNS[Math.floor(Math.random()*DEMO_PATTERNS.length)];
+  newWorld(2,'attract',null,next);
+  world.sockets=pat.slice();
+  world.attractDemo=true; world.demoGoal=0;
+  world.demoCycleT=6+Math.random()*3;
+  world.demoLabel={ txt:DIFFS[next].label, t:2.8 };
+  resetDemo();
+  if(Math.random()<0.35){
+    world.rushPhase='warning'; world.rushT=3;
+    world.flash=0.5; world.flashCol='#fb7185';
+  }
+}
+function playerHopLift(p){
+  var s=p.moving?Math.sin(p.t*Math.PI):0;
+  var land=p.landT>0?Math.sin(Math.PI*(1-p.landT/0.14)):0;
+  return s*9+land*3;
+}
+function updatePlayer(dt){
+  var p=world.player;
+  if(world.deathT>0) return; /* the fragmented packet is frozen mid-shatter */
+  /* core-secured return flight: the packet streaks back along its column to the
+     origin instead of teleporting — untouchable while airborne */
+  if(p.returnT>=0){ updateReturnFlight(dt,p); return; }
+  if(p.invuln>0) p.invuln-=dt;
+  if(p.landT>0){ p.landT-=dt; if(p.landT<0) p.landT=0; }
+  /* bus drift */
+  var dv=0;
+  if(p.ty>=2&&p.ty<=4){
+    var bus=busAt(p.ty,p.px);
+    if(bus){
+      if(bus.unsafe&&p.burst<=0&&!world.attractDemo){ die('zap'); return; } /* only THIS log is sinking */
+      dv=bus.v;
+    } else if(!p.moving&&p.burst<=0&&!world.attractDemo){ die('zap'); return; }
+  }
+  /* Frogger dock rule (standing guard): the gaps between ports are water — a packet
+     resting on one is washed out. (BURST exempts the dock water like other hazards.) */
+  if(!world.attractDemo&&!p.moving&&p.burst<=0&&p.ty===0&&(world.sockets||GOAL_COLS).indexOf(p.tx)<0){ die('water'); return; }
+  if(p.moving){
+    p.m0+=dv*dt; p.m1+=dv*dt;
+    p.t+=dt/(p.overclock>0?0.055:0.095);
+    p.px=lerp(p.m0,p.m1,ease(p.t));
+    p.py=lerp(p.g0,p.g1,ease(p.t));
+    if(p.t>=1){
+      p.px=p.m1; p.py=p.g1; p.moving=false;
+      p.landT=0.14;
+      dust(p.px,p.py,7);
+      if(!world.attractDemo) world.score+=10;
+      p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1);
+      p.ty=clamp(Math.floor(p.py/TILE),0,ROWS-1);
+      /* Frogger dock rule (instant): a touchdown on a gap tile is lethal before
+         onArrive can score it, so there's no walk-off-into-a-socket cheat and no
+         +10 row bonus for drowning. BURST exempts the dock water like every other
+         hazard — the rampage powerup smashes through anything. */
+      if(!world.attractDemo&&p.burst<=0&&p.ty===0&&(world.sockets||GOAL_COLS).indexOf(p.tx)<0){ die('water'); return; }
+      /* boarding / alighting flourish: flash when the hop lands on a trace deck,
+         or when it steps from a deck back onto a bank */
+      if(!world.attractDemo){
+        var nR=p.ty;
+        var wasOn=p.wasDeck; /* captured at hop start, so the moving deck can't slip away */
+        var nowOn=nR>=2&&nR<=4&&!!busAt(nR,p.px);
+        if(nowOn&&!wasOn) boardFlash(p.px,p.py,true);
+        else if(wasOn&&!nowOn) boardFlash(p.px,p.py,false);
+      }
+      onArrive();
+    }
+  } else {
+    p.px+=dv*dt;
+  }
+  /* hop trail: fading packet after-images strung along the arc (play only — attract uses its own draw) */
+  if((p.moving||p.landT>0)&&!world.attractDemo){
+    p.trail.push({x:p.px,y:p.py-playerHopLift(p),a:0.5,life:0.18});
+    if(p.trail.length>26) p.trail.shift();
+  }
+  for(var ti=p.trail.length-1;ti>=0;ti--){ p.trail[ti].life-=dt; if(p.trail[ti].life<=0) p.trail.splice(ti,1); }
+  p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1);
+  p.ty=clamp(Math.floor(p.py/TILE),0,ROWS-1);
+  if(p.burst<=0&&p.ty<=4&&(p.px<-12||p.px>W+12)){ die('off'); return; }
+  if(world.attractDemo){ return; } /* attract: no scoring, no powerups, no death */
+  /* row progress bonus (never while the return flight is playing) */
+  if(!p.moving&&p.returnT<0&&p.ty<world.rowMax){ world.rowMax=p.ty; world.score+=10; }
+  /* powerup collect */
+  for(var i=world.powerups.length-1;i>=0;i--){
+    var pu=world.powerups[i];
+    if(pu.col===p.tx&&pu.row===p.ty&&!p.moving&&p.returnT<0){ collectPowerup(pu); world.powerups.splice(i,1); }
+  }
+}
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+/* core-secured flourish: the packet streaks back along its secured column, then
+   glides into the origin node — Frogger's home-splash moment, no teleporting */
+function startReturnFlight(){
+  var p=world.player;
+  p.returnT=0; p.moving=false; p.landT=0; p.facing=2; /* head down toward the origin */
+  p.retX0=p.px; p.retY0=p.py;              /* the dock socket */
+  p.retX1=START_COL*TILE+TILE/2;           /* origin node */
+  p.retY1=START_ROW*TILE+TILE/2;
+  p.invuln=RETURN_FLIGHT_T+0.4;            /* untouchable while airborne (+ settle) */
+}
+function updateReturnFlight(dt,p){
+  p.returnT+=dt;
+  var k=Math.min(1,p.returnT/RETURN_FLIGHT_T);
+  var dk=Math.min(1,k*1.45);                          /* drop straight down the column first */
+  var hk=clamp((k-0.32)/0.68,0,1);                    /* then glide along the bank into the origin */
+  p.px=lerp(p.retX0,p.retX1,ease(hk));
+  p.py=lerp(p.retY0,p.retY1,ease(dk));
+  p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1);
+  p.ty=clamp(Math.floor(p.py/TILE),0,ROWS-1);
+  /* comet trail: bright packet after-images strung up the column */
+  p.trail.push({x:p.px,y:p.py,a:0.85,life:0.2});
+  if(p.trail.length>26) p.trail.shift();
+  /* teal motes shed behind the streak — the packet outruns them, so they read as a comet tail */
+  if(Math.random()<0.6*Q('part')){
+    world.particles.push({x:p.px+(Math.random()-0.5)*8,y:p.py+10,
+      vx:(Math.random()-0.5)*30,vy:40+Math.random()*70,g:20,
+      life:0.26+Math.random()*0.18,max:0.44,size:1.5+Math.random()*1.5,
+      color:'#67e8f9',shape:'rect'});
+  }
+  if(k>=1){
+    /* touchdown: the fresh packet settles into the origin node, facing the board */
+    p.returnT=-1;
+    p.px=p.retX1; p.py=p.retY1;
+    p.tx=START_COL; p.ty=START_ROW;
+    p.facing=0;
+    p.trail.length=0; p.landT=0.12; p.invuln=0; /* landing at origin needs no grace */
+    ring(p.px,p.py,'#67e8f9');
+    dust(p.px,p.py,10);
+    Snd.play('spawn');
+  }
+}
+function onArrive(){
+  if(world.attractDemo) return; /* the attract autopilot resets itself at the goal */
+  var p=world.player;
+  var cols=world.sockets||GOAL_COLS;
+  if(p.ty===0&&cols.indexOf(p.tx)>=0){
+    var idx=cols.indexOf(p.tx);
+    if(!world.goals[idx]){
+      world.goals[idx]=true;
+      world.socketAnim[idx]=SOCKET_ANIM_T;
+      world.combo++;
+      world.maxCombo=Math.max(world.maxCombo,world.combo);
+      world.comboTimer=45; /* Frogger-style return trips need a real window to chain cores */
+      var mult=world.combo;
+      var gain=500*mult;
+      world.score+=gain;
+      world.stats.delivered++;
+      lvl.cores++; lvl.bestCombo=Math.max(lvl.bestCombo, world.combo);
+      run.cores++; meta.stats.cores++;
+      if(run.cores>=1) unlock('first_core');
+      if(world.combo>=5) unlock('combo5');
+      meta.stats.bestCombo=Math.max(meta.stats.bestCombo, world.combo);
+      ring(p.px,p.py,'#4ade80');
+      burst(p.px,p.py,14,'#4ade80');
+      rumble(200,0.5,0.3); /* core secured: medium pulse */
+      if(mult>1){ Snd.play('combo'); showBanner('CORE SECURED +'+gain,'COMBO x'+mult); }
+      else { Snd.play('goal'); showBanner('CORE SECURED +'+gain); }
+      /* classic-Frogger capture: the packet locks into the socket and a fresh packet
+         returns to the origin — you can never walk the dock row to chain sockets */
+      world.rowMax=START_ROW;
+      /* original-Frogger rule: securing a core refills the route clock for the return trip */
+      world.time=world.timeMax;
+      world.lastWarn=-1;
+      if(world.goals.every(Boolean)){
+        /* final core: snap the packet home — the level-clear card takes the stage */
+        p.px=START_COL*TILE+TILE/2; p.py=START_ROW*TILE+TILE/2;
+        p.tx=START_COL; p.ty=START_ROW; p.moving=false; p.invuln=1.2;
+        p.landT=0; p.trail.length=0;
+        ring(p.px,p.py,'#67e8f9');
+        levelClear();
+      } else {
+        /* home splash: the packet streaks back along its column with a comet trail */
+        startReturnFlight();
+      }
+    }
+  }
+}
+function levelClear(){
+  var bonus=1000+Math.round(world.time)*10;
+  world.score+=bonus;
+  unlock('level_clear');
+  if(lvl.deaths===0) unlock('perfect');
+  if(lvl.deaths===0&&lvl.shieldUse===0) unlock('flawless');
+  if(world.time>=30) unlock('flash');
+  world.mode='levelclear'; world.clearT=3.6;
+  interLastN=9;
+  Snd.play('clear');
+  burst(W/2,H/2,40,'#facc15');
+  showScreen('inter');
+  var t=$('inter-title'), s=$('inter-sub');
+  if(world.daily){
+    world.dailyComplete=true;
+    if(t) t.textContent='DAILY COMPLETE';
+    if(s) s.textContent='ALL CORES SECURED';
+  } else if(classicOn()){
+    world.classicDone=true; /* fixed 5-crossing board: the run ends when all cores are in */
+    if(t) t.textContent='CLASSIC COMPLETE';
+    if(s) s.textContent='ALL 5 CORES SECURED';
+  } else {
+    if(t) t.textContent='ROUTE SECURED';
+    if(s) s.textContent='LEVEL '+world.level+' COMPLETE';
+  }
+  var im=$('is-mode'); if(im) im.textContent=diffLabel();
+  $('is-cores').textContent=lvl.cores+' / 5';
+  $('is-combo').textContent='x'+lvl.bestCombo;
+  $('is-pickups').textContent=lvl.pickups;
+  $('is-bonus').textContent='+'+bonus;
+  countUpScore($('inter-score'), world.score);
+}
+function updateTime(dt){
+  world.time-=dt;
+  if(world.time<=0){ world.time=0; die('timeout'); return; }
+  if(world.time<=10&&Math.floor(world.time)!==world.lastWarn){
+    world.lastWarn=Math.floor(world.time);
+    Snd.play('tick');
+  }
+}
+function busAt(row,px){
+  var lane=world.lanesB[row-2];
+  if(!lane) return null;
+  for(var i=0;i<lane.buses.length;i++){
+    var b=lane.buses[i];
+    for(var k=-1;k<=1;k++){
+      var bx=b.x+k*lane.period;
+      if(px>=bx&&px<=bx+b.w) return b;
+    }
+  }
+  return null;
+}
+function checkCrash(){
+  var p=world.player;
+  if(p.invuln>0||world.mode!=='play'||world.deathT>0||p.dead) return; /* a fragmented packet can never be re-killed */
+  var lane=null;
+  for(var i=0;i<world.lanesH.length;i++) if(world.lanesH[i].row===p.ty){ lane=world.lanesH[i]; break; }
+  if(!lane) return;
+  var hb={x:p.px-10,y:p.py-10,w:20,h:20};
+  for(var j=0;j<lane.vehicles.length;j++){
+    var v=lane.vehicles[j];
+    if(v.x>W||v.x+v.w<0){ v.nearScored=false; continue; }
+    var vb={x:v.x+3,y:lane.row*TILE+4,w:v.w-6,h:TILE-8};
+    if(rectsOverlap(hb,vb)){
+      if(p.burst>0){
+        /* BURST: smash straight through the traffic */
+        world.score+=150;
+        world.burstSmash++;
+        if(world.burstSmash>=10) unlock('smasher');
+        Snd.play('bursthit');
+        burst(v.x+v.w/2, lane.row*TILE+TILE/2, 22, '#e879f9');
+        burst(p.px,p.py,10,'#22d3ee');
+        world.shake=Math.max(world.shake,0.35);
+        world.flash=0.3; world.flashCol='#e879f9';
+        v.x = lane.dir>0 ? -v.w-20 : W+20; /* vaporize it */
+        showBanner('SMASHED THROUGH!','+150');
+      } else if(p.shield){
+        p.shield=false; world.score+=50;
+        lvl.shieldUse++;
+        unlock('firewall');
+        Snd.play('shieldpop');
+        burst(p.px,p.py,20,'#22d3ee');
+        v.x = lane.dir>0 ? -v.w-20 : W+20; /* knock it away */
+        showBanner('FIREWALL SAVED YOU','+50');
+        world.flash=0.4; world.flashCol='#22d3ee';
+      } else {
+        window.__CR=window.__CR||[]; __CR.push({px:p.px,py:p.py,ty:p.ty,inv:p.invuln,vx:v.x,vw:v.w,vehs:lane.vehicles.map(function(q){return q.x;}),t:world.worldTime,
+          moving:p.moving,hopT:p.t,hopFrom:p.m0,hopTo:p.m1,hopY0:p.g0,hopY1:p.g1,laneRow:lane.row,laneSpeed:lane.speed,lastPress:window.__B?window.__B.lastPress:null}); if(__CR.length>8) __CR.shift();
+        die('crash');
+      }
+      return;
+    }
+    /* near miss: a vehicle brushes the packet's column without touching — close call */
+    var brush = vb.x < hb.x+hb.w+NM('nearPx') && vb.x+vb.w > hb.x-NM('nearPx');
+    if(brush){
+      if(!v.nearScored){
+        v.nearScored=true;
+        if(world.mode==='play'){
+          world.score+=NM('nearBonus');
+          world.flash=0.16; world.flashCol='#67e8f9';
+          floatText(p.px,p.py-26,'+'+NM('nearBonus')+' CLOSE CALL','#67e8f9');
+          Snd.tone(1500,900,0.06,'sine',0.05); /* soft whoosh blip */
+        }
+      }
+    } else {
+      v.nearScored=false;
+    }
+  }
+}
+function collectPowerup(pu){
+  var p=world.player, name='', col='#22d3ee';
+  switch(pu.type){
+    case 'time': world.time=Math.min(world.timeMax,world.time+10); name='+10 SECONDS'; col='#facc15'; break;
+    case 'shield': p.shield=true; name='SHIELD UP!'; col='#22d3ee'; break;
+    case 'life': world.lives++; name='+1 PACKET'; col='#4ade80'; Snd.play('life'); break;
+    case 'overclock': p.overclock=4; name='OVERCLOCKED'; col='#fb923c'; break;
+    case 'bit': world.score+=100; name='+100 BITS'; col='#e879f9'; Snd.play('bonus'); break;
+    case 'throttle': world.throttleT=6; name='TRAFFIC SLOWED!'; col='#60a5fa'; Snd.play('throttle'); break;
+    case 'burst': p.burst=4; name='INVINCIBLE!'; col='#e879f9'; Snd.play('burst'); break;
+  }
+  run.pickups++; meta.stats.pickups++;
+  lvl.pickups++;
+  if(run.pickups>=10) unlock('pickups');
+  Snd.play('power');
+  if(pu.type==='shield'||pu.type==='overclock'||pu.type==='burst'||pu.type==='throttle') lastFxSig=''; /* sr: the fresh booster stack gets announced on pickup */
+  burst(p.px,p.py,16,col);
+  showBanner(name,'',false); /* booster flashes are visual + audible; not worth a screen-reader interruption */
+}
+function checkExtraLife(){
+  while(world.score>=world.nextLifeAt){
+    world.lives++;
+    world.nextLifeAt+=25000;
+    unlock('clone');
+    Snd.play('life');
+    showBanner('+1 PACKET','EXTRA LIFE AT '+world.nextLifeAt);
+  }
+}
+
+/* ---------------- render ---------------- */
+var COLORS={
+  pcb:'#0b2a1d', pcbEdge:'#1c6b42',
+  tarmac:'#131b32', tarmacAlt:'#0f1628', rail:'#33426e',
+  water:'#12284f', waterAlt:'#0d1f42', waterEdge:'#7c5cff', foam:'#5eead4',
+  ping:'#22d3ee', stream:'#c084fc', server:'#fb923c',
+  busFill:'#0e5a74', busEdge2:'#22d3ee'
+};
+/* per-lane ribbon of light: vertical depth gradient (the 'pipe') + soft gradient sweeps
+   that scroll at the lane's own traffic speed, so parallel lanes parallax against each other */
+function drawLaneRibbon(y,h,tint,speed,dir,period,th,light){
+  /* bold retro lane striping: solid dashes scrolling with the traffic direction */
+  var off=mod(world.worldTime*speed*dir,period)-period;
+  ctx.fillStyle=tint;
+  for(var bx=off;bx<W;bx+=period){
+    if(light) glowRect(bx,y+h/2-th/2,period*0.40,th,tint,9);
+    ctx.fillRect(bx,y+h/2-th/2,period*0.40,th);
+  }
+  ctx.shadowBlur=0;
+}
+function drawBase(){
+  /* --- board substrate: deep navy slab with a faint PCB grid of vias --- */
+  ctx.fillStyle='#060a16'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(34,211,238,.06)'; ctx.lineWidth=1;
+  for(var gx=0;gx<=W;gx+=20){ ctx.beginPath(); ctx.moveTo(gx+0.5,0); ctx.lineTo(gx+0.5,H); ctx.stroke(); }
+  for(var gy=0;gy<=H;gy+=20){ ctx.beginPath(); ctx.moveTo(0,gy+0.5); ctx.lineTo(W,gy+0.5); ctx.stroke(); }
+  ctx.fillStyle='rgba(34,211,238,.12)';
+  for(var vx=0;vx<W;vx+=40){
+    for(var vy=0;vy<H;vy+=40){
+      if(((vx/40)+(vy/40))%2===0) ctx.fillRect(vx+17,vy+17,4,4);
+    }
+  }
+
+  /* --- CPU dock bay (rows 0-1): solid green-tinted panel with socket bays --- */
+  ctx.fillStyle='#071f15'; ctx.fillRect(0,0,W,TILE*2);
+  ctx.fillStyle='#0c2f20'; ctx.fillRect(0,0,W,3); ctx.fillRect(0,TILE*2-3,W,3);
+  var cols=world.sockets||GOAL_COLS;
+  for(var i=0;i<COLS;i++){
+    var bx=i*TILE+4, bw=TILE-8;
+    ctx.fillStyle='#0d3522';
+    ctx.fillRect(bx,4,bw,TILE*2-8);
+    ctx.strokeStyle='rgba(74,222,128,.22)'; ctx.lineWidth=1;
+    ctx.strokeRect(bx,4,bw,TILE*2-8);
+  }
+  /* socket bays: physical docking ports with a guided-insertion sequence */
+  cols.forEach(function(c,si){
+    drawDockPort(c*TILE+6,6,TILE-12,TILE*2-12,si);
+  });
+  /* water gaps between socket bays: Frogger-style — miss the port and you're washed out */
+  var wt=world.worldTime;
+  for(var c2=0;c2<COLS;c2++){
+    if(cols.indexOf(c2)>=0) continue;
+    var wx=c2*TILE+8, ww=TILE-16;
+    ctx.fillStyle='#05202b';
+    roundRect(wx,10,ww,56,4); ctx.fill();
+    ctx.strokeStyle='rgba(103,232,249,.18)'; ctx.lineWidth=1;
+    roundRect(wx,10,ww,56,4); ctx.stroke();
+    /* flowing ripples: three wave lines drifting with time */
+    for(var rp=0;rp<3;rp++){
+      var wy=18+rp*16+Math.sin(wt*1.6+rp*1.7)*1.5;
+      ctx.strokeStyle='rgba(165,243,252,'+(0.10+0.08*Math.sin(wt*2.4+rp*2.1))+')';
+      ctx.lineWidth=1;
+      ctx.beginPath();
+      ctx.moveTo(wx+4,wy);
+      for(var rx=wx+4;rx<=wx+ww-4;rx+=6){
+        ctx.lineTo(rx,wy+Math.sin(wt*1.8+rx*0.12)*1.8);
+      }
+      ctx.stroke();
+    }
+    /* hazard stripe at the water line: reads as 'do not land here' */
+    ctx.fillStyle='rgba(251,113,133,.20)';
+    ctx.fillRect(wx+4,12,ww-8,2);
+  }
+
+  /* --- rest banks (rows 5, 10-11): solid deck panels --- */
+  ctx.fillStyle='#0b1226'; ctx.fillRect(0,TILE*5,W,TILE);
+  ctx.fillRect(0,TILE*10,W,TILE*2);
+  ctx.fillStyle='#17223f'; ctx.fillRect(0,TILE*5,W,2); ctx.fillRect(0,TILE*6-2,W,2);
+  ctx.fillRect(0,TILE*10,W,2); ctx.fillRect(0,TILE*12-2,W,2);
+  ctx.fillStyle='rgba(34,211,238,.18)';
+  for(var r=5;r<=10;r+=5){
+    for(var dv=0;dv<W;dv+=14){ ctx.fillRect(dv,(r*TILE)+TILE/2-1,8,2); }
+  }
+  /* vent slots on the lower deck */
+  ctx.fillStyle='rgba(0,0,0,.4)';
+  for(var vv=0;vv<W;vv+=18){ ctx.fillRect(vv,10*TILE+14,10,2); ctx.fillRect(vv,10*TILE+20,10,2); ctx.fillRect(vv,10*TILE+26,10,2); }
+  drawNodeIcon(W-44,5*TILE+TILE/2-11);
+  drawOriginIcon(10,10*TILE+TILE/2-10);
+
+  /* --- bus lanes (rows 2-4): flowing data channel --- */
+  for(var bl=0;bl<3;bl++){
+    var lane=world.lanesB[bl], y=lane.row*TILE;
+    var g=cachedGrad('buswater|'+y, function(){ var gg=ctx.createLinearGradient(0,y,0,y+TILE); gg.addColorStop(0,'#16305e'); gg.addColorStop(.5,'#0d1f42'); gg.addColorStop(1,'#16305e'); return gg; });
+    ctx.fillStyle=g; ctx.fillRect(0,y,W,TILE);
+    /* the water itself stays calm — only individual logs sink now (Frogger-style) */
+    /* current ripple chevrons flowing against the traffic */
+    var off=mod(world.worldTime*lane.speed*(-lane.dir)*34,52);
+    ctx.fillStyle='rgba(94,234,212,.30)';
+    for(var dx=-52+off;dx<W;dx+=52){
+      ctx.beginPath();
+      ctx.moveTo(dx,y+7); ctx.lineTo(dx+13,y+TILE/2); ctx.lineTo(dx,y+TILE-7); ctx.closePath(); ctx.fill();
+      ctx.fillRect(dx+13,y+TILE/2-2,11,4);
+    }
+    /* foam dashes riding the upper edge */
+    ctx.fillStyle='rgba(255,255,255,.45)';
+    var fo=mod(world.worldTime*lane.speed*22,30);
+    for(var fdx=-30+fo;fdx<W;fdx+=30){ ctx.fillRect(fdx,y+3,12,2); }
+    /* glowing channel rails */
+    ctx.fillStyle=COLORS.waterEdge;
+    ctx.fillRect(0,y,W,2); ctx.fillRect(0,y+TILE-2,W,2);
+    ctx.fillStyle='rgba(124,92,255,.35)';
+    ctx.fillRect(0,y+2,W,2); ctx.fillRect(0,y+TILE-4,W,2);
+  }
+
+  /* --- highway lanes (rows 6-9): solid tarmac with bold striping --- */
+  for(var hl=0;hl<4;hl++){
+    var hlane=world.lanesH[hl], hy=hlane.row*TILE;
+    ctx.fillStyle=(hl%2===0)? COLORS.tarmac : COLORS.tarmacAlt;
+    ctx.fillRect(0,hy,W,TILE);
+    /* raised shoulders */
+    ctx.fillStyle=COLORS.rail; ctx.fillRect(0,hy,W,3); ctx.fillRect(0,hy+TILE-3,W,3);
+    ctx.fillStyle='rgba(255,255,255,.12)';
+    ctx.fillRect(0,hy+3,W,1); ctx.fillRect(0,hy+TILE-4,W,1);
+    /* tar seams */
+    ctx.fillStyle='rgba(0,0,0,.35)';
+    for(var sx=0;sx<W;sx+=TILE){ ctx.fillRect(sx,hy+4,2,TILE-8); }
+    /* bold animated center dashes: amber on odd lanes, ice-white on even */
+    var dashCol=(hl%2===1)? '#fbbf24' : '#dbeafe';
+    drawLaneRibbon(hy,TILE,dashCol,hlane.speed,hlane.dir>0?1:-1,72,6,true);
+  }
+
+  /* --- start platform --- */
+  var spx=START_COL*TILE+2, spy=START_ROW*TILE+2;
+  ctx.fillStyle='#04242f'; roundRect(spx,spy,TILE-4,TILE-4,5); ctx.fill();
+  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2; roundRect(spx,spy,TILE-4,TILE-4,5); ctx.stroke();
+  ctx.fillStyle='rgba(103,232,249,.9)';
+  ctx.beginPath(); ctx.moveTo(spx+TILE/2-5,spy+TILE-8); ctx.lineTo(spx+TILE/2,spy+10); ctx.lineTo(spx+TILE/2+5,spy+TILE-8); ctx.closePath(); ctx.fill();
+
+  /* --- deck rows (12-13): operator console strip --- */
+  ctx.fillStyle='#0a0f1f'; ctx.fillRect(0,ROWS*TILE-TILE*2,W,TILE*2);
+  ctx.fillStyle='#1a2440'; ctx.fillRect(0,ROWS*TILE-TILE*2,W,2); ctx.fillRect(0,H-2,W,2);
+  ctx.fillStyle='rgba(34,211,238,.30)';
+  for(var st=0;st<18;st++){
+    var sx=mod(world.worldTime*(40+st*3)+(st*53),W+30)-30;
+    ctx.fillRect(sx,ROWS*TILE-TILE*2+8+((st%5)*9),2,6);
+  }
+  drawStatusLeds();
+}
+function fontStack(){ return '"Press Start 2P", monospace'; }
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+/* ---------- hand-drawn pixel-art helpers (no text on objects) ---------- */
+function drawPix(rows,pal,x,y,s){
+  for(var r=0;r<rows.length;r++){
+    var line=rows[r];
+    for(var c=0;c<line.length;c++){
+      var ch=line.charAt(c);
+      if(ch==='.'||ch===' ') continue;
+      var col=pal[ch]; if(!col) continue;
+      ctx.fillStyle=col;
+      ctx.fillRect(x+c*s,y+r*s,s,s);
+    }
+  }
+}
+/* the data packet: a chip-packet with a directional chevron, drawn facing UP (0=up,1=right,2=down,3=left) */
+function drawPkt(alpha,facing,glowCol){
+  ctx.save();
+  ctx.rotate(((facing||0)%4)*Math.PI/2);
+  /* soft glow plate */
+  ctx.globalCompositeOperation='lighter';
+  ctx.fillStyle='rgba(34,211,238,'+(0.16*alpha)+')';
+  ctx.fillRect(-16,-16,32,32);
+  ctx.globalCompositeOperation='source-over';
+  /* dark outline body */
+  ctx.fillStyle='rgba(2,20,30,'+alpha+')';
+  roundRect(-13,-13,26,26,4); ctx.fill();
+  /* bright core */
+  ctx.fillStyle='rgba(34,211,238,'+alpha+')';
+  roundRect(-9,-9,18,18,3); ctx.fill();
+  /* inner body */
+  ctx.fillStyle='rgba(4,42,54,'+alpha+')';
+  roundRect(-6,-6,12,12,2); ctx.fill();
+  /* directional arrow */
+  ctx.fillStyle='rgba(165,243,252,'+alpha+')';
+  ctx.beginPath();
+  ctx.moveTo(-3.5,3.5); ctx.lineTo(0,-5); ctx.lineTo(3.5,3.5); ctx.closePath(); ctx.fill();
+  ctx.fillRect(-1.2,3.5,2.4,3);
+  /* chip legs */
+  ctx.fillStyle='rgba(165,243,252,'+alpha+')';
+  ctx.fillRect(-15,-15,4,4); ctx.fillRect(11,-15,4,4);
+  ctx.fillRect(-15,11,4,4); ctx.fillRect(11,11,4,4);
+  /* top sheen */
+  ctx.fillStyle='rgba(255,255,255,'+(0.55*alpha)+')';
+  ctx.fillRect(-6,-9,10,2);
+  ctx.restore();
+}
+/* physical docking port: metallic bay with guide rails, corner bolts and a standby LED. When a
+   core docks, a guided-insertion sequence plays — sweep light + converging guide lasers while the
+   packet descends, clamp arms slide shut with a lock flash, and the chip seats with a settle pop. */
+/* next-socket waypoint (EASY): a pulsing beacon on the dock bay + a faint column of
+   light down the board, so newcomers always know which socket to head for */
+function drawWaypoint(){
+  var d=DIFFS&&DIFFS[settings.difficulty];
+  if(!d||!d.waypoint) return;
+  if(world.mode!=='play'&&world.mode!=='ready') return;
+  if(world.daily) return; /* the daily is a fixed challenge — no guidance */
+  if(classicOn()) return; /* strict mode: no guidance aids */
+  var cols=world.sockets||GOAL_COLS, idx=-1;
+  for(var i=0;i<cols.length;i++) if(!world.goals[i]){ idx=i; break; }
+  if(idx<0) return;
+  var cx=cols[idx]*TILE+TILE/2;
+  var t=world.worldTime;
+  /* faint column guide: a soft vertical beam down the target column (traffic drives over it) */
+  var g=cachedGrad('waycol', function(){ var gg=ctx.createLinearGradient(0,0,0,H); gg.addColorStop(0,'rgba(103,232,249,0.16)'); gg.addColorStop(0.35,'rgba(103,232,249,0.07)'); gg.addColorStop(1,'rgba(103,232,249,0)'); return gg; });
+  ctx.fillStyle=g;
+  ctx.fillRect(cx-6,0,12,H);
+  ctx.fillStyle='rgba(103,232,249,0.12)';
+  ctx.fillRect(cx-1,0,2,H);
+  /* pulsing beacon: double chevron bobbing above the bay, pointing into the port */
+  var pulse=0.5+0.5*Math.sin(t*4+idx);
+  var by=10+pulse*2;
+  ctx.save();
+  ctx.globalAlpha=0.30+0.35*pulse;
+  glowRect(cx-13,by-9,26,18,'#67e8f9',12+8*pulse);
+  ctx.fillStyle='#67e8f9';
+  ctx.beginPath();
+  ctx.moveTo(cx-13,by-9); ctx.lineTo(cx,by); ctx.lineTo(cx+13,by-9); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha=0.55+0.45*pulse;
+  ctx.fillStyle='#a5f3fc';
+  ctx.beginPath();
+  ctx.moveTo(cx-8,by); ctx.lineTo(cx,by+10); ctx.lineTo(cx+8,by); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  /* seat ping: a small breathing dot + expanding ring at the socket seat */
+  ctx.fillStyle='rgba(165,243,252,'+(0.4+0.5*pulse)+')';
+  ctx.beginPath(); ctx.arc(cx,62,2.5+1.5*pulse,0,Math.PI*2); ctx.fill();
+  var rp=mod(t*0.85,1);
+  ctx.globalAlpha=(1-rp)*0.3;
+  ctx.strokeStyle='#67e8f9'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.arc(cx,62,6+rp*12,0,Math.PI*2); ctx.stroke();
+  ctx.globalAlpha=1; ctx.lineWidth=1; /* restore — no leaks */
+}
+function drawDockPort(x,y,w,h,si){
+  var t=world.socketAnim[si]||0, active=t>0;
+  var p=active? Math.max(0,1-t/SOCKET_ANIM_T) : 1;
+  var pA=Math.min(1,p/0.4), pB=Math.min(1,Math.max(0,(p-0.4)/0.3)), pC=Math.min(1,Math.max(0,(p-0.7)/0.3));
+  var cx=x+w/2;
+  /* port body: dark recess with seat shadow + metallic bezel */
+  ctx.fillStyle='#02080c'; ctx.fillRect(x,y,w,h);
+  var sg=cachedGrad('dockseat|'+y, function(){ var gg=ctx.createLinearGradient(0,y,0,y+h); gg.addColorStop(0,'rgba(0,0,0,0)'); gg.addColorStop(1,'rgba(0,0,0,.55)'); return gg; });
+  ctx.fillStyle=sg; ctx.fillRect(x+2,y+2,w-4,h-4);
+  ctx.strokeStyle='#155e4a'; ctx.lineWidth=2; ctx.strokeRect(x,y,w,h);
+  ctx.strokeStyle='rgba(134,239,172,.5)'; ctx.lineWidth=1;
+  ctx.strokeRect(x+2,y+2,w-4,h-4);
+  ctx.strokeRect(x+4,y+4,w-8,h-8);
+  /* side guide rails: slots with rivet dots */
+  ctx.fillStyle='#0a2a1c';
+  ctx.fillRect(x+3,y+8,3,h-16); ctx.fillRect(x+w-6,y+8,3,h-16);
+  ctx.fillStyle='rgba(134,239,172,.3)';
+  for(var rv=0;rv<5;rv++){ var ry=y+10+rv*((h-22)/4); ctx.fillRect(x+3,ry,3,1.5); ctx.fillRect(x+w-6,ry,3,1.5); }
+  /* corner bolts */
+  ctx.fillStyle='#1c6b42';
+  ctx.fillRect(x+1,y+1,2,2); ctx.fillRect(x+w-3,y+1,2,2);
+  ctx.fillRect(x+1,y+h-3,2,2); ctx.fillRect(x+w-3,y+h-3,2,2);
+  /* pogo pins along the seat */
+  ctx.fillStyle='rgba(134,239,172,.35)';
+  for(var pn=0;pn<8;pn++){ ctx.fillRect(x+10,y+6+pn*((h-12)/7),4,2); ctx.fillRect(x+w-14,y+6+pn*((h-12)/7),4,2); }
+  /* status LED: green locked / amber docking / standby orange */
+  var occupied=world.goals[si];
+  var ledCol = occupied? '#4ade80' : (active? '#facc15' : '#f59e0b');
+  var ledGlow = occupied? (6+8*(0.5+0.5*Math.sin(world.worldTime*4+si*1.2))) : (active? (8+4*Math.sin(world.worldTime*20)) : 4);
+  glowRect(cx-2,y+1,4,3,ledCol,ledGlow);
+  ctx.fillStyle=ledCol;
+  ctx.fillRect(cx-2,y+1,4,3);
+  ctx.shadowBlur=0;
+  if(occupied&&!active){ /* seated core: breathing glow + settled chip */
+    var pulse=0.6+0.4*Math.sin(world.worldTime*4+si*1.2);
+    glowRect(x+9,y+9,w-18,h-18,'#4ade80',22*pulse);
+    ctx.fillStyle='rgba(74,222,128,'+(0.25+0.25*pulse)+')';
+    roundRect(x+9,y+9,w-18,h-18,6); ctx.fill();
+    ctx.shadowBlur=0;
+    drawCoreChip(x+6,y+14,w-12,h-28,pulse,si);
+    return;
+  }
+  if(!active){ /* empty port: dashed guide lane + pulsing INSERT chevron */
+    ctx.strokeStyle='rgba(74,222,128,.3)'; ctx.lineWidth=1;
+    ctx.setLineDash([2,3]);
+    ctx.beginPath(); ctx.moveTo(cx,y+8); ctx.lineTo(cx,y+h-8); ctx.stroke();
+    ctx.setLineDash([]);
+    var blink=0.5+0.5*Math.sin(world.worldTime*3+si);
+    ctx.fillStyle='rgba(74,222,128,'+(0.18+0.2*blink)+')';
+    ctx.beginPath();
+    ctx.moveTo(cx-6,y+h/2+7); ctx.lineTo(cx,y+h/2-5); ctx.lineTo(cx+6,y+h/2+7); ctx.closePath(); ctx.fill();
+    ctx.fillRect(cx-2,y+h/2+7,4,4);
+    return;
+  }
+  /* --- guided insertion sequence --- */
+  /* converging guide lasers while the packet descends */
+  ctx.strokeStyle='rgba(74,222,128,'+(0.55*pA)+')'; ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(x+6,y+2); ctx.lineTo(cx-3,y+8+pA*36);
+  ctx.moveTo(x+w-6,y+2); ctx.lineTo(cx+3,y+8+pA*36);
+  ctx.stroke();
+  /* sweep light: horizontal scan bar riding down the bay, fading as the descent completes */
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  var sy=y+4+pA*(h-8), beamA=1-pA;
+  var beam=ctx.createLinearGradient(0,sy-3,0,sy+3);
+  beam.addColorStop(0,'rgba(74,222,128,0)'); beam.addColorStop(.5,'rgba(134,239,172,'+(0.8*beamA)+')'); beam.addColorStop(1,'rgba(74,222,128,0)');
+  ctx.fillStyle=beam; ctx.fillRect(x+3,sy-3,w-6,6);
+  ctx.fillStyle='rgba(134,239,172,'+(0.3*beamA)+')';
+  ctx.fillRect(x+3,sy-6,w-6,2); ctx.fillRect(x+3,sy+4,w-6,2);
+  ctx.restore();
+  /* the packet: mini chip guided down into the seat, held at rest until the chip seats */
+  if(pA<1||pC===0){
+    var py=y+4+ease(Math.min(1,pA))*40;
+    ctx.save();
+    ctx.translate(cx,py);
+    ctx.scale(0.42,0.42);
+    drawPkt(0.95,0);
+    ctx.restore();
+  }
+  /* clamp arms slide in and lock around the docked packet */
+  var armTop=y+30, armH=26;
+  var lx=x+3+pB*Math.max(0,cx-9-(x+3));
+  var rx=x+w-3-pB*Math.max(0,(x+w-3)-(cx+9));
+  ctx.fillStyle='#1c6b42';
+  roundRect(lx,armTop,3,armH,1.5); ctx.fill();
+  roundRect(rx-3,armTop,3,armH,1.5); ctx.fill();
+  ctx.fillStyle='rgba(134,239,172,.65)';
+  ctx.fillRect(lx+3,armTop+2,1.5,armH-4);
+  ctx.fillRect(rx-4.5,armTop+2,1.5,armH-4);
+  if(pB>0.85){ /* lock flash when the arms meet */
+    ctx.fillStyle='rgba(255,255,255,'+(0.65*(pB-0.85)/0.15)+')';
+    ctx.fillRect(cx-2,armTop,4,armH);
+  }
+  /* the core seats with a settle pop */
+  if(pC>0){
+    var pop=Math.sin(Math.min(1,pC)*Math.PI);
+    var cp=0.6+0.4*Math.sin(world.worldTime*4+si*1.2);
+    ctx.save();
+    ctx.translate(cx,y+34);
+    ctx.scale(1+0.14*pop,1-0.14*pop);
+    ctx.translate(-cx,-(y+34));
+    glowRect(x+9,y+9,w-18,h-18,'#4ade80',16*pop);
+    ctx.fillStyle='rgba(74,222,128,'+(0.2+0.3*pop)+')';
+    roundRect(x+9,y+9,w-18,h-18,6); ctx.fill();
+    drawCoreChip(x+6,y+14,w-12,h-28,cp,si);
+    ctx.shadowBlur=0;
+    ctx.restore();
+  }
+}
+/* delivered core: an IC chip seated in the socket */
+function drawCoreChip(x,y,w,h,pulse,i){
+  var a=0.5+0.5*pulse;
+  /* chip body */
+  ctx.fillStyle='#04180f'; roundRect(x+2,y+10,w-4,h-20,3); ctx.fill();
+  ctx.strokeStyle='rgba(74,222,128,'+a+')'; ctx.lineWidth=2; roundRect(x+2,y+10,w-4,h-20,3); ctx.stroke();
+  /* corner dots */
+  ctx.fillStyle='rgba(217,255,233,'+(0.3+0.5*pulse)+')';
+  ctx.fillRect(x+6,y+14,3,3); ctx.fillRect(x+w-9,y+14,3,3);
+  /* side pins */
+  ctx.fillStyle='rgba(217,255,233,'+(0.4+0.5*pulse)+')';
+  for(var pn=0;pn<4;pn++){
+    var py=y+13+pn*(h-30)/3;
+    ctx.fillRect(x-3,py-2,6,5); ctx.fillRect(x+w-3,py-2,6,5);
+  }
+  /* die traces */
+  ctx.fillStyle='rgba(74,222,128,'+(0.4+0.5*pulse)+')';
+  var dx=x+10, dy=y+16, dw=w-20, dh=h-32;
+  for(var tr=0;tr<3;tr++){
+    ctx.fillRect(dx,dy+tr*(dh-2)/2,dw,2);
+    ctx.fillRect(dx+tr*dw/3+2,dy,dw/3-4,dh);
+  }
+  /* status LED */
+  glowRect(x+w-16,y+11,5,5,'#4ade80',10+12*pulse);
+  ctx.fillStyle='rgba(134,239,172,'+a+')';
+  ctx.fillRect(x+w-16,y+11,5,5);
+  ctx.shadowBlur=0;
+}
+/* highway traffic (drawn facing RIGHT; mirrored for leftward lanes) */
+/* animated wheel rim: a 4-phase spoke pattern that spins with the vehicle's speed */
+function drawWheel(x,y,ww,wh,ph){
+  ctx.fillStyle='#040a14'; ctx.fillRect(x-1,y-1,ww+2,wh+2);
+  ctx.fillStyle='#111d33'; ctx.fillRect(x,y,ww,wh);
+  var m=ph%4, hx=x+Math.floor(ww/2)-1, hy=y+Math.floor(wh/2)-1;
+  ctx.fillStyle='rgba(165,243,252,.9)';
+  if(m===0){ ctx.fillRect(hx,y,2,wh); }                 /* vertical spoke */
+  else if(m===1){ ctx.fillRect(x,hy,ww,2); }            /* horizontal spoke */
+  else if(m===2){ ctx.fillRect(x+1,y+1,3,3); ctx.fillRect(x+ww-4,y+wh-3,3,3); }
+  else { ctx.fillRect(x+ww-4,y+1,3,3); ctx.fillRect(x+1,y+wh-3,3,3); }
+  ctx.fillStyle='#e0f2fe'; ctx.fillRect(hx,hy,3,3); /* hub */
+  ctx.fillStyle='rgba(34,211,238,.85)'; ctx.fillRect(hx+0.5,hy+0.5,2,2);
+}
+/* per-lane vehicle color variants: each type keeps its hue family (cool data pods / purple shuttles /
+   warm server haulers) but lanes cycle through 3 shades so parallel lanes never read as identical rows. */
+var VEH_PAL={
+  ping:[
+    {shell:'#22d3ee',dark:'#06283a',mid:'#0b4f66',deep:'#0f6b84',hi:'#67e8f9',glow:'rgba(34,211,238,.55)'},
+    {shell:'#2dd4bf',dark:'#032a24',mid:'#0c4f46',deep:'#106a5f',hi:'#5eead4',glow:'rgba(45,212,191,.55)'},
+    {shell:'#38bdf8',dark:'#072e47',mid:'#0d4d74',deep:'#11668f',hi:'#7dd3fc',glow:'rgba(56,189,248,.55)'}
+  ],
+  stream:[
+    {shell:'#c084fc',dark:'#2a1145',cab:'#6b21a8',line:'#e9d5ff',hold:'#18082b',struts:'rgba(233,213,255,.20)',pulse:'rgba(240,171,252,.85)',rail:'#0d0520'},
+    {shell:'#e879f9',dark:'#310a44',cab:'#86198f',line:'#f5d0fe',hold:'#1c0626',struts:'rgba(245,208,254,.20)',pulse:'rgba(249,168,212,.85)',rail:'#17051e'},
+    {shell:'#818cf8',dark:'#16154a',cab:'#4338ca',line:'#e0e7ff',hold:'#0f0e33',struts:'rgba(224,231,255,.20)',pulse:'rgba(199,210,254,.85)',rail:'#0b0a22'}
+  ],
+  server:[
+    {shell:'#fb923c',dark:'#3a1a08',cab:'#7c2d12',line:'#fed7aa',hold:'#180d05',struts:'rgba(253,230,138,.28)',pulse:'rgba(254,215,170,.75)'},
+    {shell:'#facc15',dark:'#3a3005',cab:'#854d0e',line:'#fef9c3',hold:'#1d1803',struts:'rgba(253,230,138,.28)',pulse:'rgba(254,240,138,.75)'},
+    {shell:'#f87171',dark:'#3d0b0b',cab:'#991b1b',line:'#fecaca',hold:'#230707',struts:'rgba(254,202,202,.28)',pulse:'rgba(254,202,202,.75)'}
+  ]
+};
+function drawVehicle(v,h,vi){
+  var type=v.type, w=v.w, spd=Math.abs(v.v), seed=Math.abs(v.x)*0.5;
+  var P=VEH_PAL[type][vi||0];
+  var wheelPh=Math.floor(world.worldTime*(spd*0.22+7)+seed);
+  if(type==='ping'){
+    /* sleek data pod: bright shell, dark cockpit, glowing nose */
+    ctx.fillStyle=P.dark;
+    roundRect(0,1,w,h-2,6); ctx.fill();
+    ctx.fillStyle=P.shell;
+    roundRect(1,2,w-2,h-4,5); ctx.fill();
+    ctx.fillStyle=P.mid;
+    roundRect(w*0.48,4,w*0.28,h-8,2); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.9)';
+    ctx.fillRect(w*0.5,6,2,h-12);
+    ctx.fillStyle=P.deep;
+    ctx.fillRect(3,4,3,h-8);
+    ctx.fillStyle=P.hi;
+    ctx.fillRect(w*0.36,3,w*0.10,h-6);
+    ctx.fillStyle='#fef08a'; ctx.fillRect(w-3,h/2-3,2,6); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(w-2.5,h/2-2,1,4);
+    ctx.fillStyle='#fb7185'; ctx.fillRect(1,h/2-3,2,6); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(1.5,h/2-2,1,4);
+    drawWheel(3,h-5,7,4,wheelPh); drawWheel(w-10,h-5,7,4,wheelPh+2);
+    ctx.fillStyle=P.glow; ctx.fillRect(3,h-3,w-6,2);
+  } else if(type==='stream'){
+    /* data shuttle: colored cab + cargo hold with traveling pulses */
+    var cab=Math.min(15,w*0.28);
+    ctx.fillStyle=P.dark;
+    roundRect(0,1,w,h-2,5); ctx.fill();
+    ctx.fillStyle=P.shell;
+    roundRect(1,2,w-2,h-4,4); ctx.fill();
+    ctx.fillStyle=P.cab;
+    roundRect(0,4,cab-3,h-8,3); ctx.fill();
+    ctx.fillStyle=P.line;
+    ctx.fillRect(cab-8,5,2,h-10);
+    ctx.fillStyle=P.hold;
+    roundRect(cab,4,w-cab-4,h-8,2); ctx.fill();
+    var boxW=w-cab-4, crawlW=Math.max(14,boxW-14);
+    ctx.fillStyle=P.struts;
+    for(var i=0;i<3;i++){ ctx.fillRect(cab+5+i*(boxW-9)/3,h/2-7,2,14); }
+    var cr=mod(world.worldTime*(spd*0.28+6)+seed*3,crawlW);
+    ctx.fillStyle=P.pulse;
+    for(var b=0;b<2;b++){
+      var bx=cab+6+mod(cr+b*crawlW/2,crawlW);
+      ctx.fillRect(bx,h/2-7,3,14);
+    }
+    ctx.fillStyle=P.rail;
+    ctx.fillRect(cab+6,1,w-cab-12,2);
+    ctx.fillStyle='#fef08a'; ctx.fillRect(w-2,h/2-4,2,8); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(w-1.5,h/2-3,1,6);
+    ctx.fillStyle='#fb7185'; ctx.fillRect(1,h/2-4,2,8); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(1.5,h/2-3,1,6);
+    drawWheel(4,h-5,8,4,wheelPh); drawWheel(w-12,h-5,8,4,wheelPh+2);
+  } else {
+    /* server hauler: colored cab + rack box, blinking LED column */
+    var cab2=Math.min(18,w*0.24);
+    ctx.fillStyle=P.dark;
+    roundRect(0,1,w,h-2,5); ctx.fill();
+    ctx.fillStyle=P.shell;
+    roundRect(1,2,w-2,h-4,4); ctx.fill();
+    ctx.fillStyle=P.cab;
+    roundRect(0,4,cab2-3,h-8,3); ctx.fill();
+    ctx.fillStyle=P.line;
+    ctx.fillRect(cab2-8,5,2,h-10);
+    ctx.fillStyle=P.hold;
+    roundRect(cab2,4,w-cab2-4,h-8,2); ctx.fill();
+    var rackW=Math.max(10,w-cab2-16);
+    ctx.fillStyle=P.struts;
+    for(var k=0;k<5;k++){ ctx.fillRect(cab2+5,6+k*(h-12)/4,rackW,2); }
+    var cr2=mod(world.worldTime*(spd*0.24+5)+seed*2.7,rackW-4);
+    ctx.fillStyle=P.pulse;
+    ctx.fillRect(cab2+5+cr2,5,3,h-10);
+    for(var l2=0;l2<4;l2++){
+      var blink=Math.sin(world.worldTime*8+l2*1.7+seed)>0;
+      ctx.fillStyle=blink?'#4ade80':'rgba(74,222,128,.3)';
+      ctx.fillRect(w-15,6+l2*6,4,3);
+    }
+    ctx.fillStyle='#2a1005'; ctx.fillRect(cab2+6,1,12,3);
+    ctx.fillStyle='#fef08a'; ctx.fillRect(w-2,h/2-5,2,10); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(w-1.5,h/2-4,1,8);
+    ctx.fillStyle='#fb7185'; ctx.fillRect(1,h/2-5,2,10); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fillRect(1.5,h/2-4,1,8);
+    drawWheel(4,h-5,9,5,wheelPh); drawWheel(w-13,h-5,9,5,wheelPh+2);
+  }
+}
+function drawNodeIcon(x,y){
+  var g=0.5+0.2*Math.sin(world.worldTime*2);
+  glowRect(x,y,22,22,'#4ade80',12);
+  ctx.fillStyle='rgba(74,222,128,'+g+')';
+  ctx.beginPath();
+  for(var a2=0;a2<6;a2++){
+    var an=a2*Math.PI/3-Math.PI/6;
+    var hx=x+11+Math.cos(an)*11, hy=y+11+Math.sin(an)*11;
+    if(a2===0) ctx.moveTo(hx,hy); else ctx.lineTo(hx,hy);
+  }
+  ctx.closePath(); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.fillStyle='#04170d';
+  ctx.beginPath();
+  for(var a3=0;a3<6;a3++){
+    var an2=a3*Math.PI/3-Math.PI/6;
+    var hx2=x+11+Math.cos(an2)*6, hy2=y+11+Math.sin(an2)*6;
+    if(a3===0) ctx.moveTo(hx2,hy2); else ctx.lineTo(hx2,hy2);
+  }
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle='rgba(217,255,233,.9)';
+  ctx.fillRect(x+10,y+10,2,2);
+  ctx.fillRect(x+10,y-3,2,8);
+  ctx.fillStyle='rgba(251,113,133,'+(0.5+0.5*Math.sin(world.worldTime*3))+')';
+  ctx.fillRect(x+8.5,y-4,4,4);
+}
+function drawOriginIcon(x,y){
+  var g=0.5+0.2*Math.sin(world.worldTime*2+1);
+  glowRect(x-1,y-1,22,22,'#22d3ee',12);
+  ctx.fillStyle='rgba(34,211,238,'+g+')';
+  roundRect(x-1,y-1,22,22,3); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.fillStyle='#03181f';
+  roundRect(x+2,y+3,16,15,2); ctx.fill();
+  ctx.fillStyle='rgba(103,232,249,.95)';
+  ctx.fillRect(x+3,y-4,4,6); ctx.fillRect(x+14,y-4,4,6);
+  ctx.fillStyle='rgba(103,232,249,.9)';
+  ctx.fillRect(x+5,y+8,3,3); ctx.fillRect(x+9,y+8,3,3); ctx.fillRect(x+13,y+8,3,3);
+  ctx.fillStyle='rgba(255,255,255,.5)';
+  ctx.fillRect(x+4,y+4,4,2);
+}
+function drawStatusLeds(){
+  var y=H-16, seq=[['#4ade80',0],['#facc15',0.4],['#22d3ee',0.8]];
+  for(var i=0;i<3;i++){
+    var on=mod(world.worldTime+seq[i][1],2)<1;
+    glowRect(8+i*13,y,6,6,seq[i][0],on?8:0);
+    ctx.fillStyle=on?seq[i][0]:'#1e2a3a';
+    ctx.fillRect(8+i*13,y,6,6);
+    ctx.shadowBlur=0;
+    ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.lineWidth=1;
+    ctx.strokeRect(8+i*13,y,6,6);
+  }
+  var tx=mod(world.worldTime*26,44);
+  ctx.fillStyle='rgba(148,197,233,.75)';
+  ctx.fillRect(52+tx,y+1,12,4);
+}
+function drawShieldBadge(x,y){
+  var bob=Math.sin(world.worldTime*4)*2;
+  var grid=['.00000.','0.....0','0.....0','0.....0','0.....0','.0...0.','..0.0..','...0...'];
+  ctx.save();
+  ctx.translate(x,y-24+bob);
+  glowRect(-6,-9,12,14,'#67e8f9',8);
+  drawPix(grid,{0:'#a5f3fc'},-Math.floor(grid[0].length*1.4/2),-8,1.4);
+  ctx.restore();
+}
+/* how far along its warning window a log is (0→1) — per-log now */
+function hazardProg(bus,lane){ return Math.max(0,Math.min(1,1-bus.sinkT/lane.warnDur)); }
+/* the stripe pulse rate as the log's sink window closes */
+function hazardFreq(prog){ return HZ('freqMin')+prog*(HZ('freqMax')-HZ('freqMin')); }
+/* lit hazard tape: a full-lane-edge warning stripe that glows and pulses faster
+   as the sink window closes. The band replaces the lane rail with physical
+   warning chevrons scrolling with the flow — dim and slow at first, then
+   flaring red and strobe-fast right before the trace deck sinks. */
+function drawHazardStripe(bus,bx,bw,lane,y,flip){
+  var prog=hazardProg(bus,lane);
+  var unsafe=bus.unsafe;
+  var freq=hazardFreq(prog);
+  var pulse=0.5+0.5*Math.sin(world.worldTime*freq*Math.PI*2);
+  var intensity=HZ('brightMin')+prog*(HZ('brightMax')-HZ('brightMin'));
+  if(unsafe) intensity=Math.max(intensity,HZ('unsafeMin'));    /* unsafe phase stays flaring */
+  var col=unsafe? '#ff4d5e' : '#ffb020';
+  /* dark backing so the tape reads as a physical strip along the log's own span */
+  ctx.fillStyle='rgba(5,9,20,.9)';
+  ctx.fillRect(bx,y,bw,7);
+  ctx.save();
+  ctx.globalAlpha=0.3+0.7*pulse*intensity;
+  glowRect(bx,y,bw,7,col,2+11*pulse*intensity);
+  ctx.fillStyle=col;
+  var scroll=mod(world.worldTime*lane.speed*0.5*lane.dir,16);
+  for(var dx=bx-16+scroll;dx<bx+bw+16;dx+=16){
+    ctx.beginPath();
+    if(flip){ ctx.moveTo(dx,y); ctx.lineTo(dx+8,y+7); ctx.lineTo(dx+16,y+7); ctx.lineTo(dx+8,y); }
+    else{ ctx.moveTo(dx,y+7); ctx.lineTo(dx+8,y); ctx.lineTo(dx+16,y); ctx.lineTo(dx+8,y+7); }
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+  /* hairline hot edge on the lane-facing side of the tape */
+  ctx.globalAlpha=0.55+0.45*pulse*intensity;
+  ctx.fillStyle=col;
+  ctx.fillRect(bx, flip? y+6 : y, bw, 1);
+  ctx.globalAlpha=1; /* never let the pulse alpha leak into the rest of the scene */
+}
+function drawHazardBanner(txt,col){
+  ctx.font='7px '+(fontStack());
+  var w=ctx.measureText(txt).width+24, h=18;
+  var x=W/2-w/2, y=5;
+  ctx.fillStyle='#050a14';
+  ctx.fillRect(x,y,w,h);
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x,y,w,h); ctx.clip();
+  ctx.fillStyle=col;
+  for(var d=-h;d<w+h;d+=8){ ctx.fillRect(x+d,y,4,h); }
+  ctx.restore();
+  ctx.fillStyle='#ffffff';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(txt,W/2,y+h/2+0.5);
+  ctx.strokeStyle=col; ctx.lineWidth=2;
+  ctx.strokeRect(x,y,w,h);
+}
+function drawVehicles(){
+  world.lanesH.forEach(function(lane){
+    var f=lane.dir>0?1:-1;
+    lane.vehicles.forEach(function(v){
+      var y=lane.row*TILE+4, h=TILE-8;
+      var w=v.w;
+      var col=VEH_PAL[v.type][lane.var||0].shell;
+      /* solid ground shadow */
+      ctx.fillStyle='rgba(0,0,0,.55)';
+      roundRect(v.x+3,y+4,w,h,5); ctx.fill();
+      /* sprite is drawn facing RIGHT; mirrored for leftward lanes */
+      ctx.save();
+      ctx.translate(v.x+w/2,y+h/2);
+      if(f<0) ctx.scale(-1,1);
+      ctx.translate(-w/2,-h/2);
+      drawVehicle(v,h,lane.var);
+      ctx.restore();
+      /* hot edge outline */
+      glowRect(v.x,y,w,h,col,10);
+      ctx.strokeStyle=col; ctx.lineWidth=2;
+      roundRect(v.x,y,w,h,5); ctx.stroke();
+      ctx.shadowBlur=0;
+    });
+  });
+}
+function drawBuses(){
+  world.lanesB.forEach(function(lane){
+    lane.buses.forEach(function(b){
+      var unsafe=b.unsafe; /* each log sinks on its own clock */
+      var warn=b.warn&&!unsafe; /* about-to-sink phase pulses amber */
+      for(var k=-1;k<=1;k++){
+        var bx=b.x+k*lane.period;
+        if(bx>W+80||bx+b.w<-80) continue;
+        var y=lane.row*TILE+5, h=TILE-10;
+        /* a submerged log dips into the water, bobbing slightly */
+        if(unsafe) y+=3+Math.sin(world.worldTime*18+b.x*3)*1.5;
+        var col=unsafe? '#571224' : COLORS.busFill;
+        var edge=unsafe? (Math.sin(world.worldTime*20)>0?'#f87171':'#ef4444')
+              : (warn? (Math.sin(world.worldTime*10+b.x)>0?'#fbbf24':'#f59e0b') : COLORS.busEdge2);
+        /* solid ground shadow */
+        ctx.fillStyle='rgba(0,0,0,.5)';
+        roundRect(bx+2,y+4,b.w,h,5); ctx.fill();
+        /* deck with vertical depth gradient (cached per row + state) */
+        var g=cachedGrad('busbody|'+lane.row+'|'+(unsafe?1:0), function(){ var gg=ctx.createLinearGradient(0,y,0,y+h); gg.addColorStop(0, unsafe? '#6b1729' : '#10647f'); gg.addColorStop(.5, col); gg.addColorStop(1, unsafe? '#4a1020' : '#0a4052'); return gg; });
+        ctx.fillStyle=g;
+        roundRect(bx,y,b.w,h,5); ctx.fill();
+        /* edge glow */
+        glowRect(bx,y,b.w,h,edge,12);
+        ctx.strokeStyle=edge; ctx.lineWidth=2;
+        roundRect(bx,y,b.w,h,5); ctx.stroke();
+        ctx.shadowBlur=0;
+        /* grille texture */
+        ctx.fillStyle='rgba(0,0,0,.35)';
+        for(var tg=0;tg<Math.floor(b.w/10);tg++){ ctx.fillRect(bx+5+tg*10,y+6,3,h-12); }
+        ctx.fillStyle='rgba(103,232,249,.25)';
+        for(var tg2=0;tg2<Math.floor(b.w/20);tg2++){ ctx.fillRect(bx+8+tg2*20,y+3,8,2); ctx.fillRect(bx+8+tg2*20,y+h-5,8,2); }
+        /* insulators on the roof */
+        var nIns=Math.max(2,Math.floor(b.w/26));
+        for(var ii=0;ii<nIns;ii++){
+          var ix=bx+10+ii*(b.w-20)/Math.max(1,nIns-1);
+          ctx.fillStyle='#e2e8f0';
+          ctx.fillRect(ix-3,y-4,7,5);
+          ctx.fillStyle='rgba(103,232,249,.7)'; ctx.fillRect(ix-1,y-6,3,3);
+        }
+        /* live wire down the middle */
+        var glow=0.5+0.5*Math.sin(world.worldTime*6+bx);
+        glowRect(bx+8,y+h/2-2,b.w-16,4,edge,8*glow+6);
+        ctx.strokeStyle='rgba('+(unsafe?'248,113,113':'103,232,249')+','+(0.75+0.25*glow)+')';
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(bx+8,y+h/2);
+        ctx.lineTo(bx+b.w-8,y+h/2);
+        ctx.stroke();
+        ctx.shadowBlur=0;
+        /* hazard end caps */
+        for(var hz=0;hz<2;hz++){
+          var hx2=bx+(hz? b.w-10:4);
+          ctx.fillStyle='#facc15';
+          ctx.fillRect(hx2,y+4,4,h-8);
+          ctx.fillStyle='#111111';
+          ctx.fillRect(hx2+4,y+4,2,h-8);
+        }
+        /* collector arm on the front */
+        ctx.fillStyle=edge;
+        if(lane.dir>0) ctx.fillRect(bx+b.w-4,y-4,4,h+8);
+        else ctx.fillRect(bx,y-4,4,h+8);
+      }
+    });
+  });
+  /* lit hazard tape framing each log that is about to sink — drawn after the buses
+     so the warning reads as a physical rail clipped to the log's own span */
+  world.lanesB.forEach(function(lane){
+    lane.buses.forEach(function(b){
+      if(!b.sink||!b.warn) return;
+      for(var k=-1;k<=1;k++){
+        var bx=b.x+k*lane.period;
+        if(bx>W||bx+b.w<0) continue;
+        drawHazardStripe(b,bx,b.w,lane, lane.row*TILE);
+        drawHazardStripe(b,bx,b.w,lane, lane.row*TILE+TILE-7, true);
+      }
+    });
+  });
+}
+var PIX_PU={
+  shield:['.00000.','0.....0','0.....0','0.....0','0.....0','.0...0.','..0.0..','...0...'],
+  time:  ['.CCCC.','C..0.C','C..0.C','C.000C','C....C','C....C','.CCCC.'],
+  life:  ['.00.00.','0000000','0000000','.00000.','..000..','...0...'],
+  overclock:['...0...','..00...','..00...','.000...','0000...','.0000..','..000..','...00..','...00..','...0...'],
+  bit:   ['...0...','..000..','.00000.','0000000','.00000.','..000..','...0...'],
+  throttle:['.0...0.','.00.00.','0000000','.00.00.','.0...0.'],
+  burst: ['...0...','..0.0..','.0.0.0.','..000..','0000000','..000..','.0.0.0.','..0.0..','...0...']
+};
+function drawPowerups(){
+  world.powerups.forEach(function(pu){
+    if(pu.blink) return;
+    var x=pu.col*TILE+TILE/2, y=pu.row*TILE+TILE/2;
+    var bob=Math.sin(world.worldTime*4+pu.col)*2;
+    y+=bob;
+    var col=(pu.type==='bit')? '#fde047' :
+            (pu.type==='shield')? '#22d3ee' :
+            (pu.type==='time')? '#facc15' :
+            (pu.type==='life')? '#4ade80' :
+            (pu.type==='overclock')? '#fb923c' :
+            (pu.type==='throttle')? '#60a5fa' : '#e879f9';
+    /* glowing plate */
+    glowRect(x-12,y-12,24,24,col,16);
+    ctx.fillStyle='#081426';
+    ctx.beginPath(); ctx.arc(x,y,12,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.shadowBlur=0;
+    /* inner plate */
+    ctx.fillStyle='#0b1b33';
+    ctx.beginPath(); ctx.arc(x,y,9,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.lineWidth=1; ctx.stroke();
+    var grid=PIX_PU[pu.type];
+    drawPix(grid,{0:col},x-Math.floor(grid[0].length/2)*2-1,y-Math.floor(grid.length/2)*2-1,2);
+  });
+}
+function drawDemoPlayer(){
+  var p=world.player, x=p.px, y=p.py;
+  var pulse=0.6+0.4*Math.sin(world.worldTime*5);
+  ctx.save();
+  ctx.globalAlpha=0.95;
+  glowRect(x-13,y-13,26,26,'#22d3ee',18);
+  ctx.strokeStyle='rgba(34,211,238,'+(0.7+0.3*pulse)+')'; ctx.lineWidth=3;
+  roundRect(x-13,y-13,26,26,5); ctx.stroke();
+  ctx.shadowBlur=0;
+  ctx.fillStyle='rgba(34,211,238,'+(0.16+0.1*pulse)+')';
+  roundRect(x-13,y-13,26,26,5); ctx.fill();
+  ctx.translate(x,y);
+  drawPkt(0.9,p.facing||0);
+  ctx.restore();
+}
+function drawPlayer(){
+  var p=world.player;
+  if(p.dead) return; /* the packet fragmented — the shatter is the player now */
+  if(world.mode==='attract'||world.mode==='gameover') return;
+  /* the return flight never blinks and is never hidden by the dock sequence */
+  if(p.invuln>0&&p.returnT<0&&Math.floor(p.invuln*10)%2===0&&world.mode==='play') return;
+  /* while a dock sequence plays at the packet's socket, the packet IS that animation */
+  var gidx=GOAL_COLS.indexOf(p.tx);
+  var dk=(p.ty===0&&gidx>=0&&p.returnT<0)? gidx : -1;
+  if(dk>=0&&world.socketAnim[dk]>0) return;
+  var x=p.px, y=p.py;
+  var lift=playerHopLift(p);
+  var hopS=p.moving?Math.sin(p.t*Math.PI):0;
+  var landP=p.landT>0?Math.sin(Math.PI*(1-p.landT/0.14)):0;
+  var stretch=hopS*0.22+landP*0.3;
+  /* motion trail: fading after-images strung behind the hop (oldest drawn first, newest on top) */
+  for(var ti=0;ti<p.trail.length;ti++){
+    var tr=p.trail[ti], ka=Math.max(0,tr.life/0.18);
+    ctx.save();
+    ctx.translate(tr.x,tr.y);
+    drawPkt(tr.a*ka,p.facing||0);
+    ctx.restore();
+  }
+  /* soft ground shadow — shrinks as the packet lifts off */
+  ctx.save();
+  ctx.translate(x,y+10);
+  ctx.scale(1,0.45);
+  ctx.globalAlpha=0.32*(1-hopS*0.55);
+  ctx.fillStyle='#000';
+  ctx.beginPath(); ctx.arc(0,0,7*(1-hopS*0.35),0,Math.PI*2); ctx.fill();
+  ctx.restore();
+  ctx.save();
+  ctx.translate(x,y-lift);
+  ctx.scale(1+stretch,1-stretch);
+  if(p.overclock>0){
+    glowRect(-17,-17,34,34,'#fb923c',22);
+    ctx.strokeStyle='rgba(251,146,60,.8)';
+    ctx.beginPath(); ctx.arc(0,0,17,0,Math.PI*2); ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+  if(p.burst>0){
+    var bp=0.55+0.45*Math.sin(world.worldTime*14);
+    glowRect(-21,-21,42,42,'#e879f9',28*bp);
+    ctx.strokeStyle='rgba(232,121,249,'+(0.6+0.4*bp)+')'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.arc(0,0,20,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle='rgba(232,121,249,.35)';
+    ctx.beginPath(); ctx.arc(0,0,26,0,Math.PI*2); ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+  glowRect(-14,-14,28,28,p.returnT>=0 ? '#67e8f9' : '#22d3ee', p.returnT>=0 ? 26 : 16);
+  drawPkt(1,p.facing||0);
+  ctx.shadowBlur=0;
+  if(p.burst>0){ /* speed streak trails behind the packet */
+    var bx=(p.facing===1)?-1:(p.facing===3)?1:0;
+    var by=(p.facing===0)?1:(p.facing===2)?-1:0;
+    ctx.strokeStyle='rgba(232,121,249,.4)';
+    ctx.lineWidth=2;
+    ctx.setLineDash([3,4]);
+    ctx.beginPath();
+    ctx.moveTo(bx*12,by*12); ctx.lineTo(bx*26,by*26);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  ctx.restore();
+  if(p.shield){
+    ctx.strokeStyle='rgba(34,211,238,.85)'; ctx.lineWidth=2;
+    ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.arc(x,y,17,world.worldTime*2,world.worldTime*2+Math.PI*2); ctx.stroke();
+    ctx.setLineDash([]);
+    drawShieldBadge(x,y);
+  }
+}
+function drawRushOverlay(){
+  if(world.rushPhase==='idle') return;
+  var p=world.rushPhase, t=world.worldTime;
+  if(p==='warning'){
+    var a=0.20+0.12*Math.sin(t*16);
+    ctx.strokeStyle='rgba(251,113,133,'+a+')'; ctx.lineWidth=4;
+    ctx.strokeRect(3,3,W-6,H-6);
+    drawHazardBanner('RUSH HOUR INBOUND','rgba(251,113,133,'+(0.6+0.2*Math.sin(t*16))+')');
+  } else {
+    var aa=0.24+0.12*Math.sin(t*10);
+    ctx.strokeStyle='rgba(251,146,60,'+aa+')'; ctx.lineWidth=4;
+    ctx.strokeRect(3,3,W-6,H-6);
+    /* speed streaks across the lanes */
+    ctx.strokeStyle='rgba(250,204,21,'+(0.25+0.2*Math.sin(t*12))+')'; ctx.lineWidth=2;
+    for(var i=0;i<4;i++){
+      var lane=world.lanesH[i], y=lane.row*TILE+TILE/2;
+      var off=mod(t*340,60);
+      for(var x=-60+off;x<W;x+=60){ ctx.beginPath(); ctx.moveTo(x,y-8); ctx.lineTo(x+22,y-8); ctx.stroke(); }
+    }
+    drawHazardBanner('RUSH HOUR ×2','rgba(250,204,21,'+(0.6+0.2*Math.sin(t*12))+')');
+  }
+}
+function drawDemoLabel(){
+  if(!world||!world.demoLabel) return;
+  var lb=world.demoLabel;
+  var a=Math.min(1,lb.t/0.6);
+  var txt='DEMO · '+lb.txt;
+  ctx.save();
+  ctx.globalAlpha=a;
+  ctx.font='7px '+(fontStack());
+  ctx.textAlign='right'; ctx.textBaseline='top';
+  var w=ctx.measureText(txt).width;
+  var x=W-8, y=8;
+  ctx.fillStyle='rgba(4,10,20,'+(0.6*a)+')';
+  ctx.strokeStyle='rgba(34,211,238,'+(0.7*a)+')';
+  ctx.lineWidth=1;
+  ctx.fillRect(x-w-10,y-3,w+16,15);
+  ctx.strokeRect(x-w-10,y-3,w+16,15);
+  ctx.fillStyle='rgba(165,243,252,'+(0.95*a)+')';
+  ctx.fillText(txt,x,y+1);
+  ctx.restore();
+}
+function drawParticles(){
+  world.particles.forEach(function(p){
+    if(p.shape==='ring'){
+      ctx.strokeStyle=p.color; ctx.lineWidth=2;
+      ctx.globalAlpha=Math.max(0,p.life/p.max);
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.stroke();
+      ctx.globalAlpha=1;
+      return;
+    }
+    if(p.shape==='frag'){
+      ctx.globalAlpha=Math.max(0,p.life/p.max);
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      ctx.fillStyle=p.color;
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+      ctx.restore();
+      return;
+    }
+    if(p.shape==='sink'){
+      /* drowning chip: the packet tumbles down beneath a receding surface
+         ripple, dimming and flattening as it goes under */
+      var sk=Math.max(0,p.life/p.max);
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot);
+      /* surface ripple above the sinking chip (grows as it drops) */
+      ctx.strokeStyle='rgba(165,243,252,'+(0.5*sk)+')';
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.ellipse(0,-20-14*(1-sk),10+10*(1-sk),3+2*(1-sk),0,0,Math.PI*2);
+      ctx.stroke();
+      /* the chip itself, dimming to near-black under the water */
+      ctx.globalAlpha=Math.max(0,Math.min(1,sk*1.15));
+      ctx.scale(1+(1-sk)*0.12,1+(1-sk)*0.12);
+      drawPkt(0.9*sk,0);
+      /* deep-water veil over the chip — fades out with it so no blob lingers */
+      ctx.globalAlpha=0.45*(1-sk)*sk;
+      ctx.fillStyle='#05202b';
+      ctx.beginPath(); ctx.arc(0,0,13,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+      return;
+    }
+    if(p.shape==='streak'){
+      var ka=Math.max(0,p.t/p.max);
+      var px=-p.dy, py=p.dx;
+      ctx.globalAlpha=1; /* a preceding frag may have left a dimmed alpha */
+      ctx.globalCompositeOperation='lighter';
+      var chans=[['rgba(255,70,70,',-4],['rgba(120,255,140,',0],['rgba(90,140,255,',4]];
+      for(var ch=0;ch<3;ch++){
+        var off=chans[ch][1];
+        ctx.fillStyle=chans[ch][0]+(ka*0.8)+')';
+        ctx.beginPath();
+        /* base spans PERPENDICULAR to the direction; tip at the far end */
+        ctx.moveTo(p.x+px*6+px*off, p.y+py*6+py*off);
+        ctx.lineTo(p.x-px*6+px*off, p.y-py*6+py*off);
+        ctx.lineTo(p.x+p.dx*p.len+px*off, p.y+p.dy*p.len+py*off);
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.globalCompositeOperation='source-over';
+      ctx.globalAlpha=1;
+      return;
+    }
+    if(p.shape==='txt'){
+      /* floating score text: rises and fades over the lane */
+      var tk=Math.max(0,p.life/p.max);
+      ctx.save();
+      ctx.globalAlpha=Math.min(1,tk*1.5);
+      ctx.fillStyle=p.color;
+      ctx.font='7px "Press Start 2P", "Courier New", monospace';
+      ctx.textAlign='center';
+      ctx.fillText(p.str, p.x, p.y);
+      ctx.restore(); /* font/align/alpha all restored */
+      return;
+    }
+    if(p.shape==='pad'){
+      /* small landing-pad flash: blooms bright at the landing cell, then fades */
+      var pk=Math.max(0,p.life/p.max);
+      var pr=10+6*pk;
+      var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr);
+      grd.addColorStop(0,'rgba(255,255,255,'+(0.85*pk)+')');
+      grd.addColorStop(0.4,p.color);
+      grd.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grd;
+      ctx.globalAlpha=pk;
+      ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha=1;
+      return;
+    }
+    ctx.globalAlpha=Math.max(0,p.life/p.max);
+    ctx.fillStyle=p.color;
+    if(p.shape==='rect'){ ctx.fillRect(p.x-p.size/2,p.y-p.size/2,p.size,p.size); }
+    else {
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size/2,0,Math.PI*2); ctx.fill();
+    }
+  });
+  ctx.globalAlpha=1;
+}
+function render(){
+  ctx.save();
+  if(world.shake>0){ ctx.translate((Math.random()-0.5)*world.shake*9,(Math.random()-0.5)*world.shake*9); }
+  /* death beat zoom: ease into the fragment point, then ease back once the UI fires */
+  if(world.deathT>0||world.deathRelease>0){
+    var zoom=1;
+    if(world.deathT>0){ var zk=Math.min(1,Math.max(0,1-world.deathT/DEATH_SLOWMO_T)); zoom=1+(DEATH_ZOOM_MAX-1)*(1-Math.pow(1-zk,3)); }
+    else zoom=1+(DEATH_ZOOM_MAX-1)*Math.pow(Math.min(1,Math.max(0,world.deathRelease/DEATH_ZOOM_RELEASE)),3);
+    if(zoom>1.001){
+      var ax=clamp(world.deathX,120,W-120), ay=clamp(world.deathY,120,H-120);
+      ctx.translate(ax*(1-zoom), ay*(1-zoom));
+      ctx.scale(zoom,zoom);
+    }
+  }
+  drawBase();
+  drawWaypoint();
+  drawBuses();
+  drawVehicles();
+  drawPowerups();
+  if(world.mode!=='attract') drawPlayer();
+  else if(world.attractDemo) drawDemoPlayer();
+  drawParticles();
+  drawRushOverlay();
+  drawDemoLabel();
+  ctx.restore();
+  /* gentle full-screen colour cue: dim enough to never sting the eyes */
+  if(world.flash>0){
+    ctx.fillStyle=world.flashCol;
+    ctx.globalAlpha=world.flash*0.10;
+    ctx.fillRect(0,0,W,H);
+    ctx.globalAlpha=1;
+  }
+  if(world.hitFlash>0){ /* faint tint on impact, not a camera flash (cool blue on drowning) */
+    ctx.fillStyle=world.hitFlashCol||'#ffffff';
+    ctx.globalAlpha=Math.min(1,world.hitFlash*0.18);
+    ctx.fillRect(0,0,W,H);
+    ctx.globalAlpha=1;
+  }
+  if(world.mode==='paused'){ /* frozen-signal hold behind the pause panel */
+    ctx.fillStyle='rgba(4,8,18,.55)'; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(250,204,21,.28)'; ctx.lineWidth=3;
+    ctx.strokeRect(3,3,W-6,H-6);
+  }
+  updateHUD();
+}
+function durSecs(t){ var n=Math.max(1,Math.round(t)); return n+(n===1?' second':' seconds'); }
+function updateHUD(){
+  if(hud.classList.contains('hidden')) return;
+  hud.classList.toggle('demo', !!world.demoMode);
+  if(world.score>world.hi) world.hi=world.score;
+  $('h-score').textContent=pad6(world.score);
+  $('h-hi').textContent=pad6(world.hi);
+  $('h-level').textContent=world.level;
+  var li=$('h-lives');
+  li.innerHTML='';
+  for(var i=0;i<Math.min(world.lives,8);i++){
+    var s=document.createElement('span'); s.className='life-pkt'; s.innerHTML=icoSVG(PKT_ICO,8);
+    li.appendChild(s);
+  }
+  if(world.lives>8) li.innerHTML+='<span style="font-size:8px;color:var(--green)">x'+world.lives+'</span>';
+  var pct=Math.max(0,world.time/world.timeMax*100);
+  var tb=$('timebar');
+  tb.style.width=pct+'%';
+  tb.className= world.time>10?'ok':(world.time>5?'warn':'crit');
+  tb.setAttribute('aria-valuenow', Math.round(pct));
+  var fx=$('fx-icons'); fx.innerHTML='';
+  if(world.demoMode) fx.innerHTML+='<span class="fx-ico fx-demo">'+icoSVG(PLAY_ICO,8)+'</span>';
+  if(classicOn()) fx.innerHTML+='<span class="fx-ico fx-classic">'+icoSVG(CLOCK_ICO,9)+'</span>'; /* strict rules: 30s clock, no boosters */
+  if(world.player.shield) fx.innerHTML+='<span class="fx-ico fx-shield">'+icoSVG(SHIELD_ICO,9)+'</span>';
+  if(world.player.overclock>0) fx.innerHTML+='<span class="fx-ico fx-boost">'+icoSVG(BOLT_ICO,9)+'</span>';
+  if(world.player.burst>0) fx.innerHTML+='<span class="fx-ico fx-burst">'+icoSVG(STAR_ICO,10)+'</span>';
+  if(world.throttleT>0) fx.innerHTML+='<span class="fx-ico fx-throttle">'+icoSVG(SLOW_ICO,9)+'</span>';
+  if(world.rushPhase==='warning') fx.innerHTML+='<span class="fx-ico fx-burst" style="color:var(--red);border-color:var(--red)">'+icoSVG(WARN_ICO,9)+'</span>';
+  else if(world.rushPhase==='rush') fx.innerHTML+='<span class="fx-ico fx-burst" style="color:var(--yellow);border-color:var(--yellow)">'+icoSVG(FAST_ICO,9)+'</span>';
+  /* sr-only: booster state changes are spoken (the icon row is aria-hidden, so this is the AT signal) */
+  var sig=''+(world.player.shield?'S':'')+(world.player.overclock>0?'O':'')+(world.player.burst>0?'B':'')+(world.throttleT>0?'T':'');
+  if(sig!==lastFxSig){
+    lastFxSig=sig;
+    var st=[];
+    /* timed boosters name their actual remaining seconds; the shield is untimed (holds until it eats a hit) */
+    if(world.player.shield) st.push('Shield on');
+    if(world.player.overclock>0) st.push('Overclock on, '+durSecs(world.player.overclock));
+    if(world.player.burst>0) st.push('Burst on, '+durSecs(world.player.burst));
+    if(world.throttleT>0) st.push('Traffic slowed on, '+durSecs(world.throttleT));
+    $('sr-status').textContent= st.length?
+      (st.length===1? st[0] : st.slice(0,-1).join(', ')+' and '+st[st.length-1]) :
+      'Boosters expired';
+  }
+}
+/* hand-drawn pixel icons for the HUD (crisp-edges SVG, no letter labels) */
+var PKT_ICO  ='M5 1.2 L7.6 4.6 H5.8 V8 H4.2 V4.6 H2.4 Z'; /* arrow only; the bordered life-pkt box is the frame */
+var SHIELD_ICO='M5 1 L9 2.2 v2.3 c0 2.5 -1.8 3.8 -4 4.5 -2.2 -0.7 -4 -2 -4 -4.5 V2.2 Z';
+var BOLT_ICO ='M5.4 0 L1.8 5.6 h2.4 L3.8 10 8.2 4 h-2.4 Z';
+var STAR_ICO ='M5 0 l1.15 3.85 3.85 1.15 -3.85 1.15 -1.15 3.85 -1.15 -3.85 -3.85 -1.15 3.85 -1.15 Z';
+var SLOW_ICO ='M3 0.5 L0.5 5 3 9.5 H2 L0.5 5 2 0.5 Z M6.5 0.5 L4 5 6.5 9.5 H5.5 L4 5 5.5 0.5 Z';
+var FAST_ICO ='M3 0.5 L5.5 5 3 9.5 H4 L6.5 5 4 0.5 Z M6.5 0.5 L9 5 6.5 9.5 H7.5 L10 5 7.5 0.5 Z';
+var PLAY_ICO ='M2.5 0.8 L8.6 5 2.5 9.2 Z';
+var CLOCK_ICO='M5 0.6 A4.4 4.4 0 1 1 4.99 0.6 Z M5 1.4 A3.6 3.6 0 1 0 4.99 1.4 Z M4.2 4.2 H5.8 V5.8 H4.2 Z M4.7 1.3 H5.3 V2.2 H4.7 Z M7.8 4.7 H8.7 V5.3 H7.8 Z'; /* hollow 30s clock: strict-mode timer */
+var WARN_ICO ='M4.4 0.6 H5.6 V6 H4.4 Z M4.4 7.2 H5.6 V9.4 H4.4 Z';
+function icoSVG(d,size){
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 10 10" fill="currentColor" shape-rendering="crispEdges" style="display:block"><path d="'+d+'"/></svg>';
+}
+
+/* ---------------- main loop ---------------- */
+var last=performance.now();
+var perfSamples=[]; /* render() cost per frame (ms) — QA measurement */
+/* attract splash: cycle human one-liners under the logo on the title screen */
+var SPLASH_LINES=['PRESS START','GET THE PACKET HOME','BEAT THE CLOCK','WATCH THE SINKING BUSES','HOP THE BUSES — DODGE THE CARS'];
+var SPLASH_T=2.4, splashIdx=0, splashT=0;
+var splashEl=$('splash-line');
+/* reduced-motion: static splash label, no cycling (re-reads on OS change) */
+var RMQ=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+var REDUCED_MOTION=RMQ?RMQ.matches:false;
+if(RMQ&&RMQ.addEventListener) RMQ.addEventListener('change',function(){ REDUCED_MOTION=RMQ.matches; });
+var lastFxSig=''; /* sr-only booster-state signature (announce on change only) */
+function loop(now){
+  var dt=Math.min((now-last)/1000,0.05); last=now;
+  pollGamepad();
+  if(world.mode==='play'||world.mode==='ready') checkCrash();
+  update(dt);
+  if(splashEl&&curScreen==='menu'&&!REDUCED_MOTION){
+    splashT-=dt;
+    if(splashT<=0){
+      splashT=SPLASH_T;
+      splashIdx=(splashIdx+1)%SPLASH_LINES.length;
+      var line=SPLASH_LINES[splashIdx];
+      splashEl.textContent=line;
+      splashEl.classList.toggle('start', line==='PRESS START');
+      splashEl.classList.remove('swap'); void splashEl.offsetWidth; splashEl.classList.add('swap');
+    }
+  }
+  var t0=performance.now();
+  render();
+  if(perfSamples.length>300) perfSamples.shift();
+  perfSamples.push(performance.now()-t0);
+  requestAnimationFrame(loop);
+}
+
+/* ---------------- QA hook (used by automated tests) ---------------- */
+window.__DR__ = {
+  get world(){ return world; },
+  get settings(){ return settings; },
+  get scores(){ return scores; },
+  get lvl(){ return lvl; },
+  Snd: Snd,
+  key: function(k, type){ window.dispatchEvent(new KeyboardEvent(type||'keydown',{key:k})); },
+  setPadProvider: function(fn){ getPads = fn||function(){ return (navigator.getGamepads)? navigator.getGamepads() : []; }; },
+  pollPad: pollGamepad,
+  get meta(){ return meta; },
+  unlock: unlock,
+  get daily(){ return dailyStore; },
+  dateKey: dateKey,
+  dailySeed: dailySeed,
+  dailyCfgFor: dailyCfgFor,
+  get dailyKey(){ return world? world.dailyKey : null; },
+  get throttle(){ return world? world.throttleT : 0; },
+  get burst(){ return world? world.player.burst : 0; },
+  get burstSmash(){ return world? world.burstSmash : 0; },
+  get rushPhase(){ return world? world.rushPhase : 'idle'; },
+  get rushCount(){ return world? world.rushCount : 0; },
+  get rushSurvived(){ return world? world.rushSurvived : 0; },
+  get rushT(){ return world? world.rushT : 0; },
+  get perf(){ return perfSamples; }, /* last render() durations (ms) */
+  get glowCache(){ return Object.keys(GLOW_CACHE).length; } /* cached LOW-tier glow sprites */,
+  /* ---- axe regression gate: scans all 11 screens (plus a real run when {live:true}), fails on any new violation ----
+     await __DR__.a11yScan()                       -> { pass, total, screens, failures, coverage }
+     await __DR__.a11yScan({live:true})            -> same, plus the true mid-game states the menu
+        can't reach: the live pass plays a REAL level-1 run (5 socket hops + a genuine level
+        clear) and scans the play HUD/banner (live-game), the achievement toasts (live-toasts)
+        and the genuine intermission card (live-inter). It also forces ONE real crash (parks the
+        packet on a moving truck, no invuln) and scans the slow-mo shatter (live-death) plus the
+        'PACKET FRAGMENTED!' respawn banner+HUD (live-respawn) before the run continues.
+        Side-effect-free: the pre-run profile (achievement unlocks, games played) and the boot
+        world are restored on the way out.
+        `coverage` (non-null only when {live:true}) proves the gate's reach: per-state exercised
+        rule counts + mid-game-region node counts (summed across states — a volume metric, not
+        distinct nodes), the unioned rule/WCAG-criteria sets for the 11 menu screens vs the live
+        pass, and the rules/criteria ONLY the live pass reaches (e.g. color-contrast checks the
+        in-game #banner text, incl. its yellow sub-line / WCAG 1.4.3, only in live states, since
+        the banner is empty while the menu screens scan; the #hud is visibility:hidden on most
+        menu screens, and the pause/inter screens cover its region landmark).
+        NOTE: the live pass takes ~15s on top of the 11-screen loop — poll, don't await a 10s cap.
+     gate:  if(!(await __DR__.a11yScan()).pass) <fail the build>
+     baseline: tolerate known counts via { id: count }, e.g. { 'color-contrast': 1 }
+     bookmarklet (paste into the address bar while the game is open):
+       javascript:(async()=>{var r=await __DR__.a11yScan({live:true});console.table(r.screens);console.log(r.pass?'AXE PASS — 16 states clean':('AXE FAIL — '+r.total+' violations'),r.failures);if(r.coverage){console.log('LIVE-ONLY RULES',r.coverage.liveOnly.rules,'— WCAG',r.coverage.liveOnly.wcag);console.table(r.coverage.screens)}alert(r.pass?'AXE PASS':'AXE FAIL — '+r.total+' violations')})()
+     Leaves the app at the menu when done. */
+  a11yScan: async function(opts){
+    var o=opts||{}, baseline=o.baseline||{};
+    if(curScreen!=='menu') return { pass:false, error:'a11yScan must run from the main menu (a live run would be abandoned)' };
+    if(!window.axe){
+      /* offline-first: the vendored axe.min.js lives next to index.html (file://
+         and air-gapped CI load it without a network). The CDN is only a fallback
+         for web deployments that don't ship the file. */
+      var axeUrls=['axe.min.js','https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js'];
+      var ok=false;
+      for(var ui=0; ui<axeUrls.length && !ok; ui++){
+        try{
+          await new Promise(function(res,rej){
+            var s=document.createElement('script');
+            s.src=axeUrls[ui];
+            s.onload=res; s.onerror=function(){ rej(new Error('load')); };
+            document.head.appendChild(s);
+          });
+          ok=!!window.axe;
+        }catch(e){}
+      }
+      if(!ok) return { pass:false, error:'axe load failed (vendored file and CDN fallback)' };
+    }
+    var screens=['menu','diff','sound','soundtest','scores','daily','ach','help','inter','pause','go'];
+    var out={}, fails=[], total=0;
+    var covPer={}, menuCov={}, liveCov={}; /* coverage report: exercised axe rules per scanned state */
+    var WCAG_RE=/^wcag\d/; /* axe rule tags like 'wcag131' (1.3.1), 'wcag143' (1.4.3), 'wcag412' (4.1.2) */
+    var MID_REGIONS=['hud','banner','toasts','game']; /* the mid-game DOM regions axe can see */
+    var MID_REGS={}; MID_REGIONS.forEach(function(r){ MID_REGS[r]=new RegExp('^#'+r+'\\b'); });
+    function covOf(res){
+      /* exercised = the rule had applicable nodes: passed, failed, or incomplete (inapplicable means it never ran).
+         Also counts, per rule, how many evaluated nodes live in the mid-game regions — the #hud is
+         display:none on every menu screen, so rules touching it are reachable ONLY by the live pass. */
+      var m={};
+      ['passes','violations','incomplete'].forEach(function(k){
         (res[k]||[]).forEach(function(r){
           if(!r||!r.id) return;
           if(!m[r.id]) m[r.id]={ tags:(r.tags||[]).slice(), regs:{hud:0,banner:0,toasts:0,game:0}, mid:0 };

@@ -1,0 +1,1343 @@
+/* ============================================================
+   GLITCH BUG — retro CRT arcade styling
+   ============================================================ */
+
+:root {
+  --bg: #05070d;
+  --field: #070b16;
+  --green: #39ff14;
+  --green-dim: #1c8f0a;
+  --cyan: #00e5ff;
+  --magenta: #ff2d95;
+  --amber: #ffb000;
+  --purple: #9d4dff;
+  --white: #e8f6ff;
+  --red: #ff3b30;
+  --panel-bg: rgba(4, 8, 18, 0.9);
+  --panel-border: rgba(57, 255, 20, 0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #0b1020 0%, #05070d 55%, #020308 100%);
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: var(--green);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------- CABINET ---------------- */
+#cabinet {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  /* cabinet color themes — switch via data-theme (CLASSIC / SUNSET / EMERALD) */
+  --bezel-bg: linear-gradient(145deg, #151a24, #0a0d14 60%, #131823);
+  --bezel-ring: #1c2432;
+  --corner: rgba(0, 229, 255, .5);
+  --corner-glow: rgba(0, 229, 255, .25);
+  --sub-corner: rgba(0, 229, 255, .4);
+  --sub-corner-glow: rgba(0, 229, 255, .2);
+  /* CRT phosphor tints — retinted per theme so the screen glass matches the cabinet */
+  --crt-scan: 0, 0, 0;          /* scanline dark (multiply) */
+  --crt-vig: 0, 0, 0;           /* vignette dark */
+  --crt-vig-stop: 55%;          /* radius at which the vignette starts fading in */
+  --crt-vig-max: .55;           /* vignette strength at the far corners */
+  --crt-rgb-a: 255, 0, 60;      /* RGB mask channel 1 */
+  --crt-rgb-b: 0, 255, 120;     /* RGB mask channel 2 */
+  --crt-rgb-c: 0, 60, 255;      /* RGB mask channel 3 */
+  --crt-phos: 0, 255, 60;       /* fine phosphor line */
+}
+#cabinet[data-theme="sunset"] {
+  --bezel-bg: linear-gradient(145deg, #4a1532, #270a20 55%, #371128);
+  --bezel-ring: #7a285e;
+  --corner: rgba(255, 45, 149, .55);
+  --corner-glow: rgba(255, 45, 149, .3);
+  --sub-corner: rgba(255, 45, 149, .45);
+  --sub-corner-glow: rgba(255, 45, 149, .22);
+  /* warm phosphor: scanlines/vignette lean plum, mask goes hot magenta-orange */
+  --crt-scan: 28, 10, 24;
+  --crt-vig: 24, 6, 20;
+  --crt-rgb-a: 255, 90, 40;
+  --crt-rgb-b: 255, 45, 149;
+  --crt-rgb-c: 160, 40, 120;
+  --crt-phos: 255, 120, 90;
+}
+#cabinet[data-theme="emerald"] {
+  --bezel-bg: linear-gradient(145deg, #0e3221, #081b11 55%, #0d2b1b);
+  --bezel-ring: #21814b;
+  --corner: rgba(57, 255, 20, .5);
+  --corner-glow: rgba(57, 255, 20, .28);
+  --sub-corner: rgba(57, 255, 20, .4);
+  --sub-corner-glow: rgba(57, 255, 20, .2);
+  /* cool phosphor: scanlines/vignette lean deep green, mask goes teal-green */
+  --crt-scan: 4, 14, 10;
+  --crt-vig: 2, 12, 8;
+  /* tightened: the teal cast stays in the far corners, so gold swarms
+     running the outer maze lanes never get dulled by the tint */
+  --crt-vig-stop: 72%;
+  --crt-vig-max: .32;
+  --crt-rgb-a: 40, 255, 110;
+  --crt-rgb-b: 0, 255, 200;
+  --crt-rgb-c: 40, 90, 255;
+  --crt-phos: 80, 255, 140;
+}
+
+.cab-top {
+  width: min(880px, 96vw);
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--green-dim);
+  text-shadow: 0 0 6px rgba(57,255,20,.6);
+  padding: 0 6px;
+}
+.cab-top .right { color: var(--magenta); text-shadow: 0 0 6px rgba(255,45,149,.6); }
+
+.cab-bottom { font-size: 8px; color: #3b4a63; letter-spacing: 1px; }
+.credit { text-shadow: none; }
+
+/* ---------------- BEZEL & SCREEN ---------------- */
+#bezel {
+  /* fit BOTH dimensions: cap by width (desktop) and by height (short windows),
+     so the fixed-aspect screen always fits and stays centered */
+  width: min(880px, 96vw, calc((100vh - 140px) * 1.25));
+  aspect-ratio: 320 / 256;
+  background: var(--bezel-bg);
+  border-radius: 26px;
+  padding: clamp(10px, 2.4vw, 26px);
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 5px var(--bezel-ring),
+    0 0 0 7px #000,
+    0 24px 80px rgba(0,0,0,.9),
+    inset 0 0 40px rgba(0,0,0,.85);
+  transition: box-shadow .4s ease;
+}
+
+#screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 320 / 256;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.9);
+}
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
+  cursor: none;
+}
+
+/* ---------------- CRT EFFECTS ---------------- */
+.crt { position: absolute; inset: 0; pointer-events: none; border-radius: 12px; }
+
+.crt-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(var(--crt-scan), 0) 0px,
+    rgba(var(--crt-scan), 0) 2px,
+    rgba(var(--crt-scan), .22) 3px,
+    rgba(var(--crt-scan), 0) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.crt-vignette {
+  background: radial-gradient(ellipse at center, rgba(var(--crt-vig), 0) var(--crt-vig-stop), rgba(var(--crt-vig), var(--crt-vig-max)) 100%);
+}
+
+.crt-rgb {
+  background:
+    linear-gradient(to right, rgba(var(--crt-rgb-a), .035), rgba(var(--crt-rgb-b), .02), rgba(var(--crt-rgb-c), .035));
+  mix-blend-mode: screen;
+}
+
+.crt-flicker { animation: flicker 4s infinite steps(60); opacity: .5; }
+@keyframes flicker {
+  0%, 100% { opacity: .5; }
+  92% { opacity: .5; }
+  93% { opacity: .62; }
+  94% { opacity: .5; }
+  97% { opacity: .56; }
+  98% { opacity: .5; }
+}
+
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(var(--crt-phos), .012) 0 1px, transparent 1px 3px);
+}
+
+/* ---------------- PANELS ---------------- */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(2px);
+  padding: 20px;
+  z-index: 10;
+  animation: panelIn .18s ease-out;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.panel.hidden { display: none; }
+
+.panel.sub {
+  background: rgba(3, 6, 14, 0.93);
+  padding: 12px 20px 24px;
+  /* sub-panels scroll when content exceeds the fixed-aspect screen (difficulty
+     rows, controls list, score table), but center when it fits: auto margins
+     on the first/last children absorb free space (centered) and collapse to
+     0 on overflow (top-aligned + scrollable) */
+  overflow-y: auto;
+  justify-content: flex-start;
+}
+.panel.sub > :first-child { margin-bottom: auto; }
+.panel.sub > :last-child { margin-top: auto; }
+/* arcade screen framing for sub-menus */
+.panel.sub::before, .panel.sub::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--sub-corner);
+  box-shadow: 0 0 8px var(--sub-corner-glow);
+  pointer-events: none;
+  z-index: 2;
+}  .panel.sub::before { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+  .panel.sub::after { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+.scrollable { justify-content: flex-start; overflow-y: auto; }
+.scrollable::-webkit-scrollbar, .panel.sub::-webkit-scrollbar { width: 6px; }
+.scrollable::-webkit-scrollbar-thumb, .panel.sub::-webkit-scrollbar-thumb { background: var(--sub-corner); }
+
+.panel-title {
+  position: relative;
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--white);
+  text-shadow: 0 0 10px var(--cyan), 0 0 24px rgba(0,229,255,.6);
+  padding: 5px 0 7px;
+}
+.panel-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(240px, 62%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  box-shadow: 0 0 8px rgba(0, 229, 255, .55);
+}
+
+/* ---------------- BOOT ---------------- */
+.boot {
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* phosphor-tinted shell: matches the CRT retint of the active cabinet theme */
+  background: rgb(var(--crt-vig));
+  padding: 22px;
+  gap: 12px;
+  font-family: 'VT323', 'Courier New', monospace;
+}
+#bootLog {
+  font-size: clamp(12px, 2.4vmin, 17px);
+  line-height: 1.55;
+  color: rgb(var(--crt-phos));
+  text-shadow: 0 0 8px rgba(var(--crt-phos), .7);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.boot-prompt {
+  align-self: center;
+  margin-top: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--amber);
+  animation: blink 1s steps(2) infinite;
+  text-shadow: 0 0 8px rgba(255,176,0,.8);
+}
+.boot-prompt.hidden { display: none; }
+
+/* mid-run theme toast: confirms a manual tint change without the pause menu.
+   Lives at opacity 0 (never display:none) so the fade-in always animates;
+   pointer-events off so it can never block play. Accent follows the theme. */
+.toast {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  padding: 5px 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(8px, 2vmin, 11px);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  color: var(--corner);
+  background: rgba(3, 8, 18, .78);
+  border: 1px solid var(--corner);
+  text-shadow: 0 0 8px var(--corner-glow);
+  box-shadow: 0 0 14px rgba(0, 0, 0, .6);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.toast.show { opacity: 1; }
+
+/* active cabinet theme readout — glows in the accent of the theme itself */
+.boot-display {
+  align-self: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--corner);
+  text-shadow: 0 0 10px var(--corner-glow), 0 0 20px var(--corner-glow);
+  animation: displaySwap .25s steps(2);
+}
+.boot-display.hidden { display: none; }
+@keyframes displaySwap {
+  0% { transform: translateX(-3px); opacity: .2; }
+  50% { transform: translateX(3px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.boot-hint {
+  align-self: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #4a5878;
+  text-shadow: 0 0 6px rgba(57,255,20,.3);
+}
+
+/* ================= MAIN MENU (arcade marquee) ================= */
+.panel.menu {
+  justify-content: flex-start;
+  padding: 0;
+  /* translucent on purpose: the living attract-mode gameplay (lime
+     centipede, spiders, mushrooms) shows through as the backdrop */
+  background: linear-gradient(180deg,
+    rgba(2, 6, 14, .20) 0%,
+    rgba(2, 6, 14, .38) 36%,
+    rgba(2, 5, 12, .62) 76%,
+    rgba(2, 5, 12, .76) 100%);
+}
+
+.menu-marquee {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: clamp(10px, 2.4vmin, 22px) 16px;
+  /* safety net: on very short/landscape windows the marquee content can
+     exceed the fixed-aspect screen — keep it reachable instead of clipped */
+  overflow-y: auto;
+  transition: opacity .6s ease;
+}
+
+/* radial shade keeps the logo & menu readable over the live attract backdrop */
+.marquee-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(3, 8, 18, .78) 0%,
+    rgba(3, 8, 18, .52) 52%,
+    rgba(3, 8, 18, .12) 74%,
+    rgba(3, 8, 18, 0) 100%);
+  pointer-events: none;
+}
+.menu-marquee .corner, .menu-marquee .stars, .menu-marquee .spider-mascot { z-index: 1; }
+.title-block, .menu-nav, .menu-footer, .mushrow { position: relative; z-index: 1; }
+
+/* pixel-art mushroom strip along the bottom edge of the marquee */
+.mushrow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(2px, .6vmin, 5px);
+  margin-top: clamp(2px, .8vmin, 8px);
+  pointer-events: none;
+}
+.mush {
+  position: relative;
+  width: clamp(7px, 1.8vmin, 13px);
+  height: clamp(8px, 2vmin, 15px);
+  transform: scale(var(--s, 1));
+  transform-origin: bottom center;
+}
+.mush::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; height: 62%;
+  border-radius: 55% 55% 18% 18%;
+  background: var(--mc, var(--green));
+  box-shadow: 0 0 6px var(--mc, var(--green)), inset 0 -2px 0 rgba(0,0,0,.35);
+}
+.mush::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 42%; height: 55%;
+  background: #9fd8c8;
+  border-radius: 2px 2px 0 0;
+}
+
+/* corner brackets — arcade screen framing */
+.corner {
+  position: absolute;
+  width: clamp(14px, 3vmin, 26px);
+  height: clamp(14px, 3vmin, 26px);
+  border: 2px solid var(--corner);
+  box-shadow: 0 0 8px var(--corner-glow);
+  pointer-events: none;
+}
+.corner.tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.corner.tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.corner.bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.corner.br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+/* twinkling starfield */
+.stars { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.stars span {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: var(--s, 2px); height: var(--s, 2px);
+  background: #fff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, .85), 0 0 12px rgba(0, 229, 255, .5);
+  animation: twinkle 2.6s steps(2) infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes twinkle { 50% { opacity: .12; } }
+
+/* spider mascot hanging from the top-left */
+.spider-mascot {
+  position: absolute;
+  top: 0; left: clamp(20px, 4vmin, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.spider-mascot .thread {
+  width: 1px;
+  height: clamp(18px, 4.4vmin, 40px);
+  background: linear-gradient(180deg, rgba(232,246,255,0), rgba(232,246,255,.5));
+}
+.spider-mascot .sp-body {
+  position: relative;
+  width: clamp(10px, 2.4vmin, 16px);
+  height: clamp(10px, 2.4vmin, 16px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff88c8, #ff2d95 70%);
+  box-shadow: 0 0 10px rgba(255, 45, 149, .8);
+  animation: spiderBob 1.9s ease-in-out infinite;
+}
+.spider-mascot .sp-body::before,
+.spider-mascot .sp-body::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  width: clamp(6px, 1.5vmin, 10px);
+  height: 2px;
+  background: #ff2d95;
+  box-shadow: 0 -6px 0 #ff2d95, 0 6px 0 #ff2d95;
+}
+.spider-mascot .sp-body::before { left: -100%; }
+.spider-mascot .sp-body::after { right: -100%; }
+@keyframes spiderBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ================= TITLE LOGO ================= */
+.title-block {
+  text-align: center;
+  margin: clamp(2px, .6vmin, 6px) 0;
+}
+
+/* marquee centipede mascot */
+.mascot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(2px, .55vmin, 4px);
+  margin-bottom: clamp(8px, 2vmin, 16px);
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .55));
+  animation: slither 2.8s ease-in-out infinite;
+}
+.bug-seg {
+  width: clamp(10px, 2.5vmin, 19px);
+  height: clamp(10px, 2.5vmin, 19px);
+  border-radius: 32%;
+  background: currentColor;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.35), 0 0 9px currentColor;
+  animation: bob .85s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.12s);
+}
+.bug-seg::after {
+  content: "";
+  position: absolute;
+  top: 14%; left: 16%;
+  width: 26%; height: 26%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .85);
+}
+/* like the arcade (and the in-game bug): every body segment is the same
+   CRT-lime, only the head runs red with gold antennae — the leader pops */
+.bug-seg { color: #9dff3a; }
+.bug-seg.head {
+  position: relative;
+  border-radius: 40% 55% 45% 40%;
+  width: calc(clamp(10px, 2.5vmin, 19px) * 1.12);
+  color: #ff3355;
+}
+/* antennae replace the glint on the head — gold, matching the in-game eyes */
+.bug-seg.head::before,
+.bug-seg.head::after {
+  content: "";
+  position: absolute;
+  top: -70%;
+  width: 2px;
+  height: 55%;
+  background: #ffe94a;
+  box-shadow: 0 0 4px #ffe94a;
+  transform-origin: bottom;
+}
+.bug-seg.head::before { left: 26%; transform: rotate(32deg); }
+.bug-seg.head::after { right: 26%; transform: rotate(-32deg); }
+.bug-seg.head .eye {
+  position: absolute;
+  top: 28%; left: 60%;
+  width: 22%; height: 22%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 0 4px #fff;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22%); }
+}
+@keyframes slither {
+  0%, 100% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+}
+
+/* marquee rainbow logo with chunky depth */
+.glitch-title {
+  font-size: clamp(22px, 6vmin, 48px);
+  letter-spacing: 3px;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  color: #ffe9c9;
+  background: linear-gradient(180deg, #fff7c0 0%, #ffcc00 20%, #ff5a3c 42%, #ff2d95 60%, #9d4dff 78%, #33ccff 100%);
+  background-size: 100% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 90, 60, .5))
+          drop-shadow(3px 3px 0 rgba(0, 0, 0, .9))
+          drop-shadow(6px 6px 0 rgba(6, 22, 14, .5));
+  animation: marqueeShift 3.2s linear infinite alternate, titleFlicker 4.2s infinite;
+}
+@keyframes marqueeShift {
+  from { background-position: 0% 0%; }
+  to   { background-position: 0% 100%; }
+}
+.glitch-title.small { font-size: clamp(16px, 4vmin, 24px); }
+
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.glitch-title::before {
+  color: var(--magenta);
+  -webkit-text-fill-color: var(--magenta); /* restore ghost layer over the clip-text base */
+  transform: translate(-2px, 0);
+  clip-path: inset(0 0 62% 0);
+  animation: glitchA 2.1s infinite linear alternate-reverse;
+  opacity: .75;
+}
+.glitch-title::after {
+  color: var(--cyan);
+  -webkit-text-fill-color: var(--cyan);
+  transform: translate(2px, 0);
+  clip-path: inset(58% 0 0 0);
+  animation: glitchB 1.7s infinite linear alternate-reverse;
+  opacity: .75;
+}
+
+@keyframes glitchA {
+  0%   { clip-path: inset(12% 0 68% 0); transform: translate(-2px,0); }
+  20%  { clip-path: inset(70% 0 8% 0); transform: translate(2px,-1px); }
+  40%  { clip-path: inset(40% 0 40% 0); transform: translate(-3px,0); }
+  60%  { clip-path: inset(80% 0 5% 0); transform: translate(1px,1px); }
+  80%  { clip-path: inset(25% 0 60% 0); transform: translate(-1px,0); }
+  100% { clip-path: inset(55% 0 30% 0); transform: translate(3px,-1px); }
+}
+@keyframes glitchB {
+  0%   { clip-path: inset(60% 0 20% 0); transform: translate(2px,0); }
+  25%  { clip-path: inset(10% 0 78% 0); transform: translate(-2px,1px); }
+  50%  { clip-path: inset(45% 0 45% 0); transform: translate(3px,0); }
+  75%  { clip-path: inset(85% 0 3% 0); transform: translate(-1px,-1px); }
+  100% { clip-path: inset(30% 0 55% 0); transform: translate(-3px,1px); }
+}
+@keyframes titleFlicker {
+  0%, 100% { opacity: 1; }
+  90% { opacity: 1; }
+  91% { opacity: .6; }
+  92% { opacity: 1; }
+  96% { opacity: .82; }
+  97% { opacity: 1; }
+}
+
+.subtitle {
+  margin-top: clamp(6px, 1.4vmin, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.4vmin, 12px);
+  font-size: clamp(8px, 1.9vmin, 11px);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0,229,255,.7);
+}
+.subtitle .rule {
+  height: 1px;
+  flex: 0 0 clamp(18px, 4.4vmin, 36px);
+  background: linear-gradient(90deg, transparent, var(--cyan));
+  box-shadow: 0 0 6px rgba(0,229,255,.6);
+}
+.subtitle .rule:last-child { background: linear-gradient(90deg, var(--cyan), transparent); }
+
+.tagline {
+  margin-top: clamp(4px, 1vmin, 8px);
+  font-family: 'VT323', monospace;
+  font-size: clamp(11px, 2.2vmin, 15px);
+  letter-spacing: 1px;
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255, 176, 0, .55);
+}
+
+/* attract tip crawl — a scrolling one-liner under the title, like the ticker
+   on a real cabinet marquee. JS drives translateX at a constant pixel speed;
+   this bar just clips the moving text. */
+.tip-crawl {
+  position: relative;
+  z-index: 1;
+  width: min(300px, 94%);
+  height: 16px;
+  flex-shrink: 0; /* the marquee is a flex column — never let the ticker get squeezed flat */
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'VT323', monospace;
+  font-size: clamp(11px, 2.1vmin, 14px);
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0, 229, 255, .5);
+  margin-top: clamp(2px, .6vmin, 5px);
+  pointer-events: none;
+}
+.tip-crawl span {
+  display: block;
+  will-change: transform;
+}
+/* reduced-motion mode: the ticker becomes a slow centered crossfade — the
+   JS stops translating and drives opacity instead; this centers the text.
+   The font steps down a notch so the longest tip still fits the 300px bar
+   when it sits still (scroll mode never needed that — text moved past). */
+.tip-crawl.reduce { text-align: center; }
+.tip-crawl.reduce span { font-size: clamp(10px, 1.9vmin, 11px); }
+
+/* ---------------- MENUS ---------------- */
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(340px, 92%);
+  margin-top: 4px;
+}
+
+.menu-btn {
+  position: relative;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, 2.3vmin, 12px);
+  letter-spacing: 2px;
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(20,40,70,.7), rgba(8,18,38,.9));
+  border: 1px solid rgba(0,229,255,.35);
+  padding: clamp(9px, 1.9vmin, 14px) 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .12s ease;
+  text-shadow: 0 0 6px rgba(0,229,255,.5);
+  box-shadow: 0 0 0 rgba(0,229,255,0);
+}
+/* arcade menu cursor — chevron slides in on focus/hover */
+.menu-btn::before {
+  content: "▶";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  opacity: 0;
+  transition: all .12s ease;
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(57,255,20,.8);
+  font-size: 9px;
+}
+.menu-btn:hover, .menu-btn:focus-visible {
+  outline: none;
+  border-color: var(--green);
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(57,255,20,.9);
+  box-shadow: 0 0 18px rgba(57,255,20,.35), inset 0 0 12px rgba(57,255,20,.12);
+  transform: translateX(4px);
+}
+.menu-btn:hover::before, .menu-btn:focus-visible::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+.menu-btn.primary {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  text-shadow: 0 0 8px rgba(255,45,149,.6);
+  background: linear-gradient(180deg, rgba(60,10,40,.7), rgba(30,4,22,.9));
+  animation: primaryPulse 1.6s ease-in-out infinite;
+}
+.menu-btn.primary:hover, .menu-btn.primary:focus-visible {
+  color: #fff;
+  border-color: var(--magenta);
+  box-shadow: 0 0 22px rgba(255,45,149,.55), inset 0 0 14px rgba(255,45,149,.2);
+  transform: translateX(4px) scale(1.02);
+}
+.menu-btn.primary:hover::before { color: var(--magenta); text-shadow: 0 0 8px rgba(255,45,149,.8); }
+.menu-btn:active { transform: translateX(4px) scale(.98); }
+@keyframes primaryPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,45,149,.25); }
+  50% { box-shadow: 0 0 20px rgba(255,45,149,.55); }
+}
+/* blinking INSERT COIN (step-timed like a real coin door) */
+.coin-blink { animation: coinBlink 1.2s steps(1) infinite; }
+.coin-sub { opacity: .75; }
+@keyframes coinBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.menu-nav { gap: clamp(8px, 1.7vmin, 13px); }
+
+.menu-footer {
+  margin-top: clamp(6px, 1.2vmin, 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1vmin, 8px);
+  font-size: clamp(7px, 1.6vmin, 9px);
+  color: #5a6b8c;
+  letter-spacing: 2px;
+}
+.menu-footer #hiScoreFooter {
+  color: var(--amber);
+  font-size: clamp(9px, 2.1vmin, 12px);
+  text-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 20px rgba(255,176,0,.35);
+}
+/* the hi-score footer doubles as a one-tap SOUND shortcut */
+#hiScoreFooter {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  font-family: inherit;
+  line-height: 1;
+  transition: all .12s ease;
+}
+#hiScoreFooter:hover, #hiScoreFooter:focus-visible {
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255, 176, 0, 1), 0 0 28px rgba(255, 176, 0, .55);
+  transform: scale(1.06);
+}
+#hiScoreFooter:focus-visible { outline: 1px solid rgba(255, 176, 0, .55); border-radius: 2px; }
+
+/* gear badge — one-tap CONTROLS shortcut on the title frame */
+.gear-btn {
+  position: absolute;
+  top: clamp(26px, 6.5vmin, 44px);
+  right: clamp(10px, 2.2vmin, 14px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(18px, 4vmin, 26px);
+  height: clamp(18px, 4vmin, 26px);
+  font-family: 'Press Start 2P', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif;
+  font-size: clamp(11px, 2.6vmin, 15px);
+  line-height: 1;
+  color: var(--cyan);
+  background: rgba(8, 18, 38, .55);
+  border: 1px solid rgba(0, 229, 255, .35);
+  border-radius: 50%;
+  cursor: pointer;
+  text-shadow: 0 0 6px rgba(0, 229, 255, .6);
+  transition: all .15s ease;
+}
+.gear-btn:hover, .gear-btn:focus-visible {
+  outline: none;
+  color: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 12px rgba(57, 255, 20, .4);
+  transform: rotate(90deg);
+}
+
+/* fullscreen badge — mirrors the controls gear on the opposite corner */
+.fs-btn {
+  right: auto;
+  left: clamp(10px, 2.2vmin, 14px);
+}
+.fs-btn:hover, .fs-btn:focus-visible { transform: scale(1.12); }
+
+/* pause / game-over panel fullscreen row — the ⛶ glyph needs symbol fallbacks
+   since Press Start 2P doesn't carry U+26F6 (the marquee badge does the same) */
+.fs-panel-btn .fs-glyph {
+  font-family: 'Press Start 2P', 'Segoe UI Symbol', 'DejaVu Sans', sans-serif;
+}
+
+/* ---------------- FULLSCREEN ----------------
+   Fullscreening the BEZEL shows only the CRT (cab-top/cab-bottom sit outside
+   it, so the browser hides them automatically). The 320:256 screen scales to
+   fit the viewport letterboxed in black, keeping the pixel art crisp. */
+#bezel:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#bezel:fullscreen #screen {
+  width: min(100vw, calc(100vh * 1.25));
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+#bezel:fullscreen .crt { border-radius: 0; }
+
+/* ---------------- ATTRACT TAKEOVER ---------------- */
+/* after 30s idle, the title fades out and the live demo gameplay takes over,
+   with a lone blinking PRESS ANY KEY prompt — like a real arcade cabinet */
+.panel.menu.attract {
+  backdrop-filter: none;
+  background: linear-gradient(180deg,
+    rgba(2, 6, 14, .03) 0%,
+    rgba(2, 6, 14, .06) 40%,
+    rgba(2, 5, 12, .10) 100%);
+}
+.panel.menu.attract .menu-marquee {
+  opacity: 0;
+  pointer-events: none;
+}
+.attract-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(14px, 6vmin, 34px);
+  transform: translateX(-50%);
+  z-index: 5;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, 2.2vmin, 13px);
+  letter-spacing: 3px;
+  color: var(--amber);
+  text-shadow: 0 0 10px rgba(255, 176, 0, .9), 0 0 24px rgba(255, 176, 0, .45);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.attract-prompt span { animation: blink 1.1s steps(2) infinite; }
+.panel.menu.attract .attract-prompt { opacity: 1; }
+
+/* ---------------- OPTION LISTS (difficulty / sound) ---------------- */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(360px, 92%);
+}
+
+.option-row {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--white);
+  background: rgba(12, 22, 42, .6);
+  border: 1px solid rgba(0,229,255,.25);
+  padding: 9px 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .12s ease;
+}
+.option-row .opt-desc {
+  display: block;
+  margin-top: 4px;
+  font-family: 'VT323', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7d92b8;
+  text-align: left;
+  text-transform: none;
+}
+.option-row:hover, .option-row:focus-visible {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 14px rgba(57,255,20,.3);
+}
+.option-row.selected {
+  border-color: var(--green);
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(57,255,20,.8);
+  box-shadow: 0 0 16px rgba(57,255,20,.35);
+}
+.option-row .opt-value {
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(57,255,20,.6);
+  white-space: nowrap;
+}
+.option-row.selected .opt-value { color: var(--amber); text-shadow: 0 0 8px rgba(255,176,0,.7); }
+
+.back-btn {
+  width: min(240px, 80%);
+  margin-top: 4px;
+  font-size: 10px;
+  padding: 10px;
+}
+
+/* ---------------- CONTROLS (key rebinding) ---------------- */
+.control-head {
+  width: 100%;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--magenta);
+  text-shadow: 0 0 8px rgba(255, 45, 149, .5);
+  padding: 8px 2px 2px;
+  border-bottom: 1px solid rgba(255, 45, 149, .25);
+}
+.control-row { cursor: pointer; }
+.control-row .opt-value.keys {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255, 176, 0, .5);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.control-row.capturing {
+  border-color: var(--amber);
+  background: rgba(60, 40, 8, .5);
+  animation: capturePulse 1s ease-in-out infinite;
+}
+@keyframes capturePulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 176, 0, .3), inset 0 0 8px rgba(255, 176, 0, .1); }
+  50% { box-shadow: 0 0 24px rgba(255, 176, 0, .6), inset 0 0 14px rgba(255, 176, 0, .2); }
+}
+.control-row.capturing .opt-label { color: var(--amber); text-shadow: 0 0 8px rgba(255, 176, 0, .8); }
+.control-row.capturing .opt-value.keys { color: #fff; }
+
+/* key chips: one chip per bound key — ✕ removes, + adds another */
+.control-row .opt-value.keys {
+  white-space: normal; /* let multi-key rows wrap */
+  max-width: 220px;
+  text-align: right;
+}
+.key-chip {
+  display: inline-block;
+  margin: 1px 3px;
+  padding: 3px 6px;
+  border: 1px solid rgba(255, 176, 0, .55);
+  border-radius: 3px;
+  background: rgba(255, 176, 0, .12);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--amber);
+  text-shadow: 0 0 6px rgba(255, 176, 0, .6);
+  line-height: 1;
+}
+.key-remove {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 8px;
+  color: var(--magenta);
+  cursor: pointer;
+  text-shadow: 0 0 6px rgba(255, 45, 149, .8);
+}
+.key-remove:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 45, 149, 1); }
+.key-add {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 3px 6px;
+  border: 1px dashed rgba(0, 229, 255, .5);
+  border-radius: 3px;
+  color: var(--cyan);
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  text-shadow: 0 0 6px rgba(0, 229, 255, .6);
+}
+.key-add:hover { background: rgba(0, 229, 255, .15); color: #fff; }
+.key-prompt { animation: blink .9s steps(2) infinite; color: var(--amber); }
+
+.controls-hint {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #5a6b8c;
+  text-align: center;
+  min-height: 12px;
+}
+.controls-hint.capture { color: var(--amber); text-shadow: 0 0 8px rgba(255, 176, 0, .8); animation: blink 1s steps(2) infinite; }
+
+/* live gamepad status line in the CONTROLS panel — glows green when a pad is connected */
+.gamepad-note {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #5a6b8c;
+  text-align: center;
+  min-height: 12px;
+  margin-top: 2px;
+}
+.gamepad-note.on { color: var(--green); text-shadow: 0 0 8px rgba(57, 255, 20, .8); }
+
+/* cabinet-theme picker value echoes the active theme's accent color */
+#themeVal { color: var(--corner); text-shadow: 0 0 8px var(--corner-glow); }
+.controls-hint.ok { color: var(--green); text-shadow: 0 0 8px rgba(57, 255, 20, .8); }
+.controls-hint.warn { color: var(--magenta); text-shadow: 0 0 8px rgba(255, 45, 149, .8); }
+
+.controls-actions {
+  display: flex;
+  gap: 12px;
+  width: min(360px, 92%);
+  justify-content: center;
+  margin-top: 4px;
+}
+.controls-actions .back-btn { margin-top: 0; width: min(180px, 40%); }
+
+/* ---------------- HIGH SCORES TABLE ---------------- */
+.scores-table {
+  width: min(360px, 94%);
+  border-collapse: collapse;
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+.scores-table .srow {
+  display: grid;
+  grid-template-columns: 44px 1fr 90px 48px;
+  padding: 5px 10px;
+  border-bottom: 1px dashed rgba(57,255,20,.18);
+  color: #b8e6c8;
+}
+.scores-table .srow:first-child { border-top: 1px solid rgba(57,255,20,.4); }
+.scores-table .srow.header-row {
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(0,229,255,.4);
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 6px 10px;
+}
+.scores-table .srow .rk { color: #5a6b8c; }
+.scores-table .srow.top .rk, .scores-table .srow.top { color: var(--amber); text-shadow: 0 0 8px rgba(255,176,0,.5); }
+.scores-table .srow .sc { text-align: right; }
+.scores-table .srow .lv { text-align: right; color: #5a6b8c; }
+.scores-table.compact { font-size: 15px; }
+.scores-table.compact .srow { grid-template-columns: 34px 1fr 80px; }
+.scores-table.compact .srow .lv { display: none; }
+.scores-table .empty { color: #4a5878; text-align: center; padding: 18px; font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 1px; }
+
+/* ---------------- HELP ---------------- */
+.help-body {
+  width: min(430px, 94%);
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #b8e6c8;
+}
+.help-intro { margin-bottom: 10px; color: var(--white); }
+.help-intro b { color: var(--cyan); }
+.help-section { margin-bottom: 12px; }
+.help-head {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--magenta);
+  text-shadow: 0 0 8px rgba(255,45,149,.5);
+  margin-bottom: 7px;
+}
+.help-table { width: 100%; }
+.help-table td {
+  padding: 4px 6px;
+  border-bottom: 1px dashed rgba(57,255,20,.14);
+  vertical-align: top;
+}
+.help-table td:first-child {
+  color: var(--amber);
+  white-space: nowrap;
+  font-size: 14px;
+  padding-right: 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding-top: 8px;
+}
+.help-table.bugs td:first-child { font-family: inherit; }
+.swatch {
+  display: inline-block;
+  width: 22px; height: 16px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 3px;
+}
+.sw-cent { background: repeating-linear-gradient(90deg, #ff3355 0 3px, #9dff3a 3px 15px); box-shadow: 0 0 8px rgba(157,255,58,.6); }
+.sw-milli { background: repeating-linear-gradient(90deg, #9d4dff 0 5px, #00e5ff 5px 10px); box-shadow: 0 0 8px rgba(157,77,255,.6); }
+.sw-spider { background: #ff2d95; box-shadow: 0 0 8px rgba(255,45,149,.6); }
+.sw-flea { background: #4aff6a; box-shadow: 0 0 8px rgba(74,255,106,.6); }
+.sw-scorp { background: #ff3b30; box-shadow: 0 0 8px rgba(255,59,48,.6); }
+.sw-virus { background: radial-gradient(circle, #ff2d95 30%, #9d4dff); box-shadow: 0 0 8px rgba(255,45,149,.6); }
+  .sw-queen { background: repeating-linear-gradient(135deg, #9d4dff 0 4px, #ff2d95 4px 8px, #ffe94a 8px 12px); box-shadow: 0 0 10px rgba(255,45,149,.7); }
+  .sw-bonus { background: repeating-linear-gradient(90deg, #ffd700 0 5px, #ff8833 5px 10px, #ff2d95 10px 15px); box-shadow: 0 0 8px rgba(255,215,0,.6); }
+.pu {
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 2px 4px;
+  box-shadow: 0 0 6px rgba(57,255,20,.6);
+}
+.poison { color: var(--magenta); text-shadow: 0 0 6px rgba(255,45,149,.8); }
+.dim { color: #4a5878; }  .help-tip { margin-top: 8px; color: var(--amber); }
+  .poison-tip {
+    color: #ff8ecb;
+    border: 1px solid rgba(255,45,149,.35);
+    background: rgba(255,45,149,.08);
+    padding: 6px 8px;
+    border-radius: 4px;
+  }
+
+/* ---------------- PAUSE ---------------- */
+.pause {
+  /* frozen gameplay glows faintly through the pause veil */
+  background: rgba(3, 7, 16, .72);
+  backdrop-filter: blur(4px);
+}
+.pause .pause-stats {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+}
+.pause .pause-bindings {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255, 176, 0, .5);
+}
+
+/* ---------------- GAME OVER ---------------- */
+.go-stats { text-align: center; }
+.go-score-label { font-size: 9px; letter-spacing: 2px; color: #5a6b8c; }
+.go-score {
+  font-family: 'VT323', monospace;
+  font-size: 40px;
+  color: var(--amber);
+  text-shadow: 0 0 16px rgba(255,176,0,.7);
+  margin: 6px 0 2px;
+}
+.go-level { font-size: 8px; color: var(--cyan); letter-spacing: 2px; }
+
+/* game-over glitch runs red-hot */
+#gameoverPanel .glitch-title {
+  background: linear-gradient(180deg, #ffe9c9 0%, #ff5a3c 40%, #ff2d95 68%, #b4004a 100%);
+  background-size: 100% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 45, 149, .6))
+          drop-shadow(3px 3px 0 rgba(0, 0, 0, .9))
+          drop-shadow(6px 6px 0 rgba(30, 4, 22, .5));
+}
+
+.initials { text-align: center; }
+.initials-title {
+  font-size: 9px;
+  color: var(--amber);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255,176,0,.7);
+  animation: blink 1.1s steps(2) infinite;
+}
+.initials-input {
+  margin-top: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 30px;
+  letter-spacing: 12px;
+  color: var(--green);
+  text-shadow: 0 0 14px rgba(57,255,20,.9);
+}
+.initials-hint { margin-top: 8px; font-size: 8px; color: #5a6b8c; letter-spacing: 1px; }
+
+/* ---------------- MISC ---------------- */
+.blink-slow { animation: blink 1.4s steps(2) infinite; color: var(--green); text-shadow: 0 0 8px rgba(57,255,20,.6); }
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.touch-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255,176,0,.8);
+  z-index: 15;
+  animation: blink 1.2s steps(2) infinite;
+  background: rgba(0,0,0,.55);
+  padding: 6px 10px;
+  border: 1px solid rgba(255,176,0,.4);
+  border-radius: 4px;
+}
+.touch-hint.hidden { display: none; }
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 640px) {
+  .cab-top, .cab-bottom { display: none; }
+  #bezel { border-radius: 14px; padding: 8px; box-shadow: 0 0 0 2px #000, 0 0 0 4px var(--bezel-ring); }
+  #screen { border-radius: 8px; }
+  /* boot screen: the 13-line BIOS log + DISPLAY + hint must fit the small screen */
+  .boot { padding: 8px 14px; gap: 5px; }
+  #bootLog { font-size: 11px; line-height: 1.3; }
+  .boot-prompt { font-size: 8px; margin-top: 4px; }
+  .boot-display { font-size: 9px; }
+  .boot-hint { font-size: 7px; }
+  /* compact so the whole title (mascot -> mushrow) fits the small 320x256 screen */
+  .menu-btn { font-size: 8px; padding: 5px 10px; }
+  .glitch-title { font-size: 19px; letter-spacing: 2px; }
+  .menu-marquee { padding: 10px 8px; }
+  .mascot { margin-bottom: 3px; }
+  .bug-seg { width: 9px; height: 9px; }
+  .bug-seg.head { width: 10px; }
+  .tagline { display: none; }
+  .tip-crawl { display: none; }
+  .menu-nav { gap: 3px; }
+  .spider-mascot { display: none; }
+  .subtitle { font-size: 7px; letter-spacing: 1px; gap: 5px; margin-top: 2px; }
+  .title-block { margin: 1px 0; }
+  .menu-footer { gap: 2px; margin-top: 2px; }
+  .menu-footer #hiScoreFooter { font-size: 8px; }
+  .menu-footer .version { font-size: 7px; }
+  .mushrow { margin-top: 2px; gap: 2px; }
+}
+
+/* ---------------- REDUCED MOTION ---------------- */
+/* Arcade chrome is motion-rich by design (CRT flicker, glitch slices, coin
+   blink) — but when the OS asks for reduced motion, park every looping
+   animation at a calm static frame and snap interactive state changes
+   instead of sliding them. Each calmed element keeps its natural resting
+   state (static `animation: none` freezes a blink at opacity 1, not at its
+   mid-blink 0 — a universal animation-duration zeroing would end blinks
+   invisible, so the selectors are explicit). JS animations (the tip crawl)
+   handle their own reduced-motion fade mode — see crawlLoop in ui.js.
+   One-shot entrances (panelIn, the boot DISPLAY swap) are calmed too:
+   under reduced motion screens simply appear and the swap never replays.
+   The attract takeover dims the marquee instantly rather than fading, and
+   the hover/attract tweens snap — every CSS animation and transition in
+   the chrome is now static under reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  /* title + screen chrome: glitch flicker & slices, coin, boot prompt, CRT */
+  .glitch-title,
+  .glitch-title::before,
+  .glitch-title::after,
+  .coin-blink,
+  .boot-prompt,
+  .crt-flicker { animation: none; }
+
+  /* decorative loops: starfield twinkle, spider bob, centipede slither,
+     segment bob (their static frames: stars lit, mascots at rest) */
+  .stars span,
+  .spider-mascot .sp-body,
+  .mascot,
+  .bug-seg { animation: none; }
+
+  /* pulsing chrome: PLAY glow, key-capture row */
+  .menu-btn.primary,
+  .control-row.capturing { animation: none; }
+
+  /* blinking prompts (same family as the coin): attract prompt, capture
+     hints, initials, high-score marker, touch hint */
+  .attract-prompt span,
+  .key-prompt,
+  .controls-hint.capture,
+  .initials-title,
+  .blink-slow,
+  .touch-hint { animation: none; }
+
+  /* hover/focus state changes snap instantly instead of sliding — the
+     transforms still apply for feedback, just without the tween (covers
+     .fs-btn via .gear-btn) */
+  .menu-btn,
+  .menu-btn::before,
+  .option-row,
+  #hiScoreFooter,
+  .gear-btn,
+  .toast { transition: none; }
+
+  /* one-shot entrances: panel fade/scale-in and the boot DISPLAY swap —
+     strict zero motion, screens simply appear and the swap line is static
+     (the JS retrigger in ui.js skips the replay under reduced motion too) */
+  .panel,
+  .boot-display { animation: none; }
+
+  /* the attract takeover still dims the marquee, it just snaps instead of
+     fading (and its INSERT COIN prompt pops in/out instantly) */
+  .menu-marquee,
+  .attract-prompt { transition: none; }
+}
