@@ -51,55 +51,86 @@ def resolve_md(date_str):
     return None, date_str
 
 
+PLACEHOLDER_CAPTIONS = re.compile(
+    r"(no caption|visual comic|no usable caption|placeholder|couldn.?t (read|extract)|unable to (read|extract))",
+    re.IGNORECASE,
+)
+
+
 def extract_comic_caption(md, date_str=None):
     """Extract the Far Side comic caption from markdown.
     Looks for the ![Far Side comic: "caption"](farside_...) pattern.
     Validates the caption using the specialized farside_caption.py tool which
     properly extracts just the caption band from Far Side archive images.
+
+    NEVER returns a fabricated caption. Rules (2026-08-09 fix):
+      1. Placeholder captions ("Visual comic — no caption", "no caption", ...)
+         are treated as MISSING and replaced via farside_caption.py, which now
+         falls back to OCR of the source archive page (where the real caption
+         always lives below the panel).
+      2. If farside_caption.py itself reports NO_USABLE_CAPTION, return "" so
+         the caller OMITS the caption line entirely — never invent text.
     """
     m = re.search(r'!\[Far Side comic:\s*"([^"]+)"\]\(farside[^)]*\)', md)
     if m:
         caption = m.group(1).strip()
-        # VERIFY: Check caption matches the actual comic image using farside_caption.py
+    else:
+        # Fallback: any Far Side reference (bounded, not a greedy document-wide grab)
+        m = re.search(r'Far Side comic:\s*"([^"]+)"', md)
+        caption = m.group(1).strip() if m else ""
+
+    # Placeholder = missing. Resolve from the actual comic via farside_caption.py,
+    # which (after the 2026-08-09 fix) OCRs the source archive page when the crop
+    # has no caption band — recovering the real caption instead of "no caption".
+    if not caption or PLACEHOLDER_CAPTIONS.search(caption):
+        caption = ""
         if date_str:
             comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
             if os.path.exists(comic_img):
                 try:
                     import subprocess
-                    # Use the specialized farside_caption.py which properly extracts
-                    # just the caption area (not the full comic panel)
                     result = subprocess.run(
                         ["python3", "/home/ai/farside_caption.py", comic_img],
-                        capture_output=True, text=True, timeout=30
+                        capture_output=True, text=True, timeout=60
                     )
                     ocr_text = result.stdout.strip()
-                    # Only trust OCR if it looks like clean human-readable English
-                    # (reasonable word count, contains common English words, not garbled)
-                    if (ocr_text and ocr_text != "NO_USABLE_CAPTION" 
-                        and len(ocr_text) > 10 
+                    if (ocr_text and ocr_text != "NO_USABLE_CAPTION"
+                            and len(ocr_text) > 10
+                            and len(ocr_text) < 300
+                            and _looks_like_valid_caption(ocr_text)):
+                        caption = ocr_text.strip().strip('"\'')
+                except (Exception, subprocess.TimeoutExpired):
+                    pass
+        return caption
+
+    # Caption present in markdown: verify it against the actual comic image.
+    if date_str:
+        comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
+        if os.path.exists(comic_img):
+            try:
+                import subprocess
+                result = subprocess.run(
+                    ["python3", "/home/ai/farside_caption.py", comic_img],
+                    capture_output=True, text=True, timeout=60
+                )
+                ocr_text = result.stdout.strip()
+                if (ocr_text and ocr_text != "NO_USABLE_CAPTION"
+                        and len(ocr_text) > 10
                         and len(ocr_text) < 300
                         and _looks_like_valid_caption(ocr_text)):
-                        caption_words = set(re.findall(r"[a-z']+", caption.lower()))
-                        ocr_words = set(re.findall(r"[a-z']+", ocr_text.lower()))
-                        # If caption shares significant words with OCR, keep markdown caption
-                        # (they agree). If they share NO words but OCR looks valid,
-                        # the markdown caption might be wrong - use OCR.
-                        if caption_words & ocr_words:
-                            pass  # They agree, keep markdown caption
-                        elif not caption_words & ocr_words and len(ocr_words) > 5:
-                            # OCR text IS the caption from the actual image, and looks valid
-                            ocr_caption = ocr_text.strip().strip('"\'')
-                            if len(ocr_caption) > 10:
-                                caption = ocr_caption
-                    # If OCR is garbage, keep the markdown caption (don't corrupt it)
-                except (Exception, subprocess.TimeoutExpired):
-                    pass  # If verification fails, keep original caption
-        return caption
-    # Fallback: any Far Side reference
-    m = re.search(r'Far Side.*?"([^"]+)"', md)
-    if m:
-        return m.group(1).strip()
-    return "The Far Side &mdash; your daily laugh."
+                    caption_words = set(re.findall(r"[a-z']+", caption.lower()))
+                    ocr_words = set(re.findall(r"[a-z']+", ocr_text.lower()))
+                    # If they share NO words but OCR looks valid, the markdown
+                    # caption is wrong — use OCR (never ship a mismatched caption).
+                    if caption_words & ocr_words:
+                        pass  # They agree, keep markdown caption
+                    elif not caption_words & ocr_words and len(ocr_words) > 5:
+                        ocr_caption = ocr_text.strip().strip('"\'')
+                        if len(ocr_caption) > 10:
+                            caption = ocr_caption
+            except (Exception, subprocess.TimeoutExpired):
+                pass
+    return caption
 
 
 def _looks_like_valid_caption(text: str) -> bool:
@@ -356,6 +387,10 @@ def main():
     comic = f"assets/img/news/{date_str}-farside.jpg"
     comic_alt = f"The Far Side comic for {weekday}, {month} {ordinal}, {d.year}"
     comic_caption = extract_comic_caption(md, date_str)
+    # NEVER ship a fabricated caption (2026-08-09: the site showed an invented
+    # cowboy caption under a ketchup comic). If the caption is unknown, omit the
+    # caption line entirely rather than printing made-up text.
+    cap_line = f"      <div class=\"cap\">{comic_caption}</div>" if comic_caption else ""
     header_logo = extract_header_logo(md)
     tagline = extract_tagline(md)
     business_card = extract_business_card(md)
@@ -424,7 +459,7 @@ def main():
     <h2>😄 {comedy_break_title}</h2>
     <div class="comic">
       <img src="{comic}" alt="{comic_alt}">
-      <div class="cap">{comic_caption}</div>
+{cap_line}
     </div>
   </div>
 </article>
