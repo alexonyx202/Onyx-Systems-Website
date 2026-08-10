@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,12 +100,30 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-10-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-10",
+      "title": "School starts today in Columbia County — Microsoft 365 (Word, Excel, PowerPoint) is free for students at microsoft.com/education",
+      "tag": "Daily Brief",
+      "excerpt": "If your student's school uses Microsoft (most North Florida schools do), your child may already have Microsoft 365 for free — that's Word, Excel, and PowerPoint, the same programs offices use. Go to microsoft.com/education, click \"Get Office 365 for free\" or \"Sign up for free,\" and enter the student's school email. If the school is in the program, the apps install free on the family computer — no credit card, no monthly bill.",
+      "image": "assets/img/news/2026-08-10-composite.jpg",
+      "comic": "assets/img/news/2026-08-10-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Microsoft365",
+        "#BackToSchool"
+      ]
+    },
+    {
       "id": "onyx-2026-08-09-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-09",
-      "title": "Chrome patches 41 security holes including 6 critical \u2014 update in Chrome settings",
+      "title": "Chrome patches 41 security holes including 6 critical — update in Chrome settings",
       "tag": "Daily Brief",
-      "excerpt": "Chrome's latest update closes 41 security flaws with 6 rated critical. Most are use-after-free bugs attackers can exploit to run code on your machine. Update now in Chrome's settings (click the three-dot menu \u2192 Help \u2192 About Chrome) or wait for auto-update.",
+      "excerpt": "Chrome's latest update closes 41 security flaws with 6 rated critical. Most are use-after-free bugs attackers can exploit to run code on your machine. Update now in Chrome's settings (click the three-dot menu → Help → About Chrome) or wait for auto-update.",
       "image": "assets/img/news/2026-08-09-composite.jpg",
       "comic": "assets/img/news/2026-08-09-comic-square.jpg",
       "read_more": "#contact",
@@ -121,9 +139,9 @@
       "id": "onyx-2026-08-08-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-08",
-      "title": "Chrome 151 patches 41 security holes \u2014 update now at chrome://settings/help",
+      "title": "Chrome 151 patches 41 security holes — update now at chrome://settings/help",
       "tag": "Daily Brief",
-      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings \u2192 About Chrome. The browser will check, download, and ask you to relaunch.",
+      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings → About Chrome. The browser will check, download, and ask you to relaunch.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -136,9 +154,9 @@
       "id": "onyx-2026-08-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-04",
-      "title": "ClickFix \"Verify You're Human\" Scam Tricks You Into Running Malware Commands \u2014 Close the Tab Immediately",
+      "title": "ClickFix \"Verify You're Human\" Scam Tricks You Into Running Malware Commands — Close the Tab Immediately",
       "tag": "Daily Brief",
-      "excerpt": "A fake \"Verify you're human\" CAPTCHA pops up and tells you to press Win+R, then Ctrl+V, then Enter. This is ClickFix malware \u2014 the command pastes a hidden malicious script into Windows Run dialog that...",
+      "excerpt": "A fake \"Verify you're human\" CAPTCHA pops up and tells you to press Win+R, then Ctrl+V, then Enter. This is ClickFix malware — the command pastes a hidden malicious script into Windows Run dialog that...",
       "image": "assets/img/news/2026-08-04-composite.jpg",
       "comic": "assets/img/news/2026-08-04-comic-square.jpg",
       "read_more": "#contact",
@@ -174,7 +192,7 @@
       "date": "2026-07-31",
       "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
       "tag": "Daily Brief",
-      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement \u2014 July 20, 2026*",
+      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
       "image": "assets/img/news/2026-07-31-composite.jpg",
       "comic": "assets/img/news/2026-07-31-comic-square.jpg",
       "read_more": "#contact",
@@ -185,32 +203,49 @@
         "#FBI-IC3-Scam",
         "#SecurityAlert"
       ]
-    },
-    {
-      "id": "onyx-2026-07-30-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-07-30",
-      "title": "Daily Brief 2026-07-30: FBI IC3 Impersonation Scam Alert + HaveIBeenPwned Breach Check",
-      "tag": "Daily Brief",
-      "excerpt": "FBI IC3 PSA I-072026-PSA (July 20, 2026) warns of AI deepfake videos of FBI officials and spoofed IC3 complaint portals (ic3-complaint-portal.com, fbi-fundrecovery.net) targeting prior fraud victims via Facebook Messenger and Telegram. IC3 never messages first, has no social media, never charges fees, and never refers to paid recovery firms. Only genuine portal is ic3.gov \u2014 type it manually. Daily tip: Check haveibeenpwned.com for the June 2026 Stealer Logs breach (56M emails, 124M passwords added June 15). Visit haveibeenpwned.com, enter your email, and enable 2FA on any compromised accounts. Obtain method: Visit ic3.gov directly (type .gov address manually) and haveibeenpwned.com (free web lookup).",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#FBI-IC3-Scam",
-        "#HaveIBeenPwned"
-      ]
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-08-10-post-3",
+      "type": "tip",
+      "date": "2026-08-10",
+      "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
+      "tag": "Tech Tip",
+      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte.",
+      "truth": "Most people don't realize \"my files are on the computer\" is not a backup. Hard drives die with zero warning — I've seen it a hundred times. The honest answer is a backup isn't a gadget you buy, it's a switch you flip. OneDrive's folder backup is the easiest switch I know: set it once, forget it, and it quietly makes a second copy of everything in the background while you go about your day.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#OneDrive",
+        "#Backup"
+      ]
+    },
+    {
+      "id": "onyx-2026-08-10-post-2",
+      "type": "news",
+      "date": "2026-08-10",
+      "title": "Don't trust the $5 flea-market flash drive with your photos — buy a genuine SanDisk from sandisk.com or a trusted store",
+      "tag": "Tech Note",
+      "summary": "Cheap no-name flash drives often lie about their size — a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose — family photos, tax returns, school work — buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake.",
+      "truth": "I see this all the time: a customer brings in a little flash drive full of vacation photos, and it's dead or corrupt. Nine times out of ten it was a no-name stick bought cheap online or at a market. The honest answer is a flash drive is for moving files, not keeping them — and the cheap ones are the first to fail. Pay the extra five bucks for a real one from sandisk.com or a trusted store, and don't let any flash drive be your only copy of anything.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SanDisk",
+        "#FlashDriveSafety"
+      ]
+    },
+    {
       "id": "onyx-2026-08-09-post-2",
       "type": "news",
       "date": "2026-08-09",
-      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation \u2014 get it in Settings > Windows Update",
+      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation — get it in Settings > Windows Update",
       "tag": "Tech Note",
       "summary": "The August Windows 11 update adds an AI Components page where Copilot+ PC owners can uninstall the Image Generation model to reclaim storage. It also adds Voice Isolation to Voice Access for better background noise filtering, and extends Windows Hello security to USB fingerprint readers. Get it at Settings > Windows Update > Check for updates.",
-      "truth": "Microsoft has been stuffing AI features into Windows whether you want them or not. This update is the first time they've given you a real off switch for one of them. Most people don't realize: those on-device AI models aren't free \u2014 they eat gigabytes of storage and sit in memory even when you're not using them. If you bought a Copilot+ PC and never generate AI images, that space has been wasted for months. Now you can get it back.",
+      "truth": "Microsoft has been stuffing AI features into Windows whether you want them or not. This update is the first time they've given you a real off switch for one of them. Most people don't realize: those on-device AI models aren't free — they eat gigabytes of storage and sit in memory even when you're not using them. If you bought a Copilot+ PC and never generate AI images, that space has been wasted for months. Now you can get it back.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -223,9 +258,9 @@
       "id": "onyx-2026-08-09-post-3",
       "type": "tip",
       "date": "2026-08-09",
-      "title": "Your router's default admin password is public \u2014 change it in your router's settings",
+      "title": "Your router's default admin password is public — change it in your router's settings",
       "tag": "Tech Tip",
-      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page \u2014 look for Administration or Security settings. Eero and Google Nest use your account password instead.",
+      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page — look for Administration or Security settings. Eero and Google Nest use your account password instead.",
       "truth": "This is the single most important router security step, and almost nobody does it. I've seen home networks where the admin password was still \"admin\" or \"password\" years after install. Automated scanners hit home routers constantly looking for default logins. Changing the admin password blocks nearly all of them. It takes under five minutes and costs nothing.",
       "tags": [
         "#OnyxSystems",
@@ -239,10 +274,10 @@
       "id": "onyx-2026-08-08-news-11",
       "type": "news",
       "date": "2026-08-08",
-      "title": "CISA warns: Three vulnerabilities actively exploited right now \u2014 patch your software",
+      "title": "CISA warns: Three vulnerabilities actively exploited right now — patch your software",
       "tag": "Tech Note",
       "summary": "CISA added three actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog: CVE-2026-9198 (IBM Langflow code injection), CVE-2026-18556 (N-able N-central authentication bypass), and CVE-2026-34486 (Apache Tomcat missing encryption). Update today if you use these products. Check vendor advisories at ibm.com, n-able.com, and tomcat.apache.org.",
-      "truth": "Most people don't realize that the software running their business \u2014 remote monitoring tools, web servers, automation platforms \u2014 can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
+      "truth": "Most people don't realize that the software running their business — remote monitoring tools, web servers, automation platforms — can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -252,13 +287,29 @@
       ]
     },
     {
+      "id": "onyx-2026-08-08-tip-12",
+      "type": "tip",
+      "date": "2026-08-08",
+      "title": "Windows 11 Recall is watching — here is how to turn it off at Settings > Privacy & security > Recall",
+      "tag": "Tech Tip",
+      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings → Privacy & security → Recall & snapshots → turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" → \"Delete all\" to wipe existing data.",
+      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots — including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#Privacy"
+      ]
+    },
+    {
       "id": "onyx-2026-08-04-news-1",
       "type": "news",
       "date": "2026-08-04",
-      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator \u2014 Arrives August 11",
+      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator — Arrives August 11",
       "tag": "Tech Note",
       "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
-      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful \u2014 I've had customers buy external readers that didn't work with Windows Hello before.",
+      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful — I've had customers buy external readers that didn't work with Windows Hello before.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -271,7 +322,7 @@
       "id": "onyx-2026-08-02-news-1",
       "type": "news",
       "date": "2026-08-02",
-      "title": "Google Chrome patches actively exploited zero-day \u2014 update now",
+      "title": "Google Chrome patches actively exploited zero-day — update now",
       "tag": "Tech Note",
       "summary": "Google released an emergency Chrome update fixing a high-severity flaw that hackers are already using. Update Chrome now via Settings > About Chrome. Restart the browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux).",
       "truth": "Google released an emergency Chrome update February 13, 2026 fixing a high-severity use-after-free vulnerability in the CSS component. Researcher Shaheen Fazim reported the flaw February 11. The vulnerability allows arbitrary code execution within the browser sandbox via malicious websites. No sandbox escape has been confirmed. This is the first actively exploited Chrome zero-day of 2026. Microsoft Edge and other Chromium-based browsers will receive downstream patches.",
@@ -282,57 +333,9 @@
         "#BrowserSecurity",
         "#ZeroDay"
       ]
-    },
-    {
-      "id": "onyx-2026-07-31-news-1",
-      "type": "news",
-      "date": "2026-07-31",
-      "title": "Chrome 127 adds real-time anti-tracking and site-level ad controls \u2014 free update",
-      "tag": "Tech Note",
-      "summary": "Google Chrome 127 introduced three privacy features: real-time anti-tracking that blocks third-party cookies and tracking pixels before they load, site-level ad controls for per-site ad personalization settings, and on-device data processing that keeps sensitive information on your computer instead of Google's servers. Update free at chrome://settings/help or download at google.com/chrome.",
-      "truth": "Most people don't realize Chrome has been sending a surprising amount of browsing data to Google by default \u2014 every site visited, every click, every scroll. The new version changes that equation. Real-time anti-tracking means the tracker script never even loads. Site-level ad controls let you tell Amazon \"no personalized ads\" while keeping them on a news site you want to support. On-device processing means when Chrome analyzes a page for phishing or malware, the analysis happens on your laptop, not in the cloud. It's the biggest privacy shift Chrome has made since Incognito mode. And it's free \u2014 you just have to update.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Chrome127",
-        "#PrivacyTools"
-      ]
-    },
-    {
-      "id": "onyx-2026-07-30-news-8",
-      "type": "news",
-      "date": "2026-07-30",
-      "title": "Find any file instantly \u2014 Everything Search indexes your whole drive in seconds",
-      "tag": "Tech Note",
-      "summary": "Everything by voidtools is a tiny free program that indexes every filename on your Windows drive in about one second and shows results as you type. Download the installer at voidtools.com (choose 64-bit for modern PCs).",
-      "truth": "Windows Search is slow because it reads file contents, not just names. Everything only reads the file table \u2014 it's the difference between reading every book in the library versus just checking the card catalog. Customers tell me \"I can never find my stuff\" and five minutes later they're typing \"tax 2024\" and seeing the PDF instantly.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#EverythingSearch",
-        "#Voidtools"
-      ]
-    },
-    {
-      "id": "onyx-2026-08-08-tip-12",
-      "type": "tip",
-      "date": "2026-08-08",
-      "title": "Windows 11 Recall is watching \u2014 here is how to turn it off at Settings > Privacy & security > Recall",
-      "tag": "Tech Tip",
-      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings \u2192 Privacy & security \u2192 Recall & snapshots \u2192 turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" \u2192 \"Delete all\" to wipe existing data.",
-      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots \u2014 including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Privacy"
-      ]
     }
   ],
-  "updated": "2026-08-08",
+  "updated": "2026-08-10",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
@@ -608,7 +611,7 @@
   },
   "today_trivia": {
     "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
+    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
     "category": "Hardware",
     "date": "2026-08-09"
   },
@@ -628,11 +631,11 @@
         },
         {
           "id": "1to3",
-          "label": "1\u20133 years"
+          "label": "1–3 years"
         },
         {
           "id": "3to5",
-          "label": "3\u20135 years"
+          "label": "3–5 years"
         },
         {
           "id": "gt5",

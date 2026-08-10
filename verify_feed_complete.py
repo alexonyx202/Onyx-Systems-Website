@@ -78,6 +78,8 @@ KNOWN_PRODUCTS = [
     "visipics",
     # Extended 2026-08-08: Today's Onyx Tech Notes real products
     "crystaldiskinfo", "crystalmark.info",
+    # Extended 2026-08-10: SanDisk (genuine name-brand flash drives, sandisk.com) — real product named + obtain method stated.
+    "sandisk",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

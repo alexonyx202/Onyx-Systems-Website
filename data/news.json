@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-09",
+  "updated": "2026-08-10",
   "items": [
+    {
+      "id": "n-2026-08-10",
+      "type": "newsletter",
+      "date": "2026-08-10",
+      "title": "The 'Gold Bar' Scam: Fake Computer Warning, Real Lost Savings",
+      "tag": "Daily Brief",
+      "summary": "title: \"The 'Gold Bar' Scam: Fake Computer Warning, Real Lost Savings\"",
+      "comic": "Newsletter - 2026-08-10-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-10-news1",
+      "type": "tech-note",
+      "date": "2026-08-10",
+      "title": "Don't trust the $5 flea-market flash drive with your photos — buy a genuine SanDisk from sandisk.com or a trusted store",
+      "tag": "Tech Note",
+      "summary": "Cheap no-name flash drives often lie about their size — a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose — family photos, tax returns, school work — buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake."
+    },
+    {
+      "id": "t-2026-08-10-tip1",
+      "type": "tech-note",
+      "date": "2026-08-10",
+      "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
+      "tag": "Tech Tip",
+      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte."
+    },
     {
       "id": "n-2026-08-09",
       "type": "newsletter",
@@ -101,40 +127,6 @@
       "tag": "Daily Brief",
       "summary": "Change all router default credentials immediately via 192.168.1.1 or 192.168.0.1 in your browser. Daily tip: Unplug both modem and router, wait 30 seconds, plug modem first (wait for solid lights), then router. Source: CISA.gov — Secure Your Home Network (updated 2026)",
       "comic": "Newsletter - 2026-08-02-0800-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-02-1",
-      "type": "tech-note",
-      "date": "2026-08-02",
-      "title": "Google Chrome patches actively exploited zero-day — update now",
-      "tag": "Security Alert",
-      "summary": "Update Chrome now via Settings > About Chrome; restart browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux)",
-      "cta": {
-        "label": "Update Chrome",
-        "href": "https://www.google.com/chrome/"
-      }
-    },
-    {
-      "id": "t-2026-08-02-2",
-      "type": "tech-note",
-      "date": "2026-08-02",
-      "title": "Check your solid-state drive health with CrystalDiskInfo — free tool",
-      "tag": "Maintenance",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info; run monthly — blue status = good, yellow = warning, red = backup immediately and replace drive",
-      "cta": {
-        "label": "Get CrystalDiskInfo",
-        "href": "https://crystalmark.info/en/software/crystaldiskinfo/"
-      }
-    },
-    {
-      "id": "n-2026-07-31",
-      "type": "newsletter",
-      "date": "2026-07-31",
-      "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
-      "tag": "Daily Brief",
-      "summary": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
-      "comic": "Newsletter - 2026-07-31-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     }
   ]
