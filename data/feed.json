@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-11-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-11",
+      "title": "Windows Update Today: Hackers Were Already Using One of the 400 Holes It Fixes",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft released its monthly computer update today — and it's a big one. The free update closes 400 security holes in Windows, including one that a group of hackers was already using to sneak bad programs onto people's computers. Don't put this one off. Open the Start menu, type \"check for updates,\" and let your computer restart when it asks. The update is built into Windows and free from Microsoft. If it ever feels like more than you want to tackle, bring it to us and we'll handle it.",
+      "image": "assets/img/news/2026-08-11-composite.jpg",
+      "comic": "assets/img/news/2026-08-11-comic-square.jpg",
+      "read_more": "#contact",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#WindowsUpdate",
+        "#Security"
+      ]
+    },
+    {
       "id": "onyx-2026-08-10-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-10",
@@ -185,27 +203,41 @@
         "#Cybersecurity",
         "#RouterSecurity"
       ]
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-07-31-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-07-31",
-      "title": "FBI IC3 Impersonation Scam: They're Pretending to Be the FBI",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are impersonating the FBI's IC3 center, claiming they've \"recovered\" your stolen money and need remote access or banking logins to return it. The real FBI never calls out of the blue, never asks for remote access, passwords, or fees. Hang up. Don't click unexpected links. Report at ic3.gov. If you gave access or money, call your bank and bring your computer in. *Source: FBI Public Service Announcement — July 20, 2026*",
-      "image": "assets/img/news/2026-07-31-composite.jpg",
-      "comic": "assets/img/news/2026-07-31-comic-square.jpg",
-      "read_more": "#contact",
+      "id": "onyx-2026-08-11-post-1",
+      "type": "news",
+      "date": "2026-08-11",
+      "title": "Got scammed once? Now crooks are coming back for round two — never pay an \"upfront fee\" to get money back, report it free at ReportFraud.ftc.gov",
+      "tag": "Tech Note",
+      "summary": "The FTC just issued a new warning about \"refund and recovery\" scams. Scammers buy lists of people who already lost money to a scam, then call pretending to be a government agency, a law firm, or a consumer group and promise to get the money back — if you first pay a \"processing fee\" or hand over your bank details. No legitimate organization ever charges you to recover a refund. If it happens, report it free at ReportFraud.ftc.gov.",
+      "truth": "I see this all the time, and it makes me mad every single time. The first scam took your savings; the second one — the call offering to \"get it back\" — is the same crooks selling your name to the next thief and taking what's left. Most people don't realize a real refund never costs you a penny up front. The honest answer is: if someone cold-calls you offering to recover money for a fee, hang up. That's the scam calling you back.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#FBI-IC3-Scam",
-        "#SecurityAlert"
+        "#FTCScam",
+        "#Security"
       ]
-    }
-  ],
-  "posts": [
+    },
+    {
+      "id": "onyx-2026-08-11-post-2",
+      "type": "tip",
+      "date": "2026-08-11",
+      "title": "Microsoft Edge is turning off older add-ons starting this month — swap the classic uBlock Origin for the free uBlock Origin Lite in the Edge Add-ons store, or move to Firefox at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Microsoft is retiring the older kind of browser add-on in Microsoft Edge starting August 2026, and the classic version of uBlock Origin — one of the most popular free ad blockers — is on the affected list. The fix takes two minutes: open Edge, click the three-dot menu → Extensions → \"Get extensions for Microsoft Edge,\" search \"uBlock Origin Lite,\" and install it free. Or switch to Firefox at firefox.com, where the full uBlock Origin keeps working.",
+      "truth": "Most people don't realize their ad blocker is a separate little program, and browsers quietly retire old programs just like everything else gets retired. The counter-intuitive part: an ad blocker that can't update anymore is worse than none, because you think you're protected while the ads and trackers roll right back in. The honest answer is, when your browser tells you an add-on needs attention, deal with it that day — it takes less time than a load of laundry.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#uBlockOrigin",
+        "#Edge"
+      ]
+    },
     {
       "id": "onyx-2026-08-10-post-3",
       "type": "tip",
@@ -301,41 +333,9 @@
         "#Windows11",
         "#Privacy"
       ]
-    },
-    {
-      "id": "onyx-2026-08-04-news-1",
-      "type": "news",
-      "date": "2026-08-04",
-      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator — Arrives August 11",
-      "tag": "Tech Note",
-      "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
-      "truth": "Most people don't realize Windows 11 installs an AI image generator by default that uses disk space and memory. If you never create AI images, removing it frees up resources. The fingerprint reader support is genuinely useful — I've had customers buy external readers that didn't work with Windows Hello before.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#KB5101684"
-      ]
-    },
-    {
-      "id": "onyx-2026-08-02-news-1",
-      "type": "news",
-      "date": "2026-08-02",
-      "title": "Google Chrome patches actively exploited zero-day — update now",
-      "tag": "Tech Note",
-      "summary": "Google released an emergency Chrome update fixing a high-severity flaw that hackers are already using. Update Chrome now via Settings > About Chrome. Restart the browser to apply version 145.0.7632.75/76 (Windows/Mac) or 144.0.7559.75 (Linux).",
-      "truth": "Google released an emergency Chrome update February 13, 2026 fixing a high-severity use-after-free vulnerability in the CSS component. Researcher Shaheen Fazim reported the flaw February 11. The vulnerability allows arbitrary code execution within the browser sandbox via malicious websites. No sandbox escape has been confirmed. This is the first actively exploited Chrome zero-day of 2026. Microsoft Edge and other Chromium-based browsers will receive downstream patches.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#BrowserSecurity",
-        "#ZeroDay"
-      ]
     }
   ],
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

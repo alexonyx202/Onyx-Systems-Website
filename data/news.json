@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "items": [
+    {
+      "id": "n-2026-08-11",
+      "type": "newsletter",
+      "date": "2026-08-11",
+      "title": "Windows Update Today: Hackers Were Already Using One of the 400 Holes It Fixes",
+      "tag": "Daily Brief",
+      "summary": "Microsoft released its monthly computer update today — and it's a big one. The free update closes 400 security holes in Windows, including one that a group of hackers was already using to sneak bad programs onto people's computers. Don't put this one off. Open the Start menu, type \"check for updates,\" and let your computer restart when it asks. The update is built into Windows and free from Microsoft. If it ever feels like more than you want to tackle, bring it to us and we'll handle it.",
+      "comic": "Newsletter - 2026-08-11-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-11-news1",
+      "type": "tech-note",
+      "date": "2026-08-11",
+      "title": "Got scammed once? Now crooks are coming back for round two — never pay an \"upfront fee\" to get money back, report it free at ReportFraud.ftc.gov",
+      "tag": "Tech Note",
+      "summary": "The FTC just issued a new warning about \"refund and recovery\" scams. Scammers buy lists of people who already lost money to a scam, then call pretending to be a government agency, a law firm, or a consumer group and promise to get the money back — if you first pay a \"processing fee\" or hand over your bank details. No legitimate organization ever charges you to recover a refund. If it happens, report it free at ReportFraud.ftc.gov."
+    },
+    {
+      "id": "t-2026-08-11-tip1",
+      "type": "tech-note",
+      "date": "2026-08-11",
+      "title": "Microsoft Edge is turning off older add-ons starting this month — swap the classic uBlock Origin for the free uBlock Origin Lite in the Edge Add-ons store, or move to Firefox at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Microsoft is retiring the older kind of browser add-on in Microsoft Edge starting August 2026, and the classic version of uBlock Origin — one of the most popular free ad blockers — is on the affected list. The fix takes two minutes: open Edge, click the three-dot menu → Extensions → \"Get extensions for Microsoft Edge,\" search \"uBlock Origin Lite,\" and install it free. Or switch to Firefox at firefox.com, where the full uBlock Origin keeps working."
+    },
     {
       "id": "n-2026-08-10",
       "type": "newsletter",
@@ -94,40 +120,6 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "t-2026-08-04-news1",
-      "type": "tech-note",
-      "date": "2026-08-04",
-      "title": "Windows 11 August 2026 Update (KB5101684) Lets You Uninstall Built-In AI Image Generator — Arrives August 11",
-      "tag": "Tech Note",
-      "summary": "Windows 11 August 2026 update (KB5101684) releases August 11. For the first time, you can uninstall the built-in Image Generation AI model if you don't use it. Also adds Windows Hello support for external fingerprint readers and new touchpad gestures. Get it via Settings > Windows Update > Check for updates on or after August 11.",
-      "cta": {
-        "label": "Open Windows Update",
-        "href": "ms-settings:windowsupdate"
-      }
-    },
-    {
-      "id": "t-2026-08-04-tip1",
-      "type": "tech-note",
-      "date": "2026-08-04",
-      "title": "Restart Your Computer Once a Week — Clears Memory Leaks, Stuck Updates, and Sluggish Performance",
-      "tag": "Tech Tip",
-      "summary": "Leave your computer on for weeks and it gets sluggish — memory leaks, stuck background processes, updates that never finish installing. A full restart (not sleep, not hibernate) clears all that. Click Start → Power → Restart. Do it Friday afternoon so Monday starts fresh. Your computer will boot faster and programs will respond snappier.",
-      "cta": {
-        "label": "Restart Now",
-        "href": "ms-settings:recovery"
-      }
-    },
-    {
-      "id": "n-2026-08-02",
-      "type": "newsletter",
-      "date": "2026-08-02",
-      "title": "Your Router Is the Front Door — Is It Locked?",
-      "tag": "Daily Brief",
-      "summary": "Change all router default credentials immediately via 192.168.1.1 or 192.168.0.1 in your browser. Daily tip: Unplug both modem and router, wait 30 seconds, plug modem first (wait for solid lights), then router. Source: CISA.gov — Secure Your Home Network (updated 2026)",
-      "comic": "Newsletter - 2026-08-02-0800-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }
