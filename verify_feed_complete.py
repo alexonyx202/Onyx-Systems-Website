@@ -80,6 +80,9 @@ KNOWN_PRODUCTS = [
     "crystaldiskinfo", "crystalmark.info",
     # Extended 2026-08-10: SanDisk (genuine name-brand flash drives, sandisk.com) — real product named + obtain method stated.
     "sandisk",
+    # Extended 2026-08-12: Florida Dept. of Revenue (floridarevenue.com/backtoschool) —
+    # the official Back-to-School Sales Tax Holiday rules page, a real named government source.
+    "floridarevenue", "back-to-school",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
