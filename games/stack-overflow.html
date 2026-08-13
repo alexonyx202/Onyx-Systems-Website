@@ -84,8 +84,8 @@
   #initBtns{display:flex;justify-content:center;gap:8px;margin-top:8px;}
   /* ---- HUD buttons ---- */
   #hudBtns{position:absolute;inset:0;pointer-events:none;z-index:8;}
-  #hudBtns .hbtn{pointer-events:auto;position:absolute;width:38px;height:38px;border-radius:10px;
-    background:rgba(23,30,74,.85);border:2px solid #0d1230;color:#eaf2ff;font-size:16px;
+  #hudBtns .hbtn{pointer-events:auto;position:absolute;width:44px;height:44px;border-radius:11px;
+    background:rgba(23,30,74,.85);border:2px solid #0d1230;color:#eaf2ff;font-size:17px;
     cursor:pointer;display:none;touch-action:manipulation;box-shadow:0 3px 0 #0d1230;}
   #hudBtns.show .hbtn{display:block;}
   #btnPause{top:6px;right:6px;}
@@ -141,6 +141,37 @@
   .lv.overflow .n{color:var(--green);}
   .lv.overflow .nm{color:#9df0c0;}
   .lv.overflow{border-color:#1d6b45;}
+  /* ---- how-to-play field manual ---- */
+  .overlay.help{justify-content:flex-start;overflow:hidden;padding:10px;}
+  .overlay.help::before,.overlay.help::after{display:none;}
+  .helpHead{text-align:center;flex:0 0 auto;}
+  .helpHead h1{margin-bottom:0;}
+  .helpHead .sub{margin-bottom:8px;}
+  #helpSheet{width:404px;max-width:100%;flex:1 1 auto;min-height:0;overflow-y:auto;
+    display:flex;flex-direction:column;gap:7px;padding:2px 4px 10px;scrollbar-width:thin;
+    scrollbar-color:#3a4b8f transparent;}
+  #helpSheet::-webkit-scrollbar{width:8px;}
+  #helpSheet::-webkit-scrollbar-thumb{background:#3a4b8f;border-radius:8px;}
+  .hsec{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:900;letter-spacing:.18em;
+    color:var(--amber);margin:5px 0 0;}
+  .hsec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#3a4b8f,transparent);}
+  .hsec.good{color:var(--green);} .hsec.danger{color:var(--red);} .hsec.info{color:var(--cyan);}
+  .hcard{display:flex;align-items:center;gap:10px;text-align:left;background:rgba(23,30,74,.55);
+    border:1px solid #2a3568;border-radius:12px;padding:7px 10px;}
+  .hcard .hpic{width:56px;height:56px;flex:0 0 56px;border-radius:9px;background:#0d1230;
+    box-shadow:inset 0 0 0 1px #232e68;}
+  .hcard b{display:block;font-size:12.5px;color:var(--text);letter-spacing:.03em;line-height:1.3;}
+  .hcard b .pts{color:var(--amber);font-size:10.5px;}
+  .hcard small{display:block;font-size:11px;line-height:1.45;color:var(--dim);margin-top:1px;}
+  .hcard small b{display:inline;font-size:11px;}
+  .hcard.warn{border-color:#3d1f4a;background:rgba(61,31,74,.35);}
+  .hcard.warn b{color:#ff9de2;}
+  .hcard.bad{border-color:#4a2228;background:rgba(74,34,40,.35);}
+  .hcard.bad b{color:#ff8a94;}
+  .helpKey{display:inline-block;background:#0d1230;border:1px solid #3a4b8f;border-radius:6px;
+    padding:0 5px;margin:0 1px;font-size:10.5px;font-weight:900;color:var(--cyan);line-height:1.7;}
+  .helpFoot{flex:0 0 auto;text-align:center;padding:2px 0 4px;}
+  .helpFoot .mini{margin:0;}
   @media (max-height:430px){ .tbtn{width:56px;height:56px;font-size:20px;} .tbtn.jump{width:64px;height:64px;font-size:22px;} #tDash{width:44px;height:44px;font-size:15px;} }
   @media (hover:none) and (pointer:coarse){ #kbdHint{display:none;} }
 </style>
@@ -179,7 +210,8 @@
       <div class="panel controls" id="kbdHint">
         <b>←→/A D</b> move &nbsp;·&nbsp; <b>SPACE/↑/W</b> jump (hold = higher)<br>
         <b>SHIFT/X</b> dash &nbsp;·&nbsp; <b>P</b> pause &nbsp;·&nbsp; <b>M</b> sound &nbsp;·&nbsp; <b>ESC</b> menu<br>
-        Stomp bugs · collect <span style="color:var(--green)">bits</span> · <span style="color:var(--cyan)">◈ shield</span> · <span style="color:var(--amber)">⚡ turbo</span> · reach <span style="color:var(--amber)">RETURN</span>
+        Stomp bugs (not <span style="color:var(--red)">spikers</span>!) · collect <span style="color:var(--green)">bits</span> · <span style="color:var(--cyan)">◈ shield</span> · <span style="color:var(--amber)">⚡ turbo</span> · <span style="color:var(--amber)">^</span> springs<br>
+        <span style="color:var(--green)">▤</span> moving platforms · <span style="color:var(--dim)">%%</span> crumble floors · reach <span style="color:var(--amber)">RETURN</span>
       </div>
       <div id="diffRow">
         <button class="diffbtn" data-diff="easy">EASY</button>
@@ -196,8 +228,21 @@
       </div>
       <div style="margin-top:4px">
         <button class="btn ghost" id="btnSettings">⚙ SETTINGS</button>
+        <button class="btn ghost" id="btnHelp">❓ HOW TO PLAY</button>
       </div>
       <p class="blink" style="color:var(--dim);font-size:11px;margin:8px 0 0">PRESS ENTER OR CLICK TO START</p>
+    </div>
+
+    <div class="overlay help" id="ovHelp">
+      <div class="helpHead">
+        <h1 class="title" style="font-size:24px">HOW TO PLAY</h1>
+        <p class="sub">// SYSTEM FIELD MANUAL</p>
+      </div>
+      <div id="helpSheet"></div>
+      <div class="helpFoot">
+        <button class="btn ghost" id="hBack">◀ BACK</button>
+        <p class="mini" style="margin:6px 0 0">ESC / B / CLICK BACK RETURNS</p>
+      </div>
     </div>
 
     <div class="overlay" id="ovSelect">
@@ -207,6 +252,7 @@
       <div id="grid"></div>
       <div style="margin-top:6px">
         <button class="btn ghost" id="btnBack">◀ BACK</button>
+        <button class="btn ghost" id="selHelp">❓ HOW TO PLAY</button>
       </div>
       <p id="selHint" style="color:var(--dim);font-size:10px;margin:8px 0 0">CLICK A FRAME TO DEBUG · 1–9 RUN · 0 = OVERFLOW MODE · ESC BACK</p>
     </div>
@@ -218,6 +264,7 @@
         <button class="btn primary" id="pResume">▶ RESUME</button><br>
         <button class="btn" id="pRestart">↺ RESTART</button>
         <button class="btn" id="pSound">🔊 SOUND</button><br>
+        <button class="btn ghost" id="pHelp">❓ HOW TO PLAY</button>
         <button class="btn ghost" id="pMenu">◀ MENU</button>
       </div>
       <p class="mini" style="margin:8px 0 0">RUN AUTO-SAVED · ESC RESUME · GAMEPAD: START RESUME / B QUIT</p>
@@ -253,7 +300,7 @@
       <div style="margin-top:6px">
         <button class="btn ghost" id="sBack">◀ BACK</button>
       </div>
-      <p class="credits">STACK OVERFLOW · SYSTEM STACK CLIMBER <b>v4</b><br>
+      <p class="credits">STACK OVERFLOW · SYSTEM STACK CLIMBER <b>v5</b><br>
       Single-file HTML5 · Canvas2D + WebAudio · zero assets<br>
       <span id="kbdCred"></span></p>
     </div>
@@ -337,9 +384,255 @@
 <script>
 "use strict";
 /* =====================================================================
-   STACK OVERFLOW — v2  (single-file arcade platformer)
+   STACK OVERFLOW — v4  (single-file arcade platformer)
    A data packet climbs the corrupted call stack before it overflows.
    Single .html, vanilla JS, Canvas2D + WebAudio, zero assets.
+   ---------------------------------------------------------------------
+   v3 (2026-08-11): FULL GAMEPLAY OVERHAUL — 9 themed frames (distinct
+   palettes + parallax backdrops), 6 new mechanics: springs (^), moving
+   platforms (=/~) with carry,
+   breakable floors (%), spiker enemy (5), star pickups (*). All levels
+   redesigned — fixes the old L5 unreachable-exit hop and every same-column
+   platform stack that head-bonked jumps. Added in-game HOW TO PLAY manual
+   (❓ button + H key) with real-sprite illustrations of every object,
+   enemy, pickup, and rule; HUD text shadows + 44px touch targets.
+   Verified: harness (stack-overflow-v3-verify.js) 66/66 ×3 + playtest
+   (stack-overflow-v3-playtest.js) 2/2 ×3 + real-Chromium smoke, 0 errors.
+   ---------------------------------------------------------------------
+   v3.1 (2026-08-11): GAMEPLAY-FEEL FIXES after a full level/mechanics audit:
+   • PIT DEATH — out-of-bounds tiles below the map are no longer solid, so
+     falling into a floor hole drops you off the world and kills you instead
+     of landing on an invisible floor at the map edge (was a soft-lock).
+   • L2 REWORK — the shuttle now spans a wide deadly pit (cols 9-18) as the
+     required crossing: board it from the ledge, ride over, jump up-left to
+     the row-18 platform. No more 2-tile floating pad over a jumpable hole.
+   • L1 spring kept as an air-trampoline shortcut (bounce at the floor pad,
+     steer left, land on the row-14 platform).
+   • Removed the two janky mid-air springs (L6/L8) that randomly rocketed
+     players crossing the 15→13 jump; L8's floating breakable tile removed;
+     L5's redundant mover under the wraith removed; L6's elevator moved one
+     column right so the ride no longer clips the row-13 platform.
+   New harness checks: pit death, spring-placement sanity, and a full real-
+   input L2 mover-bridge playtest (board → ride → land on row 18).
+   ---------------------------------------------------------------------
+   v3.2 (2026-08-11): PIT-HAZARD FRAME — new L9 'fault()' hangs over a
+   molten void (no floor at all): the spawn is a wide island, narrow 4-6
+   tile ledges climb to the exit, and a horizontal shuttle (row 20) is the
+   ONLY way up from the island. New LAVA theme (amber tiles, magma glow +
+   rising embers). Boss frame moves to L10. Verified: harness 70/70 ×3.
+   ---------------------------------------------------------------------
+   v3.3 (2026-08-11): ENDLESS-MODE MECHANIC SCALING — overflow frames now
+   include the new mechanics, scaling with depth: a floor shuttle (from
+   depth 2) rides faster each frame (mover speed × genSpeed, capped 1.5×),
+   and spiker crawlers appear from depth 2 and grow to 3. Campaign movers
+   are unaffected (genSpeed = 1). Verified: harness 74/74 ×3.
+   v3.4 (2026-08-11): ALL-FRAMES REAL-INPUT PLAYTEST + PORTAL LANE FIXES —
+   the playtest (stack-overflow-v3-playtest.js) now drives every frame with
+   real keys: physics-validated climbs for the ladder frames, a bespoke
+   shuttle crossing for L2/L9, a crumble-floor double-jump for L4, and a
+   predictive-aim summit stomp for the L10 boss — 10/10 passes.
+   Portal cells that sat one row above a mandatory walking lane could
+   auto-warp players mid-climb (the 'o/q up' shortcut or the 'O/Q down'
+   trap): L3's O lifted a row above the row-6 lane, L7's O above the row-9
+   lane, and L7's q/Q cleared from the row-18/row-6 lanes. The lane fixes
+   also un-trapped real players, not just the harness.
+   v3.5 (2026-08-12): SPEEDRUN CLOCK IN THE PLAYTEST — the playtest now
+   wraps G.update to meter simulated per-level clear times, asserts each
+   level (and the total run) stays under a budget (~2.5x measured baseline,
+   so a difficulty regression that adds retry/death loops blows the
+   budget and fails the run), prints a speedrun table with best-time (PB)
+   deltas, and saves PBs to stack-overflow-times.json via --update-pb.
+   v3.6 (2026-08-12): BOSS-STOMP GRACE (found by a live-browser human
+   playtest) — a successful boss stomp used to be lethal: STOMP_BOUNCE (390)
+   can't lift the player out of the boss's 44px body before the next frame's
+   collision check, and since the player is rising (not falling onto the
+   head) the check killed them. The headless harness masked it with setInv;
+   a real player died on EVERY successful stomp, making the L10 fight
+   unwinnable. stompBoss() now grants 0.6s (stompEnemy 0.55s) of
+   invincibility so the bounce clears the body — the player can now chain
+   double-stomps. Locked in by a new bare-stomp regression check.
+   ---------------------------------------------------------------------
+   v4.0 (2026-08-12): PROFESSIONAL FRAME REDESIGN — every frame now has its
+   own distinct layout and purpose, designed with real level-design
+   principles (guidance, safe zones, foreshadowing, branching, pacing):
+   • TELEPORTS REMOVED — the o/O q/Q portal pairs are gone entirely (code,
+     maps, sounds, art, manual, debug API). No more unexplained warp tiles.
+   • L1 init() — FIRST BOOT: a clean staircase teaches the climb — the
+     first bench sits clear of the wall so a running jump lands on it
+     naturally; bits breadcrumb every landing, the first bug teaches the
+     stomp, a heart marks the exit deck, and a floor spring in a clear
+     column flings you to the bonus star shelf above.
+   • L2 boot() — BOOT SECTOR: the lower half is un-loaded (deadly pit), so
+     the loader shuttle is the only way up — board at its left extreme,
+     ride the sweep, hop onto the wide docking ledge. Above it a clean
+     3-row boot tower climbs to the RETURN bench, with a heart rest stop
+     and the RAM result waiting over the deck.
+   • L3 parse() — TOKEN COLUMNS: narrow 3-row parse benches; a fast spark
+     guards the middle token.
+   • L4 render() — RENDER BRIDGE: compositing layers; the crumble overdraw
+     crossing is the centerpiece, with a wraith beneath the upper layer.
+   • L5 network() — UPLINK SHAFT: narrow shaft climb, packet lifter on
+     the right edge, flyer guarding the last hop.
+   • L6 physics() — PHYSICS LAB: close-set bench slabs (a new rhythm), the
+     spiker as an un-compressible rigid body on the third bench.
+   • L7 ai() — AI VAULT: two vault walls frame a clean gantry zigzag; a
+     fast walker patrols the mid gantry, a spiker guards the upper reach,
+     the shield arms you for the final push, the star floats over the cap.
+   • L8 main() — MAIN LOOP: left column, a loader-mover crossover across a
+     wide gap, right tower with spiker/fast-spark, plus a spring that
+     flings you to a hidden star deck (branching reward).
+   • L9 fault() — LAVA CASCADE: narrow ledge climb past a spiker sentinel,
+     star hanging over the lava void, shuttle ferry over the tail.
+   Every pickup now sits on the path or a deliberate risk/reward branch —
+   no random placements. Verified: v3 verify 74/74 ×3, playtest 11/11 ×3
+   (real-input, per-frame, speedrun-budgeted).
+   v4.1 (2026-08-12): OVERFLOW MODE GETS THE CAMPAIGN'S RHYTHM — generated
+   frames are no longer a random alternating zigzag with scattered bugs.
+   Each frame is a 3-row staggered climb drawn from one of three proven
+   campaign band geometries (L1's 5-wide stairs at depths 1–2, L6's
+   close-set slabs at 3–5, L9's narrow ledges from 6), and enemies are
+   placed diegetically: spiker sentinels guard the upper-mid ledges (1→3,
+   monotonic), the fast spark guards the middle token, flyers sweep the
+   gaps into the upper climb, wraiths flank the approach, and patrol bugs
+   ride bench tops — never on the entry or exit bench. The tower grows
+   24→33 rows with depth, the L2 loader shuttle rides faster each frame
+   (×1.05→×1.5 cap), the shield arms you before the spiker gauntlet, and
+   the L1 floor-spring star shortcut returns on odd depths. New
+   check-endless.js validates every hop + pickup with real input at depths
+   1–25. Verified: verify 74/74 ×3 + playtest 11/11 ×3 on both builds.
+   v4.2 (2026-08-12): THE OVERFLOW ARENA GETS STRUCTURE — L10 is no longer
+   a flat walk-and-stomp on a summit strip. The crash core is a designed
+   boss arena: two floor wings (cols 3-9 / 12-15) flank a fall PIT (cols
+   10-11) whose tram shuttle catches any drop and rides the player back
+   out; patrol ledges above each wing are defended by bug minions and hold
+   the star bonus (stand up there and drop-stomp the boss beneath); the
+   tower below climbs a clean 3-row rhythm with bits on every landing, a
+   spiker sentinel, and a heart rest-stop, and a shield arms you at the
+   arena gate. The fight itself now has a PHASE 2: at half HP the overflow
+   bug ENRAGES — it speeds up (~1.65x), sheds a bug on every stomp (cap 5,
+   and they're fast), rings a red aura, banners the phase, and is
+   saved/restored so a resume keeps the rage. Verified: verify 77/77 ×3 +
+   playtest 11/11 ×3 on both builds (L10 real-input: arena climb + pit-tram
+   recovery + two-phase stomp fight, 93s under the 200s budget).
+   v4.3 (2026-08-12): SMOOTHER OVERFLOW RAMP — the early frames are gentler
+   and the climb eases into its challenge instead of spiking at depth 2.
+   Benches stay 5-wide through depth 8 (the L9 narrow rhythm waits for depth
+   9), the first spiker sentinel appears at depth 3 instead of 2 (1 → 2 → 3
+   by depth 6), and enemy/shuttle speed is flat at campaign speed through
+   depth 2, then ramps slowly (4%/depth, easing to 5%/depth from 6) to the
+   same 1.5× cap at depth 13. Verified: verify 77/77 ×3 + playtest 11/11 ×3
+   + check-endless (depths 1–25 real-input hops, spiker + speed contracts).
+   v4.4 (2026-08-12): THE OVERFLOW BUG SLAMS — phase 1 is no longer a
+   walk-up stomp. Once the player reaches the arena, the boss periodically
+   stops and braces (klaxon + '!!' + red charge glow), then SLAMS the floor:
+   a shockwave erupts from the bug and sweeps the wings in both directions.
+   Dodge by jumping the wave, hiding in the pit below the wing line, or
+   clearing a guard bug and taking a patrol ledge (the safe perch). The
+   wind-up is a punish window — the stationary boss is a free stomp, and the
+   stomp bounce + grace carries you over the wave. Phase 2 slams sooner
+   (3.8s vs 5.5s) with wider, faster waves. Verified: verify 79/79 ×3 +
+   playtest 11/11 ×3 on both builds (L10 slam tests: telegraph, wave sweep,
+   ledge safety, wing lethality, phase-2 wave growth).
+   v4.5 (2026-08-12): STOMP STAGGER — the enrage keeps its ~119 px/s speed,
+   but every stomp now STAGGERS the bug for 0.6s: it freezes in place (dizzy
+   stars orbit its head) while the slam timers keep ticking, so the waves
+   still come — the stagger just buys you a clean beat to land, recover, and
+   retreat before the fast phase-2 patrol resumes. The slam timers are
+   untouched: the wind-up remains the free-stomp punish window, and the
+   stagger makes chaining stomps on the enraged bug survivable. Verified:
+   verify 80/80 ×3 + playtest 11/11 ×3 on both builds (stagger test: frozen
+   during the window, resumes patrolling after).
+   v4.6 (2026-08-12): LEDGE LIPS — the L10 patrol ledges each grow a 1-tile
+   lip on their inner edge (ledges span cols 0-3 and 16-19, right wing
+   extends to col 16), so a drop-stomp that misses the boss's body falls
+   onto the wing instead of off the arena edge — the sharpest single miss
+   in the fight becomes a recoverable drop. The ledge guards, pit tram, and
+   climb geometry are unchanged. Verified:   verify 81/81 ×3 + playtest
+   11/11 ×3 on both builds (lip structure test + drop test: a miss off the
+   ledge's inner edge lands on the wing, not the void).
+   v4.7 (2026-08-12): FLOOR-END GLOW — subtle cyan glow strips now mark
+   every L10 arena edge where the walkable floor drops: both pit edges
+   between the wings, both outer arena edges (void), and the patrol-ledge
+   lips (so the drop-stomp timing reads at the ledge edge too). Each strip
+   is a short 1-tile marker falling from the floor surface, gently pulsing,
+   additive-blended so it reads as a glow rather than a block. Computed
+   from the tile grid at buildLayer (arena band only — tower bench edges
+   stay clean), so it stays in sync with the map. Verified: verify 82/82
+   ×3 + playtest 11/11 ×3 on both builds (glow-strip test: all 6 edges
+   present at exact px, strips are short lips).
+   v4.8 (2026-08-12): PERCH-LOOP TUTORIAL — the FIRST L10 fight teaches the
+   drop-stomp loop with non-blocking HINT pills at the bottom of the
+   screen. Arriving at the arena: 'GUARDED PERCH — the ledge bugs guard the
+   drop. Clear one, then climb up.' Standing on a perch with the boss
+   passing beneath: 'WAIT — let the bug pass BENEATH the perch, then
+   DROP-STOMP it.' The first stomp completes the loop ('PERCH LOOP DOWN —
+   clear the guard, wait for the bug beneath, drop-stomp.') and is
+   persisted (so the tutorial never replays); dying mid-tutorial re-arms it
+   from the start. Verified: verify 83/83   ×3 + playtest 11/11 ×3 on both
+   builds (tutorial test: guard hint on arrival, wait hint on perch+boss,
+   stomp completes, reload stays learned).
+   v4.9 (2026-08-12): PHASE-2 INTENSITY DIAL — difficulty now scales the
+   slam pressure, not just enemy speed: EASY runs slower, wider-spaced
+   waves (speed ×0.85, interval ×1.2); NORMAL is the classic 260/300 px/s
+   and 5.5s/3.8s cadence; HARD presses with faster, tighter waves (speed
+   ×1.2, interval ×0.8 — phase-2 waves at 360 px/s every ~3.0s). The
+   multipliers layer on top of the enrage escalation, and the difficulty
+   selector descriptions advertise the dial. Verified: verify 84/84 ×3 +
+   playtest 11/11 ×3 on both builds (dial test: hard phase-1/phase-2 wave
+   speed + interval, easy gentler, difficulty always restored).
+   v4.10 (2026-08-12): THE ENRAGE DIAL — the phase-2 intensity dial now
+   scales the whole enrage, not just the slams: each difficulty carries its
+   own rage multiplier + patrol cap (EASY 1.5×/120 px/s, NORMAL keeps the
+   classic 1.65×/135 — still ~119 at the phase change, HARD 1.8×/150) and
+   its own shed-bug ceiling (shedCap 3/5/7 total walkers, ledge guards
+   included — easy's cap binds at one shed bug, hard fields three). The
+   enrage patrol now matches the slam pressure: hard's phase 2 is a
+   150 px/s rage with 360 px/s waves every ~3.0s and a fuller bug field.
+   Verified: verify 85/85 ×3 + playtest 11/11 ×3 on both builds
+   (   enrage-dial test: speed ordering + hard 150 / easy 91.8 / normal 118.8
+   at the phase change, shed peaks 3/4/5, difficulty always restored).
+   v4.11 (2026-08-12): OUTER WING RAILS — each L10 wing's outer arena edge
+   (left x=72 / right x=408, the void sides) grows a 1-TILE RAIL on the
+   wing surface, so a missed drop or a clumsy re-climb catches on the rail
+   (or the wing behind it) instead of falling into the void: walking into
+   the edge is physically blocked, a low undershot fall is deflected back
+   onto the wing, and a straight drop into the rail column lands on the
+   rail top and steps down. The pit edges, perch loops, guard bugs, and
+   climb geometry are unchanged (the climb takeoffs thread the 144-168 gap
+   above the rails — probed from both wings). The floor-end glow follows
+   the map: the outer strips now mark the rail tops (72:168 / 408:168)
+   instead of the wing surface. The playtest's route driver learns to walk
+   fall-down edges (a ledge/rail stepping onto the wing below). Verified:
+   verify 86/86 ×3 + playtest 11/11 ×2 on both builds (rail structure +
+   walk-off catch + rail-column drop + step-down, glow at the rail tops,
+   real-input L10 climb/fight incl. the new rail hop under budget).
+   v4.12 (2026-08-12): GUARD-CLEAR GEOMETRY VERIFIED + HONEST HINT — the
+   guard-clear climb was re-verified on BOTH ledges, and the verification
+   corrected the tutorial's lesson. Measured truth: the vault rows 0-3 are
+   only the level's outer wall columns — the OPEN ledge is not
+   ceiling-blocked and jumps at full height on both perches (a guarded
+   bug is clearable by landing on it, from the climb descent or a ledge
+   jump). What's actually blocked is the WING→LEDGE jump (the ledge's
+   vertical face at the 144-168 gap forces the climb), and the guard
+   clears by LANDING on it. The first-fight hint now teaches exactly
+   that: 'GUARDED PERCH — can't jump up. Climb and LAND ON the guard.'
+   Verified: verify 88/88 ×3 + playtest 11/11 on both builds (guard-
+   clear geometry: a descent landing clears the guard on both ledges,
+   real timed climbs clear both guards end-to-end, the open ledge jump is
+   pinned at full height to lock the real geometry).
+   v4.13 (2026-08-12): PERMANENT HARD-BALANCE GATE — the playtest now runs
+   the FULL 10-frame battery at HARD with `--hard`: difficulty forced and
+   asserted at boot (changeDiff + diff check, so a broken dial can't run
+   the battery at normal tuning), hard-tuned speedrun budgets pinned from
+   three measured runs (observed max L1 27.3 / L2 15.1 / L3 20.1 / L4
+   38.9 / L5 41.2 / L6 23.0 / L7 50.7 / L8 26.9 / L9 13.6 / L10 94 s,
+   total ~351 s; budgets ~2.4x), and a separate PB store
+   (stack-overflow-times-hard.json, --update-pb). The hard win path under
+   the full dial — 2 lives, 1.2x enemy speed, 6-HP boss, slam x1.2/0.8,
+   enrage 150 px/s, shed cap 7 — is now a standing regression gate:
+   a hard-balance break that kills a fight or forces retry loops fails
+   the battery. Verified: verify 88/88 + playtest 11/11 (normal) +
+   playtest --hard 11/11 (x4 runs, incl. the pinned budgets + PB store).
    ---------------------------------------------------------------------
    v12 (2026-08-09): RESUME SANITY CHECK — the restored player is verified
    against the tile grid on Continue; if the rect overlaps a solid tile (a
@@ -414,320 +707,431 @@ var CFG = {
   START_LIVES: 3, MAX_LIVES: 5,
   DASH: { SPEED:900, DUR:0.14, CD:0.6 },
   TURBO_TIME: 6, TURBO_SPD: 1.6,
+  SPRING_V: 880,                     // bounce-pad launch velocity (~10-tile rise)
+  SPRING_CD: 0.55,
+  MOVE_PLAT: { SPEED: 74, RANGE: 2 }, // mover px/s + travel range in tiles
+  BREAK: { STAND: 0.16, RESTORE: 2.6 }, // crumble delay + respawn (s)
+  STAR_TIME: 8,                      // golden aura duration after a star
   SCORE: { BIT:10, RAM:200, STOMP:100, CLEAR:500, ALL_BITS:200, TIME_MAX:1000, BOSS:5000, BOSS_STOMP:250,
-           SHIELD:150, TURBO:100, PERFECT:300,
+           SHIELD:150, TURBO:100, PERFECT:300, STAR:500,
            DEPTH_BASE:200, DEPTH_STEP:40 },   // overflow-mode distance bonus per cleared frame
   RANK: [ {min:20000,g:'S'}, {min:12000,g:'A'}, {min:6500,g:'B'}, {min:2500,g:'C'}, {min:0,g:'D'} ],
   HS_KEY:'so_hs_v1', UNLOCK_KEY:'so_unlock_v1', MUTE_KEY:'so_muted', BEST_KEY:'so_best_v1', INI_KEY:'so_ini',
   DIFF_KEY:'so_diff_v1', SHAKE_KEY:'so_shake_v1', SAVE_KEY:'so_save_v1', DEPTH_KEY:'so_depth_v1',
-  KEYS_KEY:'so_keys_v1',
+  KEYS_KEY:'so_keys_v1', TUT_KEY:'so_tut_v1',
   PAL: { bg:'#070a12', cyan:'#22d3ee', magenta:'#e879f9', green:'#4ade80',
          amber:'#fbbf24', red:'#f87171', purple:'#a78bfa', text:'#cbd5e1' }
 };
 
 /* ============================== DIFFICULTY ==============================
+   The full boss dial: every axis of the fight scales per difficulty —
+   enemy speed (espeed), slam wave speed + interval (slamSpd / slamGap),
+   the phase-2 ENRAGE patrol speed (enrage ×, capped by enrageCap), and
+   the phase-2 shed-bug ceiling (shedCap — total walkers alive, ledge
+   guards included).
    Easy: 5 lives, bugs 15% slower, boss 4 HP, score ×0.8
    Normal: 3 lives, classic tuning, boss 5 HP, score ×1.0
    Hard: 2 lives, bugs 20% faster, boss 6 HP, score ×1.25
    ====================================================================== */
 var DIFFS = {
-  easy:   { name:'EASY',   lives:5, espeed:0.85, mult:0.8,  bossHP:4, desc:'5 lives · slower bugs · score ×0.8' },
-  normal: { name:'NORMAL', lives:3, espeed:1.0,  mult:1.0,  bossHP:5, desc:'3 lives · classic rules · score ×1.0' },
-  hard:   { name:'HARD',   lives:2, espeed:1.2,  mult:1.25, bossHP:6, desc:'2 lives · faster bugs · score ×1.25' }
+  easy:   { name:'EASY',   lives:5, espeed:0.85, mult:0.8,  bossHP:4, slamSpd:0.85, slamGap:1.2,
+            enrage:1.5, enrageCap:120, shedCap:3,
+            desc:'5 lives · slower bugs · calmer slams · gentler enrage · score ×0.8' },
+  normal: { name:'NORMAL', lives:3, espeed:1.0,  mult:1.0,  bossHP:5, slamSpd:1.0,  slamGap:1.0,
+            enrage:1.65, enrageCap:135, shedCap:5,
+            desc:'3 lives · classic rules · score ×1.0' },
+  hard:   { name:'HARD',   lives:2, espeed:1.2,  mult:1.25, bossHP:6, slamSpd:1.2,  slamGap:0.8,
+            enrage:1.8, enrageCap:150, shedCap:7,
+            desc:'2 lives · faster bugs · furious slams · brutal enrage · score ×1.25' }
 };
 
 /* ============================== LEVELS ==============================
-   Map legend:  # solid   P player start   E exit(RETURN portal)
-                b bit     R RAM chip       H heart
-                S shield chip   T turbo chip
+   Map legend:  # solid   % breakable floor (cracks, then falls through)
+                P player start   E exit (RETURN portal pad)
+                b bit     R RAM chip    H heart    * star (bonus 500)
+                S shield chip    T turbo chip
+                ^ spring pad          = moving platform (side-to-side)
+                ~ elevator platform (up-and-down)
                 1 bug(walker) 2 worm(flyer) 3 spark(fast walker)
-                4 wraith(ghost) B boss spawn
+                4 wraith(ghost) 5 spiker (unstompable)  B boss spawn
    Enemies sit one row ABOVE their platform; the engine drops them down.
    ==================================================================== */
 var LEVELS = [
-{ name:'init()', map:[
-"####################",
-"#................b.#",
-"#.................R#",
-"#................#E#",
+/* L1 init() — THE FIRST BOOT — FOLLOW THE BITS UP THE STACK */
+{ name:'init()', sub:'THE FIRST BOOT — FOLLOW THE BITS UP THE STACK', map:[
 "#..................#",
-"#..........######..#",
-"#............b.....#",
 "#..................#",
-"#.######...........#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#...##E##..........#",
+"#..........b.......#",
+"#..................#",
+"#.........#####....#",
+"#........b.........#",
+"#..................#",
+"#.#####............#",
+"#....H..b..........#",
+"#...........1......#",
+"#.........#####....#",
+"#........b.........#",
+"#..................#",
+"#.#####............#",
+"#...b..........*...#",
+"#...........1......#",
+"#.........#####....#",
+"#........b.........#",
+"#..................#",
+"#...#####..........#",
+"#P.............^...#",
+"####################"
+]},
+/* L2 boot() — BOOT SECTOR — RIDE THE LOADER ACROSS THE VOID */
+{ name:'boot()', sub:'BOOT SECTOR — RIDE THE LOADER ACROSS THE VOID', map:[
+"#..................#",
+"#..................#",
+"#...........R......#",
+"#.........##E##....#",
+"#..................#",
 "#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#............1.....#",
-"#..........######..#",
-"#..................#",
-"#..................#",
-"#.######...........#",
-"#...b.S............#",
-"#..P...............#",
-"####################"]},
-{ name:'boot()', map:[
-"####################",
-"#b.................#",
-"#.R................#",
-"#E#................#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#....2.......b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#........H.........#",
-"#..........######..#",
-"#............1.....#",
-"#..............P...#",
-"####################"]},
-{ name:'parse()', map:[
-"####################",
-"#................b.#",
-"#.................R#",
-"#................#E#",
-"#..................#",
-"#..........######..#",
-"#....3.......b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............3.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............1.....#",
-"#..............b...#",
-"#.######...........#",
-"#...b.T............#",
-"#..P...............#",
-"####################"]},
-{ name:'render()', map:[
-"####################",
-"#................b.#",
-"#.................R#",
-"#................#E#",
-"#..................#",
-"#..........######..#",
-"#............b.....#",
-"#..................#",
-"#.######...........#",
-"#...b....4.........#",
-"#..................#",
-"#..........######..#",
-"#............1.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#....2.......b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............1.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..P...............#",
-"####################"]},
-{ name:'network()', map:[
-"####################",
-"#..................#",
-"#.................R#",
-"#................#E#",
-"#..................#",
-"#..........######..#",
-"#....4........b....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........#####...#",
-"#..................#",
-"#..........######..#",
-"#............2.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#....4.............#",
+"#.#####............#",
 "#..................#",
 "#...........b......#",
-"#..........######..#",
-"#...........b...S..#",
+"#.........#####....#",
 "#..................#",
-"#.######...........#",
 "#...b..............#",
-"#........H.........#",
-"#..........######..#",
-"#............1.....#",
-"#..............P...#",
-"####################"]},
-{ name:'physics()', map:[
-"####################",
-"#................b.#",
-"#.................R#",
-"#................#E#",
+"#.#####............#",
+"#..................#",
+"#...........b......#",
+"#.........#####....#",
+"#..................#",
+"#...H..............#",
+"#.########.........#",
 "#..................#",
 "#..................#",
-"#..........######..#",
-"#............1.....#",
+"#.......=====......#",
+"#P.................#",
+"#########..........#",
 "#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#....3.......b.....#",
-"#..................#",
-"#.....########.....#",
-"#........H.........#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..................#",
-"#..........######..#",
-"#............1.....#",
-"#..................#",
-"#.######...........#",
-"#...b.T............#",
-"#..................#",
-"#..........######..#",
-"#....2.......b.....#",
-"#..................#",
-"#.######...........#",
-"#...b..............#",
-"#..P...............#",
-"####################"]},
-{ name:'ai()', map:[
-"####################",
-"#b.................#",
-"#.R................#",
-"#E#................#",
+"#..................#"
+]},
+/* L3 parse() — TOKEN COLUMNS — PRECISION PARSE HOPS */
+{ name:'parse()', sub:'TOKEN COLUMNS — PRECISION PARSE HOPS', map:[
 "#..................#",
 "#..................#",
-"#.######...........#",
-"#...b..............#",
-"#....4.............#",
-"#..........######..#",
-"#....2.......b.....#",
+"#.........R........#",
+"#........#E#.......#",
 "#..................#",
-"#.......########...#",
+"#....b.............#",
+"#...###............#",
+"#..................#",
+"#.........b........#",
+"#........###.......#",
+"#..................#",
+"#....b.............#",
+"#...###............#",
+"#..................#",
+"#.........3........#",
+"#........###.......#",
+"#..................#",
+"#....b.............#",
+"#...###............#",
+"#..................#",
+"#.........b........#",
+"#........###.......#",
+"#..................#",
+"#....b.............#",
+"#...###............#",
+"#..................#",
+"#P.................#",
+"####################"
+]},
+/* L4 render() — RENDER BRIDGE — BOUNCE OFF THE OVERDRAW */
+{ name:'render()', sub:'RENDER BRIDGE — BOUNCE OFF THE OVERDRAW', map:[
 "#..................#",
 "#..................#",
-"#.######...........#",
-"#...b..............#",
-"#....4.............#",
-"#..........######..#",
-"#............3.....#",
 "#..................#",
-"#.....########.....#",
+"#...............*..#",
+"#............R.....#",
+"#........###E##....#",
+"#..............4...#",
+"#..................#",
+"#...#####..........#",
+"#..................#",
+"#..........b.......#",
+"#........#####.....#",
 "#..................#",
 "#..................#",
 "#.######...........#",
-"#...b.S............#",
-"#..................#",
-"#..........######..#",
-"#............1.....#",
-"#..................#",
-"#.######...........#",
-"#........H.........#",
-"#..P...............#",
-"####################"]},
-{ name:'main()', map:[
-"####################",
-"#................b.#",
-"#.................R#",
-"#................#E#",
 "#..................#",
 "#..................#",
-"#.....########.....#",
-"#..................#",
-"#..................#",
-"#..........######..#",
-"#....3.......b.....#",
-"#..................#",
-"#.######...........#",
-"#...b....4.........#",
-"#..................#",
-"#..........######..#",
-"#....2.......b.....#",
-"#..................#",
-"#.....########.....#",
-"#..................#",
-"#........H.........#",
-"#.######...........#",
-"#...b..............#",
-"#....4.............#",
-"#..........######..#",
-"#....1.......R.....#",
-"#..................#",
-"#.........2........#",
-"#.######...........#",
-"#...b.T............#",
-"#..................#",
-"#..........######..#",
-"#..................#",
-"#..P...............#",
-"####################"]},
-{ name:'overflow()', map:[
-"####################",
-"#..................#",
-"#.......R......B...#",
+"#.........%%%%%%...#",
 "#..................#",
 "#..................#",
 "#.######...........#",
-"#...b..............#",
-"#............1.....#",
-"#..........######..#",
-"#............b.....#",
-"#....2.............#",
 "#..................#",
-"#.######...........#",
+"#..........b.......#",
+"#........#####.....#",
+"#..................#",
+"#....b.............#",
+"#...#####..........#",
+"#..................#",
+"#P.................#",
+"####################"
+]},
+/* L5 network() — UPLINK SHAFT — PRECISION ROUTE UP THE TRUNK */
+{ name:'network()', sub:'UPLINK SHAFT — PRECISION ROUTE UP THE TRUNK', map:[
+"#..................#",
+"#..................#",
+"#..................#",
+"#..###E#...........#",
+"#........R.........#",
+"#..........b.......#",
+"#........#####.....#",
+"#..................#",
+"#....b.............#",
+"#...#####..........#",
+"#..................#",
+"#..........b.......#",
+"#........#####.....#",
+"#..............*...#",
+"#.............######",
+"#...#####..........#",
+"#..............2...#",
+"#..........b.......#",
+"#........#####.....#",
+"#..................#",
+"#....b.............#",
+"#...#####..........#",
+"#..................#",
+"#..........b.......#",
+"#........#####.....#",
+"#..................#",
+"#..............~~~~#",
+"#...#####..........#",
+"#..................#",
+"#..................#",
+"#P.................#",
+"####################"
+]},
+/* L6 physics() — PHYSICS LAB — CLOSE-SET BENCH RHYTHM */
+{ name:'physics()', sub:'PHYSICS LAB — CLOSE-SET BENCH RHYTHM', map:[
+"#..................#",
+"#..................#",
+"#..........R.......#",
+"#..................#",
+"#.........#####E...#",
+"#..........b.......#",
+"#..................#",
+"#..#####...........#",
 "#...b..............#",
 "#..................#",
-"#..........######..#",
-"#............b.....#",
+"#.........#####....#",
+"#..........b.......#",
 "#..................#",
+"#..#####...........#",
+"#...H..b...........#",
 "#..................#",
-"#.######...........#",
+"#.........#####....#",
+"#..........5b......#",
+"#..................#",
+"#..#####...........#",
 "#...b..............#",
-"#............1.....#",
-"#..........######..#",
-"#...........R......#",
 "#..................#",
+"#.........#####....#",
+"#..........b.......#",
+"#..................#",
+"#..#####...........#",
+"#...b..............#",
+"#..................#",
+"#.........#####....#",
+"#..........b.......#",
+"#..................#",
+"#..#####...........#",
+"#P...............^.#",
+"####################"
+]},
+/* L7 ai() — AI VAULT — BREACH THE SEALED GANTRY */
+{ name:'ai()', sub:'AI VAULT — BREACH THE SEALED GANTRY', map:[
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#...........*......#",
+"#..........R.......#",
+"#..................#",
+"#..................#",
+"###...##E##......###",
+"###..............###",
+"###.........b....###",
+"###......#####...###",
+"###..............###",
+"###.b............###",
+"###...#####......###",
+"###..............###",
+"###.........3....###",
+"###......#####...###",
+"###..............###",
+"###.S..b.........###",
+"###...#####......###",
+"###..............###",
+"###.........5....###",
+"###......#####...###",
+"###..............###",
+"###.H............###",
+"###...#####......###",
+"###..............###",
+"###.........b....###",
+"###......#####...###",
+"###..............###",
+"###.b............###",
+"###...#####......###",
+"###..............###",
+"###.....P........###",
+"####################"
+]},
+/* L8 main() — MAIN LOOP — EVERY MECHANIC ONCE */
+{ name:'main()', sub:'MAIN LOOP — EVERY MECHANIC ONCE', map:[
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#....R.............#",
+"#..##E##...........#",
+"#.......b..........#",
+"#..................#",
+"#.......#####......#",
+"#................4.#",
+"#..................#",
+"#.#####............#",
+"#...b..............#",
+"#..................#",
+"#.......#####......#",
+"#........5.........#",
+"#..................#",
+"#.#####............#",
+"#...H..............#",
+"#..................#",
+"#.......#####......#",
+"#........b.........#",
+"#..................#",
+"#.#####............#",
+"#...T..............#",
+"#..................#",
+"#.......#####......#",
+"#........b.........#",
+"#..................#",
+"#.#####............#",
+"#...b..............#",
+"#..................#",
+"#.......#####......#",
+"#........b.........#",
+"#..................#",
+"#.#####............#",
+"#P.................#",
+"####################"
+]},
+/* L9 fault() — LAVA CASCADE — FERRY OVER THE MOLTEN TAIL */
+{ name:'fault()', sub:'LAVA CASCADE — FERRY OVER THE MOLTEN TAIL', map:[
+"#..................#",
+"#.........R........#",
+"#......##E##.......#",
+"#..................#",
+"#..................#",
+"#..#####...........#",
+"#.....b............#",
+"#..................#",
+"#........#####.....#",
+"#..........5b......#",
+"#..................#",
+"#..#####...........#",
+"#.....b............#",
+"#..................#",
+"#........#####.....#",
+"#..............*...#",
 "#..................#",
 "#.######...........#",
-"#...b.S............#",
-"#.P.b..............#",
-"####################"]}
+"#..................#",
+"#..................#",
+"#.......======.....#",
+"#..................#",
+"#.....P..b.........#",
+"#.##########.......#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#"
+]},
+/* L10 overflow() — OVERFLOW ARENA — PATCH THE CRASH */
+{ name:'overflow()', sub:'OVERFLOW ARENA — PATCH THE CRASH', map:[
+"#..................#",
+"#..................#",
+"#..................#",
+"#..................#",
+"#1...............1*#",
+"####............####",
+"#b...............b.#",
+"#..#.B..........#..#",
+"#..#######..#####..#",
+"#....b.......b.....#",
+"#S.....======......#",
+"###................#",
+"#..................#",
+"#..###.............#",
+"#...b..............#",
+"#..................#",
+"#......####........#",
+"#.......b..........#",
+"#..................#",
+"#.####.............#",
+"#...b..............#",
+"#..................#",
+"#......####........#",
+"#........5.........#",
+"#..................#",
+"#.####.............#",
+"#...H..............#",
+"#..................#",
+"#......####........#",
+"#.......b..........#",
+"#..................#",
+"#.####.............#",
+"#...b..............#",
+"#..................#",
+"#......####........#",
+"#.......b..........#",
+"#P.................#",
+"####################"
+]}
 ];
 
 /* ============================== OVERFLOW MODE (ENDLESS) ==============================
-   After frame 9, frames are procedurally generated and get denser with depth:
-   platforms narrow, bug counts rise, and each cleared frame pays a growing
-   distance bonus (DEPTH_BASE + DEPTH_STEP * depth). Generation is seeded per
-   frame number, so a given frame is always identical (Continue Run stays fair).
-   Map legend matches the hand-built frames: # P E b R H S T 1 2 3 4.
+   After frame 10 (the OVERFLOW boss), frames are built from the CAMPAIGN'S own
+   bench rhythms and enemy placements — no random scatter. Every frame is a 3-row
+   staggered climb drawn from one of three proven campaign geometries, and it
+   gets denser with depth: benches stay 5-wide through depth 8, then narrow,
+   the tower grows taller (24→33 rows), spiker sentinels start at depth 3 and
+   grow 1→3, flyers guard the upper gaps, wraiths flank the approach, and the
+   L2 loader shuttle rides faster with depth (mover speed × genSpeed — flat
+   through depth 2, then a slow 4%/depth ramp, capped 1.5×). Enemy posts are diegetic — sentinels guard ledges,
+   patrol bugs ride bench tops, the fast spark guards the middle token — never
+   the entry or exit bench. Support pickups repeat the campaign beats: bits
+   breadcrumb every landing, the shield arms you before the spiker gauntlet, a
+   heart rests on the exit deck, and the floor spring flings you to the star
+   over the first right-side bench. Each cleared frame pays a growing distance
+   bonus (DEPTH_BASE + DEPTH_STEP * depth). Generation is seeded per frame
+   number, so a given frame is always identical (Continue Run stays fair).
+   Map legend matches the hand-built frames: # P E b R H S T * ^ = 1 2 3 4 5.
    =================================================================================== */
 function mulberry32(a){
   return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a);
@@ -743,61 +1147,113 @@ function levelName(n){
 }
 function genEndlessLevel(n){
   var d = n - LEVELS.length;                    // 1-based overflow depth
-  var W=20, H=24, g=[], x, y, i, k;
+  // The climb grows with depth: deeper frames are taller towers with more
+  // benches (6 → 9), mirroring the campaign's per-frame height ramp.
+  var N  = d<=5 ? 6 : 6 + Math.min(3, Math.floor((d-5)/2));  // climb benches
+  var H  = 24 + 3*(N-6);                        // frame rows: 24/27/30/33
+  var W=20, g=[], x, y, i, k;
   for(y=0;y<H;y++){ var row=[]; for(x=0;x<W;x++) row.push('.'); g.push(row); }
   for(x=0;x<W;x++){ g[0][x]='#'; g[H-1][x]='#'; }          // ceiling + floor
   for(y=0;y<H;y++){ g[y][0]='#'; g[y][W-1]='#'; }          // side walls
-  // depth scaling — denser every frame. Width floor is 6: a 5-wide platform
-  // makes the alternating climb a pixel-perfect jump (gap 4 exceeds the drift).
-  var w     = Math.max(6, 8 - Math.floor(d/3));            // platform width (gap = 9-w)
-  var nWalk = Math.min(1 + Math.floor(d/2), 4);            // patrol bugs
-  var nFly  = Math.min(1 + Math.floor(d/3), 3);            // flyers
-  var nWrap = d>=4 ? Math.min(1 + Math.floor((d-4)/3), 2) : 0; // wraiths
-  var nBits = 4 + Math.min(3 + Math.floor(d/2), 8);        // data bits
   var rnd = mulberry32(n*7919+17);
-  // climb skeleton: platforms alternate sides, 3 rows apart, bottom (20) → top (5)
-  var plats=[], side = (d%2===0)?1:-1;
-  for(y=H-4; y>=5; y-=3){
-    var cs = side>0 ? 1 : (W-1-w-(9-w));       // left: cols 1..w · right: cols 10..10+w-1
-    plats.push({y:y, x:cs, w:w, side:side});
-    side = -side;
+  // depth scaling — density (enemy counts grow monotonically with depth)
+  var nSpike = d>=3 ? Math.min(3, 1+Math.floor((d-2)/2)) : 0; // sentinel ledges: first at d3, 3 by d6
+  var nFly   = d>=3 ? Math.min(2, 1+Math.floor((d-3)/3)) : 0; // gap guards (L5)
+  var nWrap  = d>=4 ? Math.min(2, 1+Math.floor((d-4)/4)) : 0; // flanking wraiths (L8)
+  var nBits  = 4 + Math.min(3 + Math.floor(d/2), 8);          // data bits
+  var hasShuttle = d>=2, hasSpring = d%2===1, hasHeart = d%4===1;
+  var hasShield  = nSpike>=2, hasTurbo = d>=2 && d%3===1, hasSpark = d>=6;
+
+  // Campaign bench rhythm — one proven band geometry per depth band, each
+  // with the exact column rhythm of its source frame:
+  //   A  L1 init()    5-wide  gap 0   gentle first-boot stairs
+  //   C  L6 physics() 5-wide  gap 3   close-set bench slabs
+  //   D  L9 fault()   4-wide  gap 1   narrow lava-cascade ledges
+  // (5-wide bands extend through depth 8 — benches stay comfortable while
+  //  the tower and enemy count ramp; the narrow L9 rhythm waits for depth 9.)
+  var bw = d<=8 ? 5 : 4;                       // bench width (tiles)
+  var L0 = d<=2 ? 4 : (d<=8 ? 1 : 3);          // left-band start col
+  var R0 = d<=8 ? 9 : 8;                       // right-band start col
+  var bFirstIsL = d<=2;                        // A frames open on the wall-clear left bench
+  var benches=[];
+  for(i=0;i<N;i++){
+    var isL = i===N-1 ? true : (bFirstIsL ? i%2===0 : i%2===1);
+    var bx  = i===N-1 ? L0+2 : (isL ? L0 : R0); // final bench hugs the exit pad
+    benches.push({y:H-4-3*i, x:bx, w:bw, isL:isL});
   }
-  // shift the final platform 2 tiles toward center: its edge must clear the pad
-  // overhead (a platform directly under the pad makes the exit jump bonk)
-  var last = plats[plats.length-1];
-  last.x = last.side>0 ? 5 : 8;
-  for(i=0;i<plats.length;i++){ var p=plats[i]; for(x=p.x;x<p.x+p.w;x++) g[p.y][x]='#'; }
-  // exit pad 2 rows above the final platform, E embedded (like the hand-built frames)
-  var padX = last.side>0 ? 1 : 17;
-  for(x=padX;x<padX+3;x++) g[3][x]='#';
-  g[3][padX+1]='E';
-  // spawn on the floor under the first platform, offset toward it
-  var first = plats[0], spx = first.side>0 ? first.x+2 : first.x+first.w-2;
+  for(i=0;i<benches.length;i++){ var p=benches[i]; for(x=p.x;x<p.x+p.w;x++) g[p.y][x]='#'; }
+  // exit pad 2 rows above the final bench, E embedded (campaign corner pad)
+  for(x=1;x<4;x++) g[3][x]='#';
+  g[3][2]='E';
+  // spawn on the floor just left of the first bench: a natural running jump
+  var spx = benches[0].x - 2; if(spx<1) spx=1;
   g[H-2][spx]='P';
-  // patrol bugs on platform tops (marker 1 row above → engine drops them down)
-  var walkPlats = shuffleArr(plats.slice(), rnd);
-  for(i=0;i<nWalk && i<walkPlats.length;i++){
-    var wp=walkPlats[i], wx=wp.x+1+Math.floor(rnd()*(wp.w-2));
-    if(g[wp.y-1][wx]==='.') g[wp.y-1][wx]='1';
+  // --- enemies, placed diegetically: sentinels guard ledges, patrol bugs ride
+  // bench tops, the fast spark guards the middle token; the entry and exit
+  // benches always stay clean ---
+  // spiker sentinels: L6's rigid-body slab, L7's upper-reach guard, L9's
+  // lava-cascade sentinel — each blocks its own ledge (arrival-side, jump past)
+  var spikeIdx = nSpike===0 ? [] : nSpike===1 ? [N-3] : nSpike===2 ? [N-3, N-2] : [N-4, N-3, N-2];
+  for(i=0;i<spikeIdx.length;i++){
+    var sk=benches[spikeIdx[i]];
+    if(g[sk.y-1][sk.x+1]==='.') g[sk.y-1][sk.x+1]='5';
   }
-  // flyers sweeping the gap between two platforms
-  for(i=0;i<nFly;i++){
-    var a=plats[1+Math.floor(rnd()*(plats.length-2))];
-    var gx=Math.round((w+10)/2), gy=a.y+1;
-    if(g[gy][gx]==='.') g[gy][gx]='2';
+  // patrol bugs: L1's every-other mid-bench rhythm on frame 1, then a single
+  // "first bug" on the first climb bench (the stomp lesson repeats)
+  var walkIdx = d===1 ? [1,3] : [1];
+  for(i=0;i<walkIdx.length;i++){
+    var wk=benches[walkIdx[i]];
+    if(g[wk.y-1][wk.x+2]==='.') g[wk.y-1][wk.x+2]='1';
   }
-  // wraiths hovering 2 rows above platforms
-  for(i=0;i<nWrap;i++){
-    var wq=plats[1+Math.floor(rnd()*(plats.length-1))], qx=wq.x+1+Math.floor(rnd()*(wq.w-2));
-    if(g[wq.y-2][qx]==='.') g[wq.y-2][qx]='4';
+  // L3's fast spark guards the middle token
+  if(hasSpark){
+    var fk=benches[2];
+    if(g[fk.y-1][fk.x+2]==='.') g[fk.y-1][fk.x+2]='3';
   }
-  // bits: 2 rows above platform tops and across the jump gaps
+  // flyers sweep the gaps into the upper climb (L5: "guards the last hop")
+  if(nFly>=1){
+    var ga=benches[N-5], gb=benches[N-4], gc=Math.floor((ga.x+ga.w+gb.x)/2);
+    if(g[gb.y+1][gc]==='.') g[gb.y+1][gc]='2';
+  }
+  if(nFly>=2){
+    var gd=benches[N-4], ge=benches[N-3], gf=Math.floor((gd.x+gd.w+ge.x)/2);
+    if(g[ge.y+1][gf]==='.') g[ge.y+1][gf]='2';
+  }
+  // wraiths flank the climb in open air beside the upper ledges (L8 style —
+  // never directly over a landing spot)
+  var beside = function(b){
+    var c = b.isL ? b.x-1 : b.x+b.w+1;
+    if(c<1||c>18) c = b.isL ? b.x+b.w+1 : b.x-1;
+    return (c>=1&&c<=18) ? {row:b.y-1, col:c} : null;
+  };
+  if(nWrap>=1){ var wa=beside(benches[N-2]); if(wa && g[wa.row][wa.col]==='.') g[wa.row][wa.col]='4'; }
+  if(nWrap>=2){ var wb=beside(benches[N-4]); if(wb && g[wb.row][wb.col]==='.') g[wb.row][wb.col]='4'; }
+  // L2 loader shuttle: an optional floor ride on the side opposite the entry
+  // bench; its speed scales with depth in loadLevel (genSpeed, capped 1.5×)
+  if(hasShuttle){
+    var shX = bFirstIsL ? 12 : 1;
+    for(k=shX;k<shX+5;k++) g[H-3][k]='=';
+  }
+  // L1 floor spring + bonus star: bounce at the right-floor pad and steer
+  // left into the star over the first right-side bench (L1's shortcut)
+  if(hasSpring){
+    var stB = bFirstIsL ? benches[1] : benches[0];
+    if(g[H-2][17]==='.') g[H-2][17]='^';
+    if(g[stB.y-2][stB.x+stB.w]==='.') g[stB.y-2][stB.x+stB.w]='*';
+  }
+  // support pickups, diegetic: the shield arms you one bench before the spiker
+  // gauntlet (L7), a heart rests on the exit deck (L1/L2), the turbo waits in
+  // a gap above the lower climb (periodic)
+  if(hasShield){ var sh=benches[N-5]; if(g[sh.y-1][sh.x+1]==='.') g[sh.y-1][sh.x+1]='S'; }
+  if(hasHeart){ var hb=benches[N-1];  if(g[hb.y-1][hb.x+1]==='.') g[hb.y-1][hb.x+1]='H'; }
+  if(hasTurbo){ var tb=benches[2], tc=tb.isL?tb.x+tb.w+1:tb.x-1; if(g[tb.y-2][tc]==='.') g[tb.y-2][tc]='T'; }
+  // bits: breadcrumb every landing and the hop gaps (L1's guiding trail)
   var bitCells=[];
-  for(i=0;i<plats.length;i++){
-    var p=plats[i];
+  for(i=0;i<benches.length;i++){
+    var p=benches[i];
     for(k=p.x;k<p.x+p.w;k++) bitCells.push([p.y-2,k]);
-    if(i<plats.length-1){
-      var nxt=plats[i+1];
+    if(i<benches.length-1){
+      var nxt=benches[i+1];
       for(k=Math.min(p.x+p.w,nxt.x)+1;k<Math.max(p.x,nxt.x+nxt.w);k++) bitCells.push([p.y-2,k]);
     }
   }
@@ -807,14 +1263,8 @@ function genEndlessLevel(n){
     var c=bitCells[i];
     if(g[c[0]][c[1]]==='.'){ g[c[0]][c[1]]='b'; placed++; }
   }
-  // RAM near the top on the pad's side (grabbed while approaching the pad)
-  if(g[2][padX+1]==='.') g[2][padX+1]='R';
-  // support pickups, periodic so they don't crowd every frame
-  function gapCol(p){ return p.side>0 ? p.x+p.w+1 : p.x-1; }
-  if(d%2===1){ var sc=gapCol(plats[0]); if(g[plats[0].y-2][sc]==='.') g[plats[0].y-2][sc]='S'; }
-  if(d%3===1){ var tp=plats[2], tc=gapCol(tp); if(g[tp.y-2][tc]==='.') g[tp.y-2][tc]='T'; }
-  if(d%4===2){ var hp=plats[Math.floor(rnd()*plats.length)], hx=hp.x+1+Math.floor(rnd()*(hp.w-2));
-    if(g[hp.y-2][hx]==='.') g[hp.y-2][hx]='H'; }
+  // RAM over the exit deck (L2/L7 style)
+  if(g[2][2]==='.') g[2][2]='R';
   // assemble
   var map = g.map(function(row){ return row.join(''); });
   return { name:'overflow() ∞+'+d, map:map };
@@ -878,13 +1328,17 @@ function sfx(name){
                   tone(1318,0.39,0.30,'square',0.13); noise(0.66,0.20,0.10,4000); break;
     case 'select':tone(440,0,0.05,'square',0.08); break;
     case 'patch': tone(180,0,0.12,'triangle',0.16,70); tone(880,0.02,0.10,'square',0.10); break;
-    case 'portal':tone(300,0,0.16,'sine',0.12,1100); break;
     case 'warn':  tone(880,0,0.12,'square',0.12); tone(880,0.16,0.12,'square',0.12); break;
     case 'bonk':  tone(140,0,0.08,'triangle',0.10,90); break;
     case 'dash':  noise(0,0.10,0.12,2500); tone(500,0,0.08,'square',0.08,1400); break;
     case 'shield':tone(660,0,0.07,'sine',0.12); tone(990,0.06,0.10,'sine',0.10); break;
     case 'shieldbreak':tone(800,0,0.16,'sawtooth',0.12,140); noise(0.02,0.14,0.10,3000); break;
     case 'turbo': tone(300,0,0.12,'square',0.10,900); tone(600,0.09,0.16,'square',0.08); break;
+    case 'spring': tone(220,0,0.14,'square',0.12,980); noise(0.01,0.08,0.08,1800); break;
+    case 'break': noise(0,0.12,0.14,700); tone(300,0,0.10,'triangle',0.10,90); break;
+    case 'star': tone(660,0,0.08,'square',0.11); tone(880,0.07,0.08,'square',0.11);
+                 tone(1320,0.14,0.18,'square',0.12); noise(0.18,0.12,0.06,6000); break;
+    case 'spike': tone(160,0,0.12,'sawtooth',0.12,60); break;
   }
 }
 /* tiny procedural chiptune: 16th-note scheduler */
@@ -918,11 +1372,16 @@ var afterList=[];
 var banner={txt:'',sub:'',t:0,dur:1.8};
 banner.set=function(txt,sub){ this.txt=txt; this.sub=sub||''; this.t=this.dur; };
 var finishing=false, boss=null;
+var arenaTut=0, hintTxt='', hintT=0, hintMax=1;   // L10 first-fight perch-loop tutorial
+function showHint(txt,dur){ hintTxt=txt; hintT=dur||4; hintMax=hintT; }
 var pl={x:0,y:0,vx:0,vy:0,w:CFG.PW,h:CFG.PH,onGround:false,coyote:0,jbuf:0,
         dead:false,deadT:0,inv:0,sq:0,st:0,prevBottom:0,face:1,
-        shield:false,turbo:0,dashT:0,dashCd:0,dashDir:1};
+        shield:false,turbo:0,dashT:0,dashCd:0,dashDir:1,
+        ride:null,starT:0};
 var enemies=[], pickups=[], parts=[], floaters=[];
-var tiles=null, lvlW=0, lvlH=0, camY=0, layer=null, spawnTile=null;
+var platforms=[], springs=[], breakables=[], shockwaves=[];
+var edgeStrips=null;   // L10 arena: floor-end glow strips (computed in buildLayer)
+var tiles=null, lvlW=0, lvlH=0, camY=0, layer=null, spawnTile=null, mvT=0;
 var input={left:false,right:false,jump:false,jumpHeld:false,dashEdge:false};
 var hs=[], unlock=1, muted=false, bestTimes={}, initials='AAA';
 var diff='normal', shakeOn=true, dmgTaken=false, gpL=false, gpR=false;
@@ -984,7 +1443,9 @@ function saveRun(){
     enemies: enemies.map(function(e){
       return {t:e.type, x:e.x, y:e.y, d:e.dir, dead:e.dead, dt:e.deadT||0,
               ph:e.phase||0, tm:e.t||0, ay:e.anchorY, am:e.amp||0, f:e.freq||0,
-              fl:e.flashT||0, hp:e.hp||0};
+              fl:e.flashT||0, hp:e.hp||0, er:e.enraged||0,
+              al:e.alerted?1:0, sl:e.slamPhase||'', st2:e.slamT||0, sp2:e.slamPh||0,
+              st3:e.staggerT||0};
     }),
     // which pickups were already collected (keeps resume score-exact)
     taken: pickups.filter(function(p){ return p.taken; }).map(function(p){ return [p.x,p.y]; })
@@ -1003,26 +1464,58 @@ function clearSave(){
 /* ============================== LEVEL LOAD ============================== */
 function loadLevel(n){
   var L = n<=LEVELS.length ? LEVELS[n-1] : genEndlessLevel(n);
-  genSpeed = n>LEVELS.length ? Math.min(1+(n-LEVELS.length-1)*0.05, 1.5) : 1;
+  // enemy speed ramp for generated frames: flat at campaign speed through
+  // depth 2 (gentle intro), then a slow 4%/depth ramp, easing to 5%/depth
+  // from depth 6; cap 1.5× reached at depth 13.
+  var gd = n - LEVELS.length;
+  genSpeed = n>LEVELS.length ? Math.min(1 + 0.04*Math.max(0,gd-2) + 0.01*Math.max(0,gd-6), 1.5) : 1;
   var map=L.map, h=map.length, w=map[0].length;
   lvlW=w; lvlH=h;
   tiles = new Uint8Array(w*h);
-  pickups=[]; enemies=[]; boss=null; finishing=false;
+  pickups=[]; enemies=[]; platforms=[]; springs=[]; breakables=[]; shockwaves=[];
+  boss=null; finishing=false; mvT=0;
+  pl.ride=null;
   var spawn=null, marks=[];
-  // pass 1: fill the tile grid + collect spawn/pickups/enemy markers
+  // pass 1: fill the tile grid + collect spawn/pickups/enemies/markers
   for(var y=0;y<h;y++){
     for(var x=0;x<w;x++){
       var ch = map[y].charAt(x), i=y*w+x;
       if(ch==='#') tiles[i]=1;
       else if(ch==='E') tiles[i]=2;                 // exit = solid + portal
+      else if(ch==='%'){ tiles[i]=3; breakables.push({tx:x,ty:y,breakT:0,respawn:0}); }
       else if(ch==='P') spawn={x:x,y:y};
       else if(ch==='b') pickups.push({kind:'b',x:x*CFG.TILE+8,y:y*CFG.TILE+8,w:8,h:8,taken:false});
       else if(ch==='R') pickups.push({kind:'R',x:x*CFG.TILE+6,y:y*CFG.TILE+6,w:12,h:12,taken:false});
       else if(ch==='H') pickups.push({kind:'H',x:x*CFG.TILE+7,y:y*CFG.TILE+7,w:10,h:10,taken:false});
       else if(ch==='S') pickups.push({kind:'S',x:x*CFG.TILE+7,y:y*CFG.TILE+7,w:10,h:10,taken:false});
       else if(ch==='T') pickups.push({kind:'T',x:x*CFG.TILE+7,y:y*CFG.TILE+7,w:10,h:10,taken:false});
-      else if('134B'.indexOf(ch)>=0) marks.push({ch:ch,x:x*CFG.TILE+1,y:y*CFG.TILE});
+      else if(ch==='*') pickups.push({kind:'*',x:x*CFG.TILE+7,y:y*CFG.TILE+7,w:10,h:10,taken:false});
+      else if(ch==='^') springs.push({x:x*CFG.TILE+1,y:y*CFG.TILE+6,cd:0});
+      else if('1345B'.indexOf(ch)>=0) marks.push({ch:ch,x:x*CFG.TILE+1,y:y*CFG.TILE});
       else if(ch==='2') marks.push({ch:'2',x:x*CFG.TILE+1,y:y*CFG.TILE});
+    }
+  }
+  // moving platforms: group runs of = (side-to-side) and ~ (up-and-down)
+  for(var py=0;py<h;py++){
+    var px=0;
+    while(px<w){
+      var pc=map[py].charAt(px);
+      if(pc==='='||pc==='~'){
+        var px2=px; while(px2<w && map[py].charAt(px2)===pc) px2++;
+        var span=(px2-px);
+        var isV = pc==='~';
+        var _range=(isV?3:2)*CFG.TILE, _speed=CFG.MOVE_PLAT.SPEED*(isV?0.85:1)*genSpeed, _phase=(py*7+px*13)%4/4;
+        var _off0=platOff({range:_range,speed:_speed,phase:_phase},0);
+        platforms.push({
+          axis:isV?'y':'x',
+          x:px*CFG.TILE+1+(isV?0:_off0), y:(isV?(py+1)*CFG.TILE-CFG.TILE+2:py*CFG.TILE+4)-(isV?_off0:0),
+          w:span*CFG.TILE-2, h:12,
+          baseX:px*CFG.TILE+1, baseY:(isV?(py+1)*CFG.TILE-14:py*CFG.TILE+4),
+          range:_range, speed:_speed,
+          dx:0, dy:0, phase:_phase
+        });
+        px=px2;
+      } else px++;
     }
   }
   // pass 2: spawn enemies now that the full tile grid exists (drop needs tiles below)
@@ -1031,12 +1524,17 @@ function loadLevel(n){
     if(mk.ch==='1'||mk.ch==='3') enemies.push(mkEnemy('walker', mk.x, mk.y, mk.ch==='3'));
     else if(mk.ch==='2') enemies.push(mkEnemy('flyer', mk.x, mk.y, false));
     else if(mk.ch==='4') enemies.push(mkEnemy('wraith', mk.x, mk.y, false));
+    else if(mk.ch==='5') enemies.push(mkEnemy('spiker', mk.x, mk.y, false));
     else if(mk.ch==='B'){ enemies.push(mkEnemy('boss', mk.x, mk.y, false)); boss=enemies[enemies.length-1]; }
   }
   levelBitsTotal = pickups.filter(function(p){return p.kind==='b';}).length;
   bitsGot=0; dmgTaken=false;
   if(spawn){ placePlayer(spawn.x, spawn.y); spawnTile={x:spawn.x,y:spawn.y}; }
   buildLayer();
+  // first-fight tutorial: once the perch loop is learned it never replays
+  // (persisted); any other L10 load re-arms it so a mid-tutorial death retries
+  // the hints from the start instead of dropping the lesson mid-way.
+  if(level===10) arenaTut = storeGet(CFG.TUT_KEY)==='1' ? 3 : 0;
 }
 function gainPts(n){
   // difficulty score multiplier applied at every gain site
@@ -1100,50 +1598,88 @@ function mkEnemy(type, x, y, fast){
   if(type==='walker'){ e.speed= (fast?110:58)*es; e.fast=fast; e.w=22; e.h=18; }
   if(type==='flyer'){ e.speed=55*es; e.w=22; e.h=16; }
   if(type==='wraith'){ e.speed=44*es; e.w=20; e.h=24; }
-  if(type==='boss'){ e.speed=52*es; e.w=60; e.h=44; e.hp=DIFFS[diff].bossHP; e.spawnT=0; }
+  if(type==='spiker'){ e.speed=64*es; e.w=20; e.h=18; e.spikes=true; }
+  if(type==='boss'){ e.speed=52*es; e.w=60; e.h=44; e.hp=DIFFS[diff].bossHP; e.maxHp=e.hp; e.enraged=false; e.spawnT=0;
+                     e.alerted=false; e.slamT=0; e.slamPhase=''; e.slamPh=0; e.staggerT=0; }
   dropEnemy(e);
   return e;
 }
 function dropEnemy(e){
-  if(e.type==='walker'||e.type==='boss'){
+  if(e.type==='walker'||e.type==='spiker'||e.type==='boss'){
     var fx=Math.floor((e.x+e.w/2)/CFG.TILE), fy=Math.floor(e.y/CFG.TILE);
     while(fy<lvlH && !isSolid(fx,fy)) fy++;
     if(fy<lvlH) e.y = fy*CFG.TILE - e.h;
   }
 }
-function isSolid(tx,ty){ if(tx<0||tx>=lvlW||ty<0||ty>=lvlH) return true; return tiles[ty*lvlW+tx]>0; }
-function isSolidAt(px,py){ return isSolid(tileOf(px),tileOf(py)); }/* pre-render static tile layer once per level — cartoon stack-frame blocks */
+function isSolid(tx,ty){ if(tx<0||tx>=lvlW||ty<0) return true; if(ty>=lvlH) return false; return tiles[ty*lvlW+tx]>0; }
+// Below-map tiles are NOT solid so floor holes are real pits: the player falls
+// through the bottom edge and the fall-out-of-world check in stepPlayer kills
+// them instead of an invisible floor at the map boundary (was a soft-lock).
+function isSolidAt(px,py){ return isSolid(tileOf(px),tileOf(py)); }/* ============================== THEMES ==============================
+   Every frame gets its own palette + backdrop motif so no two levels
+   look alike. Endless frames cycle through the palettes.
+   ================================================================== */
+var THEMES=[
+ {name:'BIOS',     bg:['#2b3a7d','#1a2355','#0b1030'], tile:{fill:'#3a4a92',cap:'#6f86f0',edge:'#232c63',dark:'#141b3f',shine:'rgba(255,255,255,0.38)'}, accent:'#3ee7ff', grid:'rgba(150,175,255,0.08)', motif:'circuit'},
+ {name:'STARTUP',  bg:['#1e5a40','#12382a','#081a10'], tile:{fill:'#2f7a52',cap:'#5ecf8a',edge:'#1b4a30',dark:'#0e2b1c',shine:'rgba(255,255,255,0.32)'}, accent:'#7dff6a', grid:'rgba(125,255,138,0.08)', motif:'pipes'},
+ {name:'PARSER',   bg:['#6b4a16','#432c0e','#1c1205'], tile:{fill:'#8a5a1e',cap:'#f0a94f',edge:'#5c3a12',dark:'#33200a',shine:'rgba(255,255,255,0.34)'}, accent:'#ffd23f', grid:'rgba(255,205,125,0.08)', motif:'gears'},
+ {name:'RENDER',   bg:['#55205e','#341338','#150714'], tile:{fill:'#7e2d6b',cap:'#e76fc4',edge:'#4d1745',dark:'#24091f',shine:'rgba(255,255,255,0.32)'}, accent:'#ff9de2', grid:'rgba(255,157,226,0.09)', motif:'grid'},
+ {name:'NETWORK',  bg:['#14566b','#0c3444','#05161d'], tile:{fill:'#1f6673',cap:'#54d3e0',edge:'#12404d',dark:'#08232b',shine:'rgba(255,255,255,0.32)'}, accent:'#3ee7ff', grid:'rgba(62,231,255,0.08)', motif:'towers'},
+ {name:'PHYSICS',  bg:['#33701f','#1e4512','#0a1c06'], tile:{fill:'#4d8a2e',cap:'#a2e65c',edge:'#2e5c1e',dark:'#152a0a',shine:'rgba(255,255,255,0.34)'}, accent:'#c8ff5e', grid:'rgba(200,255,120,0.08)', motif:'dots'},
+ {name:'NEURAL',   bg:['#45247a','#291348','#0e061d'], tile:{fill:'#5c3496',cap:'#b28dff',edge:'#3a1e66',dark:'#1b0b33',shine:'rgba(255,255,255,0.32)'}, accent:'#b28dff', grid:'rgba(178,141,255,0.09)', motif:'nebula'},
+ {name:'CORE',     bg:['#6b222b','#42121c','#1a070b'], tile:{fill:'#8a2b38',cap:'#ff6f7a',edge:'#5e1a22',dark:'#2b0d14',shine:'rgba(255,255,255,0.32)'}, accent:'#ff5f6b', grid:'rgba(255,140,140,0.08)', motif:'city'},
+ {name:'LAVA',     bg:['#6e1c0d','#431007','#1c0403'], tile:{fill:'#8a3a14',cap:'#ff9a3d',edge:'#5c2008',dark:'#2a0f04',shine:'rgba(255,255,255,0.30)'}, accent:'#ffb347', grid:'rgba(255,150,80,0.08)', motif:'lava'},
+ {name:'OVERFLOW', bg:['#3c0d18','#260610','#0c0206'], tile:{fill:'#5c1220',cap:'#e83a4a',edge:'#330b14',dark:'#1c050c',shine:'rgba(255,255,255,0.28)'}, accent:'#ff5f6b', grid:'rgba(255,90,110,0.07)', motif:'glitch'}
+];
+function themeFor(n){
+  if(n<=THEMES.length) return THEMES[n-1];
+  return THEMES[(n-THEMES.length-1)%THEMES.length];  // endless: cycle palettes
+}
+
+/* pre-render static tile layer once per level — themed cartoon stack blocks */
 function buildLayer(){
   layer = document.createElement('canvas');
   layer.width = lvlW*CFG.TILE; layer.height = lvlH*CFG.TILE;
   var c=layer.getContext('2d'), T=CFG.TILE;
+  var th=themeFor(level);
   var solid=function(x,y){ return isSolid(x,y); };
   // pass 1: base block fills
   for(var y=0;y<lvlH;y++) for(var x=0;x<lvlW;x++){
-    if(tiles[y*lvlW+x]===1){
-      c.fillStyle='#33417f';
+    var tv=tiles[y*lvlW+x];
+    if(tv===1||tv===3){
+      c.fillStyle= tv===1 ? th.tile.fill : '#6b7686';
       rrPath(c,x*T+1,y*T+1,T-2,T-2,5); c.fill();
     }
   }
   // pass 2: glossy caps, shading, rivets, outlines — only on exposed faces
   for(var y=0;y<lvlH;y++) for(var x=0;x<lvlW;x++){
     var t=tiles[y*lvlW+x];
-    if(t===1){
+    if(t===1||t===3){
       var up=!solid(x,y-1), dn=!solid(x,y+1), lf=!solid(x-1,y), rt=!solid(x+1,y);
       var px=x*T, py=y*T;
-      if(up){ c.fillStyle='#5d76e0'; rrPath(c,px+1,py+1,T-2,5,4); c.fill();
-              c.fillStyle='rgba(255,255,255,0.35)'; c.fillRect(px+3,py+2,T-6,2); }
-      if(dn){ c.fillStyle='#222c63'; c.fillRect(px+1,py+T-4,T-2,3); }
-      if(lf){ c.fillStyle='#2a3568'; c.fillRect(px+1,py+1,3,T-2); }
-      if(rt){ c.fillStyle='#2a3568'; c.fillRect(px+T-4,py+1,3,T-2); }
+      if(up){ c.fillStyle= t===1? th.tile.cap : '#aeb9cc'; rrPath(c,px+1,py+1,T-2,5,4); c.fill();
+              c.fillStyle=th.tile.shine; c.fillRect(px+3,py+2,T-6,2); }
+      if(dn){ c.fillStyle= t===1? th.tile.dark : '#3a4454'; c.fillRect(px+1,py+T-4,T-2,3); }
+      if(lf){ c.fillStyle=th.tile.edge; c.fillRect(px+1,py+1,3,T-2); }
+      if(rt){ c.fillStyle=th.tile.edge; c.fillRect(px+T-4,py+1,3,T-2); }
       if(up||dn||lf||rt){
         c.strokeStyle='#0d1230'; c.lineWidth=2;
         c.beginPath(); c.roundRect(px+1.5,py+1.5,T-3,T-3,4); c.stroke();
       }
       if(up){ c.fillStyle='rgba(255,255,255,0.55)'; c.fillRect(px+T/2-1.5,py+4,3,3); }
       if(dn){ c.fillStyle='rgba(0,0,0,0.35)'; c.fillRect(px+T/2-1.5,py+T-6,3,3); }
+      if(t===3){
+        // cracks on breakable floors
+        c.strokeStyle='rgba(10,12,30,0.5)'; c.lineWidth=1.4;
+        c.beginPath();
+        c.moveTo(px+4,py+4); c.lineTo(px+10,py+8); c.lineTo(px+8,py+14); c.lineTo(px+14,py+18);
+        c.moveTo(px+14,py+6); c.lineTo(px+9,py+10);
+        c.moveTo(px+19,py+12); c.lineTo(px+14,py+14);
+        c.stroke();
+        c.fillStyle='rgba(0,0,0,0.15)'; c.fillRect(px+T/2-1.5,py+8,3,3);
+      }
     } else if(t===2){
-      // RETURN portal pad: green glowing block with a portal swirl on top
+      // RETURN portal pad: green glowing block with an up-swirl on top
       var px=x*T, py=y*T;
       c.fillStyle='#14532d'; rrPath(c,px+1,py+1,T-2,T-2,5); c.fill();
       c.fillStyle='#4ade80'; rrPath(c,px+1,py+1,T-2,5,4); c.fill();
@@ -1155,6 +1691,33 @@ function buildLayer(){
       c.fillStyle='#7dffa8';
       c.beginPath(); c.moveTo(px+T/2,py+T/2-3.5); c.lineTo(px+T/2-3,py+T/2+2.5); c.lineTo(px+T/2+3,py+T/2+2.5); c.fill();
     }
+  }
+  // L10 arena: subtle glow strips where the walkable floor ends (the pit
+  // edges between the wings and the arena's outer void), so the drop reads
+  // during the boss fight. Scanned from the tile grid (arena band, rows
+  // 0-10) so it stays in sync with the map; tower bench edges below are
+  // normal landing edges and are intentionally excluded.
+  edgeStrips=null;
+  if(level===10){
+    var strips=[];
+    for(var ec=1;ec<lvlW-2;ec++){   // skip the outer wall faces — only floor edges glow
+      for(var ey=0;ey<11;ey++){
+        var eA=isSolid(ec,ey), eB=isSolid(ec+1,ey);
+        var eAd=isSolid(ec,ey+1), eBd=isSolid(ec+1,ey+1);
+        if((eA&&!eB&&!eBd)||(eB&&!eA&&!eAd)){
+          var eyy=ey+1;
+          while(eyy<11){
+            var eA2=isSolid(ec,eyy), eB2=isSolid(ec+1,eyy);
+            var eA2d=isSolid(ec,eyy+1), eB2d=isSolid(ec+1,eyy+1);
+            if(!((eA2&&!eB2&&!eB2d)||(eB2&&!eA2&&!eA2d))) break;
+            eyy++;
+          }
+          strips.push({x:ec*T+T, y:ey*T, h:Math.min((eyy+1)*T-ey*T,T*3), ph:((ec*17+ey*11)%628)/100});
+          ey=eyy;
+        }
+      }
+    }
+    edgeStrips=strips;
   }
 }
 
@@ -1211,6 +1774,12 @@ function resumeRun(){
       if(o.f!==undefined) e.freq=o.f;
       if(o.fl!==undefined) e.flashT=o.fl;
       if(o.hp!==undefined) e.hp=o.hp;
+      if(o.er!==undefined) e.enraged=!!o.er;
+      if(o.al!==undefined) e.alerted=!!o.al;
+      if(o.sl!==undefined) e.slamPhase=o.sl||'';
+      if(o.st2!==undefined) e.slamT=o.st2||0;
+      if(o.sp2!==undefined) e.slamPh=o.sp2||0;
+      if(o.st3!==undefined) e.staggerT=o.st3||0;
     }
   }
   // re-point the boss global and finish a dying boss's death sequence
@@ -1251,7 +1820,7 @@ function startGame(n){
   ST='PLAY';
   showOv('');
   if(runEndless) banner.set('∞ FRAME 1 — OVERFLOW MODE','SURVIVE THE CRASH · CLIMB FOREVER');
-  else banner.set('FRAME '+level+' — '+LEVELS[level-1].name, 'CLIMB TO THE RETURN PORTAL');
+  else banner.set('FRAME '+level+' — '+LEVELS[level-1].name, LEVELS[level-1].sub || 'CLIMB TO THE RETURN PORTAL');
   AU.track = (level===LEVELS.length)?'boss':'play';
   AU.tempo = clamp(128+level*5,132,168);
   showHud(true);
@@ -1415,6 +1984,10 @@ function stepPlayer(dt){
   if(input.jumpEdge){ pl.jbuf=CFG.BUFFER; input.jumpEdge=false; }
   else pl.jbuf-=dt;
   if(pl.jbuf>0 && pl.coyote>0){ doJump(); }
+  // ride a moving platform: carry the player with it before own physics
+  if(pl.ride && !pl.ride._dead){
+    pl.x+=pl.ride.dx; pl.y+=pl.ride.dy;
+  }
   // gravity + variable jump
   pl.vy+=CFG.GRAV*dt;
   if(!input.jumpHeld && pl.vy<-260) pl.vy+=CFG.GRAV*dt*0.85;
@@ -1425,14 +1998,30 @@ function stepPlayer(dt){
   var wasFalling=pl.vy>0;
   moveX(pl.vx*dt);
   moveY(pl.vy*dt);
+  // land on moving platforms (jump-through from below, snap from above)
+  pl.ride=null;
+  if(!pl.dead){
+    for(var pi=0;pi<platforms.length;pi++){
+      var pp=platforms[pi];
+      var feet=pl.y+pl.h, top=pp.y;
+      if(feet>=top-4 && feet<=top+10 && pl.vy>=-40 &&
+         pl.x+pl.w>pp.x+2 && pl.x<pp.x+pp.w-2 && !pp._dead){
+        if(pl.vy>0 || feet<=top+4){
+          pl.y=top-pl.h; pl.vy=0; pl.onGround=true; pl.ride=pp;
+        }
+      }
+    }
+  }
   if(pl.onGround && wasAir){
     pl.sq=1; pl.sqT=0.16;
-    if(fallV>260){ dust(pl.x+pl.w/2,pl.y+pl.h,3); }
+    if(fallV>260){ dust(pl.x+pl.w/2,pl.y+pl.h,3); ring(pl.x+pl.w/2,pl.y+pl.h,'rgba(125,255,168,0.5)'); }
   }
   if(pl.sq>0){ pl.sq-=dt*4; if(pl.sq<0)pl.sq=0; }
   if(pl.st>0){ pl.st-=dt*4; if(pl.st<0)pl.st=0; }
+  if(pl.starT>0) pl.starT-=dt;
   // fall out of world safety
   if(pl.y>lvlH*CFG.TILE+60 && !pl.dead) killPlayer();
+  checkSprings(dt);
   checkEnemyCollisions(wasFalling,prevBottom);
   checkExit();
 }
@@ -1441,6 +2030,7 @@ function checkEnemyCollisions(falling,prevBottom){
     var e=enemies[i];
     if(e.dead||e.type==='boss') continue;
     if(!overlap(pl.x,pl.y,pl.w,pl.h,e.x,e.y,e.w,e.h)) continue;
+    if(e.type==='spiker'){ killPlayer(); continue; }   // spikes: unstompable
     var ok = falling && prevBottom<=e.y+2 && (pl.y+pl.h)>=e.y-2 &&
              Math.abs((pl.x+pl.w/2)-(e.x+e.w/2))<=e.w/2+4;
     if(ok) stompEnemy(e); else killPlayer();
@@ -1450,6 +2040,15 @@ function checkEnemyCollisions(falling,prevBottom){
               Math.abs((pl.x+pl.w/2)-(boss.x+boss.w/2))<=boss.w/2+4;
     if(bok) stompBoss(); else killPlayer();
   }
+  // the boss's slam shockwaves: a floor-level band that sweeps the wings —
+  // jump it, hide in the pit below the wing line, or stand on a patrol ledge
+  // (all above or below the band are safe)
+  for(var wi=0; wi<shockwaves.length; wi++){
+    var wv=shockwaves[wi];
+    var pcx=pl.x+pl.w/2;
+    var db=Math.abs(pcx-wv.cx);
+    if(db>=wv.r-18 && db<=wv.r+18 && pl.y+pl.h>=wv.fy-wv.h && pl.y+pl.h<=wv.fy+6) killPlayer();
+  }
 }
 function stompEnemy(e){
   e.dead=true; e.deadT=0.25;
@@ -1457,6 +2056,7 @@ function stompEnemy(e){
   if(combo>maxCombo) maxCombo=combo;
   var v=gainPts(CFG.SCORE.STOMP*combo);
   pl.vy=-CFG.STOMP_BOUNCE; pl.onGround=false;
+  pl.inv=Math.max(pl.inv,0.55);  // stomp grace: let the bounce clear the body
   freezeT=0.05; shake(3,0.18); sfx('stomp');
   burst(e.x+e.w/2,e.y+e.h/2,e.type==='wraith'?'#a78bfa':(e.fast?'#fbbf24':'#f87171'),10);
   floater(e.x+e.w/2,e.y,'+'+v);
@@ -1464,19 +2064,46 @@ function stompEnemy(e){
 function stompBoss(){
   if(!boss) return;
   boss.hp--; boss.flashT=0.18;
+  boss.staggerT=0.6;   // each stomp stuns the bug briefly — the mercy window that
+                       // lets you land, recover, and retreat before it resumes
+                       // (critical in phase 2 where it runs at ~119 px/s)
   combo++; comboT=CFG.COMBO_WINDOW;
   if(combo>maxCombo) maxCombo=combo;
   var v=gainPts(CFG.SCORE.BOSS_STOMP);
   pl.vy=-CFG.STOMP_BOUNCE; pl.onGround=false;
+  pl.inv=Math.max(pl.inv,0.6);   // boss is 44px tall: the bounce can't clear it in one frame
   freezeT=0.06; shake(6,0.25); sfx('patch');
   floater(boss.x+boss.w/2,boss.y,'+'+v);
   burst(boss.x+boss.w/2,boss.y,'#fbbf24',8);
-  boss.speed=Math.min((52+boss.hp*10)*DIFFS[diff].espeed,110);
+  // first-fight tutorial: the first stomp during the perch lesson completes
+  // the loop and is persisted so it never replays
+  if(level===10 && arenaTut<3){
+    arenaTut=3; storeSet(CFG.TUT_KEY,'1');
+    showHint('PERCH LOOP DOWN — clear the guard, wait for the bug beneath, drop-stomp.',4);
+  }
+  // PHASE 2: at half HP the overflow bug ENRAGES — it speeds up and sheds a
+  // bug on every stomp (instead of capping at two). The arena is built for
+  // it: the patrol ledges give you height, the pit tram gets you out of
+  // trouble. enraged is also saved/restored so a resume keeps the phase.
+  if(!boss.enraged && boss.hp>0 && boss.hp<=Math.max(2,Math.floor(boss.maxHp/2))){
+    boss.enraged=true; freezeT=0.14; shake(11,0.45); sfx('warn');
+    burst(boss.x+boss.w/2,boss.y+boss.h/2,'#f87171',20);
+    ring(boss.x+boss.w/2,boss.y+boss.h/2,'rgba(248,113,113,0.8)');
+    banner.set('THE OVERFLOW BUG ENRAGES!','IT\'S FASTER — FINISH IT');
+  }
+  // the enrage dial: each difficulty carries its own rage multiplier + patrol
+  // cap (HARD 1.8×/150 px/s, EASY 1.5×/120 — NORMAL keeps the classic
+  // 1.65×/135, still ~119 px/s at the phase change) so the phase-2 patrol
+  // matches the slam pressure the dial already sets.
+  var enrageMult = boss.enraged ? DIFFS[diff].enrage : 1;
+  boss.speed=Math.min((52+boss.hp*10)*DIFFS[diff].espeed*enrageMult, boss.enraged?DIFFS[diff].enrageCap:110);
   if(boss.hp>0){
-    // spawn a bug from the boss (max 2 alive)
+    // spawn a bug from the boss (max 2 alive, shedCap while enraged — and
+    // they're fast). shedCap is per-difficulty: HARD fields a fuller bug
+    // swarm, EASY stays sparse.
     var alive=enemies.filter(function(e){return e.type==='walker'&&!e.dead;}).length;
-    if(alive<2){
-      var nb=mkEnemy('walker', boss.x+boss.w/2-11, boss.y-2, false);
+    if(alive<(boss.enraged?DIFFS[diff].shedCap:2)){
+      var nb=mkEnemy('walker', boss.x+boss.w/2-11, boss.y-2, boss.enraged);
       enemies.push(nb);
       burst(boss.x+boss.w/2,boss.y+boss.h/2,'#f87171',6);
     }
@@ -1502,15 +2129,65 @@ function stepEnemies(dt){
       e.x+=Math.sign((pl.x+pl.w/2)-(e.x+e.w/2))*e.speed*dt;
       if(e.x<CFG.TILE*1){ e.x=CFG.TILE*1; }
       if(e.x+e.w>CFG.TILE*(lvlW-2)){ e.x=CFG.TILE*(lvlW-2)-e.w; }
+    } else if(e.type==='spiker'){
+      var aheadX=e.dir>0?e.x+e.w+1:e.x-1;
+      var fx=tileOf(aheadX), fy=Math.floor((e.y+e.h)/CFG.TILE);
+      var blocked = !isSolid(fx,fy) || isSolid(fx,fy-1) || isSolid(fx,fy-2);
+      if(blocked) e.dir*=-1; else e.x+=e.dir*e.speed*dt;
     } else if(e.type==='boss'){
       if(e.flashT>0) e.flashT-=dt;
-      var bx=e.dir>0?e.x+e.w+1:e.x-1;
-      var leftB=CFG.TILE*2, rightB=CFG.TILE*(lvlW-2)-e.w;
-      if(e.x<=leftB){ e.x=leftB; e.dir=1; }
-      if(e.x>=rightB){ e.x=rightB; e.dir=-1; }
-      e.x+=e.dir*e.speed*dt;
+      if(e.staggerT>0) e.staggerT-=dt;   // stunned by the last stomp
+      // --- SLAM ATTACK (phase 1 + 2) ---
+      // The overflow bug periodically slams the arena floor: it stops, braces
+      // (klaxon + '!!'), then the floor erupts — a shockwave expands from the
+      // boss along the wings in both directions. Dodge by jumping the wave,
+      // hiding in the pit below the wing line, or standing on a patrol ledge
+      // (the safe option). Phase 2 slams sooner with wider, faster waves.
+      if(!e.alerted && pl.y+pl.h<=CFG.TILE*8+8){ e.alerted=true; e.slamT=3; }
+      if(e.alerted){
+        if(e.slamPhase==='wind'){
+          e.slamPh-=dt;
+          if(e.slamPh<=0){
+            e.slamPhase='recover'; e.slamPh=e.enraged?0.4:0.5;
+            // difficulty dial: slamGap scales the interval, slamSpd the wave
+            // speed — hard mode presses with faster, tighter waves; easy is
+            // gentler. Applied on top of the phase-2 enrage escalation.
+            e.slamT=(e.enraged?3.8:5.5)*DIFFS[diff].slamGap;
+            var fcx=e.x+e.w/2, fy0=e.y+e.h;
+            shockwaves.push({cx:fcx, fy:fy0, r:24, h:e.enraged?34:30,
+                             speed:(e.enraged?300:260)*DIFFS[diff].slamSpd,
+                             maxR:Math.max(fcx-CFG.TILE*2, CFG.TILE*(lvlW-2)-fcx)+26});
+            sfx('stomp'); shake(6,0.35); freezeT=0.04;
+            burst(fcx,fy0,'#f87171',14); ring(fcx,fy0,'rgba(248,113,113,0.7)');
+          }
+        } else if(e.slamPhase==='recover'){
+          e.slamPh-=dt;
+          if(e.slamPh<=0) e.slamPhase='';
+        } else if(e.slamT>0){
+          e.slamT-=dt;
+        } else {
+          e.slamPhase='wind'; e.slamPh=e.enraged?0.55:0.8;
+          sfx('warn'); floater(e.x+e.w/2,e.y-8,'!!');
+          ring(e.x+e.w/2,e.y,'rgba(248,113,113,0.9)');
+        }
+      }
+      // patrol only when neither slamming nor staggered (the slam timers keep
+      // ticking through a stagger, so the waves still come — the stagger just
+      // buys the player a clean beat to retreat before it runs again)
+      if(e.slamPhase==='' && e.staggerT<=0){
+        var leftB=CFG.TILE*2, rightB=CFG.TILE*(lvlW-2)-e.w;
+        if(e.x<=leftB){ e.x=leftB; e.dir=1; }
+        if(e.x>=rightB){ e.x=rightB; e.dir=-1; }
+        e.x+=e.dir*e.speed*dt;
+      }
     }
     // flyers/wraiths/boss don't collide with tiles; walkers handled above
+  }
+  // step the boss's floor-shockwave fronts (they expand until they hit the walls)
+  for(var wi=shockwaves.length-1; wi>=0; wi--){
+    var wv=shockwaves[wi];
+    wv.r+=wv.speed*dt;
+    if(wv.r>=wv.maxR) shockwaves.splice(wi,1);
   }
 }
 function stepPickups(){
@@ -1524,6 +2201,58 @@ function stepPickups(){
       else if(p.kind==='H'){ lives=Math.min(lives+1,CFG.MAX_LIVES); sfx('heart'); floater(p.x,p.y,'+1 ♥'); burst(p.x+5,p.y+5,'#4ade80',10); }
       else if(p.kind==='S'){ if(!pl.shield){ pl.shield=true; var v=gainPts(CFG.SCORE.SHIELD); sfx('shield'); floater(p.x,p.y,'SHIELD +'+v); burst(p.x+5,p.y+5,'#3ee7ff',12); } }
       else if(p.kind==='T'){ pl.turbo=CFG.TURBO_TIME; var v=gainPts(CFG.SCORE.TURBO); sfx('turbo'); floater(p.x,p.y,'TURBO +'+v); burst(p.x+5,p.y+5,'#ffd23f',12); }
+      else if(p.kind==='*'){ var v=gainPts(CFG.SCORE.STAR); pl.starT=CFG.STAR_TIME; sfx('star'); floater(p.x,p.y,'★ +'+v); burst(p.x+5,p.y+5,'#ffd23f',18); ring(p.x+5,p.y+5,'rgba(255,210,63,0.7)'); }
+    }
+  }
+}
+/* triangle-wave offset 0->1->0 over a 2-period */
+function platOff(p,t){
+  var u=(t*p.speed/(p.range||48)+p.phase)%2; if(u<0)u+=2;
+  return (1-Math.abs(1-u))*p.range;
+}
+function stepPlatforms(dt){
+  mvT+=dt;
+  for(var i=0;i<platforms.length;i++){
+    var p=platforms[i];
+    var nx = p.axis==='x' ? p.baseX+platOff(p,mvT) : p.x;
+    var ny = p.axis==='y' ? p.baseY-platOff(p,mvT) : p.y;
+    p.dx=nx-p.x; p.dy=ny-p.y;
+    p.x=nx; p.y=ny;
+  }
+}
+function checkSprings(dt){
+  for(var i=0;i<springs.length;i++){
+    var s=springs[i];
+    if(s.cd>0){ s.cd-=dt; continue; }
+    var feet=pl.y+pl.h, top=s.y;
+    if(pl.vy>0 && feet>=top-4 && feet<=top+8 &&
+       pl.x+pl.w>s.x+3 && pl.x<s.x+CFG.TILE-3){
+      pl.vy=-CFG.SPRING_V; pl.onGround=false; pl.ride=null;
+      s.cd=CFG.SPRING_CD; pl.st=1.4; sfx('spring');
+      burst(s.x+12, top, '#ffd23f', 7);
+      ring(s.x+12, top, 'rgba(255,210,63,0.6)');
+    }
+  }
+}
+function checkBreakables(dt){
+  for(var i=0;i<breakables.length;i++){
+    var b=breakables[i], idx=b.ty*lvlW+b.tx;
+    if(tiles[idx]===3){
+      // is the player's feet resting on this tile?
+      var feet=pl.y+pl.h;
+      var onTop = feet>=b.ty*CFG.TILE-3 && feet<=b.ty*CFG.TILE+9 &&
+                  pl.x+pl.w>b.tx*CFG.TILE && pl.x<b.tx*CFG.TILE+CFG.TILE;
+      if(onTop && !pl.dead){ b.breakT+=dt; } else b.breakT=0;
+      if(b.breakT>=CFG.BREAK.STAND){
+        tiles[idx]=0; b.breakT=0; b.respawn=CFG.BREAK.RESTORE;
+        burst(b.tx*CFG.TILE+12, b.ty*CFG.TILE+12, '#9aa8e8', 10);
+        burst(b.tx*CFG.TILE+12, b.ty*CFG.TILE+12, '#3b4a66', 6);
+        sfx('break');
+        if(pl.onGround && onTop){ /* falls through */ }
+      }
+    } else if(b.respawn>0){
+      b.respawn-=dt;
+      if(b.respawn<=0) tiles[idx]=3;
     }
   }
 }
@@ -1557,6 +2286,11 @@ function dust(x,y,n){
     parts.push(p);
   }
   if(parts.length>220) parts.splice(0,parts.length-220);
+}
+/* expanding ring shockwave */
+function ring(x,y,color){
+  parts.push({x:x,y:y,vx:0,vy:0,life:0.3,max:0.3,color:color,size:4,grav:0,ring:1});
+  if(parts.length>240) parts.splice(0,parts.length-240);
 }
 function floater(x,y,txt){
   floaters.push({x:x,y:y,txt:txt,life:0.9});
@@ -1623,9 +2357,9 @@ function renderKeysUI(){
 function updateKbdHint(){
   var h=document.getElementById('kbdHint'); if(!h) return;
   h.innerHTML=
-    '<b>'+keyName(KEYS.left[0])+'/'+keyName(KEYS.right[0])+'</b> move &nbsp;·&nbsp; <b>'+keyName(KEYS.jump[0])+'</b> jump (hold = higher)<br>'+
-    '<b>'+keyName(KEYS.dash[0])+'</b> dash &nbsp;·&nbsp; <b>'+keyName(KEYS.pause[0])+'</b> pause &nbsp;·&nbsp; <b>M</b> sound &nbsp;·&nbsp; <b>ESC</b> menu<br>'+
-    'Stomp bugs · collect <span style="color:var(--green)">bits</span> · <span style="color:var(--cyan)">◈ shield</span> · <span style="color:var(--amber)">⚡ turbo</span> · reach <span style="color:var(--amber)">RETURN</span>';
+    '<b>'+keyName(KEYS.left[0])+'/'+keyName(KEYS.right[0])+'</b> move &nbsp;·&nbsp; <b>'+keyName(KEYS.jump[0])+'</b> jump &nbsp;·&nbsp; <b>'+keyName(KEYS.dash[0])+'</b> dash &nbsp;·&nbsp; <b>'+keyName(KEYS.pause[0])+'</b> pause &nbsp;·&nbsp; <b>ESC</b> menu<br>'+
+    'Stomp bugs (not <span style="color:var(--red)">spikers</span>) · grab <span style="color:var(--green)">bits</span> · ride <span style="color:var(--cyan)">movers</span> · reach <span style="color:var(--amber)">RETURN</span><br>'+
+    'Full field manual with pictures: <b style="color:var(--cyan)">❓ HOW TO PLAY</b>';
   var c=document.getElementById('kbdCred');
   if(c) c.innerHTML=
     keyName(KEYS.left[0])+'/'+keyName(KEYS.right[0])+' move · '+keyName(KEYS.jump[0])+' jump · '+
@@ -1661,40 +2395,150 @@ function buildBg(){
   }
 }
 function drawBg(){
-  ctx.fillStyle='#1b2350'; ctx.fillRect(0,0,cw,ch);
-  // soft tech moon
-  ctx.fillStyle='rgba(95,118,224,0.10)'; ctx.beginPath(); ctx.arc(cw-80,70,90,0,6.2832); ctx.fill();
-  ctx.fillStyle='rgba(95,118,224,0.14)'; ctx.beginPath(); ctx.arc(cw-80,70,58,0,6.2832); ctx.fill();
-  ctx.fillStyle='rgba(160,180,255,0.20)'; ctx.beginPath(); ctx.arc(cw-80,70,32,0,6.2832); ctx.fill();
+  var th=themeFor(level);
+  var g=ctx.createLinearGradient(0,0,0,ch);
+  g.addColorStop(0,th.bg[0]); g.addColorStop(0.55,th.bg[1]); g.addColorStop(1,th.bg[2]);
+  ctx.fillStyle=g; ctx.fillRect(0,0,cw,ch);
+  // backdrop glow
+  ctx.fillStyle='rgba(255,255,255,0.05)'; ctx.beginPath(); ctx.arc(cw-90,60,90,0,6.2832); ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.arc(cw-90,60,55,0,6.2832); ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.14)'; ctx.beginPath(); ctx.arc(cw-90,60,30,0,6.2832); ctx.fill();
+  // theme motif
+  drawMotif(th.motif, th.accent);
   // grid
-  ctx.strokeStyle='rgba(160,180,255,0.06)'; ctx.lineWidth=1;
+  ctx.strokeStyle=th.grid; ctx.lineWidth=1;
   ctx.beginPath();
   for(var y=0;y<ch;y+=48){ ctx.moveTo(0,y); ctx.lineTo(cw,y); }
   for(var x=0;x<cw;x+=48){ ctx.moveTo(x,0); ctx.lineTo(x,ch); }
   ctx.stroke();
   var t=performance.now()/1000;
-  // circuit traces with flowing data dots
-  if(bgTraces) for(var i=0;i<bgTraces.length;i++){
-    var tr=bgTraces[i];
-    ctx.strokeStyle=tr.col; ctx.globalAlpha=tr.alpha; ctx.lineWidth=1.5;
-    ctx.beginPath();
-    for(var j=0;j<tr.pts.length;j++){ if(j===0) ctx.moveTo(tr.pts[j][0],tr.pts[j][1]); else ctx.lineTo(tr.pts[j][0],tr.pts[j][1]); }
-    ctx.stroke();
-    var tt=(t*0.3+i*0.13)%1, seg=(tr.pts.length-1)*tt, s0=Math.floor(seg), f=seg-s0;
-    var x0=tr.pts[s0][0],y0=tr.pts[s0][1],x1=tr.pts[s0+1][0],y1=tr.pts[s0+1][1];
-    var dx=x0+(x1-x0)*f, dy=y0+(y1-y0)*f;
-    ctx.globalAlpha=tr.alpha+0.12; ctx.fillStyle='#7dffa8';
-    ctx.beginPath(); ctx.arc(dx,dy,2.2,0,6.2832); ctx.fill();
-    ctx.globalAlpha=1;
-  }
   // floating code glyphs
   if(bgGlyphs) for(var i=0;i<bgGlyphs.length;i++){
-    var g=bgGlyphs[i];
-    ctx.globalAlpha=g.a; ctx.fillStyle='#cfd8ff';
-    ctx.font='bold '+g.s+'px monospace'; ctx.textAlign='left';
-    ctx.fillText(g.g,g.x+Math.sin(t*0.5+i)*3,g.y+Math.cos(t*0.4+i)*2);
+    var gg=bgGlyphs[i];
+    ctx.globalAlpha=gg.a; ctx.fillStyle=th.accent;
+    ctx.font='bold '+gg.s+'px monospace'; ctx.textAlign='left';
+    ctx.fillText(gg.g,gg.x+Math.sin(t*0.5+i)*3,gg.y+Math.cos(t*0.4+i)*2);
     ctx.globalAlpha=1;
   }
+}
+function drawMotif(kind,accent){
+  var t=performance.now()/1000;
+  ctx.save();
+  if(kind==='circuit'){
+    // circuit traces with flowing data dots
+    if(bgTraces) for(var i=0;i<bgTraces.length;i++){
+      var tr=bgTraces[i];
+      ctx.strokeStyle=tr.col; ctx.globalAlpha=tr.alpha; ctx.lineWidth=1.5;
+      ctx.beginPath();
+      for(var j=0;j<tr.pts.length;j++){ if(j===0) ctx.moveTo(tr.pts[j][0],tr.pts[j][1]); else ctx.lineTo(tr.pts[j][0],tr.pts[j][1]); }
+      ctx.stroke();
+      var tt=(t*0.3+i*0.13)%1, seg=(tr.pts.length-1)*tt, s0=Math.floor(seg), f=seg-s0;
+      var dx=tr.pts[s0][0]+(tr.pts[s0+1][0]-tr.pts[s0][0])*f, dy=tr.pts[s0][1]+(tr.pts[s0+1][1]-tr.pts[s0][1])*f;
+      ctx.globalAlpha=tr.alpha+0.12; ctx.fillStyle=accent;
+      ctx.beginPath(); ctx.arc(dx,dy,2.2,0,6.2832); ctx.fill();
+      ctx.globalAlpha=1;
+    }
+  } else if(kind==='pipes'){
+    // rising bubbles in tube silhouettes
+    ctx.strokeStyle='rgba(125,255,106,0.10)'; ctx.lineWidth=8;
+    for(var i=0;i<4;i++){
+      var px=30+i*110;
+      ctx.beginPath(); ctx.moveTo(px,ch); ctx.lineTo(px,20+i*40); ctx.stroke();
+    }
+    for(var i2=0;i2<6;i2++){
+      var by=ch-((t*60+i2*90)%(ch+40));
+      ctx.fillStyle='rgba(160,255,180,0.12)'; ctx.beginPath(); ctx.arc(30+((i2*97)%440),by,4,0,6.2832); ctx.fill();
+    }
+  } else if(kind==='gears'){
+    // slowly rotating gears
+    for(var i=0;i<3;i++){
+      var gx=40+i*150, gy=60+i*70, r=26+i*6;
+      ctx.save(); ctx.translate(gx,gy); ctx.rotate(t*(0.3+i*0.1)*(i%2?-1:1));
+      ctx.strokeStyle='rgba(240,169,79,0.10)'; ctx.lineWidth=5;
+      ctx.beginPath(); ctx.arc(0,0,r,0,6.2832); ctx.stroke();
+      for(var j=0;j<8;j++){
+        var a=j*Math.PI/4;
+        ctx.beginPath(); ctx.arc(Math.cos(a)*r,Math.sin(a)*r,4,0,6.2832); ctx.fill();
+      }
+      ctx.restore();
+    }
+  } else if(kind==='grid'){
+    // glowing pixel grid blocks
+    ctx.fillStyle='rgba(231,111,196,0.08)';
+    for(var y=0;y<ch;y+=56) for(var x=0;x<cw;x+=68){
+      ctx.fillRect(x+(Math.sin(t+x)*4|0),y,(26+((x+y)%20)),3);
+    }
+  } else if(kind==='towers'){
+    // cable towers with blinking beacon lights
+    ctx.strokeStyle='rgba(84,211,224,0.12)'; ctx.lineWidth=2;
+    for(var i=0;i<4;i++){
+      var bx=20+i*115, bh=40+((i*53)%60);
+      ctx.beginPath();
+      ctx.moveTo(bx-8,ch); ctx.lineTo(bx-4,bh); ctx.lineTo(bx,bh-18); ctx.lineTo(bx+4,bh); ctx.lineTo(bx+8,ch);
+      ctx.moveTo(bx-4,bh); ctx.lineTo(bx-14,bh+24); ctx.moveTo(bx+4,bh); ctx.lineTo(bx+14,bh+24);
+      ctx.stroke();
+      ctx.fillStyle=(Math.sin(t*3+i)>0.5)?'rgba(62,231,255,0.5)':'rgba(62,231,255,0.12)';
+      ctx.beginPath(); ctx.arc(bx,bh-18,3,0,6.2832); ctx.fill();
+    }
+  } else if(kind==='dots'){
+    // bouncy spring-forest dots
+    for(var i=0;i<7;i++){
+      var dx=20+i*70, dy=80+((i*67)%80);
+      var bob=Math.abs(Math.sin(t*2+i));
+      ctx.fillStyle='rgba(200,255,120,'+(0.06+bob*0.08)+')';
+      ctx.beginPath(); ctx.arc(dx,dy+bob*10,5+i%3,0,6.2832); ctx.fill();
+    }
+  } else if(kind==='nebula'){
+    // drifting neural clouds
+    for(var i=0;i<3;i++){
+      var nx=cw/2+Math.sin(t*0.2+i*2)*70, ny=120+i*90;
+      var rg=ctx.createRadialGradient(nx,ny,0,nx,ny,80);
+      rg.addColorStop(0,'rgba(178,141,255,0.14)'); rg.addColorStop(1,'rgba(178,141,255,0)');
+      ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(nx,ny,80,0,6.2832); ctx.fill();
+    }
+  } else if(kind==='city'){
+    // burning city skyline with lit windows
+    for(var i=0;i<5;i++){
+      var bw=36+((i*31)%24), bh=70+((i*89)%110);
+      ctx.fillStyle='rgba(30,8,12,0.5)';
+      ctx.fillRect(16+i*92,bh,bw,ch-bh);
+      ctx.fillStyle='rgba(255,180,120,0.25)';
+      for(var w=0;w<2;w++) for(var wi=0;wi<4;wi++){
+        if((i*7+w*3+wi)%3===0) ctx.fillRect(16+i*92+6+w*10,bh+8+wi*14,4,6);
+      }
+    }
+  } else if(kind==='glitch'){
+    // glitching scan bars + code rain
+    ctx.fillStyle='rgba(255,95,107,0.05)';
+    for(var i=0;i<8;i++){
+      var gy=((t*40+i*71)%(ch+30))-15;
+      ctx.fillRect((Math.sin(t*5+i)*20|0),gy,cw,3+((i*3)%6));
+    }
+    ctx.font='10px monospace'; ctx.fillStyle='rgba(255,120,130,0.10)';
+    for(var i2=0;i2<12;i2++){
+      ctx.fillText(String.fromCharCode(33+((i2*37+t*40|0)%80)), (i2*41)%cw, ((t*70+i2*57)%(ch+20))-10);
+    }
+  } else if(kind==='lava'){
+    // molten pool along the bottom edge + rising embers
+    var g2=ctx.createLinearGradient(0,ch-26,0,ch);
+    g2.addColorStop(0,'rgba(255,96,24,0)'); g2.addColorStop(1,'rgba(255,120,30,0.30)');
+    ctx.fillStyle=g2; ctx.fillRect(0,ch-26,cw,26);
+    for(var i=0;i<9;i++){
+      var bx=((i*59+t*9)%(cw+50))-25, bob=Math.sin(t*2.6+i*1.9)*3, r=7+((i*5)%7);
+      var rg=ctx.createRadialGradient(bx,ch-10+bob,0,bx,ch-10+bob,r*2.4);
+      rg.addColorStop(0,'rgba(255,150,60,0.30)'); rg.addColorStop(1,'rgba(255,150,60,0)');
+      ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(bx,ch-10+bob,r*2.4,0,6.2832); ctx.fill();
+      ctx.fillStyle='rgba(255,200,120,'+(0.16+Math.sin(t*3+i)*0.10)+')';
+      ctx.beginPath(); ctx.arc(bx,ch-10+bob,r*0.7,0,6.2832); ctx.fill();
+    }
+    for(var i2=0;i2<10;i2++){
+      var ex=((i2*97+t*26)%(cw+30))-15;
+      var ey=ch-((t*46+i2*131)%(ch-90));
+      ctx.fillStyle='rgba(255,190,110,'+(0.22+Math.sin(t*4+i2)*0.14)+')';
+      ctx.beginPath(); ctx.arc(ex,ey,1.7,0,6.2832); ctx.fill();
+    }
+  }
+  ctx.restore();
 }
 function render(){
   drawBg();
@@ -1707,6 +2551,17 @@ function render(){
   ctx.save();
   ctx.translate(sx,sy);
   if(layer) ctx.drawImage(layer,0,camY,cw,ch,0,0,cw,ch);
+  drawEdgeGlow();
+  // moving platforms
+  for(var i=0;i<platforms.length;i++){ var mp=platforms[i]; if(mp.y+mp.h<camY-40||mp.y>camY+ch+40) continue; drawPlatform(mp); }
+  // breakable crack overlays (cracks grow right before the tile shatters)
+  for(var i=0;i<breakables.length;i++){
+    var br=breakables[i];
+    if(tiles[br.ty*lvlW+br.tx]===3 && br.breakT>0) drawBreakCrack(br);
+    else if(tiles[br.ty*lvlW+br.tx]===0 && br.respawn>0) drawBreakGhost(br);
+  }
+  // springs
+  for(var i=0;i<springs.length;i++){ var sp=springs[i]; if(sp.y<camY-40||sp.y>camY+ch+40) continue; drawSpring(sp); }
   // pickups
   for(var i=0;i<pickups.length;i++){
     var p=pickups[i];
@@ -1719,12 +2574,112 @@ function render(){
     if(e.y+ e.h < camY || e.y>camY+ch) continue;
     drawEnemy(e);
   }
+  drawShockwaves();
   if(!pl.dead) drawPlayer();
   drawParticles();
   drawFloaters();
   ctx.restore();
   if(ST==='PLAY'||ST==='PAUSE') drawHUD();
   if(banner.t>0) drawBanner();
+}
+function drawEdgeGlow(){
+  // subtle floor-end markers along the L10 wing edges: a soft cyan strip that
+  // falls from the floor surface down the drop, plus a thin tick on the
+  // surface itself, so the walkable floor's limit reads mid-fight. Gentle
+  // pulse; additive so it stays a glow, not a block.
+  if(!edgeStrips||!edgeStrips.length) return;
+  var t=performance.now()/1000;
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  for(var i=0;i<edgeStrips.length;i++){
+    var s=edgeStrips[i], y=s.y-camY;
+    if(y+s.h<-8||y>ch+48) continue;
+    var k=0.62+0.22*Math.sin(t*2.4+s.ph);
+    var g=ctx.createLinearGradient(0,y,0,y+s.h);
+    g.addColorStop(0,'rgba(120,215,255,'+(0.38*k).toFixed(3)+')');
+    g.addColorStop(1,'rgba(120,215,255,0.02)');
+    ctx.fillStyle=g;
+    ctx.fillRect(s.x-2.5,y,5,s.h);
+    ctx.fillStyle='rgba(205,242,255,'+(0.7*k).toFixed(3)+')';
+    ctx.fillRect(s.x-0.75,y+1,1.5,s.h-2);
+    ctx.fillStyle='rgba(170,230,255,'+(0.45*k).toFixed(3)+')';
+    ctx.fillRect(s.x-5,y-1.5,10,1.5);
+  }
+  ctx.restore();
+}
+function drawPlatform(mp){
+  var x=mp.x, y=mp.y-camY, w=mp.w, h=mp.h;
+  var th=themeFor(level);
+  var col = mp.axis==='x' ? th.tile.cap : '#ffce7a';
+  var dark= mp.axis==='x' ? th.tile.dark : '#8a5a1e';
+  ctx.save();
+  // glow under the slab
+  ctx.fillStyle='rgba(255,255,255,0.05)'; rrPath(ctx,x-2,y-2,w+4,h+4,7); ctx.fill();
+  // base + slab
+  ctx.fillStyle=dark; rrPath(ctx,x,y+3,w,h,5); ctx.fill();
+  ctx.fillStyle=col; rrPath(ctx,x,y,w,h,5); ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.4)'; rrPath(ctx,x+2,y+1.5,w-4,3,2); ctx.fill();
+  ctx.strokeStyle='#0d1230'; ctx.lineWidth=2; rrPath(ctx,x+1,y+1,w-2,h-2,5); ctx.stroke();
+  // motion arrows / wheels
+  ctx.fillStyle='rgba(0,0,0,0.25)';
+  if(mp.axis==='x'){
+    for(var a=0;a<3;a++){
+      var ax=x+6+a*(w-12)/2;
+      ctx.beginPath();
+      ctx.moveTo(ax-3,y+h/2); ctx.lineTo(ax+3,y+h/2); ctx.lineTo(ax,y+h/2-4); ctx.closePath(); ctx.fill();
+    }
+  } else {
+    for(var a2=0;a2<3;a2++){
+      var ay=y+5+a2*3;
+      ctx.beginPath();
+      ctx.moveTo(x+w/2,ay-3); ctx.lineTo(x+w/2,ay+3); ctx.lineTo(x+w/2+4,ay); ctx.closePath(); ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+function drawBreakCrack(br){
+  var px=br.tx*CFG.TILE, py=br.ty*CFG.TILE-camY;
+  var k=clamp(br.breakT/CFG.BREAK.STAND,0,1);
+  ctx.save();
+  ctx.strokeStyle='rgba(10,12,30,'+(0.3+k*0.6)+')'; ctx.lineWidth=1.6;
+  ctx.beginPath();
+  ctx.moveTo(px+3,py+3+k*2); ctx.lineTo(px+10,py+8+k*3); ctx.lineTo(px+8,py+14+k*2); ctx.lineTo(px+15,py+18+k*2);
+  ctx.moveTo(px+15,py+5+k); ctx.lineTo(px+10,py+10+k*2);
+  ctx.stroke();
+  if(k>0.6){ ctx.globalAlpha=(k-0.6)/0.4; ctx.fillStyle='#0d1230'; ctx.fillRect(px,py,CFG.TILE,CFG.TILE); }
+  ctx.restore();
+}
+function drawBreakGhost(br){
+  var px=br.tx*CFG.TILE, py=br.ty*CFG.TILE-camY;
+  var k=clamp(br.respawn/CFG.BREAK.RESTORE,0,1);
+  ctx.save();
+  ctx.globalAlpha=0.18+0.15*Math.sin(performance.now()/150);
+  ctx.strokeStyle='#cfd8ff'; ctx.lineWidth=1.5;
+  ctx.strokeRect(px+2,py+2,CFG.TILE-4,CFG.TILE-4);
+  ctx.globalAlpha=0.12; ctx.fillStyle='#cfd8ff'; ctx.fillRect(px+2,py+2,CFG.TILE-4,CFG.TILE-4);
+  ctx.restore();
+}
+function drawSpring(sp){
+  var x=sp.x, y=sp.y-camY, T=CFG.TILE;
+  var coil=2.5+Math.sin(performance.now()/60+sp.x)*0.8; // idle wobble
+  ctx.save();
+  // pad base
+  ctx.fillStyle='#6b2d18'; rrPath(ctx,x,y+12-coil,18,8,3); ctx.fill();
+  ctx.fillStyle='#ff5f5f'; rrPath(ctx,x,y+10-coil,18,6,3); ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fillRect(x+2,y+10-coil,6,2);
+  // coil
+  ctx.strokeStyle='#3d0f1a'; ctx.lineWidth=2.5;
+  ctx.beginPath();
+  for(var i=0;i<4;i++){ ctx.moveTo(x+3, y+9-i*3.2-coil); ctx.lineTo(x+15, y+7-i*3.2-coil); }
+  ctx.stroke();
+  // top plate
+  ctx.fillStyle='#c8502a'; rrPath(ctx,x+1,y+2-coil,16,4,2); ctx.fill();
+  ctx.fillStyle='#ff8a5e'; rrPath(ctx,x+1,y+1-coil,16,3,1.5); ctx.fill();
+  ctx.fillStyle='#fff';
+  ctx.font='bold 7px monospace'; ctx.textAlign='center';
+  ctx.fillText('^',x+9,y+8-coil);
+  ctx.restore();
+  ctx.textAlign='left';
 }
 function drawPickup(p){
   if(p.y<camY-30||p.y>camY+ch+30) return;
@@ -1760,6 +2715,27 @@ function drawPickup(p){
     ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.fillRect(x+2,y+1.5,3,2);
     ctx.fillStyle='#6b4a00';
     ctx.beginPath(); ctx.moveTo(x+6,y+1.5); ctx.lineTo(x+3,y+5.6); ctx.lineTo(x+5.2,y+5.6); ctx.lineTo(x+4,y+8.5); ctx.lineTo(x+7.4,y+4.2); ctx.lineTo(x+5.2,y+4.2); ctx.closePath(); ctx.fill();
+  } else if(p.kind==='*'){
+    // golden star, slowly spinning
+    var t=performance.now()/900;
+    var ang=Math.sin(t+p.x)*0.35;
+    ctx.translate(x+5,y+5);
+    ctx.fillStyle='#8a5b00'; ctx.beginPath();
+    for(var s=0;s<10;s++){
+      var r=s%2===0?6:2.6, a=ang+s*Math.PI/5;
+      var sx=Math.cos(a)*r, sy=Math.sin(a)*r;
+      if(s===0) ctx.moveTo(sx,sy); else ctx.lineTo(sx,sy);
+    }
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle='#ffd23f';
+    ctx.beginPath();
+    for(var s2=0;s2<10;s2++){
+      var r2=s2%2===0?4.8:2.0, a2=ang+s2*Math.PI/5;
+      var sx2=Math.cos(a2)*r2, sy2=Math.sin(a2)*r2;
+      if(s2===0) ctx.moveTo(sx2,sy2); else ctx.lineTo(sx2,sy2);
+    }
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.beginPath(); ctx.arc(-1.2,-1.4,1.3,0,6.2832); ctx.fill();
   } else {
     // cartoon heart (two lobes + wedge)
     ctx.fillStyle='#a02050';
@@ -1782,14 +2758,21 @@ function drawPlayer(){
   ctx.scale(sq, 2-sq); ctx.scale(stt,1/stt);
   ctx.scale(face,1);
   var t=performance.now()/300;
+  var moving = input.left||input.right||gpL||gpR;
+  var runT=performance.now()/80;
+  var footKick = pl.onGround && moving ? Math.sin(runT)*2.5 : 0;
+  var bob = pl.onGround && !moving ? Math.sin(performance.now()/320)*0.8
+         : (pl.onGround && moving ? Math.abs(Math.cos(runT))*1.1 : 0);
+  var lean = pl.onGround && moving ? 0.10 : (pl.vy<-200?-0.08:(pl.vy>220?0.14:0));
+  ctx.translate(0,-bob); ctx.rotate(lean);
   // antenna with pulsing beacon
   ctx.strokeStyle='#0b2b4f'; ctx.lineWidth=2;
   ctx.beginPath(); ctx.moveTo(0,-pl.h/2+2); ctx.lineTo(0,-pl.h/2-4); ctx.stroke();
   ctx.fillStyle='rgba(125,255,168,0.30)'; ctx.beginPath(); ctx.arc(0,-pl.h/2-5,5.5+Math.sin(t)*1.2,0,6.2832); ctx.fill();
   ctx.fillStyle='#7dffa8'; ctx.beginPath(); ctx.arc(0,-pl.h/2-5,3,0,6.2832); ctx.fill();
-  // little feet
-  ctx.fillStyle='#0b2b4f'; rrPath(ctx,-5,pl.h/2-2.5,5,3,1.5); ctx.fill();
-  ctx.fillStyle='#0b2b4f'; rrPath(ctx,0,pl.h/2-2.5,5,3,1.5); ctx.fill();
+  // little feet (alternate when running)
+  ctx.fillStyle='#0b2b4f'; rrPath(ctx,-5+footKick,pl.h/2-2.5,5,3,1.5); ctx.fill();
+  ctx.fillStyle='#0b2b4f'; rrPath(ctx,0-footKick,pl.h/2-2.5,5,3,1.5); ctx.fill();
   // body — chunky rounded data packet
   ctx.fillStyle='#0b2b4f'; rrPath(ctx,-pl.w/2,-pl.h/2,pl.w,pl.h,6); ctx.fill();
   ctx.fillStyle='#35e0ff'; rrPath(ctx,-pl.w/2+1.5,-pl.h/2+1.5,pl.w-3,pl.h-3,5); ctx.fill();
@@ -1814,6 +2797,16 @@ function drawPlayer(){
     ctx.beginPath(); ctx.arc(0,0,18+Math.sin(t*9)*2,0,6.2832); ctx.stroke();
     ctx.strokeStyle='rgba(255,210,63,0.35)'; ctx.lineWidth=1;
     ctx.beginPath(); ctx.arc(0,0,21+Math.cos(t*9)*2,0,6.2832); ctx.stroke();
+  }
+  // star aura (golden, after collecting a star)
+  if(pl.starT>0){
+    ctx.strokeStyle='rgba(255,210,63,'+(0.35+0.25*Math.sin(t*12))+')'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(0,0,19+Math.sin(t*10)*3,0,6.2832); ctx.stroke();
+    for(var si=0;si<6;si++){
+      var a=si*Math.PI/3+t;
+      ctx.fillStyle='rgba(255,210,63,0.9)';
+      ctx.beginPath(); ctx.arc(Math.cos(a)*20,Math.sin(a)*20,1.6,0,6.2832); ctx.fill();
+    }
   }
   ctx.restore();
 }
@@ -1883,8 +2876,32 @@ function drawEnemy(e){
     ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(-4,-4,2.6,0,6.2832); ctx.arc(4,-4,2.6,0,6.2832); ctx.fill();
     ctx.fillStyle='#2a1a4d'; ctx.beginPath(); ctx.arc(-4,-4,1.3,0,6.2832); ctx.arc(4,-4,1.3,0,6.2832); ctx.fill();
     ctx.beginPath(); ctx.arc(0,1,1.6,0,6.2832); ctx.fill();
+  } else if(e.type==='spiker'){
+    // spiker: armored urchin — spikes on every side, unstompable
+    var f=e.dir; ctx.scale(f,1);
+    var rot=t*2;
+    ctx.fillStyle='#3d0f1a';
+    for(var sp=0;sp<10;sp++){
+      var a=sp*Math.PI/5+rot*0.3;
+      ctx.save(); ctx.rotate(a);
+      ctx.beginPath(); ctx.moveTo(12,0); ctx.lineTo(7,-3); ctx.lineTo(7,3); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    // body
+    ctx.fillStyle='#4a1220'; ctx.beginPath(); ctx.arc(0,0,9,0,6.2832); ctx.fill();
+    ctx.fillStyle='#ff5f6b'; ctx.beginPath(); ctx.arc(0,0,7.4,0,6.2832); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.arc(-2.5,-2.5,2.4,0,6.2832); ctx.fill();
+    // angry eyes
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(-3,-1.5,2,0,6.2832); ctx.arc(3,-1.5,2,0,6.2832); ctx.fill();
+    ctx.fillStyle='#3d0f1a'; ctx.beginPath(); ctx.arc(-3,-1.5,1,0,6.2832); ctx.arc(3,-1.5,1,0,6.2832); ctx.fill();
+    ctx.strokeStyle='#3d0f1a'; ctx.lineWidth=1.6;
+    ctx.beginPath(); ctx.moveTo(-5.5,-4); ctx.lineTo(-1,-2.6); ctx.moveTo(1,-2.6); ctx.lineTo(5.5,-4); ctx.stroke();
+    // gritted teeth
+    ctx.strokeStyle='#fff'; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(-3,3); ctx.lineTo(-1.5,1.6); ctx.lineTo(0,3); ctx.lineTo(1.5,1.6); ctx.lineTo(3,3); ctx.stroke();
   } else if(e.type==='boss'){
     // OVERFLOW boss: big angry glitch monster with horns
+    if(e.slamPhase==='wind'){ ctx.translate(0,4); ctx.scale(1,0.9); } // bracing for the slam
     ctx.fillStyle='#2b0a0f';
     ctx.beginPath(); ctx.moveTo(-22,-22); ctx.lineTo(-16,-34); ctx.lineTo(-10,-22); ctx.closePath(); ctx.fill();
     ctx.beginPath(); ctx.moveTo(10,-22); ctx.lineTo(16,-34); ctx.lineTo(22,-22); ctx.closePath(); ctx.fill();
@@ -1908,14 +2925,63 @@ function drawEnemy(e){
       ctx.fillStyle=(h<e.hp)?'#4ade80':'#3a2a2e';
       rrPath(ctx,-27+h*11,16,9,3,1.5); ctx.fill();
     }
+    if(e.enraged){
+      // phase-2 rage aura: a hot red glow rings the bug
+      ctx.fillStyle='rgba(255,70,70,0.10)';
+      ctx.beginPath(); ctx.arc(0,0,46,0,6.2832); ctx.fill();
+      ctx.strokeStyle='rgba(255,90,90,0.55)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(0,0,46,0,6.2832); ctx.stroke();
+    }
+    if(e.slamPhase==='wind'){
+      // slam telegraph: a pulsing red charge glow pulses around the crouched bug
+      ctx.fillStyle='rgba(255,80,80,'+(0.16+0.12*Math.abs(Math.sin(e.slamPh*22)))+')';
+      ctx.beginPath(); ctx.arc(0,-2,52,0,6.2832); ctx.fill();
+      ctx.strokeStyle='rgba(255,120,120,0.7)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(0,-2,52,0,6.2832); ctx.stroke();
+    }
+    if(e.staggerT>0){
+      // dizzy stars orbit the bug's head while it's stunned by the last stomp
+      for(var ds=0;ds<3;ds++){
+        var da=t*7+ds*2.1;
+        ctx.fillStyle='#ffd23f';
+        ctx.beginPath();
+        ctx.arc(Math.cos(da)*17, -25+Math.sin(da)*3, 2.8, 0, 6.2832);
+        ctx.fill();
+      }
+    }
     if(e.flashT>0){ ctx.fillStyle='rgba(255,255,255,0.4)'; rrPath(ctx,-28,-20,56,40,8); ctx.fill(); }
   }
   ctx.restore();
+}
+function drawShockwaves(){
+  // the boss's slam: an energy wall sweeps the arena floor from the impact
+  // point — red band, yellow leading edge, faint trailing wall
+  for(var i=0;i<shockwaves.length;i++){
+    var wv=shockwaves[i], fy=wv.fy-camY, h=wv.h;
+    for(var s=-1;s<=1;s+=2){
+      var fx=wv.cx+s*wv.r;
+      ctx.globalAlpha=0.32;
+      ctx.fillStyle='#f87171';
+      rrPath(ctx,fx-14-s*5,fy-h,9,h,2); ctx.fill();
+      ctx.globalAlpha=0.92;
+      ctx.fillStyle='#f87171';
+      rrPath(ctx,fx-10,fy-h,20,h,3); ctx.fill();
+      ctx.fillStyle='#ffd23f';
+      rrPath(ctx,fx-10,fy-h,20,5,2); ctx.fill();
+      ctx.globalAlpha=1;
+    }
+  }
 }
 function drawParticles(){
   for(var i=0;i<parts.length;i++){
     var p=parts[i];
     ctx.globalAlpha=clamp(p.life/p.max,0,1);
+    if(p.ring){
+      var rr=p.size+(1-p.life/p.max)*34;
+      ctx.strokeStyle=p.color; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.arc(p.x,p.y-camY,rr,0,6.2832); ctx.stroke();
+      continue;
+    }
     ctx.fillStyle=p.color;
     ctx.beginPath(); ctx.arc(p.x,p.y-camY,p.size,0,6.2832); ctx.fill();
     ctx.fillStyle='rgba(255,255,255,0.7)';
@@ -1960,6 +3026,7 @@ function drawHUD(){
   ctx.font='9px monospace'; ctx.fillStyle='#9aa8e8';
   ctx.fillText(subTxt, cw/2, 30);
   // status row (under the bar, left): dash cooldown · shield · turbo
+  ctx.shadowColor='rgba(0,0,0,0.9)'; ctx.shadowBlur=2; ctx.shadowOffsetY=1;
   ctx.font='bold 7px monospace'; ctx.fillStyle='#9aa8e8';
   ctx.fillText('DASH',8,58);
   ctx.fillStyle='rgba(13,18,48,0.7)'; rrPath(ctx,38,51,52,6,3); ctx.fill();
@@ -1968,6 +3035,7 @@ function drawHUD(){
   rrPath(ctx,38,51,52*cdFrac,6,3); ctx.fill();
   if(pl.shield){ ctx.fillStyle='#3ee7ff'; ctx.fillText('◈ SHIELD',100,58); }
   if(pl.turbo>0){ ctx.fillStyle='#ffd23f'; ctx.fillText('⚡ '+pl.turbo.toFixed(0),170,58); }
+  ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
   // time + bits (right)
   ctx.textAlign='right';
   ctx.font='bold 12px monospace'; ctx.lineWidth=2.5; ctx.strokeStyle='#0d1230';
@@ -1979,7 +3047,43 @@ function drawHUD(){
     ctx.textAlign='center'; ctx.font='bold 20px monospace'; ctx.lineWidth=4; ctx.strokeStyle='#0d1230';
     ctx.strokeText('×'+combo, cw/2, 64); ctx.fillStyle='#ff9de2'; ctx.fillText('×'+combo, cw/2, 64);
   }
+  // tutorial hint pill (bottom center) — non-blocking, fades in/out
+  if(hintT>0&&hintTxt){
+    var fi=clamp((hintMax-hintT)/0.35,0,1), fo=clamp(hintT/0.35,0,1), ha=Math.min(fi,fo);
+    ctx.globalAlpha=ha;
+    ctx.textAlign='center'; ctx.font='bold 10px monospace';
+    var lw=ctx.measureText('HINT ').width, tw=ctx.measureText(hintTxt).width;
+    var bw=tw+lw+20, bx=cw/2-bw/2, by=ch-42, bh=24;
+    ctx.fillStyle='rgba(13,18,48,0.88)'; rrPath(ctx,bx,by,bw,bh,6); ctx.fill();
+    ctx.strokeStyle='#3ee7ff'; ctx.lineWidth=1.5; rrPath(ctx,bx+0.5,by+0.5,bw-1,bh-1,6); ctx.stroke();
+    ctx.textAlign='left';
+    ctx.fillStyle='#3ee7ff'; ctx.fillText('HINT',bx+8,by+15);
+    ctx.fillStyle='#fff'; ctx.fillText(hintTxt,bx+8+lw+4,by+15);
+    ctx.globalAlpha=1; ctx.textAlign='left';
+  }
   ctx.textAlign='left';
+}
+function updateArenaTut(){
+  // teaches the perch loop on the FIRST L10 fight only: (1) arriving at the
+  // arena — the guard bugs own the perches, clear one; (2) on a perch with
+  // the boss passing beneath — wait, then drop-stomp. A stomp completes it.
+  if(level!==10||arenaTut>=3||!boss||boss.dead) return;
+  var T=CFG.TILE, wingY=8*T, ledgeY=5*T, bottom=pl.y+pl.h;
+  if(arenaTut===0 && pl.onGround && bottom<=wingY+24){
+    arenaTut=1;
+    showHint('GUARDED PERCH — can\'t jump up. Climb and LAND ON the guard.',4);
+    return;
+  }
+  if(arenaTut===1 && pl.onGround && Math.abs(bottom-ledgeY)<=4){
+    var lx1, lx2;
+    if(pl.x+pl.w>0 && pl.x<96)      { lx1=0;   lx2=96; }
+    else if(pl.x+pl.w>384 && pl.x<480){ lx1=384; lx2=480; }
+    else return;
+    if(boss.x+boss.w>lx1 && boss.x<lx2 && boss.y>=wingY-70 && boss.y<=wingY+12){
+      arenaTut=2;
+      showHint('WAIT — let the bug pass BENEATH the perch, then DROP-STOMP it.',4);
+    }
+  }
 }
 function drawBanner(){
   var a=clamp(banner.t/0.3,0,1);
@@ -2002,7 +3106,7 @@ function showHud(on){
 }
 function overlay(id){ return document.getElementById(id); }
 function showOv(id){
-  var ids=['ovTitle','ovSelect','ovPause','ovQuit','ovSettings','ovControls','ovOver','ovWin'];
+  var ids=['ovTitle','ovSelect','ovPause','ovQuit','ovSettings','ovControls','ovHelp','ovOver','ovWin'];
   for(var i=0;i<ids.length;i++){ var o=overlay(ids[i]); if(o) o.classList.remove('show'); }
   if(id){ var el=overlay(id); if(el) el.classList.add('show'); }
   gpRefresh();
@@ -2014,6 +3118,125 @@ function showSettings(){
 function showControls(){
   initAudio();
   ST='CONTROLS'; showHud(false); setMusic(false); showOv('ovControls'); renderKeysUI();
+}
+/* ---------------- HOW TO PLAY field manual ---------------- */
+var helpFrom='ovTitle';
+function showHelp(from){
+  initAudio(); cancelKeysArm();
+  helpFrom = from || (isOv('ovPause') ? 'ovPause' : (isOv('ovSelect') ? 'ovSelect' : 'ovTitle'));
+  ST='HELP'; showHud(false); setMusic(false); showOv('ovHelp');
+  buildHelpSheet();
+  gpRefresh();
+}
+function hideHelp(){
+  var back=helpFrom;
+  if(back==='ovPause'){ ST='PAUSE'; showHud(false); setMusic(false); showOv('ovPause'); }
+  else if(back==='ovSelect'){ toSelect(); }
+  else { toTitle(); }
+  sfx('select');
+}
+function helpKey(name){ return '<span class="helpKey">'+name+'</span>'; }
+function helpArt(kind, extra){
+  return '<canvas class="hpic" width="112" height="112" data-art="'+kind+'"'+(extra?' data-extra="'+extra+'"':'')+'></canvas>';
+}
+function buildHelpSheet(){
+  var sh=document.getElementById('helpSheet'); if(!sh) return;
+  var k=function(a){ return helpKey(keyName(KEYS[a][0])); };
+  var esc=helpKey('ESC');
+  var html='';
+  html+='<div class="hsec info">CONTROLS</div>';
+  html+='<div class="hcard"><small>'+k('left')+'/'+k('right')+' move &nbsp;·&nbsp; '+k('jump')+' jump (hold = higher) &nbsp;·&nbsp; '+k('dash')+' dash &nbsp;·&nbsp; '+k('pause')+' pause<br>'+
+    'Touch: on-screen buttons. Gamepad: <b>▲▼</b> move · <b>A</b> jump · <b>X</b> dash · <b>B</b> menu</small></div>';
+  html+='<div class="hsec info">THE MISSION</div>';
+  html+='<div class="hcard">'+helpArt('player')+'<div><b>YOU — the DATA PACKET</b><small>Climb the corrupted call stack frame by frame. Land on <b>enemies</b> to stomp them, grab <b>bits</b>, and reach the <b>RETURN</b> portal at the top of each frame. <b style="color:var(--red)">Gaps in the floor are real pits</b> — fall in and you lose a life!</small></div></div>';
+  html+='<div class="hcard">'+helpArt('exit')+'<div><b>RETURN PORTAL <span class="pts">+CLEAR BONUS</span></b><small>The green pad at the top of the frame. Land on it (or walk across) to clear the frame and move up the stack. Grab every bit first for an ALL-BITS bonus!</small></div></div>';
+  html+='<div class="hsec good">GOOD STUFF — GRAB IT</div>';
+  html+='<div class="hcard">'+helpArt('b')+'<div><b>DATA BIT <span class="pts">+10</span></b><small>Green chip. Collect every bit in a frame for an ALL-BITS bonus at the RETURN portal.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('R')+'<div><b>RAM CHIP <span class="pts">+200</span></b><small>Gold chip with pins. Big points — usually hidden up high.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('H')+'<div><b>HEART <span class="pts">+1 ♥</span></b><small>Repairs one crash. Lives are capped at 5.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('S')+'<div><b>SHIELD CHIP <span class="pts">◈</span></b><small>Cyan hexagon. Absorbs one hit, then pops.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('T')+'<div><b>TURBO CHIP <span class="pts">⚡</span></b><small>Amber bolt. Temporary speed boost.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('*')+'<div><b>STAR <span class="pts">+500</span></b><small>Golden star. Big score and a shimmering aura.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('^')+'<div><b>SPRING <span class="pts">^</span></b><small>Bounce pad. Jump onto it to rocket upward — great for shortcuts.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('mx')+'<div><b>MOVING PLATFORM <span class="pts">▤</span></b><small>Rides side to side. Step on and it carries you — jump from the edge at the right moment.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('my')+'<div><b>LIFTER <span class="pts">▥</span></b><small>Vertical mover. Carries you straight up through the frame.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('c')+'<div><b>CRUMBLE FLOOR <span class="pts">%</span></b><small>Cracked slab. Stand still on it for a moment and it shatters — then it respawns. Keep moving!</small></div></div>';
+  html+='<div class="hsec danger">DANGER — THE BUGS</div>';
+  html+='<div class="hcard">'+helpArt('walker')+'<div><b>BUG WALKER</b><small>Red crawler. Patrolling the stack. <b>Stomp it</b> from above to squash it (+50 × combo).</small></div></div>';
+  html+='<div class="hcard warn">'+helpArt('fast')+'<div><b>FAST SPARK</b><small>Yellow bug — twice the speed. Same deal: stomp it, but time the drop.</small></div></div>';
+  html+='<div class="hcard">'+helpArt('flyer')+'<div><b>WORM FLYER</b><small>Green segmented worm bobbing mid-air. Stomp it from above like any bug.</small></div></div>';
+  html+='<div class="hcard warn">'+helpArt('wraith')+'<div><b>WRaith GHOST</b><small>Purple ghost that <b>flies through walls</b> and chases you. Stompable, but it hunts — jump late.</small></div></div>';
+  html+='<div class="hcard bad">'+helpArt('spiker')+'<div><b>SPIKER <span class="pts">— DO NOT TOUCH</span></b><small>Armored urchin with spikes on every side. <b>You cannot stomp it.</b> Touching it costs a life — jump over or around.</small></div></div>';
+  html+='<div class="hcard bad">'+helpArt('boss')+'<div><b>OVERFLOW BOSS</b><small>Frame 9&rsquo;s giant glitch monster. Drop onto its head <b>5 times</b> to patch the bug and win the game.</small></div></div>';
+  html+='<div class="hsec info">TIPS &amp; TRICKS</div>';
+  html+='<div class="hcard"><small><b>• Hold '+k('jump')+'</b> for a higher jump — release early for a short hop.<br>'+
+    '<b>• Combo:</b> stomp bugs quickly in a row — the score multiplier climbs ×2, ×3…<br>'+
+    '<b>• Dash</b> gives a burst of speed and brief invulnerability — escape corners and tight drops.<br>'+    '<b>• </b>'+k('pause')+' pauses (the run auto-saves) — '+esc+' returns to the title from anywhere.</small></div>';
+  sh.innerHTML=html;
+  paintHelpArt();
+}
+function paintHelpArt(){
+  var cvs=document.querySelectorAll('#helpSheet canvas[data-art]');
+  var savedCtx=ctx, savedCamY=camY;
+  for(var i=0;i<cvs.length;i++){
+    var cv=cvs[i], kind=cv.getAttribute('data-art');
+    var g=cv.getContext('2d');
+    g.clearRect(0,0,cv.width,cv.height);
+    ctx=g; camY=0;
+    g.save(); g.scale(cv.width/96, cv.height/96);
+    paintArtItem(kind);
+    g.restore();
+  }
+  ctx=savedCtx; camY=savedCamY;
+}
+function paintArtItem(kind){
+  var T=CFG.TILE;
+  if(kind==='player'){
+    var savedPl=pl, savedIn=input, savedL=gpL, savedR=gpR;
+    pl={x:34,y:32,w:22,h:22,inv:0,face:1,onGround:true,vy:0,sq:0,st:0,shield:false,turbo:0,starT:0};
+    input={left:false,right:false,jump:false,jumpHeld:false,jumpEdge:false};
+    gpL=false; gpR=false;
+    ctx.fillStyle='#0d1230'; rrPath(ctx,26,56,44,5,2); ctx.fill();
+    drawPlayer();
+    pl=savedPl; input=savedIn; gpL=savedL; gpR=savedR;
+  } else if(kind==='exit'){
+    var px=48-T/2, py=48-T/2;
+    ctx.fillStyle='#14532d'; rrPath(ctx,px+1,py+1,T-2,T-2,5); ctx.fill();
+    ctx.fillStyle='#4ade80'; rrPath(ctx,px+1,py+1,T-2,5,4); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.35)'; ctx.fillRect(px+3,py+2,T-6,2);
+    ctx.strokeStyle='#0d1230'; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(px+1.5,py+1.5,T-3,T-3,4); ctx.stroke();
+    ctx.fillStyle='rgba(74,222,128,0.25)'; ctx.beginPath(); ctx.arc(48,48,9,0,6.2832); ctx.fill();
+    ctx.fillStyle='#0b3b26'; ctx.beginPath(); ctx.arc(48,48,6.5,0,6.2832); ctx.fill();
+    ctx.strokeStyle='#7dffa8'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(48,48,6.5,0,6.2832); ctx.stroke();
+    ctx.fillStyle='#7dffa8';
+    ctx.beginPath(); ctx.moveTo(48,44.5); ctx.lineTo(45,50.5); ctx.lineTo(51,50.5); ctx.fill();
+  } else if(kind==='b'||kind==='R'||kind==='H'||kind==='S'||kind==='T'||kind==='*'){
+    drawPickup({kind:kind,x:48-6,y:48-6,taken:false});
+  } else if(kind==='^'){
+    drawSpring({x:48-9,y:48-15});
+  } else if(kind==='mx'){
+    drawPlatform({axis:'x',x:26,y:42,w:44,h:12});
+  } else if(kind==='my'){
+    drawPlatform({axis:'y',x:26,y:42,w:44,h:12});
+  } else if(kind==='c'){
+    var cx=48-T/2, cy=48-T/2;
+    ctx.fillStyle='#6b7686'; rrPath(ctx,cx+1,cy+1,T-2,T-2,5); ctx.fill();
+    ctx.fillStyle='#aeb9cc'; rrPath(ctx,cx+1,cy+1,T-2,5,4); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.35)'; ctx.fillRect(cx+3,cy+2,T-6,2);
+    ctx.strokeStyle='#0d1230'; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(cx+1.5,cy+1.5,T-3,T-3,4); ctx.stroke();
+    ctx.strokeStyle='rgba(10,12,30,0.6)'; ctx.lineWidth=1.4;
+    ctx.beginPath();
+    ctx.moveTo(cx+4,cy+4); ctx.lineTo(cx+10,cy+8); ctx.lineTo(cx+8,cy+14); ctx.lineTo(cx+14,cy+18);
+    ctx.moveTo(cx+14,cy+6); ctx.lineTo(cx+9,cy+10); ctx.lineTo(cx+19,cy+12);
+    ctx.stroke();
+  } else {
+    var dims={walker:[22,18],fast:[22,18],flyer:[22,16],wraith:[20,24],spiker:[20,18],boss:[60,44]};
+    var d=dims[kind]||[22,18];
+    var e={type: kind==='fast' ? 'walker' : kind, x:48-d[0]/2, y:48-d[1]/2, w:d[0], h:d[1], dir:1, t:1, flashT:0, fast: kind==='fast', hp:5};
+    if(kind==='wraith') e.t=2.5;
+    if(kind==='flyer'){ e.t=2; e.freq=4; e.amp=10; e.phase=0; }
+    drawEnemy(e);
+  }
 }
 function toTitle(){
   ini.active=false; // leave the high-score editor behind
@@ -2250,6 +3473,7 @@ function loop(t){
 function update(dt){
   gpPoll();
   if(banner.t>0) banner.t-=dt;
+  if(hintT>0) hintT-=dt;
   if(shakeT>0) shakeT-=dt; if(shakeMag>0) shakeMag*=0.9;
   for(var ai=afterList.length-1; ai>=0; ai--){
     afterList[ai].t-=dt;
@@ -2261,9 +3485,12 @@ function update(dt){
     if(freezeT>0){ freezeT-=dt; }
     else {
       levelTime+=dt;
+      stepPlatforms(dt);
       stepPlayer(dt);
       stepEnemies(dt);
       stepPickups();
+      checkBreakables(dt);
+      updateArenaTut();
     }
     stepParts(dt);
     musicTick();
@@ -2310,6 +3537,7 @@ document.addEventListener('keydown', function(e){
   else if(e.key==='m'||e.key==='M'){ setMuted(!muted); updateMuteBtn(); updateSettingsUI(); }
   else if(e.key==='Escape'){
     if(ST==='PLAY'){ saveRun(); toTitle(); }
+    else if(ST==='HELP'){ hideHelp(); }
     else if(ST==='CONTROLS'){ showSettings(); }
     else if(ST==='PAUSE'&&isOv('ovQuit')){ showOv('ovPause'); }
     else if(ST==='PAUSE'||ST==='SELECT'||ST==='SETTINGS'||ST==='OVER'||ST==='WIN') toTitle();
@@ -2324,6 +3552,7 @@ document.addEventListener('keydown', function(e){
       startGame(selLevel);
     }
     else if(ST==='OVER'||ST==='WIN'){ startGame(1); }
+    else if(ST==='HELP'){ hideHelp(); }
     else if(ST==='CONTROLS'){ showSettings(); }
     else if(ST==='SETTINGS'){ toTitle(); }
     else if(ST==='PAUSE'&&isOv('ovQuit')){ gpConfirm(); }
@@ -2360,6 +3589,10 @@ function wire(){
   byId('btnContinue').onclick=function(){ initAudio(); resumeRun(); };
   byId('btnSelect').onclick=function(){ toSelect(); };
   byId('btnSettings').onclick=function(){ showSettings(); };
+  byId('btnHelp').onclick=function(){ showHelp('ovTitle'); };
+  byId('selHelp').onclick=function(){ showHelp('ovSelect'); };
+  byId('pHelp').onclick=function(){ showHelp('ovPause'); };
+  byId('hBack').onclick=function(){ hideHelp(); };
   byId('btnBack').onclick=function(){ toTitle(); };
   byId('sBack').onclick=function(){ toTitle(); };
   byId('sControls').onclick=function(){ showControls(); };
@@ -2485,6 +3718,7 @@ function gpConfirm(){
 function gpBack(){
   if(keysArmed){ cancelKeysArm(); return; }
   if(ini.active){ iniSkip(); return; }
+  if(ST==='HELP'){ hideHelp(); return; }
   if(ST==='CONTROLS'){ showSettings(); return; }
   if(ST==='PAUSE'&&isOv('ovQuit')){ showOv('ovPause'); return; }
   if(ST==='SELECT'||ST==='SETTINGS'||ST==='PAUSE'||ST==='OVER'||ST==='WIN') toTitle();
@@ -2586,12 +3820,22 @@ window.__SO={
   score:function(){ return score; }, lives:function(){ return lives; }, level:function(){ return level; },
   time:function(){ return levelTime; }, bitsGot:function(){ return bitsGot; }, bitsTotal:function(){ return levelBitsTotal; },
   combo:function(){ return combo; }, kills:function(){ return kills; }, freeze:function(){ return freezeT; },
-  VERSION:'v3',
+  VERSION:'v5',
   player:function(){ return {x:pl.x,y:pl.y,vx:pl.vx,vy:pl.vy,onGround:pl.onGround,dead:pl.dead,inv:pl.inv,cx:pl.x+pl.w/2,cy:pl.y+pl.h/2,bottom:pl.y+pl.h,shield:pl.shield,turbo:pl.turbo,dashCd:pl.dashCd,dashT:pl.dashT,face:pl.face}; },
   enemies:function(){ return enemies.filter(function(e){return !e.dead;}).map(function(e){
     return {type:e.type,x:e.x,y:e.y,w:e.w,h:e.h,hp:e.hp||0,dead:e.dead}; }); },
   pickups:function(){ return pickups.filter(function(p){return !p.taken;}).map(function(p){return {kind:p.kind,x:p.x,y:p.y};}); },
-  boss:function(){ return boss&&!boss.dead?{hp:boss.hp,x:boss.x,y:boss.y,speed:boss.speed}:null; },
+  platforms:function(){ return platforms.map(function(p){return {axis:p.axis,x:p.x,y:p.y,w:p.w,h:p.h,dx:p.dx,dy:p.dy,speed:p.speed};}); },
+  springs:function(){ return springs.map(function(s){return {x:s.x,y:s.y,cd:s.cd};}); },
+  breakables:function(){ return breakables.map(function(b){return {tx:b.tx,ty:b.ty,breakT:b.breakT,respawn:b.respawn};}); },
+  boss:function(){ return boss&&!boss.dead?{hp:boss.hp,x:boss.x,y:boss.y,speed:boss.speed,enraged:!!boss.enraged,slam:boss.slamPhase||'',alerted:!!boss.alerted,staggerT:boss.staggerT||0,slamT:boss.slamT||0}:null; },
+  diffs:function(){ return {easy:DIFFS.easy,normal:DIFFS.normal,hard:DIFFS.hard}; },
+  moveBoss:function(x){ if(boss&&!boss.dead) boss.x=x; },
+  arenaTut:function(){ return arenaTut; },
+  hint:function(){ return {txt:hintTxt,t:hintT}; },
+  resetTut:function(){ arenaTut=0; storeSet(CFG.TUT_KEY,'0'); },
+  shockwaves:function(){ return shockwaves.map(function(w){return {cx:w.cx,fy:w.fy,r:w.r,h:w.h,speed:w.speed};}); },
+  edgeStrips:function(){ return edgeStrips?edgeStrips.slice():[]; },
   start:function(n){ startGame(n||1); },
   title:function(){ toTitle(); }, select:function(){ toSelect(); },
   requestLevel:function(n){ if(n>unlock) return false; selLevel=n; startGame(n); return true; },
@@ -2647,7 +3891,11 @@ function getLevelInfo(n){
     else if(ch==='H') info.heart.push({x:x,y:y});
     else if(ch==='S') info.shield=(info.shield||[]).concat([{x:x,y:y}]);
     else if(ch==='T') info.turbo=(info.turbo||[]).concat([{x:x,y:y}]);
-    else if(ch==='1'||ch==='2'||ch==='3'||ch==='4'||ch==='B') info.enemies.push({type:ch,x:x,y:y});
+    else if(ch==='*') info.stars=(info.stars||[]).concat([{x:x,y:y}]);
+    else if(ch==='^') info.springs=(info.springs||[]).concat([{x:x,y:y}]);
+    else if(ch==='='||ch==='~') info.platforms=(info.platforms||[]).concat([{axis:ch,x:x,y:y}]);
+    else if(ch==='%') info.breakables=(info.breakables||[]).concat([{x:x,y:y}]);
+    else if(ch==='1'||ch==='2'||ch==='3'||ch==='4'||ch==='5'||ch==='B') info.enemies.push({type:ch,x:x,y:y});
   }
   return info;
 }
