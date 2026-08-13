@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-12",
+  "updated": "2026-08-13",
   "items": [
+    {
+      "id": "n-2026-08-13",
+      "type": "newsletter",
+      "date": "2026-08-13",
+      "title": "Fake CCleaner Download Pages Are Hiding Bad Programs — Check the Web Address First",
+      "tag": "Daily Brief",
+      "summary": "Scammers built a fake website that looks exactly like the download page for CCleaner, a popular free cleanup program. People who downloaded it got a bad program hiding on their computer that could watch everything they typed and steal passwords and bank logins. The same trick is spreading with fake copies of 7-Zip and Adobe programs. Only download software from the company's official website — check the web address at the very top of your screen first. If you're not sure, close the page and ask me.",
+      "comic": "Newsletter - 2026-08-13-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-13-news1",
+      "type": "tech-note",
+      "date": "2026-08-13",
+      "title": "ChatGPT now lets free users text as much as they want — no subscription needed, just sign up free at chatgpt.com",
+      "tag": "Tech Note",
+      "summary": "OpenAI announced this week that free ChatGPT accounts can now send unlimited text messages — no paid plan required. Just open chatgpt.com on your computer, sign up for a free account, and start typing. Picture-making and file uploads still have their own limits, but everyday questions, email drafts, and homework help are wide open."
+    },
+    {
+      "id": "t-2026-08-13-tip1",
+      "type": "tech-note",
+      "date": "2026-08-13",
+      "title": "Log in to Windows with your fingerprint instead of a password — Windows Hello is built in and free at Settings > Accounts > Sign-in options",
+      "tag": "Tech Tip",
+      "summary": "Windows Hello is built into Windows and lets you sign in with your fingerprint — nothing to remember, and nobody can guess it. If your laptop has the little fingerprint square near the keyboard, set it up in about two minutes at Settings > Accounts > Sign-in options and choose \"Fingerprint recognition.\" Microsoft just made the same sign-in work on desktop PCs with a plug-in fingerprint reader. It's free and already part of Windows."
+    },
     {
       "id": "n-2026-08-12",
       "type": "newsletter",
@@ -78,40 +104,6 @@
       "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
       "tag": "Tech Tip",
       "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte."
-    },
-    {
-      "id": "n-2026-08-09",
-      "type": "newsletter",
-      "date": "2026-08-09",
-      "title": "Fake Virus Popups Still the #1 Scam I See",
-      "tag": "Daily Brief",
-      "summary": "title: \"Fake Virus Popups Still the #1 Scam I See\"",
-      "comic": "Newsletter - 2026-08-09-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-09-news1",
-      "type": "tech-note",
-      "date": "2026-08-09",
-      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation — get it in Settings > Windows Update",
-      "tag": "Tech Note",
-      "summary": "The August Windows 11 update adds an AI Components page where Copilot+ PC owners can uninstall the Image Generation model to reclaim storage. It also adds Voice Isolation to Voice Access for better background noise filtering, and extends Windows Hello security to USB fingerprint readers. Get it at Settings > Windows Update > Check for updates.",
-      "cta": {
-        "label": "Check for Updates",
-        "href": "ms-settings:windowsupdate"
-      }
-    },
-    {
-      "id": "t-2026-08-09-tip1",
-      "type": "tech-note",
-      "date": "2026-08-09",
-      "title": "Your router's default admin password is public — change it in your router's settings",
-      "tag": "Tech Tip",
-      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page — look for Administration or Security settings. Eero and Google Nest use your account password instead.",
-      "cta": {
-        "label": "Router Settings",
-        "href": "https://router.network"
-      }
     }
   ]
 }

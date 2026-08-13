@@ -83,6 +83,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-12: Florida Dept. of Revenue (floridarevenue.com/backtoschool) —
     # the official Back-to-School Sales Tax Holiday rules page, a real named government source.
     "floridarevenue", "back-to-school",
+    # Extended 2026-08-13: CCleaner (fake-download security alert, named product) and
+    # ChatGPT (openai.com/chatgpt.com) — real products named in today's headlines.
+    "ccleaner", "chatgpt",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

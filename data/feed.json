@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,12 +100,30 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-13-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-13",
+      "title": "Fake CCleaner Download Pages Are Hiding Bad Programs — Check the Web Address First",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers built a fake website that looks exactly like the download page for CCleaner, a popular free cleanup program. People who downloaded it got a bad program hiding on their computer that could watch everything they typed and steal passwords and bank logins. The same trick is spreading with fake copies of 7-Zip and Adobe programs. Only download software from the company's official website — check the web address at the very top of your screen first. If you're not sure, close the page and ask me.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#SecurityAlert",
+        "#Malware"
+      ],
+      "image": "assets/img/news/2026-08-13-composite.jpg",
+      "comic": "assets/img/news/2026-08-13-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-12-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-12",
       "title": "New FTC Warning: Scammers Are Coming Back for People Who Already Lost Money",
       "tag": "Daily Brief",
-      "excerpt": "The FTC is warning about a cruel new twist on fraud: scammers buy lists of people who already lost money and call or email pretending to be a government agency, a law firm, or a consumer group \u2014 promising to get the money back for an upfront \"fee\" or your bank information. Real organizations never charge to return your money. If anyone asks you to pay to recover money, it's a scam: hang up, don't pay, and report it free at ReportFraud.ftc.gov.",
+      "excerpt": "The FTC is warning about a cruel new twist on fraud: scammers buy lists of people who already lost money and call or email pretending to be a government agency, a law firm, or a consumer group — promising to get the money back for an upfront \"fee\" or your bank information. Real organizations never charge to return your money. If anyone asks you to pay to recover money, it's a scam: hang up, don't pay, and report it free at ReportFraud.ftc.gov.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -123,7 +141,7 @@
       "date": "2026-08-11",
       "title": "Windows Update Today: Hackers Were Already Using One of the 400 Holes It Fixes",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft released its monthly computer update today \u2014 and it's a big one. The free update closes 400 security holes in Windows, including one that a group of hackers was already using to sneak bad programs onto people's computers. Don't put this one off. Open the Start menu, type \"check for updates,\" and let your computer restart when it asks. The update is built into Windows and free from Microsoft. If it ever feels like more than you want to tackle, bring it to us and we'll handle it.",
+      "excerpt": "Microsoft released its monthly computer update today — and it's a big one. The free update closes 400 security holes in Windows, including one that a group of hackers was already using to sneak bad programs onto people's computers. Don't put this one off. Open the Start menu, type \"check for updates,\" and let your computer restart when it asks. The update is built into Windows and free from Microsoft. If it ever feels like more than you want to tackle, bring it to us and we'll handle it.",
       "image": "assets/img/news/2026-08-11-composite.jpg",
       "comic": "assets/img/news/2026-08-11-comic-square.jpg",
       "read_more": "#contact",
@@ -139,9 +157,9 @@
       "id": "onyx-2026-08-10-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-10",
-      "title": "School starts today in Columbia County \u2014 Microsoft 365 (Word, Excel, PowerPoint) is free for students at microsoft.com/education",
+      "title": "School starts today in Columbia County — Microsoft 365 (Word, Excel, PowerPoint) is free for students at microsoft.com/education",
       "tag": "Daily Brief",
-      "excerpt": "If your student's school uses Microsoft (most North Florida schools do), your child may already have Microsoft 365 for free \u2014 that's Word, Excel, and PowerPoint, the same programs offices use. Go to microsoft.com/education, click \"Get Office 365 for free\" or \"Sign up for free,\" and enter the student's school email. If the school is in the program, the apps install free on the family computer \u2014 no credit card, no monthly bill.",
+      "excerpt": "If your student's school uses Microsoft (most North Florida schools do), your child may already have Microsoft 365 for free — that's Word, Excel, and PowerPoint, the same programs offices use. Go to microsoft.com/education, click \"Get Office 365 for free\" or \"Sign up for free,\" and enter the student's school email. If the school is in the program, the apps install free on the family computer — no credit card, no monthly bill.",
       "image": "assets/img/news/2026-08-10-composite.jpg",
       "comic": "assets/img/news/2026-08-10-comic-square.jpg",
       "read_more": "#contact",
@@ -157,9 +175,9 @@
       "id": "onyx-2026-08-09-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-09",
-      "title": "Chrome patches 41 security holes including 6 critical \u2014 update in Chrome settings",
+      "title": "Chrome patches 41 security holes including 6 critical — update in Chrome settings",
       "tag": "Daily Brief",
-      "excerpt": "Chrome's latest update closes 41 security flaws with 6 rated critical. Most are use-after-free bugs attackers can exploit to run code on your machine. Update now in Chrome's settings (click the three-dot menu \u2192 Help \u2192 About Chrome) or wait for auto-update.",
+      "excerpt": "Chrome's latest update closes 41 security flaws with 6 rated critical. Most are use-after-free bugs attackers can exploit to run code on your machine. Update now in Chrome's settings (click the three-dot menu → Help → About Chrome) or wait for auto-update.",
       "image": "assets/img/news/2026-08-09-composite.jpg",
       "comic": "assets/img/news/2026-08-09-comic-square.jpg",
       "read_more": "#contact",
@@ -170,32 +188,33 @@
         "#ChromeUpdate",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-08-08-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-08",
-      "title": "Chrome 151 patches 41 security holes \u2014 update now at chrome://settings/help",
-      "tag": "Daily Brief",
-      "excerpt": "Google Chrome 151 patches 41 security vulnerabilities including six critical flaws that could let attackers run code on your machine. Update immediately at chrome://settings/help or Settings \u2192 About Chrome. The browser will check, download, and ask you to relaunch.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Chrome151",
-        "#SecurityUpdate"
-      ]
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-08-13-post-1",
+      "type": "news",
+      "date": "2026-08-13",
+      "title": "ChatGPT now lets free users text as much as they want — no subscription needed, just sign up free at chatgpt.com",
+      "tag": "Tech Note",
+      "summary": "OpenAI announced this week that free ChatGPT accounts can now send unlimited text messages — no paid plan required. Just open chatgpt.com on your computer, sign up for a free account, and start typing. Picture-making and file uploads still have their own limits, but everyday questions, email drafts, and homework help are wide open.",
+      "truth": "Most people don't realize how much a free tool like this can do for them. I see customers pay for things ChatGPT does for free — drafting a letter to your insurance company, explaining a confusing medical bill, writing a polite note to a landlord. You don't have to be \"good with computers\" to use it. You just type the question the same way you'd ask me across the counter.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#AI",
+        "#ChatGPT"
+      ]
+    },
+    {
       "id": "onyx-2026-08-12-post-1",
       "type": "news",
       "date": "2026-08-12",
-      "title": "Buy a computer tax-free until August 20 \u2014 Florida's Back-to-School Sales Tax Holiday covers computers up to $1,500, rules at floridarevenue.com/backtoschool",
+      "title": "Buy a computer tax-free until August 20 — Florida's Back-to-School Sales Tax Holiday covers computers up to $1,500, rules at floridarevenue.com/backtoschool",
       "tag": "Tech Note",
-      "summary": "Through Thursday, August 20, Florida's Back-to-School Sales Tax Holiday makes personal computers up to $1,500 tax-free \u2014 that includes laptops and desktops, plus accessories like monitors, printers, routers, and ink cartridges. See the full list of what counts at floridarevenue.com/backtoschool, then shop any store \u2014 online orders count too.",
-      "truth": "Most people don't realize Florida runs this holiday for a whole month, not just one weekend. If you've been putting off a new computer, this month is the cheapest time all year \u2014 and you've got until the 20th to save every penny of sales tax. See the full list of what counts at floridarevenue.com/backtoschool.",
+      "summary": "Through Thursday, August 20, Florida's Back-to-School Sales Tax Holiday makes personal computers up to $1,500 tax-free — that includes laptops and desktops, plus accessories like monitors, printers, routers, and ink cartridges. See the full list of what counts at floridarevenue.com/backtoschool, then shop any store — online orders count too.",
+      "truth": "Most people don't realize Florida runs this holiday for a whole month, not just one weekend. If you've been putting off a new computer, this month is the cheapest time all year — and you've got until the 20th to save every penny of sales tax. See the full list of what counts at floridarevenue.com/backtoschool.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -208,10 +227,10 @@
       "id": "onyx-2026-08-11-post-1",
       "type": "news",
       "date": "2026-08-11",
-      "title": "Got scammed once? Now crooks are coming back for round two \u2014 never pay an \"upfront fee\" to get money back, report it free at ReportFraud.ftc.gov",
+      "title": "Got scammed once? Now crooks are coming back for round two — never pay an \"upfront fee\" to get money back, report it free at ReportFraud.ftc.gov",
       "tag": "Tech Note",
-      "summary": "The FTC just issued a new warning about \"refund and recovery\" scams. Scammers buy lists of people who already lost money to a scam, then call pretending to be a government agency, a law firm, or a consumer group and promise to get the money back \u2014 if you first pay a \"processing fee\" or hand over your bank details. No legitimate organization ever charges you to recover a refund. If it happens, report it free at ReportFraud.ftc.gov.",
-      "truth": "I see this all the time, and it makes me mad every single time. The first scam took your savings; the second one \u2014 the call offering to \"get it back\" \u2014 is the same crooks selling your name to the next thief and taking what's left. Most people don't realize a real refund never costs you a penny up front. The honest answer is: if someone cold-calls you offering to recover money for a fee, hang up. That's the scam calling you back.",
+      "summary": "The FTC just issued a new warning about \"refund and recovery\" scams. Scammers buy lists of people who already lost money to a scam, then call pretending to be a government agency, a law firm, or a consumer group and promise to get the money back — if you first pay a \"processing fee\" or hand over your bank details. No legitimate organization ever charges you to recover a refund. If it happens, report it free at ReportFraud.ftc.gov.",
+      "truth": "I see this all the time, and it makes me mad every single time. The first scam took your savings; the second one — the call offering to \"get it back\" — is the same crooks selling your name to the next thief and taking what's left. Most people don't realize a real refund never costs you a penny up front. The honest answer is: if someone cold-calls you offering to recover money for a fee, hang up. That's the scam calling you back.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -224,10 +243,10 @@
       "id": "onyx-2026-08-10-post-2",
       "type": "news",
       "date": "2026-08-10",
-      "title": "Don't trust the $5 flea-market flash drive with your photos \u2014 buy a genuine SanDisk from sandisk.com or a trusted store",
+      "title": "Don't trust the $5 flea-market flash drive with your photos — buy a genuine SanDisk from sandisk.com or a trusted store",
       "tag": "Tech Note",
-      "summary": "Cheap no-name flash drives often lie about their size \u2014 a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose \u2014 family photos, tax returns, school work \u2014 buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake.",
-      "truth": "I see this all the time: a customer brings in a little flash drive full of vacation photos, and it's dead or corrupt. Nine times out of ten it was a no-name stick bought cheap online or at a market. The honest answer is a flash drive is for moving files, not keeping them \u2014 and the cheap ones are the first to fail. Pay the extra five bucks for a real one from sandisk.com or a trusted store, and don't let any flash drive be your only copy of anything.",
+      "summary": "Cheap no-name flash drives often lie about their size — a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose — family photos, tax returns, school work — buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake.",
+      "truth": "I see this all the time: a customer brings in a little flash drive full of vacation photos, and it's dead or corrupt. Nine times out of ten it was a no-name stick bought cheap online or at a market. The honest answer is a flash drive is for moving files, not keeping them — and the cheap ones are the first to fail. Pay the extra five bucks for a real one from sandisk.com or a trusted store, and don't let any flash drive be your only copy of anything.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -240,10 +259,10 @@
       "id": "onyx-2026-08-09-post-2",
       "type": "news",
       "date": "2026-08-09",
-      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation \u2014 get it in Settings > Windows Update",
+      "title": "Windows 11 August update lets you remove AI components and adds Voice Isolation — get it in Settings > Windows Update",
       "tag": "Tech Note",
       "summary": "The August Windows 11 update adds an AI Components page where Copilot+ PC owners can uninstall the Image Generation model to reclaim storage. It also adds Voice Isolation to Voice Access for better background noise filtering, and extends Windows Hello security to USB fingerprint readers. Get it at Settings > Windows Update > Check for updates.",
-      "truth": "Microsoft has been stuffing AI features into Windows whether you want them or not. This update is the first time they've given you a real off switch for one of them. Most people don't realize: those on-device AI models aren't free \u2014 they eat gigabytes of storage and sit in memory even when you're not using them. If you bought a Copilot+ PC and never generate AI images, that space has been wasted for months. Now you can get it back.",
+      "truth": "Microsoft has been stuffing AI features into Windows whether you want them or not. This update is the first time they've given you a real off switch for one of them. Most people don't realize: those on-device AI models aren't free — they eat gigabytes of storage and sit in memory even when you're not using them. If you bought a Copilot+ PC and never generate AI images, that space has been wasted for months. Now you can get it back.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -253,29 +272,29 @@
       ]
     },
     {
-      "id": "onyx-2026-08-08-news-11",
-      "type": "news",
-      "date": "2026-08-08",
-      "title": "CISA warns: Three vulnerabilities actively exploited right now \u2014 patch your software",
-      "tag": "Tech Note",
-      "summary": "CISA added three actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog: CVE-2026-9198 (IBM Langflow code injection), CVE-2026-18556 (N-able N-central authentication bypass), and CVE-2026-34486 (Apache Tomcat missing encryption). Update today if you use these products. Check vendor advisories at ibm.com, n-able.com, and tomcat.apache.org.",
-      "truth": "Most people don't realize that the software running their business \u2014 remote monitoring tools, web servers, automation platforms \u2014 can be a wide-open door if not patched. If you don't know what software runs on your network, you can't protect it. Ask your IT person for a software inventory.",
+      "id": "onyx-2026-08-13-post-2",
+      "type": "tip",
+      "date": "2026-08-13",
+      "title": "Log in to Windows with your fingerprint instead of a password — Windows Hello is built in and free at Settings > Accounts > Sign-in options",
+      "tag": "Tech Tip",
+      "summary": "Windows Hello is built into Windows and lets you sign in with your fingerprint — nothing to remember, and nobody can guess it. If your laptop has the little fingerprint square near the keyboard, set it up in about two minutes at Settings > Accounts > Sign-in options and choose \"Fingerprint recognition.\" Microsoft just made the same sign-in work on desktop PCs with a plug-in fingerprint reader. It's free and already part of Windows.",
+      "truth": "Most people don't realize their password is the weakest link in their whole computer. I can't tell you how many customers use one password for everything — and when it leaks, crooks try it everywhere. A fingerprint can't be written on a sticky note or guessed by a stranger. That's why I set up fingerprint or PIN sign-in on every machine that leaves this shop.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#CISA",
-        "#VulnerabilityAlert"
+        "#Windows",
+        "#Security"
       ]
     },
     {
       "id": "onyx-2026-08-12-post-2",
       "type": "tip",
       "date": "2026-08-12",
-      "title": "Videos too big to email? HandBrake shrinks them for free at handbrake.fr \u2014 no subscription, works offline",
+      "title": "Videos too big to email? HandBrake shrinks them for free at handbrake.fr — no subscription, works offline",
       "tag": "Tech Tip",
-      "summary": "Download HandBrake free from handbrake.fr, open your video, pick the \"Fast 1080p30\" preset at the top, and hit Start. A video that was too big to attach to an email will fit in a couple of minutes \u2014 it works on Windows and Mac, no account, no subscription, and no internet needed once it's installed.",
-      "truth": "Most people don't realize video is saved in a format that's way bigger than it needs to be. That three-minute clip of the grandkids doesn't have to be a giant file \u2014 shrinking it barely changes how it looks, but it changes everything about whether it'll send. HandBrake is one of the first tools I put on any machine that's going to hold family videos.",
+      "summary": "Download HandBrake free from handbrake.fr, open your video, pick the \"Fast 1080p30\" preset at the top, and hit Start. A video that was too big to attach to an email will fit in a couple of minutes — it works on Windows and Mac, no account, no subscription, and no internet needed once it's installed.",
+      "truth": "Most people don't realize video is saved in a format that's way bigger than it needs to be. That three-minute clip of the grandkids doesn't have to be a giant file — shrinking it barely changes how it looks, but it changes everything about whether it'll send. HandBrake is one of the first tools I put on any machine that's going to hold family videos.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -288,10 +307,10 @@
       "id": "onyx-2026-08-11-post-2",
       "type": "tip",
       "date": "2026-08-11",
-      "title": "Microsoft Edge is turning off older add-ons starting this month \u2014 swap the classic uBlock Origin for the free uBlock Origin Lite in the Edge Add-ons store, or move to Firefox at firefox.com",
+      "title": "Microsoft Edge is turning off older add-ons starting this month — swap the classic uBlock Origin for the free uBlock Origin Lite in the Edge Add-ons store, or move to Firefox at firefox.com",
       "tag": "Tech Tip",
-      "summary": "Microsoft is retiring the older kind of browser add-on in Microsoft Edge starting August 2026, and the classic version of uBlock Origin \u2014 one of the most popular free ad blockers \u2014 is on the affected list. The fix takes two minutes: open Edge, click the three-dot menu \u2192 Extensions \u2192 \"Get extensions for Microsoft Edge,\" search \"uBlock Origin Lite,\" and install it free. Or switch to Firefox at firefox.com, where the full uBlock Origin keeps working.",
-      "truth": "Most people don't realize their ad blocker is a separate little program, and browsers quietly retire old programs just like everything else gets retired. The counter-intuitive part: an ad blocker that can't update anymore is worse than none, because you think you're protected while the ads and trackers roll right back in. The honest answer is, when your browser tells you an add-on needs attention, deal with it that day \u2014 it takes less time than a load of laundry.",
+      "summary": "Microsoft is retiring the older kind of browser add-on in Microsoft Edge starting August 2026, and the classic version of uBlock Origin — one of the most popular free ad blockers — is on the affected list. The fix takes two minutes: open Edge, click the three-dot menu → Extensions → \"Get extensions for Microsoft Edge,\" search \"uBlock Origin Lite,\" and install it free. Or switch to Firefox at firefox.com, where the full uBlock Origin keeps working.",
+      "truth": "Most people don't realize their ad blocker is a separate little program, and browsers quietly retire old programs just like everything else gets retired. The counter-intuitive part: an ad blocker that can't update anymore is worse than none, because you think you're protected while the ads and trackers roll right back in. The honest answer is, when your browser tells you an add-on needs attention, deal with it that day — it takes less time than a load of laundry.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -304,10 +323,10 @@
       "id": "onyx-2026-08-10-post-3",
       "type": "tip",
       "date": "2026-08-10",
-      "title": "Your photos and documents can survive a dead computer \u2014 turn on OneDrive backup, built into Windows and free",
+      "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
       "tag": "Tech Tip",
-      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon \u2192 Sync and back up \u2192 Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically \u2014 so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte.",
-      "truth": "Most people don't realize \"my files are on the computer\" is not a backup. Hard drives die with zero warning \u2014 I've seen it a hundred times. The honest answer is a backup isn't a gadget you buy, it's a switch you flip. OneDrive's folder backup is the easiest switch I know: set it once, forget it, and it quietly makes a second copy of everything in the background while you go about your day.",
+      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte.",
+      "truth": "Most people don't realize \"my files are on the computer\" is not a backup. Hard drives die with zero warning — I've seen it a hundred times. The honest answer is a backup isn't a gadget you buy, it's a switch you flip. OneDrive's folder backup is the easiest switch I know: set it once, forget it, and it quietly makes a second copy of everything in the background while you go about your day.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -320,9 +339,9 @@
       "id": "onyx-2026-08-09-post-3",
       "type": "tip",
       "date": "2026-08-09",
-      "title": "Your router's default admin password is public \u2014 change it in your router's settings",
+      "title": "Your router's default admin password is public — change it in your router's settings",
       "tag": "Tech Tip",
-      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page \u2014 look for Administration or Security settings. Eero and Google Nest use your account password instead.",
+      "summary": "Your router ships with a default admin password that anyone on your network can find. Change it in your router's settings to block automated attacks. Netgear, TP-Link, ASUS, Linksys, Xfinity, and Verizon routers each have a settings page — look for Administration or Security settings. Eero and Google Nest use your account password instead.",
       "truth": "This is the single most important router security step, and almost nobody does it. I've seen home networks where the admin password was still \"admin\" or \"password\" years after install. Automated scanners hit home routers constantly looking for default logins. Changing the admin password blocks nearly all of them. It takes under five minutes and costs nothing.",
       "tags": [
         "#OnyxSystems",
@@ -331,25 +350,9 @@
         "#RouterSecurity",
         "#HomeNetwork"
       ]
-    },
-    {
-      "id": "onyx-2026-08-08-tip-12",
-      "type": "tip",
-      "date": "2026-08-08",
-      "title": "Windows 11 Recall is watching \u2014 here is how to turn it off at Settings > Privacy & security > Recall",
-      "tag": "Tech Tip",
-      "summary": "Windows 11 Recall captures screenshots of your activity on Copilot+ PCs. Disable it at Settings \u2192 Privacy & security \u2192 Recall & snapshots \u2192 turn off \"Save snapshots.\" Optionally click \"Delete snapshots\" \u2192 \"Delete all\" to wipe existing data.",
-      "truth": "Customers have brought in laptops with full drives and sluggish performance caused by Recall quietly storing thousands of screenshots \u2014 including banking screens, medical portals, and school logins. Microsoft says data is encrypted and local, but the safest data is data that doesn't exist. If you didn't explicitly ask for this feature, turn it off.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Privacy"
-      ]
     }
   ],
-  "updated": "2026-08-12",
+  "updated": "2026-08-13",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
@@ -625,7 +628,7 @@
   },
   "today_trivia": {
     "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
+    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
     "category": "Hardware",
     "date": "2026-08-09"
   },
@@ -645,11 +648,11 @@
         },
         {
           "id": "1to3",
-          "label": "1\u20133 years"
+          "label": "1–3 years"
         },
         {
           "id": "3to5",
-          "label": "3\u20135 years"
+          "label": "3–5 years"
         },
         {
           "id": "gt5",
