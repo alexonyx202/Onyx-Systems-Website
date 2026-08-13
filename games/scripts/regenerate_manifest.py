@@ -30,10 +30,13 @@ def regenerate_manifest():
     # Use a function replacement so backslash sequences in entries (e.g. a
     # literal \u2014) are never interpreted as re escape codes.
     pattern = r'var MANIFEST=\[.*?\];'
+    if not re.search(pattern, content, flags=re.DOTALL):
+        raise ValueError("MANIFEST pattern not found in games/index.html - no replacement made")
     new_content = re.sub(pattern, lambda m: manifest_content, content, flags=re.DOTALL)
     
     if new_content == content:
-        raise ValueError("MANIFEST pattern not found in games/index.html - no replacement made")
+        print('ℹ MANIFEST already in sync with games.json - nothing to change')
+        return
     
     # Write back
     with open('games/index.html', 'w') as f:

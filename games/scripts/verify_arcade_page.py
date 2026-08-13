@@ -59,12 +59,14 @@ def verify_manifest_matches(games):
     print(f'✓ MANIFEST matches games.json perfectly ({len(games)} games)')
 
 def verify_grid_columns():
-    """Verify 5-column grid on arcade page"""
+    """Verify 6-column grid on arcade page (desktop) per Arcade Release Rule"""
     with open('games/index.html') as f:
         content = f.read()
-    if 'repeat(5,minmax(0,1fr))' not in content:
-        raise ValueError("5-column grid not found in games/index.html")
-    print('✓ 5-column grid present in games/index.html')
+    if 'repeat(6,minmax(0,1fr))' not in content:
+        raise ValueError("6-column grid not found in games/index.html")
+    if 'repeat(2,minmax(0,1fr))' not in content:
+        raise ValueError("2-column mobile grid not found in games/index.html")
+    print('✓ 6-column desktop / 2-column mobile grid present in games/index.html')
 
 def verify_new_games_badge():
     """Verify NEW GAMES badge on arcade page"""
@@ -105,7 +107,7 @@ def verify_local_render():
             ('MANIFEST variable', 'var MANIFEST='),
             ('gameGrid element', 'id="gameGrid"'),
             ('NEW GAMES badge', 'new-games-badge'),
-            ('5-column grid', 'repeat(5,minmax'),
+            ('6-column grid', 'repeat(6,minmax'),
         ]
         
         for name, pattern in checks:
@@ -148,7 +150,7 @@ def verify_live():
         ('MANIFEST variable', 'var MANIFEST='),
         ('gameGrid element', 'id="gameGrid"'),
         ('NEW GAMES badge', 'new-games-badge'),
-        ('5-column grid', 'repeat(5,minmax'),
+        ('6-column grid', 'repeat(6,minmax'),
     ]
     
     for name, pattern in checks:
