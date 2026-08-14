@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-13",
+  "updated": "2026-08-14",
   "items": [
+    {
+      "id": "n-2026-08-14",
+      "type": "newsletter",
+      "date": "2026-08-14",
+      "title": "Fake 'FCC' Callers Say Your Number Is Under Investigation — Hang Up",
+      "tag": "Daily Brief",
+      "summary": "Scammers are calling and texting people pretending to be from the FCC — the government agency that watches over phones and the internet. They say your phone number is under investigation for criminal activity and demand money or personal information to make it stop. That's a lie — no real agency does that. Hang up, don't call the number they give you, don't pay anything, and don't share personal information with anyone who calls out of the blue.",
+      "comic": "Newsletter - 2026-08-14-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-14-news1",
+      "type": "tech-note",
+      "date": "2026-08-14",
+      "title": "A Windows update is putting some computers on a \"BitLocker recovery\" screen — find your recovery key now, free, at account.microsoft.com/devices/recoverykey",
+      "tag": "Tech Note",
+      "summary": "Microsoft's recent Windows updates have been sending some computers to a \"BitLocker recovery\" screen after they restart — that's the built-in lock that protects your files, and it asks for a 48-digit recovery key to prove the computer is yours. Look yours up in about two minutes before anything happens: sign in at account.microsoft.com/devices/recoverykey with the Microsoft account you use on that computer, and write the key down somewhere safe. If your machine was set up by an employer or a shop, ask whoever set it up."
+    },
+    {
+      "id": "t-2026-08-14-tip1",
+      "type": "tech-note",
+      "date": "2026-08-14",
+      "title": "Save any document as a PDF without paying for Adobe — Microsoft Print to PDF is built into Windows and free",
+      "tag": "Tech Tip",
+      "summary": "The next time a form or a website lets you print, save it as a PDF instead of paper. On Windows, open the print window and choose \"Microsoft Print to PDF\" as the printer, hit Print, and pick where to save the file. On a Mac, choose \"Save as PDF\" in the print window. No downloads, no accounts, no cost — it's already on your computer."
+    },
     {
       "id": "n-2026-08-13",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Microsoft Edge is turning off older add-ons starting this month — swap the classic uBlock Origin for the free uBlock Origin Lite in the Edge Add-ons store, or move to Firefox at firefox.com",
       "tag": "Tech Note",
       "summary": "Microsoft is retiring the older kind of browser add-on in Microsoft Edge starting August 2026, and the classic version of uBlock Origin — one of the most popular free ad blockers — is on the affected list. The fix takes two minutes: open Edge, click the three-dot menu → Extensions → \"Get extensions for Microsoft Edge,\" search \"uBlock Origin Lite,\" and install it free. Or switch to Firefox at firefox.com, where the full uBlock Origin keeps working."
-    },
-    {
-      "id": "n-2026-08-10",
-      "type": "newsletter",
-      "date": "2026-08-10",
-      "title": "The 'Gold Bar' Scam: Fake Computer Warning, Real Lost Savings",
-      "tag": "Daily Brief",
-      "summary": "title: \"The 'Gold Bar' Scam: Fake Computer Warning, Real Lost Savings\"",
-      "comic": "Newsletter - 2026-08-10-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-10-news1",
-      "type": "tech-note",
-      "date": "2026-08-10",
-      "title": "Don't trust the $5 flea-market flash drive with your photos — buy a genuine SanDisk from sandisk.com or a trusted store",
-      "tag": "Tech Note",
-      "summary": "Cheap no-name flash drives often lie about their size — a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose — family photos, tax returns, school work — buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake."
-    },
-    {
-      "id": "t-2026-08-10-tip1",
-      "type": "tech-note",
-      "date": "2026-08-10",
-      "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
-      "tag": "Tech Tip",
-      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte."
     }
   ]
 }

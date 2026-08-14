@@ -55,6 +55,10 @@ def parse_newsletter(path):
     if not date:
         m = re.search(r"(\d{4}-\d{2}-\d{2})", path)
         date = m.group(1) if m else datetime.date.today().isoformat()
+    # Strip the frontmatter so its key: value lines (e.g. a long `title:`) can never
+    # be mistaken for the summary paragraph.
+    if fm:
+        txt = txt[fm.end():]
     # summary = first paragraph after the alert banner
     paras = [p.strip() for p in txt.split("\n") if p.strip() and not p.startswith("!") and not p.startswith("---")]
     summary = ""
