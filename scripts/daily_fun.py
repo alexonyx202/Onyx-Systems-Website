@@ -58,11 +58,16 @@ def cursor_pick(pool, state_path, today):
     recent n-1 entries, the natural next index is ALWAYS the one that just aged out
     of the window — so it is NEVER in the window, and every item returns exactly once
     per full cycle (interval = n days), with no repeats. This is correct for all n>=1.
+    DAY-IDEMPOTENT (2026-08-14): a `last_date` sidecar makes re-runs safe — if this
+    pool already advanced for `today`, the same pick is returned WITHOUT advancing
+    again (a replay/re-dispatch mid-publish must not skip tomorrow's item).
     """
     n = len(pool)
     if n == 0:
         return None, -1
     st = load_json(state_path) or {"last_index": -1, "used_trailing": []}
+    if st.get("last_date") == today and 0 <= int(st.get("last_index", -1)) < n:
+        return pool[int(st["last_index"])], int(st["last_index"])
     used = list(st.get("used_trailing", []))
     idx = (int(st.get("last_index", -1)) + 1) % n
     window = used[-(n - 1):] if n > 1 else []
@@ -71,6 +76,7 @@ def cursor_pick(pool, state_path, today):
         idx = (idx + 1) % n
         guard += 1
     st["last_index"] = idx
+    st["last_date"] = today
     used.append(idx)
     st["used_trailing"] = used[-(n - 1):] if n > 1 else []
     save_json(state_path, st)
