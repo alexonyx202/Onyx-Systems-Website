@@ -325,8 +325,21 @@ def verify():
     return r.returncode
 
 
+# Files the daily publish owns. commit_and_push stages ONLY these — never
+# `git add -A` — so stray untracked scratch (e.g. _preview_*.html) can't ride
+# along in the daily commit. Everything else is code committed on its own
+# schedule (scripts/ etc.) or deliberately excluded (see .gitignore).
+CONTENT_PATHS = [
+    "newsletter.html",
+    "onyxsystems-header.png",  # brand copies build_newsletter_html.py refreshes
+    "Onyx_Card.png",
+    "data",                    # feed/news/events, today_*.json, pools, *_state.json, poll
+    "assets/img/news",         # comic + composite/comic-square images
+]
+
+
 def commit_and_push(date_iso):
-    _run(["git", "add", "-A"], cwd=str(REPO))
+    _run(["git", "add", "--"] + CONTENT_PATHS, cwd=str(REPO))
     r = _run(["git", "diff", "--cached", "--quiet"], cwd=str(REPO), check=False)
     if r.returncode == 0:
         print("No changes to commit.")

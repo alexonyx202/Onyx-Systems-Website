@@ -12,3 +12,6 @@ games/whack-a-troll.html
 
 # Freebuff app state (per-project thread DB — created when the publishing agent opens this repo; never commit)
 .freebuff/
+
+# agent preview scratch (never commit — publish_today.py stages content paths only)
+_preview_*.html
