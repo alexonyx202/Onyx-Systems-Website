@@ -1,170 +1,137 @@
 {
-  "title": "58. Math Terms & Numbers",
-  "size": 33,
+  "title": "5th Grade Math",
+  "size": 24,
   "grid": [
-    "........S........................",
-    "........q........................",
-    "........u........G...............",
-    "........a........e...............",
-    "........r....D...o...............",
-    "........EquAtioN.m...............",
-    "...........n.v.u.e...T...........",
-    ".....P.....g.i.m.t...r...........",
-    "Circle.....l.Subtraction.........",
-    ".....r.....e.i.e.y...a........D..",
-    ".....c...F...o.r.....n........e..",
-    "....Measurement......g........c..",
-    ".....n...a.........Multiplication",
-    ".....t...c...........e........m..",
-    ".....Addition.................a..",
-    ".....g...i....................l..",
-    ".....e...o.......................",
-    ".........n.......................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    ".................................",
-    "................................."
+    "............N...........",
+    "...E........u...........",
+    "...x........Moore.......",
+    "...i......R.b...........",
+    "...t......h.e...D....S..",
+    "...T......o.r...e.L..p..",
+    ".A.i......Multiplication",
+    ".r.c......b.i...a.D..n..",
+    ".r.k......u.n..KCF...k..",
+    "Parentheses.e...r.......",
+    ".y.t..........Tausk.....",
+    "................z.......",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 6,
-        "col": 9,
-        "len": 8,
-        "answer": "EquAtioN",
-        "clue": "A math sentence that shows two sides are equal using an \"=\" symbol."
+        "num": 3,
+        "row": 3,
+        "col": 13,
+        "len": 5,
+        "answer": "Moore",
+        "clue": "Math teacher in 5C"
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 1,
-        "len": 6,
-        "answer": "Circle",
-        "clue": "A round shape where all points are the same distance from the center."
+        "row": 7,
+        "col": 11,
+        "len": 14,
+        "answer": "Multiplication",
+        "clue": "Does multiplication or Addition come first in the order of operations?"
       },
       {
         "num": 10,
         "row": 9,
-        "col": 14,
+        "col": 16,
+        "len": 3,
+        "answer": "KCF",
+        "clue": "What technique do you use to divide fractions?"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 1,
         "len": 11,
-        "answer": "Subtraction",
-        "clue": "A math operation where one number is taken away from another to find the difference."
+        "answer": "Parentheses",
+        "clue": "What does the P stand for in PEMDAS?"
       },
       {
-        "num": 13,
-        "row": 12,
-        "col": 5,
-        "len": 11,
-        "answer": "Measurement",
-        "clue": "A way to find out the length, weight, or size of something."
-      },
-      {
-        "num": 14,
-        "row": 13,
-        "col": 20,
-        "len": 14,
-        "answer": "Multiplication",
-        "clue": "A quick way to add the same number multiple times."
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 6,
-        "len": 8,
-        "answer": "Addition",
-        "clue": "A math operation where two or more numbers are combined to make a larger number."
+        "num": 12,
+        "row": 11,
+        "col": 15,
+        "len": 5,
+        "answer": "Tausk",
+        "clue": "Math teacher in 5A"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 6,
-        "answer": "SquarE",
-        "clue": "A shape with four equal sides and four right angles."
+        "col": 13,
+        "len": 10,
+        "answer": "NuMberline",
+        "clue": "What model do we use when talking about distance?"
       },
       {
         "num": 2,
-        "row": 3,
-        "col": 18,
-        "len": 8,
-        "answer": "Geometry",
-        "clue": "A branch of math that studies shapes, lines, and angles."
+        "row": 2,
+        "col": 4,
+        "len": 10,
+        "answer": "ExitTicket",
+        "clue": "Problem done at the end of class to test your knowledge"
       },
       {
-        "num": 3,
-        "row": 5,
-        "col": 14,
-        "len": 8,
-        "answer": "DiviSion",
-        "clue": "A math operation that splits a number into equal parts."
+        "num": 4,
+        "row": 4,
+        "col": 11,
+        "len": 7,
+        "answer": "RhoMbus",
+        "clue": "Any parallelogram with 4 equal sides"
       },
       {
         "num": 5,
-        "row": 6,
-        "col": 12,
-        "len": 5,
-        "answer": "Angle",
-        "clue": "A shape formed where two lines meet at a point."
+        "row": 5,
+        "col": 17,
+        "len": 8,
+        "answer": "DelaCruz",
+        "clue": "Math teacher in 5D"
       },
       {
         "num": 6,
-        "row": 6,
-        "col": 16,
-        "len": 6,
-        "answer": "Number",
-        "clue": "Line\tA straight line with numbers placed in order, used for counting and math."
+        "row": 5,
+        "col": 22,
+        "len": 5,
+        "answer": "Spink",
+        "clue": "Math teacher in 5B"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 22,
-        "len": 8,
-        "answer": "Triangle",
-        "clue": "A shape with three sides and three angles."
+        "row": 6,
+        "col": 19,
+        "len": 3,
+        "answer": "LcD",
+        "clue": "What technique do you use to add or subtract fractions?"
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 6,
-        "len": 10,
-        "answer": "PercentAge",
-        "clue": "A way to express a part of a whole using the number 100."
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 31,
-        "len": 7,
-        "answer": "Decimal",
-        "clue": "A number that includes a dot to show values smaller than one."
-      },
-      {
-        "num": 12,
-        "row": 11,
-        "col": 10,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "A way to show a part of a whole using two numbers separated by a line."
+        "row": 7,
+        "col": 2,
+        "len": 5,
+        "answer": "Array",
+        "clue": "A model used to visualize the multiplication of fractions"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/58-math-terms-numbers",
-  "slug": "58-math-terms-numbers",
-  "fetched_at": "2026-07-14T19:19:21.808908+00:00",
-  "date": "2026-08-13"
+  "source_url": "https://crosswordlabs.com/view/5th-grade-math-59",
+  "slug": "5th-grade-math-59",
+  "fetched_at": "2026-07-14T19:22:54.740286+00:00",
+  "date": "2026-08-14"
 }
