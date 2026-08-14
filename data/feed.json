@@ -105,13 +105,12 @@
       "date": "2026-08-14",
       "title": "Fake 'FCC' Callers Say Your Number Is Under Investigation — Hang Up",
       "tag": "Daily Brief",
-      "excerpt": "Scammers are calling and texting people pretending to be from the FCC — the government agency that watches over phones and the internet. They say your phone number is under investigation for criminal activity and demand money or personal information to make it stop. That's a lie — no real agency does that. Hang up, don't call the number they give you, don't pay anything, and don't share personal information with anyone who calls out of the blue.",
+      "excerpt": "Scammers are calling and texting people, pretending to be from the FCC — the government agency that watches over phones and the internet. According to the FCC, they say your phone number is under investigation for criminal activity and demand money or personal information to make it stop. That's a lie — no real agency does that. If you get this call, hang up. Don't call the number they give you, don't pay anything, and don't share personal information with anyone who calls out of the blue.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#SecurityAlert",
-        "#ScamAlert"
+        "#DailyBrief"
       ],
       "image": "assets/img/news/2026-08-14-composite.jpg",
       "comic": "assets/img/news/2026-08-14-comic-square.jpg",
@@ -197,14 +196,12 @@
       "date": "2026-08-14",
       "title": "A Windows update is putting some computers on a \"BitLocker recovery\" screen — find your recovery key now, free, at account.microsoft.com/devices/recoverykey",
       "tag": "Tech Note",
-      "summary": "Microsoft's recent Windows updates have been sending some computers to a \"BitLocker recovery\" screen after they restart — that's the built-in lock that protects your files, and it asks for a 48-digit recovery key to prove the computer is yours. Look yours up in about two minutes before anything happens: sign in at account.microsoft.com/devices/recoverykey with the Microsoft account you use on that computer, and write the key down somewhere safe. If your machine was set up by an employer or a shop, ask whoever set it up.",
-      "truth": "Most people don't realize their computer is secretly locked with a key they never knew existed. I see it all the time: the update runs overnight, the morning restart lands on that blue recovery screen, and suddenly it's a panic. The honest answer is, the files are fine — you just need the key. Sign in at account.microsoft.com/devices/recoverykey and write it down now, not at 9 p.m. in a hurry.",
+      "summary": "Microsoft's recent Windows updates have been sending some computers to a \"BitLocker recovery\" screen after they restart — that's the built-in lock that protects your files, and it asks for a 48-digit recovery key to prove the computer is yours. You can look yours up in about two minutes, before anything happens: sign in at `account.microsoft.com/devices/recoverykey` with the Microsoft account you use on that computer, and write the key down somewhere safe. If your machine was set up by an employer or a shop, ask whoever set it up.",
+      "truth": "Most people don't realize their computer is secretly locked with a key they never knew existed. I see it all the time: the update runs overnight, the morning restart lands on that blue recovery screen, and suddenly it's a panic — \"John, is everything on my computer gone?\" The honest answer is, the files are fine; you just need the key. And the key is the easiest thing in the world to find while everything is working. Find it now, not at 9 p.m. in a hurry.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#BitLocker",
-        "#WindowsUpdate"
+        "#ComputerRepair"
       ]
     },
     {
@@ -275,16 +272,14 @@
       "id": "onyx-2026-08-14-post-2",
       "type": "tip",
       "date": "2026-08-14",
-      "title": "Save any document as a PDF without paying for Adobe — Microsoft Print to PDF is built into Windows and free",
+      "title": "Power flickers and your computer dies mid-work — a UPS keeps it running through outages, APC Back-UPS from about 60 dollars at apc.com",
       "tag": "Tech Tip",
-      "summary": "The next time a form or a website lets you print, save it as a PDF instead of paper. On Windows, open the print window and choose \"Microsoft Print to PDF\" as the printer, hit Print, and pick where to save the file. On a Mac, choose \"Save as PDF\" in the print window. No downloads, no accounts, no cost — it's already on your computer.",
-      "truth": "Most people don't realize they're paying for something that's already free on their computer. I see customers keep a paid Adobe subscription just to make a PDF out of a form or a receipt — and the honest answer is their computer has done that for free since the day they bought it. It's the kind of thing that makes me wish I'd told every single customer years ago.",
+      "summary": "A UPS — that's a power station your computer plugs into — keeps things running when the electricity blinks or goes out, long enough to save your work and turn the computer off the right way. APC Back-UPS is the one I recommend; find it at `apc.com`, or compare CyberPower at `cyberpowersystems.com`. You'll also see them at Best Buy and Office Depot. Get one big enough for your computer and monitor.",
+      "truth": "I see it all the time: somebody types for an hour, a storm rolls through, the lights flicker for half a second, and their work is gone — or worse, the computer won't start the next day. The honest answer is a $60 UPS costs less than the work you lose in one bad afternoon, and way less than a new machine. Florida power doesn't go out politely; it blinks, browns, and drops.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsTips",
-        "#PDF"
+        "#ComputerRepair"
       ]
     },
     {
