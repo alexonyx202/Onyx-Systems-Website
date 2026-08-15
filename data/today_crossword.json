@@ -1,137 +1,204 @@
 {
-  "title": "5th Grade Math",
-  "size": 24,
+  "title": "5th grade math for Drew",
+  "size": 27,
   "grid": [
-    "............N...........",
-    "...E........u...........",
-    "...x........Moore.......",
-    "...i......R.b...........",
-    "...t......h.e...D....S..",
-    "...T......o.r...e.L..p..",
-    ".A.i......Multiplication",
-    ".r.c......b.i...a.D..n..",
-    ".r.k......u.n..KCF...k..",
-    "Parentheses.e...r.......",
-    ".y.t..........Tausk.....",
-    "................z.......",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................"
+    "................F..........",
+    "................Area.......",
+    "................c..........",
+    "................t.SuM......",
+    "................o...u......",
+    "..............Variable.....",
+    "....................t......",
+    "DivisIon........G...i......",
+    ".....n..........e...Product",
+    ".....t....Fraction..l......",
+    ".....e...P......m...i......",
+    ".....r...a..Difference.....",
+    ".....s..Prime...t...a......",
+    ".....e...a..c.Perimeter....",
+    ".....Circle.i...y...i...A..",
+    ".....t...l..m.L...Quotient.",
+    ".........Equation...n...g..",
+    ".........l..l.n.........l..",
+    "..............e.........e..",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "...........................",
+    "..........................."
   ],
   "clues": {
     "across": [
       {
+        "num": 2,
+        "row": 2,
+        "col": 17,
+        "len": 4,
+        "answer": "Area",
+        "clue": "The amount of space inside a shape, measured in square units."
+      },
+      {
         "num": 3,
-        "row": 3,
-        "col": 13,
-        "len": 5,
-        "answer": "Moore",
-        "clue": "Math teacher in 5C"
+        "row": 4,
+        "col": 19,
+        "len": 3,
+        "answer": "SuM",
+        "clue": "The result of adding numbers."
+      },
+      {
+        "num": 5,
+        "row": 6,
+        "col": 15,
+        "len": 8,
+        "answer": "Variable",
+        "clue": "A letter or symbol that represents an unknown value."
+      },
+      {
+        "num": 6,
+        "row": 8,
+        "col": 1,
+        "len": 8,
+        "answer": "DivisIon",
+        "clue": "The math operation of splitting into equal parts."
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 11,
-        "len": 14,
-        "answer": "Multiplication",
-        "clue": "Does multiplication or Addition come first in the order of operations?"
+        "row": 9,
+        "col": 21,
+        "len": 7,
+        "answer": "Product",
+        "clue": "The result of multiplying numbers."
       },
       {
         "num": 10,
-        "row": 9,
-        "col": 16,
-        "len": 3,
-        "answer": "KCF",
-        "clue": "What technique do you use to divide fractions?"
-      },
-      {
-        "num": 11,
         "row": 10,
-        "col": 1,
-        "len": 11,
-        "answer": "Parentheses",
-        "clue": "What does the P stand for in PEMDAS?"
+        "col": 11,
+        "len": 8,
+        "answer": "Fraction",
+        "clue": "A part of a whole, represented with a numerator and denominator."
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 15,
+        "row": 12,
+        "col": 13,
+        "len": 10,
+        "answer": "Difference",
+        "clue": "The result of subtracting numbers."
+      },
+      {
+        "num": 13,
+        "row": 13,
+        "col": 9,
         "len": 5,
-        "answer": "Tausk",
-        "clue": "Math teacher in 5A"
+        "answer": "Prime",
+        "clue": "A number greater than 1 that has only two factors: 1 and itself."
+      },
+      {
+        "num": 14,
+        "row": 14,
+        "col": 15,
+        "len": 9,
+        "answer": "Perimeter",
+        "clue": "The total distance around a shape."
+      },
+      {
+        "num": 15,
+        "row": 15,
+        "col": 6,
+        "len": 6,
+        "answer": "Circle",
+        "clue": "A round shape where all points are equidistant from the center."
+      },
+      {
+        "num": 18,
+        "row": 16,
+        "col": 19,
+        "len": 8,
+        "answer": "Quotient",
+        "clue": "The result of a division problem."
+      },
+      {
+        "num": 19,
+        "row": 17,
+        "col": 10,
+        "len": 8,
+        "answer": "Equation",
+        "clue": "A math statement that shows two expressions are equal."
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 13,
-        "len": 10,
-        "answer": "NuMberline",
-        "clue": "What model do we use when talking about distance?"
-      },
-      {
-        "num": 2,
-        "row": 2,
-        "col": 4,
-        "len": 10,
-        "answer": "ExitTicket",
-        "clue": "Problem done at the end of class to test your knowledge"
+        "col": 17,
+        "len": 6,
+        "answer": "FActor",
+        "clue": "A number that divides another number evenly."
       },
       {
         "num": 4,
         "row": 4,
-        "col": 11,
-        "len": 7,
-        "answer": "RhoMbus",
-        "clue": "Any parallelogram with 4 equal sides"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 17,
-        "len": 8,
-        "answer": "DelaCruz",
-        "clue": "Math teacher in 5D"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 22,
-        "len": 5,
-        "answer": "Spink",
-        "clue": "Math teacher in 5B"
+        "col": 21,
+        "len": 14,
+        "answer": "MultiPlication",
+        "clue": "The math operation of repeated addition."
       },
       {
         "num": 7,
-        "row": 6,
-        "col": 19,
-        "len": 3,
-        "answer": "LcD",
-        "clue": "What technique do you use to add or subtract fractions?"
+        "row": 8,
+        "col": 6,
+        "len": 9,
+        "answer": "InterseCt",
+        "clue": "To cross or meet at a point."
       },
       {
         "num": 8,
-        "row": 7,
-        "col": 2,
+        "row": 8,
+        "col": 17,
+        "len": 8,
+        "answer": "Geometry",
+        "clue": "The branch of math dealing with shapes, sizes, and properties of space."
+      },
+      {
+        "num": 11,
+        "row": 11,
+        "col": 10,
+        "len": 8,
+        "answer": "ParallEl",
+        "clue": "Lines that never meet, no matter how far they extend."
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 13,
+        "len": 7,
+        "answer": "Decimal",
+        "clue": "A number with a point to separate whole numbers and parts."
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 25,
         "len": 5,
-        "answer": "Array",
-        "clue": "A model used to visualize the multiplication of fractions"
+        "answer": "Angle",
+        "clue": "The space between two intersecting lines, measured in degrees."
+      },
+      {
+        "num": 17,
+        "row": 16,
+        "col": 15,
+        "len": 4,
+        "answer": "Line",
+        "clue": "A straight one-dimensional figure that extends infinitely in both directions."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/5th-grade-math-59",
-  "slug": "5th-grade-math-59",
-  "fetched_at": "2026-07-14T19:22:54.740286+00:00",
-  "date": "2026-08-14"
+  "source_url": "https://crosswordlabs.com/view/5th-grade-math-for-drew",
+  "slug": "5th-grade-math-for-drew",
+  "fetched_at": "2026-07-14T19:20:09.411394+00:00",
+  "date": "2026-08-15"
 }
