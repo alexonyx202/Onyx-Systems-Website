@@ -116,6 +116,24 @@
   }
 
   .right-box { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; margin-right: 56px; }
+  .battery-line { font-size: 15px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-shadow: 0 2px 0 rgba(7,17,31,.9); }
+  .battery-line b { color: #fff; font-size: 17px; }
+  .battery-line .combo-inline {
+    font-weight: 900;
+    font-size: 15px;
+    color: rgba(255, 217, 74, .45);
+    transition: color .15s ease;
+  }
+  .battery-line .combo-inline.on {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 217, 74, .55);
+  }
+  .battery-line.drain { animation: drainPulse .55s ease; }
+  @keyframes drainPulse {
+    0% { transform: scale(1); color: var(--gold); }
+    35% { transform: scale(1.3); color: var(--red); }
+    100% { transform: scale(1); color: var(--gold); }
+  }
   .best-line { font-size: 13px; font-weight: 800; color: var(--accent-2); text-shadow: 0 2px 0 rgba(7,17,31,.9); letter-spacing: 1px; }
   .best-line b { color: #fff; font-size: 15px; }
   #diff-chip {
@@ -150,35 +168,6 @@
   #btn-pause:active { transform: scale(.92); }
   #btn-pause .bar { width: 4px; height: 16px; border-radius: 2px; background: #cfefff; }
   #btn-pause:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-
-  #combo {
-    position: absolute;
-    top: calc(76px + var(--safe-top));
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    display: none;
-    pointer-events: none;
-  }
-  #combo .combo-x {
-    font-size: 26px;
-    font-weight: 900;
-    color: #fff;
-    text-shadow: 0 3px 0 var(--accent-dark, #07516b), 0 0 18px rgba(98,237,255,.6);
-    letter-spacing: 1px;
-  }
-  #combo .combo-bar {
-    width: 120px; height: 5px;
-    margin: 5px auto 0;
-    border-radius: 99px;
-    background: rgba(255,255,255,.15);
-    overflow: hidden;
-  }
-  #combo .combo-bar i {
-    display: block; height: 100%;
-    background: linear-gradient(90deg, var(--accent), #fff);
-    border-radius: 99px;
-  }
 
   #powerups {
     position: absolute;
@@ -680,14 +669,10 @@
         <div id="score">0</div>
       </div>
       <div class="right-box">
+        <div class="battery-line" id="battery-line">🔋 <b id="batteries">0</b><span class="combo-inline" id="combo-inline"> ×1</span></div>
         <div class="best-line">BEST <b id="best">0</b></div>
         <div id="diff-chip">CLASSIC</div>
       </div>
-    </div>
-
-    <div id="combo">
-      <div class="combo-x" id="combo-x">×2</div>
-      <div class="combo-bar"><i id="combo-bar"></i></div>
     </div>
 
     <div id="powerups"></div>
@@ -765,7 +750,7 @@
       <div class="help-items">
         <div class="help-item"><span class="ico">🕹️</span>Boost to fly</div>
         <div class="help-item"><span class="ico">🔋</span>+2 points</div>
-        <div class="help-item"><span class="ico">🦠</span>Game over</div>
+        <div class="help-item"><span class="ico">🦠</span>−3 🔋</div>
         <div class="help-item"><span class="ico">🛡️</span>Shield hit</div>
         <div class="help-item"><span class="ico">⏳</span>Slow-mo</div>
         <div class="help-item"><span class="ico">🧲</span>Magnet</div>
@@ -779,7 +764,7 @@
         <div class="help-row"><span class="what">Back / close</span><span class="how" data-prompt="back"></span></div>
         <div class="help-row"><span class="what">Navigate menus</span><span class="how" data-prompt="nav"></span></div>
       </div>
-      <p class="go-sub" style="max-width:320px">Grab batteries in a row for a <b style="color:var(--gold)">combo multiplier</b>. Your best score is saved per difficulty.</p>
+      <p class="go-sub" style="max-width:320px">Grab batteries in a row for a <b style="color:var(--gold)">combo multiplier</b>. Viruses zap you for <b style="color:var(--red)">−3 batteries</b> and break your combo — but they never end your run.</p>
       <button class="btn ghost" data-nav="close-help" id="btn-close-help">✕&nbsp; CLOSE</button>
     </div>
 
@@ -796,10 +781,6 @@
           <input type="range" id="set-music" min="0" max="100" step="5" value="50" data-nav="range" aria-label="Music volume">
         </div>
         <div class="set-row">
-          <span class="lbl">Screen shake<small>Camera intensity</small></span>
-          <input type="range" id="set-shake" min="0" max="100" step="5" value="70" data-nav="range" aria-label="Screen shake">
-        </div>
-        <div class="set-row">
           <span class="lbl">Flash effects<small>Death & milestone flashes</small></span>
           <button class="toggle" id="set-flash" data-nav="toggle" aria-label="Flash effects">ON</button>
         </div>
@@ -808,7 +789,7 @@
           <input type="range" id="set-glow" min="0" max="100" step="5" value="100" data-nav="range" aria-label="Title glow">
         </div>
         <div class="set-row">
-          <span class="lbl">Reduce motion<small>Minimize animations & shake</small></span>
+          <span class="lbl">Reduce motion<small>Minimize animations & flashes</small></span>
           <button class="toggle" id="set-motion" data-nav="toggle" aria-label="Reduce motion">OFF</button>
         </div>
       </div>
@@ -884,28 +865,28 @@ const DIFFICULTIES = {
   relaxed: {
     label: "RELAXED", color: "#4ade80", glow: "rgba(74,222,128,.45)",
     desc: "Big gaps, gentle speed. Perfect for a first flight.",
-    gravity: 880, gap: 218, baseSpeed: 158, speedPerScore: 2.2, maxSpeedAdd: 60,
+    gravity: 880, maxFall: 470, gap: 218, baseSpeed: 158, speedPerScore: 2.2, maxSpeedAdd: 60,
     virusChance: 0.10, batteryChance: 0.88, powerupChance: 0.16, spawnMin: 1.05,
     firewallChance: 0.08,
   },
   classic: {
     label: "CLASSIC", color: "#62edff", glow: "rgba(98,237,255,.45)",
     desc: "The original Byte Bird challenge.",
-    gravity: 1050, gap: 200, baseSpeed: 190, speedPerScore: 3.0, maxSpeedAdd: 105,
+    gravity: 1050, maxFall: 530, gap: 200, baseSpeed: 190, speedPerScore: 3.0, maxSpeedAdd: 105,
     virusChance: 0.30, batteryChance: 0.75, powerupChance: 0.11, spawnMin: 0.92,
     firewallChance: 0.14,
   },
   hardcore: {
     label: "HARDCORE", color: "#ffb84d", glow: "rgba(255,184,77,.45)",
     desc: "Narrow gaps, more viruses, less mercy.",
-    gravity: 1160, gap: 184, baseSpeed: 218, speedPerScore: 3.5, maxSpeedAdd: 125,
+    gravity: 1160, maxFall: 590, gap: 184, baseSpeed: 218, speedPerScore: 3.5, maxSpeedAdd: 125,
     virusChance: 0.46, batteryChance: 0.70, powerupChance: 0.08, spawnMin: 0.84,
     firewallChance: 0.20,
   },
   insane: {
     label: "INSANE", color: "#ff5c73", glow: "rgba(255,92,115,.45)",
     desc: "For pilots with nothing left to lose.",
-    gravity: 1260, gap: 168, baseSpeed: 242, speedPerScore: 4.0, maxSpeedAdd: 140,
+    gravity: 1260, maxFall: 640, gap: 168, baseSpeed: 242, speedPerScore: 4.0, maxSpeedAdd: 140,
     virusChance: 0.56, batteryChance: 0.64, powerupChance: 0.06, spawnMin: 0.76,
     firewallChance: 0.26,
   },
@@ -933,7 +914,7 @@ const SCORES_KEY = "byteBird.scores.v2";
 const STATS_KEY = "byteBird.stats.v2";
 
 const settings = Object.assign({
-  sfx: 0.8, music: 0.5, shake: 0.7, flashes: true, reduceMotion: false, titleGlow: 1,
+  sfx: 0.8, music: 0.5, flashes: true, reduceMotion: false, titleGlow: 1,
 }, Store.get(SETTINGS_KEY, {}));
 
 // reduceMotion default follows OS preference
@@ -1078,6 +1059,8 @@ const SFX = {
   score() { beep(880, .07, "square", .03); },
   powerup() { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => beep(f, .14, "triangle", .05), i * 70)); },
   shieldBreak() { beep(300, .2, "sawtooth", .06, 90); noiseHit(.15, .05, 900); },
+  thump() { beep(110, .16, "sine", .06, 48); noiseHit(.12, .05, 200); },
+  zap() { beep(240, .16, "square", .05, 80); noiseHit(.12, .04, 1500); },
   hit() { beep(150, .32, "sawtooth", .07, 38); noiseHit(.22, .08, 700); },
   milestone() { [392, 523, 659, 784].forEach((f, i) => setTimeout(() => beep(f, .12, "square", .035), i * 65)); },
   record() { [523, 659, 784, 1047, 1319].forEach((f, i) => setTimeout(() => beep(f, .16, "triangle", .05), i * 90)); },
@@ -1453,8 +1436,9 @@ let gridScroll = 0;
 
 let time = 0, lastNow = 0;
 let spawnTimer = 0;
-let trauma = 0, flash = 0, shakeT = 0;
-let hitStopUntil = 0, slowUntil = 0, magnetUntil = 0, shrinkUntil = 0, invulnUntil = 0;
+let lastGapCenterY = 0;   // keeps consecutive gaps reachable (see spawnPipe)
+let trauma = 0, flash = 0, vignette = 0;
+let hitStopUntil = 0, slowUntil = 0, deathSlowUntil = 0, magnetUntil = 0, shrinkUntil = 0, invulnUntil = 0;
 let shield = false;
 let dying = 0;
 let nextMile = 10;
@@ -1486,6 +1470,8 @@ function scoreHash(seed, score, batteries, combo) {
 }
 
 const FLAP_POWER = -380;
+const BOUND_BOUNCE = FLAP_POWER * 0.7; // upward kick off the floor on a shielded clip
+const CEIL_BOUNCE = 180;               // downward push off the ceiling
 
 /* ---------- Background setup ---------- */
 
@@ -1558,12 +1544,13 @@ function beginRun() {
   combo = 0; comboTimer = 0; runBestCombo = 0;
   runBatteries = 0; runTime = 0;
   shield = false; invulnUntil = 0;
-  slowUntil = 0; magnetUntil = 0; shrinkUntil = 0; hitStopUntil = 0;
-  trauma = 0; flash = 0;
+  slowUntil = 0; deathSlowUntil = 0; magnetUntil = 0; shrinkUntil = 0; hitStopUntil = 0;
+  trauma = 0; flash = 0; vignette = 0;
   wasRecord = false;
 
   pipes = []; firewalls = []; batteries = []; viruses = []; powerups = [];
   spawnTimer = 0.75;
+  lastGapCenterY = H * 0.46; // first gap spawns near the bird's launch altitude
   time = 0; // anchor sine phases to the run so seeded layouts are reproducible
   milestoneIdx = 0;
   MILESTONES.forEach(m => m.done = false);
@@ -1586,15 +1573,19 @@ function beginRun() {
   updateScoreDisplay();
 }
 
-function die() {
+function die(cause = "pipe") {
   if (state !== "playing") return;
   state = "dying";
   dying = 1.05;
   hitStopUntil = now() + 0.12;
+  deathSlowUntil = now() + 0.5; // brief slow-mo beat after the freeze
 
   burst(bird.x, bird.y, "#ff5f75", 30);
   flash = 0.55;
-  addTrauma(1);
+  vignette = 1;
+  // Death jolt scales with what ended the run: pipe/firewall impacts rattle
+  // hardest, clipping a boundary is a softer bump. Duration stays fixed.
+  addTrauma(cause === "boundary" ? 0.55 : cause === "firewall" ? 0.9 : 1);
   SFX.hit();
   if (navigator.vibrate) navigator.vibrate([60, 40, 120]);
 
@@ -1640,6 +1631,7 @@ function finishRunStats() {
 
 function finishGameOver() {
   state = "gameover";
+  updateBatteryDisplay(); // hide the live HUD on the game-over screen
   gameoverShownAt = now();
 
   document.getElementById("go-score").textContent = "0";
@@ -1696,16 +1688,25 @@ function spawnObstacle() {
 
 function spawnFirewall() {
   const gapSize = Math.max(155, diff.gap * 0.9);
-  const minY = gapSize / 2 + 30;
-  const maxY = H - gapSize / 2 - 30;
+  const halfGap = gapSize / 2;
+  const minY = halfGap + 30;
+  const maxY = H - halfGap - 90;
+  // Correlate the moving gap's rest position with the last gap, and keep the
+  // oscillation gentle so a firewall is never an impossible swinging target.
+  // step is deliberately smaller than the pipe step because the gap also
+  // oscillates by +/-amp; step + 2*amp stays below one full gap height, so
+  // even two firewalls back-to-back are always reachable.
+  const step = gapSize * 0.6;
+  const baseY = clamp(lastGapCenterY + rnd(-step, step), minY, maxY);
+  lastGapCenterY = baseY;
   firewalls.push({
     x: W + 90,
     width: 60,
     gapSize,
-    baseY: clamp(rnd(minY, maxY), 120, H - 120),
-    amp: rnd(38, 62) * (diff.gap / 200),
+    baseY,
+    amp: rnd(12, 20) * (diff.gap / 200),
     phase: R() * 6.28,
-    speed: rnd(1.3, 2.1),
+    speed: rnd(1.0, 1.6),
     passed: false,
     t: 0,
     seed: R() * 6.28,
@@ -1729,16 +1730,27 @@ function collideFirewall(fw) {
 }
 
 function spawnPipe() {
-  const gap = Math.max(diff.gap - score * 0.7, diff.gap * 0.78);
-  const minTop = 105;
-  const maxTop = Math.max(minTop + 20, H - gap - 130);
-  const top = clamp(minTop + R() * (maxTop - minTop), minTop, H - gap - 20);
+  const gap = diff.gap;            // constant gap — difficulty ramps via speed & hazards
+  const halfGap = gap / 2;
+  const minTop = 105;              // keep the top pipe clear of the HUD
+  const minBottom = 130;           // keep the bottom pipe visible & weighty
+  const minCenter = minTop + halfGap;
+  const maxCenter = H - halfGap - minBottom;
+
+  // Level-design rule: every gap must be physically reachable from the last
+  // one. Bound the vertical step between consecutive gap centers to a fraction
+  // of the gap height so the worst case needs only a small correction flap
+  // instead of an impossible multi-hundred-pixel climb.
+  const step = gap * 0.85;
+  const center = clamp(lastGapCenterY + rnd(-step, step), minCenter, maxCenter);
+  lastGapCenterY = center;
+  const top = center - halfGap;
 
   pipes.push({ x: W + 80, width: 76, top, bottom: top + gap, passed: false });
 
   if (R() < diff.batteryChance) {
     batteries.push({
-      x: W + 118, y: clamp(top + gap / 2, 40, H - 40), r: 13,
+      x: W + 118, y: clamp(center, 40, H - 40), r: 13,
       rotation: R() * 6, seed: R() * 6.28,
     });
   }
@@ -1746,7 +1758,7 @@ function spawnPipe() {
   if (score > 4 && R() < diff.virusChance) {
     const roll = R();
     const type = roll < 0.28 ? "bob" : (roll < 0.46 ? "fast" : (roll < 0.74 ? "zig" : "spin"));
-    const vy = clamp(top + gap / 2 + rnd(-35, 35), 40, H - 40);
+    const vy = clamp(center + rnd(-35, 35), 40, H - 40);
     viruses.push({
       x: W + 190,
       y: vy,
@@ -1759,7 +1771,7 @@ function spawnPipe() {
     const types = ["shield", "slow", "magnet", "shrink"];
     powerups.push({
       type: types[Math.floor(R() * types.length)],
-      x: W + 150, y: clamp(top + gap / 2, 40, H - 40),
+      x: W + 150, y: clamp(center, 40, H - 40),
       r: 16, t: 0, seed: R() * 6.28,
     });
   }
@@ -1800,7 +1812,6 @@ function checkMilestones() {
       m.done = true;
       showBanner(m.txt, m.sub, false);
       SFX.milestone();
-      addTrauma(0.25);
       popup(W / 2, H * 0.32, m.txt, diff.color, 26);
       break;
     }
@@ -1814,6 +1825,7 @@ function checkMilestones() {
 function worldScale() {
   const t = now();
   if (t < hitStopUntil) return 0.06;
+  if (state === "dying" && t < deathSlowUntil) return 0.45;
   if (t < slowUntil) return 0.55;
   return 1;
 }
@@ -1822,9 +1834,9 @@ function update(realDt) {
   time += realDt;
 
   // real-time effects
-  if (trauma > 0) trauma = Math.max(0, trauma - 1.3 * realDt);
+  if (trauma > 0) trauma = Math.max(0, trauma - 5.5 * realDt);
   if (flash > 0) flash -= realDt;
-  shakeT += realDt;
+  if (vignette > 0) vignette = Math.max(0, vignette - 2.4 * realDt);
 
   // background always animates
   for (const s of stars) {
@@ -1873,6 +1885,7 @@ function update(realDt) {
   /* ---- bird physics ---- */
 
   bird.vy += diff.gravity * dt;
+  if (bird.vy > diff.maxFall) bird.vy = diff.maxFall; // terminal velocity keeps dives controlled
   bird.y += bird.vy * dt;
 
   // shrink / grow the hitbox smoothly
@@ -1914,7 +1927,7 @@ function update(realDt) {
     }
     if (collidePipe(p)) {
       if (shieldHit()) continue;
-      die();
+      die("pipe");
       return;
     }
   }
@@ -1932,7 +1945,7 @@ function update(realDt) {
     }
     if (collideFirewall(fw)) {
       if (shieldHit()) continue;
-      die();
+      die("firewall");
       return;
     }
   }
@@ -1957,6 +1970,7 @@ function update(realDt) {
       b.collected = true;
       runBatteries++;
       stats.batteries++;
+      updateBatteryDisplay();
       if (stats.batteries >= 10) unlock("battery_10");
       if (stats.batteries >= 50) unlock("battery_50");
 
@@ -1972,7 +1986,6 @@ function update(realDt) {
       burst(b.x, b.y, "#ffe45b", 12);
       coinMelody(combo);
       if (combo >= 2) popup(b.x, b.y - 42, `×${combo}`, "#62edff", 24);
-      addTrauma(0.08);
     }
   }
   batteries = batteries.filter(b => b.x > -60 && !b.collected);
@@ -1994,12 +2007,13 @@ function update(realDt) {
 
     const dx = bird.x - v.x, dy = bird.y - v.y;
     if (dx * dx + dy * dy < (bird.r + v.r - 4) ** 2) {
-      if (shieldHit()) continue;
-      die();
-      return;
+      // Viruses are non-lethal: they drain batteries & combo instead of ending
+      // the run. Brief i-frames prevent chain-hits, keeping the flow going.
+      if (now() >= invulnUntil) hitVirus(v);
+      continue;
     }
   }
-  viruses = viruses.filter(v => v.x > -80);
+  viruses = viruses.filter(v => v.x > -80 && !v.popped);
 
   /* ---- powerups ---- */
 
@@ -2017,7 +2031,20 @@ function update(realDt) {
   /* ---- boundaries ---- */
 
   if (bird.y - bird.r < 0 || bird.y + bird.r > H) {
-    die();
+    if (shieldHit()) {
+      // Shielded boundary clip: pop back in-bounds with a bounce (up off the
+      // floor, down off the ceiling), plus an impact squash and a small puff,
+      // so the save reads as a bounce instead of a delayed death.
+      const hitFloor = bird.y + bird.r > H;
+      bird.y = clamp(bird.y, bird.r, H - bird.r);
+      bird.vy = hitFloor ? BOUND_BOUNCE : CEIL_BOUNCE;
+      bird.squash = 1;                      // squash on impact, springs back
+      burst(bird.x, bird.y, "#6ee7ff", 10); // small puff at the bounce point
+      SFX.thump();
+      if (navigator.vibrate) navigator.vibrate(30);
+      return;
+    }
+    die("boundary");
     return;
   }
 
@@ -2044,15 +2071,35 @@ function circleRect(cx, cy, r, rx, ry, rw, rh) {
   return dx * dx + dy * dy < r * r;
 }
 
+function hitVirus(v) {
+  v.popped = true;
+  invulnUntil = now() + 0.9;
+  const lost = Math.min(3, runBatteries);
+  runBatteries = Math.max(0, runBatteries - 3);
+  combo = 0; comboTimer = 0;
+  updateComboDisplay();
+  updateBatteryDisplay();
+  const bl = document.getElementById("battery-line");
+  if (bl) { bl.classList.remove("drain"); void bl.offsetWidth; bl.classList.add("drain"); }
+  burst(v.x, v.y, "#b06aff", 18);
+  burst(v.x, v.y, "#ff5f75", 8);
+  popup(v.x, v.y - 22, lost > 0 ? `-${lost} 🔋` : "ZAP!", "#ff8f9d", 20);
+  flash = 0.28;
+  vignette = 0.6;
+  hitStopUntil = now() + 0.06;
+  SFX.zap();
+  if (navigator.vibrate) navigator.vibrate(45);
+}
+
 function shieldHit() {
   if (shield) {
     shield = false;
     invulnUntil = now() + 1.2;
     burst(bird.x, bird.y, "#6ee7ff", 20);
     burst(bird.x, bird.y, "#ff5f75", 6);
-    addTrauma(0.5);
     hitStopUntil = now() + 0.08;
     flash = 0.25;
+    vignette = 0.7;
     SFX.shieldBreak();
     if (navigator.vibrate) navigator.vibrate(80);
     updatePowerupUI();
@@ -2065,7 +2112,6 @@ function shieldHit() {
 function applyPowerup(type, x, y) {
   burst(x, y, "#a78bfa", 16);
   SFX.powerup();
-  addTrauma(0.2);
   if (type === "shield") {
     shield = true;
     popup(x, y - 20, "SHIELD!", "#6ee7ff", 22);
@@ -2206,6 +2252,14 @@ function updateHUD() {
     chip.style.background = diff.color;
   }
   updatePowerupUI();
+  updateBatteryDisplay();
+}
+
+function updateBatteryDisplay() {
+  const line = document.getElementById("battery-line");
+  if (!line) return;
+  line.style.display = (state === "playing" || state === "paused" || state === "dying") ? "" : "none";
+  document.getElementById("batteries").textContent = runBatteries;
 }
 
 function updateBestDisplay() {
@@ -2213,14 +2267,13 @@ function updateBestDisplay() {
 }
 
 function updateComboDisplay() {
-  const el = document.getElementById("combo");
-  if (combo > 1 && comboTimer > 0) {
-    el.style.display = "block";
-    document.getElementById("combo-x").textContent = `×${combo}`;
-    document.getElementById("combo-bar").style.width = `${(comboTimer / 2) * 100}%`;
-  } else {
-    el.style.display = "none";
-  }
+  const ci = document.getElementById("combo-inline");
+  if (!ci) return;
+  const active = combo > 1 && comboTimer > 0;
+  ci.textContent = active ? ` ×${combo}` : " ×1";
+  ci.classList.toggle("on", active);
+  // fade as the combo window expires so the timing cue is preserved
+  ci.style.opacity = active ? String(0.55 + 0.45 * (comboTimer / 2)) : "";
 }
 
 let bannerTimeout = null;
@@ -2288,7 +2341,6 @@ function updatePauseBtn() {
 const settingEls = {
   sfx: document.getElementById("set-sfx"),
   music: document.getElementById("set-music"),
-  shake: document.getElementById("set-shake"),
   glow: document.getElementById("set-glow"),
   flash: document.getElementById("set-flash"),
   motion: document.getElementById("set-motion"),
@@ -2301,7 +2353,6 @@ function saveSettings() {
 function syncSettingsUI() {
   settingEls.sfx.value = Math.round(settings.sfx * 100);
   settingEls.music.value = Math.round(settings.music * 100);
-  settingEls.shake.value = Math.round(settings.shake * 100);
   settingEls.glow.value = Math.round(settings.titleGlow * 100);
   document.documentElement.style.setProperty("--glow-pulse", settings.titleGlow);
   settingEls.flash.textContent = settings.flashes ? "ON" : "OFF";
@@ -2318,10 +2369,6 @@ settingEls.music.addEventListener("input", () => {
   settings.music = settingEls.music.value / 100;
   applyVolumes(); saveSettings();
   if (settings.music > 0.001) audioStart();
-});
-settingEls.shake.addEventListener("input", () => {
-  settings.shake = settingEls.shake.value / 100;
-  saveSettings();
 });
 settingEls.glow.addEventListener("input", () => {
   settings.titleGlow = settingEls.glow.value / 100;
@@ -2408,7 +2455,7 @@ function showTitle() {
   resetBird();
   pipes = []; firewalls = []; batteries = []; viruses = []; powerups = [];
   particles = []; popups = [];
-  shield = false; slowUntil = 0; magnetUntil = 0; shrinkUntil = 0; invulnUntil = 0;
+  shield = false; slowUntil = 0; deathSlowUntil = 0; magnetUntil = 0; shrinkUntil = 0; invulnUntil = 0;
   combo = 0;
   updateComboDisplay();
   updatePowerupUI();
@@ -2985,14 +3032,10 @@ function drawPopups() {
 function draw() {
   ctx.save();
 
-  // trauma shake — smooth noise, scaled by settings
-  const shakeAmt = settings.reduceMotion ? 0 : trauma * trauma * settings.shake;
-  if (shakeAmt > 0.01) {
-    const o = shakeAmt * 12;
-    ctx.translate(
-      o * (0.6 * Math.sin(shakeT * 11) + 0.4 * Math.sin(shakeT * 23)),
-      o * (0.6 * Math.cos(shakeT * 13) + 0.4 * Math.cos(shakeT * 29))
-    );
+  // Death shake only — a short jolt when the run ends; gameplay stays still.
+  if (state === "dying" && trauma > 0) {
+    const mag = trauma * trauma * 14;
+    ctx.translate((Math.random() * 2 - 1) * mag, (Math.random() * 2 - 1) * mag);
   }
 
   drawBackground();
@@ -3012,6 +3055,16 @@ function draw() {
   // flash overlay
   if (flash > 0 && settings.flashes && !settings.reduceMotion) {
     ctx.fillStyle = `rgba(255,80,100,${Math.min(0.42, flash)})`;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // impact vignette — soft red edges that pulse in and fade
+  if (vignette > 0 && settings.flashes && !settings.reduceMotion) {
+    const a = vignette * 0.5;
+    const g = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.3, W / 2, H / 2, Math.max(W, H) * 0.72);
+    g.addColorStop(0, "rgba(255,70,90,0)");
+    g.addColorStop(1, `rgba(255,70,90,${a})`);
+    ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
   }
 }
