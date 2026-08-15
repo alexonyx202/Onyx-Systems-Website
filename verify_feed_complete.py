@@ -86,6 +86,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-13: CCleaner (fake-download security alert, named product) and
     # ChatGPT (openai.com/chatgpt.com) — real products named in today's headlines.
     "ccleaner", "chatgpt",
+    # Extended 2026-08-15: coin cell (CR2032 watch-style battery) — the real consumer
+    # part named in today's Tech Note headline (losing time/date), obtain method stated.
+    "coin cell",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
