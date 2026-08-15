@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-15-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-15",
+      "title": "School's Back — So Are the Back-to-School Scams: Fake Laptop Deals and 'School' Emails",
+      "tag": "Daily Brief",
+      "excerpt": "School's back, and scammers are working the season. Crooks set up fake online stores advertising laptops at prices too good to be true — they take your money and card number, then vanish. Others send emails that look like they're from your child's school, asking you to log in or pay a fee. Real schools never do that. Type the store's web address yourself instead of clicking a link, and call the school using the number you already have if anything feels off.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-15-composite.jpg",
+      "comic": "assets/img/news/2026-08-15-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-14-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-14",
@@ -169,27 +186,23 @@
         "#WindowsUpdate",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-08-10-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-10",
-      "title": "School starts today in Columbia County — Microsoft 365 (Word, Excel, PowerPoint) is free for students at microsoft.com/education",
-      "tag": "Daily Brief",
-      "excerpt": "If your student's school uses Microsoft (most North Florida schools do), your child may already have Microsoft 365 for free — that's Word, Excel, and PowerPoint, the same programs offices use. Go to microsoft.com/education, click \"Get Office 365 for free\" or \"Sign up for free,\" and enter the student's school email. If the school is in the program, the apps install free on the family computer — no credit card, no monthly bill.",
-      "image": "assets/img/news/2026-08-10-composite.jpg",
-      "comic": "assets/img/news/2026-08-10-comic-square.jpg",
-      "read_more": "#contact",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Microsoft365",
-        "#BackToSchool"
-      ]
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-15-post-1",
+      "type": "news",
+      "date": "2026-08-15",
+      "title": "Your computer forgets the time and date every morning? The tiny silver coin cell inside is worn out — about $2 at Walmart, CVS, or Amazon",
+      "tag": "Tech Note",
+      "summary": "If your computer shows the wrong time and date every time you switch it on, the small round silver coin cell inside the case has run out of life. A fresh one costs about two dollars, and you can get it at Walmart, CVS, or Amazon — or a shop can put it in while you wait.",
+      "truth": "I see this all the time: somebody brings in a computer that's wrong on the clock every single morning, and they've been fixing the time by hand for months without ever wondering why. Most people don't realize there's a little silver watch-style cell inside the computer that keeps the clock running when the power is off — the same idea as the battery in a wall clock. It quietly does its job for years, and when it wears out, the computer loses the time and date every time you shut it down or unplug it. You can get a fresh one for about two dollars at Walmart, CVS, or Amazon, or bring it by the shop and we'll put it in while you wait. The honest answer is it's a two-dollar part and a quick job, not a reason to shop for a new computer.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-14-post-1",
       "type": "news",
@@ -253,19 +266,17 @@
       ]
     },
     {
-      "id": "onyx-2026-08-10-post-2",
-      "type": "news",
-      "date": "2026-08-10",
-      "title": "Don't trust the $5 flea-market flash drive with your photos — buy a genuine SanDisk from sandisk.com or a trusted store",
-      "tag": "Tech Note",
-      "summary": "Cheap no-name flash drives often lie about their size — a \"1TB\" stick may really hold only a few gigabytes, and once it's full it quietly overwrites your files. For anything you'd hate to lose — family photos, tax returns, school work — buy a name-brand drive like SanDisk, from sandisk.com or a trusted store like Walmart, Best Buy, or Amazon (sold by SanDisk itself). If the price sounds too good to be true, it's fake.",
-      "truth": "I see this all the time: a customer brings in a little flash drive full of vacation photos, and it's dead or corrupt. Nine times out of ten it was a no-name stick bought cheap online or at a market. The honest answer is a flash drive is for moving files, not keeping them — and the cheap ones are the first to fail. Pay the extra five bucks for a real one from sandisk.com or a trusted store, and don't let any flash drive be your only copy of anything.",
+      "id": "onyx-2026-08-15-post-2",
+      "type": "tip",
+      "date": "2026-08-15",
+      "title": "Google Chrome shipped a new security update on August 11 — see if yours has it in 30 seconds at chrome://settings/help",
+      "tag": "Tech Tip",
+      "summary": "Google pushed out a Chrome security update on Tuesday, August 11, 2026 that closes five security holes. Open Chrome, type chrome://settings/help in the address bar, and Chrome will grab it for free — then restart the browser and you are done.",
+      "truth": "Most people don't realize their browser updates itself in the background — until it asks for a restart, and the restart never happens. The honest answer is that the browser holding your banking and your email is only as safe as its latest update. I see machines come in running browsers that haven't restarted in months, and that's the door crooks walk through. Thirty seconds once in a while beats a long afternoon at the shop.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#SanDisk",
-        "#FlashDriveSafety"
+        "#ComputerRepair"
       ]
     },
     {
@@ -329,25 +340,9 @@
         "#uBlockOrigin",
         "#Edge"
       ]
-    },
-    {
-      "id": "onyx-2026-08-10-post-3",
-      "type": "tip",
-      "date": "2026-08-10",
-      "title": "Your photos and documents can survive a dead computer — turn on OneDrive backup, built into Windows and free",
-      "tag": "Tech Tip",
-      "summary": "OneDrive is Microsoft's free cloud storage built into Windows. Click the little cloud icon at the bottom-right of your screen (near the clock), then the gear icon → Sync and back up → Manage backup, and turn on Desktop, Documents, and Pictures. From then on, every file in those folders is copied to the cloud automatically — so a dead computer, a spilled drink, or a locked-up drive can't take them. You get 5GB free with a Microsoft account; a Microsoft 365 subscription ups it to a full terabyte.",
-      "truth": "Most people don't realize \"my files are on the computer\" is not a backup. Hard drives die with zero warning — I've seen it a hundred times. The honest answer is a backup isn't a gadget you buy, it's a switch you flip. OneDrive's folder backup is the easiest switch I know: set it once, forget it, and it quietly makes a second copy of everything in the background while you go about your day.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#OneDrive",
-        "#Backup"
-      ]
     }
   ],
-  "updated": "2026-08-14",
+  "updated": "2026-08-15",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
