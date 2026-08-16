@@ -840,6 +840,7 @@
   .about{width:100%;max-width:100%;box-sizing:border-box}
 }
 </style>
+  <meta name="onyx-build" content="20260815">
 </head>
 <body>
   <a class="skip-link" href="#hub">Skip to content</a>
@@ -1998,6 +1999,26 @@ function arcadeRender(list){
 // Instant paint from the inline fallback, then refresh from the single source of truth (games.json)
 arcadeRender(MANIFEST);
 fetch('games/games.json').then(function(r){return r.ok?r.json():Promise.reject();}).then(function(d){if(d&&Array.isArray(d.games)&&d.games.length)arcadeRender(d.games);}).catch(function(){});
+</script>
+
+<script>
+/* Freshness layer (2026-08-15): bfcache self-heal + build-date cache-bust + service worker.
+   Top-level only — embedded/iframe pages are never force-reloaded. */
+window.addEventListener('pageshow',function(e){if(e.persisted&&window.self===window.top)location.reload();});
+(function(){
+  try{
+    var m=document.querySelector('meta[name="onyx-build"]');
+    var b=m?m.getAttribute('content'):'';
+    if(b&&/^\d{8}$/.test(b)&&window.self===window.top&&window.sessionStorage){
+      var key='onyxBust'+location.pathname;
+      var age=Math.floor((Date.now()-Date.UTC(+b.slice(0,4),+b.slice(4,6)-1,+b.slice(6,8)))/86400000);
+      if(age>2&&sessionStorage.getItem(key)!=='1'){sessionStorage.setItem(key,'1');location.replace(location.pathname+'?cb='+Date.now());}
+    }
+  }catch(e){}
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'}).catch(function(){});});
+  }
+})();
 </script>
 </body>
 </html>
