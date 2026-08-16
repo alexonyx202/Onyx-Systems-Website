@@ -3,8 +3,9 @@
    1. The inline MANIFEST in index.html parses and matches games/games.json
       per-game (the arcade release rule — identical data everywhere).
    2. The pure arcade-core (date seed, mulberry32 RNG, Fisher-Yates, pick-6)
-      extracted from index.html is deterministic per UTC date, returns 6 unique
-      games from the full pool, and rotates across consecutive days.
+      extracted from index.html is deterministic per Eastern (America/New_York)
+      date, returns 6 unique games from the full pool, rotates across consecutive
+      days, and flips exactly at Eastern midnight (not UTC midnight).
 
    Run: node scripts/verify_daily_arcade.js   (exit 0 PASS / 1 FAIL)
    The core block in index.html sits between the markers "arcade-core-start" and
@@ -46,13 +47,21 @@ if (core) {
 check('arcade-core evals under Node', typeof arcadePick === 'function');
 
 if (typeof arcadePick === 'function' && manifest.length) {
-  // 30 consecutive UTC days starting 2026-08-01
+  // 30 consecutive Eastern dates starting 2026-08-01. Probes are at NOON UTC
+  // (08:00 EDT / 07:00 EST), so the Eastern calendar date is unambiguous
+  // regardless of DST and always equals the printed date.
   const dates = [];
-  for (let i = 0; i < 30; i++) dates.push(new Date(Date.UTC(2026, 7, 1 + i)));
+  for (let i = 0; i < 30; i++) dates.push(new Date(Date.UTC(2026, 7, 1 + i, 12)));
   const picks = dates.map(d => arcadePick(manifest, d));
 
   const same = JSON.stringify(arcadePick(manifest, dates[0])) === JSON.stringify(arcadePick(manifest, dates[0]));
-  check('daily pick is deterministic for a given UTC date', same);
+  check('daily pick is deterministic for a given Eastern date', same);
+
+  // The rotation must flip at EASTERN midnight, not UTC: 03:59 UTC on 2026-08-16
+  // is 23:59 EDT on Aug 15, and 04:01 UTC is 00:01 EDT on Aug 16 — different seeds.
+  const before = arcadeSeed(new Date(Date.UTC(2026, 7, 16, 3, 59)));
+  const after = arcadeSeed(new Date(Date.UTC(2026, 7, 16, 4, 1)));
+  check('seed flips at Eastern midnight (23:59 ET vs 00:01 ET)', before === 20260815 && after === 20260816, before + ' -> ' + after);
 
   const okPick = picks.every(p =>
     Array.isArray(p) && p.length === 6 &&
@@ -70,7 +79,7 @@ if (typeof arcadePick === 'function' && manifest.length) {
   picks.forEach(p => p.forEach(g => seen.add(g.file)));
   check('full collection surfaces over the month', seen.size === manifest.length, seen.size + '/' + manifest.length + ' games seen');
 
-  console.log('\nsample lineups (UTC date -> 6 files):');
+  console.log('\nsample lineups (Eastern date -> 6 files):');
   [0, 1, 2, 10].forEach(i => {
     const d = dates[i];
     console.log('  ' + d.toISOString().slice(0, 10) + '  ' + picks[i].map(g => g.file).join(', '));
