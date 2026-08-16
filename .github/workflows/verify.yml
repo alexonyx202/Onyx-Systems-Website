@@ -1,0 +1,54 @@
+name: arcade verify
+
+# Gates every push to main (GitHub Pages deploys from main): manifests stay in
+# sync with games.json, the daily-lineup harness passes, every game link/asset
+# resolves, and a headless browser pass checks cards, copy-match and the
+# service-worker freshness layer. Also runnable manually via workflow_dispatch.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Static gates (manifests + links + daily picks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Manifests must be regenerable without changes
+        run: |
+          python3 scripts/regenerate_manifest.py
+          git diff --exit-code -- games/index.html index.html
+
+      - name: Daily-lineup harness (sync + determinism + Eastern-midnight flip)
+        run: node scripts/verify_daily_arcade.js
+
+      - name: Game links + assets resolve on disk
+        run: node scripts/check_games_links.js
+
+  e2e:
+    name: Browser pass (cards, copy, service worker, offline)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install puppeteer (bundled Chromium)
+        run: npm install puppeteer --no-save
+
+      - name: Serve the site and run the arcade verifier
+        env:
+          NO_SHOTS: '1'
+        run: |
+          python3 -m http.server 8099 --bind 127.0.0.1 >/tmp/serve.log 2>&1 &
+          sleep 2
+          node scripts/verify_arcade.js

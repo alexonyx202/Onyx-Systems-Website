@@ -3,7 +3,8 @@
 # Chains the release pipeline and pushes to GitHub Pages:
 #   1. python3 scripts/regenerate_manifest.py   # manifests from games.json (arcade + homepage)
 #   2. python3 scripts/stamp_build.py           # Eastern build tokens (onyx-build metas + sw.js cache)
-#   3. node scripts/verify_daily_arcade.js      # pre-commit gate (aborts on failure)
+#   3. node scripts/verify_daily_arcade.js      # daily-lineup gate
+#      node scripts/check_games_links.js         # game links/assets gate
 #   4. stage the arcade pipeline files, commit, push
 #
 # Usage:
@@ -42,8 +43,9 @@ python3 scripts/regenerate_manifest.py
 echo "==> 2/4  stamp Eastern build tokens"
 python3 scripts/stamp_build.py "${DATE_ARG[@]+"${DATE_ARG[@]}"}"
 
-echo "==> 3/4  verify daily-lineup gate (aborts on failure)"
+echo "==> 3/4  verify gates (abort on failure)"
 node scripts/verify_daily_arcade.js
+node scripts/check_games_links.js
 
 echo "==> 4/4  stage, commit, push"
 
@@ -78,7 +80,11 @@ KNOWN=(
   scripts/regenerate_manifest.py
   scripts/stamp_build.py
   scripts/verify_daily_arcade.js
+  scripts/check_games_links.js
+  scripts/verify_arcade.js
+  scripts/verify_arcade_8111.js
   scripts/deploy.sh
+  .github/workflows/verify.yml
 )
 git add "${KNOWN[@]}"
 
