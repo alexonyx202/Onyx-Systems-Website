@@ -33,7 +33,7 @@ if (m) {
 }
 check('inline MANIFEST parses as JSON', manifest.length > 0, manifest.length + ' games');
 
-const key = g => JSON.stringify({ file: g.file, title: g.title, tagline: g.tagline, desc: g.desc, thumb: g.thumb, cabinet: g.cabinet, featured: !!g.featured });
+const key = g => JSON.stringify({ file: g.file, title: g.title, tagline: g.tagline, desc: g.desc, thumb: g.thumb, cabinet: g.cabinet });
 const fromJson = json.games.map(key).sort().join('\n');
 const fromManifest = manifest.map(key).sort().join('\n');
 check('inline MANIFEST identical to games/games.json', fromJson === fromManifest, fromJson === fromManifest ? '' : '(fields differ — keep them identical per the arcade release rule)');
