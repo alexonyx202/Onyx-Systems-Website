@@ -12,7 +12,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const http = require('http');
-const BASE = 'http://localhost:' + (process.argv[2] || '8099');
+const BASE = 'http://127.0.0.1:' + (process.argv[2] || '8099');
 const SHOT_DIR = process.env.SHOT_DIR || '/home/ai';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
