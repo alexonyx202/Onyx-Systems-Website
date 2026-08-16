@@ -47,6 +47,26 @@ node scripts/verify_daily_arcade.js
 
 echo "==> 4/4  stage, commit, push"
 
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+if [[ "$BRANCH" != "main" ]]; then
+  echo "WARNING: on branch '$BRANCH' — GitHub Pages deploys from 'main'."
+fi
+
+if [[ -z "$MSG" ]]; then
+  DATE="$(python3 -c 'import sys;sys.path.insert(0,"scripts");import stamp_build;print(stamp_build.eastern_today())')"
+  MSG="arcade: deploy $DATE (regenerate manifests + stamp build tokens)"
+fi
+
+echo
+git status --short
+echo
+echo "commit message: $MSG"
+
+if [[ "$DRYRUN" -eq 1 ]]; then
+  echo "dry run — nothing staged, committed, or pushed."
+  exit 0
+fi
+
 KNOWN=(
   games/games.json
   games/index.html
@@ -79,26 +99,7 @@ if [[ -s /tmp/deploy_leftovers.$$ ]]; then
 fi
 rm -f /tmp/deploy_leftovers.$$
 
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-if [[ "$BRANCH" != "main" ]]; then
-  echo "WARNING: on branch '$BRANCH' — GitHub Pages deploys from 'main'."
-fi
-
-if [[ -z "$MSG" ]]; then
-  DATE="$(python3 -c 'import sys;sys.path.insert(0,"scripts");import stamp_build;print(stamp_build.eastern_today())')"
-  MSG="arcade: deploy $DATE (regenerate manifests + stamp build tokens)"
-fi
-
-echo
-git status --short
 git diff --cached --stat
-echo
-echo "commit message: $MSG"
-
-if [[ "$DRYRUN" -eq 1 ]]; then
-  echo "dry run — nothing staged, committed, or pushed."
-  exit 0
-fi
 
 if git diff --cached --quiet; then
   echo "Nothing staged — all up to date. Nothing to commit."
