@@ -669,7 +669,7 @@
         <div id="score">0</div>
       </div>
       <div class="right-box">
-        <div class="battery-line" id="battery-line">🔋 <b id="batteries">0</b><span class="combo-inline" id="combo-inline"> ×1</span></div>
+        <div class="battery-line" id="battery-line">🔋 <b id="batteries">0</b><span class="combo-inline" id="combo-inline"></span></div>
         <div class="best-line">BEST <b id="best">0</b></div>
         <div id="diff-chip">CLASSIC</div>
       </div>
@@ -732,10 +732,12 @@
       <div id="go-score">0</div>
       <p class="go-sub">Best: <b id="go-best">0</b> on <span id="go-diff">CLASSIC</span></p>
       <div class="stats-grid">
+        <div class="stat"><b id="go-pipes">0</b><span>Pipes</span></div>
         <div class="stat"><b id="go-batteries">0</b><span>Batteries</span></div>
-        <div class="stat"><b id="go-combo">×1</b><span>Best combo</span></div>
+        <div class="stat"><b id="go-combo">0</b><span>Best streak</span></div>
         <div class="stat"><b id="go-time">0:00</b><span>Survived</span></div>
       </div>
+      <p class="go-sub" style="font-size:12px;margin-top:-8px;letter-spacing:.5px">Score = pipes passed &nbsp;•&nbsp; 🔋 are bonus</p>
       <p class="go-sub" id="go-hash" style="display:none"></p>
       <div class="menu-btns">
         <button class="btn" data-nav="again" id="btn-again">↻&nbsp; PLAY AGAIN</button>
@@ -749,7 +751,7 @@
       <h2>HOW TO PLAY</h2>
       <div class="help-items">
         <div class="help-item"><span class="ico">🕹️</span>Boost to fly</div>
-        <div class="help-item"><span class="ico">🔋</span>+2 points</div>
+        <div class="help-item"><span class="ico">🔋</span>Bonus</div>
         <div class="help-item"><span class="ico">🦠</span>−3 🔋</div>
         <div class="help-item"><span class="ico">🛡️</span>Shield hit</div>
         <div class="help-item"><span class="ico">⏳</span>Slow-mo</div>
@@ -764,7 +766,7 @@
         <div class="help-row"><span class="what">Back / close</span><span class="how" data-prompt="back"></span></div>
         <div class="help-row"><span class="what">Navigate menus</span><span class="how" data-prompt="nav"></span></div>
       </div>
-      <p class="go-sub" style="max-width:320px">Grab batteries in a row for a <b style="color:var(--gold)">combo multiplier</b>. Viruses zap you for <b style="color:var(--red)">−3 batteries</b> and break your combo — but they never end your run.</p>
+      <p class="go-sub" style="max-width:320px">Your score counts <b style="color:var(--accent)">pipes passed</b> — how far you fly. 🔋 batteries are <b style="color:var(--gold)">bonus pickups</b>: collect them in a row to build a streak. Viruses zap you for <b style="color:var(--red)">−3 batteries</b> and break your streak — but they never end your run.</p>
       <button class="btn ghost" data-nav="close-help" id="btn-close-help">✕&nbsp; CLOSE</button>
     </div>
 
@@ -801,7 +803,7 @@
       <h2>HIGH SCORES</h2>
       <div class="tabs" id="score-tabs"></div>
       <table class="score-table">
-        <thead><tr><th>#</th><th>Score</th><th>🔋</th><th>Combo</th><th>Date</th></tr></thead>
+        <thead><tr><th>#</th><th>Pipes</th><th>🔋</th><th>Streak</th><th>Date</th></tr></thead>
         <tbody id="score-body"></tbody>
       </table>
       <div class="stats-line" id="stats-line"></div>
@@ -947,8 +949,8 @@ const ACHIEVEMENTS = {
   centurion: { icon: "💯", name: "Centurion", desc: "Reach a score of 100." },
   battery_10: { icon: "🔋", name: "Battery Fan", desc: "Collect 10 batteries in total." },
   battery_50: { icon: "⚡", name: "Battery Hoarder", desc: "Collect 50 batteries in total." },
-  combo_3: { icon: "🎯", name: "Combo Starter", desc: "Reach a ×3 battery combo." },
-  combo_5: { icon: "🚀", name: "Combo Master", desc: "Reach a ×5 battery combo." },
+  combo_3: { icon: "🎯", name: "Streak Starter", desc: "Reach a 3-battery streak." },
+  combo_5: { icon: "🚀", name: "Streak Master", desc: "Reach a 5-battery streak." },
   shielded: { icon: "🛡️", name: "Shielded", desc: "Survive a hit with a shield." },
   slowed: { icon: "⏳", name: "Time Lord", desc: "Use the slow-mo power-up." },
   magnetized: { icon: "🧲", name: "Magnetized", desc: "Use the magnet power-up." },
@@ -1041,7 +1043,7 @@ function noiseHit(dur, vol, filterFreq) {
   src.stop(audioCtx.currentTime + dur + 0.02);
 }
 
-/* Coin melody — a rising pentatonic run that climbs with the combo multiplier.
+/* Coin melody — a rising pentatonic run that climbs with the battery streak.
    Every battery grabbed lands on a brighter note, so streaks literally sing. */
 const COIN_SCALE = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50, 1174.66, 1318.51, 1567.98]; // C5 D5 E5 G5 A5 C6 D6 E6 G6
 
@@ -1421,10 +1423,10 @@ let difficulty = Store.get("byteBird.difficulty.v2", "classic");
 if (!DIFFICULTIES[difficulty]) difficulty = "classic";
 let diff = DIFFICULTIES[difficulty];
 
-let score = 0;
+let score = 0;                // score = pipes passed (distance), like Flappy Bird
 let bestScore = 0;
 let combo = 0, comboTimer = 0, runBestCombo = 0;
-let runBatteries = 0, runTime = 0;
+let runBatteries = 0, runTime = 0; // batteries are a bonus counter, not score
 let gameoverShownAt = 0;
 let wasRecord = false;
 let milestoneIdx = 0;
@@ -1453,9 +1455,10 @@ function dailySeed() {
   const d = new Date();
   return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
 }
-// Deterministic verification hash for a (seed, score, batteries, combo) run.
+// Deterministic verification hash for a (seed, pipes, batteries, combo) run.
 // Lets a shared leaderboard (or your friends) confirm a posted score without
 // trusting the poster. Not cryptographically secure — nothing client-side is.
+// `score` is the pipe count — the score IS the distance flown.
 function scoreHash(seed, score, batteries, combo) {
   const s = `byte-bird-v2|${seed}|${score}|${batteries}|${combo}`;
   let h = 0x811c9dc5; // FNV-1a
@@ -1635,10 +1638,11 @@ function finishGameOver() {
   gameoverShownAt = now();
 
   document.getElementById("go-score").textContent = "0";
+  document.getElementById("go-pipes").textContent = score;
   document.getElementById("go-best").textContent = bestScore;
   document.getElementById("go-diff").textContent = isDaily ? "DAILY" : diff.label;
   document.getElementById("go-batteries").textContent = runBatteries;
-  document.getElementById("go-combo").textContent = `×${Math.max(1, runBestCombo)}`;
+  document.getElementById("go-combo").textContent = String(runBestCombo);
   document.getElementById("go-time").textContent = fmtTime(runTime);
   const badge = document.getElementById("go-badge");
   badge.textContent = isDaily ? "★ DAILY RECORD ★" : "★ NEW RECORD ★";
@@ -1910,7 +1914,7 @@ function update(realDt) {
   if (spawnTimer <= 0) {
     spawnObstacle();
     const speed = currentSpeed();
-    spawnTimer = Math.max(diff.spawnMin, 1.45 - score * 0.008) * (speed / diff.baseSpeed) ** 0.5;
+    spawnTimer = spawnInterval(score, speed);
   }
 
   const speed = currentSpeed();
@@ -1981,11 +1985,12 @@ function update(realDt) {
       if (combo >= 3) unlock("combo_3");
       if (combo >= 5) unlock("combo_5");
 
-      const pts = 2 * combo;
-      addScore(pts, b.x, b.y - 16, "#ffe45b");
+      // Batteries are bonus pickups: they feed the 🔋 counter and a streak of
+      // consecutive pickups, but never the score — distance beats loot.
+      popup(b.x, b.y - 16, "+1 🔋", "#ffe45b", 20);
       burst(b.x, b.y, "#ffe45b", 12);
       coinMelody(combo);
-      if (combo >= 2) popup(b.x, b.y - 42, `×${combo}`, "#62edff", 24);
+      if (combo >= 2) popup(b.x, b.y - 42, `streak ${combo}`, "#62edff", 24);
     }
   }
   batteries = batteries.filter(b => b.x > -60 && !b.collected);
@@ -2057,6 +2062,12 @@ function update(realDt) {
 
 function currentSpeed() {
   return diff.baseSpeed + Math.min(score * diff.speedPerScore, diff.maxSpeedAdd);
+}
+
+// Seconds between obstacle spawns. Cadence tightens with score (pipes passed)
+// and scales with the current speed, so faster runs face slightly denser traffic.
+function spawnInterval(scoreVal, speed) {
+  return Math.max(diff.spawnMin, 1.45 - scoreVal * 0.008) * Math.sqrt(speed / diff.baseSpeed);
 }
 
 function collidePipe(p) {
@@ -2269,10 +2280,11 @@ function updateBestDisplay() {
 function updateComboDisplay() {
   const ci = document.getElementById("combo-inline");
   if (!ci) return;
+  // The "combo" is a battery streak — consecutive pickups with no scoring effect.
   const active = combo > 1 && comboTimer > 0;
-  ci.textContent = active ? ` ×${combo}` : " ×1";
+  ci.textContent = active ? ` · streak ${combo}` : "";
   ci.classList.toggle("on", active);
-  // fade as the combo window expires so the timing cue is preserved
+  // fade as the streak window expires so the timing cue is preserved
   ci.style.opacity = active ? String(0.55 + 0.45 * (comboTimer / 2)) : "";
 }
 
@@ -2507,19 +2519,19 @@ function renderScoreTable(d) {
   } else {
     list.forEach((s, i) => {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td class="rank">${i + 1}</td><td>${s.score}</td><td>${s.batteries}</td><td>×${s.combo || 1}</td><td class="date">${s.date || ""}</td>`;
+      tr.innerHTML = `<td class="rank">${i + 1}</td><td>${s.score}</td><td>${s.batteries}</td><td>${s.combo || 0}</td><td class="date">${s.date || ""}</td>`;
       body.appendChild(tr);
     });
   }
   const mins = Math.floor(stats.playTime / 60);
   document.getElementById("stats-line").innerHTML =
-    `📊 <b>${stats.games}</b> games • <b>${stats.totalScore}</b> total score • <b>${stats.batteries}</b> 🔋 • best combo <b>×${stats.bestCombo}</b> • <b>${mins}m</b> played`;
+    `📊 <b>${stats.games}</b> games • <b>${stats.totalScore}</b> pipes • <b>${stats.batteries}</b> 🔋 • best streak <b>${stats.bestCombo}</b> • <b>${mins}m</b> played`;
 }
 
 function shareScore() {
   const text = isDaily
-    ? `I scored ${score} in today's Byte Bird Daily Challenge (${dailySeedNum})! 🐤 Proof ${scoreHash(dailySeedNum, score, runBatteries, runBestCombo)} — beat it?`
-    : `I scored ${score} on ${diff.label} in Byte Bird! 🐤 Can you beat me?`;
+    ? `I passed ${score} pipes in today's Byte Bird Daily Challenge (${dailySeedNum})! 🐤 Proof ${scoreHash(dailySeedNum, score, runBatteries, runBestCombo)} — beat it?`
+    : `I passed ${score} pipes on ${diff.label} in Byte Bird! 🐤 Can you beat me?`;
   if (navigator.share) {
     navigator.share({ title: "Byte Bird", text }).catch(() => {});
   } else if (navigator.clipboard) {
