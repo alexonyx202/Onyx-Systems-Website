@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-15",
+  "updated": "2026-08-16",
   "items": [
+    {
+      "id": "n-2026-08-16",
+      "type": "newsletter",
+      "date": "2026-08-16",
+      "title": "Fake Job Offer Emails Are Installing Bad Programs — Don't Open the Attachment",
+      "tag": "Daily Brief",
+      "summary": "Scammers are sending fake job offer emails — notes about a \"position\" you never applied for, with a file attached. Opening that file quietly installs a bad program on your computer, and security researchers say this newest wave is already spreading. If a job offer shows up out of nowhere, don't open the attachment. Delete the message. Looking for work? Go straight to the company's website and apply there. Never click a link in an email that's trying to hand you a job you didn't ask for.",
+      "comic": "Newsletter - 2026-08-16-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-16-news1",
+      "type": "tech-note",
+      "date": "2026-08-16",
+      "title": "Type with your voice for free — Windows Voice Typing is built into Windows 11, press the Windows key + H",
+      "tag": "Tech Note",
+      "summary": "Click into any text box, press the Windows key + H, and start talking — Windows Voice Typing types your words for you, free, with nothing to download. It's already on your Windows 11 computer; if nothing happens, check that the microphone is turned on at Settings > Privacy & security > Microphone."
+    },
+    {
+      "id": "t-2026-08-16-tip1",
+      "type": "tech-note",
+      "date": "2026-08-16",
+      "title": "Microsoft's August Windows update closes 400+ security holes — get it tonight at Settings > Windows Update",
+      "tag": "Tech Tip",
+      "summary": "Microsoft shipped its August 2026 Windows update on Tuesday and says to install it within days — it closes more than 400 security holes in Windows. Open Settings > Windows Update, click Check for updates, let it finish, and restart your computer once. Free, and it takes about ten minutes."
+    },
     {
       "id": "n-2026-08-15",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Log in to Windows with your fingerprint instead of a password — Windows Hello is built in and free at Settings > Accounts > Sign-in options",
       "tag": "Tech Tip",
       "summary": "Windows Hello is built into Windows and lets you sign in with your fingerprint — nothing to remember, and nobody can guess it. If your laptop has the little fingerprint square near the keyboard, set it up in about two minutes at Settings > Accounts > Sign-in options and choose \"Fingerprint recognition.\" Microsoft just made the same sign-in work on desktop PCs with a plug-in fingerprint reader. It's free and already part of Windows."
-    },
-    {
-      "id": "n-2026-08-12",
-      "type": "newsletter",
-      "date": "2026-08-12",
-      "title": "New FTC Warning: Scammers Are Coming Back for People Who Already Lost Money",
-      "tag": "Daily Brief",
-      "summary": "title: \"New FTC Warning: Scammers Are Coming Back for People Who Already Lost Money\"",
-      "comic": "Newsletter - 2026-08-12-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-12-news1",
-      "type": "tech-note",
-      "date": "2026-08-12",
-      "title": "Buy a computer tax-free until August 20 — Florida's Back-to-School Sales Tax Holiday covers computers up to $1,500, rules at floridarevenue.com/backtoschool",
-      "tag": "Tech Note",
-      "summary": "Through Thursday, August 20, Florida's Back-to-School Sales Tax Holiday makes personal computers up to $1,500 tax-free — that includes laptops and desktops, plus accessories like monitors, printers, routers, and ink cartridges. See the full list of what counts at floridarevenue.com/backtoschool, then shop any store — online orders count too."
-    },
-    {
-      "id": "t-2026-08-12-tip1",
-      "type": "tech-note",
-      "date": "2026-08-12",
-      "title": "Videos too big to email? HandBrake shrinks them for free at handbrake.fr — no subscription, works offline",
-      "tag": "Tech Tip",
-      "summary": "Download HandBrake free from handbrake.fr, open your video, pick the \"Fast 1080p30\" preset at the top, and hit Start. A video that was too big to attach to an email will fit in a couple of minutes — it works on Windows and Mac, no account, no subscription, and no internet needed once it's installed."
     }
   ]
 }

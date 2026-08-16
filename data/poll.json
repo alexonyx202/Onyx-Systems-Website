@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-08-09",
-    "question": "What do you mostly use your computer for?",
+    "weekOf": "2026-08-16",
+    "question": "How's your Wi-Fi at home?",
     "options": [
       {
-        "id": "email",
-        "label": "Email & web"
+        "id": "great",
+        "label": "Rock solid"
       },
       {
-        "id": "work",
-        "label": "Work / school"
+        "id": "spots",
+        "label": "A few dead spots"
       },
       {
-        "id": "photo",
-        "label": "Photos & videos"
+        "id": "drops",
+        "label": "Drops daily"
       },
       {
-        "id": "game",
-        "label": "Gaming"
+        "id": "hotspot",
+        "label": "I use my phone"
       }
     ]
   }
