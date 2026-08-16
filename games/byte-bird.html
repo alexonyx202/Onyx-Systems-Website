@@ -197,6 +197,7 @@
     animation: pwspin 1s linear infinite;
   }
   .pw-chip span { position: relative; z-index: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5)); }
+  .pw-chip svg { width: 26px; height: 26px; display: block; }
   @keyframes pwspin { to { transform: rotate(360deg); } }
 
   .hud-hidden { display: none !important; }
@@ -562,6 +563,10 @@
   .help-items { display: flex; gap: 12px; justify-content: center; margin: 10px 0 4px; flex-wrap: wrap; }
   .help-item { width: 74px; text-align: center; font-size: 11px; color: var(--muted); line-height: 1.35; }
   .help-item .ico { font-size: 30px; display: block; margin-bottom: 4px; filter: drop-shadow(0 3px 5px rgba(0,0,0,.4)); }
+  .help-item .ico svg { width: 34px; height: 34px; display: block; margin: 0 auto; }
+  .ico-sm { display: inline-block; vertical-align: -3px; }
+  .ico-sm svg { width: 15px; height: 15px; }
+  .toast .ico svg { width: 22px; height: 22px; }
 
   /* Banner */
   #banner {
@@ -669,7 +674,7 @@
         <div id="score">0</div>
       </div>
       <div class="right-box">
-        <div class="battery-line" id="battery-line">🔋 <b id="batteries">0</b><span class="combo-inline" id="combo-inline"></span></div>
+        <div class="battery-line" id="battery-line"><span class="ico-sm" data-icon="battery"></span> <b id="batteries">0</b><span class="combo-inline" id="combo-inline"></span></div>
         <div class="best-line">BEST <b id="best">0</b></div>
         <div id="diff-chip">CLASSIC</div>
       </div>
@@ -690,7 +695,7 @@
     <!-- TITLE -->
     <section id="screen-title" class="screen open" aria-label="Main menu">
       <h1 class="logo">BYTE BIRD<small>CARTOON TECH ARCADE</small></h1>
-      <p class="tagline">Fly the little bot through the server maze.<br>Grab 🔋 batteries, dodge 🦠 viruses.</p>
+      <p class="tagline">Fly the little bot through the server maze.<br>Grab <span class="ico-sm" data-icon="battery"></span> batteries, dodge <span class="ico-sm" data-icon="virus"></span> viruses.</p>
 
       <div class="diff-row" id="diff-row" role="group" aria-label="Difficulty">
         <button class="pill" data-nav="diff" data-diff="relaxed">RELAXED</button>
@@ -737,7 +742,7 @@
         <div class="stat"><b id="go-combo">0</b><span>Best streak</span></div>
         <div class="stat"><b id="go-time">0:00</b><span>Survived</span></div>
       </div>
-      <p class="go-sub" style="font-size:12px;margin-top:-8px;letter-spacing:.5px">Score = pipes passed &nbsp;•&nbsp; 🔋 are bonus</p>
+      <p class="go-sub" style="font-size:12px;margin-top:-8px;letter-spacing:.5px">Score = pipes passed &nbsp;•&nbsp; <span class="ico-sm" data-icon="battery"></span> are bonus</p>
       <p class="go-sub" id="go-hash" style="display:none"></p>
       <div class="menu-btns">
         <button class="btn" data-nav="again" id="btn-again">↻&nbsp; PLAY AGAIN</button>
@@ -750,14 +755,13 @@
     <div id="modal-help" class="modal" role="dialog" aria-modal="true" aria-label="How to play">
       <h2>HOW TO PLAY</h2>
       <div class="help-items">
-        <div class="help-item"><span class="ico">🕹️</span>Boost to fly</div>
-        <div class="help-item"><span class="ico">🔋</span>Bonus</div>
-        <div class="help-item"><span class="ico">🦠</span>−3 🔋</div>
-        <div class="help-item"><span class="ico">🛡️</span>Shield hit</div>
-        <div class="help-item"><span class="ico">⏳</span>Slow-mo</div>
-        <div class="help-item"><span class="ico">🧲</span>Magnet</div>
-        <div class="help-item"><span class="ico">🐥</span>Shrink</div>
-        <div class="help-item"><span class="ico">🔥</span>Wall gaps</div>
+        <div class="help-item"><span class="ico" data-icon="flap"></span>Boost to fly</div>
+        <div class="help-item"><span class="ico" data-icon="battery"></span>Bonus</div>
+        <div class="help-item"><span class="ico" data-icon="virus"></span>−3 <span class="ico-sm" data-icon="battery"></span></div>
+        <div class="help-item"><span class="ico" data-icon="shield"></span>Shield hit</div>
+        <div class="help-item"><span class="ico" data-icon="slow"></span>Slow-mo</div>
+        <div class="help-item"><span class="ico" data-icon="magnet"></span>Magnet</div>
+        <div class="help-item"><span class="ico" data-icon="shrink"></span>Shrink</div>
       </div>
       <div class="help-list">
         <div class="help-row"><span class="what">Boost / flap</span><span class="how" data-prompt="flap"></span></div>
@@ -766,7 +770,7 @@
         <div class="help-row"><span class="what">Back / close</span><span class="how" data-prompt="back"></span></div>
         <div class="help-row"><span class="what">Navigate menus</span><span class="how" data-prompt="nav"></span></div>
       </div>
-      <p class="go-sub" style="max-width:320px">Your score counts <b style="color:var(--accent)">pipes passed</b> — how far you fly. 🔋 batteries are <b style="color:var(--gold)">bonus pickups</b>: collect them in a row to build a streak. Viruses zap you for <b style="color:var(--red)">−3 batteries</b> and break your streak — but they never end your run.</p>
+      <p class="go-sub" style="max-width:320px">Your score counts <b style="color:var(--accent)">pipes passed</b> — how far you fly. <span class="ico-sm" data-icon="battery"></span> batteries are <b style="color:var(--gold)">bonus pickups</b>: collect them in a row to build a streak. Viruses zap you for <b style="color:var(--red)">−3 batteries</b> and break your streak — but they never end your run.</p>
       <button class="btn ghost" data-nav="close-help" id="btn-close-help">✕&nbsp; CLOSE</button>
     </div>
 
@@ -803,7 +807,7 @@
       <h2>HIGH SCORES</h2>
       <div class="tabs" id="score-tabs"></div>
       <table class="score-table">
-        <thead><tr><th>#</th><th>Pipes</th><th>🔋</th><th>Streak</th><th>Date</th></tr></thead>
+        <thead><tr><th>#</th><th>Pipes</th><th><span class="ico-sm" data-icon="battery"></span></th><th>Streak</th><th>Date</th></tr></thead>
         <tbody id="score-body"></tbody>
       </table>
       <div class="stats-line" id="stats-line"></div>
@@ -942,19 +946,41 @@ const stats = Object.assign({
    ACHIEVEMENTS
 ========================================================= */
 
+/* Inline SVG icons that mirror the in-game canvas art (drawBattery / drawVirus /
+   drawPowerup / drawFirewall / drawBird), used wherever items appear in text —
+   HUD, title screen, help modal, power-up chips, and achievement toasts — so the
+   UI always shows the same item the player sees on the field. */
+const ITEM_ICONS = {
+  // The actual Byte Bird mascot (same art as the favicon / icon-512).
+  flap: `<svg viewBox="0 0 100 100" width="34" height="34" aria-hidden="true"><defs><linearGradient id="birdg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="0.55" stop-color="#8ef0ff"/><stop offset="1" stop-color="#38c6ee"/></linearGradient></defs><ellipse cx="50" cy="69" rx="34" ry="8" fill="#07516b"/><circle cx="50" cy="52" r="35" fill="url(#birdg)" stroke="#174b65" stroke-width="4"/><rect x="28" y="39" width="35" height="22" rx="9" fill="#12253a"/><circle cx="39.5" cy="50" r="4" fill="#65f1ff"/><circle cx="51.5" cy="50" r="4" fill="#65f1ff"/><path d="M74 49l14 6-14 6z" fill="#ffc94f" stroke="#174b65" stroke-width="2.5" stroke-linejoin="round"/><line x1="50" y1="17" x2="50" y2="8" stroke="#70e8f6" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="6" r="4.5" fill="#ffcf4a"/></svg>`,
+  battery: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><rect x="12" y="8" width="20" height="30" rx="5" fill="#ffe45b"/><rect x="18" y="3" width="8" height="5" rx="1.5" fill="#ffbd35"/><path d="M23 14 L15.5 23.5 L20.5 23.5 L18.5 32 L27 22.5 L21.5 22.5 Z" fill="#26304a"/></svg>`,
+  virus: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><g stroke="#ff5c73" stroke-width="4" stroke-linecap="round"><line x1="35" y1="22" x2="42" y2="22"/><line x1="32.5" y1="29.6" x2="38.2" y2="33.8"/><line x1="26" y1="34.4" x2="28.2" y2="41"/><line x1="18" y1="34.4" x2="15.8" y2="41"/><line x1="11.5" y1="29.6" x2="5.8" y2="33.8"/><line x1="9" y1="22" x2="2" y2="22"/><line x1="11.5" y1="14.4" x2="5.8" y2="10.2"/><line x1="18" y1="9.6" x2="15.8" y2="3"/><line x1="26" y1="9.6" x2="28.2" y2="3"/><line x1="32.5" y1="14.4" x2="38.2" y2="10.2"/></g><circle cx="22" cy="22" r="17" fill="#ff4f68"/><circle cx="16" cy="19" r="3" fill="#9d2945"/><circle cx="28" cy="19" r="3" fill="#9d2945"/><path d="M15 27 Q22 33 29 27" stroke="#631b31" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+  shield: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><path d="M39 22 L30.5 36.7 L13.5 36.7 L5 22 L13.5 7.3 L30.5 7.3 Z" fill="#16233f" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/><path d="M22 13 L29 16 L29 23 Q29 28.5 22 31 Q15 28.5 15 23 L15 16 Z" fill="#e9d5ff"/></svg>`,
+  slow: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><path d="M39 22 L30.5 36.7 L13.5 36.7 L5 22 L13.5 7.3 L30.5 7.3 Z" fill="#16233f" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="7.5" fill="#e9d5ff"/><path d="M22 22 L22 16.5 M22 22 L26.5 23.5" stroke="#1c1145" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  magnet: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><path d="M39 22 L30.5 36.7 L13.5 36.7 L5 22 L13.5 7.3 L30.5 7.3 Z" fill="#16233f" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 23 A6 6 0 0 1 28 23 L28 30 M16 23 L16 30" stroke="#ff6b6b" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M16 26.5 L16 30 M28 26.5 L28 30" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/></svg>`,
+  shrink: `<svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><path d="M39 22 L30.5 36.7 L13.5 36.7 L5 22 L13.5 7.3 L30.5 7.3 Z" fill="#16233f" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 15.5 L18.5 22 L14 28.5 M30 15.5 L25.5 22 L30 28.5" stroke="#a3e635" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="22" r="3.4" fill="#a3e635"/></svg>`,
+};
+
+function injectItemIcons() {
+  document.querySelectorAll("[data-icon]").forEach(el => {
+    const svg = ITEM_ICONS[el.dataset.icon];
+    if (svg) el.innerHTML = svg;
+  });
+}
+
 const ACHIEVEMENTS = {
   first_flight: { icon: "🐤", name: "First Flight", desc: "Score your first point." },
   double_digits: { icon: "🔟", name: "Double Digits", desc: "Reach a score of 10." },
   half_century: { icon: "🔥", name: "Half Century", desc: "Reach a score of 50." },
   centurion: { icon: "💯", name: "Centurion", desc: "Reach a score of 100." },
-  battery_10: { icon: "🔋", name: "Battery Fan", desc: "Collect 10 batteries in total." },
-  battery_50: { icon: "⚡", name: "Battery Hoarder", desc: "Collect 50 batteries in total." },
+  battery_10: { icon: "battery", name: "Battery Fan", desc: "Collect 10 batteries in total." },
+  battery_50: { icon: "battery", name: "Battery Hoarder", desc: "Collect 50 batteries in total." },
   combo_3: { icon: "🎯", name: "Streak Starter", desc: "Reach a 3-battery streak." },
   combo_5: { icon: "🚀", name: "Streak Master", desc: "Reach a 5-battery streak." },
-  shielded: { icon: "🛡️", name: "Shielded", desc: "Survive a hit with a shield." },
-  slowed: { icon: "⏳", name: "Time Lord", desc: "Use the slow-mo power-up." },
-  magnetized: { icon: "🧲", name: "Magnetized", desc: "Use the magnet power-up." },
-  shrunk: { icon: "🐥", name: "Tiny Bot", desc: "Use the shrink power-up." },
+  shielded: { icon: "shield", name: "Shielded", desc: "Survive a hit with a shield." },
+  slowed: { icon: "slow", name: "Time Lord", desc: "Use the slow-mo power-up." },
+  magnetized: { icon: "magnet", name: "Magnetized", desc: "Use the magnet power-up." },
+  shrunk: { icon: "shrink", name: "Tiny Bot", desc: "Use the shrink power-up." },
   survivor: { icon: "⏱️", name: "Survivor", desc: "Survive 60 seconds in one run." },
   veteran: { icon: "🏆", name: "Veteran", desc: "Play for 15 minutes in total." },
 };
@@ -965,7 +991,7 @@ function unlock(id) {
   if (!a) return;
   stats.achievements.push(id);
   Store.set(STATS_KEY, stats);
-  toast(a.icon, a.name, a.desc);
+  toast(ITEM_ICONS[a.icon] || a.icon, a.name, a.desc);
   beep(660, .08, "triangle", .04);
 }
 
@@ -2154,7 +2180,7 @@ function updatePowerupUI() {
     const c = document.createElement("div");
     c.className = "pw-chip";
     c.dataset.type = "shield";
-    c.innerHTML = "<span>🛡️</span>";
+    c.innerHTML = `<span>${ITEM_ICONS.shield}</span>`;
     el.appendChild(c);
   }
   if (uiChips.slow) {
@@ -2162,7 +2188,7 @@ function updatePowerupUI() {
     c.className = "pw-chip";
     c.dataset.type = "slow";
     c.style.setProperty("--pw-p", `${clamp((slowUntil - t) / 3.5, 0, 1) * 100}%`);
-    c.innerHTML = "<span>⏳</span>";
+    c.innerHTML = `<span>${ITEM_ICONS.slow}</span>`;
     el.appendChild(c);
   }
   if (uiChips.magnet) {
@@ -2170,7 +2196,7 @@ function updatePowerupUI() {
     c.className = "pw-chip";
     c.dataset.type = "magnet";
     c.style.setProperty("--pw-p", `${clamp((magnetUntil - t) / 5, 0, 1) * 100}%`);
-    c.innerHTML = "<span>🧲</span>";
+    c.innerHTML = `<span>${ITEM_ICONS.magnet}</span>`;
     el.appendChild(c);
   }
   if (uiChips.shrink) {
@@ -2178,7 +2204,7 @@ function updatePowerupUI() {
     c.className = "pw-chip";
     c.dataset.type = "shrink";
     c.style.setProperty("--pw-p", `${clamp((shrinkUntil - t) / 6, 0, 1) * 100}%`);
-    c.innerHTML = "<span>🐥</span>";
+    c.innerHTML = `<span>${ITEM_ICONS.shrink}</span>`;
     el.appendChild(c);
   }
 }
@@ -2525,7 +2551,7 @@ function renderScoreTable(d) {
   }
   const mins = Math.floor(stats.playTime / 60);
   document.getElementById("stats-line").innerHTML =
-    `📊 <b>${stats.games}</b> games • <b>${stats.totalScore}</b> pipes • <b>${stats.batteries}</b> 🔋 • best streak <b>${stats.bestCombo}</b> • <b>${mins}m</b> played`;
+    `📊 <b>${stats.games}</b> games • <b>${stats.totalScore}</b> pipes • <b>${stats.batteries}</b> <span class="ico-sm">${ITEM_ICONS.battery}</span> • best streak <b>${stats.bestCombo}</b> • <b>${mins}m</b> played`;
 }
 
 function shareScore() {
@@ -3140,6 +3166,7 @@ function animateCount(el, to, dur) {
 
 Input.device = ("ontouchstart" in window) ? "touch" : "keyboard";
 updatePrompts();
+injectItemIcons();
 
 // purge legacy zero-score leaderboard entries
 DIFF_ORDER.forEach(d => {
