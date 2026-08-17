@@ -89,6 +89,10 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-15: coin cell (CR2032 watch-style battery) — the real consumer
     # part named in today's Tech Note headline (losing time/date), obtain method stated.
     "coin cell",
+    # Extended 2026-08-17: WeTransfer (wetransfer.com file sharing) and the three
+    # credit bureaus Equifax/Experian/TransUnion (freeze at each bureau's site) —
+    # real products named in today's posts (computer-only picks, obtain method stated).
+    "wetransfer", "equifax", "experian", "transunion",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -164,6 +168,9 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "rural broadband", "broadband funding",
         # Extended 2026-08-04: how-to process tips (restart, maintenance, cleanup) are exempt per master prompt.
         "restart", "maintenance", "cleanup", "disk cleanup", "clear temporary",
+        # Extended 2026-08-17: expired-domain scam alert (crooks buying lapsed
+        # websites and turning saved sites into malware/scam traps) is a security alert (exempt).
+        "expired websites", "crooks are buying",
     ]
     if any(s in low for s in SKIP):
         return fails
