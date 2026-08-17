@@ -1,188 +1,245 @@
 {
-  "title": "5th hour",
-  "size": 27,
+  "title": "6 grade teachers",
+  "size": 44,
   "grid": [
-    "................m..........",
-    "................u..........",
-    "...f...o....brisli.........",
-    "...r...n...p....t..........",
-    "...a...e...addition........",
-    "...c...h...r....p..........",
-    "...t...u.h.e....l..........",
-    "division.o.n....y..........",
-    "...o...d.m.t...f...........",
-    "...n.kurseth...i...........",
-    ".......e.c.e...f...........",
-    ".s.....d.o.smartboard......",
-    ".u.......m.e...h...........",
-    ".b.P..f..i.s...............",
-    ".t.exponent................",
-    ".r.m..r..g.................",
-    ".a.d..t....................",
-    ".charly....................",
-    ".t.s..f....................",
-    "......i...v................",
-    "......v...a................",
-    "....checkers...............",
-    "..........i................",
-    "..........a................",
-    "..........b................",
-    "..........l................",
-    "..........e................"
+    "..................................M.........",
+    "..................................r.........",
+    "..................................s.........",
+    "..................................S.........",
+    "..................................c.........",
+    "..................................h.........",
+    "..................................n.........",
+    "............................MsAlgier........",
+    "............................s.....t.........",
+    "............................C.....t.........",
+    "............................a.....l.........",
+    "............................l.....e.........",
+    "............................l.....r.........",
+    "............................a...............",
+    "........................MsAshcroft..........",
+    "............................a...............",
+    ".....................MrsMarinkov............",
+    "........................s...................",
+    "........................G...................",
+    "........................r...................",
+    "....................M...a.M......M..........",
+    "...................MrRichard.....s..........",
+    "....................H...a.s......M..........",
+    "....................o...MrKlucharich........",
+    "...............MrMiller...e......l..........",
+    "...............r....l.....l..MrsKlopp.......",
+    "........M.M...MsRailing...l......e..........",
+    "........r.s....M....n.....e......r..........",
+    "........s.D....i....g.....n.................",
+    "........J.a....l....e.....b.................",
+    "........o.v....l....r.....e.................",
+    "......MsHeikkinen.........r.................",
+    "......r.n.s....r..M.......g.................",
+    "......B.s........DrMetzinger................",
+    "......o.o.........B.......r.................",
+    "MsBaldwin.........u.........................",
+    "......e...........r.........................",
+    "......r...........k.........................",
+    "....MrScheetz.....h.........................",
+    "..................o.........................",
+    "..................l.........................",
+    "..................d.........................",
+    "..................e.........................",
+    "..................r........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 3,
-        "col": 13,
-        "len": 6,
-        "answer": "brisli",
-        "clue": "is the current ball in red champ"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 12,
-        "len": 8,
-        "answer": "addition",
-        "clue": "plus sign means"
-      },
-      {
-        "num": 8,
+        "num": 2,
         "row": 8,
-        "col": 1,
+        "col": 29,
         "len": 8,
-        "answer": "division",
-        "clue": "opposite of multiplication"
+        "answer": "MsAlgier",
+        "clue": "grade 6 art teacher"
+      },
+      {
+        "num": 3,
+        "row": 15,
+        "col": 25,
+        "len": 10,
+        "answer": "MsAshcroft",
+        "clue": "grade 6 PE"
+      },
+      {
+        "num": 4,
+        "row": 17,
+        "col": 22,
+        "len": 11,
+        "answer": "MrsMarinkov",
+        "clue": "red math"
+      },
+      {
+        "num": 9,
+        "row": 22,
+        "col": 20,
+        "len": 9,
+        "answer": "MrRichard",
+        "clue": "blue STEM"
       },
       {
         "num": 10,
-        "row": 10,
-        "col": 6,
-        "len": 7,
-        "answer": "kurseth",
-        "clue": "makes puzzles 5th hour"
+        "row": 24,
+        "col": 25,
+        "len": 12,
+        "answer": "MrKlucharich",
+        "clue": "red STEM"
+      },
+      {
+        "num": 11,
+        "row": 25,
+        "col": 16,
+        "len": 8,
+        "answer": "MrMiller",
+        "clue": "gold STEM"
       },
       {
         "num": 12,
-        "row": 12,
-        "col": 12,
-        "len": 10,
-        "answer": "smartboard",
-        "clue": "where we solve math problems and play picitionary"
+        "row": 26,
+        "col": 30,
+        "len": 8,
+        "answer": "MrsKlopp",
+        "clue": "red Lit4Life"
       },
       {
         "num": 15,
-        "row": 15,
-        "col": 4,
-        "len": 8,
-        "answer": "exponent",
-        "clue": "the e in pemdas"
+        "row": 27,
+        "col": 15,
+        "len": 9,
+        "answer": "MsRailing",
+        "clue": "blue geography"
       },
       {
         "num": 16,
-        "row": 18,
-        "col": 2,
-        "len": 6,
-        "answer": "charly",
-        "clue": "kurseth jokes with this person"
+        "row": 32,
+        "col": 7,
+        "len": 11,
+        "answer": "MsHeikkinen",
+        "clue": "blue ELA"
       },
       {
         "num": 18,
-        "row": 22,
+        "row": 34,
+        "col": 18,
+        "len": 11,
+        "answer": "DrMetzinger",
+        "clue": "building principal"
+      },
+      {
+        "num": 19,
+        "row": 36,
+        "col": 1,
+        "len": 9,
+        "answer": "MsBaldwin",
+        "clue": "grade 6 ESL"
+      },
+      {
+        "num": 20,
+        "row": 39,
         "col": 5,
-        "len": 8,
-        "answer": "checkers",
-        "clue": "instead of math we do this sometimes"
+        "len": 9,
+        "answer": "MrScheetz",
+        "clue": "blue Lit4Life"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 17,
-        "len": 8,
-        "answer": "multiply",
-        "clue": "means to times two numbers"
+        "col": 35,
+        "len": 13,
+        "answer": "MrsSchnettler",
+        "clue": "red learning support"
       },
       {
         "num": 2,
-        "row": 3,
-        "col": 4,
-        "len": 8,
-        "answer": "fraction",
-        "clue": "two thirds is a _________________"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 8,
+        "row": 8,
+        "col": 29,
         "len": 10,
-        "answer": "onehundred",
-        "clue": "10 times 10"
+        "answer": "MsCallahan",
+        "clue": "gold math"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 12,
+        "row": 17,
+        "col": 25,
+        "len": 8,
+        "answer": "MsGrahaM",
+        "clue": "assistant principal"
+      },
+      {
+        "num": 6,
+        "row": 21,
+        "col": 21,
         "len": 11,
-        "answer": "parentheses",
-        "clue": "the p in pemdas"
+        "answer": "MrHollinger",
+        "clue": "assistant principal"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 10,
-        "len": 10,
-        "answer": "homecoming",
-        "clue": "next week is"
+        "row": 21,
+        "col": 27,
+        "len": 15,
+        "answer": "MrsKellenberger",
+        "clue": "gold Lit4Life"
       },
       {
-        "num": 9,
-        "row": 9,
-        "col": 16,
-        "len": 5,
-        "answer": "fifth",
-        "clue": "hour we have math"
+        "num": 8,
+        "row": 21,
+        "col": 34,
+        "len": 8,
+        "answer": "MsMiller",
+        "clue": "gold ELA"
       },
       {
         "num": 11,
-        "row": 12,
-        "col": 2,
-        "len": 8,
-        "answer": "subtract",
-        "clue": "to take away"
+        "row": 25,
+        "col": 16,
+        "len": 9,
+        "answer": "MrsMiller",
+        "clue": "blue learning support"
       },
       {
         "num": 13,
-        "row": 14,
-        "col": 4,
-        "len": 6,
-        "answer": "Pemdas",
-        "clue": "order of operations acronym"
+        "row": 27,
+        "col": 9,
+        "len": 10,
+        "answer": "MrsJoHnson",
+        "clue": "red ELA"
       },
       {
         "num": 14,
-        "row": 14,
+        "row": 27,
+        "col": 11,
+        "len": 7,
+        "answer": "MsDavis",
+        "clue": "blue math"
+      },
+      {
+        "num": 16,
+        "row": 32,
         "col": 7,
-        "len": 9,
-        "answer": "fortyfive",
-        "clue": "if three people got 15 dollars each how much in total was given"
+        "len": 8,
+        "answer": "MrBowerS",
+        "clue": "gold geography"
       },
       {
         "num": 17,
-        "row": 20,
-        "col": 11,
-        "len": 8,
-        "answer": "variable",
-        "clue": "a letter in algebra"
+        "row": 33,
+        "col": 19,
+        "len": 12,
+        "answer": "MrBurkholder",
+        "clue": "red geography"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/5th-hour-36",
-  "slug": "5th-hour-36",
-  "fetched_at": "2026-07-14T19:19:49.236323+00:00",
-  "date": "2026-08-16"
+  "source_url": "https://crosswordlabs.com/view/6-grade-teachers",
+  "slug": "6-grade-teachers",
+  "fetched_at": "2026-07-14T19:10:35.458959+00:00",
+  "date": "2026-08-17"
 }
