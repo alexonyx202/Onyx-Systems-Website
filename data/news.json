@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "items": [
+    {
+      "id": "n-2026-08-17",
+      "type": "newsletter",
+      "date": "2026-08-17",
+      "title": "Crooks Are Buying Expired Websites — a Site You Save Could Become a Trap",
+      "tag": "Daily Brief",
+      "summary": "Crooks are buying up expired website addresses — spending millions to do it — and turning them into traps that install bad programs or run scams. Every day, thousands of website addresses lapse, and security researchers say criminals snap them up to fool people who've trusted those sites for years. If a familiar website suddenly looks different, begs you to install something, or flashes alarming pop-ups, close it. Type the company's address yourself instead, and never click a link that pushes you to a site.",
+      "comic": "Newsletter - 2026-08-17-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-17-news1",
+      "type": "tech-note",
+      "date": "2026-08-17",
+      "title": "Your info leaked? Freeze your credit free at Equifax, Experian, and TransUnion",
+      "tag": "Tech Note",
+      "summary": "A credit freeze stops crooks from opening credit cards or loans in your name — and it's free by federal law. Do it online at equifax.com, experian.com, and transunion.com; it takes about 20 minutes total, and you can freeze a child's credit too."
+    },
+    {
+      "id": "t-2026-08-17-tip1",
+      "type": "tech-note",
+      "date": "2026-08-17",
+      "title": "Email says 'file too big'? WeTransfer sends it free — no account needed at wetransfer.com",
+      "tag": "Tech Tip",
+      "summary": "Go to wetransfer.com, add your file (up to 3 GB free), type the person's email address, and hit send — they get a link to download it. No account, no software, works in any browser."
+    },
     {
       "id": "n-2026-08-16",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Power flickers and your computer dies mid-work — a UPS keeps it running through outages, APC Back-UPS from about 60 dollars at apc.com",
       "tag": "Tech Tip",
       "summary": "A UPS — that's a power station your computer plugs into — keeps things running when the electricity blinks or goes out, long enough to save your work and turn the computer off the right way. APC Back-UPS is the one I recommend; find it at `apc.com`, or compare CyberPower at `cyberpowersystems.com`. You'll also see them at Best Buy and Office Depot. Get one big enough for your computer and monitor."
-    },
-    {
-      "id": "n-2026-08-13",
-      "type": "newsletter",
-      "date": "2026-08-13",
-      "title": "Fake CCleaner Download Pages Are Hiding Bad Programs — Check the Web Address First",
-      "tag": "Daily Brief",
-      "summary": "Scammers built a fake website that looks exactly like the download page for CCleaner, a popular free cleanup program. People who downloaded it got a bad program hiding on their computer that could watch everything they typed and steal passwords and bank logins. The same trick is spreading with fake copies of 7-Zip and Adobe programs. Only download software from the company's official website — check the web address at the very top of your screen first. If you're not sure, close the page and ask me.",
-      "comic": "Newsletter - 2026-08-13-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-13-news1",
-      "type": "tech-note",
-      "date": "2026-08-13",
-      "title": "ChatGPT now lets free users text as much as they want — no subscription needed, just sign up free at chatgpt.com",
-      "tag": "Tech Note",
-      "summary": "OpenAI announced this week that free ChatGPT accounts can now send unlimited text messages — no paid plan required. Just open chatgpt.com on your computer, sign up for a free account, and start typing. Picture-making and file uploads still have their own limits, but everyday questions, email drafts, and homework help are wide open."
-    },
-    {
-      "id": "t-2026-08-13-tip1",
-      "type": "tech-note",
-      "date": "2026-08-13",
-      "title": "Log in to Windows with your fingerprint instead of a password — Windows Hello is built in and free at Settings > Accounts > Sign-in options",
-      "tag": "Tech Tip",
-      "summary": "Windows Hello is built into Windows and lets you sign in with your fingerprint — nothing to remember, and nobody can guess it. If your laptop has the little fingerprint square near the keyboard, set it up in about two minutes at Settings > Accounts > Sign-in options and choose \"Fingerprint recognition.\" Microsoft just made the same sign-in work on desktop PCs with a plug-in fingerprint reader. It's free and already part of Windows."
     }
   ]
 }

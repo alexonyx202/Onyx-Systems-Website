@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-17-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-17",
+      "title": "Crooks Are Buying Expired Websites — a Site You Save Could Become a Trap",
+      "tag": "Daily Brief",
+      "excerpt": "Crooks are buying up expired website addresses — spending millions to do it — and turning them into traps that install bad programs or run scams. Every day, thousands of website addresses lapse, and security researchers say criminals snap them up to fool people who've trusted those sites for years. If a familiar website suddenly looks different, begs you to install something, or flashes alarming pop-ups, close it. Type the company's address yourself instead, and never click a link that pushes you to a site.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-17-composite.jpg",
+      "comic": "assets/img/news/2026-08-17-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-16-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-16",
@@ -167,27 +184,24 @@
       "image": "assets/img/news/2026-08-13-composite.jpg",
       "comic": "assets/img/news/2026-08-13-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-12-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-12",
-      "title": "New FTC Warning: Scammers Are Coming Back for People Who Already Lost Money",
-      "tag": "Daily Brief",
-      "excerpt": "The FTC is warning about a cruel new twist on fraud: scammers buy lists of people who already lost money and call or email pretending to be a government agency, a law firm, or a consumer group — promising to get the money back for an upfront \"fee\" or your bank information. Real organizations never charge to return your money. If anyone asks you to pay to recover money, it's a scam: hang up, don't pay, and report it free at ReportFraud.ftc.gov.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#FTCScam",
-        "#Security"
-      ],
-      "image": "assets/img/news/2026-08-12-composite.jpg",
-      "comic": "assets/img/news/2026-08-12-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-17-post-5",
+      "type": "news",
+      "date": "2026-08-17",
+      "title": "Your info leaked? Freeze your credit free at Equifax, Experian, and TransUnion",
+      "tag": "Tech Note",
+      "summary": "A credit freeze stops crooks from opening credit cards or loans in your name — and it's free by federal law. Do it online at equifax.com, experian.com, and transunion.com; it takes about 20 minutes total, and you can freeze a child's credit too.",
+      "tip": "A credit freeze stops crooks from opening credit cards or loans in your name — and it's free by federal law. Do it online at equifax.com, experian.com, and transunion.com; it takes about 20 minutes total, and you can freeze a child's credit too.",
+      "truth": "Most people don't realize that after a leak, crooks don't come after your money — they come after your name. A freeze is the one thing that stops them before they open anything.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-16-post-1",
       "type": "news",
@@ -247,19 +261,17 @@
       ]
     },
     {
-      "id": "onyx-2026-08-12-post-1",
-      "type": "news",
-      "date": "2026-08-12",
-      "title": "Buy a computer tax-free until August 20 — Florida's Back-to-School Sales Tax Holiday covers computers up to $1,500, rules at floridarevenue.com/backtoschool",
-      "tag": "Tech Note",
-      "summary": "Through Thursday, August 20, Florida's Back-to-School Sales Tax Holiday makes personal computers up to $1,500 tax-free — that includes laptops and desktops, plus accessories like monitors, printers, routers, and ink cartridges. See the full list of what counts at floridarevenue.com/backtoschool, then shop any store — online orders count too.",
-      "truth": "Most people don't realize Florida runs this holiday for a whole month, not just one weekend. If you've been putting off a new computer, this month is the cheapest time all year — and you've got until the 20th to save every penny of sales tax. See the full list of what counts at floridarevenue.com/backtoschool.",
+      "id": "onyx-2026-08-17-post-4",
+      "type": "tip",
+      "date": "2026-08-17",
+      "title": "Email says 'file too big'? WeTransfer sends it free — no account needed at wetransfer.com",
+      "tag": "Tech Tip",
+      "summary": "Go to wetransfer.com, add your file (up to 3 GB free), type the person's email address, and hit send — they get a link to download it. No account, no software, works in any browser.",
+      "truth": "The honest answer is email was never built to carry photos and video. When a customer tells me their pictures won't send, I tell them to stop fighting the email and send a link instead.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#BackToSchool",
-        "#TaxHoliday"
+        "#ComputerRepair"
       ]
     },
     {
@@ -319,25 +331,9 @@
         "#Windows",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-08-12-post-2",
-      "type": "tip",
-      "date": "2026-08-12",
-      "title": "Videos too big to email? HandBrake shrinks them for free at handbrake.fr — no subscription, works offline",
-      "tag": "Tech Tip",
-      "summary": "Download HandBrake free from handbrake.fr, open your video, pick the \"Fast 1080p30\" preset at the top, and hit Start. A video that was too big to attach to an email will fit in a couple of minutes — it works on Windows and Mac, no account, no subscription, and no internet needed once it's installed.",
-      "truth": "Most people don't realize video is saved in a format that's way bigger than it needs to be. That three-minute clip of the grandkids doesn't have to be a giant file — shrinking it barely changes how it looks, but it changes everything about whether it'll send. HandBrake is one of the first tools I put on any machine that's going to hold family videos.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#HandBrake",
-        "#Video"
-      ]
     }
   ],
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
