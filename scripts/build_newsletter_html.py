@@ -22,6 +22,31 @@ VAULT = "/home/ai/Documents/Obsidian Vault/Daily"
 REPO = "/home/ai/onyx-systems-website"
 DATA = os.path.join(REPO, "data")
 
+# Freshness layer (kept byte-identical to the script in the other core pages so
+# stamp_build.py keeps working on every deploy). The daily generator rewrites
+# newsletter.html wholesale, so this must live in the template — not be patched
+# onto the generated file afterward (that patch would be lost on the next run).
+FRESHNESS_JS = r"""<script>
+/* Freshness layer (2026-08-15): bfcache self-heal + build-date cache-bust + service worker.
+   Top-level only — embedded/iframe pages are never force-reloaded. */
+window.addEventListener('pageshow',function(e){if(e.persisted&&window.self===window.top)location.reload();});
+(function(){
+  try{
+    var m=document.querySelector('meta[name="onyx-build"]');
+    var b=m?m.getAttribute('content'):'';
+    if(b&&/^\d{8}$/.test(b)&&window.self===window.top&&window.sessionStorage){
+      var key='onyxBust'+location.pathname;
+      var age=Math.floor((Date.now()-Date.UTC(+b.slice(0,4),+b.slice(4,6)-1,+b.slice(6,8)))/86400000);
+      if(age>2&&sessionStorage.getItem(key)!=='1'){sessionStorage.setItem(key,'1');location.replace(location.pathname+'?cb='+Date.now());}
+    }
+  }catch(e){}
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'}).catch(function(){});});
+  }
+})();
+</script>
+"""
+
 
 def today_iso():
     return datetime.date.today().isoformat()
@@ -380,6 +405,7 @@ def main():
     tip_body = clean_tip_body(tip_body.strip())
     tech_bullets = bullets(today) or bullets(alert_body)
     d = datetime.date.fromisoformat(date_str)
+    build_stamp = d.strftime("%Y%m%d")
     weekday = d.strftime("%A")
     month = d.strftime("%B")
     day = d.day
@@ -430,6 +456,7 @@ def main():
   .foot{{padding:18px 28px;background:#16161A;color:#C9C2B6;font-size:13px;text-align:center}}
   .foot a{{color:var(--accent);text-decoration:none}}
 </style>
+  <meta name="onyx-build" content="{build_stamp}">
 </head>
 <body>
 <article class="wrap doc">
@@ -464,6 +491,7 @@ def main():
   </div>
 </article>
 <div class="foot">— John @ ONYX SYSTEMS ✌️</div>
+{FRESHNESS_JS}
 </body>
 </html>
 """
