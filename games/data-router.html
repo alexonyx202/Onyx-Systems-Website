@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="DATA ROUTER — a retro arcade game. Hop a lone data packet across busy traffic and bus lanes to the CPU cores before the clock runs out.">
+<meta name="description" content="DATA ROUTER — a retro arcade game. Hop a lone data packet across five lanes of traffic and five rows of river (data barges + diving relay buoys) to the CPU cores before the clock runs out.">
 <meta name="theme-color" content="#05070d">
 <title>DATA ROUTER — Retro Arcade</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050a12'/%3E%3Crect x='7' y='7' width='18' height='18' rx='4' fill='none' stroke='%2322d3ee' stroke-width='3'/%3E%3Ctext x='16' y='23' font-size='15' font-family='monospace' font-weight='bold' fill='%2322d3ee' text-anchor='middle'%3E@%3C/text%3E%3C/svg%3E">
@@ -23,8 +23,8 @@
   --yellow:#facc15;
   --red:#fb7185;
   --blue:#60a5fa;
-  --text:#b8e6f5;
-  --dim:#64849a; /* WCAG AA: #5b7a8c was ~4.2-4.4:1 on the darkest panels; this clears 4.5:1 and stays a muted secondary tone */
+  --text:#cdeefb;
+  --dim:#7091ab; /* WCAG AA: #5b7a8c was ~4.2-4.4:1 on the darkest panels; this clears 4.5:1 and stays a muted secondary tone */
   --pix:'Press Start 2P', 'Courier New', monospace;
 }
 *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -57,18 +57,18 @@ body::before{ /* faint grid backdrop */
   background:#04060c;
   border:2px solid rgba(34,211,238,.4);
   border-radius:10px;
-  box-shadow:0 0 0 1px rgba(0,0,0,.9), 0 0 26px rgba(34,211,238,.22), inset 0 0 40px rgba(0,0,0,.7);
+  box-shadow:0 0 0 1px rgba(0,0,0,.9), 0 0 14px rgba(34,211,238,.14), inset 0 0 40px rgba(0,0,0,.7);
   overflow:hidden;
 }
 #game{ display:block; width:100%; touch-action:none; image-rendering:pixelated; }
 /* keyboard a11y: skip straight to the board, arcade style */
 .skip-link{ position:absolute; left:-9999px; top:auto; z-index:99; }
-.skip-link:focus{ left:8px; top:8px; font-family:var(--pix); font-size:9px; color:#05070d; background:var(--cyan); padding:6px 10px; border-radius:3px; box-shadow:0 0 14px rgba(34,211,238,.8); }
+.skip-link:focus{ left:8px; top:8px; font-family:var(--pix); font-size:9px; color:#05070d; background:var(--cyan); padding:6px 10px; border-radius:3px; box-shadow:0 0 8px rgba(34,211,238,.5); }
 /* visually hidden but still announced: booster-state updates for screen readers */
 .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 
 /* ---------- CRT overlays ---------- */
-#frame{ --crt:.22; }
+#frame{ --crt:.14; }
 /* Soft scanlines: light enough that small pixel text stays crisp and readable. */
 #scanlines{
   position:absolute; inset:0; pointer-events:none; z-index:40;
@@ -100,10 +100,10 @@ body::before{ /* faint grid backdrop */
   padding:8px 4px; cursor:pointer; transition:all .1s; outline:none; text-align:center;
 }
 .st-btn:hover{ background:rgba(34,211,238,.15); border-color:var(--cyan); color:#fff; }
-.st-btn:active{ transform:scale(.95); box-shadow:0 0 10px rgba(34,211,238,.5); }
-.st-btn.sel{ background:rgba(232,121,249,.18); border-color:var(--magenta); box-shadow:0 0 10px rgba(232,121,249,.4); }
-.st-btn.playing{ animation:stPlaying .45s ease-in-out infinite alternate; border-color:var(--cyan); color:#fff; text-shadow:0 0 3px rgba(34,211,238,.85); }
-@keyframes stPlaying{ from{ box-shadow:0 0 2px rgba(34,211,238,.35); } to{ box-shadow:0 0 12px rgba(34,211,238,.9); } }
+.st-btn:active{ transform:scale(.95); box-shadow:0 0 6px rgba(34,211,238,.3); }
+.st-btn.sel{ background:rgba(232,121,249,.18); border-color:var(--magenta); box-shadow:0 0 6px rgba(232,121,249,.25); }
+.st-btn.playing{ animation:stPlaying .45s ease-in-out infinite alternate; border-color:var(--cyan); color:#fff; text-shadow:0 0 1px rgba(34,211,238,.4); }
+@keyframes stPlaying{ from{ box-shadow:0 0 1px rgba(34,211,238,.18); } to{ box-shadow:0 0 4px rgba(34,211,238,.35); } }
 
 /* ---------- HUD ---------- */
 #hud{
@@ -114,7 +114,7 @@ body::before{ /* faint grid backdrop */
   border-bottom:2px solid rgba(34,211,238,.28);
   font-size:9px; letter-spacing:1px;
   color:var(--text);
-  text-shadow:0 0 2px rgba(34,211,238,.55);
+  text-shadow:0 0 1px rgba(34,211,238,.4);
 }
 #hud.hidden{ visibility:hidden; }
 .hud-col{ display:flex; flex-direction:column; gap:5px; }
@@ -122,15 +122,15 @@ body::before{ /* faint grid backdrop */
 .hud-value{ color:var(--cyan); }
 #hud .right{ align-items:flex-end; }
 #lives-icons{ display:flex; gap:3px; }
-.life-pkt{ width:11px; height:11px; border:1.5px solid var(--green); border-radius:2px; display:flex; align-items:center; justify-content:center; color:var(--green); box-shadow:0 0 6px rgba(74,222,128,.35) inset; }
+.life-pkt{ width:11px; height:11px; border:1.5px solid var(--green); border-radius:2px; display:flex; align-items:center; justify-content:center; color:var(--green); box-shadow:0 0 4px rgba(74,222,128,.22) inset; }
 #timebar-wrap{
   width:130px; height:8px; border:1px solid rgba(255,255,255,.25); border-radius:4px;
   background:rgba(0,0,0,.5); overflow:hidden;
 }
 #timebar{ height:100%; width:100%; border-radius:3px; transition:width .1s linear; }
-#timebar.ok{ background:linear-gradient(90deg,#15803d,var(--green)); box-shadow:0 0 8px rgba(74,222,128,.7); }
-#timebar.warn{ background:linear-gradient(90deg,#b45309,var(--yellow)); box-shadow:0 0 10px rgba(250,204,21,.8); }
-#timebar.crit{ background:linear-gradient(90deg,#b91c1c,var(--red)); box-shadow:0 0 12px rgba(251,113,133,.9); animation:pulse .5s infinite alternate; }
+#timebar.ok{ background:linear-gradient(90deg,#15803d,var(--green)); box-shadow:0 0 3px rgba(74,222,128,.25); }
+#timebar.warn{ background:linear-gradient(90deg,#b45309,var(--yellow)); box-shadow:0 0 3px rgba(250,204,21,.3); }
+#timebar.crit{ background:linear-gradient(90deg,#b91c1c,var(--red)); box-shadow:0 0 4px rgba(251,113,133,.32); animation:pulse .5s infinite alternate; }
 @keyframes pulse{ from{filter:brightness(1)} to{filter:brightness(1.7)} }
 #fx-icons{ display:flex; gap:4px; min-height:12px; }
 .fx-ico{ font-size:8px; padding:1px 3px; border:1px solid; border-radius:2px; animation:pulse 1s infinite alternate; display:inline-flex; align-items:center; justify-content:center; line-height:0; }
@@ -149,65 +149,56 @@ body::before{ /* faint grid backdrop */
 .screen.on{ display:flex; }
 .screen h2{
   color:var(--cyan); font-size:13px; letter-spacing:3px;
-  text-shadow:0 0 5px rgba(34,211,238,.85);
+  text-shadow:0 0 3px rgba(34,211,238,.28);
   display:flex; align-items:center; justify-content:center; gap:12px;
 }
 .screen h2::before, .screen h2::after{ content:''; width:38px; height:2px; flex-shrink:0; }
-.screen h2::before{ background:linear-gradient(90deg, transparent, rgba(34,211,238,.55)); }
-.screen h2::after{ background:linear-gradient(90deg, rgba(34,211,238,.55), transparent); }
-.screen h2 .acc{ color:var(--magenta); text-shadow:0 0 5px rgba(232,121,249,.85); }
+.screen h2::before{ background:linear-gradient(90deg, transparent, rgba(34,211,238,.25)); }
+.screen h2::after{ background:linear-gradient(90deg, rgba(34,211,238,.25), transparent); }
+.screen h2 .acc{ color:var(--magenta); text-shadow:0 0 2px rgba(232,121,249,.3); }
 .screen.on{ animation:screenIn .2s ease-out both; }
 @keyframes screenIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
 .screen .sub{ font-size:7px; color:var(--dim); letter-spacing:2px; line-height:1.8; }
 
-/* title */
+/* title — clean static lettering: hard outline for weight, a whisper of glow
+   for the neon theme, no pulse, no travelling sheen */
 .logo{
   font-size:28px; letter-spacing:2px; line-height:1.15; margin-top:2px;
   color:#f6fdff;
-  /* Press Start 2P has no bold weight, so the logo is thickened with a hard
-     dark outline (8-direction shadows) + a strong neon glow. The fill is
-     white-dominant (see the marquee gradient below) so every phase of the
-     sheen keeps high contrast on the dark board. */
   text-shadow:
     1px 0 0 rgba(4,16,32,1), -1px 0 0 rgba(4,16,32,1),
     0 1px 0 rgba(4,16,32,1), 0 -1px 0 rgba(4,16,32,1),
     1px 1px 0 rgba(4,16,32,1), -1px -1px 0 rgba(4,16,32,1),
     1px -1px 0 rgba(4,16,32,1), -1px 1px 0 rgba(4,16,32,1),
-    0 0 8px rgba(34,211,238,1), 0 0 22px rgba(34,211,238,.75),
+    0 0 4px rgba(34,211,238,.35), 0 0 10px rgba(34,211,238,.15),
     0 4px 0 rgba(6,30,50,1);
-  animation:logoPulse 2.6s ease-in-out infinite;
 }
 .logo .row2{ color:var(--magenta); text-shadow:
     1px 0 0 rgba(26,6,40,1), -1px 0 0 rgba(26,6,40,1),
     0 1px 0 rgba(26,6,40,1), 0 -1px 0 rgba(26,6,40,1),
     1px 1px 0 rgba(26,6,40,1), -1px -1px 0 rgba(26,6,40,1),
     1px -1px 0 rgba(26,6,40,1), -1px 1px 0 rgba(26,6,40,1),
-    0 0 8px rgba(232,121,249,1), 0 0 22px rgba(232,121,249,.7),
-    0 4px 0 rgba(44,10,54,1); animation:logoPulse2 2.6s ease-in-out infinite; }
-@keyframes logoPulse{ 0%,100%{ filter:brightness(1)} 50%{ filter:brightness(1.12)} }
-@keyframes logoPulse2{ 0%,100%{ filter:brightness(1.12)} 50%{ filter:brightness(1)} }
-/* marquee lettering: gradient-clipped text with a travelling sheen */
+    0 0 4px rgba(232,121,249,.35), 0 0 10px rgba(232,121,249,.15),
+    0 4px 0 rgba(44,10,54,1); }
+/* marquee lettering: a static gradient fill — no travelling sheen */
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .logo .lg{
     color:transparent;
     background-image:linear-gradient(90deg,#e9fcff 0%,#ffffff 30%,#f2feff 50%,#ffffff 70%,#e9fcff 100%);
-    background-size:200% 100%; background-repeat:repeat-x;
     -webkit-background-clip:text; background-clip:text;
-    animation:logoSheen 3.6s linear infinite;
   }
   .logo .row2{
     background-image:linear-gradient(90deg,#ffd8fb 0%,#ffffff 30%,#ffb8f7 50%,#ffffff 70%,#ffd8fb 100%);
   }
 }
-@keyframes logoSheen{ 0%{ background-position:0% 0; } 100%{ background-position:-200% 0; } }
 .tagline{ font-size:8px; color:#d9f2fc; letter-spacing:4px; text-shadow:0 1px 0 rgba(4,10,20,.9), 0 0 6px rgba(6,20,40,.85); }
 /* attract splash line: cycles one-liner captions under the logo */
 #splash-line.swap{ animation:splashSwap .4s ease-out; }
 @keyframes splashSwap{ from{ opacity:0; transform:translateY(3px); } to{ opacity:1; transform:none; } }
-#splash-line.start{ color:var(--yellow); text-shadow:0 1px 0 rgba(4,10,20,.9), 0 0 6px rgba(6,20,40,.5), 0 0 3px rgba(250,204,21,.75); animation:pressPulse 1.25s ease-in-out infinite; letter-spacing:5px; }
+#splash-line.start{ color:var(--yellow); text-shadow:0 1px 0 rgba(4,10,20,.9), 0 0 6px rgba(6,20,40,.5), 0 0 2px rgba(250,204,21,.45); animation:pressPulse 1.25s ease-in-out infinite; letter-spacing:5px; }
 
 /* title screen intro sequence */
-#scr-menu.intro .logo{ animation:logoDrop .5s cubic-bezier(.2,1.4,.3,1) both, logoPulse 2.6s ease-in-out 1.1s infinite; }
+#scr-menu.intro .logo{ animation:logoDrop .5s cubic-bezier(.2,1.4,.3,1) both; }
 #scr-menu.intro .tagline{ animation:fadeUp .5s ease-out .25s both; }
 #scr-menu.intro .title-board{ animation:fadeUp .5s ease-out .45s both; }
 #scr-menu.intro #menu-main{ animation:fadeUp .5s ease-out .6s both; }
@@ -228,7 +219,7 @@ body::before{ /* faint grid backdrop */
 .title-board td:first-child{ width:16px; text-align:left; color:var(--dim); }
 .title-board td:nth-child(2){ text-align:left; }
 .title-board td:last-child{ text-align:right; color:var(--cyan); }
-.title-board tr.best td{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.65); }
+.title-board tr.best td{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.4); }
 .title-board tr.best td:first-child{ color:var(--yellow); }
 .title-board tr.rk1 td:first-child{ color:var(--yellow); }
 .title-board tr.rk2 td:first-child{ color:#d9dde3; }
@@ -246,8 +237,8 @@ body::before{ /* faint grid backdrop */
   font-size:5.5px; letter-spacing:2px; color:rgba(91,122,140,.85);
   animation:tickerScroll 26s linear infinite;
 }
-.ticker-track b{ color:var(--cyan); font-weight:normal; text-shadow:0 0 2px rgba(34,211,238,.5); }
-.ticker-track .accent{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.55); }
+.ticker-track b{ color:var(--cyan); font-weight:normal; text-shadow:0 0 1px rgba(34,211,238,.35); }
+.ticker-track .accent{ color:var(--yellow); text-shadow:0 0 1px rgba(250,204,21,.35); }
 .ticker:hover .ticker-track{ animation-play-state:paused; }
 @media (prefers-reduced-motion: reduce){
   .ticker-track{ animation:none; }
@@ -277,15 +268,15 @@ body::before{ /* faint grid backdrop */
 }
 .mbtn .lbl{ flex:1; }
 .mbtn .val{ color:var(--dim); font-size:8px; }
-.mbtn:hover{ background:rgba(34,211,238,.14); border-color:rgba(34,211,238,.7); box-shadow:0 0 12px rgba(34,211,238,.22); }
+.mbtn:hover{ background:rgba(34,211,238,.14); border-color:rgba(34,211,238,.7); box-shadow:0 0 8px rgba(34,211,238,.16); }
 .foot-hint{ font-size:6px; color:rgba(91,122,140,.8); letter-spacing:2px; line-height:1.9; margin-top:2px; }
 .mbtn:active{ transform:scale(.98); }
 .mbtn.sel{
   background:rgba(34,211,238,.16); border-color:var(--cyan);
-  box-shadow:0 0 14px rgba(34,211,238,.35), inset 0 0 10px rgba(34,211,238,.15);
+  box-shadow:0 0 5px rgba(34,211,238,.16), inset 0 0 4px rgba(34,211,238,.08);
   color:#fff;
 }
-.mbtn.sel::before{ content:'▸'; color:var(--cyan); text-shadow:0 0 3px var(--cyan); }
+.mbtn.sel::before{ content:'▸'; color:var(--cyan); text-shadow:0 0 2px var(--cyan); }
 .mbtn.sel .val{ color:var(--cyan); }
 .mbtn[data-act="back"]{ color:var(--dim); font-size:8px; justify-content:center; border-style:dashed; }
 .mbtn[data-act="back"].sel{ color:var(--text); }
@@ -303,20 +294,20 @@ body::before{ /* faint grid backdrop */
 .diff-card h3{ font-size:11px; letter-spacing:2px; margin-bottom:8px; }
 .diff-card p{ font-size:6px; color:var(--dim); line-height:1.9; min-height:52px; }
 .diff-card .stats{ font-size:7px; color:var(--yellow); margin-top:8px; letter-spacing:1px; }
-.diff-card.sel{ border-color:var(--cyan); box-shadow:0 0 16px rgba(34,211,238,.4); background:rgba(34,211,238,.1); }
-.diff-card.sel h3{ color:var(--cyan); text-shadow:0 0 3px var(--cyan); }
+.diff-card.sel{ border-color:var(--cyan); box-shadow:0 0 5px rgba(34,211,238,.18); background:rgba(34,211,238,.1); }
+.diff-card.sel h3{ color:var(--cyan); text-shadow:0 0 2px rgba(34,211,238,.4); }
 /* CLASSIC is its own full-width mode card, accented magenta to match the strict-Frogger hint it replaces */
 .diff-card.wide{ flex:0 0 100%; border-color:rgba(232,121,249,.3); }
-.diff-card.wide.sel{ border-color:var(--magenta); box-shadow:0 0 16px rgba(232,121,249,.4); background:rgba(232,121,249,.1); }
-.diff-card.wide.sel h3{ color:var(--magenta); text-shadow:0 0 3px var(--magenta); }
+.diff-card.wide.sel{ border-color:var(--magenta); box-shadow:0 0 5px rgba(232,121,249,.18); background:rgba(232,121,249,.1); }
+.diff-card.wide.sel h3{ color:var(--magenta); text-shadow:0 0 2px rgba(232,121,249,.4); }
 
 /* daily challenge */
-.daily-head{ font-size:10px; color:var(--cyan); letter-spacing:2px; text-shadow:0 0 4px rgba(34,211,238,.7); }
+.daily-head{ font-size:10px; color:var(--cyan); letter-spacing:2px; text-shadow:0 0 2px rgba(34,211,238,.28); }
 .daily-cfg{ font-size:6.5px; color:var(--dim); letter-spacing:1px; }
-.daily-tip{ font-size:8px; color:var(--yellow); letter-spacing:1px; text-shadow:0 0 3px rgba(250,204,21,.65); min-height:12px; }
+.daily-tip{ font-size:8px; color:var(--yellow); letter-spacing:1px; text-shadow:0 0 2px rgba(250,204,21,.4); min-height:12px; }
 #daily-board{ width:min(300px,92%); }
 /* operator stats / achievements */
-.ach-count{ font-size:7px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 3px rgba(250,204,21,.65); }
+.ach-count{ font-size:7px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 2px rgba(250,204,21,.4); }
 .ach-stats{ width:min(290px,92%); }
 .ach-stats td:last-child{ text-align:right; color:var(--cyan); }
 .ach-list{ width:min(340px,94%); max-height:252px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; padding:2px 6px 2px 2px; }
@@ -325,7 +316,7 @@ body::before{ /* faint grid backdrop */
 .ach-item{ display:flex; align-items:center; gap:10px; padding:8px 10px; border:1px solid rgba(34,211,238,.15); border-radius:4px; background:rgba(10,20,36,.4); text-align:left; }
 .ach-item.on{ border-color:rgba(250,204,21,.55); background:rgba(250,204,21,.06); box-shadow:0 0 10px rgba(250,204,21,.15); }
 .ach-ico{ font-size:12px; color:var(--dim); width:18px; text-align:center; flex-shrink:0; }
-.ach-item.on .ach-ico{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.85); }
+.ach-item.on .ach-ico{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.5); }
 .ach-n{ font-size:7.5px; letter-spacing:1px; color:var(--text); }
 .ach-item.on .ach-n{ color:#fff; }
 .ach-d{ font-size:6px; color:var(--dim); line-height:1.6; margin-top:3px; }
@@ -334,24 +325,24 @@ body::before{ /* faint grid backdrop */
 .toast{
   width:250px; padding:10px 12px; text-align:left;
   background:rgba(6,14,26,.95); border:2px solid var(--yellow); border-radius:6px;
-  box-shadow:0 0 18px rgba(250,204,21,.45), inset 0 0 12px rgba(250,204,21,.12);
+  box-shadow:0 0 6px rgba(250,204,21,.16), inset 0 0 6px rgba(250,204,21,.06);
   transform:translateX(120%); opacity:0; transition:transform .28s cubic-bezier(.2,.9,.3,1.2), opacity .28s;
 }
 .toast.in{ transform:none; opacity:1; }
 .toast.out{ transform:translateX(120%); opacity:0; }
-.toast-h{ font-size:6px; color:var(--yellow); letter-spacing:2px; margin-bottom:5px; text-shadow:0 0 3px rgba(250,204,21,.7); }
+.toast-h{ font-size:6px; color:var(--yellow); letter-spacing:2px; margin-bottom:5px; text-shadow:0 0 2px rgba(250,204,21,.45); }
 .toast-n{ font-size:9px; color:#fff; letter-spacing:1px; margin-bottom:4px; }
 .toast-d{ font-size:6px; color:var(--dim); line-height:1.7; }
 /* score table */
 table.scores{ border-collapse:collapse; width:min(320px,92%); font-size:8px; }
 table.scores th{ color:var(--dim); font-size:6.5px; letter-spacing:2px; padding:6px 8px; border-bottom:1px solid rgba(34,211,238,.3); }
 table.scores td{ padding:7px 8px; color:var(--text); letter-spacing:1px; }
-table.scores tr.hl td{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.75); animation:blink 1s steps(2) infinite; }
+table.scores tr.hl td{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.45); animation:blink 1s steps(2) infinite; }
 table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3; } table.scores tr .rk3{ color:#d9a06b; }
 .empty-note{ font-size:7px; color:var(--dim); line-height:2; padding:10px 0; }
 .tabs{ display:flex; gap:6px; }
 .tab-btn{ font-family:var(--pix); font-size:7px; letter-spacing:1px; color:var(--dim); background:none; border:1px solid rgba(34,211,238,.25); border-radius:3px; padding:6px 9px; cursor:pointer; }
-.tab-btn.sel{ color:var(--cyan); border-color:var(--cyan); box-shadow:0 0 10px rgba(34,211,238,.4); }
+.tab-btn.sel{ color:var(--cyan); border-color:var(--cyan); box-shadow:0 0 6px rgba(34,211,238,.25); }
 
 /* help */
 .help-body{ font-size:7px; line-height:2.2; color:var(--text); width:min(400px,92%); text-align:left; letter-spacing:1px; }
@@ -363,7 +354,7 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
 .help-body .z{ color:var(--magenta); }
 
 /* pause */
-#pause-title{ color:var(--yellow); text-shadow:0 0 5px rgba(250,204,21,.75); animation:pausePulse 1.7s ease-in-out infinite; }
+#pause-title{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.5); animation:pausePulse 1.7s ease-in-out infinite; }
 @keyframes pausePulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.07); } }
 .pause-stats{
   width:min(300px,90%); display:grid; grid-template-columns:1fr 1fr; gap:6px 14px;
@@ -375,12 +366,12 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
   background:rgba(6,12,24,.5);
 }
 .pause-stats .ps span{ color:var(--dim); }
-.pause-stats .ps b{ color:var(--cyan); text-shadow:0 0 2px rgba(34,211,238,.5); }
-.pause-stats .ps.warn b{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.55); }
+.pause-stats .ps b{ color:var(--cyan); text-shadow:0 0 1px rgba(34,211,238,.35); }
+.pause-stats .ps.warn b{ color:var(--yellow); text-shadow:0 0 1px rgba(250,204,21,.4); }
 .resume-line{ margin-top:-2px; }
 .resume-hint{
   font-size:8px; color:var(--green); letter-spacing:2px;
-  text-shadow:0 0 3px rgba(74,222,128,.85); animation:blink 1.1s steps(2) infinite;
+  text-shadow:0 0 2px rgba(74,222,128,.5); animation:blink 1.1s steps(2) infinite;
 }
 .input-hint{ font-size:6px; color:var(--dim); letter-spacing:2px; margin-top:2px; }
 .input-hint .dev{ color:var(--cyan); }
@@ -389,13 +380,13 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
 #scr-inter .inter-card{
   width:min(300px,88%); border:2px solid rgba(74,222,128,.5); border-radius:8px;
   background:rgba(6,16,10,.9); padding:16px 14px;
-  box-shadow:0 0 26px rgba(74,222,128,.25), inset 0 0 30px rgba(74,222,128,.06);
+  box-shadow:0 0 8px rgba(74,222,128,.1), inset 0 0 12px rgba(74,222,128,.04);
   animation:interIn .55s cubic-bezier(.2,1.3,.3,1) both;
   display:flex; flex-direction:column; align-items:center; gap:10px;
 }
 @keyframes interIn{ from{ transform:translateX(-52px); opacity:0; } to{ transform:none; opacity:1; } }
 #scr-inter .inter-title{ font-size:13px; letter-spacing:3px; color:var(--green);
-  text-shadow:0 0 5px rgba(74,222,128,.9), 0 0 14px rgba(74,222,128,.4); }
+  text-shadow:0 0 2px rgba(74,222,128,.35); }
 #scr-inter .inter-title::before, #scr-inter .inter-title::after{ background:linear-gradient(90deg, transparent, rgba(74,222,128,.5)); }
 #scr-inter .inter-title::after{ background:linear-gradient(90deg, rgba(74,222,128,.5), transparent); }
 .inter-sub{ font-size:7px; color:var(--dim); letter-spacing:2px; }
@@ -403,23 +394,22 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
 .inter-stats .is{ display:flex; justify-content:space-between; gap:8px; padding:5px 8px;
   border:1px solid rgba(74,222,128,.18); border-radius:3px; background:rgba(4,12,8,.6); }
 .inter-stats .is span{ color:var(--dim); }
-.inter-stats .is b{ color:var(--green); text-shadow:0 0 2px rgba(74,222,128,.5); }
-.inter-score{ font-size:17px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 5px rgba(250,204,21,.75); }
+.inter-stats .is b{ color:var(--green); text-shadow:0 0 1px rgba(74,222,128,.35); }
+.inter-score{ font-size:17px; color:var(--yellow); letter-spacing:2px; text-shadow:0 0 3px rgba(250,204,21,.5); }
 .inter-count{ font-size:7px; letter-spacing:2px; color:var(--dim); display:flex; align-items:center; gap:8px; }
-.inter-count #inter-count{ font-size:16px; color:var(--green); text-shadow:0 0 5px rgba(74,222,128,.85); animation:blink 1s steps(2) infinite; }
+.inter-count #inter-count{ font-size:16px; color:var(--green); text-shadow:0 0 3px rgba(74,222,128,.55); animation:blink 1s steps(2) infinite; }
 /* game over */
 .go-stats{ width:min(310px,88%); display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; font-size:7.5px; letter-spacing:1px; }
 .go-stats .gs{ display:flex; justify-content:space-between; gap:8px; padding:4px 6px; border-bottom:1px dotted rgba(34,211,238,.2); }
 .go-stats .gs span{ color:var(--dim); }
 .go-stats .gs b{ color:var(--cyan); }
 .go-rank{ font-size:7px; letter-spacing:1px; color:var(--text); margin-top:2px; }
-.go-rank .rk-num{ color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.75); }
-.go-title.glitch{ animation:goIn .3s ease-out both, goGlitch .45s steps(2) .32s 1; }
+.go-rank .rk-num{ color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.45); }
+.go-title.glitch{ animation:goIn .3s ease-out both; }
 @keyframes goIn{ from{ transform:scale(1.5); opacity:0 } to{ transform:scale(1); opacity:1 } }
-@keyframes goGlitch{ 0%{ transform:translateX(0) } 20%{ transform:translateX(-3px) skewX(8deg) } 40%{ transform:translateX(3px) } 60%{ transform:translateX(-2px) skewX(-6deg) } 80%{ transform:translateX(2px) } 100%{ transform:none } }
-.no-rank{ font-size:7px; color:var(--red); letter-spacing:1px; text-shadow:0 0 3px rgba(251,113,133,.65); }
-.big-score{ font-size:20px; color:var(--yellow); text-shadow:0 0 6px rgba(250,204,21,.7); margin:4px 0; }
-.new-best{ color:var(--green); font-size:8px; text-shadow:0 0 3px rgba(74,222,128,.85); animation:blink .8s steps(2) infinite; }
+.no-rank{ font-size:7px; color:var(--red); letter-spacing:1px; text-shadow:0 0 2px rgba(251,113,133,.4); }
+.big-score{ font-size:20px; color:var(--yellow); text-shadow:0 0 3px rgba(250,204,21,.45); margin:4px 0; }
+.new-best{ color:var(--green); font-size:8px; text-shadow:0 0 2px rgba(74,222,128,.5); animation:blink .8s steps(2) infinite; }
 
 /* initials entry */
 #name-entry{ display:flex; flex-direction:column; align-items:center; gap:10px; }
@@ -427,20 +417,20 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
 .name-slot{
   width:40px; height:46px; border:2px solid rgba(34,211,238,.35); border-radius:4px;
   display:flex; align-items:center; justify-content:center;
-  font-size:20px; color:var(--cyan); background:rgba(10,20,36,.6); text-shadow:0 0 4px var(--cyan);
+  font-size:20px; color:var(--cyan); background:rgba(10,20,36,.6); text-shadow:0 0 2px var(--cyan);
 }
-.name-slot.cur{ border-color:var(--yellow); box-shadow:0 0 14px rgba(250,204,21,.5); color:var(--yellow); text-shadow:0 0 4px var(--yellow); }
+.name-slot.cur{ border-color:var(--yellow); box-shadow:0 0 8px rgba(250,204,21,.3); color:var(--yellow); text-shadow:0 0 2px var(--yellow); }
 
 /* banner */
 #banner{
   position:absolute; top:38%; left:0; right:0; z-index:35; text-align:center; pointer-events:none;
   font-size:15px; letter-spacing:3px; color:#fff;
-  text-shadow:0 0 5px rgba(34,211,238,.95), 0 0 14px rgba(34,211,238,.45), 0 3px 0 rgba(8,40,60,1);
+  text-shadow:0 0 3px rgba(34,211,238,.35), 0 0 8px rgba(34,211,238,.16), 0 3px 0 rgba(8,40,60,1);
   opacity:0; transform:scale(.7);
 }
 #banner.on{ animation:bannerPop .32s ease-out forwards; }
-#banner.green{ color:#4ade80; text-shadow:0 0 5px rgba(74,222,128,.95), 0 0 14px rgba(74,222,128,.4), 0 3px 0 rgba(8,40,24,1); }
-#banner.sub{ font-size:8px; color:var(--yellow); text-shadow:0 0 4px rgba(250,204,21,.85), 0 3px 0 rgba(60,40,8,1); }
+#banner.green{ color:#4ade80; text-shadow:0 0 3px rgba(74,222,128,.35), 0 0 8px rgba(74,222,128,.16), 0 3px 0 rgba(8,40,24,1); }
+#banner.sub{ font-size:8px; color:var(--yellow); text-shadow:0 0 2px rgba(250,204,21,.3), 0 3px 0 rgba(60,40,8,1); }
 @keyframes bannerPop{ from{opacity:0; transform:scale(.7)} to{opacity:1; transform:scale(1)} }
 
 /* touch dpad */
@@ -448,7 +438,7 @@ table.scores tr .rk1{ color:var(--yellow); } table.scores tr .rk2{ color:#d9dde3
 .vol-row{ display:flex; align-items:center; gap:12px; width:min(280px,88%); font-size:7px; color:var(--dim); letter-spacing:1px; }
 .vol-row span{ width:84px; text-align:left; }
 .vol-row input[type=range]{ -webkit-appearance:none; appearance:none; flex:1; height:6px; background:rgba(34,211,238,.22); border-radius:3px; outline:none; border:1px solid rgba(34,211,238,.3); }
-.vol-row input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; background:var(--cyan); border:2px solid #a5f3fc; border-radius:2px; box-shadow:0 0 10px rgba(34,211,238,.8); cursor:pointer; }
+.vol-row input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; background:var(--cyan); border:2px solid #a5f3fc; border-radius:2px; box-shadow:0 0 6px rgba(34,211,238,.5); cursor:pointer; }
 .vol-row input[type=range]::-moz-range-thumb{ width:12px; height:12px; background:var(--cyan); border:2px solid #a5f3fc; border-radius:2px; cursor:pointer; }
 body.touch #dpad{
   display:grid; grid-template-columns:repeat(3,64px); grid-template-rows:repeat(2,56px); gap:6px;
@@ -457,9 +447,9 @@ body.touch #dpad{
   font-size:16px; color:var(--cyan); background:rgba(10,20,36,.7);
   border:2px solid rgba(34,211,238,.4); border-radius:8px; cursor:pointer;
   display:flex; align-items:center; justify-content:center; touch-action:none;
-  box-shadow:0 0 10px rgba(34,211,238,.15);
+  box-shadow:0 0 6px rgba(34,211,238,.1);
 }
-.dbtn:active{ background:rgba(34,211,238,.35); box-shadow:0 0 16px rgba(34,211,238,.6); }
+.dbtn:active{ background:rgba(34,211,238,.35); box-shadow:0 0 10px rgba(34,211,238,.4); }
 .dbtn.up{ grid-column:2; grid-row:1; } .dbtn.down{ grid-column:2; grid-row:2; }
 .dbtn.left{ grid-column:1; grid-row:2; } .dbtn.right{ grid-column:3; grid-row:2; }
 
@@ -517,8 +507,8 @@ body.touch #dpad{
         <h2>DIFFICULTY</h2>
         <div class="diff-grid" id="diff-grid">
           <button class="diff-card" data-act="easy"><h3>EASY</h3><p>Slow traffic and plenty of time. Five packets to learn the ropes.</p><div class="stats">90s · LIGHT TRAFFIC · 5 PKT</div></button>
-          <button class="diff-card" data-act="normal"><h3>NORMAL</h3><p>The real deal. Moving buses, steady traffic, 30 seconds on the clock.</p><div class="stats">30s · CLASSIC · 3 PKT</div></button>
-          <button class="diff-card" data-act="hard"><h3>HARD</h3><p>Wall-to-wall traffic, sinking buses, 45 seconds. Good luck.</p><div class="stats">45s · CHAOS · 3 PKT</div></button>
+          <button class="diff-card" data-act="normal"><h3>NORMAL</h3><p>The real deal. Five traffic lanes, five river rows, 30 seconds on the clock.</p><div class="stats">30s · FROGGER BOARD · 5 PKT</div></button>
+          <button class="diff-card" data-act="hard"><h3>HARD</h3><p>Wall-to-wall traffic, fast-diving buoys, 50 seconds. Good luck.</p><div class="stats">50s · CHAOS · 3 PKT</div></button>
           <button class="diff-card wide" data-act="classic"><h3>CLASSIC</h3><p>Strict Frogger rules: 30-second clock, 1981 arcade lane pace, no boosters, one fixed board. Five packets to the cores.</p><div class="stats">30s · ONE BOARD · 5 PKT</div></button>
         </div>
         <button class="mbtn" data-act="back"><span class="lbl">BACK</span></button>
@@ -538,7 +528,7 @@ body.touch #dpad{
         </nav>
         <div class="vol-row"><span>SFX VOL</span><input type="range" id="vol-sfx" min="0" max="1" step="0.05" value="0.8" aria-label="Sound effects volume"></div>
         <div class="vol-row"><span>MUSIC VOL</span><input type="range" id="vol-music" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume"></div>
-        <div class="vol-row"><span>CRT INTENSITY</span><input type="range" id="crt-int" min="0" max="1" step="0.05" value="0.18" aria-label="CRT intensity"></div>
+        <div class="vol-row"><span>CRT INTENSITY</span><input type="range" id="crt-int" min="0" max="1" step="0.05" value="0.12" aria-label="CRT intensity"></div>
         <div class="hint">M = MUTE · PIXEL PERFECT = CRISP PIXELS · CRT = SCANLINES · ALERT = LOUD WARNINGS · BLUR = AUTO-PAUSE WHEN WINDOW UNFOCUSED</div>
       </section>
 
@@ -567,7 +557,7 @@ body.touch #dpad{
 
       <!-- ============ DAILY CHALLENGE ============ -->
       <section id="scr-daily" class="screen">
-        <h2><span class="acc">☀</span> DAILY CHALLENGE <span class="acc">☀</span></h2>
+        <h2>DAILY CHALLENGE</h2>
         <div class="daily-head" id="daily-date"></div>
         <div class="daily-cfg" id="daily-cfg"></div>
         <div class="hint">SAME BOARD ALL DAY · CLEAR ALL 5 CORES FOR THE BONUS</div>
@@ -591,10 +581,10 @@ body.touch #dpad{
       <section id="scr-help" class="screen">
         <h2>INSTRUCTIONS</h2>
         <div class="help-body">
-          <p><b>MISSION ▸</b> Get the packet from the START square up to the <span class="z">CPU CORES</span> and land it <b>dead-centre in a socket bay</b> — the gaps between ports are open water. Fill all five to move up a level. Beat the clock!</p>
+          <p><b>MISSION ▸</b> Get the packet from the origin deck up to the <span class="z">CPU CORES</span> and land it <b>dead-centre in a socket bay</b> — the gaps between ports are open water. Fill all five to move up a level. Beat the clock!</p>
           <p><b>MOVE ▸</b> <span class="k">↑</span><span class="k">↓</span><span class="k">←</span><span class="k">→</span> or <span class="k">W</span><span class="k">A</span><span class="k">S</span><span class="k">D</span> to hop one tile. Swipe on touch screens.</p>
-          <p><b>THE ROAD ▸</b> Dodge the <span class="z">PINGS</span>, <span class="z">STREAMS</span> and big <span class="z">SERVERS</span>. One hit and your packet is scrap. No free ride after a crash — you're back on the line with no shield.</p>
-          <p><b>BUS LINES ▸</b> Hop on the <span class="z">BUSES</span> to cross the water. Miss one and you're fried. Watch out — some buses <span class="z">SINK</span>!</p>
+          <p><b>THE ROAD ▸</b> Five lanes of traffic, 1981-style — calm <span class="z">PINGS</span> at the bottom, big <span class="z">SERVERS</span> in the middle, and a dangerous <span class="z">RACING</span> lane at the top. One hit and your packet is scrap. No free ride after a crash — you're back on the line with no shield.</p>
+          <p><b>THE RIVER ▸</b> Five rows of <span class="z">DATA BARGES</span> and <span class="z">RELAY BUOYS</span>. Barges always float; some <span class="z">BUOYS DIVE</span> — bail off the amber-warning ones before their dive countdown hits zero!</p>
           <p><b>BOOSTERS ▸</b> <span class="z">FIREWALL</span> = one free hit · <span class="z">+TIME</span> = more seconds · <span class="z">1UP</span> = extra packet · <span class="z">OVERCLOCK</span> = fast hops · <span class="z">THROTTLE</span> = slow traffic · <span class="z">BURST</span> = smash through cars for +150 each</p>
           <p><b>COMBOS ▸</b> Dock cores back-to-back to build a combo. Every 25,000 points earns an extra packet.</p>
           <p><b>PAUSE ▸</b> <span class="k">P</span> / <span class="k">ESC</span> · <b>MUTE ▸</b> <span class="k">M</span></p>
@@ -642,7 +632,7 @@ body.touch #dpad{
 
       <!-- ============ GAME OVER ============ -->
       <section id="scr-go" class="screen">
-        <h2 class="go-title" id="go-title" style="color:var(--red);text-shadow:0 0 5px rgba(251,113,133,.85)">SIGNAL LOST</h2>
+        <h2 class="go-title" id="go-title" style="color:var(--red);text-shadow:0 0 3px rgba(251,113,133,.55)">SIGNAL LOST</h2>
         <div class="big-score" id="go-score">000000</div>
         <div id="go-newbest"></div>
         <div class="go-rank" id="go-rank" style="display:none"></div>
@@ -690,12 +680,17 @@ var TILE=40, COLS=12, ROWS=14, W=480, H=560;
 var GOAL_COLS=[1,3,5,7,9];
 var SOCKET_ANIM_T=1.2;
 var SOCKET_LOCK_T=SOCKET_ANIM_T*0.3; /* clamp arms meet at end of phase B */
-var START_COL=5, START_ROW=11;
+var START_COL=5, START_ROW=12;
+/* 1981 Frogger board map (13 playfield rows, top→bottom). The dock bay is a single
+   row, the river is five rows (barges + buoys), the median is one safe strip, the
+   highway is five traffic lanes, and the origin deck is the bottom safe row. */
+var ROW_HOME=0, ROW_WATER_TOP=1, ROW_WATER_BOT=5, ROW_MEDIAN=6,
+    ROW_ROAD_BOT=7, ROW_ROAD_TOP=11, ROW_START=12;
 var RETURN_FLIGHT_T=0.9; /* core-secured → origin streak (s): the packet flies home along its column */
 /* death beat: brief slow-mo zoom on the fragmentation before the crash UI */
 var DEATH_SLOWMO_T=0.4;      /* real-time slow-mo window (s) */
 var DEATH_SLOWMO_SCALE=0.25; /* world-sim speed during the window */
-var DEATH_ZOOM_MAX=1.35;     /* zoom toward the fragment point */
+var DEATH_ZOOM_MAX=1.22;     /* zoom toward the fragment point */
 var DEATH_ZOOM_RELEASE=0.15; /* ease-back to full view after the window (s) */
 var SFX_LIST=[
   ['hop','HOP'],['ui','BLIP'],['select','SELECT'],['power','POWER'],['goal','GOAL'],['combo','COMBO'],
@@ -710,7 +705,7 @@ var store={
   get:function(k,fb){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):fb; }catch(e){ return fb; } },
   set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
 };
-var DEFAULT_SETTINGS={ difficulty:'normal', classic:false, sfx:true, music:true, best:0, sfxVol:0.8, musicVol:0.45, crtIntensity:0.18, pixelPerfect:true, quality:'high', announce:'polite', pauseOnBlur:true };
+var DEFAULT_SETTINGS={ difficulty:'normal', classic:false, sfx:true, music:true, best:0, sfxVol:0.8, musicVol:0.45, crtIntensity:0.12, pixelPerfect:true, quality:'high', announce:'polite', pauseOnBlur:true };
 var settings=Object.assign({}, DEFAULT_SETTINGS, store.get(SAVE_KEY,{}));
 var scores=Object.assign({easy:[],normal:[],hard:[],classic:[]}, store.get(HS_KEY,{}));
 function persist(){ store.set(SAVE_KEY,settings); store.set(HS_KEY,scores); }
@@ -747,10 +742,14 @@ function NM(k){
 /* LOW / MED / HIGH trim the most expensive effects (glow radii via shadowBlur,
    particle spawn counts) for weaker GPUs. HIGH = full fidelity. Toggled from
    the pause menu; applies instantly since Q() resolves at draw/spawn time. */
+/* HIGH is the full-fidelity tier, but the whole ladder is re-based toward clean
+   definition: glows are halos for emphasis, not a wash over the whole board.
+   (Explicit radii in the draw code were already halved once; this is the second,
+   global pass.) */
 var QUAL={
-  high:{ label:'HIGH', glow:1.00, part:1.00 },
-  med: { label:'MED',  glow:0.65, part:0.65 },
-  low: { label:'LOW',  glow:0.30, part:0.35 }
+  high:{ label:'HIGH', glow:0.55, part:0.75 },
+  med: { label:'MED',  glow:0.40, part:0.55 },
+  low: { label:'LOW',  glow:0.22, part:0.30 }
 };
 function Q(k){ return (QUAL[settings.quality]||QUAL.high)[k]; }
 function qGlow(v){ return v*Q('glow'); }                             /* scale a shadowBlur radius */
@@ -802,14 +801,14 @@ var DIFFS={
   easy:  { label:'EASY',   time:90, speed:0.70, density:1.35, lives:5, sinkPeriod:99, busGap:0.85, waypoint:true, desc:'Easy lanes, slow clock. 5 packets.',
            /* forgiving close calls: wide band, small payout */
            nearmiss:{ nearPx:16, nearBonus:5 } },
-  normal:{ label:'NORMAL', time:30, speed:0.85, density:1.15, lives:3, sinkPeriod:6.0, busGap:1.0, desc:'The real Frogger feel: 30s clock, 3 packets.' },
+  normal:{ label:'NORMAL', time:30, speed:0.85, density:1.15, lives:5, sinkPeriod:6.0, busGap:1.0, desc:'The real Frogger feel: 30s clock, 5 packets.' },
   /* strict-Frogger mode (CLASSIC RULES): 30s clock per packet, one fixed board,
-     no boosters. Lane speeds follow the 1981 arcade profile — calm entry lane,
-     faster middle, dangerous lane at the top (bottom→top multipliers in `lanes`,
-     rows 9,8,7,6) — with wide, steady gaps (density 1.15) so the danger builds
-     as you climb instead of a NORMAL-style rush at the entry lane. */
-  classic:{ label:'CLASSIC', time:30, speed:0.72, density:1.15, lives:3, sinkPeriod:5.5, busGap:1.05, lanes:[1.0,1.5,1.25,2.0], desc:'Strict Frogger: 30s clock, 1981 arcade lane pace, one fixed board.' },
-  hard:  { label:'HARD',   time:45, speed:1.30, density:0.80, lives:3, sinkPeriod:4.2, busGap:1.15, desc:'Crazy traffic, fast buses. 45s. Good luck.',
+     no boosters. Every difficulty shares the 1981 arcade board shape — five
+     traffic lanes (calm entry lane, trucks on 2 & 4, dangerous lane at the top)
+     and five river rows (barges + diving buoys) — so CLASSIC just tightens the
+     clock, the sink windows and the lane gaps without touching the layout. */
+  classic:{ label:'CLASSIC', time:30, speed:0.72, density:1.15, lives:3, sinkPeriod:5.5, busGap:1.05, desc:'Strict Frogger: 30s clock, 1981 arcade lane pace, one fixed board.' },
+  hard:  { label:'HARD',   time:50, speed:1.10, density:1.15, lives:3, sinkPeriod:4.6, busGap:1.10, desc:'Crazy traffic, fast buses. 50s. Good luck.',
            /* harder sink warnings: faster pulse, brighter tape, louder chirps */
            hazard:{ freqMin:3.4, freqMax:15.5, brightMin:0.45, brightMax:1.0, unsafeMin:0.95,
                     pitchMin:380, pitchMax:1200, volMin:0.07, volMax:0.22 },
@@ -822,7 +821,7 @@ if(settings.classic&&settings.difficulty!=='classic') settings.difficulty='class
 ['easy','normal','hard','classic'].forEach(function(d){ if(!Array.isArray(scores[d])) scores[d]=[]; });
 if(!isFinite(settings.sfxVol)) settings.sfxVol=0.8; settings.sfxVol=Math.max(0,Math.min(1,settings.sfxVol));
 if(!isFinite(settings.musicVol)) settings.musicVol=0.45; settings.musicVol=Math.max(0,Math.min(1,settings.musicVol));
-if(!isFinite(settings.crtIntensity)) settings.crtIntensity=0.18; settings.crtIntensity=Math.max(0,Math.min(1,settings.crtIntensity));
+if(!isFinite(settings.crtIntensity)) settings.crtIntensity=0.12; settings.crtIntensity=Math.max(0,Math.min(1,settings.crtIntensity));
 settings.pixelPerfect=!!settings.pixelPerfect;
 settings.classic=!!settings.classic;
 settings.pauseOnBlur=!!settings.pauseOnBlur; /* default true via DEFAULT_SETTINGS; old saves merge to true */
@@ -1025,7 +1024,7 @@ function newWorld(level, mode, dailyOpts, cfgKey){
     goals:[false,false,false,false,false],
     socketAnim:[0,0,0,0,0],
     player:{ px:START_COL*TILE+TILE/2, py:START_ROW*TILE+TILE/2, tx:START_COL, ty:START_ROW,
-             m0:0,m1:0,t:0,moving:false, facing:0, invuln:0, shield:false, overclock:0, burst:0,
+             m0:0,m1:0,t:0,hopV:0,moving:false, facing:0, invuln:0, shield:false, overclock:0, burst:0,
              landT:0, trail:[], returnT:-1, dead:0 },
     throttleT:0, burstSmash:0, attractDemo:false, demoMode:false,
     rushT:11, rushPhase:'idle', rushCount:0, rushSurvived:0, rushLives:3,
@@ -1035,7 +1034,7 @@ function newWorld(level, mode, dailyOpts, cfgKey){
     shake:0, flash:0, flashCol:'#fff', hitFlash:0, hitFlashCol:'#ffffff',
     deathT:0, deathRelease:0, deathX:0, deathY:0, deathMsg:'', deathFinal:'',
     bannerT:0, readyT:0, clearT:0, bestAnnounced:false, beatBest:false,
-    lastWarn:-1, nextLifeAt:25000,
+    lastWarn:-1,    nextLifeAt:20000, /* Frogger awards an extra frog every 20,000 points */
     powerSpawnT:4, worldTime:0, stats:{ delivered:0 },
     hi:Math.max(settings.best, 0)
   };
@@ -1053,25 +1052,52 @@ function newWorld(level, mode, dailyOpts, cfgKey){
   world.time=world.timeMax;
   world.lives = classicOn()? 5 : diffCfg().lives; /* Frogger starts you with five packets */
 }
+/* The real 1981 Frogger never changes the board's shape between rounds — the
+   arcade ramps every lane's speed and tightens the turtle dive window each
+   round. These are Frogger's own per-round lane profiles, so a daily board
+   picked from this pool is always a faithful arcade layout: the same highway
+   (calm entry cars, trucks on lanes 2 & 4, race cars on top), the same river
+   (barges on rows 1·3·4, diving buoy triads on rows 2·5, flow R L R L R
+   top→bottom) — just a different arcade round's pace. seed%5 picks the round,
+   so every player on a given date shares one fixed, authentic board. */
+var FROGGER_PATTERNS=[
+  { round:1, mult:0.72, dive:1.35, tag:'OPENING ROUTE' },
+  { round:2, mult:0.85, dive:1.15, tag:'RUSH HOUR' },
+  { round:3, mult:1.00, dive:1.00, tag:'PEAK LOAD' },
+  { round:4, mult:1.15, dive:0.85, tag:'SATURATED' },
+  { round:5, mult:1.30, dive:0.70, tag:'FULL BLAST' }
+];
+function dailyPattern(){
+  return (world&&world.daily)? FROGGER_PATTERNS[world.dailySeed%FROGGER_PATTERNS.length] : null;
+}
 function buildLanes(level){
   var d=diffCfg(), s=1+(level-1)*0.09;
-  var base=78*d.speed*s;
-  /* per-difficulty lane profile (bottom→top: rows 9,8,7,6). CLASSIC carries the
-     1981 arcade shape — entry lane slowest, dangerous lane at the top; everyone
-     else keeps the default highway. Daily cfg carries no lanes → default. */
-  var L=d.lanes||[1.85,0.8,1.5,1.15];
+  var pat=dailyPattern(); /* null outside the daily challenge → canonical arcade pace */
+  var base=78*d.speed*s*(pat?pat.mult:1);
+  var sink=d.sinkPeriod*(pat?pat.dive:1); /* later arcade rounds dive the turtles more often */
+  /* 1981 Frogger highway (bottom→top rows 7..11): calm entry cars on the bottom,
+     trucks on lanes 2 & 4, medium cars, and the dangerous racing lane at the top.
+     Directions alternate R→L / L→R / R→L / L→R / R→L exactly like the arcade,
+     and speed builds as you climb — the entry lane is the calmerst, the top lane
+     the fastest. */
   world.lanesH=[
-    mkH(6, 1, base*L[3], 3.1*d.density, ['ping','stream']),
-    mkH(7,-1, base*L[2], 3.6*d.density, ['stream','server']),
-    mkH(8, 1, base*L[1], 4.3*d.density, ['server','stream']),
-    mkH(9,-1, base*L[0], 2.9*d.density, ['ping'])
+    mkH(ROW_ROAD_BOT,     -1, base*0.50, 4.1*d.density, ['ping']),            /* lane 1: slow cars */
+    mkH(ROW_ROAD_BOT + 1,  1, base*0.72, 4.6*d.density, ['server']),          /* lane 2: trucks */
+    mkH(ROW_ROAD_BOT + 2, -1, base*0.95, 3.9*d.density, ['stream']),          /* lane 3: cars */
+    mkH(ROW_ROAD_BOT + 3,  1, base*1.25, 4.6*d.density, ['server']),          /* lane 4: trucks (dangerous) */
+    mkH(ROW_ROAD_TOP,     -1, base*1.55, 3.5*d.density, ['ping','stream'])    /* lane 5: racing cars */
   ];
-  var sink = d.sinkPeriod<99;
-  /* every trace row can sink now, Frogger-style — each log does so on its own clock */
+  /* 1981 Frogger river (top→bottom rows 1..5): medium barges, buoys, long barges,
+     short barges, buoys. Barges (the logs) NEVER sink; buoys (the turtles) dive
+     on their own staggered clocks — Frogger's exact split. Flow follows the
+     arcade: the top row drifts LEFT→RIGHT (so the leftmost home is the hardest
+     to reach), and every row alternates from there: R→L, L→R, R→L, L→R. */
   world.lanesB=[
-    mkB(2, 1, base*0.72, 2.7*d.busGap, [3,3,2], sink, d.sinkPeriod),
-    mkB(3,-1, base*1.02, 3.0*d.busGap, [2,2,2], sink, d.sinkPeriod),
-    mkB(4, 1, base*1.3,  3.5*d.busGap, [4,3],   sink, d.sinkPeriod)
+    mkB(ROW_WATER_TOP,      1, base*0.62, 3.2*d.busGap, [4,3],   'barge', sink, false), /* lane 5: medium barges → */
+    mkB(ROW_WATER_TOP + 1, -1, base*0.54, 3.6*d.busGap, [2,2,2], 'buoy',  sink, false), /* lane 4: turtles — NEVER dive (Frogger) ← */
+    mkB(ROW_WATER_TOP + 2,  1, base*0.46, 3.0*d.busGap, [4,4],   'barge', sink, false), /* lane 3: long barges → */
+    mkB(ROW_WATER_TOP + 3, -1, base*0.38, 3.4*d.busGap, [3,3],   'barge', sink, false), /* lane 2: short barges ← */
+    mkB(ROW_WATER_BOT,      1, base*0.30, 3.2*d.busGap, [2,2,2], 'buoy',  sink, true)   /* lane 1: turtles — ONE diving triad (Frogger) → */
   ];
 }
 function mkH(row,dir,speed,spacingT,types){
@@ -1095,17 +1121,18 @@ function mkH(row,dir,speed,spacingT,types){
   }
   return lane;
 }
-function mkB(row,dir,speed,gapT,lens,sink,sinkPeriod){
-  /* sink state lives on each LOG now (Frogger-style): every bus runs its own
-     staggered sink clock, so the row never goes under at once. Only some logs
-     sink at all; warnDur/unsafeDur are shared lane timings for the window shape. */
-  var lane={row:row,dir:dir,speed:speed,gap:gapT,lens:lens,buses:[],
+function mkB(row,dir,speed,gapT,lens,kind,sinkPeriod,dive){
+  /* Frogger river platforms. `kind` is 'barge' (a log — solid, never sinks) or
+     'buoy' (a turtle — dives). Frogger-exact dive rule: only the BOTTOM turtle
+     row dives, and only the middle dome of the first triad submerges — the two
+     outer domes stay boardable (the arcade's ( )( )( ) keeps 2 turtles up).
+     warnDur/unsafeDur are shared lane timings for the window shape. */
+  var lane={row:row,dir:dir,speed:speed,gap:gapT,lens:lens,buses:[],kind:kind,
             warnDur:1.15, unsafeDur:0.95};
-  /* The lane layout repeats every full lens cycle. Bus positions are stored as a
+  /* The lane layout repeats every full lens cycle. Positions are stored as a
      phase in [0,period) and drawn at every copy (phase +/- k*period) that touches
-     the screen — this guarantees the wrap-around can never drop a bus on top of
-     its neighbour (the old fixed 640px wrap did exactly that, permanently merging
-     logs into oversized double-glow blocks). */
+     the screen — this guarantees the wrap-around can never drop a platform on top
+     of its neighbour. */
   var period=0;
   for(var pi=0;pi<lens.length;pi++) period+=(lens[pi]+gapT)*TILE;
   lane.period=period;
@@ -1115,9 +1142,9 @@ function mkB(row,dir,speed,gapT,lens,sink,sinkPeriod){
     var phase=mod(x,period);
     if(seen[phase]) break; /* wrapped the ring: every slot is accounted for */
     seen[phase]=true;
-    var bSink = !!(sink && RND()<0.5); /* Frogger: roughly half the logs are safe forever */
+    var bSink = (kind==='buoy') && !!dive && (i===0); /* Frogger: only the bottom turtle row dives, and only the first triad's middle dome; barges are always solid */
     var bPeriod = bSink? (sinkPeriod||99)*(1.0+RND()*0.8) : (sinkPeriod||99);
-    lane.buses.push({ x:phase, w:len*TILE, len:len, v:dir*speed, sink:bSink,
+    lane.buses.push({ x:phase, w:len*TILE, len:len, v:dir*speed, kind:kind, sink:bSink,
                       sinkPeriod:bPeriod, sinkT:bPeriod*(0.1+RND()*0.8),
                       warn:false, unsafe:false, warnSnd:false, unsafeSnd:false });
     x+=(len+gapT)*TILE; i++;
@@ -1127,12 +1154,12 @@ function mkB(row,dir,speed,gapT,lens,sink,sinkPeriod){
 function initPowerups(){
   world.powerups=[];
   if(classicOn()) return; /* strict rules: no boosters on the board */
-  spawnPowerup(5); spawnPowerup(5); spawnPowerup(10);
+  spawnPowerup(ROW_MEDIAN); spawnPowerup(ROW_MEDIAN); spawnPowerup(ROW_START);
 }
 var PU_TYPES=[{t:'time',w:28},{t:'shield',w:22},{t:'bit',w:15},{t:'overclock',w:16},{t:'life',w:12},{t:'throttle',w:20},{t:'burst',w:17}];
 function spawnPowerup(prefRow, rng){
   var r=rng||RND;
-  var row = prefRow!=null ? prefRow : (r()<0.6?5:10);
+  var row = prefRow!=null ? prefRow : (r()<0.6?ROW_MEDIAN:ROW_START);
   var col;
   do{ col=Math.floor(r()*COLS); }while(col===START_COL&&row===START_ROW);
   var total=0; PU_TYPES.forEach(function(p){ total+=p.w; });
@@ -1152,7 +1179,7 @@ function pad6(n){ n=Math.max(0,Math.round(n)); var s=''+n; while(s.length<6)s='0
 
 /* ---------------- input ---------------- */
 var keys={ up:false,down:false,left:false,right:false };
-var lastMoveAt=0, moveInterval=175;
+var lastMoveAt=0, moveInterval=250; /* held-key repeat is deliberate, not machine-gun */
 var DXDY=[[0,-1],[1,0],[0,1],[-1,0]];
 function tryMove(dir){
   if(world.mode!=='play'&&world.mode!=='attract') return false;
@@ -1162,7 +1189,9 @@ function tryMove(dir){
   if(gx<TILE/2||gx>W-TILE/2) return false;
   if(gy<TILE/2||gy>START_ROW*TILE+TILE/2) return false;
   p.m0=p.px; p.m1=gx; p.g0=p.py; p.g1=gy; p.t=0; p.moving=true; p.facing=dir;
-  p.wasDeck=p.ty>=2&&p.ty<=4&&!!busAt(p.ty,p.px); /* capture deck state NOW — the bus may drift during the hop */
+  p.wasDeck=p.ty>=ROW_WATER_TOP&&p.ty<=ROW_WATER_BOT&&!!busAt(p.ty,p.px); /* capture deck state NOW — the platform may drift during the hop */
+  var srcBus=(p.ty>=ROW_WATER_TOP&&p.ty<=ROW_WATER_BOT)?busAt(p.ty,p.px):null;
+  p.hopV=srcBus?srcBus.v:0; /* Frogger: a hop keeps the SOURCE platform's velocity for the whole arc */
   Snd.play('hop');
   if(!world.attractDemo){ /* the attract autopilot never touches player stats */
     meta.stats.hops++;
@@ -1664,7 +1693,7 @@ function renderTicker(){
   ];
   var txt=segs.join(' &nbsp;·&nbsp; ');
   /* each copy carries its own trailing separator so translateX(-50%) lands exactly on the next copy */
-  var a=txt+' <span style="opacity:.4">✦</span> ';
+  var a=txt+' <span style="opacity:.4">·</span> ';
   el.innerHTML=a+a;
 }
 function refreshSoundLabels(){
@@ -1957,8 +1986,9 @@ function dailyRankTip(k){
 }
 function renderDaily(){
   var k=dateKey(), cfg=dailyCfgFor(dailySeed()), b=dailyBoard(k);
+  var pat=FROGGER_PATTERNS[dailySeed()%FROGGER_PATTERNS.length];
   $('daily-date').textContent='ROUTE #'+k+' · BOARD LVL '+cfg.level;
-  $('daily-cfg').textContent='TODAY: '+cfg.baseDiff.toUpperCase()+' · '+cfg.time+'s CLOCK · TRAFFIC '+Math.round(cfg.speed*cfg.density*100)+'%';
+  $('daily-cfg').textContent='TODAY: '+cfg.baseDiff.toUpperCase()+' · ARCADE ROUND '+pat.round+' — '+pat.tag+' · '+cfg.time+'s CLOCK · TRAFFIC '+Math.round(cfg.speed*cfg.density*100)+'%';
   $('daily-tip').textContent=dailyRankTip(k);
   var body=$('daily-board');
   if(!b.length){ body.innerHTML='<div class="empty-note">NO SCORES TODAY<br>BE THE FIRST TO ROUTE IT</div>'; return; }
@@ -1981,7 +2011,8 @@ function startDaily(){
   world.dailyRng=mulberry32(seed^0x9E3779B9); /* separate stream: fixed board, seeded booster respawns */
   world.readyT=1.6;
   showScreen('game');
-  showBanner('DAILY ROUTE','ROUTE #'+String(seed));
+  var pat=FROGGER_PATTERNS[seed%FROGGER_PATTERNS.length];
+  showBanner('DAILY ROUTE','ROUTE #'+String(seed)+' · ARCADE ROUND '+pat.round+' — '+pat.tag);
   Snd.play('spawn');
 }
 
@@ -2105,7 +2136,6 @@ function die(reason){
   } else {
     world.hitFlashCol='#ffffff'; /* faint white impact frame */
     shatter(p.px,p.py,p.facing);
-    chromaStreak(p.px,p.py,p.facing);
     rumble(260,1.0,0.55); /* fragment: hard hit */
   }
   if(reason==='timeout') Snd.play('timeout'); else if(reason==='zap') Snd.play('zap'); else if(reason==='water') Snd.play('splash'); else Snd.play('crash');
@@ -2247,7 +2277,7 @@ function showBanner(main,sub,mode){
   var live=(mode===false||mode==='off')?'off':((mode==='alert'&&settings.announce==='alert')?'assertive':'polite');
   banner.setAttribute('aria-live', live);
   banner.classList.remove('sub');
-  var html= sub? main+'<br><span class="sub2" style="font-size:9px;color:var(--yellow);text-shadow:0 0 3px rgba(250,204,21,.8)">'+sub+'</span>' : (main||'');
+  var html= sub? main+'<br><span class="sub2" style="font-size:9px;color:var(--yellow);text-shadow:0 0 2px rgba(250,204,21,.4)">'+sub+'</span>' : (main||'');
   /* identical consecutive banner (back-to-back demo deaths): ATs diff whole content and skip
      unchanged text — clear first so the rewrite is a content change and gets re-announced.
      Both writes land in the same frame, so the visible pop-in is unchanged. */
@@ -2265,10 +2295,6 @@ function burst(x,y,n,col){
 function ring(x,y,col){
   world.particles.push({x:x,y:y,vx:0,vy:0,g:0,life:0.45,max:0.45,size:6,color:col,shape:'ring',r:6});
 }
-/* floating score text: a tiny rising label, e.g. near-miss feedback */
-function floatText(x,y,str,col){
-  world.particles.push({shape:'txt', x:x, y:y, vx:0, vy:-36, g:0, str:str, color:col||'#67e8f9', life:0.7, max:0.7});
-}
 /* landing dust: a soft puff kicked up when the packet touches down */
 function dust(x,y,n){
   for(var i=0;i<qPart(n);i++){
@@ -2283,16 +2309,10 @@ function dust(x,y,n){
 /* boarding / alighting flourish: a quick pad flash + small expanding ring when the
    packet hops onto a trace deck (or steps off one) — echoes the dock ports' sparkle */
 function boardFlash(x,y,on){
+  /* boarding / alighting cue: one soft pad bloom, no sparks or rings — the
+     deck change is readable from the pad itself, not a firework */
   var col= on? '#5eead4' : '#a5f3fc'; /* energize teal / neutral pale cyan */
-  world.particles.push({shape:'pad', x:x, y:y, vx:0, vy:0, g:0, life:0.26, max:0.26, color:col});
-  world.particles.push({shape:'ring', x:x, y:y, life:0.4, max:0.4, color:col, r:8});
-  var a0= on? -Math.PI/2 : Math.PI/2; /* boarding sparks lift, alighting ones settle */
-  for(var i=0;i<qPart(4);i++){
-    var a=a0+(Math.random()-0.5)*1.5;
-    var sp=36+Math.random()*56;
-    world.particles.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,g:0,
-      life:0.28+Math.random()*0.14,max:0.42,size:2,color:col,shape:'rect'});
-  }
+  world.particles.push({shape:'pad', x:x, y:y, vx:0, vy:0, g:0, life:0.24, max:0.24, color:col});
 }
 /* screen-shatter: packet fragments fly out biased along the impact direction, spin, and bounce off the board */
 function shatter(x,y,facing){
@@ -2314,12 +2334,6 @@ function shatter(x,y,facing){
       color:'#e8fbff',shape:'spark'});
   }
 }
-/* brief chromatic streak: an RGB-split comet along the direction of impact */
-function chromaStreak(x,y,facing){
-  var d={0:[0,-1],1:[1,0],2:[0,1],3:[-1,0]}[facing||0];
-  world.particles.push({shape:'streak',x:x,y:y,dx:d[0],dy:d[1],len:52,t:0.28,max:0.28});
-}
-
 /* water death: the packet plunges — a droplet crown bursts upward, twin ripples
    spread across the surface, and the chip itself sinks under with a tumble, so a
    WASHED OUT reads as drowning instead of the same glass shatter */
@@ -2403,7 +2417,10 @@ function update(dt){
   updateHeld();
 }
 function updateRush(dt){
-  if(classicOn()) return; /* strict Frogger traffic never surges */
+  var d=diffCfg();
+  /* Frogger-exact play never surges: RUSH HOUR is HARD-mode only (and CLASSIC
+     already excludes it). EASY/NORMAL/DAILY match the 1981 arcade — steady lanes. */
+  if(classicOn()||d!==DIFFS.hard) return;
   if(world.mode!=='play'||world.daily&&world.dailyComplete) return;
   world.rushT-=dt;
   if(world.rushT<=0){
@@ -2524,9 +2541,9 @@ function resetDemo(){
 }
 function busUnderHere(p){
   var b=busAt(p.ty,p.px);
-  if(b) return !b.unsafe; /* a sinking log is not safe to stand on (autoplay avoids it) */
-  if(p.ty<=4&&p.ty>=2){
-    var lane=world.lanesB[p.ty-2];
+  if(b) return !b.unsafe; /* a diving buoy is not safe to stand on (autoplay avoids it) */
+  if(p.ty<=ROW_WATER_BOT&&p.ty>=ROW_WATER_TOP){
+    var lane=world.lanesB[p.ty-ROW_WATER_TOP];
     for(var i=0;i<lane.buses.length;i++){
       var bu=lane.buses[i];
       for(var k=-1;k<=1;k++){
@@ -2554,8 +2571,8 @@ function updateAttractDemo(dt){
   if(p.invuln>0) p.invuln-=dt;
   if(p.moving||world.mode!=='attract') return;
   /* weave: if the ghost is overlapping a vehicle on the highway, bloom and restart */
-  if(p.ty>=6&&p.ty<=9){
-    var lane=world.lanesH[p.ty-6];
+  if(p.ty>=ROW_ROAD_BOT&&p.ty<=ROW_ROAD_TOP){
+    var lane=world.lanesH[p.ty-ROW_ROAD_BOT];
     var hb={x:p.px-10,y:p.py-10,w:20,h:20};
     for(var i=0;i<lane.vehicles.length;i++){
       var v=lane.vehicles[i];
@@ -2578,18 +2595,20 @@ function updateAttractDemo(dt){
     resetDemo();
     return;
   }
-  if(ty>=2&&ty<=4){
-    /* bus rows: hop onto an oncoming bus (predictive) */
-    if(tx!==target) tryMove(tx<target?1:3);
+  if(ty>=ROW_WATER_TOP&&ty<=ROW_WATER_BOT){
+    /* river rows: hop onto an oncoming platform (predictive). On the top river
+       row, climb straight into the socket when the ghost is aligned with the goal. */
+    if(ty===ROW_WATER_TOP&&tx===target&&busUnderHere(p)) tryMove(0);
+    else if(tx!==target) tryMove(tx<target?1:3);
     else if(busUnderHere(p)) tryMove(0);
-    else tryMove(1); /* shuffle a tile while waiting — keeps the demo alive on the ride lanes */
+    else tryMove(1); /* shuffle a tile while waiting — keeps the demo alive on the ride rows */
     return;
   }
-  if(ty===1){ if(tx!==target) tryMove(tx<target?1:3); else tryMove(0); return; } /* bank above the buses: keep climbing */
-  if(ty<=9){
+  if(ty===ROW_MEDIAN){ if(tx!==target) tryMove(tx<target?1:3); else tryMove(0); return; } /* median: keep climbing */
+  if(ty<=ROW_ROAD_TOP){
     /* highway: hop only into a clear landing cell */
-    if(tx!==target&&laneClear(world.lanesH[ty],ty,p.px+(tx<target?1:-1)*TILE)) tryMove(tx<target?1:3);
-    else if(tx===target&&laneClear(world.lanesH[ty-1],ty-1,p.px)) tryMove(0);
+    if(tx!==target&&laneClear(world.lanesH[ty-ROW_ROAD_BOT],ty,p.px+(tx<target?1:-1)*TILE)) tryMove(tx<target?1:3);
+    else if(tx===target&&laneClear(world.lanesH[ty-ROW_ROAD_BOT-1],ty-1,p.px)) tryMove(0);
     return;
   }
   /* origin banks */
@@ -2653,12 +2672,13 @@ function updatePlayer(dt){
   if(p.returnT>=0){ updateReturnFlight(dt,p); return; }
   if(p.invuln>0) p.invuln-=dt;
   if(p.landT>0){ p.landT-=dt; if(p.landT<0) p.landT=0; }
-  /* bus drift */
+  /* platform drift */
   var dv=0;
-  if(p.ty>=2&&p.ty<=4){
+  if(p.ty>=ROW_WATER_TOP&&p.ty<=ROW_WATER_BOT){
     var bus=busAt(p.ty,p.px);
     if(bus){
-      if(bus.unsafe&&p.burst<=0&&!world.attractDemo){ die('zap'); return; } /* only THIS log is sinking */
+      /* busAt already returns null on the submerged middle dome, so standing
+         there falls through to the gap-death below — the outer domes are safe. */
       dv=bus.v;
     } else if(!p.moving&&p.burst<=0&&!world.attractDemo){ die('zap'); return; }
   }
@@ -2666,8 +2686,9 @@ function updatePlayer(dt){
      resting on one is washed out. (BURST exempts the dock water like other hazards.) */
   if(!world.attractDemo&&!p.moving&&p.burst<=0&&p.ty===0&&(world.sockets||GOAL_COLS).indexOf(p.tx)<0){ die('water'); return; }
   if(p.moving){
-    p.m0+=dv*dt; p.m1+=dv*dt;
-    p.t+=dt/(p.overclock>0?0.055:0.095);
+    var hopV=p.hopV||0; /* carry the source platform's velocity for the full hop — the destination row must not hijack the arc */
+    p.m0+=hopV*dt; p.m1+=hopV*dt;
+    p.t+=dt/(p.overclock>0?0.12:0.18); /* Frogger hop: a smooth, readable arc (not a 2-frame snap) */
     p.px=lerp(p.m0,p.m1,ease(p.t));
     p.py=lerp(p.g0,p.g1,ease(p.t));
     if(p.t>=1){
@@ -2687,7 +2708,7 @@ function updatePlayer(dt){
       if(!world.attractDemo){
         var nR=p.ty;
         var wasOn=p.wasDeck; /* captured at hop start, so the moving deck can't slip away */
-        var nowOn=nR>=2&&nR<=4&&!!busAt(nR,p.px);
+        var nowOn=nR>=ROW_WATER_TOP&&nR<=ROW_WATER_BOT&&!!busAt(nR,p.px);
         if(nowOn&&!wasOn) boardFlash(p.px,p.py,true);
         else if(wasOn&&!nowOn) boardFlash(p.px,p.py,false);
       }
@@ -2698,13 +2719,13 @@ function updatePlayer(dt){
   }
   /* hop trail: fading packet after-images strung along the arc (play only — attract uses its own draw) */
   if((p.moving||p.landT>0)&&!world.attractDemo){
-    p.trail.push({x:p.px,y:p.py-playerHopLift(p),a:0.5,life:0.18});
+    p.trail.push({x:p.px,y:p.py-playerHopLift(p),a:0.3,life:0.15});
     if(p.trail.length>26) p.trail.shift();
   }
   for(var ti=p.trail.length-1;ti>=0;ti--){ p.trail[ti].life-=dt; if(p.trail[ti].life<=0) p.trail.splice(ti,1); }
   p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1);
   p.ty=clamp(Math.floor(p.py/TILE),0,ROWS-1);
-  if(p.burst<=0&&p.ty<=4&&(p.px<-12||p.px>W+12)){ die('off'); return; }
+  if(p.burst<=0&&p.ty<=ROW_WATER_BOT&&(p.px<-12||p.px>W+12)){ die('off'); return; }
   if(world.attractDemo){ return; } /* attract: no scoring, no powerups, no death */
   /* row progress bonus (never while the return flight is playing) */
   if(!p.moving&&p.returnT<0&&p.ty<world.rowMax){ world.rowMax=p.ty; world.score+=10; }
@@ -2734,16 +2755,9 @@ function updateReturnFlight(dt,p){
   p.py=lerp(p.retY0,p.retY1,ease(dk));
   p.tx=clamp(Math.floor(p.px/TILE),0,COLS-1);
   p.ty=clamp(Math.floor(p.py/TILE),0,ROWS-1);
-  /* comet trail: bright packet after-images strung up the column */
-  p.trail.push({x:p.px,y:p.py,a:0.85,life:0.2});
+  /* comet trail: fading packet after-images strung up the column */
+  p.trail.push({x:p.px,y:p.py,a:0.5,life:0.16});
   if(p.trail.length>26) p.trail.shift();
-  /* teal motes shed behind the streak — the packet outruns them, so they read as a comet tail */
-  if(Math.random()<0.6*Q('part')){
-    world.particles.push({x:p.px+(Math.random()-0.5)*8,y:p.py+10,
-      vx:(Math.random()-0.5)*30,vy:40+Math.random()*70,g:20,
-      life:0.26+Math.random()*0.18,max:0.44,size:1.5+Math.random()*1.5,
-      color:'#67e8f9',shape:'rect'});
-  }
   if(k>=1){
     /* touchdown: the fresh packet settles into the origin node, facing the board */
     p.returnT=-1;
@@ -2843,13 +2857,20 @@ function updateTime(dt){
   }
 }
 function busAt(row,px){
-  var lane=world.lanesB[row-2];
+  var lane=world.lanesB[row-ROW_WATER_TOP];
   if(!lane) return null;
   for(var i=0;i<lane.buses.length;i++){
     var b=lane.buses[i];
     for(var k=-1;k<=1;k++){
       var bx=b.x+k*lane.period;
-      if(px>=bx&&px<=bx+b.w) return b;
+      if(b.sink&&b.unsafe){
+        /* Frogger partial dive: the middle dome of the diving triad is down, so
+           only the two outer domes are boardable (two islands) — standing where
+           the diving turtle was drops you into the water. */
+        var step=b.w/3;
+        if(px>=bx&&px<=bx+step) return b;
+        if(px>=bx+2*step&&px<=bx+b.w) return b;
+      } else if(px>=bx&&px<=bx+b.w) return b;
     }
   }
   return null;
@@ -2857,6 +2878,7 @@ function busAt(row,px){
 function checkCrash(){
   var p=world.player;
   if(p.invuln>0||world.mode!=='play'||world.deathT>0||p.dead) return; /* a fragmented packet can never be re-killed */
+  if(p.moving) return; /* Frogger rule: the packet is airborne mid-hop — traffic passes under it; you die on landing, not in the air */
   var lane=null;
   for(var i=0;i<world.lanesH.length;i++) if(world.lanesH[i].row===p.ty){ lane=world.lanesH[i]; break; }
   if(!lane) return;
@@ -2902,7 +2924,7 @@ function checkCrash(){
         if(world.mode==='play'){
           world.score+=NM('nearBonus');
           world.flash=0.16; world.flashCol='#67e8f9';
-          floatText(p.px,p.py-26,'+'+NM('nearBonus')+' CLOSE CALL','#67e8f9');
+          /* near-miss feedback stays in the flash + sound — no floating text */
           Snd.tone(1500,900,0.06,'sine',0.05); /* soft whoosh blip */
         }
       }
@@ -2943,7 +2965,7 @@ function checkExtraLife(){
 /* ---------------- render ---------------- */
 var COLORS={
   pcb:'#0b2a1d', pcbEdge:'#1c6b42',
-  tarmac:'#131b32', tarmacAlt:'#0f1628', rail:'#33426e',
+  tarmac:'#18223e', tarmacAlt:'#131c31', rail:'#3f5184',
   water:'#12284f', waterAlt:'#0d1f42', waterEdge:'#7c5cff', foam:'#5eead4',
   ping:'#22d3ee', stream:'#c084fc', server:'#fb923c',
   busFill:'#0e5a74', busEdge2:'#22d3ee'
@@ -2955,14 +2977,14 @@ function drawLaneRibbon(y,h,tint,speed,dir,period,th,light){
   var off=mod(world.worldTime*speed*dir,period)-period;
   ctx.fillStyle=tint;
   for(var bx=off;bx<W;bx+=period){
-    if(light) glowRect(bx,y+h/2-th/2,period*0.40,th,tint,9);
+    /* clean dashes — no glow on background striping (definition, not neon) */
     ctx.fillRect(bx,y+h/2-th/2,period*0.40,th);
   }
   ctx.shadowBlur=0;
 }
 function drawBase(){
   /* --- board substrate: deep navy slab with a faint PCB grid of vias --- */
-  ctx.fillStyle='#060a16'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#0a101e'; ctx.fillRect(0,0,W,H);
   ctx.strokeStyle='rgba(34,211,238,.06)'; ctx.lineWidth=1;
   for(var gx=0;gx<=W;gx+=20){ ctx.beginPath(); ctx.moveTo(gx+0.5,0); ctx.lineTo(gx+0.5,H); ctx.stroke(); }
   for(var gy=0;gy<=H;gy+=20){ ctx.beginPath(); ctx.moveTo(0,gy+0.5); ctx.lineTo(W,gy+0.5); ctx.stroke(); }
@@ -2973,20 +2995,20 @@ function drawBase(){
     }
   }
 
-  /* --- CPU dock bay (rows 0-1): solid green-tinted panel with socket bays --- */
-  ctx.fillStyle='#071f15'; ctx.fillRect(0,0,W,TILE*2);
-  ctx.fillStyle='#0c2f20'; ctx.fillRect(0,0,W,3); ctx.fillRect(0,TILE*2-3,W,3);
+  /* --- CPU dock bay (row 0): solid green-tinted panel with socket bays --- */
+  ctx.fillStyle='#071f15'; ctx.fillRect(0,0,W,TILE);
+  ctx.fillStyle='#0c2f20'; ctx.fillRect(0,0,W,3); ctx.fillRect(0,TILE-3,W,3);
   var cols=world.sockets||GOAL_COLS;
   for(var i=0;i<COLS;i++){
     var bx=i*TILE+4, bw=TILE-8;
     ctx.fillStyle='#0d3522';
-    ctx.fillRect(bx,4,bw,TILE*2-8);
+    ctx.fillRect(bx,4,bw,TILE-8);
     ctx.strokeStyle='rgba(74,222,128,.22)'; ctx.lineWidth=1;
-    ctx.strokeRect(bx,4,bw,TILE*2-8);
+    ctx.strokeRect(bx,4,bw,TILE-8);
   }
   /* socket bays: physical docking ports with a guided-insertion sequence */
   cols.forEach(function(c,si){
-    drawDockPort(c*TILE+6,6,TILE-12,TILE*2-12,si);
+    drawDockPort(c*TILE+6,6,TILE-12,TILE-12,si);
   });
   /* water gaps between socket bays: Frogger-style — miss the port and you're washed out */
   var wt=world.worldTime;
@@ -2994,12 +3016,12 @@ function drawBase(){
     if(cols.indexOf(c2)>=0) continue;
     var wx=c2*TILE+8, ww=TILE-16;
     ctx.fillStyle='#05202b';
-    roundRect(wx,10,ww,56,4); ctx.fill();
+    roundRect(wx,6,ww,TILE-12,4); ctx.fill();
     ctx.strokeStyle='rgba(103,232,249,.18)'; ctx.lineWidth=1;
-    roundRect(wx,10,ww,56,4); ctx.stroke();
-    /* flowing ripples: three wave lines drifting with time */
-    for(var rp=0;rp<3;rp++){
-      var wy=18+rp*16+Math.sin(wt*1.6+rp*1.7)*1.5;
+    roundRect(wx,6,ww,TILE-12,4); ctx.stroke();
+    /* flowing ripples: two wave lines drifting with time */
+    for(var rp=0;rp<2;rp++){
+      var wy=9+rp*10+Math.sin(wt*1.6+rp*1.7)*1.5;
       ctx.strokeStyle='rgba(165,243,252,'+(0.10+0.08*Math.sin(wt*2.4+rp*2.1))+')';
       ctx.lineWidth=1;
       ctx.beginPath();
@@ -3011,30 +3033,30 @@ function drawBase(){
     }
     /* hazard stripe at the water line: reads as 'do not land here' */
     ctx.fillStyle='rgba(251,113,133,.20)';
-    ctx.fillRect(wx+4,12,ww-8,2);
+    ctx.fillRect(wx+4,8,ww-8,2);
   }
 
-  /* --- rest banks (rows 5, 10-11): solid deck panels --- */
-  ctx.fillStyle='#0b1226'; ctx.fillRect(0,TILE*5,W,TILE);
-  ctx.fillRect(0,TILE*10,W,TILE*2);
-  ctx.fillStyle='#17223f'; ctx.fillRect(0,TILE*5,W,2); ctx.fillRect(0,TILE*6-2,W,2);
-  ctx.fillRect(0,TILE*10,W,2); ctx.fillRect(0,TILE*12-2,W,2);
+  /* --- median (row 6) + origin deck (row 12): solid safe panels --- */
+  ctx.fillStyle='#101830'; ctx.fillRect(0,ROW_MEDIAN*TILE,W,TILE);
+  ctx.fillRect(0,ROW_START*TILE,W,TILE);
+  ctx.fillStyle='#1d2b4e'; ctx.fillRect(0,ROW_MEDIAN*TILE,W,2); ctx.fillRect(0,ROW_MEDIAN*TILE+TILE-2,W,2);
+  ctx.fillRect(0,ROW_START*TILE,W,2); ctx.fillRect(0,ROW_START*TILE+TILE-2,W,2);
   ctx.fillStyle='rgba(34,211,238,.18)';
-  for(var r=5;r<=10;r+=5){
+  [ROW_MEDIAN,ROW_START].forEach(function(r){
     for(var dv=0;dv<W;dv+=14){ ctx.fillRect(dv,(r*TILE)+TILE/2-1,8,2); }
-  }
-  /* vent slots on the lower deck */
+  });
+  /* vent slots on the origin deck */
   ctx.fillStyle='rgba(0,0,0,.4)';
-  for(var vv=0;vv<W;vv+=18){ ctx.fillRect(vv,10*TILE+14,10,2); ctx.fillRect(vv,10*TILE+20,10,2); ctx.fillRect(vv,10*TILE+26,10,2); }
-  drawNodeIcon(W-44,5*TILE+TILE/2-11);
-  drawOriginIcon(10,10*TILE+TILE/2-10);
+  for(var vv=0;vv<W;vv+=18){ ctx.fillRect(vv,ROW_START*TILE+8,10,2); ctx.fillRect(vv,ROW_START*TILE+14,10,2); ctx.fillRect(vv,ROW_START*TILE+20,10,2); }
+  drawNodeIcon(W-44,ROW_MEDIAN*TILE+TILE/2-11);
+  drawOriginIcon(10,ROW_START*TILE+TILE/2-10);
 
-  /* --- bus lanes (rows 2-4): flowing data channel --- */
-  for(var bl=0;bl<3;bl++){
+  /* --- river rows (1-5): flowing data channel --- */
+  for(var bl=0;bl<world.lanesB.length;bl++){
     var lane=world.lanesB[bl], y=lane.row*TILE;
-    var g=cachedGrad('buswater|'+y, function(){ var gg=ctx.createLinearGradient(0,y,0,y+TILE); gg.addColorStop(0,'#16305e'); gg.addColorStop(.5,'#0d1f42'); gg.addColorStop(1,'#16305e'); return gg; });
+    var g=cachedGrad('buswater|'+y, function(){ var gg=ctx.createLinearGradient(0,y,0,y+TILE); gg.addColorStop(0,'#1a3768'); gg.addColorStop(.5,'#11244c'); gg.addColorStop(1,'#1a3768'); return gg; });
     ctx.fillStyle=g; ctx.fillRect(0,y,W,TILE);
-    /* the water itself stays calm — only individual logs sink now (Frogger-style) */
+    /* the water itself stays calm — only individual buoys dive now (Frogger-style) */
     /* current ripple chevrons flowing against the traffic */
     var off=mod(world.worldTime*lane.speed*(-lane.dir)*34,52);
     ctx.fillStyle='rgba(94,234,212,.30)';
@@ -3054,8 +3076,8 @@ function drawBase(){
     ctx.fillRect(0,y+2,W,2); ctx.fillRect(0,y+TILE-4,W,2);
   }
 
-  /* --- highway lanes (rows 6-9): solid tarmac with bold striping --- */
-  for(var hl=0;hl<4;hl++){
+  /* --- highway lanes (rows 7-11): solid tarmac with bold striping --- */
+  for(var hl=0;hl<world.lanesH.length;hl++){
     var hlane=world.lanesH[hl], hy=hlane.row*TILE;
     ctx.fillStyle=(hl%2===0)? COLORS.tarmac : COLORS.tarmacAlt;
     ctx.fillRect(0,hy,W,TILE);
@@ -3071,20 +3093,15 @@ function drawBase(){
     drawLaneRibbon(hy,TILE,dashCol,hlane.speed,hlane.dir>0?1:-1,72,6,true);
   }
 
-  /* --- start platform --- */
-  var spx=START_COL*TILE+2, spy=START_ROW*TILE+2;
-  ctx.fillStyle='#04242f'; roundRect(spx,spy,TILE-4,TILE-4,5); ctx.fill();
-  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2; roundRect(spx,spy,TILE-4,TILE-4,5); ctx.stroke();
-  ctx.fillStyle='rgba(103,232,249,.9)';
-  ctx.beginPath(); ctx.moveTo(spx+TILE/2-5,spy+TILE-8); ctx.lineTo(spx+TILE/2,spy+10); ctx.lineTo(spx+TILE/2+5,spy+TILE-8); ctx.closePath(); ctx.fill();
+  /* no start square: like Frogger, the packet just stands on the origin deck */
 
-  /* --- deck rows (12-13): operator console strip --- */
-  ctx.fillStyle='#0a0f1f'; ctx.fillRect(0,ROWS*TILE-TILE*2,W,TILE*2);
-  ctx.fillStyle='#1a2440'; ctx.fillRect(0,ROWS*TILE-TILE*2,W,2); ctx.fillRect(0,H-2,W,2);
+  /* --- deck row (13): operator console strip --- */
+  ctx.fillStyle='#0e1526'; ctx.fillRect(0,ROWS*TILE-TILE,W,TILE);
+  ctx.fillStyle='#223152'; ctx.fillRect(0,ROWS*TILE-TILE,W,2); ctx.fillRect(0,H-2,W,2);
   ctx.fillStyle='rgba(34,211,238,.30)';
   for(var st=0;st<18;st++){
     var sx=mod(world.worldTime*(40+st*3)+(st*53),W+30)-30;
-    ctx.fillRect(sx,ROWS*TILE-TILE*2+8+((st%5)*9),2,6);
+    ctx.fillRect(sx,ROWS*TILE-TILE+8+((st%5)*5),2,4);
   }
   drawStatusLeds();
 }
@@ -3109,34 +3126,58 @@ function drawPix(rows,pal,x,y,s){
 }
 /* the data packet: a chip-packet with a directional chevron, drawn facing UP (0=up,1=right,2=down,3=left) */
 function drawPkt(alpha,facing,glowCol){
+  /* the player is a DATA PACKET — drawn as the canonical network-packet diagram
+     come to life: a bright header block that leads the packet (direction chevron
+     + status LED), a darker payload body with twinkling data bits, and a thin
+     checksum trailer. It travels header-first, so it faces movement like the
+     frog. Local up = forward; the caller rotates by facing. */
   ctx.save();
   ctx.rotate(((facing||0)%4)*Math.PI/2);
-  /* soft glow plate */
+  var t=(world&&world.worldTime)||0;
+  var pulse=0.85+0.15*Math.sin(t*6); /* header breathing — motion is what the eye locks onto */
+  var rim=glowCol||'#67e8f9';
+  /* soft glow plate — tight to the packet so it stays crisp */
   ctx.globalCompositeOperation='lighter';
-  ctx.fillStyle='rgba(34,211,238,'+(0.16*alpha)+')';
-  ctx.fillRect(-16,-16,32,32);
+  ctx.fillStyle='rgba(34,211,238,'+(0.10*alpha)+')';
+  ctx.fillRect(-15,-15,30,30);
   ctx.globalCompositeOperation='source-over';
-  /* dark outline body */
-  ctx.fillStyle='rgba(2,20,30,'+alpha+')';
-  roundRect(-13,-13,26,26,4); ctx.fill();
-  /* bright core */
-  ctx.fillStyle='rgba(34,211,238,'+alpha+')';
-  roundRect(-9,-9,18,18,3); ctx.fill();
-  /* inner body */
-  ctx.fillStyle='rgba(4,42,54,'+alpha+')';
-  roundRect(-6,-6,12,12,2); ctx.fill();
-  /* directional arrow */
-  ctx.fillStyle='rgba(165,243,252,'+alpha+')';
+  /* bright outer rim — pops off tarmac, water and barges alike */
+  ctx.strokeStyle='rgba(103,232,249,'+(0.95*alpha)+')';
+  ctx.lineWidth=2;
+  ctx.shadowBlur=7*alpha; ctx.shadowColor=rim;
+  roundRect(-14,-14,28,28,5); ctx.stroke();
+  ctx.shadowBlur=0;
+  /* dark chassis */
+  ctx.fillStyle='rgba(3,24,36,'+alpha+')';
+  roundRect(-14,-14,28,28,5); ctx.fill();
+  /* HEADER — the control block that leads the packet (forward = up) */
+  ctx.fillStyle='rgba(34,211,238,'+(alpha*pulse)+')';
+  roundRect(-11,-12,22,9,3); ctx.fill();
+  /* header direction chevron */
+  ctx.fillStyle='rgba(255,255,255,'+alpha+')';
   ctx.beginPath();
-  ctx.moveTo(-3.5,3.5); ctx.lineTo(0,-5); ctx.lineTo(3.5,3.5); ctx.closePath(); ctx.fill();
-  ctx.fillRect(-1.2,3.5,2.4,3);
-  /* chip legs */
-  ctx.fillStyle='rgba(165,243,252,'+alpha+')';
-  ctx.fillRect(-15,-15,4,4); ctx.fillRect(11,-15,4,4);
-  ctx.fillRect(-15,11,4,4); ctx.fillRect(11,11,4,4);
-  /* top sheen */
-  ctx.fillStyle='rgba(255,255,255,'+(0.55*alpha)+')';
-  ctx.fillRect(-6,-9,10,2);
+  ctx.moveTo(-4.5,-6.5); ctx.lineTo(0,-11.5); ctx.lineTo(4.5,-6.5); ctx.closePath(); ctx.fill();
+  /* header status LED — slow blink keeps the packet findable anywhere on the board */
+  var led=((t*1.4)%1)<0.6;
+  ctx.fillStyle=led?'rgba(74,222,128,'+(0.95*alpha)+')':'rgba(74,222,128,'+(0.28*alpha)+')';
+  ctx.fillRect(-9,-9,2.5,2.5);
+  /* PAYLOAD — the data body */
+  ctx.fillStyle='rgba(8,52,66,'+alpha+')';
+  roundRect(-11,-3,22,11,2); ctx.fill();
+  /* payload data bits — one twinkles at a time, like live traffic */
+  var bits=[-6,0,6], tw=Math.floor(t*3)%3;
+  for(var bi=0;bi<bits.length;bi++){
+    ctx.fillStyle=(bi===tw)?'rgba(255,255,255,'+(0.95*alpha)+')':'rgba(165,243,252,'+(0.55*alpha)+')';
+    ctx.fillRect(bits[bi]-1,1,2,2);
+  }
+  /* TRAILER — the checksum tail */
+  ctx.fillStyle='rgba(103,232,249,'+(0.7*alpha)+')';
+  ctx.fillRect(-6,9,12,2);
+  ctx.fillStyle='rgba(3,24,36,'+alpha+')';
+  ctx.fillRect(-2,9,4,2);
+  /* top sheen across the header */
+  ctx.fillStyle='rgba(255,255,255,'+(0.4*alpha)+')';
+  ctx.fillRect(-8,-12,16,2);
   ctx.restore();
 }
 /* physical docking port: metallic bay with guide rails, corner bolts and a standby LED. When a
@@ -3156,7 +3197,7 @@ function drawWaypoint(){
   var cx=cols[idx]*TILE+TILE/2;
   var t=world.worldTime;
   /* faint column guide: a soft vertical beam down the target column (traffic drives over it) */
-  var g=cachedGrad('waycol', function(){ var gg=ctx.createLinearGradient(0,0,0,H); gg.addColorStop(0,'rgba(103,232,249,0.16)'); gg.addColorStop(0.35,'rgba(103,232,249,0.07)'); gg.addColorStop(1,'rgba(103,232,249,0)'); return gg; });
+  var g=cachedGrad('waycol', function(){ var gg=ctx.createLinearGradient(0,0,0,H); gg.addColorStop(0,'rgba(103,232,249,0.10)'); gg.addColorStop(0.35,'rgba(103,232,249,0.05)'); gg.addColorStop(1,'rgba(103,232,249,0)'); return gg; });
   ctx.fillStyle=g;
   ctx.fillRect(cx-6,0,12,H);
   ctx.fillStyle='rgba(103,232,249,0.12)';
@@ -3166,7 +3207,7 @@ function drawWaypoint(){
   var by=10+pulse*2;
   ctx.save();
   ctx.globalAlpha=0.30+0.35*pulse;
-  glowRect(cx-13,by-9,26,18,'#67e8f9',12+8*pulse);
+  glowRect(cx-13,by-9,26,18,'#67e8f9',6+4*pulse);
   ctx.fillStyle='#67e8f9';
   ctx.beginPath();
   ctx.moveTo(cx-13,by-9); ctx.lineTo(cx,by); ctx.lineTo(cx+13,by-9); ctx.closePath(); ctx.fill();
@@ -3188,7 +3229,7 @@ function drawDockPort(x,y,w,h,si){
   var t=world.socketAnim[si]||0, active=t>0;
   var p=active? Math.max(0,1-t/SOCKET_ANIM_T) : 1;
   var pA=Math.min(1,p/0.4), pB=Math.min(1,Math.max(0,(p-0.4)/0.3)), pC=Math.min(1,Math.max(0,(p-0.7)/0.3));
-  var cx=x+w/2;
+  var cx=x+w/2, cy=y+h/2;
   /* port body: dark recess with seat shadow + metallic bezel */
   ctx.fillStyle='#02080c'; ctx.fillRect(x,y,w,h);
   var sg=cachedGrad('dockseat|'+y, function(){ var gg=ctx.createLinearGradient(0,y,0,y+h); gg.addColorStop(0,'rgba(0,0,0,0)'); gg.addColorStop(1,'rgba(0,0,0,.55)'); return gg; });
@@ -3199,75 +3240,75 @@ function drawDockPort(x,y,w,h,si){
   ctx.strokeRect(x+4,y+4,w-8,h-8);
   /* side guide rails: slots with rivet dots */
   ctx.fillStyle='#0a2a1c';
-  ctx.fillRect(x+3,y+8,3,h-16); ctx.fillRect(x+w-6,y+8,3,h-16);
+  ctx.fillRect(x+3,y+5,3,h-10); ctx.fillRect(x+w-6,y+5,3,h-10);
   ctx.fillStyle='rgba(134,239,172,.3)';
-  for(var rv=0;rv<5;rv++){ var ry=y+10+rv*((h-22)/4); ctx.fillRect(x+3,ry,3,1.5); ctx.fillRect(x+w-6,ry,3,1.5); }
+  for(var rv=0;rv<3;rv++){ var ry=y+6+rv*((h-14)/2); ctx.fillRect(x+3,ry,3,1.5); ctx.fillRect(x+w-6,ry,3,1.5); }
   /* corner bolts */
   ctx.fillStyle='#1c6b42';
   ctx.fillRect(x+1,y+1,2,2); ctx.fillRect(x+w-3,y+1,2,2);
   ctx.fillRect(x+1,y+h-3,2,2); ctx.fillRect(x+w-3,y+h-3,2,2);
   /* pogo pins along the seat */
   ctx.fillStyle='rgba(134,239,172,.35)';
-  for(var pn=0;pn<8;pn++){ ctx.fillRect(x+10,y+6+pn*((h-12)/7),4,2); ctx.fillRect(x+w-14,y+6+pn*((h-12)/7),4,2); }
+  for(var pn=0;pn<4;pn++){ ctx.fillRect(x+10,y+5+pn*((h-10)/3),4,2); ctx.fillRect(x+w-14,y+5+pn*((h-10)/3),4,2); }
   /* status LED: green locked / amber docking / standby orange */
   var occupied=world.goals[si];
   var ledCol = occupied? '#4ade80' : (active? '#facc15' : '#f59e0b');
-  var ledGlow = occupied? (6+8*(0.5+0.5*Math.sin(world.worldTime*4+si*1.2))) : (active? (8+4*Math.sin(world.worldTime*20)) : 4);
+  var ledGlow = occupied? (4+5*(0.5+0.5*Math.sin(world.worldTime*4+si*1.2))) : (active? (5+2*Math.sin(world.worldTime*20)) : 2.5);
   glowRect(cx-2,y+1,4,3,ledCol,ledGlow);
   ctx.fillStyle=ledCol;
   ctx.fillRect(cx-2,y+1,4,3);
   ctx.shadowBlur=0;
   if(occupied&&!active){ /* seated core: breathing glow + settled chip */
     var pulse=0.6+0.4*Math.sin(world.worldTime*4+si*1.2);
-    glowRect(x+9,y+9,w-18,h-18,'#4ade80',22*pulse);
+    glowRect(x+8,y+6,w-16,h-12,'#4ade80',9*pulse);
     ctx.fillStyle='rgba(74,222,128,'+(0.25+0.25*pulse)+')';
-    roundRect(x+9,y+9,w-18,h-18,6); ctx.fill();
+    roundRect(x+8,y+6,w-16,h-12,4); ctx.fill();
     ctx.shadowBlur=0;
-    drawCoreChip(x+6,y+14,w-12,h-28,pulse,si);
+    drawCoreChip(x+5,y+4,w-10,h-8,pulse,si);
     return;
   }
   if(!active){ /* empty port: dashed guide lane + pulsing INSERT chevron */
     ctx.strokeStyle='rgba(74,222,128,.3)'; ctx.lineWidth=1;
     ctx.setLineDash([2,3]);
-    ctx.beginPath(); ctx.moveTo(cx,y+8); ctx.lineTo(cx,y+h-8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx,y+5); ctx.lineTo(cx,y+h-5); ctx.stroke();
     ctx.setLineDash([]);
     var blink=0.5+0.5*Math.sin(world.worldTime*3+si);
     ctx.fillStyle='rgba(74,222,128,'+(0.18+0.2*blink)+')';
     ctx.beginPath();
-    ctx.moveTo(cx-6,y+h/2+7); ctx.lineTo(cx,y+h/2-5); ctx.lineTo(cx+6,y+h/2+7); ctx.closePath(); ctx.fill();
-    ctx.fillRect(cx-2,y+h/2+7,4,4);
+    ctx.moveTo(cx-6,cy+5); ctx.lineTo(cx,cy-4); ctx.lineTo(cx+6,cy+5); ctx.closePath(); ctx.fill();
+    ctx.fillRect(cx-2,cy+5,4,3);
     return;
   }
-  /* --- guided insertion sequence --- */
+  /* --- guided insertion sequence (compact single-row bay) --- */
   /* converging guide lasers while the packet descends */
   ctx.strokeStyle='rgba(74,222,128,'+(0.55*pA)+')'; ctx.lineWidth=1;
   ctx.beginPath();
-  ctx.moveTo(x+6,y+2); ctx.lineTo(cx-3,y+8+pA*36);
-  ctx.moveTo(x+w-6,y+2); ctx.lineTo(cx+3,y+8+pA*36);
+  ctx.moveTo(x+5,y+2); ctx.lineTo(cx-3,y+4+pA*(h-8));
+  ctx.moveTo(x+w-5,y+2); ctx.lineTo(cx+3,y+4+pA*(h-8));
   ctx.stroke();
-  /* sweep light: horizontal scan bar riding down the bay, fading as the descent completes */
+  /* sweep light: horizontal scan bar riding down the bay */
   ctx.save();
   ctx.globalCompositeOperation='lighter';
-  var sy=y+4+pA*(h-8), beamA=1-pA;
-  var beam=ctx.createLinearGradient(0,sy-3,0,sy+3);
+  var sy=y+3+pA*(h-6), beamA=1-pA;
+  var beam=ctx.createLinearGradient(0,sy-2,0,sy+2);
   beam.addColorStop(0,'rgba(74,222,128,0)'); beam.addColorStop(.5,'rgba(134,239,172,'+(0.8*beamA)+')'); beam.addColorStop(1,'rgba(74,222,128,0)');
-  ctx.fillStyle=beam; ctx.fillRect(x+3,sy-3,w-6,6);
+  ctx.fillStyle=beam; ctx.fillRect(x+3,sy-2,w-6,4);
   ctx.fillStyle='rgba(134,239,172,'+(0.3*beamA)+')';
-  ctx.fillRect(x+3,sy-6,w-6,2); ctx.fillRect(x+3,sy+4,w-6,2);
+  ctx.fillRect(x+3,sy-4,w-6,1); ctx.fillRect(x+3,sy+3,w-6,1);
   ctx.restore();
-  /* the packet: mini chip guided down into the seat, held at rest until the chip seats */
+  /* the packet: mini chip guided down into the seat */
   if(pA<1||pC===0){
-    var py=y+4+ease(Math.min(1,pA))*40;
+    var py=y+3+ease(Math.min(1,pA))*(h-8);
     ctx.save();
     ctx.translate(cx,py);
-    ctx.scale(0.42,0.42);
+    ctx.scale(0.30,0.30);
     drawPkt(0.95,0);
     ctx.restore();
   }
   /* clamp arms slide in and lock around the docked packet */
-  var armTop=y+30, armH=26;
-  var lx=x+3+pB*Math.max(0,cx-9-(x+3));
-  var rx=x+w-3-pB*Math.max(0,(x+w-3)-(cx+9));
+  var armTop=y+h*0.55, armH=Math.max(6,h*0.30);
+  var lx=x+3+pB*Math.max(0,cx-8-(x+3));
+  var rx=x+w-3-pB*Math.max(0,(x+w-3)-(cx+8));
   ctx.fillStyle='#1c6b42';
   roundRect(lx,armTop,3,armH,1.5); ctx.fill();
   roundRect(rx-3,armTop,3,armH,1.5); ctx.fill();
@@ -3283,43 +3324,42 @@ function drawDockPort(x,y,w,h,si){
     var pop=Math.sin(Math.min(1,pC)*Math.PI);
     var cp=0.6+0.4*Math.sin(world.worldTime*4+si*1.2);
     ctx.save();
-    ctx.translate(cx,y+34);
+    ctx.translate(cx,cy);
     ctx.scale(1+0.14*pop,1-0.14*pop);
-    ctx.translate(-cx,-(y+34));
-    glowRect(x+9,y+9,w-18,h-18,'#4ade80',16*pop);
+    ctx.translate(-cx,-cy);
+    glowRect(x+8,y+6,w-16,h-12,'#4ade80',7*pop);
     ctx.fillStyle='rgba(74,222,128,'+(0.2+0.3*pop)+')';
-    roundRect(x+9,y+9,w-18,h-18,6); ctx.fill();
-    drawCoreChip(x+6,y+14,w-12,h-28,cp,si);
+    roundRect(x+8,y+6,w-16,h-12,4); ctx.fill();
+    drawCoreChip(x+5,y+4,w-10,h-8,cp,si);
     ctx.shadowBlur=0;
     ctx.restore();
   }
 }
-/* delivered core: an IC chip seated in the socket */
+/* delivered core: an IC chip seated in the socket (compact for the single-row bay) */
 function drawCoreChip(x,y,w,h,pulse,i){
   var a=0.5+0.5*pulse;
   /* chip body */
-  ctx.fillStyle='#04180f'; roundRect(x+2,y+10,w-4,h-20,3); ctx.fill();
-  ctx.strokeStyle='rgba(74,222,128,'+a+')'; ctx.lineWidth=2; roundRect(x+2,y+10,w-4,h-20,3); ctx.stroke();
+  ctx.fillStyle='#04180f'; roundRect(x+2,y+5,w-4,h-10,2); ctx.fill();
+  ctx.strokeStyle='rgba(74,222,128,'+a+')'; ctx.lineWidth=2; roundRect(x+2,y+5,w-4,h-10,2); ctx.stroke();
   /* corner dots */
   ctx.fillStyle='rgba(217,255,233,'+(0.3+0.5*pulse)+')';
-  ctx.fillRect(x+6,y+14,3,3); ctx.fillRect(x+w-9,y+14,3,3);
+  ctx.fillRect(x+6,y+7,2,2); ctx.fillRect(x+w-8,y+7,2,2);
   /* side pins */
   ctx.fillStyle='rgba(217,255,233,'+(0.4+0.5*pulse)+')';
-  for(var pn=0;pn<4;pn++){
-    var py=y+13+pn*(h-30)/3;
-    ctx.fillRect(x-3,py-2,6,5); ctx.fillRect(x+w-3,py-2,6,5);
+  for(var pn=0;pn<3;pn++){
+    var py=y+6+pn*(h-14)/2;
+    ctx.fillRect(x-3,py-1,6,3); ctx.fillRect(x+w-3,py-1,6,3);
   }
   /* die traces */
   ctx.fillStyle='rgba(74,222,128,'+(0.4+0.5*pulse)+')';
-  var dx=x+10, dy=y+16, dw=w-20, dh=h-32;
-  for(var tr=0;tr<3;tr++){
-    ctx.fillRect(dx,dy+tr*(dh-2)/2,dw,2);
-    ctx.fillRect(dx+tr*dw/3+2,dy,dw/3-4,dh);
-  }
+  var dx=x+8, dy=y+8, dw=w-16, dh=h-16;
+  ctx.fillRect(dx,dy,dw,1);
+  ctx.fillRect(dx,dy+dh-1,dw,1);
+  ctx.fillRect(dx+2,dy,dw/2-4,dh);
   /* status LED */
-  glowRect(x+w-16,y+11,5,5,'#4ade80',10+12*pulse);
+  glowRect(x+w-12,y+6,4,4,'#4ade80',4+6*pulse);
   ctx.fillStyle='rgba(134,239,172,'+a+')';
-  ctx.fillRect(x+w-16,y+11,5,5);
+  ctx.fillRect(x+w-12,y+6,4,4);
   ctx.shadowBlur=0;
 }
 /* highway traffic (drawn facing RIGHT; mirrored for leftward lanes) */
@@ -3436,7 +3476,7 @@ function drawVehicle(v,h,vi){
 }
 function drawNodeIcon(x,y){
   var g=0.5+0.2*Math.sin(world.worldTime*2);
-  glowRect(x,y,22,22,'#4ade80',12);
+  glowRect(x,y,22,22,'#4ade80',5);
   ctx.fillStyle='rgba(74,222,128,'+g+')';
   ctx.beginPath();
   for(var a2=0;a2<6;a2++){
@@ -3462,7 +3502,7 @@ function drawNodeIcon(x,y){
 }
 function drawOriginIcon(x,y){
   var g=0.5+0.2*Math.sin(world.worldTime*2+1);
-  glowRect(x-1,y-1,22,22,'#22d3ee',12);
+  glowRect(x-1,y-1,22,22,'#22d3ee',5);
   ctx.fillStyle='rgba(34,211,238,'+g+')';
   roundRect(x-1,y-1,22,22,3); ctx.fill();
   ctx.shadowBlur=0;
@@ -3479,7 +3519,7 @@ function drawStatusLeds(){
   var y=H-16, seq=[['#4ade80',0],['#facc15',0.4],['#22d3ee',0.8]];
   for(var i=0;i<3;i++){
     var on=mod(world.worldTime+seq[i][1],2)<1;
-    glowRect(8+i*13,y,6,6,seq[i][0],on?8:0);
+    glowRect(8+i*13,y,6,6,seq[i][0],on?4:0);
     ctx.fillStyle=on?seq[i][0]:'#1e2a3a';
     ctx.fillRect(8+i*13,y,6,6);
     ctx.shadowBlur=0;
@@ -3495,7 +3535,7 @@ function drawShieldBadge(x,y){
   var grid=['.00000.','0.....0','0.....0','0.....0','0.....0','.0...0.','..0.0..','...0...'];
   ctx.save();
   ctx.translate(x,y-24+bob);
-  glowRect(-6,-9,12,14,'#67e8f9',8);
+  glowRect(-6,-9,12,14,'#67e8f9',4);
   drawPix(grid,{0:'#a5f3fc'},-Math.floor(grid[0].length*1.4/2),-8,1.4);
   ctx.restore();
 }
@@ -3520,7 +3560,7 @@ function drawHazardStripe(bus,bx,bw,lane,y,flip){
   ctx.fillRect(bx,y,bw,7);
   ctx.save();
   ctx.globalAlpha=0.3+0.7*pulse*intensity;
-  glowRect(bx,y,bw,7,col,2+11*pulse*intensity);
+  glowRect(bx,y,bw,7,col,1.5+5*pulse*intensity);
   ctx.fillStyle=col;
   var scroll=mod(world.worldTime*lane.speed*0.5*lane.dir,16);
   for(var dx=bx-16+scroll;dx<bx+bw+16;dx+=16){
@@ -3570,8 +3610,7 @@ function drawVehicles(){
       ctx.translate(-w/2,-h/2);
       drawVehicle(v,h,lane.var);
       ctx.restore();
-      /* hot edge outline */
-      glowRect(v.x,y,w,h,col,10);
+      /* hot edge outline: a crisp solid stroke — definition without a halo */
       ctx.strokeStyle=col; ctx.lineWidth=2;
       roundRect(v.x,y,w,h,5); ctx.stroke();
       ctx.shadowBlur=0;
@@ -3581,72 +3620,23 @@ function drawVehicles(){
 function drawBuses(){
   world.lanesB.forEach(function(lane){
     lane.buses.forEach(function(b){
-      var unsafe=b.unsafe; /* each log sinks on its own clock */
-      var warn=b.warn&&!unsafe; /* about-to-sink phase pulses amber */
+      var unsafe=b.unsafe; /* only buoys dive — barges never go under */
+      var warn=b.warn&&!unsafe; /* about-to-dive phase pulses amber */
       for(var k=-1;k<=1;k++){
         var bx=b.x+k*lane.period;
         if(bx>W+80||bx+b.w<-80) continue;
-        var y=lane.row*TILE+5, h=TILE-10;
-        /* a submerged log dips into the water, bobbing slightly */
-        if(unsafe) y+=3+Math.sin(world.worldTime*18+b.x*3)*1.5;
-        var col=unsafe? '#571224' : COLORS.busFill;
-        var edge=unsafe? (Math.sin(world.worldTime*20)>0?'#f87171':'#ef4444')
-              : (warn? (Math.sin(world.worldTime*10+b.x)>0?'#fbbf24':'#f59e0b') : COLORS.busEdge2);
-        /* solid ground shadow */
-        ctx.fillStyle='rgba(0,0,0,.5)';
-        roundRect(bx+2,y+4,b.w,h,5); ctx.fill();
-        /* deck with vertical depth gradient (cached per row + state) */
-        var g=cachedGrad('busbody|'+lane.row+'|'+(unsafe?1:0), function(){ var gg=ctx.createLinearGradient(0,y,0,y+h); gg.addColorStop(0, unsafe? '#6b1729' : '#10647f'); gg.addColorStop(.5, col); gg.addColorStop(1, unsafe? '#4a1020' : '#0a4052'); return gg; });
-        ctx.fillStyle=g;
-        roundRect(bx,y,b.w,h,5); ctx.fill();
-        /* edge glow */
-        glowRect(bx,y,b.w,h,edge,12);
-        ctx.strokeStyle=edge; ctx.lineWidth=2;
-        roundRect(bx,y,b.w,h,5); ctx.stroke();
-        ctx.shadowBlur=0;
-        /* grille texture */
-        ctx.fillStyle='rgba(0,0,0,.35)';
-        for(var tg=0;tg<Math.floor(b.w/10);tg++){ ctx.fillRect(bx+5+tg*10,y+6,3,h-12); }
-        ctx.fillStyle='rgba(103,232,249,.25)';
-        for(var tg2=0;tg2<Math.floor(b.w/20);tg2++){ ctx.fillRect(bx+8+tg2*20,y+3,8,2); ctx.fillRect(bx+8+tg2*20,y+h-5,8,2); }
-        /* insulators on the roof */
-        var nIns=Math.max(2,Math.floor(b.w/26));
-        for(var ii=0;ii<nIns;ii++){
-          var ix=bx+10+ii*(b.w-20)/Math.max(1,nIns-1);
-          ctx.fillStyle='#e2e8f0';
-          ctx.fillRect(ix-3,y-4,7,5);
-          ctx.fillStyle='rgba(103,232,249,.7)'; ctx.fillRect(ix-1,y-6,3,3);
-        }
-        /* live wire down the middle */
-        var glow=0.5+0.5*Math.sin(world.worldTime*6+bx);
-        glowRect(bx+8,y+h/2-2,b.w-16,4,edge,8*glow+6);
-        ctx.strokeStyle='rgba('+(unsafe?'248,113,113':'103,232,249')+','+(0.75+0.25*glow)+')';
-        ctx.lineWidth=3;
-        ctx.beginPath();
-        ctx.moveTo(bx+8,y+h/2);
-        ctx.lineTo(bx+b.w-8,y+h/2);
-        ctx.stroke();
-        ctx.shadowBlur=0;
-        /* hazard end caps */
-        for(var hz=0;hz<2;hz++){
-          var hx2=bx+(hz? b.w-10:4);
-          ctx.fillStyle='#facc15';
-          ctx.fillRect(hx2,y+4,4,h-8);
-          ctx.fillStyle='#111111';
-          ctx.fillRect(hx2+4,y+4,2,h-8);
-        }
-        /* collector arm on the front */
-        ctx.fillStyle=edge;
-        if(lane.dir>0) ctx.fillRect(bx+b.w-4,y-4,4,h+8);
-        else ctx.fillRect(bx,y-4,4,h+8);
+        if(b.kind==='buoy') drawBuoy(bx,lane,b,unsafe,warn);
+        else drawBarge(bx,lane,b,unsafe,warn);
       }
     });
   });
-  /* lit hazard tape framing each log that is about to sink — drawn after the buses
-     so the warning reads as a physical rail clipped to the log's own span */
+  /* lit hazard tape framing each buoy that is about to dive — drawn after the
+     platforms so the warning reads as a physical rail clipped to the buoy's span */
   world.lanesB.forEach(function(lane){
     lane.buses.forEach(function(b){
-      if(!b.sink||!b.warn) return;
+      /* tape only in the amber pre-dive window — once the middle dome is down the
+         platform is stable on two domes, so the alarm clears */
+      if(b.kind!=='buoy'||!b.sink||!b.warn||b.unsafe) return;
       for(var k=-1;k<=1;k++){
         var bx=b.x+k*lane.period;
         if(bx>W||bx+b.w<0) continue;
@@ -3655,6 +3645,114 @@ function drawBuses(){
       }
     });
   });
+}
+/* a floating data barge (Frogger's log): a solid deck that NEVER sinks */
+function drawBarge(bx,lane,b,unsafe,warn){
+  var y=lane.row*TILE+5, h=TILE-10;
+  var col=COLORS.busFill, edge=COLORS.busEdge2;
+  ctx.fillStyle='rgba(0,0,0,.5)';
+  roundRect(bx+2,y+4,b.w,h,5); ctx.fill();
+  var g=cachedGrad('busbody|'+lane.row, function(){ var gg=ctx.createLinearGradient(0,y,0,y+h); gg.addColorStop(0,'#10647f'); gg.addColorStop(.5,col); gg.addColorStop(1,'#0a4052'); return gg; });
+  ctx.fillStyle=g;
+  roundRect(bx,y,b.w,h,5); ctx.fill();
+  ctx.strokeStyle=edge; ctx.lineWidth=2;
+  roundRect(bx,y,b.w,h,5); ctx.stroke();
+  ctx.shadowBlur=0;
+  /* grille texture */
+  ctx.fillStyle='rgba(0,0,0,.35)';
+  for(var tg=0;tg<Math.floor(b.w/10);tg++){ ctx.fillRect(bx+5+tg*10,y+6,3,h-12); }
+  ctx.fillStyle='rgba(103,232,249,.25)';
+  for(var tg2=0;tg2<Math.floor(b.w/20);tg2++){ ctx.fillRect(bx+8+tg2*20,y+3,8,2); ctx.fillRect(bx+8+tg2*20,y+h-5,8,2); }
+  /* insulators on the roof */
+  var nIns=Math.max(2,Math.floor(b.w/26));
+  for(var ii=0;ii<nIns;ii++){
+    var ix=bx+10+ii*(b.w-20)/Math.max(1,nIns-1);
+    ctx.fillStyle='#e2e8f0';
+    ctx.fillRect(ix-3,y-4,7,5);
+    ctx.fillStyle='rgba(103,232,249,.7)'; ctx.fillRect(ix-1,y-6,3,3);
+  }
+  /* live wire down the middle */
+  var glow=0.5+0.5*Math.sin(world.worldTime*6+bx);
+  glowRect(bx+8,y+h/2-2,b.w-16,4,edge,4*glow+2);
+  ctx.strokeStyle='rgba(103,232,249,'+(0.75+0.25*glow)+')';
+  ctx.lineWidth=3;
+  ctx.beginPath();
+  ctx.moveTo(bx+8,y+h/2);
+  ctx.lineTo(bx+b.w-8,y+h/2);
+  ctx.stroke();
+  ctx.shadowBlur=0;
+  /* hazard end caps */
+  for(var hz=0;hz<2;hz++){
+    var hx2=bx+(hz? b.w-10:4);
+    ctx.fillStyle='#facc15';
+    ctx.fillRect(hx2,y+4,4,h-8);
+    ctx.fillStyle='#111111';
+    ctx.fillRect(hx2+4,y+4,2,h-8);
+  }
+  /* collector arm on the front */
+  ctx.fillStyle=edge;
+  if(lane.dir>0) ctx.fillRect(bx+b.w-4,y-4,4,h+8);
+  else ctx.fillRect(bx,y-4,4,h+8);
+}
+/* a relay buoy (Frogger's turtle): a triad of floating relay nodes that periodically
+   dive. warn = amber fast-pulse before the dive; unsafe = submerged (riding it drowns). */
+function drawBuoy(bx,lane,b,unsafe,warn){
+  var y=lane.row*TILE+5, h=TILE-10;
+  var n=3; /* Frogger turtle string: always a full triad of 3 domes, like the arcade's ( )( )( ) */
+  var step=b.w/n;
+  for(var i=0;i<n;i++){
+    var nx=bx+i*step+step/2;
+    var bob=Math.sin(world.worldTime*3+nx*0.05)*1.5;
+    /* Frogger partial dive: only the middle dome of the diving triad submerges;
+       the two outer domes stay up and boardable. */
+    var dives = unsafe && i===1;
+    var dy=dives? (7+Math.sin(world.worldTime*18+nx*3)*1.5) : 0;
+    var topY=y+dy+bob;
+    var col=dives? '#3b1d4f' : '#7c3aed';
+    var edge=dives? (Math.sin(world.worldTime*20+nx)>0?'#f87171':'#ef4444')
+          : (warn? (Math.sin(world.worldTime*10+nx)>0?'#fbbf24':'#f59e0b') : '#c084fc');
+    /* wake shadow */
+    ctx.fillStyle='rgba(0,0,0,.45)';
+    ctx.beginPath(); ctx.ellipse(nx,y+h-2,11,3,0,0,Math.PI*2); ctx.fill();
+    glowRect(nx-12,topY,24,16,col,5);
+    /* dome body */
+    ctx.fillStyle=col;
+    ctx.beginPath(); ctx.ellipse(nx,topY+10,11,7,0,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='rgba(0,0,0,.35)';
+    ctx.beginPath(); ctx.ellipse(nx,topY+10,11,7,0,0,Math.PI*2); ctx.stroke();
+    /* relay ring */
+    ctx.strokeStyle=edge; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.ellipse(nx,topY+6,7,4.5,0,0,Math.PI*2); ctx.stroke();
+    ctx.shadowBlur=0;
+    /* antenna mast + beacon */
+    var beacon=0.5+0.5*Math.sin(world.worldTime*5+nx*1.3);
+    ctx.strokeStyle='rgba(233,213,255,.7)'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(nx,topY+4); ctx.lineTo(nx,topY-4); ctx.stroke();
+    ctx.fillStyle=edge;
+    ctx.beginPath(); ctx.arc(nx,topY-5,2,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,'+(0.4+0.5*beacon)+')';
+    ctx.beginPath(); ctx.arc(nx,topY-5,1,0,Math.PI*2); ctx.fill();
+  }
+  /* dive countdown: exact seconds-to-submerge above a diving buoy. Neutral while
+     the triad is up, amber in the warn window, red while sinking — players can
+     read precisely when it will go under. Only the diving buoy shows one. */
+  if(b.sink){
+    var left=Math.max(0,b.sinkT);
+    var cdCol=unsafe? '#ff4d5e' : (warn? '#ffb020' : '#7dd3fc');
+    var txt=left.toFixed(1);
+    ctx.save();
+    ctx.font='7px '+(fontStack());
+    var tw=ctx.measureText(txt).width;
+    var cw=tw+10, ch=12, cx=bx+b.w/2, cy=y-14;
+    ctx.fillStyle='rgba(5,9,20,.88)';
+    ctx.fillRect(cx-cw/2,cy-ch/2,cw,ch);
+    ctx.strokeStyle=cdCol; ctx.lineWidth=1;
+    ctx.strokeRect(cx-cw/2+0.5,cy-ch/2+0.5,cw-1,ch-1);
+    ctx.fillStyle=cdCol;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(txt,cx,cy+0.5);
+    ctx.restore();
+  }
 }
 var PIX_PU={
   shield:['.00000.','0.....0','0.....0','0.....0','0.....0','.0...0.','..0.0..','...0...'],
@@ -3678,7 +3776,7 @@ function drawPowerups(){
             (pu.type==='overclock')? '#fb923c' :
             (pu.type==='throttle')? '#60a5fa' : '#e879f9';
     /* glowing plate */
-    glowRect(x-12,y-12,24,24,col,16);
+    glowRect(x-12,y-12,24,24,col,7);
     ctx.fillStyle='#081426';
     ctx.beginPath(); ctx.arc(x,y,12,0,Math.PI*2); ctx.fill();
     ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.stroke();
@@ -3696,12 +3794,12 @@ function drawDemoPlayer(){
   var pulse=0.6+0.4*Math.sin(world.worldTime*5);
   ctx.save();
   ctx.globalAlpha=0.95;
-  glowRect(x-13,y-13,26,26,'#22d3ee',18);
+  glowRect(x-15,y-15,30,30,'#22d3ee',8);
   ctx.strokeStyle='rgba(34,211,238,'+(0.7+0.3*pulse)+')'; ctx.lineWidth=3;
-  roundRect(x-13,y-13,26,26,5); ctx.stroke();
+  roundRect(x-15,y-15,30,30,6); ctx.stroke();
   ctx.shadowBlur=0;
   ctx.fillStyle='rgba(34,211,238,'+(0.16+0.1*pulse)+')';
-  roundRect(x-13,y-13,26,26,5); ctx.fill();
+  roundRect(x-15,y-15,30,30,6); ctx.fill();
   ctx.translate(x,y);
   drawPkt(0.9,p.facing||0);
   ctx.restore();
@@ -3741,21 +3839,21 @@ function drawPlayer(){
   ctx.translate(x,y-lift);
   ctx.scale(1+stretch,1-stretch);
   if(p.overclock>0){
-    glowRect(-17,-17,34,34,'#fb923c',22);
+    glowRect(-17,-17,34,34,'#fb923c',12);
     ctx.strokeStyle='rgba(251,146,60,.8)';
     ctx.beginPath(); ctx.arc(0,0,17,0,Math.PI*2); ctx.stroke();
     ctx.shadowBlur=0;
   }
   if(p.burst>0){
     var bp=0.55+0.45*Math.sin(world.worldTime*14);
-    glowRect(-21,-21,42,42,'#e879f9',28*bp);
+    glowRect(-21,-21,42,42,'#e879f9',14*bp);
     ctx.strokeStyle='rgba(232,121,249,'+(0.6+0.4*bp)+')'; ctx.lineWidth=3;
     ctx.beginPath(); ctx.arc(0,0,20,0,Math.PI*2); ctx.stroke();
     ctx.strokeStyle='rgba(232,121,249,.35)';
     ctx.beginPath(); ctx.arc(0,0,26,0,Math.PI*2); ctx.stroke();
     ctx.shadowBlur=0;
   }
-  glowRect(-14,-14,28,28,p.returnT>=0 ? '#67e8f9' : '#22d3ee', p.returnT>=0 ? 26 : 16);
+  glowRect(-15,-15,30,30,p.returnT>=0 ? '#67e8f9' : '#22d3ee', p.returnT>=0 ? 12 : 8);
   drawPkt(1,p.facing||0);
   ctx.shadowBlur=0;
   if(p.burst>0){ /* speed streak trails behind the packet */
@@ -3782,22 +3880,15 @@ function drawRushOverlay(){
   if(world.rushPhase==='idle') return;
   var p=world.rushPhase, t=world.worldTime;
   if(p==='warning'){
-    var a=0.20+0.12*Math.sin(t*16);
+    var a=0.13+0.08*Math.sin(t*16);
     ctx.strokeStyle='rgba(251,113,133,'+a+')'; ctx.lineWidth=4;
     ctx.strokeRect(3,3,W-6,H-6);
-    drawHazardBanner('RUSH HOUR INBOUND','rgba(251,113,133,'+(0.6+0.2*Math.sin(t*16))+')');
+    drawHazardBanner('RUSH HOUR INBOUND','rgba(251,113,133,'+(0.45+0.15*Math.sin(t*16))+')');
   } else {
-    var aa=0.24+0.12*Math.sin(t*10);
+    var aa=0.15+0.08*Math.sin(t*10);
     ctx.strokeStyle='rgba(251,146,60,'+aa+')'; ctx.lineWidth=4;
     ctx.strokeRect(3,3,W-6,H-6);
-    /* speed streaks across the lanes */
-    ctx.strokeStyle='rgba(250,204,21,'+(0.25+0.2*Math.sin(t*12))+')'; ctx.lineWidth=2;
-    for(var i=0;i<4;i++){
-      var lane=world.lanesH[i], y=lane.row*TILE+TILE/2;
-      var off=mod(t*340,60);
-      for(var x=-60+off;x<W;x+=60){ ctx.beginPath(); ctx.moveTo(x,y-8); ctx.lineTo(x+22,y-8); ctx.stroke(); }
-    }
-    drawHazardBanner('RUSH HOUR ×2','rgba(250,204,21,'+(0.6+0.2*Math.sin(t*12))+')');
+    drawHazardBanner('RUSH HOUR ×2','rgba(250,204,21,'+(0.45+0.15*Math.sin(t*12))+')');
   }
 }
 function drawDemoLabel(){
@@ -3857,7 +3948,7 @@ function drawParticles(){
       /* deep-water veil over the chip — fades out with it so no blob lingers */
       ctx.globalAlpha=0.45*(1-sk)*sk;
       ctx.fillStyle='#05202b';
-      ctx.beginPath(); ctx.arc(0,0,13,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(0,0,15,0,Math.PI*2); ctx.fill();
       ctx.restore();
       return;
     }
@@ -3894,15 +3985,15 @@ function drawParticles(){
       return;
     }
     if(p.shape==='pad'){
-      /* small landing-pad flash: blooms bright at the landing cell, then fades */
+      /* soft landing-pad bloom: a low-key pulse at the landing cell, then fades */
       var pk=Math.max(0,p.life/p.max);
-      var pr=10+6*pk;
+      var pr=8+5*pk;
       var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr);
-      grd.addColorStop(0,'rgba(255,255,255,'+(0.85*pk)+')');
+      grd.addColorStop(0,'rgba(255,255,255,'+(0.5*pk)+')');
       grd.addColorStop(0.4,p.color);
       grd.addColorStop(1,'rgba(0,0,0,0)');
       ctx.fillStyle=grd;
-      ctx.globalAlpha=pk;
+      ctx.globalAlpha=pk*0.8;
       ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2); ctx.fill();
       ctx.globalAlpha=1;
       return;
@@ -3918,7 +4009,7 @@ function drawParticles(){
 }
 function render(){
   ctx.save();
-  if(world.shake>0){ ctx.translate((Math.random()-0.5)*world.shake*9,(Math.random()-0.5)*world.shake*9); }
+  if(world.shake>0){ ctx.translate((Math.random()-0.5)*world.shake*5,(Math.random()-0.5)*world.shake*5); }
   /* death beat zoom: ease into the fragment point, then ease back once the UI fires */
   if(world.deathT>0||world.deathRelease>0){
     var zoom=1;
@@ -3944,7 +4035,7 @@ function render(){
   /* gentle full-screen colour cue: dim enough to never sting the eyes */
   if(world.flash>0){
     ctx.fillStyle=world.flashCol;
-    ctx.globalAlpha=world.flash*0.10;
+    ctx.globalAlpha=world.flash*0.06;
     ctx.fillRect(0,0,W,H);
     ctx.globalAlpha=1;
   }
@@ -4023,7 +4114,7 @@ function icoSVG(d,size){
 var last=performance.now();
 var perfSamples=[]; /* render() cost per frame (ms) — QA measurement */
 /* attract splash: cycle human one-liners under the logo on the title screen */
-var SPLASH_LINES=['PRESS START','GET THE PACKET HOME','BEAT THE CLOCK','WATCH THE SINKING BUSES','HOP THE BUSES — DODGE THE CARS'];
+var SPLASH_LINES=['PRESS START','GET THE PACKET HOME','BEAT THE CLOCK','RIDE THE BARGES — WATCH THE BUOYS','RIDE THE BARGES — DODGE THE CARS'];
 var SPLASH_T=2.4, splashIdx=0, splashT=0;
 var splashEl=$('splash-line');
 /* reduced-motion: static splash label, no cycling (re-reads on OS change) */
@@ -4368,7 +4459,22 @@ window.addEventListener('blur',function(){
   if (window.__B && window.__B.installed) return;
   var B = window.__B = window.__B || {};
   B.installed = true;
-  B.armed = false;
+  /* live-demo persistence: `armed` survives a page reload so a running demo
+     re-arms itself when the preview re-serves index.html. Stored in localStorage
+     (same origin as the game's own save), so headless runners that boot a fresh
+     profile still start disarmed until they explicitly set B.armed = true. */
+  var BOT_ARM_KEY = 'datarouter_bot_armed_v1';
+  var _botArmed = false;
+  try { _botArmed = JSON.parse(localStorage.getItem(BOT_ARM_KEY)) === true; } catch(e){ _botArmed = false; }
+  Object.defineProperty(B, 'armed', {
+    configurable: true,
+    enumerable: true,
+    get: function(){ return _botArmed; },
+    set: function(v){
+      _botArmed = !!v;
+      try { localStorage.setItem(BOT_ARM_KEY, JSON.stringify(_botArmed)); } catch(e){}
+    }
+  });
   B.diff = (__DR__.settings && __DR__.settings.difficulty) || '?';
   B.report = { diff: B.diff, attempts: [], deaths: [], clears: 0, ts: Date.now() };
   B.lastWorld = null;
@@ -4378,7 +4484,7 @@ window.addEventListener('blur',function(){
 
   var TILE = 40, W = 480;
   var KEYN = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'];
-  var HOP_N = 0.095, HOP_O = 0.055;
+  var HOP_N = 0.18, HOP_O = 0.12; /* Frogger-smooth hop transit */
   var HOME_X = 5 * TILE + TILE / 2; /* origin column (START_COL=5): crossing near the center leaves room to dodge both ways and avoids board-edge dead-ends */
 
   function mod(a, n){ return ((a % n) + n) % n; }
@@ -4423,21 +4529,34 @@ window.addEventListener('blur',function(){
     return true;
   };
 
+  /* is (px) on a boardable part of bus b at time t? Frogger partial dive: the
+     middle dome of a diving triad is down, so only the two outer domes count. */
+  B.onBus = function(b, bx, px, lane, t, pad){
+    var P = pad || 0;
+    if (b.sink && (b.sinkT - t) < lane.unsafeDur){
+      var step = b.w / 3;
+      if (px >= bx + P && px <= bx + step - P) return true;
+      if (px >= bx + 2 * step + P && px <= bx + b.w - P) return true;
+      return false;
+    }
+    return px >= bx + P && px <= bx + b.w - P;
+  };
+
   B.curBus = function(row, px){
-    var lane = ww().lanesB[row - 2];
+    var lane = ww().lanesB[row - 1];
     if (!lane) return null;
     for (var i = 0; i < lane.buses.length; i++){
       var b = lane.buses[i];
       for (var k = -1; k <= 1; k++){
         var bx = b.x + k * lane.period;
-        if (px >= bx && px <= bx + b.w) return b;
+        if (B.onBus(b, bx, px, lane, 0, 0)) return b;
       }
     }
     return null;
   };
 
   B.busAt = function(row, px, t, minSafe, pad){
-    var lane = ww().lanesB[row - 2];
+    var lane = ww().lanesB[row - 1];
     if (!lane) return null;
     var p = pad || 0, best = null, bestSafe = -1;
     for (var i = 0; i < lane.buses.length; i++){
@@ -4447,8 +4566,9 @@ window.addEventListener('blur',function(){
         var bx = bx0 + k * lane.period;
         /* pad: the landing point must land well INSIDE the bus, not within p px of
            an edge — execution lag (~1 frame) shifts the landing ~5px, and a landing
-           that clips the edge drops the player into the gap (instant SHORT CIRCUIT). */
-        if (px >= bx + p && px <= bx + b.w - p){
+           that clips the edge drops the player into the gap (instant SHORT CIRCUIT).
+           onBus also refuses the submerged middle dome of a diving triad. */
+        if (B.onBus(b, bx, px, lane, t, p)){
           var safeT = (!b.sink) ? 999 : (b.sinkT - t);
           if (safeT >= minSafe && safeT > bestSafe){ best = b; bestSafe = safeT; }
         }
@@ -4466,15 +4586,15 @@ window.addEventListener('blur',function(){
     var ride = b.v > 0 ? (W + 12 - landX) / b.v : (landX + 12) / -b.v;
     return ride >= minRide ? b : null;
   };
-  /* seconds until the current bus carries the player off the board edge */
+  /* seconds until the current platform carries the player off the board edge */
   B.timeToEdge = function(){
     var p = ww().player;
-    if (p.ty < 2 || p.ty > 4) return 999;
+    if (p.ty < 1 || p.ty > 5) return 999;
     var bus = B.curBus(p.ty, p.px);
     if (!bus) return 999;
     return bus.v > 0 ? (W + 12 - p.px) / bus.v : (p.px + 12) / -bus.v;
   };
-  /* last-ditch sinking/edge escape: hop sideways to a safe same-row bus */
+  /* last-ditch diving/edge escape: hop sideways to a safe same-row platform */
   B.sideEscape = function(row, px, curBus){
     var H = B.hopT();
     var dirs = (curBus.v > 0) ? [3, 1] : [1, 3];
@@ -4485,11 +4605,20 @@ window.addEventListener('blur',function(){
     }
     return false;
   };
+  /* is a sideways hop from (row, px) in direction dir safe to land (drift included)? */
+  B.sideSafe = function(row, px, dir){
+    var H = B.hopT();
+    var bus = B.curBus(row, px);
+    var v = bus ? bus.v : 0;
+    var landX = px + (dir === 1 ? TILE : -TILE) + v * H;
+    if (landX < 4 || landX > W - 4) return false;
+    return !!B.safeRide(row, landX, H, 1.0, 0.6);
+  };
 
   B.chainUp = function(px){
     var p = ww().player, H = B.hopT();
     var rows = [];
-    for (var rr = p.ty - 1; rr >= 5; rr--) rows.push(rr);
+    for (var rr = p.ty - 1; rr >= 6; rr--) rows.push(rr);
     var arrive = 0;
     for (var i = 0; i < rows.length; i++){
       var rr = rows[i];
@@ -4538,7 +4667,7 @@ window.addEventListener('blur',function(){
   B.hopUpSafe = function(px){
     var p = ww().player, r = p.ty, H = B.hopT();
     if (r <= 0) return false;
-    if (!B.cellClear(r, px, 0, 0.14)) return false;        /* transit out of current row */
+    if (!B.cellClear(r, px, 0, H + 0.04)) return false;    /* transit out of current row */
     /* clock-pressure ladder: with time to spare the bot requires a full verified
        escape; as the clock dies it relaxes and gambles rather than starve on the
        bank. depth=3 full chain, depth=2 medium, depth=1 landing-row-only gamble. */
@@ -4548,20 +4677,20 @@ window.addEventListener('blur',function(){
     var land = H - 0.05;                                    /* landing window start */
     if (!B.cellClear(r - 1, px, land, stand)) return false; /* landing row standing window */
     var L = r - 1;
-    if (L >= 6 && L <= 9){
+    if (L >= 7 && L <= 11){
       /* Escape-guarantee: every hop onto a traffic row must have a verified way off.
          Up-chain: the rows above must be clear at their hop-out times (trap-free).
          OR retreat: the row below (the row we're leaving) clear at retreat time —
          that's what real Frogger lane-by-lane play does, and it lets the bot enter
-         a row while row 9 is open instead of waiting for the whole chain. Row 9
-         from the bank always retreats to the bank. */
+         a row while row 11 is open instead of waiting for the whole chain. Row 11
+         from the origin always retreats to the origin deck. */
       var upOK = true;
-      for (var d = 1; d < depth && L - d >= 6; d++){
+      for (var d = 1; d < depth && L - d >= 7; d++){
         if (!B.cellClear(L - d, px, land + d * H, stand)){ upOK = false; break; }
       }
       if (upOK) return true;
       if (depth >= 2){
-        if (r >= 10) return true;                     /* retreat to the bank: always safe */
+        if (r >= 12) return true;                     /* retreat to the origin deck: always safe */
         if (B.cellClear(r, px, land + 2 * H, 0.25)) return true; /* row below clear at retreat */
       }
       return false;
@@ -4571,8 +4700,8 @@ window.addEventListener('blur',function(){
 
   B.retreatSafe = function(px){
     var p = ww().player, r = p.ty, H = B.hopT();
-    if (r >= 11) return false;
-    if (!B.cellClear(r, px, 0, 0.14)) return false;
+    if (r >= 12) return false;
+    if (!B.cellClear(r, px, 0, H + 0.04)) return false;
     /* landing window 0.25s: just enough for a 45ms re-eval + 95ms hop out, so the
        retreat ladder (8->9->bank) works instead of stranding the bot on a dead-end
        row because the landing lane only had a brief gap. */
@@ -4593,8 +4722,8 @@ window.addEventListener('blur',function(){
     for (var i = 0; i < dirs.length; i++){
       var d = dirs[i], nx = px + (d === 1 ? TILE : -TILE);
       if (nx < TILE / 2 || nx > W - TILE / 2) continue;
-      if (!B.cellClear(r, px, 0, 0.08)) continue;
-      if (!B.cellClear(r, nx, 0.03, H + 0.15)) continue;
+      if (!B.cellClear(r, px, 0, H * 0.8)) continue;
+      if (!B.cellClear(r, nx, 0.03, H + 0.18)) continue;
       B.press(d);
       return true;
     }
@@ -4657,19 +4786,20 @@ window.addEventListener('blur',function(){
 
     var goal = B.nextGoal(), goalC = goal * TILE + TILE / 2, r = p.ty;
 
-    if (r >= 10){
+    /* origin deck (12): chain through the highway to the median */
+    if (r >= 12){
       /* prefer the full-chain rush when all lanes open at once; otherwise enter
-         lane-by-lane like a careful human: single hop onto row 9, then the
-         r>=6 logic hops up / retreats with per-lane safety. */
+         lane-by-lane like a careful human: single hop onto row 11, then the
+         r>=7 logic hops up / retreats with per-lane safety. */
       if (B.chainUp(p.px)) B.press(0);
       else if (B.hopUpSafe(p.px)) B.press(0);
-      /* idle on the bank: drift toward the center column — the bank is safe, and
+      /* idle on the deck: drift toward the center column — the deck is safe, and
          waiting at the center avoids edge columns (where a dodge can strand the
          bot) and keeps both dodge directions open. */
       else if (Math.abs(HOME_X - p.px) > 30) B.press(HOME_X > p.px ? 1 : 3);
       return;
     }
-    if (r >= 6){
+    if (r >= 7){
       /* retreat only once a vehicle is genuinely approaching (ttv < 0.45) — that leaves
          the retreat-safe window wide enough (~0.3s, 6-7 re-eval ticks) to catch a gap in
          the landing row below, instead of firing at 0.25s when the transit check is
@@ -4684,60 +4814,71 @@ window.addEventListener('blur',function(){
          hop up when the next lane opens). */
       return;
     }
-    /* median (5): board a safe bus on row 4 that stays on-board; if none is
+    /* median (6): board a safe platform on row 5 that stays on-board; if none is
        available, drift toward the center column — the median is safe, and waiting
-       at the center avoids the board-edge dead-ends (row 4 carries right, so a bus
-       at the right edge can never be boarded; row 3 carries left) and samples
-       other bus phases. The grass row aligns the final approach to the goal. */
-    if (r === 5){
-      if (B.safeRide(4, p.px, B.hopT(), 2.0, 0.8)) B.press(0);
+       at the center avoids the board-edge dead-ends and samples platform phases. */
+    if (r === 6){
+      if (B.safeRide(5, p.px, B.hopT(), 2.0, 0.8)) B.press(0);
       else if (Math.abs(HOME_X - p.px) > 20) B.press(HOME_X > p.px ? 1 : 3);
       return;
     }
-    if (r >= 2 && r <= 4){
+    /* river rows (1-5) */
+    if (r >= 1 && r <= 5){
       var bus = B.curBus(r, p.px);
       var escape = (bus && bus.sink && bus.sinkT < 2.5) || B.timeToEdge() < 0.7;
       if (!bus){
         /* somehow in a gap (fatal on the next frame): leave immediately */
-        if (r === 2) B.press(0);                                      /* up to grass, always safe */
-        else if (r === 3){ if (B.safeRide(2, p.px, B.hopT(), 1.0, 1.0)) B.press(0); }
-        else if (r === 4 && B.retreatSafe(p.px)) B.press(2);          /* back to the median */
+        if (r === 5) B.press(2);                                      /* back to the median, always safe */
+        else if (r === 1){ if (Math.abs(goalC - p.px) <= 20) B.press(0); else if (B.safeRide(2, p.px, B.hopT(), 1.0, 1.0)) B.press(2); }
+        else { if (B.safeRide(r - 1, p.px, B.hopT(), 1.0, 1.0)) B.press(0); else if (B.safeRide(r + 1, p.px, B.hopT(), 1.0, 1.0)) B.press(2); }
         return;
       }
-      var arrivePx = p.px + bus.v * B.hopT(); /* hop endpoints drift with the current bus */
-      if (r === 2){
-        /* grass above is always safe: hop up when aligned, sinking, near the edge,
-           or the bus is carrying us away from the goal */
-        var away = (bus.v > 0 && goalC < p.px - 8) || (bus.v < 0 && goalC > p.px + 8);
-        if (escape || away || Math.abs(p.px - goalC) < 24) B.press(0);
+      var arrivePx = p.px + bus.v * B.hopT(); /* hop endpoints drift with the current platform */
+      if (r === 1){
+        /* top river row: hop into the socket when aligned with the goal band; a
+           diving/edge escape drops to a safe platform below first if one exists.
+           Check the ARRIVAL position (platform drift shifts the landing). */
+        var dx = goalC - arrivePx;
+        if (Math.abs(dx) <= 20) B.press(0);
+        else if (escape){ if (B.safeRide(2, arrivePx, B.hopT(), 1.5, 0.8)) B.press(2); else B.press(0); }
+        else if (dx > 20 && B.sideSafe(r, p.px, 1)) B.press(1);
+        else if (dx <= -20 && B.sideSafe(r, p.px, 3)) B.press(3);
+        /* reposition down a row only when the current platform is carrying us
+           AWAY from the socket; when the flow is toward the goal, stay put and
+           let the ride deliver us into the band (bouncing down here is what
+           starved the old bot into timeouts). */
+        else if (B.safeRide(2, arrivePx, B.hopT(), 2.0, 0.8) && !((dx > 20 && bus.v > 0) || (dx < -20 && bus.v < 0))) B.press(2);
         return;
       }
-      /* rows 3-4: hop up when a safe bus on the row above covers the arrival column */
+      /* rows 2-5: hop up when a safe platform on the row above covers the arrival column */
       var hopUp = function(minSafe){
         return B.safeRide(r - 1, arrivePx, B.hopT(), minSafe, 0.8);
       };
       if (escape){
         if (hopUp(1.5)) B.press(0);
-        else if (r === 4 && B.retreatSafe(p.px)) B.press(2);          /* row 4 -> median, always safe */
-        else if (B.sideEscape(r, p.px, bus)) return;                  /* sideways to a safe bus */
-        else if (hopUp(0.25)) B.press(0);                             /* last resort: any bus above */
+        else if (r === 5) B.press(2);                                 /* row 5 -> median, always safe */
+        else if (B.sideEscape(r, p.px, bus)) return;                  /* sideways to a safe platform */
+        else if (hopUp(0.25)) B.press(0);                             /* last resort: any platform above */
         return;
       }
       if (hopUp(2.0)) B.press(0);
       return;
     }
-    if (r === 1){
-      /* grass landings can be off-grid (bus drift), so align to the socket band
-         [goalC-20, goalC+20): hop toward the goal only while outside it, then up. */
-      var dx = goalC - p.px;
-      if (dx > 20) B.press(1);
-      else if (dx <= -20) B.press(3);
-      else B.press(0);
-      return;
-    }
+    /* r === 0: on a socket, the return flight takes over */
   };
 
   setInterval(B.tick, 45);
+
+  /* A persisted arm flag means the demo was live when the page was re-served:
+     kick a fresh route immediately instead of leaving the bot disarmed on the
+     title screen. One macrotask later so the booted menu is fully mounted. */
+  if (B.armed){
+    setTimeout(function(){
+      if (!B.armed) return;
+      var btn = document.querySelector('.mbtn[data-act="start"]');
+      if (btn) btn.click();
+    }, 0);
+  }
 })();
 /* ==== END TEMP-BOT ==== */
 </script>
