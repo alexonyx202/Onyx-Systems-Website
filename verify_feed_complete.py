@@ -152,7 +152,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "daily computer brief", "summer hours", "free diagnostic",
         "onsite", "open", "hours", "announcement", "welcome",
         "zero-days", "zero days", "ftc agent", "patch chrome",
-        "patch ", "alert", "wants your money", "crashstealer",
+        "patch ", "alert",        "wants your money", "crashstealer",
+        # Extended 2026-08-18: AmnesiaStealer fake-\"download\"-page browser-hijack
+        # alert (BleepingComputer) is a security alert (exempt), like crashstealer.
+        "take over your browser",
         "loaded with junk", "came loaded", "trialware", "debloat",
         # Extended 2026-07-18: FTC-impersonation scam brief is a security alert (exempt).
         "ftc",
