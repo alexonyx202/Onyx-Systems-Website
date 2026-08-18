@@ -14,7 +14,10 @@ Run this on deploy AFTER content changes so that:
     python3 scripts/stamp_build.py --date 20260816  # explicit date (testing/CI)
 
 Idempotent (reports SYNC when already stamped) and atomic per file (tmp + rename).
-Exit 0 on success, 1 on any error. Typical deploy flow:
+A file that has no token is SKIPPED with a warning instead of aborting the run, so
+one stale page can't block the rest of the deploy. Exit 0 on success (including
+skips); exit 1 only on a hard error such as a malformed --date or an unreadable
+file. Typical deploy flow:
 
     python3 scripts/regenerate_manifest.py   # manifests from games.json
     python3 scripts/stamp_build.py           # build tokens + sw.js cache
@@ -62,24 +65,27 @@ def eastern_today():
 
 
 def stamp_file(path, date):
+    """Stamp `date` into the file's freshness token.
+
+    Returns 'updated' (rewritten), 'sync' (already stamped), or 'missing'
+    (no token present — the caller skips it rather than failing the deploy).
+    """
     with open(path, "r", encoding="utf-8") as f:
         s = f.read()
     orig = s
     if os.path.basename(path) == SW:
         s, n = CACHE_RE.subn(r"\g<1>" + date + r"\g<2>", s)
-        if n == 0:
-            raise SystemExit("FATAL: %s: no 'CACHE = \\'onyx-vYYYYMMDD\\'' token found" % path)
     else:
         s, n = META_RE.subn(r"\g<1>" + date + r"\g<2>", s)
-        if n == 0:
-            raise SystemExit("FATAL: %s: no <meta name=\"onyx-build\" content=\"YYYYMMDD\"> token found" % path)
+    if n == 0:
+        return "missing"
     if s == orig:
-        return False
+        return "sync"
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         f.write(s)
     os.replace(tmp, path)
-    return True
+    return "updated"
 
 
 def main():
@@ -93,18 +99,29 @@ def main():
 
     targets = PAGES + [SW]
     changed = False
+    skipped = []
     for rel in targets:
         path = os.path.join(ROOT, rel)
-        if stamp_file(path, date):
+        status = stamp_file(path, date)
+        if status == "updated":
             changed = True
             print("UPDATED  %s  -> onyx-v%s" % (rel, date))
-        else:
+        elif status == "sync":
             print("SYNC     %s  (already stamped %s)" % (rel, date))
+        else:
+            skipped.append(rel)
+            print("SKIP     %s  (no freshness token — leaving as-is)" % rel, file=sys.stderr)
 
-    if not changed:
-        print("no changes — every freshness token already %s" % date)
-    else:
+    if skipped:
+        print("warning: skipped %d file(s) with no token: %s"
+              % (len(skipped), ", ".join(skipped)), file=sys.stderr)
+
+    if changed:
         print("stamped %s — remember to commit & push (GitHub Pages deploys automatically)" % date)
+    elif skipped:
+        print("no changes — %d file(s) skipped (no token present)" % len(skipped))
+    else:
+        print("no changes — every freshness token already %s" % date)
     return 0
 
 
