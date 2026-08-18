@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-18-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-18",
+      "title": "Fake 'Download' Pages Can Take Over Your Browser — Never Copy-Paste From a Website",
+      "tag": "Daily Brief",
+      "excerpt": "A new bad program called AmnesiaStealer is spreading through fake \"download\" pages. The page tells you to copy a command and paste it — and once it's in, it takes over the program you use to go on the internet and can steal your saved passwords. Real download pages never ask you to copy and paste commands. If one does, close the tab. Only download programs from the maker's real website, and keep your computer's free updates turned on.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-18-composite.jpg",
+      "comic": "assets/img/news/2026-08-18-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-17-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-17",
@@ -166,27 +183,23 @@
       "image": "assets/img/news/2026-08-14-composite.jpg",
       "comic": "assets/img/news/2026-08-14-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-13-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-13",
-      "title": "Fake CCleaner Download Pages Are Hiding Bad Programs — Check the Web Address First",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers built a fake website that looks exactly like the download page for CCleaner, a popular free cleanup program. People who downloaded it got a bad program hiding on their computer that could watch everything they typed and steal passwords and bank logins. The same trick is spreading with fake copies of 7-Zip and Adobe programs. Only download software from the company's official website — check the web address at the very top of your screen first. If you're not sure, close the page and ask me.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SecurityAlert",
-        "#Malware"
-      ],
-      "image": "assets/img/news/2026-08-13-composite.jpg",
-      "comic": "assets/img/news/2026-08-13-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-18-post-1",
+      "type": "news",
+      "date": "2026-08-18",
+      "title": "Internet down? Check the free Xfinity Outage Map before you blame your equipment — xfinity.com/support/statusmap",
+      "tag": "Tech Note",
+      "summary": "When your internet drops, first check whether the whole neighborhood is down. Open the Xfinity Outage Map at xfinity.com/support/statusmap, type in your service address, and it shows you if there's an outage and when it's expected back. If the map shows nothing, the trouble is inside your house — that's when you call the shop.",
+      "truth": "I see this all the time: a customer buys brand-new equipment because the internet went out, and it turns out the whole street was down and the cable company fixed it before they even got home. The honest answer is check the map first — it can save you a hundred dollars and a trip to the store.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-17-post-5",
       "type": "news",
@@ -245,19 +258,17 @@
       ]
     },
     {
-      "id": "onyx-2026-08-13-post-1",
-      "type": "news",
-      "date": "2026-08-13",
-      "title": "ChatGPT now lets free users text as much as they want — no subscription needed, just sign up free at chatgpt.com",
-      "tag": "Tech Note",
-      "summary": "OpenAI announced this week that free ChatGPT accounts can now send unlimited text messages — no paid plan required. Just open chatgpt.com on your computer, sign up for a free account, and start typing. Picture-making and file uploads still have their own limits, but everyday questions, email drafts, and homework help are wide open.",
-      "truth": "Most people don't realize how much a free tool like this can do for them. I see customers pay for things ChatGPT does for free — drafting a letter to your insurance company, explaining a confusing medical bill, writing a polite note to a landlord. You don't have to be \"good with computers\" to use it. You just type the question the same way you'd ask me across the counter.",
+      "id": "onyx-2026-08-18-post-2",
+      "type": "tip",
+      "date": "2026-08-18",
+      "title": "Can't open that file your bank or lawyer sent? 7-Zip opens it free — download at 7-zip.org",
+      "tag": "Tech Tip",
+      "summary": "Files that end in .zip or .rar are just folders squeezed into one file — and Windows won't open all of them. Download 7-Zip free from 7-zip.org, install it (takes about a minute), then right-click the file and choose \"7-Zip > Extract here\" to get your documents out.",
+      "truth": "Most people don't realize that when a file won't open, it's usually not broken — it's just bundled up. I've had customers delete an important file thinking it was corrupt when it was one right-click away from opening.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#AI",
-        "#ChatGPT"
+        "#ComputerRepair"
       ]
     },
     {
@@ -315,25 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-13-post-2",
-      "type": "tip",
-      "date": "2026-08-13",
-      "title": "Log in to Windows with your fingerprint instead of a password — Windows Hello is built in and free at Settings > Accounts > Sign-in options",
-      "tag": "Tech Tip",
-      "summary": "Windows Hello is built into Windows and lets you sign in with your fingerprint — nothing to remember, and nobody can guess it. If your laptop has the little fingerprint square near the keyboard, set it up in about two minutes at Settings > Accounts > Sign-in options and choose \"Fingerprint recognition.\" Microsoft just made the same sign-in work on desktop PCs with a plug-in fingerprint reader. It's free and already part of Windows.",
-      "truth": "Most people don't realize their password is the weakest link in their whole computer. I can't tell you how many customers use one password for everything — and when it leaks, crooks try it everywhere. A fingerprint can't be written on a sticky note or guessed by a stranger. That's why I set up fingerprint or PIN sign-in on every machine that leaves this shop.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows",
-        "#Security"
-      ]
     }
   ],
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

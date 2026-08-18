@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "items": [
+    {
+      "id": "n-2026-08-18",
+      "type": "newsletter",
+      "date": "2026-08-18",
+      "title": "Fake 'Download' Pages Can Take Over Your Browser — Never Copy-Paste From a Website",
+      "tag": "Daily Brief",
+      "summary": "A new bad program called AmnesiaStealer is spreading through fake \"download\" pages. The page tells you to copy a command and paste it — and once it's in, it takes over the program you use to go on the internet and can steal your saved passwords. Real download pages never ask you to copy and paste commands. If one does, close the tab. Only download programs from the maker's real website, and keep your computer's free updates turned on.",
+      "comic": "Newsletter - 2026-08-18-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-18-news1",
+      "type": "tech-note",
+      "date": "2026-08-18",
+      "title": "Internet down? Check the free Xfinity Outage Map before you blame your equipment — xfinity.com/support/statusmap",
+      "tag": "Tech Note",
+      "summary": "When your internet drops, first check whether the whole neighborhood is down. Open the Xfinity Outage Map at xfinity.com/support/statusmap, type in your service address, and it shows you if there's an outage and when it's expected back. If the map shows nothing, the trouble is inside your house — that's when you call the shop."
+    },
+    {
+      "id": "t-2026-08-18-tip1",
+      "type": "tech-note",
+      "date": "2026-08-18",
+      "title": "Can't open that file your bank or lawyer sent? 7-Zip opens it free — download at 7-zip.org",
+      "tag": "Tech Tip",
+      "summary": "Files that end in .zip or .rar are just folders squeezed into one file — and Windows won't open all of them. Download 7-Zip free from 7-zip.org, install it (takes about a minute), then right-click the file and choose \"7-Zip > Extract here\" to get your documents out."
+    },
     {
       "id": "n-2026-08-17",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Google Chrome shipped a new security update on August 11 — see if yours has it in 30 seconds at chrome://settings/help",
       "tag": "Tech Tip",
       "summary": "Google pushed out a Chrome security update on Tuesday, August 11, 2026 that closes five security holes. Open Chrome, type chrome://settings/help in the address bar, and Chrome will grab it for free — then restart the browser and you are done."
-    },
-    {
-      "id": "n-2026-08-14",
-      "type": "newsletter",
-      "date": "2026-08-14",
-      "title": "Fake 'FCC' Callers Say Your Number Is Under Investigation — Hang Up",
-      "tag": "Daily Brief",
-      "summary": "Scammers are calling and texting people, pretending to be from the FCC — the government agency that watches over phones and the internet. According to the FCC, they say your phone number is under investigation for criminal activity and demand money or personal information to make it stop. That's a lie — no real agency does that. If you get this call, hang up. Don't call the number they give you, don't pay anything, and don't share personal information with anyone who calls out of the blue.",
-      "comic": "Newsletter - 2026-08-14-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-14-news1",
-      "type": "tech-note",
-      "date": "2026-08-14",
-      "title": "A Windows update is putting some computers on a \"BitLocker recovery\" screen — find your recovery key now, free, at account.microsoft.com/devices/recoverykey",
-      "tag": "Tech Note",
-      "summary": "Microsoft's recent Windows updates have been sending some computers to a \"BitLocker recovery\" screen after they restart — that's the built-in lock that protects your files, and it asks for a 48-digit recovery key to prove the computer is yours. You can look yours up in about two minutes, before anything happens: sign in at `account.microsoft.com/devices/recoverykey` with the Microsoft account you use on that computer, and write the key down somewhere safe. If your machine was set up by an employer or a shop, ask whoever set it up."
-    },
-    {
-      "id": "t-2026-08-14-tip1",
-      "type": "tech-note",
-      "date": "2026-08-14",
-      "title": "Power flickers and your computer dies mid-work — a UPS keeps it running through outages, APC Back-UPS from about 60 dollars at apc.com",
-      "tag": "Tech Tip",
-      "summary": "A UPS — that's a power station your computer plugs into — keeps things running when the electricity blinks or goes out, long enough to save your work and turn the computer off the right way. APC Back-UPS is the one I recommend; find it at `apc.com`, or compare CyberPower at `cyberpowersystems.com`. You'll also see them at Best Buy and Office Depot. Get one big enough for your computer and monitor."
     }
   ]
 }
