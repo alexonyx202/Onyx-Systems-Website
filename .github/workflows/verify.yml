@@ -32,6 +32,9 @@ jobs:
       - name: Game links + assets resolve on disk
         run: node scripts/check_games_links.js
 
+      - name: Freshness tokens present (onyx-build meta + sw cache)
+        run: python3 scripts/check_freshness_tokens.py
+
   e2e:
     name: Browser pass (cards, copy, service worker, offline)
     runs-on: ubuntu-latest
