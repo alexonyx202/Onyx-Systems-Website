@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-19-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-19",
+      "title": "Hackers Are Breaking Into Windows Computers Right Now — Update Today",
+      "tag": "Daily Brief",
+      "excerpt": "The federal government's cyber-watchdog agency warned Wednesday that hackers are actively breaking into Windows computers through a weakness Microsoft already fixed back in April. If your computer hasn't installed the update, a crook can get in over the internet — no clicking, no tricking you — and take it over. The fix takes two minutes: press the Start button, type \"check for updates,\" open it, install whatever it finds, then turn your computer off and back on.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-19-composite.jpg",
+      "comic": "assets/img/news/2026-08-19-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-18-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-18",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-15-composite.jpg",
       "comic": "assets/img/news/2026-08-15-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-14-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-14",
-      "title": "Fake 'FCC' Callers Say Your Number Is Under Investigation — Hang Up",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are calling and texting people, pretending to be from the FCC — the government agency that watches over phones and the internet. According to the FCC, they say your phone number is under investigation for criminal activity and demand money or personal information to make it stop. That's a lie — no real agency does that. If you get this call, hang up. Don't call the number they give you, don't pay anything, and don't share personal information with anyone who calls out of the blue.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-14-composite.jpg",
-      "comic": "assets/img/news/2026-08-14-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-19-post-1",
+      "type": "news",
+      "date": "2026-08-19",
+      "title": "Firefox just shipped its August 18 security update — check yours free at firefox.com in 2 minutes",
+      "tag": "Tech Note",
+      "summary": "Open Firefox, click the three-line menu in the top corner, choose Help then About Firefox, and let it finish updating — it's free and takes about 2 minutes. If it says \"Firefox is up to date,\" you're good. If you don't have Firefox at all, download it free from firefox.com.",
+      "truth": "Most people don't realize their browser updates itself quietly — until an update gets stuck and they keep browsing on an old, unprotected copy. The honest answer is that the 2 minutes it takes to check Firefox is some of the cheapest insurance you'll ever buy, and I say that to everyone who walks in this door.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-18-post-1",
       "type": "news",
@@ -244,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-14-post-1",
-      "type": "news",
-      "date": "2026-08-14",
-      "title": "A Windows update is putting some computers on a \"BitLocker recovery\" screen — find your recovery key now, free, at account.microsoft.com/devices/recoverykey",
-      "tag": "Tech Note",
-      "summary": "Microsoft's recent Windows updates have been sending some computers to a \"BitLocker recovery\" screen after they restart — that's the built-in lock that protects your files, and it asks for a 48-digit recovery key to prove the computer is yours. You can look yours up in about two minutes, before anything happens: sign in at `account.microsoft.com/devices/recoverykey` with the Microsoft account you use on that computer, and write the key down somewhere safe. If your machine was set up by an employer or a shop, ask whoever set it up.",
-      "truth": "Most people don't realize their computer is secretly locked with a key they never knew existed. I see it all the time: the update runs overnight, the morning restart lands on that blue recovery screen, and suddenly it's a panic — \"John, is everything on my computer gone?\" The honest answer is, the files are fine; you just need the key. And the key is the easiest thing in the world to find while everything is working. Find it now, not at 9 p.m. in a hurry.",
+      "id": "onyx-2026-08-19-post-2",
+      "type": "tip",
+      "date": "2026-08-19",
+      "title": "Your computer has a check-engine light hidden inside — read it free with CrystalDiskInfo before it quits on you",
+      "tag": "Tech Tip",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info and open it. The big box at the top shows your computer's storage health — think of it as the check-engine light for the part that holds all your files. If it says \"Good,\" you're fine. If it says \"Caution\" or \"Bad,\" don't wait — bring the computer in and we'll save what we can while there's still time.",
+      "truth": "Most people don't realize that the part that holds your files usually gives weeks of warning before it dies — it just doesn't know how to tell you. I see this all the time: the warning was sitting there on the screen, nobody looked, and by the time the computer quit, the family pictures were gone for good.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-14-post-2",
-      "type": "tip",
-      "date": "2026-08-14",
-      "title": "Power flickers and your computer dies mid-work — a UPS keeps it running through outages, APC Back-UPS from about 60 dollars at apc.com",
-      "tag": "Tech Tip",
-      "summary": "A UPS — that's a power station your computer plugs into — keeps things running when the electricity blinks or goes out, long enough to save your work and turn the computer off the right way. APC Back-UPS is the one I recommend; find it at `apc.com`, or compare CyberPower at `cyberpowersystems.com`. You'll also see them at Best Buy and Office Depot. Get one big enough for your computer and monitor.",
-      "truth": "I see it all the time: somebody types for an hour, a storm rolls through, the lights flicker for half a second, and their work is gone — or worse, the computer won't start the next day. The honest answer is a $60 UPS costs less than the work you lose in one bad afternoon, and way less than a new machine. Florida power doesn't go out politely; it blinks, browns, and drops.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

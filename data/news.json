@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "items": [
+    {
+      "id": "n-2026-08-19",
+      "type": "newsletter",
+      "date": "2026-08-19",
+      "title": "Hackers Are Breaking Into Windows Computers Right Now — Update Today",
+      "tag": "Daily Brief",
+      "summary": "The federal government's cyber-watchdog agency warned Wednesday that hackers are actively breaking into Windows computers through a weakness Microsoft already fixed back in April. If your computer hasn't installed the update, a crook can get in over the internet — no clicking, no tricking you — and take it over. The fix takes two minutes: press the Start button, type \"check for updates,\" open it, install whatever it finds, then turn your computer off and back on.",
+      "comic": "Newsletter - 2026-08-19-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-19-news1",
+      "type": "tech-note",
+      "date": "2026-08-19",
+      "title": "Firefox just shipped its August 18 security update — check yours free at firefox.com in 2 minutes",
+      "tag": "Tech Note",
+      "summary": "Open Firefox, click the three-line menu in the top corner, choose Help then About Firefox, and let it finish updating — it's free and takes about 2 minutes. If it says \"Firefox is up to date,\" you're good. If you don't have Firefox at all, download it free from firefox.com."
+    },
+    {
+      "id": "t-2026-08-19-tip1",
+      "type": "tech-note",
+      "date": "2026-08-19",
+      "title": "Your computer has a check-engine light hidden inside — read it free with CrystalDiskInfo before it quits on you",
+      "tag": "Tech Tip",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info and open it. The big box at the top shows your computer's storage health — think of it as the check-engine light for the part that holds all your files. If it says \"Good,\" you're fine. If it says \"Caution\" or \"Bad,\" don't wait — bring the computer in and we'll save what we can while there's still time."
+    },
     {
       "id": "n-2026-08-18",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Microsoft's August Windows update closes 400+ security holes — get it tonight at Settings > Windows Update",
       "tag": "Tech Tip",
       "summary": "Microsoft shipped its August 2026 Windows update on Tuesday and says to install it within days — it closes more than 400 security holes in Windows. Open Settings > Windows Update, click Check for updates, let it finish, and restart your computer once. Free, and it takes about ten minutes."
-    },
-    {
-      "id": "n-2026-08-15",
-      "type": "newsletter",
-      "date": "2026-08-15",
-      "title": "School's Back — So Are the Back-to-School Scams: Fake Laptop Deals and 'School' Emails",
-      "tag": "Daily Brief",
-      "summary": "School's back, and scammers are working the season. Crooks set up fake online stores advertising laptops at prices too good to be true — they take your money and card number, then vanish. Others send emails that look like they're from your child's school, asking you to log in or pay a fee. Real schools never do that. Type the store's web address yourself instead of clicking a link, and call the school using the number you already have if anything feels off.",
-      "comic": "Newsletter - 2026-08-15-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-15-news1",
-      "type": "tech-note",
-      "date": "2026-08-15",
-      "title": "Your computer forgets the time and date every morning? The tiny silver coin cell inside is worn out — about $2 at Walmart, CVS, or Amazon",
-      "tag": "Tech Note",
-      "summary": "If your computer shows the wrong time and date every time you switch it on, the small round silver coin cell inside the case has run out of life. A fresh one costs about two dollars, and you can get it at Walmart, CVS, or Amazon — or a shop can put it in while you wait."
-    },
-    {
-      "id": "t-2026-08-15-tip1",
-      "type": "tech-note",
-      "date": "2026-08-15",
-      "title": "Google Chrome shipped a new security update on August 11 — see if yours has it in 30 seconds at chrome://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Google pushed out a Chrome security update on Tuesday, August 11, 2026 that closes five security holes. Open Chrome, type chrome://settings/help in the address bar, and Chrome will grab it for free — then restart the browser and you are done."
     }
   ]
 }
