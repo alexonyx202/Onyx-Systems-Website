@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-19",
+  "updated": "2026-08-20",
   "items": [
+    {
+      "id": "n-2026-08-20",
+      "type": "newsletter",
+      "date": "2026-08-20",
+      "title": "Scammers Are Posing as Computer 'Rescue' Companies — Don't Pay Them a Dime",
+      "tag": "Daily Brief",
+      "summary": "Crooks are now posing as computer \"rescue\" companies to steal money. Researchers say a group calling itself Ransom Busters has been emailing people right after their computers are attacked — sometimes before the attack is even public — and offering to \"recover\" their files for a fee. Researchers believe the \"rescuers\" are the same crooks behind the attacks. If you get an email or call like this, don't pay, don't reply, and don't call the number in the message. Real help never comes from a stranger demanding money.",
+      "comic": "Newsletter - 2026-08-20-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-20-news1",
+      "type": "tech-note",
+      "date": "2026-08-20",
+      "title": "Hackers found a way into Macs over the internet and are using them to mine digital money — update macOS today",
+      "tag": "Tech Note",
+      "summary": "Open System Settings, click General, then Software Update, and install whatever Apple offers — it's free and takes about 10 minutes. If you can't update right away, you can also turn off Screen Sharing (System Settings → General → Sharing → Screen Sharing) unless you actually use it."
+    },
+    {
+      "id": "t-2026-08-20-tip1",
+      "type": "tech-note",
+      "date": "2026-08-20",
+      "title": "Your PC feels slow? Task Manager shows what's eating it — built into Windows, press Ctrl+Shift+Esc",
+      "tag": "Tech Tip",
+      "summary": "Press Ctrl+Shift+Esc to open Task Manager — it's built into Windows and shows every program running on your computer. Look at the top of the list: whatever is using the most working memory is usually the troublemaker. To close a stuck program, click it, then click End Task."
+    },
     {
       "id": "n-2026-08-19",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Email says 'file too big'? WeTransfer sends it free — no account needed at wetransfer.com",
       "tag": "Tech Tip",
       "summary": "Go to wetransfer.com, add your file (up to 3 GB free), type the person's email address, and hit send — they get a link to download it. No account, no software, works in any browser."
-    },
-    {
-      "id": "n-2026-08-16",
-      "type": "newsletter",
-      "date": "2026-08-16",
-      "title": "Fake Job Offer Emails Are Installing Bad Programs — Don't Open the Attachment",
-      "tag": "Daily Brief",
-      "summary": "Scammers are sending fake job offer emails — notes about a \"position\" you never applied for, with a file attached. Opening that file quietly installs a bad program on your computer, and security researchers say this newest wave is already spreading. If a job offer shows up out of nowhere, don't open the attachment. Delete the message. Looking for work? Go straight to the company's website and apply there. Never click a link in an email that's trying to hand you a job you didn't ask for.",
-      "comic": "Newsletter - 2026-08-16-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-16-news1",
-      "type": "tech-note",
-      "date": "2026-08-16",
-      "title": "Type with your voice for free — Windows Voice Typing is built into Windows 11, press the Windows key + H",
-      "tag": "Tech Note",
-      "summary": "Click into any text box, press the Windows key + H, and start talking — Windows Voice Typing types your words for you, free, with nothing to download. It's already on your Windows 11 computer; if nothing happens, check that the microphone is turned on at Settings > Privacy & security > Microphone."
-    },
-    {
-      "id": "t-2026-08-16-tip1",
-      "type": "tech-note",
-      "date": "2026-08-16",
-      "title": "Microsoft's August Windows update closes 400+ security holes — get it tonight at Settings > Windows Update",
-      "tag": "Tech Tip",
-      "summary": "Microsoft shipped its August 2026 Windows update on Tuesday and says to install it within days — it closes more than 400 security holes in Windows. Open Settings > Windows Update, click Check for updates, let it finish, and restart your computer once. Free, and it takes about ten minutes."
     }
   ]
 }

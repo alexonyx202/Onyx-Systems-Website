@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-20-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-20",
+      "title": "Scammers Are Posing as Computer 'Rescue' Companies — Don't Pay Them a Dime",
+      "tag": "Daily Brief",
+      "excerpt": "Crooks are now posing as computer \"rescue\" companies to steal money. Researchers say a group calling itself Ransom Busters has been emailing people right after their computers are attacked — sometimes before the attack is even public — and offering to \"recover\" their files for a fee. Researchers believe the \"rescuers\" are the same crooks behind the attacks. If you get an email or call like this, don't pay, don't reply, and don't call the number in the message. Real help never comes from a stranger demanding money.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-20-composite.jpg",
+      "comic": "assets/img/news/2026-08-20-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-19-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-19",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-16-composite.jpg",
       "comic": "assets/img/news/2026-08-16-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-15-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-15",
-      "title": "School's Back — So Are the Back-to-School Scams: Fake Laptop Deals and 'School' Emails",
-      "tag": "Daily Brief",
-      "excerpt": "School's back, and scammers are working the season. Crooks set up fake online stores advertising laptops at prices too good to be true — they take your money and card number, then vanish. Others send emails that look like they're from your child's school, asking you to log in or pay a fee. Real schools never do that. Type the store's web address yourself instead of clicking a link, and call the school using the number you already have if anything feels off.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-15-composite.jpg",
-      "comic": "assets/img/news/2026-08-15-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-20-post-1",
+      "type": "news",
+      "date": "2026-08-20",
+      "title": "Hackers found a way into Macs over the internet and are using them to mine digital money — update macOS today",
+      "tag": "Tech Note",
+      "summary": "Open System Settings, click General, then Software Update, and install whatever Apple offers — it's free and takes about 10 minutes. If you can't update right away, you can also turn off Screen Sharing (System Settings → General → Sharing → Screen Sharing) unless you actually use it.",
+      "truth": "Most people don't realize their Mac has a feature called Screen Sharing that lets another computer take over the screen — and on many machines it's left on without anyone knowing. The honest answer is that this isn't a Mac problem to panic about, it's an update problem: install the fix and the hole is closed.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-19-post-1",
       "type": "news",
@@ -244,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-15-post-1",
-      "type": "news",
-      "date": "2026-08-15",
-      "title": "Your computer forgets the time and date every morning? The tiny silver coin cell inside is worn out — about $2 at Walmart, CVS, or Amazon",
-      "tag": "Tech Note",
-      "summary": "If your computer shows the wrong time and date every time you switch it on, the small round silver coin cell inside the case has run out of life. A fresh one costs about two dollars, and you can get it at Walmart, CVS, or Amazon — or a shop can put it in while you wait.",
-      "truth": "I see this all the time: somebody brings in a computer that's wrong on the clock every single morning, and they've been fixing the time by hand for months without ever wondering why. Most people don't realize there's a little silver watch-style cell inside the computer that keeps the clock running when the power is off — the same idea as the battery in a wall clock. It quietly does its job for years, and when it wears out, the computer loses the time and date every time you shut it down or unplug it. You can get a fresh one for about two dollars at Walmart, CVS, or Amazon, or bring it by the shop and we'll put it in while you wait. The honest answer is it's a two-dollar part and a quick job, not a reason to shop for a new computer.",
+      "id": "onyx-2026-08-20-post-2",
+      "type": "tip",
+      "date": "2026-08-20",
+      "title": "Your PC feels slow? Task Manager shows what's eating it — built into Windows, press Ctrl+Shift+Esc",
+      "tag": "Tech Tip",
+      "summary": "Press Ctrl+Shift+Esc to open Task Manager — it's built into Windows and shows every program running on your computer. Look at the top of the list: whatever is using the most working memory is usually the troublemaker. To close a stuck program, click it, then click End Task.",
+      "truth": "Most people don't realize that \"slow computer\" almost always has a name — a program quietly running in the background. I see this all the time: it's not that the computer is old, it's that something is hogging it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-15-post-2",
-      "type": "tip",
-      "date": "2026-08-15",
-      "title": "Google Chrome shipped a new security update on August 11 — see if yours has it in 30 seconds at chrome://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Google pushed out a Chrome security update on Tuesday, August 11, 2026 that closes five security holes. Open Chrome, type chrome://settings/help in the address bar, and Chrome will grab it for free — then restart the browser and you are done.",
-      "truth": "Most people don't realize their browser updates itself in the background — until it asks for a restart, and the restart never happens. The honest answer is that the browser holding your banking and your email is only as safe as its latest update. I see machines come in running browsers that haven't restarted in months, and that's the door crooks walk through. Thirty seconds once in a while beats a long afternoon at the shop.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-19",
+  "updated": "2026-08-20",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
