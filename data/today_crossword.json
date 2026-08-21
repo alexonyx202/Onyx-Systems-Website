@@ -1,203 +1,205 @@
 {
   "title": "Computer",
-  "size": 26,
+  "size": 28,
   "grid": [
-    "..............M...........",
-    "..............i...........",
-    "..............Chat........",
-    "..............r...........",
-    "......B.......o.......P...",
-    "......l.K....Speaker..a...",
-    "Headphones....h.......s...",
-    "......g.y....MonitOr..s...",
-    "........b.....n...n...w...",
-    "........o...U.Email...o.W.",
-    ".......Backup.....Internet",
-    "......M.r...l.....n...d.b.",
-    ".Download...Offline....USB",
-    "......u.....a...........i.",
-    "..Virus.....d...........t.",
-    "......e............Printer",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    ".........................."
+    "......T.....................",
+    "......a.....................",
+    "......s..........M..G.......",
+    "......k....Download.o.......",
+    "......b...S......s..o.......",
+    ".....Laptop.I.Booting.......",
+    "......r...e.c....e..l.......",
+    ".........Memorycard.e.......",
+    "..........d.n....c..........",
+    "......Windows.B..a..........",
+    "....J.....m...r..r..........",
+    "AdaLovelace...o..d........D.",
+    "....y.....t...w...........e.",
+    "....s....Refresh..........s.",
+    "....t.....r...e...........k.",
+    "Hybrid......WirelesSFidelity",
+    "....c.......e......o......o.",
+    "....k.......b......u......p.",
+    "............a....Interview..",
+    "............d......h........",
+    "............d......A........",
+    "............r......f........",
+    "............e......r........",
+    "............s......i........",
+    "............s......c........",
+    "...................a........",
+    "............................",
+    "............................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 15,
-        "len": 4,
-        "answer": "Chat",
-        "clue": "To communicate with others in real-time through text or video messages"
+        "num": 4,
+        "row": 4,
+        "col": 12,
+        "len": 8,
+        "answer": "Download",
+        "clue": "To copy an information from the internet to your computer"
       },
       {
         "num": 6,
         "row": 6,
-        "col": 14,
-        "len": 7,
-        "answer": "Speaker",
-        "clue": "A device that produces sound from the computer"
-      },
-      {
-        "num": 7,
-        "row": 7,
-        "col": 1,
-        "len": 10,
-        "answer": "Headphones",
-        "clue": "A pair of devices worn over the ears to listen to audio from the computer"
+        "col": 6,
+        "len": 6,
+        "answer": "Laptop",
+        "clue": "An example of digital computer"
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 14,
+        "row": 6,
+        "col": 15,
         "len": 7,
-        "answer": "MonitOr",
-        "clue": "A screen that displays information from the computer"
+        "answer": "Booting",
+        "clue": "The process begins when the computer is turned on"
       },
       {
-        "num": 11,
+        "num": 9,
+        "row": 8,
+        "col": 10,
+        "len": 10,
+        "answer": "Memorycard",
+        "clue": "A type of storage device"
+      },
+      {
+        "num": 10,
         "row": 10,
-        "col": 15,
-        "len": 5,
-        "answer": "Email",
-        "clue": "Electronic mail, a system for sending and receiving messages online"
+        "col": 7,
+        "len": 7,
+        "answer": "Windows",
+        "clue": "Allows you to use different applications at the same time"
       },
       {
         "num": 13,
-        "row": 11,
-        "col": 8,
-        "len": 6,
-        "answer": "Backup",
-        "clue": "A copy of files or data made for safekeeping or recovery"
+        "row": 12,
+        "col": 1,
+        "len": 11,
+        "answer": "AdaLovelace",
+        "clue": "One of the first women in computer"
       },
       {
-        "num": 14,
-        "row": 11,
-        "col": 19,
-        "len": 8,
-        "answer": "Internet",
-        "clue": "A global network that connects computers worldwide"
+        "num": 15,
+        "row": 14,
+        "col": 10,
+        "len": 7,
+        "answer": "Refresh",
+        "clue": "The feature of a browser that enables you to open the latest copy of a webpage"
       },
       {
         "num": 16,
-        "row": 13,
-        "col": 2,
-        "len": 8,
-        "answer": "Download",
-        "clue": "To transfer data or files from the internet to the computer"
+        "row": 16,
+        "col": 1,
+        "len": 6,
+        "answer": "Hybrid",
+        "clue": "A combination of analog and digital computer"
       },
       {
         "num": 17,
-        "row": 13,
+        "row": 16,
         "col": 13,
-        "len": 7,
-        "answer": "Offline",
-        "clue": "Not connected to the internet or not actively using it"
-      },
-      {
-        "num": 18,
-        "row": 13,
-        "col": 24,
-        "len": 3,
-        "answer": "USB",
-        "clue": "Universal Serial Bus, a common interface for connecting devices to the computer"
+        "len": 16,
+        "answer": "WirelesSFidelity",
+        "clue": "The full meaning of WI-FI"
       },
       {
         "num": 19,
-        "row": 15,
-        "col": 3,
-        "len": 5,
-        "answer": "Virus",
-        "clue": "A malicious software program that can harm computer systems"
-      },
-      {
-        "num": 20,
-        "row": 16,
-        "col": 20,
-        "len": 7,
-        "answer": "Printer",
-        "clue": "A machine that prints text and images on paper"
+        "row": 19,
+        "col": 18,
+        "len": 9,
+        "answer": "Interview",
+        "clue": "An example of data collection"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 15,
+        "col": 7,
+        "len": 7,
+        "answer": "Taskbar",
+        "clue": "Contains the system tray and start button"
+      },
+      {
+        "num": 2,
+        "row": 3,
+        "col": 18,
         "len": 10,
-        "answer": "MiCrophonE",
-        "clue": "A device used to capture audio or sound input"
+        "answer": "Mastercard",
+        "clue": "Used for online shopping"
       },
       {
         "num": 3,
-        "row": 5,
-        "col": 7,
-        "len": 4,
-        "answer": "Blog",
-        "clue": "An online journal or informational website where individuals or groups share their thoughts and opinions"
-      },
-      {
-        "num": 4,
-        "row": 5,
-        "col": 23,
-        "len": 8,
-        "answer": "Password",
-        "clue": "A secret combination of letters, numbers, or symbols used to protect access to the computer or online accounts"
+        "row": 3,
+        "col": 21,
+        "len": 6,
+        "answer": "Google",
+        "clue": "An example of search engine"
       },
       {
         "num": 5,
+        "row": 5,
+        "col": 11,
+        "len": 11,
+        "answer": "Speedometer",
+        "clue": "An example of analog computer"
+      },
+      {
+        "num": 7,
         "row": 6,
-        "col": 9,
-        "len": 8,
-        "answer": "Keyboard",
-        "clue": "A device with buttons used for typing and inputting commands"
-      },
-      {
-        "num": 9,
-        "row": 8,
-        "col": 19,
-        "len": 6,
-        "answer": "OnlIne",
-        "clue": "Connected to or available through the internet"
-      },
-      {
-        "num": 10,
-        "row": 10,
         "col": 13,
-        "len": 6,
-        "answer": "UplOad",
-        "clue": "To transfer data or files from the computer to the internet"
+        "len": 5,
+        "answer": "Icons",
+        "clue": "A representation of programs using pictures"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 15,
+        "len": 7,
+        "answer": "Browser",
+        "clue": "A program that enables you interact with information on the world wide web"
       },
       {
         "num": 12,
-        "row": 10,
-        "col": 25,
-        "len": 7,
-        "answer": "WebSite",
-        "clue": "A collection of web pages accessed through the internet"
+        "row": 11,
+        "col": 5,
+        "len": 8,
+        "answer": "Joystick",
+        "clue": "An input device"
       },
       {
-        "num": 15,
+        "num": 14,
         "row": 12,
-        "col": 7,
-        "len": 5,
-        "answer": "Mouse",
-        "clue": "A device that moves the cursor on the computer screen"
+        "col": 27,
+        "len": 7,
+        "answer": "Desktop",
+        "clue": "A rectangular workspace where you can access everything on your computer"
+      },
+      {
+        "num": 17,
+        "row": 16,
+        "col": 13,
+        "len": 10,
+        "answer": "Webaddress",
+        "clue": "Another name for URL"
+      },
+      {
+        "num": 18,
+        "row": 16,
+        "col": 20,
+        "len": 11,
+        "answer": "SouthAfrica",
+        "clue": "A top leading African country in technology"
       }
     ]
   },
   "category": "",
-  "source_url": "https://crosswordlabs.com/view/computer-7608",
-  "slug": "computer-7608",
-  "fetched_at": "2026-07-25T16:50:57.706831+00:00",
-  "date": "2026-08-20"
+  "source_url": "https://crosswordlabs.com/view/computer-8007",
+  "slug": "computer-8007",
+  "fetched_at": "2026-07-25T16:50:57.123711+00:00",
+  "date": "2026-08-21"
 }
