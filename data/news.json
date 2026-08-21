@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-20",
+  "updated": "2026-08-21",
   "items": [
+    {
+      "id": "n-2026-08-21",
+      "type": "newsletter",
+      "date": "2026-08-21",
+      "title": "Healthcare Company CareCloud Confirms Data Breach Affecting 3.7 Million Patients",
+      "tag": "Daily Brief",
+      "summary": "Healthcare technology company CareCloud confirmed a massive data breach that exposed personal information of 3.7 million patients, according to a report by BleepingComputer on August 19, 2026. If you or a family member received care from a medical provider that uses CareCloud systems, your name, contact details, and health-related information may have been compromised. Here's what to do right now: call your healthcare provider's office and ask if they use CareCloud, then place a free fraud alert on your credit reports by calling Equifax at 1-800-525-6285, Experian at 1-888-397-3742, or TransUnion at 1-800-680-7289.",
+      "comic": "Newsletter - 2026-08-21-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-21-news1",
+      "type": "tech-note",
+      "date": "2026-08-21",
+      "title": "Government warns ransomware gangs are targeting Windows computers right now — Windows Update keeps you safe",
+      "tag": "Tech Note",
+      "summary": "CISA (the government's cybersecurity agency) confirmed that ransomware gangs are actively using a Windows flaw to take full control of computers. Open Settings, click Windows Update, and click \"Check for updates\" — it takes 2 minutes and keeps you safe."
+    },
+    {
+      "id": "t-2026-08-21-tip1",
+      "type": "tech-note",
+      "date": "2026-08-21",
+      "title": "Adobe Firefly now generates music, speech, and sound effects free — try it at firefly.adobe.com",
+      "tag": "Tech Tip",
+      "summary": "Adobe's free AI tool Firefly can now create background music, voice narration, and sound effects from a simple text description. Go to firefly.adobe.com, sign up free with any email, and click \"Generate Audio\" — no music skills needed, and you get free tries every day."
+    },
     {
       "id": "n-2026-08-20",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Can't open that file your bank or lawyer sent? 7-Zip opens it free — download at 7-zip.org",
       "tag": "Tech Tip",
       "summary": "Files that end in .zip or .rar are just folders squeezed into one file — and Windows won't open all of them. Download 7-Zip free from 7-zip.org, install it (takes about a minute), then right-click the file and choose \"7-Zip > Extract here\" to get your documents out."
-    },
-    {
-      "id": "n-2026-08-17",
-      "type": "newsletter",
-      "date": "2026-08-17",
-      "title": "Crooks Are Buying Expired Websites — a Site You Save Could Become a Trap",
-      "tag": "Daily Brief",
-      "summary": "Crooks are buying up expired website addresses — spending millions to do it — and turning them into traps that install bad programs or run scams. Every day, thousands of website addresses lapse, and security researchers say criminals snap them up to fool people who've trusted those sites for years. If a familiar website suddenly looks different, begs you to install something, or flashes alarming pop-ups, close it. Type the company's address yourself instead, and never click a link that pushes you to a site.",
-      "comic": "Newsletter - 2026-08-17-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-17-news1",
-      "type": "tech-note",
-      "date": "2026-08-17",
-      "title": "Your info leaked? Freeze your credit free at Equifax, Experian, and TransUnion",
-      "tag": "Tech Note",
-      "summary": "A credit freeze stops crooks from opening credit cards or loans in your name — and it's free by federal law. Do it online at equifax.com, experian.com, and transunion.com; it takes about 20 minutes total, and you can freeze a child's credit too."
-    },
-    {
-      "id": "t-2026-08-17-tip1",
-      "type": "tech-note",
-      "date": "2026-08-17",
-      "title": "Email says 'file too big'? WeTransfer sends it free — no account needed at wetransfer.com",
-      "tag": "Tech Tip",
-      "summary": "Go to wetransfer.com, add your file (up to 3 GB free), type the person's email address, and hit send — they get a link to download it. No account, no software, works in any browser."
     }
   ]
 }

@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-21-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-21",
+      "title": "Healthcare Company CareCloud Confirms Data Breach Affecting 3.7 Million Patients",
+      "tag": "Daily Brief",
+      "excerpt": "Healthcare technology company CareCloud confirmed a massive data breach that exposed personal information of 3.7 million patients, according to a report by BleepingComputer on August 19, 2026. If you or a family member received care from a medical provider that uses CareCloud systems, your name, contact details, and health-related information may have been compromised. Here's what to do right now: call your healthcare provider's office and ask if they use CareCloud, then place a free fraud alert on your credit reports by calling Equifax at 1-800-525-6285, Experian at 1-888-397-3742, or TransUnion at 1-800-680-7289.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-21-composite.jpg",
+      "comic": "assets/img/news/2026-08-21-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-20-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-20",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-17-composite.jpg",
       "comic": "assets/img/news/2026-08-17-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-16-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-16",
-      "title": "Fake Job Offer Emails Are Installing Bad Programs — Don't Open the Attachment",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are sending fake job offer emails — notes about a \"position\" you never applied for, with a file attached. Opening that file quietly installs a bad program on your computer, and security researchers say this newest wave is already spreading. If a job offer shows up out of nowhere, don't open the attachment. Delete the message. Looking for work? Go straight to the company's website and apply there. Never click a link in an email that's trying to hand you a job you didn't ask for.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-16-composite.jpg",
-      "comic": "assets/img/news/2026-08-16-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-21-post-1",
+      "type": "news",
+      "date": "2026-08-21",
+      "title": "Government warns ransomware gangs are targeting Windows computers right now — Windows Update keeps you safe",
+      "tag": "Tech Note",
+      "summary": "CISA (the government's cybersecurity agency) confirmed that ransomware gangs are actively using a Windows flaw to take full control of computers. Open Settings, click Windows Update, and click \"Check for updates\" — it takes 2 minutes and keeps you safe.",
+      "truth": "I see this every week at the shop. Someone clicks a bad link and suddenly all their photos, documents, and tax files are locked up with a ransom note on the screen. Most people think it only happens to big companies, but ransomware gangs target regular people too — your personal files are worth money to them. The good news: Microsoft already fixed this months ago. If your Windows Update is current, you're already protected. If it's not — fix it tonight.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-20-post-1",
       "type": "news",
@@ -244,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-16-post-1",
-      "type": "news",
-      "date": "2026-08-16",
-      "title": "Type with your voice for free — Windows Voice Typing is built into Windows 11, press the Windows key + H",
-      "tag": "Tech Note",
-      "summary": "Click into any text box, press the Windows key + H, and start talking — Windows Voice Typing types your words for you, free, with nothing to download. It's already on your Windows 11 computer; if nothing happens, check that the microphone is turned on at Settings > Privacy & security > Microphone.",
-      "truth": "I see this all the time: somebody's hands hurt, or they never got comfortable typing, so they just don't write emails or long messages at all. Most people don't realize their computer already has a free speech-to-text helper sitting right inside it. The honest answer is you don't need to buy a thing — Windows Voice Typing is already there, and once folks try it, half of them never go back to pecking at the keys. It's not a gimmick; it's how a lot of people get their words out without pain.",
+      "id": "onyx-2026-08-21-post-2",
+      "type": "tip",
+      "date": "2026-08-21",
+      "title": "Adobe Firefly now generates music, speech, and sound effects free — try it at firefly.adobe.com",
+      "tag": "Tech Tip",
+      "summary": "Adobe's free AI tool Firefly can now create background music, voice narration, and sound effects from a simple text description. Go to firefly.adobe.com, sign up free with any email, and click \"Generate Audio\" — no music skills needed, and you get free tries every day.",
+      "truth": "I'm not a music guy, but I had a customer last week who needed a short background track for a church slideshow. She typed \"gentle piano, 30 seconds\" into Firefly and had something she could use in about a minute. Most people don't realize these tools exist — they think making audio requires expensive software or a recording studio. You don't. Adobe gives you free daily generations, and it's enough for most personal projects. The honest answer is: for a church presentation, a family video, or a school project, this is more than good enough.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-16-post-2",
-      "type": "tip",
-      "date": "2026-08-16",
-      "title": "Microsoft's August Windows update closes 400+ security holes — get it tonight at Settings > Windows Update",
-      "tag": "Tech Tip",
-      "summary": "Microsoft shipped its August 2026 Windows update on Tuesday and says to install it within days — it closes more than 400 security holes in Windows. Open Settings > Windows Update, click Check for updates, let it finish, and restart your computer once. Free, and it takes about ten minutes.",
-      "truth": "Most people don't realize their computer only stays safe if the updates actually get installed. I see machines come in where the last update went through months ago because somebody clicked \"remind me later\" one too many times. The honest answer is a ten-minute update tonight is a whole lot cheaper than a long afternoon at the shop after something bad happens. Microsoft built the update to do the work for you — you just have to let it run.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-20",
+  "updated": "2026-08-21",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
