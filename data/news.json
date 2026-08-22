@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-21",
+  "updated": "2026-08-22",
   "items": [
+    {
+      "id": "n-2026-08-22",
+      "type": "newsletter",
+      "date": "2026-08-22",
+      "title": "Microsoft Edge Browser Security Update — Check Yours in 30 Seconds Free",
+      "tag": "Daily Brief",
+      "summary": "Microsoft pushed a fresh security patch to Edge this week that closes several vulnerabilities attackers are actively exploiting through malicious websites. If your Edge browser is out of date, simply visiting the wrong page could let someone run code on your computer. Here's the fix — it's free and takes 30 seconds: open Microsoft Edge, click the three dots in the top right corner, choose Help and feedback, then About Microsoft Edge. The browser will show your current version and update automatically if it's not current. I do this check on every computer that comes into the shop, and I'm always surprised how many are months behind. Don't be one of them — check it now. (Source: Microsoft Security Response Center, August 2026)",
+      "comic": "Newsletter - 2026-08-22-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-22-news1",
+      "type": "tech-note",
+      "date": "2026-08-22",
+      "title": "Microsoft Edge just got a security update — check yours free in 30 seconds at edge://settings/help",
+      "tag": "Tech Note",
+      "summary": "Microsoft pushed a fresh security patch to Edge this week. Open Microsoft Edge, click the three dots in the top right, choose Help and feedback, then About Microsoft Edge — it will show your current version and update automatically if it's not current. Takes 30 seconds."
+    },
+    {
+      "id": "t-2026-08-22-tip1",
+      "type": "tech-note",
+      "date": "2026-08-22",
+      "title": "Find any file in a second — Everything Search by Voidtools is free and finds what Windows Search misses at voidtools.com",
+      "tag": "Tech Tip",
+      "summary": "Windows Search is slow and sometimes misses files entirely. Everything Search by Voidtools indexes your entire drive the moment you install it and finds any file the instant you type its name. Download it free from voidtools.com — no account needed, no ads, takes 2 minutes to install."
+    },
     {
       "id": "n-2026-08-21",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Your computer has a check-engine light hidden inside — read it free with CrystalDiskInfo before it quits on you",
       "tag": "Tech Tip",
       "summary": "Download CrystalDiskInfo free from crystalmark.info and open it. The big box at the top shows your computer's storage health — think of it as the check-engine light for the part that holds all your files. If it says \"Good,\" you're fine. If it says \"Caution\" or \"Bad,\" don't wait — bring the computer in and we'll save what we can while there's still time."
-    },
-    {
-      "id": "n-2026-08-18",
-      "type": "newsletter",
-      "date": "2026-08-18",
-      "title": "Fake 'Download' Pages Can Take Over Your Browser — Never Copy-Paste From a Website",
-      "tag": "Daily Brief",
-      "summary": "A new bad program called AmnesiaStealer is spreading through fake \"download\" pages. The page tells you to copy a command and paste it — and once it's in, it takes over the program you use to go on the internet and can steal your saved passwords. Real download pages never ask you to copy and paste commands. If one does, close the tab. Only download programs from the maker's real website, and keep your computer's free updates turned on.",
-      "comic": "Newsletter - 2026-08-18-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-18-news1",
-      "type": "tech-note",
-      "date": "2026-08-18",
-      "title": "Internet down? Check the free Xfinity Outage Map before you blame your equipment — xfinity.com/support/statusmap",
-      "tag": "Tech Note",
-      "summary": "When your internet drops, first check whether the whole neighborhood is down. Open the Xfinity Outage Map at xfinity.com/support/statusmap, type in your service address, and it shows you if there's an outage and when it's expected back. If the map shows nothing, the trouble is inside your house — that's when you call the shop."
-    },
-    {
-      "id": "t-2026-08-18-tip1",
-      "type": "tech-note",
-      "date": "2026-08-18",
-      "title": "Can't open that file your bank or lawyer sent? 7-Zip opens it free — download at 7-zip.org",
-      "tag": "Tech Tip",
-      "summary": "Files that end in .zip or .rar are just folders squeezed into one file — and Windows won't open all of them. Download 7-Zip free from 7-zip.org, install it (takes about a minute), then right-click the file and choose \"7-Zip > Extract here\" to get your documents out."
     }
   ]
 }
