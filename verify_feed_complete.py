@@ -93,6 +93,11 @@ KNOWN_PRODUCTS = [
     # credit bureaus Equifax/Experian/TransUnion (freeze at each bureau's site) —
     # real products named in today's posts (computer-only picks, obtain method stated).
     "wetransfer", "equifax", "experian", "transunion",
+    # Extended 2026-08-21: CareCloud (healthcare IT company, named in data-breach alert headline).
+    "carecloud",
+    # Extended 2026-08-23: NAPS2 (Not Another PDF Scanner 2, naps2.org) — real free
+    # scanner-to-PDF product named in today's Tech Note headline, obtain method stated.
+    "naps2", "naps2.org",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -170,10 +175,12 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         # Extended 2026-07-28: Florida rural broadband funding announcement is a policy alert (exempt).
         "rural broadband", "broadband funding",
         # Extended 2026-08-04: how-to process tips (restart, maintenance, cleanup) are exempt per master prompt.
-        "restart", "maintenance", "cleanup", "disk cleanup", "clear temporary",
-        # Extended 2026-08-17: expired-domain scam alert (crooks buying lapsed
-        # websites and turning saved sites into malware/scam traps) is a security alert (exempt).
-        "expired websites", "crooks are buying",
+        "restart", "maintenance", "cleanup", "disk cleanup", "clear temporary",    # Extended 2026-08-17: expired-domain scam alert (crooks buying lapsed
+    # websites and turning saved sites into malware/scam traps) is a security alert (exempt).
+    "expired websites", "crooks are buying",
+    # Extended 2026-08-23: FTC bill-pay impersonator scam alert (fake ads at the
+    # top of Google/Bing posing as electric company/bank) is a security alert (exempt).
+    "bill-payment", "bill pay",
     ]
     if any(s in low for s in SKIP):
         return fails

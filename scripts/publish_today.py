@@ -133,17 +133,28 @@ def _box_section(md, marker):
 
 
 def _heading_section(body, heading):
-    m = re.search(rf"^###\s*{re.escape(heading)}\s*$", body, re.M)
+    # Match ### Heading or **Heading:** (bold inline format)
+    m = re.search(rf"^(?:###\s*{re.escape(heading)}\s*$|\*\*{re.escape(heading)}:?(?:\*\*|$))", body, re.M)
     if not m:
         return ""
     rest = body[m.end():]
-    nm = re.search(r"^###\s+", rest, re.M)
+    # End at next ###, next **Bold:**, or end of body
+    nm = re.search(r"^(?:###\s+|\*\*[A-Z])", rest, re.M)
     end = nm.start() if nm else len(rest)
     return rest[:end].strip()
 
 
 def _hashtags(body):
-    return re.findall(r"(?:^|\s)(#\w+)", body)
+    tags = re.findall(r"(?:^|\s)(#\w+)", body)
+    # Deduplicate while preserving order
+    seen = set()
+    out = []
+    for t in tags:
+        tl = t.lower()
+        if tl not in seen:
+            seen.add(tl)
+            out.append(t)
+    return out
 
 
 def parse_newsletter(md_path):
@@ -157,13 +168,16 @@ def parse_newsletter(md_path):
 def parse_tech_notes(md_path):
     md = md_path.read_text(encoding="utf-8")
     posts = []
-    for m in re.finditer(r"^##\s*Post\s+(\d+)\s*$", md, re.M):
+    # Today's Onyx Tech Notes carry the headline on the `## Post N — <headline>` line
+    # itself (no separate **Headline:** field), so capture it as group 2.
+    for m in re.finditer(r"^##\s*Post\s+(\d+)\s*(?:[—–-]\s*)?(.*)$", md, re.M):
         start = m.end()
-        nm = re.search(r"^##\s*Post\s+\d+\s*$", md[start:], re.M)
+        headline = m.group(2).strip()
+        nm = re.search(r"^##\s*Post\s+\d+\s*(?:[—–-]\s*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
         posts.append({
-            "headline": _heading_section(body, "Headline"),
+            "headline": headline or _heading_section(body, "Headline"),
             "tip": _heading_section(body, "The Tip"),
             "truth": _heading_section(body, "The Shop Owner's Truth"),
             "tags": _hashtags(body) or BASE_TAGS,
