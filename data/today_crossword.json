@@ -1,211 +1,251 @@
 {
   "title": "Computer",
-  "size": 26,
+  "size": 34,
   "grid": [
-    ".........w.....m..........",
-    ".........i....norton......",
-    ".........n.....t..........",
-    ".........z.....h..........",
-    "........firmware..........",
-    ".........p.....r..........",
-    "...............b..c.......",
-    "...............o..c.......",
-    ".........s.....a..l.......",
-    ".........p.safari.e.......",
-    ".........r.s.r.d.ram......",
-    "........headset...n.......",
-    ".........a...e..p.e.......",
-    "........hdd..winrar.......",
-    ".w.......s...a..o.........",
-    ".e...l...h...r..j.........",
-    ".b...i...e.speakers.......",
-    ".c...b...e......c.........",
-    "malwarebytes....t.........",
-    ".m...e..........o.........",
-    "....notepad.....r.........",
-    ".....f....................",
-    ".....f.g..................",
-    ".....i.p..................",
-    ".....cpu..................",
-    ".....e...................."
+    ".m................................",
+    ".a................................",
+    ".l................................",
+    ".w................................",
+    ".a................................",
+    ".r................................",
+    ".e................................",
+    ".b................................",
+    ".y.h..............................",
+    ".t.d.k............................",
+    "headset...........................",
+    ".s...y............................",
+    ".....b......l.....................",
+    ".norton.winzip....................",
+    ".o...a......b.....................",
+    ".t..projector..m..w.......freeware",
+    ".e...d......e.mouse.......i.......",
+    "gpu.....c...o..n..b.......r.......",
+    ".a......c.safari..cpu.....m.......",
+    ".d......l.p.f..t..a.......w.......",
+    "........e.e.i..o..motherboard.....",
+    "........a.a.c..ram........r..u....",
+    "........n.k.e..........spreadsheet",
+    "........e.e..................b....",
+    ".....winrar.......................",
+    "..........ssd.....................",
+    "..................................",
+    "..................................",
+    "..................................",
+    "..................................",
+    "..................................",
+    "..................................",
+    "..................................",
+    ".................................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 2,
-        "col": 15,
-        "len": 6,
-        "answer": "norton",
-        "clue": "an anti-virus or anti-malware software product founded by Peter Norton"
-      },
-      {
         "num": 4,
-        "row": 5,
-        "col": 9,
-        "len": 8,
-        "answer": "firmware",
-        "clue": "is a specific class of computer software that provides the low-level control for a device's specific hardware."
-      },
-      {
-        "num": 7,
-        "row": 10,
-        "col": 12,
-        "len": 6,
-        "answer": "safari",
-        "clue": "is a web browser developed by Apple Inc. and included in Mac OS X. It was first released as a public beta in January 2003."
-      },
-      {
-        "num": 9,
         "row": 11,
-        "col": 18,
-        "len": 3,
-        "answer": "ram",
-        "clue": "acronym that stands for random-access memory."
-      },
-      {
-        "num": 10,
-        "row": 12,
-        "col": 9,
+        "col": 1,
         "len": 7,
         "answer": "headset",
         "clue": "a piece of equipment worn on the head that allows someone to hear sound when using a phone, music, or computer system."
       },
       {
-        "num": 12,
+        "num": 6,
+        "row": 14,
+        "col": 2,
+        "len": 6,
+        "answer": "norton",
+        "clue": "an anti-virus or anti-malware software product founded by Peter Norton"
+      },
+      {
+        "num": 7,
         "row": 14,
         "col": 9,
-        "len": 3,
-        "answer": "hdd",
-        "clue": "the hardware component that stores all of your digital content"
+        "len": 6,
+        "answer": "winzip",
+        "clue": "a software product used to archive, compress and encrypt files in a variety of archive formats for more efficient storage and distribution."
+      },
+      {
+        "num": 8,
+        "row": 16,
+        "col": 5,
+        "len": 9,
+        "answer": "projector",
+        "clue": "It projects images from a Blu-ray player or computer and presents ideas on the projection screen"
+      },
+      {
+        "num": 11,
+        "row": 16,
+        "col": 27,
+        "len": 8,
+        "answer": "freeware",
+        "clue": "a type of proprietary software that is released without charge to the public."
+      },
+      {
+        "num": 12,
+        "row": 17,
+        "col": 15,
+        "len": 5,
+        "answer": "mouse",
+        "clue": "a small device that a computer user pushes across a desk surface in order to point to a place on a display screen and to select one or more actions to take from that position."
       },
       {
         "num": 13,
-        "row": 14,
-        "col": 14,
+        "row": 18,
+        "col": 1,
+        "len": 3,
+        "answer": "gpu",
+        "clue": "a specialized processor originally designed to accelerate graphics rendering."
+      },
+      {
+        "num": 15,
+        "row": 19,
+        "col": 11,
+        "len": 6,
+        "answer": "safari",
+        "clue": "is a web browser developed by Apple Inc. and included in Mac OS X. It was first released as a public beta in January 2003."
+      },
+      {
+        "num": 16,
+        "row": 19,
+        "col": 19,
+        "len": 3,
+        "answer": "cpu",
+        "clue": "the primary component of a computer that acts as its \u201ccontrol center.\u201d"
+      },
+      {
+        "num": 17,
+        "row": 21,
+        "col": 19,
+        "len": 11,
+        "answer": "motherboard",
+        "clue": "an electronic circuit board in a computer which interconnects hardware devices attached to it \u2014 which is to say, all of the"
+      },
+      {
+        "num": 18,
+        "row": 22,
+        "col": 16,
+        "len": 3,
+        "answer": "ram",
+        "clue": "acronym that stands for random-access memory."
+      },
+      {
+        "num": 20,
+        "row": 23,
+        "col": 24,
+        "len": 11,
+        "answer": "spreadsheet",
+        "clue": "is a computer application for computation, organization, analysis and storage of data in tabular form."
+      },
+      {
+        "num": 21,
+        "row": 25,
+        "col": 6,
         "len": 6,
         "answer": "winrar",
         "clue": "a trialware file archiver utility for Windows, developed by Eugene Roshal of win.rar GmbH."
       },
       {
-        "num": 16,
-        "row": 17,
-        "col": 12,
-        "len": 8,
-        "answer": "speakers",
-        "clue": "a piece of output gear that connects to a computer to produce sound"
-      },
-      {
-        "num": 17,
-        "row": 19,
-        "col": 1,
-        "len": 12,
-        "answer": "malwarebytes",
-        "clue": "Malwarebytes Anti-Malware, abbreviated as MBAM) is an anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware."
-      },
-      {
-        "num": 18,
-        "row": 21,
-        "col": 5,
-        "len": 7,
-        "answer": "notepad",
-        "clue": "a text editor, i.e., an app specialized in editing plain text."
-      },
-      {
-        "num": 20,
-        "row": 25,
-        "col": 6,
+        "num": 22,
+        "row": 26,
+        "col": 11,
         "len": 3,
-        "answer": "cpu",
-        "clue": "the primary component of a computer that acts as its \u201ccontrol center.\u201d"
+        "answer": "ssd",
+        "clue": "a storage device containing nonvolatile flash memory, used in place of a hard disk because of its much greater speed."
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 10,
-        "len": 6,
-        "answer": "winzip",
-        "clue": "a software product used to archive, compress and encrypt files in a variety of archive formats for more efficient storage and distribution."
+        "col": 2,
+        "len": 12,
+        "answer": "malwarebytes",
+        "clue": "Malwarebytes Anti-Malware, abbreviated as MBAM) is an anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware."
       },
       {
         "num": 2,
-        "row": 1,
-        "col": 16,
-        "len": 11,
-        "answer": "motherboard",
-        "clue": "an electronic circuit board in a computer which interconnects hardware devices attached to it \u2014 which is to say, all of the"
+        "row": 9,
+        "col": 4,
+        "len": 3,
+        "answer": "hdd",
+        "clue": "the hardware component that stores all of your digital content"
+      },
+      {
+        "num": 3,
+        "row": 10,
+        "col": 6,
+        "len": 8,
+        "answer": "keyboard",
+        "clue": "an input device used to enter characters and functions into the computer system by pressing buttons, or keys"
       },
       {
         "num": 5,
-        "row": 7,
-        "col": 19,
-        "len": 8,
-        "answer": "ccleaner",
-        "clue": "developed by Piriform Software, is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer."
-      },
-      {
-        "num": 6,
-        "row": 9,
-        "col": 10,
-        "len": 11,
-        "answer": "spreadsheet",
-        "clue": "is a computer application for computation, organization, analysis and storage of data in tabular form."
-      },
-      {
-        "num": 7,
-        "row": 10,
-        "col": 12,
-        "len": 3,
-        "answer": "ssd",
-        "clue": "a storage device containing nonvolatile flash memory, used in place of a hard disk because of its much greater speed."
-      },
-      {
-        "num": 8,
-        "row": 10,
-        "col": 14,
-        "len": 8,
-        "answer": "freeware",
-        "clue": "a type of proprietary software that is released without charge to the public."
-      },
-      {
-        "num": 11,
         "row": 13,
-        "col": 17,
-        "len": 9,
-        "answer": "projector",
-        "clue": "It projects images from a Blu-ray player or computer and presents ideas on the projection screen"
-      },
-      {
-        "num": 14,
-        "row": 15,
-        "col": 2,
-        "len": 6,
-        "answer": "webcam",
-        "clue": "is a combination of \"Web\" and \"video camera.\""
-      },
-      {
-        "num": 15,
-        "row": 16,
-        "col": 6,
+        "col": 13,
         "len": 11,
         "answer": "libreoffice",
         "clue": "is a powerful and free office suite, a successor to OpenOffice(.org), used by millions of people around the world."
       },
       {
+        "num": 6,
+        "row": 14,
+        "col": 2,
+        "len": 7,
+        "answer": "notepad",
+        "clue": "a text editor, i.e., an app specialized in editing plain text."
+      },
+      {
+        "num": 9,
+        "row": 16,
+        "col": 16,
+        "len": 7,
+        "answer": "monitor",
+        "clue": "an output device that displays information being processed in a computer."
+      },
+      {
+        "num": 10,
+        "row": 16,
+        "col": 19,
+        "len": 6,
+        "answer": "webcam",
+        "clue": "is a combination of \"Web\" and \"video camera.\""
+      },
+      {
+        "num": 11,
+        "row": 16,
+        "col": 27,
+        "len": 8,
+        "answer": "firmware",
+        "clue": "is a specific class of computer software that provides the low-level control for a device's specific hardware."
+      },
+      {
+        "num": 14,
+        "row": 18,
+        "col": 9,
+        "len": 8,
+        "answer": "ccleaner",
+        "clue": "developed by Piriform Software, is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer."
+      },
+      {
+        "num": 15,
+        "row": 19,
+        "col": 11,
+        "len": 8,
+        "answer": "speakers",
+        "clue": "a piece of output gear that connects to a computer to produce sound"
+      },
+      {
         "num": 19,
-        "row": 23,
-        "col": 8,
+        "row": 22,
+        "col": 30,
         "len": 3,
-        "answer": "gpu",
-        "clue": "a specialized processor originally designed to accelerate graphics rendering."
+        "answer": "usb",
+        "clue": "commonly used for storage, data backup, and transferring files between devices."
       }
     ]
   },
   "category": "",
-  "source_url": "https://crosswordlabs.com/view/computer-8194",
-  "slug": "computer-8194",
-  "fetched_at": "2026-07-25T16:51:11.868511+00:00",
-  "date": "2026-08-22"
+  "source_url": "https://crosswordlabs.com/view/computer-8195",
+  "slug": "computer-8195",
+  "fetched_at": "2026-07-25T16:51:39.446464+00:00",
+  "date": "2026-08-23"
 }
