@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-08-16",
-    "question": "How's your Wi-Fi at home?",
+    "weekOf": "2026-08-23",
+    "question": "Have you ever been phished?",
     "options": [
       {
-        "id": "great",
-        "label": "Rock solid"
+        "id": "yes",
+        "label": "Yes, I fell for one"
       },
       {
-        "id": "spots",
-        "label": "A few dead spots"
+        "id": "maybe",
+        "label": "Maybe \u2014 not sure"
       },
       {
-        "id": "drops",
-        "label": "Drops daily"
+        "id": "no",
+        "label": "No, I'm careful"
       },
       {
-        "id": "hotspot",
-        "label": "I use my phone"
+        "id": "what",
+        "label": "What's phishing?"
       }
     ]
   }

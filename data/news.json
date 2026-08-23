@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-22",
+  "updated": "2026-08-23",
   "items": [
+    {
+      "id": "n-2026-08-23",
+      "type": "newsletter",
+      "date": "2026-08-23",
+      "title": "Fake Bill-Payment Websites Are Tricking You Through Search Ads",
+      "tag": "Daily Brief",
+      "summary": "The FTC just warned that scammers are buying fake ads at the top of Google and Bing that look like your electric company, insurance provider, or bank. You search for \"pay my light bill,\" click the first result, enter your account number and card, and the money goes to a crook instead of your real company. Always scroll past the ads and look for the official web address you already know — or call the number on your paper bill. Report fraud at ReportFraud.ftc.gov. (Source: FTC.gov, August 17, 2026)",
+      "comic": "Newsletter - 2026-08-23-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-23-news1",
+      "type": "tech-note",
+      "date": "2026-08-23",
+      "title": "Stop Windows from begging you to buy Microsoft 365 — turn off the subscription nag screens",
+      "tag": "Tech Note",
+      "summary": "Press the Windows key, type **Notifications** and press Enter. Scroll down and turn off notifications from **Microsoft 365 (Office)** and **Get Help**. That kills the pop-ups permanently — takes 30 seconds."
+    },
+    {
+      "id": "t-2026-08-23-tip1",
+      "type": "tech-note",
+      "date": "2026-08-23",
+      "title": "Turn your old scanner into a clean PDF maker — NAPS2 is free and has no watermarks",
+      "tag": "Tech Tip",
+      "summary": "Download **NAPS2** (Not Another PDF Scanner 2) free at **naps2.org**. Plug in your scanner, open NAPS2, click the green **Scan** button, and save your document as a PDF or image file. No account, no watermarks, no ads, no subscription."
+    },
     {
       "id": "n-2026-08-22",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Your PC feels slow? Task Manager shows what's eating it — built into Windows, press Ctrl+Shift+Esc",
       "tag": "Tech Tip",
       "summary": "Press Ctrl+Shift+Esc to open Task Manager — it's built into Windows and shows every program running on your computer. Look at the top of the list: whatever is using the most working memory is usually the troublemaker. To close a stuck program, click it, then click End Task."
-    },
-    {
-      "id": "n-2026-08-19",
-      "type": "newsletter",
-      "date": "2026-08-19",
-      "title": "Hackers Are Breaking Into Windows Computers Right Now — Update Today",
-      "tag": "Daily Brief",
-      "summary": "The federal government's cyber-watchdog agency warned Wednesday that hackers are actively breaking into Windows computers through a weakness Microsoft already fixed back in April. If your computer hasn't installed the update, a crook can get in over the internet — no clicking, no tricking you — and take it over. The fix takes two minutes: press the Start button, type \"check for updates,\" open it, install whatever it finds, then turn your computer off and back on.",
-      "comic": "Newsletter - 2026-08-19-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-19-news1",
-      "type": "tech-note",
-      "date": "2026-08-19",
-      "title": "Firefox just shipped its August 18 security update — check yours free at firefox.com in 2 minutes",
-      "tag": "Tech Note",
-      "summary": "Open Firefox, click the three-line menu in the top corner, choose Help then About Firefox, and let it finish updating — it's free and takes about 2 minutes. If it says \"Firefox is up to date,\" you're good. If you don't have Firefox at all, download it free from firefox.com."
-    },
-    {
-      "id": "t-2026-08-19-tip1",
-      "type": "tech-note",
-      "date": "2026-08-19",
-      "title": "Your computer has a check-engine light hidden inside — read it free with CrystalDiskInfo before it quits on you",
-      "tag": "Tech Tip",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info and open it. The big box at the top shows your computer's storage health — think of it as the check-engine light for the part that holds all your files. If it says \"Good,\" you're fine. If it says \"Caution\" or \"Bad,\" don't wait — bring the computer in and we'll save what we can while there's still time."
     }
   ]
 }
