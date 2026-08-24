@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#05060e">
+<title>RALLY Z</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2305060e'/%3E%3Ctext x='2' y='12' font-size='11' font-family='monospace' fill='%23ffd94a'%3EZ%3C/text%3E%3C/svg%3E">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#05060e;overflow:hidden;
+  font-family:'Cascadia Mono','SF Mono',Consolas,Menlo,'DejaVu Sans Mono','Courier New',monospace;-webkit-user-select:none;user-select:none;
+  -webkit-touch-callout:none;touch-action:none;overscroll-behavior:none}
+body{padding-bottom:env(safe-area-inset-bottom,0)}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block;background:#000}
+/* ---------- rotate prompt (phones portrait only) ---------- */
+#rotate-prompt{display:none;position:fixed;inset:0;z-index:99999;background:#05060e;color:#fff;
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px;
+  font-family:'Cascadia Mono','SF Mono',Consolas,Menlo,'DejaVu Sans Mono','Courier New',monospace}
+#rotate-prompt .icon{font-size:60px;animation:rot-hint 2s ease-in-out infinite}
+#rotate-prompt .msg{font-size:16px;letter-spacing:1px;max-width:280px;line-height:1.5}
+#rotate-prompt .sub{font-size:12px;color:#7fa8d0}
+@keyframes rot-hint{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
+@media (orientation:portrait) and (hover:none) and (pointer:coarse) and (max-width:767px){
+  #rotate-prompt{display:flex!important}
+  #C{visibility:hidden}
+}
+/* ---------- touch controls ---------- */
+#touchUI{position:fixed;inset:auto 0 0 0;z-index:500;display:none;justify-content:space-between;
+  align-items:flex-end;padding:0 14px calc(10px + env(safe-area-inset-bottom,0));pointer-events:none;
+  filter:drop-shadow(0 0 6px rgba(0,229,255,.35))}
+#touchUI .pad{display:grid;grid-template-columns:56px 56px 56px;grid-template-rows:56px 56px;gap:6px;pointer-events:auto}
+#touchUI .tbtn{background:linear-gradient(180deg,rgba(20,30,60,.55),rgba(8,10,24,.7));
+  border:1px solid rgba(0,229,255,.55);border-radius:10px;box-shadow:0 0 10px rgba(0,229,255,.18),inset 0 0 8px rgba(0,229,255,.08);
+  color:#9ff6ff;display:flex;align-items:center;justify-content:center;font-size:22px;
+  -webkit-tap-highlight-color:transparent}
+#touchUI .tbtn:active{background:rgba(0,229,255,.35);box-shadow:0 0 14px rgba(0,229,255,.5)}
+#touchUI .smoke{pointer-events:auto;width:76px;height:76px;border-radius:50%;
+  background:radial-gradient(circle,rgba(120,20,70,.5),rgba(40,6,26,.6));
+  border:1px solid rgba(255,46,151,.6);box-shadow:0 0 12px rgba(255,46,151,.3),inset 0 0 10px rgba(255,46,151,.15);
+  color:#ffd9ee;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;letter-spacing:1px;
+  -webkit-tap-highlight-color:transparent}
+#touchUI .smoke:active{background:rgba(255,46,151,.45);box-shadow:0 0 18px rgba(255,46,151,.6)}
+@media (hover:none) and (pointer:coarse){ #touchUI{display:flex} }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="C"></canvas></div>
+<div id="touchUI">
+  <div class="pad">
+    <div></div><div class="tbtn" data-k="up">&#9650;</div><div></div>
+    <div class="tbtn" data-k="left">&#9664;</div><div class="tbtn" data-k="down">&#9660;</div><div class="tbtn" data-k="right">&#9654;</div>
+  </div>
+  <div class="smoke" data-k="smoke">SMOKE</div>
+</div>
+<div id="rotate-prompt">
+  <div class="icon">&#128241;</div>
+  <div class="msg">Rotate your phone to landscape to play</div>
+  <div class="sub">&#8635; Turn your device for the full screen</div>
+</div>
+<script>
+/* ============================================================
+   RALLY Z — a faithful tribute to Namco's Rally-X (1980)
+   Original maze layouts, level progression, scoring, enemy AI
+   behavior, radar & fuel systems reproduced; modern graphics.
+   ============================================================ */
+"use strict";
+const MAZES=[
+/* MAZE 1 */ [
+"..................................",
+"................XXXXXXXX..........",
+"..XXX.XXXXX.XX......XXXX.XXXXXXX..",
+"..XXX.XXXXX.XX...X..XXXX..........",
+".................X.......XXX.XXX..",
+"..XXXXXX.XXXXX......XXXX.XXX.XXX..",
+"................XXX.XXXX..........",
+".....XXXXXX.X.XXXXX.XXXX.XXXXXXX..",
+".X.X.X....X.X.XXX.................",
+".X.X.X.XX.X.X.XXX.XXX.XXXXXXXXX.X.",
+".X.X.X.XX.X.X.XXX.XXX.X.......X.X.",
+".X.X.X....X.X.....XXX.X.......X.X.",
+"...X.X....X.X.XXX.XXX.X.XXXXX.X.X.",
+"..XX.X....X.X.XXX.XXX.X.XXXXX.X.X.",
+"..XX.X....X.X.........X.......X.X.",
+".....X......X.XXX.XX..XXX..XXXX.X.",
+"..XX.X.XXXXXX.XXX.XX..XXX..XXXX.X.",
+"..XX..........XXX.XX..XXX..XXXX...",
+"..XXXXXXXXXXX.XXX.................",
+".......XX.................XXX.XX..",
+"..XXXX.XX.XXXXXXX..XXXXXX.XXX.XX..",
+"..XXXX........XXX..XXXXXX.....XX..",
+"..XXXX.XX.XXX.XXX......XX.XXX..X..",
+".......XX.XXX......XX..XX.XXX..X..",
+".X.XXXXXX.XXXXXXX..XX..XX.XXXX.X..",
+".X.................XX..........X..",
+".X.XXXXXX.XXXXXXX..XXXXXX.XXXX.X..",
+".X.XXXXXX.XXXXXXX..XXXXXX.XXXX.X..",
+".X................................",
+".X.XXX.XX.XXXX.XX..XXX.XX.XXXX.X..",
+".X.XXX.XX.XXXX.XX..XXX.XX.XXXX.X..",
+".X.XXX.XX.XX...........XX.XX...X..",
+".X.XXX.XX.XX.X.XX..XXX.XX.XX.X.X..",
+".X.............XX..XXX....XX.X.X..",
+".X.XX.XXX.XXXX.XX......XX....X....",
+"...XX.XXX.XXXX.XX..XXX.XX.XXXXX...",
+"............XX.XX..XXX.XX.XXXXX...",
+"...XXXX.XXX.......................",
+"...XXXX.XXX.......................",
+"..........XXX.XX.XXX.XXXX.XX.XX...",
+"...XX.XXX.XXX.XX.XXX.XXXX.XX.XX...",
+"...XX.XXX.XXX........XXXX.XX.XX...",
+"...XX.XXX.XXX.XX.XXX......XX......",
+"...XX.........XX.....X.XX.XX.XX...",
+"...XX.XXXXX.XXXX.XXX.X.XX.XX.XX...",
+"...XX.XXXXX.XXXX.XXX.X.XX.XX.XX...",
+".....................X.......XX...",
+".XX.XXX.XX.XXXXX.XXX.X.XX.XX.XX...",
+".XX.XXX.XX.XXXXX.XXX.X.XX.XX.XX...",
+".XX....................XX.XX.XX...",
+".XX.XXX.XX.X.X.X.X.X.X.XX.XX.XX...",
+".XX.XXX.XX.X.X.X4X.X.X.XX.........",
+".....XX....X.X.X.X.X.X....XXXXX...",
+"..XX....XX.X3X1X1X1X2X.XX.XXXXX...",
+"..XX.XXXXX.X.X.X.X.X.X.XX....XX...",
+"..XX.XXXXX.X.X.X.X.X.X.XX.XX.XX...",
+"..........................XX......",
+".................................."
+],
+/* MAZE 2 */ [
+"..................................",
+".XXXXXXXXXXXXX....................",
+".X...........X3X1X2X.XXXXXX.XXXX..",
+".X.XXXX.XXXX.X.X.X.X.XXXXXX.XXXX..",
+".X.X.......X.X.X.X.X...........X..",
+".X.X.XX.XX.X.X.X.X.X.XXX.XX.XX.X..",
+".X.X.X...X.X.X.X.X.X.XXX.XX.XX.X..",
+".X.X.X...X.X.X....................",
+".X.X.X.X.X.X.X.X.XX.XX.XXXXXXX.X..",
+".X.X.X.X.X.X.X.X.XX.XX.X.......X..",
+".X...X.X.X.....X.XX.XX.X.XXXXX.X..",
+".X.X.X.X.X.X.X.X.XX.XX.X.X.....X..",
+".X.X.X...X.X.X...........X.XXX.X..",
+".X.X.X...X.X.X.X.XX.XX.X.X.....X..",
+".X.X.XX.XX.X.X.X.XX.XX.X.XXXXX.X..",
+".X.X.......X.X.X.XX.XX.X.......X..",
+".X.XXXXXXXXX.X.X.XX.XX.XXXXXXX.X..",
+".X...........X....................",
+".XXXXXX.XXXXXX.X.XX.XX.XX.XXXX.X..",
+"...............X.XX.XX.XX.XXXX.X..",
+".X.X.XX.XXXX.XXX.XX............X..",
+".X.X.XX.XXXX.XXX.XXXXX.XXXX.XX.X..",
+".X.X.XX.XXXX.XXX.XXXXX.XXXX.XX.X..",
+".X.X.XX.XXXX.XXX.XXXXX.XXXX.XX.X..",
+"...X...................XXXX.XX.X..",
+"...X.XXX.XXXX.XXXXX...............",
+"...X.XXX.XX.....X.................",
+"...X.....XX.XXX.X.XXXX.XXX.XXXXX..",
+"...X.XXX.XX.XXX.X.XXXX.XXX.XXXXX..",
+"...X.XXX.XX.XXX...XXXX.XXX.XXXXX..",
+"..................XXX...XX.XX.....",
+"...X.XXX.XXXXXX...XXX.X.XX.XX.XX..",
+"...X.XXX.XXXXXX...XXX.X.XX.XX.XX..",
+"...X.X.....XXXX...............XX..",
+".....X.....XXXX...XXX.X.XX.XX.XX..",
+"...X.X..XX.XXXX...XXX.X.XX.XX.XX..",
+"...X.X..XX.XXXX...XXX...XX.XX.....",
+"...X.X............XXXX.XXX.XXXXX..",
+"...X.XXXXXXX.XX...XXXX.XXX.XXXXX..",
+".............XX...XXXX............",
+"..XX.XX.XX.X.XX...XXXX.XXXXXXXXX..",
+"..XX.XX.XX.X...........XX.........",
+".............XXX.XX.XX.XX.XXX.XX..",
+"..XX.XX.XX.X.XXX....XX........XX..",
+"..XX.XX.XX.X.XXX.XXXXX.XXXXXXXXX..",
+"...........X......................",
+"..XX.XX.XX.X.XXX.XXX.XXXXX.XXX.XX.",
+"..XX.XX.XX.X.XXX.XXX.XXXXX.XXX.XX.",
+".......................XXX.XXX.XX.",
+".XXX.XXXX.XX.X.X.X.X.X............",
+".XXX.XXXX..X.X.X.X.X.X.XXX.XXXXX..",
+".XXX.XXXXX.X.X.X4X.X.X............",
+"........XX.X.X.X.X.X.X.XXXXXX.XX..",
+"..XX.XX.XX.X1X1X1X1X1X.X......XX..",
+"..XX.XX................X.XXXX.XX..",
+"..XX.XX.XX.XXXXX.XXXXX.X.XXXX.XX..",
+".........................XXXX.....",
+".................................."
+],
+/* MAZE 3 */ [
+"..................................",
+".....................XXX..........",
+"...XXXXXX.XXXX1X1X1X.XXX.XXX.XXX..",
+"...X......XXXX.X.X.X.....XXX......",
+"...X......XXXX.X.X.X.XXX.XXX.XXX..",
+"...X...........X.X.X.XXX.....XXX..",
+"...XXXXXXXX.XX.X.X.X.XXXXX.XXXXX..",
+".....XXXXXX.XX.......XXXXX.XXXXX..",
+"...X.XXXXXX.XXXX.XXX..............",
+"...X.............XXX.XXXXX.XX..X..",
+"...X.XX.XXX.XXXX.XXX.XXXXX.XX..X..",
+"...X.XX.XXX.XXXX...........XX..X..",
+"........XXX.XXXX.X.X.XXXXX.XX..X..",
+"..XXXXX.XXX.XXXX.X.X.XXXXX.XX..X..",
+"..XXXXX.XXX......X.X.XXXXX.XX.....",
+"..XXXXX.XXX.XXXX.X.X.XX........X..",
+"..XXXXX.XXX.XXXX.X.X.XX.XXXXX..X..",
+"............XXXX.X.X.XX.XXXXX..X..",
+"..XXXXX.XXX.XXXX.X.X.XX.XXXXX..X..",
+"..XXXXX.XXX.XXXX.X.X.XX.XXXXX..X..",
+"..XXXXX.XXX.......................",
+"..XXXXX.XXXXX.XX.....XXXX.XX.XX...",
+"..XX.......XX.XXXXXXXXXXX.XX.XX...",
+"..XX..XXX..XX.X.........X.XX.XX.X.",
+"......XXX.....X.XX..XXX.X.XX.XX.X.",
+"..XX.......XX.X.........X.XX....X.",
+"..XXXXX.XXXXX.X.XX..XXX.X.XXXXX.X.",
+"..XXXXX.XXXXX.X.........X.XXXXX.X.",
+"..XXXXX.XXXXX.XXXX..XXXXX.........",
+"..............XXXX..XXXXX.XXXXX...",
+"..............XXXX..XXXXX.XXXXX...",
+".XXX.XX.XX.XX.....................",
+".XXX.XX.XX.XX.....................",
+".XXX.XX.XX.XX.XXXXX.XXXX.XXXXXXX..",
+".....XX.XX....XXXXX.XXXX.XXXXXXX..",
+"..XXXXX.XXXX.XXXXXX.XXXX....XXXX..",
+"..XXXXX.XXXX.XXXX.....XX.XX.XXXX..",
+"..................XXX.XX.XX...XX..",
+"..XXXXX.XXXX.XXXX.XXX....XXXX.XX..",
+"..XXXXX.XXXX.XXXX.....XX.XXXX.....",
+".....XX.XX...XXXX.XXX.XX.XXXXXXX..",
+"..XX.XX.XX.XXX....XXX.XX.XXXXXXX..",
+"..XX.XX.XX.....XX.................",
+"..XX.XX.XX.XX.XXX.XXXX.XXXX.XXXX..",
+"..XX.......XX.XXX.XXXX.XXXX.XXXX..",
+"..XXXXX.XX.X........XX.XXXX.XXXX..",
+"..XXXXX.XX...XXX.XX.XX............",
+".............XXX.XX.XX.XXXXXXXXX..",
+"..XXXXXXXX.X......................",
+"..XXXXXXXX.X.X.X.X.X.X.XXX.XXXXX..",
+"..XXX......X.X.X.X.X.X.X...X...X..",
+"..XXX.XXXX.X.X.X4X.X.X.X.X.X.X.X..",
+"......XXXX.X.X.X.X.X.X.X.X.X.X.X..",
+"..XXXXXXXX.X1X1X1X1X1X.X.X.X.X.X..",
+"..XXX..................X.X.....X..",
+"..XXX.XXXX.XXXXXXX.XXX.X.XXXXX.X..",
+"......XXXX........................",
+".................................."
+],
+/* MAZE 4 */ [
+"..................................",
+"..................................",
+"..XXXXXXX.XXXX1.1.1.XXX.XXXXXXXX..",
+"....XXXXX.XXXX......XXX.XXXXXXXX..",
+"..X..XXXX.XXXX......XXX...........",
+"..XX..XXX.XXXX.X..X.XXXX.XXXX.X...",
+"..XXX.......XX.X..X.XXXX.XXXX.X...",
+"..XXXX.XXXX.XX.X..X.XXXX.XXXX.X...",
+"..XXXX.XXX.....X..X.......XXX.X...",
+"..XXXX.XXX.XXX.X..X.XXXXX.XXX.X...",
+"..XXXX.XXX..XX.X..X.XXXXX.XXX.X...",
+".......XXXX.XX.X..X.XXXXX.XXX.X...",
+"..XXX.XXXXX.XX......XXXXX.....X...",
+"..XXX.......XXXX..XXXXXXXX.XX.X...",
+"..XXXXX.XXX.XXXX..XXXXXXXX.XX.X...",
+"..XXXXX.XXX.X........XXXXX.XX.X...",
+"..XXXXX.XXX.X........XXXXX.XX.....",
+"..XXXXX.XXX.X..XXXX..XXXXX.XXXXX..",
+"...............XXXX...............",
+"...............XXXX.......X.XXXX..",
+".XX.XXX.XXXXX..XXXX..XX.X...XXXX..",
+".XX.XXX.XXXXX........XX.XXX.XXXX..",
+".XX.XXX.XXXXX........X....X....X..",
+"............XXXX..XXXX.XX.XXXX.X..",
+".XX.XXX.XXX.XXXX..XX...XX.........",
+".XX.XXX.XXX.XXXX..XX.XXXXXX.XX.X..",
+".XX.XXX.XXX.XXXX..XX.XXX....XX.X..",
+".XX...............XX.XXX.XXXXX.X..",
+".XX.XXX.XXX.X.XX..XX.XXX.XXXXX.X..",
+".XX.XXX.XXX.X.XX..XX.XXX.XXXXX.X..",
+".....XX.XXX.X.XX..XX.XXX.XXXXX.X..",
+"..XX.....................XXXX.....",
+"..XX.........XXX..XX.XXX.XXXX.XX..",
+"..XX.XXXXXXX.XXX..XX.XXX.XXXX.....",
+"...X.........XXX..XX.XXX.XXXX.XXX.",
+"...X..XXX....XXX..XX.XX....XX.XXX.",
+"...X.........XXX..XX.XX.XX....XXX.",
+"...X.XXXX.........XX.XX.XX.XXXXXX.",
+"........X..X.XXX........XX.XXXXXX.",
+"...X.XX.X..X.XXX..XX.XX...........",
+"...X.XX.X..X.XXX..XX.XX.XX.XXXXX..",
+"...X..X.X..X.XXX..XX.XX.XX.XXX....",
+"...XX.X.X..X.XXX..XX.......XXX.X..",
+"...XX.X.X..X.XXX..XX.XX.XX.XXX.X..",
+"..XXX...X..X.XXX..XX.XX.XX........",
+"..XXXXX.X..X.XXX..XX.XXXXX.XXXXX..",
+"..XXXXX.X..X.XXX..XX.XXXXX.X...X..",
+"..X..........................X.X..",
+"..X.X.X.X..X.X.X.X.X.X.XX.XX.X.X..",
+"..X.X.X.X..X.X.X.X.X.X.XX.XX.X.X..",
+"....X.X.X..X.X.X.X.X.X.XX.XX...X..",
+"..XXX.X.X..X.X.X4X.X.X.XX.XX.X.X..",
+"......X.X..X.X.X.X.X.X.XX.XX.X.X..",
+"..XXXXX.X..X1.1.1.1.1..XX.XX.X.X..",
+"..XXXXX.X..X.XXXXXXXXX.XX.XX......",
+"........X..X.XXXXXXXXX....XXXXXX..",
+"..................................",
+".................................."
+]
+];
+
+
+/* ================= CONSTANTS ================= */
+const TILE=16;                 // px per tile at logical resolution
+const COLS=34, ROWS=56;        // playfield grid (row 0 & 55 are border)
+const VIEW_W=15, VIEW_H=13;    // visible tiles (odd so car can center)
+const HUD_W=110;               // radar/HUD panel px
+const SCREEN_W=VIEW_W*TILE+HUD_W;
+const SCREEN_H=VIEW_H*TILE+32; // + score bar
+const FPS=60, FIXED_DT=1000/FPS;
+
+const State={BOOT:0,TITLE:1,MENU:2,DIFF:3,HOWTO:4,SCORES:5,READY:6,PLAY:7,DYING:8,
+             STAGECLEAR:9,GAMEOVER:10,PAUSED:11,BONUS:12};
+
+/* ============ CYBERPUNK THEME ============ */
+const CYBER={
+  bg:'#04050d',            // void background
+  bgGradTop:'#0a0a1f', bgGradBot:'#04050d',
+  road:'#4a5d8c',          // asphalt base (light steel blue — strong contrast vs dark walls)
+  roadAlt:'#3f5178',
+  roadGrid:'rgba(0,229,255,0.11)',
+  wall:'#0c0b20',          // wall body (near-black violet)
+  wallTop:'#2a2160',       // wall top face
+  wallEdge:'rgba(255,255,255,.10)',
+  neonCyan:'#00e5ff',
+  neonMagenta:'#ff2e97',
+  neonPurple:'#a855f7',
+  neonYellow:'#ffd94a',
+  player:'#39ff14',        // player's fixed signature color — bright neon green, never in the wall cycle
+  playerDark:'#0a3d14',    // dark base for the player hull
+  rivalGold:'#ffc426',     // enemy trim accent — gold rival livery
+  rival:'#ff3b3b',         // enemy's fixed signature color — crimson, never in the wall cycle
+  rivalDark:'#5c0b0b',     // dark base for the enemy hull
+  neonGreen:'#3cff8a',
+  neonRed:'#ff3b5c',
+  panelBg:'#080a18',
+  panelLine:'rgba(0,229,255,.18)',
+  textDim:'#7c8db5',
+  textSoft:'#b9c6e8',
+  textBright:'#eef4ff',
+  scanAlpha:0.05
+};
+
+/* ============ CONTROL TUNING ============ */
+const TURN_BUFFER_MS=450;    // how long a queued turn survives
+const TURN_SNAP=6.5;         // px of centerline alignment required to turn
+const INPUT_SEQ={n:0};       // monotonically increasing input stamp for last-press-wins
+
+/* ============ EFFECTS TUNING ============ */
+const FX={
+  MAX_PARTICLES:160,
+  SHAKE_DECAY:1.4,           // trauma/sec decay
+  SHAKE_MAX:8,               // max camera offset px
+  FLAG_BURST:14,             // particles on flag pickup
+  KILL_BURST:36,
+  CLEAR_BURST:48,
+  SMOKE_BURST:8,
+  ROCK_SPARK_CD:220,         // ms between ambient rock sparks
+  HITSTOP_MS:70,             // freeze frame on death
+  POWERUP_BURST:14           // particles when a PWR cell is collected
+};
+
+/* Power-up: a PWR cell briefly appears on a road cell, refills the tank, then vanishes.
+   FIRST/INTERVAL are PRO-difficulty baselines; powerupTiming() scales them per difficulty+round.
+   Timed against the ~59s ARCADE tank (2.7/s drain): the first cell lands at ~24% of the tank
+   (a real mid-round pit stop, not an ignored early slot), and a 14s interval keeps a live cell
+   within reach through the danger zone; DUR gives ~10s to make the 9+ tile detour. */
+const POWERUP={FIRST:14000,INTERVAL:14000,DUR:10000,SCORE:500};
+
+/* Fixed flag positions per maze — the original places flags at table spots on
+   each maze layout; these are farthest-point spreads computed from the ROM mazes,
+   so every sector has a designed, well-spread course. */
+const FLAG_TABLE=[
+  [[11,2],[31,3],[21,13],[2,15],[30,23],[11,25],[22,34],[2,36],[31,53],[4,55]],
+  [[2,2],[20,4],[30,15],[9,17],[22,29],[7,37],[31,39],[18,45],[4,55],[29,55]],
+  [[2,2],[21,3],[11,13],[31,14],[2,24],[21,25],[10,34],[19,45],[2,52],[30,55]],
+  [[23,2],[2,3],[11,14],[31,14],[2,23],[21,24],[11,34],[29,36],[31,54],[2,55]]
+];
+
+// Level table from the original ROM mapping: [topCars,bottomCars,mazeIdx(1-4),challenge]
+function levelSpec(n){
+  const t=[[0,3],[0,4],[3,5],[0,5],[1,5],[2,5],[3,5],
+           [3,5],[3,5],[3,5],[3,5],[3,5],[3,5],[3,5],[3,5]];
+  const i=Math.min(n,15)-1;
+  const challenge=(n===3||(n>3&&(n-3)%4===0));
+  const maze=((n-1)%15)+1;
+  let m;
+  if(maze<=3)m=1;else if(maze<=7)m=2;else if(maze<=11)m=3;else m=4;
+  return{top:t[i][0],bottom:t[i][1],maze:m,challenge};
+}
+
+/* ================= INPUT ================= */
+const Input={keys:{},seq:{},touch:{left:false,right:false,up:false,down:false,smoke:false},
+  gamepad:{left:false,right:false,up:false,down:false,smoke:false,start:false},
+  stamp(name){this.seq[name]=++INPUT_SEQ.n;},
+  dir(){ // returns current desired dir or null — LAST-press-wins across all devices
+    const held=[];
+    const add=(name,names)=>{for(const n of names)if(this.keys[n])held.push({name,seq:this.seq[n]||0});};
+    add('left',['arrowleft','a']);add('right',['arrowright','d']);
+    add('up',['arrowup','w']);add('down',['arrowdown','s']);
+    const t=this.touch,g=this.gamepad;
+    if(t.left)held.push({name:'left',seq:this.seq['tleft']||0});
+    if(t.right)held.push({name:'right',seq:this.seq['tright']||0});
+    if(t.up)held.push({name:'up',seq:this.seq['tup']||0});
+    if(t.down)held.push({name:'down',seq:this.seq['tdown']||0});
+    if(g.left)held.push({name:'left',seq:this.seq['gleft']||0});
+    if(g.right)held.push({name:'right',seq:this.seq['gright']||0});
+    if(g.up)held.push({name:'up',seq:this.seq['gup']||0});
+    if(g.down)held.push({name:'down',seq:this.seq['gdown']||0});
+    if(!held.length)return null;
+    held.sort((a,b)=>b.seq-a.seq);
+    return held[0].name;}
+};
+window.addEventListener('keydown',e=>{
+  const k=e.key.toLowerCase();
+  Input.keys[k]=true;Input.stamp(k);
+  Game.anyKey(e);
+  if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();
+});
+window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();Input.keys[k]=false;Input.seq[k]=0;});
+document.querySelectorAll('#touchUI .tbtn,#touchUI .smoke').forEach(b=>{
+  const k=b.dataset.k;
+  const on=e=>{e.preventDefault();Input.touch[k]=true;Input.stamp('t'+k);};
+  const off=e=>{e.preventDefault();Input.touch[k]=false;Input.seq['t'+k]=0;};
+  b.addEventListener('touchstart',on,{passive:false});
+  b.addEventListener('touchend',off,{passive:false});
+  b.addEventListener('touchcancel',off,{passive:false});
+  b.addEventListener('mousedown',on);
+  b.addEventListener('mouseup',off);
+});
+window.addEventListener('gamepadconnected',()=>{Game.padConnected=true;});
+function pollPad(){
+  const gps=navigator.getGamepads?navigator.getGamepads():[];
+  for(const gp of gps){
+    if(!gp)continue;
+    const ax=gp.axes[0]||0,ay=gp.axes[1]||0;
+    const upd=(n,v)=>{if(v!==Input.gamepad[n]){Input.gamepad[n]=v;if(v)Input.stamp('g'+n);}};
+    upd('left', ax<-0.4||!!gp.buttons[14]?.pressed);
+    upd('right',ax> 0.4||!!gp.buttons[15]?.pressed);
+    upd('up',   ay<-0.4||!!gp.buttons[12]?.pressed);
+    upd('down', ay> 0.4||!!gp.buttons[13]?.pressed);
+    Input.gamepad.smoke=!!(gp.buttons[0]?.pressed||gp.buttons[2]?.pressed);
+    Input.gamepad.start=!!(gp.buttons[9]?.pressed);
+    break;
+  }
+}
+
+/* ================= AUDIO (WebAudio synth — no assets) ================= */
+const AudioSys={
+  ctx:null,on:true,
+  init(){if(!this.ctx){try{this.ctx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}
+    if(this.ctx&&this.ctx.state==='suspended')this.ctx.resume();},
+  beep(f,dur,type='square',vol=0.08,slide=0){
+    if(!this.on||!this.ctx)return;
+    const o=this.ctx.createOscillator(),g=this.ctx.createGain();
+    o.type=type;o.frequency.value=f;
+    if(slide)o.frequency.linearRampToValueAtTime(f+slide,this.ctx.currentTime+dur);
+    g.gain.value=vol;g.gain.exponentialRampToValueAtTime(0.001,this.ctx.currentTime+dur);
+    o.connect(g);g.connect(this.ctx.destination);
+    o.start();o.stop(this.ctx.currentTime+dur);}
+};
+
+/* Rally-X's iconic looping BGM, approximated with a square-wave sequencer */
+const BGM={step:0,timer:null,
+  // main riff (semitone offsets from base), -1 = rest
+  seq:[0,-1,4,-1,7,-1,4,-1,0,-1,4,7,12,-1,7,-1],
+  bass:[-24,-24,-17,-17,-19,-19,-12,-12],
+  start(){this.stop();
+    this.timer=setInterval(()=>{
+      if(!AudioSys.on||!AudioSys.ctx)return;
+      if(Game.state!==State.PLAY&&Game.state!==State.BONUS)return;
+      const s=this.seq[this.step%this.seq.length];
+      const b=this.bass[Math.floor(this.step/2)%this.bass.length];
+      if(s>=0)AudioSys.beep(330*Math.pow(2,s/12),0.09,'square',0.03);
+      if(this.step%2===0&&b>=-24)AudioSys.beep(165*Math.pow(2,(b+24)/12),0.11,'triangle',0.05);
+      this.step++;
+    },150);},
+  stop(){if(this.timer){clearInterval(this.timer);this.timer=null;}}
+};
+
+/* ================= HELPERS ================= */
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function isRoad(m,c,r){ // maze lookup with solid border
+  if(r<0||r>=ROWS||c<0||c>=COLS)return false;
+  return m[r][c]!=='X';
+}
+function roadAtPx(m,x,y){return isRoad(m,Math.floor(x/TILE),Math.floor(y/TILE));}
+
+/* ================= ENTITIES ================= */
+class Car{
+  constructor(maze){this.maze=maze;this.x=0;this.y=0;this.dir='up';this.speed=1.9;
+    this.stun=0;this.spin=0;this.alive=true;this.px=0;this.py=0;}
+  get cx(){return Math.floor(this.x/TILE);} get cy(){return Math.floor(this.y/TILE);}
+  setTile(c,r){this.x=c*TILE+TILE/2;this.y=r*TILE+TILE/2;}
+  tryTurn(nd){ // axis-change turns snap the car to the lane centerline (original feel)
+    if(nd===this.dir)return true; // already heading that way — never re-snap (keeps cars moving!)
+    const cx=this.cx,cy=this.cy,midX=cx*TILE+TILE/2,midY=cy*TILE+TILE/2;
+    const nearX=Math.abs(this.x-midX)<=TURN_SNAP,nearY=Math.abs(this.y-midY)<=TURN_SNAP;
+    if((nd==='left'||nd==='right')&&!nearY)return false;
+    if((nd==='up'||nd==='down')&&!nearX)return false;
+    const dc={left:-1,right:1,up:0,down:0}[nd],dr={left:0,right:0,up:-1,down:1}[nd];
+    if(!isRoad(this.maze,cx+dc,cy+dr))return false;
+    // also verify there is room to actually move one sub-step that way
+    const HB=6;
+    if(nd==='left' && !isRoad(this.maze,Math.floor((this.x-HB-2)/TILE),cy))return false;
+    if(nd==='right'&& !isRoad(this.maze,Math.floor((this.x+HB+2)/TILE),cy))return false;
+    if(nd==='up'   && !isRoad(this.maze,cx,Math.floor((this.y-HB-2)/TILE)))return false;
+    if(nd==='down' && !isRoad(this.maze,cx,Math.floor((this.y+HB+2)/TILE)))return false;
+    if((nd==='left'||nd==='right')){this.y=midY;this.x=midX;}
+    else {this.x=midX;this.y=midY;}
+    this.dir=nd;return true;}
+  step(dt,speedMul=1){
+    if(this.frozen)return;
+    if(this.stun>0){this.stun-=dt;return;}
+    // Car hitbox: 12x12 centered. Move in small sub-steps and test the hitbox
+    // against wall tiles each time — no speed can tunnel through a wall.
+    const HB=6;                       // half-width of hitbox
+    const v=this.speed*speedMul*(dt/FIXED_DT);
+    const d=this.dir;
+    let remaining=Math.abs(v);
+    const sx=(d==='left'?-1:d==='right'?1:0), sy=(d==='up'?-1:d==='down'?1:0);
+    while(remaining>0){
+      const s=Math.min(remaining,4);  // sub-step <= 4px, always < TILE
+      remaining-=s;
+      const nx=this.x+sx*s, ny=this.y+sy*s;
+      // corners of the proposed hitbox
+      const l=nx-HB,r=nx+HB,t=ny-HB,b=ny+HB;
+      const c0=Math.floor(l/TILE),c1=Math.floor(r/TILE);
+      const r0=Math.floor(t/TILE),r1=Math.floor(b/TILE);
+      let blocked=false;
+      for(let rr=r0;rr<=r1&&!blocked;rr++)
+        for(let cc=c0;cc<=c1;cc++)
+          if(!isRoad(this.maze,cc,rr)){blocked=true;break;}
+      if(blocked){
+        // snap flush against the wall edge we hit
+        if(sx<0)this.x=(c0+1)*TILE+HB;
+        else if(sx>0)this.x=c1*TILE-HB-0.01;
+        else if(sy<0)this.y=(r0+1)*TILE+HB;
+        else if(sy>0)this.y=r1*TILE-HB-0.01;
+        break;
+      }
+      this.x=nx;this.y=ny;
+    }
+    // safety clamp: the outer road lanes (row 0/55, col 0/33) are drivable in the
+    // original — only keep the car inside the maze bounds, never past the edge.
+    this.x=clamp(this.x,HB,COLS*TILE-HB);
+    this.y=clamp(this.y,HB,ROWS*TILE-HB);
+  }
+}
+
+class Player extends Car{
+  constructor(maze){super(maze);this.smoke=[];this.smokeCd=0;this.pendingDir=null;this.pendingT=0;this.smokeHeld=false;}
+  puff(){ // one trail puff at the car — cheap, can never zero the tank
+    this.smoke.push({x:this.x,y:this.y,life:1400,max:1400,seed:Math.random()*Math.PI*2,
+      vx:(Math.random()*2-1)*0.3,vy:(Math.random()*2-1)*0.3});
+    Game.fuel=Math.max(0,Game.fuel-SMOKE_COST);
+  }
+  update(dt,input){
+    // smoke: holding the button streams a continuous drifting trail
+    this.smokeCd-=dt;
+    if(this.smokeHeld&&Game.fuel>=SMOKE_COST&&this.smokeCd<=0){
+      this.smokeCd=SMOKE_TRAIL_MS;
+      this.puff();
+    }
+    for(let i=this.smoke.length-1;i>=0;i--){
+      const s=this.smoke[i];
+      s.life-=dt;
+      s.x+=s.vx*dt/16.6;s.y+=s.vy*dt/16.6;
+      if(s.life<=0)this.smoke.splice(i,1);
+    }
+    // turn buffering: a direction pressed early is retried until it becomes
+    // possible at the next intersection (fixes "imprecise" cornering)
+    const want=input.dir();
+    if(want){
+      if(this.tryTurn(want)){this.pendingDir=null;this.pendingT=0;}
+      else{this.pendingDir=want;this.pendingT=TURN_BUFFER_MS;}
+    }else if(this.pendingDir){
+      this.pendingT-=dt;
+      if(this.pendingT<=0)this.pendingDir=null;
+      else if(this.tryTurn(this.pendingDir))this.pendingDir=null;
+    }
+  }
+  dropSmoke(){ // instant puff + sound on the button's rising edge
+    if(Game.fuel<SMOKE_COST)return false;
+    this.smokeCd=SMOKE_TRAIL_MS;
+    this.puff();
+    AudioSys.beep(220,0.15,'sawtooth',0.06,-80);
+    Game.emit(this.x,this.y,5,CYBER.neonCyan,1.1,'smoke');
+    return true;}
+}
+
+const SMOKE_COST=0.6;       // fuel per trail puff (~8.6/sec while held)
+const SMOKE_TRAIL_MS=70;    // ms between trail puffs while held
+
+class Enemy extends Car{
+  constructor(maze,top,idx){super(maze);this.top=top;this.chase=true;this.idx=idx||0;
+    this.tc=16;this.tr=40;this.retargetT=0;}
+  /* pick a committed target cell around the player — formation offsets rotated
+     to the player's heading herd the pack: one cuts ahead, others flank, later
+     ones come from behind (faithful to the arcade cars boxing you in). */
+  setTarget(player,dt){
+    this.retargetT-=dt;
+    if(this.retargetT>0)return;
+    this.retargetT=550+Math.random()*450;
+    const fwd={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[player.dir]||[0,-1];
+    const side=[fwd[1],-fwd[0]]; // left normal of the player's heading
+    const offs=[[0,-2],[-2,-1],[2,-1],[0,2],[1,2],[-1,2]];
+    const o=offs[this.idx%offs.length];
+    let tc=0,tr=0,ok=false;
+    for(const s of [1,0.5,0]){ // shrink toward the player if offset lands on a wall
+      tc=player.cx+Math.round(fwd[0]*o[0]*s)+Math.round(side[0]*o[1]*s);
+      tr=player.cy+Math.round(fwd[1]*o[0]*s)+Math.round(side[1]*o[1]*s);
+      if(isRoad(this.maze,tc,tr)){ok=true;break;}
+    }
+    if(!ok){tc=player.cx;tr=player.cy;}
+    this.tc=tc;this.tr=tr;
+  }
+  update(dt,player,others,rocks){
+    if(this.stun>0){this.stun-=dt;this.spin+=dt;return;}
+    if(!player)return; /* challenge round: cars frozen while fuel lasts */
+    this.setTarget(player,dt);
+    const cx=this.cx,cy=this.cy;
+    const dirs=[];
+    const opp={left:'right',right:'left',up:'down',down:'up'}[this.dir];
+    for(const d of ['left','right','up','down']){
+      if(d===opp)continue;
+      const dc={left:-1,right:1}[d]||0,dr={up:-1,down:1}[d]||0;
+      if(isRoad(this.maze,cx+dc,cy+dr))dirs.push(d);
+    }
+    if(dirs.length===0){ // dead end: reverse
+      const dc={left:-1,right:1}[opp]||0,dr={up:-1,down:1}[opp]||0;
+      if(isRoad(this.maze,cx+dc,cy+dr))this.tryTurn(opp)||(()=>{this.dir=opp;})();
+      return;
+    }
+    // steer toward the committed target: min manhattan distance with a strong
+    // straight preference — decisions stay stable between retargets, so the
+    // pack sweeps corners smoothly instead of flapping direction every frame.
+    let best=null,bd=1e9;
+    for(const d of dirs){
+      const dc={left:-1,right:1}[d]||0,dr={up:-1,down:1}[d]||0;
+      const dist=Math.abs(this.tc-(cx+dc))+Math.abs(this.tr-(cy+dr));
+      const straight=d===this.dir?-0.9:0;
+      if(dist+straight<bd){bd=dist+straight;best=d;}
+    }
+    if(best)this.tryTurn(best);
+  }
+}
+
+/* ================= GAME ================= */
+const Game={
+  state:State.BOOT,stateT:0,
+  canvas:null,ctx:null,scale:1,W:SCREEN_W,H:SCREEN_H,
+  padConnected:false,
+  highScores:[],
+  diff:1, // 0 easy 1 normal 2 arcade
+  DIFFS:[{name:'ROOKIE',fuelMul:1.35,spdMul:0.92},{name:'PRO',fuelMul:1.0,spdMul:1.0},
+         {name:'ARCADE',fuelMul:1.0,spdMul:1.0}], // ARCADE = original cabinet balance
+  menuIdx:0,diffIdx:1,scoresScroll:0,
+  /* juice state */
+  particles:[],floaters:[],trauma:0,hitStopT:0,rockSparkT:{},shakeX:0,shakeY:0,flashA:0,redFlashA:0,skids:[],
+  /* power-up + attract mode */
+  powerup:null,powerupCd:0,demo:false,demoRound:1,demoWait:0,demoTarget:null,demoStep:null,demoRt:0,
+  demoFlag:null,demoSlowT:0,demoDeadT:0,demoDeathCd:0,demoWreck:null,demoPlumeT:0,demoScore:0,
+
+  /* ---- particle system (cheap, pooled by cap) ---- */
+  emit(x,y,count,color,spd,kind){
+    for(let i=0;i<count;i++){
+      if(this.particles.length>=FX.MAX_PARTICLES)return;
+      const a=Math.random()*Math.PI*2, s=spd*(0.3+Math.random()*0.9);
+      this.particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:500+Math.random()*400,max:900,
+        size:1+Math.random()*2.4,color,kind:kind||'spark'});
+    }
+  },
+  /* lingering wreck-smoke plume: big soft dark puffs that drift and swell */
+  plume(x,y,n,sizeMul){
+    for(let i=0;i<n;i++){
+      if(this.particles.length>=FX.MAX_PARTICLES)return;
+      const a=Math.random()*Math.PI*2, s=0.12+Math.random()*0.4;
+      this.particles.push({x:x+(Math.random()*10-5),y:y+(Math.random()*10-5),vx:Math.cos(a)*s,vy:Math.sin(a)*s-0.3,
+        life:1900+Math.random()*700,max:2600,size:(2.6+Math.random()*3.4)*(sizeMul||1),
+        color:'#151826',kind:'plume'});
+    }
+  },
+  /* tire skid streaks at a crash site: dark dashes along the car's heading */
+  dropSkids(x,y,dir){
+    const ang=dir==='up'?-Math.PI/2:dir==='down'?Math.PI/2:dir==='left'?Math.PI:0;
+    const ca=Math.cos(ang),sa=Math.sin(ang),px=Math.cos(ang+Math.PI/2),py=Math.sin(ang+Math.PI/2);
+    for(let i=0;i<14;i++){
+      const back=-10-Math.random()*36, off=Math.random()*16-8;
+      this.skids.push({x:x+ca*back+px*off,y:y+sa*back+py*off,rot:ang,
+        w:2+Math.random()*1.6,h:6+Math.random()*8,life:3200+Math.random()*600,max:3800});
+    }
+  },
+  addFloater(x,y,text,color,big){
+    this.floaters.push({x,y,text,color:color||CYBER.neonCyan,life:900,max:900,big:!!big});
+  },
+  shake(a){this.trauma=Math.min(1,this.trauma+a);},
+  updateFX(dt){
+    // hit-stop: brief freeze-frame on death
+    if(this.hitStopT>0){this.hitStopT-=dt;return;}
+    // trauma-based screen shake (smooth sine, decays on its own)
+    if(this.trauma>0){
+      this.trauma=Math.max(0,this.trauma-FX.SHAKE_DECAY*dt/1000);
+      const s=this.trauma*this.trauma;
+      const t=performance.now()/1000;
+      this.shakeX=(Math.sin(t*41.3)*0.6+Math.sin(t*17.7)*0.4)*FX.SHAKE_MAX*s;
+      this.shakeY=(Math.sin(t*37.9+2.1)*0.6+Math.sin(t*23.3)*0.4)*FX.SHAKE_MAX*s;
+    }else{this.shakeX=this.shakeY=0;}
+    if(this.flashA>0)this.flashA=Math.max(0,this.flashA-dt/220);
+    if(this.redFlashA>0)this.redFlashA=Math.max(0,this.redFlashA-dt/450);
+    for(let i=this.skids.length-1;i>=0;i--){
+      this.skids[i].life-=dt;
+      if(this.skids[i].life<=0)this.skids.splice(i,1);
+    }
+    for(let i=this.particles.length-1;i>=0;i--){
+      const p=this.particles[i];
+      p.life-=dt;p.x+=p.vx*(dt/16.6);p.y+=p.vy*(dt/16.6);
+      p.vx*=0.985;p.vy*=0.985;
+      if(p.life<=0)this.particles.splice(i,1);
+    }
+    for(let i=this.floaters.length-1;i>=0;i--){
+      const f=this.floaters[i];
+      f.life-=dt;f.y-=dt*0.02;
+      if(f.life<=0)this.floaters.splice(i,1);
+    }
+  },
+
+  init(){
+    this.canvas=document.getElementById('C');
+    this.ctx=this.canvas.getContext('2d');
+    this.initStars();
+    try{this.highScores=JSON.parse(localStorage.getItem('rallyz_scores')||'[]');}catch(e){this.highScores=[];}
+    this.resize();
+    window.addEventListener('resize',()=>this.resize());
+    window.addEventListener('orientationchange',()=>setTimeout(()=>this.resize(),60));
+    if(window.visualViewport)visualViewport.addEventListener('resize',()=>this.resize());
+    this.setState(State.TITLE);
+    this.startDemo();
+    let last=performance.now(),acc=0;
+    const loop=(now)=>{
+      acc+=now-last;last=now;
+      if(acc>250)acc=FIXED_DT;
+      while(acc>=FIXED_DT){this.tick(FIXED_DT);acc-=FIXED_DT;}
+      this.render();
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  },
+  resize(){
+    const v=window.visualViewport||{width:innerWidth,height:innerHeight};
+    const s=Math.min(v.width/(SCREEN_W+8),v.height/(SCREEN_H+8));
+    this.canvas.width=Math.round(SCREEN_W*s);this.canvas.height=Math.round(SCREEN_H*s);
+    this.canvas.style.width=this.canvas.width+'px';this.canvas.style.height=this.canvas.height+'px';
+    this.scale=s;
+  },
+  setState(s){this.state=s;this.stateT=0;},
+
+  anyKey(e){
+    AudioSys.init();
+    const k=e.key.toLowerCase();
+    if(k==='p'&&this.state===State.PLAY){this.setState(State.PAUSED);return;}
+    if(k==='p'&&this.state===State.PAUSED){this.setState(State.PLAY);return;}
+    switch(this.state){
+      case State.TITLE: if(k==='enter'||k===' '||Input.gamepad.start)this.setState(State.MENU); break;
+      case State.MENU:
+        if(k==='arrowup'||k==='w'){this.menuIdx=(this.menuIdx+3)%4;AudioSys.beep(500,.05);}
+        else if(k==='arrowdown'||k==='s'){this.menuIdx=(this.menuIdx+1)%4;AudioSys.beep(500,.05);}
+        else if(k==='enter'||k===' '){
+          AudioSys.beep(700,.08);
+          if(this.menuIdx===0){this.newGame();}
+          else if(this.menuIdx===1)this.setState(State.DIFF);
+          else if(this.menuIdx===2)this.setState(State.HOWTO);
+          else {this.scoresScroll=0;this.setState(State.SCORES);}
+        }break;
+      case State.DIFF:
+        if(k==='arrowup'||k==='w'||k==='arrowleft'||k==='a')this.diffIdx=(this.diffIdx+2)%3;
+        else if(k==='arrowdown'||k==='s'||k==='arrowright'||k==='d')this.diffIdx=(this.diffIdx+1)%3;
+        else if(k==='enter'||k===' '){this.diff=this.diffIdx;this.menuIdx=0;AudioSys.beep(700,.08);this.setState(State.MENU);}
+        else if(k==='escape')this.setState(State.MENU);
+        break;
+      case State.HOWTO:case State.SCORES:
+        if(k==='enter'||k===' '||k==='escape'){this.menuIdx=0;this.setState(State.MENU);}break;
+      case State.PAUSED:
+        if(k==='enter'||k===' ')this.setState(State.PLAY);
+        else if(k==='escape'||k==='q')this.toTitle();break;
+      case State.GAMEOVER:
+        if(k==='enter'||k===' ')this.toTitle();break;
+    }
+  },
+
+  toTitle(){BGM.stop();this.menuIdx=0;this.setState(State.TITLE);this.startDemo();},
+
+  newGame(){
+    this.score=0;this.lives=3;this.round=1;this.extraAt=20000;
+    this.diff=this.diffIdx;
+    this.startRound(true);
+  },
+  /* PWR cell cadence: harder difficulty + later rounds respawn the cell sooner so fuel pressure stays fair */
+  powerupTiming(){
+    const mul=this.DIFFS[this.demo?1:this.diff].fuelMul; // 1.35 rookie / 1.0 pro+arcade (original balance)
+    const roundT=Math.max(0.75,1-(this.round-1)*0.025);   // slight speed-up on later sectors
+    return {first:Math.round(POWERUP.FIRST*mul*roundT),interval:Math.round(POWERUP.INTERVAL*mul*roundT)};
+  },
+  setupRound(){ // shared by real play and attract-mode demo
+    const spec=levelSpec(this.round);
+    const D=this.DIFFS[this.demo?1:this.diff];
+    this.maze=MAZES[spec.maze-1];
+    this.spec=spec;
+    this.challenge=spec.challenge;
+    this.flagsLeft=10;this.flagVal=100;this.doubled=false;this.specialTaken=false;
+    this.outOfFuelMsg=false;this.fuelOutT=0;this.lowFuelWarnT=0;
+    this.powerup=null;this.powerupCd=this.powerupTiming().first;
+    this.fuelMax=Math.round(100*D.fuelMul);this.fuel=this.fuelMax;
+    // fixed flag positions per maze (faithful table spots); special flag rotates per round
+    this.flags=FLAG_TABLE[spec.maze-1].map(([c,r],i)=>({c,r,taken:false,special:i===((this.round-1)%10)}));
+    // rocks: deterministic per round, never on a flag or in the start strip
+    this.rocks=[];
+    let seed=(this.round*7919+13)>>>0;
+    const rnd=()=>{seed=(Math.imul(seed,1103515245)+12345)>>>0;return seed/4294967296;}; // [0,1)
+    const rockCand=[];
+    for(let r=3;r<ROWS-3;r++)for(let c=3;c<COLS-3;c++)
+      if(isRoad(this.maze,c,r)&&!(Math.abs(r-51)<6&&Math.abs(c-16)<8)
+        // never on a flag OR beside one, so a rock can't seal a flag pocket
+        &&!this.flags.some(f=>Math.abs(f.c-c)<=1&&Math.abs(f.r-r)<=1))rockCand.push([c,r]);
+    for(let i=0;i<8&&rockCand.length;i++){
+      const idx=Math.floor(rnd()*rockCand.length)%rockCand.length;
+      const[c,r]=rockCand.splice(idx,1)[0];
+      this.rocks.push({c,r});
+    }
+    // entities
+    this.player=new Player(this.maze);
+    this.player.setTile(16,51);this.player.dir='up';
+    this.enemies=[];
+    for(let i=0;i<spec.bottom;i++){
+      const e=new Enemy(this.maze,false,i);
+      e.setTile(12+i*2,53);e.dir=i%2?'left':'right';
+      e.speed=(1.5*D.spdMul+this.round*0.02)*(this.demo?1.18:1); // demo pack keeps pace → real chase
+      e.top=false;this.enemies.push(e);
+    }
+    for(let i=0;i<spec.top;i++){
+      const e=new Enemy(this.maze,true,i+spec.bottom);
+      e.setTile(14+i*2,2);e.dir='down';e.speed=(1.45*D.spdMul+this.round*0.02)*(this.demo?1.18:1);
+      e.top=true;this.enemies.push(e);
+    }
+    this.playT=0;
+  },
+  startRound(newLife){
+    this.demo=false;
+    this.setupRound();
+    this.setState(State.READY);this.readyT=2000;
+    BGM.start();
+  },
+  startDemo(){ // attract mode: the game plays itself behind the title screen
+    this.demo=true;
+    this.round=this.demoRound;
+    this.setupRound();
+    this.setState(State.TITLE);
+    this.demoWait=0;this.demoTarget=null;this.demoStep=null;this.demoRt=0;
+    this.demoFlag=null;this.demoSlowT=0;this.demoScore=0;
+  },
+
+  tick(dt){
+    this.stateT+=dt;
+    this.updateFX(dt);
+    pollPad();
+    if(Input.gamepad.start){
+      if(this.state===State.TITLE){this.setState(State.MENU);Input.gamepad.start=false;}
+      else if(this.state===State.PLAY){this.setState(State.PAUSED);Input.gamepad.start=false;}
+      else if(this.state===State.PAUSED){this.setState(State.PLAY);Input.gamepad.start=false;}
+    }
+    // smoke: held across keyboard/touch/gamepad → continuous trail; rising edge = instant puff + beep
+    if(this.state===State.PLAY&&this.player){
+      const held=Input.keys[' ']||Input.touch.smoke||Input.gamepad.smoke;
+      const p=this.player;
+      if(held&&!p.smokeHeld)p.dropSmoke();
+      p.smokeHeld=held;
+    }
+
+    switch(this.state){
+      case State.TITLE:this.updateDemo(dt);break;
+      case State.READY:
+        this.readyT-=dt;if(this.readyT<=0)this.setState(this.challenge?State.BONUS:State.PLAY);
+        break;
+      case State.PLAY:case State.BONUS:this.updatePlay(dt);break;
+      case State.DYING:
+        if(this.stateT>1800){
+          this.lives--;
+          if(this.lives<=0){this.endGame();}
+          else this.startRound(false);
+        }break;
+      case State.STAGECLEAR:
+        if(this.stateT>2200){this.round++;this.startRound(false);}break;
+    }
+  },
+
+  updatePlay(dt){
+    this.playT=(this.playT||0)+dt;
+    const p=this.player;
+    p.update(dt,Input);
+    const frozen=this.state===State.BONUS&&this.fuel>0;
+    for(const e of this.enemies)e.frozen=frozen;
+    const aggro=this.playT>1200&&!frozen;
+    for(const e of this.enemies)e.update(dt,aggro?p:null,this.enemies,this.rocks);
+    // ambient sparks from scrap piles
+    for(const rk of this.rocks){
+      const key=rk.c+','+rk.r;
+      this.rockSparkT[key]=(this.rockSparkT[key]||Math.random()*FX.ROCK_SPARK_CD)-dt;
+      if(this.rockSparkT[key]<=0){
+        this.rockSparkT[key]=FX.ROCK_SPARK_CD*(0.5+Math.random());
+        this.emit(rk.c*TILE+8+(Math.random()*10-5),rk.r*TILE+8+(Math.random()*10-5),
+          2,CYBER.neonRed,0.9,'rock');
+      }
+    }
+    // power drain — out of fuel stops the car, then the life is lost (original behavior)
+    this.fuel-=dt*0.0027*this.DIFFS[this.diff].fuelMul*(this.fuel>20?1:0.25); // ~60s full tank, like the original
+    // low-fuel warning chime — cabinet-style repeating alarm while the tank is under 25%.
+    // In the challenge round fuel IS the freeze timer, so it gets a distinct urgent
+    // rising chirp (higher pitch, faster cadence) instead of the normal fuel drone.
+    if(this.fuel>0&&this.fuel<this.fuelMax*0.25){
+      this.lowFuelWarnT=(this.lowFuelWarnT||0)-dt;
+      if(this.lowFuelWarnT<=0){
+        this.lowFuelWarnT=this.challenge?1100:1600;
+        if(this.challenge){
+          AudioSys.beep(1046,.08,'square',.07);
+          setTimeout(()=>AudioSys.beep(1318,.08,'square',.07),90);
+          setTimeout(()=>AudioSys.beep(1568,.1,'square',.07),180);
+        }else{
+          AudioSys.beep(880,.09,'square',.07);setTimeout(()=>AudioSys.beep(660,.12,'square',.07),110);
+        }
+      }
+    }
+    if(this.fuel<=0){
+      this.fuel=0;
+      if(!this.outOfFuelMsg){this.outOfFuelMsg=true;AudioSys.beep(120,0.5,'sawtooth',0.07);this.fuelOutT=900;}
+      else this.fuelOutT-=dt;
+      if(this.fuelOutT<=0){this.kill(this.player.x,this.player.y);return;}
+    }
+    p.step(dt,this.fuel>0?1:0);
+    for(const e of this.enemies)e.step(dt);
+
+    // smoke stun / rock stun (enemies pass through each other, like the original)
+    for(const e of this.enemies){
+      if(e.stun>0)continue;
+      for(const s of p.smoke)
+        if(Math.abs(e.x-s.x)<12&&Math.abs(e.y-s.y)<12){e.stun=1500;AudioSys.beep(140,.12,'square',.05);
+          this.emit(e.x,e.y,FX.SMOKE_BURST,CYBER.neonCyan,1.4,'smoke');this.shake(0.15);}
+      for(const rk of this.rocks)
+        if(Math.abs(e.x-(rk.c*TILE+8))<10&&Math.abs(e.y-(rk.r*TILE+8))<10)e.stun=1500;
+    }
+    // flag pickup
+    for(const f of this.flags){
+      if(f.taken)continue;
+      if(Math.abs(p.x-(f.c*TILE+8))<10&&Math.abs(p.y-(f.r*TILE+8))<10){
+        f.taken=true;this.flagsLeft--;
+        const wasSpecial=f.special&&!this.specialTaken;
+        let v=this.flagVal*(this.doubled&&!wasSpecial?2:1); // S flag itself pays face value
+        this.addScore(v);
+        AudioSys.beep(600+ (10-this.flagsLeft)*40,.09,'square',.07);
+        const fx=f.c*TILE+8, fy=f.r*TILE+8;
+        this.emit(fx,fy,FX.FLAG_BURST,wasSpecial?'#fff3a0':CYBER.neonYellow,1.6,'flag');
+        this.addFloater(fx,fy-8,'+'+v,wasSpecial?'#fff3a0':CYBER.neonYellow,wasSpecial);
+        this.shake(wasSpecial?0.5:0.25);
+        if(wasSpecial){this.specialTaken=true;this.doubled=true;
+          AudioSys.beep(900,.2,'square',.08,300);
+          this.addFloater(this.camX+VIEW_W*TILE/2,this.camY+VIEW_H*TILE*0.3,'DOUBLE SCORE!',CYBER.neonYellow,true);}
+        if(this.flagVal<1000)this.flagVal+=100;
+        if(this.flagsLeft===0){this.stageClear();return;}
+      }
+    }
+    // PWR cell: appears briefly, refills the tank, then vanishes
+    if(this.powerup){
+      this.powerup.t+=dt;
+      if(this.powerup.t>POWERUP.DUR){this.powerup=null;this.powerupCd=this.powerupTiming().interval;}
+      else if(Math.abs(p.x-(this.powerup.c*TILE+8))<10&&Math.abs(p.y-(this.powerup.r*TILE+8))<10){
+        const fx=this.powerup.c*TILE+8,fy=this.powerup.r*TILE+8;
+        this.powerup=null;this.powerupCd=this.powerupTiming().interval;
+        this.fuel=this.fuelMax;
+        this.addScore(POWERUP.SCORE); // the cell pays like a mid-value flag
+        this.emit(fx,fy,FX.POWERUP_BURST,CYBER.neonGreen,1.7,'powerup');
+        this.addFloater(fx,fy-8,'+'+POWERUP.SCORE+' PWR',CYBER.neonGreen,true);
+        this.shake(0.35);
+        AudioSys.beep(760,.12,'square',.08);setTimeout(()=>AudioSys.beep(1140,.14,'square',.08),110);
+      }
+    }else{
+      this.powerupCd-=dt;
+      if(this.powerupCd<=0){
+        const cand=[];
+        for(let r=3;r<ROWS-3;r++)for(let c=3;c<COLS-3;c++)
+          if(isRoad(this.maze,c,r)&&Math.abs(r-p.cy)+Math.abs(c-p.cx)>9)cand.push([c,r]);
+        if(cand.length){
+          const[c,r]=cand[Math.floor(Math.random()*cand.length)%cand.length];
+          this.powerup={c,r,t:0};
+        }
+        this.powerupCd=this.powerupTiming().interval;
+      }
+    }
+    if(this.playT>1200){
+      // rock collision (player dies)
+      for(const rk of this.rocks)
+        if(Math.abs(p.x-(rk.c*TILE+8))<9&&Math.abs(p.y-(rk.r*TILE+8))<9){this.kill(p.x,p.y);return;}
+      // enemy collision
+      for(const e of this.enemies){
+        if(e.stun>0)continue;
+        if(Math.abs(p.x-e.x)<11&&Math.abs(p.y-e.y)<11){this.kill(e.x,e.y);return;}
+      }
+    }
+  },
+
+  updateDemo(dt){ // attract mode: a demo driver collects flags while enemies chase
+    this.playT=(this.playT||0)+dt;
+    const p=this.player;
+    // ambient sparks from scrap piles
+    for(const rk of this.rocks){
+      const key=rk.c+','+rk.r;
+      this.rockSparkT[key]=(this.rockSparkT[key]||Math.random()*FX.ROCK_SPARK_CD)-dt;
+      if(this.rockSparkT[key]<=0){
+        this.rockSparkT[key]=FX.ROCK_SPARK_CD*(0.5+Math.random());
+        this.emit(rk.c*TILE+8+(Math.random()*10-5),rk.r*TILE+8+(Math.random()*10-5),
+          2,CYBER.neonRed,0.9,'rock');
+      }
+    }
+    // smoke trail: decay + drift so the trail fades like in real play
+    for(let i=p.smoke.length-1;i>=0;i--){
+      const s=p.smoke[i];
+      s.life-=dt;s.x+=s.vx*dt/16.6;s.y+=s.vy*dt/16.6;
+      if(s.life<=0)p.smoke.splice(i,1);
+    }
+    // smoke and scrap piles affect pursuers — the same visible reactions real play has
+    for(const e of this.enemies){
+      if(e.stun>0)continue;
+      for(const s of p.smoke)
+        if(Math.abs(e.x-s.x)<12&&Math.abs(e.y-s.y)<12){e.stun=1500;AudioSys.beep(140,.12,'square',.05);
+          this.emit(e.x,e.y,FX.SMOKE_BURST,CYBER.neonCyan,1.4,'smoke');this.shake(0.15);}
+      for(const rk of this.rocks)
+        if(Math.abs(e.x-(rk.c*TILE+8))<10&&Math.abs(e.y-(rk.r*TILE+8))<10)e.stun=1500;
+    }
+    // demo crash: occasionally the pack catches the car — play the death beat,
+    // then restart the round, like the original arcade attract loop
+    if(this.demoDeadT>0){
+      this.demoDeadT-=dt;
+      for(const e of this.enemies){e.update(dt,p,this.enemies,this.rocks);e.step(dt);}
+      // smoldering wreck: keep the plume alive through the whole beat
+      if(this.demoWreck){
+        this.demoPlumeT-=dt;
+        if(this.demoPlumeT<=0){
+          this.demoPlumeT=140;
+          this.plume(this.demoWreck.x+(Math.random()*14-7),this.demoWreck.y+(Math.random()*14-7),2,0.7);
+        }
+      }
+      if(this.demoDeadT<=0){
+        const spec=levelSpec(this.round);
+        let bi=0,ti=0;
+        for(const e of this.enemies){
+          if(e.top){e.setTile(14+ti*2,2);e.dir='down';ti++;}
+          else{e.setTile(12+bi*2,53);e.dir=bi%2?'left':'right';bi++;}
+        }
+        this.player.setTile(16,51);this.player.dir='up';this.player.smoke=[];this.player.smokeCd=0;
+        for(const f of this.flags)f.taken=false;this.flagsLeft=10;
+        this.demoFlag=null;this.demoStep=null;this.demoRt=0;this.demoWait=0;
+        this.demoWreck=null;this.skids=[]; // wreck clears as the round restarts
+        this.demoScore=0; // new attract run — the score starts over, like the cabinet
+        this.demoDeadT=0; // exact zero — the draw gate tests <=0, negatives hide the car
+      }
+      return;
+    }
+    this.demoDeathCd=(this.demoDeathCd||0)-dt;
+    if(this.playT>5000&&this.demoDeathCd<=0){
+      let hit=null;
+      for(const rk of this.rocks)
+        if(Math.abs(p.x-(rk.c*TILE+8))<9&&Math.abs(p.y-(rk.r*TILE+8))<9){hit='rock';break;}
+      if(!hit)for(const e of this.enemies){
+        if(e.stun>0)continue;
+        if(Math.abs(p.x-e.x)<11&&Math.abs(p.y-e.y)<11){hit='enemy';break;}
+      }
+      if(hit){ // crash + respawn beat (occasional — 60–120s between demo deaths)
+        this.demoDeathCd=60000+Math.random()*60000;
+        this.demoDeadT=1900;
+        this.emit(p.x,p.y,FX.KILL_BURST,CYBER.neonMagenta,2.4,'death');
+        this.emit(p.x,p.y,14,CYBER.neonYellow,1.2,'death');
+        this.dropSkids(p.x,p.y,p.dir);           // tire streaks at the wreck
+        this.plume(p.x,p.y,10,1);                // initial smoke cloud
+        this.demoWreck={x:p.x,y:p.y};this.demoPlumeT=0; // smolder for the rest of the beat
+        this.shake(1);this.flashA=0.45;this.redFlashA=0.55;this.hitStopT=FX.HITSTOP_MS;
+        AudioSys.beep(90,.7,'sawtooth',.09,-50);
+      }
+    }
+    // committed flag + short BFS re-step: the flag never changes mid-route (a
+    // timer made the car reverse as a different flag became "nearest"), but the
+    // next path cell is recomputed from the current position every ~200ms or on
+    // arrival, so the car always has a direction and never stalls at a node.
+    this.demoRt=(this.demoRt||0)-dt;
+    const arrived=this.demoStep&&p.cx===this.demoStep.c&&p.cy===this.demoStep.r;
+    // a rock cell is not drivable — the demo routes around scrap piles
+    const demoRoad=(c,r)=>c>=0&&c<COLS&&r>=0&&r<ROWS&&this.maze[r][c]!=='X'
+      &&!this.rocks.some(rk=>rk.c===c&&rk.r===r);
+    if(!this.demoFlag||this.demoFlag.taken){
+      const m=this.maze;
+      const road=demoRoad;
+      let tf=null,bd=1e9;
+      for(const f of this.flags){
+        if(f.taken)continue;
+        const d=Math.abs(f.c-p.cx)+Math.abs(f.r-p.cy);
+        if(d<bd){bd=d;tf=f;}
+      }
+      this.demoFlag=tf;this.demoTarget=tf?{c:tf.c,r:tf.r}:null;
+    }
+    if((arrived||this.demoRt<=0||!this.demoStep)&&this.demoFlag&&!this.demoFlag.taken){
+      this.demoRt=200;
+      const tf=this.demoFlag,m=this.maze;
+      const road=demoRoad;
+      const start=p.cx+','+p.cy;
+      let step=null;
+      const prev={},seen=new Set([start]),q=[{c:p.cx,r:p.cy}];
+      let found=null;
+      while(q.length){
+        const cur=q.shift();
+        if(cur.c===tf.c&&cur.r===tf.r){found=cur;break;}
+        for(const[dc,dr]of[[0,-1],[0,1],[-1,0],[1,0]]){
+          const nc=cur.c+dc,nr=cur.r+dr,k=nc+','+nr;
+          if(road(nc,nr)&&!seen.has(k)){seen.add(k);prev[k]=cur.c+','+cur.r;q.push({c:nc,r:nr});}
+        }
+      }
+      if(found){
+        let k=found.c+','+found.r;
+        while(prev[k]!==undefined&&prev[k]!==start)k=prev[k];
+        const kp=k.split(',').map(Number);
+        step={c:kp[0],r:kp[1]};
+      }
+      this.demoStep=step;
+    }
+    // steer toward the next path cell (coast through corners, like a real driver)
+    let turning=false;
+    if(this.demoStep){
+      const dc=this.demoStep.c-p.cx,dr=this.demoStep.r-p.cy;
+      const want=dc===1?'right':dc===-1?'left':dr===1?'down':dr===-1?'up':null;
+      if(want&&want!==p.dir){turning=true;if(!p.tryTurn(want))turning=false;}
+    }
+    // nearest pursuer — drives the smoke defense
+    let threat=1e9;
+    for(const e of this.enemies){
+      if(e.stun>0)continue;
+      const d=Math.hypot(e.x-p.x,e.y-p.y);if(d<threat)threat=d;
+    }
+    // steady, slightly slower than the pack: they keep pace and pressure the
+    // car, which escapes by cornering and laying smoke — the classic arcade look
+    p.smokeCd-=dt;                                               // (demo has no p.update — keep the trail ticking)
+    if(threat<64&&p.smokeCd<=0)p.dropSmoke();                    // shake the tail with smoke
+    p.step(dt,0.87*(turning?0.9:1));
+    for(const e of this.enemies){e.update(dt,p,this.enemies,this.rocks);e.step(dt);}
+    // collect flags (juice only — attract mode scores nothing)
+    for(const f of this.flags){
+      if(f.taken)continue;
+      if(Math.abs(p.x-(f.c*TILE+8))<10&&Math.abs(p.y-(f.r*TILE+8))<10){
+        const v=Math.min(1000,100*(10-this.flagsLeft+1)); // 100..1000 ramp, same as real play
+        f.taken=true;this.flagsLeft--;
+        const fx=f.c*TILE+8,fy=f.r*TILE+8;
+        this.emit(fx,fy,FX.FLAG_BURST,f.special?'#fff3a0':CYBER.neonYellow,1.6,'flag');
+        this.addFloater(fx,fy-8,'+'+v,f.special?'#fff3a0':CYBER.neonYellow,f.special);
+        this.demoScore+=v; // attract-run score — ticks up like the cabinet
+        this.shake(0.2);
+        AudioSys.beep(600+(10-this.flagsLeft)*40,.06,'square',.04);
+      }
+    }
+    // all flags taken → next demo sector after a beat
+    if(this.flagsLeft<=0){
+      this.demoWait+=dt;
+      if(this.demoWait>1600){
+        this.demoWait=0;
+        this.demoRound=this.demoRound%8+1;
+        this.startDemo();
+      }
+    }
+  },
+
+  addScore(v){
+    this.score+=v;
+    if(this.score>=this.extraAt){this.lives++;this.extraAt+=20000;AudioSys.beep(1000,.25,'square',.09,400);}
+  },
+  kill(ix,iy){
+    if(this.state!==State.PLAY&&this.state!==State.BONUS)return;
+    const px=ix!=null?ix:this.player.x, py=iy!=null?iy:this.player.y;
+    this.emit(px,py,FX.KILL_BURST,CYBER.neonMagenta,2.4,'death');
+    this.emit(px,py,14,CYBER.neonYellow,1.2,'death');
+    this.shake(1);this.flashA=0.45;
+    this.hitStopT=FX.HITSTOP_MS;
+    this.setState(State.DYING);AudioSys.beep(90,.7,'sawtooth',.09,-50);BGM.stop();
+  },
+  stageClear(){
+    // fuel bonus: 10 pts per sliver
+    const bonus=Math.floor(this.fuel)*10;
+    this.fuelBonus=bonus;this.addScore(bonus);
+    // neon confetti burst across the screen
+    const cx=this.camX+VIEW_W*TILE/2, cy=this.camY+VIEW_H*TILE/2;
+    for(let i=0;i<FX.CLEAR_BURST;i++){
+      if(this.particles.length>=FX.MAX_PARTICLES)break;
+      const a=Math.random()*Math.PI*2, s=1.5+Math.random()*2.2;
+      this.particles.push({x:cx,y:cy,vx:Math.cos(a)*s,vy:Math.sin(a)*s-0.6,life:900+Math.random()*500,max:1400,
+        size:1.5+Math.random()*2,color:[CYBER.neonCyan,CYBER.neonMagenta,CYBER.neonPurple,CYBER.neonYellow,CYBER.neonGreen][i%5],kind:'confetti'});
+    }
+    this.addFloater(cx,cy-10,'FUEL BONUS +'+bonus,CYBER.neonGreen,false);
+    this.shake(0.6);this.flashA=0.2;
+    this.setState(State.STAGECLEAR);BGM.stop();
+    AudioSys.beep(700,.15,'square',.08);setTimeout(()=>AudioSys.beep(900,.15,'square',.08),160);
+    setTimeout(()=>AudioSys.beep(1200,.2,'square',.09),320);
+  },
+  endGame(){
+    BGM.stop();
+    this.highScores.push({score:this.score,round:this.round,diff:this.DIFFS[this.diff].name,date:new Date().toISOString().slice(0,10)});
+    this.highScores.sort((a,b)=>b.score-a.score);
+    this.highScores=this.highScores.slice(0,10);
+    try{localStorage.setItem('rallyz_scores',JSON.stringify(this.highScores));}catch(e){}
+    this.setState(State.GAMEOVER);
+  },
+
+/* ================= RENDERING ================= */
+  render(){
+    const x=this.ctx,S=this.scale;
+    x.setTransform(S,0,0,S,0,0);
+    x.fillStyle='#000';x.fillRect(0,0,SCREEN_W,SCREEN_H);
+    switch(this.state){
+      case State.TITLE:this.drawTitle(x);break;
+      case State.MENU:this.drawMenu(x);break;
+      case State.DIFF:this.drawDiff(x);break;
+      case State.HOWTO:this.drawHowto(x);break;
+      case State.SCORES:this.drawScores(x);break;
+      case State.GAMEOVER:this.drawGameOver(x);break;
+      default:this.drawWorld(x);
+    }
+    // CRT finish: scanlines + vignette
+    x.save();
+    x.globalAlpha=CYBER.scanAlpha;
+    x.fillStyle='#000';
+    for(let y=0;y<SCREEN_H;y+=2)x.fillRect(0,y,SCREEN_W,1);
+    x.globalAlpha=1;
+    const vg=x.createRadialGradient(SCREEN_W/2,SCREEN_H/2,SCREEN_H*0.42,SCREEN_W/2,SCREEN_H/2,SCREEN_H*0.85);
+    vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,10,.28)');
+    x.fillStyle=vg;x.fillRect(0,0,SCREEN_W,SCREEN_H);
+    x.restore();
+  },
+
+  /* auto-fit a centered label to a max width so text never overflows its frame */
+  textFit(x,text,cx,y,base,maxW,minS,bold){
+    const F='"Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    let fs=base;
+    x.font=(bold?'bold ':'')+fs+'px '+F;
+    while(fs>minS&&x.measureText(text).width>maxW){fs-=0.5;x.font=(bold?'bold ':'')+fs+'px '+F;}
+    x.fillText(text,cx,y);
+  },
+  drawTitle(x){
+    const now=performance.now();
+    if(this.demo){
+      // full-time attract mode: the AI plays the game behind the marquee,
+      // like the arcade cabinet — lightly dimmed so the action reads clearly
+      this.drawWorld(x);
+      x.fillStyle='rgba(2,3,10,.22)';x.fillRect(0,0,SCREEN_W,SCREEN_H);
+      const tg=x.createLinearGradient(0,0,0,120);
+      tg.addColorStop(0,'rgba(2,3,10,.38)');tg.addColorStop(1,'rgba(2,3,10,0)');
+      x.fillStyle=tg;x.fillRect(0,0,SCREEN_W,120);
+      const bg2=x.createLinearGradient(0,SCREEN_H-56,0,SCREEN_H);
+      bg2.addColorStop(0,'rgba(2,3,10,0)');bg2.addColorStop(1,'rgba(2,3,10,.72)');
+      x.fillStyle=bg2;x.fillRect(0,SCREEN_H-56,SCREEN_W,56);
+    }else{
+      const g=x.createLinearGradient(0,0,SCREEN_W,SCREEN_H);
+      g.addColorStop(0,'#080818');g.addColorStop(1,'#04050d');
+      x.fillStyle=g;x.fillRect(0,0,SCREEN_W,SCREEN_H);
+      // perspective grid floor (lower half)
+    const gy0=SCREEN_H*0.62;
+    x.strokeStyle='rgba(0,229,255,.16)';x.lineWidth=1;
+    x.beginPath();
+    const off=(now/30)%26;
+    for(let i=0;i<12;i++){
+      const y=gy0+i*18+off;
+      if(y>SCREEN_H)break;
+      x.moveTo(0,y);x.lineTo(SCREEN_W,y);
+    }
+    for(let i=0;i<=10;i++){
+      const t=i/10,px=SCREEN_W/2+(t-0.5)*SCREEN_W*1.4;
+      x.moveTo(px,gy0);x.lineTo(SCREEN_W/2+(i-5)*46,SCREEN_H+40);
+    }
+    x.stroke();
+    // horizon glow
+    const hg=x.createLinearGradient(0,gy0-40,0,gy0);
+    hg.addColorStop(0,'rgba(0,229,255,0)');hg.addColorStop(1,'rgba(0,229,255,.22)');
+    x.fillStyle=hg;x.fillRect(0,gy0-40,SCREEN_W,40);
+      // digital rain flecks
+      for(let i=0;i<26;i++){
+        const rx=((i*97+Math.floor(now/40))%(SCREEN_W+20))-10;
+        const ry=(i*53)%(SCREEN_H*0.55);
+        x.fillStyle='rgba(0,229,255,'+(0.10+0.15*Math.sin(now/300+i)).toFixed(2)+')';
+        x.fillRect(rx,ry,1,5);
+      }
+    }
+    // marquee backing panel — keeps the title readable over the attract demo,
+    // translucent enough that the chase still reads through it
+    x.fillStyle='rgba(3,5,15,.52)';
+    x.beginPath();x.roundRect?x.roundRect(SCREEN_W/2-118,42,236,98,8):x.rect(SCREEN_W/2-118,42,236,98);x.fill();
+    x.strokeStyle='rgba(0,229,255,.32)';x.lineWidth=1;x.stroke();
+    x.strokeStyle='rgba(255,46,151,.22)';
+    x.beginPath();
+    x.moveTo(SCREEN_W/2-118,52);x.lineTo(SCREEN_W/2-108,42);x.lineTo(SCREEN_W/2-96,42);
+    x.moveTo(SCREEN_W/2+118,52);x.lineTo(SCREEN_W/2+108,42);x.lineTo(SCREEN_W/2+96,42);
+    x.moveTo(SCREEN_W/2-118,130);x.lineTo(SCREEN_W/2-108,140);x.lineTo(SCREEN_W/2-96,140);
+    x.moveTo(SCREEN_W/2+118,130);x.lineTo(SCREEN_W/2+108,140);x.lineTo(SCREEN_W/2+96,140);
+    x.stroke();
+    // neon title with chromatic offset + dark outline for crisp contrast
+    x.textAlign='center';
+    x.font='bold 44px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillStyle='rgba(0,0,0,.9)';
+    x.fillText('RALLY Z',SCREEN_W/2+2,88);x.fillText('RALLY Z',SCREEN_W/2-2,88);x.fillText('RALLY Z',SCREEN_W/2,89);
+    x.fillStyle='rgba(255,46,151,.5)';x.fillText('RALLY Z',SCREEN_W/2+2,88);
+    x.fillStyle='rgba(0,229,255,.5)';x.fillText('RALLY Z',SCREEN_W/2-2,88);
+    x.shadowColor='#00e5ff';x.shadowBlur=8;
+    x.fillStyle='#eaffff';x.fillText('RALLY Z',SCREEN_W/2,88);
+    x.shadowBlur=0;
+    x.fillStyle='rgba(0,229,255,.9)';
+    x.fillRect(SCREEN_W/2-70,96,140,1);x.fillRect(SCREEN_W/2-70,97,140,1);
+    x.font='bold 11px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillStyle=CYBER.neonMagenta;x.fillText('NEON SECTOR PROTOCOL \u00b7 2077',SCREEN_W/2,116);
+    // tagline auto-fits the panel width so it never spills past the frame
+    const TAG='A FAITHFUL TRIBUTE TO NAMCO\u2019S RALLY-X (1980)';
+    let fs=10;x.font='bold '+fs+'px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    while(x.measureText(TAG).width>220&&fs>6){fs-=0.5;x.font='bold '+fs+'px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';}
+    x.fillStyle='#93a5cd';x.fillText(TAG,SCREEN_W/2,127);
+    if(Math.floor(now/500)%2===0){
+      x.shadowColor=CYBER.neonYellow;x.shadowBlur=6;
+      x.fillStyle=CYBER.neonYellow;x.font='bold 15px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillText('> PRESS ENTER OR TAP TO BOOT <',SCREEN_W/2,SCREEN_H-50);
+      x.shadowBlur=0;}
+    x.font='10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';x.fillStyle='#57638a';
+    x.fillText('\u00a9 ONYX SYSTEMS \u2014 FAN TRIBUTE',SCREEN_W/2,SCREEN_H-10);
+    // attract run score — bottom-left, ticking up with each flag like the cabinet
+    if(this.demo){
+      x.textAlign='left';
+      x.font='bold 8px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillStyle='#7c8db5';x.fillText('SCORE',10,SCREEN_H-25);
+      x.font='bold 13px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.shadowColor=CYBER.neonYellow;x.shadowBlur=4;
+      x.fillStyle=CYBER.neonYellow;
+      x.fillText(String(this.demoScore).padStart(6,'0'),10,SCREEN_H-9);
+      x.shadowBlur=0;
+    }
+    x.textAlign='left';
+    // any tap/click also starts
+    if(this.stateT>800&&this._tapPending)this.setState(State.MENU);
+  },
+
+  drawMenu(x){
+    this.drawPanelBg(x,'MAIN MENU');
+    const items=['START GAME','DIFFICULTY: '+this.DIFFS[this.diffIdx].name,'HOW TO PLAY','HIGH SCORES'];
+    x.textAlign='center';
+    items.forEach((it,i)=>{
+      const y=SCREEN_H/2-40+i*30,sel=i===this.menuIdx;
+      if(sel){
+        x.fillStyle='rgba(0,229,255,.14)';x.fillRect(SCREEN_W/2-78,y-12,156,19);
+      x.shadowColor=CYBER.neonCyan;x.shadowBlur=5;
+      x.fillStyle='#9ff6ff';this.textFit(x,'> '+it+' <',SCREEN_W/2,y,15,318,9,true);
+        x.shadowBlur=0;
+        x.fillStyle=CYBER.neonCyan;x.fillRect(SCREEN_W/2-78,y-12,156,1);x.fillRect(SCREEN_W/2-78,y+7,156,1);
+      }else x.fillStyle='#9fc2e0';
+      if(!sel)this.textFit(x,it,SCREEN_W/2,y,15,318,9,false);
+    });
+    x.fillStyle='#7f93bd';
+    this.textFit(x,'\u2191\u2193 SELECT \u00b7 ENTER CONFIRM \u00b7 GAMEPAD OK',SCREEN_W/2,SCREEN_H-14,10,318,8,false);
+    x.textAlign='left';
+  },
+
+  drawDiff(x){
+    this.drawPanelBg(x,'DIFFICULTY');
+    x.textAlign='center';
+    this.DIFFS.forEach((d,i)=>{
+      const y=SCREEN_H/2-20+i*28,sel=i===this.diffIdx;
+      if(sel){
+        x.fillStyle='rgba(168,85,247,.16)';x.fillRect(SCREEN_W/2-72,y-12,144,19);
+        x.shadowColor=CYBER.neonPurple;x.shadowBlur=8;
+        x.fillStyle='#e6d2ff';this.textFit(x,'> '+d.name+' <',SCREEN_W/2,y,15,318,9,true);
+        x.shadowBlur=0;
+      }else x.fillStyle='#9fc2e0';
+      if(!sel)this.textFit(x,d.name,SCREEN_W/2,y,15,318,9,false);
+      if(sel){x.fillStyle='#a78bfa';this.textFit(x,['MORE POWER, SLOWER CARS','ORIGINAL BALANCE','ORIGINAL ARCADE BALANCE'][i],SCREEN_W/2,y+16,10,318,8,false);}
+    });
+    x.fillStyle='#5f7bb5';
+    this.textFit(x,'ENTER TO SET \u00b7 ESC BACK',SCREEN_W/2,SCREEN_H-14,9,318,7,false);
+    x.textAlign='left';
+  },
+
+  drawHowto(x){
+    this.drawPanelBg(x,'MISSION BRIEFING');
+    const lines=[
+      'COLLECT ALL 10 FLAGS PER SECTOR.',
+      'FLAG VALUES CLIMB 100 \u2192 1000 PTS.',
+      'GRAB THE SPECIAL (S) FLAG FOR 2X.',
+      'HOSTILE RACERS CHASE YOU \u2014 A CRASH',
+      'OR SCRAP PILE ENDS A LIFE.',
+      'SMOKE (SPACE) STUNS ENEMIES BUT BURNS',
+      'POWER \u2014 SCRAP PILES ARE NOT ON THE RADAR!',
+      'EVERY FEW ROUNDS: CHALLENGE STAGE \u2014',
+      'CARS FROZEN WHILE POWER LASTS.'];
+    x.textAlign='center';
+    lines.forEach((l,i)=>{
+      x.fillStyle=i===0?CYBER.neonYellow:CYBER.textSoft;
+      this.textFit(x,l,SCREEN_W/2,42+i*13,11,318,8,false);
+    });
+    // livery legend — learn the color code before you race
+    const ly=172,nowH=performance.now();
+    const bobA=Math.sin(nowH/850)*1.2,bobB=Math.sin(nowH/850+2.1)*1.2;
+    x.save();x.translate(SCREEN_W*0.27,ly+bobA);x.scale(2,2);
+    Game.drawCar(x,{x:0,y:0,dir:'right'},CYBER.player,CYBER.playerDark,false,0,null);
+    x.restore();
+    x.save();x.translate(SCREEN_W*0.73,ly+bobB);x.scale(2,2);
+    Game.drawCar(x,{x:0,y:0,dir:'left'},CYBER.rival,CYBER.rivalDark,false,0,CYBER.rivalGold);
+    x.restore();
+    x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillStyle=CYBER.player;x.fillText('YOU',SCREEN_W*0.27,ly+34);
+    x.fillStyle=CYBER.rival;x.fillText('RIVALS',SCREEN_W*0.73,ly+34);
+    x.fillStyle='#7c8db5';
+    this.textFit(x,'GREEN = YOUR RACER \u00b7 CRIMSON + GOLD = RIVALS',SCREEN_W/2,ly+47,9,318,7,false);
+    x.fillStyle='#5f7bb5';
+    this.textFit(x,'ENTER / ESC TO RETURN',SCREEN_W/2,SCREEN_H-14,9,318,7,false);
+    x.textAlign='left';
+  },
+
+  drawScores(x){
+    this.drawPanelBg(x,'HIGH SCORES');
+    x.textAlign='center';
+    if(this.highScores.length===0){
+      x.fillStyle='#9fc2e0';
+      this.textFit(x,'NO SCORES YET \u2014 GO SET ONE!',SCREEN_W/2,SCREEN_H/2,12,318,9,false);
+    }else{
+      x.fillStyle='#5f7bb5';
+      this.textFit(x,'RANK  SCORE     ROUND  DIFF',SCREEN_W/2,48,9,318,7,true);
+      this.highScores.forEach((s,i)=>{
+        if(i===0){x.shadowColor=CYBER.neonYellow;x.shadowBlur=6;}
+        x.fillStyle=i===0?CYBER.neonYellow:CYBER.textSoft;
+        this.textFit(x,String(i+1).padStart(2)+'   '+String(s.score).padStart(7)+'  R'+String(s.round).padStart(2)+'   '+s.diff,SCREEN_W/2,60+i*17,12,318,9,false);
+        x.shadowBlur=0;
+      });
+    }
+    x.fillStyle='#5f7bb5';
+    this.textFit(x,'ENTER / ESC TO RETURN',SCREEN_W/2,SCREEN_H-14,9,318,7,false);
+    x.textAlign='left';
+  },
+
+  drawGameOver(x){
+    this.drawPanelBg(x,null);
+    x.textAlign='center';
+    const now=performance.now();
+    x.font='bold 30px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillStyle='rgba(255,46,151,.5)';x.fillText('GAME OVER',SCREEN_W/2+2,SCREEN_H/2-34);
+    x.shadowColor=CYBER.neonRed;x.shadowBlur=8;
+    x.fillStyle='#ffd7e8';x.fillText('GAME OVER',SCREEN_W/2,SCREEN_H/2-34);
+    x.shadowBlur=0;
+    x.fillStyle='#eef4ff';
+    this.textFit(x,'SCORE  '+this.score,SCREEN_W/2,SCREEN_H/2+4,15,318,10,true);
+    x.fillStyle=CYBER.neonYellow;
+    if(this.highScores.length&&this.score>=this.highScores[0].score){
+      x.shadowColor=CYBER.neonYellow;x.shadowBlur=6;
+      if(Math.floor(now/300)%2===0)this.textFit(x,'\u2605 NEW HIGH SCORE \u2605',SCREEN_W/2,SCREEN_H/2+28,15,318,10,true);
+      x.shadowBlur=0;
+    }
+    if(Math.floor(now/500)%2===0){
+      x.fillStyle='#b9c6e8';
+      this.textFit(x,'PRESS ENTER TO REBOOT',SCREEN_W/2,SCREEN_H-30,12,318,9,false);}
+    x.textAlign='left';
+  },
+
+  drawPanelBg(x,title){
+    const g=x.createLinearGradient(0,0,0,SCREEN_H);
+    g.addColorStop(0,'#0a0a22');g.addColorStop(1,'#04050d');
+    x.fillStyle=g;x.fillRect(0,0,SCREEN_W,SCREEN_H);
+    // faint grid
+    x.strokeStyle='rgba(0,229,255,.05)';x.lineWidth=1;x.beginPath();
+    for(let i=1;i<12;i++){x.moveTo(0,i*24);x.lineTo(SCREEN_W,i*24);}
+    for(let i=1;i<16;i++){x.moveTo(i*24,0);x.lineTo(i*24,SCREEN_H);}
+    x.stroke();
+    // corner accents
+    x.strokeStyle='rgba(0,229,255,.4)';x.lineWidth=1.4;x.beginPath();
+    x.moveTo(4,16);x.lineTo(4,4);x.lineTo(16,4);
+    x.moveTo(SCREEN_W-16,4);x.lineTo(SCREEN_W-4,4);x.lineTo(SCREEN_W-4,16);
+    x.moveTo(4,SCREEN_H-16);x.lineTo(4,SCREEN_H-4);x.lineTo(16,SCREEN_H-4);
+    x.moveTo(SCREEN_W-16,SCREEN_H-4);x.lineTo(SCREEN_W-4,SCREEN_H-4);x.lineTo(SCREEN_W-4,SCREEN_H-16);
+    x.stroke();
+    if(title){
+      x.textAlign='center';x.font='bold 18px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.shadowColor=CYBER.neonCyan;x.shadowBlur=10;
+      x.fillStyle='#c8f6ff';this.textFit(x,title,SCREEN_W/2,32,18,300,12,true);x.shadowBlur=0;
+      x.fillStyle='rgba(0,229,255,.5)';
+      x.fillRect(SCREEN_W/2-46,38,92,1);
+      x.textAlign='left';
+    }
+  },
+
+/* ---- world rendering ---- */
+  camX:0,camY:0,
+  stars:[],
+  initStars(){
+    this.stars=[];
+    for(let i=0;i<110;i++){
+      this.stars.push({x:Math.random()*COLS*TILE,y:Math.random()*ROWS*TILE,
+        s:Math.random()<0.85?1:2,ph:Math.random()*Math.PI*2,tw:0.3+Math.random()*0.7,par:0.15+Math.random()*0.25});
+    }
+  },
+  themeFor(round){
+    // original Rally-X cycles the maze color every round — now in neon
+    const set=Math.floor(((round-1)%16)/4);
+    return[
+      {trim:CYBER.neonCyan,  glow:'rgba(0,229,255,'},    // cyan
+      {trim:CYBER.neonMagenta,glow:'rgba(255,46,151,'},   // magenta
+      {trim:CYBER.neonPurple,glow:'rgba(168,85,247,'},    // violet
+      {trim:'#ffb020', glow:'rgba(255,176,32,'}           // amber (green freed for the player)
+    ][set];
+  },
+  drawWorld(x){
+    const th=this.themeFor(this.round);
+    const p=this.player;
+    // camera centers on player (+ screen shake offset)
+    const tx=p?p.x:COLS*TILE/2, ty=p?p.y:ROWS*TILE/2;
+    this.camX=clamp(tx-VIEW_W*TILE/2,0,COLS*TILE-VIEW_W*TILE);
+    // attract mode: bias the camera low so the demo car drives BELOW the marquee
+    // panel instead of hiding behind it (the panel covers the screen center)
+    this.camY=clamp(ty-(this.demo?VIEW_H*TILE*0.62:VIEW_H*TILE/2),0,ROWS*TILE-VIEW_H*TILE);
+    const sx=this.shakeX, sy=this.shakeY;
+    if(!this.demo){
+    // neon score bar
+    const sbg=x.createLinearGradient(0,0,0,26);
+    sbg.addColorStop(0,'#0a0d20');sbg.addColorStop(1,'#06081a');
+    x.fillStyle=sbg;x.fillRect(0,0,SCREEN_W,26);
+    x.fillStyle='rgba(0,229,255,.25)';x.fillRect(0,25,SCREEN_W,1);
+    x.textAlign='left';
+    // vertical dividers between stat groups
+    x.strokeStyle='rgba(0,229,255,.16)';x.lineWidth=1;x.beginPath();
+    x.moveTo(60,5);x.lineTo(60,21);x.moveTo(132,5);x.lineTo(132,21);x.stroke();
+    x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillStyle='#8fa6d6';x.fillText('SCORE',8,9);x.fillText('HIGH',64,9);
+    x.font='bold 14px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.shadowColor=CYBER.neonCyan;x.shadowBlur=5;
+    x.fillStyle='#d6fbff';x.fillText(String(this.score||0).padStart(6,'0'),8,22);
+    x.shadowBlur=0;
+    x.shadowColor=CYBER.neonMagenta;x.shadowBlur=4;
+    x.fillStyle='#ffc9e8';x.fillText(String(Math.max(this.score,this.highScores[0]?this.highScores[0].score:0)).padStart(6,'0'),64,22);
+    x.shadowBlur=0;
+    x.textAlign='right';
+    x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.shadowColor=CYBER.neonYellow;x.shadowBlur=3;
+    x.fillStyle='#ffe95a';x.fillText('ROUND '+String(this.round).padStart(2,'0'),VIEW_W*TILE-6,9);
+    x.shadowBlur=0;
+    x.fillStyle='#9ff6ff';x.fillText('FLAGS '+String(this.flagsLeft).padStart(2,'0')+'/'+'10',VIEW_W*TILE-6,22);
+    x.textAlign='left';
+    }
+
+    // playfield clip
+    x.save();
+    x.beginPath();x.rect(0,26,VIEW_W*TILE,VIEW_H*TILE);x.clip();
+    x.translate(-this.camX+sx,-this.camY+26+sy);
+    // void + starfield (authentic to the original — now with parallax twinkle)
+    x.fillStyle=CYBER.bg;x.fillRect(this.camX,this.camY,VIEW_W*TILE,VIEW_H*TILE);
+    for(const st of this.stars){
+      const wx=((st.x-this.camX*st.par)%(COLS*TILE)+COLS*TILE)%(COLS*TILE);
+      const wy=((st.y-this.camY*st.par)%(ROWS*TILE)+ROWS*TILE)%(ROWS*TILE);
+      if(wx<this.camX||wx>this.camX+VIEW_W*TILE||wy<this.camY||wy>this.camY+VIEW_H*TILE)continue;
+      const tw=0.35+0.65*Math.abs(Math.sin(performance.now()/900*st.tw+st.ph));
+      x.fillStyle='rgba(190,215,255,'+(0.5*tw*st.s).toFixed(2)+')';
+      x.fillRect(wx,wy,st.s,st.s);
+    }
+    // roads: asphalt with faint neon grid
+    const c0=Math.floor(this.camX/TILE),r0=Math.floor(this.camY/TILE);
+    for(let r=r0;r<=r0+VIEW_H;r++)for(let c=c0;c<=c0+VIEW_W;c++){
+      if(c<0||c>=COLS||r<0||r>=ROWS)continue;
+      const ch=this.maze[r][c];
+      if(ch!=='X'){
+        x.fillStyle=(c+r)%2?CYBER.road:CYBER.roadAlt;
+        x.fillRect(c*TILE,r*TILE,TILE,TILE);
+        // subtle corner rivet on every 4th tile
+        if((c+r)%4===0){
+          x.fillStyle='rgba(120,150,255,.07)';
+          x.fillRect(c*TILE+1,r*TILE+1,1,1);x.fillRect(c*TILE+TILE-2,r*TILE+TILE-2,1,1);
+        }
+      }
+    }
+    // faint grid lines over the whole playfield
+    x.strokeStyle=CYBER.roadGrid;x.lineWidth=1;
+    x.beginPath();
+    for(let c=c0;c<=c0+VIEW_W;c++){x.moveTo(c*TILE+.5,this.camY);x.lineTo(c*TILE+.5,this.camY+VIEW_H*TILE);}
+    for(let r=r0;r<=r0+VIEW_H;r++){x.moveTo(this.camX,r*TILE+.5);x.lineTo(this.camX+VIEW_W*TILE,r*TILE+.5);}
+    x.stroke();
+    // walls: beveled neon-edged blocks
+    for(let r=r0;r<=r0+VIEW_H;r++)for(let c=c0;c<=c0+VIEW_W;c++){
+      if(c<0||c>=COLS||r<0||r>=ROWS)continue;
+      if(this.maze[r][c]!=='X')continue;
+      const px=c*TILE,py=r*TILE;
+      // body
+      x.fillStyle=CYBER.wall;x.fillRect(px,py,TILE,TILE);
+      // beveled top face (light from above)
+      const g=x.createLinearGradient(px,py,px,py+TILE);
+      g.addColorStop(0,'rgba(90,120,255,.28)');g.addColorStop(.35,'rgba(30,40,110,.12)');g.addColorStop(1,'rgba(0,0,0,.35)');
+      x.fillStyle=g;x.fillRect(px,py,TILE,TILE);
+      // neon edge on faces adjacent to road (crisp)
+      x.strokeStyle=th.trim;x.lineWidth=1.4;x.shadowColor=th.trim;x.shadowBlur=1.5;
+      x.beginPath();
+      if(r+1<ROWS&&this.maze[r+1]&&this.maze[r+1][c]!=='X'){x.moveTo(px,py+TILE-.7);x.lineTo(px+TILE,py+TILE-.7);}
+      if(r-1>=0&&this.maze[r-1][c]!=='X'){x.moveTo(px,py+.7);x.lineTo(px+TILE,py+.7);}
+      if(c+1<COLS&&this.maze[r][c+1]!=='X'){x.moveTo(px+TILE-.7,py);x.lineTo(px+TILE-.7,py+TILE);}
+      if(c-1>=0&&this.maze[r][c-1]!=='X'){x.moveTo(px+.7,py);x.lineTo(px+.7,py+TILE);}
+      x.stroke();x.shadowBlur=0;
+    }
+    // glowing corner nodes at wall junctions (batched — one path, one glow fill)
+    const open=(rr,cc)=>rr>=0&&rr<ROWS&&cc>=0&&cc<COLS&&this.maze[rr][cc]!=='X';
+    x.beginPath();
+    for(let r=r0;r<=r0+VIEW_H;r++)for(let c=c0;c<=c0+VIEW_W;c++){
+      if(c<0||c>=COLS||r<0||r>=ROWS)continue;
+      if(this.maze[r][c]!=='X')continue;
+      const px=c*TILE,py=r*TILE;
+      if(open(r-1,c)&&open(r,c-1)){x.rect(px+.5,py+.5,2.2,2.2);}
+      if(open(r-1,c)&&open(r,c+1)){x.rect(px+TILE-2.7,py+.5,2.2,2.2);}
+      if(open(r+1,c)&&open(r,c-1)){x.rect(px+.5,py+TILE-2.7,2.2,2.2);}
+      if(open(r+1,c)&&open(r,c+1)){x.rect(px+TILE-2.7,py+TILE-2.7,2.2,2.2);}
+    }
+    x.fillStyle=th.trim;x.shadowColor=th.trim;x.shadowBlur=2.5;
+    x.fill();x.shadowBlur=0;
+    // rocks (cyber scrap piles)
+    for(const rk of this.rocks)this.drawRock(x,rk.c*TILE+8,rk.r*TILE+8);
+    // PWR cell (brief fuel refill)
+    if(this.powerup)this.drawPowerup(x,this.powerup.c*TILE+8,this.powerup.r*TILE+8,this.powerup.t);
+    // flags (neon data beacons)
+    for(const f of this.flags){
+      if(f.taken)continue;
+      this.drawFlag(x,f.c*TILE+8,f.r*TILE+8,f.special);
+    }
+    // smoke trail (wispy neon vapor — drifts, grows, fades like a real exhaust)
+    for(const s of this.player.smoke){
+      const a=s.life/s.max;          // 1 → 0
+      const grow=1-a;                // 0 → 1
+      const r=2.6+grow*5.2;
+      const ox=Math.cos(s.seed),oy=Math.sin(s.seed);
+      x.globalAlpha=Math.max(0,a*a*0.8);
+      x.fillStyle=CYBER.neonCyan;
+      x.shadowColor=CYBER.neonCyan;x.shadowBlur=6;
+      x.beginPath();
+      x.arc(s.x+ox*r*0.35,s.y+oy*r*0.35,r*0.8,0,7);
+      x.arc(s.x-ox*r*0.3,s.y-oy*r*0.3,r*0.6,0,7);
+      x.arc(s.x,s.y,r*0.45,0,7);
+      x.fill();
+      x.shadowBlur=0;
+      x.fillStyle='rgba(230,248,255,.85)';
+      x.beginPath();
+      x.arc(s.x+Math.cos(s.seed+.9)*r*0.2,s.y+Math.sin(s.seed+.9)*r*0.2,r*0.4,0,7);
+      x.fill();
+      x.globalAlpha=1;
+    }
+    // tire skid streaks at crash sites (world space, under the cars)
+    for(const s of this.skids){
+      const a=Math.pow(s.life/s.max,1.4)*0.5;
+      x.globalAlpha=a;
+      x.fillStyle='#0b0d1c';
+      x.save();x.translate(s.x,s.y);x.rotate(s.rot);
+      x.fillRect(-s.w/2,-s.h/2,s.w,s.h);
+      x.restore();
+    }
+    x.globalAlpha=1;
+    // particles (world space)
+    for(const pt of this.particles){
+      const a=pt.life/pt.max;
+      if(pt.kind==='plume'){
+        // soft swelling smoke — dark, drifts up, reads as a lingering wreck
+        const r=pt.size*(2.4-a*1.3), al=a*a*0.55;
+        const g=x.createRadialGradient(pt.x,pt.y,0,pt.x,pt.y,r);
+        g.addColorStop(0,'rgba(38,42,64,'+al.toFixed(3)+')');
+        g.addColorStop(1,'rgba(38,42,64,0)');
+        x.globalAlpha=al;
+        x.fillStyle=g;
+        x.beginPath();x.arc(pt.x,pt.y,r,0,7);x.fill();
+        continue;
+      }
+      x.globalAlpha=a;
+      x.fillStyle=pt.color;
+      x.fillRect(pt.x-pt.size/2,pt.y-pt.size/2,pt.size,pt.size);
+    }
+    x.globalAlpha=1;
+    // enemies (hot magenta racers)
+    for(const e of this.enemies)this.drawCar(x,e,CYBER.rival,CYBER.rivalDark,e.stun>0,e.spin,CYBER.rivalGold);
+    // player (green hero racer — fixed signature color, never matches a wall theme; blinks during READY, hidden during a demo crash)
+    if((this.state!==State.READY||Math.floor(performance.now()/200)%2===0)&&this.demoDeadT<=0)
+      this.drawCar(x,this.player,CYBER.player,CYBER.playerDark,false,0);
+    // floating score text (world space)
+    for(const f of this.floaters){
+      const a=f.life/f.max;
+      x.globalAlpha=Math.min(1,a*2);
+      x.font=(f.big?'bold 15px':'bold 11px')+' "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.textAlign='center';x.shadowColor=f.color;x.shadowBlur=6;
+      x.fillStyle=f.color;x.fillText(f.text,f.x,f.y);
+      x.shadowBlur=0;x.textAlign='left';
+    }
+    x.globalAlpha=1;
+    x.restore();
+    // white flash on big moments (full playfield)
+    if(this.flashA>0){
+      x.fillStyle='rgba(255,255,255,'+this.flashA.toFixed(2)+')';
+      x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+    }
+    // brief red vignette flash on demo crashes (playfield)
+    if(this.redFlashA>0){
+      const a=this.redFlashA;
+      x.fillStyle='rgba(255,0,44,'+(a*0.14).toFixed(3)+')';
+      x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+      const cx=VIEW_W*TILE/2,cy=26+VIEW_H*TILE/2;
+      const vg=x.createRadialGradient(cx,cy,VIEW_H*TILE*0.32,cx,cy,VIEW_H*TILE*0.78);
+      vg.addColorStop(0,'rgba(255,0,60,0)');
+      vg.addColorStop(1,'rgba(255,10,50,'+(a*0.6).toFixed(3)+')');
+      x.fillStyle=vg;x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+    }
+
+    if(!this.demo){
+    // right HUD panel: radar + power gauge (neon terminal)
+    const rx=VIEW_W*TILE,ry=26,rw=HUD_W,rh=VIEW_H*TILE;
+    const pg=x.createLinearGradient(0,ry,0,ry+rh);
+    pg.addColorStop(0,'#070a1c');pg.addColorStop(1,'#04060f');
+    x.fillStyle=pg;x.fillRect(rx,ry,rw,rh);
+    x.strokeStyle='rgba(0,229,255,.3)';x.lineWidth=1;x.strokeRect(rx+.5,ry+.5,rw-1,rh-1);
+    x.fillStyle='rgba(0,229,255,.12)';x.fillRect(rx+2,ry+2,rw-4,1);
+    // radar map scaled to fit (height adapts so the gauge + info block always fits)
+    const mapH=rh-86,sc=Math.min((rw-12)/(COLS*TILE),mapH/(ROWS*TILE));
+    const mx=rx+6,my=ry+8;
+    x.fillStyle='#030510';x.fillRect(mx,my,COLS*TILE*sc,ROWS*TILE*sc);
+    x.strokeStyle='rgba(0,229,255,.25)';x.strokeRect(mx+.5,my+.5,COLS*TILE*sc-1,ROWS*TILE*sc-1);
+    // radar grid
+    x.strokeStyle='rgba(0,229,255,.06)';x.lineWidth=1;x.beginPath();
+    for(let i=1;i<8;i++){x.moveTo(mx+i*(COLS*TILE*sc)/8,my);x.lineTo(mx+i*(COLS*TILE*sc)/8,my+ROWS*TILE*sc);}
+    for(let i=1;i<8;i++){x.moveTo(mx,my+i*(ROWS*TILE*sc)/8);x.lineTo(mx+COLS*TILE*sc,my+i*(ROWS*TILE*sc)/8);}
+    x.stroke();
+    const blink=Math.floor(performance.now()/250)%2; // 4Hz strobe clock
+    for(const f of this.flags){
+      if(f.taken)continue;
+      x.fillStyle=f.special?(blink?'#ffe95a':'#fff'):'#ffe95a';
+      x.fillRect(mx+f.c*TILE*sc,my+f.r*TILE*sc,2,2);
+    }
+    for(const e of this.enemies){
+      x.fillStyle=e.stun>0?'#8a3030':CYBER.rival;
+      x.fillRect(mx+e.x*sc-1,my+e.y*sc-1,3,3);
+    }
+    if(this.powerup){
+      const cxr=mx+this.powerup.c*TILE*sc+1,cyr=my+this.powerup.r*TILE*sc+1;
+      if(this.fuel/this.fuelMax<0.25){
+        // low fuel: urgent beacon so the refill is easy to spot
+        if(blink){
+          x.fillStyle='#3cff8a';x.shadowColor='#3cff8a';x.shadowBlur=6;
+          x.fillRect(cxr-2.5,cyr-2.5,5,5);x.shadowBlur=0;
+          x.strokeStyle='rgba(60,255,138,.75)';x.lineWidth=1;
+          x.beginPath();x.arc(cxr,cyr,4.5,0,7);x.stroke();
+        }else{
+          x.fillStyle='rgba(60,255,138,.22)';x.fillRect(cxr-1,cyr-1,2,2);
+        }
+      }else{
+        x.fillStyle=blink?'#3cff8a':'#b8ffdd';
+        x.fillRect(cxr-1,cyr-1,2,2);
+      }
+    }
+    if(p&&blink){x.fillStyle='#fff';x.fillRect(mx+p.x*sc-1.5,my+p.y*sc-1.5,3,3);}
+    // power (fuel) gauge: segmented LEDs on a dark slot track
+    const fy=my+ROWS*TILE*sc+9;
+    x.fillStyle='rgba(0,229,255,.10)';x.fillRect(rx+4,my+ROWS*TILE*sc+4,rw-8,1); // section divider
+    x.fillStyle='#8fd3ff';x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillText('PWR',rx+8,fy);
+    const bw=rw-16,frac=clamp(this.fuel/this.fuelMax,0,1);
+    const segs=16,sw=(bw-2*(segs-1))/segs,lit=Math.ceil(frac*segs);
+    const low=frac<0.25,flash=low&&blink; // the gauge itself flashes below 25% (cabinet-style)
+    for(let i=0;i<segs;i++){
+      const on=i<lit&&!flash;
+      x.fillStyle=on?(low?CYBER.neonRed:CYBER.player):'rgba(10,16,40,.9)';
+      if(on){x.shadowColor=x.fillStyle;x.shadowBlur=4;}
+      x.fillRect(rx+8+i*(sw+2),fy+3,sw,9);
+      x.shadowBlur=0;
+    }
+    // strobe: the LOW POWER text lights on the opposite phase of the gauge (the
+    // gauge's lit segments show when !blink), so the two alternate like the cabinet
+    if(low&&blink){x.fillStyle=CYBER.neonRed;x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';x.fillText('LOW POWER',rx+8,fy+22);}
+    // lives: mini player cars to the right of the label (small, green, on their own lane)
+    x.fillStyle='#b9c6e8';x.font='bold 10px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+    x.fillText('LIVES',rx+8,fy+36);
+    for(let i=0;i<this.lives&&i<6;i++){
+      x.save();
+      x.translate(rx+54+i*14,fy+33);   // centered on the label row, clear of the word
+      x.scale(0.55,0.55);
+      this.drawCar(x,{x:0,y:0,dir:'right'},CYBER.player,CYBER.playerDark,false,0,null);
+      x.restore();
+    }
+    x.fillStyle='#ffe95a';x.fillText('FLAGS '+String(this.flagsLeft).padStart(2,'0'),rx+8,fy+50);
+    x.fillStyle='#8fa6d6';x.fillText('SECTOR '+String(this.round).padStart(2,'0'),rx+8,fy+62);
+    }
+
+    // overlays during play states
+    x.textAlign='center';
+    if(this.state===State.READY){
+      x.fillStyle='rgba(2,3,10,.6)';x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+      x.font='bold 22px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.shadowColor=this.challenge?CYBER.neonMagenta:CYBER.neonCyan;x.shadowBlur=6;
+      x.fillStyle=this.challenge?CYBER.neonMagenta:CYBER.neonYellow;
+      x.fillText(this.challenge?'CHARGE STAGE':'SECTOR '+this.round,VIEW_W*TILE/2,SCREEN_H/2-8);
+      x.shadowBlur=0;
+      x.font='bold 12px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';x.fillStyle='#eef4ff';
+      x.fillText('GET READY',VIEW_W*TILE/2,SCREEN_H/2+16);
+    }
+    if(this.state===State.BONUS){
+      x.fillStyle=CYBER.neonMagenta;x.shadowColor=CYBER.neonMagenta;x.shadowBlur=4;
+      x.font='bold 11px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillText('CHALLENGE \u2014 CARS FROZEN',VIEW_W*TILE/2,38);x.shadowBlur=0;
+    }
+    if(this.state===State.DYING){
+      x.fillStyle='rgba(255,46,151,.15)';x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+      if(Math.floor(performance.now()/120)%2===0){
+        x.fillStyle='rgba(255,60,60,.25)';x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);}
+    }
+    if(this.state===State.STAGECLEAR){
+      x.fillStyle='rgba(2,3,10,.6)';x.fillRect(0,26,VIEW_W*TILE,VIEW_H*TILE);
+      x.shadowColor=CYBER.neonGreen;x.shadowBlur=8;
+      x.fillStyle=CYBER.neonGreen;x.font='bold 20px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillText('SECTOR CLEAR!',VIEW_W*TILE/2,SCREEN_H/2-14);x.shadowBlur=0;
+      x.fillStyle='#eef4ff';x.font='bold 13px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillText('POWER BONUS  '+this.fuelBonus,VIEW_W*TILE/2,SCREEN_H/2+12);
+    }
+    if(this.state===State.PAUSED){
+      x.fillStyle='rgba(2,3,10,.7)';x.fillRect(0,0,SCREEN_W,SCREEN_H);
+      x.shadowColor=CYBER.neonCyan;x.shadowBlur=8;
+      x.fillStyle='#9ff6ff';x.font='bold 26px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';
+      x.fillText('PAUSED',SCREEN_W/2,SCREEN_H/2-12);x.shadowBlur=0;
+      x.font='12px "Cascadia Mono","SF Mono",Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace';x.fillStyle='#b9c6e8';
+      x.fillText('ENTER / P RESUME \u00b7 ESC QUIT',SCREEN_W/2,SCREEN_H/2+16);
+    }
+    x.textAlign='left';
+  },
+  drawCar(x,car,body,dark,spinning,spinPhase,trim){
+    /* slim cyber rally racer: thin pod body + top-down tires that FIT the
+       16px lanes (total width ~14px). Neon bead tires, roof lightbar,
+       fog-lamp bumper, rear wing, roll-cage windshield. `trim` (defaults to
+       body) recolors the accent strips for distinct liveries. */
+    x.save();
+    x.translate(car.x,car.y);
+    const ang={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2}[car.dir]||0;
+    x.rotate(ang);
+    if(spinning)x.rotate(spinPhase/120);
+    const now=performance.now();
+    const trimC=trim||body;
+    const rr=(a,b,c,d,e)=>{x.beginPath();x.roundRect?x.roundRect(a,b,c,d,e):x.rect(a,b,c,d);};
+    // neon under-glow pool (subtle)
+    const ug=x.createRadialGradient(0,0,1,0,0,10);
+    ug.addColorStop(0,body);ug.addColorStop(1,'rgba(0,0,0,0)');
+    x.globalAlpha=.26+.12*Math.sin(now/160);
+    x.fillStyle=ug;x.beginPath();x.arc(0,0,10,0,7);x.fill();
+    x.globalAlpha=1;
+    // ground shadow (fits the lane)
+    x.fillStyle='rgba(0,0,0,.5)';
+    rr(-9.2,-6.9,18,13.8,4);x.fill();
+    // TOP-DOWN TIRES — wide flat footprints with tread, tucked to lane width
+    const tire=(tx,ty)=>{
+      x.fillStyle='#0d1016';
+      rr(tx-2.9,ty-2.4,5.8,4.8,1.8);x.fill();
+      // crown/shoulder light on both long edges — reads as a top surface
+      x.fillStyle='rgba(255,255,255,.10)';
+      rr(tx-2.9,ty-2.4,5.8,1.0,1.8);x.fill();
+      rr(tx-2.9,ty+1.4,5.8,1.0,1.8);x.fill();
+      // circumferential tread grooves + block dashes (top-down tread)
+      x.fillStyle='rgba(0,0,0,.55)';
+      x.fillRect(tx-2.9,ty-.9,5.8,.45);x.fillRect(tx-2.9,ty+.45,5.8,.45);
+      x.fillStyle='rgba(255,255,255,.06)';
+      for(let i=-1;i<=1;i++){x.fillRect(tx+i*1.5-.28,ty-1.5,.55,.55);x.fillRect(tx+i*1.5-.28,ty+.95,.55,.55);}
+    };
+    tire(4.6,-4.4);tire(4.6,4.4);tire(-5.3,-4.4);tire(-5.3,4.4);
+    // dark fender flares over each tire's outer edge (ties them to the pod)
+    x.fillStyle='rgba(0,0,0,.4)';
+    rr(1.7,-6.9,5.8,2.0,1.5);x.fill(); rr(1.7,4.9,5.8,2.0,1.5);x.fill();
+    rr(-8.2,-6.9,5.8,2.0,1.5);x.fill(); rr(-8.2,4.9,5.8,2.0,1.5);x.fill();
+    // neon bead rings around each tire's top-down footprint (trim accent)
+    x.strokeStyle=trimC;x.lineWidth=.7;x.shadowColor=trimC;x.shadowBlur=4;
+    for(const[tx,ty]of[[4.6,-4.4],[4.6,4.4],[-5.3,-4.4],[-5.3,4.4]]){
+      x.beginPath();x.roundRect?x.roundRect(tx-2.9,ty-2.4,5.8,4.8,1.8):x.rect(tx-2.9,ty-2.4,5.8,4.8);x.stroke();
+    }
+    x.shadowBlur=0;
+    // chassis base (dark) — thin
+    x.fillStyle=dark;
+    rr(-7.4,-3.4,14.4,6.8,2);x.fill();
+    // main hull — thin angular rally pod
+    x.fillStyle=body;
+    x.beginPath();
+    x.moveTo(7.0,0);
+    x.lineTo(4.8,-2.6);
+    x.lineTo(0.7,-3.9);
+    x.lineTo(-1.7,-3.1);
+    x.lineTo(-2.9,-3.3);
+    x.lineTo(-5.2,-3.1);
+    x.lineTo(-7.2,-2.3);
+    x.lineTo(-7.2,2.3);
+    x.lineTo(-5.2,3.1);
+    x.lineTo(-2.9,3.3);
+    x.lineTo(-1.7,3.1);
+    x.lineTo(0.7,3.9);
+    x.lineTo(4.8,2.6);
+    x.closePath();x.fill();
+    // neon light-bleed along the hull silhouette
+    x.strokeStyle=body;x.lineWidth=.7;x.shadowColor=body;x.shadowBlur=5;
+    x.stroke();x.shadowBlur=0;
+    // hood: highlight + vents + twin racing stripes
+    x.fillStyle='rgba(255,255,255,.22)';
+    x.fillRect(0.5,-2.9,3.3,.85);
+    x.fillStyle='rgba(0,0,0,.35)';
+    x.fillRect(1.0,-2.15,2.6,.4);x.fillRect(1.0,1.75,2.6,.4);  // hood vents
+    x.fillStyle=trimC;   // livery racing stripes
+    x.fillRect(1.3,-.95,4.0,.65);x.fillRect(1.3,-.3,4.0,.65);
+    // cabin glass — set back, slanted windshield with a roll-cage divider
+    const glass=spinning?'#ffd94a':'#cfeaff';
+    x.fillStyle=glass;
+    x.beginPath();
+    x.moveTo(0.4,-1.5);      // windshield base
+    x.lineTo(-0.9,-2.9);     // windshield top (slanted)
+    x.lineTo(-3.3,-2.8);     // roof rear
+    x.lineTo(-3.7,-1.4);     // rear window base
+    x.closePath();x.fill();
+    x.strokeStyle='rgba(255,255,255,.75)';x.lineWidth=.6;x.stroke();
+    x.fillStyle='rgba(0,0,0,.4)';
+    x.fillRect(-1.0,-2.9,.35,1.5);      // B-pillar / roll-cage divider
+    x.fillStyle='rgba(120,200,255,.5)';x.shadowColor='#9fe8ff';x.shadowBlur=4;
+    x.fillRect(-2.8,-2.6,2.0,1.0);x.shadowBlur=0;
+    // roof lightbar (cyberpunk neon strip across the cabin front)
+    x.fillStyle=trimC;x.shadowColor=trimC;x.shadowBlur=6;
+    x.fillRect(-1.2,-3.7,1.8,.5);x.shadowBlur=0;
+    // roof scoop — the rally signature intake (neon-lit)
+    x.fillStyle=dark;
+    rr(-3.0,-4.2,2.2,1.2,1);x.fill();
+    x.fillStyle='rgba(0,0,0,.6)';
+    x.fillRect(-2.7,-3.85,1.6,.5);      // intake mouth
+    x.fillStyle=trimC;x.shadowColor=trimC;x.shadowBlur=4;
+    x.fillRect(-3.0,-4.3,2.2,.35);      // scoop neon lip
+    x.shadowBlur=0;
+    // rear wing with endplates + struts
+    x.fillStyle=dark;
+    rr(-9.9,-4.1,2.6,.68,0);x.fill();            // wing plane
+    x.fillStyle='rgba(0,0,0,.45)';
+    x.fillRect(-9.9,-4.45,.4,1.4);x.fillRect(-7.3,-4.45,.4,1.4); // endplates
+    x.fillRect(-9.2,-3.45,.45,.95);x.fillRect(-8.1,-3.45,.45,.95); // struts
+    x.fillStyle=trimC;x.shadowColor=trimC;x.shadowBlur=5;
+    x.fillRect(-9.9,-4.2,2.6,.3);       // wing neon edge
+    x.shadowBlur=0;
+    // rear tail light bar
+    x.fillStyle='rgba(255,70,70,.85)';x.shadowColor='#ff4646';x.shadowBlur=4;
+    x.fillRect(-7.6,-2.1,.7,4.2);x.shadowBlur=0;
+    // side intakes + neon side skirts
+    x.fillStyle='rgba(0,0,0,.5)';
+    x.fillRect(-4.4,-2.8,2.2,.8);x.fillRect(-4.4,2.0,2.2,.8);
+    x.fillStyle=trimC;x.shadowColor=trimC;x.shadowBlur=5;
+    x.fillRect(-6.8,-2.2,.6,4.4);
+    x.fillRect(2.6,-2.8,.5,5.6);
+    x.shadowBlur=0;
+    // fog-lamp bumper pod on the nose (Group-B signature)
+    x.fillStyle='#0c0e14';
+    rr(4.8,-2.2,2.2,4.4,1);x.fill();
+    x.fillStyle=trimC;x.shadowColor=trimC;x.shadowBlur=5;
+    x.fillRect(5.05,-2.0,.4,4.0);x.shadowBlur=0;   // bumper neon strip
+    x.fillStyle='#fff';x.shadowColor='#fff';x.shadowBlur=5;
+    x.fillRect(5.6,-1.55,1.05,1.15);x.fillRect(5.6,.4,1.05,1.15);  // twin headlights
+    x.fillStyle='#ffd76a';
+    x.fillRect(5.6,-.55,1.05,1.15);                          // center fog lamp
+    x.shadowBlur=0;
+    // headlight cone
+    x.save();
+    x.translate(7.0,0);
+    const cone=x.createLinearGradient(0,0,6.5,0);
+    cone.addColorStop(0,'rgba(255,255,255,.28)');cone.addColorStop(1,'rgba(255,255,255,0)');
+    x.fillStyle=cone;
+    x.beginPath();x.moveTo(0,-2.1);x.lineTo(6.5,-3.1);x.lineTo(6.5,3.1);x.lineTo(0,2.1);x.closePath();x.fill();
+    x.restore();
+    // rear engine block + twin exhaust wash (flickering)
+    x.fillStyle='#0c0e14';
+    x.fillRect(-7.9,-2.6,1.15,5.2);
+    const pulse=.5+.5*Math.sin(now/80+car.x);
+    const eg=x.createLinearGradient(-7.7,0,-12,0);
+    eg.addColorStop(0,body);eg.addColorStop(1,'rgba(0,0,0,0)');
+    x.globalAlpha=.35+.55*pulse;
+    x.fillStyle=eg;
+    x.fillRect(-12,-2.1,4.3,4.2);
+    x.fillStyle='#fff';x.fillRect(-8.2,-1.4,1.15,1.0);x.fillRect(-8.2,.4,1.15,1.0);
+    x.globalAlpha=1;
+    x.restore();
+  },
+  drawFlag(x,fx,fy,special){
+    /* golden tribute to the original yellow flags — crisp, no halo bleed */
+    const gold='#ffd94a', hot=special?'#fff3a0':'#ffdf66';
+    const now=performance.now();
+    x.save();
+    x.fillStyle='#8a6d2a';           // brass pole
+    x.fillRect(fx-1,fy-7,2,13);
+    // blinking lamp (bright core only — no glow bleed)
+    x.fillStyle=Math.floor(now/(special?150:220))%2?'#fff':hot;
+    x.beginPath();x.arc(fx,fy-7,2.4,0,7);x.fill();
+    // golden pennant with highlight
+    x.fillStyle=hot;
+    x.beginPath();x.moveTo(fx+2,fy-7);x.lineTo(fx+7.5,fy-4.6);x.lineTo(fx+2,fy-2.2);x.closePath();x.fill();
+    x.fillStyle='rgba(255,255,255,.4)';
+    x.beginPath();x.moveTo(fx+2.3,fy-6.6);x.lineTo(fx+6,fy-5);x.lineTo(fx+2.3,fy-3.4);x.closePath();x.fill();
+    if(special){
+      x.fillStyle='#3a2c00';x.font='bold 7px monospace';x.fillText('S',fx+2.5,fy-4);
+    }
+    x.restore();
+  },
+  drawPowerup(x,fx,fy,t){
+    /* PWR cell: glowing fuel canister — refills the tank */
+    x.save();x.translate(fx,fy);
+    const now=performance.now();
+    const pulse=.5+.5*Math.sin(now/180+fx);
+    // green glow pool
+    const g=x.createRadialGradient(0,0,1,0,0,9);
+    g.addColorStop(0,CYBER.neonGreen);g.addColorStop(1,'rgba(0,0,0,0)');
+    x.globalAlpha=.35+.25*pulse;
+    x.fillStyle=g;x.beginPath();x.arc(0,0,9,0,7);x.fill();
+    x.globalAlpha=1;
+    // canister body
+    x.fillStyle='#0d1220';
+    x.beginPath();
+    if(x.roundRect)x.roundRect(-4,-6,8,13,2.5);else x.rect(-4,-6,8,13);
+    x.fill();
+    x.strokeStyle='rgba(120,170,255,.4)';x.lineWidth=.8;x.stroke();
+    // sloshing neon fuel
+    const frac=.55+.3*pulse, lh=11*frac;
+    const lg=x.createLinearGradient(0,5,0,5-lh);
+    lg.addColorStop(0,'rgba(60,255,138,.95)');lg.addColorStop(1,'rgba(160,255,220,.95)');
+    x.fillStyle=lg;x.shadowColor=CYBER.neonGreen;x.shadowBlur=5;
+    x.fillRect(-3.4,5-lh,6.8,lh);
+    x.shadowBlur=0;
+    // top cap + blinking lamp
+    x.fillStyle='#3a3f5e';x.fillRect(-4.4,-7,8.8,1.6);
+    x.fillStyle=Math.floor(now/160)%2?'#fff':'#aaffdd';
+    x.shadowColor=CYBER.neonGreen;x.shadowBlur=6;
+    x.beginPath();x.arc(0,-8,1.8,0,7);x.fill();
+    x.shadowBlur=0;
+    // remaining-life arc (shrinks as the cell fades)
+    const ft=clamp(1-t/POWERUP.DUR,0,1);
+    x.strokeStyle=CYBER.neonGreen;x.lineWidth=1;
+    x.globalAlpha=.5+.5*pulse;
+    x.beginPath();x.arc(0,0,7.5,-Math.PI/2,-Math.PI/2+ft*Math.PI*2);x.stroke();
+    x.globalAlpha=1;
+    x.restore();
+  },
+  drawRock(x,rx,ry){
+    /* cyber scrap pile: angular debris, chevrons, energy core — no ring */
+    x.save();x.translate(rx,ry);
+    const now=performance.now();
+    const pulse=.5+.5*Math.sin(now/280+rx);
+    // angular scrap body (fixed irregular octoid per-position)
+    const seed=Math.floor(rx*13.37+ry*7.77);
+    const rnd=i=>{const s=(seed*9301+i*49297)%233280;return s/233280;};
+    x.fillStyle='#1a1b2c';
+    x.beginPath();
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4, rad=5.5+rnd(i)*2.5-1;
+      i?x.lineTo(Math.cos(a)*rad,Math.sin(a)*rad):x.moveTo(Math.cos(a)*rad,Math.sin(a)*rad);
+    }
+    x.closePath();x.fill();
+    x.strokeStyle='rgba(120,130,185,.5)';x.lineWidth=.8;x.stroke();
+    // lit top-left facet
+    x.fillStyle='#3a3f5e';
+    x.beginPath();
+    for(let i=6;i<10;i++){
+      const a=i*Math.PI/4, rad=4.6+rnd(i+8)*1.4-0.7;
+      i===6?x.moveTo(Math.cos(a)*rad,Math.sin(a)*rad):x.lineTo(Math.cos(a)*rad,Math.sin(a)*rad);
+    }
+    x.closePath();x.fill();
+    // hazard chevrons
+    x.strokeStyle=CYBER.neonRed;x.lineWidth=1.1;
+    x.shadowColor=CYBER.neonRed;x.shadowBlur=4;
+    x.beginPath();
+    x.moveTo(-4.8,3.6);x.lineTo(-2.8,1.4);x.lineTo(-0.8,3.6);
+    x.moveTo(1.4,3.9);x.lineTo(3.4,1.7);x.lineTo(5.4,3.9);
+    x.stroke();x.shadowBlur=0;
+    // glowing energy core
+    x.fillStyle='rgba(255,110,60,'+(0.55+0.45*pulse).toFixed(3)+')';
+    x.shadowColor=CYBER.neonRed;x.shadowBlur=6+5*pulse;
+    x.beginPath();x.arc(1.2,-1.2,1.9,0,7);x.fill();
+    x.fillStyle='rgba(255,225,190,.9)';
+    x.beginPath();x.arc(1.2,-1.2,.8,0,7);x.fill();
+    x.shadowBlur=0;
+    x.restore();
+  }
+};
+
+/* ===== global text contrast: dark outline behind every fillText ===== */
+(()=>{
+  const orig=CanvasRenderingContext2D.prototype.fillText;
+  CanvasRenderingContext2D.prototype.fillText=function(t,x,y,maxW){
+    const fs=parseFloat(this.font)||12;
+    if(!this._skipOutline){
+      const lw=Math.max(1,Math.min(5,Math.round(fs*0.13)));
+      this.save();
+      this.lineJoin='round';
+      this.lineWidth=lw;
+      this.strokeStyle='rgba(0,0,0,.82)';
+      this.shadowBlur=0; // keep the outline clean; glow comes from the fill pass
+      this.strokeText(t,x,y,maxW);
+      this.restore();
+    }
+    return orig.call(this,t,x,y,maxW);
+  };
+})();
+
+/* ================= BOOT ================= */
+window.addEventListener('load',()=>{
+  Game.init();
+  // tap anywhere on title/menus = confirm (mobile)
+  document.getElementById('wrap').addEventListener('pointerdown',()=>{
+    AudioSys.init();
+    Game._tapPending=false;
+    if(Game.state===State.TITLE){Game.setState(State.MENU);AudioSys.beep(700,.08);}
+    else if(Game.state===State.MENU)Game.newGame();
+    else if(Game.state===State.GAMEOVER)Game.toTitle();
+    else if(Game.state===State.HOWTO||Game.state===State.SCORES)Game.setState(State.MENU);
+    else if(Game.state===State.DIFF){Game.diff=Game.diffIdx;Game.setState(State.MENU);}
+  });
+});
+
+/* mobile baseline: visualViewport resize handled in init; clean exit */
+function cleanExit(){
+  try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}
+  try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}
+  document.body.style.overflow='';document.documentElement.style.overflow='';
+}
+window.addEventListener('pagehide',cleanExit);
+window.addEventListener('beforeunload',cleanExit);
+
+</script>
+</body>
+</html>
