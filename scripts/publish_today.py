@@ -138,6 +138,8 @@ def _heading_section(body, heading):
     if not m:
         return ""
     rest = body[m.end():]
+    # Skip blank lines after the heading marker
+    rest = re.sub(r"^\s*\n", "", rest)
     # End at next ###, next **Bold:**, or end of body
     nm = re.search(r"^(?:###\s+|\*\*[A-Z])", rest, re.M)
     end = nm.start() if nm else len(rest)
