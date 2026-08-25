@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-25-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-25",
+      "title": "Fake Postcards Promise VA Benefits \u2014 It's a Scam Stealing Veterans' Personal Info",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are mailing official-looking postcards to veterans across the country, promising free monthly VA benefit payments. The postcard includes a phone number and website asking for your Social Security number or bank details to \"verify eligibility.\" The real VA never contacts veterans this way \u2014 they already have your information on file. If you or a loved one receives one of these postcards, do not call the number or visit the website. Instead, verify any VA communication through va.gov or call 1-800-827-1000 directly. Report the scam to ReportFraud.ftc.gov. \u2014 Source: FTC, August 24, 2026",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-25-composite.jpg",
+      "comic": "assets/img/news/2026-08-25-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-24-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-24",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-21-composite.jpg",
       "comic": "assets/img/news/2026-08-21-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-20-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-20",
-      "title": "Scammers Are Posing as Computer 'Rescue' Companies \u2014 Don't Pay Them a Dime",
-      "tag": "Daily Brief",
-      "excerpt": "Crooks are now posing as computer \"rescue\" companies to steal money. Researchers say a group calling itself Ransom Busters has been emailing people right after their computers are attacked \u2014 sometimes before the attack is even public \u2014 and offering to \"recover\" their files for a fee. Researchers believe the \"rescuers\" are the same crooks behind the attacks. If you get an email or call like this, don't pay, don't reply, and don't call the number in the message. Real help never comes from a stranger demanding money.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-20-composite.jpg",
-      "comic": "assets/img/news/2026-08-20-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-25-post-1",
+      "type": "news",
+      "date": "2026-08-25",
+      "title": "Windows 11 August update causes games to crash and PCs to reboot \u2014 Microsoft is working on a patch",
+      "tag": "Tech Note",
+      "summary": "If your PC crashes, freezes, or reboots by itself after the August Windows update, you're not alone \u2014 Microsoft has confirmed the issue and a proper fix is on the way. Don't uninstall the update, which leaves you vulnerable to 400+ security holes; just wait for Microsoft's patch within the next few weeks.",
+      "truth": "I've been seeing this all week in the shop \u2014 customers come in thinking their PC is dying, but it's actually the August update conflicting with an old RGB lighting driver. The problem is real but temporary. Microsoft's proper patch should arrive soon, and in the meantime the affected games and apps still work fine on most PCs. The only people who should be worried are folks who rely on specific gaming software for work.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-24-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-20-post-1",
-      "type": "news",
-      "date": "2026-08-20",
-      "title": "Hackers found a way into Macs over the internet and are using them to mine digital money \u2014 update macOS today",
-      "tag": "Tech Note",
-      "summary": "Open System Settings, click General, then Software Update, and install whatever Apple offers \u2014 it's free and takes about 10 minutes. If you can't update right away, you can also turn off Screen Sharing (System Settings \u2192 General \u2192 Sharing \u2192 Screen Sharing) unless you actually use it.",
-      "truth": "Most people don't realize their Mac has a feature called Screen Sharing that lets another computer take over the screen \u2014 and on many machines it's left on without anyone knowing. The honest answer is that this isn't a Mac problem to panic about, it's an update problem: install the fix and the hole is closed.",
+      "id": "onyx-2026-08-25-post-2",
+      "type": "tip",
+      "date": "2026-08-25",
+      "title": "Chrome 153 ships with a critical security patch \u2014 take 30 seconds to update now",
+      "tag": "Tech Tip",
+      "summary": "Open Chrome, click the three dots at top right, click Help, then About Google Chrome \u2014 the update installs automatically when you open that page.",
+      "truth": "Google just patched a critical memory bug in Chrome 153 that could let a bad website take over your computer. The update is free, takes 30 seconds, and you don't need to do anything except open the update page. I check this for every customer who comes in \u2014 it's one of the fastest ways to stay safe online. Most people don't realize their browser is the front door to their computer, and keeping it updated is the easiest protection you have.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-20-post-2",
-      "type": "tip",
-      "date": "2026-08-20",
-      "title": "Your PC feels slow? Task Manager shows what's eating it \u2014 built into Windows, press Ctrl+Shift+Esc",
-      "tag": "Tech Tip",
-      "summary": "Press Ctrl+Shift+Esc to open Task Manager \u2014 it's built into Windows and shows every program running on your computer. Look at the top of the list: whatever is using the most working memory is usually the troublemaker. To close a stuck program, click it, then click End Task.",
-      "truth": "Most people don't realize that \"slow computer\" almost always has a name \u2014 a program quietly running in the background. I see this all the time: it's not that the computer is old, it's that something is hogging it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
