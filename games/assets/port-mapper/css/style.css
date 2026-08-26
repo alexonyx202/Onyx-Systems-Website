@@ -991,7 +991,12 @@ body.no-crt #crt { display: none; }
 #touch-pad {
   position: absolute;
   left: 50%;
-  bottom: 26px;
+  /* [MOBILE FIX 2026-08-26] The 2x2 pad (buttons offset --ty:+46px, 64px
+     tall) bottom edge = offset+78. With bottom:26px the bottom row (hop
+     down-left/down-right) sat 52px below the fold on phones — only a 12px
+     sliver was tappable. Raised the anchor so the bottom row clears the
+     viewport by 16px on 844px-tall phones (94px = 78px + 16px margin). */
+  bottom: 94px;
   width: 0;
   height: 0;
   z-index: 55;
