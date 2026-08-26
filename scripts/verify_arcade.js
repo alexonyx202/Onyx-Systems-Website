@@ -10,6 +10,10 @@
      overflow, theme toggle clickable
    - crossword: the board MUST render usable cells on mobile (guard against the
      2026-08-26 fitCell 1px collapse) and fit the viewport
+   - gallery: a touch tap on a gallery item MUST open the full-size viewer and
+     the close button MUST return to the grid (touch-tap-block guard)
+   - news toggle: a touch tap on the Show News & Tips button MUST reveal the grid
+     (and flip aria-expanded) and a second tap MUST hide it again
    - freshness: service worker controls the page and an offline reload still
      renders the lineup
    Run: node scripts/verify_arcade.js [port]     (default port 8099)
@@ -207,6 +211,50 @@ async function shot(page, url, sel, file) {
   console.log(`XWORD MOBILE cells=${Math.round(xw.cellW)}x${Math.round(xw.cellH)}px n=${xw.cells} board=${Math.round(xw.boardW)}px vw=${xw.vw} overflow=${xwNoOverflow}`);
   if (!xwCells || !xwFits || !xwNoOverflow) {
     console.error('FAIL: crossword board collapsed on mobile (fitCell height regression?)');
+    failures++;
+  }
+
+  // Gallery viewer regression (2026-08-26): on touch, tapping a gallery item MUST
+  // open the full-size viewer and tapping the close button MUST return to the grid.
+  // gallery.html wires openViewer to the figure click and closeViewer to
+  // #glvClose/#glvScrim; a touch handler calling preventDefault (the arcade
+  // 2026-07-17 pattern) would cancel the click and leave the viewer unopenable.
+  // Guard: real touch taps, the viewer's hidden flag must flip both ways.
+  await page.goto(BASE + '/gallery.html', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.waitForSelector('#galleryGrid .gallery-item', { timeout: 15000 });
+  await (await page.$('#galleryGrid .gallery-item')).tap();
+  await sleep(400);
+  const viewerOpen = await page.evaluate(() => !document.getElementById('glViewer').hasAttribute('hidden'));
+  let viewerClosed = false;
+  if (viewerOpen) {
+    await (await page.$('#glvClose')).tap();
+    await sleep(300);
+    viewerClosed = await page.evaluate(() => document.getElementById('glViewer').hasAttribute('hidden'));
+  }
+  console.log(`GALLERY MOBILE open=${viewerOpen} closed=${viewerClosed}`);
+  if (!viewerOpen || !viewerClosed) {
+    console.error('FAIL: gallery viewer did not open/close on touch tap');
+    failures++;
+  }
+
+  // News & Tips toggle regression (2026-08-26): on touch, tapping the Show News
+  // & Tips button MUST reveal the grid and flip aria-expanded, and a second tap
+  // MUST hide it again. Same trap pattern would block this click on mobile.
+  await page.goto(BASE + '/index.html', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.waitForSelector('#showNewsBtn', { timeout: 15000 });
+  await (await page.$('#showNewsBtn')).tap();
+  await sleep(300);
+  const newsOpen = await page.evaluate(() =>
+    !document.getElementById('newsTipsGrid').hasAttribute('hidden') &&
+    document.getElementById('showNewsBtn').getAttribute('aria-expanded') === 'true');
+  await (await page.$('#showNewsBtn')).tap();
+  await sleep(300);
+  const newsClosed = await page.evaluate(() =>
+    document.getElementById('newsTipsGrid').hasAttribute('hidden') &&
+    document.getElementById('showNewsBtn').getAttribute('aria-expanded') === 'false');
+  console.log(`NEWS MOBILE open=${newsOpen} closed=${newsClosed}`);
+  if (!newsOpen || !newsClosed) {
+    console.error('FAIL: news & tips toggle did not open/close on touch tap');
     failures++;
   }
 
