@@ -44,7 +44,9 @@ note in `Reference/` after a significant snapshot.
 
 **Automatic**: `python3 scripts/snapshot_site.py --install-hook` installs a
 pre-push hook (shim at `.git/hooks/pre-push` → `scripts/hooks/pre-push`)
-that refreshes this snapshot automatically on every push to `main` — this
+that, on every push to `main`, runs the **local deploy gates** (freshness
+tokens, manifest parity, game links, daily-lineup harness, browser QA
+verifier — blocking on failure) and then refreshes this snapshot — this
 folder was produced that way.
 
 ## Where everything lives (quick map)
