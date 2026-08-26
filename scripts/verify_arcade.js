@@ -5,6 +5,11 @@
    - arcade hub: full card set, copy MATCH
    - mobile tap: a real touch tap on an arcade card MUST open the game (behavioral
      guard against the 2026-07-17 preventDefault regression — fails the run, exit 1)
+   - mobile nav: the bottom tab bar MUST dock at the viewport bottom on touch (guard
+     against the 2026-08-26 backdrop-filter containing-block trap), no horizontal
+     overflow, theme toggle clickable
+   - crossword: the board MUST render usable cells on mobile (guard against the
+     2026-08-26 fitCell 1px collapse) and fit the viewport
    - freshness: service worker controls the page and an offline reload still
      renders the lineup
    Run: node scripts/verify_arcade.js [port]     (default port 8099)
@@ -141,6 +146,67 @@ async function shot(page, url, sel, file) {
   }
   if (!tapNavigated) {
     console.error('FAIL: mobile tap on an arcade card did not open the game (preventDefault regression?)');
+    failures++;
+  }
+
+  // Mobile nav-bar trap regression (2026-08-26): the bottom tab bar (#nav-links)
+  // MUST dock at the viewport bottom on touch. backdrop-filter on header.site (like
+  // filter/transform) creates a containing block for position:fixed descendants, so
+  // the bar was trapped at the TOP of the page, overlaying the logo/theme toggle and
+  // causing ~88px horizontal overflow. Removed in a02a1fd. Guard: docked bottom +
+  // no overflow + theme toggle clickable, else the run FAILS (exit 1).
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
+  await page.goto(BASE + '/index.html', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.waitForSelector('#nav-links', { timeout: 15000 });
+  const nav = await page.evaluate(() => {
+    const nb = document.querySelector('#nav-links').getBoundingClientRect();
+    const theme = document.getElementById('themeToggle');
+    const themeR = theme ? theme.getBoundingClientRect() : null;
+    const hit = themeR ? document.elementFromPoint(themeR.left + themeR.width / 2, themeR.top + 8) : null;
+    return {
+      vw: window.innerWidth,
+      docW: document.documentElement.scrollWidth,
+      navTop: Math.round(nb.top),
+      navBottomGap: Math.round(window.innerHeight - nb.bottom),
+      themeHit: hit ? (hit.closest && hit.closest('#themeToggle') ? 'themeToggle' : (hit.id || hit.className || hit.tagName)) : null
+    };
+  });
+  const navDocked = nav.navBottomGap >= -2 && nav.navBottomGap <= 8 && nav.navTop > 600;
+  const navNoOverflow = nav.docW <= nav.vw + 1;
+  const toggleHit = nav.themeHit === 'themeToggle';
+  console.log(`NAV MOBILE docked=${navDocked} (top=${nav.navTop}, bottomGap=${nav.navBottomGap}) overflow=${navNoOverflow} (docW=${nav.docW}/${nav.vw}) toggle=${toggleHit} (hit=${nav.themeHit})`);
+  if (!navDocked || !navNoOverflow || !toggleHit) {
+    console.error('FAIL: mobile bottom tab bar is not docked at the viewport bottom (backdrop-filter trap regression?)');
+    failures++;
+  }
+
+  // Crossword board regression (2026-08-26): on mobile the board MUST render usable
+  // cells. fitCell() in assets/js/crossword.js sizes cells from the board's measured
+  // clientHeight; with only max-height:58vh and height:auto the board collapsed to its
+  // empty content box and cells floored to 1px (a 24x24 grid rendered as an unreadable
+  // dot). Fixed in a02a1fd with a definite height:min(58vh,520px). Guard: cells > 5px
+  // and the board fits the viewport, else the run FAILS (exit 1).
+  await page.goto(BASE + '/crossword.html', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.waitForSelector('.xw-cell', { timeout: 15000 });
+  await sleep(600);
+  const xw = await page.evaluate(() => {
+    const board = document.querySelector('.xw-board');
+    const cell = document.querySelector('.xw-cell');
+    const br = board.getBoundingClientRect();
+    const cr = cell.getBoundingClientRect();
+    return {
+      vw: window.innerWidth,
+      docW: document.documentElement.scrollWidth,
+      cellW: cr.width, cellH: cr.height,
+      boardW: br.width, cells: document.querySelectorAll('.xw-cell').length
+    };
+  });
+  const xwCells = xw.cellW > 5 && xw.cellH > 5;
+  const xwFits = xw.boardW <= xw.vw + 2;
+  const xwNoOverflow = xw.docW <= xw.vw + 1;
+  console.log(`XWORD MOBILE cells=${Math.round(xw.cellW)}x${Math.round(xw.cellH)}px n=${xw.cells} board=${Math.round(xw.boardW)}px vw=${xw.vw} overflow=${xwNoOverflow}`);
+  if (!xwCells || !xwFits || !xwNoOverflow) {
+    console.error('FAIL: crossword board collapsed on mobile (fitCell height regression?)');
     failures++;
   }
 
