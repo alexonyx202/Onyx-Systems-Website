@@ -3,6 +3,8 @@
    - homepage teaser: exactly 6 cards, one row, no overflow, images load, daily
      lineup deterministic, rendered desc/tagline MATCH games/games.json
    - arcade hub: full card set, copy MATCH
+   - mobile tap: a real touch tap on an arcade card MUST open the game (behavioral
+     guard against the 2026-07-17 preventDefault regression — fails the run, exit 1)
    - freshness: service worker controls the page and an offline reload still
      renders the lineup
    Run: node scripts/verify_arcade.js [port]     (default port 8099)
@@ -92,6 +94,7 @@ async function shot(page, url, sel, file) {
   else if (fs.existsSync('/snap/bin/chromium')) launch.executablePath = '/snap/bin/chromium';
   const browser = await puppeteer.launch(launch);
   const page = await browser.newPage();
+  let failures = 0;
 
   const manifest = (await getJSON(BASE + '/games/games.json')).games;
   for (const w of [1280, 1440, 1920]) {
@@ -111,6 +114,36 @@ async function shot(page, url, sel, file) {
   const hubM = await probe(page, BASE + '/games/', '.arcade-hub');
   console.log(`MOBILE 390 HUB cards=${hubM.count} row=${hubM.distinctTops === 1 ? '1' : 'MULTI'} off=${hubM.overflow} imgs=${hubM.allImgs} [${hubM.titles.join('|')}]`);
   await shot(page, BASE + '/games/', '.arcade-hub', `${SHOT_DIR}/arcade_hub_390.png`);
+
+  // Mobile tap regression (2026-08-26): a real touch tap on an arcade card MUST
+  // open the game. The hover-panel handler from 2026-07-17 (78ab1cb) called
+  // e.preventDefault() on every touch tap — (hover:none) matches on mobile — which
+  // cancelled the card's <a> navigation, so games never opened on touch devices.
+  // The homepage was fixed 2026-07-19 (c0ee991); the hub missed it until 1efba4b.
+  // This guard is behavioral: if the tap does not navigate, the run FAILS (exit 1).
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
+  await page.goto(BASE + '/games/', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.waitForSelector('.arcade-hub .game-card', { timeout: 15000 });
+  const tapCard = await page.$('.arcade-hub .game-card');
+  const tapHref = await tapCard.evaluate(a => a.getAttribute('href'));
+  let tapNavigated = false, tapUrl = '';
+  try {
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'load', timeout: 45000 }),
+      tapCard.tap()
+    ]);
+    tapUrl = page.url();
+    tapNavigated = tapUrl.includes('/games/') && tapUrl.endsWith(tapHref);
+    console.log(`MOBILE TAP ${tapHref} -> ${tapUrl} navigated=${tapNavigated}`);
+  } catch (e) {
+    tapUrl = page.url();
+    console.log(`MOBILE TAP ${tapHref} -> ${tapUrl} navigated=false (${String(e.message || e).split('\n')[0]})`);
+  }
+  if (!tapNavigated) {
+    console.error('FAIL: mobile tap on an arcade card did not open the game (preventDefault regression?)');
+    failures++;
+  }
+
   // Freshness: service worker registers + controls, and an offline reload still renders the lineup.
   try {
     await page.setViewport({ width: 1280, height: 900 });
@@ -126,5 +159,6 @@ async function shot(page, url, sel, file) {
     console.log(`FRESH swControlled=${controlled} offlineHomeCards=${offlineCards}`);
   } catch (err) { console.log('FRESH probe skipped:', err.message); }
   await browser.close();
+  if (failures) { console.error(`${failures} FAILURE(S)`); process.exit(1); }
   console.log('DONE');
 })().catch(e => { console.error('FATAL', e.message); process.exit(1); });
