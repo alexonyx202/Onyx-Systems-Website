@@ -142,7 +142,12 @@
   .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800;color:var(--copper)}
 
   /* ===== NAV ===== */
-  header.site{position:sticky;top:0;z-index:40;background:var(--nav-bg);backdrop-filter:blur(10px);
+  /* MOBILE FIX 2026-08-26: no backdrop-filter here. backdrop-filter (like filter/transform)
+     creates a containing block for fixed descendants, so the mobile bottom tab bar
+     (#nav-links, position:fixed) was trapped at the TOP of the page, overlaying the
+     logo/theme-toggle instead of docking at the viewport bottom. The header bg is
+     >=94% opaque (--nav-bg), so the blur was imperceptible — removed it. */
+  header.site{position:sticky;top:0;z-index:40;background:var(--nav-bg);
     border-bottom:1px solid var(--line);transition:background .3s,box-shadow .3s}
   header.site.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.28);border-bottom-color:var(--line-strong)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:14px}
@@ -723,8 +728,7 @@
     .nav-links a{flex:1 1 0;flex-direction:column;justify-content:center;font-size:11px;padding:8px 4px;
       text-align:center;min-height:56px;border-radius:0}
     .nav-links a.active::after,.nav-links a:hover::after,.nav-links a:focus-visible::after{left:25%;right:25%;bottom:2px}
-    .nav-phone{margin-left:0;align-self:center;padding:9px 12px;font-size:12px}
-    .nav-phone::before{display:none}
+    .nav-links a.nav-phone{display:none} /* redundant on mobile: .mobile-call quick-dial bar above the tab bar has Call + Directions; the pill's ~125px min-content width overflowed the 390px tab bar */
     .mobile-call{display:flex;gap:0;padding:0} /* quick-dial above the bottom tab bar (tab bar is 56px at bottom:0) */
     .mobile-call a{flex:1 1 0}
     .mobile-call .mc-call{background:var(--copper)}

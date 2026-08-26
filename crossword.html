@@ -131,7 +131,12 @@
     .xw-app{height:auto;min-height:100vh;padding:14px 14px 20px}
     .xw-stage{flex-direction:column;gap:12px}
     .xw-boardcol{flex:0 0 auto}
-    .xw-board{max-height:58vh}
+    /* MOBILE FIX 2026-08-26: the board needs a DEFINITE height here, not just a
+       max-height. fitCell() in assets/js/crossword.js sizes the cells from the
+       board's measured clientHeight; with height:auto the board collapsed to its
+       (empty) content box and cells floored to 1px — the whole grid rendered
+       unreadable on phones. min() caps it so big puzzles still fit the fold. */
+    .xw-board{height:min(58vh,520px)}
     .xw-clues{flex:1 1 auto}
     .xw-h{display:block}            /* show section headers when both lists visible fallback */
     .xw-cluehead{display:flex}       /* tabs drive which list shows */
