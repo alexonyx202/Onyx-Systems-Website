@@ -64,6 +64,54 @@ EVERGREEN_DOCS = [
 FACTS_BEGIN = "<!-- SNAPSHOT-FACTS-BEGIN -->"
 FACTS_END = "<!-- SNAPSHOT-FACTS-END -->"
 
+HOOK_SOURCE = os.path.join(REPO, "scripts", "hooks", "pre-push")
+GIT_HOOKS = os.path.join(REPO, ".git", "hooks")
+PRE_PUSH = os.path.join(GIT_HOOKS, "pre-push")
+# Shim that execs the version-controlled hook, so updates apply without
+# reinstalling. dirname($0) is .git/hooks; ../.. is the repo root.
+SHIM = (
+    "#!/usr/bin/env bash\n"
+    'exec "$(cd "$(dirname "$0")/../.." && pwd)/scripts/hooks/pre-push" "$@"\n'
+)
+
+
+def install_hook():
+    if not os.path.isdir(GIT_HOOKS):
+        sys.exit("not a git checkout (no %s)" % GIT_HOOKS)
+    if not os.path.isfile(HOOK_SOURCE):
+        sys.exit("hook source missing: %s" % HOOK_SOURCE)
+    if os.path.exists(PRE_PUSH):
+        with open(PRE_PUSH, "r", encoding="utf-8") as fh:
+            existing = fh.read()
+        if "scripts/hooks/pre-push" not in existing:
+            bak = PRE_PUSH + ".bak"
+            os.rename(PRE_PUSH, bak)
+            log("  backed up existing hook to %s" % bak)
+    with open(PRE_PUSH, "w", encoding="utf-8") as fh:
+        fh.write(SHIM)
+    os.chmod(PRE_PUSH, 0o755)
+    log("installed pre-push hook shim: %s" % PRE_PUSH)
+    log("main pushes now refresh Site Snapshots automatically "
+        "(updates to scripts/hooks/pre-push apply without reinstalling)")
+
+
+def uninstall_hook():
+    if not os.path.exists(PRE_PUSH):
+        log("no pre-push hook installed")
+        return
+    with open(PRE_PUSH, "r", encoding="utf-8") as fh:
+        content = fh.read()
+    if "scripts/hooks/pre-push" not in content:
+        log("refusing to remove %s — not our shim" % PRE_PUSH)
+        return
+    os.remove(PRE_PUSH)
+    bak = PRE_PUSH + ".bak"
+    if os.path.exists(bak):
+        os.rename(bak, PRE_PUSH)
+        log("restored previous hook from %s" % bak)
+    else:
+        log("removed pre-push hook shim: %s" % PRE_PUSH)
+
 
 def log(msg):
     print(msg, flush=True)
@@ -296,7 +344,18 @@ def main():
                     help="snapshot date, YYYY-MM-DD (default: today)")
     ap.add_argument("--dry-run", action="store_true",
                     help="show what would happen without writing anything")
+    ap.add_argument("--install-hook", action="store_true",
+                    help="install the pre-push hook shim (snapshots on main pushes)")
+    ap.add_argument("--uninstall-hook", action="store_true",
+                    help="remove the pre-push hook shim (restore any backup)")
     args = ap.parse_args()
+
+    if args.install_hook:
+        install_hook()
+        return
+    if args.uninstall_hook:
+        uninstall_hook()
+        return
 
     try:
         date_str = datetime.date.fromisoformat(args.date).isoformat()

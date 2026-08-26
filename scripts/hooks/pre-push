@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Pre-push hook — refresh the vault snapshot whenever main is pushed.
+#
+# Version-controlled here at scripts/hooks/pre-push. Install with:
+#   python3 scripts/snapshot_site.py --install-hook
+# which drops a shim at .git/hooks/pre-push that execs this file, so edits
+# here apply to every checkout without reinstalling (re-run --install-hook
+# only on fresh clones).
+#
+# Behavior:
+#   * Fires only when the push includes refs/heads/main.
+#   * Skips (with a note) when this checkout is not the vault layout —
+#     the repo must sit next to a "Reference/" folder (the Obsidian vault).
+#   * A failed snapshot warns but does NOT block the push; set
+#     SNAPSHOT_STRICT=1 to make it abort the push instead.
+set -euo pipefail
+
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+push_to_main=0
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    push_to_main=1
+  fi
+done
+
+if [ "$push_to_main" != "1" ]; then
+  exit 0
+fi
+
+if [ ! -d "$REPO/../Reference" ]; then
+  echo "pre-push: skipping snapshot — '$(cd "$REPO/.." && pwd)' is not the vault layout (no Reference/)" >&2
+  exit 0
+fi
+
+echo "pre-push: refreshing vault snapshot for main push…"
+if ! python3 "$REPO/scripts/snapshot_site.py"; then
+  if [ "${SNAPSHOT_STRICT:-0}" = "1" ]; then
+    echo "pre-push: snapshot failed and SNAPSHOT_STRICT=1 — aborting push" >&2
+    exit 1
+  fi
+  echo "pre-push: WARNING snapshot_site.py failed — push continues; re-run 'python3 scripts/snapshot_site.py' manually" >&2
+fi
+exit 0

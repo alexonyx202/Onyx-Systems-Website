@@ -42,6 +42,11 @@ snapshot (preserving changelog history), refreshes the evergreen docs from
 and `FILE-INVENTORY.txt`. Per the vault's add-only convention, add a dated
 note in `Reference/` after a significant snapshot.
 
+**Automatic**: `python3 scripts/snapshot_site.py --install-hook` installs a
+pre-push hook (shim at `.git/hooks/pre-push` → `scripts/hooks/pre-push`)
+that refreshes this snapshot automatically on every push to `main` — this
+folder was produced that way.
+
 ## Where everything lives (quick map)
 
 | Path | What it is |

@@ -17,7 +17,8 @@
 | `gen_crossword.py`, `rotate_crosswords.py`, `xw_words.py`, `xw_fillers.txt` | Crossword generation, daily rotation, word lists. |
 | `build_newsletter_html.py` | Builds `newsletter.html` from the feed. |
 | `audit-cdp.py` | CDP-based audit helper. |
-| `snapshot_site.py` | **Vault snapshot tool** — recreates/refreshes the dated `Site Snapshots/<date> Corrected Site/` folder in the vault and regenerates the docs index, README facts and `FILE-INVENTORY.txt` in one command. Evergreen docs live under `scripts/snapshot_docs/` and are refreshed into every snapshot. See the script's docstring for usage. |
+| `snapshot_site.py` | **Vault snapshot tool** — recreates/refreshes the dated `Site Snapshots/<date> Corrected Site/` folder in the vault and regenerates the docs index, README facts and `FILE-INVENTORY.txt` in one command. Evergreen docs live under `scripts/snapshot_docs/` and are refreshed into every snapshot. Flags: `--date YYYY-MM-DD`, `--dry-run`, `--install-hook`, `--uninstall-hook`. See the script's docstring. |
+| `hooks/pre-push` | **Pre-push hook** — refreshes the vault snapshot automatically whenever `main` is pushed. Installed via `snapshot_site.py --install-hook` (drops a shim at `.git/hooks/pre-push` that execs this file, so edits apply without reinstalling). Fires only on `refs/heads/main`, skips if the checkout isn't the vault layout (no `Reference/` sibling), warns-but-doesn't-block on failure (`SNAPSHOT_STRICT=1` to abort the push instead). |
 | `deploy.sh` | One-command deploy ritual: regenerate manifest → stamp → verify → push. |
 
 ## Root-level scripts
