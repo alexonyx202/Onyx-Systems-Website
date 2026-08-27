@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-26",
+  "updated": "2026-08-27",
   "items": [
+    {
+      "id": "n-2026-08-27",
+      "type": "newsletter",
+      "date": "2026-08-27",
+      "title": "Fake Email Attachments Are Stealing Microsoft 365 Logins — Even With Two-Factor On",
+      "tag": "Daily Brief",
+      "summary": "Security researchers found a new trick hitting over 4,500 companies across the U.S. Crooks send emails with attachments that look like a Microsoft login page. When you open the attachment, it loads a fake sign-in screen and steals your username, password, and even your two-factor code — all in one shot. The attackers then reuse your login session without needing your password again. The FTC says never open unexpected email attachments, even if they look official. If you get a surprise attachment asking you to \"verify\" your account, delete it and go directly to outlook.com or office.com instead (The Hacker News, August 25; CybersecurityNews, August 26).",
+      "comic": "Newsletter - 2026-08-27-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-27-news1",
+      "type": "tech-note",
+      "date": "2026-08-27",
+      "title": "Google's free Password Checkup finds every weak and reused password in Chrome — try it in 10 seconds",
+      "tag": "Tech Note",
+      "summary": "Open Chrome, click your profile icon in the top right, select \"Google Password Manager,\" then click \"Password Checkup.\" Google will scan every password saved in your browser and tell you which ones are weak, reused, or leaked in a data breach — for free, in about 10 seconds."
+    },
+    {
+      "id": "t-2026-08-27-tip1",
+      "type": "tech-note",
+      "date": "2026-08-27",
+      "title": "Rapid Fiber just finished wiring every SVEC member in Columbia County — check plans from 50 dollars a month at rapid-fiber.com",
+      "tag": "Tech Tip",
+      "summary": "Rapid Fiber Internet, powered by Suwannee Valley Electric Cooperative, has completed its initial fiber build — every SVEC member in Columbia County, Suwannee, Lafayette, and Hamilton counties can now get fiber internet. Plans start at 50 dollars a month for 100 Mbps. Check your address and sign up at rapid-fiber.com or call (888) 857-4959."
+    },
     {
       "id": "n-2026-08-26",
       "type": "newsletter",
@@ -87,32 +113,6 @@
         "#ComputerRepair",
         "#TechTip"
       ]
-    },
-    {
-      "id": "n-2026-08-23",
-      "type": "newsletter",
-      "date": "2026-08-23",
-      "title": "Fake Bill-Payment Websites Are Tricking You Through Search Ads",
-      "tag": "Daily Brief",
-      "summary": "The FTC just warned that scammers are buying fake ads at the top of Google and Bing that look like your electric company, insurance provider, or bank. You search for \"pay my light bill,\" click the first result, enter your account number and card, and the money goes to a crook instead of your real company. Always scroll past the ads and look for the official web address you already know — or call the number on your paper bill. Report fraud at ReportFraud.ftc.gov. (Source: FTC.gov, August 17, 2026)",
-      "comic": "Newsletter - 2026-08-23-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-23-news1",
-      "type": "tech-note",
-      "date": "2026-08-23",
-      "title": "Stop Windows from begging you to buy Microsoft 365 — turn off the subscription nag screens",
-      "tag": "Tech Note",
-      "summary": "Press the Windows key, type **Notifications** and press Enter. Scroll down and turn off notifications from **Microsoft 365 (Office)** and **Get Help**. That kills the pop-ups permanently — takes 30 seconds."
-    },
-    {
-      "id": "t-2026-08-23-tip1",
-      "type": "tech-note",
-      "date": "2026-08-23",
-      "title": "Turn your old scanner into a clean PDF maker — NAPS2 is free and has no watermarks",
-      "tag": "Tech Tip",
-      "summary": "Download **NAPS2** (Not Another PDF Scanner 2) free at **naps2.org**. Plug in your scanner, open NAPS2, click the green **Scan** button, and save your document as a PDF or image file. No account, no watermarks, no ads, no subscription."
     }
   ]
 }

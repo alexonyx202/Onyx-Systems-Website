@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-27-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-27",
+      "title": "Fake Email Attachments Are Stealing Microsoft 365 Logins — Even With Two-Factor On",
+      "tag": "Daily Brief",
+      "excerpt": "Security researchers found a new trick hitting over 4,500 companies across the U.S. Crooks send emails with attachments that look like a Microsoft login page. When you open the attachment, it loads a fake sign-in screen and steals your username, password, and even your two-factor code — all in one shot. The attackers then reuse your login session without needing your password again. The FTC says never open unexpected email attachments, even if they look official. If you get a surprise attachment asking you to \"verify\" your account, delete it and go directly to outlook.com or office.com instead (The Hacker News, August 25; CybersecurityNews, August 26).",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-27-composite.jpg",
+      "comic": "assets/img/news/2026-08-27-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-26-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-26",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-23-composite.jpg",
       "comic": "assets/img/news/2026-08-23-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-22-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-22",
-      "title": "Microsoft Edge Browser Security Update — Check Yours in 30 Seconds Free",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft pushed a fresh security patch to Edge this week that closes several vulnerabilities attackers are actively exploiting through malicious websites. If your Edge browser is out of date, simply visiting the wrong page could let someone run code on your computer. Here's the fix — it's free and takes 30 seconds: open Microsoft Edge, click the three dots in the top right corner, choose Help and feedback, then About Microsoft Edge. The browser will show your current version and update automatically if it's not current. I do this check on every computer that comes into the shop, and I'm always surprised how many are months behind. Don't be one of them — check it now. (Source: Microsoft Security Response Center, August 2026)",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-22-composite.jpg",
-      "comic": "assets/img/news/2026-08-22-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-27-post-1",
+      "type": "news",
+      "date": "2026-08-27",
+      "title": "Google's free Password Checkup finds every weak and reused password in Chrome — try it in 10 seconds",
+      "tag": "Tech Note",
+      "summary": "Open Chrome, click your profile icon in the top right, select \"Google Password Manager,\" then click \"Password Checkup.\" Google will scan every password saved in your browser and tell you which ones are weak, reused, or leaked in a data breach — for free, in about 10 seconds.",
+      "truth": "Most people don't realize that if you use the same password for your email and your bank — which about 65% of people do — a single data breach at some website you signed up for three years ago can hand a crook access to everything. Google's Password Checkup shows you exactly which passwords are in danger, and it takes less time than filling your coffee mug. I run this on every computer that comes into the shop.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-26-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-22-post-1",
-      "type": "news",
-      "date": "2026-08-22",
-      "title": "Microsoft Edge just got a security update — check yours free in 30 seconds at edge://settings/help",
-      "tag": "Tech Note",
-      "summary": "Microsoft pushed a fresh security patch to Edge this week. Open Microsoft Edge, click the three dots in the top right, choose Help and feedback, then About Microsoft Edge — it will show your current version and update automatically if it's not current. Takes 30 seconds.",
-      "truth": "I see this all the time. Someone tells me \"I never get viruses\" while running a browser that hasn't updated in three months. Here's the honest truth: you don't get a virus the moment a security hole opens — you get it weeks later, after the bad guys figure out how to use it. That's why Microsoft pushes these updates fast. Most people don't realize Edge updates itself, but only if you open the browser and let it check. If you've been ignoring that little \"update available\" bar at the top, you're leaving the door open. I check Edge on every machine that comes through the shop — it takes 30 seconds and could save you from a real headache.",
+      "id": "onyx-2026-08-27-post-2",
+      "type": "tip",
+      "date": "2026-08-27",
+      "title": "Rapid Fiber just finished wiring every SVEC member in Columbia County — check plans from 50 dollars a month at rapid-fiber.com",
+      "tag": "Tech Tip",
+      "summary": "Rapid Fiber Internet, powered by Suwannee Valley Electric Cooperative, has completed its initial fiber build — every SVEC member in Columbia County, Suwannee, Lafayette, and Hamilton counties can now get fiber internet. Plans start at 50 dollars a month for 100 Mbps. Check your address and sign up at rapid-fiber.com or call (888) 857-4959.",
+      "truth": "I've been watching Rapid Fiber roll out for almost three years, and they finally hit 100% coverage for SVEC members. Most people in this area have been stuck with slow DSL or spotty satellite while the rest of the country moved to fiber. This is real gigabit-speed internet through your electric co-op — and it means you finally have an option if Xfinity or AT&T don't reach your road. If you're an SVEC member, you need to check this today.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-22-post-2",
-      "type": "tip",
-      "date": "2026-08-22",
-      "title": "Find any file in a second — Everything Search by Voidtools is free and finds what Windows Search misses at voidtools.com",
-      "tag": "Tech Tip",
-      "summary": "Windows Search is slow and sometimes misses files entirely. Everything Search by Voidtools indexes your entire drive the moment you install it and finds any file the instant you type its name. Download it free from voidtools.com — no account needed, no ads, takes 2 minutes to install.",
-      "truth": "I recommend this to almost every customer who walks in frustrated because they can't find a file. Here's what most people don't realize: Windows Search indexes only some files and sometimes takes minutes to return results. Everything indexes everything — every file on every drive — and shows results as you type. I've watched people spend 10 minutes looking for a document that Everything finds in half a second. It's free, it's tiny, it doesn't slow your computer down, and once you use it you'll never go back to Windows Search. I install it on every machine I set up in the shop.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-26",
+  "updated": "2026-08-27",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
