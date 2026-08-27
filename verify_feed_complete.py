@@ -98,6 +98,15 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-23: NAPS2 (Not Another PDF Scanner 2, naps2.org) — real free
     # scanner-to-PDF product named in today's Tech Note headline, obtain method stated.
     "naps2", "naps2.org",
+    # Extended 2026-08-26: TP-Link Kasa Smart Plug EP25 (Amazon/Walmart) —
+    # real product named in today's Tech Note headline, obtain method stated.
+    "tp-link", "kasa", "smart plug",
+    # Windows Magnifier (built-in Windows accessibility tool) — real product named,
+    # obtain method stated (Windows key + Plus).
+    "magnifier",
+    # Extended 2026-08-27: Rapid Fiber (rapid-fiber.com, SVEC fiber internet)
+    # — real service named in today's Tech Note headline, obtain method stated.
+    "rapid fiber",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

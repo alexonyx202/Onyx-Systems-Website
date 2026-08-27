@@ -170,16 +170,18 @@ def parse_newsletter(md_path):
 def parse_tech_notes(md_path):
     md = md_path.read_text(encoding="utf-8")
     posts = []
-    # Today's Onyx Tech Notes carry the headline on the `## Post N — <headline>` line
-    # itself (no separate **Headline:** field), so capture it as group 2.
     for m in re.finditer(r"^##\s*Post\s+(\d+)\s*(?:[—–-]\s*)?(.*)$", md, re.M):
         start = m.end()
-        headline = m.group(2).strip()
+        header_label = m.group(2).strip()  # e.g. "SECURITY", "LOCAL-N-FL"
         nm = re.search(r"^##\s*Post\s+\d+\s*(?:[—–-]\s*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
+        # Prefer **Headline:** field inside body (the real headline);
+        # fall back to the header text only if no bold headline field exists.
+        real_headline = _heading_section(body, "Headline")
+        headline = real_headline if real_headline else header_label
         posts.append({
-            "headline": headline or _heading_section(body, "Headline"),
+            "headline": headline,
             "tip": _heading_section(body, "The Tip"),
             "truth": _heading_section(body, "The Shop Owner's Truth"),
             "tags": _hashtags(body) or BASE_TAGS,
