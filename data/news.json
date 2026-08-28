@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-27",
+  "updated": "2026-08-28",
   "items": [
+    {
+      "id": "n-2026-08-28",
+      "type": "newsletter",
+      "date": "2026-08-28",
+      "title": "Windows Update Is Breaking Printers and PDFs — Here's What to Do",
+      "tag": "Daily Brief",
+      "summary": "Microsoft's latest Windows update is breaking printers and PDF saving across the country. Programs crash when you try to print or create a PDF. Here is what to do right now: open Settings, go to Windows Update, and click \"Pause updates\" for 7 days. If your printer already stopped working, try printing from a web browser instead. This is a Microsoft mistake, not a printer problem. They are working on a fix. Bring it by the shop if you need help — free diagnosis, no pressure. (Sources: PCWorld, BleepingComputer — August 25-26, 2026)",
+      "comic": "Newsletter - 2026-08-28-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-28-news1",
+      "type": "tech-note",
+      "date": "2026-08-28",
+      "title": "CISA says hackers are already using six new flaws — update your computer tonight and tell your IT department if you use Citrix at work",
+      "tag": "Tech Note",
+      "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 — including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes."
+    },
+    {
+      "id": "t-2026-08-28-tip1",
+      "type": "tech-note",
+      "date": "2026-08-28",
+      "title": "Stop losing things you copied — Windows Clipboard History remembers your last 25 clips, built-in and free",
+      "tag": "Tech Tip",
+      "summary": "Press the Windows key + V to open Windows Clipboard History. It remembers everything you copy — text, links, images — and lets you paste any older item, not just the most recent one. If it's not turned on yet, press Start, type \"clipboard settings,\" open it, and flip the switch to On. It takes five seconds and you'll never lose a copied item again."
+    },
     {
       "id": "n-2026-08-27",
       "type": "newsletter",
@@ -80,39 +106,6 @@
       "title": "Chrome 153 ships with a critical security patch — take 30 seconds to update now",
       "tag": "Tech Tip",
       "summary": "Open Chrome, click the three dots at top right, click Help, then About Google Chrome — the update installs automatically when you open that page."
-    },
-    {
-      "id": "n-2026-08-24",
-      "type": "newsletter",
-      "date": "2026-08-24",
-      "title": "Brushing Scams: Why Random Packages Are Showing Up at Your Door",
-      "tag": "Daily Brief",
-      "summary": "A package shows up on your porch you never ordered. The FTC warned on August 20 that this is a \"brushing\" scam — sellers send you free junk using your name so they can post a fake five-star review in your name. Some packages include QR codes that lead to fake websites designed to steal your information. If you receive a package you did not order, do not scan any codes inside. Check your online accounts for unfamiliar orders and report it free at ReportFraud.ftc.gov.",
-      "comic": "Newsletter - 2026-08-24-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-24-news1",
-      "type": "tech-note",
-      "date": "2026-08-24",
-      "title": "CISA Flags 4 Actively Exploited Flaws — Update Your Mac and Windows Now",
-      "tag": "Tech Note",
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added four new actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on August 18. Two affect Apple Macs and two affect Windows. Update macOS at System Settings > General > Software Update and Windows at Settings > Windows Update tonight.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-08-24-tip1",
-      "type": "tech-note",
-      "date": "2026-08-24",
-      "title": "Patch My PC Home Updater Updates 500 Apps Free at patchmypc.com",
-      "tag": "Tech Tip",
-      "summary": "Download Patch My PC Home Updater free at patchmypc.com, run it, and click Scan — it finds every outdated app on your PC and updates them all in one click. It supports over 500 apps including Chrome, Firefox, Zoom, VLC, 7-Zip, iTunes, Skype, and more.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#TechTip"
-      ]
     }
   ]
 }

@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-28-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-28",
+      "title": "Windows Update Is Breaking Printers and PDFs — Here's What to Do",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft's latest Windows update is breaking printers and PDF saving across the country. Programs crash when you try to print or create a PDF. Here is what to do right now: open Settings, go to Windows Update, and click \"Pause updates\" for 7 days. If your printer already stopped working, try printing from a web browser instead. This is a Microsoft mistake, not a printer problem. They are working on a fix. Bring it by the shop if you need help — free diagnosis, no pressure. (Sources: PCWorld, BleepingComputer — August 25-26, 2026)",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-28-composite.jpg",
+      "comic": "assets/img/news/2026-08-28-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-27",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-24-composite.jpg",
       "comic": "assets/img/news/2026-08-24-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-23-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-23",
-      "title": "Fake Bill-Payment Websites Are Tricking You Through Search Ads",
-      "tag": "Daily Brief",
-      "excerpt": "The FTC just warned that scammers are buying fake ads at the top of Google and Bing that look like your electric company, insurance provider, or bank. You search for \"pay my light bill,\" click the first result, enter your account number and card, and the money goes to a crook instead of your real company. Always scroll past the ads and look for the official web address you already know — or call the number on your paper bill. Report fraud at ReportFraud.ftc.gov. (Source: FTC.gov, August 17, 2026)",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-23-composite.jpg",
-      "comic": "assets/img/news/2026-08-23-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-28-post-1",
+      "type": "news",
+      "date": "2026-08-28",
+      "title": "CISA says hackers are already using six new flaws — update your computer tonight and tell your IT department if you use Citrix at work",
+      "tag": "Tech Note",
+      "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 — including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes.",
+      "truth": "I see this all the time — businesses assume their IT person handles updates and they don't need to worry about it. But CISA's alert specifically says these flaws are being actively exploited right now, not someday. If your company uses Citrix for remote access, the clock is ticking. And if you're a home user, keeping your Windows updates current is still the single fastest way to stay safe. Most people don't realize that a two-minute update once a month can stop a hacker cold.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-27-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-23-post-1",
-      "type": "news",
-      "date": "2026-08-23",
-      "title": "Stop Windows from begging you to buy Microsoft 365 — turn off the subscription nag screens",
-      "tag": "Tech Note",
-      "summary": "Press the Windows key, type **Notifications** and press Enter. Scroll down and turn off notifications from **Microsoft 365 (Office)** and **Get Help**. That kills the pop-ups permanently — takes 30 seconds.",
-      "truth": "I see this all the time — people think their computer is broken because it keeps popping up windows telling them to \"Try Microsoft 365\" or \"Renew your subscription.\" It's not broken. Windows is just advertising to you. Most people don't realize that these nag screens are built-in notifications, and you can turn them off the same way you'd silence a chatty app. The honest answer is Microsoft wants your $100 a year, so they're going to keep asking. But you don't have to listen.",
+      "id": "onyx-2026-08-28-post-2",
+      "type": "tip",
+      "date": "2026-08-28",
+      "title": "Stop losing things you copied — Windows Clipboard History remembers your last 25 clips, built-in and free",
+      "tag": "Tech Tip",
+      "summary": "Press the Windows key + V to open Windows Clipboard History. It remembers everything you copy — text, links, images — and lets you paste any older item, not just the most recent one. If it's not turned on yet, press Start, type \"clipboard settings,\" open it, and flip the switch to On. It takes five seconds and you'll never lose a copied item again.",
+      "truth": "Most people don't realize that when you copy something new on your computer, the old thing you copied disappears. Windows Clipboard History fixes that — it keeps your last 25 copies so you can go back and paste any of them. I use it ten times a day when I'm juggling parts numbers, customer notes, and URLs. It's the most underused free tool in Windows.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -312,23 +326,9 @@
         "#ComputerRepair",
         "#TechTip"
       ]
-    },
-    {
-      "id": "onyx-2026-08-23-post-2",
-      "type": "tip",
-      "date": "2026-08-23",
-      "title": "Turn your old scanner into a clean PDF maker — NAPS2 is free and has no watermarks",
-      "tag": "Tech Tip",
-      "summary": "Download **NAPS2** (Not Another PDF Scanner 2) free at **naps2.org**. Plug in your scanner, open NAPS2, click the green **Scan** button, and save your document as a PDF or image file. No account, no watermarks, no ads, no subscription.",
-      "truth": "I see this every week — someone bought a nice printer with a scanner and they can't figure out how to scan a document to their computer. The software that came with the printer is confusing, asks for an account, or puts a watermark on every page. Here's the truth: you don't need the manufacturer's software at all. NAPS2 works with almost every scanner made in the last 20 years, and it does one thing — turns your paper into a clean digital file. No strings attached.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-27",
+  "updated": "2026-08-28",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
