@@ -107,6 +107,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-27: Rapid Fiber (rapid-fiber.com, SVEC fiber internet)
     # — real service named in today's Tech Note headline, obtain method stated.
     "rapid fiber",
+    # Extended 2026-08-28: Citrix (remote access / virtual desktop software)
+    # — real product named in today's CISA security alert headline, obtain method stated.
+    "citrix",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
