@@ -17,7 +17,9 @@ def verify_games_json():
     games = data.get('games', [])
     print(f'✓ games.json: {len(games)} games')
     for g in games:
-        required = ['file', 'title', 'tagline', 'desc', 'thumb', 'cabinet', 'featured']
+        required = ['file', 'title', 'tagline', 'desc', 'thumb', 'cabinet']
+        # NOTE (2026-08-28): 'featured' was REMOVED from the schema on 2026-08-15
+        # (the featured badge was retired) — do not require it again.
         for req in required:
             if req not in g:
                 raise ValueError(f"Missing field '{req}' in game: {g.get('title', 'unknown')}")
@@ -59,14 +61,19 @@ def verify_manifest_matches(games):
     print(f'✓ MANIFEST matches games.json perfectly ({len(games)} games)')
 
 def verify_grid_columns():
-    """Verify 6-column grid on arcade page (desktop) per Arcade Release Rule"""
+    """Verify 6-column grid on arcade page (desktop) per Arcade Release Rule.
+
+    Updated 2026-08-28: the hub grid went back to 6 columns (commit 1b24f4c,
+    21 games); this check still asserted the 2026-08-23 5-column layout and
+    failed every run despite a healthy page. 6-up desktop / 2-up mobile per rule 6.
+    """
     with open('games/index.html') as f:
         content = f.read()
-    if 'repeat(5,minmax(0,1fr))' not in content:
-        raise ValueError("5-column grid not found in games/index.html")
+    if 'repeat(6,minmax(0,1fr))' not in content:
+        raise ValueError("6-column grid not found in games/index.html")
     if 'repeat(2,minmax(0,1fr))' not in content:
         raise ValueError("2-column mobile grid not found in games/index.html")
-    print('✓ 5-column desktop / 2-column mobile grid present in games/index.html')
+    print('✓ 6-column desktop / 2-column mobile grid present in games/index.html')
 
 def verify_new_games_badge():
     """Verify NEW GAMES badge on arcade page"""
@@ -77,16 +84,23 @@ def verify_new_games_badge():
     print('✓ NEW GAMES badge present in games/index.html')
 
 def verify_pwa_headers():
-    """Verify PWA headers in new game HTML files"""
-    new_games = ['data-break.html', 'bug-swarm.html', 'neon-pilot.html', 'technobonk.html']
-    for fname in new_games:
+    """Verify PWA headers in the multi-file PWA games.
+
+    Updated 2026-08-28: only data-break / bug-swarm / technobonk ship as PWA
+    multi-file packages with their own manifest + icons (neon-pilot was dropped:
+    like every single-file game — barrel-fishing, rally-z, pinball-2600,
+    silicon-spins — it is self-contained with inline assets and no SW/manifest,
+    which is the correct shape for that class of game, not a defect).
+    """
+    pwa_games = ['data-break.html', 'bug-swarm.html', 'technobonk.html']
+    for fname in pwa_games:
         with open(f'games/{fname}') as f:
             head = f.read(1000)
         if 'manifest.webmanifest' not in head:
             raise ValueError(f"Missing manifest.webmanifest in {fname}")
         if 'apple-touch-icon' not in head:
             raise ValueError(f"Missing apple-touch-icon in {fname}")
-    print(f'✓ PWA headers present in {len(new_games)} new games')
+    print(f'✓ PWA headers present in {len(pwa_games)} PWA games (single-file games exempt by design)')
 
 def verify_local_render():
     """Start local server and verify arcade page has required static elements"""
