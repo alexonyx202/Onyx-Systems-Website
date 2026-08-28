@@ -1,0 +1,3094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#120b1f">
+<title>PINBALL 2600</title>
+<!-- Orbitron is embedded (base64 woff2 variable font, 400–900) so the game
+     runs fully offline from file:// with zero network requests -->
+<style>
+@font-face{
+  font-family:'Orbitron';font-style:normal;font-weight:400 900;font-display:swap;
+  src:url(data:font/woff2;base64,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) format('woff2');
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;background:radial-gradient(circle at 50% 30%,#241533 0%,#160d24 55%,#0a0614 100%)}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;-webkit-user-select:none;user-select:none}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+canvas{display:block;image-rendering:auto;touch-action:none;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
+#rotate-prompt{display:none;position:fixed;inset:0;z-index:99999;background:#0a0614;color:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px;font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif}
+#rotate-prompt .icon{font-size:56px;animation:ro 2s ease-in-out infinite}
+#rotate-prompt .msg{font-size:16px;letter-spacing:2px;max-width:280px;line-height:1.5}
+#rotate-prompt .sub{font-size:12px;color:#9aa}
+@keyframes ro{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
+@media (orientation:portrait) and (hover:none) and (pointer:coarse) and (max-width:767px){
+  #rotate-prompt{display:flex!important}#wrap{visibility:hidden}}
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="C"></canvas></div>
+<div id="rotate-prompt">
+  <div class="icon">📱</div>
+  <div class="msg">ROTATE YOUR PHONE TO LANDSCAPE TO PLAY</div>
+  <div class="sub">↻ Turn your device for the full table</div>
+</div>
+<script>
+'use strict';
+/* =====================================================================================
+   PINBALL 2600 — a modern arcade tribute to Atari 2600 "Video Pinball" (CX2648, 1980).
+
+   Faithful to the original cartridge & 1980 manual (C016943-48 REV.1):
+   - DROP TARGETS .... 3 diamond-shaped targets across the top, 100 pts each.
+                       Knock down all 3 to raise bumper value by 1 (max 9).
+   - LEFT ROLLOVER ... Upper-left lane. 100 pts each pass, number shows hit count
+                       (1→4). At drain: pays number × 1000 points.
+   - ATARI ROLLOVER .. Upper-right lane. 100 pts, +1 bonus multiplier per pass.
+                       After 4 passes: EXTRA BALL (once per ball).
+   - BUMPERS ......... 3 pop bumpers in triangle: 100 × current value (1..9).
+                       GAMES 1&2 accumulate value; GAMES 3&4 reset each ball.    - SPECIAL TARGET .. main centre shot: 500 unlit; lit streak 1000/2500/5000.
+
+   - SPINNERS ........ 1 pt each pass (2 spinners, mid left & right).
+   - TILT ............ Too many nudges: flippers freeze, no scoring, extra ball lost.
+   - DIFFICULTY A .... Adds two extra drain holes at the bottom corners.
+   - SCORE ........... Rolls over at 1,000,000 (keeps remainder).
+   - GAMES 1..4 ...... 1P/2P × accumulate/reset bumper value.
+
+   Modern presentation: chrome rails & flippers, lit pop bumpers, glowing inserts,
+   DMD scoreboard, attract marquee, particles, dynamic light, synthesized audio.
+   ===================================================================================== */
+
+/* ---------- typography — modern display font with clean system fallbacks ---------- */
+const F_DISP='"Orbitron","Arial Black","Segoe UI",system-ui,sans-serif';
+const F_UI='"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif';
+const F_MONO='ui-monospace,"Cascadia Mono","Courier New",monospace';
+
+/* ---------- logical stage ---------- */
+const W=720, H=1200;
+const CAB_H=168;
+const PF={x:48,y:CAB_H,w:W-96,h:H-CAB_H-118};
+PF.r=PF.x+PF.w; PF.b=PF.y+PF.h;
+/* playable area — 48px shooter lane on right, 48px ball return on left */
+const PL_L=PF.x+48, PL_R=PF.r-48, PL_CX=(PL_L+PL_R)/2, PL_W=PL_R-PL_L;
+const LANE_TOP=PF.y+PF.h*0.13, LANE_BOT=PF.y+PF.h*0.34;
+/* pass-through lane circle line — vertical centre of the lane corridors; the
+   rollover circles AND the skill-shot disc share this centre line */
+const LANE_CY=PF.y+PF.h*0.235-20;       // midpoint of LANE_TOP+4 … LANE_BOT-44
+/* angled outlane wall top — both angled walls start at this height (mirrored) */
+const WALL_TOP_Y=PF.b-290;
+
+/* ---------- state machine ---------- */
+const S={TITLE:0,MENU:1,OPTS:2,SCORES:3,HELP:4,LAUNCH:5,PLAY:6,PAUSE:7,TALLY:8,GAMEOVER:9,ENTRY:10};
+let state=S.TITLE;
+
+/* ---------- persistent ---------- */
+const LSK='pinball2600.v3';
+let store={scores:[0,0,0,0,0,0,0,0],names:['AAA','AAA','AAA','AAA','AAA','AAA','AAA','AAA'],
+            diff:1,game:1,snd:true,hap:true,tilt:2,physics:'atari',angle:3};
+try{const s=JSON.parse(localStorage.getItem(LSK));if(s)store=Object.assign(store,s)}catch(e){}
+function saveStore(){try{localStorage.setItem(LSK,JSON.stringify(store))}catch(e){}}
+const SAVKEY=LSK+'.sav';
+function saveGame(silent){
+  if(state!==S.PLAY&&state!==S.LAUNCH&&state!==S.PAUSE)return;
+  const g=Game,b=g.ball;
+  const snap={
+    st:state,ps:g.players,cur:g.cur,sc:[...g.scores],bl:[...g.balls],ex:[...g.extra],ue:[...g.usedExtra],
+    ah:g.atariHits,bn:g.bonus,lr:g.leftRoll,bv:g.bumperVal,ba:g.bumperAccum,
+    sa:g.saveArmed,bt:g.ballSaveTimer,ss:g.skillShotReady,skt:g.skillShotT,sd:g.skillShotDone,pc:g.plungerCharge,lp:g.launchPower,
+    ti:g.tilt,th:g.tiltHeat,
+    bx:b?b.x:0,by:b?b.y:0,bvx:b?b.vx:0,bvy:b?b.vy:0,blv:b?b.live:false,bsk:b?b.stuck||0:0,
+    tdn:g.targets.filter(t=>t.down).map((_,i)=>i),
+    rin:g.rolls.reduce((a,r,i)=>{if(r.in)a.push(i);return a;},[]),
+    sl:g.special.lit,stt:g.special.t,scd:g.special.cd,spv:g.special.streak||0,
+    bmp:g.bumpers.map(bp=>bp.v),fla:[FL.l.ang,FL.r.ang],
+  };
+  try{localStorage.setItem(SAVKEY,JSON.stringify(snap));if(!silent){Game.msg='💾 SAVED';Game.msgT=1.5;}}catch(e){}
+}
+function clearSave(){try{localStorage.removeItem(SAVKEY)}catch(e){}}
+function hasSave(){try{return!!localStorage.getItem(SAVKEY)}catch(e){return false;}}
+function loadGame(){
+  let snap;try{snap=JSON.parse(localStorage.getItem(SAVKEY));clearSave();}catch(e){return false;}
+  if(!snap)return false;
+  demoMode=false;Game.msg='';Game.msgT=0;Game.pfx.length=0; // leave the attract demo
+  const g=Game;
+  makeTable();
+  g.players=snap.ps;g.cur=snap.cur;g.scores=[...snap.sc];g.balls=[...snap.bl];
+  g.extra=[...snap.ex];g.usedExtra=[...snap.ue];
+  g.atariHits=snap.ah;g.bonus=snap.bn;g.leftRoll=snap.lr;g.bumperVal=snap.bv;g.bumperAccum=snap.ba;
+  g.saveArmed=snap.sa;g.ballSaveTimer=snap.bt;g.skillShotReady=snap.ss;g.skillShotT=snap.skt||0;
+  // One skill shot per ball survives save/restore too — otherwise a mid-ball
+  // save/load would re-offer an already-collected shot (a free extra +5000).
+  g.skillShotDone=!!snap.sd;
+  g.plungerCharge=snap.pc;g.launchPower=snap.lp;g.tilt=snap.ti;g.tiltHeat=snap.th;
+  Game.bumpers.forEach((bp,i)=>{bp.v=snap.bmp[i]||1;});
+  if(snap.tdn)snap.tdn.forEach(i=>{Game.targets[i].down=true;Game.targets[i].in=false;});
+  if(snap.rin)snap.rin.forEach(i=>{Game.rolls[i].in=true;});
+  Game.special.lit=snap.sl;Game.special.t=snap.stt;Game.special.cd=snap.scd;Game.special.streak=snap.spv||0;
+  Game.ball={x:snap.bx,y:snap.by,vx:snap.bvx,vy:snap.bvy,live:snap.blv,stuck:snap.bsk||0,trail:[]};
+  if(snap.fla){FL.l.ang=snap.fla[0];FL.r.ang=snap.fla[1];FL.l.prev=snap.fla[0];FL.r.prev=snap.fla[1];}
+  g.autoSaveTimer=10;
+  state=S.PLAY;Game.prevState=S.PLAY;
+  return true;
+}
+
+/* ---------- audio ---------- */
+const AudioSys=(()=>{
+  let ctx=null,master=null,mix=null,reverb=null,reverbGain=null;
+  // Master chain: dry bus → master → speakers, plus a centered reverb send.
+  // The synthetic impulse response has IDENTICAL left/right channels, so the
+  // wet path stays perfectly symmetric — a mono input up-mixed to stereo and
+  // convolved with an L=R IR yields L=R output (x*ir + x*ir on both sides).
+  // Subtle mirrored space without ever breaking the centered mix.
+  function buildGraph(c){
+    if(master)return;
+    master=c.createGain();master.gain.value=0.96;master.connect(c.destination);
+    reverb=c.createConvolver();
+    const irLen=Math.floor(c.sampleRate*1.3),pre=Math.floor(c.sampleRate*0.012),
+      ir=c.createBuffer(2,irLen,c.sampleRate),d0=ir.getChannelData(0),d1=ir.getChannelData(1);
+    let lp=0;
+    for(let i=0;i<irLen;i++){
+      let v=0;
+      if(i>=pre){
+        const t=(i-pre)/(irLen-pre);
+        lp+=0.18*((Math.random()*2-1)-lp); // one-pole damping → warm room tail
+        v=lp*Math.pow(1-t,2.4)*Math.min(1,t*20);
+      }
+      d0[i]=v;d1[i]=v; // identical channels → perfectly centered wet path
+    }
+    reverb.buffer=ir;
+    reverbGain=c.createGain();reverbGain.gain.value=0.14;
+    reverb.connect(reverbGain);reverbGain.connect(master);
+    mix=c.createGain();mix.connect(master);mix.connect(reverb);
+  }
+  function ac(){if(!ctx){try{ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+    if(ctx&&ctx.state==='suspended')ctx.resume();if(ctx)buildGraph(ctx);return ctx;}
+  function tone(f0,f1,dur,type,vol,when,shape,force){
+    if(demoMode&&!force)return;const c=ac();if(!c||!store.snd)return;const t=c.currentTime+(when||0);
+    const o=c.createOscillator(),g=c.createGain();o.type=type||'square';
+    o.frequency.setValueAtTime(f0,t);
+    if(f1&&f1!==f0)o.frequency.exponentialRampToValueAtTime(Math.max(f1,1),t+dur);
+    if(shape==='pluck'){g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(0.0001,t+dur*0.5);}
+    else{g.gain.setValueAtTime(vol||0.12,t);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);}
+    o.connect(g);g.connect(mix);o.start(t);o.stop(t+dur+0.02);
+  }
+  function noise(dur,vol,hp,lp){
+    if(demoMode)return;const c=ac();if(!c||!store.snd)return;const n=Math.floor(c.sampleRate*dur),
+      buf=c.createBuffer(1,n,c.sampleRate),d=buf.getChannelData(0);
+    for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*(1-i/n);
+    const src=c.createBufferSource();src.buffer=buf;const g=c.createGain();g.gain.value=vol||0.15;
+    let node=src;
+    if(hp){const f=c.createBiquadFilter();f.type='highpass';f.frequency.value=hp;node.connect(f);node=f;}
+    if(lp){const f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=lp;node.connect(f);node=f;}
+    node.connect(g);g.connect(mix);src.start();
+  }
+  function ring(f,dur,vol){tone(f,f*0.98,dur,'sine',vol,0,'pluck');tone(f*1.01,f*0.99,dur*0.7,'sine',vol*0.5,0.01,'pluck');}
+  function thud(vol){tone(100,40,0.06,'sine',vol);noise(0.03,vol*0.5,200,800);}
+  function zap(f0,f1,dur,vol){tone(f0,f1,dur,'sawtooth',vol);noise(dur*0.4,vol*0.6,f0*3);}
+  return{
+    unlock(){ac();},
+    // ---- SOLENOID FLIPPER: mechanical snap + magnetic clack + rubber thwack ----
+    flip(){
+      const c=ac();if(!c||!store.snd)return;const t=c.currentTime;
+      // Solenoid body resonance — low metallic ring
+      const o1=c.createOscillator(),g1=c.createGain();o1.type='triangle';o1.frequency.setValueAtTime(380,t);
+      o1.frequency.exponentialRampToValueAtTime(220,t+0.02);o1.frequency.exponentialRampToValueAtTime(110,t+0.05);
+      g1.gain.setValueAtTime(0.14,t);g1.gain.exponentialRampToValueAtTime(0.0001,t+0.06);
+      o1.connect(g1);g1.connect(mix);o1.start(t);o1.stop(t+0.08);
+      // Click — sharp attack
+      tone(2400,800,0.02,'square',0.09);
+      // Mechanical snap
+      noise(0.04,0.12,1800);
+      // Low rubber thwack
+      tone(200,80,0.04,'sine',0.10);
+    },
+    // ---- POP BUMPER: metallic ring layered with impact burst, pitch follows value ----
+    bumper(v){
+      const c=ac();if(!c||!store.snd)return;const t=c.currentTime;
+      const base=220+v*28;
+      // Ringing dome resonance
+      ring(base*2,0.09,0.10);
+      ring(base*3,0.07,0.06);
+      // Impact burst — bright noise crack
+      noise(0.05,0.13,base*2.5);
+      // Low body thud
+      thud(0.14);
+      // Score beep overlay (satisfying digital chirp)
+      tone(base*4,base*3,0.06,'square',0.07);
+    },
+    // ---- DROP TARGET: crack + glass shatter ring + thud ----
+    target(){
+      noise(0.06,0.14,1800);
+      ring(1200,0.07,0.09);
+      ring(800,0.05,0.07);
+      thud(0.12);
+      tone(1500,800,0.06,'sawtooth',0.08);
+    },
+    // ---- ROLLOVER LANE: bright ascending electronic chime ----
+    roll(){
+      tone(1100,1500,0.08,'sine',0.10,0,'pluck');
+      tone(550,750,0.06,'sine',0.06,0.02,'pluck');
+    },
+    // ---- SPINNER: rapid ratchet whirl that decays with ball energy ----
+    spin(){
+      const c=ac();if(!c||!store.snd)return;const t=c.currentTime;
+      // 8-10 rapid ticks in quick succession simulating the spinner ratchet
+      for(let i=0;i<9;i++){
+        tone(2800+Math.random()*600,1200,0.015,'square',0.04,t+i*0.008);
+      }
+      // Underlying whir
+      noise(0.06,0.06,3000);
+    },
+    // ---- SPECIAL TARGET: ascending arpeggio + sparkle ----
+    special(){
+      [880,1108,1318,1760].forEach((f,i)=>{
+        tone(f,f*1.02,0.10,'square',0.11,i*0.06);
+        tone(f*1.5,f*1.4,0.06,'sine',0.05,i*0.06+0.03);
+      });
+      noise(0.08,0.10,2000);
+    },
+    // ---- PLUNGER LAUNCH: spring whoosh → mechanical release → ball rolling ----
+    launch(){
+      const c=ac();if(!c||!store.snd)return;const t=c.currentTime;
+      // Spring stretching/release whoosh
+      zap(500,120,0.10,0.10);
+      // Metallic release click
+      tone(600,300,0.03,'square',0.10,0.05);
+      // Spring bounce vibration
+      noise(0.08,0.12,600);
+      // Rolling ball rumble
+      noise(0.15,0.08,0,400);
+      // Ascending tone — ball traveling up lane
+      tone(140,600,0.12,'sine',0.08);
+    },
+    // ---- PLUNGER RELEASE: mechanical thunk when the spring fires ----
+    // Volume scales with the pull — a full pull thunks hard, a feather tap is
+    // a faint click. (Soft pulls that roll back down the lane get softPlunge.)
+    plungerRelease(pull){
+      const v=0.4+0.6*Math.max(0,Math.min(1,pull||0));
+      // Sharp release clack — rod snapping against the stop
+      tone(1500,450,0.03,'square',0.10*v);
+      tone(800,250,0.04,'sawtooth',0.06*v,0.006);
+      // Spring twang as the rod flies back up
+      tone(340,70,0.10,'triangle',0.11*v,0.012);
+      tone(520,130,0.06,'sine',0.05*v,0.02,'pluck');
+      // Low mechanical thud
+      tone(110,45,0.06,'sine',0.13*v,0.008);
+      noise(0.04,0.10*v,1500);
+    },
+    // ---- SOFT PLUNGE: a gentle whiff when a soft pull rolls back down the lane ----
+    softPlunge(){
+      // Whiff — the launch energy peters out partway up the lane: a soft
+      // dying tone plus the first breath of the ball rolling back. The
+      // descent itself rattles (rollTick) and the plunger landing thunks
+      // (plungerSettle) — three beats, one failed plunge.
+      tone(720,150,0.18,'sine',0.06);
+      noise(0.16,0.04,300,900);
+    },
+    // ---- ROLLBACK RATTLE: one tiny metallic tick of the ball knocking
+    // against the lane walls on the way back down. plungerStep calls it
+    // every ~28px of descent — the randomized pitch across calls is what
+    // makes the sequence read as a rattle rather than a tone. Kept well
+    // under the whiff so the failed plunge stays a soft story.
+    rollTick(sp){
+      const f=900+Math.random()*900,v=0.016+Math.min(0.018,(sp||0)/45000);
+      tone(f,f*0.85,0.014,'square',v);
+      if(Math.random()<0.3)noise(0.01,0.012,2600+Math.random()*1800);
+    },
+    // ---- PLUNGER SETTLE: the soft thunk of the ball landing back on the
+    // rod tip — the mechanical full stop that ends a failed plunge. Softer
+    // than the release thunk: a landed ball, not a fired spring.
+    plungerSettle(){
+      tone(140,58,0.05,'sine',0.085);
+      tone(92,48,0.07,'sine',0.06,0.012);
+      noise(0.018,0.028,700);
+      tone(1900,1300,0.012,'square',0.02,0.005);
+    },
+    // ---- SPRING PULL: the coils ticking as the plunger compresses — a real
+    // machine's charge is audible before you release. Kept quiet; the pitch
+    // rises with the pull so the charge is readable by ear.
+    springPull(c){
+      tone(200+700*c,160+560*c,0.03,'square',0.028);
+      noise(0.015,0.02,900+2600*c);
+    },
+    // ---- DRAIN: descending groan + sad whine + thud ----
+    drain(){
+      zap(400,55,0.45,0.11);
+      tone(300,50,0.4,'sine',0.07);
+      // Low rumble thud at bottom
+      const c=ac();if(!c||!store.snd)return;const t=c.currentTime;
+      const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(80,t+0.35);
+      o.frequency.exponentialRampToValueAtTime(30,t+0.55);
+      g.gain.setValueAtTime(0,0.35);g.gain.setValueAtTime(0.15,t+0.36);g.gain.exponentialRampToValueAtTime(0.0001,t+0.55);
+      o.connect(g);g.connect(mix);o.start(t+0.35);o.stop(t+0.6);
+    },
+    // ---- TALLY TICK: cash-register ding ----
+    tallyTick(){
+      tone(1400,1400,0.02,'square',0.08,0,'pluck');
+      tone(1100,1100,0.015,'sine',0.05,0.005,'pluck');
+    },
+    // ---- EXTRA BALL JINGLE: celebratory ascending fanfare ----
+    extra(){
+      [523,659,784,1046,1318,1568].forEach((f,i)=>{
+        tone(f,f*1.01,0.11,'square',0.11,i*0.08);
+        tone(f*1.25,f*1.2,0.08,'sine',0.05,i*0.08+0.04);
+      });
+      noise(0.05,0.08,1500);
+    },
+    // ---- TILT: alarm buzzer ----
+    tilt(){
+      noise(0.7,0.14,200);
+      tone(120,100,0.6,'sawtooth',0.14);
+      tone(240,200,0.5,'square',0.08,0.1);
+    },
+    // ---- NUDGE: low-frequency shake rumble ----
+    nudge(){
+      noise(0.07,0.16,0,300);
+      tone(55,35,0.06,'sine',0.12);
+    },
+    // ---- UI NAVIGATION: crisp blip ----
+    ui(){tone(900,900,0.03,'square',0.06,0,'pluck',true);},
+    // ---- UI CONFIRM: stronger two-tone beep ----
+    uiBig(){tone(500,700,0.08,'square',0.09,0,undefined,true);tone(700,900,0.06,'square',0.07,0.06,undefined,true);},
+    // ---- GAME OVER: descending sad chord ----
+    over(){
+      [392,330,262,196,147].forEach((f,i)=>tone(f,f*0.88,0.20,'sawtooth',0.09,i*0.14));
+    },
+    // ---- BALL SAVE: heroic rising save ----
+    save(){
+      tone(400,800,0.12,'sine',0.11);
+      tone(600,1200,0.10,'square',0.07,0.02);
+      noise(0.08,0.07,600,1200);
+      tone(900,900,0.05,'sine',0.10,0.01,'pluck');
+    },
+    // ---- SKILL SHOT: triumphant cash-out fanfare ----
+    skill(){
+      tone(660,880,0.13,'sine',0.12);
+      tone(880,1100,0.10,'square',0.09,0.04);
+      tone(1320,1320,0.07,'sine',0.08,0.06,'pluck');
+      noise(0.06,0.09,800,2000);
+      tone(1760,1760,0.05,'square',0.07,0.10,'pluck');
+    },
+  };
+})();
+
+/* ---------- input ---------- */
+const input={lFlip:false,rFlip:false,plunger:false,nudgeL:false,nudgeR:false,nudgeU:false,_plungerHeld:false,_bothFlip:false};
+
+/* ---------- tilt-bob sensor (DeviceOrientation) ---------- */
+const tiltBob={beta:0,gamma:0,active:false,cd:0};
+function initTiltBob(){
+  // iOS 13+ requires explicit permission; other platforms fire events directly
+  const request=typeof DeviceOrientationEvent!=='undefined'&&
+    typeof DeviceOrientationEvent.requestPermission==='function'?
+    DeviceOrientationEvent.requestPermission:null;
+  function start(){window.addEventListener('deviceorientation',onTilt,{passive:true});tiltBob.active=true;}
+  if(request){
+    const cv=document.getElementById('C');
+    function ask(){request().then(p=>{if(p==='granted')start();}).catch(()=>{});cv.removeEventListener('click',ask);cv.removeEventListener('touchstart',ask);}
+    cv.addEventListener('click',ask,{once:true});
+    cv.addEventListener('touchstart',ask,{once:true});
+  }else{start();}
+}
+function onTilt(e){
+  if(!e.beta||!e.gamma||state!==S.PLAY||tiltBob.cd>0)return;
+  tiltBob.beta=e.beta; tiltBob.gamma=e.gamma;
+  const threshold=20, dead=12;
+  const absBeta=Math.abs(e.beta-90);
+  const absGamma=Math.abs(e.gamma);
+  if(absBeta>threshold){
+    if(e.beta<90-dead){input.nudgeL=true;tiltBob.cd=30;}
+    else if(e.beta>90+dead){input.nudgeR=true;tiltBob.cd=30;}
+  }else if(absGamma>threshold){input.nudgeU=true;tiltBob.cd=30;}
+}
+
+function keyAction(e,down){
+  const k=e.key;
+  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' ','Shift','Enter','Escape','Tab','m','M'].includes(k))e.preventDefault();
+  if(!down){
+    if(k==='ArrowLeft'||k==='a'||k==='A'){input.lFlip=false;input.nudgeL=false;}
+    if(k==='ArrowRight'||k==='d'||k==='D'){input.rFlip=false;input.nudgeR=false;}
+    if(k==='ArrowDown'||k==='s'||k==='S'){input.plunger=false;input.nudgeD=false;
+      // releasing the plunger key fires the launch (charge while held)
+      if(state===S.LAUNCH)launchBall();}
+    if(k==='ArrowUp'||k==='w'||k==='W'){input.nudgeU=false;
+      // The ↑/W "flip both" press must also RELEASE both bats — the old handler
+      // only cleared nudgeU here, so both flippers stuck in the up position
+      // forever after one press. The _bothFlip guard keeps a separately-held
+      // flipper key (e.g. holding A) from being dropped by this release.
+      if(input._bothFlip){input.lFlip=false;input.rFlip=false;input._bothFlip=false;}}
+    if(k==='Shift'){input.nudgeL=false;input.nudgeR=false;}
+    return;
+  }
+  if(e.repeat)return;AudioSys.unlock();const shift=e.shiftKey;
+  switch(k){
+    case'ArrowLeft':case'a':case'A':shift?input.nudgeL=true:input.lFlip=true;break;
+    case'ArrowRight':case'd':case'D':
+      if(state===S.TITLE){Attr.diff=(Attr.diff+1)%Attr.diffRates.length;AudioSys.ui();break;}
+      shift?input.nudgeR=true:input.rFlip=true;break;
+    case'ArrowUp':case'w':case'W':shift?input.nudgeU=true:(input.lFlip=true,input.rFlip=true,input._bothFlip=true);break;
+    case'ArrowDown':case's':case'S':
+      if((k==='s'||k==='S')&&state===S.PAUSE){saveGame();break;}
+      input.plunger=true;input._plungerHeld=true;break;
+    case' ':if(state===S.LAUNCH)launchBall();else if(state===S.PLAY&&input._plungerHeld)launchBall();else uiConfirm();break;
+    case'Enter':uiConfirm();break;
+    case'Escape':case'p':case'P':
+      if(state===S.PLAY||state===S.LAUNCH){state=S.PAUSE;Game._pauseT=performance.now();AudioSys.ui();saveGame();}
+      else if(state===S.PAUSE){state=Game.prevState;AudioSys.ui();}break;
+    case'm':case'M':store.snd=!store.snd;saveStore();
+      if(state===S.PLAY||state===S.LAUNCH){Game.msg=store.snd?'🔊 SOUND ON':'🔇 SOUND OFF';Game.msgT=1.5;}break;
+    case'Tab':if(state===S.TITLE){state=S.MENU;demoMode=false;AudioSys.ui();}break;
+  }
+}
+window.addEventListener('keydown',e=>keyAction(e,true),{passive:false});
+window.addEventListener('keyup',e=>keyAction(e,false));
+
+function touchInit(){
+  const cv=document.getElementById('C');
+  function handle(e,phase){
+    e.preventDefault();AudioSys.unlock();const r=cv.getBoundingClientRect();
+    for(const t of(e.changedTouches||[e])){
+      const x=(t.clientX-r.left)/r.width,y=(t.clientY-r.top)/r.height;
+      if(phase==='start'&&state!==S.PLAY&&state!==S.LAUNCH){uiTouch(x,y);continue;}
+      if(x>0.82&&y<0.30&&phase==='start'){input.nudgeU=true;setTimeout(()=>input.nudgeU=false,80);continue;}
+      if(x>0.82){input.plunger=(phase==='start');if(phase==='start')input._plungerHeld=true;
+        if(phase==='end'&&state===S.LAUNCH)launchBall();continue;}
+      if(x<0.5){input.lFlip=(phase==='start');}else{input.rFlip=(phase==='start');}
+    }
+  }
+  cv.addEventListener('touchstart',e=>handle(e,'start'),{passive:false});
+  cv.addEventListener('touchend',e=>handle(e,'end'),{passive:false});
+  cv.addEventListener('touchcancel',e=>handle(e,'end'),{passive:false});
+  let mDown=false;
+  cv.addEventListener('mousedown',e=>{mDown=true;
+    // Precise row selection with the mouse — hover already moves the cursor,
+    // a click activates the row under the pointer.
+    if(state===S.MENU||state===S.OPTS){
+      const r=cv.getBoundingClientRect(),y=(e.clientY-r.top)/r.height,i=rowHitIndex(y);
+      if(i>=0){if(state===S.MENU)menuIdx=i;else optIdx=i;uiConfirm();return;}
+    }
+    handle({clientX:e.clientX,clientY:e.clientY,preventDefault:()=>{}},'start');});
+  cv.addEventListener('mousemove',e=>{
+    if(state!==S.MENU&&state!==S.OPTS)return;
+    const r=cv.getBoundingClientRect(),y=(e.clientY-r.top)/r.height,i=rowHitIndex(y);
+    if(i>=0){if(state===S.MENU)menuIdx=i;else optIdx=i;}});
+  window.addEventListener('mouseup',e=>{if(mDown){mDown=false;
+    handle({clientX:e.clientX,clientY:e.clientY,preventDefault:()=>{}},'end');}});
+}
+let padPrev={};
+function padPoll(){
+  const pads=navigator.getGamepads?navigator.getGamepads():[];
+  for(const p of pads){if(!p)continue;const b=i=>p.buttons[i]&&p.buttons[i].pressed;
+    const now={l:b(14)||b(4)||(p.axes[0]<-0.5),r:b(15)||b(5)||(p.axes[0]>0.5),
+      pl:b(13)||(p.axes[1]>0.5),fire:b(0)||b(1)||b(2)||b(3),up:b(12)||(p.axes[1]<-0.5),start:b(9)};
+    input.lFlip=now.l;input.rFlip=now.r;
+    if(now.pl&&!padPrev.pl){input._plungerHeld=true;input.plunger=true;}
+    if(!now.pl&&padPrev.pl){input.plunger=false;if(state===S.LAUNCH)launchBall();}
+    if(now.fire&&!padPrev.fire){if(state===S.LAUNCH)launchBall();
+      else if(state===S.ENTRY){if(Game.entryBuf<2)Game.entryBuf++;else commitEntry();Game.entryTimer=performance.now();}
+      else uiConfirm();}
+    if(now.start&&!padPrev.start){if(state===S.PLAY||state===S.LAUNCH){Game.prevState=state;state=S.PAUSE;Game._pauseT=performance.now();saveGame();}
+      else if(state===S.PAUSE){state=Game.prevState;}}
+    if(b(6)&&!padPrev._l1){input.nudgeL=true;setTimeout(()=>input.nudgeL=false,80);}padPrev._l1=b(6);
+    if(b(7)&&!padPrev._r1){input.nudgeR=true;setTimeout(()=>input.nudgeR=false,80);}padPrev._r1=b(7);
+    padPrev=now;break;
+  }
+}
+function haptic(ms,mag){if(!store.hap||demoMode)return;const pads=navigator.getGamepads?navigator.getGamepads():[];
+  for(const p of pads){if(p&&p.vibrationActuator&&p.vibrationActuator.playEffect){
+    try{p.vibrationActuator.playEffect('dual-rumble',{duration:ms,strongMagnitude:mag||0.8,weakMagnitude:(mag||0.8)*0.5});}catch(e){}break;}}}
+
+/* =====================================================================================
+   PHYSICS
+   ===================================================================================== */
+const GRAV=1200, MAXV=1200, SUB_DT=1/240, BALL_R=13;
+// Guide rails are drawn ~12px wide (radius 6). The collision radius must be
+// BALL_R+6 so the ball surface lands flush with the rail's outer edge — the old
+// fixed 6px let the ball's body ride 8px THROUGH the rail (visible wall crossing).
+const G_RAD=BALL_R+6;
+
+/* ---------- physics presets ---------- */
+// AUTHENTIC LAUNCH — the launch chain is the real machine's, solved from
+// physics by tuneLaunch() (see the solver below the presets). Each preset
+// carries only its PHYSICAL parameters: exitDrop (how far past horizontal
+// the top guide feeds the ball) and curveMu (guide friction coefficient).
+// Everything the player sees — the meter's white into-play tick, the gold
+// SKILL band, the exact-power centre pull, the full-pull rod speed — is
+// DERIVED from the lane climb + curve integration, so meter and physics can
+// never disagree:
+//   vTipFull = rod-tip speed of a full pull (exits the curve at maxVel)
+//   intoPlay = weakest pull that still clears the curve (white tick)
+//   skillShot band = pulls whose projectile drops onto the target (width
+//     parity-derived per preset — see DIFFICULTY PARITY in tuneLaunch)
+//   skillCenter = the pull whose parabola crosses the target dead-centre
+// preset's guide exit and curve friction are tuned so the EXACT-POWER pull
+// — the one whose parabola crosses the target dead-centre — sits at the
+// classic two-thirds of the meter: atari 0.665, arcade 0.67 (at the default
+// angle; 0.62–0.71 across the table-angle range, which is honest physics —
+// a steeper table asks for a firmer plunge). SUPERBALL is the one physics-
+// honest exception: its spring is dimensioned by its 2400 maxVel, and
+// two-thirds of that ball LOOPS the table, so its stab shot lives at ~0.42 —
+// a delicate half-stab on the crazy ball. The knobs can't move it: extra
+// curve friction makes the solver fatten the spring (full pull must still
+// exit at maxVel), which pushes the centre DOWN, not up. Measured, not guessed.
+const PHYS_PRESETS={
+  atari:{
+    label:'ATARI 2600',
+    grav:1200, maxVel:1600,
+    bumperKick:880, bumperJitter:140, bumperLateral:520,
+    wallBounce:0.75, guideBounce:1.05,
+    flipperSpeed:110, flipperRestBase:0.40, flipperRestScale:12,
+    nudgeX:180, nudgeY:160,
+    exitDrop:0.06, curveMu:0.13,
+    targetKick:550, spinnerKick:700, spinnerKickScale:0.5, specialKick:380,
+    stuckSpd:45, stuckBot:1.6, stuckTop:3.5, stuckVy:300, stuckVxJit:200,
+  },
+  arcade:{
+    label:'ARCADE SIM',
+    grav:980, maxVel:1550,
+    bumperKick:760, bumperJitter:100, bumperLateral:420,
+    wallBounce:0.55, guideBounce:0.45,
+    flipperSpeed:95, flipperRestBase:0.42, flipperRestScale:9,
+    nudgeX:100, nudgeY:90,
+    exitDrop:0.14, curveMu:0.06,
+    targetKick:420, spinnerKick:600, spinnerKickScale:0.45, specialKick:300,
+    stuckSpd:35, stuckBot:1.2, stuckTop:2.8, stuckVy:240, stuckVxJit:160,
+  },
+  superball:{
+    label:'SUPERBALL',
+    grav:520, maxVel:2400,
+    bumperKick:1350, bumperJitter:300, bumperLateral:780,
+    wallBounce:1.08, guideBounce:1.45,
+    flipperSpeed:150, flipperRestBase:0.55, flipperRestScale:20,
+    nudgeX:320, nudgeY:300,
+    exitDrop:0.18, curveMu:0.02,
+    targetKick:900, spinnerKick:1100, spinnerKickScale:0.7, specialKick:650,
+    stuckSpd:55, stuckBot:2.2, stuckTop:4.4, stuckVy:480, stuckVxJit:360,
+  }
+};
+let PHYS=PHYS_PRESETS[store.physics==='arcade'?'arcade':store.physics==='superball'?'superball':'atari'];
+// ARCADE table angle: the steeper the table, the more energy the climb bleeds.
+// The band, into-play tick and target position are all re-derived from the
+// physics by tuneLaunch() — steeper tables shift them automatically.
+function arcadeTune(){
+  PHYS.grav=700+(store.angle-1)*100;
+}
+if(store.physics==='arcade'){PHYS={...PHYS};arcadeTune();}
+
+/* ---------- real launch solver ---------- */
+// AUTHENTIC PLUNGER PHYSICS — the launch chain of a real arcade machine:
+//   1. SPRING: Hooke's law F=kx stores E=½kx² in the plunger spring; the
+//      ball leaves the rod at v_tip = pull·vTipFull — speed LINEAR in pull
+//      distance (energy in x²), exactly like a real spring.
+//   2. LANE CLIMB: the ball rolls up the 743px shooter lane against the
+//      slope's gravity component (PHYS.grav is exactly that, in px/s²) plus
+//      rolling resistance (ROLL_F). Kinetic energy pays 2·a·d.
+//   3. TOP CURVE: a constrained 90°+ guide (radius CURVE_R) bends the lane's
+//      vertical flight onto the playfield. Gravity's tangential component
+//      decelerates the climb (full g at entry, zero at the apex, accelerating
+//      down the far side); guide friction scales with the normal force
+//      |v²/R − g·sinα| — the ball presses on the OUTER rail while fast and
+//      on the INNER rail while slow, like a real channeled curve.
+//   4. EXIT & FREE FLIGHT: the ball leaves the guide heading left and
+//      slightly DOWN (exitDrop rad) at whatever speed survived, then flies
+//      as a plain projectile under playfield gravity. Pull strength sets
+//      ONLY the speed — the guide fixes the direction — so the drop point is
+//      a pure function of the pull. Too weak: the ball stalls on the curve
+//      and ROLLS BACK down the lane — the real machine's weak-plunge
+//      return, fully deterministic (no dice, ever).
+// The solver derives, per preset: vTipFull (full pull exits at maxVel — the
+// reference the whole meter scales from), intoPlay (weakest clearing pull),
+// the skill target x (where the design-centre pull's parabola crosses the
+// target line) and the SKILL band (pulls whose parabola passes within
+// SS_COLLECT of it). Gauge, HELP and arming all read these derived values.
+const CURVE_R=72;                       // top guide radius (px)
+const ROLL_F=110;                       // lane rolling resistance (px/s²) ≈0.11 m/s² real
+const CURVE_ENTRY_Y=PF.y+PF.h*0.10;     // tube top — where the guide begins
+const SS_COLLECT=30;                    // skill-shot collect radius (px) — the CLASSIC reference
+const SS_COLLECT_CAP=100;               // parity-radius ceiling: band-edge drops stay clear of the lane corridors
+const SS_Y_CLASSIC=PF.y+PF.h*0.116;     // pre-move target line — kept only as the difficulty reference
+// SKILL-SHOT CHANCE CLOCK — real-machine insert behaviour, researched:
+//   · The shot lights at ball start and stays lit while you AIM — a real
+//     machine puts no limit on how long the ball may sit on the plunger.
+//   · The chance itself is live only while the launch resolves: the plunge
+//     is the shot (Twilight Zone's rollover zones), and it's over the moment
+//     the ball touches anything else / the shot is made — the insert goes
+//     dark once the ball is in general play.
+//   · It is one chance per ball (Johnny Mnemonic: "a skill shot at the start
+//     of each numbered ball"; most machines explicitly don't re-offer after
+//     ball saves). Modern games that extend the window bound it with an
+//     explicit countdown (Pulp Fiction's Super Skill Shot: "hit ... before
+//     the timer expires") — typically 5–10s.
+// This clock is the bounded window: armed when the shot goes live, and the
+// light resolves when it expires, the ball is collected or first touched.
+const SKILL_SHOT_TIME=10;               // seconds the armed chance stays live
+const SS_X=PL_CX;                       // skill target: dead centre between the pass-through lanes
+const SS_Y=LANE_CY;                     // ... level with the lane rollover circles (shared centre line)
+function arcExitSpeed(vTip,p){
+  // Sim-faithful launch integrator — replicates the LIVE physics chain
+  // step-for-step so every derived value (vTipFull, intoPlay, skillCenter,
+  // the skill band, the wall-clearance filter) matches what the ball actually
+  // does. The old closed-form climb + fine-dt curve drifted ~10–17px/s fast
+  // on exit speed versus the sim — enough to skew the band edges by a full
+  // meter step (measured: the 0.61 edge was admitted but its real flight
+  // clipped the corridor wall and missed the shot).
+  //   CLIMB: the same semi-implicit Euler physStep runs at its 1/240 substep
+  //   (gravity, plus rolling resistance while rising), down to the tube top.
+  //   CURVE: the same Euler step arcStep runs at 1/240, including the exact
+  //   exit-fraction interpolation at the guide mouth.
+  const dt=1/240;
+  let vy=-vTip,y=(PF.b-66-BALL_R);      // ball sits ON the rod tip at rest
+  while(y>CURVE_ENTRY_Y){
+    vy+=p.grav*dt;
+    if(vy<0)vy+=ROLL_F*dt;
+    y+=vy*dt;
+    if(vy>=0)return 0;                  // ran out of speed — rolls back down
+  }
+  let v=-vy,a=0;const exa=Math.PI/2+p.exitDrop;let guard=0;
+  while(guard++<40000){
+    const N=Math.abs(v*v/CURVE_R-p.grav*Math.sin(a));
+    const prevV=v;
+    v+=(-p.grav*Math.cos(a)-p.curveMu*N*(v>0?1:-1))*dt;
+    if(v<=0)return 0;                   // stalls on the curve — rolls back
+    const prevA=a;
+    a+=(v/CURVE_R)*dt;
+    if(a>=exa){                         // exit-fraction interpolation, as arcStep
+      const f=Math.max(0,Math.min(1,(exa-prevA)/((a-prevA)||1e-9)));
+      return prevV+(v-prevV)*f;
+    }
+  }
+  return v;
+}
+function parabolaAtY(vExit,p,yT){
+  // where the post-exit projectile first crosses the yT line (x coordinate)
+  const x0=PF.r-24-CURVE_R-CURVE_R*Math.sin(p.exitDrop),
+        y0=CURVE_ENTRY_Y-CURVE_R*Math.cos(p.exitDrop),
+        vx=-vExit*Math.cos(p.exitDrop),vy=vExit*Math.sin(p.exitDrop),dy=yT-y0;
+  const A=0.5*p.grav,disc=vy*vy+4*A*dy;
+  if(disc<0)return Infinity;
+  return x0+vx*(-vy+Math.sqrt(disc))/(2*A);
+}
+function tuneLaunch(){
+  // vTipFull — the rod speed whose full pull exits the curve at exactly maxVel
+  let lo=0,hi=3*PHYS.maxVel+Math.sqrt(2*(PHYS.grav+ROLL_F)*900);
+  for(let i=0;i<50;i++){const m=(lo+hi)/2;(arcExitSpeed(m,PHYS)<PHYS.maxVel?lo=m:hi=m);}
+  PHYS.vTipFull=(lo+hi)/2;
+  // intoPlay — weakest pull that still clears the curve with ≥120px/s
+  const vAt=pull=>arcExitSpeed(pull*PHYS.vTipFull,PHYS);
+  lo=0;hi=1;for(let i=0;i<40;i++){const m=(lo+hi)/2;(vAt(m)<120?lo=m:hi=m);}
+  PHYS.intoPlay=Math.ceil(((lo+hi)/2)*200)/200;
+  // skill target — FIXED at the playfield centre between the two pass-through
+  // lanes (SS_X), level with the two lane rollover circles (SS_Y = LANE_CY):
+  // the target is a playfield FEATURE, identical for every preset and table
+  // angle. The PHYSICS adapts instead: the design-centre pull is solved as
+  // the one whose parabola crosses (SS_X, SS_Y) exactly (crossing x falls
+  // monotonically with pull, so a bisection nails it), and the SKILL band =
+  // the pulls whose parabola passes within the parity-derived collect radius
+  // of it (see DIFFICULTY PARITY below). Collection fires ~126px below the
+  // diamond pass-over sensors — and the skill check
+  // runs before the diamond sensors anyway — so the diamonds the shot flies
+  // past can never steal it.
+  PHYS.skillX=SS_X;
+  const cross=pull=>parabolaAtY(vAt(pull),PHYS,SS_Y);
+  let c1=PHYS.intoPlay,c2=0.95;
+  for(let i=0;i<36;i++){const m=(c1+c2)/2;(cross(m)>SS_X?c1=m:c2=m);}
+  PHYS.skillCenter=Math.round(((c1+c2)/2)*200)/200;
+  // ===== DIFFICULTY PARITY ===== Moving the target down to the lane-circle
+  // line steepens the descent through it: the ball is airborne longer before
+  // crossing the target line, so pull-driven speed differences compound and
+  // the drop point became 2–3.5× more pull-sensitive (measured). The classic
+  // 30px circle would map to a hair-thin band (atari 0.62–0.63 vs the classic
+  // 0.65–0.685), so the collect radius is DERIVED per preset: widen it until
+  // the band width matches the one the CLASSIC placement gave (SS_Y_CLASSIC
+  // with SS_COLLECT — re-measured live, so preset tuning and table angle stay
+  // honest). At band edges the descent is ~25–31° steep, so the ball's true
+  // closest approach to the disc is only ~0.5× the horizontal miss (25–44px)
+  // — it visibly grazes the disc and stays inside the 48px armed glow.
+  // Ceiling: band-edge drops must stay clear of the pass-through lane
+  // corridors (100px either side of the disc).
+  // LANE-CORRIDOR CLEARANCE — a band pull must reach the disc without
+  // clipping the pass-through lane walls: the descent crosses each inner
+  // corridor wall line exactly once, and when that crossing lands inside a
+  // wall's span the ball grinds along the rail and is deflected away from
+  // the target (measured: the 0.61 slow edge crossed the right corridor's
+  // wall line at y≈295 — 4px inside its top end — and lost the shot, while
+  // 0.615, crossing 13px above the end, only grazed it and collected).
+  // Same parabola as parabolaAtY, so the scan rejects clipping pulls for
+  // free. CLEAR=6 reproduces the measured live boundary: it rejects the
+  // deep 0.61 clip yet keeps the 0.615–0.645 edges that empirically collect
+  // (near the wall ENDS the contact is a momentary graze that barely
+  // deflects the ball — the full G_RAD=19 zone would over-reject them).
+  const LANE_WALLS=[PL_L+PL_W*0.19,PL_L+PL_W*0.31,PL_R-PL_W*0.31,PL_R-PL_W*0.19];
+  const CORRIDOR_CLEAR=6;
+  const clipsCorridor=v=>{
+    const x0=PF.r-24-CURVE_R-CURVE_R*Math.sin(PHYS.exitDrop),
+          y0=CURVE_ENTRY_Y-CURVE_R*Math.cos(PHYS.exitDrop),
+          vx=-v*Math.cos(PHYS.exitDrop),vy0=v*Math.sin(PHYS.exitDrop);
+    for(const wx of LANE_WALLS){
+      const t=(wx-x0)/vx;if(t<=0)continue;
+      const y=y0+vy0*t+0.5*PHYS.grav*t*t;
+      if(y>LANE_TOP+4-CORRIDOR_CLEAR&&y<LANE_BOT-44+CORRIDOR_CLEAR)return true;
+    }
+    return false;
+  };
+  const dropLive=[],dropClassic=[];   // scanned pull → |crossing x − target| per line
+  for(let q=0.30;q<=0.96;q+=0.0025){
+    const v=vAt(q);if(v<120)continue;
+    if(!clipsCorridor(v))dropLive.push([q,Math.abs(parabolaAtY(v,PHYS,SS_Y)-SS_X)]);
+    dropClassic.push([q,Math.abs(parabolaAtY(v,PHYS,SS_Y_CLASSIC)-SS_X)]); // width reference only — no clearance filter
+  }
+  const bandFrom=(drops,r)=>{         // measured band, quantised like the meter
+    let mn=1,mx=0;
+    for(const [q,m] of drops)if(m<=r){if(q<mn)mn=q;if(q>mx)mx=q;}
+    return mx>mn?{min:Math.ceil(mn*200)/200,max:Math.floor(mx*200)/200}:null;
+  };
+  const ref=bandFrom(dropClassic,SS_COLLECT);
+  let band=bandFrom(dropLive,SS_COLLECT),collect=SS_COLLECT;
+  if(ref&&(!band||band.max-band.min<ref.max-ref.min)){
+    let lo=SS_COLLECT,hi=SS_COLLECT*5;  // width grows with radius — bisect it
+    for(let i=0;i<24;i++){
+      const m=(lo+hi)/2,b=bandFrom(dropLive,m);
+      (b&&b.max-b.min>=ref.max-ref.min)?hi=m:lo=m;
+    }
+    collect=Math.min(Math.ceil(hi),SS_COLLECT_CAP);
+    band=bandFrom(dropLive,collect);
+  }
+  if(band)PHYS.skillShot={min:band.min,max:band.max,collect};
+}
+tuneLaunch();
+function setPhysics(mode){store.physics=mode;PHYS={...PHYS_PRESETS[mode]};if(mode==='arcade')arcadeTune();tuneLaunch();saveStore();}
+function setAngle(v){store.angle=v;if(store.physics==='arcade')arcadeTune();tuneLaunch();saveStore();}
+
+const Game={
+  prevState:S.PLAY,players:1,game:store.game||1,diff:store.diff||1,
+  cur:0,scores:[0,0],balls:[1,1],extra:[false,false],usedExtra:[false,false],
+  atariHits:0,bonus:1,leftRoll:0,bumperVal:1,bumperAccum:true,
+  targets:[],bumpers:[],rolls:[],spinners:[],topLanes:[],
+  ball:null,plungerY:0,plungerCharge:0,launchPower:0,launchAnim:0,springBob:0,launchStartY:0,launching:false,arc:null,
+  tilt:false,tiltHeat:0,flashes:0,shakeT:0,
+  tally:null,msg:'',msgT:0,specialTimer:0,drainHoles:[],
+  special:{x:0,y:0,r:18,lit:false,t:0,cd:0,streak:0}, // filled with table coords by makeTable()
+  skillShotReady:false,skillShotDone:false,skillShotT:0,skillShot:{x:0,y:0,r:0},saveArmed:false,ballSaveTimer:0,
+  autoSaveTimer:10,
+  attract:0,demo:null,rank:'',pfx:[],pfxLife:0
+};
+
+function makeTable(){
+  // 3 pop bumpers in triangle — more vertical space, bottom closer to center.
+  // The two lower bumpers are mirror positions, so they share one tint (blue);
+  // the top-centre bumper keeps the orange axis colour. (They used to be blue
+  // left / green right — an asymmetric tint break on mirrored geometry, and
+  // unlike the original 2600 game where every bumper is the same colour.)
+  Game.bumpers=[
+    {x:PL_CX, y:PF.y+PF.h*0.38, r:46, v:1, hit:0, col:0},  // top center
+    {x:PL_CX-PL_W*0.24, y:PF.y+PF.h*0.63, r:46, v:1, hit:0, col:1},  // bottom left
+    {x:PL_CX+PL_W*0.24, y:PF.y+PF.h*0.63, r:46, v:1, hit:0, col:1}   // bottom right
+  ];
+  // Special target — THE main centre shot between the two lower bumpers.
+  // Always solid (a real pinball target is physical whether its lamp is on
+  // or not): unlit hits score 500; when LIT it pays an escalating streak
+  // (1000 → 2500 → 5000) that resets on drain. Lit windows are long (10s)
+  // and frequent so the centre lane stays the go-to shot.
+  Game.special={x:PL_CX, y:PF.y+PF.h*0.63, r:18, lit:false, t:0, cd:0, streak:0};
+  // 3 diamond lights across the top — pass-over switches (original game):
+  // the ball rolls straight over them, no deflection at all.
+  const tgtSpread=PL_W*0.29;
+  Game.targets=[
+    {x:PL_CX-tgtSpread, y:PF.y+PF.h*0.075, down:false, t:0, in:false},
+    {x:PL_CX, y:PF.y+PF.h*0.075, down:false, t:0, in:false},
+    {x:PL_CX+tgtSpread, y:PF.y+PF.h*0.075, down:false, t:0, in:false}
+  ];
+  // Two top rollover pass-through lanes — centred in each half of playable area.
+  // Vertically centred between the pass-through lane corridor walls.
+  const rlaneY=LANE_CY;             // rollover circles share the skill shot's centre line
+  Game.rolls=[
+    {x:(PL_L+PL_CX)/2, y:rlaneY, in:false},  // left lane
+    {x:(PL_CX+PL_R)/2, y:rlaneY, in:false}   // right lane
+  ];
+  // Two spinners — smaller, at midpoint, pulled well away from walls
+  Game.spinners=[
+    {x:PL_L+PL_W*0.15, y:PF.y+PF.h*0.505, ang:0, spin:0, cd:0},
+    {x:PL_R-PL_W*0.15, y:PF.y+PF.h*0.505, ang:0, spin:0, cd:0}
+  ];
+  // Expert difficulty: two extra drain holes
+  Game.drainHoles=Game.diff===0?[{x:PL_L+PL_W*0.06,y:PF.b-24},{x:PL_R-PL_W*0.06,y:PF.b-24}]:[];
+  // Skill shot — sits in the CENTRE DROP ZONE between the two pass-through
+  // lanes: after a launch the ball rides the top rail (decelerating) and
+  // falls off at a power-determined spot; only the EXACT pull drops the ball
+  // on this target. The disc is dead centre (SS_X) and level with the two
+  // rollover circles (SS_Y), so the shot is genuinely hard — a hair over or
+  // under and the ball drops past it (the arming band is the measured
+  // collect range per preset).
+  Game.skillShot={x:SS_X,y:SS_Y,r:22,collect:SS_COLLECT}; // collect is a fallback — PHYS.skillShot.collect (tuneLaunch) is live
+  Game.skillShotReady=false;Game.skillShotDone=false; // fresh game/ball — the shot is up for grabs
+}
+function resetBall(){
+  // Ball sits ON the rod tip at rest — tip at PF.b-66, ball radius above that
+  const tipRestY=PF.b-66;
+  Game.ball={x:PF.r-24,y:tipRestY-BALL_R,vx:0,vy:0,live:false,stuck:0,trail:[]};
+  Game.plungerCharge=0;Game.plungerY=0;Game.launchAnim=0;Game.springBob=0;Game.launching=false;Game.arc=null;
+  Game.skillShotT=0; // no live chance while the ball is parked on the rod
+  Game.launchStartY=tipRestY-BALL_R;
+  // Flippers always reset to rest for the next ball (a flipper frozen mid-swing
+  // while the ball is on the plunger looks like a glitch)
+  FL.l.ang=FL.l.rest;FL.r.ang=FL.r.rest;FL.l.prev=FL.l.rest;FL.r.prev=FL.r.rest;FL.l.av=0;FL.r.av=0;
+  FL.l._obl=false;FL.r._obl=false; // one-shot oblique steering per swing
+}
+function newGame(){
+  demoMode=false;Game.msg='';Game.msgT=0;Game.pfx.length=0; // leave the attract demo
+  Game.cur=0;Game.scores=[0,0];Game.balls=[1,1];
+  Game.extra=[false,false];Game.usedExtra=[false,false];
+  // GAMES 2 & 4 are the 2-player variations (ACCUM / RESET)
+  Game.players=(Game.game===2||Game.game===4)?2:1;
+  Game.bumperAccum=(Game.game===1||Game.game===2);
+  Game.bumperVal=1;Game.tilt=false;Game.tiltHeat=0;
+  Game.saveArmed=false; // no free save on the game's first ball
+  Game.autoSaveTimer=10;
+  makeTable();startTurn();
+}
+function startTurn(){
+  Game.atariHits=0;Game.bonus=1;Game.leftRoll=0;
+  Game.tilt=false;Game.tiltHeat=0;Game.usedExtra[Game.cur]=false;
+  if(!Game.bumperAccum){Game.bumperVal=1;Game.bumpers.forEach(b=>b.v=1);}
+  Game.targets.forEach(t=>{t.down=false;t.t=0;t.in=false;});
+  Game.rolls.forEach(r=>r.in=false);
+  Game.special.lit=false;Game.special.t=0;Game.special.cd=0;Game.special.streak=0;
+  Game.skillShotDone=false; // new ball — the skill shot is back on offer
+  Game.autoSaveTimer=10;
+  resetBall();state=S.LAUNCH;
+}
+function launchBall(){
+  if((state!==S.LAUNCH&&!demoMode)||!Game.ball||Game.ball.live)return;
+  const pull=Game.plungerCharge;
+  Game.launchPower=pull; // raw 0..1, no minimum
+  // Feather tap — just a nudge of the spring, the ball stays on the tip
+  if(pull<0.05){Game.springBob=0.4;AudioSys.plungerRelease(0.12);return;}
+  // REAL LAUNCH — the spring-energy model of an actual arcade plunger.
+  // Hooke's law F=kx stores E=½kx² in the spring, which becomes the ball's
+  // kinetic energy ½mv², so launch speed is LINEAR in pull distance (v∝pull)
+  // — a half pull launches at half speed, exactly like a real machine. The
+  // reference is the top of the playfield: a FULL pull crosses the top at the
+  // preset's top speed (PHYS.maxVel), and every other pull scales from there.
+  // Weak pulls climb partway, roll back down the lane and re-arm — the
+  // authentic soft-plunge behaviour.
+  // SPRING LAUNCH — Hooke's law: the plunger stores E=½kx² (x = pull
+  // distance) and the ball leaves the rod at v = x·√(k/m): speed LINEAR in
+  // the pull, exactly like a real spring. The reference: a FULL pull is
+  // solved by tuneLaunch() to exit the top guide curve at exactly
+  // PHYS.maxVel after paying the real lane climb and curve losses — so the
+  // meter reads true speed across its whole travel.
+  const v0=PHYS.vTipFull*pull;
+  // The ball is LIVE from the moment of release and climbs the lane under real
+  // gravity. The shooter-lane divider + tube catch keep it in the lane; if it
+  // runs out of energy it rolls back down and re-arms (no penalty, no drain).
+  Game.ball.vx=0;Game.ball.vy=-v0;Game.ball.live=true;
+  Game.launching=true;Game.arc=null;
+  Game._rbWhiff=false;Game._rbAcc=0;Game._lastVy=-v0; // rollback audio state
+  Game.launchAnim=1.0;
+  Game.springBob=1.0;
+  Game._ltAcc=0;Game._ltPX=Game.ball.x;Game._ltPY=Game.ball.y; // reset launch-trail spacing
+  if(!demoMode)state=S.PLAY;
+  // Mechanical release thunk — the spring firing, scaled by the pull
+  AudioSys.plungerRelease(pull);
+}
+function addScore(pts){
+  if(Game.tilt)return;
+  Game.scores[Game.cur]=(Game.scores[Game.cur]+pts)%1000000;
+}
+function addScoreFlat(pts){Game.scores[Game.cur]=(Game.scores[Game.cur]+pts)%1000000;}
+function flash(){Game.flashes=8;}
+
+// Rounded top corners (real pinball playfields have curved corners so a ball
+// arcs over the top naturally instead of pinning in a square corner). The
+// corner arcs (radius CR) OWN the top-left/top-right corner bands; the flat
+// clamps skip those bands so the two never fight. A ball rolling along the
+// top wall rides up over the arc and around the corner — the natural launch
+// flow. The arc push keeps the ball at radius CR+R from the corner centre, so
+// it can never be pushed outside the table: at the arc's top end the ball
+// centre sits one radius above the flat top wall (exactly like a real ball on
+// a rounded corner) and rides the arc down to the side wall.
+const CORNER_R=36;
+function clampPF(b){
+  const R=BALL_R,CR=CORNER_R,cxL=PF.x+CR,cxR=PF.r-CR,cyT=PF.y+CR;
+  // left corner arc
+  if(b.x<cxL&&b.y<cyT){
+    // ALWAYS correct inside the corner quadrant: every point beyond the arc
+    // here is outside the table, so the ball must be held on the arc. The old
+    // ad<CR+R upper bound let a ball a hair past the radius (e.g. ad=50.1 vs
+    // the 49 limit after a superball kick) escape entirely — the clamp never
+    // fired again and the ball accelerated out of the table.
+    const adx=b.x-cxL,ady=b.y-cyT,ad=Math.hypot(adx,ady);
+    if(ad>0.001){
+      const nx=adx/ad,ny=ady/ad;b.x=cxL+nx*(CR+R);b.y=cyT+ny*(CR+R);
+      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;}
+    }
+  }
+  // right corner arc — mirror of the left. The launch's guide curve (see
+  // arcStep) swings the ball through this region on its own rail, clear of
+  // the corner quadrant, so both arcs always seal their corners.
+  if(b.x>cxR&&b.y<cyT){
+    const adx=b.x-cxR,ady=b.y-cyT,ad=Math.hypot(adx,ady);
+    if(ad>0.001){
+      const nx=adx/ad,ny=ady/ad;b.x=cxR+nx*(CR+R);b.y=cyT+ny*(CR+R);
+      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;}
+    }
+  }
+  // flat walls — skip the corner bands (the arcs own them)
+  if(b.x<PF.x+R&&b.y>=cyT){b.x=PF.x+R;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
+  if(b.x>PF.r-R&&b.y>=cyT){b.x=PF.r-R;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;}
+  if(b.y<PF.y+R&&b.x>=cxL&&b.x<=cxR){b.y=PF.y+R;b.vy=Math.abs(b.vy)*PHYS.wallBounce;}
+}
+
+/* ---------- top guide curve (the shooter lane's 90°+ arc) ---------- */
+// Constrained-channel integration, run once per physics substep while
+// Game.arc is set: the ball follows the guide rail, decelerating under
+// gravity's tangential component (full g on the rise, zero at the apex,
+// accelerating down the far side) and guide friction ∝ the normal force
+// |v²/R − g·sinα| — outer rail while fast, inner rail while slow. A ball
+// that runs out of speed stalls on the curve and rolls BACK down it (the
+// authentic weak-plunge return: deterministic, no randomness). At the exit
+// angle the ball is released into free flight — pull strength set only its
+// speed; the guide fixes the direction, like a real machine.
+function arcStep(b,dt){
+  const A=Game.arc,g=PHYS.grav,R=CURVE_R;
+  const N=Math.abs(A.v*A.v/R-g*Math.sin(A.a));
+  A.v+=(-g*Math.cos(A.a)-PHYS.curveMu*N*(A.v>0?1:A.v<0?-1:-1))*dt;
+  // A marginal plunge that creeps near the apex can't balance there (friction
+  // vs gravity is a near-tie) — a real ball teeters and falls back. Nudge it.
+  if(A.dir>0&&A.a<Math.PI/2&&A.v<15){A.dir=-1;A.v=-15;AudioSys.softPlunge();}
+  const prevA=A.a,prevV=A.v;
+  A.a+=(A.v/R)*dt;
+  const cx=PF.r-24-R; // guide centre — entry sits on the tube centreline
+  const exa=Math.PI/2+PHYS.exitDrop;
+  if(A.a>=exa&&A.dir>0){ // ===== CURVE EXIT — into free flight =====
+    // Exact release: the 240Hz substep can overshoot the exit angle by several
+    // degrees (a fast ball sweeps ~0.09 rad/step), which fired the ball
+    // measurably steeper than the solver's physics. Interpolate back to the
+    // exact exit fraction of the step so sim and solver agree.
+    const f=Math.max(0,Math.min(1,(exa-prevA)/((A.a-prevA)||1e-9)));
+    A.a=exa;A.v=prevV+(A.v-prevV)*f;
+    b.x=cx+R*Math.cos(A.a);
+    b.y=CURVE_ENTRY_Y-R*Math.sin(A.a);
+    b.vx=-Math.sin(A.a)*A.v;
+    b.vy=-Math.cos(A.a)*A.v;
+    Game.arc=null;Game.launching=false;
+    Game.launchAnim=0.5; // glow flash as the ball enters play
+    if(Game.saveArmed){Game.ballSaveTimer=5.0;Game.saveArmed=false;}
+    // Skill shot arms ONLY inside the exact-power band — the pull whose
+    // projectile path drops the ball onto the target. tuneLaunch derives the
+    // band from this very curve's exit physics, so meter and physics agree
+    // by construction. Too weak: the ball rolls back down the lane; too
+    // strong: it overshoots the target and the shot is missed.
+    Game.skillShotReady=!Game.skillShotDone&&Game.launchPower>=PHYS.skillShot.min&&Game.launchPower<=PHYS.skillShot.max;
+    Game.skillShotT=Game.skillShotReady?SKILL_SHOT_TIME:0; // the live chance is on a clock
+    AudioSys.launch();haptic(30+30*Game.launchPower,0.3+0.4*Game.launchPower);
+    return;
+  }
+  b.x=cx+R*Math.cos(A.a);
+  b.y=CURVE_ENTRY_Y-R*Math.sin(A.a);
+  b.vx=-Math.sin(A.a)*A.v;
+  b.vy=-Math.cos(A.a)*A.v;
+  if(A.a<=0&&A.dir<0){ // rolled back to the lane — free fall to the plunger
+    Game.arc=null;b.vx=0; // launching stays true: the tube catch re-arms
+  }
+}
+
+function physStep(dt){
+  const b=Game.ball;if(!b||!b.live)return;
+  b.vy+=PHYS.grav*dt;
+  let sp=Math.hypot(b.vx,b.vy);
+  // Launch exemption: while the ball is in the launch flight (Game.launching
+  // — lane climb, guide curve) the in-play speed cap doesn't apply; the
+  // spring's real speed rules. The moment it enters play (launching→false)
+  // the normal cap is back.
+  if(sp>PHYS.maxVel&&!Game.launching){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
+  b.x+=b.vx*dt;b.y+=b.vy*dt;
+  // Shooter-lane rolling resistance while the launch ball climbs — a real
+  // ball rolling up the lane bleeds a little energy to friction on top of
+  // the slope's gravity component.
+  if(Game.launching&&b.vy<0)b.vy+=ROLL_F*dt;
+  // Guide-curve entry — the climb reaches the tube top and swings into the
+  // top guide; arcStep owns the ball from here.
+  if(Game.launching&&!Game.arc&&b.vy<0&&b.y<=CURVE_ENTRY_Y){
+    b.x=PF.r-24;b.y=CURVE_ENTRY_Y;
+    Game.arc={a:0,v:Math.hypot(b.vx,b.vy),dir:1};
+  }
+  // ===== CURVE PHASE — the arc integrator is authoritative (position,
+  // velocity, guide normal forces); free physics and clamps are skipped.
+  if(Game.launching&&Game.arc){arcStep(b,dt);return;}
+  const R=BALL_R;
+  clampPF(b);
+  // Left lane inner wall — keep the ball SURFACE clear of the divider (the
+  // old PL_L+4 clamp let the ball body sink 9px into the rail)
+  if(b.x<PL_L+6){b.x=PL_L+6;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
+  // shooter lane inner wall — the ball stays in the playfield and bounces off
+  // the lane divider. But ONLY when the ball is on the playfield side: once it
+  // crosses OVER the divider and into the tube (x>laneX+BALL_R), the divider
+  // lets it pass through so it can fall into the launch tube and onto the
+  // plunger. (The old blanket push emptied the tube — the ball could never fall
+  // into it and the user only saw it glitch through the wall.)
+  const laneX=PF.r-48,laneExitY=PF.y+PF.h*0.10; // divider wall runs from the tube top down
+  if(b.x>laneX-BALL_R-3&&b.y>laneExitY&&b.x<laneX+BALL_R){b.x=laneX-BALL_R-3;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;}
+
+  // ===== skill shot — bonus target hit from launch =====
+  if(Game.skillShotReady){
+    const ss=Game.skillShot;
+    // The collect radius is per-preset, derived by tuneLaunch (difficulty
+    // parity after the target moved to the lane-circle line — see there);
+    // PHYS is the live source, Game.skillShot.collect only a fallback.
+    const sr=((PHYS.skillShot&&PHYS.skillShot.collect)||ss.collect||ss.r)+R;
+    const sdx=b.x-ss.x,sdy=b.y-ss.y;
+    if(sdx*sdx+sdy*sdy<sr*sr){
+      const skillBonus=5000;
+      addScore(skillBonus);flash();
+      Game.msg='SKILL SHOT +'+skillBonus;Game.msgT=2.0;
+      AudioSys.skill();haptic(70,0.8);
+      burst(ss.x,ss.y,3);
+      Game.skillShotReady=false;Game.skillShotDone=true; // collected — one per ball
+    }
+  }
+
+  // bumpers — real pop bumpers fire a solenoid ring, kicking the ball outward energetically
+  for(const bp of Game.bumpers){
+    // hw = drawn bumper radius so the ball surface stays flush with the ring
+    const hw=bp.r,dx=b.x-bp.x,dy=b.y-bp.y;
+    if(Math.abs(dx)<hw+R&&Math.abs(dy)<hw+R){
+      const ox=(hw+R)-Math.abs(dx),oy=(hw+R)-Math.abs(dy);
+      const jit=()=>(Math.random()-0.5)*PHYS.bumperJitter;
+      const kickSpd=PHYS.bumperKick;
+      // REAL POP BUMPER KICK: the solenoid ring fires UPWARD (the skirt is
+      // pushed up by the coil), so the ball is flung up-and-away from the
+      // bumper regardless of where it contacts — a genuine energy ADDER that
+      // keeps play in the upper playfield. The old code kicked radially
+      // (sign(dy)), so a ball clipping a bumper's UNDERSIDE — the common case
+      // for a rising centre/side shot — got slammed straight back DOWN or
+      // sideways into a lane: the "play is limited to the bottom half" bug.
+      // Direction = radial normal blended with a strong upward bias, speed =
+      // max(current speed, kick) so bumpers always ADD energy, never steal it.
+      const d=Math.hypot(dx,dy)||1,nx=dx/d,ny=dy/d;
+      // Up-biased kick direction. The random lateral term in kx keeps a
+      // dead-centre hit from firing perfectly vertical (kx=0): a purely
+      // vertical kick ping-pongs the ball straight up-and-down against the
+      // top wall instead of caroming between the three bumpers, so the ball
+      // falls straight back down the centre lane — the "play sags back down"
+      // symptom. A small always-present lateral spread forces every bumper
+      // hit to deflect the ball sideways a little, so it drifts into the
+      // neighbouring bumpers and stays alive in the upper playfield.
+      const kx=nx*0.55+(Math.random()-0.5)*0.30,ky=ny*0.55-0.82;
+      const kl=Math.hypot(kx,ky)||1;
+      const out=Math.max(Math.hypot(b.vx,b.vy),kickSpd);
+      b.vx=kx/kl*out+jit();b.vy=ky/kl*out+jit()*0.8;
+      b.x+=Math.sign(dx)*ox;b.y+=Math.sign(dy)*oy;
+      addScore(bp.v*100);bp.hit=5;AudioSys.bumper(bp.v);haptic(40,0.7);flash();burst(b.x,b.y,bp.col);
+      Game.skillShotReady=false;
+      // Clamp after bumper push and break — one bumper per sub-step
+      clampPF(b);
+      break;
+    }
+  }
+  // special target — always solid; LIT pays the escalating centre streak
+  const sp2=Game.special;
+  {const dx=b.x-sp2.x,dy=b.y-sp2.y;
+    if((sp2.cool||0)<=0&&dx*dx+dy*dy<(sp2.r+R)*(sp2.r+R)){
+      sp2.cool=0.12; // refractory — one score/kick per contact (substeps re-enter radius)
+      const wasLit=sp2.lit;
+      sp2.lit=false;sp2.t=0;
+      const d=Math.hypot(dx,dy)||1;
+      b.vx=dx/d*Math.max(Math.hypot(b.vx,b.vy),PHYS.specialKick);b.vy=dy/d*Math.max(Math.abs(b.vy),PHYS.specialKick);
+      let pts;
+      if(wasLit){
+        sp2.streak=Math.min(3,(sp2.streak||0)+1);
+        pts=sp2.streak===1?1000:sp2.streak===2?2500:5000;
+        Game.msg='SPECIAL '+pts+(sp2.streak>1?' ×'+sp2.streak:'');
+      }else{
+        pts=500;Game.msg='TARGET 500';
+      }
+      addScore(pts);flash();AudioSys.special();haptic(90,1);
+      Game.msgT=1.2;burst(b.x,b.y,3);
+      Game.skillShotReady=false; // consumed on first contact
+    }
+  }
+  // top diamond lights — pass-over switches (original game behaviour):
+  // the ball rolls straight over them, switching each one off and awarding
+  // 100 pts, with NO deflection or bounce whatsoever.
+  for(const t of Game.targets){
+    if(t.down)continue;
+    const over=Math.abs(b.x-t.x)<20&&Math.abs(b.y-t.y)<20;
+    if(over&&!t.in){
+      t.in=true;t.down=true;
+      addScore(100);AudioSys.target();haptic(35,0.6);ring(t.x,t.y,'#ffd23a');
+      // NOTE: diamonds are no-deflection pass-over switches — rolling over
+      // one must NOT cancel an armed skill shot. The band-power launch
+      // descent clips the right diamond's sensor ~145px above the disc
+      // (measured: ready was consumed at y≈217 on its way to the target),
+      // which stole the shot from the slow half of the arming band.
+      if(Game.targets.every(q=>q.down)){
+        if(Game.bumperVal<9)Game.bumperVal++;
+        Game.bumpers.forEach(bp=>bp.v=Game.bumperVal);
+        Game.msg='BUMPER VALUE '+Game.bumperVal;Game.msgT=1.4;
+        setTimeout(()=>Game.targets.forEach(q=>{q.down=false;q.in=false;}),1200);
+      }
+    }else if(!over){t.in=false;}
+  }
+  // rollover lanes — only trigger on downward pass through lane
+  for(let i=0;i<Game.rolls.length;i++){
+    const r=Game.rolls[i];
+    const inside=Math.abs(b.x-r.x)<18&&Math.abs(b.y-r.y)<28;
+    if(inside&&!r.in){
+      r.in=true;addScore(100);AudioSys.roll();
+      if(i===0){
+        // LEFT ROLLOVER: increments left roll counter
+        Game.leftRoll=Math.min(Game.leftRoll+1,4);
+        ring(r.x,r.y,'#3fd0ff');
+      } else {
+        // ATARI ROLLOVER: lights ATARI symbols, extra ball after 4 hits
+        Game.bonus=Math.min(Game.bonus+1,9);Game.atariHits++;
+        ring(r.x,r.y,'#ff7a2a');
+        if(Game.atariHits>=4&&!Game.extra[Game.cur]&&!Game.usedExtra[Game.cur]){
+          Game.extra[Game.cur]=true;AudioSys.extra();
+          Game.msg='EXTRA BALL';Game.msgT=2;
+        }
+      }
+    } else if(!inside){r.in=false;}
+  }
+  // spinners — POWERED kicker-style: the blade catches the ball and whips it
+  // back UP toward the bumper zone. (Real spinners are passive, but the table
+  // needs an upper-playfield energy source — the old logic DRAINED the ball's
+  // speed here, which is why play sagged into the bottom half.) Power scales
+  // with the ball's impact speed: a fast ball through the spinner gets flung
+  // higher, rewarding speed. Kick aims up and toward the table centre so the
+  // ball rejoins the bumper flow instead of dead-ending in an outlane.
+  for(const s of Game.spinners){
+    s.cd=Math.max(0,s.cd-dt);
+    const inside=Math.abs(b.x-s.x)<12&&Math.abs(b.y-s.y)<24;
+    if(inside&&s.cd<=0){
+      s.cd=0.12;
+      const impactSpeed=Math.hypot(b.vx,b.vy);
+      s.spin=Math.min(200,Math.floor(impactSpeed*0.35));
+      addScore(1);AudioSys.spin();
+      Game.skillShotReady=false; // consumed on first contact
+      const kick=PHYS.spinnerKick+Math.min(impactSpeed,600)*PHYS.spinnerKickScale;
+      const towardC=(s.x<PL_CX)?1:-1; // ALWAYS steer toward the table centre
+      b.vx=towardC*kick*0.45;
+      b.vy=-kick*0.9; // upward
+    }
+    if(s.spin>0){s.ang+=3.5;s.spin-=Math.random()<0.20?0:1;}
+  }
+  // flippers — only one can collide per sub-step to avoid ping-pong trap
+  if(flipperStep(b,FL.l,dt)){}else flipperStep(b,FL.r,dt);
+  // guide rails
+  const gg=guideGeom();
+  for(const g of gg)segCollide(b,g[0],g[1],g[2],g[3],G_RAD,PHYS.guideBounce,g[4]);
+  // Re-clamp to playfield after collision pushes — prevent wall escapes
+  clampPF(b);
+  if(b.x<PL_L+6){b.x=PL_L+6;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
+  const laneX2=PF.r-48,laneExitY2=PF.y+PF.h*0.10;
+  // Shooter-lane divider (upper section only): keep the ball on the playfield
+  // side until it drops into the tube mouth from above. The lower angled
+  // outlane wall is handled by the guide-rail collision (guideGeom, tMax 1.0)
+  // which deflects smoothly. The old hard clamp here yanked a ball that had
+  // reached the tube/outlane channel ~150px left in ONE frame — the "ball
+  // glitched from the right side to the left" teleport. Removed; the rail
+  // collision plus the right-outlane drain check handle that region cleanly.
+  if(b.y>laneExitY2&&b.y<WALL_TOP_Y&&b.x>laneX2-BALL_R-3&&b.x<laneX2){
+    b.x=laneX2-BALL_R-3;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;
+  }
+  // ===== tube catch (real pinball) =====
+  // A live ball that falls back into the shooter lane settles on the plunger
+  // and can be relaunched with NO penalty — no drain, no ball advance. The
+  // divider above lets in-tube balls pass through, so this only fires for a
+  // genuine fall-in: the ball is fully inside the tube (x past the divider),
+  // low in the lane (y past the plunger's rest tip, and well ABOVE the drain
+  // line so it always beats the outlane drain check), and not moving up. No
+  // speed gate — a ball falling down the tube is moving fast the whole way and
+  // would drain before it ever slowed down. resetBall() parks it on the rod
+  // tip and re-arms the launcher; score, rolls and flippers are untouched.
+  if(b.x>laneX2+BALL_R&&b.y>PF.b-60&&b.vy>-50){
+    // A rolled-back ball settling onto the rod — the soft mechanical thunk
+    // that closes the failed-plunge story (whiff at the stall, rattle on the
+    // way down, thunk here)
+    if(Game.launching)AudioSys.plungerSettle();
+    resetBall();if(!demoMode)state=S.LAUNCH;return;
+  }
+  // Final guide-rail pass — a bumper or flipper push must never leave the
+  // ball overlapping a rail at the end of a step.
+  for(const g of gg)segCollide(b,g[0],g[1],g[2],g[3],G_RAD,PHYS.guideBounce,g[4]);
+  // Cap velocity after all collisions — bumpers/rails can stack speed past MAXV.
+  // Same launch exemption as the top of physStep: the spring's real speed
+  // rules until the curve exit; the moment it enters play the cap is back.
+  sp=Math.hypot(b.vx,b.vy);if(sp>PHYS.maxVel&&!Game.launching){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
+  // ===== bottom drain zones =====
+  // The flippers are the last line of defence: a ball still in contact with a
+  // bat is supported and stays in play. Everything else below the flipper line
+  // drains. (A ball resting on a flipper must NOT count as drained.)
+  const restTipLX=FL.l.x+Math.cos(FL.l.rest)*FL.l.len;
+  const restTipRX=FL.r.x-Math.cos(FL.r.rest)*FL.r.len;
+  const Rf=BALL_R+8;
+  const cl=flipperContact(b,FL.l),cr=flipperContact(b,FL.r);
+  // "On the flipper" = touching the BAT BODY from the playfield side, with the
+  // ball's projection genuinely on the body (tRaw>=0.14 — past the base end it
+  // is in the drain and must fall). The pivot area is NOT part of the flipper.
+  // +1 tolerance: the flipper clamp rests the ball at EXACTLY Rf, so a strict
+  // < would misclassify a resting ball as not-on-flipper and drain it.
+  const onFlip=(cl.tRaw>=0.14&&cl.d<Rf+1&&cl.face>-8)||(cr.tRaw>=0.14&&cr.d<Rf+1&&cr.face>-8);
+  if(!onFlip){
+    // outlanes — past the outer edge of either flipper. The threshold covers the
+    // pivot region so a ball falling beside a flipper base always drains.
+    if(b.y>FL.l.y-2&&(b.x<FL.l.x+10||b.x>FL.r.x-10)){b.live=false;ballDrained();return;}
+    // centre drain — between the two flipper tips
+    if(b.y>FL.l.y+8&&b.x>restTipLX-4&&b.x<restTipRX+4){b.live=false;ballDrained();return;}
+    // safety floor — never let the ball fall off the table
+    if(b.y>PF.b+28){b.live=false;ballDrained();return;}
+  }
+  // drain holes (difficulty a)
+  for(const dh of Game.drainHoles){if(Math.hypot(b.x-dh.x,b.y-dh.y)<20){b.live=false;ballDrained();return;}}
+  // stuck detection — a ball resting on a flipper is NOT stuck; it's waiting
+  // for the player to flip. Only rescue balls stuck elsewhere on the table.
+  if(!onFlip){
+    if(sp<PHYS.stuckSpd){b.stuck+=dt;}else b.stuck=0;
+    const inBottom=b.y>PF.b-150;
+    if(b.stuck>(inBottom?PHYS.stuckBot:PHYS.stuckTop)){
+      if(inBottom){b.live=false;ballDrained();return;}
+      b.vy=-PHYS.stuckVy;b.vx+=(Math.random()-0.5)*PHYS.stuckVxJit;b.stuck=0;
+    }
+    // Anti-loop: only a FAST ball that keeps returning to the EXACT same 30px
+    // cell is genuinely looping (e.g. pinballed between two walls — it returns
+    // to the same cells every cycle). Neighbour-tolerance was the bug: a ball
+    // falling or rolling straight down a narrow lane stays in one x-column, so
+    // its grid history was full of adjacent cells and it got slammed with
+    // +260px/s down + sideways jitter mid-fall. A straight-line ball NEVER
+    // returns to an exact cell, so exact-match counting is safe. Slow balls are
+    // covered by the stuck-rescue above. The kick always pushes the ball DOWN
+    // into the playfield (never up, which would pin it against the top wall).
+    if(!b.visitGrid)b.visitGrid=[];
+    const gx=Math.floor(b.x/30),gy=Math.floor(b.y/30),key=gx*1000+gy;
+    // Record a cell visit ONLY on entry (cell change). Counting every frame was
+    // wrong: a ball slowly accelerating down a lane lingers in each 30px cell
+    // for many frames, so its own cell showed 12+ "revisits" and it got slammed
+    // with +260px/s down + sideways jitter mid-fall (the mystery corner kicks).
+    // With entry-only recording a straight-line ball enters every cell exactly
+    // once — only a genuine loop (returning to cells it has left) accumulates.
+    if(b.lastCell!==key){
+      b.lastCell=key;
+      b.visitGrid.push(key);
+      if(b.visitGrid.length>300)b.visitGrid.shift();
+      let revisits=0;
+      for(const k2 of b.visitGrid){if(k2===key)revisits++;}
+      // 8+ re-entries of the same cell within recent history = a real loop; a
+      // normal ball never returns to a cell 8 times. Require real speed — slow
+      // balls are covered by the stuck-rescue above. NOTE: do NOT reset b.stuck
+      // here — a ball wedged in geometry needs the stuck-rescue (kick/drain) to
+      // fire; resetting stuck would hold it forever.
+      if(revisits>=8&&sp>200){
+        b.vy=Math.abs(b.vy)+260+Math.random()*160;
+        b.vx+=(Math.random()-0.5)*220;
+        b.visitGrid=[];
+      }
+    }
+  }
+  b.trail.unshift({x:b.x,y:b.y});if(b.trail.length>8)b.trail.pop();
+}
+
+const FL={
+  // Flipper geometry modelled on real pinball machines:
+  // - pivots ~24px above the playfield floor (PF.b-24), 100px bats (≈3" bat)
+  // - rest droop 0.20 rad (~11.5°) — the tips sit level with the playfield edge
+  // - full swing to -0.52 rad (~-30°) — a ~41° sweep, tips clear the drain
+  // - pivot spread 23% of play width each side → ~47px gap between rest tips
+  //   (≈1.8 ball diameters — a fair centre drain, and the bats never touch)
+  l:{x:PL_CX-PL_W*0.23,y:PF.b-24,len:100,ang:0.20,rest:0.20,up:-0.52,av:0,prev:0.20,side:-1},
+  r:{x:PL_CX+PL_W*0.23,y:PF.b-24,len:100,ang:Math.PI-0.20,rest:Math.PI-0.20,up:Math.PI+0.52,av:0,prev:Math.PI-0.20,side:1}
+};
+function flipperContact(b,f){
+  // Closest point on the BAT BODY, with t clamped to [0.14,1]. The pivot area is
+  // deliberately excluded: a full capsule around the pivot lets balls wedge in
+  // the notch beside a raised flipper and hang there forever (the ball gets
+  // clamped 21px from the pivot endpoint, catch-friction pins it, and it counts
+  // as "on the flipper" so the stuck-rescue never fires). Balls rolling down the
+  // outlane guides must be free to fall past the pivot into the drain.
+  // tRaw is the UNCLAMPED projection: a ball whose closest point lies past the
+  // base end (tRaw<0.14) is NOT on the bat — it must fall into the drain rather
+  // than rest on the rounded base cap (the "hung on the flipper edge" bug).
+  const len=f.len||80;
+  const dx=Math.cos(f.ang)*len,dy=Math.sin(f.ang)*len;
+  const tRaw=((b.x-f.x)*dx+(b.y-f.y)*dy)/(dx*dx+dy*dy);
+  let t=tRaw;if(t<0.14)t=0.14;if(t>1)t=1;
+  const px=f.x+dx*t,py=f.y+dy*t;
+  const d=Math.hypot(b.x-px,b.y-py);
+  // Signed distance to the bat's playfield-side face. Positive = ball above the
+  // bat (playfield side) — only these collide. A ball behind a swinging bat
+  // (drain side) passes through and drains instead of being slapped back up.
+  const npx=-f.side*Math.sin(f.ang),npy=f.side*Math.cos(f.ang);
+  const face=(b.x-f.x)*npx+(b.y-f.y)*npy;
+  return {t:t,tRaw:tRaw,d:d,face:face,px:px,py:py};
+}
+function segCollide(b,x1,y1,x2,y2,rad,rest,tMax){
+  // tMax < 1 truncates the collision: the segment's tail (near the flippers) is
+  // pass-through so a ball rolling off the guide can fall onto the flipper or
+  // into the drain instead of wedging between the guide end and the bat base.
+  const dx=x2-x1,dy=y2-y1;
+  const t=Math.max(0,Math.min(tMax||1,((b.x-x1)*dx+(b.y-y1)*dy)/(dx*dx+dy*dy)));
+  const px=x1+dx*t,py=y1+dy*t;
+  let nx=b.x-px,ny=b.y-py;const d=Math.hypot(nx,ny);
+  if(d<rad&&d>0.001){nx/=d;ny/=d;b.x=px+nx*rad;b.y=py+ny*rad;
+    const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=rest*vn*nx;b.vy-=rest*vn*ny;}return true;}
+  return false;
+}
+function guideGeom(){
+  return[
+    // lower outlane guides — feed the ball ONTO the flippers. Both are perfect
+    // mirrors across PL_CX: the left starts at the left rail (x=PL_L), the right
+    // at the right rail (x=PL_R) at the same height, and both angle inward to
+    // the flipper pivots. The collision runs all the way to the pivot (tMax 1)
+    // so the ball rides the guide down and is released ON the bat body
+    // (t≈0.15, right of the pivot). With the old 0.85 cut the ball was released
+    // at x≈232-245 — left of the bat's usable body (t≥0.14 ⇒ x≥252) — and
+    // fell straight into the outlane corner: the "corner drain" on both sides.
+    // No wedge risk: the bat collision excludes the pivot (tRaw≥0.14 gate), so
+    // the guide end hands the ball cleanly to the bat base.
+    [PL_L,WALL_TOP_Y,FL.l.x-2,FL.l.y,1.0],
+    [PL_R,WALL_TOP_Y,FL.r.x+2,FL.r.y,1.0],
+    // ---- LEFT BALL RETURN LANE (48px tube, mirrors right shooter lane) ----
+    [PL_L, PF.y+PF.h*0.10, PL_L, FL.l.y-10],
+    // ---- PASS-THROUGH LANE CORRIDORS — tight narrow lanes ----
+    [PL_L+PL_W*0.19, LANE_TOP+4, PL_L+PL_W*0.19, LANE_BOT-44],
+    [PL_L+PL_W*0.31, LANE_TOP+4, PL_L+PL_W*0.31, LANE_BOT-44],
+    // Right lane: tight walls on both sides
+    [PL_R-PL_W*0.31, LANE_TOP+4, PL_R-PL_W*0.31, LANE_BOT-44],
+    [PL_R-PL_W*0.19, LANE_TOP+4, PL_R-PL_W*0.19, LANE_BOT-44],
+    // NOTE: no horizontal bar between the lower bumpers. The original game has
+    // the SPECIAL target freely hittable in the centre lane between the two
+    // lower bumpers — a decorative chrome bar there hard-stopped every centre
+    // shot (vy −1100 → +1 in one frame), pinning play to the bottom half of
+    // the table and making the SPECIAL target unreachable. Removed so centre
+    // flips flow up the middle to the top bumper/diamonds like the original.
+  ];
+}
+function flipperAnimate(f,dt){
+  // The pure animation half of flipperStep — bat angle, surface velocity and
+  // oblique-steer reset, NO ball interaction. Runs from the PLAY physics AND
+  // from the LAUNCH tick so the bats answer the buttons while you aim (a real
+  // machine's flippers are live whenever a ball is on the plunger; the old
+  // code left them frozen through the whole launch phase).
+  // Tilt de-energizes the flippers — they drop to rest and stay dead until the
+  // ball ends (authentic: a tilted machine won't fire the coils).
+  const target=Game.tilt?f.rest:(f.side<0?input.lFlip:input.rFlip)?f.up:f.rest;
+  const prev=f.ang;
+  // Cap the per-substep swing: the raw lerp (dt*flipperSpeed) sweeps the bat TIP
+  // ~33px in one 1/240s sub-step — faster than the 26px ball diameter — so a
+  // flipping bat skipped clean through a ball resting in the middle of the bat
+  // (the "ball passes through the flipper" bug). 0.10 rad/substep ≈ 10px tip
+  // sweep (well under the ball diameter) and ~28 rad/s — a realistic flip that
+  // can never tunnel. Flip POWER (restitution) ramps off f.av and saturates at
+  // the 1.2 cap below (a real solenoid imparts MORE than elastic restitution).
+  const dang=Math.max(-0.10,Math.min(0.10,(target-f.ang)*Math.min(1,dt*PHYS.flipperSpeed)));
+  f.ang+=dang;f.av=(f.ang-prev)/dt;
+  // Bat back at rest → the next swing gets its own oblique steering
+  if(Math.abs(f.ang-f.rest)<0.012&&Math.abs(f.av)<2)f._obl=false;
+}
+function flipperStep(b,f,dt){
+  flipperAnimate(f,dt);
+  const R=BALL_R+8,fx=f.x,fy=f.y;
+  const ux=Math.cos(f.ang),uy=Math.sin(f.ang);
+  const c=flipperContact(b,f);
+  // d<R+1 (not d<R): the clamp below pushes the ball to EXACTLY R, so a strict
+  // d<R would leave a resting ball out of contact every frame — it would free-
+  // slide down the bat face with no friction and no clamp. The +1 tolerance
+  // keeps a settled ball "in contact" so the catch friction holds it.
+  if(c.tRaw>=0.14&&c.d<R+1&&c.d>0.001&&c.face>-8){
+    const nx=(b.x-c.px)/c.d,ny=(b.y-c.py)/c.d;
+    b.x=c.px+nx*R;b.y=c.py+ny*R;
+    const rx=c.px-fx,ry=c.py-fy;const svx=-f.av*ry,svy=f.av*rx;
+    const rvx=b.vx-svx,rvy=b.vy-svy;const vn=rvx*nx+rvy*ny;
+    if(vn<0){
+      // Per-contact-spot restitution: tip hits harder than base.
+      // c.t = distance from pivot along the bat (0=base, 1=tip).
+      // Resting flippers use flipperRestBase (~0.4 = real pinball rubber, so the
+      // ball BOUNCES off a still bat instead of thudding dead onto it), and a
+      // swinging flipper ramps up to a 1.2 cap. A real solenoid flipper imparts
+      // MORE than elastic restitution (Power Law ≈2 — the flipper's momentum
+      // transfers into the ball), so rest>1 on a full swing is correct; the
+      // ball leaves with the bat's surface velocity PLUS its bounce.
+      const baseRest=Math.min(1.2,PHYS.flipperRestBase+Math.min(0.95,Math.abs(f.av)/PHYS.flipperRestScale));
+      const rest=baseRest*(0.6+0.4*c.t);
+      b.vx-=(1+rest)*vn*nx;b.vy-=(1+rest)*vn*ny;
+      // Oblique correction — ONE-SHOT per swing (the flag prevents re-adds on
+      // every contact substep and on the ball's return bounce): steer the shot
+      // toward the table CENTRE. Without it a left-flipper launch drifts left
+      // up the rise, grazes the underside of the bottom-left pop bumper and is
+      // knocked straight back DOWN — the whole table never opens up. Real
+      // flippers steer shots toward the middle; this is the same idea. 24% of
+      // the new vertical speed, capped — weak taps stay soft, full flips climb
+      // the centre.
+      if(!f._obl){f._obl=true;b.vx+=(f.side<0?1:-1)*Math.min(380,Math.abs(b.vy)*0.24);}
+      if(Math.abs(f.av)>2){AudioSys.flip();haptic(25,0.4);}
+    }
+    // BASE ZONE (t<0.4): force a slow settled ball to roll DOWNHILL along the
+    // bat — toward the tip when the bat droops, toward the base when raised.
+    // Without this, a ball landing on the bat's inner end balances on the
+    // rounded collision cap and freezes forever (the "hung on the flipper edge"
+    // bug). Rolling toward the base when raised lets the ball fall into the
+    // drain; rolling onto the face when drooped ends in a normal catch.
+    const sdir=Math.sign(Math.sin(f.ang));
+    const along=b.vx*ux+b.vy*uy;
+    if(c.t<0.4&&Math.abs(f.av)<6&&Math.hypot(b.vx,b.vy)<200){
+      b.vx+=(sdir*80-along)*ux;b.vy+=(sdir*80-along)*uy;
+    }else if(Math.abs(f.ang-f.up)<0.15&&c.t>0.2&&c.t<0.92&&Math.abs(f.av)<4&&Math.hypot(b.vx,b.vy)<150){
+      // The catch ONLY works on a flipper you are actively holding up — real
+      // pinball: a ball landing on a drooped (resting) flipper rolls off the
+      // tip and drains. Strong friction along the bat holds the ball on the
+      // rubber until you release. Only on the BAT BODY: at the tip the friction
+      // would trap the ball — there it stays free to roll off into the drain.
+      b.vx-=along*ux*0.95;b.vy-=along*uy*0.95;
+    }
+    return true;}
+  return false;}
+
+/* ---------- drain / tally / tilt ---------- */
+function ballDrained(){
+  // Demo mode: the attract AI just relaunches — no ball-save, tally or game over
+  if(demoMode){
+    Attr.phase='drained';Attr.timer=1.6+Math.random()*0.8;
+    Game.skillShotDone=false; // each attract ball re-offers the skill shot
+    resetBall();return;
+  }
+  // Ball-save: if still in grace window, return ball to plunger
+  if(Game.ballSaveTimer>0){
+    Game.ballSaveTimer=0; // consumed — one save per launch
+    Game.msg='BALL SAVED';Game.msgT=2.0;
+    Game.flashes=5;Game.shakeT=0.15;
+    AudioSys.save();haptic(40,0.3);
+    resetBall();state=S.LAUNCH;return;
+  }
+  if(Game.tilt){
+    if(Game.leftRoll>0)addScoreFlat(Game.leftRoll*1000);
+    Game.extra[Game.cur]=false;endTurn();return;
+  }
+  Game.saveArmed=true; // a drain arms the save for the next launch
+  let pay=0;if(Game.leftRoll>0)pay+=Game.leftRoll*1000;
+  const totalPay=pay*Game.bonus;
+  Game.tally={base:pay,mult:Game.bonus,paid:0,total:totalPay,t:0,_tickAcc:0};
+  AudioSys.drain();haptic(120,0.9);state=S.TALLY;
+}
+function tallyStep(dt){
+  const t=Game.tally;if(!t)return;t.t+=dt;
+  // Pacing: short pause, then count at increasing speed in a BOUNDED number of
+  // ticks (the old geometric step — remaining/10 — decayed asymptotically, so a
+  // 36000 payout took ~6s of dead time), then a brief hold at the total.
+  if(t.paid<t.total&&t.t>0.4){
+    // Speed ramps up: starts slow, finishes fast
+    const speedFrac=Math.min(1,(t.t-0.4)/0.5); // ramp over 0.5s
+    const ticksPerSec=6+speedFrac*20; // 6→26 ticks/sec
+    const tickInterval=1/ticksPerSec;
+    // Accumulate fractional ticks
+    if(!t._tickAcc)t._tickAcc=0;
+    t._tickAcc+=dt;
+    // Total tick budget: 6 ticks for a small payout, up to 30 for the max —
+    // the count ALWAYS finishes in ~1.5–2.5s regardless of the total.
+    if(t._left===undefined)t._left=Math.max(6,Math.min(30,Math.ceil(t.total/600)));
+    while(t._tickAcc>=tickInterval&&t.paid<t.total&&t._left>0){
+      t._tickAcc-=tickInterval;
+      // Even steps over the remaining ticks — finishes EXACTLY on the last
+      // tick (no asymptotic tail), and never under/over-shoots the total.
+      const remaining=t.total-t.paid;
+      const step=Math.max(1,Math.ceil(remaining/t._left));
+      t._left--;
+      const add=Math.min(step,remaining);
+      addScoreFlat(add);t.paid+=add;
+      AudioSys.tallyTick();
+    }
+  }
+  // Zero-payout drains flash through quickly (0.7s); paid payouts hold the
+  // total until t≈2.4s so the final number sits readable for ~0.7s after the
+  // count lands (~1.7s) before the next ball.
+  const holdTime=t.total>0?2.4:0.7;
+  if(t.paid>=t.total&&t.t>holdTime){
+    // Transition: null the tally and move on
+    // Draw holds Game.tally for one extra frame so the final total is visible
+    if(!t._done){t._done=true;return;}
+    Game.tally=null;
+    if(Game.extra[Game.cur]){Game.extra[Game.cur]=false;Game.usedExtra[Game.cur]=true;
+      Game.msg='X PLAY';Game.msgT=1.5;resetBall();state=S.LAUNCH;return;}
+    if(Game.balls[Game.cur]<3){Game.balls[Game.cur]++;startTurn();return;}
+    if(Game.players===2&&Game.cur===0){Game.cur=1;startTurn();return;}
+    gameOver();
+  }
+}
+function endTurn(){
+  Game.tally=null;
+  if(Game.balls[Game.cur]<3){Game.balls[Game.cur]++;startTurn();return;}
+  if(Game.players===2&&Game.cur===0){Game.cur=1;startTurn();return;}
+  gameOver();
+}
+function gameOver(){
+  state=S.GAMEOVER;Game._goT=performance.now();AudioSys.over();clearSave();
+  // Total = both players' scores (P1 base; P2 added in 2-player games)
+  const final=Game.scores[0]+(Game.players===2?Game.scores[1]:0);
+  Game.rank=final>250000?'PINBALL WIZARD':final>100000?'SOLID STATE PRO':
+    final>40000?'TECHNICIAN':final>10000?'APPRENTICE':'ROOKIE';
+  const s=final,idx=store.scores.findIndex(x=>s>x);
+  if(idx>=0){store.scores.splice(idx,0,s);store.names.splice(idx,0,'AAA');
+    store.scores=store.scores.slice(0,8);store.names=store.names.slice(0,8);
+    Game.entryRank=idx;state=S.ENTRY;Game.entryBuf=0;Game.entryChar=['A','A','A'];}
+  saveStore();
+}
+function nudgeStep(dt){
+  if(tiltBob.cd>0)tiltBob.cd--;
+  if(state!==S.PLAY){input.nudgeL=input.nudgeR=input.nudgeU=false;return;}
+  let dir=0,dy=0;
+  if(input.nudgeL){dir=-1;input.nudgeL=false;}
+  else if(input.nudgeR){dir=1;input.nudgeR=false;}
+  else if(input.nudgeU){dy=-1;input.nudgeU=false;}
+  if(dir||dy){
+    Game.tiltHeat+=1;Game.shakeT=0.12;AudioSys.nudge();
+    const b=Game.ball;if(b&&b.live&&!Game.launching){b.vx+=dir*PHYS.nudgeX;b.vy+=dy*PHYS.nudgeY;}
+    // Tilt threshold from sensitivity: LOW=7, NORMAL=5, HIGH=3
+    const tiltThresh=[7,5,3][store.tilt-1]||5;
+    if(Game.tiltHeat>tiltThresh-1)doTilt();
+  }
+  Game.tiltHeat=Math.max(0,Game.tiltHeat-dt*1.0);
+}
+function doTilt(){Game.tilt=true;Game.tiltHeat=0;AudioSys.tilt();haptic(300,1);Game.msg='TILT';Game.msgT=2.5;}
+function specialStep(dt){
+  const s=Game.special;
+  if(s.cool)s.cool-=dt;
+  if(s.lit){s.t-=dt;if(s.t<=0)s.lit=false;}
+  else{s.cd=(s.cd||0)-dt;if(s.cd<=0){s.lit=true;s.t=10;s.cd=5+Math.random()*4;}}
+}
+
+/* ---------- particles ---------- */
+function burst(x,y,kind){
+  const cols=kind===0?['#ffb347','#ff7a2a','#fff']:kind===1?['#7ad0ff','#3f7fff','#fff']:
+    kind===2?['#a5ffb0','#37e06a','#fff']:kind===3?['#ffd95a','#ffb020','#fff']:['#ff8a6a','#ff5a3a','#fff'];
+  for(let i=0;i<14;i++){const a=Math.random()*Math.PI*2,sp=120+Math.random()*300;
+    Game.pfx.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-40,life:0.4+Math.random()*0.4,t:0,col:cols[i%cols.length],size:2+Math.random()*2.6});}
+}
+function ring(x,y,col){Game.pfx.push({x,y,vx:0,vy:0,life:0.5,t:0,col,size:6,ring:true});}
+function pfxStep(dt){
+  const p=Game.pfx;Game.pfxLife=0;
+  for(let i=p.length-1;i>=0;i--){const q=p[i];q.t+=dt;
+    if(q.t>=q.life){p.splice(i,1);continue;}
+    if(!q.ring){q.x+=q.vx*dt;q.y+=q.vy*dt;q.vy+=(q.grav||420)*dt;q.vx*=0.98;}}
+}
+
+/* ---------- menus ---------- */
+let menuIdx=0,optIdx=0;
+function menuItems(){const base=['OPTIONS','HIGH SCORES','HOW TO PLAY'];if(hasSave())return['RESUME GAME','DISCARD SAVE'].concat(base);return['START GAME'].concat(base);}
+function uiConfirm(){
+  AudioSys.uiBig();
+  if(state===S.TITLE){state=S.MENU;demoMode=false;menuIdx=0;return;}
+  if(state===S.MENU){
+    if(menuIdx===0){if(hasSave()&&loadGame());else newGame();}
+    else if(hasSave()&&menuIdx===1){clearSave();state=S.MENU;menuIdx=0;}
+    else{const off=hasSave()?2:1;
+      if(menuIdx===off){state=S.OPTS;optIdx=0;}
+      else if(menuIdx===off+1){state=S.SCORES;}
+      else state=S.HELP;}return;
+  }
+  if(state===S.OPTS){
+    if(optIdx===0)Game.game=Game.game%4+1;
+    else if(optIdx===1)Game.diff=1-Game.diff;
+    else if(optIdx===2)store.snd=!store.snd;
+    else if(optIdx===3)store.hap=!store.hap;
+    else if(optIdx===4)store.tilt=store.tilt%3+1; // cycle 1→2→3→1
+    else if(optIdx===5)setPhysics(store.physics==='atari'?'arcade':store.physics==='arcade'?'superball':'atari');
+    else if(store.physics==='arcade'&&optIdx===6)setAngle(store.angle%5+1);
+    else{state=S.MENU;}
+    store.game=Game.game;store.diff=Game.diff;saveStore();return;
+  }
+  if(state===S.SCORES||state===S.HELP||state===S.PAUSE){state=S.MENU;return;}
+  if(state===S.GAMEOVER){state=S.TITLE;return;}
+  // ENTRY is handled by its dedicated keydown handler (letters set + advance,
+  // Enter/Space advance or commit) and by pad/touch below — uiConfirm itself
+  // must do nothing here. (It used to bump the letter on Enter, which fired
+  // alongside the dedicated handler and corrupted the final initial.)
+}
+function uiBack(){AudioSys.ui();
+  if(state===S.OPTS||state===S.SCORES||state===S.HELP)state=S.MENU;
+  else if(state===S.MENU)state=S.TITLE;
+  else if(state===S.PAUSE){state=Game.prevState;}}
+function uiMove(d){AudioSys.ui();const n=(state===S.MENU)?menuItems().length:(state===S.OPTS?(store.physics==='arcade'?8:7):0);if(!n)return;
+  if(state===S.MENU)menuIdx=(menuIdx+d+n)%n;else optIdx=(optIdx+d+n)%n;}
+function uiTouch(x,y){if(state===S.TITLE){uiConfirm();return;}
+  if(state===S.ENTRY){if(Game.entryBuf<2)Game.entryBuf++;else commitEntry();Game.entryTimer=performance.now();return;}
+  if(state===S.MENU||state===S.OPTS){if(y>0.8)uiMove(1);else if(y<0.2)uiBack();else uiConfirm();return;}
+  uiConfirm();}
+// Number of OPTIONS rows that cycle a value (the rest are BACK / sub-rows)
+const optEditableRows=()=>store.physics==='arcade'?7:6;
+// Vertical layout for panel rows — the whole block is centred in the card so
+// short lists don't hug the top. drawPanel and rowHitIndex share these.
+function menuRowY(i){
+  const py=100,ph=H-230;
+  const n=menuItems().length,block=n*74;
+  const top=py+96,bottom=py+ph-60;
+  return top+Math.max(0,(bottom-top-block)/2)+i*74;
+}
+function optRowY(i){
+  const py=100,ph=H-230;
+  const n=store.physics==='arcade'?8:7,block=n*78;
+  const top=py+96,bottom=py+ph-60;
+  return top+Math.max(0,(bottom-top-block)/2)+i*78;
+}
+// Map a normalized Y coordinate to the panel row under the pointer (MENU/OPTS only).
+// Geometry must match drawPanel() exactly.
+function rowHitIndex(yN){
+  if(state!==S.MENU&&state!==S.OPTS)return -1;
+  const y=yN*H;
+  if(state===S.MENU){const n=menuItems().length;for(let i=0;i<n;i++)if(Math.abs(y-menuRowY(i))<32)return i;return -1;}
+  const n=store.physics==='arcade'?8:7;
+  for(let i=0;i<n;i++)if(Math.abs(y-optRowY(i))<30)return i;return -1;
+}
+window.addEventListener('keydown',e=>{
+  if(state===S.MENU||state===S.OPTS){if(e.key==='ArrowUp'||e.key==='w')uiMove(-1);if(e.key==='ArrowDown'||e.key==='s')uiMove(1);}
+  if(state===S.OPTS&&(e.key==='ArrowLeft'||e.key==='ArrowRight')&&!e.repeat){if(optIdx<optEditableRows())uiConfirm();}
+  if(e.key==='Backspace')uiBack();});
+
+function plungerStep(dt){
+  // Ball rides the rod tip — moves down as the spring compresses (only at rest;
+  // once the ball is live it climbs the lane under real physics)
+  // demoMode lets the attract AI charge the real plunger (state stays TITLE)
+  if((state===S.LAUNCH||demoMode)&&Game.launchAnim<=0&&Game.ball&&!Game.ball.live){
+    Game.plungerCharge=input.plunger?Math.min(1,Game.plungerCharge+dt*1.2):Game.plungerCharge;
+    // Spring creak — a real plunger's coils tick as they compress; the pitch
+    // rises with the pull, so the charge is audible before you release.
+    const creakStep=Math.floor(Game.plungerCharge/0.06);
+    if(creakStep!==Game._creak){Game._creak=creakStep;if(Game.plungerCharge>0.04)AudioSys.springPull(Game.plungerCharge);}
+    const tipY=PF.b-66+(Game.plungerCharge*36);
+    Game.ball.x=PF.r-24;
+    Game.ball.y=tipY-BALL_R;
+  }
+  // ===== REAL LAUNCH FLIGHT =====
+  // After release the ball is LIVE and climbs the shooter lane under the real
+  // gravity — the same kinematics as a real machine. In the tube it travels
+  // straight up; gravity bleeds its energy. If it reaches the lane top it
+  // swings into the playfield; if not, it rolls back down the lane and the
+  // tube catch parks it on the plunger for another pull (no penalty).
+  const b=Game.ball;
+  if(Game.launching&&b&&b.live){
+    // Launch trail: a fading particle every ~12px so the fast climb reads.
+    if(Game._ltAcc===undefined)Game._ltAcc=0;
+    if(Game._ltPX===undefined){Game._ltPX=b.x;Game._ltPY=b.y;}
+    Game._ltAcc+=Math.hypot(b.x-Game._ltPX,b.y-Game._ltPY);
+    Game._ltPX=b.x;Game._ltPY=b.y;
+    while(Game._ltAcc>=12){
+      Game._ltAcc-=12;
+      // Trail colour = preset identity (atari orange / arcade cyan /
+      // superball magenta) — the launch flight reads at a glance.
+      const col=PHYS.label==='SUPERBALL'?'#ff40b0':PHYS.label==='ARCADE SIM'?'#7ad0ff':'#ffb347';
+      Game.pfx.push({x:b.x+(Math.random()-0.5)*4,y:b.y+3,
+        vx:(Math.random()-0.5)*26,vy:16+Math.random()*26,
+        life:0.28+Math.random()*0.22,t:0,col:col,size:1.4+Math.random()*1.6,grav:40});
+    }
+    // Weak-plunge whiff — a straight-lane stall: the climb dies below the
+    // guide and the ball peaks. (A curve stall fires its whiff in arcStep.)
+    if(Game._lastVy===undefined)Game._lastVy=b.vy;
+    if(!Game.arc&&!Game._rbWhiff&&Game._lastVy<0&&b.vy>=0){
+      Game._rbWhiff=true;AudioSys.softPlunge();
+    }
+    Game._lastVy=b.vy;
+    // Rollback rattle — tiny metallic ticks as the ball knocks its way back
+    // down the lane, one per ~28px of descent, pitch-randomized so the
+    // sequence reads as a rattle. Forward flight never rattles (the only
+    // live-and-launching descent IS a rollback).
+    if(b.vy>0&&(!Game.arc||Game.arc.dir<0)){
+      if(Game._rbAcc===undefined)Game._rbAcc=0;
+      Game._rbAcc+=b.vy*dt;
+      while(Game._rbAcc>=28){Game._rbAcc-=28;AudioSys.rollTick(Math.abs(b.vy));}
+    }else Game._rbAcc=0;
+  }
+  // Launch glow decay (short flash after release / on lane exit)
+  if(Game.launchAnim>0)Game.launchAnim=Math.max(0,Game.launchAnim-dt*1.8);
+  // Spring oscillation after release
+  if(Game.springBob>0)Game.springBob=Math.max(0,Game.springBob-dt*8);
+}
+
+/* =====================================================================================
+   RENDER
+   ===================================================================================== */
+const cv=document.getElementById('C'),ctx=cv.getContext('2d');
+let scale=1,offX=0,offY=0,dpr=1;
+function vpSize(){const v=window.visualViewport;return v?{w:v.width,h:v.height}:{w:innerWidth,h:innerHeight};}
+function resize(){
+  const s=vpSize();dpr=Math.min(window.devicePixelRatio||1,2.5);
+  const sc=Math.min(s.w/W,s.h/H);scale=sc;
+  cv.width=Math.round(W*sc*dpr);cv.height=Math.round(H*sc*dpr);
+  cv.style.width=Math.round(W*sc)+'px';cv.style.height=Math.round(H*sc)+'px';
+  offX=(s.w-W*sc)/2;offY=(s.h-H*sc)/2;cv.style.left=offX+'px';cv.style.top=offY+'px';
+}
+addEventListener('resize',()=>requestAnimationFrame(resize));
+addEventListener('orientationchange',()=>requestAnimationFrame(resize));
+if(window.visualViewport){visualViewport.addEventListener('resize',()=>requestAnimationFrame(resize));
+  visualViewport.addEventListener('scroll',()=>requestAnimationFrame(resize));}
+matchMedia('(orientation:portrait)').addEventListener('change',()=>requestAnimationFrame(resize));
+resize();
+
+/* helpers */
+function rr(x,y,w,h,r){r=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function glowCircle(x,y,r,color,alpha){
+  const g=ctx.createRadialGradient(x,y,r*0.15,x,y,r);g.addColorStop(0,color);g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.globalAlpha=alpha;ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.fill();ctx.globalAlpha=1;}
+function chromeBar(x1,y1,x2,y2,w,cx){const c=cx||ctx;c.lineCap='round';
+  // soft drop shadow — tighter than before so bar-to-bar joints stay crisp
+  c.strokeStyle='rgba(0,0,0,0.45)';c.lineWidth=w+2;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+  // crisp dark edge — the same outline treatment as the side rails
+  c.strokeStyle='#0c0f14';c.lineWidth=w+1;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+  // brushed-steel body — the canonical chrome gradient shared by every rail
+  const g=c.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'#5b6570');g.addColorStop(0.5,'#aeb8c2');g.addColorStop(1,'#2a3036');
+  c.strokeStyle=g;c.lineWidth=w;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+  // specular catch-light down the centre, matching the rails' top-edge light
+  c.strokeStyle='rgba(255,255,255,0.4)';c.lineWidth=Math.max(1.5,w*0.22);c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+  c.lineCap='butt';}
+// Chrome frame — a rounded-rect bezel in the same brushed-steel language as the
+// playfield rails (drop shadow, steel gradient, top catch-light, dark outline).
+// Used for the cabinet trim: the DMD bezel, the marquee frame and the backglass
+// playfield-window border, so the whole cabinet reads as one metal finish.
+function chromeFrame(x,y,w,h,r){
+  // soft drop shadow (down-right, like the rails)
+  ctx.fillStyle='rgba(0,0,0,0.45)';rr(x+3,y+4,w,h,r);ctx.fill();
+  // brushed-steel body — canonical rail gradient
+  const g=ctx.createLinearGradient(x,y,x,y+h);
+  g.addColorStop(0,'#5b6570');g.addColorStop(0.5,'#aeb8c2');g.addColorStop(1,'#2a3036');
+  ctx.fillStyle=g;rr(x,y,w,h,r);ctx.fill();
+  // top catch-light + mid wash (same edge light as the rails)
+  ctx.save();ctx.beginPath();rr(x,y,w,h,r);ctx.clip();
+  ctx.fillStyle='rgba(255,255,255,0.35)';ctx.fillRect(x,y,w,Math.max(3,h*0.22));
+  ctx.fillStyle='rgba(255,255,255,0.10)';ctx.fillRect(x,y+2,w,Math.max(2,h*0.5));
+  ctx.restore();
+  // crisp dark outline
+  ctx.strokeStyle='#0c0f14';ctx.lineWidth=1.5;rr(x+0.75,y+0.75,w-1.5,h-1.5,r);ctx.stroke();
+}
+// Authentic Atari "Fuji" logo — the official vector asset (AtariFuji.svg, CC0)
+// with the source path copied verbatim, so the mark matches the real thing at any size.
+const ATARI_FUJI_PATH=new Path2D("m0 21.653s3.154-0.355 5.612-2.384c2.339-1.93 3.185-3.592 3.77-5.476 0.584-1.885 0.671-6.419 0.671-7.764v-3.683h-1.455v1.365c-0.024 2.041-0.2 5.918-1.135 8.444-2.26 6.087-7.463 6.62-7.463 6.62zm24 0s-3.154-0.355-5.61-2.384c-2.342-1.93-3.187-3.592-3.772-5.476-0.583-1.885-0.671-6.419-0.671-7.764v-3.683h1.453l1e-3 1.365c0.024 2.041 0.202 5.918 1.138 8.444 2.258 6.087 7.46 6.62 7.46 6.62zm-13.341-19.305h2.685v19.306h-2.684z");
+const FUJI_W=24,FUJI_H=19.308,FUJI_Y=2.346;
+// Draw the genuine Atari logo centered at (cx,cy), scaled to pixel width w
+function drawAtariLogo(cx,cy,w,color){
+  const h=w*FUJI_H/FUJI_W, k=w/FUJI_W;
+  ctx.save();
+  ctx.translate(cx-w/2, cy-h/2);
+  ctx.scale(k,k);
+  ctx.translate(0,-FUJI_Y);
+  ctx.fillStyle=color;
+  ctx.fill(ATARI_FUJI_PATH);
+  ctx.restore();
+}
+
+/* ---------- static playfield ---------- */
+let pfLayer=null;
+const BPC=[[255,150,40],[64,160,255],[90,225,150]];
+function buildPF(){
+  pfLayer=document.createElement('canvas');pfLayer.width=W*dpr;pfLayer.height=H*dpr;
+  const c=pfLayer.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);
+  // cabinet wood — the two side margins are exact MIRRORS so both walls read
+  // identically: wood band at the outer edge, then the dark gap, then the
+  // chrome rail overlapping the playfield edge by 2px. (The right side used to
+  // butt the wood right against the rail, so a brown gradient showed next to
+  // the right wall while the left had a clean dark gap.)
+  const wood=c.createLinearGradient(PF.x-22,0,PF.x,0);wood.addColorStop(0,'#2a120b');wood.addColorStop(1,'#4a2414');
+  c.fillStyle=wood;c.fillRect(0,0,PF.x-22,H);
+  const woodR=c.createLinearGradient(PF.r,0,PF.r+22,0);woodR.addColorStop(0,'#4a2414');woodR.addColorStop(1,'#2a120b');
+  c.fillStyle=woodR;c.fillRect(PF.r+22,0,W-PF.r-22,H);
+  // playfield plate — rounded TOP corners (matches the corner-arc physics) so
+  // the launched ball rides the drawn edge and never crosses it
+  const platePath=()=>{c.beginPath();c.moveTo(PF.x,PF.y+CORNER_R);
+    c.arcTo(PF.x,PF.y,PF.x+CORNER_R,PF.y,CORNER_R);c.lineTo(PF.r-CORNER_R,PF.y);
+    c.arcTo(PF.r,PF.y,PF.r,PF.y+CORNER_R,CORNER_R);c.lineTo(PF.r,PF.b);c.lineTo(PF.x,PF.b);c.closePath();};
+  const pg=c.createLinearGradient(PF.x,PF.y,PF.r,PF.b);
+  pg.addColorStop(0,'#1b2750');pg.addColorStop(0.5,'#263a78');pg.addColorStop(1,'#16204a');
+  platePath();c.fillStyle=pg;c.fill();
+  // dark corner wedges — fill the removed corner regions with cabinet wood so
+  // no transparent hole shows where the plate rounds off. (The old path drew
+  // the quarter-arc plus a closing chord, which filled a lens INSIDE the plate
+  // with wood and left the actual notch transparent — the top corners showed a
+  // black hole with the rail shadows bleeding through it and a brown smear on
+  // the plate. The wedge now traces the square corner plus the plate's own
+  // rounding arc, so it covers exactly the notch, mirrored on both sides.)
+  c.fillStyle='#3a1f12';
+  c.beginPath();c.moveTo(PF.x,PF.y+CORNER_R);
+  c.lineTo(PF.x,PF.y);c.lineTo(PF.x+CORNER_R,PF.y);
+  c.arc(PF.x+CORNER_R,PF.y+CORNER_R,CORNER_R,-Math.PI/2,Math.PI,true);c.closePath();c.fill();
+  c.beginPath();c.moveTo(PF.r-CORNER_R,PF.y);
+  c.lineTo(PF.r,PF.y);c.lineTo(PF.r,PF.y+CORNER_R);
+  c.arc(PF.r-CORNER_R,PF.y+CORNER_R,CORNER_R,0,-Math.PI/2,true);c.closePath();c.fill();
+  const sheen=c.createRadialGradient(PF.x+PF.w*0.25,PF.y+PF.h*0.18,40,PF.x+PF.w*0.25,PF.y+PF.h*0.18,PF.w*0.95);
+  sheen.addColorStop(0,'rgba(255,255,255,0.16)');sheen.addColorStop(0.5,'rgba(255,255,255,0.04)');sheen.addColorStop(1,'rgba(0,0,0,0.25)');
+  platePath();c.fillStyle=sheen;c.fill();
+  c.globalAlpha=1;
+  // grain
+  c.globalAlpha=0.03;c.strokeStyle='#ffffff';
+  for(let i=-20;i<40;i+=3){c.beginPath();c.moveTo(PF.x+i*18,PF.y);c.lineTo(PF.x+i*18-400,PF.b);c.stroke();}
+  c.globalAlpha=1;
+  // floor shadow
+  const floor=c.createLinearGradient(0,PF.b-70,0,PF.b);floor.addColorStop(0,'rgba(0,0,0,0)');floor.addColorStop(1,'rgba(0,0,0,0.4)');
+  c.fillStyle=floor;c.fillRect(PF.x,PF.b-70,PF.w,70);
+  // chrome rails
+  const rrail=(x,y,w,h,sd)=>{const g=c.createLinearGradient(x,y,x,y+h);
+    g.addColorStop(0,'#5b6570');g.addColorStop(0.5,'#aeb8c2');g.addColorStop(1,'#2a3036');
+    // shadow x-offset: +2 (right) by default; side walls pass -2 so their shadows
+    // fall INWARD onto the plate — every frame rail casts its shadow into the
+    // playfield well, so the two side rails mirror (left: 2px strip right of the
+    // rail, right: 2px strip left of the rail) instead of the right shadow
+    // disappearing into the outer margin. sd=0 keeps the top rail's shadow
+    // perfectly centred so both top corners darken the same 14px of side rail.
+    c.fillStyle='rgba(0,0,0,0.5)';c.fillRect(x+(sd===undefined?2:sd),y+2,w,h);c.fillStyle=g;c.fillRect(x,y,w,h);
+    // Brushed-steel micro-texture — faint horizontal streaks across the face so
+    // the flat rails read as machined metal rather than smooth plastic. Two
+    // interleaved 1px lines (light/dark) at very low alpha, clipped to the body
+    // and layered UNDER the catch-light and outline.
+    c.save();c.beginPath();c.rect(x,y,w,h);c.clip();
+    c.fillStyle='rgba(255,255,255,0.055)';
+    for(let sy=y+1;sy<y+h;sy+=3)c.fillRect(x,sy,w,1);
+    c.fillStyle='rgba(0,0,0,0.05)';
+    for(let sy=y+2;sy<y+h;sy+=3)c.fillRect(x,sy,w,1);
+    c.restore();
+    c.fillStyle='rgba(255,255,255,0.4)';c.fillRect(x,y,w,Math.max(2,h*0.16));
+    c.fillStyle='rgba(255,255,255,0.12)';c.fillRect(x,y+2,w,Math.max(1,h*0.5));
+    c.strokeStyle='#0c0f14';c.strokeRect(x+0.5,y+0.5,w-1,h-1);};
+  // Side rails are mirrors across the playfield centre: left spans [PF.x-12, PF.x+2]
+  // (14px), right spans [PF.r-2, PF.r+12] (14px) — same chrome width, same 2px
+  // overlap onto the plate. The right rail was 1px thinner (13px) and read as
+  // a visibly skinnier wall.
+  // Top rail spans the SAME outer faces as the side rails (PF.x-12 … PF.r+12) so
+  // the three frame rails meet in flush 90° corners — the old top rail was inset
+  // 4px and left a visible step at both top corners. Shadow offsets: left side
+  // rail defaults +2 (falls right, into the plate), right side rail passes -2
+  // (falls left, into the plate), top rail passes 0 so its 2px under-strip and
+  // corner darkening are centred — the three rails read as one recessed frame
+  // with an unbroken inner shadow around the plate.
+  rrail(PF.x-12,PF.y-10,14,PF.h+22);rrail(PF.r-2,PF.y-10,14,PF.h+22,-2);rrail(PF.x-12,PF.y-10,PF.w+24,14,0);
+  // shooter lane divider (right) — 48px tube. The 5px stub sits at PF.r-53 so
+  // it is the exact mirror of the left stub (left [96,101] ↔ right [619,624]);
+  // its shadow falls left into the plate like the left stub's falls right, so
+  // BOTH dividers cast their 2px shadow onto the playfield (the old right stub
+  // at 624 cast its shadow into its own halo — the two walls never matched).
+  rrail(PF.r-53,PF.y+PF.h*0.12,5,PF.h*0.88,-2);
+  // NOTE: the old drawn "guide channel" here — two pale curves sweeping from
+  // the tube top toward the top rail — was purely decorative: the PHYSICAL
+  // launch guide lives in arcStep/clampPF, not in these strokes, and they
+  // read as stray lines floating on the plate. Removed.
+  // left ball return lane divider — mirrors right shooter lane exactly
+  rrail(PL_L,PF.y+PF.h*0.12,5,PF.h*0.88);
+  // shooter lane arrows — point UP
+  c.fillStyle='#9fb4ff';c.globalAlpha=0.5;
+  for(let i=0;i<5;i++){const y=PF.y+PF.h*0.15+i*32;c.beginPath();c.moveTo(PF.r-28,y+18);c.lineTo(PF.r-24,y+8);c.lineTo(PF.r-20,y+18);c.closePath();c.fill();}
+  // left return lane arrows — point DOWN (the ball-escape lane flows down)
+  for(let i=0;i<5;i++){const y=PF.y+PF.h*0.15+i*32;c.beginPath();c.moveTo(PL_L-24,y+18);c.lineTo(PL_L-28,y+8);c.lineTo(PL_L-20,y+8);c.closePath();c.fill();}
+  c.globalAlpha=1;
+  // lane dark channels — MIRRORED both sides so the left return lane and the
+  // right shooter lane read identically (the right tube used to be plain plate
+  // while the left was a dark danger zone, so the two walls never matched).
+  // Each channel also runs 2px under its outer rail, giving both walls the
+  // same dark "lane colour under the chrome line".
+  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.x,PF.y+PF.h*0.10,48,PF.h*0.87);
+  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.r-48,PF.y+PF.h*0.10,48,PF.h*0.87);
+  // top lane divider (separates left and right lanes)
+  // === PASS-THROUGH LANES — chrome corridor walls, centered on playable area ===
+  // Lane floor glow — left lane (cyan)
+  const llcx=(PL_L+PL_CX)/2;
+  const lglowY=PF.y+PF.h*0.235-20;  // match the rollover sensor y after recentre
+  const llg=c.createRadialGradient(llcx,lglowY,5,llcx,lglowY,60);
+  llg.addColorStop(0,'rgba(63,208,255,0.18)');llg.addColorStop(1,'rgba(0,0,0,0)');
+  const LW2=32, LTOP2=LANE_TOP+4, LBOT2=LANE_BOT-44;
+  c.fillStyle=llg;c.fillRect(llcx-LW2,LTOP2,LW2*2,LBOT2-LTOP2);
+  // Lane floor glow — right lane (orange)
+  const rlcx=(PL_CX+PL_R)/2;
+  const rlg=c.createRadialGradient(rlcx,lglowY,5,rlcx,lglowY,60);
+  rlg.addColorStop(0,'rgba(255,122,42,0.18)');rlg.addColorStop(1,'rgba(0,0,0,0)');
+  c.fillStyle=rlg;c.fillRect(rlcx-LW2,LTOP2,LW2*2,LBOT2-LTOP2);
+  // ===== PASS-THROUGH LANES — tight narrow corridors like the original =====
+  const LW=32, LTOP3=LANE_TOP+4, LBOT3=LANE_BOT-44;
+  // Left lane: close walls on both sides
+  chromeBar(llcx-LW,LTOP3,llcx-LW,LBOT3,6,c);
+  chromeBar(llcx+LW,LTOP3,llcx+LW,LBOT3,6,c);
+  // Right lane: close walls on both sides
+  chromeBar(rlcx-LW,LTOP3,rlcx-LW,LBOT3,6,c);
+  chromeBar(rlcx+LW,LTOP3,rlcx+LW,LBOT3,6,c);
+  // Left outlane escape channel visual (dark danger zone in return lane) —
+  // mirrored to the right shooter lane for uniformity
+  c.fillStyle='rgba(0,0,0,0.20)';
+  c.fillRect(PF.x,PF.y+PF.h*0.10,48,PF.h*0.82);
+  c.fillStyle='rgba(0,0,0,0.20)';
+  c.fillRect(PF.r-48,PF.y+PF.h*0.10,48,PF.h*0.82);
+  // Lane divider walls — exact mirrors. Both are drawn ON TOP of the channels so
+  // neither side's chrome is dimmed by its lane colour: 8px chromeBar on each,
+  // identical span (PF.h*0.10 → flipper pivot), so the left ball-return lane and
+  // the right shooter lane read as the same wall. (The 5px rrail dividers below
+  // remain as the tube-boundary stubs past the flipper, mirrored on both sides.)
+  chromeBar(PL_L,PF.y+PF.h*0.10,PL_L,FL.l.y-10,8,c);
+  chromeBar(PF.r-48,PF.y+PF.h*0.10,PF.r-48,FL.l.y-10,8,c);
+  // Lane entrance guide arrows (visual only, no physics)
+  c.fillStyle='#9fb4ff';c.globalAlpha=0.5;
+  c.beginPath();c.moveTo(llcx,LBOT3+4);c.lineTo(llcx-12,LBOT3+20);c.lineTo(llcx+12,LBOT3+20);c.closePath();c.fill();
+  c.beginPath();c.moveTo(rlcx,LBOT3+4);c.lineTo(rlcx-12,LBOT3+20);c.lineTo(rlcx+12,LBOT3+20);c.closePath();c.fill();
+  c.globalAlpha=1;
+  // Dark outlane gap — drain danger indicator
+  c.fillStyle='rgba(220,60,40,0.15)';c.beginPath();c.ellipse(PF.x+24,FL.l.y-6,12,30,-0.2,0,6.28);c.fill();
+  // Lane surface inset
+  c.fillStyle='rgba(0,0,0,0.10)';
+  c.fillRect(llcx-LW+3,LTOP3+3,LW*2-6,LBOT3-LTOP3-3);
+  c.fillRect(rlcx-LW+3,LTOP3+3,LW*2-6,LBOT3-LTOP3-3);
+  // outlane guides — mirrored angled walls touching both side rails
+  const gg2=[[PL_L,WALL_TOP_Y,FL.l.x-2,FL.l.y],[PL_R,WALL_TOP_Y,FL.r.x+2,FL.r.y]];
+  for(const g of gg2)chromeBar(g[0],g[1],g[2],g[3],9,c);
+  // bottom apron
+  const apr=c.createLinearGradient(0,PF.b,0,PF.b+118);apr.addColorStop(0,'#2a2f3a');apr.addColorStop(1,'#141820');
+  c.fillStyle=apr;c.fillRect(PF.x-12,PF.b,PF.w+24,118);
+  c.fillStyle='rgba(255,255,255,0.08)';c.fillRect(PF.x-12,PF.b,PF.w+24,2);
+  c.textAlign='center';c.fillStyle='rgba(200,215,255,0.5)';c.font='700 11px '+F_DISP;
+  c.fillText('A T A R I  ·  V I D E O  P I N B A L L  ·  1 9 8 0  ·  T R I B U T E',W/2,PF.b+30);
+  c.fillStyle='rgba(255,150,80,0.6)';c.font='500 11px '+F_UI;
+  c.fillText('FLIPPERS  ←→   ·   PLUNGER  HOLD ↓ / RELEASE   ·   NUDGE  SHIFT+DIR',W/2,PF.b+52);
+}
+buildPF();
+
+/* ---------- main draw ---------- */
+function draw(){
+  ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);ctx.clearRect(0,0,W,H);
+  if(Game.shakeT>0)ctx.translate((Math.random()-0.5)*6,(Math.random()-0.5)*6);
+  if(state===S.TITLE){drawBackglass();return;}
+  ctx.fillStyle='#0a0f1c';ctx.fillRect(0,0,W,H);
+  const lt=performance.now()/1000;
+  const lamp=ctx.createRadialGradient(PF.x+PF.w*0.5+Math.sin(lt*0.4)*70,PF.y+PF.h*0.30,10,
+    PF.x+PF.w*0.5+Math.sin(lt*0.4)*70,PF.y+PF.h*0.30,PF.w*0.9);
+  lamp.addColorStop(0,'rgba(255,255,255,0.07)');lamp.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=lamp;ctx.fillRect(PF.x,PF.y,PF.w,PF.h);
+  ctx.drawImage(pfLayer,0,0,W,H);
+  if(state===S.MENU||state===S.OPTS||state===S.SCORES||state===S.HELP){drawPanel();return;}
+  if(Game.tally){drawTally();return;}
+  drawDMD();drawTable();drawBall();
+  if(state===S.LAUNCH)drawLaunchHint();
+  if(state===S.PAUSE)drawPause();
+  if(state===S.GAMEOVER||state===S.ENTRY)drawGameOver();
+  if(Game.flashes>0){Game.flashes--;ctx.globalAlpha=0.10;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);ctx.globalAlpha=1;}
+  if(Game.msgT>0){
+    // Detect a new message (msgT jumps back up) to drive the slide-in entrance
+    if(Game._msgPrevT===undefined||Game.msgT>Game._msgPrevT)Game._msgT0=performance.now();
+    Game._msgPrevT=Game.msgT;
+    Game.msgT-=1/60;
+    // 0.25s ease-out slide: starts 8px above, settles gently into place
+    const age=Math.min(1,(performance.now()-Game._msgT0)/250);
+    const slideIn=1-(1-age)*(1-age);
+    const offY=(1-slideIn)*-8;
+    ctx.globalAlpha=Math.min(1,Game.msgT)*slideIn;
+    // Compact top banner — small and unobtrusive, clear of the diamond targets
+    ctx.font='700 19px '+F_DISP;ctx.textAlign='center';
+    const mx=PF.x+PF.w/2,my=PF.y+32+offY;
+    ctx.fillStyle='rgba(0,0,0,0.45)';const tw=ctx.measureText(Game.msg).width;rr(mx-tw/2-12,my-18,tw+24,28,14);ctx.fill();
+    ctx.strokeStyle='rgba(255,210,90,0.25)';ctx.lineWidth=1;rr(mx-tw/2-12,my-18,tw+24,28,14);ctx.stroke();
+    ctx.fillStyle='#ffd23a';ctx.fillText(Game.msg,mx,my+4);ctx.globalAlpha=1;}
+  if(Game.tilt){const g=ctx.createLinearGradient(0,PF.y,0,PF.y+PF.h*0.5);
+    g.addColorStop(0,'rgba(220,40,40,0.5)');g.addColorStop(1,'rgba(220,40,40,0)');
+    ctx.fillStyle=g;ctx.fillRect(PF.x,PF.y,PF.w,PF.h*0.5);}
+    // TILT text comes from the compact top message banner (Game.msg) — no
+    // redundant oversized overlay text on the field
+  drawPfx();
+}
+
+/* ---------- backglass ---------- */
+let titleT=0;
+/* ---------- attract-mode demo — runs the REAL table ---------- */
+// The title screen plays the actual game: the same physics (physStep /
+// flipperStep / specialStep), the same devices, and the same rendering
+// (drawTable / drawBall), so the demo can never drift from the real machine.
+// Attr holds only the AI's decisions and the difficulty knob; the table state
+// lives in Game exactly like a real game.
+const ATTR_H=440; // scaled playfield height on the title screen
+const ATTR_W=Math.round(ATTR_H*PF.w/PF.h); // real table aspect → 300px wide
+let demoMode=false;
+const Attr={
+  x:W/2-ATTR_W/2, y:294, w:ATTR_W, h:ATTR_H,       // screen rect
+  px:PF.x, py:PF.y, pw:PF.w, ph:PF.h,               // logical space = the REAL table
+  phase:'aiming', timer:0, charge:0, nudgeC:0,      // AI launch/drain pacing
+  _lIn:false,_rIn:false,_lMiss:false,_rMiss:false,  // flipper approach tracking
+  // Attract AI difficulty knob — cycle from the title screen with D / →.
+  // diff is the index into diffRates (per-approach catch rate):
+  //   BEGINNER 0.62 — the AI misses ~38% of approaches, so balls drain often
+  //   BALANCED 0.82 — the default: honest short rallies with occasional drains
+  //   EXPERT   0.97 — near-perfect: long rallies, rare drains
+  diff:1,
+  diffRates:[0.62,0.82,0.97],
+  diffNames:['BEGINNER','BALANCED','EXPERT'],
+};
+function startDemo(){
+  demoMode=true;
+  // A fresh real table (players=1, current difficulty), exactly like a game
+  Game.players=1;Game.game=store.game||1;Game.diff=store.diff||1;
+  Game.cur=0;Game.scores=[0,0];Game.balls=[1,1];
+  Game.extra=[false,false];Game.usedExtra=[false,false];
+  Game.bumperAccum=true;Game.bumperVal=1;Game.tilt=false;Game.tiltHeat=0;
+  Game.saveArmed=false;Game.ballSaveTimer=0;Game.autoSaveTimer=10;
+  Game.msg='';Game.msgT=0;Game.flashes=0;Game.shakeT=0;Game.pfx.length=0;
+  makeTable();
+  Game.atariHits=0;Game.bonus=1;Game.leftRoll=0;
+  Game.targets.forEach(t=>{t.down=false;t.t=0;t.in=false;});
+  Game.rolls.forEach(r=>r.in=false);
+  Game.special.lit=false;Game.special.t=0;Game.special.cd=0;Game.special.streak=0;
+  resetBall();
+  Attr.phase='aiming';Attr.timer=0.4+Math.random()*0.5;Attr.charge=0;Attr.nudgeC=0;
+  Attr._lIn=false;Attr._rIn=false;Attr._lMiss=false;Attr._rMiss=false;
+  input.lFlip=input.rFlip=input.plunger=false;
+}
+function drawBackglass(){
+  titleT+=1/60;
+  // Deep backdrop — soft radial glow, no hard-edged motion
+  const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#0b0618');bg.addColorStop(0.45,'#170c31');bg.addColorStop(1,'#05030c');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  const glow=ctx.createRadialGradient(W/2,310,60,W/2,310,520);
+  glow.addColorStop(0,'rgba(255,140,60,0.16)');glow.addColorStop(0.55,'rgba(120,70,220,0.12)');glow.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+  // Marquee lamp row — slow chase, motion-safe, perfectly centred. Two 3-lamp
+  // bands start at the outer edges and sweep toward the centre, meet at the
+  // middle pair, then sweep back out (triangle phase, no snap) — mirrored about
+  // the centre lamp axis so the ANIMATION reads symmetric like the in-game
+  // marquee (the old chase swept one 5-lamp block left→right).
+  const mkk=Math.floor(titleT*3)%13,mk=mkk<7?mkk:12-mkk;
+  for(let i=0;i<18;i++){const m=i<9?i:17-i,on=m>=mk&&m<mk+3;
+    glowCircle(W/2-323+i*38,44,on?6:2.5,on?'#ffd95a':'rgba(120,140,180,0.45)',on?0.85:0.28);}
+  ctx.textAlign='center';
+  // ---- Title: PINBALL 2600 — modern display font, layered glow ----
+  const tg=ctx.createLinearGradient(W/2-270,262,W/2+270,348);
+  tg.addColorStop(0,'#ffffff');tg.addColorStop(0.45,'#ffe9b0');tg.addColorStop(1,'#9fb4ff');
+  ctx.font='900 100px '+F_DISP;
+  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('PINBALL',W/2+4,324+4);
+  ctx.fillStyle=tg;ctx.fillText('PINBALL',W/2,324);
+  const t2=ctx.createLinearGradient(W/2-170,360,W/2+170,430);
+  t2.addColorStop(0,'#ffb04a');t2.addColorStop(0.5,'#ff7d2a');t2.addColorStop(1,'#ff3d3d');
+  ctx.font='900 112px '+F_DISP;
+  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('2600',W/2+4,416+4);
+  ctx.fillStyle=t2;ctx.fillText('2600',W/2,416);
+  // Taglines — clean, single-line hierarchy, clear of the demo card below
+  ctx.font='600 15px '+F_UI;ctx.fillStyle='rgba(200,214,255,0.78)';ctx.fillText('THE 1980 SOLID-STATE CLASSIC · REBUILT MODERN',W/2,442);
+  ctx.font='600 13px '+F_UI;ctx.fillStyle='rgba(143,160,255,0.85)';ctx.fillText('3 BUMPERS · DROP TARGETS · ATARI LANES · SPECIAL · BONUS · EXTRA BALL',W/2,466);
+  if(state===S.TITLE)drawAttract(730);
+  // ---- DEMO AI difficulty — clean pill control, content centred as a group ----
+  const dk=Attr.diff,dn=Attr.diffNames[dk]||'BALANCED';
+  const dcol=['#ff8a6a','#ffd23a','#5aff9a'][dk]||'#ffd23a';
+  const knobY=1012;
+  ctx.fillStyle='rgba(10,14,30,0.6)';rr(W/2-150,knobY-22,300,40,20);ctx.fill();
+  ctx.strokeStyle='rgba(140,170,230,0.22)';ctx.lineWidth=1.5;rr(W/2-150,knobY-22,300,40,20);ctx.stroke();
+  ctx.font='600 14px '+F_UI;
+  const wLabel=ctx.measureText('DEMO AI').width;
+  ctx.font='700 14px '+F_MONO;
+  const wName=ctx.measureText(dn).width;
+  ctx.font='500 11px '+F_UI;
+  const wHint=ctx.measureText('[D / \u2192]').width;
+  const dotsW=32,gap=12;
+  const total=wLabel+gap+dotsW+gap+wName+gap+wHint;
+  let px0=W/2-total/2;
+  ctx.textAlign='left';
+  ctx.font='600 14px '+F_UI;ctx.fillStyle='rgba(160,180,220,0.85)';
+  ctx.fillText('DEMO AI',px0,knobY+4);
+  px0+=wLabel+gap;
+  const dotCx=px0+dotsW/2;
+  for(let i=0;i<3;i++){ctx.globalAlpha=i===dk?1:0.35;
+    ctx.fillStyle=i===dk?dcol:'#8fa0ff';ctx.beginPath();ctx.arc(dotCx-13+i*13,knobY-2,3.2,0,6.28);ctx.fill();}
+  ctx.globalAlpha=1;
+  px0+=dotsW+gap;
+  rr(px0-6,knobY-18,wName+12,26,13);ctx.fillStyle='rgba(255,210,58,0.14)';ctx.fill();
+  ctx.font='700 14px '+F_MONO;ctx.fillStyle=dcol;ctx.fillText(dn,px0,knobY+4);
+  px0+=wName+gap;
+  ctx.font='500 11px '+F_UI;ctx.fillStyle='rgba(120,140,190,0.7)';ctx.fillText('[D / \u2192]',px0,knobY+4);
+  ctx.textAlign='center';
+  // ---- START prompt ----
+  const pulse=0.55+0.45*Math.sin(titleT*4);
+  ctx.globalAlpha=pulse;ctx.font='800 20px '+F_DISP;
+  ctx.fillStyle='#ffd23a';ctx.fillText('PRESS FIRE  /  TAP  TO  PLAY',W/2,1058);ctx.globalAlpha=1;
+  // SAVED GAME AVAILABLE banner
+  if(hasSave()){
+    const pulse2=0.75+0.25*Math.sin(titleT*5);
+    ctx.globalAlpha=pulse2;ctx.fillStyle='rgba(0,0,0,0.55)';rr(W/2-160,1078,320,34,17);ctx.fill();
+    ctx.globalAlpha=1;ctx.font='700 15px '+F_UI;
+    const sg=ctx.createLinearGradient(0,1086,0,1106);sg.addColorStop(0,'#ffe08a');sg.addColorStop(1,'#ff8a3a');
+    ctx.fillStyle=sg;ctx.fillText('💾 SAVED GAME AVAILABLE',W/2,1102);
+  }
+  ctx.font='500 13px '+F_UI;ctx.fillStyle='rgba(180,200,255,0.55)';ctx.fillText('KEYBOARD · TOUCH · GAMEPAD',W/2,1134);
+  ctx.font='500 11px '+F_UI;ctx.fillStyle='rgba(120,140,190,0.45)';ctx.fillText('© 2600 SERIES · SOLID STATE EDITION',W/2,H-22);
+  // Mute indicator on title screen
+  if(!store.snd){
+    ctx.globalAlpha=0.75;ctx.font='600 12px '+F_UI;ctx.textAlign='right';
+    ctx.fillStyle='#ff9a6a';ctx.fillText('🔇 MUTED (M TO TOGGLE)',W-24,H-40);ctx.globalAlpha=1;
+  }
+}
+/* --- attract step: AI plays pinball on the title screen --- */
+function demoStep(dt){
+  // The demo runs the REAL game logic below (plungerStep / specialStep /
+  // physStep) — Attr only decides when to charge the plunger, when to flip,
+  // and which approaches to "miss" for the difficulty knob.
+  // AI plunger — hold until charged, then release exactly like a player
+  if(Attr.phase==='aiming'){
+    Attr.timer-=dt;
+    input.plunger=Attr.timer<=0;
+    if(Attr.timer<=0){
+      // Real machines need a strong pull to clear the lane — a soft plunge
+      // rolls back down. The AI plays the skill-shot design: sometimes it
+      // pulls the EXACT power band to collect the skill shot, sometimes it
+      // pulls hard (a deliberate overshoot that forfeits the shot), and
+      // sometimes it soft-plunges so the demo shows the authentic roll-back
+      // behaviour too.
+      if(!Attr.charge){const r=Math.random();
+        Attr.charge=r<0.30?(PHYS.skillShot.min+PHYS.skillShot.max)/2+(Math.random()-0.5)*0.04
+          :r<0.75?0.72+Math.random()*0.20
+          :0.50+Math.random()*0.16;}
+      if(Game.plungerCharge>=Attr.charge){
+        input.plunger=false;Attr.charge=0;
+        launchBall();
+        Attr.phase='tubing';
+      }
+    }
+  }else if(Attr.phase==='tubing'){
+    input.plunger=false;
+    if(!Game.ball.live){ // soft plunge rolled back down the lane — re-aim
+      Attr.phase='aiming';Attr.timer=0.3+Math.random()*0.4;
+    }else if(!Game.launching){ // cleared the lane — ball is in play
+      Attr.phase='play';
+    }
+  }else if(Attr.phase==='drained'){
+    input.plunger=false;
+    Attr.timer-=dt;
+    if(Attr.timer<=0){Attr.phase='aiming';Attr.timer=0.4+Math.random()*0.5;}
+  }else input.plunger=false;
+  // Real plunger + special cycling (identical to a live game)
+  plungerStep(dt);
+  specialStep(dt);
+  // Real physics when the ball is live
+  const b=Game.ball;
+  if(b&&b.live){
+    // AI flippers — flip on an approach unless this one is a "miss" (difficulty).
+    // No flips while the ball is still climbing/rolling back in the shooter lane.
+    if(!Game.launching){
+      const flipperY=FL.l.y,lZone=FL.l.x-20,rZone=FL.r.x+20;
+      const catchRate=Attr.diffRates[Attr.diff]||0.82;
+      const inL=b.y>flipperY-30&&b.vy>50&&b.x<rZone;
+      const inR=b.y>flipperY-30&&b.vy>50&&b.x>lZone;
+      if(inL&&!Attr._lIn){Attr._lIn=true;Attr._lMiss=Math.random()<catchRate;}
+      if(!inL)Attr._lIn=false;
+      if(inR&&!Attr._rIn){Attr._rIn=true;Attr._rMiss=Math.random()<catchRate;}
+      if(!inR)Attr._rIn=false;
+      input.lFlip=inL&&!Attr._lMiss;
+      input.rFlip=inR&&!Attr._rMiss;
+      // Occasional random nudges
+      if(Math.random()<0.006&&Attr.nudgeC<0.1){Attr.nudgeC=1;b.vx+=(Math.random()-0.5)*200;b.vy+=(Math.random()-0.5)*120;}
+      if(Attr.nudgeC>0)Attr.nudgeC-=dt*4;
+    }else{input.lFlip=false;input.rFlip=false;}
+    let n=Math.ceil(dt/SUB_DT);const sub=dt/n;
+    for(let i=0;i<n;i++){if(Game.ball&&Game.ball.live)physStep(sub);else break;}
+    // Tube catch — the real physStep reset the ball onto the plunger
+    if(!Game.ball.live&&Attr.phase==='play'){Attr.phase='aiming';Attr.timer=0.4+Math.random()*0.5;Attr.charge=0;}
+  }
+  // The demo never shakes the backglass or flashes the screen
+  Game.shakeT=0;Game.flashes=0;
+}
+/* --- draw the attract playfield --- */
+function drawAttract(ybase){
+  const A=Attr;
+  // Card with a header strip; the mini playfield sits just below it
+  const pad=30,ch=A.h+pad*2,cx=W/2,cy=ybase,cw=A.w+28;
+  A.x=W/2-A.w/2; A.y=cy-ch/2+pad;
+  // Chrome frame around the backglass playfield window — cabinet trim matching
+  // the rails; the dark card sits inset inside it.
+  chromeFrame(cx-cw/2-6,cy-ch/2-6,cw+12,ch+12,26);
+  rr(cx-cw/2,cy-ch/2,cw,ch,20);
+  ctx.fillStyle='rgba(6,10,24,0.85)';ctx.fill();
+  // Header strip — real score left, demo state right
+  ctx.textAlign='left';ctx.font='700 12px '+F_MONO;ctx.fillStyle='rgba(255,220,120,0.9)';
+  ctx.fillText('SCORE '+String(Game.scores[0]||0).padStart(6,'0'),cx-cw/2+16,cy-ch/2+24);
+  ctx.textAlign='right';ctx.font='600 12px '+F_UI;ctx.fillStyle='rgba(160,190,220,0.7)';
+  const label=A.phase==='aiming'||A.phase==='tubing'?'AIMING':A.phase==='play'?'IN PLAY':'DRAINED';
+  ctx.fillText('COMPUTER DEMO · '+label,cx+cw/2-16,cy-ch/2+24);
+  // Clip to card
+  ctx.save();
+  ctx.beginPath();rr(cx-cw/2,cy-ch/2,cw,ch,20);ctx.clip();
+  const sx=A.w/A.pw, sy=A.h/A.ph;
+  // ---- REAL table plate: the actual static playfield art (wood, chrome rails,
+  // lane tubes + arrows, pass-through corridors, outlane guides) drawn straight
+  // from the pre-rendered pfLayer — a true miniature of the real table -------
+  const pd=pfLayer.width/W;
+  ctx.drawImage(pfLayer,PF.x*pd,PF.y*pd,PF.w*pd,PF.h*pd,A.x,A.y,A.w,A.h);
+  // Soft vignette so the devices pop off the plate
+  const vg=ctx.createRadialGradient(A.x+A.w/2,A.y+A.h/2,A.h*0.22,A.x+A.w/2,A.y+A.h/2,A.w*0.72);
+  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,0.28)');
+  ctx.fillStyle=vg;ctx.fillRect(A.x,A.y,A.w,A.h);
+  // ---- the REAL dynamic table — drawTable/drawBall/drawPfx run unchanged,
+  // scaled into the card, so the demo renders exactly like the real playfield
+  ctx.translate(A.x-PF.x*sx,A.y-PF.y*sy);ctx.scale(sx,sy);
+  drawTable();
+  drawBall();
+  drawPfx();
+  ctx.restore();
+  // Plunger power gauge — anchored to the mini shooter lane so the gold
+  // skill-shot band is discoverable before the player even starts a game. Shown
+  // only while the demo is charging the plunger, exactly like the in-game
+  // LAUNCH gauge.
+  if(Attr.phase==='aiming'&&Game.plungerCharge>0){
+    drawPlungerGauge(A.x+A.w-40,A.y+A.h-35,Game.plungerCharge);
+  }
+}
+
+/* ---------- DMD ---------- */
+function drawDMD(){
+  const t=performance.now()/1000;
+  // Chrome frame around the marquee glass — cabinet trim matching the rails.
+  chromeFrame(6,0,W-12,48,10);
+  const mq=ctx.createLinearGradient(10,4,W-10,44);mq.addColorStop(0,'#2a1030');mq.addColorStop(0.5,'#4a1450');mq.addColorStop(1,'#2a1030');
+  ctx.fillStyle=mq;ctx.fillRect(10,4,W-20,42);ctx.fillStyle='rgba(255,255,255,0.06)';ctx.fillRect(10,4,W-20,42);
+  ctx.textAlign='center';ctx.font='800 24px '+F_DISP;
+  const lg=ctx.createLinearGradient(0,4,0,46);lg.addColorStop(0,'#ffca6a');lg.addColorStop(1,'#ff7d2a');
+  ctx.fillStyle=lg;ctx.fillText('PINBALL 2600',W/2,34);
+  // Lamp row — 30 lamps at 23px pitch centered on the marquee glass. (The old
+  // hard-coded 18px start spanned 18–685, 8.5px LEFT of the 360px centre — the
+  // mirror of the leftmost lamp sat 17px past the rightmost one. Now centered
+  // so the cabinet trim reads symmetric like the rails.)
+  const lampW=29*23,lampX0=(W-lampW)/2;
+  // Bidirectional chase — two 5-lamp bands start at the outer edges and sweep
+  // toward the centre, meet at the middle pair, then sweep back out. A triangle
+  // phase (0..10..0) keeps it continuous — no hard snap — and every frame is
+  // mirrored about the centre lamp axis, so the ANIMATION reads symmetric too
+  // (the old chase swept one 10-lamp block left→right).
+  const kk=Math.floor(t*8)%21,k=kk<11?kk:20-kk;
+  for(let i=0;i<30;i++){const m=i<15?i:29-i,on=m>=k&&m<k+5;
+    glowCircle(lampX0+i*23,8,on?4:2,on?'#ffd95a':'rgba(120,60,120,0.6)',on?0.8:0.3);}
+  const dx=PF.x,dy=50,dw=PF.w,dh=104;
+  // Chrome bezel around the score screen — the rail finish on the DMD trim.
+  chromeFrame(dx-5,48,dw+10,dh+10,12);
+  // Thin chrome divider strip — sits exactly on the seam (y=48) where the
+  // marquee frame and the DMD bezel meet, spanning the full cabinet width like
+  // the marquee so the two trim pieces read as ONE continuous cabinet rail.
+  // (Both frames carried their own outline at the joint; the strip masks the
+  // seam with a single steel line — same gradient, catch-light and outline as
+  // every rail — plus a tight shadow so it reads as a raised divider.)
+  {
+    const sdx=6,sdy=46,sdw=W-12,sdh=4;
+    ctx.fillStyle='rgba(0,0,0,0.4)';rr(sdx+2,sdy+2,sdw,sdh,2);ctx.fill();
+    const sg=ctx.createLinearGradient(0,sdy,0,sdy+sdh);
+    sg.addColorStop(0,'#aeb8c2');sg.addColorStop(0.5,'#8e959d');sg.addColorStop(1,'#5b6570');
+    ctx.fillStyle=sg;rr(sdx,sdy,sdw,sdh,2);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.35)';ctx.fillRect(sdx,sdy,sdw,1);
+    ctx.strokeStyle='#0c0f14';ctx.lineWidth=1;rr(sdx+0.5,sdy+0.5,sdw-1,sdh-1,2);ctx.stroke();
+  }
+  const dg=ctx.createLinearGradient(0,dy,0,dy+dh);dg.addColorStop(0,'#0a0d12');dg.addColorStop(1,'#05070a');
+  ctx.fillStyle='rgba(0,0,0,0.6)';rr(dx+2,dy+2,dw,dh,8);ctx.fill();
+  ctx.fillStyle=dg;rr(dx,dy,dw,dh,8);ctx.fill();
+  drawSeven(String(Game.scores[Game.cur]).padStart(6,'0'),dx+dw/2,dy+52,'#ff7d1f');
+  // 12px baseline grid — every label baseline snaps to dy+12k, readouts evenly spaced
+  ctx.textAlign='left';ctx.font='700 13px '+F_MONO;ctx.fillStyle='#9fb4ff';
+  ctx.fillText('P'+(Game.cur+1)+'  BALL '+Game.balls[Game.cur]+'/3',dx+14,dy+24);
+  ctx.fillText('HI  '+String(store.scores[0]).padStart(6,'0'),dx+dw-6-ctx.measureText('HI  '+String(store.scores[0]).padStart(6,'0')).width,dy+24);
+  // Physics mode — subtle indicator below player/ball line
+  ctx.font='700 10px '+F_MONO;ctx.textAlign='left';
+  ctx.fillStyle=PHYS.label==='SUPERBALL'?'#ff5a8a':PHYS.label==='ARCADE SIM'?'#5ac8ff':'#ffb040';
+  ctx.fillText(PHYS.label,dx+14,dy+36);
+  ctx.font='700 13px '+F_MONO;ctx.fillStyle='#7dffb0';ctx.textAlign='right';
+  ctx.fillText('BONUS ×'+Game.bonus,dx+dw-14,dy+72);
+  ctx.fillStyle='#7dc8ff';ctx.fillText('DRAIN ×'+Game.leftRoll+' = '+(Game.leftRoll*1000),dx+dw-14,dy+84);
+  ctx.fillStyle='#ffd9a0';  ctx.fillText('BUMPER ×'+Game.bumperVal,dx+dw-14,dy+96);
+  // Mute indicator — show a subtle icon when sound is off
+  if(!store.snd){
+    ctx.globalAlpha=0.8;ctx.font='600 12px '+F_UI;ctx.textAlign='right';
+    ctx.fillStyle='#ff9a6a';ctx.fillText('🔇 MUTED',dx+dw-14,dy+36);ctx.globalAlpha=1;
+  }
+  // Countdown pills — the SPECIAL lit-window and BALL SAVE grace-window timers
+  // share one container shape: matched gold pills (dark-gold fill, gold border,
+  // and the shrinking gold bar inside above the label), centered under the
+  // score as a pair. Each pill centers on its own when the other isn't running.
+  const pills=[];
+  // Both pills share ONE pulse (the old SPECIAL sin·6t / BALL SAVE sin·12t ran
+  // at different frequencies, ranges AND phases — at any instant one pill was
+  // near-full bright while the other sat nearly dark, so the pair never read
+  // mirrored). Shared pulse = the pair breathes in lockstep.
+  const pillPulse=0.7+0.3*Math.sin(t*8);
+  if(Game.special.lit)pills.push({txt:'SPECIAL '+Game.special.t.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.special.t/10.0))});
+  if(Game.ballSaveTimer>0)pills.push({txt:'⚡ BALL SAVE  '+Game.ballSaveTimer.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.ballSaveTimer/5.0))});
+  if(pills.length){
+    ctx.font='700 14px '+F_MONO;ctx.textAlign='center';
+    const py=dy+76,gap=10;
+    const pw=pills.map(p=>ctx.measureText(p.txt).width+24);
+    let px=dx+dw/2-(pw.reduce((a,b)=>a+b,0)+gap*(pills.length-1))/2;
+    for(let i=0;i<pills.length;i++){
+      const p=pills[i],cw=pw[i];
+      ctx.fillStyle='rgba(24,18,8,0.6)';rr(px,py-20,cw,32,16);ctx.fill();
+      ctx.strokeStyle='rgba(255,217,90,0.4)';ctx.lineWidth=1;rr(px,py-20,cw,32,16);ctx.stroke();
+      // Shrinking time bar — remaining window as a gold progress bar inside the
+      // pill above the label. The pair's bars recede OUTWARD — left pill hugs
+      // its left edge, right pill its right edge — so the countdown reads
+      // mirrored (both bars used to be left-anchored, so the right pill's bar
+      // shrank toward the centre while the left's shrank away). A lone centred
+      // pill anchors left like a normal progress bar.
+      const bw=cw-12,by=py-18,bh=4;
+      ctx.globalAlpha=0.5;ctx.fillStyle='rgba(255,255,255,0.12)';rr(px+6,by,bw,bh,2);ctx.fill();
+      const barX=i===1?px+cw-6-bw*p.frac:px+6;
+      ctx.globalAlpha=0.85*p.pulse;ctx.fillStyle='#ffd95a';rr(barX,by,bw*p.frac,bh,2);ctx.fill();
+      ctx.globalAlpha=p.pulse;ctx.fillStyle='#ffd95a';ctx.fillText(p.txt,px+cw/2,py);
+      ctx.globalAlpha=1;
+      px+=cw+gap;
+    }
+  }
+}
+function drawSeven(str,x,y,color){ctx.save();ctx.textAlign='center';ctx.font='800 44px '+F_DISP;
+  ctx.fillStyle='rgba(0,0,0,0.7)';ctx.fillText(str,x+2,y+3);
+  const g=ctx.createLinearGradient(0,y-40,0,y+4);g.addColorStop(0,'#fff2d0');g.addColorStop(0.5,color);g.addColorStop(1,'#b34400');
+  ctx.fillStyle=g;ctx.fillText(str,x,y);ctx.restore();}
+
+/* ---------- table objects ---------- */
+function drawTable(){
+  // Not built yet — the first frame's tick is skipped (dt=0), so startDemo()
+  // hasn't populated Game.rolls when the title draws. Frame 2 renders fully.
+  if(Game.rolls.length===0)return;
+  const t=performance.now()/1000;
+
+  // ===== LEFT ROLLOVER LANE (upper-left, numbered) =====
+  const lr=Game.rolls[0],lv=Game.leftRoll;
+  const llcx=lr.x,llcy=lr.y;
+  // Lane surface glow
+  if(lv>0)glowCircle(llcx,llcy,34,'#3fd0ff',0.30);
+  // Rollover button housing
+  ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.ellipse(llcx+2,llcy+3,20,18,0,0,6.28);ctx.fill();
+  const lrg=ctx.createRadialGradient(llcx-4,llcy-4,1,llcx,llcy,18);
+  if(lv>0){lrg.addColorStop(0,'#eafcff');lrg.addColorStop(0.6,'#3fd0ff');lrg.addColorStop(1,'#0a7ab0');}
+  else{lrg.addColorStop(0,'#3a4668');lrg.addColorStop(1,'#141a30');}
+  ctx.fillStyle=lrg;ctx.beginPath();ctx.arc(llcx,llcy,17,0,6.28);ctx.fill();
+  ctx.strokeStyle=lv>0?'rgba(200,250,255,0.8)':'rgba(120,150,210,0.4)';ctx.lineWidth=2;ctx.stroke();
+  // Number display
+  ctx.fillStyle=lv>0?'#003a55':'#8aa0cf';ctx.font='bold 22px "Courier New",monospace';ctx.textAlign='center';
+  ctx.fillText(String(lv||1),llcx,llcy+8);
+
+  // LEFT LANE — both arrows point TOWARD the rollover circle, matching the
+  // right pass-through lane (arrows converge on the lane's circle).
+  ctx.fillStyle=lv>0?'rgba(63,208,255,0.6)':'rgba(150,180,220,0.3)';
+  ctx.beginPath();ctx.moveTo(llcx,llcy+24);ctx.lineTo(llcx-8,llcy+38);ctx.lineTo(llcx+8,llcy+38);ctx.closePath();ctx.fill();
+  // Above arrow also points down toward the circle (tip below the base)
+  ctx.beginPath();ctx.moveTo(llcx,llcy-24);ctx.lineTo(llcx-8,llcy-38);ctx.lineTo(llcx+8,llcy-38);ctx.closePath();ctx.fill();
+
+  // ===== ATARI ROLLOVER LANE (upper-right, ATARI logo) =====
+  const ar=Game.rolls[1],atariLit=Math.min(Game.atariHits,4);
+  const alcx=ar.x,alcy=ar.y;
+  // Lane surface glow
+  if(atariLit>0)glowCircle(alcx,alcy,34,'#ff7a2a',0.25+atariLit*0.05);
+  // Rollover button housing
+  ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.ellipse(alcx+2,alcy+3,20,18,0,0,6.28);ctx.fill();
+  const arg=ctx.createRadialGradient(alcx-4,alcy-4,1,alcx,alcy,18);
+  if(atariLit>0){arg.addColorStop(0,'#fff2d0');arg.addColorStop(0.6,'#ff7d2a');arg.addColorStop(1,'#a34400');}
+  else{arg.addColorStop(0,'#3a4668');arg.addColorStop(1,'#141a30');}
+  ctx.fillStyle=arg;ctx.beginPath();ctx.arc(alcx,alcy,17,0,6.28);ctx.fill();
+  ctx.strokeStyle=atariLit>0?'rgba(255,240,190,0.8)':'rgba(120,150,210,0.4)';ctx.lineWidth=2;ctx.stroke();
+
+  // Arrow pointing down from lane (below the circle)
+  ctx.fillStyle=atariLit>0?'rgba(255,122,42,0.6)':'rgba(150,180,220,0.3)';
+  ctx.beginPath();ctx.moveTo(alcx,alcy+24);ctx.lineTo(alcx-8,alcy+38);ctx.lineTo(alcx+8,alcy+38);ctx.closePath();ctx.fill();
+  // Arrow pointing down toward the circle (above) — mirrors the lower arrow
+  ctx.beginPath();ctx.moveTo(alcx,alcy-24);ctx.lineTo(alcx-8,alcy-38);ctx.lineTo(alcx+8,alcy-38);ctx.closePath();ctx.fill();
+  // ATARI logo on lane button — always visible
+  drawAtariLogo(alcx,alcy,22,'#E31B23');
+
+  // ===== SKILL SHOT TARGET =====
+  // Light states mirror a real machine's skill-shot insert (researched — see
+  // SKILL_SHOT_TIME):
+  //   AIMING  — lit warm gold while the ball is parked on the plunger or in
+  //             the launch flight: the shot is on offer, take your time (real
+  //             machines never time out the aim).
+  //   ARMED   — full pulsing bullseye while the chance is live: the ball is
+  //             away from an in-band pull and the collect window is open —
+  //             until collect, first touch, or the SKILL_SHOT_TIME clock.
+  //   DARK    — dim disc once the ball is in general play (chance over) or
+  //             the shot was collected (one skill shot per ball).
+  const sk=Game.skillShot;
+  if(sk&&sk.r>0){
+    const active=Game.skillShotReady, up=!Game.skillShotDone;
+    const aiming=up&&(Game.launching||!Game.ball.live); // on the plunger / in flight
+    if(active){
+      // Glowing bullseye — pulses to attract the eye
+      glowCircle(sk.x,sk.y,sk.r*2.2,'#ffd95a',0.40+0.20*Math.sin(t*8));
+      const sgg=ctx.createRadialGradient(sk.x-3,sk.y-3,2,sk.x,sk.y,sk.r);
+      sgg.addColorStop(0,'#ffffff');sgg.addColorStop(0.4,'#ffe566');sgg.addColorStop(1,'#c88800');
+      ctx.fillStyle=sgg;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,0.8)';ctx.lineWidth=2.5;ctx.stroke();
+      // Inner ring
+      ctx.strokeStyle='#ffd95a';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r*0.5,0,6.28);ctx.stroke();
+      ctx.fillStyle='#4a2000';ctx.font='bold 9px "Courier New",monospace';ctx.textAlign='center';
+      ctx.fillText('SKILL',sk.x,sk.y-3);ctx.fillText('SHOT',sk.x,sk.y+9);
+    } else if(aiming){
+      // LIT steady state — the insert is ON: warm amber disc with a slow
+      // breathing glow, readable while aiming from the plunger.
+      glowCircle(sk.x,sk.y,sk.r*1.9,'#ffd95a',0.18+0.08*Math.sin(t*3));
+      const sug=ctx.createRadialGradient(sk.x-3,sk.y-3,2,sk.x,sk.y,sk.r);
+      sug.addColorStop(0,'#ffe9a8');sug.addColorStop(0.5,'#d9a832');sug.addColorStop(1,'#7a5410');
+      ctx.fillStyle=sug;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.fill();
+      ctx.strokeStyle='rgba(255,215,110,0.75)';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.strokeStyle='rgba(120,80,10,0.6)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r*0.5,0,6.28);ctx.stroke();
+      ctx.fillStyle='#3a2600';ctx.font='bold 9px "Courier New",monospace';ctx.textAlign='center';
+      ctx.fillText('SKILL',sk.x,sk.y-3);ctx.fillText('SHOT',sk.x,sk.y+9);
+    } else {
+      ctx.fillStyle='rgba(100,90,60,0.55)';ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.fill();
+      ctx.strokeStyle='rgba(180,150,80,0.4)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.stroke();
+    }
+  }
+
+  // ===== top diamond lights — pass-over switches (original game) =====
+  // Lit diamonds glow; when the ball rolls over one it switches off (dark)
+  // and re-lights after a moment. No movement, no deflection.
+  ctx.fillStyle='rgba(0,0,0,0.3)';
+  rr(Game.targets[0].x-22,Game.targets[0].y-22,(Game.targets[2].x-Game.targets[0].x)+44,38,12);ctx.fill();
+  for(const d of Game.targets){
+    ctx.save();ctx.translate(d.x,d.y);ctx.rotate(Math.PI/4);
+    const lit=!d.down;
+    if(lit)glowCircle(0,0,26,'#ff9a2a',0.30+0.10*Math.sin(t*5));
+    const dg3=ctx.createLinearGradient(-11,-11,11,11);
+    if(lit){dg3.addColorStop(0,'#fff0c0');dg3.addColorStop(0.5,'#ff8a2a');dg3.addColorStop(1,'#c25400');}
+    else{dg3.addColorStop(0,'#333c58');dg3.addColorStop(1,'#161c30');}
+    ctx.fillStyle=dg3;ctx.fillRect(-11,-11,22,22);
+    ctx.strokeStyle=lit?'rgba(255,240,210,0.9)':'rgba(140,160,200,0.35)';ctx.lineWidth=2;ctx.strokeRect(-11,-11,22,22);
+    ctx.restore();
+  }
+
+  // ===== special target — main centre shot =====
+  const sp=Game.special;
+  if(sp.lit){
+    glowCircle(sp.x,sp.y,34,'#ffd95a',0.45+0.15*Math.sin(t*10));
+    // Pulsing halo ring — the on-table lit indicator, readable at a glance
+    // without any text. A tight halo hugging the diamond: crisp ring + soft
+    // glow, sized to clear the pulsing arrows and the SPECIAL label below.
+    // The pulse quickens as the countdown nears zero for end-of-window urgency.
+    const u=Math.max(0,1-sp.t/3);          // 0 until 3s left, then 0 → 1
+    const pr=22+(1.5+2*u)*Math.sin(t*(5+9*u));
+    ctx.strokeStyle='rgba(255,225,120,0.85)';ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(sp.x,sp.y,pr,0,6.28);ctx.stroke();
+    ctx.strokeStyle='rgba(255,210,90,0.30)';ctx.lineWidth=5;
+    ctx.beginPath();ctx.arc(sp.x,sp.y,pr,0,6.28);ctx.stroke();
+    ctx.save();ctx.translate(sp.x,sp.y);ctx.rotate(Math.PI/4);
+    const sg=ctx.createLinearGradient(-11,-11,11,11);sg.addColorStop(0,'#fff5c0');sg.addColorStop(1,'#ffb020');
+    ctx.fillStyle=sg;ctx.fillRect(-11,-11,22,22);ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.strokeRect(-11,-11,22,22);
+    ctx.restore();ctx.fillStyle='#6a2a00';ctx.font='bold 11px "Courier New",monospace';ctx.textAlign='center';
+    ctx.fillText('SPECIAL',sp.x,sp.y+14);
+    if((sp.streak||0)>0){ // show next streak value
+      ctx.fillStyle='#ffd95a';ctx.font='bold 10px "Courier New",monospace';
+      ctx.fillText(sp.streak>=2?'5000':sp.streak===1?'2500':'1000',sp.x,sp.y-42);
+    }
+  }else{
+    ctx.save();ctx.translate(sp.x,sp.y);ctx.rotate(Math.PI/4);
+    const ug=ctx.createLinearGradient(-9,-9,9,9);ug.addColorStop(0,'#39466b');ug.addColorStop(1,'#1a2238');
+    ctx.fillStyle=ug;ctx.fillRect(-9,-9,18,18);
+    ctx.strokeStyle='rgba(150,180,235,0.55)';ctx.lineWidth=1.5;ctx.strokeRect(-9,-9,18,18);ctx.restore();
+  }
+
+  // ===== spinners =====
+  for(const s of Game.spinners){
+    const spinning=s.spin>0;
+    ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.ellipse(s.x+2,s.y+3,20,24,0,0,6.28);ctx.fill();
+    if(spinning){glowCircle(s.x,s.y,22,'rgba(255,255,255,0.4)',0.35);}
+    const hg=ctx.createRadialGradient(s.x-4,s.y-4,2,s.x,s.y,19);
+    hg.addColorStop(0,spinning?'#c8d8f0':'#6a7a92');hg.addColorStop(0.5,spinning?'#8098b8':'#3a4658');hg.addColorStop(1,'#1c2430');
+    ctx.fillStyle=hg;ctx.beginPath();ctx.arc(s.x,s.y,18,0,6.28);ctx.fill();
+    ctx.strokeStyle=spinning?'rgba(240,255,255,0.7)':'rgba(160,190,255,0.35)';ctx.lineWidth=1.5;ctx.stroke();
+    ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.ang);
+    const tg=ctx.createLinearGradient(-4,-20,4,20);
+    tg.addColorStop(0,spinning?'#ffffff':'#c6d2e2');tg.addColorStop(0.4,spinning?'#b8c8e0':'#7a8aa2');tg.addColorStop(1,spinning?'#6a7a92':'#3a4658');
+    ctx.fillStyle=tg;ctx.fillRect(-5,-20,10,40);
+    ctx.strokeStyle='#ffffff';ctx.lineWidth=spinning?1.5:0.8;
+    ctx.strokeRect(-5,-20,10,40);
+    ctx.restore();
+    if(spinning){ctx.fillStyle='rgba(255,255,255,0.15)';ctx.beginPath();ctx.arc(s.x,s.y,18,0,6.28);ctx.fill();}
+  }
+
+  // NOTE: the decorative chrome bar between the lower bumpers is intentionally
+  // gone — it hard-stopped every centre shot (see guideGeom). The SPECIAL
+  // target below it is now freely reachable, matching the original game.
+
+  // ===== pop bumpers =====
+  for(const bp of Game.bumpers){
+    if(bp.hit>0)bp.hit--;const hit=bp.hit>0,col=BPC[bp.col];
+    // Idle breathing phase — min(x, W-x) is symmetric about the centre axis, so
+    // the mirrored lower pair swell in LOCKSTEP (the old raw-bp.x phase put
+    // them ~120° apart: one bumped while the other shrank). The top-centre
+    // bumper sits on the axis, so its own phase keeps the field symmetric too.
+    const flare=hit?1.15:(1+0.05*Math.sin(t*3+Math.min(bp.x,W-bp.x)));
+    ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.ellipse(bp.x+5,bp.y+8,bp.r*flare,bp.r*0.82*flare,0,0,6.28);ctx.fill();
+    if(hit)glowCircle(bp.x,bp.y,bp.r*2.2,'rgb('+col[0]+','+col[1]+','+col[2]+')',0.30);
+    const pg2=ctx.createLinearGradient(bp.x-bp.r*flare,0,bp.x+bp.r*flare,0);
+    pg2.addColorStop(0,'rgb('+Math.round(col[0]*0.6)+','+Math.round(col[1]*0.6)+','+Math.round(col[2]*0.6)+')');
+    pg2.addColorStop(0.45,'rgb('+col[0]+','+col[1]+','+col[2]+')');
+    pg2.addColorStop(1,'rgb('+Math.round(col[0]*0.45)+','+Math.round(col[1]*0.45)+','+Math.round(col[2]*0.45)+')');
+    ctx.fillStyle=pg2;ctx.beginPath();ctx.arc(bp.x,bp.y,bp.r*flare,0,6.28);ctx.fill();
+    // Skirt ring — the rubber ring around the bumper base
+    ctx.strokeStyle=hit?'#ffffff':'rgba(255,255,255,0.55)';ctx.globalAlpha=hit?0.9:0.5;
+    ctx.lineWidth=hit?4:3;
+    ctx.beginPath();ctx.arc(bp.x,bp.y,bp.r*flare-6,0,6.28);ctx.stroke();ctx.globalAlpha=1;
+    // Clean flat center with subtle highlight
+    ctx.fillStyle='rgba(0,0,0,0.25)';ctx.beginPath();ctx.arc(bp.x+1,bp.y+2,bp.r*0.28,0,6.28);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.12)';ctx.beginPath();ctx.arc(bp.x-2,bp.y-3,bp.r*0.22,0,6.28);ctx.fill();
+    // Value number in the center — clean, bold
+    ctx.fillStyle=hit?'#ffffff':'rgba(255,255,255,0.85)';
+    ctx.font='bold 16px "Courier New",monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(String(bp.v),bp.x,bp.y+1);
+    ctx.textBaseline='alphabetic';
+  }
+
+  // ===== ATARI FUJI LOGOS — 3 in a row below bottom bumpers (hit count indicators) =====
+  const fujiY=PF.y+PF.h*0.68, fujiCX=PL_CX;
+  const fujiAtari=Math.min(Game.atariHits,4);
+  for(let fi=0;fi<3;fi++){
+    const fx=fujiCX+(fi-1)*42;
+    const lit=fi<fujiAtari;
+    ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.arc(fx+1,fujiY+1,13,0,6.28);ctx.fill();
+    if(lit)glowCircle(fx,fujiY,18,'#ff7d2a',0.5);
+    const fg2=ctx.createRadialGradient(fx-3,fujiY-3,1,fx,fujiY,12);
+    fg2.addColorStop(0,lit?'#fff5d0':'#4a5688');fg2.addColorStop(0.6,lit?'#ff7d2a':'#2a3050');fg2.addColorStop(1,lit?'#a34400':'#1a2030');
+    ctx.fillStyle=fg2;ctx.beginPath();ctx.arc(fx,fujiY,11,0,6.28);ctx.fill();
+    ctx.strokeStyle=lit?'rgba(255,240,180,0.9)':'rgba(80,100,150,0.3)';ctx.lineWidth=1.5;ctx.stroke();
+    if(fi===1&&Game.extra[Game.cur]){
+      // Middle turns to RED X = extra ball earned (original game indicator)
+      ctx.fillStyle='#ff2a2a';ctx.font='bold 18px "Courier New",monospace';ctx.textAlign='center';
+      ctx.fillText('X',fx,fujiY+7);
+      glowCircle(fx,fujiY,20,'#ff3030',0.6);
+      ctx.strokeStyle='rgba(255,60,60,0.9)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(fx,fujiY,13,0,6.28);ctx.stroke();
+    } else {
+      // ATARI logo — match the classic mountain shape
+      drawAtariLogo(fx,fujiY,18,lit?'#E31B23':'rgba(200,180,180,0.45)');
+    }
+  }
+
+  // ===== flippers =====
+  for(const f of [FL.l,FL.r]){
+    const tx=f.x+Math.cos(f.ang)*f.len,ty=f.y+Math.sin(f.ang)*f.len;
+    const nx=Math.cos(f.ang),ny=Math.sin(f.ang);
+    ctx.lineCap='round';
+    ctx.strokeStyle='rgba(0,0,0,0.5)';ctx.lineWidth=24;ctx.beginPath();ctx.moveTo(f.x+5,f.y+6);ctx.lineTo(tx+5,ty+6);ctx.stroke();
+    ctx.strokeStyle='#14181d';ctx.lineWidth=20;ctx.beginPath();ctx.moveTo(f.x,f.y);ctx.lineTo(tx,ty);ctx.stroke();
+    const fg2=ctx.createLinearGradient(f.x-ny*10,f.y+nx*10,f.x+ny*10,f.y-nx*10);
+    fg2.addColorStop(0,'#5b6570');fg2.addColorStop(0.5,'#aeb8c2');fg2.addColorStop(1,'#2a3036');
+    ctx.strokeStyle=fg2;ctx.lineWidth=14;ctx.beginPath();ctx.moveTo(f.x,f.y);ctx.lineTo(tx,ty);ctx.stroke();
+    const tl=0.70,rx=f.x+(tx-f.x)*tl,ry=f.y+(ty-f.y)*tl;
+    ctx.globalAlpha=0.12;ctx.lineWidth=26;ctx.beginPath();ctx.moveTo(rx-3,ry-3);ctx.lineTo(tx,ty);ctx.stroke();ctx.globalAlpha=1;
+    const rg4=ctx.createLinearGradient(rx-ny*10,ry+nx*10,rx+ny*10,ry-nx*10);
+    rg4.addColorStop(0,'#ff8a7a');rg4.addColorStop(0.45,'#e2231a');rg4.addColorStop(1,'#8f0f08');
+    ctx.strokeStyle=rg4;ctx.lineWidth=19;ctx.beginPath();ctx.moveTo(rx,ry);ctx.lineTo(tx,ty);ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,0.45)';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(rx,ry);ctx.lineTo(tx,ty);ctx.stroke();
+    ctx.fillStyle='rgba(0,0,0,0.5)';ctx.beginPath();ctx.arc(f.x+2,f.y+2,10,0,6.28);ctx.fill();
+    const pv=ctx.createRadialGradient(f.x-3,f.y-3,1,f.x,f.y,9);
+    pv.addColorStop(0,'#ffffff');pv.addColorStop(0.6,'#aeb8c2');pv.addColorStop(1,'#2a3036');
+    ctx.fillStyle=pv;ctx.beginPath();ctx.arc(f.x,f.y,8,0,6.28);ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1;ctx.stroke();ctx.lineCap='butt';
+  }
+
+  // drain holes
+  for(const dh of Game.drainHoles){
+    ctx.fillStyle='rgba(0,0,0,0.55)';ctx.beginPath();ctx.arc(dh.x,dh.y,17,0,6.28);ctx.fill();
+    const dg4=ctx.createRadialGradient(dh.x-4,dh.y-4,1,dh.x,dh.y,16);dg4.addColorStop(0,'#ff6a6a');dg4.addColorStop(1,'#a01010');
+    ctx.fillStyle=dg4;ctx.beginPath();ctx.arc(dh.x,dh.y,13,0,6.28);ctx.fill();
+  }
+
+  // ===== plunger — spring-loaded rod with coiled spring =====
+  // Real pinball plunger: spring compresses when you pull the handle. At rest
+  // the rod tip sits high in the lane under the ball. Pulling withdraws the
+  // tip downward, compressing the spring against the fixed housing. Travel is
+  // bounded to a real spring's proportions: a genuine plunger spring (~5.5"
+  // free length) is compressed by a ~1.75–2" full pull, so it shortens to
+  // ~65% of its rest length and NEVER binds solid. The rod and handle are one
+  // rigid piece, so the handle pulls out with the tip, and after release the
+  // spring settles back to rest with a short oscillation.
+  const housingY=PF.b+40;   // fixed spring housing (the stop the spring pushes against)
+  const tipRestY=PF.b-66;    // rod tip at full rest — sits just below the ball
+  const tipTravel=36;        // full pull withdraws the tip this far (~35% of the spring)
+  const charging=!Game.ball||!Game.ball.live; // ball on the tip = being charged
+  const pullFrac=(state===S.LAUNCH||demoMode||Game.springBob>0)?Game.plungerCharge:0;
+  // 1 while charging; eases 1→0 after release so the rod springs back to rest
+  const easeBack=charging?1:Game.springBob;
+  const pullPos=pullFrac*tipTravel*easeBack;
+  // Short spring oscillation after release (amplitude ∝ pull)
+  const bob=Game.springBob*Math.sin(Game.springBob*25)*(8*pullFrac+3);
+  // Tip moves DOWN when charging: rod withdraws, spring compresses against the
+  // housing. Clamped so the tip can never pass the housing/bushing.
+  const tipY=Math.max(tipRestY-6,Math.min(tipRestY+tipTravel+2,tipRestY+pullPos+bob));
+  // Handle position — the handle is the outer end of the rod: it pulls OUT
+  // (down) with the tip and rides back with the spring after release
+  const hy=housingY+10+pullPos;
+  // Spring sits between the housing (bottom) and the rod tip (top).
+  // More charge = tip closer to housing = spring shorter (never below ~60%).
+  const springTop=Math.min(tipY,housingY-4);
+  const springLen=Math.max(6,housingY-springTop);
+  // Dark channel behind spring
+  ctx.fillStyle='rgba(0,0,0,0.2)';
+  ctx.fillRect(PF.r-50,springTop-4,52,springLen+12);
+  // Spring coils — fixed count; the pitch compresses as the spring shortens
+  const coils=9;
+  const coilSpacing=springLen/coils;
+  ctx.save();ctx.beginPath();
+  ctx.rect(PF.r-50,springTop-4,52,springLen+12);ctx.clip();
+  for(let ci=0;ci<coils;ci++){
+    const cy=springTop+ci*coilSpacing+coilSpacing*0.5;
+    const cw=10;
+    ctx.strokeStyle='#aeb8c2';ctx.lineWidth=2.6;
+    ctx.beginPath();ctx.moveTo(PF.r-26-cw,cy-coilSpacing*0.35);
+    ctx.lineTo(PF.r-26+cw,cy+coilSpacing*0.35);ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,0.5)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(PF.r-27-cw,cy-coilSpacing*0.35+1);
+    ctx.lineTo(PF.r-27+cw,cy+coilSpacing*0.35+1);ctx.stroke();
+  }
+  ctx.restore();
+  // Housing bracket
+  ctx.fillStyle='rgba(0,0,0,0.35)';rr(PF.r-38,housingY-4,20,8,3);ctx.fill();
+  ctx.fillStyle='#5b6570';rr(PF.r-37,housingY-3,18,6,3);ctx.fill();
+  // Rod shaft (runs through the spring down to the handle — one rigid piece)
+  ctx.strokeStyle='rgba(0,0,0,0.35)';ctx.lineWidth=7;
+  ctx.beginPath();ctx.moveTo(PF.r-26,tipY-8);ctx.lineTo(PF.r-26,hy);ctx.stroke();
+  const rodG=ctx.createLinearGradient(PF.r-30,0,PF.r-22,0);
+  rodG.addColorStop(0,'#5b6570');rodG.addColorStop(0.5,'#aeb8c2');rodG.addColorStop(1,'#2a3036');
+  ctx.strokeStyle=rodG;ctx.lineWidth=5;
+  ctx.beginPath();ctx.moveTo(PF.r-26,tipY-8);ctx.lineTo(PF.r-26,hy);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(PF.r-27,tipY-8);ctx.lineTo(PF.r-27,hy);ctx.stroke();
+  // Flat rod tip — the ball sits on this wide platform, not a dome
+  const tipTopY=tipY-4;
+  // Shadow beneath the flat tip
+  ctx.fillStyle='rgba(0,0,0,0.35)';rr(PF.r-32,tipTopY,12,10,3);ctx.fill();
+  // Flat metal platform
+  const tipG=ctx.createLinearGradient(PF.r-32,tipTopY,PF.r-32,tipTopY+10);
+  tipG.addColorStop(0,'#e8edf3');tipG.addColorStop(0.2,'#ffffff');tipG.addColorStop(0.5,'#aeb8c2');tipG.addColorStop(0.9,'#5b6570');
+  tipG.addColorStop(1,'#2a3036');
+  ctx.fillStyle=tipG;rr(PF.r-31,tipTopY+1,10,8,3);ctx.fill();
+  // Highlight line on top edge
+  ctx.strokeStyle='rgba(255,255,255,0.7)';ctx.lineWidth=1.2;
+  ctx.beginPath();ctx.moveTo(PF.r-29,tipTopY+1);ctx.lineTo(PF.r-23,tipTopY+1);ctx.stroke();
+  // Handle at bottom — travels with the rod (pulls out as the spring compresses)
+  ctx.fillStyle='rgba(0,0,0,0.45)';rr(PF.r-38,hy,20,28,6);ctx.fill();
+  const hg=ctx.createLinearGradient(PF.r-38,hy,PF.r-38,hy+28);
+  hg.addColorStop(0,'#ff7d2a');hg.addColorStop(0.6,'#d45518');hg.addColorStop(1,'#8a2808');
+  ctx.fillStyle=hg;rr(PF.r-37,hy+1,18,26,5);ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.4)';rr(PF.r-35,hy+2,14,6,3);ctx.fill();
+  // Charge glow beneath handle
+  if(pullFrac>0){
+    glowCircle(PF.r-26,hy+30,12+pullFrac*14,'#ff7d2a',pullFrac*0.6);
+    glowCircle(PF.r-26,hy+30,6+pullFrac*8,'#ffd23a',pullFrac*0.8);
+  }
+
+  // ===== chevrons on the angled outlane walls — classic lane arrows =====
+  // Precisely aligned with the outlane guide rails so the chevrons sit ON the
+  // chrome bars, not floating in mid-air.
+  const chv=[
+    [PL_L,   WALL_TOP_Y, FL.l.x-2, FL.l.y],   // left guide
+    [PL_R,   WALL_TOP_Y, FL.r.x+2, FL.r.y]    // right guide (matches guideGeom)
+  ];
+  ctx.lineCap='round';ctx.lineJoin='round';
+  for(const g of chv){
+    for(let i=0;i<5;i++){
+      const u=(i+0.5)/5;
+      const cx=g[0]+(g[2]-g[0])*u,cy=g[1]+(g[3]-g[1])*u;
+      ctx.globalAlpha=0.35+0.28*Math.sin(t*6+i*1.25);
+      ctx.strokeStyle=i%2?'#ff9a3a':'#ffd23a';
+      ctx.lineWidth=2.5;
+      ctx.beginPath();ctx.moveTo(cx-7,cy);ctx.lineTo(cx,cy+9);ctx.lineTo(cx+7,cy);ctx.stroke();
+    }
+  }
+  ctx.globalAlpha=1;
+
+}
+
+/* ---------- ball ---------- */
+function drawBall(){
+  const b=Game.ball;if(!b)return;if(!b.live&&state!==S.LAUNCH&&!demoMode)return;
+  const superball=PHYS.label==='SUPERBALL';
+  const t=performance.now()/1000;
+  // Launch glow
+  if(Game.launchAnim>0){
+    glowCircle(b.x,b.y,BALL_R*3,'rgba(255,200,80,'+Game.launchAnim.toFixed(2)+')',Game.launchAnim*0.8);
+  }
+  // Trail
+  for(let i=b.trail.length-1;i>=1;i--){const p=b.trail[i],a=0.16*(1-i/b.trail.length);
+    ctx.globalAlpha=a;ctx.fillStyle=superball?'#ff40b0':'#bcd6ff';ctx.beginPath();
+    ctx.arc(p.x,p.y,BALL_R*(1-i*0.07),0,6.28);ctx.fill();}
+  ctx.globalAlpha=1;
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.5)';ctx.beginPath();ctx.ellipse(b.x+3,b.y+5,BALL_R*1.1,BALL_R*0.9,0,0,6.28);ctx.fill();
+  // Main ball
+  const g=ctx.createRadialGradient(b.x-5,b.y-6,2,b.x,b.y,BALL_R+1);
+  if(superball){
+    // Brilliant hot-pink sparkling ball
+    const hue=Math.sin(t*10)*15;
+    g.addColorStop(0,'#ffffff');g.addColorStop(0.15,'#ffe0f0');g.addColorStop(0.35,'#ff40b0');
+    g.addColorStop(0.6,'#cc1070');g.addColorStop(0.85,'#600830');g.addColorStop(1,'#200010');
+  }else{
+    g.addColorStop(0,'#ffffff');g.addColorStop(0.3,'#e8f0ff');g.addColorStop(0.5,'#9fb4c9');
+    g.addColorStop(0.75,'#45586e');g.addColorStop(1,'#141c26');
+  }
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(b.x,b.y,BALL_R,0,6.28);ctx.fill();
+  // Specular highlight band
+  ctx.save();ctx.beginPath();ctx.arc(b.x,b.y,BALL_R,0,6.28);ctx.clip();
+  ctx.fillStyle=superball?'rgba(255,255,255,0.45)':'rgba(255,125,42,0.33)';ctx.fillRect(b.x-BALL_R,b.y+1,BALL_R*2,3);
+  ctx.fillStyle=superball?'rgba(255,200,255,0.35)':'rgba(63,208,255,0.25)';ctx.fillRect(b.x-BALL_R,b.y-5,BALL_R*2,2);
+  if(superball){ctx.fillStyle='rgba(255,255,255,0.25)';ctx.fillRect(b.x-BALL_R,b.y-2,BALL_R*2,1.5);}
+  ctx.restore();
+  // Sparkle points for SUPERBALL
+  if(superball){for(let i=0;i<6;i++){
+    const a=i/6*Math.PI*2+t*4,bright=0.5+0.5*Math.sin(t*16+i*2.5);
+    if(bright<0.4)continue;const sx=b.x+Math.cos(a)*BALL_R*1.15,sy=b.y+Math.sin(a)*BALL_R*1.15;
+    ctx.fillStyle='rgba(255,255,255,'+(bright*0.7).toFixed(2)+')';ctx.beginPath();
+    ctx.arc(sx,sy,1.5+bright*2,0,6.28);ctx.fill();
+  }}
+  ctx.strokeStyle='rgba(0,0,0,0.4)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(b.x,b.y,BALL_R,0,6.28);ctx.stroke();
+}
+
+function drawPfx(){for(const q of Game.pfx){const a=1-q.t/q.life;
+  if(q.ring){ctx.globalAlpha=a;ctx.strokeStyle=q.col;ctx.lineWidth=3*(1-a)+1;ctx.beginPath();ctx.arc(q.x,q.y,(1-a)*38+4,0,6.28);ctx.stroke();}
+  else{ctx.globalAlpha=a;ctx.fillStyle=q.col;ctx.beginPath();ctx.arc(q.x,q.y,q.size*a+0.5,0,6.28);ctx.fill();}}ctx.globalAlpha=1;}
+
+function drawLaunchHint(){
+  // Pulsing instruction pill
+  const pulse=0.55+0.45*Math.sin(performance.now()/400);
+  const msg=Game.plungerCharge>0.05?'RELEASE TO LAUNCH':'HOLD ↓ / TOUCH RIGHT → TO CHARGE';
+  ctx.globalAlpha=pulse;ctx.font='700 15px '+F_MONO;ctx.textAlign='center';
+  const tw=ctx.measureText(msg).width;
+  ctx.fillStyle=Game.plungerCharge>0.05?'rgba(60,20,0,0.7)':'rgba(8,14,32,0.7)';
+  rr(PF.x+PF.w/2-tw/2-14,PF.b-132,tw+28,34,17);ctx.fill();
+  ctx.fillStyle=Game.plungerCharge>0.05?'#ffd23a':'#dfe8ff';
+  ctx.fillText(msg,PF.x+PF.w/2,PF.b-108);
+  ctx.globalAlpha=1;
+  // Power indicator ring around plunger handle area
+  if(Game.plungerCharge>0){
+    const py=PF.b-8,px=PF.r-26;
+    drawPlungerGauge(px,py+30,Game.plungerCharge);
+  }
+}
+
+// Plunger power gauge — shared by the in-game LAUNCH hint and the title-screen
+// attract demo, so the red escape zone reads identically everywhere. charge is
+// the pull 0..1; cx,cy is the gauge centre.
+function drawPlungerGauge(cx,cy,charge){
+  // Charge ring — grows with the pull (the spring compressing).
+  ctx.strokeStyle='rgba(255,210,58,'+(0.3+charge*0.6)+')';ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(cx,cy,10+charge*10,-Math.PI/2,-Math.PI/2+Math.PI*2*charge);ctx.stroke();
+  // Tick at the pull that gets the ball INTO play — below it the ball rolls
+  // back down the lane (arcade soft-plunge feel). Measured per preset on the
+  // real launch physics: the spring energy must lift the ball the 743px up
+  // the tube and still arc it past the tube mouth into the playfield.
+  const thA=-Math.PI/2+Math.PI*2*(PHYS.intoPlay||0.52);
+  ctx.strokeStyle='rgba(255,255,255,0.9)';ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(cx+Math.cos(thA)*22,cy+Math.sin(thA)*22);
+  ctx.lineTo(cx+Math.cos(thA)*26,cy+Math.sin(thA)*26);
+  ctx.stroke();
+  // GOLD sweet spot — the EXACT-POWER skill-shot band, derived from the real
+  // launch physics (tuneLaunch): only this pull range's projectile drops the
+  // ball onto the SKILL SHOT target. Too weak: it drops short (or rolls
+  // back below the white tick); too strong: it overshoots and the shot is
+  // missed — the SKILL SHOT is the launch bonus, nothing else pays.
+  // Bright gold while the shot is up for grabs this ball; dimmed once
+  // collected (one skill shot per ball — it stays collected on re-launches).
+  const ssMin=PHYS.skillShot.min,ssMax=PHYS.skillShot.max;
+  const ss0=-Math.PI/2+Math.PI*2*ssMin,ss1=-Math.PI/2+Math.PI*2*ssMax;
+  const sk=!Game.skillShotDone;
+  ctx.strokeStyle=sk?'rgba(255,215,80,0.85)':'rgba(150,140,110,0.40)';ctx.lineWidth=4;
+  ctx.beginPath();ctx.arc(cx,cy,15,ss0,ss1);ctx.stroke();
+  const thS=-Math.PI/2+Math.PI*2*((ssMin+ssMax)/2);
+  ctx.strokeStyle=sk?'#ffd95a':'rgba(165,155,125,0.65)';ctx.lineWidth=3;
+  ctx.beginPath();
+  ctx.moveTo(cx+Math.cos(thS)*19,cy+Math.sin(thS)*19);
+  ctx.lineTo(cx+Math.cos(thS)*29,cy+Math.sin(thS)*29);
+  ctx.stroke();
+  ctx.fillStyle=sk?'#ffd95a':'rgba(165,155,125,0.75)';ctx.font='700 8px '+F_MONO;ctx.textAlign='center';
+  ctx.fillText('SKILL',cx+Math.cos(thS)*34,cy+Math.sin(thS)*34+3);
+}
+
+/* ---------- overlays ---------- */
+/* Key-cap hint row — e.g.  [↑↓] SELECT   [ENTER] CONFIRM */
+function drawKeyHints(items,y){
+  ctx.font='600 13px '+F_MONO;
+  const kws=items.map(([k])=>ctx.measureText(k).width+14);
+  ctx.font='500 14px '+F_UI;
+  const lws=items.map(([,l])=>ctx.measureText(l).width);
+  const gap=24;
+  const total=items.reduce((a,_,i)=>a+kws[i]+6+lws[i]+gap,0)-gap;
+  let x=W/2-total/2;
+  for(let i=0;i<items.length;i++){
+    const[k,l]=items[i];
+    rr(x,y-12,kws[i],22,6);
+    ctx.fillStyle='rgba(140,170,230,0.13)';ctx.fill();
+    ctx.strokeStyle='rgba(140,170,230,0.35)';ctx.lineWidth=1;rr(x,y-12,kws[i],22,6);ctx.stroke();
+    ctx.fillStyle='#9fb4ff';ctx.font='600 13px '+F_MONO;ctx.textAlign='left';
+    ctx.fillText(k,x+7,y+5);
+    ctx.fillStyle='#6a78a0';ctx.font='500 14px '+F_UI;ctx.textAlign='left';
+    ctx.fillText(l,x+kws[i]+6,y+5);
+    x+=kws[i]+6+lws[i]+gap;
+  }
+}
+function drawPanel(){
+  ctx.fillStyle='rgba(5,7,16,0.72)';ctx.fillRect(0,0,W,H);
+  const pw=W-160,ph=H-230,px=(W-pw)/2,py=100;
+  // Card
+  ctx.fillStyle='rgba(0,0,0,0.5)';rr(px+4,py+6,pw,ph,18);ctx.fill();
+  const g=ctx.createLinearGradient(0,py,0,py+ph);g.addColorStop(0,'#1a1e33');g.addColorStop(1,'#0d1020');
+  ctx.fillStyle=g;rr(px,py,pw,ph,18);ctx.fill();
+  ctx.strokeStyle='rgba(140,180,255,0.22)';ctx.lineWidth=1.5;rr(px,py,pw,ph,18);ctx.stroke();
+  // Accent line
+  const acc=ctx.createLinearGradient(px,0,px+pw,0);
+  acc.addColorStop(0,'#3fd0ff');acc.addColorStop(0.5,'#ffd23a');acc.addColorStop(1,'#ff7d2a');
+  ctx.fillStyle=acc;rr(px+40,py,pw-80,4,2);ctx.fill();
+  // Header
+  ctx.textAlign='center';ctx.fillStyle='#ffe9c0';ctx.font='800 38px '+F_DISP;
+  ctx.fillText(panelTitle(),W/2,py+64);
+  if(state===S.MENU){
+    const items=menuItems();
+    items.forEach((m,i)=>{const y=menuRowY(i),sel=i===menuIdx;
+      if(sel){ctx.fillStyle='rgba(255,125,42,0.13)';rr(px+84,y-30,pw-168,56,14);ctx.fill();
+        ctx.fillStyle='#ff7d2a';rr(px+84,y-30,6,56,3);ctx.fill();
+        ctx.strokeStyle='rgba(255,180,110,0.35)';ctx.lineWidth=1.5;rr(px+84,y-30,pw-168,56,14);ctx.stroke();}
+      ctx.fillStyle=sel?'#ffca6a':'#b7c4e6';ctx.font='600 26px '+F_UI;
+      ctx.fillText(m,W/2,y+10);});
+    drawKeyHints([['↑↓','SELECT'],['ENTER','CONFIRM'],['BACKSPACE','BACK']],py+ph-44);
+  }else if(state===S.OPTS){
+    const tiltLabel=['LOW','NORMAL','HIGH'][store.tilt-1];
+    const rows=[['GAME VARIATION',['G1 · 1P ACCUM','G2 · 2P ACCUM','G3 · 1P RESET','G4 · 2P RESET'][Game.game-1]],
+      ['DIFFICULTY',Game.diff===0?'A · EXPERT (+2 DRAINS)':'B · NOVICE'],['SOUND',store.snd?'ON':'OFF'],
+      ['HAPTICS',store.hap?'ON':'OFF'],['TILT',tiltLabel],['PHYSICS',PHYS.label],
+      ...(store.physics==='arcade'?[['TABLE ANGLE',''+store.angle+' ('+(700+(store.angle-1)*100)+' px/s²)']]:[]),
+      ['BACK','']];
+    const editableRows=store.physics==='arcade'?7:6;
+    rows.forEach((r,i)=>{const y=optRowY(i),sel=i===optIdx;
+      if(sel){ctx.fillStyle='rgba(63,208,255,0.12)';rr(px+70,y-28,pw-140,54,12);ctx.fill();
+        ctx.fillStyle='#3fd0ff';rr(px+70,y-28,5,54,3);ctx.fill();
+        ctx.strokeStyle='rgba(120,200,255,0.3)';ctx.lineWidth=1.5;rr(px+70,y-28,pw-140,54,12);ctx.stroke();}
+      ctx.textAlign='left';ctx.fillStyle=sel?'#ffca6a':'#8fa0c8';ctx.font='600 20px '+F_UI;
+      ctx.fillText(r[0],px+96,y+7);
+      if(i===rows.length-1){
+        // BACK — action button
+        ctx.textAlign='center';
+        if(sel){ctx.fillStyle='rgba(255,122,42,0.16)';rr(px+pw/2-80,y-18,160,38,19);ctx.fill();}
+        ctx.fillStyle=sel?'#ffca6a':'#b7c4e6';ctx.font='600 18px '+F_UI;
+        ctx.fillText('←  BACK',px+pw/2,y+6);
+      }else{
+        ctx.textAlign='right';ctx.font='700 18px '+F_MONO;
+        const val=r[1],vw=ctx.measureText(sel?'< '+val+' >':val).width;
+        ctx.fillStyle=sel?'rgba(63,208,255,0.16)':'rgba(120,150,210,0.08)';
+        rr(px+pw-100-vw-14,y-16,vw+28,32,8);ctx.fill();
+        ctx.fillStyle=sel?'#3fd0ff':'#dfe8ff';
+        ctx.fillText(sel?'< '+val+' >':val,px+pw-100,y+7);
+      }});
+    if(optIdx===5){
+      const descs={atari:'📺  1980 cartridge feel — floaty, springy, arcade-faithful',
+        arcade:'🎯  Real-machine simulation — weighty, precise, pro controls',
+        superball:'🔥  Maximum chaos — low gravity, wild bounces, pinball anarchy'};
+      ctx.textAlign='center';ctx.font='500 italic 14px '+F_UI;
+      ctx.fillStyle='rgba(180,210,255,0.75)';
+      ctx.fillText(descs[store.physics]||'',W/2,optRowY(5)+38);
+    }
+    drawKeyHints([['↑↓','SELECT'],['←→','CHANGE'],['BACKSPACE','BACK']],py+ph-44);
+  }else if(state===S.SCORES){
+    store.scores.forEach((s,i)=>{const y=py+180+i*60;
+      if(i<3){ctx.fillStyle=i===0?'#ffd23a':i===1?'#c8d6e8':'#d08a4a';
+        ctx.beginPath();ctx.arc(px+116,y-14,12,0,6.28);ctx.fill();
+        ctx.fillStyle='#0d1020';ctx.font='700 13px '+F_MONO;ctx.textAlign='center';
+        ctx.fillText(String(i+1),px+116,y-9);}
+      ctx.textAlign='left';ctx.fillStyle=i===0?'#ffca6a':'#b7c4e6';ctx.font='600 19px '+F_UI;
+      ctx.fillText(store.names[i],px+150,y);
+      ctx.textAlign='right';ctx.fillStyle=i===0?'#ffca6a':'#8fa0c8';ctx.font='700 19px '+F_MONO;
+      ctx.fillText(String(s).padStart(7,'0'),px+pw-100,y);});
+    drawKeyHints([['ENTER','RETURN']],py+ph-44);
+  }else if(state===S.HELP){
+    const ss=PHYS.skillShot,fmt=p=>{const s=(''+p).replace(/0+$/,'').replace(/\.$/,'');return s.indexOf('.')<0?s+'.0':s;};
+    const L=[['FLIPPERS','← → · A D · touch corners'],      ['PLUNGER','HOLD ↓ / S — release to fire'],
+      // Plunger meter — read the power ring beside the plunger while you charge:
+      // soft zone (ball rolls back), white into-play tick, gold skill-shot band
+      ['PLUNGER METER','power ring · white tick = in play · gold = SKILL band'],
+      ['PLUNGER ZONES','white tick = in play · below rolls back'],
+      ['SKILL SHOT',PHYS.label+' · '+fmt(ss.min)+'–'+fmt(ss.max)+' · +5000 · live till first touch'],
+      ['NUDGE','SHIFT+← → ↑ ('+[7,5,3][store.tilt-1]+' fast = TILT!)'],      ['PAUSE','ESC / P'],['SAVE','S while paused'],['MUTE','M'],['BUMPER','100 × value (1-9)'],
+      ['DROP TARGET','100 · all 3 = value +1'],['LEFT LANE','100 · drain pays ×1000 (max 4)'],
+      ['ATARI LANE','100 · +1 BONUS · 4 = EXTRA BALL'],['SPINNER','1 pt'],
+      ['SPECIAL','500 · LIT 1000/2500/5000'],
+      ['',''],
+      ['DIFFICULTY A','adds 2 drain holes · score rolls at 1M'],['TILT','flippers freeze · no scoring · no bonus']];
+    ctx.textAlign='left';let yy=py+148;
+    for(const[k,v]of L){if(!k){yy+=10;continue;}
+      ctx.fillStyle='#ff8a3a';ctx.font='700 17px '+F_UI;ctx.fillText(k,px+110,yy);
+      ctx.fillStyle='#b7c4e6';ctx.font='500 14px '+F_UI;ctx.fillText(v,px+312,yy);yy+=38;}
+    drawKeyHints([['ENTER','RETURN']],py+ph-44);
+  }
+}
+function panelTitle(){if(state===S.MENU)return'MAIN MENU';if(state===S.OPTS)return'OPTIONS';if(state===S.SCORES)return'HIGH SCORES';return'HOW TO PLAY';}
+
+function drawPause(){
+  ctx.fillStyle='rgba(5,7,16,0.8)';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(0,0,0,0.5)';rr(W/2-190,H/2-54+6,380,108,16);ctx.fill();
+  const g=ctx.createLinearGradient(0,H/2-48,0,H/2+54);g.addColorStop(0,'#1a1e33');g.addColorStop(1,'#0d1020');
+  ctx.fillStyle=g;rr(W/2-190,H/2-54,380,108,16);ctx.fill();
+  ctx.strokeStyle='rgba(140,180,255,0.25)';ctx.lineWidth=1.5;rr(W/2-190,H/2-54,380,108,16);ctx.stroke();
+  // "PAUSED" — brief symmetric settle, the same mirrored-animation convention
+  // as the GAME OVER score: each letter squashes in (easeOutBack, 0→~1.1→1)
+  // staggered by mirror index md=|d-2.5| so pairs (0↔5, 1↔4, 2↔3) settle in
+  // lockstep, emanating from the middle outward. Each letter sits at its real
+  // proportional advance (measureText), so the centred label never shifts.
+  ctx.textAlign='center';ctx.fillStyle='#ffe9c0';ctx.font='800 42px '+F_DISP;
+  const pw='PAUSED',pwd=[];let pTot=0;
+  for(let i=0;i<pw.length;i++){const w=ctx.measureText(pw[i]).width;pwd.push(w);pTot+=w;}
+  const pAge=Game._pauseT?(performance.now()-Game._pauseT)/1000:9;
+  let pSx=W/2-pTot/2;
+  for(let d=0;d<6;d++){
+    const p=Math.min(1,Math.max(0,(pAge-Math.abs(d-2.5)*0.11)/0.4));
+    const tt=p-1,cc=1.70158,e=1+tt*tt*((cc+1)*tt+cc);
+    const pCx=pSx+pwd[d]/2;
+    ctx.save();ctx.translate(pCx,H/2-10);ctx.scale(1,Math.max(0.001,e));
+    ctx.fillText(pw[d],0,0);ctx.restore();
+    pSx+=pwd[d];
+  }
+  ctx.fillStyle='#8fa0c8';ctx.font='500 14px '+F_UI;
+  ctx.fillText('GAME KEEPS SAVING — AUTO-SAVE EVERY 10s',W/2,H/2+24);
+  drawKeyHints([['ESC','RESUME'],['S','SAVE'],['ENTER','MENU'],['M','MUTE']],H/2+58);
+}
+function drawTally(){
+  const t=Game.tally;if(!t)return;
+  const cx=PF.x+PF.w/2, cy=PF.y+PF.h*0.5, now=performance.now()/1000;
+  // Full-screen darken for clean tally overlay
+  const pulse=0.72+0.06*Math.sin(now*3);
+  ctx.fillStyle='rgba(4,6,16,'+pulse.toFixed(2)+')';ctx.fillRect(0,0,W,H);
+  // "BONUS PAYOUT" header with glow
+  ctx.textAlign='center';
+  const hdrAlpha=0.75+0.25*Math.sin(now*2.5);
+  ctx.globalAlpha=hdrAlpha;
+  ctx.fillStyle='#ffd23a';ctx.font='800 30px '+F_DISP;
+  ctx.fillText('BONUS PAYOUT',cx,cy-172);ctx.globalAlpha=1;
+  // Calculation breakdown — use stored values since Game.leftRoll may have reset
+  const lv=Math.min(t.base/1000,4), bm=t.mult;
+  ctx.fillStyle='rgba(0,0,0,0.5)';rr(cx-200,cy-146,400,52,12);ctx.fill();
+  ctx.fillStyle='#8fb0ff';ctx.font='700 18px '+F_MONO;
+  ctx.fillText('LEFT LANE  ×  '+lv+'  =  '+lv*1000, cx, cy-118);
+  ctx.fillStyle='#ff7d2a';ctx.font='700 18px '+F_MONO;
+  ctx.fillText('BONUS  ×  '+bm+'  =  '+lv*1000*bm, cx, cy-86);
+  // Divider line
+  ctx.strokeStyle='rgba(255,255,255,0.25)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(cx-120,cy-68);ctx.lineTo(cx+120,cy-68);ctx.stroke();
+  // Animated score counter with digit roll
+  const s=String(Math.floor(t.paid)).padStart(6,'0');
+  for(let d=0;d<6;d++){
+    const dx=cx-72+d*29;
+    const digit=parseInt(s[d]);
+    // Digit background
+    ctx.fillStyle='rgba(0,0,0,0.5)';rr(dx-10,cy-45,23,44,4);ctx.fill();
+    // Rolling digits — show a flash of the previous value for motion feel.
+    // All three digit animations use a phase symmetric about the row's centre
+    // (md=|d-2.5|), so mirror pairs (0↔5, 1↔4, 2↔3) pulse in lockstep and the
+    // ripple emanates from the middle outward instead of sweeping left→right.
+    const md=Math.abs(d-2.5);
+    const roll=(t.t<0.8)?(Math.sin(now*18+md*3.4)>0?9:0):0;
+    if(roll&&t.paid>0){
+      ctx.fillStyle='rgba(255,122,42,0.3)';ctx.font='800 34px '+F_MONO;
+      ctx.fillText(String((digit+9)%10),dx+2,cy-10);
+    }
+    // Current digit
+    const bright=roll?1:(0.85+0.15*Math.sin(now*3+md*1.4));
+    ctx.fillStyle='rgba(255,122,42,'+bright.toFixed(2)+')';ctx.font='800 34px '+F_MONO;
+    ctx.fillText(String(digit),dx+2,cy-10);
+    // Digit underline glow
+    ctx.fillStyle='rgba(255,210,58,'+(0.3+0.3*Math.sin(now*4+md*2)).toFixed(2)+')';
+    ctx.fillRect(dx-8,cy+8,20,3);
+  }
+  // Progress bar under digits
+  const frac=t.paid/Math.max(1,t.total);
+  ctx.fillStyle='rgba(0,0,0,0.4)';rr(cx-100,cy+22,200,10,5);ctx.fill();
+  const pbg=ctx.createLinearGradient(cx-100,0,cx+100,0);
+  pbg.addColorStop(0,'#3fd0ff');pbg.addColorStop(0.5,'#ffd23a');pbg.addColorStop(1,'#ff7d2a');
+  ctx.fillStyle=pbg;rr(cx-98,cy+24,196*frac,6,3);ctx.fill();
+  // "TOTAL" label when complete
+  if(t.paid>=t.total&&t.t>0.8){
+    ctx.fillStyle='#ffd23a';ctx.font='800 20px '+F_MONO;
+    ctx.fillText('TOTAL: '+String(t.paid).padStart(6,'0'),cx,cy+70);
+  }
+}
+function drawGameOver(){
+  ctx.fillStyle='rgba(5,7,16,0.9)';ctx.fillRect(0,0,W,H);
+  ctx.textAlign='center';
+  ctx.font='900 56px '+F_DISP;ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillText('GAME OVER',W/2+3,H*0.30+3);
+  ctx.fillStyle='#ff7d2a';ctx.fillText('GAME OVER',W/2,H*0.30);
+  // Score digits — brief symmetric roll-in: each digit settles in with a
+  // slot-reel squash (easeOutBack, 0→~1.1→1) staggered by the mirror index
+  // md=|d-2.5|, so mirror pairs (0↔5, 1↔4, 2↔3) animate in lockstep, the
+  // ripple emanating from the middle outward — the same mirrored-animation
+  // convention as the TALLY digit ripples. Each digit is placed at its real
+  // proportional advance (measureText), so the centred layout never shifts.
+  ctx.font='800 40px '+F_DISP;ctx.textAlign='center';
+  const sc=String(Game.scores[Game.cur]).padStart(6,'0');
+  const wds=[];let tot=0;
+  for(let i=0;i<6;i++){const w=ctx.measureText(sc[i]).width;wds.push(w);tot+=w;}
+  const age=Game._goT?(performance.now()-Game._goT)/1000:9;
+  let sx=W/2-tot/2;
+  for(let d=0;d<6;d++){
+    const p=Math.min(1,Math.max(0,(age-Math.abs(d-2.5)*0.11)/0.4));
+    const tt=p-1,cc=1.70158,e=1+tt*tt*((cc+1)*tt+cc);
+    const cx=sx+wds[d]/2;
+    ctx.save();ctx.translate(cx,H*0.40);ctx.scale(1,Math.max(0.001,e));
+    ctx.fillStyle='#ffe9c0';ctx.fillText(sc[d],0,0);ctx.restore();
+    sx+=wds[d];
+  }
+  ctx.fillStyle='rgba(0,0,0,0.45)';rr(W/2-90,H*0.48-22,180,34,17);ctx.fill();
+  ctx.fillStyle='#3fd0ff';ctx.font='700 16px '+F_UI;ctx.fillText('RANK: '+Game.rank,W/2,H*0.48+5);
+  if(state===S.ENTRY){
+    ctx.fillStyle='#ffe9c0';ctx.font='700 22px '+F_UI;ctx.fillText('NEW HIGH SCORE — ENTER INITIALS',W/2,H*0.60);
+    const blink=Math.floor(performance.now()/350)%2===0;let x=W/2-64;
+    for(let i=0;i<3;i++){
+      rr(x,H*0.64-30,44,44,10);
+      ctx.fillStyle='rgba(20,26,48,0.9)';ctx.fill();
+      ctx.strokeStyle=i===Game.entryBuf&&blink?'#ff7d2a':'rgba(140,180,255,0.4)';ctx.lineWidth=2;
+      rr(x,H*0.64-30,44,44,10);ctx.stroke();
+      ctx.fillStyle=Game.entryChar[i]===' '?'rgba(140,160,200,0.4)':'#ffe9c0';
+      ctx.font='800 24px '+F_DISP;ctx.fillText(Game.entryChar[i],x+22,H*0.64+8);x+=52;}
+    drawKeyHints([['A–Z','TYPE'],['ENTER','NEXT'],['ENTER ×3','DONE']],H*0.72);
+    if(!Game.entryTimer)Game.entryTimer=performance.now();if(performance.now()-Game.entryTimer>6000)commitEntry();
+  }else{ctx.fillStyle='#8fa0c8';ctx.font='500 15px '+F_UI;ctx.fillText('PRESS FIRE FOR TITLE',W/2,H*0.62);}
+}
+function commitEntry(){if(Game.entryRank>=0){store.names[Game.entryRank]=Game.entryChar.join('');saveStore();}
+  Game.entryRank=-1;Game.entryTimer=0;Game._goT=performance.now();state=S.GAMEOVER;}
+window.addEventListener('keydown',e=>{if(state!==S.ENTRY)return;
+  if(e.key==='Enter'||e.key===' '){if(Game.entryBuf<2)Game.entryBuf++;else commitEntry();Game.entryTimer=performance.now();}
+  const k=e.key.toUpperCase();if(k>='A'&&k<='Z'&&k.length===1){Game.entryChar[Game.entryBuf]=k;
+    if(Game.entryBuf<2)Game.entryBuf++;Game.entryTimer=performance.now();}});
+
+/* =====================================================================================
+   MAIN LOOP
+   ===================================================================================== */
+let last=0,acc=0;
+function frame(now){requestAnimationFrame(frame);if(!last)last=now;let dt=(now-last)/1000;last=now;
+  if(dt>0.1)dt=0.1;padPoll();acc+=dt;const STEP=1/120;
+  while(acc>=STEP){tick(STEP);acc-=STEP;}draw();}
+function tick(dt){
+  if(state===S.TITLE){if(!demoMode||!Game.ball)startDemo();demoStep(dt);}
+  if(state===S.PLAY||state===S.LAUNCH){plungerStep(dt);nudgeStep(dt);specialStep(dt);
+    if(state===S.PLAY){let n=Math.ceil(dt/SUB_DT);const sub=dt/n;
+      for(let i=0;i<n;i++){        if(Game.ball&&Game.ball.live)physStep(sub);else break;}
+      // Ball-save grace timer — counts down after launch
+      if(Game.ballSaveTimer>0){Game.ballSaveTimer-=dt;if(Game.ballSaveTimer<=0)Game.ballSaveTimer=0;}
+      // Skill-shot chance clock — the armed chance resolves on collect,
+      // first touch, or this timeout; the clock dies with the chance.
+      if(Game.skillShotT>0){Game.skillShotT-=dt;if(Game.skillShotT<=0){Game.skillShotT=0;Game.skillShotReady=false;}}
+      if(!Game.skillShotReady)Game.skillShotT=0;
+      // Auto-save every 10s as crash fallback
+      Game.autoSaveTimer-=dt;
+      if(Game.autoSaveTimer<=0){Game.autoSaveTimer=10;saveGame(true);}
+      }
+    else{
+      // LAUNCH — the bats answer the buttons while you aim. Animation only:
+      // the ball is not on the playfield yet, so no collision pass runs here.
+      flipperAnimate(FL.l,dt);flipperAnimate(FL.r,dt);
+      // Solenoid click on each press edge (the contact-driven flip sound can't
+      // fire without a ball on the playfield; a tilted machine is dead silent).
+      if(input.lFlip&&!Game._lfEdge){Game._lfEdge=true;if(!Game.tilt){AudioSys.flip();haptic(25,0.4);}}
+      else if(!input.lFlip)Game._lfEdge=false;
+      if(input.rFlip&&!Game._rfEdge){Game._rfEdge=true;if(!Game.tilt){AudioSys.flip();haptic(25,0.4);}}
+      else if(!input.rFlip)Game._rfEdge=false;
+    }
+  }else if(state===S.TALLY){tallyStep(dt);}
+  // Particles age in every state (incl. the LAUNCH animation) so the launch
+  // trail fades naturally instead of freezing until the ball goes live.
+  pfxStep(dt);
+  if(Game.shakeT>0)Game.shakeT-=dt;
+  if(Game.pfx.length>400)Game.pfx.splice(0,Game.pfx.length-400);
+}
+touchInit();requestAnimationFrame(frame);
+
+function cleanExit(){try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}
+  try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock();}catch(e){}}
+addEventListener('pagehide',cleanExit);addEventListener('beforeunload',cleanExit);
+window.Game=Game;window.S=S;window.stateRef={get:()=>state,set:v=>state=v};
+window.launchBall=launchBall;window.uiConfirm=uiConfirm;window.uiMove=uiMove;
+window.input=input;window.FL=FL;window.addScoreFlat=addScoreFlat;
+initTiltBob();
+</script>
+</body>
+</html>

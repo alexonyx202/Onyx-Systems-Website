@@ -64,7 +64,12 @@ var XW = (function(){
       var gcs=getComputedStyle(gridEl);
       var gPadX=(parseInt(gcs.paddingLeft)||0)+(parseInt(gcs.paddingRight)||0);
       var gPadY=(parseInt(gcs.paddingTop)||0)+(parseInt(gcs.paddingBottom)||0);
-      var gap=3;
+      /* Adaptive gap (2026-08-28): a fixed 3px gap eats 111px of a 360px phone on a
+         38×38 daily puzzle (daily sizes have grown 22→38 since 2026-08-19), flooring
+         cells to ~5px — unreadable and failing the mobile crossword gate in
+         verify_arcade.js. Scale the gap with the grid so big boards keep readable
+         cells: 3px for small grids, 1px past ~30 cells. */
+      var gap=(n>=30)?1:3;
       var availW=Math.max(60, boardEl.clientWidth  - bPadX - gPadX);
       var availH=Math.max(60, boardEl.clientHeight - bPadY - gPadY);
       var byW=Math.floor((availW - (n-1)*gap) / n);
