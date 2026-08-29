@@ -1,303 +1,205 @@
 {
-  "title": "Computer",
-  "size": 38,
+  "title": "math",
+  "size": 28,
   "grid": [
-    ".........m............................",
-    "....libreoffice.......................",
-    ".........n............................",
-    "......gmail...........................",
-    ".......i.t............................",
-    ".......c.o............................",
-    ".......r.r............................",
-    "..n....o......h.......................",
-    "..OS...p.speakers.....................",
-    "..r....h.p....a.......................",
-    "motherboard...d.......................",
-    "..o....n.e....s.......................",
-    "..n.notepad...e.......................",
-    ".........d.m..t.......................",
-    ".........s.o..........................",
-    ".........hdd..........................",
-    ".........e.e..........................",
-    "..firmware.m..........................",
-    "....o....t............................",
-    "g...u.f...............................",
-    "printer...............................",
-    "u...e.e...............................",
-    "....r.e.....u.........................",
-    "......w.....s..k......................",
-    ".....malwarebytes.....................",
-    "......r.i......y......................",
-    "...ccleaner....b......................",
-    "....p...r..p...o......................",
-    "....u..safari..a......................",
-    "........r..o...ram....................",
-    "...........j.ssd......................",
-    "...........e..........................",
-    "........webcam........................",
-    "........i..t..........................",
-    "........n.mouse.......................",
-    "........z..r..........................",
-    "........i.............................",
-    "........p............................."
+    "...............r.h..........",
+    "...............a.y..........",
+    ".....s.........d.p.....a....",
+    ".....t...composite.divide...",
+    "constant....a..u.r.....d....",
+    ".....n......r..subtraction..",
+    ".....degenerate..o.....t....",
+    ".....a......b..ellipse.i.f..",
+    ".....r......o....a....focus.",
+    ".....d......l..........n.n..",
+    ".....f...v..a............c..",
+    ".....o...e..........p..m.t..",
+    "...directrix........i..u.i..",
+    ".....m...t.......generalform",
+    ".........e..........c..t.n..",
+    ".........x......center.i....",
+    "....................w..p....",
+    "...................circle...",
+    "....................s..y....",
+    "....................e.......",
+    "............................",
+    "............................",
+    "............................",
+    "............................",
+    "............................",
+    "............................",
+    "............................",
+    "............................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 2,
-        "col": 5,
-        "len": 11,
-        "answer": "libreoffice",
-        "clue": "is a powerful and free office suite, a successor to OpenOffice(.org), used by millions of people around the world."
-      },
-      {
-        "num": 3,
+        "num": 5,
         "row": 4,
-        "col": 7,
-        "len": 5,
-        "answer": "gmail",
-        "clue": "an abbreviation for Google Mail."
+        "col": 10,
+        "len": 9,
+        "answer": "composite",
+        "clue": "(f\u2218g)(x) = f(g(x))"
       },
       {
         "num": 7,
-        "row": 9,
-        "col": 3,
-        "len": 2,
-        "answer": "OS",
-        "clue": "manages all of the other application programs in a computer."
+        "row": 4,
+        "col": 20,
+        "len": 6,
+        "answer": "divide",
+        "clue": "g/h"
       },
       {
         "num": 8,
-        "row": 9,
-        "col": 10,
+        "row": 5,
+        "col": 1,
         "len": 8,
-        "answer": "speakers",
-        "clue": "a piece of output gear that connects to a computer to produce sound."
+        "answer": "constant",
+        "clue": "y(x)=4"
       },
       {
         "num": 9,
-        "row": 11,
-        "col": 1,
+        "row": 6,
+        "col": 16,
         "len": 11,
-        "answer": "motherboard",
-        "clue": "the main printed circuit board (PCB) in a computer."
+        "answer": "subtraction",
+        "clue": "g-h"
       },
       {
         "num": 10,
-        "row": 13,
-        "col": 5,
-        "len": 7,
-        "answer": "notepad",
-        "clue": "a text editor, i.e., an app specialized in editing plain text."
+        "row": 7,
+        "col": 6,
+        "len": 10,
+        "answer": "degenerate",
+        "clue": "4x+9y=1"
       },
       {
-        "num": 12,
-        "row": 16,
-        "col": 10,
-        "len": 3,
-        "answer": "hdd",
-        "clue": "the hardware component that stores all of your digital content."
+        "num": 11,
+        "row": 8,
+        "col": 16,
+        "len": 7,
+        "answer": "ellipse",
+        "clue": "9x^2 + 4y^2 = 36"
       },
       {
         "num": 13,
-        "row": 18,
-        "col": 3,
-        "len": 8,
-        "answer": "firmware",
-        "clue": "is a specific class of computer software that provides the low-level control for a device's specific hardware."
+        "row": 9,
+        "col": 23,
+        "len": 5,
+        "answer": "focus",
+        "clue": "in (x-h)^2=4p(y-k), its (h,k+p)"
       },
       {
         "num": 17,
-        "row": 21,
-        "col": 1,
-        "len": 7,
-        "answer": "printer",
-        "clue": "a device that accepts text and graphic output from a computer and transfers the information to paper."
+        "row": 13,
+        "col": 4,
+        "len": 9,
+        "answer": "directrix",
+        "clue": "perpendicular to the axis of symmetry of a parabola."
+      },
+      {
+        "num": 18,
+        "row": 14,
+        "col": 18,
+        "len": 11,
+        "answer": "generalform",
+        "clue": "y = ax^2 + bx + c"
+      },
+      {
+        "num": 19,
+        "row": 16,
+        "col": 17,
+        "len": 6,
+        "answer": "center",
+        "clue": "(x,y)"
       },
       {
         "num": 20,
-        "row": 25,
-        "col": 6,
-        "len": 12,
-        "answer": "malwarebytes",
-        "clue": "Malwarebytes Anti-Malware, abbreviated as MBAM) is an anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware."
-      },
-      {
-        "num": 22,
-        "row": 27,
-        "col": 4,
-        "len": 8,
-        "answer": "ccleaner",
-        "clue": "developed by Piriform Software, is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer."
-      },
-      {
-        "num": 25,
-        "row": 29,
-        "col": 8,
+        "row": 18,
+        "col": 20,
         "len": 6,
-        "answer": "safari",
-        "clue": "is a web browser developed by Apple Inc. and included in Mac OS X. It was first released as a public beta in January 2003."
-      },
-      {
-        "num": 26,
-        "row": 30,
-        "col": 16,
-        "len": 3,
-        "answer": "ram",
-        "clue": "acronym that stands for random-access memory."
-      },
-      {
-        "num": 27,
-        "row": 31,
-        "col": 14,
-        "len": 3,
-        "answer": "ssd",
-        "clue": "a storage device containing nonvolatile flash memory, used in place of a hard disk because of its much greater speed."
-      },
-      {
-        "num": 28,
-        "row": 33,
-        "col": 9,
-        "len": 6,
-        "answer": "webcam",
-        "clue": "is a combination of \"Web\" and \"video camera.\""
-      },
-      {
-        "num": 29,
-        "row": 35,
-        "col": 11,
-        "len": 5,
-        "answer": "mouse",
-        "clue": "a small device that a computer user pushes across a desk surface in order to point to a place on a display screen and to select one or more actions to take from that position."
+        "answer": "circle",
+        "clue": "x^2 + y^2 \u2212 4x + 2y \u2212 3 = 0"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 10,
-        "len": 7,
-        "answer": "monitor",
-        "clue": "an output device that displays information being processed in a computer."
+        "col": 16,
+        "len": 6,
+        "answer": "radius",
+        "clue": "its the r in x^2 + y^2 = r^2"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 18,
+        "len": 9,
+        "answer": "hyperbola",
+        "clue": "9y^2 - 4x^2 =  144"
+      },
+      {
+        "num": 3,
+        "row": 3,
+        "col": 6,
+        "len": 12,
+        "answer": "standardform",
+        "clue": "(x - h)^2 = 4p(y - k)"
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 8,
-        "len": 10,
-        "answer": "microphone",
-        "clue": "convert the audio sound waves into electrical signals."
-      },
-      {
-        "num": 5,
-        "row": 8,
-        "col": 3,
-        "len": 6,
-        "answer": "nOrton",
-        "clue": "an anti-virus or anti-malware software product founded by Peter Norton"
+        "row": 3,
+        "col": 24,
+        "len": 8,
+        "answer": "addition",
+        "clue": "g+h"
       },
       {
         "num": 6,
+        "row": 4,
+        "col": 13,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "x^2=4py"
+      },
+      {
+        "num": 12,
         "row": 8,
-        "col": 15,
-        "len": 7,
-        "answer": "headset",
-        "clue": "a piece of equipment worn on the head that allows someone to hear sound when using a phone, music, or computer system."
-      },
-      {
-        "num": 8,
-        "row": 9,
-        "col": 10,
-        "len": 11,
-        "answer": "spreadsheet",
-        "clue": "is a computer application for computation, organization, analysis and storage of data in tabular form."
-      },
-      {
-        "num": 11,
-        "row": 14,
-        "col": 12,
-        "len": 5,
-        "answer": "modem",
-        "clue": "stands for \"modulator-demodulator,\"."
+        "col": 26,
+        "len": 8,
+        "answer": "function",
+        "clue": "f(x)"
       },
       {
         "num": 14,
-        "row": 18,
-        "col": 5,
+        "row": 11,
+        "col": 10,
         "len": 6,
-        "answer": "router",
-        "clue": "is a device that provides Wi-Fi and is typically connected to a modem."
+        "answer": "vertex",
+        "clue": "(h,K)"
       },
       {
         "num": 15,
-        "row": 20,
-        "col": 1,
-        "len": 3,
-        "answer": "gpu",
-        "clue": "a specialized processor originally designed to accelerate graphics rendering."
+        "row": 12,
+        "col": 21,
+        "len": 9,
+        "answer": "piecewise",
+        "clue": "a function built from pieces of different functions over different intervals"
       },
       {
         "num": 16,
-        "row": 20,
-        "col": 7,
+        "row": 12,
+        "col": 24,
         "len": 8,
-        "answer": "freeware",
-        "clue": "a type of proprietary software that is released without charge to the public."
-      },
-      {
-        "num": 18,
-        "row": 23,
-        "col": 13,
-        "len": 3,
-        "answer": "usb",
-        "clue": "commonly used for storage, data backup, and transferring files between devices."
-      },
-      {
-        "num": 19,
-        "row": 24,
-        "col": 16,
-        "len": 8,
-        "answer": "keyboard",
-        "clue": "an input device used to enter characters and functions into the computer system by pressing buttons, or keys."
-      },
-      {
-        "num": 21,
-        "row": 25,
-        "col": 9,
-        "len": 6,
-        "answer": "winrar",
-        "clue": "a trialware file archiver utility for Windows, developed by Eugene Roshal of win.rar GmbH."
-      },
-      {
-        "num": 23,
-        "row": 27,
-        "col": 5,
-        "len": 3,
-        "answer": "cpu",
-        "clue": "the primary component of a computer that acts as its \u201ccontrol center.\u201d"
-      },
-      {
-        "num": 24,
-        "row": 28,
-        "col": 12,
-        "len": 9,
-        "answer": "projector",
-        "clue": "It projects images from a Blu-ray player or computer and presents ideas on the projection screen."
-      },
-      {
-        "num": 28,
-        "row": 33,
-        "col": 9,
-        "len": 6,
-        "answer": "winzip",
-        "clue": "a software product used to archive, compress and encrypt files in a variety of archive formats for more efficient storage and distribution."
+        "answer": "multiply",
+        "clue": "f*g"
       }
     ]
   },
-  "category": "",
-  "source_url": "https://crosswordlabs.com/view/computer-8201",
-  "slug": "computer-8201",
-  "fetched_at": "2026-07-25T16:50:55.952069+00:00",
-  "date": "2026-08-28"
+  "category": "math",
+  "source_url": "https://crosswordlabs.com/view/math-8131",
+  "slug": "math-8131",
+  "fetched_at": "2026-07-14T19:16:29.830480+00:00",
+  "date": "2026-08-29"
 }
