@@ -51,6 +51,12 @@ def _bank_valid(p):
 
 
 def _load_bank_puzzles():
+    """Load and validate bank puzzles, compact-size first.
+
+    2026-08-28: daily puzzle grids grew to 38×38, flooring mobile cells to ~5px
+    (see the adaptive-gap note in assets/js/crossword.js). The daily rotation now
+    prefers COMPACT puzzles (size <= 30) so the fallback pool stays phone-readable.
+    """
     cand_dirs = []
     for d in BANK_TECH_DIRS:
         pp = os.path.join(BANK_DIR, d)
@@ -81,6 +87,16 @@ def _load_bank_puzzles():
             continue
         seen.add(key)
         out.append(pz)
+    # 2026-08-28: prefer COMPACT puzzles (size <= 30) so the rotation stays
+    # phone-readable. Only if the compact pool is short of the window do we
+    # backfill with larger puzzles (ascending size).
+    compact = [pz for pz in out if (pz.get("size") or 0) <= 30]
+    larger = sorted(
+        (pz for pz in out if (pz.get("size") or 0) > 30),
+        key=lambda pz: pz.get("size") or 0,
+    )
+    ordered = compact + larger
+    out[:] = ordered
     return out
 
 
@@ -100,8 +116,11 @@ def main():
         raise RuntimeError(f"bank pool too small: {len(fresh_pool)}")
 
     # Keep the existing window but inject a fresh puzzle at the front
-    # (so the daily rotation modulus stays stable, content just refreshes)
-    fresh = fresh_pool[datetime.date.today().toordinal() % len(fresh_pool)]
+    # (so the daily rotation modulus stays stable, content just refreshes).
+    # 2026-08-28: prefer COMPACT puzzles (size <= 30) so the daily injection
+    # stays phone-readable too.
+    compact = [pz for pz in fresh_pool if (pz.get("size") or 0) <= 30]
+    fresh = compact[datetime.date.today().toordinal() % len(compact)]
     roll = [fresh] + puzzles[:args.window - 1]
     roll = roll[-args.window:]
 

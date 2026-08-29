@@ -166,6 +166,31 @@ def _load_bank_puzzles():
             continue
         seen.add(key)
         out.append(pz)
+    # 2026-08-28: prefer COMPACT puzzles (size <= 30) so the daily crossword
+    # stays phone-readable. Sizes had drifted 22→38 cells (2026-08-19 → 08-28),
+    # flooring mobile cells to ~5px (see the adaptive-gap note in
+    # assets/js/crossword.js — kept as defense-in-depth). The bank holds 1,196
+    # compact puzzles vs 777 larger ones, so the no-repeat cursor only rotates
+    # the compact pool; larger puzzles are appended (ascending size) solely as
+    # backfill if the compact supply ever drops below the safety floor.
+    compact = [pz for pz in out if (pz.get("size") or 0) <= 30]
+    larger = sorted(
+        (pz for pz in out if (pz.get("size") or 0) > 30),
+        key=lambda pz: pz.get("size") or 0,
+    )
+    out[:] = compact + larger
+    # Cursor migration: last_index was recorded against the OLD (unsorted)
+    # ordering and may now point into the >30 tail. Re-anchor it to the same
+    # relative position within the compact head so tomorrow's pick is compact
+    # (one-time modulo, keyed to the last_date guard below).
+    try:
+        st = load_json(os.path.join(DATA, "crossword_state.json")) or {}
+        li = int(st.get("last_index", -1))
+    except Exception:
+        return out
+    if 0 <= li < len(out) and (out[li].get("size") or 0) > 30:
+        st["last_index"] = li % max(1, len(compact))
+        save_json(os.path.join(DATA, "crossword_state.json"), st)
     return out
 
 
