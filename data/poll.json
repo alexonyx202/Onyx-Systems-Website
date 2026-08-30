@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-08-23",
-    "question": "Have you ever been phished?",
+    "weekOf": "2026-08-30",
+    "question": "Would a yearly 'computer tune-up' interest you?",
     "options": [
       {
         "id": "yes",
-        "label": "Yes, I fell for one"
+        "label": "Yes, sign me up"
       },
       {
         "id": "maybe",
-        "label": "Maybe \u2014 not sure"
+        "label": "Depends on price"
       },
       {
-        "id": "no",
-        "label": "No, I'm careful"
+        "id": "diy",
+        "label": "I do it myself"
       },
       {
-        "id": "what",
-        "label": "What's phishing?"
+        "id": "never",
+        "label": "Not really"
       }
     ]
   }

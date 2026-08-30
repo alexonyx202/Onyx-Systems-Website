@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-30-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-08-30",
+      "title": "Scammers Are Using AI to Impersonate Charities",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are using artificial intelligence to make charity appeals sound personal and urgent. A message may use a familiar organization’s name, a copied logo, or a convincing voice recording, then ask for gift cards, cryptocurrency, or a wire transfer. Before giving, stop and visit the organization’s official website by typing its address yourself. Never use payment instructions from an unexpected message. The Federal Trade Commission says pressure to pay immediately is a major warning sign.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-08-30-composite.jpg",
+      "comic": "assets/img/news/2026-08-30-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-08-29-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-29",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-08-26-composite.jpg",
       "comic": "assets/img/news/2026-08-26-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-25-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-25",
-      "title": "Fake Postcards Promise VA Benefits — It's a Scam Stealing Veterans' Personal Info",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are mailing official-looking postcards to veterans across the country, promising free monthly VA benefit payments. The postcard includes a phone number and website asking for your Social Security number or bank details to \"verify eligibility.\" The real VA never contacts veterans this way — they already have your information on file. If you or a loved one receives one of these postcards, do not call the number or visit the website. Instead, verify any VA communication through va.gov or call 1-800-827-1000 directly. Report the scam to ReportFraud.ftc.gov. — Source: FTC, August 24, 2026",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-25-composite.jpg",
-      "comic": "assets/img/news/2026-08-25-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-08-30-post-1",
+      "type": "news",
+      "date": "2026-08-30",
+      "title": "Chrome security update helps block dangerous websites — update Chrome at `chrome://settings/help`",
+      "tag": "Tech Note",
+      "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help → About Google Chrome**, and let it update. Restart Chrome when it asks.",
+      "truth": "I see this all the time: people keep using a browser for months because it still opens their favorite websites. The honest answer is that a browser is the front door to the internet. A current Chrome update closes doors that criminals may try to use, even if you never download anything.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-08-29-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-25-post-1",
-      "type": "news",
-      "date": "2026-08-25",
-      "title": "Windows 11 August update causes games to crash and PCs to reboot — Microsoft is working on a patch",
-      "tag": "Tech Note",
-      "summary": "If your PC crashes, freezes, or reboots by itself after the August Windows update, you're not alone — Microsoft has confirmed the issue and a proper fix is on the way. Don't uninstall the update, which leaves you vulnerable to 400+ security holes; just wait for Microsoft's patch within the next few weeks.",
-      "truth": "I've been seeing this all week in the shop — customers come in thinking their PC is dying, but it's actually the August update conflicting with an old RGB lighting driver. The problem is real but temporary. Microsoft's proper patch should arrive soon, and in the meantime the affected games and apps still work fine on most PCs. The only people who should be worried are folks who rely on specific gaming software for work.",
+      "id": "onyx-2026-08-30-post-2",
+      "type": "tip",
+      "date": "2026-08-30",
+      "title": "Apple Security Releases help protect your iPhone — install the latest iPhone update from Settings",
+      "tag": "Tech Tip",
+      "summary": "Apple's Security Releases page lists the latest protection for iPhones. On your iPhone, open **Settings → General → Software Update** and install the latest update. Leave the phone connected to power while it finishes.",
+      "truth": "Most people wait for a problem before updating. That is backwards. Security updates are preventative maintenance, like changing the oil before the engine starts making noise. The update may not add a flashy feature, but it helps protect your photos, messages, and banking apps.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-25-post-2",
-      "type": "tip",
-      "date": "2026-08-25",
-      "title": "Chrome 153 ships with a critical security patch — take 30 seconds to update now",
-      "tag": "Tech Tip",
-      "summary": "Open Chrome, click the three dots at top right, click Help, then About Google Chrome — the update installs automatically when you open that page.",
-      "truth": "Google just patched a critical memory bug in Chrome 153 that could let a bad website take over your computer. The update is free, takes 30 seconds, and you don't need to do anything except open the update page. I check this for every customer who comes in — it's one of the fastest ways to stay safe online. Most people don't realize their browser is the front door to their computer, and keeping it updated is the easiest protection you have.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-08-29",
+  "updated": "2026-08-30",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
