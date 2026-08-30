@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-28",
+  "updated": "2026-08-29",
   "items": [
+    {
+      "id": "n-2026-08-29",
+      "type": "newsletter",
+      "date": "2026-08-29",
+      "title": "Genetic Testing Data Breach Exposes 2.8 Million People — Your DNA Data May Be at Risk",
+      "tag": "Daily Brief",
+      "summary": "Big news if you or anyone in your family ever had a DNA test. Baylor Genetics — a company that runs genetic tests for cancer risk, pregnancy screening, and rare diseases — just confirmed hackers stole personal information of 2.8 million people. We are talking names, Social Security numbers, medical diagnoses, and your actual genetic test results (source: KCRA/Hearst TV, Aug 28). If that sounds like you, check baylorgenetics.com/securityupdate right now to see if you were affected. Then place a free credit freeze at all three credit bureaus — Equifax, Experian, and TransUnion. Federal law makes credit freezes free, and it takes about five minutes per bureau.",
+      "comic": "Newsletter - 2026-08-29-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-08-29-news1",
+      "type": "tech-note",
+      "date": "2026-08-29",
+      "title": "Google Gemini inside Google Forms creates quizzes from your notes free — try it at forms.google.com",
+      "tag": "Tech Note",
+      "summary": "Open Google Forms at forms.google.com, click the Gemini sparkle icon, type your topic or upload a PDF, and it builds a complete quiz with questions and answer choices automatically."
+    },
+    {
+      "id": "t-2026-08-29-tip1",
+      "type": "tech-note",
+      "date": "2026-08-29",
+      "title": "Clipchamp is the free video editor built into Windows 11 — edit family clips and save them without a watermark",
+      "tag": "Tech Tip",
+      "summary": "Press Start and type Clipchamp, open it, drag your videos onto the timeline, trim and arrange them, and export — built into Windows 11, completely free with no watermarks."
+    },
     {
       "id": "n-2026-08-28",
       "type": "newsletter",
@@ -80,32 +106,6 @@
       "tag": "Tech Tip",
       "summary": "Press the Windows key and the Plus sign (+) to zoom in on anything on your screen, press Windows key and Minus to zoom back out, and press Windows key and Escape to turn Magnifier off — built into every Windows 10 and 11 computer, no download needed.",
       "truth": "I cannot tell you how many customers come in thinking they need a new monitor because the text is too small. They do not — they just need Magnifier. It has been built into Windows for years and almost nobody knows it exists. Press Windows key + Plus and your entire screen zooms in. You can even choose a lens mode that works like a magnifying glass that follows your mouse around the screen."
-    },
-    {
-      "id": "n-2026-08-25",
-      "type": "newsletter",
-      "date": "2026-08-25",
-      "title": "Fake Postcards Promise VA Benefits — It's a Scam Stealing Veterans' Personal Info",
-      "tag": "Daily Brief",
-      "summary": "Scammers are mailing official-looking postcards to veterans across the country, promising free monthly VA benefit payments. The postcard includes a phone number and website asking for your Social Security number or bank details to \"verify eligibility.\" The real VA never contacts veterans this way — they already have your information on file. If you or a loved one receives one of these postcards, do not call the number or visit the website. Instead, verify any VA communication through va.gov or call 1-800-827-1000 directly. Report the scam to ReportFraud.ftc.gov. — Source: FTC, August 24, 2026",
-      "comic": "Newsletter - 2026-08-25-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-25-news1",
-      "type": "tech-note",
-      "date": "2026-08-25",
-      "title": "Windows 11 August update causes games to crash and PCs to reboot — Microsoft is working on a patch",
-      "tag": "Tech Note",
-      "summary": "If your PC crashes, freezes, or reboots by itself after the August Windows update, you're not alone — Microsoft has confirmed the issue and a proper fix is on the way. Don't uninstall the update, which leaves you vulnerable to 400+ security holes; just wait for Microsoft's patch within the next few weeks."
-    },
-    {
-      "id": "t-2026-08-25-tip1",
-      "type": "tech-note",
-      "date": "2026-08-25",
-      "title": "Chrome 153 ships with a critical security patch — take 30 seconds to update now",
-      "tag": "Tech Tip",
-      "summary": "Open Chrome, click the three dots at top right, click Help, then About Google Chrome — the update installs automatically when you open that page."
     }
   ]
 }
