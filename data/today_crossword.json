@@ -1,205 +1,201 @@
 {
   "title": "math",
-  "size": 28,
+  "size": 24,
   "grid": [
-    "...............r.h..........",
-    "...............a.y..........",
-    ".....s.........d.p.....a....",
-    ".....t...composite.divide...",
-    "constant....a..u.r.....d....",
-    ".....n......r..subtraction..",
-    ".....degenerate..o.....t....",
-    ".....a......b..ellipse.i.f..",
-    ".....r......o....a....focus.",
-    ".....d......l..........n.n..",
-    ".....f...v..a............c..",
-    ".....o...e..........p..m.t..",
-    "...directrix........i..u.i..",
-    ".....m...t.......generalform",
-    ".........e..........c..t.n..",
-    ".........x......center.i....",
-    "....................w..p....",
-    "...................circle...",
-    "....................s..y....",
-    "....................e.......",
-    "............................",
-    "............................",
-    "............................",
-    "............................",
-    "............................",
-    "............................",
-    "............................",
-    "............................"
+    ".....directrix..........",
+    ".........i..............",
+    ".........r...d..........",
+    ".........center.s.......",
+    ".........l...g..u.......",
+    ".composite...e..b.......",
+    "...u.........n..t.......",
+    ".ellipse....generalform.",
+    "...t.........r..a.......",
+    "divide.......a..c.......",
+    "...p..v..constant.......",
+    "...l..e......e..i.......",
+    "..hyperbola.....o.......",
+    "......t.........n.......",
+    "..piecewise.............",
+    "..a...x.................",
+    "..r.a....f..............",
+    "standardform............",
+    "..b.d....c..............",
+    "..o.i....u..............",
+    "..l.t....s..............",
+    ".radius.................",
+    "....o...................",
+    "..function.............."
   ],
   "clues": {
     "across": [
       {
-        "num": 5,
-        "row": 4,
-        "col": 10,
-        "len": 9,
-        "answer": "composite",
-        "clue": "(f\u2218g)(x) = f(g(x))"
-      },
-      {
-        "num": 7,
-        "row": 4,
-        "col": 20,
-        "len": 6,
-        "answer": "divide",
-        "clue": "g/h"
-      },
-      {
-        "num": 8,
-        "row": 5,
-        "col": 1,
-        "len": 8,
-        "answer": "constant",
-        "clue": "y(x)=4"
-      },
-      {
-        "num": 9,
-        "row": 6,
-        "col": 16,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "g-h"
-      },
-      {
-        "num": 10,
-        "row": 7,
+        "num": 1,
+        "row": 1,
         "col": 6,
-        "len": 10,
-        "answer": "degenerate",
-        "clue": "4x+9y=1"
-      },
-      {
-        "num": 11,
-        "row": 8,
-        "col": 16,
-        "len": 7,
-        "answer": "ellipse",
-        "clue": "9x^2 + 4y^2 = 36"
-      },
-      {
-        "num": 13,
-        "row": 9,
-        "col": 23,
-        "len": 5,
-        "answer": "focus",
-        "clue": "in (x-h)^2=4p(y-k), its (h,k+p)"
-      },
-      {
-        "num": 17,
-        "row": 13,
-        "col": 4,
         "len": 9,
         "answer": "directrix",
         "clue": "perpendicular to the axis of symmetry of a parabola."
       },
       {
-        "num": 18,
-        "row": 14,
-        "col": 18,
-        "len": 11,
-        "answer": "generalform",
-        "clue": "y = ax^2 + bx + c"
-      },
-      {
-        "num": 19,
-        "row": 16,
-        "col": 17,
+        "num": 4,
+        "row": 4,
+        "col": 10,
         "len": 6,
         "answer": "center",
         "clue": "(x,y)"
       },
       {
-        "num": 20,
-        "row": 18,
-        "col": 20,
-        "len": 6,
-        "answer": "circle",
-        "clue": "x^2 + y^2 \u2212 4x + 2y \u2212 3 = 0"
-      }
-    ],
-    "down": [
-      {
-        "num": 1,
-        "row": 1,
-        "col": 16,
-        "len": 6,
-        "answer": "radius",
-        "clue": "its the r in x^2 + y^2 = r^2"
+        "num": 6,
+        "row": 6,
+        "col": 2,
+        "len": 9,
+        "answer": "composite",
+        "clue": "(f\u2218g)(x) = f(g(x))"
       },
       {
-        "num": 2,
-        "row": 1,
-        "col": 18,
+        "num": 8,
+        "row": 8,
+        "col": 2,
+        "len": 7,
+        "answer": "ellipse",
+        "clue": "9x^2 + 4y^2 = 36"
+      },
+      {
+        "num": 9,
+        "row": 8,
+        "col": 13,
+        "len": 11,
+        "answer": "generalform",
+        "clue": "y = ax^2 + bx + c"
+      },
+      {
+        "num": 10,
+        "row": 10,
+        "col": 1,
+        "len": 6,
+        "answer": "divide",
+        "clue": "g/h"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 10,
+        "len": 8,
+        "answer": "constant",
+        "clue": "y(x)=4"
+      },
+      {
+        "num": 13,
+        "row": 13,
+        "col": 3,
         "len": 9,
         "answer": "hyperbola",
         "clue": "9y^2 - 4x^2 =  144"
       },
       {
-        "num": 3,
-        "row": 3,
-        "col": 6,
-        "len": 12,
-        "answer": "standardform",
-        "clue": "(x - h)^2 = 4p(y - k)"
-      },
-      {
-        "num": 4,
-        "row": 3,
-        "col": 24,
-        "len": 8,
-        "answer": "addition",
-        "clue": "g+h"
-      },
-      {
-        "num": 6,
-        "row": 4,
-        "col": 13,
-        "len": 8,
-        "answer": "parabola",
-        "clue": "x^2=4py"
-      },
-      {
-        "num": 12,
-        "row": 8,
-        "col": 26,
-        "len": 8,
-        "answer": "function",
-        "clue": "f(x)"
-      },
-      {
         "num": 14,
-        "row": 11,
-        "col": 10,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "(h,K)"
-      },
-      {
-        "num": 15,
-        "row": 12,
-        "col": 21,
+        "row": 15,
+        "col": 3,
         "len": 9,
         "answer": "piecewise",
         "clue": "a function built from pieces of different functions over different intervals"
       },
       {
-        "num": 16,
-        "row": 12,
-        "col": 24,
+        "num": 17,
+        "row": 18,
+        "col": 1,
+        "len": 12,
+        "answer": "standardform",
+        "clue": "(x - h)^2 = 4p(y - k)"
+      },
+      {
+        "num": 18,
+        "row": 22,
+        "col": 2,
+        "len": 6,
+        "answer": "radius",
+        "clue": "its the r in x^2 + y^2 = r^2"
+      },
+      {
+        "num": 19,
+        "row": 24,
+        "col": 3,
+        "len": 8,
+        "answer": "function",
+        "clue": "f(x)"
+      }
+    ],
+    "down": [
+      {
+        "num": 2,
+        "row": 1,
+        "col": 10,
+        "len": 6,
+        "answer": "circle",
+        "clue": "x^2 + y^2 \u2212 4x + 2y \u2212 3 = 0"
+      },
+      {
+        "num": 3,
+        "row": 3,
+        "col": 14,
+        "len": 10,
+        "answer": "degenerate",
+        "clue": "4x+9y=1"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 17,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "g-h"
+      },
+      {
+        "num": 7,
+        "row": 6,
+        "col": 4,
         "len": 8,
         "answer": "multiply",
         "clue": "f*g"
+      },
+      {
+        "num": 11,
+        "row": 11,
+        "col": 7,
+        "len": 6,
+        "answer": "vertex",
+        "clue": "(h,K)"
+      },
+      {
+        "num": 14,
+        "row": 15,
+        "col": 3,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "x^2=4py"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 5,
+        "len": 8,
+        "answer": "addition",
+        "clue": "g+h"
+      },
+      {
+        "num": 16,
+        "row": 17,
+        "col": 10,
+        "len": 5,
+        "answer": "focus",
+        "clue": "in (x-h)^2=4p(y-k), its (h,k+p)"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8131",
-  "slug": "math-8131",
-  "fetched_at": "2026-07-14T19:16:29.830480+00:00",
-  "date": "2026-08-29"
+  "source_url": "https://crosswordlabs.com/view/math-8132",
+  "slug": "math-8132",
+  "fetched_at": "2026-07-14T19:12:58.911876+00:00",
+  "date": "2026-08-30"
 }
