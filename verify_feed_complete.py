@@ -193,6 +193,9 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # Extended 2026-08-23: FTC bill-pay impersonator scam alert (fake ads at the
     # top of Google/Bing posing as electric company/bank) is a security alert (exempt).
     "bill-payment", "bill pay",
+    # Extended 2026-08-29: Genetic testing data breach (Baylor Genetics) is a
+    # security alert — no product name required.
+    "breach", "genetic testing",
     ]
     if any(s in low for s in SKIP):
         return fails
