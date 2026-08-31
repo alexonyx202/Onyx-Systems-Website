@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,12 +100,30 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-08-31-daily-brief",
+      "type": "newsletter",
+      "date": "2026-08-31",
+      "title": "Windows 10 Support Ends October 14 \u2014 Check Your PC This Week",
+      "tag": "Daily Brief",
+      "excerpt": "Windows 10 support ends October 14, 2026. After that, Microsoft stops issuing security updates for Windows 10. Check which version you have now: press Start, type \"About your PC\", and look at Windows specifications. The free upgrade to Windows 11 is still available for most machines, or it's time to plan a replacement. Source: Microsoft \u2014 Windows 10 End of Support.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "cta": {
+        "label": "Book a free check",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-08-30-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-30",
       "title": "Scammers Are Using AI to Impersonate Charities",
       "tag": "Daily Brief",
-      "excerpt": "Scammers are using artificial intelligence to make charity appeals sound personal and urgent. A message may use a familiar organization’s name, a copied logo, or a convincing voice recording, then ask for gift cards, cryptocurrency, or a wire transfer. Before giving, stop and visit the organization’s official website by typing its address yourself. Never use payment instructions from an unexpected message. The Federal Trade Commission says pressure to pay immediately is a major warning sign.",
+      "excerpt": "Scammers are using artificial intelligence to make charity appeals sound personal and urgent. A message may use a familiar organization\u2019s name, a copied logo, or a convincing voice recording, then ask for gift cards, cryptocurrency, or a wire transfer. Before giving, stop and visit the organization\u2019s official website by typing its address yourself. Never use payment instructions from an unexpected message. The Federal Trade Commission says pressure to pay immediately is a major warning sign.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -120,9 +138,9 @@
       "id": "onyx-2026-08-29-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-29",
-      "title": "Genetic Testing Data Breach Exposes 2.8 Million People — Your DNA Data May Be at Risk",
+      "title": "Genetic Testing Data Breach Exposes 2.8 Million People \u2014 Your DNA Data May Be at Risk",
       "tag": "Daily Brief",
-      "excerpt": "Big news if you or anyone in your family ever had a DNA test. Baylor Genetics — a company that runs genetic tests for cancer risk, pregnancy screening, and rare diseases — just confirmed hackers stole personal information of 2.8 million people. We are talking names, Social Security numbers, medical diagnoses, and your actual genetic test results (source: KCRA/Hearst TV, Aug 28). If that sounds like you, check baylorgenetics.com/securityupdate right now to see if you were affected. Then place a free credit freeze at all three credit bureaus — Equifax, Experian, and TransUnion. Federal law makes credit freezes free, and it takes about five minutes per bureau.",
+      "excerpt": "Big news if you or anyone in your family ever had a DNA test. Baylor Genetics \u2014 a company that runs genetic tests for cancer risk, pregnancy screening, and rare diseases \u2014 just confirmed hackers stole personal information of 2.8 million people. We are talking names, Social Security numbers, medical diagnoses, and your actual genetic test results (source: KCRA/Hearst TV, Aug 28). If that sounds like you, check baylorgenetics.com/securityupdate right now to see if you were affected. Then place a free credit freeze at all three credit bureaus \u2014 Equifax, Experian, and TransUnion. Federal law makes credit freezes free, and it takes about five minutes per bureau.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -137,9 +155,9 @@
       "id": "onyx-2026-08-28-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-28",
-      "title": "Windows Update Is Breaking Printers and PDFs — Here's What to Do",
+      "title": "Windows Update Is Breaking Printers and PDFs \u2014 Here's What to Do",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft's latest Windows update is breaking printers and PDF saving across the country. Programs crash when you try to print or create a PDF. Here is what to do right now: open Settings, go to Windows Update, and click \"Pause updates\" for 7 days. If your printer already stopped working, try printing from a web browser instead. This is a Microsoft mistake, not a printer problem. They are working on a fix. Bring it by the shop if you need help — free diagnosis, no pressure. (Sources: PCWorld, BleepingComputer — August 25-26, 2026)",
+      "excerpt": "Microsoft's latest Windows update is breaking printers and PDF saving across the country. Programs crash when you try to print or create a PDF. Here is what to do right now: open Settings, go to Windows Update, and click \"Pause updates\" for 7 days. If your printer already stopped working, try printing from a web browser instead. This is a Microsoft mistake, not a printer problem. They are working on a fix. Bring it by the shop if you need help \u2014 free diagnosis, no pressure. (Sources: PCWorld, BleepingComputer \u2014 August 25-26, 2026)",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -154,9 +172,9 @@
       "id": "onyx-2026-08-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-08-27",
-      "title": "Fake Email Attachments Are Stealing Microsoft 365 Logins — Even With Two-Factor On",
+      "title": "Fake Email Attachments Are Stealing Microsoft 365 Logins \u2014 Even With Two-Factor On",
       "tag": "Daily Brief",
-      "excerpt": "Security researchers found a new trick hitting over 4,500 companies across the U.S. Crooks send emails with attachments that look like a Microsoft login page. When you open the attachment, it loads a fake sign-in screen and steals your username, password, and even your two-factor code — all in one shot. The attackers then reuse your login session without needing your password again. The FTC says never open unexpected email attachments, even if they look official. If you get a surprise attachment asking you to \"verify\" your account, delete it and go directly to outlook.com or office.com instead (The Hacker News, August 25; CybersecurityNews, August 26).",
+      "excerpt": "Security researchers found a new trick hitting over 4,500 companies across the U.S. Crooks send emails with attachments that look like a Microsoft login page. When you open the attachment, it loads a fake sign-in screen and steals your username, password, and even your two-factor code \u2014 all in one shot. The attackers then reuse your login session without needing your password again. The FTC says never open unexpected email attachments, even if they look official. If you get a surprise attachment asking you to \"verify\" your account, delete it and go directly to outlook.com or office.com instead (The Hacker News, August 25; CybersecurityNews, August 26).",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -166,33 +184,30 @@
       "image": "assets/img/news/2026-08-27-composite.jpg",
       "comic": "assets/img/news/2026-08-27-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-26-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-26",
-      "title": "Fake Ads on Social Media Are Trapping Shoppers — FTC Warns",
-      "tag": "Daily Brief",
-      "excerpt": "The Federal Trade Commission warns that ads on social media platforms are not checked for scams. Crooks run fake ads on Facebook, Instagram, and TikTok using stolen product photos and made-up reviews — you pay but the item never arrives, or it shows up broken. The FTC says this happens every day and costs people real money (FTC.gov, August 2026). Before buying from any social media ad, search the company name plus \"scam\" on Google. If the company has no real website or phone number, don't buy. Always use a credit card so you can dispute the charge.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-26-composite.jpg",
-      "comic": "assets/img/news/2026-08-26-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-08-31-post-1",
+      "type": "news",
+      "date": "2026-08-31",
+      "title": "Windows 10 support ends October 14 \u2014 check your edition at Settings \u2192 System \u2192 About",
+      "tag": "Tech Note",
+      "summary": "Microsoft ends support for Windows 10 on October 14, 2026, after which security updates stop. Press Start, type \"About your PC\", and check the Windows specifications section. If it says Windows 10, upgrade to Windows 11 for free at Settings \u2192 Update & Security \u2192 Windows Update, or bring your machine in for a compatibility check.",
+      "truth": "Most people don't realize their PC will quietly stop getting security patches this October. The honest answer: check your Windows edition now \u2014 the free upgrade path is still open, and six weeks is plenty of time to plan.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
       "id": "onyx-2026-08-30-post-1",
       "type": "news",
       "date": "2026-08-30",
-      "title": "Chrome security update helps block dangerous websites — update Chrome at `chrome://settings/help`",
+      "title": "Chrome security update helps block dangerous websites \u2014 update Chrome at `chrome://settings/help`",
       "tag": "Tech Note",
-      "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help → About Google Chrome**, and let it update. Restart Chrome when it asks.",
+      "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help \u2192 About Google Chrome**, and let it update. Restart Chrome when it asks.",
       "truth": "I see this all the time: people keep using a browser for months because it still opens their favorite websites. The honest answer is that a browser is the front door to the internet. A current Chrome update closes doors that criminals may try to use, even if you never download anything.",
       "tags": [
         "#OnyxSystems",
@@ -204,10 +219,10 @@
       "id": "onyx-2026-08-29-post-1",
       "type": "news",
       "date": "2026-08-29",
-      "title": "Google Gemini inside Google Forms creates quizzes from your notes free — try it at forms.google.com",
+      "title": "Google Gemini inside Google Forms creates quizzes from your notes free \u2014 try it at forms.google.com",
       "tag": "Tech Note",
       "summary": "Open Google Forms at forms.google.com, click the Gemini sparkle icon, type your topic or upload a PDF, and it builds a complete quiz with questions and answer choices automatically.",
-      "truth": "I see this all the time — parents and teachers spend hours writing practice quizzes by hand. Most people don't realize Google Forms now has a built-in AI assistant that does the whole thing in under a minute. You type a topic like \"5th grade math fractions\" and it generates ten questions with multiple choice answers. You can edit any question it creates, and when you're done, you share the link. It works on any computer with a web browser, no special software needed. The honest answer is this saves teachers and parents a ton of time — and it's completely free.",
+      "truth": "I see this all the time \u2014 parents and teachers spend hours writing practice quizzes by hand. Most people don't realize Google Forms now has a built-in AI assistant that does the whole thing in under a minute. You type a topic like \"5th grade math fractions\" and it generates ten questions with multiple choice answers. You can edit any question it creates, and when you're done, you share the link. It works on any computer with a web browser, no special software needed. The honest answer is this saves teachers and parents a ton of time \u2014 and it's completely free.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -218,10 +233,10 @@
       "id": "onyx-2026-08-28-post-1",
       "type": "news",
       "date": "2026-08-28",
-      "title": "CISA says hackers are already using six new flaws — update your computer tonight and tell your IT department if you use Citrix at work",
+      "title": "CISA says hackers are already using six new flaws \u2014 update your computer tonight and tell your IT department if you use Citrix at work",
       "tag": "Tech Note",
-      "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 — including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes.",
-      "truth": "I see this all the time — businesses assume their IT person handles updates and they don't need to worry about it. But CISA's alert specifically says these flaws are being actively exploited right now, not someday. If your company uses Citrix for remote access, the clock is ticking. And if you're a home user, keeping your Windows updates current is still the single fastest way to stay safe. Most people don't realize that a two-minute update once a month can stop a hacker cold.",
+      "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 \u2014 including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes.",
+      "truth": "I see this all the time \u2014 businesses assume their IT person handles updates and they don't need to worry about it. But CISA's alert specifically says these flaws are being actively exploited right now, not someday. If your company uses Citrix for remote access, the clock is ticking. And if you're a home user, keeping your Windows updates current is still the single fastest way to stay safe. Most people don't realize that a two-minute update once a month can stop a hacker cold.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -232,10 +247,10 @@
       "id": "onyx-2026-08-27-post-1",
       "type": "news",
       "date": "2026-08-27",
-      "title": "Google's free Password Checkup finds every weak and reused password in Chrome — try it in 10 seconds",
+      "title": "Google's free Password Checkup finds every weak and reused password in Chrome \u2014 try it in 10 seconds",
       "tag": "Tech Note",
-      "summary": "Open Chrome, click your profile icon in the top right, select \"Google Password Manager,\" then click \"Password Checkup.\" Google will scan every password saved in your browser and tell you which ones are weak, reused, or leaked in a data breach — for free, in about 10 seconds.",
-      "truth": "Most people don't realize that if you use the same password for your email and your bank — which about 65% of people do — a single data breach at some website you signed up for three years ago can hand a crook access to everything. Google's Password Checkup shows you exactly which passwords are in danger, and it takes less time than filling your coffee mug. I run this on every computer that comes into the shop.",
+      "summary": "Open Chrome, click your profile icon in the top right, select \"Google Password Manager,\" then click \"Password Checkup.\" Google will scan every password saved in your browser and tell you which ones are weak, reused, or leaked in a data breach \u2014 for free, in about 10 seconds.",
+      "truth": "Most people don't realize that if you use the same password for your email and your bank \u2014 which about 65% of people do \u2014 a single data breach at some website you signed up for three years ago can hand a crook access to everything. Google's Password Checkup shows you exactly which passwords are in danger, and it takes less time than filling your coffee mug. I run this on every computer that comes into the shop.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -243,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-26-post-1",
-      "type": "news",
-      "date": "2026-08-26",
-      "title": "Turn any lamp into a smart lamp for 10 dollars — TP-Link Kasa Smart Plug lets you control it from your phone with the free Kasa app",
-      "tag": "Tech Note",
-      "summary": "Buy a TP-Link Kasa Smart Plug EP25 for about 10 dollars at Amazon or Walmart, plug it into any wall outlet, plug in your lamp, and control it from the free Kasa Smart app on your phone — set schedules, turn lights on from bed, or flip them off from the grocery store.",
-      "truth": "I see people spend 200 dollars on \"smart home\" systems when all they really want is to turn the porch light on before they get home. A 10-dollar smart plug does that. You don't need a hub, you don't need a subscription, and you don't need to call me. Download the free Kasa Smart app from the Play Store or App Store, follow the 2-minute setup, and you're done. I put one on my mom's lamp so she can turn it on without getting up — she thinks it's magic.",
+      "id": "onyx-2026-08-31-post-2",
+      "type": "tip",
+      "date": "2026-08-31",
+      "title": "Install Microsoft's August security update \u2014 open Settings \u2192 Windows Update and check for updates",
+      "tag": "Tech Tip",
+      "summary": "Microsoft's August update patched roughly 400 vulnerabilities, including three actively exploited zero-days. Open Settings \u2192 Update & Security \u2192 Windows Update \u2192 Check for updates and install anything pending, then restart when asked.",
+      "truth": "The August patch batch is one of the biggest of the year, and three of the flaws are already being used in the wild. The honest answer: a two-minute update now is cheaper than a ransomware call later.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -260,9 +275,9 @@
       "id": "onyx-2026-08-30-post-2",
       "type": "tip",
       "date": "2026-08-30",
-      "title": "Apple Security Releases help protect your iPhone — install the latest iPhone update from Settings",
+      "title": "Apple Security Releases help protect your iPhone \u2014 install the latest iPhone update from Settings",
       "tag": "Tech Tip",
-      "summary": "Apple's Security Releases page lists the latest protection for iPhones. On your iPhone, open **Settings → General → Software Update** and install the latest update. Leave the phone connected to power while it finishes.",
+      "summary": "Apple's Security Releases page lists the latest protection for iPhones. On your iPhone, open **Settings \u2192 General \u2192 Software Update** and install the latest update. Leave the phone connected to power while it finishes.",
       "truth": "Most people wait for a problem before updating. That is backwards. Security updates are preventative maintenance, like changing the oil before the engine starts making noise. The update may not add a flashy feature, but it helps protect your photos, messages, and banking apps.",
       "tags": [
         "#OnyxSystems",
@@ -274,10 +289,10 @@
       "id": "onyx-2026-08-29-post-2",
       "type": "tip",
       "date": "2026-08-29",
-      "title": "Clipchamp is the free video editor built into Windows 11 — edit family clips and save them without a watermark",
+      "title": "Clipchamp is the free video editor built into Windows 11 \u2014 edit family clips and save them without a watermark",
       "tag": "Tech Tip",
-      "summary": "Press Start and type Clipchamp, open it, drag your videos onto the timeline, trim and arrange them, and export — built into Windows 11, completely free with no watermarks.",
-      "truth": "I see this all the time — customers want to make a quick video from their phone clips for a birthday or family reunion, and they think they need to pay for expensive software. Most people don't realize Windows 11 already comes with a free video editor called Clipchamp that's made by Microsoft. You press Start, type Clipchamp, open it, and drag your videos right onto the timeline. You can trim clips, add music, put in text titles, and when you're done, export the whole thing as an MP4 video file. No watermark on the free version. The honest answer is you probably already have this on your computer and just don't know it's there.",
+      "summary": "Press Start and type Clipchamp, open it, drag your videos onto the timeline, trim and arrange them, and export \u2014 built into Windows 11, completely free with no watermarks.",
+      "truth": "I see this all the time \u2014 customers want to make a quick video from their phone clips for a birthday or family reunion, and they think they need to pay for expensive software. Most people don't realize Windows 11 already comes with a free video editor called Clipchamp that's made by Microsoft. You press Start, type Clipchamp, open it, and drag your videos right onto the timeline. You can trim clips, add music, put in text titles, and when you're done, export the whole thing as an MP4 video file. No watermark on the free version. The honest answer is you probably already have this on your computer and just don't know it's there.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -288,10 +303,10 @@
       "id": "onyx-2026-08-28-post-2",
       "type": "tip",
       "date": "2026-08-28",
-      "title": "Stop losing things you copied — Windows Clipboard History remembers your last 25 clips, built-in and free",
+      "title": "Stop losing things you copied \u2014 Windows Clipboard History remembers your last 25 clips, built-in and free",
       "tag": "Tech Tip",
-      "summary": "Press the Windows key + V to open Windows Clipboard History. It remembers everything you copy — text, links, images — and lets you paste any older item, not just the most recent one. If it's not turned on yet, press Start, type \"clipboard settings,\" open it, and flip the switch to On. It takes five seconds and you'll never lose a copied item again.",
-      "truth": "Most people don't realize that when you copy something new on your computer, the old thing you copied disappears. Windows Clipboard History fixes that — it keeps your last 25 copies so you can go back and paste any of them. I use it ten times a day when I'm juggling parts numbers, customer notes, and URLs. It's the most underused free tool in Windows.",
+      "summary": "Press the Windows key + V to open Windows Clipboard History. It remembers everything you copy \u2014 text, links, images \u2014 and lets you paste any older item, not just the most recent one. If it's not turned on yet, press Start, type \"clipboard settings,\" open it, and flip the switch to On. It takes five seconds and you'll never lose a copied item again.",
+      "truth": "Most people don't realize that when you copy something new on your computer, the old thing you copied disappears. Windows Clipboard History fixes that \u2014 it keeps your last 25 copies so you can go back and paste any of them. I use it ten times a day when I'm juggling parts numbers, customer notes, and URLs. It's the most underused free tool in Windows.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -302,24 +317,10 @@
       "id": "onyx-2026-08-27-post-2",
       "type": "tip",
       "date": "2026-08-27",
-      "title": "Rapid Fiber just finished wiring every SVEC member in Columbia County — check plans from 50 dollars a month at rapid-fiber.com",
+      "title": "Rapid Fiber just finished wiring every SVEC member in Columbia County \u2014 check plans from 50 dollars a month at rapid-fiber.com",
       "tag": "Tech Tip",
-      "summary": "Rapid Fiber Internet, powered by Suwannee Valley Electric Cooperative, has completed its initial fiber build — every SVEC member in Columbia County, Suwannee, Lafayette, and Hamilton counties can now get fiber internet. Plans start at 50 dollars a month for 100 Mbps. Check your address and sign up at rapid-fiber.com or call (888) 857-4959.",
-      "truth": "I've been watching Rapid Fiber roll out for almost three years, and they finally hit 100% coverage for SVEC members. Most people in this area have been stuck with slow DSL or spotty satellite while the rest of the country moved to fiber. This is real gigabit-speed internet through your electric co-op — and it means you finally have an option if Xfinity or AT&T don't reach your road. If you're an SVEC member, you need to check this today.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-08-26-post-2",
-      "type": "tip",
-      "date": "2026-08-26",
-      "title": "Can't read the small text on your computer screen? Windows Magnifier makes everything bigger free — press the Windows key and Plus to zoom in instantly",
-      "tag": "Tech Tip",
-      "summary": "Press the Windows key and the Plus sign (+) to zoom in on anything on your screen, press Windows key and Minus to zoom back out, and press Windows key and Escape to turn Magnifier off — built into every Windows 10 and 11 computer, no download needed.",
-      "truth": "I can't tell you how many customers come in thinking they need a new monitor because the text is too small. They don't — they just need Magnifier. It's been built into Windows for years and almost nobody knows it exists. Press Windows key + Plus and your entire screen zooms in. You can even choose a lens mode that works like a magnifying glass that follows your mouse around the screen.",
+      "summary": "Rapid Fiber Internet, powered by Suwannee Valley Electric Cooperative, has completed its initial fiber build \u2014 every SVEC member in Columbia County, Suwannee, Lafayette, and Hamilton counties can now get fiber internet. Plans start at 50 dollars a month for 100 Mbps. Check your address and sign up at rapid-fiber.com or call (888) 857-4959.",
+      "truth": "I've been watching Rapid Fiber roll out for almost three years, and they finally hit 100% coverage for SVEC members. Most people in this area have been stuck with slow DSL or spotty satellite while the rest of the country moved to fiber. This is real gigabit-speed internet through your electric co-op \u2014 and it means you finally have an option if Xfinity or AT&T don't reach your road. If you're an SVEC member, you need to check this today.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -327,7 +328,7 @@
       ]
     }
   ],
-  "updated": "2026-08-30",
+  "updated": "2026-08-31",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
@@ -603,7 +604,7 @@
   },
   "today_trivia": {
     "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
+    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
     "category": "Hardware",
     "date": "2026-08-09"
   },
@@ -623,11 +624,11 @@
         },
         {
           "id": "1to3",
-          "label": "1–3 years"
+          "label": "1\u20133 years"
         },
         {
           "id": "3to5",
-          "label": "3–5 years"
+          "label": "3\u20135 years"
         },
         {
           "id": "gt5",
