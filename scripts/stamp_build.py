@@ -41,6 +41,10 @@ SW = "sw.js"
 
 META_RE = re.compile(r'(<meta name="onyx-build" content=")\d{8}(")')
 CACHE_RE = re.compile(r"(CACHE = 'onyx-v)\d{8}(')")
+# Date-capturing variants (same token format) — used by check_freshness_tokens.py
+# to read the stamped date back out of each file for the stale-build gate.
+META_STAMP_RE = re.compile(r'<meta name="onyx-build" content="(\d{8})"')
+CACHE_STAMP_RE = re.compile(r"CACHE = 'onyx-v(\d{8})'")
 DATE_RE = re.compile(r"^\d{8}$")
 
 

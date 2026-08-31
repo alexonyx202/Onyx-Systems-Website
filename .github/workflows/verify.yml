@@ -32,7 +32,7 @@ jobs:
       - name: Game links + assets resolve on disk
         run: node scripts/check_games_links.js
 
-      - name: Freshness tokens present (onyx-build meta + sw cache)
+      - name: Freshness tokens present and current (onyx-build meta + sw cache, matches today's Eastern date)
         run: python3 scripts/check_freshness_tokens.py
 
   e2e:

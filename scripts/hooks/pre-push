@@ -10,8 +10,8 @@
 # Flow (fires only when the push includes refs/heads/main):
 #   1. Vault-layout guard — skip (with a note) if there is no Reference/
 #      sibling next to the repo (i.e. not the Obsidian vault checkout).
-#   2. LOCAL GATES — mirror the CI static + browser gates in verify.yml:
-#        a. freshness tokens present (check_freshness_tokens.py)
+#   2. LOCAL GATES — mirror the CI static + browser gates in verify.yml:  #        a. freshness tokens present + matching today's Eastern build date
+  #          (check_freshness_tokens.py)
 #        b. inline manifests regenerate without changes (parity check done
 #           read-only via temp copies — the working tree is never modified)
 #        c. game links + assets resolve (check_games_links.js)
