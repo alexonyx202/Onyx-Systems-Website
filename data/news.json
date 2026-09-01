@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-31",
+  "updated": "2026-09-01",
   "items": [
+    {
+      "id": "n-2026-09-01",
+      "type": "newsletter",
+      "date": "2026-09-01",
+      "title": "Fake Chrome Update Pop-Ups Are Spreading Malware",
+      "tag": "Daily Brief",
+      "summary": "Security writers are warning about fake browser-update pop-ups: a notice claiming your browser needs a \"critical update.\" Clicking it installs malware, not an update. Real updates come from the browser's own menu — never from a website pop-up. If you see one, close the tab without clicking, then update properly: in Chrome, click the three dots, choose **Help → About Google Chrome**, and let it update itself. Then check your extensions and remove anything you don't recognize.",
+      "comic": "Newsletter - 2026-09-01-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-01-news1",
+      "type": "tech-note",
+      "date": "2026-09-01",
+      "title": "300+ malicious Chrome extensions caught leaking browser data — audit yours in Chrome's Extensions manager",
+      "tag": "Tech Note",
+      "summary": "Security researchers found more than 300 malicious Chrome extensions collecting browsing history or stealing user information. Open Chrome, click the three dots, choose **Extensions → Manage Extensions**, and remove anything you don't recognize or no longer use."
+    },
+    {
+      "id": "t-2026-09-01-tip1",
+      "type": "tech-note",
+      "date": "2026-09-01",
+      "title": "Audit your Chrome extensions in two minutes — Manage Extensions finds the fakes",
+      "tag": "Tech Tip",
+      "summary": "In Chrome, click the three dots, choose **Extensions → Manage Extensions**, and turn off anything you don't recognize or no longer use — one at a time, so you'll know what changed. Real updates come from the browser's own menu, never from a website pop-up."
+    },
     {
       "id": "n-2026-08-31",
       "type": "newsletter",
@@ -79,32 +105,6 @@
       "title": "CISA says hackers are already using six new flaws — update your computer tonight and tell your IT department if you use Citrix at work",
       "tag": "Tech Note",
       "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 — including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes."
-    },
-    {
-      "id": "t-2026-08-28-tip1",
-      "type": "tech-note",
-      "date": "2026-08-28",
-      "title": "Stop losing things you copied — Windows Clipboard History remembers your last 25 clips, built-in and free",
-      "tag": "Tech Tip",
-      "summary": "Press the Windows key + V to open Windows Clipboard History. It remembers everything you copy — text, links, images — and lets you paste any older item, not just the most recent one. If it's not turned on yet, press Start, type \"clipboard settings,\" open it, and flip the switch to On. It takes five seconds and you'll never lose a copied item again."
-    },
-    {
-      "id": "n-2026-08-27",
-      "type": "newsletter",
-      "date": "2026-08-27",
-      "title": "Fake Email Attachments Are Stealing Microsoft 365 Logins — Even With Two-Factor On",
-      "tag": "Daily Brief",
-      "summary": "Security researchers found a new trick hitting over 4,500 companies across the U.S. Crooks send emails with attachments that look like a Microsoft login page. When you open the attachment, it loads a fake sign-in screen and steals your username, password, and even your two-factor code — all in one shot. The attackers then reuse your login session without needing your password again. The FTC says never open unexpected email attachments, even if they look official. If you get a surprise attachment asking you to \"verify\" your account, delete it and go directly to outlook.com or office.com instead (The Hacker News, August 25; CybersecurityNews, August 26).",
-      "comic": "Newsletter - 2026-08-27-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-27-news1",
-      "type": "tech-note",
-      "date": "2026-08-27",
-      "title": "Google's free Password Checkup finds every weak and reused password in Chrome — try it in 10 seconds",
-      "tag": "Tech Note",
-      "summary": "Open Chrome, click your profile icon in the top right, select \"Google Password Manager,\" then click \"Password Checkup.\" Google will scan every password saved in your browser and tell you which ones are weak, reused, or leaked in a data breach — for free, in about 10 seconds."
     }
   ]
 }
