@@ -19,22 +19,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:radial-gradient(circ
 body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;-webkit-user-select:none;user-select:none}
 #wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
 canvas{display:block;image-rendering:auto;touch-action:none;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
-#rotate-prompt{display:none;position:fixed;inset:0;z-index:99999;background:#0a0614;color:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px;font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif}
-#rotate-prompt .icon{font-size:56px;animation:ro 2s ease-in-out infinite}
-#rotate-prompt .msg{font-size:16px;letter-spacing:2px;max-width:280px;line-height:1.5}
-#rotate-prompt .sub{font-size:12px;color:#9aa}
-@keyframes ro{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
-@media (orientation:portrait) and (hover:none) and (pointer:coarse) and (max-width:767px){
-  #rotate-prompt{display:flex!important}#wrap{visibility:hidden}}
+/* Mobile: the table is PORTRAIT-shaped (720×1200), so portrait phones render it
+   LARGER than landscape (min(w/720,h/1200) ≈ 0.5 vs 0.3) — never block either
+   orientation, just fit the canvas to whichever viewport you get. */
 </style>
 </head>
 <body>
 <div id="wrap"><canvas id="C"></canvas></div>
-<div id="rotate-prompt">
-  <div class="icon">📱</div>
-  <div class="msg">ROTATE YOUR PHONE TO LANDSCAPE TO PLAY</div>
-  <div class="sub">↻ Turn your device for the full table</div>
-</div>
 <script>
 'use strict';
 /* =====================================================================================
@@ -48,7 +39,8 @@ canvas{display:block;image-rendering:auto;touch-action:none;border-radius:18px;b
    - ATARI ROLLOVER .. Upper-right lane. 100 pts, +1 bonus multiplier per pass.
                        After 4 passes: EXTRA BALL (once per ball).
    - BUMPERS ......... 3 pop bumpers in triangle: 100 × current value (1..9).
-                       GAMES 1&2 accumulate value; GAMES 3&4 reset each ball.    - SPECIAL TARGET .. main centre shot: 500 unlit; lit streak 1000/2500/5000.
+   - SPECIAL LIGHT ... pass-over centre lamp (no bounce): 500 unlit;
+                       lit streak 1000/2500/5000.
 
    - SPINNERS ........ 1 pt each pass (2 spinners, mid left & right).
    - TILT ............ Too many nudges: flippers freeze, no scoring, extra ball lost.
@@ -66,18 +58,42 @@ const F_UI='"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif';
 const F_MONO='ui-monospace,"Cascadia Mono","Courier New",monospace';
 
 /* ---------- logical stage ---------- */
-const W=720, H=1200;
-const CAB_H=168;
-const PF={x:48,y:CAB_H,w:W-96,h:H-CAB_H-118};
+/* W/H derive the stage ASPECT from the real viewport. The playfield mechanics
+   (ball, bumpers, targets, lanes, flippers — everything in PF coordinates) are
+   untouched; only the non-playable chrome is flexed so phones aren't letterboxed
+   into tiny tables. Phone portrait (≈0.46 aspect): cabinet/bottom trim shrink
+   and the rails tighten, so scale rises ≈0.5 → ≈0.75 — the same table fills the
+   screen edge-to-edge. Desktop keeps the roomy 720×1200 cabinet.
+   Coordinates elsewhere never read W/H directly — everything hangs off PF —
+   except the title/menu/entry screens, which fully re-draw every frame and
+   therefore adapt automatically. */
+let W=720, H=1200, CAB_H=168;
+const MOBILE=(()=>{try{return matchMedia('(hover:none) and (pointer:coarse)').matches
+  && Math.min(screen.width,screen.height)<=800;}catch(e){return false}})();
+const PORTRAIT_ASPECT=(()=>{try{
+  const a=(screen.width<=screen.height?screen.height/screen.width:screen.width/screen.height);
+  return Math.max(1.3,Math.min(1.75,a));}catch(e){return 1.667}})();
+if(MOBILE){
+  CAB_H=Math.round(168*0.55);                    // 92 — compact scoreboard, still readable
+  W=652;                                          // rails 26px each side
+  H=Math.round(W*PORTRAIT_ASPECT);                // 652×~1.3–1.75 → 850–1140
+}
+const PF={x:MOBILE?26:48,y:CAB_H,w:0,h:0};
+PF.w=W-2*PF.x;
+const BOT_H=MOBILE?72:118;                       // bottom chrome (drain + plunger strip)
+PF.h=H-CAB_H-BOT_H;
 PF.r=PF.x+PF.w; PF.b=PF.y+PF.h;
-/* playable area — 48px shooter lane on right, 48px ball return on left */
-const PL_L=PF.x+48, PL_R=PF.r-48, PL_CX=(PL_L+PL_R)/2, PL_W=PL_R-PL_L;
+/* playable area — LANE_W px shooter lane on right, mirrored return on left */
+const LANE_W=48;
+const PL_L=PF.x+LANE_W, PL_R=PF.r-LANE_W, PL_CX=(PL_L+PL_R)/2, PL_W=PL_R-PL_L;
 const LANE_TOP=PF.y+PF.h*0.13, LANE_BOT=PF.y+PF.h*0.34;
 /* pass-through lane circle line — vertical centre of the lane corridors; the
    rollover circles AND the skill-shot disc share this centre line */
 const LANE_CY=PF.y+PF.h*0.235-20;       // midpoint of LANE_TOP+4 … LANE_BOT-44
-/* angled outlane wall top — both angled walls start at this height (mirrored) */
-const WALL_TOP_Y=PF.b-290;
+/* angled outlane wall top — both angled walls start at this height (mirrored).
+   Scales with the playfield: 290px on the 964px-tall desktop field (30%),
+   235px on the ~786px-tall mobile field — the angle and span stay equivalent. */
+const WALL_TOP_Y=PF.b-(PF.h*0.30);
 
 /* ---------- state machine ---------- */
 const S={TITLE:0,MENU:1,OPTS:2,SCORES:3,HELP:4,LAUNCH:5,PLAY:6,PAUSE:7,TALLY:8,GAMEOVER:9,ENTRY:10};
@@ -103,6 +119,10 @@ function saveGame(silent){
     rin:g.rolls.reduce((a,r,i)=>{if(r.in)a.push(i);return a;},[]),
     sl:g.special.lit,stt:g.special.t,scd:g.special.cd,spv:g.special.streak||0,
     bmp:g.bumpers.map(bp=>bp.v),fla:[FL.l.ang,FL.r.ang],
+    // Multiball state: lit kicker, active 2×, grace window, and the second
+    // ball's full physics snapshot (null when no second ball is live).
+    ml:g.mbLit?1:0,mb:g.multiball?1:0,mst:g.mbSaveT||0,mdt:g.mbDropT||0,sh:g.spinHotT||0,
+    b2:g.ball2&&g.ball2.live?{x:g.ball2.x,y:g.ball2.y,vx:g.ball2.vx,vy:g.ball2.vy,sv:g.ball2._serve?1:0}:null,
   };
   try{localStorage.setItem(SAVKEY,JSON.stringify(snap));if(!silent){Game.msg='💾 SAVED';Game.msgT=1.5;}}catch(e){}
 }
@@ -111,6 +131,24 @@ function hasSave(){try{return!!localStorage.getItem(SAVKEY)}catch(e){return fals
 function loadGame(){
   let snap;try{snap=JSON.parse(localStorage.getItem(SAVKEY));clearSave();}catch(e){return false;}
   if(!snap)return false;
+  // Corrupt-save guard: any missing/garbage field aborts the restore (and the
+  // snap was already cleared, so a poisoned file can never poison two loads).
+  // Without this a hand-edited or truncated save threw mid-restore and left
+  // Game half-restored (scores NaN, flipper angles garbage → drawTable crashed
+  // every frame on a non-finite createLinearGradient).
+  const bad=v=>v===undefined||v===null||typeof v!=='number'&&typeof v!=='boolean'||(typeof v==='number'&&!isFinite(v));
+  if(bad(snap.st)||bad(snap.ps)||bad(snap.cur)||!Array.isArray(snap.sc)||snap.sc.some(bad)||
+     !Array.isArray(snap.bl)||snap.bl.some(bad)||!Array.isArray(snap.ex)||snap.ex.some(bad)||
+     !Array.isArray(snap.ue)||snap.ue.some(bad)||bad(snap.ah)||bad(snap.bn)||bad(snap.lr)||
+     bad(snap.bv)||bad(snap.ba)||bad(snap.sa)||bad(snap.bt)||bad(snap.ss)||bad(snap.skt)||
+     bad(snap.sd)||bad(snap.pc)||bad(snap.lp)||bad(snap.ti)||bad(snap.th)||bad(snap.bx)||
+     bad(snap.by)||bad(snap.bvx)||bad(snap.bvy)||bad(snap.blv)||!Array.isArray(snap.bmp)||
+     snap.bmp.some(bad)||!Array.isArray(snap.fla)||snap.fla.some(bad))return false;
+  // Multiball fields (older saves lack them — defaults cover that)
+  if(snap.ml!==undefined&&(bad(snap.ml)||bad(snap.mb)||bad(snap.mst)||bad(snap.mdt)))return false;
+  if(snap.b2&&snap.b2!==null){
+    if(bad(snap.b2.x)||bad(snap.b2.y)||bad(snap.b2.vx)||bad(snap.b2.vy))return false;
+  }
   demoMode=false;Game.msg='';Game.msgT=0;Game.pfx.length=0; // leave the attract demo
   const g=Game;
   makeTable();
@@ -126,7 +164,12 @@ function loadGame(){
   if(snap.tdn)snap.tdn.forEach(i=>{Game.targets[i].down=true;Game.targets[i].in=false;});
   if(snap.rin)snap.rin.forEach(i=>{Game.rolls[i].in=true;});
   Game.special.lit=snap.sl;Game.special.t=snap.stt;Game.special.cd=snap.scd;Game.special.streak=snap.spv||0;
-  Game.ball={x:snap.bx,y:snap.by,vx:snap.bvx,vy:snap.bvy,live:snap.blv,stuck:snap.bsk||0,trail:[]};
+  // Multiball restore: lit kicker / active 2× / grace timers / second ball
+  Game.mbLit=!!snap.ml;Game.multiball=!!snap.mb;
+  Game.mbSaveT=snap.mst||0;Game.mbDropT=snap.mdt||0;Game.spinHotT=snap.sh||0;
+  Game.ball2=snap.b2?{x:snap.b2.x,y:snap.b2.y,vx:snap.b2.vx,vy:snap.b2.vy,live:true,
+                       stuck:0,trail:[],visitGrid:[],lastCell:-1,_serve:!!snap.b2.sv}:null;
+  Game.ball={x:snap.bx,y:snap.by,vx:snap.bvx,vy:snap.bvy,live:snap.blv,stuck:snap.bsk||0,spin:0,trail:[]};
   if(snap.fla){FL.l.ang=snap.fla[0];FL.r.ang=snap.fla[1];FL.l.prev=snap.fla[0];FL.r.prev=snap.fla[1];}
   g.autoSaveTimer=10;
   state=S.PLAY;Game.prevState=S.PLAY;
@@ -370,6 +413,19 @@ const AudioSys=(()=>{
       noise(0.06,0.09,800,2000);
       tone(1760,1760,0.05,'square',0.07,0.10,'pluck');
     },
+    // ---- MULTIBALL KICKER: big rising two-chord slam (the saucer fires) ----
+    multi(){
+      // First chord: the catch clunk
+      tone(160,90,0.10,'sine',0.14);
+      noise(0.06,0.12,300,900);
+      // Second chord: the release fanfare rising
+      [523,659,784,1046].forEach((f,i)=>{
+        tone(f,f*1.01,0.10,'square',0.10,0.12+i*0.05);
+        tone(f*2,f*1.9,0.06,'sine',0.05,0.12+i*0.05+0.02);
+      });
+      // Final shimmer
+      tone(1568,2093,0.14,'sine',0.08,0.36);
+    },
   };
 })();
 
@@ -410,8 +466,9 @@ function keyAction(e,down){
     if(k==='ArrowLeft'||k==='a'||k==='A'){input.lFlip=false;input.nudgeL=false;}
     if(k==='ArrowRight'||k==='d'||k==='D'){input.rFlip=false;input.nudgeR=false;}
     if(k==='ArrowDown'||k==='s'||k==='S'){input.plunger=false;input.nudgeD=false;
-      // releasing the plunger key fires the launch (charge while held)
-      if(state===S.LAUNCH)launchBall();}
+      // releasing the plunger key fires the launch (charge while held);
+      // MULTIBALL: a parked primary relaunches from PLAY too
+      if(state===S.LAUNCH||(Game.multiball&&state===S.PLAY))launchBall();}
     if(k==='ArrowUp'||k==='w'||k==='W'){input.nudgeU=false;
       // The ↑/W "flip both" press must also RELEASE both bats — the old handler
       // only cleared nudgeU here, so both flippers stuck in the up position
@@ -431,10 +488,14 @@ function keyAction(e,down){
     case'ArrowDown':case's':case'S':
       if((k==='s'||k==='S')&&state===S.PAUSE){saveGame();break;}
       input.plunger=true;input._plungerHeld=true;break;
-    case' ':if(state===S.LAUNCH)launchBall();else if(state===S.PLAY&&input._plungerHeld)launchBall();else uiConfirm();break;
+    case' ':if(state===S.LAUNCH)launchBall();else if((state===S.PLAY&&input._plungerHeld)||(Game.multiball&&state===S.PLAY))launchBall();else uiConfirm();break;
     case'Enter':uiConfirm();break;
     case'Escape':case'p':case'P':
-      if(state===S.PLAY||state===S.LAUNCH){state=S.PAUSE;Game._pauseT=performance.now();AudioSys.ui();saveGame();}
+      // Record the pre-pause state BEFORE switching — the gamepad pause path
+      // does this (padPoll line ~529) but the keyboard path didn't, so a
+      // keyboard pause from LAUNCH resumed into a stale prevState (usually
+      // PLAY) and froze the plunger: no charging, no ArrowDown-release launch.
+      if(state===S.PLAY||state===S.LAUNCH){Game.prevState=state;state=S.PAUSE;Game._pauseT=performance.now();AudioSys.ui();saveGame();}
       else if(state===S.PAUSE){state=Game.prevState;AudioSys.ui();}break;
     case'm':case'M':store.snd=!store.snd;saveStore();
       if(state===S.PLAY||state===S.LAUNCH){Game.msg=store.snd?'🔊 SOUND ON':'🔇 SOUND OFF';Game.msgT=1.5;}break;
@@ -446,14 +507,23 @@ window.addEventListener('keyup',e=>keyAction(e,false));
 
 function touchInit(){
   const cv=document.getElementById('C');
+  // Touch zones are FRACTIONS of the canvas, so they adapt to the mobile stage
+  // automatically — but the plunger strip must still track the physical lane:
+  // the plunger lives at PF.r-26 (logical) = (PF.r-26)/W of the canvas width.
+  // On mobile the lane shrank (48px at x=652 ⇒ plunger ≈0.90 of width), so a
+  // fixed 0.82 threshold would sit LEFT of the lane and charge while the
+  // player was still grabbing the return lane. PLUNGER_X / NUDGE_X read the
+  // same lane constants the physics uses.
+  const PLUNGER_X=(PF.r-LANE_W+14)/W; // left edge of the strip — the lane mouth (desktop ≈0.93, mobile ≈0.88)
+  const NUDGE_X=PLUNGER_X;       // upper-right corner nudge zone — same strip
   function handle(e,phase){
     e.preventDefault();AudioSys.unlock();const r=cv.getBoundingClientRect();
     for(const t of(e.changedTouches||[e])){
       const x=(t.clientX-r.left)/r.width,y=(t.clientY-r.top)/r.height;
       if(phase==='start'&&state!==S.PLAY&&state!==S.LAUNCH){uiTouch(x,y);continue;}
-      if(x>0.82&&y<0.30&&phase==='start'){input.nudgeU=true;setTimeout(()=>input.nudgeU=false,80);continue;}
-      if(x>0.82){input.plunger=(phase==='start');if(phase==='start')input._plungerHeld=true;
-        if(phase==='end'&&state===S.LAUNCH)launchBall();continue;}
+      if(x>NUDGE_X&&y<0.30&&phase==='start'){input.nudgeU=true;setTimeout(()=>input.nudgeU=false,80);continue;}
+      if(x>PLUNGER_X){input.plunger=(phase==='start');if(phase==='start')input._plungerHeld=true;
+        if(phase==='end'&&(state===S.LAUNCH||(Game.multiball&&state===S.PLAY)))launchBall();continue;}
       if(x<0.5){input.lFlip=(phase==='start');}else{input.rFlip=(phase==='start');}
     }
   }
@@ -484,8 +554,8 @@ function padPoll(){
       pl:b(13)||(p.axes[1]>0.5),fire:b(0)||b(1)||b(2)||b(3),up:b(12)||(p.axes[1]<-0.5),start:b(9)};
     input.lFlip=now.l;input.rFlip=now.r;
     if(now.pl&&!padPrev.pl){input._plungerHeld=true;input.plunger=true;}
-    if(!now.pl&&padPrev.pl){input.plunger=false;if(state===S.LAUNCH)launchBall();}
-    if(now.fire&&!padPrev.fire){if(state===S.LAUNCH)launchBall();
+    if(!now.pl&&padPrev.pl){input.plunger=false;if(state===S.LAUNCH||(Game.multiball&&state===S.PLAY))launchBall();}
+    if(now.fire&&!padPrev.fire){if(state===S.LAUNCH||(Game.multiball&&state===S.PLAY))launchBall();
       else if(state===S.ENTRY){if(Game.entryBuf<2)Game.entryBuf++;else commitEntry();Game.entryTimer=performance.now();}
       else uiConfirm();}
     if(now.start&&!padPrev.start){if(state===S.PLAY||state===S.LAUNCH){Game.prevState=state;state=S.PAUSE;Game._pauseT=performance.now();saveGame();}
@@ -507,6 +577,13 @@ const GRAV=1200, MAXV=1200, SUB_DT=1/240, BALL_R=13;
 // BALL_R+6 so the ball surface lands flush with the rail's outer edge — the old
 // fixed 6px let the ball's body ride 8px THROUGH the rail (visible wall crossing).
 const G_RAD=BALL_R+6;
+// Lane-mouth capture band: a divider rail is drawn 8px wide, so a ball whose
+// centre is within BALL_R+5 of the rail line has its body visibly OVER the
+// rail. Those balls fall into their lane (clampPF's lane walls) instead of
+// being held outside the mouth — the "rejected at the top of the lane" fix.
+const MOUTH_CAPW=BALL_R+5;   // horizontal capture half-width at the lane mouth
+const MOUTH_CAP_WIN=40;      // capture window depth below the rail top (px) —
+                             // below this the divider is SOLID: no mid-wall pass-through
 
 /* ---------- physics presets ---------- */
 // AUTHENTIC LAUNCH — the launch chain is the real machine's, solved from
@@ -524,47 +601,76 @@ const G_RAD=BALL_R+6;
 //   skillCenter = the pull whose parabola crosses the target dead-centre
 // preset's guide exit and curve friction are tuned so the EXACT-POWER pull
 // — the one whose parabola crosses the target dead-centre — sits at the
-// classic two-thirds of the meter: atari 0.665, arcade 0.67 (at the default
-// angle; 0.62–0.71 across the table-angle range, which is honest physics —
-// a steeper table asks for a firmer plunge). SUPERBALL is the one physics-
-// honest exception: its spring is dimensioned by its 2400 maxVel, and
-// two-thirds of that ball LOOPS the table, so its stab shot lives at ~0.42 —
-// a delicate half-stab on the crazy ball. The knobs can't move it: extra
-// curve friction makes the solver fatten the spring (full pull must still
-// exit at maxVel), which pushes the centre DOWN, not up. Measured, not guessed.
+// classic two-thirds of the meter AT THE CLASSIC (high) target line:
+// centerClassic = atari 0.725, arcade 0.571–0.671 across the table angles
+// (0.625 at the default angle 3). The live target sits LOWER — on the lane
+// rollover circles (SS_Y = LANE_CY) — where the descent is steeper, so the
+// exact-power pull moves down the meter: atari 0.625, arcade 0.48–0.56
+// (0.525 at the default angle 3), superball ~0.39. That is honest physics,
+// not drift: a lower target line = longer airborne = more pull sensitivity.
 const PHYS_PRESETS={
   atari:{
     label:'ATARI 2600',
+    // CLASSIC BASE — the relaxed, authentic-feel table. Original pacing kept
+    // (grav 1200, top speed 1600, mid-power bumpers) so shots arc and land the
+    // way an Atari-era machine does. "Reactive" comes from the stuck-rescue:
+    // stuckSpd 70 catches balls coasting under 70px/s (the old 45 let them
+    // idle 6–14s), so a stalled ball is kicked/dropped in 1.5–3s instead.
     grav:1200, maxVel:1600,
     bumperKick:880, bumperJitter:140, bumperLateral:520,
     wallBounce:0.75, guideBounce:1.05,
     flipperSpeed:110, flipperRestBase:0.40, flipperRestScale:12,
+    // flipScatter — how non-repeatable flip shots are on this preset (the
+    // imperfect-ball layer's flipper-contact spray, × the global ±3.4°):
+    // ATARI keeps aimed shots readable (a classic table still rewards
+    // practiced lines), ARCADE is the standard, SUPERBALL sprays.
+    flipScatter:0.65,
     nudgeX:180, nudgeY:160,
     exitDrop:0.06, curveMu:0.13,
     targetKick:550, spinnerKick:700, spinnerKickScale:0.5, specialKick:380,
-    stuckSpd:45, stuckBot:1.6, stuckTop:3.5, stuckVy:300, stuckVxJit:200,
+    stuckSpd:70, stuckBot:1.5, stuckTop:3.0, stuckVy:300, stuckVxJit:200,
   },
   arcade:{
     label:'ARCADE SIM',
-    grav:980, maxVel:1550,
-    bumperKick:760, bumperJitter:100, bumperLateral:420,
-    wallBounce:0.55, guideBounce:0.45,
-    flipperSpeed:95, flipperRestBase:0.42, flipperRestScale:9,
-    nudgeX:100, nudgeY:90,
+    // THE FAST ONE — inherits the lively retune: maxVel 2000 ceiling, 1400
+    // solenoid adds, powered spinner (1100 + 0.8×impact ≈ 1600 exits), stiff
+    // walls and rails, quick flippers. Low-friction curve keeps shots alive.
+    // NOTE: grav is owned by the TABLE ANGLE option (arcadeTune below) —
+    // steeper angle = heavier gravity; the preset value is the fallback.
+    grav:1450, maxVel:2000,
+    bumperKick:1400, bumperJitter:200, bumperLateral:700,
+    wallBounce:0.88, guideBounce:1.18,
+    flipperSpeed:140, flipperRestBase:0.50, flipperRestScale:12,
+    flipScatter:1.0, // the measured standard: ±3.4° flip-exit spray, 8/8 unique shots
+    nudgeX:230, nudgeY:210,
     exitDrop:0.14, curveMu:0.06,
-    targetKick:420, spinnerKick:600, spinnerKickScale:0.45, specialKick:300,
-    stuckSpd:35, stuckBot:1.2, stuckTop:2.8, stuckVy:240, stuckVxJit:160,
+    targetKick:720, spinnerKick:1100, spinnerKickScale:0.8, specialKick:380,
+    stuckSpd:70, stuckBot:1.3, stuckTop:2.2, stuckVy:300, stuckVxJit:200,
   },
   superball:{
     label:'SUPERBALL',
-    grav:520, maxVel:2400,
-    bumperKick:1350, bumperJitter:300, bumperLateral:780,
-    wallBounce:1.08, guideBounce:1.45,
-    flipperSpeed:150, flipperRestBase:0.55, flipperRestScale:20,
-    nudgeX:320, nudgeY:300,
+    // PURE CHAOS — floaty 520 gravity, 2400 ceiling, energy-GAINING walls and
+    // rails (bounce >1: every ricochet comes back FASTER), giant bumper adds,
+    // max-power spinner and nudges. Every contact feeds the ball — pinball
+    // anarchy that still reads as a game (the rescue keeps it from dead-locking).
+    // SANITY CEILING: energy-gaining surfaces may only amplify the ball up to
+    // gainCeilFrac × maxVel (0.85 → 2040). Below that the full 1.18/1.7 chaos
+    // gain applies untouched; above it the bounce is rescaled DOWN to the
+    // ceiling, so the ball peaks at ~2040 instead of riding the 2400 cap —
+    // measured: sustained ride band was 1500–2400 (avg to 2198) and read as
+    // teleporting. Flip shots and the launch still spike to maxVel; the first
+    // wall touch settles them back into the fun band. (Gain sources NOT capped:
+    // bumpers exit at max(impact, kick) ≤ 2040 anyway under this regime, the
+    // spinner tops out at 1849, and flipper power is the player's agency.)
+    grav:520, maxVel:2400, gainCeilFrac:0.85,
+    bumperKick:1500, bumperJitter:380, bumperLateral:900,
+    wallBounce:1.18, guideBounce:1.7,
+    flipperSpeed:160, flipperRestBase:0.62, flipperRestScale:20,
+    flipScatter:1.35, // sprayier: ±4.6° flip exits + stronger spin deposit — bouncy chaos
+    nudgeX:380, nudgeY:360,
     exitDrop:0.18, curveMu:0.02,
-    targetKick:900, spinnerKick:1100, spinnerKickScale:0.7, specialKick:650,
-    stuckSpd:55, stuckBot:2.2, stuckTop:4.4, stuckVy:480, stuckVxJit:360,
+    targetKick:1100, spinnerKick:1300, spinnerKickScale:0.9, specialKick:700,
+    stuckSpd:70, stuckBot:1.8, stuckTop:3.2, stuckVy:560, stuckVxJit:420,
   }
 };
 let PHYS=PHYS_PRESETS[store.physics==='arcade'?'arcade':store.physics==='superball'?'superball':'atari'];
@@ -605,6 +711,10 @@ if(store.physics==='arcade'){PHYS={...PHYS};arcadeTune();}
 const CURVE_R=72;                       // top guide radius (px)
 const ROLL_F=110;                       // lane rolling resistance (px/s²) ≈0.11 m/s² real
 const CURVE_ENTRY_Y=PF.y+PF.h*0.10;     // tube top — where the guide begins
+// curve centre x: the rod/tube centreline is 24px left of the lane's OUTER
+// wall, on BOTH layouts (48px lane ⇒ 24 from the rail; 600px mobile ⇒ same —
+// LANE_W is the constant, so this derivation stays exact for both).
+const CURVE_CX=PF.r-LANE_W+24-CURVE_R;  // guide centre — entry sits on the tube centreline
 const SS_COLLECT=30;                    // skill-shot collect radius (px) — the CLASSIC reference
 const SS_COLLECT_CAP=100;               // parity-radius ceiling: band-edge drops stay clear of the lane corridors
 const SS_Y_CLASSIC=PF.y+PF.h*0.116;     // pre-move target line — kept only as the difficulty reference
@@ -638,7 +748,7 @@ function arcExitSpeed(vTip,p){
   //   CURVE: the same Euler step arcStep runs at 1/240, including the exact
   //   exit-fraction interpolation at the guide mouth.
   const dt=1/240;
-  let vy=-vTip,y=(PF.b-66-BALL_R);      // ball sits ON the rod tip at rest
+  let vy=-vTip,y=(PF.b-(MOBILE?54:66)-BALL_R);      // ball sits ON the rod tip at rest
   while(y>CURVE_ENTRY_Y){
     vy+=p.grav*dt;
     if(vy<0)vy+=ROLL_F*dt;
@@ -661,8 +771,18 @@ function arcExitSpeed(vTip,p){
   return v;
 }
 function parabolaAtY(vExit,p,yT){
-  // where the post-exit projectile first crosses the yT line (x coordinate)
-  const x0=PF.r-24-CURVE_R-CURVE_R*Math.sin(p.exitDrop),
+  // where the post-exit projectile first crosses the yT line (x coordinate).
+  // PARITY ANCHOR — the exit point must be the EXACT point arcStep releases
+  // the ball: on the guide circle (centre CURVE_CX, CURVE_ENTRY_Y, radius
+  // CURVE_R) at angle π/2+exitDrop, i.e. x = cx + R·cos(π/2+ed)
+  // = cx − R·sin(ed). (History: this read cx + R − R·sin(ed) — the circle
+  // displacement from the ENTRY point, missing the −R of cos(exa)−cos(0) —
+  // putting the modelled launch 72px right of the real one. The whole
+  // parabola was the true flight shifted +72px: the derived skillCenter
+  // dropped its ball 72px LEFT of the disc and only the slow half of the
+  // gold band could ever collect. Measured live: sim exit x=565.95 vs model
+  // 637.95 at arcade@3.) y0 is unchanged — it already matched the sim.
+  const x0=CURVE_CX-CURVE_R*Math.sin(p.exitDrop),
         y0=CURVE_ENTRY_Y-CURVE_R*Math.cos(p.exitDrop),
         vx=-vExit*Math.cos(p.exitDrop),vy=vExit*Math.sin(p.exitDrop),dy=yT-y0;
   const A=0.5*p.grav,disc=vy*vy+4*A*dy;
@@ -722,7 +842,9 @@ function tuneLaunch(){
   const LANE_WALLS=[PL_L+PL_W*0.19,PL_L+PL_W*0.31,PL_R-PL_W*0.31,PL_R-PL_W*0.19];
   const CORRIDOR_CLEAR=6;
   const clipsCorridor=v=>{
-    const x0=PF.r-24-CURVE_R-CURVE_R*Math.sin(PHYS.exitDrop),
+    // same parity anchor as parabolaAtY (cx − R·sin(ed)) — a shifted model
+    // here would clear/reject pulls against a 72px-wrong wall crossing.
+    const x0=CURVE_CX-CURVE_R*Math.sin(PHYS.exitDrop),
           y0=CURVE_ENTRY_Y-CURVE_R*Math.cos(PHYS.exitDrop),
           vx=-v*Math.cos(PHYS.exitDrop),vy0=v*Math.sin(PHYS.exitDrop);
     for(const wx of LANE_WALLS){
@@ -771,6 +893,20 @@ const Game={
   special:{x:0,y:0,r:18,lit:false,t:0,cd:0,streak:0}, // filled with table coords by makeTable()
   skillShotReady:false,skillShotDone:false,skillShotT:0,skillShot:{x:0,y:0,r:0},saveArmed:false,ballSaveTimer:0,
   autoSaveTimer:10,
+  // MULTIBALL — completing the 3-diamond bank lights the KICKER (the LEFT
+  // rollover lane — the real-machine lane lock, Attack from Mars "lock when
+  // lit"). A ball entering the lit lane is caught (kick-back), drops a SECOND
+  // ball from the top and runs 2× scoring until one ball remains. mbSaveT is
+  // the multiball grace ball-save (8s) that returns a drained ball to play
+  // during the opening chaos window.
+  multiball:false,mbLit:false,mbSaveT:0,mbDropT:0,ball2:null,
+  // SPINNER RUSH — the comeback device. Finishing the LEFT rollover lane (4
+  // passes) lights both spinners for 20 seconds: double points (2 per pass vs
+  // the original's 1) and a 1.3× kick multiplier, so the blade throws the ball
+  // into the bumper zone harder. One rush per turn (the lane caps at 4 within
+  // a turn and startTurn resets the counter); the timer itself carries across
+  // a drain so an earned rush isn't wasted by a fast ball end.
+  spinHotT:0,
   attract:0,demo:null,rank:'',pfx:[],pfxLife:0
 };
 
@@ -785,19 +921,20 @@ function makeTable(){
     {x:PL_CX-PL_W*0.24, y:PF.y+PF.h*0.63, r:46, v:1, hit:0, col:1},  // bottom left
     {x:PL_CX+PL_W*0.24, y:PF.y+PF.h*0.63, r:46, v:1, hit:0, col:1}   // bottom right
   ];
-  // Special target — THE main centre shot between the two lower bumpers.
-  // Always solid (a real pinball target is physical whether its lamp is on
-  // or not): unlit hits score 500; when LIT it pays an escalating streak
-  // (1000 → 2500 → 5000) that resets on drain. Lit windows are long (10s)
-  // and frequent so the centre lane stays the go-to shot.
-  Game.special={x:PL_CX, y:PF.y+PF.h*0.63, r:18, lit:false, t:0, cd:0, streak:0};
+  // Special LIGHT — the main centre lamp between the two lower bumpers. It is
+  // a pass-over switch (like the top diamonds), NOT a bumper: the ball rolls
+  // straight over it with no deflection. Overlap pays 500 unlit; when LIT it
+  // pays an escalating streak (1000 → 2500 → 5000) that resets on drain. Lit
+  // windows are long (10s) and frequent so the centre lane stays the go-to shot.
+  Game.special={x:PL_CX, y:PF.y+PF.h*0.63, r:18, lit:false, t:0, cd:0, streak:0, in:false};
   // 3 diamond lights across the top — pass-over switches (original game):
   // the ball rolls straight over them, no deflection at all.
   const tgtSpread=PL_W*0.29;
+  const tgtY=PF.y+(MOBILE?60:72);   // clear of the top chrome bezel (96px desktop / 74px mobile)
   Game.targets=[
-    {x:PL_CX-tgtSpread, y:PF.y+PF.h*0.075, down:false, t:0, in:false},
-    {x:PL_CX, y:PF.y+PF.h*0.075, down:false, t:0, in:false},
-    {x:PL_CX+tgtSpread, y:PF.y+PF.h*0.075, down:false, t:0, in:false}
+    {x:PL_CX-tgtSpread, y:tgtY, down:false, t:0, in:false},
+    {x:PL_CX, y:tgtY, down:false, t:0, in:false},
+    {x:PL_CX+tgtSpread, y:tgtY, down:false, t:0, in:false}
   ];
   // Two top rollover pass-through lanes — centred in each half of playable area.
   // Vertically centred between the pass-through lane corridor walls.
@@ -822,11 +959,22 @@ function makeTable(){
   // collect range per preset).
   Game.skillShot={x:SS_X,y:SS_Y,r:22,collect:SS_COLLECT}; // collect is a fallback — PHYS.skillShot.collect (tuneLaunch) is live
   Game.skillShotReady=false;Game.skillShotDone=false; // fresh game/ball — the shot is up for grabs
+  // MULTIBALL KICKER — the LEFT ROLLOVER LANE (the lock shot). Not a new
+  // device: when the 3-diamond bank completes, the lane becomes the lit lock —
+  // a ball entering it is caught (kick-back), a second ball drops from the top
+  // and 2× scoring starts. The lane coords live in Game.rolls[0] and the lamp
+  // is drawn live in drawTable. (Measured: the centre disc was unreachable in
+  // organic play — the centre pop bumper at (360,515) deflects every centre
+  // shot ±425px/s sideways before it can reach y=363, and the launch rail drop
+  // always crosses x=360 ABOVE the disc — closest approach 133px over a 60s
+  // rally. The lane is what play actually feeds.)
+  Game.mbLit=false;Game.multiball=false;Game.mbSaveT=0;Game.mbDropT=0;Game.ball2=null;
 }
 function resetBall(){
-  // Ball sits ON the rod tip at rest — tip at PF.b-66, ball radius above that
-  const tipRestY=PF.b-66;
-  Game.ball={x:PF.r-24,y:tipRestY-BALL_R,vx:0,vy:0,live:false,stuck:0,trail:[]};
+  // Ball sits ON the rod tip at rest — tip just below the ball (PF.b-66
+  // desktop / PF.b-54 mobile; the plunger draw code shares these constants)
+  const tipRestY=PF.b-(MOBILE?54:66);
+  Game.ball={x:CURVE_CX+CURVE_R,y:tipRestY-BALL_R,vx:0,vy:0,live:false,stuck:0,spin:0,trail:[]};
   Game.plungerCharge=0;Game.plungerY=0;Game.launchAnim=0;Game.springBob=0;Game.launching=false;Game.arc=null;
   Game.skillShotT=0; // no live chance while the ball is parked on the rod
   Game.launchStartY=tipRestY-BALL_R;
@@ -845,6 +993,8 @@ function newGame(){
   Game.bumperVal=1;Game.tilt=false;Game.tiltHeat=0;
   Game.saveArmed=false; // no free save on the game's first ball
   Game.autoSaveTimer=10;
+  Game.multiball=false;Game.mbLit=false;Game.mbSaveT=0;Game.mbDropT=0;Game.ball2=null;
+  Game.spinHotT=0; // a fresh game starts cold — the rush is earned per turn
   makeTable();startTurn();
 }
 function startTurn(){
@@ -853,13 +1003,19 @@ function startTurn(){
   if(!Game.bumperAccum){Game.bumperVal=1;Game.bumpers.forEach(b=>b.v=1);}
   Game.targets.forEach(t=>{t.down=false;t.t=0;t.in=false;});
   Game.rolls.forEach(r=>r.in=false);
-  Game.special.lit=false;Game.special.t=0;Game.special.cd=0;Game.special.streak=0;
+  Game.special.lit=false;Game.special.t=0;Game.special.cd=0;Game.special.streak=0;Game.special.in=false;
   Game.skillShotDone=false; // new ball — the skill shot is back on offer
   Game.autoSaveTimer=10;
+  // Multiball resets every turn: the kicker goes dark and any stray second
+  // ball is collected (a fresh turn starts with exactly one ball).
+  Game.multiball=false;Game.mbLit=false;Game.mbSaveT=0;Game.mbDropT=0;Game.ball2=null;
   resetBall();state=S.LAUNCH;
 }
 function launchBall(){
-  if((state!==S.LAUNCH&&!demoMode)||!Game.ball||Game.ball.live)return;
+  // MULTIBALL: a parked primary may also be launched from PLAY (it returned
+  // to the tube mid-multiball and we kept the state in PLAY so the airborne
+  // second ball never froze).
+  if((state!==S.LAUNCH&&!(Game.multiball&&state===S.PLAY)&&!demoMode)||!Game.ball||Game.ball.live)return;
   const pull=Game.plungerCharge;
   Game.launchPower=pull; // raw 0..1, no minimum
   // Feather tap — just a nudge of the spring, the ball stays on the tip
@@ -894,6 +1050,11 @@ function launchBall(){
 }
 function addScore(pts){
   if(Game.tilt)return;
+  // PLAYFIELD MULTIPLIER — 2× while multiball is running (Black Knight-style:
+  // the multiplier follows the ball count; with 2 balls live every shot pays
+  // double). In-play scoring only — the end-of-ball tally payout is NOT
+  // multiplied (it already carries the rollover bonus × bonus multiplier).
+  if(Game.multiball)pts*=2;
   Game.scores[Game.cur]=(Game.scores[Game.cur]+pts)%1000000;
 }
 function addScoreFlat(pts){Game.scores[Game.cur]=(Game.scores[Game.cur]+pts)%1000000;}
@@ -909,6 +1070,93 @@ function flash(){Game.flashes=8;}
 // centre sits one radius above the flat top wall (exactly like a real ball on
 // a rounded corner) and rides the arc down to the side wall.
 const CORNER_R=36;
+// ENERGY-GAIN SANITY CEILING — SUPERBALL only (any preset with gainCeilFrac).
+// Every energy-gaining wall/rail/gate ricochet is rescaled to exactly
+// gainCeilFrac × maxVel if it would land above it. Absorbing modes
+// (ATARI 0.75 / ARCADE 0.88) can never overshoot — their walls only take
+// energy — so the helper is a no-op there and their behaviour is bit-identical.
+// Rescaling preserves DIRECTION (the chaos comes from the deflection angles,
+// which stay fully random); only the magnitude is bounded.
+function gainCap(b){
+  if(!PHYS.gainCeilFrac)return;
+  const ceil=PHYS.gainCeilFrac*PHYS.maxVel, sp=Math.hypot(b.vx,b.vy);
+  if(sp>ceil){const s=ceil/sp;b.vx*=s;b.vy*=s;}
+}
+/* ---------- IMPERFECT-BALL CONTACT MODEL — why real routes never repeat ----------
+   The old passive bounces were PERFECT SPECULAR MIRRORS: angle in = angle out,
+   exactly, forever. A ball that bounced once between two walls retraced that
+   identical loop bounce after bounce ("some hits cycle the same route several
+   times before changing"). A real ball NEVER does this — three mechanisms:
+
+   1. GRIP + SPIN (R. Cross, "Grip-slip behavior of a bouncing ball", Am. J.
+      Phys. 75, 699): a real ball does NOT roll during a bounce — the contact
+      region grips and slides, and contact friction exchanges tangential
+      velocity with the ball's rolling spin while the grip lasts. The bounce
+      therefore depends on the ball's HISTORY (spin carried in from previous
+      rolls and hits), not just the incoming angle: the same approach exits at
+      a different angle every time, and the spin itself alternates through
+      successive opposite-wall hits (topspin ↔ backspin), so exits zigzag.
+   2. ROUNDNESS — pinballs "vary in both size and surface roughness" (cheap
+      finishing leaves seams and flat spots on the 27 mm ball) and playfield
+      patina adds more: every HARD contact deflects the heading a degree or
+      two, randomly.
+   3. SPEED VARIANCE — real shots never arrive at the same speed twice; the
+      bounce exit scales with it (bumper jitter already supplies this here).
+
+   Design rules for THIS table:
+   • Speeds are UNCHANGED — scatter rotates the heading only; the spin
+     coupling bends the exit by at most SPIN_DEFLECT_MAX (±2.4°).
+   • Contacts below IMPACT_MIN are grazes/slides, not hits — no scatter, no
+     grip noise (a ball riding a wall or grinding a rail stays smooth, and the
+     skill-shot band's admitted corridor grazes stay exact).
+   • The LAUNCH CURVE and FLIPPER CONTACT are untouched: the skill shot's
+     parabola parity and a player's aimed flip must stay deterministic — on a
+     real machine a well-timed flip IS repeatable; the routes that cycle are
+     the passive-wall loops, which is what this fixes. */
+const IMPACT_MIN=90;                    // below this a contact is a graze, not a hit
+const SCATTER_MAX=3.4*Math.PI/180;      // ±3.4° roundness noise on a full-power hit
+const GRIP_FRICTION=0.05;               // tangential speed eaten by the grip at full impact
+const SPIN_DEFLECT_MAX=2.4*Math.PI/180; // carried spin bends the exit at most ±2.4°
+// scatterBounce — ROUNDNESS: rotate the post-bounce velocity by a small random
+// angle, scaled by impact speed (graze ≈ 0°, full hit = full ±SCATTER_MAX).
+// Speed is preserved exactly; only the heading changes.
+function scatterBounce(b,strength){
+  const sp=Math.hypot(b.vx,b.vy);if(sp<60)return;
+  // Impact ramp: even a modest 200px/s contact bends the heading ~±1.9° —
+  // the old 700px/s full-strength point let most mid-speed play contacts
+  // (300–500px/s, the bulk of real rallies) through with under ±2°, which is
+  // why repeated routes still cycled. Real machines bend every hit; full
+  // scatter now lands at 600px/s and nothing under the graze line (IMPACT_MIN)
+  // ever fires.
+  const a=(Math.random()*2-1)*SCATTER_MAX*strength*Math.min(1,0.35+sp/600);
+  const c=Math.cos(a),s=Math.sin(a);
+  const vx=b.vx*c-b.vy*s,vy=b.vx*s+b.vy*c;b.vx=vx;b.vy=vy;
+}
+// gripContact — GRIP+SPIN exchange at a contact with outward normal (nx,ny),
+// called AFTER the restitution reflection. The ball's stored spin (b.spin,
+// rad/s — real ω for 800 px/s on a 26 px ball is ≈60 rad/s, so stored values
+// stay in the 0–6 range) bends the exit toward its rolling side, the slide
+// spins the ball up for the NEXT hit, and most of the stored spin is consumed
+// by the grip. No randomness — the deflection is driven by history, which is
+// what makes repeated approaches diverge without ever feeling arbitrary.
+function gripContact(b,nx,ny,strength){
+  const vn=b.vx*nx+b.vy*ny;             // post-bounce normal component (outward, >0)
+  const tx=-ny,ty=nx;                   // tangent (right-hand of the normal)
+  const vt=b.vx*tx+b.vy*ty;
+  const damp=GRIP_FRICTION*Math.min(1,Math.abs(vn)/700)*strength;
+  const dv=vt*damp;                     // tangential speed the grip eats → spins the ball
+  b.vx-=dv*tx;b.vy-=dv*ty;
+  b.spin=(b.spin||0)+dv/BALL_R;         // rolling spin from the slide (sign = motion side)
+  // the spin carried INTO this hit bends the exit (bounded, speed-relative):
+  const sp=Math.hypot(b.vx,b.vy);
+  const def=Math.max(-SPIN_DEFLECT_MAX,Math.min(SPIN_DEFLECT_MAX,Math.atan2((b.spin||0)*BALL_R,Math.max(sp,300))));
+  if(Math.abs(def)>0.002){
+    const c=Math.cos(def),s=Math.sin(def);
+    const vx=b.vx*c-b.vy*s,vy=b.vx*s+b.vy*c;b.vx=vx;b.vy=vy;
+  }
+  b.spin*=0.4;                          // the grip consumed most of the stored spin
+  scatterBounce(b,strength);
+}
 function clampPF(b){
   const R=BALL_R,CR=CORNER_R,cxL=PF.x+CR,cxR=PF.r-CR,cyT=PF.y+CR;
   // left corner arc
@@ -921,7 +1169,7 @@ function clampPF(b){
     const adx=b.x-cxL,ady=b.y-cyT,ad=Math.hypot(adx,ady);
     if(ad>0.001){
       const nx=adx/ad,ny=ady/ad;b.x=cxL+nx*(CR+R);b.y=cyT+ny*(CR+R);
-      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;}
+      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;gainCap(b);if(-vn>IMPACT_MIN)gripContact(b,nx,ny,1);}
     }
   }
   // right corner arc — mirror of the left. The launch's guide curve (see
@@ -931,13 +1179,80 @@ function clampPF(b){
     const adx=b.x-cxR,ady=b.y-cyT,ad=Math.hypot(adx,ady);
     if(ad>0.001){
       const nx=adx/ad,ny=ady/ad;b.x=cxR+nx*(CR+R);b.y=cyT+ny*(CR+R);
-      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;}
+      const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=PHYS.wallBounce*vn*nx;b.vy-=PHYS.wallBounce*vn*ny;gainCap(b);if(-vn>IMPACT_MIN)gripContact(b,nx,ny,1);}
     }
   }
-  // flat walls — skip the corner bands (the arcs own them)
-  if(b.x<PF.x+R&&b.y>=cyT){b.x=PF.x+R;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
-  if(b.x>PF.r-R&&b.y>=cyT){b.x=PF.r-R;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;}
-  if(b.y<PF.y+R&&b.x>=cxL&&b.x<=cxR){b.y=PF.y+R;b.vy=Math.abs(b.vy)*PHYS.wallBounce;}
+  // flat walls — skip the corner bands (the arcs own them). gainCap rides
+  // INSIDE each contact branch: the ceiling must follow an actual bounce, not
+  // a clamp call that touched nothing (the first cut capped free-flight speed
+  // every substep and strangled launch-exit flights — measured, then fixed).
+  // Same for the imperfect-ball contact: only genuine hits scatter/grip.
+  // LANE INTERIOR outer walls: when the ball is inside a side lane (below the
+  // lane mouth), the outer cabinet wall must NOT amplify either (SUPERBALL's
+  // 1.18× + gainCap ping-pongs the ball between divider and outer wall).
+  // Same damped laneRest applies there; the playfield face above the lane
+  // band keeps the full preset bounce.
+  // LANE RESTITUTION (declared early: the outer-wall branch below uses it).
+  // Inside a 48px channel a bounce>1 surface (SUPERBALL wallBounce 1.18 +
+  // gainCap) multiplies lateral speed on EVERY wall hit, so the ball
+  // ping-pongs between the faces instead of falling — measured as long
+  // back-and-forth rides before reaching the bottom. Lane interiors use a
+  // damped, NON-amplifying restitution (0.55, no gainCap): the ball keeps
+  // sliding down and drains in a second or two, in every physics mode.
+  const laneRest=Math.min(PHYS.wallBounce,0.55);
+  const inLaneBand=b.y>CURVE_ENTRY_Y;
+  if(b.x<PF.x+R&&b.y>=cyT){const vin=-b.vx;b.x=PF.x+R;b.vx=Math.abs(b.vx)*(inLaneBand?laneRest:PHYS.wallBounce);if(!inLaneBand)gainCap(b);if(vin>IMPACT_MIN)gripContact(b,1,0,1);}
+  if(b.x>PF.r-R&&b.y>=cyT){const vin=b.vx;b.x=PF.r-R;b.vx=-Math.abs(b.vx)*(inLaneBand?laneRest:PHYS.wallBounce);if(!inLaneBand)gainCap(b);if(vin>IMPACT_MIN)gripContact(b,-1,0,1);}
+  if(b.y<PF.y+R&&b.x>=cxL&&b.x<=cxR){const vin=-b.vy;b.y=PF.y+R;b.vy=Math.abs(b.vy)*PHYS.wallBounce;gainCap(b);if(vin>IMPACT_MIN)gripContact(b,0,1,1);}
+  // ===== LANE DIVIDER WALLS — one-way, ball-radius surfaces =====
+  // (laneRest declared above, before first use.) The two lane dividers (left drain channel x<PL_L, right shooter tube
+  // x>PL_R, both from the lane mouth y=0.10h down to the flipper line) are
+  // REAL walls here, not guide rails: the felt surface sits exactly BALL_R
+  // from the rail line, so the ball presses flush with the drawn 8px rail.
+  // (History: they ran as guideGeom rails with the 19px G_RAD halo — it
+  // reached 6px PAST the ball surface on the playfield side, so every ball
+  // descending along a lane mouth was shoved 19px away from the rail line
+  // and held there for the whole descent, then flung off the lower outlane
+  // guide's underside — the visible "rejected at the top of the lane".)
+  //   ONE-WAY: only a ball already inside its lane feels the inner face.
+  //   A playfield ball is untouched — it falls in the moment its centre
+  //   crosses the line, exactly like stepping over a real lane edge.
+  //   MOUTH CAPTURE — TOP WINDOW ONLY: the capture band is limited to the
+  //   first MOUTH_CAP_WIN px below the rail top (the physical opening).
+  //   Below that the rail is SOLID in both directions: no teleport across
+  //   the line mid-wall (that was the pass-through-below-the-opening bug),
+  //   and a ball riding inside its lane cannot leak back out either.
+  const lwT=CURVE_ENTRY_Y,lwB=FL.l.y-10;
+  const capWinB=lwT+MOUTH_CAP_WIN;
+  if(b.y>lwT&&b.y<lwB&&!Game.launching&&!b.arc){
+    // ---- left drain channel (lane side = x<PL_L) ----
+    if(b.x<=PL_L){
+      if(b.x>PL_L-BALL_R){ // inside the channel, hugging the divider face
+        b.x=PL_L-BALL_R;
+        if(b.vx>0){const vin=b.vx;b.vx=-vin*laneRest;if(vin>IMPACT_MIN)gripContact(b,-1,0,1);}
+      }
+    }else if(b.vy>40&&Math.abs(b.vx)<160&&!b._serve&&b.y<capWinB&&b.x<PL_L+MOUTH_CAPW){
+      // descending over the mouth edge AT THE OPENING — falls in, no bounce
+      b.x=PL_L-BALL_R;
+    }else if(b.x<PL_L+BALL_R){ // playfield-side face — pressing or flying in
+      b.x=PL_L+BALL_R;
+      if(b.vx<0){const vin=-b.vx;b.vx=vin*laneRest;if(vin>IMPACT_MIN)gripContact(b,1,0,1);}
+    }
+    // ---- right shooter tube (lane side = x>PL_R; held 2px deeper so the
+    // plunger catch's x>PL_R+BALL_R test always sees a settled tube ball) ----
+    if(b.x>=PL_R){
+      if(b.x<PL_R+BALL_R+2){
+        b.x=PL_R+BALL_R+2;
+        if(b.vx<0){const vin=-b.vx;b.vx=vin*laneRest;if(vin>IMPACT_MIN)gripContact(b,1,0,1);}
+      }
+    }else if(b.vy>40&&Math.abs(b.vx)<160&&!b._serve&&b.y<capWinB&&b.x>PL_R-MOUTH_CAPW){
+      // descending over the tube edge AT THE OPENING — falls in, no bounce
+      b.x=PL_R+BALL_R+2;
+    }else if(b.x>PL_R-BALL_R){ // playfield-side face — pressing or flying in
+      b.x=PL_R-BALL_R;
+      if(b.vx>0){const vin=b.vx;b.vx=-vin*laneRest;if(vin>IMPACT_MIN)gripContact(b,-1,0,1);}
+    }
+  }
 }
 
 /* ---------- top guide curve (the shooter lane's 90°+ arc) ---------- */
@@ -959,7 +1274,7 @@ function arcStep(b,dt){
   if(A.dir>0&&A.a<Math.PI/2&&A.v<15){A.dir=-1;A.v=-15;AudioSys.softPlunge();}
   const prevA=A.a,prevV=A.v;
   A.a+=(A.v/R)*dt;
-  const cx=PF.r-24-R; // guide centre — entry sits on the tube centreline
+  const cx=CURVE_CX; // guide centre — entry sits on the tube centreline (see CURVE_CX)
   const exa=Math.PI/2+PHYS.exitDrop;
   if(A.a>=exa&&A.dir>0){ // ===== CURVE EXIT — into free flight =====
     // Exact release: the 240Hz substep can overshoot the exit angle by several
@@ -993,45 +1308,99 @@ function arcStep(b,dt){
     Game.arc=null;b.vx=0; // launching stays true: the tube catch re-arms
   }
 }
+// SECONDARY-ball serve ride — the tube's virtual auto-plunge (MPF-style:
+// the machine claims the ball in the lane and serves it back into play).
+// Same constrained-curve integration as arcStep, but scoped to the ball's
+// own arc and with NO primary side effects (no launch flags, no ball-save
+// arm, no skill-shot arm — those belong to the plunger launch only).
+function arcServe(b,dt){
+  const A=b.arc,g=PHYS.grav,R=CURVE_R;
+  const N=Math.abs(A.v*A.v/R-g*Math.sin(A.a));
+  A.v+=(-g*Math.cos(A.a)-PHYS.curveMu*N*(A.v>0?1:A.v<0?-1:-1))*dt;
+  if(A.dir>0&&A.a<Math.PI/2&&A.v<15){A.dir=-1;A.v=-15;}
+  const prevA=A.a,prevV=A.v;
+  A.a+=(A.v/R)*dt;
+  const cx=CURVE_CX,exa=Math.PI/2+PHYS.exitDrop;
+  if(A.a>=exa&&A.dir>0){ // ===== CURVE EXIT — free flight into play =====
+    const f=Math.max(0,Math.min(1,(exa-prevA)/((A.a-prevA)||1e-9)));
+    A.a=exa;A.v=prevV+(A.v-prevV)*f;
+    b.x=cx+R*Math.cos(A.a);b.y=CURVE_ENTRY_Y-R*Math.sin(A.a);
+    b.vx=-Math.sin(A.a)*A.v;b.vy=-Math.cos(A.a)*A.v;
+    b.arc=null;b._serve=false;
+    return;
+  }
+  b.x=cx+R*Math.cos(A.a);b.y=CURVE_ENTRY_Y-R*Math.sin(A.a);
+  b.vx=-Math.sin(A.a)*A.v;b.vy=-Math.cos(A.a)*A.v;
+  if(A.a<=0&&A.dir<0){ // stalled on the serve ride — free fall down the lane
+    b.arc=null;b.vx=0; // _serve stays true: the tube catch re-serves
+  }
+}
 
-function physStep(dt){
-  const b=Game.ball;if(!b||!b.live)return;
+function physStep(dt,bb){
+  // MULTIBALL: bb is the ball being stepped (primary by default). The launch
+  // machinery (lane climb, curve, plunger) belongs to the PRIMARY ball only —
+  // the secondary ball enters play by dropping from the top and is served
+  // back by the tube with its own per-ball arc (b.arc + _serve).
+  const b=bb||Game.ball;if(!b||!b.live)return;
+  const isPri=b===Game.ball;
   b.vy+=PHYS.grav*dt;
   let sp=Math.hypot(b.vx,b.vy);
   // Launch exemption: while the ball is in the launch flight (Game.launching
   // — lane climb, guide curve) the in-play speed cap doesn't apply; the
   // spring's real speed rules. The moment it enters play (launching→false)
-  // the normal cap is back.
-  if(sp>PHYS.maxVel&&!Game.launching){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
+  // the normal cap is back. The secondary ball's auto-serve boost rides the
+  // SAME exemption (b._serve) — it must clear the tube climb exactly like a
+  // full-pull launch, or the serve stalls at the curve mouth and loops.
+  if(sp>PHYS.maxVel&&!Game.launching&&!b._serve){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
   b.x+=b.vx*dt;b.y+=b.vy*dt;
   // Shooter-lane rolling resistance while the launch ball climbs — a real
   // ball rolling up the lane bleeds a little energy to friction on top of
   // the slope's gravity component.
   if(Game.launching&&b.vy<0)b.vy+=ROLL_F*dt;
   // Guide-curve entry — the climb reaches the tube top and swings into the
-  // top guide; arcStep owns the ball from here.
-  if(Game.launching&&!Game.arc&&b.vy<0&&b.y<=CURVE_ENTRY_Y){
-    b.x=PF.r-24;b.y=CURVE_ENTRY_Y;
+  // top guide; arcStep owns the ball from here. PRIMARY: global launch state
+  // (Game.launching/Game.arc — plunger audio + draw read those). SECONDARY:
+  // its own per-ball arc (b.arc) so two balls can ride the guide independently.
+  if(isPri&&Game.launching&&!Game.arc&&b.vy<0&&b.y<=CURVE_ENTRY_Y){
+    b.x=CURVE_CX+CURVE_R;b.y=CURVE_ENTRY_Y;
     Game.arc={a:0,v:Math.hypot(b.vx,b.vy),dir:1};
+  }
+  if(!isPri&&b._serve&&!b.arc&&b.vy<0&&b.y<=CURVE_ENTRY_Y){
+    b.x=CURVE_CX+CURVE_R;b.y=CURVE_ENTRY_Y;
+    b.arc={a:0,v:Math.hypot(b.vx,b.vy),dir:1};
   }
   // ===== CURVE PHASE — the arc integrator is authoritative (position,
   // velocity, guide normal forces); free physics and clamps are skipped.
-  if(Game.launching&&Game.arc){arcStep(b,dt);return;}
+  if(isPri&&Game.launching&&Game.arc){arcStep(b,dt);return;}
+  if(!isPri&&b.arc){arcServe(b,dt);return;}
   const R=BALL_R;
   clampPF(b);
-  // Left lane inner wall — keep the ball SURFACE clear of the divider (the
-  // old PL_L+4 clamp let the ball body sink 9px into the rail)
-  if(b.x<PL_L+6){b.x=PL_L+6;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
-  // shooter lane inner wall — the ball stays in the playfield and bounces off
-  // the lane divider. But ONLY when the ball is on the playfield side: once it
-  // crosses OVER the divider and into the tube (x>laneX+BALL_R), the divider
-  // lets it pass through so it can fall into the launch tube and onto the
-  // plunger. (The old blanket push emptied the tube — the ball could never fall
-  // into it and the user only saw it glitch through the wall.)
-  const laneX=PF.r-48,laneExitY=PF.y+PF.h*0.10; // divider wall runs from the tube top down
-  if(b.x>laneX-BALL_R-3&&b.y>laneExitY&&b.x<laneX+BALL_R){b.x=laneX-BALL_R-3;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;}
+  // ===== SIDE-LANE MOUTHS — real walls, honest commit line =====
+  // An outlane or shooter lane on a real machine is a channel beside a solid
+  // divider rail: a ball whose centre crosses the rail line falls in; a ball
+  // that presses the rail's playfield face simply rides it down. The dividers
+  // are owned by clampPF (one-way BALL_R walls + a mouth-capture band for
+  // descending balls whose body visibly overlaps the rail — see lane walls
+  // there); no gate ever bounces a ball away from a mouth it is falling into:
+  //   LEFT  = ball-drain lane (48px channel, x 61..95): a centre inside the
+  //           channel falls down it and is lost at the outlane drain by the
+  //           flipper base (the ball-save still covers an accidental loss).
+  //   RIGHT = launch lane (shooter tube, x 637..659): a centre inside the tube
+  //           drops onto the plunger and re-arms (resetBall → LAUNCH, no
+  //           penalty).
+  // (History: the unconditional PL_L+6 clamp was the original "invisible
+  // wall"; the mirrored straddle gates that replaced it still bounced
+  // straddling balls visibly at the mouth top; the guide-rail interim still
+  // held balls 19px outside the mouth. The one-way BALL_R walls + capture are
+  // the real-machine behaviour the player asked for.)
 
   // ===== skill shot — bonus target hit from launch =====
+  // ONE DEVICE, TWO ROLES (the Twilight Zone Left-Ramp model: the same shot
+  // serves the skill shot AND the multiball start, whichever feature is lit;
+  // John Wick's full-plunge combo starts multiball when lit). While the
+  // KICKER is lit, the skill shot IS the multiball catch: the band-power
+  // launch that lands on the disc starts the second-ball multiball instead
+  // of the plain +5000. The chance is still one per ball, consumed here.
   if(Game.skillShotReady){
     const ss=Game.skillShot;
     // The collect radius is per-preset, derived by tuneLaunch (difficulty
@@ -1040,12 +1409,27 @@ function physStep(dt){
     const sr=((PHYS.skillShot&&PHYS.skillShot.collect)||ss.collect||ss.r)+R;
     const sdx=b.x-ss.x,sdy=b.y-ss.y;
     if(sdx*sdx+sdy*sdy<sr*sr){
-      const skillBonus=5000;
-      addScore(skillBonus);flash();
-      Game.msg='SKILL SHOT +'+skillBonus;Game.msgT=2.0;
-      AudioSys.skill();haptic(70,0.8);
-      burst(ss.x,ss.y,3);
       Game.skillShotReady=false;Game.skillShotDone=true; // collected — one per ball
+      // (demo included: an attract ball with the kicker lit shows the catch,
+      // exactly like a player's — the demo drain routing handles 2 balls)
+      if(Game.mbLit&&!Game.multiball){
+        // KICKER CATCH — the shot pays its full 5000 FIRST (before the 2×
+        // engages, so the catch reads exactly like the skill shot it
+        // replaces — the same effective 5000 the lane lock pays), then the
+        // multiball machine takes over: 8s grace save, second-ball drop
+        // 0.55s later, 2× scoring. Same slam as the lane lock.
+        addScore(5000);flash();
+        Game.mbLit=false;Game.multiball=true;Game.mbSaveT=8;Game.mbDropT=0.55;
+        Game.msg='MULTIBALL! SKILL CATCH +5000';Game.msgT=2.4;
+        AudioSys.multi();haptic(140,1);Game.flashes=8;Game.shakeT=0.2;
+        burst(ss.x,ss.y,6);burst(PF.x+PF.w/2,PF.y+40,4);
+      }else{
+        const skillBonus=5000;
+        addScore(skillBonus);flash();
+        Game.msg='SKILL SHOT +'+skillBonus;Game.msgT=2.0;
+        AudioSys.skill();haptic(70,0.8);
+        burst(ss.x,ss.y,3);
+      }
     }
   }
 
@@ -1087,27 +1471,31 @@ function physStep(dt){
       break;
     }
   }
-  // special target — always solid; LIT pays the escalating centre streak
+  // special LIGHT — a pass-over switch like the top diamonds: the ball rolls
+  // straight over it. NO deflection and NO kick — it is a lamp, not a bumper
+  // (the old code fired a specialKick impulse outward, so every centre shot
+  // bounced off the lamp like off a pop bumper). Overlap pays 500 unlit;
+  // while LIT it pays the escalating centre streak and the lamp goes out.
+  // The in/out latch gives one trigger per pass (substeps re-enter the radius).
   const sp2=Game.special;
   {const dx=b.x-sp2.x,dy=b.y-sp2.y;
-    if((sp2.cool||0)<=0&&dx*dx+dy*dy<(sp2.r+R)*(sp2.r+R)){
-      sp2.cool=0.12; // refractory — one score/kick per contact (substeps re-enter radius)
+    const over=dx*dx+dy*dy<(sp2.r+R)*(sp2.r+R);
+    if(over&&!sp2.in){
+      sp2.in=true;
       const wasLit=sp2.lit;
       sp2.lit=false;sp2.t=0;
-      const d=Math.hypot(dx,dy)||1;
-      b.vx=dx/d*Math.max(Math.hypot(b.vx,b.vy),PHYS.specialKick);b.vy=dy/d*Math.max(Math.abs(b.vy),PHYS.specialKick);
       let pts;
       if(wasLit){
         sp2.streak=Math.min(3,(sp2.streak||0)+1);
         pts=sp2.streak===1?1000:sp2.streak===2?2500:5000;
         Game.msg='SPECIAL '+pts+(sp2.streak>1?' ×'+sp2.streak:'');
       }else{
-        pts=500;Game.msg='TARGET 500';
+        pts=500;Game.msg='SPECIAL 500';
       }
       addScore(pts);flash();AudioSys.special();haptic(90,1);
       Game.msgT=1.2;burst(b.x,b.y,3);
-      Game.skillShotReady=false; // consumed on first contact
-    }
+      Game.skillShotReady=false; // consumed on first touch
+    }else if(!over){sp2.in=false;}
   }
   // top diamond lights — pass-over switches (original game behaviour):
   // the ball rolls straight over them, switching each one off and awarding
@@ -1126,8 +1514,18 @@ function physStep(dt){
       if(Game.targets.every(q=>q.down)){
         if(Game.bumperVal<9)Game.bumperVal++;
         Game.bumpers.forEach(bp=>bp.v=Game.bumperVal);
-        Game.msg='BUMPER VALUE '+Game.bumperVal;Game.msgT=1.4;
-        setTimeout(()=>Game.targets.forEach(q=>{q.down=false;q.in=false;}),1200);
+        // BANK COMPLETE → the MULTIBALL KICKER is lit (the attract flow of a
+        // real machine: finish the bank, the lock shot lights up). The kicker
+        // is the LEFT ROLLOVER LANE — and while it is lit, the launch skill
+        // shot IS the catch. The attract demo earns it too now, so the AI
+        // showcases the whole feature loop.
+        if(!Game.mbLit&&!Game.multiball){
+          Game.mbLit=true;
+          Game.msg='KICKER LIT — SKILL SHOT / LEFT LANE';Game.msgT=2.6;
+          AudioSys.extra();haptic(60,0.7);
+        }
+        // Already multiballing: no second kicker (spec caps at 2 balls) —
+        // the bank still pays its bumper-value reward, silently.
       }
     }else if(!over){t.in=false;}
   }
@@ -1138,16 +1536,31 @@ function physStep(dt){
     if(inside&&!r.in){
       r.in=true;addScore(100);AudioSys.roll();
       if(i===0){
-        // LEFT ROLLOVER: increments left roll counter
+        // LEFT ROLLOVER: increments left roll counter. The 4th pass FINISHES
+        // the lane → SPINNER RUSH (the comeback device): both spinners go hot
+        // for 20s — double points + a 1.3× kick. One rush per turn (the
+        // counter caps at 4 and startTurn resets it); never in the attract
+        // demo or during a tilt.
+        const before=Game.leftRoll;
         Game.leftRoll=Math.min(Game.leftRoll+1,4);
         ring(r.x,r.y,'#3fd0ff');
+        // Light ONLY on the completing pass (3→4 transition) — a ball re-
+        // passing a lane that already sits at 4 must not re-trigger after an
+        // earlier rush expired (one rush per turn, like the extra ball).
+        // The attract demo earns the rush too — its timer ticks in demoStep.
+        if(Game.leftRoll===4&&before<4&&!Game.tilt&&!(Game.spinHotT>0)){
+          Game.spinHotT=20;flash();
+          Game.msg='SPINNERS HOT — 2× + POWER KICKS 20s';Game.msgT=2.8;
+          AudioSys.extra();haptic(90,0.8);
+          burst(Game.spinners[0].x,Game.spinners[0].y,4);burst(Game.spinners[1].x,Game.spinners[1].y,4);
+        }
       } else {
         // ATARI ROLLOVER: lights ATARI symbols, extra ball after 4 hits
         Game.bonus=Math.min(Game.bonus+1,9);Game.atariHits++;
         ring(r.x,r.y,'#ff7a2a');
         if(Game.atariHits>=4&&!Game.extra[Game.cur]&&!Game.usedExtra[Game.cur]){
-          Game.extra[Game.cur]=true;AudioSys.extra();
-          Game.msg='EXTRA BALL';Game.msgT=2;
+          Game.extra[Game.cur]=true;AudioSys.extra();flash();
+          Game.msg='EXTRA BALL LIT — SHOOT AGAIN AT DRAIN';Game.msgT=2.8;
         }
       }
     } else if(!inside){r.in=false;}
@@ -1159,57 +1572,91 @@ function physStep(dt){
   // with the ball's impact speed: a fast ball through the spinner gets flung
   // higher, rewarding speed. Kick aims up and toward the table centre so the
   // ball rejoins the bumper flow instead of dead-ending in an outlane.
+  // TRIGGER ACCURACY: the drawn blade sweeps a ~20px-radius disc (hub 19 +
+  // 40px blade). The old 12×24 rectangular window missed passes the player
+  // plainly SAW clip the blade — an edge pass at dx≈14 or dy≈25 triggered
+  // nothing ("ball passes over it with no effect"). A 26px circular zone ≈
+  // blade sweep + ball radius, so every visibly-touching pass registers.
   for(const s of Game.spinners){
     s.cd=Math.max(0,s.cd-dt);
-    const inside=Math.abs(b.x-s.x)<12&&Math.abs(b.y-s.y)<24;
+    const ddx=b.x-s.x,ddy=b.y-s.y;
+    const inside=ddx*ddx+ddy*ddy<26*26;
     if(inside&&s.cd<=0){
       s.cd=0.12;
       const impactSpeed=Math.hypot(b.vx,b.vy);
-      s.spin=Math.min(200,Math.floor(impactSpeed*0.35));
-      addScore(1);AudioSys.spin();
+      // SPINNER RUSH: hot spinners pay double (2 vs the original 1) and the
+      // blade's kick is 1.3× — the kick exits stay under every preset's
+      // maxVel cap (ATARI 1306, ARCADE/SUPERBALL clamp at 2000/2400).
+      const hot=Game.spinHotT>0;
+      s.spin=Math.min(hot?280:200,Math.floor(impactSpeed*(hot?0.45:0.35)));
+      addScore(hot?2:1);AudioSys.spin();
       Game.skillShotReady=false; // consumed on first contact
-      const kick=PHYS.spinnerKick+Math.min(impactSpeed,600)*PHYS.spinnerKickScale;
+      const kick=(PHYS.spinnerKick+Math.min(impactSpeed,600)*PHYS.spinnerKickScale)*(hot?1.3:1);
       const towardC=(s.x<PL_CX)?1:-1; // ALWAYS steer toward the table centre
       b.vx=towardC*kick*0.45;
       b.vy=-kick*0.9; // upward
+      // IMPERFECT BALL: the blade physically ROLLS the ball through it — the
+      // pass leaves the ball spinning (topspin toward its travel side), so
+      // the next wall hit exits at a history-dependent angle, and the wire
+      // blade's own micro-roughness scatters the exit a little. (Fixed
+      // 0.45/0.9 exits repeated the same return route every pass.)
+      b.spin=(b.spin||0)+towardC*Math.min(5,0.5+impactSpeed*0.0022);
+      scatterBounce(b,0.8);
     }
     if(s.spin>0){s.ang+=3.5;s.spin-=Math.random()<0.20?0:1;}
   }
-  // flippers — only one can collide per sub-step to avoid ping-pong trap
-  if(flipperStep(b,FL.l,dt)){}else flipperStep(b,FL.r,dt);
+  // flippers — only one can collide per sub-step to avoid ping-pong trap.
+  // MULTIBALL: flipperAnimate runs ONCE per substep in the tick loop; this
+  // per-ball pass is contact-only (flipperHit) so two balls don't double-
+  // speed the bat animation.
+  if(flipperHit(b,FL.l,dt)){}else flipperHit(b,FL.r,dt);
   // guide rails
   const gg=guideGeom();
   for(const g of gg)segCollide(b,g[0],g[1],g[2],g[3],G_RAD,PHYS.guideBounce,g[4]);
-  // Re-clamp to playfield after collision pushes — prevent wall escapes
+  // Re-clamp to playfield after collision pushes — prevent wall escapes.
+  // (The old gate pair here bounced straddling balls at both lane mouths —
+  // the visible "deflection at the top of the lane" the player reported.
+  // With the mouths open, the lane walls in guideGeom do this job physically:
+  // a ball on the playfield side slides along the divider rail and continues;
+  // a ball past the edge falls into its lane. No bounce, ever.)
   clampPF(b);
-  if(b.x<PL_L+6){b.x=PL_L+6;b.vx=Math.abs(b.vx)*PHYS.wallBounce;}
-  const laneX2=PF.r-48,laneExitY2=PF.y+PF.h*0.10;
-  // Shooter-lane divider (upper section only): keep the ball on the playfield
-  // side until it drops into the tube mouth from above. The lower angled
-  // outlane wall is handled by the guide-rail collision (guideGeom, tMax 1.0)
-  // which deflects smoothly. The old hard clamp here yanked a ball that had
-  // reached the tube/outlane channel ~150px left in ONE frame — the "ball
-  // glitched from the right side to the left" teleport. Removed; the rail
-  // collision plus the right-outlane drain check handle that region cleanly.
-  if(b.y>laneExitY2&&b.y<WALL_TOP_Y&&b.x>laneX2-BALL_R-3&&b.x<laneX2){
-    b.x=laneX2-BALL_R-3;b.vx=-Math.abs(b.vx)*PHYS.wallBounce;
-  }
+  const laneX2=PF.r-LANE_W;
   // ===== tube catch (real pinball) =====
   // A live ball that falls back into the shooter lane settles on the plunger
   // and can be relaunched with NO penalty — no drain, no ball advance. The
-  // divider above lets in-tube balls pass through, so this only fires for a
-  // genuine fall-in: the ball is fully inside the tube (x past the divider),
+  // tube's one-way inner wall (clampPF's lane walls) keeps in-tube balls
+  // inside the lane, so this only fires for a genuine fall-in: the ball is
+  // fully inside the tube (x past the divider),
   // low in the lane (y past the plunger's rest tip, and well ABOVE the drain
   // line so it always beats the outlane drain check), and not moving up. No
   // speed gate — a ball falling down the tube is moving fast the whole way and
   // would drain before it ever slowed down. resetBall() parks it on the rod
   // tip and re-arms the launcher; score, rolls and flippers are untouched.
-  if(b.x>laneX2+BALL_R&&b.y>PF.b-60&&b.vy>-50){
+  // MULTIBALL: the PRIMARY returning to the tube stays in PLAY (a LAUNCH
+  // switch would freeze the airborne second ball); it re-arms on the plunger
+  // and the player pulls to relaunch. The SECONDARY is auto-served — the
+  // machine claims the ball and fires it back up the lane (virtual lock
+  // auto-plunge, the standard multiball serve).
+  if(b.x>laneX2+BALL_R&&b.y>PF.b-(MOBILE?60:66)&&b.vy>-50){
+    if(!isPri){ // SECONDARY: auto-serve back into play
+      // Full-pull strength (vTipFull) — the same speed tuneLaunch guarantees
+      // clears the tube climb + curve. Anything less stalls at the curve mouth
+      // and the serve loops forever.
+      b.x=CURVE_CX+CURVE_R;b.y=PF.b-70;b.vx=0;
+      b.vy=-PHYS.vTipFull*0.95;
+      b._serve=true;b.arc=null;b.stuck=0;b.visitGrid=[];b.trail=[];
+      burst(b.x,b.y,2);AudioSys.plungerRelease(0.7);
+      return;
+    }
     // A rolled-back ball settling onto the rod — the soft mechanical thunk
     // that closes the failed-plunge story (whiff at the stall, rattle on the
     // way down, thunk here)
     if(Game.launching)AudioSys.plungerSettle();
-    resetBall();if(!demoMode)state=S.LAUNCH;return;
+    resetBall();
+    // During multiball stay in PLAY so the second ball keeps flying; the
+    // parked primary re-arms on the plunger (launch allowed from PLAY).
+    if(!demoMode&&!Game.multiball)state=S.LAUNCH;
+    return;
   }
   // Final guide-rail pass — a bumper or flipper push must never leave the
   // ball overlapping a rail at the end of a step.
@@ -1217,13 +1664,19 @@ function physStep(dt){
   // Cap velocity after all collisions — bumpers/rails can stack speed past MAXV.
   // Same launch exemption as the top of physStep: the spring's real speed
   // rules until the curve exit; the moment it enters play the cap is back.
-  sp=Math.hypot(b.vx,b.vy);if(sp>PHYS.maxVel&&!Game.launching){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
+  sp=Math.hypot(b.vx,b.vy);if(sp>PHYS.maxVel&&!Game.launching&&!b._serve){b.vx*=PHYS.maxVel/sp;b.vy*=PHYS.maxVel/sp;}
   // ===== bottom drain zones =====
   // The flippers are the last line of defence: a ball still in contact with a
   // bat is supported and stays in play. Everything else below the flipper line
   // drains. (A ball resting on a flipper must NOT count as drained.)
   const restTipLX=FL.l.x+Math.cos(FL.l.rest)*FL.l.len;
-  const restTipRX=FL.r.x-Math.cos(FL.r.rest)*FL.r.len;
+  // The RIGHT flipper's inner tip uses the SAME +cos formula as the left: its
+  // rest angle has cos<0 (the bat points down-left), so the old minus here
+  // double-negated and placed the "tip" 100px out on the RIGHT WALL (579 vs
+  // the real 383). The drain span stretched under the right flipper and the
+  // old kicker lamp drew below the right bat — the "lit area below the right
+  // flipper" the player reported.
+  const restTipRX=FL.r.x+Math.cos(FL.r.rest)*FL.r.len;
   const Rf=BALL_R+8;
   const cl=flipperContact(b,FL.l),cr=flipperContact(b,FL.r);
   // "On the flipper" = touching the BAT BODY from the playfield side, with the
@@ -1232,24 +1685,49 @@ function physStep(dt){
   // +1 tolerance: the flipper clamp rests the ball at EXACTLY Rf, so a strict
   // < would misclassify a resting ball as not-on-flipper and drain it.
   const onFlip=(cl.tRaw>=0.14&&cl.d<Rf+1&&cl.face>-8)||(cr.tRaw>=0.14&&cr.d<Rf+1&&cr.face>-8);
+  // ===== MULTIBALL KICKER (the lit left lane — the real-machine lane lock) =====
+  // Best practice (Attack from Mars "lock when lit", lane inserts): the lock
+  // is an upper-playfield LANE/SAUCER shot, never the drain — the drain must
+  // always drain. Completing the 3-diamond bank lights the LEFT rollover lane;
+  // a ball entering it is CAUGHT (the lane holds the ball), kicked back up
+  // into play, and a second ball drops from the top (mbDropT countdown in tick
+  // fires the drop) → 2× scoring. Only the primary can trigger — mbLit clears
+  // at the catch, so a running multiball never stacks a third. Never on the
+  // launch rail (a lucky plunger arc must not farm the lock). The attract
+  // demo can catch it too (its drain routing handles 2 balls now).
+  if(Game.mbLit&&!Game.multiball&&!Game.arc&&!Game.launching&&
+     !b._serve&&!onFlip){
+    const lr=Game.rolls[0];
+    if(Math.abs(b.x-lr.x)<18&&Math.abs(b.y-lr.y)<28){
+      Game.mbLit=false;Game.multiball=true;Game.mbSaveT=8;Game.mbDropT=0.55;
+      b.x=lr.x;b.y=lr.y;
+      b.vy=-(PHYS.stuckVy*1.5+240);b.vx=(Math.random()-0.5)*160;
+      b.stuck=0;b.visitGrid=[];b.lastCell=-1;
+      addScore(2500);Game.msg='MULTIBALL';Game.msgT=2.2;
+      AudioSys.multi();haptic(140,1);flash();Game.flashes=8;Game.shakeT=0.2;
+      burst(b.x,b.y,6);burst(PF.x+PF.w/2,PF.y+40,4);
+      clampPF(b);
+      return;
+    }
+  }
   if(!onFlip){
     // outlanes — past the outer edge of either flipper. The threshold covers the
     // pivot region so a ball falling beside a flipper base always drains.
-    if(b.y>FL.l.y-2&&(b.x<FL.l.x+10||b.x>FL.r.x-10)){b.live=false;ballDrained();return;}
+    if(b.y>FL.l.y-2&&(b.x<FL.l.x+10||b.x>FL.r.x-10)){b.live=false;drainBall(b);return;}
     // centre drain — between the two flipper tips
-    if(b.y>FL.l.y+8&&b.x>restTipLX-4&&b.x<restTipRX+4){b.live=false;ballDrained();return;}
+    if(b.y>FL.l.y+8&&b.x>restTipLX-4&&b.x<restTipRX+4){b.live=false;drainBall(b);return;}
     // safety floor — never let the ball fall off the table
-    if(b.y>PF.b+28){b.live=false;ballDrained();return;}
+    if(b.y>PF.b+28){b.live=false;drainBall(b);return;}
   }
   // drain holes (difficulty a)
-  for(const dh of Game.drainHoles){if(Math.hypot(b.x-dh.x,b.y-dh.y)<20){b.live=false;ballDrained();return;}}
+  for(const dh of Game.drainHoles){if(Math.hypot(b.x-dh.x,b.y-dh.y)<20){b.live=false;drainBall(b);return;}}
   // stuck detection — a ball resting on a flipper is NOT stuck; it's waiting
   // for the player to flip. Only rescue balls stuck elsewhere on the table.
   if(!onFlip){
     if(sp<PHYS.stuckSpd){b.stuck+=dt;}else b.stuck=0;
     const inBottom=b.y>PF.b-150;
     if(b.stuck>(inBottom?PHYS.stuckBot:PHYS.stuckTop)){
-      if(inBottom){b.live=false;ballDrained();return;}
+      if(inBottom){b.live=false;drainBall(b);return;}
       b.vy=-PHYS.stuckVy;b.vx+=(Math.random()-0.5)*PHYS.stuckVxJit;b.stuck=0;
     }
     // Anti-loop: only a FAST ball that keeps returning to the EXACT same 30px
@@ -1332,7 +1810,14 @@ function segCollide(b,x1,y1,x2,y2,rad,rest,tMax){
   const px=x1+dx*t,py=y1+dy*t;
   let nx=b.x-px,ny=b.y-py;const d=Math.hypot(nx,ny);
   if(d<rad&&d>0.001){nx/=d;ny/=d;b.x=px+nx*rad;b.y=py+ny*rad;
-    const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=rest*vn*nx;b.vy-=rest*vn*ny;}return true;}
+    const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=rest*vn*nx;b.vy-=rest*vn*ny;
+      // energy-gaining rails (SUPERBALL 1.7) get the same sanity ceiling —
+      // absorbing restitutions can't overshoot, so guard keeps them untouched
+      if(rest>1)gainCap(b);
+      // imperfect-ball contact on genuine rail hits (grazes stay smooth —
+      // the skill-shot band's admitted corridor grazes must stay exact)
+      if(-vn>IMPACT_MIN)gripContact(b,nx,ny,0.9);
+    }return true;}
   return false;
 }
 function guideGeom(){
@@ -1349,8 +1834,12 @@ function guideGeom(){
     // the guide end hands the ball cleanly to the bat base.
     [PL_L,WALL_TOP_Y,FL.l.x-2,FL.l.y,1.0],
     [PL_R,WALL_TOP_Y,FL.r.x+2,FL.r.y,1.0],
-    // ---- LEFT BALL RETURN LANE (48px tube, mirrors right shooter lane) ----
-    [PL_L, PF.y+PF.h*0.10, PL_L, FL.l.y-10],
+    // ---- LEFT DRAIN CHANNEL (x<PL_L) + RIGHT SHOOTER TUBE (x>PL_R) ----
+    // both dividers moved OUT of guideGeom: as G_RAD-19 guide rails their
+    // halo reached 6px past the ball surface on the playfield side and held
+    // descending balls 19px outside the mouth for the whole descent (the
+    // "rejected at the top of the lane" bug). clampPF owns them now as
+    // one-way BALL_R walls with a mouth-capture band — see lane walls there.
     // ---- PASS-THROUGH LANE CORRIDORS — tight narrow lanes ----
     [PL_L+PL_W*0.19, LANE_TOP+4, PL_L+PL_W*0.19, LANE_BOT-44],
     [PL_L+PL_W*0.31, LANE_TOP+4, PL_L+PL_W*0.31, LANE_BOT-44],
@@ -1387,8 +1876,10 @@ function flipperAnimate(f,dt){
   // Bat back at rest → the next swing gets its own oblique steering
   if(Math.abs(f.ang-f.rest)<0.012&&Math.abs(f.av)<2)f._obl=false;
 }
-function flipperStep(b,f,dt){
-  flipperAnimate(f,dt);
+function flipperHit(b,f,dt){
+  // Contact-only half of flipperStep: NO animation. In multiball the bats
+  // animate ONCE per substep (tick loop) and each ball then runs its own
+  // collision pass — animating per-ball would double the swing speed.
   const R=BALL_R+8,fx=f.x,fy=f.y;
   const ux=Math.cos(f.ang),uy=Math.sin(f.ang);
   const c=flipperContact(b,f);
@@ -1422,6 +1913,23 @@ function flipperStep(b,f,dt){
       // the new vertical speed, capped — weak taps stay soft, full flips climb
       // the centre.
       if(!f._obl){f._obl=true;b.vx+=(f.side<0?1:-1)*Math.min(380,Math.abs(b.vy)*0.24);}
+      // IMPERFECT BAT + IMPERFECT BALL: real flip shots NEVER repeat — the
+      // ball lands a hair different on the bat every pass, the rubber
+      // compresses differently, the ball's mold seam and flat spots bend the
+      // contact, and the carried spin changes what the bat rolls into it.
+      // Real players report ~20% shot accuracy even after tens of thousands
+      // of games (Pinside aiming threads: "you can't make 2 moves 100%
+      // identical — speed, weight, inertia, grip make it impossible"). VPE
+      // models this with its per-material scatter knob; this table does the
+      // same on every genuine flip impact (the hold-up catch path below stays
+      // smooth — only the impulse fires). The bat also rolls spin into the
+      // ball (mirrored left/right) so the NEXT wall contact diverges too.
+      // Per-preset spray: ATARI 0.65× (subtle), ARCADE 1.0× (standard),
+      // SUPERBALL 1.35× (sprayier) — the scatter AND the spin deposit scale
+      // together so the next-contact divergence tracks the mode's chaos.
+      const fsc=PHYS.flipScatter||1.0;
+      scatterBounce(b,fsc);
+      b.spin=(b.spin||0)+f.side*Math.min(4*fsc,1+Math.abs(b.vy)*0.002);
       if(Math.abs(f.av)>2){AudioSys.flip();haptic(25,0.4);}
     }
     // BASE ZONE (t<0.4): force a slow settled ball to roll DOWNHILL along the
@@ -1446,6 +1954,64 @@ function flipperStep(b,f,dt){
   return false;}
 
 /* ---------- drain / tally / tilt ---------- */
+// drainBall routes a live=false event for EITHER ball through the multiball
+// rules, then falls through to the normal drain flow for the primary ball.
+function drainBall(b){
+  if(demoMode){
+    // Attract multiball: the demo plays the REAL drain routing (the AI earns
+    // the kicker like a player — bank, catch, rush are all live in the
+    // attract now, so the demo showcases the whole feature loop). Identical
+    // rules to PLAY: a secondary drain = grace re-drop or multiball end; a
+    // primary drain with a live second ball = promote the survivor; else the
+    // plain attract relaunch.
+    const isPri=b===Game.ball;
+    if(!isPri&&Game.multiball){
+      if(Game.mbSaveT>0&&!Game.tilt){Game.mbSaveT=Math.max(0,Game.mbSaveT-1.5);dropBall2();return;}
+      Game.ball2=null;endMultiball();return;
+    }
+    if(Game.multiball&&Game.ball2&&Game.ball2.live){Game.ball=Game.ball2;Game.ball2=null;endMultiball();return;}
+    ballDrained();return;
+  }
+  const isPri=b===Game.ball;
+  if(!isPri&&Game.multiball){
+    // SECONDARY ball drain. Multiball grace ball-save: during the opening
+    // window the drained ball is returned to play (standard 5–15s multiball
+    // save) — re-drop from the top, ball count stays 2. Tilt kills the grace.
+    if(Game.mbSaveT>0&&!Game.tilt){
+      Game.mbSaveT=Math.max(0,Game.mbSaveT-1.5); // each save trims the window a bit
+      dropBall2();
+      Game.msg='BALL SAVED';Game.msgT=1.6;Game.flashes=5;Game.shakeT=0.12;
+      AudioSys.save();haptic(40,0.3);
+      return;
+    }
+    // Grace over (or tilt): the second ball is gone — back to one ball, 1×
+    Game.ball2=null;
+    endMultiball();
+    return;
+  }
+  if(Game.multiball&&Game.ball2&&Game.ball2.live){
+    // PRIMARY drain while the second ball still flies: PROMOTE the survivor —
+    // it becomes Game.ball and play continues with no tally (the turn isn't
+    // over; the surviving ball simply keeps going, 1× from here on).
+    Game.ball=Game.ball2;Game.ball2=null;
+    endMultiball();
+    return;
+  }
+  // Normal end-of-ball flow (single ball, multiball already over)
+  ballDrained();
+}
+function endMultiball(){
+  Game.multiball=false;Game.mbSaveT=0;Game.mbDropT=0;
+  if(Game.ball&&Game.ball.live){Game.msg='MULTIBALL ENDED';Game.msgT=1.4;}
+}
+// dropBall2 — spawn the multiball's second ball at the top-centre (below the
+// top bezel, clear of the diamond row's switch line) falling into play.
+function dropBall2(){
+  Game.ball2={x:PL_CX,y:PF.y+BALL_R+8,vx:(Math.random()-0.5)*80,vy:430,live:true,
+              stuck:0,spin:0,trail:[],visitGrid:[],lastCell:-1,_serve:false};
+  Game.mbDropT=0;
+  burst(Game.ball2.x,Game.ball2.y,4);
+}
 function ballDrained(){
   // Demo mode: the attract AI just relaunches — no ball-save, tally or game over
   if(demoMode){
@@ -1509,7 +2075,8 @@ function tallyStep(dt){
     if(!t._done){t._done=true;return;}
     Game.tally=null;
     if(Game.extra[Game.cur]){Game.extra[Game.cur]=false;Game.usedExtra[Game.cur]=true;
-      Game.msg='X PLAY';Game.msgT=1.5;resetBall();state=S.LAUNCH;return;}
+      Game.msg='SHOOT AGAIN · EXTRA BALL';Game.msgT=2.4;flash();
+      resetBall();state=S.LAUNCH;return;}
     if(Game.balls[Game.cur]<3){Game.balls[Game.cur]++;startTurn();return;}
     if(Game.players===2&&Game.cur===0){Game.cur=1;startTurn();return;}
     gameOver();
@@ -1618,17 +2185,15 @@ function uiTouch(x,y){if(state===S.TITLE){uiConfirm();return;}
 const optEditableRows=()=>store.physics==='arcade'?7:6;
 // Vertical layout for panel rows — the whole block is centred in the card so
 // short lists don't hug the top. drawPanel and rowHitIndex share these.
+// MOBILE: condensed paddings/rows so 5–8 rows fit the 850–1140px stage.
+function panelGeom(){const M=MOBILE;return{py:M?48:100,ph:H-(M?108:230),rowH:M?64:74,top:M?74:96,bot:M?36:60};}
 function menuRowY(i){
-  const py=100,ph=H-230;
-  const n=menuItems().length,block=n*74;
-  const top=py+96,bottom=py+ph-60;
-  return top+Math.max(0,(bottom-top-block)/2)+i*74;
+  const g=panelGeom(),n=menuItems().length,block=n*g.rowH;
+  return g.py+g.top+Math.max(0,(g.ph-g.top-g.bot-block)/2)+i*g.rowH;
 }
 function optRowY(i){
-  const py=100,ph=H-230;
-  const n=store.physics==='arcade'?8:7,block=n*78;
-  const top=py+96,bottom=py+ph-60;
-  return top+Math.max(0,(bottom-top-block)/2)+i*78;
+  const g=panelGeom(),n=store.physics==='arcade'?8:7,block=n*(MOBILE?68:78);
+  return g.py+g.top+Math.max(0,(g.ph-g.top-g.bot-block)/2)+i*(MOBILE?68:78);
 }
 // Map a normalized Y coordinate to the panel row under the pointer (MENU/OPTS only).
 // Geometry must match drawPanel() exactly.
@@ -1648,14 +2213,16 @@ function plungerStep(dt){
   // Ball rides the rod tip — moves down as the spring compresses (only at rest;
   // once the ball is live it climbs the lane under real physics)
   // demoMode lets the attract AI charge the real plunger (state stays TITLE)
-  if((state===S.LAUNCH||demoMode)&&Game.launchAnim<=0&&Game.ball&&!Game.ball.live){
+  // MULTIBALL: a parked primary during multiball (it returned to the tube and
+  // we stayed in PLAY) charges here too, so the player can relaunch mid-2×.
+  if((state===S.LAUNCH||demoMode||(Game.multiball&&state===S.PLAY))&&Game.launchAnim<=0&&Game.ball&&!Game.ball.live){
     Game.plungerCharge=input.plunger?Math.min(1,Game.plungerCharge+dt*1.2):Game.plungerCharge;
     // Spring creak — a real plunger's coils tick as they compress; the pitch
     // rises with the pull, so the charge is audible before you release.
     const creakStep=Math.floor(Game.plungerCharge/0.06);
     if(creakStep!==Game._creak){Game._creak=creakStep;if(Game.plungerCharge>0.04)AudioSys.springPull(Game.plungerCharge);}
-    const tipY=PF.b-66+(Game.plungerCharge*36);
-    Game.ball.x=PF.r-24;
+    const tipY=PF.b-(MOBILE?54:66)+(Game.plungerCharge*(MOBILE?26:36));
+    Game.ball.x=CURVE_CX+CURVE_R;
     Game.ball.y=tipY-BALL_R;
   }
   // ===== REAL LAUNCH FLIGHT =====
@@ -1710,7 +2277,12 @@ const cv=document.getElementById('C'),ctx=cv.getContext('2d');
 let scale=1,offX=0,offY=0,dpr=1;
 function vpSize(){const v=window.visualViewport;return v?{w:v.width,h:v.height}:{w:innerWidth,h:innerHeight};}
 function resize(){
-  const s=vpSize();dpr=Math.min(window.devicePixelRatio||1,2.5);
+  // dpr cap: 3 on phones (CSS-px-locked retina displays were rounding down to
+  // 2.5 and noticeably blurring text/bumpers), 2.5 on desktop hi-dpi, 1 on
+  // low-end mid-dpi. Cheap round-trip — a 652×1200 stage at sc≈0.6, dpr 3 is
+  // ~2.9MP, still well under the iOS canvas limit (~16.7MP).
+  dpr=Math.min(window.devicePixelRatio||1,MOBILE?3:2.5);
+  const s=vpSize();
   const sc=Math.min(s.w/W,s.h/H);scale=sc;
   cv.width=Math.round(W*sc*dpr);cv.height=Math.round(H*sc*dpr);
   cv.style.width=Math.round(W*sc)+'px';cv.style.height=Math.round(H*sc)+'px';
@@ -1786,10 +2358,17 @@ function buildPF(){
   // chrome rail overlapping the playfield edge by 2px. (The right side used to
   // butt the wood right against the rail, so a brown gradient showed next to
   // the right wall while the left had a clean dark gap.)
-  const wood=c.createLinearGradient(PF.x-22,0,PF.x,0);wood.addColorStop(0,'#2a120b');wood.addColorStop(1,'#4a2414');
-  c.fillStyle=wood;c.fillRect(0,0,PF.x-22,H);
-  const woodR=c.createLinearGradient(PF.r,0,PF.r+22,0);woodR.addColorStop(0,'#4a2414');woodR.addColorStop(1,'#2a120b');
-  c.fillStyle=woodR;c.fillRect(PF.r+22,0,W-PF.r-22,H);
+  // MOBILE: rails sit only 26px from the canvas edge, so the wood band is 0 —
+  // a flat dark fill keeps the mirror symmetric without a wood sliver.
+  {
+    const woodW=Math.min(22,PF.x-1);
+    if(woodW>2){
+      const wood=c.createLinearGradient(PF.x-woodW,0,PF.x,0);wood.addColorStop(0,'#2a120b');wood.addColorStop(1,'#4a2414');
+      c.fillStyle=wood;c.fillRect(0,0,PF.x-woodW,H);
+      const woodR=c.createLinearGradient(PF.r,0,PF.r+woodW,0);woodR.addColorStop(0,'#4a2414');woodR.addColorStop(1,'#2a120b');
+      c.fillStyle=woodR;c.fillRect(PF.r,0,W-PF.r-woodW,H);
+    } else {c.fillStyle='#2a120b';c.fillRect(0,0,PF.x,H);c.fillRect(PF.r,0,W-PF.r,H);}
+  }
   // playfield plate — rounded TOP corners (matches the corner-arc physics) so
   // the launched ball rides the drawn edge and never crosses it
   const platePath=()=>{c.beginPath();c.moveTo(PF.x,PF.y+CORNER_R);
@@ -1858,12 +2437,11 @@ function buildPF(){
   // corner darkening are centred — the three rails read as one recessed frame
   // with an unbroken inner shadow around the plate.
   rrail(PF.x-12,PF.y-10,14,PF.h+22);rrail(PF.r-2,PF.y-10,14,PF.h+22,-2);rrail(PF.x-12,PF.y-10,PF.w+24,14,0);
-  // shooter lane divider (right) — 48px tube. The 5px stub sits at PF.r-53 so
-  // it is the exact mirror of the left stub (left [96,101] ↔ right [619,624]);
-  // its shadow falls left into the plate like the left stub's falls right, so
-  // BOTH dividers cast their 2px shadow onto the playfield (the old right stub
-  // at 624 cast its shadow into its own halo — the two walls never matched).
-  rrail(PF.r-53,PF.y+PF.h*0.12,5,PF.h*0.88,-2);
+  // shooter lane divider (right) — LANE_W px tube. The 5px stub sits at PF.r-LANE_W-5 so
+  // it is the exact mirror of the left stub; its shadow falls left into the plate
+  // like the left stub's falls right, so BOTH dividers cast their 2px shadow onto
+  // the playfield.
+  rrail(PF.r-LANE_W-5,PF.y+PF.h*0.12,5,PF.h*0.88,-2);
   // NOTE: the old drawn "guide channel" here — two pale curves sweeping from
   // the tube top toward the top rail — was purely decorative: the PHYSICAL
   // launch guide lives in arcStep/clampPF, not in these strokes, and they
@@ -1872,7 +2450,7 @@ function buildPF(){
   rrail(PL_L,PF.y+PF.h*0.12,5,PF.h*0.88);
   // shooter lane arrows — point UP
   c.fillStyle='#9fb4ff';c.globalAlpha=0.5;
-  for(let i=0;i<5;i++){const y=PF.y+PF.h*0.15+i*32;c.beginPath();c.moveTo(PF.r-28,y+18);c.lineTo(PF.r-24,y+8);c.lineTo(PF.r-20,y+18);c.closePath();c.fill();}
+  for(let i=0;i<5;i++){const y=PF.y+PF.h*0.15+i*32;c.beginPath();c.moveTo(PF.r-LANE_W+20,y+18);c.lineTo(PF.r-LANE_W+24,y+8);c.lineTo(PF.r-LANE_W+28,y+18);c.closePath();c.fill();}
   // left return lane arrows — point DOWN (the ball-escape lane flows down)
   for(let i=0;i<5;i++){const y=PF.y+PF.h*0.15+i*32;c.beginPath();c.moveTo(PL_L-24,y+18);c.lineTo(PL_L-28,y+8);c.lineTo(PL_L-20,y+8);c.closePath();c.fill();}
   c.globalAlpha=1;
@@ -1881,8 +2459,8 @@ function buildPF(){
   // while the left was a dark danger zone, so the two walls never matched).
   // Each channel also runs 2px under its outer rail, giving both walls the
   // same dark "lane colour under the chrome line".
-  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.x,PF.y+PF.h*0.10,48,PF.h*0.87);
-  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.r-48,PF.y+PF.h*0.10,48,PF.h*0.87);
+  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.x,PF.y+PF.h*0.10,LANE_W,PF.h*0.87);
+  c.fillStyle='rgba(0,0,0,0.15)';c.fillRect(PF.r-LANE_W,PF.y+PF.h*0.10,LANE_W,PF.h*0.87);
   // top lane divider (separates left and right lanes)
   // === PASS-THROUGH LANES — chrome corridor walls, centered on playable area ===
   // Lane floor glow — left lane (cyan)
@@ -1908,23 +2486,23 @@ function buildPF(){
   // Left outlane escape channel visual (dark danger zone in return lane) —
   // mirrored to the right shooter lane for uniformity
   c.fillStyle='rgba(0,0,0,0.20)';
-  c.fillRect(PF.x,PF.y+PF.h*0.10,48,PF.h*0.82);
+  c.fillRect(PF.x,PF.y+PF.h*0.10,LANE_W,PF.h*0.82);
   c.fillStyle='rgba(0,0,0,0.20)';
-  c.fillRect(PF.r-48,PF.y+PF.h*0.10,48,PF.h*0.82);
+  c.fillRect(PF.r-LANE_W,PF.y+PF.h*0.10,LANE_W,PF.h*0.82);
   // Lane divider walls — exact mirrors. Both are drawn ON TOP of the channels so
   // neither side's chrome is dimmed by its lane colour: 8px chromeBar on each,
   // identical span (PF.h*0.10 → flipper pivot), so the left ball-return lane and
   // the right shooter lane read as the same wall. (The 5px rrail dividers below
   // remain as the tube-boundary stubs past the flipper, mirrored on both sides.)
   chromeBar(PL_L,PF.y+PF.h*0.10,PL_L,FL.l.y-10,8,c);
-  chromeBar(PF.r-48,PF.y+PF.h*0.10,PF.r-48,FL.l.y-10,8,c);
+  chromeBar(PF.r-LANE_W,PF.y+PF.h*0.10,PF.r-LANE_W,FL.l.y-10,8,c);
   // Lane entrance guide arrows (visual only, no physics)
   c.fillStyle='#9fb4ff';c.globalAlpha=0.5;
   c.beginPath();c.moveTo(llcx,LBOT3+4);c.lineTo(llcx-12,LBOT3+20);c.lineTo(llcx+12,LBOT3+20);c.closePath();c.fill();
   c.beginPath();c.moveTo(rlcx,LBOT3+4);c.lineTo(rlcx-12,LBOT3+20);c.lineTo(rlcx+12,LBOT3+20);c.closePath();c.fill();
   c.globalAlpha=1;
   // Dark outlane gap — drain danger indicator
-  c.fillStyle='rgba(220,60,40,0.15)';c.beginPath();c.ellipse(PF.x+24,FL.l.y-6,12,30,-0.2,0,6.28);c.fill();
+  c.fillStyle='rgba(220,60,40,0.15)';c.beginPath();c.ellipse(PF.x+LANE_W*0.5,FL.l.y-6,12,30,-0.2,0,6.28);c.fill();
   // Lane surface inset
   c.fillStyle='rgba(0,0,0,0.10)';
   c.fillRect(llcx-LW+3,LTOP3+3,LW*2-6,LBOT3-LTOP3-3);
@@ -1933,15 +2511,27 @@ function buildPF(){
   const gg2=[[PL_L,WALL_TOP_Y,FL.l.x-2,FL.l.y],[PL_R,WALL_TOP_Y,FL.r.x+2,FL.r.y]];
   for(const g of gg2)chromeBar(g[0],g[1],g[2],g[3],9,c);
   // bottom apron
-  const apr=c.createLinearGradient(0,PF.b,0,PF.b+118);apr.addColorStop(0,'#2a2f3a');apr.addColorStop(1,'#141820');
-  c.fillStyle=apr;c.fillRect(PF.x-12,PF.b,PF.w+24,118);
+  const aprH=BOT_H;
+  const apr=c.createLinearGradient(0,PF.b,0,PF.b+aprH);apr.addColorStop(0,'#2a2f3a');apr.addColorStop(1,'#141820');
+  c.fillStyle=apr;c.fillRect(PF.x-12,PF.b,PF.w+24,aprH);
   c.fillStyle='rgba(255,255,255,0.08)';c.fillRect(PF.x-12,PF.b,PF.w+24,2);
-  c.textAlign='center';c.fillStyle='rgba(200,215,255,0.5)';c.font='700 11px '+F_DISP;
-  c.fillText('A T A R I  ·  V I D E O  P I N B A L L  ·  1 9 8 0  ·  T R I B U T E',W/2,PF.b+30);
-  c.fillStyle='rgba(255,150,80,0.6)';c.font='500 11px '+F_UI;
-  c.fillText('FLIPPERS  ←→   ·   PLUNGER  HOLD ↓ / RELEASE   ·   NUDGE  SHIFT+DIR',W/2,PF.b+52);
+  c.textAlign='center';c.fillStyle='rgba(200,215,255,0.5)';c.font='700 '+(MOBILE?9:11)+'px '+F_DISP;
+  c.fillText('A T A R I  ·  V I D E O  P I N B A L L  ·  1 9 8 0  ·  T R I B U T E',W/2,PF.b+(MOBILE?20:30));
+  if(!MOBILE){c.fillStyle='rgba(255,150,80,0.6)';c.font='500 11px '+F_UI;
+    c.fillText('FLIPPERS  ←→   ·   PLUNGER  HOLD ↓ / RELEASE   ·   NUDGE  SHIFT+DIR',W/2,PF.b+52);}
 }
 buildPF();
+
+/* ---------- physics-mode identity ---------- */
+// One accent per physics mode, shared by the backglass badge, the DMD mode
+// line, the marquee band tint and the playfield wash — ATARI 2600 reads warm
+// amber, ARCADE SIM cool cyan, SUPERBALL hot magenta (the same hues the
+// launch trail already uses per mode, so every cue agrees).
+function modeIdentity(){
+  return PHYS.label==='SUPERBALL'?{name:'SUPERBALL',col:'#ff40b0',rgb:'255,64,176'}:
+         PHYS.label==='ARCADE SIM'?{name:'ARCADE SIM',col:'#7ad0ff',rgb:'122,208,255'}:
+         {name:'ATARI 2600',col:'#ffb347',rgb:'255,179,71'};
+}
 
 /* ---------- main draw ---------- */
 function draw(){
@@ -1955,10 +2545,16 @@ function draw(){
   lamp.addColorStop(0,'rgba(255,255,255,0.07)');lamp.addColorStop(1,'rgba(0,0,0,0)');
   ctx.fillStyle=lamp;ctx.fillRect(PF.x,PF.y,PF.w,PF.h);
   ctx.drawImage(pfLayer,0,0,W,H);
+  // Per-mode table wash — a whisper of the mode's accent colour across the
+  // playfield (6% alpha): unmistakable in aggregate, invisible over any one
+  // feature, and it swaps instantly with the physics mode so ATARI / ARCADE /
+  // SUPERBALL read apart at a glance.
+  const mi=modeIdentity();
+  ctx.fillStyle='rgba('+mi.rgb+',0.06)';ctx.fillRect(PF.x,PF.y,PF.w,PF.h);
   if(state===S.MENU||state===S.OPTS||state===S.SCORES||state===S.HELP){drawPanel();return;}
   if(Game.tally){drawTally();return;}
   drawDMD();drawTable();drawBall();
-  if(state===S.LAUNCH)drawLaunchHint();
+  if(state===S.LAUNCH||(Game.multiball&&state===S.PLAY&&!Game.ball.live))drawLaunchHint();
   if(state===S.PAUSE)drawPause();
   if(state===S.GAMEOVER||state===S.ENTRY)drawGameOver();
   if(Game.flashes>0){Game.flashes--;ctx.globalAlpha=0.10;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);ctx.globalAlpha=1;}
@@ -1994,11 +2590,12 @@ let titleT=0;
 // (drawTable / drawBall), so the demo can never drift from the real machine.
 // Attr holds only the AI's decisions and the difficulty knob; the table state
 // lives in Game exactly like a real game.
-const ATTR_H=440; // scaled playfield height on the title screen
-const ATTR_W=Math.round(ATTR_H*PF.w/PF.h); // real table aspect → 300px wide
+const ATTR_H=MOBILE?260:440; // scaled playfield height on the title screen
+// real table aspect → 300px wide (desktop) / ~178px wide (mobile)
+const ATTR_W=Math.round(ATTR_H*PF.w/PF.h);
 let demoMode=false;
 const Attr={
-  x:W/2-ATTR_W/2, y:294, w:ATTR_W, h:ATTR_H,       // screen rect
+  x:W/2-ATTR_W/2, y:MOBILE?162:294, w:ATTR_W, h:ATTR_H,       // screen rect (mobile: y under the scaled title)
   px:PF.x, py:PF.y, pw:PF.w, ph:PF.h,               // logical space = the REAL table
   phase:'aiming', timer:0, charge:0, nudgeC:0,      // AI launch/drain pacing
   _lIn:false,_rIn:false,_lMiss:false,_rMiss:false,  // flipper approach tracking
@@ -2019,6 +2616,10 @@ function startDemo(){
   Game.extra=[false,false];Game.usedExtra=[false,false];
   Game.bumperAccum=true;Game.bumperVal=1;Game.tilt=false;Game.tiltHeat=0;
   Game.saveArmed=false;Game.ballSaveTimer=0;Game.autoSaveTimer=10;
+  // Multiball + spinner-rush state resets with the demo table (a previous
+  // attract session may have ended mid-feature — a fresh demo starts clean).
+  Game.multiball=false;Game.mbLit=false;Game.mbSaveT=0;Game.mbDropT=0;Game.ball2=null;
+  Game.spinHotT=0;
   Game.msg='';Game.msgT=0;Game.flashes=0;Game.shakeT=0;Game.pfx.length=0;
   makeTable();
   Game.atariHits=0;Game.bonus=1;Game.leftRoll=0;
@@ -2033,9 +2634,14 @@ function startDemo(){
 function drawBackglass(){
   titleT+=1/60;
   // Deep backdrop — soft radial glow, no hard-edged motion
+  // MOBILE TITLE SCALE — the title runs on a 0.55 vertical layout so a phone
+  // (stage ≈652×1000–1290) keeps the whole backglass: lamps, title, demo
+  // window, knob and prompt all fit without crowding. Desktop stays as before.
+  const M=MOBILE,k=M?0.55:1;
+  const KY=v=>Math.round(v*k);
   const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#0b0618');bg.addColorStop(0.45,'#170c31');bg.addColorStop(1,'#05030c');
   ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-  const glow=ctx.createRadialGradient(W/2,310,60,W/2,310,520);
+  const glow=ctx.createRadialGradient(W/2,310*k,60,W/2,310*k,520*Math.max(0.7,k));
   glow.addColorStop(0,'rgba(255,140,60,0.16)');glow.addColorStop(0.55,'rgba(120,70,220,0.12)');glow.addColorStop(1,'rgba(0,0,0,0)');
   ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
   // Marquee lamp row — slow chase, motion-safe, perfectly centred. Two 3-lamp
@@ -2043,29 +2649,30 @@ function drawBackglass(){
   // middle pair, then sweep back out (triangle phase, no snap) — mirrored about
   // the centre lamp axis so the ANIMATION reads symmetric like the in-game
   // marquee (the old chase swept one 5-lamp block left→right).
-  const mkk=Math.floor(titleT*3)%13,mk=mkk<7?mkk:12-mkk;
-  for(let i=0;i<18;i++){const m=i<9?i:17-i,on=m>=mk&&m<mk+3;
-    glowCircle(W/2-323+i*38,44,on?6:2.5,on?'#ffd95a':'rgba(120,140,180,0.45)',on?0.85:0.28);}
+  const tlampN=M?17:18,tlampPitch=M?13:38;
+  const mkk=Math.floor(titleT*3)%(tlampN-3),mk=mkk<7?mkk:(tlampN-3)-mkk-1;
+  for(let i=0;i<tlampN;i++){const m=i<(tlampN-1)/2?i:(tlampN-1)-i,on=m>=mk&&m<mk+3;
+    glowCircle(W/2-((tlampN-1)*tlampPitch)/2+i*tlampPitch,M?8:44,on?6:2.5,on?'#ffd95a':'rgba(120,140,180,0.45)',on?0.85:0.28);}
   ctx.textAlign='center';
   // ---- Title: PINBALL 2600 — modern display font, layered glow ----
-  const tg=ctx.createLinearGradient(W/2-270,262,W/2+270,348);
+  const tg=ctx.createLinearGradient(W/2-270*KY(262),KY(262),W/2+270*KY(262),KY(348));
   tg.addColorStop(0,'#ffffff');tg.addColorStop(0.45,'#ffe9b0');tg.addColorStop(1,'#9fb4ff');
-  ctx.font='900 100px '+F_DISP;
-  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('PINBALL',W/2+4,324+4);
-  ctx.fillStyle=tg;ctx.fillText('PINBALL',W/2,324);
-  const t2=ctx.createLinearGradient(W/2-170,360,W/2+170,430);
+  ctx.font='900 '+(M?58:100)+'px '+F_DISP;
+  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('PINBALL',W/2+4,KY(328));
+  ctx.fillStyle=tg;ctx.fillText('PINBALL',W/2,KY(324));
+  const t2=ctx.createLinearGradient(W/2-170,KY(360),W/2+170,KY(430));
   t2.addColorStop(0,'#ffb04a');t2.addColorStop(0.5,'#ff7d2a');t2.addColorStop(1,'#ff3d3d');
-  ctx.font='900 112px '+F_DISP;
-  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('2600',W/2+4,416+4);
-  ctx.fillStyle=t2;ctx.fillText('2600',W/2,416);
+  ctx.font='900 '+(M?64:112)+'px '+F_DISP;
+  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillText('2600',W/2+4,KY(420));
+  ctx.fillStyle=t2;ctx.fillText('2600',W/2,KY(416));
   // Taglines — clean, single-line hierarchy, clear of the demo card below
-  ctx.font='600 15px '+F_UI;ctx.fillStyle='rgba(200,214,255,0.78)';ctx.fillText('THE 1980 SOLID-STATE CLASSIC · REBUILT MODERN',W/2,442);
-  ctx.font='600 13px '+F_UI;ctx.fillStyle='rgba(143,160,255,0.85)';ctx.fillText('3 BUMPERS · DROP TARGETS · ATARI LANES · SPECIAL · BONUS · EXTRA BALL',W/2,466);
-  if(state===S.TITLE)drawAttract(730);
+  ctx.font='600 '+(M?11:15)+'px '+F_UI;ctx.fillStyle='rgba(200,214,255,0.78)';ctx.fillText('THE 1980 SOLID-STATE CLASSIC · REBUILT MODERN',W/2,KY(442));
+  ctx.font='600 '+(M?10:13)+'px '+F_UI;ctx.fillStyle='rgba(143,160,255,0.85)';ctx.fillText('3 BUMPERS · MULTIBALL · SKILL SHOT · SPINNER RUSH · EXTRA BALL',W/2,KY(466));
+  if(state===S.TITLE)drawAttract(KY(730));
   // ---- DEMO AI difficulty — clean pill control, content centred as a group ----
   const dk=Attr.diff,dn=Attr.diffNames[dk]||'BALANCED';
   const dcol=['#ff8a6a','#ffd23a','#5aff9a'][dk]||'#ffd23a';
-  const knobY=1012;
+  const knobY=KY(1012);
   ctx.fillStyle='rgba(10,14,30,0.6)';rr(W/2-150,knobY-22,300,40,20);ctx.fill();
   ctx.strokeStyle='rgba(140,170,230,0.22)';ctx.lineWidth=1.5;rr(W/2-150,knobY-22,300,40,20);ctx.stroke();
   ctx.font='600 14px '+F_UI;
@@ -2093,17 +2700,17 @@ function drawBackglass(){
   ctx.textAlign='center';
   // ---- START prompt ----
   const pulse=0.55+0.45*Math.sin(titleT*4);
-  ctx.globalAlpha=pulse;ctx.font='800 20px '+F_DISP;
-  ctx.fillStyle='#ffd23a';ctx.fillText('PRESS FIRE  /  TAP  TO  PLAY',W/2,1058);ctx.globalAlpha=1;
+  ctx.globalAlpha=pulse;ctx.font='800 '+(M?15:20)+'px '+F_DISP;
+  ctx.fillStyle='#ffd23a';ctx.fillText(M?'TAP TO PLAY':'PRESS FIRE  /  TAP  TO  PLAY',W/2,KY(1058));ctx.globalAlpha=1;
   // SAVED GAME AVAILABLE banner
   if(hasSave()){
     const pulse2=0.75+0.25*Math.sin(titleT*5);
-    ctx.globalAlpha=pulse2;ctx.fillStyle='rgba(0,0,0,0.55)';rr(W/2-160,1078,320,34,17);ctx.fill();
-    ctx.globalAlpha=1;ctx.font='700 15px '+F_UI;
-    const sg=ctx.createLinearGradient(0,1086,0,1106);sg.addColorStop(0,'#ffe08a');sg.addColorStop(1,'#ff8a3a');
-    ctx.fillStyle=sg;ctx.fillText('💾 SAVED GAME AVAILABLE',W/2,1102);
+    ctx.globalAlpha=pulse2;ctx.fillStyle='rgba(0,0,0,0.55)';rr(W/2-(M?110:160),KY(1078),M?220:320,M?26:34,13);ctx.fill();
+    ctx.globalAlpha=1;ctx.font='700 '+(M?11:15)+'px '+F_UI;
+    const sg=ctx.createLinearGradient(0,KY(1086),0,KY(1106));sg.addColorStop(0,'#ffe08a');sg.addColorStop(1,'#ff8a3a');
+    ctx.fillStyle=sg;ctx.fillText('💾 SAVED GAME AVAILABLE',W/2,KY(1102));
   }
-  ctx.font='500 13px '+F_UI;ctx.fillStyle='rgba(180,200,255,0.55)';ctx.fillText('KEYBOARD · TOUCH · GAMEPAD',W/2,1134);
+  ctx.font='500 '+(M?11:13)+'px '+F_UI;ctx.fillStyle='rgba(180,200,255,0.55)';ctx.fillText('KEYBOARD · TOUCH · GAMEPAD',W/2,KY(1134));
   ctx.font='500 11px '+F_UI;ctx.fillStyle='rgba(120,140,190,0.45)';ctx.fillText('© 2600 SERIES · SOLID STATE EDITION',W/2,H-22);
   // Mute indicator on title screen
   if(!store.snd){
@@ -2172,19 +2779,42 @@ function demoStep(dt){
       if(Math.random()<0.006&&Attr.nudgeC<0.1){Attr.nudgeC=1;b.vx+=(Math.random()-0.5)*200;b.vy+=(Math.random()-0.5)*120;}
       if(Attr.nudgeC>0)Attr.nudgeC-=dt*4;
     }else{input.lFlip=false;input.rFlip=false;}
+    // Substep loop mirrors the live PLAY tick exactly: the bats animate ONCE
+    // per substep (the multiball refactor moved flipperAnimate out of
+    // physStep — without this call the attract bats sat frozen at rest and
+    // the AI's flips were both invisible AND hitless), then EVERY live ball
+    // runs its own physics pass — including the multiball second ball.
     let n=Math.ceil(dt/SUB_DT);const sub=dt/n;
-    for(let i=0;i<n;i++){if(Game.ball&&Game.ball.live)physStep(sub);else break;}
+    for(let i=0;i<n;i++){
+      flipperAnimate(FL.l,sub);flipperAnimate(FL.r,sub);
+      if(Game.ball&&Game.ball.live)physStep(sub,Game.ball);
+      if(Game.ball2&&Game.ball2.live&&Game.ball2!==Game.ball)physStep(sub,Game.ball2);
+    }
     // Tube catch — the real physStep reset the ball onto the plunger
     if(!Game.ball.live&&Attr.phase==='play'){Attr.phase='aiming';Attr.timer=0.4+Math.random()*0.5;Attr.charge=0;}
   }
+  // MULTIBALL timers — the demo now plays the REAL multiball, so the grace
+  // window and the second-ball drop tick here exactly like the PLAY tick
+  // (the PLAY-side block only runs in state PLAY; the attract lives in TITLE).
+  if(Game.multiball){
+    if(Game.mbSaveT>0){Game.mbSaveT-=dt;if(Game.mbSaveT<=0)Game.mbSaveT=0;}
+    if(Game.mbDropT>0){Game.mbDropT-=dt;if(Game.mbDropT<=0&&!Game.ball2)dropBall2();}
+  }
+  // SPINNER RUSH timer ticks in the attract too, so an earned 20s rush
+  // expires on schedule instead of staying hot for the whole demo.
+  if(Game.spinHotT>0){Game.spinHotT-=dt;if(Game.spinHotT<=0)Game.spinHotT=0;}
   // The demo never shakes the backglass or flashes the screen
   Game.shakeT=0;Game.flashes=0;
 }
 /* --- draw the attract playfield --- */
 function drawAttract(ybase){
   const A=Attr;
+  // Physics-mode identity for this card: the demo plays the REAL table, so the
+  // card wears the mode's accent (dot + name in the bottom strip, and the same
+  // 6% wash the live table gets).
+  const mi=modeIdentity();
   // Card with a header strip; the mini playfield sits just below it
-  const pad=30,ch=A.h+pad*2,cx=W/2,cy=ybase,cw=A.w+28;
+  const pad=MOBILE?16:30,ch=A.h+pad*2,cx=W/2,cy=ybase,cw=A.w+(MOBILE?16:28);
   A.x=W/2-A.w/2; A.y=cy-ch/2+pad;
   // Chrome frame around the backglass playfield window — cabinet trim matching
   // the rails; the dark card sits inset inside it.
@@ -2196,7 +2826,7 @@ function drawAttract(ybase){
   ctx.fillText('SCORE '+String(Game.scores[0]||0).padStart(6,'0'),cx-cw/2+16,cy-ch/2+24);
   ctx.textAlign='right';ctx.font='600 12px '+F_UI;ctx.fillStyle='rgba(160,190,220,0.7)';
   const label=A.phase==='aiming'||A.phase==='tubing'?'AIMING':A.phase==='play'?'IN PLAY':'DRAINED';
-  ctx.fillText('COMPUTER DEMO · '+label,cx+cw/2-16,cy-ch/2+24);
+  ctx.fillText('COMPUTER DEMO · '+label+(Game.multiball?' · ⚡2×':''),cx+cw/2-16,cy-ch/2+24);
   // Clip to card
   ctx.save();
   ctx.beginPath();rr(cx-cw/2,cy-ch/2,cw,ch,20);ctx.clip();
@@ -2217,49 +2847,86 @@ function drawAttract(ybase){
   drawBall();
   drawPfx();
   ctx.restore();
+  // Same per-mode wash as the live table, scaled into the card so the attract
+  // window matches what the player will see in game.
+  ctx.fillStyle='rgba('+mi.rgb+',0.06)';ctx.fillRect(A.x,A.y,A.w,A.h);
+  // PHYSICS-MODE badge — in the card's bottom padding strip (the empty band
+  // under the mini table): accent dot + mode name, so the attract window reads
+  // "this is what the ATARI 2600 table plays like" before you even start.
+  {
+    const stripH=MOBILE?16:30;
+    const by=A.y+A.h+stripH/2+(MOBILE?1:2);
+    ctx.font='700 '+(MOBILE?9:11)+'px '+F_MONO;
+    const nw=ctx.measureText(mi.name).width;
+    const dotR=MOBILE?2.5:3.5,gap=MOBILE?5:7;
+    const bw=dotR*2+gap+nw+14;
+    const bx=W/2-bw/2;
+    const bh=MOBILE?15:21;
+    ctx.fillStyle='rgba('+mi.rgb+',0.10)';rr(bx,by-bh/2,bw,bh,bh/2);ctx.fill();
+    ctx.strokeStyle='rgba('+mi.rgb+',0.42)';ctx.lineWidth=1;rr(bx,by-bh/2,bw,bh,bh/2);ctx.stroke();
+    const dotCx=bx+8+dotR;
+    glowCircle(dotCx,by,dotR*2,mi.col,0.6);
+    ctx.fillStyle=mi.col;ctx.beginPath();ctx.arc(dotCx,by,dotR,0,6.28);ctx.fill();
+    ctx.textAlign='left';ctx.fillStyle=mi.col;
+    ctx.fillText(mi.name,dotCx+dotR+gap,by+(MOBILE?3:4));
+    ctx.textAlign='center';
+  }
   // Plunger power gauge — anchored to the mini shooter lane so the gold
   // skill-shot band is discoverable before the player even starts a game. Shown
   // only while the demo is charging the plunger, exactly like the in-game
   // LAUNCH gauge.
   if(Attr.phase==='aiming'&&Game.plungerCharge>0){
-    drawPlungerGauge(A.x+A.w-40,A.y+A.h-35,Game.plungerCharge);
+    drawPlungerGauge(A.x+A.w-(MOBILE?22:40),A.y+A.h-(MOBILE?20:35),Game.plungerCharge);
   }
 }
 
 /* ---------- DMD ---------- */
 function drawDMD(){
   const t=performance.now()/1000;
+  // MOBILE COMPACT SCOREBOARD — the marquee/DMD trim is condensed (CAB_H=92 on
+  // phones) while the desktop layout keeps its 168px cabinet. All y-baselines
+  // here are desktop values; MOBILE mode rescales each rung to keep the same
+  // relative order and clearances inside the 92px strip.
+  const M=MOBILE;
+  const yMarqH=M?30:48;                  // marquee band height
+  const yDmdH=M?62:104;                  // score screen height
   // Chrome frame around the marquee glass — cabinet trim matching the rails.
-  chromeFrame(6,0,W-12,48,10);
-  const mq=ctx.createLinearGradient(10,4,W-10,44);mq.addColorStop(0,'#2a1030');mq.addColorStop(0.5,'#4a1450');mq.addColorStop(1,'#2a1030');
-  ctx.fillStyle=mq;ctx.fillRect(10,4,W-20,42);ctx.fillStyle='rgba(255,255,255,0.06)';ctx.fillRect(10,4,W-20,42);
-  ctx.textAlign='center';ctx.font='800 24px '+F_DISP;
-  const lg=ctx.createLinearGradient(0,4,0,46);lg.addColorStop(0,'#ffca6a');lg.addColorStop(1,'#ff7d2a');
-  ctx.fillStyle=lg;ctx.fillText('PINBALL 2600',W/2,34);
+  chromeFrame(6,0,W-12,yMarqH,10);
+  const mq=ctx.createLinearGradient(10,4,W-10,yMarqH-4);mq.addColorStop(0,'#2a1030');mq.addColorStop(0.5,'#4a1450');mq.addColorStop(1,'#2a1030');
+  ctx.fillStyle=mq;ctx.fillRect(10,4,W-20,yMarqH-8);
+  // Mode tint on the marquee band — 10% of the mode's accent over the purple
+  // glass, so the whole cabinet (not just the playfield) wears the mode colour.
+  const miM=modeIdentity();
+  ctx.fillStyle='rgba('+miM.rgb+',0.10)';ctx.fillRect(10,4,W-20,yMarqH-8);
+  ctx.fillStyle='rgba(255,255,255,0.06)';ctx.fillRect(10,4,W-20,yMarqH-8);
+  ctx.textAlign='center';ctx.font='800 '+(M?17:24)+'px '+F_DISP;
+  const lg=ctx.createLinearGradient(0,4,0,yMarqH-2);lg.addColorStop(0,'#ffca6a');lg.addColorStop(1,'#ff7d2a');
+  ctx.fillStyle=lg;ctx.fillText('PINBALL 2600',W/2,M?22:34);
   // Lamp row — 30 lamps at 23px pitch centered on the marquee glass. (The old
   // hard-coded 18px start spanned 18–685, 8.5px LEFT of the 360px centre — the
   // mirror of the leftmost lamp sat 17px past the rightmost one. Now centered
   // so the cabinet trim reads symmetric like the rails.)
-  const lampW=29*23,lampX0=(W-lampW)/2;
-  // Bidirectional chase — two 5-lamp bands start at the outer edges and sweep
-  // toward the centre, meet at the middle pair, then sweep back out. A triangle
-  // phase (0..10..0) keeps it continuous — no hard snap — and every frame is
-  // mirrored about the centre lamp axis, so the ANIMATION reads symmetric too
-  // (the old chase swept one 10-lamp block left→right).
-  const kk=Math.floor(t*8)%21,k=kk<11?kk:20-kk;
-  for(let i=0;i<30;i++){const m=i<15?i:29-i,on=m>=k&&m<k+5;
-    glowCircle(lampX0+i*23,8,on?4:2,on?'#ffd95a':'rgba(120,60,120,0.6)',on?0.8:0.3);}
-  const dx=PF.x,dy=50,dw=PF.w,dh=104;
+  // MOBILE: 17 lamps at 13px pitch so the chase still fills the thin marquee.
+  const lampN=M?17:30,lampPitch=M?13:23,lampW=(lampN-1)*lampPitch,lampX0=(W-lampW)/2;
+  // Bidirectional chase — two bands start at the outer edges and sweep toward
+  // the centre, meet at the middle pair, then sweep back out. A triangle phase
+  // (0..N..0) keeps it continuous — no hard snap — and every frame is mirrored
+  // about the centre lamp axis, so the ANIMATION reads symmetric too (the old
+  // chase swept one 10-lamp block left→right). Band width: 5 lamps desktop, 3
+  // mobile (the thin 30px marquee glass only fits a small band).
+  const lampBand=M?3:5;
+  const kk=Math.floor(t*8)%(lampN-lampBand),k=kk<(lampN-lampBand)/2?kk:(lampN-lampBand)-kk-1;
+  for(let i=0;i<lampN;i++){const m=i<(lampN-1)/2?i:(lampN-1)-i,on=m>=k&&m<k+lampBand;
+    glowCircle(lampX0+i*lampPitch,M?6:8,on?4:2,on?'#ffd95a':'rgba(120,60,120,0.6)',on?0.8:0.3);}
+  const dyM=M?34:50,dx=PF.x,dw=PF.w,dh=yDmdH;
   // Chrome bezel around the score screen — the rail finish on the DMD trim.
-  chromeFrame(dx-5,48,dw+10,dh+10,12);
-  // Thin chrome divider strip — sits exactly on the seam (y=48) where the
-  // marquee frame and the DMD bezel meet, spanning the full cabinet width like
-  // the marquee so the two trim pieces read as ONE continuous cabinet rail.
-  // (Both frames carried their own outline at the joint; the strip masks the
-  // seam with a single steel line — same gradient, catch-light and outline as
-  // every rail — plus a tight shadow so it reads as a raised divider.)
+  chromeFrame(dx-5,yMarqH-2,dw+10,dh+10,12);
+  // Thin chrome divider strip — sits exactly on the seam (y=48 desktop / 32
+  // mobile) where the marquee frame and the DMD bezel meet, spanning the full
+  // cabinet width like the marquee so the two trim pieces read as ONE
+  // continuous cabinet rail.
   {
-    const sdx=6,sdy=46,sdw=W-12,sdh=4;
+    const sdx=6,sdy=yMarqH-2,sdw=W-12,sdh=4;
     ctx.fillStyle='rgba(0,0,0,0.4)';rr(sdx+2,sdy+2,sdw,sdh,2);ctx.fill();
     const sg=ctx.createLinearGradient(0,sdy,0,sdy+sdh);
     sg.addColorStop(0,'#aeb8c2');sg.addColorStop(0.5,'#8e959d');sg.addColorStop(1,'#5b6570');
@@ -2267,18 +2934,74 @@ function drawDMD(){
     ctx.fillStyle='rgba(255,255,255,0.35)';ctx.fillRect(sdx,sdy,sdw,1);
     ctx.strokeStyle='#0c0f14';ctx.lineWidth=1;rr(sdx+0.5,sdy+0.5,sdw-1,sdh-1,2);ctx.stroke();
   }
-  const dg=ctx.createLinearGradient(0,dy,0,dy+dh);dg.addColorStop(0,'#0a0d12');dg.addColorStop(1,'#05070a');
-  ctx.fillStyle='rgba(0,0,0,0.6)';rr(dx+2,dy+2,dw,dh,8);ctx.fill();
-  ctx.fillStyle=dg;rr(dx,dy,dw,dh,8);ctx.fill();
-  drawSeven(String(Game.scores[Game.cur]).padStart(6,'0'),dx+dw/2,dy+52,'#ff7d1f');
+  const dg=ctx.createLinearGradient(0,dyM,0,dyM+dh);dg.addColorStop(0,'#0a0d12');dg.addColorStop(1,'#05070a');
+  ctx.fillStyle='rgba(0,0,0,0.6)';rr(dx+2,dyM+2,dw,dh,8);ctx.fill();
+  ctx.fillStyle=dg;rr(dx,dyM,dw,dh,8);ctx.fill();
+  drawSeven(String(Game.scores[Game.cur]).padStart(6,'0'),dx+dw/2,dyM+(M?36:52),'#ff7d1f',M?30:44);
+  // 12px baseline grid — every label baseline snaps to the rungs, readouts
+  // evenly spaced. MOBILE condenses the right-side readouts into ONE line
+  // (BONUS ×n · DRAIN ×n · BUMPER ×n) at 9px so nothing spills out of 62px.
+  if(M){
+    ctx.font='700 11px '+F_MONO;ctx.textAlign='left';ctx.fillStyle='#9fb4ff';
+    ctx.fillText('P'+(Game.cur+1)+'  BALL '+Game.balls[Game.cur]+'/3',dx+12,dyM+54);
+    ctx.textAlign='right';
+    const hi='HI  '+String(store.scores[0]).padStart(6,'0');
+    ctx.fillText(hi,dx+dw-12,dyM+54);
+    const rl='BONUS ×'+Game.bonus+' · DRAIN ×'+Game.leftRoll+' · BUMPER ×'+Game.bumperVal;
+    ctx.font='700 9px '+F_MONO;ctx.fillStyle='#7dffb0';
+    ctx.fillText(rl,dx+dw-12,dyM+18);
+    // Mode line — the compact DMD never showed which physics mode is running;
+    // the name now sits left on the mute row in the mode's own colour.
+    const miMob=modeIdentity();
+    ctx.font='700 10px '+F_MONO;ctx.textAlign='left';ctx.fillStyle=miMob.col;
+    ctx.fillText(miMob.name,dx+12,dyM+31);
+    if(!store.snd){ctx.globalAlpha=0.8;ctx.font='600 11px '+F_UI;
+      ctx.fillStyle='#ff9a6a';ctx.fillText('🔇',dx+dw-12,dyM+30);ctx.globalAlpha=1;}
+    // Countdown pills — same pair logic, condensed metrics
+    const pills=[];
+    const pillPulse=0.7+0.3*Math.sin(t*8);
+    if(Game.special.lit)pills.push({txt:'SPECIAL '+Game.special.t.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.special.t/10.0))});
+    if(Game.ballSaveTimer>0)pills.push({txt:'⚡ BALL SAVE '+Game.ballSaveTimer.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.ballSaveTimer/5.0))});
+    if(Game.mbLit&&!Game.multiball)pills.push({txt:'◆ KICKER LIT',pulse:pillPulse,frac:1});
+    if(Game.spinHotT>0)pills.push({txt:'SPINNER 2×',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.spinHotT/20.0))});
+    if(Game.extra[Game.cur]&&!Game.usedExtra[Game.cur])pills.push({txt:'X SHOOT AGAIN',pulse:pillPulse,frac:1});
+    if(Game.multiball){
+      pills.push({txt:'MULTIBALL 2×',pulse:pillPulse,frac:1});
+      if(Game.mbSaveT>0)pills.push({txt:'⚡ SAVE '+Game.mbSaveT.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.mbSaveT/8.0))});
+    }
+    if(pills.length){
+      ctx.font='700 10px '+F_MONO;ctx.textAlign='center';
+      const py=dyM+14,gap=8;
+      const pw=pills.map(p=>ctx.measureText(p.txt).width+16);
+      let px=dx+dw/2-(pw.reduce((a,b)=>a+b,0)+gap*(pills.length-1))/2;
+      for(let i=0;i<pills.length;i++){
+        const p=pills[i],cw=pw[i];
+        ctx.fillStyle='rgba(24,18,8,0.6)';rr(px,py-11,cw,22,11);ctx.fill();
+        ctx.strokeStyle='rgba(255,217,90,0.4)';ctx.lineWidth=1;rr(px,py-11,cw,22,11);ctx.stroke();
+        const bw=cw-10,by=py-9,bh=3;
+        ctx.globalAlpha=0.5;ctx.fillStyle='rgba(255,255,255,0.12)';rr(px+5,by,bw,bh,2);ctx.fill();
+        const barX=i===1?px+cw-5-bw*p.frac:px+5;
+        ctx.globalAlpha=0.85*p.pulse;ctx.fillStyle='#ffd95a';rr(barX,by,bw*p.frac,bh,2);ctx.fill();
+        ctx.globalAlpha=p.pulse;ctx.fillStyle='#ffd95a';ctx.fillText(p.txt,px+cw/2,py);
+        ctx.globalAlpha=1;
+        px+=cw+gap;
+      }
+    }
+    return;
+  }
+  const dy=dyM;
   // 12px baseline grid — every label baseline snaps to dy+12k, readouts evenly spaced
   ctx.textAlign='left';ctx.font='700 13px '+F_MONO;ctx.fillStyle='#9fb4ff';
   ctx.fillText('P'+(Game.cur+1)+'  BALL '+Game.balls[Game.cur]+'/3',dx+14,dy+24);
   ctx.fillText('HI  '+String(store.scores[0]).padStart(6,'0'),dx+dw-6-ctx.measureText('HI  '+String(store.scores[0]).padStart(6,'0')).width,dy+24);
-  // Physics mode — subtle indicator below player/ball line
+  // Physics mode — subtle indicator below the player/ball line, now in the
+  // shared mode accent with a small glowing dot so the colour itself reads.
+  const miD=modeIdentity();
   ctx.font='700 10px '+F_MONO;ctx.textAlign='left';
-  ctx.fillStyle=PHYS.label==='SUPERBALL'?'#ff5a8a':PHYS.label==='ARCADE SIM'?'#5ac8ff':'#ffb040';
-  ctx.fillText(PHYS.label,dx+14,dy+36);
+  ctx.fillStyle=miD.col;
+  glowCircle(dx+17,dy+32,5,miD.col,0.55);
+  ctx.fillStyle=miD.col;ctx.beginPath();ctx.arc(dx+17,dy+32,3,0,6.28);ctx.fill();
+  ctx.fillText(miD.name,dx+26,dy+36);
   ctx.font='700 13px '+F_MONO;ctx.fillStyle='#7dffb0';ctx.textAlign='right';
   ctx.fillText('BONUS ×'+Game.bonus,dx+dw-14,dy+72);
   ctx.fillStyle='#7dc8ff';ctx.fillText('DRAIN ×'+Game.leftRoll+' = '+(Game.leftRoll*1000),dx+dw-14,dy+84);
@@ -2300,6 +3023,13 @@ function drawDMD(){
   const pillPulse=0.7+0.3*Math.sin(t*8);
   if(Game.special.lit)pills.push({txt:'SPECIAL '+Game.special.t.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.special.t/10.0))});
   if(Game.ballSaveTimer>0)pills.push({txt:'⚡ BALL SAVE  '+Game.ballSaveTimer.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.ballSaveTimer/5.0))});
+  if(Game.mbLit&&!Game.multiball)pills.push({txt:'◆ KICKER LIT',pulse:pillPulse,frac:1});
+  if(Game.spinHotT>0)pills.push({txt:'SPINNER 2×',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.spinHotT/20.0))});
+  if(Game.extra[Game.cur]&&!Game.usedExtra[Game.cur])pills.push({txt:'X SHOOT AGAIN',pulse:pillPulse,frac:1});
+  if(Game.multiball){
+    pills.push({txt:'MULTIBALL 2×',pulse:pillPulse,frac:1});
+    if(Game.mbSaveT>0)pills.push({txt:'⚡ SAVE  '+Game.mbSaveT.toFixed(1)+'s',pulse:pillPulse,frac:Math.max(0,Math.min(1,Game.mbSaveT/8.0))});
+  }
   if(pills.length){
     ctx.font='700 14px '+F_MONO;ctx.textAlign='center';
     const py=dy+76,gap=10;
@@ -2325,9 +3055,9 @@ function drawDMD(){
     }
   }
 }
-function drawSeven(str,x,y,color){ctx.save();ctx.textAlign='center';ctx.font='800 44px '+F_DISP;
+function drawSeven(str,x,y,color,fs){ctx.save();ctx.textAlign='center';ctx.font='800 '+(fs||44)+'px '+F_DISP;
   ctx.fillStyle='rgba(0,0,0,0.7)';ctx.fillText(str,x+2,y+3);
-  const g=ctx.createLinearGradient(0,y-40,0,y+4);g.addColorStop(0,'#fff2d0');g.addColorStop(0.5,color);g.addColorStop(1,'#b34400');
+  const g=ctx.createLinearGradient(0,y-(fs||44)*0.91,0,y+4);g.addColorStop(0,'#fff2d0');g.addColorStop(0.5,color);g.addColorStop(1,'#b34400');
   ctx.fillStyle=g;ctx.fillText(str,x,y);ctx.restore();}
 
 /* ---------- table objects ---------- */
@@ -2396,7 +3126,25 @@ function drawTable(){
   if(sk&&sk.r>0){
     const active=Game.skillShotReady, up=!Game.skillShotDone;
     const aiming=up&&(Game.launching||!Game.ball.live); // on the plunger / in flight
-    if(active){
+    // KICKER-LIT LAUNCH: the disc becomes the MULTIBALL CATCH (the lit lock
+    // shot — the Twilight Zone stacked-lamp model). One gold lock language
+    // across the whole feature: this insert, the meter band, the launch hint
+    // and the lane lamp all read the same feature. Reverts to the plain
+    // skill-shot insert once the kicker is caught or the shot is spent.
+    const catchOn=Game.mbLit&&!Game.multiball&&up;
+    if(active&&catchOn){
+      // ⚡ KICKER CATCH bullseye — brighter pulse, bolt above, MULTI/BALL
+      glowCircle(sk.x,sk.y,sk.r*2.6,'#ffd95a',0.48+0.25*Math.sin(t*9));
+      ctx.fillStyle='#ffdf6a';ctx.font='bold 12px "Courier New",monospace';ctx.textAlign='center';
+      ctx.fillText('⚡',sk.x,sk.y-16);
+      const cgg=ctx.createRadialGradient(sk.x-3,sk.y-3,2,sk.x,sk.y,sk.r);
+      cgg.addColorStop(0,'#ffffff');cgg.addColorStop(0.4,'#ffe566');cgg.addColorStop(1,'#c88800');
+      ctx.fillStyle=cgg;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,0.85)';ctx.lineWidth=2.5;ctx.stroke();
+      ctx.strokeStyle='rgba(255,255,255,0.55)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r*0.5,0,6.28);ctx.stroke();
+      ctx.fillStyle='#4a2000';ctx.font='bold 9px "Courier New",monospace';
+      ctx.fillText('MULTI',sk.x,sk.y-2);ctx.fillText('BALL',sk.x,sk.y+10);
+    } else if(active){
       // Glowing bullseye — pulses to attract the eye
       glowCircle(sk.x,sk.y,sk.r*2.2,'#ffd95a',0.40+0.20*Math.sin(t*8));
       const sgg=ctx.createRadialGradient(sk.x-3,sk.y-3,2,sk.x,sk.y,sk.r);
@@ -2407,6 +3155,19 @@ function drawTable(){
       ctx.strokeStyle='#ffd95a';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r*0.5,0,6.28);ctx.stroke();
       ctx.fillStyle='#4a2000';ctx.font='bold 9px "Courier New",monospace';ctx.textAlign='center';
       ctx.fillText('SKILL',sk.x,sk.y-3);ctx.fillText('SHOT',sk.x,sk.y+9);
+    } else if(aiming&&catchOn){
+      // LIT steady catch state — the insert is ON while aiming: the gold
+      // catch lamp with a slow breathing glow and the bolt above it.
+      glowCircle(sk.x,sk.y,sk.r*2.2,'#ffd95a',0.20+0.09*Math.sin(t*4));
+      const cug=ctx.createRadialGradient(sk.x-3,sk.y-3,2,sk.x,sk.y,sk.r);
+      cug.addColorStop(0,'#ffe9a8');cug.addColorStop(0.5,'#d9a832');cug.addColorStop(1,'#7a5410');
+      ctx.fillStyle=cug;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r,0,6.28);ctx.fill();
+      ctx.strokeStyle='rgba(255,217,90,0.8)';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.strokeStyle='rgba(120,80,10,0.6)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(sk.x,sk.y,sk.r*0.5,0,6.28);ctx.stroke();
+      ctx.fillStyle='#ffdf6a';ctx.font='bold 12px "Courier New",monospace';ctx.textAlign='center';
+      ctx.fillText('⚡',sk.x,sk.y-16);
+      ctx.fillStyle='#3a2600';ctx.font='bold 9px "Courier New",monospace';
+      ctx.fillText('MULTI',sk.x,sk.y-2);ctx.fillText('BALL',sk.x,sk.y+10);
     } else if(aiming){
       // LIT steady state — the insert is ON: warm amber disc with a slow
       // breathing glow, readable while aiming from the plunger.
@@ -2429,6 +3190,12 @@ function drawTable(){
   // and re-lights after a moment. No movement, no deflection.
   ctx.fillStyle='rgba(0,0,0,0.3)';
   rr(Game.targets[0].x-22,Game.targets[0].y-22,(Game.targets[2].x-Game.targets[0].x)+44,38,12);ctx.fill();
+  // KICKER LIT strip: a gold underline under the diamond bank while the bank
+  // is complete and the kicker is armed — the classic "lock is lit" insert.
+  if(Game.mbLit&&!Game.multiball){
+    ctx.fillStyle='rgba(255,217,90,'+(0.35+0.25*Math.sin(t*7)).toFixed(2)+')';
+    rr(Game.targets[0].x-18,Game.targets[0].y+26,(Game.targets[2].x-Game.targets[0].x)+36,5,3);ctx.fill();
+  }
   for(const d of Game.targets){
     ctx.save();ctx.translate(d.x,d.y);ctx.rotate(Math.PI/4);
     const lit=!d.down;
@@ -2441,7 +3208,7 @@ function drawTable(){
     ctx.restore();
   }
 
-  // ===== special target — main centre shot =====
+  // ===== special light — main centre lamp =====
   const sp=Game.special;
   if(sp.lit){
     glowCircle(sp.x,sp.y,34,'#ffd95a',0.45+0.15*Math.sin(t*10));
@@ -2472,8 +3239,13 @@ function drawTable(){
   }
 
   // ===== spinners =====
+  // SPINNER RUSH: while hot (left lane complete) both lamps glow gold and the
+  // blade reads brighter — the "comeback device" state is visible at a glance.
+  const spinHot=Game.spinHotT>0;
+  const hotPulse=0.5+0.5*Math.sin(t*8);
   for(const s of Game.spinners){
     const spinning=s.spin>0;
+    if(spinHot)glowCircle(s.x,s.y,34,'#ffd95a',0.22+0.16*hotPulse);
     ctx.fillStyle='rgba(0,0,0,0.45)';ctx.beginPath();ctx.ellipse(s.x+2,s.y+3,20,24,0,0,6.28);ctx.fill();
     if(spinning){glowCircle(s.x,s.y,22,'rgba(255,255,255,0.4)',0.35);}
     const hg=ctx.createRadialGradient(s.x-4,s.y-4,2,s.x,s.y,19);
@@ -2570,6 +3342,57 @@ function drawTable(){
     ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1;ctx.stroke();ctx.lineCap='butt';
   }
 
+  // ===== MULTIBALL KICKER lamp — the lit left lane (the lock shot) =====
+  // "Lock when lit" (the Attack from Mars lane-insert convention, in gold):
+  // the saucer ring sits ON the left rollover lane — the shot the lane feed
+  // already aims at — so the lock reads instantly. The geometry mirrors the
+  // catch check in physStep (|x-lane|<18, |y-lane|<28).
+  if(Game.mbLit&&!Game.multiball){
+    const hx=Game.rolls[0].x;
+    const hy=Game.rolls[0].y;
+    const pulse=0.55+0.45*Math.sin(t*6);
+    glowCircle(hx,hy,42,'#ffd95a',0.30*pulse+0.12);
+    // Saucer mouth: dark ellipse with a gold rim
+    ctx.fillStyle='rgba(0,0,0,0.55)';ctx.beginPath();ctx.ellipse(hx,hy,20,13,0,0,6.28);ctx.fill();
+    ctx.strokeStyle='rgba(255,217,90,'+(0.55+0.4*pulse).toFixed(2)+')';ctx.lineWidth=3;
+    ctx.beginPath();ctx.ellipse(hx,hy,20,13,0,0,6.28);ctx.stroke();
+    ctx.strokeStyle='rgba(255,240,180,0.5)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.ellipse(hx,hy,13,8,0,0,6.28);ctx.stroke();
+    // Down-arrows funneling into the hole (reads as "drop it here")
+    ctx.fillStyle='rgba(255,217,90,'+(0.5+0.4*pulse).toFixed(2)+')';
+    ctx.beginPath();ctx.moveTo(hx-14,hy-16);ctx.lineTo(hx-8,hy-8);ctx.lineTo(hx-20,hy-8);ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.moveTo(hx+14,hy-16);ctx.lineTo(hx+8,hy-8);ctx.lineTo(hx+20,hy-8);ctx.closePath();ctx.fill();
+    ctx.fillStyle='#5a3a00';ctx.font='bold 9px "Courier New",monospace';ctx.textAlign='center';
+    ctx.fillText('MULTIBALL',hx,hy+24);
+  }
+  // Second-ball drop flash — a charging glow at the spawn point right before
+  // the ball springs down (mbDropT counts 0.55s after the kicker fires).
+  if(Game.mbDropT>0&&!Game.ball2){
+    const fx=PL_CX,fy=PF.y+BALL_R+8;
+    glowCircle(fx,fy,BALL_R*3+6*(1-Game.mbDropT/0.55),'rgba(255,210,120,0.8)',0.5+0.4*(1-Game.mbDropT/0.55));
+  }
+
+  // ===== SHOOT AGAIN insert — the earned extra ball's lamp =====
+  // Original Atari rule: 4 ATARI rollovers earn one extra ball, indicated by
+  // the red X on the middle Fuji — and it releases AUTOMATICALLY when that
+  // ball drains (the ball is not consumed). Real machines put the SHOOT AGAIN
+  // lamp right at the drain mouth so the award reads at the moment the ball
+  // dies — so does this insert: a pulsing red ✕ in the flipper gap, exactly
+  // where a draining ball passes, with the label just above the flipper line.
+  if(Game.extra[Game.cur]&&!Game.usedExtra[Game.cur]&&!Game.tilt){
+    const sx=(FL.l.x+Math.cos(FL.l.rest)*FL.l.len+FL.r.x+Math.cos(FL.r.rest)*FL.r.len)/2;
+    const sy=FL.l.y-34;
+    const pulse=0.55+0.45*Math.sin(t*7);
+    glowCircle(sx,sy,26,'#ff4040',0.32*pulse+0.10);
+    ctx.strokeStyle='rgba(255,70,70,'+(0.6+0.35*pulse).toFixed(2)+')';ctx.lineWidth=2.5;
+    ctx.beginPath();ctx.arc(sx,sy,15,0,6.28);ctx.stroke();
+    ctx.fillStyle='#ff3030';ctx.font='bold 17px "Courier New",monospace';ctx.textAlign='center';
+    ctx.fillText('X',sx,sy+6);
+    ctx.fillStyle='rgba(255,175,160,'+(0.75+0.25*pulse).toFixed(2)+')';
+    ctx.font='bold 9px "Courier New",monospace';
+    ctx.fillText('SHOOT AGAIN',sx,sy-20);
+  }
+
   // drain holes
   for(const dh of Game.drainHoles){
     ctx.fillStyle='rgba(0,0,0,0.55)';ctx.beginPath();ctx.arc(dh.x,dh.y,17,0,6.28);ctx.fill();
@@ -2586,9 +3409,14 @@ function drawTable(){
   // ~65% of its rest length and NEVER binds solid. The rod and handle are one
   // rigid piece, so the handle pulls out with the tip, and after release the
   // spring settles back to rest with a short oscillation.
-  const housingY=PF.b+40;   // fixed spring housing (the stop the spring pushes against)
-  const tipRestY=PF.b-66;    // rod tip at full rest — sits just below the ball
-  const tipTravel=36;        // full pull withdraws the tip this far (~35% of the spring)
+  // MOBILE: the apron is 72px (BOT_H) instead of 118, so the housing can't sit
+  // at PF.b+40 (inside the spring channel but flush with the canvas bottom —
+  // the handle would clip out of frame). Condensed: housing at PF.b+30, tip
+  // travel 24px, rod tip still rests just under the ball (PF.b-54 rest tip =
+  // ball sits 41px above the floor — same clearance proportions as desktop).
+  const housingY=PF.b+(MOBILE?30:40);   // fixed spring housing (the stop the spring pushes against)
+  const tipRestY=PF.b-(MOBILE?54:66);   // rod tip at full rest — sits just below the ball
+  const tipTravel=MOBILE?26:36;         // full pull withdraws the tip this far
   const charging=!Game.ball||!Game.ball.live; // ball on the tip = being charged
   const pullFrac=(state===S.LAUNCH||demoMode||Game.springBob>0)?Game.plungerCharge:0;
   // 1 while charging; eases 1→0 after release so the rod springs back to rest
@@ -2686,12 +3514,22 @@ function drawTable(){
 /* ---------- ball ---------- */
 function drawBall(){
   const b=Game.ball;if(!b)return;if(!b.live&&state!==S.LAUNCH&&!demoMode)return;
-  const superball=PHYS.label==='SUPERBALL';
   const t=performance.now()/1000;
-  // Launch glow
+  // Launch glow — primary only (the launch chain belongs to the primary ball)
   if(Game.launchAnim>0){
     glowCircle(b.x,b.y,BALL_R*3,'rgba(255,200,80,'+Game.launchAnim.toFixed(2)+')',Game.launchAnim*0.8);
   }
+  drawBallSprite(b,t);
+  // MULTIBALL: the second ball renders identically, tinted with a warm halo
+  // so the two balls read at a glance during the 2× chaos.
+  const b2=Game.ball2;
+  if(b2&&b2.live&&b2!==b){
+    drawBallSprite(b2,t);
+    glowCircle(b2.x,b2.y,BALL_R*2.2,'rgba(255,180,60,0.35)',0.5);
+  }
+}
+function drawBallSprite(b,t){
+  const superball=PHYS.label==='SUPERBALL';
   // Trail
   for(let i=b.trail.length-1;i>=1;i--){const p=b.trail[i],a=0.16*(1-i/b.trail.length);
     ctx.globalAlpha=a;ctx.fillStyle=superball?'#ff40b0':'#bcd6ff';ctx.beginPath();
@@ -2734,17 +3572,24 @@ function drawPfx(){for(const q of Game.pfx){const a=1-q.t/q.life;
 function drawLaunchHint(){
   // Pulsing instruction pill
   const pulse=0.55+0.45*Math.sin(performance.now()/400);
-  const msg=Game.plungerCharge>0.05?'RELEASE TO LAUNCH':'HOLD ↓ / TOUCH RIGHT → TO CHARGE';
-  ctx.globalAlpha=pulse;ctx.font='700 15px '+F_MONO;ctx.textAlign='center';
+  // MOBILE: shorter copy — the desktop hint overflows a 600px-wide field
+  // KICKER-LIT LAUNCH: the hint teaches the catch — the gold band now drops
+  // the second ball (the catch rides the exact same meter band as the skill
+  // shot, so nothing new to learn: same timing, bigger payoff).
+  const catchOn=Game.mbLit&&!Game.multiball&&!Game.skillShotDone;
+  const msg=Game.plungerCharge>0.05?(catchOn?'RELEASE — MULTIBALL CATCH':'RELEASE TO LAUNCH')
+    :(catchOn?(MOBILE?'GOLD BAND = MULTIBALL':'HIT THE GOLD BAND — MULTIBALL CATCH')
+             :(MOBILE?'HOLD RIGHT → TO CHARGE':'HOLD ↓ / TOUCH RIGHT → TO CHARGE'));
+  ctx.globalAlpha=pulse;ctx.font='700 '+(MOBILE?12:15)+'px '+F_MONO;ctx.textAlign='center';
   const tw=ctx.measureText(msg).width;
   ctx.fillStyle=Game.plungerCharge>0.05?'rgba(60,20,0,0.7)':'rgba(8,14,32,0.7)';
   rr(PF.x+PF.w/2-tw/2-14,PF.b-132,tw+28,34,17);ctx.fill();
   ctx.fillStyle=Game.plungerCharge>0.05?'#ffd23a':'#dfe8ff';
-  ctx.fillText(msg,PF.x+PF.w/2,PF.b-108);
+  ctx.fillText(msg,PF.x+PF.w/2,PF.b-108);  // hint pill sits above the flipper zone (PF.b-290 desktop, PF.b-235 mobile — clear)
   ctx.globalAlpha=1;
   // Power indicator ring around plunger handle area
   if(Game.plungerCharge>0){
-    const py=PF.b-8,px=PF.r-26;
+    const py=PF.b-8,px=CURVE_CX+CURVE_R+2;
     drawPlungerGauge(px,py+30,Game.plungerCharge);
   }
 }
@@ -2784,35 +3629,45 @@ function drawPlungerGauge(cx,cy,charge){
   ctx.moveTo(cx+Math.cos(thS)*19,cy+Math.sin(thS)*19);
   ctx.lineTo(cx+Math.cos(thS)*29,cy+Math.sin(thS)*29);
   ctx.stroke();
+  // KICKER-LIT LAUNCH: the band is the multiball catch now — same gold band,
+  // 'CATCH' label so the meter reads the feature's live role (the Twilight
+  // Zone stacked-lamp model: one shot, the lit feature owns the label).
+  const catchLit=Game.mbLit&&!Game.multiball&&sk;
   ctx.fillStyle=sk?'#ffd95a':'rgba(165,155,125,0.75)';ctx.font='700 8px '+F_MONO;ctx.textAlign='center';
-  ctx.fillText('SKILL',cx+Math.cos(thS)*34,cy+Math.sin(thS)*34+3);
+  ctx.fillText(catchLit?'CATCH':'SKILL',cx+Math.cos(thS)*34,cy+Math.sin(thS)*34+3);
 }
-
-/* ---------- overlays ---------- */
-/* Key-cap hint row — e.g.  [↑↓] SELECT   [ENTER] CONFIRM */
+// MOBILE: keycaps are meaningless on a phone — swap to plain tap words.
+// The full rows are condensed (13px gap 12) so they fit the 600px field.
+const TOUCH_SWAP={
+  '↑↓':'TAP','ENTER':'TAP','BACKSPACE':'BACK','←→':'TAP','ESC':'TAP','A–Z':'TAP',
+};
 function drawKeyHints(items,y){
-  ctx.font='600 13px '+F_MONO;
-  const kws=items.map(([k])=>ctx.measureText(k).width+14);
-  ctx.font='500 14px '+F_UI;
+  const M=MOBILE;
+  if(M)items=items.map(([k,l])=>[TOUCH_SWAP[k]||'TAP',l]);
+  ctx.font='600 '+(M?12:13)+'px '+F_MONO;
+  const kws=items.map(([k])=>ctx.measureText(k).width+(M?10:14));
+  ctx.font='500 '+(M?12:14)+'px '+F_UI;
   const lws=items.map(([,l])=>ctx.measureText(l).width);
-  const gap=24;
+  const gap=M?12:24;
   const total=items.reduce((a,_,i)=>a+kws[i]+6+lws[i]+gap,0)-gap;
   let x=W/2-total/2;
   for(let i=0;i<items.length;i++){
     const[k,l]=items[i];
-    rr(x,y-12,kws[i],22,6);
+    rr(x,y-12,kws[i],(M?20:22),(M?10:6));
     ctx.fillStyle='rgba(140,170,230,0.13)';ctx.fill();
-    ctx.strokeStyle='rgba(140,170,230,0.35)';ctx.lineWidth=1;rr(x,y-12,kws[i],22,6);ctx.stroke();
-    ctx.fillStyle='#9fb4ff';ctx.font='600 13px '+F_MONO;ctx.textAlign='left';
-    ctx.fillText(k,x+7,y+5);
-    ctx.fillStyle='#6a78a0';ctx.font='500 14px '+F_UI;ctx.textAlign='left';
-    ctx.fillText(l,x+kws[i]+6,y+5);
-    x+=kws[i]+6+lws[i]+gap;
+    ctx.strokeStyle='rgba(140,170,230,0.35)';ctx.lineWidth=1;rr(x,y-12,kws[i],(M?20:22),(M?10:6));ctx.stroke();
+    ctx.fillStyle='#9fb4ff';ctx.font='600 '+(M?12:13)+'px '+F_MONO;ctx.textAlign='left';
+    ctx.fillText(k,x+(M?5:7),y+5);
+    ctx.fillStyle='#6a78a0';ctx.font='500 '+(M?12:14)+'px '+F_UI;ctx.textAlign='left';
+    ctx.fillText(l,x+kws[i]+(M?5:6),y+5);
+    x+=kws[i]+(M?5:6)+lws[i]+gap;
   }
 }
 function drawPanel(){
-  ctx.fillStyle='rgba(5,7,16,0.72)';ctx.fillRect(0,0,W,H);
-  const pw=W-160,ph=H-230,px=(W-pw)/2,py=100;
+  // MOBILE: W-160 leaves a 300px card on a 600px field — too narrow for the
+  // options rows. Condensed paddings: card W-64, y=48, header 30px.
+  const M=MOBILE;
+  const pw=W-(M?64:160),ph=H-(M?108:230),px=(W-pw)/2,py=M?48:100;
   // Card
   ctx.fillStyle='rgba(0,0,0,0.5)';rr(px+4,py+6,pw,ph,18);ctx.fill();
   const g=ctx.createLinearGradient(0,py,0,py+ph);g.addColorStop(0,'#1a1e33');g.addColorStop(1,'#0d1020');
@@ -2823,15 +3678,16 @@ function drawPanel(){
   acc.addColorStop(0,'#3fd0ff');acc.addColorStop(0.5,'#ffd23a');acc.addColorStop(1,'#ff7d2a');
   ctx.fillStyle=acc;rr(px+40,py,pw-80,4,2);ctx.fill();
   // Header
-  ctx.textAlign='center';ctx.fillStyle='#ffe9c0';ctx.font='800 38px '+F_DISP;
-  ctx.fillText(panelTitle(),W/2,py+64);
+  ctx.textAlign='center';ctx.fillStyle='#ffe9c0';ctx.font='800 '+(M?30:38)+'px '+F_DISP;
+  ctx.fillText(panelTitle(),W/2,py+(M?52:64));
   if(state===S.MENU){
     const items=menuItems();
+    const mOff=M?44:84;
     items.forEach((m,i)=>{const y=menuRowY(i),sel=i===menuIdx;
-      if(sel){ctx.fillStyle='rgba(255,125,42,0.13)';rr(px+84,y-30,pw-168,56,14);ctx.fill();
-        ctx.fillStyle='#ff7d2a';rr(px+84,y-30,6,56,3);ctx.fill();
-        ctx.strokeStyle='rgba(255,180,110,0.35)';ctx.lineWidth=1.5;rr(px+84,y-30,pw-168,56,14);ctx.stroke();}
-      ctx.fillStyle=sel?'#ffca6a':'#b7c4e6';ctx.font='600 26px '+F_UI;
+      if(sel){ctx.fillStyle='rgba(255,125,42,0.13)';rr(px+mOff,y-30,pw-2*mOff,56,14);ctx.fill();
+        ctx.fillStyle='#ff7d2a';rr(px+mOff,y-30,6,56,3);ctx.fill();
+        ctx.strokeStyle='rgba(255,180,110,0.35)';ctx.lineWidth=1.5;rr(px+mOff,y-30,pw-2*mOff,56,14);ctx.stroke();}
+      ctx.fillStyle=sel?'#ffca6a':'#b7c4e6';ctx.font='600 '+(M?22:26)+'px '+F_UI;
       ctx.fillText(m,W/2,y+10);});
     drawKeyHints([['↑↓','SELECT'],['ENTER','CONFIRM'],['BACKSPACE','BACK']],py+ph-44);
   }else if(state===S.OPTS){
@@ -2843,11 +3699,12 @@ function drawPanel(){
       ['BACK','']];
     const editableRows=store.physics==='arcade'?7:6;
     rows.forEach((r,i)=>{const y=optRowY(i),sel=i===optIdx;
-      if(sel){ctx.fillStyle='rgba(63,208,255,0.12)';rr(px+70,y-28,pw-140,54,12);ctx.fill();
-        ctx.fillStyle='#3fd0ff';rr(px+70,y-28,5,54,3);ctx.fill();
-        ctx.strokeStyle='rgba(120,200,255,0.3)';ctx.lineWidth=1.5;rr(px+70,y-28,pw-140,54,12);ctx.stroke();}
-      ctx.textAlign='left';ctx.fillStyle=sel?'#ffca6a':'#8fa0c8';ctx.font='600 20px '+F_UI;
-      ctx.fillText(r[0],px+96,y+7);
+      const oOff=M?36:70,oLbl=M?52:96,oVal=M?52:100;
+      if(sel){ctx.fillStyle='rgba(63,208,255,0.12)';rr(px+oOff,y-28,pw-2*oOff,54,12);ctx.fill();
+        ctx.fillStyle='#3fd0ff';rr(px+oOff,y-28,5,54,3);ctx.fill();
+        ctx.strokeStyle='rgba(120,200,255,0.3)';ctx.lineWidth=1.5;rr(px+oOff,y-28,pw-2*oOff,54,12);ctx.stroke();}
+      ctx.textAlign='left';ctx.fillStyle=sel?'#ffca6a':'#8fa0c8';ctx.font='600 '+(M?16:20)+'px '+F_UI;
+      ctx.fillText(r[0],px+oLbl,y+7);
       if(i===rows.length-1){
         // BACK — action button
         ctx.textAlign='center';
@@ -2855,62 +3712,79 @@ function drawPanel(){
         ctx.fillStyle=sel?'#ffca6a':'#b7c4e6';ctx.font='600 18px '+F_UI;
         ctx.fillText('←  BACK',px+pw/2,y+6);
       }else{
-        ctx.textAlign='right';ctx.font='700 18px '+F_MONO;
+        ctx.textAlign='right';ctx.font='700 '+(M?15:18)+'px '+F_MONO;
         const val=r[1],vw=ctx.measureText(sel?'< '+val+' >':val).width;
         ctx.fillStyle=sel?'rgba(63,208,255,0.16)':'rgba(120,150,210,0.08)';
-        rr(px+pw-100-vw-14,y-16,vw+28,32,8);ctx.fill();
+        rr(px+pw-oVal-vw-14,y-16,vw+28,32,8);ctx.fill();
         ctx.fillStyle=sel?'#3fd0ff':'#dfe8ff';
-        ctx.fillText(sel?'< '+val+' >':val,px+pw-100,y+7);
+        ctx.fillText(sel?'< '+val+' >':val,px+pw-oVal,y+7);
       }});
     if(optIdx===5){
       const descs={atari:'📺  1980 cartridge feel — floaty, springy, arcade-faithful',
         arcade:'🎯  Real-machine simulation — weighty, precise, pro controls',
         superball:'🔥  Maximum chaos — low gravity, wild bounces, pinball anarchy'};
-      ctx.textAlign='center';ctx.font='500 italic 14px '+F_UI;
+      ctx.textAlign='center';ctx.font='500 italic '+(M?12:14)+'px '+F_UI;
       ctx.fillStyle='rgba(180,210,255,0.75)';
       ctx.fillText(descs[store.physics]||'',W/2,optRowY(5)+38);
     }
     drawKeyHints([['↑↓','SELECT'],['←→','CHANGE'],['BACKSPACE','BACK']],py+ph-44);
   }else if(state===S.SCORES){
-    store.scores.forEach((s,i)=>{const y=py+180+i*60;
+    const sOff=M?52:116,sName=M?82:150,sVal=M?56:100;
+    store.scores.forEach((s,i)=>{const y=py+(M?128:180)+i*(M?52:60);
       if(i<3){ctx.fillStyle=i===0?'#ffd23a':i===1?'#c8d6e8':'#d08a4a';
-        ctx.beginPath();ctx.arc(px+116,y-14,12,0,6.28);ctx.fill();
+        ctx.beginPath();ctx.arc(px+sOff,y-14,12,0,6.28);ctx.fill();
         ctx.fillStyle='#0d1020';ctx.font='700 13px '+F_MONO;ctx.textAlign='center';
-        ctx.fillText(String(i+1),px+116,y-9);}
-      ctx.textAlign='left';ctx.fillStyle=i===0?'#ffca6a':'#b7c4e6';ctx.font='600 19px '+F_UI;
-      ctx.fillText(store.names[i],px+150,y);
-      ctx.textAlign='right';ctx.fillStyle=i===0?'#ffca6a':'#8fa0c8';ctx.font='700 19px '+F_MONO;
-      ctx.fillText(String(s).padStart(7,'0'),px+pw-100,y);});
+        ctx.fillText(String(i+1),px+sOff,y-9);}
+      ctx.textAlign='left';ctx.fillStyle=i===0?'#ffca6a':'#b7c4e6';ctx.font='600 '+(M?17:19)+'px '+F_UI;
+      ctx.fillText(store.names[i],px+sName,y);
+      ctx.textAlign='right';ctx.fillStyle=i===0?'#ffca6a':'#8fa0c8';ctx.font='700 '+(M?17:19)+'px '+F_MONO;
+      ctx.fillText(String(s).padStart(7,'0'),px+pw-sVal,y);});
     drawKeyHints([['ENTER','RETURN']],py+ph-44);
   }else if(state===S.HELP){
     const ss=PHYS.skillShot,fmt=p=>{const s=(''+p).replace(/0+$/,'').replace(/\.$/,'');return s.indexOf('.')<0?s+'.0':s;};
+    // Value column budget is 248px on desktop (px+312 → card edge 640) — every
+    // string below was measured at the real F_UI metrics to stay inside it (the
+    // pre-restyle rows ran up to 329px and clipped the card edge).
     const L=[['FLIPPERS','← → · A D · touch corners'],      ['PLUNGER','HOLD ↓ / S — release to fire'],
       // Plunger meter — read the power ring beside the plunger while you charge:
       // soft zone (ball rolls back), white into-play tick, gold skill-shot band
-      ['PLUNGER METER','power ring · white tick = in play · gold = SKILL band'],
-      ['PLUNGER ZONES','white tick = in play · below rolls back'],
-      ['SKILL SHOT',PHYS.label+' · '+fmt(ss.min)+'–'+fmt(ss.max)+' · +5000 · live till first touch'],
-      ['NUDGE','SHIFT+← → ↑ ('+[7,5,3][store.tilt-1]+' fast = TILT!)'],      ['PAUSE','ESC / P'],['SAVE','S while paused'],['MUTE','M'],['BUMPER','100 × value (1-9)'],
-      ['DROP TARGET','100 · all 3 = value +1'],['LEFT LANE','100 · drain pays ×1000 (max 4)'],
-      ['ATARI LANE','100 · +1 BONUS · 4 = EXTRA BALL'],['SPINNER','1 pt'],
+      ['PLUNGER METER','tick in play · gold = SKILL band'],
+      ['NUDGE','SHIFT+← → ↑ ('+[7,5,3][store.tilt-1]+' fast = TILT!)'],
+      ['SKILL SHOT',PHYS.label+' · '+fmt(ss.min)+'–'+fmt(ss.max)+' · +5000'],
+      // MULTIBALL — the merged catch: while the kicker is lit the launch
+      // skill shot IS the multiball catch (one shot, two roles — the lit
+      // state decides, like Twilight Zone's stacked Left-Ramp lamps).
+      ['MULTIBALL','bank → kicker · skill shot or lane'],
+      ['MULTIBALL 2×','scores ×2 with 2 balls · 8 s save'],
+      ['BUMPER','100 × value (1-9)'],['DROP TARGET','100 · all 3 = value +1'],
+      ['LEFT LANE','100 · drain pays ×1000 (max 4)'],
+      ['ATARI LANE','100 · +1 BONUS · 4 = EXTRA BALL'],
+      ['EXTRA BALL','SHOOT AGAIN at drain · ball kept'],
+      ['SPINNER','1 pt · lane done = 2× RUSH 20 s'],
       ['SPECIAL','500 · LIT 1000/2500/5000'],
+      ['BALL SAVE','5 s per launch · armed at drain'],
+      ['PAUSE','ESC / P'],['SAVE DISK','S while paused keeps your game'],['MUTE','M'],
+      ['PHYSICS','ATARI / ARCADE / SUPERBALL'],
       ['',''],
-      ['DIFFICULTY A','adds 2 drain holes · score rolls at 1M'],['TILT','flippers freeze · no scoring · no bonus']];
-    ctx.textAlign='left';let yy=py+148;
+      ['DIFFICULTY A','adds 2 drains · score rolls at 1M'],['TILT','flippers freeze · no scoring']];
+    ctx.textAlign='left';let yy=py+(M?116:148);
     for(const[k,v]of L){if(!k){yy+=10;continue;}
-      ctx.fillStyle='#ff8a3a';ctx.font='700 17px '+F_UI;ctx.fillText(k,px+110,yy);
-      ctx.fillStyle='#b7c4e6';ctx.font='500 14px '+F_UI;ctx.fillText(v,px+312,yy);yy+=38;}
+      ctx.fillStyle='#ff8a3a';ctx.font='700 '+(M?14:17)+'px '+F_UI;ctx.fillText(k,px+(M?62:110),yy);
+      ctx.fillStyle='#b7c4e6';ctx.font='500 '+(M?12:14)+'px '+F_UI;ctx.fillText(v,px+(M?218:312),yy);yy+=M?32:36;}
     drawKeyHints([['ENTER','RETURN']],py+ph-44);
   }
 }
 function panelTitle(){if(state===S.MENU)return'MAIN MENU';if(state===S.OPTS)return'OPTIONS';if(state===S.SCORES)return'HIGH SCORES';return'HOW TO PLAY';}
 
 function drawPause(){
+  // MOBILE: the 380×108 pause card overflows a 600px-wide field (PW≈600) —
+  // condensed card + hints, and the KEY hints become touch words.
+  const M=MOBILE,cw=M?270:380,chh=M?96:108;
   ctx.fillStyle='rgba(5,7,16,0.8)';ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='rgba(0,0,0,0.5)';rr(W/2-190,H/2-54+6,380,108,16);ctx.fill();
+  ctx.fillStyle='rgba(0,0,0,0.5)';rr(W/2-cw/2,H/2-54+6,cw,chh,16);ctx.fill();
   const g=ctx.createLinearGradient(0,H/2-48,0,H/2+54);g.addColorStop(0,'#1a1e33');g.addColorStop(1,'#0d1020');
-  ctx.fillStyle=g;rr(W/2-190,H/2-54,380,108,16);ctx.fill();
-  ctx.strokeStyle='rgba(140,180,255,0.25)';ctx.lineWidth=1.5;rr(W/2-190,H/2-54,380,108,16);ctx.stroke();
+  ctx.fillStyle=g;rr(W/2-cw/2,H/2-54,cw,chh,16);ctx.fill();
+  ctx.strokeStyle='rgba(140,180,255,0.25)';ctx.lineWidth=1.5;rr(W/2-cw/2,H/2-54,cw,chh,16);ctx.stroke();
   // "PAUSED" — brief symmetric settle, the same mirrored-animation convention
   // as the GAME OVER score: each letter squashes in (easeOutBack, 0→~1.1→1)
   // staggered by mirror index md=|d-2.5| so pairs (0↔5, 1↔4, 2↔3) settle in
@@ -2929,13 +3803,17 @@ function drawPause(){
     ctx.fillText(pw[d],0,0);ctx.restore();
     pSx+=pwd[d];
   }
-  ctx.fillStyle='#8fa0c8';ctx.font='500 14px '+F_UI;
-  ctx.fillText('GAME KEEPS SAVING — AUTO-SAVE EVERY 10s',W/2,H/2+24);
-  drawKeyHints([['ESC','RESUME'],['S','SAVE'],['ENTER','MENU'],['M','MUTE']],H/2+58);
+  ctx.fillStyle='#8fa0c8';ctx.font='500 '+(M?12:14)+'px '+F_UI;
+  ctx.fillText(M?'AUTO-SAVE ON':'GAME KEEPS SAVING — AUTO-SAVE EVERY 10s',W/2,H/2+24);
+  if(M)drawKeyHints([['TAP','RESUME'],['M','MUTE']],H/2+56);
+  else drawKeyHints([['ESC','RESUME'],['S','SAVE'],['ENTER','MENU'],['M','MUTE']],H/2+58);
 }
 function drawTally(){
   const t=Game.tally;if(!t)return;
   const cx=PF.x+PF.w/2, cy=PF.y+PF.h*0.5, now=performance.now()/1000;
+  // MOBILE: the 400px breakdown box overflows a 600px field — condensed fonts
+  // and a 340px box; everything else (digits, bar, total) is centred and fits.
+  const M=MOBILE;
   // Full-screen darken for clean tally overlay
   const pulse=0.72+0.06*Math.sin(now*3);
   ctx.fillStyle='rgba(4,6,16,'+pulse.toFixed(2)+')';ctx.fillRect(0,0,W,H);
@@ -2943,14 +3821,14 @@ function drawTally(){
   ctx.textAlign='center';
   const hdrAlpha=0.75+0.25*Math.sin(now*2.5);
   ctx.globalAlpha=hdrAlpha;
-  ctx.fillStyle='#ffd23a';ctx.font='800 30px '+F_DISP;
+  ctx.fillStyle='#ffd23a';ctx.font='800 '+(M?24:30)+'px '+F_DISP;
   ctx.fillText('BONUS PAYOUT',cx,cy-172);ctx.globalAlpha=1;
   // Calculation breakdown — use stored values since Game.leftRoll may have reset
   const lv=Math.min(t.base/1000,4), bm=t.mult;
-  ctx.fillStyle='rgba(0,0,0,0.5)';rr(cx-200,cy-146,400,52,12);ctx.fill();
-  ctx.fillStyle='#8fb0ff';ctx.font='700 18px '+F_MONO;
+  ctx.fillStyle='rgba(0,0,0,0.5)';rr(cx-(M?170:200),cy-146,M?340:400,52,12);ctx.fill();
+  ctx.fillStyle='#8fb0ff';ctx.font='700 '+(M?14:18)+'px '+F_MONO;
   ctx.fillText('LEFT LANE  ×  '+lv+'  =  '+lv*1000, cx, cy-118);
-  ctx.fillStyle='#ff7d2a';ctx.font='700 18px '+F_MONO;
+  ctx.fillStyle='#ff7d2a';ctx.font='700 '+(M?14:18)+'px '+F_MONO;
   ctx.fillText('BONUS  ×  '+bm+'  =  '+lv*1000*bm, cx, cy-86);
   // Divider line
   ctx.strokeStyle='rgba(255,255,255,0.25)';ctx.lineWidth=2;
@@ -2958,7 +3836,7 @@ function drawTally(){
   // Animated score counter with digit roll
   const s=String(Math.floor(t.paid)).padStart(6,'0');
   for(let d=0;d<6;d++){
-    const dx=cx-72+d*29;
+    const dx=cx-(M?70:72)+d*(M?24:29);
     const digit=parseInt(s[d]);
     // Digit background
     ctx.fillStyle='rgba(0,0,0,0.5)';rr(dx-10,cy-45,23,44,4);ctx.fill();
@@ -2969,12 +3847,12 @@ function drawTally(){
     const md=Math.abs(d-2.5);
     const roll=(t.t<0.8)?(Math.sin(now*18+md*3.4)>0?9:0):0;
     if(roll&&t.paid>0){
-      ctx.fillStyle='rgba(255,122,42,0.3)';ctx.font='800 34px '+F_MONO;
+      ctx.fillStyle='rgba(255,122,42,0.3)';ctx.font='800 '+(M?26:34)+'px '+F_MONO;
       ctx.fillText(String((digit+9)%10),dx+2,cy-10);
     }
     // Current digit
     const bright=roll?1:(0.85+0.15*Math.sin(now*3+md*1.4));
-    ctx.fillStyle='rgba(255,122,42,'+bright.toFixed(2)+')';ctx.font='800 34px '+F_MONO;
+    ctx.fillStyle='rgba(255,122,42,'+bright.toFixed(2)+')';ctx.font='800 '+(M?26:34)+'px '+F_MONO;
     ctx.fillText(String(digit),dx+2,cy-10);
     // Digit underline glow
     ctx.fillStyle='rgba(255,210,58,'+(0.3+0.3*Math.sin(now*4+md*2)).toFixed(2)+')';
@@ -2988,14 +3866,17 @@ function drawTally(){
   ctx.fillStyle=pbg;rr(cx-98,cy+24,196*frac,6,3);ctx.fill();
   // "TOTAL" label when complete
   if(t.paid>=t.total&&t.t>0.8){
-    ctx.fillStyle='#ffd23a';ctx.font='800 20px '+F_MONO;
+    ctx.fillStyle='#ffd23a';ctx.font='800 '+(M?16:20)+'px '+F_MONO;
     ctx.fillText('TOTAL: '+String(t.paid).padStart(6,'0'),cx,cy+70);
   }
 }
 function drawGameOver(){
+  // MOBILE: 'GAME OVER' at 56px spans ~430px of a 600px field — condense to
+  // 44px; rank pill and hint lines follow the same scale-down.
+  const M=MOBILE;
   ctx.fillStyle='rgba(5,7,16,0.9)';ctx.fillRect(0,0,W,H);
   ctx.textAlign='center';
-  ctx.font='900 56px '+F_DISP;ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillText('GAME OVER',W/2+3,H*0.30+3);
+  ctx.font='900 '+(M?44:56)+'px '+F_DISP;ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillText('GAME OVER',W/2+3,H*0.30+3);
   ctx.fillStyle='#ff7d2a';ctx.fillText('GAME OVER',W/2,H*0.30);
   // Score digits — brief symmetric roll-in: each digit settles in with a
   // slot-reel squash (easeOutBack, 0→~1.1→1) staggered by the mirror index
@@ -3003,7 +3884,7 @@ function drawGameOver(){
   // ripple emanating from the middle outward — the same mirrored-animation
   // convention as the TALLY digit ripples. Each digit is placed at its real
   // proportional advance (measureText), so the centred layout never shifts.
-  ctx.font='800 40px '+F_DISP;ctx.textAlign='center';
+  ctx.font='800 '+(M?32:40)+'px '+F_DISP;ctx.textAlign='center';
   const sc=String(Game.scores[Game.cur]).padStart(6,'0');
   const wds=[];let tot=0;
   for(let i=0;i<6;i++){const w=ctx.measureText(sc[i]).width;wds.push(w);tot+=w;}
@@ -3017,21 +3898,21 @@ function drawGameOver(){
     ctx.fillStyle='#ffe9c0';ctx.fillText(sc[d],0,0);ctx.restore();
     sx+=wds[d];
   }
-  ctx.fillStyle='rgba(0,0,0,0.45)';rr(W/2-90,H*0.48-22,180,34,17);ctx.fill();
-  ctx.fillStyle='#3fd0ff';ctx.font='700 16px '+F_UI;ctx.fillText('RANK: '+Game.rank,W/2,H*0.48+5);
+  ctx.fillStyle='rgba(0,0,0,0.45)';rr(W/2-(M?78:90),H*0.48-22,(M?156:180),34,17);ctx.fill();
+  ctx.fillStyle='#3fd0ff';ctx.font='700 '+(M?14:16)+'px '+F_UI;ctx.fillText('RANK: '+Game.rank,W/2,H*0.48+5);
   if(state===S.ENTRY){
-    ctx.fillStyle='#ffe9c0';ctx.font='700 22px '+F_UI;ctx.fillText('NEW HIGH SCORE — ENTER INITIALS',W/2,H*0.60);
-    const blink=Math.floor(performance.now()/350)%2===0;let x=W/2-64;
+    ctx.fillStyle='#ffe9c0';ctx.font='700 '+(M?16:22)+'px '+F_UI;ctx.fillText('NEW HIGH SCORE — ENTER INITIALS',W/2,H*0.60);
+    const blink=Math.floor(performance.now()/350)%2===0;let x=W/2-(M?54:64);
     for(let i=0;i<3;i++){
-      rr(x,H*0.64-30,44,44,10);
+      rr(x,H*0.64-(M?26:30),(M?38:44),(M?38:44),10);
       ctx.fillStyle='rgba(20,26,48,0.9)';ctx.fill();
       ctx.strokeStyle=i===Game.entryBuf&&blink?'#ff7d2a':'rgba(140,180,255,0.4)';ctx.lineWidth=2;
-      rr(x,H*0.64-30,44,44,10);ctx.stroke();
+      rr(x,H*0.64-(M?26:30),(M?38:44),(M?38:44),10);ctx.stroke();
       ctx.fillStyle=Game.entryChar[i]===' '?'rgba(140,160,200,0.4)':'#ffe9c0';
-      ctx.font='800 24px '+F_DISP;ctx.fillText(Game.entryChar[i],x+22,H*0.64+8);x+=52;}
+      ctx.font='800 '+(M?20:24)+'px '+F_DISP;ctx.fillText(Game.entryChar[i],x+(M?19:22),H*0.64+8);x+=(M?44:52);}
     drawKeyHints([['A–Z','TYPE'],['ENTER','NEXT'],['ENTER ×3','DONE']],H*0.72);
     if(!Game.entryTimer)Game.entryTimer=performance.now();if(performance.now()-Game.entryTimer>6000)commitEntry();
-  }else{ctx.fillStyle='#8fa0c8';ctx.font='500 15px '+F_UI;ctx.fillText('PRESS FIRE FOR TITLE',W/2,H*0.62);}
+  }else{ctx.fillStyle='#8fa0c8';ctx.font='500 '+(M?13:15)+'px '+F_UI;ctx.fillText('PRESS FIRE FOR TITLE',W/2,H*0.62);}
 }
 function commitEntry(){if(Game.entryRank>=0){store.names[Game.entryRank]=Game.entryChar.join('');saveStore();}
   Game.entryRank=-1;Game.entryTimer=0;Game._goT=performance.now();state=S.GAMEOVER;}
@@ -3051,9 +3932,25 @@ function tick(dt){
   if(state===S.TITLE){if(!demoMode||!Game.ball)startDemo();demoStep(dt);}
   if(state===S.PLAY||state===S.LAUNCH){plungerStep(dt);nudgeStep(dt);specialStep(dt);
     if(state===S.PLAY){let n=Math.ceil(dt/SUB_DT);const sub=dt/n;
-      for(let i=0;i<n;i++){        if(Game.ball&&Game.ball.live)physStep(sub);else break;}
+      // MULTIBALL step loop: the bats animate exactly ONCE per substep (the
+      // swing speed must not scale with the ball count), then every live ball
+      // runs its own physics/contact pass.
+      for(let i=0;i<n;i++){
+        flipperAnimate(FL.l,sub);flipperAnimate(FL.r,sub);
+        if(Game.ball&&Game.ball.live)physStep(sub,Game.ball);
+        if(Game.ball2&&Game.ball2.live&&Game.ball2!==Game.ball)physStep(sub,Game.ball2);
+      }
       // Ball-save grace timer — counts down after launch
       if(Game.ballSaveTimer>0){Game.ballSaveTimer-=dt;if(Game.ballSaveTimer<=0)Game.ballSaveTimer=0;}
+      // MULTIBALL timers: the grace ball-save window and the second-ball drop
+      if(Game.multiball){
+        if(Game.mbSaveT>0){Game.mbSaveT-=dt;if(Game.mbSaveT<=0)Game.mbSaveT=0;}
+        if(Game.mbDropT>0){Game.mbDropT-=dt;if(Game.mbDropT<=0&&!Game.ball2)dropBall2();}
+      }
+      // SPINNER RUSH — the 20s hot-spinners window (earned by finishing the
+      // left lane). Runs as a pure timer so an earned rush carries across a
+      // fast drain instead of being wasted.
+      if(Game.spinHotT>0){Game.spinHotT-=dt;if(Game.spinHotT<=0)Game.spinHotT=0;}
       // Skill-shot chance clock — the armed chance resolves on collect,
       // first touch, or this timeout; the clock dies with the chance.
       if(Game.skillShotT>0){Game.skillShotT-=dt;if(Game.skillShotT<=0){Game.skillShotT=0;Game.skillShotReady=false;}}

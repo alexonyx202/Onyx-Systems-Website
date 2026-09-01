@@ -380,10 +380,24 @@ h1.logo{
   position:relative;
   /* width capped by viewport HEIGHT too, so cabinet + chrome always fit on screen */
   width:max(300px, min(98vw, 860px, calc((100dvh - 512px) * 5 / 3)));
+  /* smooth rescale when the viewport geometry changes (rotation / fullscreen / softkeys) */
+  transition:width .45s cubic-bezier(.22,1.2,.36,1),transform .45s cubic-bezier(.22,1.2,.36,1);
   border-radius:20px;padding:10px 10px 8px;
   background:linear-gradient(180deg,var(--cab-a) 0%,var(--cab-b) 60%,var(--cab-c) 100%);
   border:1px solid var(--cab-border);
   box-shadow:0 22px 55px rgba(5,10,24,.55),0 0 0 1px rgba(255,197,61,.10),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -14px 30px rgba(5,10,24,.3);
+}
+/* orientation-change micro-animation: a soft settle pulse, like the cabinet
+   re-seating itself on the floor after the room turns. Runs once per rotation. */
+#cabinet.turning{animation:cabinetTurn .6s cubic-bezier(.22,1.35,.36,1)}
+@keyframes cabinetTurn{
+  0%{transform:scale(.985)}
+  45%{transform:scale(1.008)}
+  100%{transform:scale(1)}
+}
+@media (prefers-reduced-motion:reduce){
+  #cabinet{transition:none}
+  #cabinet.turning{animation:none}
 }
 /* Vegas cabinet pinstripe: a thin gold inner ring, like a real machine's deck trim */
 #cabinet::after{
@@ -6520,7 +6534,21 @@ function init(){
   document.addEventListener('keydown', onKeyDown, true);
   document.addEventListener('pointerdown', onPointerDown);
   window.addEventListener('resize', () => { Reels.measure(); });
-  window.addEventListener('orientationchange', () => setTimeout(() => { Reels.measure(); }, 300));
+  // orientation micro-animation: pulse the cabinet while the layout rescales,
+  // then re-measure the reels once the browser has settled the new geometry
+  const cabinetTurn = () => {
+    const cab = document.getElementById('cabinet');
+    if (cab){
+      cab.classList.remove('turning');
+      // force a reflow so the animation can restart even on rapid double-flips
+      void cab.offsetWidth;
+      cab.classList.add('turning');
+      window.setTimeout(() => cab.classList.remove('turning'), 650);
+    }
+    window.setTimeout(() => { Reels.measure(); }, 300);
+  };
+  window.addEventListener('orientationchange', cabinetTurn);
+  window.addEventListener('resize', cabinetTurn);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && (Game.state === 'PLAYING' || Game.state === 'SPINNING' || Game.state === 'BONUS_PLAYING')){
       if (!Game.frozen && !Game.overlays.length) pauseGame();
