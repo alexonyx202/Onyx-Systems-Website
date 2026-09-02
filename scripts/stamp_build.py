@@ -23,6 +23,12 @@ file. Typical deploy flow:
     python3 scripts/stamp_build.py           # build tokens + sw.js cache
     node scripts/verify_daily_arcade.js      # sanity gate
     git add ... && git commit && git push
+
+In the daily flow this runs automatically: publish_today.py's commit_and_push
+and Hermes Import/Scripts/daily_fun_publish.sh both invoke this before staging,
+so the rolling build date rides in with the content. check_freshness_tokens.py
+then fails the deploy gate if the stamp is ever missing, stale, or split across
+files.
 """
 import argparse
 import os

@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-01",
+  "updated": "2026-09-02",
   "items": [
+    {
+      "id": "n-2026-09-02",
+      "type": "newsletter",
+      "date": "2026-09-02",
+      "title": "FBI Warning: One Click Can Hand Scammers Your Email — No Password Needed",
+      "tag": "Daily Brief",
+      "summary": "The FBI put out a warning yesterday about a new trick: scammers send you a link that opens a real-looking Google or Microsoft screen asking, \"Allow this app access?\" One click hands them your email — your messages, your contacts, your password-reset emails — even though your password never changed, and even with two-step sign-in on. Change your password afterward and they still stay logged in. Fix in two minutes: open your email account settings and look for \"connected apps\" or \"third-party access,\" then remove anything you don't recognize. Never approve an access request you didn't start. (Source: According to the FBI's official Internet Crime Complaint Center, September 1, 2026)",
+      "comic": "Newsletter - 2026-09-02-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-02-news1",
+      "type": "tech-note",
+      "date": "2026-09-02",
+      "title": "Google's free Security Checkup shows every device signed into your Gmail — run it in 2 minutes at myaccount.google.com/security-checkup",
+      "tag": "Tech Note",
+      "summary": "Run Google's free Security Checkup at myaccount.google.com/security-checkup. It lists every device signed into your Gmail and lets you sign out any device you don't recognize — it takes 2 minutes and Google walks you through it step by step."
+    },
+    {
+      "id": "t-2026-09-02-tip1",
+      "type": "tech-note",
+      "date": "2026-09-02",
+      "title": "Copy text out of any screenshot — the Windows Snipping Tool's Text Actions does it in one click",
+      "tag": "Tech Tip",
+      "summary": "The Snipping Tool that's already on your Windows 11 computer can pull the words out of any screenshot. Press the Windows key + Shift + S to take a snip, click the Text Actions button at the top of the picture, then click Copy — now the words paste like normal text. Built into Windows, free, no download."
+    },
     {
       "id": "n-2026-09-01",
       "type": "newsletter",
@@ -79,32 +105,6 @@
       "title": "Google Gemini inside Google Forms creates quizzes from your notes free — try it at forms.google.com",
       "tag": "Tech Note",
       "summary": "Open Google Forms at forms.google.com, click the Gemini sparkle icon, type your topic or upload a PDF, and it builds a complete quiz with questions and answer choices automatically."
-    },
-    {
-      "id": "t-2026-08-29-tip1",
-      "type": "tech-note",
-      "date": "2026-08-29",
-      "title": "Clipchamp is the free video editor built into Windows 11 — edit family clips and save them without a watermark",
-      "tag": "Tech Tip",
-      "summary": "Press Start and type Clipchamp, open it, drag your videos onto the timeline, trim and arrange them, and export — built into Windows 11, completely free with no watermarks."
-    },
-    {
-      "id": "n-2026-08-28",
-      "type": "newsletter",
-      "date": "2026-08-28",
-      "title": "Windows Update Is Breaking Printers and PDFs — Here's What to Do",
-      "tag": "Daily Brief",
-      "summary": "Microsoft's latest Windows update is breaking printers and PDF saving across the country. Programs crash when you try to print or create a PDF. Here is what to do right now: open Settings, go to Windows Update, and click \"Pause updates\" for 7 days. If your printer already stopped working, try printing from a web browser instead. This is a Microsoft mistake, not a printer problem. They are working on a fix. Bring it by the shop if you need help — free diagnosis, no pressure. (Sources: PCWorld, BleepingComputer — August 25-26, 2026)",
-      "comic": "Newsletter - 2026-08-28-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-28-news1",
-      "type": "tech-note",
-      "date": "2026-08-28",
-      "title": "CISA says hackers are already using six new flaws — update your computer tonight and tell your IT department if you use Citrix at work",
-      "tag": "Tech Note",
-      "summary": "The government's cybersecurity agency (CISA) added six newly exploited vulnerabilities to its catalog on August 26 — including a Citrix flaw that lets hackers break into remote access systems without a password. If your company uses Citrix for remote work, tell your IT department to patch it tonight. On your own computer, press Start, type \"check for updates,\" open Windows Update, and install whatever is available. It takes two minutes."
     }
   ]
 }

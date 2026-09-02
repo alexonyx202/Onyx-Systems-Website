@@ -13,7 +13,9 @@ thin verify step. Runs, in order:
      (mechanically extracted from the emailed newsletter + Onyx Tech Notes markdown)
   6. prune past events from data/events.json
   7. completeness gate:         verify_feed_complete.py --all (exit 0 required)
-  8. (with --push) commit + push origin main
+  8. (with --push) build stamp: scripts/stamp_build.py rolls the onyx-build meta + sw.js
+     cache key to today's Eastern date, then commit + push origin main
+     (stamp files ride in the same daily commit)
 
 Default behavior (no --push) does steps 1-7 and STOPS, printing the extracted feed/news
 entries so a reviewer can fix wording/selection before anything ships. Then:
@@ -138,6 +140,11 @@ def _heading_section(body, heading):
     if not m:
         return ""
     rest = body[m.end():]
+    # Headline values in the generated notes are bold on the following line.
+    if heading == "Headline":
+        value = re.search(r"\*\*(.+?)\*\*", rest, re.S)
+        if value:
+            return value.group(1).strip()
     # Skip blank lines after the heading marker
     rest = re.sub(r"^\s*\n", "", rest)
     # End at next ###, next **Bold:**, or end of body
@@ -176,9 +183,10 @@ def parse_tech_notes(md_path):
         nm = re.search(r"^##\s*Post\s+\d+\s*(?:[—–-]\s*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
-        # Prefer **Headline:** field inside body (the real headline);
-        # fall back to the header text only if no bold headline field exists.
-        real_headline = _heading_section(body, "Headline")
+        # Prefer the bold value following the ### Headline marker.
+        segment = body.split("### Headline", 1)[-1]
+        hm = re.search(r"\*\*([^*\n]+?)\*\*", segment)
+        real_headline = hm.group(1).strip() if hm else ""
         headline = real_headline if real_headline else header_label
         posts.append({
             "headline": headline,
@@ -355,14 +363,34 @@ CONTENT_PATHS = [
     "assets/img/news",         # comic + composite/comic-square images
 ]
 
+# Freshness-token files scripts/stamp_build.py rewrites. Staged with the content
+# so every daily deploy carries today's build date automatically — otherwise a
+# push leaves returning browsers on yesterday's service-worker cache.
+STAMP_PATHS = [
+    "index.html",
+    "games/index.html",
+    "gallery.html",
+    "crossword.html",
+    "newsletter.html",
+    "sw.js",
+]
+
 
 def commit_and_push(date_iso):
-    _run(["git", "add", "--"] + CONTENT_PATHS, cwd=str(REPO))
+    # Roll today's build date into the freshness tokens first so the daily
+    # commit carries a current stamp. Idempotent: on a no-op it just re-adds
+    # the already-stamped files (no extra diff, no extra commit).
+    sr = _run(["python3", "scripts/stamp_build.py"], cwd=str(REPO), check=False)
+    print(sr.stdout.strip(), file=sys.stderr)
+    if sr.returncode != 0:
+        print("❌ stamp_build.py failed — aborting push (see output above)", file=sys.stderr)
+        raise SystemExit(1)
+    _run(["git", "add", "--"] + CONTENT_PATHS + STAMP_PATHS, cwd=str(REPO))
     r = _run(["git", "diff", "--cached", "--quiet"], cwd=str(REPO), check=False)
     if r.returncode == 0:
         print("No changes to commit.")
         return
-    _run(["git", "commit", "-m", f"daily: {date_iso} brief + news/tips + widgets"], cwd=str(REPO))
+    _run(["git", "commit", "-m", f"daily: {date_iso} brief + news/tips + widgets (+ build stamp)"], cwd=str(REPO))
     _run(["git", "push", "origin", "main"], cwd=str(REPO))
     print(f"Pushed to origin/main ({date_iso}).")
 
