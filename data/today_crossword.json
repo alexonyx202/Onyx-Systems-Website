@@ -1,295 +1,178 @@
 {
   "title": "Math",
-  "size": 22,
+  "size": 25,
   "grid": [
-    "..........1...........",
-    "..........2.2.........",
-    "..........5.9.........",
-    "............249.92....",
-    "..........9...........",
-    "..........315.864.....",
-    "............6..4......",
-    "...............0......",
-    "............427.128...",
-    "...............6.5....",
-    ".........434.518......",
-    "..........6......9....",
-    "..........5......7....",
-    "........369.46...6....",
-    "......................",
-    "........125.477.......",
-    "....2.3.9.9...........",
-    "....2.0.6.............",
-    "......3...............",
-    "...508.542............",
-    "....4.4.7.............",
-    "566.148.9............."
+    ".......p.................",
+    ".......r.................",
+    "......right..............",
+    ".......m..r..............",
+    ".......e..iready.........",
+    "..........a..............",
+    "..d.......n..............",
+    "..e.....n.g.p.a..........",
+    "..n...equal.r.d..........",
+    "l.o.....m.e.o.d..........",
+    "composite...p.i..........",
+    "m.i.....ratio.t..........",
+    "..n...m.a...r.i..........",
+    "..a..subtraction.........",
+    "..t...l.o...i.n..........",
+    "..o...t.r...o............",
+    "..r...i.....n............",
+    "......p.....a............",
+    "......l.simplify.........",
+    "......e....e.............",
+    "...........r.............",
+    "..........gcf............",
+    "...........e.............",
+    "...........n.............",
+    "...........t............."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 4,
-        "col": 13,
-        "len": 3,
-        "answer": "249",
-        "clue": ""
+        "num": 2,
+        "row": 3,
+        "col": 7,
+        "len": 5,
+        "answer": "right",
+        "clue": "angle that equals 90"
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 17,
-        "len": 2,
-        "answer": "92",
-        "clue": ""
-      },
-      {
-        "num": 6,
-        "row": 6,
+        "row": 5,
         "col": 11,
-        "len": 3,
-        "answer": "315",
-        "clue": ""
+        "len": 6,
+        "answer": "iready",
+        "clue": "45 minutes a week"
       },
       {
-        "num": 8,
-        "row": 6,
-        "col": 15,
-        "len": 3,
-        "answer": "864",
-        "clue": ""
-      },
-      {
-        "num": 10,
+        "num": 9,
         "row": 9,
-        "col": 13,
-        "len": 3,
-        "answer": "427",
-        "clue": ""
+        "col": 7,
+        "len": 5,
+        "answer": "equal",
+        "clue": "same value"
       },
       {
         "num": 11,
-        "row": 9,
-        "col": 17,
-        "len": 3,
-        "answer": "128",
-        "clue": ""
+        "row": 11,
+        "col": 1,
+        "len": 9,
+        "answer": "composite",
+        "clue": "multiple factors"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 9,
+        "len": 5,
+        "answer": "ratio",
+        "clue": "can be written with \"to\" \":\" and \"1/5\""
       },
       {
         "num": 14,
-        "row": 11,
-        "col": 10,
-        "len": 3,
-        "answer": "434",
-        "clue": ""
-      },
-      {
-        "num": 16,
-        "row": 11,
-        "col": 14,
-        "len": 3,
-        "answer": "518",
-        "clue": ""
-      },
-      {
-        "num": 18,
         "row": 14,
+        "col": 6,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "to find the difference"
+      },
+      {
+        "num": 15,
+        "row": 19,
         "col": 9,
-        "len": 3,
-        "answer": "369",
-        "clue": ""
+        "len": 8,
+        "answer": "simplify",
+        "clue": "reduce to the smallest form"
       },
       {
-        "num": 19,
-        "row": 14,
-        "col": 13,
-        "len": 2,
-        "answer": "46",
-        "clue": ""
-      },
-      {
-        "num": 20,
-        "row": 16,
-        "col": 9,
-        "len": 3,
-        "answer": "125",
-        "clue": ""
-      },
-      {
-        "num": 22,
-        "row": 16,
-        "col": 13,
-        "len": 3,
-        "answer": "477",
-        "clue": ""
-      },
-      {
-        "num": 25,
-        "row": 20,
-        "col": 4,
-        "len": 3,
-        "answer": "508",
-        "clue": ""
-      },
-      {
-        "num": 27,
-        "row": 20,
-        "col": 8,
-        "len": 3,
-        "answer": "542",
-        "clue": ""
-      },
-      {
-        "num": 30,
+        "num": 17,
         "row": 22,
-        "col": 1,
+        "col": 11,
         "len": 3,
-        "answer": "566",
-        "clue": ""
-      },
-      {
-        "num": 31,
-        "row": 22,
-        "col": 5,
-        "len": 3,
-        "answer": "148",
-        "clue": ""
+        "answer": "gcf",
+        "clue": "greatest common factor"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 11,
-        "len": 3,
-        "answer": "125",
-        "clue": ""
+        "col": 8,
+        "len": 5,
+        "answer": "prime",
+        "clue": "only two factors"
       },
       {
-        "num": 2,
-        "row": 2,
-        "col": 13,
-        "len": 3,
-        "answer": "292",
-        "clue": ""
+        "num": 3,
+        "row": 3,
+        "col": 11,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "3 sided shape"
       },
       {
         "num": 5,
-        "row": 5,
-        "col": 11,
-        "len": 2,
-        "answer": "93",
-        "clue": ""
+        "row": 7,
+        "col": 3,
+        "len": 11,
+        "answer": "denominator",
+        "clue": "bottom number"
+      },
+      {
+        "num": 6,
+        "row": 8,
+        "col": 9,
+        "len": 9,
+        "answer": "numerator",
+        "clue": "top number"
       },
       {
         "num": 7,
-        "row": 6,
+        "row": 8,
         "col": 13,
-        "len": 2,
-        "answer": "56",
-        "clue": ""
+        "len": 12,
+        "answer": "proportional",
+        "clue": "each ratio is equal"
       },
       {
-        "num": 9,
-        "row": 6,
-        "col": 16,
+        "num": 8,
+        "row": 8,
+        "col": 15,
+        "len": 8,
+        "answer": "addition",
+        "clue": "to find the sum"
+      },
+      {
+        "num": 10,
+        "row": 10,
+        "col": 1,
         "len": 3,
-        "answer": "640",
-        "clue": ""
-      },
-      {
-        "num": 12,
-        "row": 9,
-        "col": 18,
-        "len": 2,
-        "answer": "25",
-        "clue": ""
+        "answer": "lcm",
+        "clue": "least common multiple"
       },
       {
         "num": 13,
-        "row": 10,
-        "col": 16,
-        "len": 2,
-        "answer": "68",
-        "clue": ""
-      },
-      {
-        "num": 15,
-        "row": 11,
-        "col": 11,
-        "len": 4,
-        "answer": "3659",
-        "clue": ""
-      },
-      {
-        "num": 17,
-        "row": 12,
-        "col": 18,
-        "len": 3,
-        "answer": "976",
-        "clue": ""
-      },
-      {
-        "num": 20,
-        "row": 16,
-        "col": 9,
-        "len": 3,
-        "answer": "196",
-        "clue": ""
-      },
-      {
-        "num": 21,
-        "row": 16,
-        "col": 11,
-        "len": 2,
-        "answer": "59",
-        "clue": ""
-      },
-      {
-        "num": 23,
-        "row": 17,
-        "col": 5,
-        "len": 2,
-        "answer": "22",
-        "clue": ""
-      },
-      {
-        "num": 24,
-        "row": 17,
+        "row": 13,
         "col": 7,
-        "len": 3,
-        "answer": "303",
-        "clue": ""
+        "len": 8,
+        "answer": "multiple",
+        "clue": "can be divided by a number w/o remainders"
       },
       {
-        "num": 26,
-        "row": 20,
-        "col": 5,
-        "len": 3,
-        "answer": "041",
-        "clue": ""
-      },
-      {
-        "num": 28,
-        "row": 20,
-        "col": 9,
-        "len": 3,
-        "answer": "479",
-        "clue": ""
-      },
-      {
-        "num": 29,
-        "row": 21,
-        "col": 7,
-        "len": 2,
-        "answer": "48",
-        "clue": ""
+        "num": 16,
+        "row": 19,
+        "col": 12,
+        "len": 7,
+        "answer": "percent",
+        "clue": "one part in every one hundred"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8216",
-  "slug": "math-8216",
-  "fetched_at": "2026-07-14T19:22:58.177422+00:00",
-  "date": "2026-09-01"
+  "source_url": "https://crosswordlabs.com/view/math-8280",
+  "slug": "math-8280",
+  "fetched_at": "2026-07-14T19:21:27.410395+00:00",
+  "date": "2026-09-02"
 }
