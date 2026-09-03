@@ -1,178 +1,159 @@
 {
   "title": "Math",
-  "size": 25,
+  "size": 22,
   "grid": [
-    ".......p.................",
-    ".......r.................",
-    "......right..............",
-    ".......m..r..............",
-    ".......e..iready.........",
-    "..........a..............",
-    "..d.......n..............",
-    "..e.....n.g.p.a..........",
-    "..n...equal.r.d..........",
-    "l.o.....m.e.o.d..........",
-    "composite...p.i..........",
-    "m.i.....ratio.t..........",
-    "..n...m.a...r.i..........",
-    "..a..subtraction.........",
-    "..t...l.o...i.n..........",
-    "..o...t.r...o............",
-    "..r...i.....n............",
-    "......p.....a............",
-    "......l.simplify.........",
-    "......e....e.............",
-    "...........r.............",
-    "..........gcf............",
-    "...........e.............",
-    "...........n.............",
-    "...........t............."
+    "................twelve",
+    "..................i...",
+    "..................g...",
+    "........f.........h...",
+    ".......nine..seventy..",
+    ".....t..v.i..i........",
+    "....three.g..x........",
+    ".....i...thirty.......",
+    ".....r.t..t..e..o.....",
+    ".....twenty.seven.....",
+    ".....e.n.....n..e.....",
+    "fifteen...............",
+    ".....n................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 7,
-        "len": 5,
-        "answer": "right",
-        "clue": "angle that equals 90"
+        "num": 1,
+        "row": 1,
+        "col": 17,
+        "len": 6,
+        "answer": "twelve",
+        "clue": "8+4"
       },
       {
         "num": 4,
         "row": 5,
-        "col": 11,
-        "len": 6,
-        "answer": "iready",
-        "clue": "45 minutes a week"
+        "col": 8,
+        "len": 4,
+        "answer": "nine",
+        "clue": "5+4"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 14,
+        "len": 7,
+        "answer": "seventy",
+        "clue": "66+4"
+      },
+      {
+        "num": 8,
+        "row": 7,
+        "col": 5,
+        "len": 5,
+        "answer": "three",
+        "clue": "2+1"
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 7,
-        "len": 5,
-        "answer": "equal",
-        "clue": "same value"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 1,
-        "len": 9,
-        "answer": "composite",
-        "clue": "multiple factors"
+        "row": 8,
+        "col": 10,
+        "len": 6,
+        "answer": "thirty",
+        "clue": "20+10"
       },
       {
         "num": 12,
-        "row": 12,
-        "col": 9,
+        "row": 10,
+        "col": 6,
+        "len": 6,
+        "answer": "twenty",
+        "clue": "12+8"
+      },
+      {
+        "num": 13,
+        "row": 10,
+        "col": 13,
         "len": 5,
-        "answer": "ratio",
-        "clue": "can be written with \"to\" \":\" and \"1/5\""
+        "answer": "seven",
+        "clue": "4+3"
       },
       {
         "num": 14,
-        "row": 14,
-        "col": 6,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "to find the difference"
-      },
-      {
-        "num": 15,
-        "row": 19,
-        "col": 9,
-        "len": 8,
-        "answer": "simplify",
-        "clue": "reduce to the smallest form"
-      },
-      {
-        "num": 17,
-        "row": 22,
-        "col": 11,
-        "len": 3,
-        "answer": "gcf",
-        "clue": "greatest common factor"
+        "row": 12,
+        "col": 1,
+        "len": 7,
+        "answer": "fifteen",
+        "clue": "20-5"
       }
     ],
     "down": [
       {
-        "num": 1,
+        "num": 2,
         "row": 1,
-        "col": 8,
+        "col": 19,
         "len": 5,
-        "answer": "prime",
-        "clue": "only two factors"
+        "answer": "eight",
+        "clue": "25-17"
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 11,
-        "len": 8,
-        "answer": "triangle",
-        "clue": "3 sided shape"
+        "row": 4,
+        "col": 9,
+        "len": 4,
+        "answer": "five",
+        "clue": "50-45"
       },
       {
         "num": 5,
-        "row": 7,
-        "col": 3,
-        "len": 11,
-        "answer": "denominator",
-        "clue": "bottom number"
+        "row": 5,
+        "col": 11,
+        "len": 6,
+        "answer": "eighty",
+        "clue": "43+37"
       },
       {
         "num": 6,
-        "row": 8,
-        "col": 9,
-        "len": 9,
-        "answer": "numerator",
-        "clue": "top number"
+        "row": 5,
+        "col": 14,
+        "len": 7,
+        "answer": "sixteen",
+        "clue": "19-3"
       },
       {
         "num": 7,
-        "row": 8,
-        "col": 13,
-        "len": 12,
-        "answer": "proportional",
-        "clue": "each ratio is equal"
-      },
-      {
-        "num": 8,
-        "row": 8,
-        "col": 15,
+        "row": 6,
+        "col": 6,
         "len": 8,
-        "answer": "addition",
-        "clue": "to find the sum"
+        "answer": "thirteen",
+        "clue": "6+7"
       },
       {
         "num": 10,
-        "row": 10,
-        "col": 1,
+        "row": 9,
+        "col": 8,
         "len": 3,
-        "answer": "lcm",
-        "clue": "least common multiple"
+        "answer": "ten",
+        "clue": "12-2"
       },
       {
-        "num": 13,
-        "row": 13,
-        "col": 7,
-        "len": 8,
-        "answer": "multiple",
-        "clue": "can be divided by a number w/o remainders"
-      },
-      {
-        "num": 16,
-        "row": 19,
-        "col": 12,
-        "len": 7,
-        "answer": "percent",
-        "clue": "one part in every one hundred"
+        "num": 11,
+        "row": 9,
+        "col": 17,
+        "len": 3,
+        "answer": "one",
+        "clue": "1+0"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8280",
-  "slug": "math-8280",
-  "fetched_at": "2026-07-14T19:21:27.410395+00:00",
-  "date": "2026-09-02"
+  "source_url": "https://crosswordlabs.com/view/math-8282",
+  "slug": "math-8282",
+  "fetched_at": "2026-07-14T19:26:56.823148+00:00",
+  "date": "2026-09-03"
 }
