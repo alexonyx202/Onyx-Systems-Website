@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-02",
+  "updated": "2026-09-03",
   "items": [
+    {
+      "id": "n-2026-09-03",
+      "type": "newsletter",
+      "date": "2026-09-03",
+      "title": "Fake Car-Dealership Websites Are Taking Deposits — FTC Warns",
+      "tag": "Daily Brief",
+      "summary": "The Federal Trade Commission is warning about scammers cloning real car-dealership websites. They copy the logo, car photos, and customer reviews, then take an upfront deposit for a vehicle that doesn't exist. Buyers show up at the lot and find no record of their order or money. Before paying: search the dealer's name plus the word \"scam,\" and insist on seeing the car in person or having an independent inspector check it. Never send a deposit by wire transfer. Report fake dealer sites at ReportFraud.ftc.gov. (Source: FTC, Sept. 1, 2026)",
+      "comic": "Newsletter - 2026-09-03-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-03-news1",
+      "type": "tech-note",
+      "date": "2026-09-03",
+      "title": "The Windows 11 September update finally brings back the movable taskbar — put it back at the top in Settings, free from Microsoft",
+      "tag": "Tech Note",
+      "summary": "Microsoft's September update for Windows 11 is rolling out now, and it brings back the choice owners have asked for since 2021: you can move the taskbar back to the top of the screen or to either side. Check for the update at Settings → Windows Update, then open Settings → Personalization → Taskbar → Taskbar behaviors and pick where you want it. It's free, built into Windows, and takes about a minute once the update is installed."
+    },
+    {
+      "id": "t-2026-09-03-tip1",
+      "type": "tech-note",
+      "date": "2026-09-03",
+      "title": "Is your flash drive crawling? Plug it into the blue USB port — it's many times faster and it's already on your computer",
+      "tag": "Tech Tip",
+      "summary": "Look at the USB ports on your computer: some are black, some are blue. The blue ones are the fast kind — a flash drive or camera card reader can run many times quicker in them than in the old black ports. There's no software to download and nothing to install — just move the plug. If you don't have blue ports, the black ones still work fine; they're just slower."
+    },
     {
       "id": "n-2026-09-02",
       "type": "newsletter",
@@ -79,32 +105,6 @@
       "title": "Chrome security update helps block dangerous websites — update Chrome at `chrome://settings/help`",
       "tag": "Tech Note",
       "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help → About Google Chrome**, and let it update. Restart Chrome when it asks."
-    },
-    {
-      "id": "t-2026-08-30-tip1",
-      "type": "tech-note",
-      "date": "2026-08-30",
-      "title": "Apple Security Releases help protect your iPhone — install the latest iPhone update from Settings",
-      "tag": "Tech Tip",
-      "summary": "Apple's Security Releases page lists the latest protection for iPhones. On your iPhone, open **Settings → General → Software Update** and install the latest update. Leave the phone connected to power while it finishes."
-    },
-    {
-      "id": "n-2026-08-29",
-      "type": "newsletter",
-      "date": "2026-08-29",
-      "title": "Genetic Testing Data Breach Exposes 2.8 Million People — Your DNA Data May Be at Risk",
-      "tag": "Daily Brief",
-      "summary": "Big news if you or anyone in your family ever had a DNA test. Baylor Genetics — a company that runs genetic tests for cancer risk, pregnancy screening, and rare diseases — just confirmed hackers stole personal information of 2.8 million people. We are talking names, Social Security numbers, medical diagnoses, and your actual genetic test results (source: KCRA/Hearst TV, Aug 28). If that sounds like you, check baylorgenetics.com/securityupdate right now to see if you were affected. Then place a free credit freeze at all three credit bureaus — Equifax, Experian, and TransUnion. Federal law makes credit freezes free, and it takes about five minutes per bureau.",
-      "comic": "Newsletter - 2026-08-29-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-29-news1",
-      "type": "tech-note",
-      "date": "2026-08-29",
-      "title": "Google Gemini inside Google Forms creates quizzes from your notes free — try it at forms.google.com",
-      "tag": "Tech Note",
-      "summary": "Open Google Forms at forms.google.com, click the Gemini sparkle icon, type your topic or upload a PDF, and it builds a complete quiz with questions and answer choices automatically."
     }
   ]
 }
