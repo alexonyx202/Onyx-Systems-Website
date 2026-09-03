@@ -110,6 +110,10 @@ KNOWN_PRODUCTS = [
     # Extended 2026-08-28: Citrix (remote access / virtual desktop software)
     # — real product named in today's CISA security alert headline, obtain method stated.
     "citrix",
+    # Extended 2026-09-03: USB (the blue SuperSpeed ports on a PC) — the real,
+    # universally-named port standard in today's Tech Note tip headline; the obtain
+    # method is stated (plug the flash drive into the blue port).
+    "usb",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
