@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "items": [
+    {
+      "id": "n-2026-09-04",
+      "type": "newsletter",
+      "date": "2026-09-04",
+      "title": "Fake QR Codes on Parking Meters Are Stealing Card Numbers — FTC Warns",
+      "tag": "Daily Brief",
+      "summary": "The FTC is warning about fake QR codes — the square black-and-white patterns you scan to pay for parking. Scammers print their own codes and stick them over the real ones on parking meters. Scan the wrong one and it opens a fake payment page that steals your card number. Before you pay, check the code: if it looks like a sticker slapped over the real sign, don't scan it. Type the parking service's web address yourself, pay at the machine, and report fakes at ReportFraud.ftc.gov.",
+      "comic": "Newsletter - 2026-09-04-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-04-news1",
+      "type": "tech-note",
+      "date": "2026-09-04",
+      "title": "Windows 11's Smart App Control stops bad apps before they run — turn it on free in Windows Security",
+      "tag": "Tech Note",
+      "summary": "Windows 11's Smart App Control checks every program before it opens and blocks the ones that look untrusted — and it's free, built right into Windows. Most computers just have it sitting there, turned off. To switch it on, open the Windows Security app that came with your computer, go to App & browser control, and turn on Smart App Control. It's about one click and it's from Microsoft. If your computer doesn't show the option, that's normal on some machines — bring it by and I'll set up the next-best protection for you."
+    },
+    {
+      "id": "t-2026-09-04-tip1",
+      "type": "tech-note",
+      "date": "2026-09-04",
+      "title": "That slow old laptop isn't done yet — ChromeOS Flex is Google's free operating system that makes it fast again",
+      "tag": "Tech Tip",
+      "summary": "ChromeOS Flex is Google's free operating system built for older computers, and it can help a slow old laptop feel quick again. It's free at chromeos.google/products/chromeos-flex — Google gives you the download and the steps to put it on a USB stick, and the laptop starts up from that stick. If that sounds like more than you want to tackle, that's exactly what I'm here for."
+    },
     {
       "id": "n-2026-09-03",
       "type": "newsletter",
@@ -78,33 +104,6 @@
       "title": "Audit your Chrome extensions in two minutes — Manage Extensions finds the fakes",
       "tag": "Tech Tip",
       "summary": "In Chrome, click the three dots, choose **Extensions → Manage Extensions**, and turn off anything you don't recognize or no longer use — one at a time, so you'll know what changed. Real updates come from the browser's own menu, never from a website pop-up."
-    },
-    {
-      "id": "n-2026-08-31",
-      "type": "newsletter",
-      "date": "2026-08-31",
-      "title": "Windows 10 Support Ends October 14 — Check Your PC This Week",
-      "tag": "Daily Brief",
-      "summary": "Windows 10 support ends **October 14, 2026** — six weeks from today. After that date Microsoft stops releasing security updates for Windows 10, so newly discovered vulnerabilities won't be patched on your PC. Check which version you have now: press **Start**, type **About your PC",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-08-30",
-      "type": "newsletter",
-      "date": "2026-08-30",
-      "title": "Scammers Are Using AI to Impersonate Charities",
-      "tag": "Daily Brief",
-      "summary": "Scammers are using artificial intelligence to make charity appeals sound personal and urgent. A message may use a familiar organization’s name, a copied logo, or a convincing voice recording, then ask for gift cards, cryptocurrency, or a wire transfer. Before giving, stop and visit the organization’s official website by typing its address yourself. Never use payment instructions from an unexpected message. The Federal Trade Commission says pressure to pay immediately is a major warning sign.",
-      "comic": "Newsletter - 2026-08-30-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-08-30-news1",
-      "type": "tech-note",
-      "date": "2026-08-30",
-      "title": "Chrome security update helps block dangerous websites — update Chrome at `chrome://settings/help`",
-      "tag": "Tech Note",
-      "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help → About Google Chrome**, and let it update. Restart Chrome when it asks."
     }
   ]
 }

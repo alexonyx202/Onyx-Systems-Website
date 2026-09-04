@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-04-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-04",
+      "title": "Fake QR Codes on Parking Meters Are Stealing Card Numbers — FTC Warns",
+      "tag": "Daily Brief",
+      "excerpt": "The FTC is warning about fake QR codes — the square black-and-white patterns you scan to pay for parking. Scammers print their own codes and stick them over the real ones on parking meters. Scan the wrong one and it opens a fake payment page that steals your card number. Before you pay, check the code: if it looks like a sticker slapped over the real sign, don't scan it. Type the parking service's web address yourself, pay at the machine, and report fakes at ReportFraud.ftc.gov.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-04-composite.jpg",
+      "comic": "assets/img/news/2026-09-04-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-03-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-03",
@@ -167,26 +184,23 @@
         "label": "Book a free check",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-08-30-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-08-30",
-      "title": "Scammers Are Using AI to Impersonate Charities",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are using artificial intelligence to make charity appeals sound personal and urgent. A message may use a familiar organization’s name, a copied logo, or a convincing voice recording, then ask for gift cards, cryptocurrency, or a wire transfer. Before giving, stop and visit the organization’s official website by typing its address yourself. Never use payment instructions from an unexpected message. The Federal Trade Commission says pressure to pay immediately is a major warning sign.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-08-30-composite.jpg",
-      "comic": "assets/img/news/2026-08-30-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-04-post-1",
+      "type": "news",
+      "date": "2026-09-04",
+      "title": "Windows 11's Smart App Control stops bad apps before they run — turn it on free in Windows Security",
+      "tag": "Tech Note",
+      "summary": "Windows 11's Smart App Control checks every program before it opens and blocks the ones that look untrusted — and it's free, built right into Windows. Most computers just have it sitting there, turned off. To switch it on, open the Windows Security app that came with your computer, go to App & browser control, and turn on Smart App Control. It's about one click and it's from Microsoft. If your computer doesn't show the option, that's normal on some machines — bring it by and I'll set up the next-best protection for you.",
+      "truth": "Most people don't realize the scariest moment isn't when a bad program is already running — it's the two seconds before, when the computer hasn't decided yet. I see this all the time: someone downloads a 'free PDF converter' or a 'driver updater' out of an ad, and it's junk from the first click. Smart App Control is Microsoft's bouncer at the door — it checks a program's reputation before letting it in and stops a lot of the junk before it ever touches your files. It's not magic, but it's one of the best free layers I know, and most people have it sitting there, turned off.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-03-post-1",
       "type": "news",
@@ -245,13 +259,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-30-post-1",
-      "type": "news",
-      "date": "2026-08-30",
-      "title": "Chrome security update helps block dangerous websites — update Chrome at `chrome://settings/help`",
-      "tag": "Tech Note",
-      "summary": "Google's Chrome release blog reports a new desktop security update. Open Chrome, select the three dots in the upper-right corner, choose **Help → About Google Chrome**, and let it update. Restart Chrome when it asks.",
-      "truth": "I see this all the time: people keep using a browser for months because it still opens their favorite websites. The honest answer is that a browser is the front door to the internet. A current Chrome update closes doors that criminals may try to use, even if you never download anything.",
+      "id": "onyx-2026-09-04-post-2",
+      "type": "tip",
+      "date": "2026-09-04",
+      "title": "That slow old laptop isn't done yet — ChromeOS Flex is Google's free operating system that makes it fast again",
+      "tag": "Tech Tip",
+      "summary": "ChromeOS Flex is Google's free operating system built for older computers, and it can help a slow old laptop feel quick again. It's free at chromeos.google/products/chromeos-flex — Google gives you the download and the steps to put it on a USB stick, and the laptop starts up from that stick. If that sounds like more than you want to tackle, that's exactly what I'm here for.",
+      "truth": "I see this all the time: a perfectly good 8- or 10-year-old laptop sitting in a drawer because 'it got slow' — and the owner is about to spend six hundred dollars on a new one. Most people don't realize the hardware is usually fine; the software on it just got too heavy. ChromeOS Flex strips it back to the basics — email, Facebook, banking, photos — and it doesn't bog down the way an old install does. It's not for everyone: if you depend on one specific Windows program, keep it. But for the customer who just wants email and pictures, I've seen a ten-year-old laptop feel faster after Flex than it did the day it was new.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -314,23 +328,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-30-post-2",
-      "type": "tip",
-      "date": "2026-08-30",
-      "title": "Apple Security Releases help protect your iPhone — install the latest iPhone update from Settings",
-      "tag": "Tech Tip",
-      "summary": "Apple's Security Releases page lists the latest protection for iPhones. On your iPhone, open **Settings → General → Software Update** and install the latest update. Leave the phone connected to power while it finishes.",
-      "truth": "Most people wait for a problem before updating. That is backwards. Security updates are preventative maintenance, like changing the oil before the engine starts making noise. The update may not add a flashy feature, but it helps protect your photos, messages, and banking apps.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
