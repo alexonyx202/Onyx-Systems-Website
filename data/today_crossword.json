@@ -1,163 +1,202 @@
 {
-  "title": "Math",
-  "size": 18,
+  "title": "math",
+  "size": 25,
   "grid": [
-    ".multiply.........",
-    "......r...........",
-    "pentagon..........",
-    "....d.p.d.........",
-    "....d.o.i..r......",
-    "......r.v..i.d....",
-    "......triangle.p..",
-    "......i.d..h.n.e..",
-    "......o.e..t.o.r..",
-    "....ten......m.c..",
-    "........positive..",
-    ".............n.n..",
-    ".....y..subtract..",
-    ".....a.....e.t....",
-    "....fraction.o....",
-    ".....d.....t.r....",
-    "...........h......",
-    "...exponents......"
+    "....................v....",
+    "............inflection...",
+    ".................e..l....",
+    "............mapping.u..p.",
+    "......c.....o....t..m..a.",
+    ".....compound..parameter.",
+    "......l.....u.d..o.....t.",
+    "......l..outlier.implicit",
+    "......i.....o.r..d.r...t.",
+    "riemannsum....i....o...i.",
+    "......e.......v...boxplot",
+    ".....ratio...ray...f...n.",
+    "......r.......t..........",
+    "..........abscissa.......",
+    "..........x...v..........",
+    "..........i..census......",
+    "..........s..............",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    "........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 2,
-        "len": 8,
-        "answer": "multiply",
-        "clue": "What operation is the product?"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 1,
-        "len": 8,
-        "answer": "pentagon",
-        "clue": "5 sided shape"
-      },
-      {
-        "num": 8,
-        "row": 7,
-        "col": 7,
-        "len": 8,
-        "answer": "triangle",
-        "clue": "3 sided shape."
-      },
-      {
-        "num": 10,
-        "row": 10,
-        "col": 5,
-        "len": 3,
-        "answer": "ten",
-        "clue": "-8 + 18 = (write the number)"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 9,
-        "len": 8,
-        "answer": "positive",
-        "clue": "When you multiply 2 negative numbers you get a..."
-      },
-      {
-        "num": 13,
-        "row": 13,
-        "col": 9,
-        "len": 8,
-        "answer": "subtract",
-        "clue": "What operation is the difference?"
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 5,
-        "len": 8,
-        "answer": "fraction",
-        "clue": "A division problem. Also an amount out of something."
-      },
-      {
-        "num": 16,
-        "row": 18,
-        "col": 4,
-        "len": 9,
-        "answer": "exponents",
-        "clue": "The second rule in the order of operations"
-      }
-    ],
-    "down": [
-      {
         "num": 2,
-        "row": 1,
-        "col": 7,
+        "row": 2,
+        "col": 13,
         "len": 10,
-        "answer": "proportion",
-        "clue": "2 Equivalent ratios."
+        "answer": "inflection",
+        "clue": "point where the curve changes concavity"
       },
       {
         "num": 4,
-        "row": 3,
-        "col": 5,
-        "len": 3,
-        "answer": "add",
-        "clue": "What operation is the sum?"
-      },
-      {
-        "num": 5,
         "row": 4,
-        "col": 9,
-        "len": 6,
-        "answer": "divide",
-        "clue": "What operation is the quotient?"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 12,
-        "len": 5,
-        "answer": "right",
-        "clue": "An angle that is 90 degrees."
+        "col": 13,
+        "len": 7,
+        "answer": "mapping",
+        "clue": "a diagram used to determine whether a relation is a function or not a function"
       },
       {
         "num": 7,
         "row": 6,
+        "col": 6,
+        "len": 8,
+        "answer": "compound",
+        "clue": "two simple inequalities joined by \"and\" or \"or\""
+      },
+      {
+        "num": 8,
+        "row": 6,
+        "col": 16,
+        "len": 9,
+        "answer": "parameter",
+        "clue": "number that summarizes data for an entire population"
+      },
+      {
+        "num": 10,
+        "row": 8,
+        "col": 10,
+        "len": 7,
+        "answer": "outlier",
+        "clue": "a number in a set of data that is either way smaller or way bigger than most of the data"
+      },
+      {
+        "num": 11,
+        "row": 8,
+        "col": 18,
+        "len": 8,
+        "answer": "implicit",
+        "clue": "differentiation by separating variables"
+      },
+      {
+        "num": 13,
+        "row": 10,
+        "col": 1,
+        "len": 10,
+        "answer": "riemannsum",
+        "clue": "(2 words) approximation of the area of a function using rectangles under the curve"
+      },
+      {
+        "num": 14,
+        "row": 11,
+        "col": 19,
+        "len": 7,
+        "answer": "boxplot",
+        "clue": "a graph using a number line to show distribution of the data set; created by finding medians"
+      },
+      {
+        "num": 15,
+        "row": 12,
+        "col": 6,
+        "len": 5,
+        "answer": "ratio",
+        "clue": "comparison of two numbers"
+      },
+      {
+        "num": 16,
+        "row": 12,
         "col": 14,
-        "len": 11,
-        "answer": "denominator",
-        "clue": "The bottom part of a fraction."
+        "len": 3,
+        "answer": "ray",
+        "clue": "a line with a start point but no endpoint"
+      },
+      {
+        "num": 17,
+        "row": 14,
+        "col": 11,
+        "len": 8,
+        "answer": "abscissa",
+        "clue": "first coordinate in an ordered pair"
+      },
+      {
+        "num": 18,
+        "row": 16,
+        "col": 14,
+        "len": 6,
+        "answer": "census",
+        "clue": "collection of data from every element of a population"
+      }
+    ],
+    "down": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 21,
+        "len": 6,
+        "answer": "volume",
+        "clue": "space occupied by a solid"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 18,
+        "len": 8,
+        "answer": "centroid",
+        "clue": "a 3D point defining the geometric center of a solid"
+      },
+      {
+        "num": 4,
+        "row": 4,
+        "col": 13,
+        "len": 6,
+        "answer": "modulo",
+        "clue": "remainder when a number is divided by another value"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 24,
+        "len": 9,
+        "answer": "partition",
+        "clue": "a set divided into non-empty subsets such that each element of the set is in exactly one subset"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 7,
+        "len": 9,
+        "answer": "collinear",
+        "clue": "when points are on the same line"
       },
       {
         "num": 9,
         "row": 7,
-        "col": 16,
-        "len": 7,
-        "answer": "percent",
-        "clue": "Always out of 100."
+        "col": 15,
+        "len": 10,
+        "answer": "derivative",
+        "clue": "slope or rate of change of a function"
       },
       {
         "num": 12,
-        "row": 13,
-        "col": 6,
-        "len": 4,
-        "answer": "yard",
-        "clue": "3 feet equals this."
+        "row": 8,
+        "col": 20,
+        "len": 5,
+        "answer": "proof",
+        "clue": "argument used to convice that a mathematical statement is true"
       },
       {
-        "num": 14,
-        "row": 13,
-        "col": 12,
-        "len": 6,
-        "answer": "tenths",
-        "clue": "The first decimal place is called this."
+        "num": 17,
+        "row": 14,
+        "col": 11,
+        "len": 4,
+        "answer": "axis",
+        "clue": "an imaginary line through a body, about which it rotates"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8306",
-  "slug": "math-8306",
-  "fetched_at": "2026-07-14T19:22:39.127086+00:00",
-  "date": "2026-09-04"
+  "source_url": "https://crosswordlabs.com/view/math-8371",
+  "slug": "math-8371",
+  "fetched_at": "2026-07-14T19:13:00.107019+00:00",
+  "date": "2026-09-05"
 }
