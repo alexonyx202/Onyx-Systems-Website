@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "items": [
+    {
+      "id": "n-2026-09-05",
+      "type": "newsletter",
+      "date": "2026-09-05",
+      "title": "Fake 'Are You Human?' Checks Are Running Hidden Commands on Computers",
+      "tag": "Daily Brief",
+      "summary": "Those little boxes websites use to check \"Are you human?\" — scammers are putting up fakes. They ask you to press the Windows key and R, paste a code, and press Enter \"to verify.\" What really happens is a hidden command runs that can sneak a bad program in or open a doorway into your computer. Microsoft and the FTC are warning about this trick right now. A real human check never asks you to run anything. If you see that, close the tab.",
+      "comic": "Newsletter - 2026-09-05-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-05-news1",
+      "type": "tech-note",
+      "date": "2026-09-05",
+      "title": "153 million driver's licenses were stolen — check your free credit report at annualcreditreport.com",
+      "tag": "Tech Note",
+      "summary": "News broke this week that an identity-theft service is selling scanned driver's licenses for more than 153 million Americans and Canadians — and the FBI is investigating the company that collected them. Pull your free credit report at **annualcreditreport.com** (it's free every week, no catch), and freeze your credit for free at **Equifax**, **Experian**, and **TransUnion** so nobody can open a card or loan in your name."
+    },
+    {
+      "id": "t-2026-09-05-tip1",
+      "type": "tech-note",
+      "date": "2026-09-05",
+      "title": "Firefox's new update shows how many trackers it blocked right in the address bar — free at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "**Firefox**'s latest version, out September 1, puts a counter right in the address bar that shows how many ad trackers it stopped, and it loads pages faster with new AI help features on top. If you already use Firefox, it updates itself automatically — or download it free at **firefox.com**. Takes 2 minutes."
+    },
     {
       "id": "n-2026-09-04",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Copy text out of any screenshot — the Windows Snipping Tool's Text Actions does it in one click",
       "tag": "Tech Tip",
       "summary": "The Snipping Tool that's already on your Windows 11 computer can pull the words out of any screenshot. Press the Windows key + Shift + S to take a snip, click the Text Actions button at the top of the picture, then click Copy — now the words paste like normal text. Built into Windows, free, no download."
-    },
-    {
-      "id": "n-2026-09-01",
-      "type": "newsletter",
-      "date": "2026-09-01",
-      "title": "Fake Chrome Update Pop-Ups Are Spreading Malware",
-      "tag": "Daily Brief",
-      "summary": "Security writers are warning about fake browser-update pop-ups: a notice claiming your browser needs a \"critical update.\" Clicking it installs malware, not an update. Real updates come from the browser's own menu — never from a website pop-up. If you see one, close the tab without clicking, then update properly: in Chrome, click the three dots, choose **Help → About Google Chrome**, and let it update itself. Then check your extensions and remove anything you don't recognize.",
-      "comic": "Newsletter - 2026-09-01-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-01-news1",
-      "type": "tech-note",
-      "date": "2026-09-01",
-      "title": "300+ malicious Chrome extensions caught leaking browser data — audit yours in Chrome's Extensions manager",
-      "tag": "Tech Note",
-      "summary": "Security researchers found more than 300 malicious Chrome extensions collecting browsing history or stealing user information. Open Chrome, click the three dots, choose **Extensions → Manage Extensions**, and remove anything you don't recognize or no longer use."
-    },
-    {
-      "id": "t-2026-09-01-tip1",
-      "type": "tech-note",
-      "date": "2026-09-01",
-      "title": "Audit your Chrome extensions in two minutes — Manage Extensions finds the fakes",
-      "tag": "Tech Tip",
-      "summary": "In Chrome, click the three dots, choose **Extensions → Manage Extensions**, and turn off anything you don't recognize or no longer use — one at a time, so you'll know what changed. Real updates come from the browser's own menu, never from a website pop-up."
     }
   ]
 }

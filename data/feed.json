@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-05-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-05",
+      "title": "Fake 'Are You Human?' Checks Are Running Hidden Commands on Computers",
+      "tag": "Daily Brief",
+      "excerpt": "Those little boxes websites use to check \"Are you human?\" — scammers are putting up fakes. They ask you to press the Windows key and R, paste a code, and press Enter \"to verify.\" What really happens is a hidden command runs that can sneak a bad program in or open a doorway into your computer. Microsoft and the FTC are warning about this trick right now. A real human check never asks you to run anything. If you see that, close the tab.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-05-composite.jpg",
+      "comic": "assets/img/news/2026-09-05-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-04",
@@ -166,27 +183,23 @@
       "image": null,
       "comic": null,
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-08-31-daily-brief",
-      "type": "newsletter",
-      "date": "2026-08-31",
-      "title": "Windows 10 Support Ends October 14 — Check Your PC This Week",
-      "tag": "Daily Brief",
-      "excerpt": "Windows 10 support ends October 14, 2026. After that, Microsoft stops issuing security updates for Windows 10. Check which version you have now: press Start, type \"About your PC\", and look at Windows specifications. The free upgrade to Windows 11 is still available for most machines, or it's time to plan a replacement. Source: Microsoft — Windows 10 End of Support.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "cta": {
-        "label": "Book a free check",
-        "href": "tel:+13867557772"
-      }
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-05-post-1",
+      "type": "news",
+      "date": "2026-09-05",
+      "title": "153 million driver's licenses were stolen — check your free credit report at annualcreditreport.com",
+      "tag": "Tech Note",
+      "summary": "News broke this week that an identity-theft service is selling scanned driver's licenses for more than 153 million Americans and Canadians — and the FBI is investigating the company that collected them. Pull your free credit report at **annualcreditreport.com** (it's free every week, no catch), and freeze your credit for free at **Equifax**, **Experian**, and **TransUnion** so nobody can open a card or loan in your name.",
+      "truth": "Most people don't realize a stolen driver's license isn't about somebody driving as you — it's about opening credit cards and loans in your name. And here's the part that surprises everyone: freezing your credit doesn't change your life one bit. Your existing cards still work, you still buy what you normally buy — you just unfreeze for a day when you apply for something new, and freeze it again. It's 15 minutes of work at each of the three bureaus, it's free, and it's the closest thing to a lock on your front door that exists.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-04-post-1",
       "type": "news",
@@ -245,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-08-31-post-1",
-      "type": "news",
-      "date": "2026-08-31",
-      "title": "Windows 10 support ends October 14 — check your edition at Settings → System → About",
-      "tag": "Tech Note",
-      "summary": "Microsoft ends support for Windows 10 on October 14, 2026, after which security updates stop. Press Start, type \"About your PC\", and check the Windows specifications section. If it says Windows 10, upgrade to Windows 11 for free at Settings → Update & Security → Windows Update, or bring your machine in for a compatibility check.",
-      "truth": "Most people don't realize their PC will quietly stop getting security patches this October. The honest answer: check your Windows edition now — the free upgrade path is still open, and six weeks is plenty of time to plan.",
+      "id": "onyx-2026-09-05-post-2",
+      "type": "tip",
+      "date": "2026-09-05",
+      "title": "Firefox's new update shows how many trackers it blocked right in the address bar — free at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "**Firefox**'s latest version, out September 1, puts a counter right in the address bar that shows how many ad trackers it stopped, and it loads pages faster with new AI help features on top. If you already use Firefox, it updates itself automatically — or download it free at **firefox.com**. Takes 2 minutes.",
+      "truth": "Most people don't realize your browser does two jobs at once: it shows you the page, and it quietly tells advertisers who you are and where you've been. Firefox blocks that second job by default now, and it shows you the count so you can see it working. The honest answer to \"is my computer safe?\" is: safer than it was last week — if you let your browser update itself.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -314,23 +327,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-08-31-post-2",
-      "type": "tip",
-      "date": "2026-08-31",
-      "title": "Install Microsoft's August security update — open Settings → Windows Update and check for updates",
-      "tag": "Tech Tip",
-      "summary": "Microsoft's August update patched roughly 400 vulnerabilities, including three actively exploited zero-days. Open Settings → Update & Security → Windows Update → Check for updates and install anything pending, then restart when asked.",
-      "truth": "The August patch batch is one of the biggest of the year, and three of the flaws are already being used in the wild. The honest answer: a two-minute update now is cheaper than a ransomware call later.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
