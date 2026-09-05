@@ -200,6 +200,9 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # Extended 2026-08-29: Genetic testing data breach (Baylor Genetics) is a
     # security alert — no product name required.
     "breach", "genetic testing",
+    # Extended 2026-09-05: fake "Are you human?" CAPTCHA-check scam brief
+    # (Microsoft + FTC warning) is a security alert (exempt).
+    "are you human", "captcha",
     ]
     if any(s in low for s in SKIP):
         return fails
