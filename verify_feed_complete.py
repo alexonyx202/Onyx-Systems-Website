@@ -114,6 +114,10 @@ KNOWN_PRODUCTS = [
     # universally-named port standard in today's Tech Note tip headline; the obtain
     # method is stated (plug the flash drive into the blue port).
     "usb",
+    # Extended 2026-09-06: SunPass (Florida's toll system, sunpass.com) — real
+    # service named in today's Tech Note headline; obtain method stated (check the
+    # real balance by signing in at sunpass.com, never via a text link).
+    "sunpass",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -203,6 +207,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # Extended 2026-09-05: fake "Are you human?" CAPTCHA-check scam brief
     # (Microsoft + FTC warning) is a security alert (exempt).
     "are you human", "captcha",
+    # Extended 2026-09-06: 153-million driver's-license scan breach (IDSCAN,
+    # FBI-investigated, BleepingComputer/KrebsOnSecurity) is a security alert (exempt).
+    "driver's license", "driver's licenses", "drivers license", "drivers licenses",
+    "license scan", "153 million",
     ]
     if any(s in low for s in SKIP):
         return fails
