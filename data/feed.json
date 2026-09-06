@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-06-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-06",
+      "title": "Scans of 153 Million Driver's Licenses Are Being Sold Online",
+      "tag": "Daily Brief",
+      "excerpt": "Criminals are selling pictures of more than 153 million driver's licenses stolen from a company that checks IDs for car rentals and stores — the FBI is investigating. With your license picture, a stranger can open cards or loans in your name. Do this today: pull your free credit report at annualcreditreport.com and freeze your credit for free at Equifax, Experian, and TransUnion — it stops new accounts cold. Expect a second wave: scam emails and calls offering to \"help\" you with this breach. Hang up and delete.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-06-composite.jpg",
+      "comic": "assets/img/news/2026-09-06-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-05-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-05",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-02-composite.jpg",
       "comic": "assets/img/news/2026-09-02-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-01-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-01",
-      "title": "Fake Chrome Update Pop-Ups Are Spreading Malware",
-      "tag": "Daily Brief",
-      "excerpt": "Security writers are warning about fake browser-update pop-ups: a notice claiming your browser needs a \"critical update.\" Clicking it installs malware, not an update. Real updates come from the browser's own menu — never from a website pop-up. If you see one, close the tab without clicking, then update properly: in Chrome, click the three dots, choose **Help → About Google Chrome**, and let it update itself. Then check your extensions and remove anything you don't recognize.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": null,
-      "comic": null,
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-06-post-1",
+      "type": "news",
+      "date": "2026-09-06",
+      "title": "That \"unpaid SunPass toll\" text is fake — delete it and check your real balance at sunpass.com",
+      "tag": "Tech Note",
+      "summary": "The real SunPass never demands payment over a text message, and Florida's Attorney General has shut down fake toll sites before. Don't tap the link — delete the message, then check what you actually owe by signing in at **sunpass.com** or calling 1-888-TOLL-FLA (1-888-865-5352). Report the message free at **reportfraud.ftc.gov**.",
+      "truth": "These texts work because they land on a day you actually drove to Gainesville or Orlando, and six dollars sounds believable. The crooks only need one panicked tap. Here's the honest rule: no toll agency in Florida will ever ask you to settle up by tapping a link in a text — real invoices come by mail and inside your account. Delete first, then check the real balance yourself. More than one customer has told me they paid a fake toll site before something felt off.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-05-post-1",
       "type": "news",
@@ -244,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-01-post-1",
-      "type": "news",
-      "date": "2026-09-01",
-      "title": "300+ malicious Chrome extensions caught leaking browser data — audit yours in Chrome's Extensions manager",
-      "tag": "Tech Note",
-      "summary": "Security researchers found more than 300 malicious Chrome extensions collecting browsing history or stealing user information. Open Chrome, click the three dots, choose **Extensions → Manage Extensions**, and remove anything you don't recognize or no longer use.",
-      "truth": "Extensions are the usual way this scam gets in. People install a \"free PDF converter\" or a coupon helper once and forget about it for years — and it keeps quietly watching every page they visit.",
+      "id": "onyx-2026-09-06-post-2",
+      "type": "tip",
+      "date": "2026-09-06",
+      "title": "Windows 10 computers no longer get free security updates — check Windows Update for your free Windows 11 offer",
+      "tag": "Tech Tip",
+      "summary": "On a Windows 10 PC, click **Start > Settings > Update & Security > Windows Update** and choose **Check for updates**. If your PC can run Windows 11, Microsoft's free offer appears right there — no purchase, no new computer, and your files stay put. If you see an offer for \"Extended Security Updates\" instead, that's Microsoft's safety net for older PCs — and it doesn't last forever.",
+      "truth": "Most people don't realize what \"no more updates\" really means: your banks, your email, and your protection programs all lean on that update stream, and an unpatched Windows 10 computer will still turn on and \"work fine\" right up until it doesn't. The honest answer is that plenty of these machines can make the free jump to Windows 11 today — but nobody gets told unless they look.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -313,23 +327,9 @@
         "#ComputerRepair",
         "#WindowsTips"
       ]
-    },
-    {
-      "id": "onyx-2026-09-01-post-2",
-      "type": "tip",
-      "date": "2026-09-01",
-      "title": "Audit your Chrome extensions in two minutes — Manage Extensions finds the fakes",
-      "tag": "Tech Tip",
-      "summary": "In Chrome, click the three dots, choose **Extensions → Manage Extensions**, and turn off anything you don't recognize or no longer use — one at a time, so you'll know what changed. Real updates come from the browser's own menu, never from a website pop-up.",
-      "truth": "A \"free PDF converter\" or a coupon helper installed once and forgotten can quietly watch every page you visit for years. Two minutes in Manage Extensions closes that door.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-05",
+  "updated": "2026-09-06",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

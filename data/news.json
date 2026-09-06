@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-05",
+  "updated": "2026-09-06",
   "items": [
+    {
+      "id": "n-2026-09-06",
+      "type": "newsletter",
+      "date": "2026-09-06",
+      "title": "Scans of 153 Million Driver's Licenses Are Being Sold Online",
+      "tag": "Daily Brief",
+      "summary": "Criminals are selling pictures of more than 153 million driver's licenses stolen from a company that checks IDs for car rentals and stores — the FBI is investigating. With your license picture, a stranger can open cards or loans in your name. Do this today: pull your free credit report at annualcreditreport.com and freeze your credit for free at Equifax, Experian, and TransUnion — it stops new accounts cold. Expect a second wave: scam emails and calls offering to \"help\" you with this breach. Hang up and delete.",
+      "comic": "Newsletter - 2026-09-06-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-06-news1",
+      "type": "tech-note",
+      "date": "2026-09-06",
+      "title": "That \"unpaid SunPass toll\" text is fake — delete it and check your real balance at sunpass.com",
+      "tag": "Tech Note",
+      "summary": "The real SunPass never demands payment over a text message, and Florida's Attorney General has shut down fake toll sites before. Don't tap the link — delete the message, then check what you actually owe by signing in at **sunpass.com** or calling 1-888-TOLL-FLA (1-888-865-5352). Report the message free at **reportfraud.ftc.gov**."
+    },
+    {
+      "id": "t-2026-09-06-tip1",
+      "type": "tech-note",
+      "date": "2026-09-06",
+      "title": "Windows 10 computers no longer get free security updates — check Windows Update for your free Windows 11 offer",
+      "tag": "Tech Tip",
+      "summary": "On a Windows 10 PC, click **Start > Settings > Update & Security > Windows Update** and choose **Check for updates**. If your PC can run Windows 11, Microsoft's free offer appears right there — no purchase, no new computer, and your files stay put. If you see an offer for \"Extended Security Updates\" instead, that's Microsoft's safety net for older PCs — and it doesn't last forever."
+    },
     {
       "id": "n-2026-09-05",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Is your flash drive crawling? Plug it into the blue USB port — it's many times faster and it's already on your computer",
       "tag": "Tech Tip",
       "summary": "Look at the USB ports on your computer: some are black, some are blue. The blue ones are the fast kind — a flash drive or camera card reader can run many times quicker in them than in the old black ports. There's no software to download and nothing to install — just move the plug. If you don't have blue ports, the black ones still work fine; they're just slower."
-    },
-    {
-      "id": "n-2026-09-02",
-      "type": "newsletter",
-      "date": "2026-09-02",
-      "title": "FBI Warning: One Click Can Hand Scammers Your Email — No Password Needed",
-      "tag": "Daily Brief",
-      "summary": "The FBI put out a warning yesterday about a new trick: scammers send you a link that opens a real-looking Google or Microsoft screen asking, \"Allow this app access?\" One click hands them your email — your messages, your contacts, your password-reset emails — even though your password never changed, and even with two-step sign-in on. Change your password afterward and they still stay logged in. Fix in two minutes: open your email account settings and look for \"connected apps\" or \"third-party access,\" then remove anything you don't recognize. Never approve an access request you didn't start. (Source: According to the FBI's official Internet Crime Complaint Center, September 1, 2026)",
-      "comic": "Newsletter - 2026-09-02-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-02-news1",
-      "type": "tech-note",
-      "date": "2026-09-02",
-      "title": "Google's free Security Checkup shows every device signed into your Gmail — run it in 2 minutes at myaccount.google.com/security-checkup",
-      "tag": "Tech Note",
-      "summary": "Run Google's free Security Checkup at myaccount.google.com/security-checkup. It lists every device signed into your Gmail and lets you sign out any device you don't recognize — it takes 2 minutes and Google walks you through it step by step."
-    },
-    {
-      "id": "t-2026-09-02-tip1",
-      "type": "tech-note",
-      "date": "2026-09-02",
-      "title": "Copy text out of any screenshot — the Windows Snipping Tool's Text Actions does it in one click",
-      "tag": "Tech Tip",
-      "summary": "The Snipping Tool that's already on your Windows 11 computer can pull the words out of any screenshot. Press the Windows key + Shift + S to take a snip, click the Text Actions button at the top of the picture, then click Copy — now the words paste like normal text. Built into Windows, free, no download."
     }
   ]
 }

@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-08-30",
-    "question": "Would a yearly 'computer tune-up' interest you?",
+    "weekOf": "2026-09-06",
+    "question": "What scares you most about your PC?",
     "options": [
       {
-        "id": "yes",
-        "label": "Yes, sign me up"
+        "id": "lose",
+        "label": "Losing my files"
       },
       {
-        "id": "maybe",
-        "label": "Depends on price"
+        "id": "hack",
+        "label": "Getting hacked"
       },
       {
-        "id": "diy",
-        "label": "I do it myself"
+        "id": "slow",
+        "label": "It dying suddenly"
       },
       {
-        "id": "never",
-        "label": "Not really"
+        "id": "cost",
+        "label": "A big repair bill"
       }
     ]
   }
