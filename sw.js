@@ -12,7 +12,7 @@
    is fine (SWR self-heals assets), but bump it when you want a clean slate of
    cached images. Keep it in sync with <meta name="onyx-build"> in the pages. */
 
-var CACHE = 'onyx-v20260905';
+var CACHE = 'onyx-v20260906';
 
 self.addEventListener('install', function (e) {
   // Pre-cache the entry page so the site works offline after the first visit.

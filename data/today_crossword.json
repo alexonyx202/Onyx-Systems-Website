@@ -1,202 +1,204 @@
 {
-  "title": "math",
-  "size": 25,
+  "title": "Math",
+  "size": 27,
   "grid": [
-    "....................v....",
-    "............inflection...",
-    ".................e..l....",
-    "............mapping.u..p.",
-    "......c.....o....t..m..a.",
-    ".....compound..parameter.",
-    "......l.....u.d..o.....t.",
-    "......l..outlier.implicit",
-    "......i.....o.r..d.r...t.",
-    "riemannsum....i....o...i.",
-    "......e.......v...boxplot",
-    ".....ratio...ray...f...n.",
-    "......r.......t..........",
-    "..........abscissa.......",
-    "..........x...v..........",
-    "..........i..census......",
-    "..........s..............",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    "........................."
+    ".........ray...............",
+    "..........l...............p",
+    "..........t...............e",
+    "........point.anglebisector",
+    "..........t.r.r...........i",
+    "......postulate...........m",
+    "..........d.n.a...........e",
+    ".......inverse............t",
+    "............v.o.....d.....e",
+    ".........l..e.b.....i.....r",
+    "......similarity....s......",
+    ".........n..s.u.....t......",
+    "rightangle..a.s.....a......",
+    ".........a..l.e.....n......",
+    "......m..r....a..p..c......",
+    "......i..p....n..line......",
+    "......decagon.g..a..f......",
+    "......p..i....l..n..o......",
+    "......o..r..theorem.r......",
+    ".....kite...........m......",
+    "......n.............u......",
+    "......t.............l......",
+    "....................a......",
+    "...........................",
+    "...........................",
+    "...........................",
+    "..........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 2,
-        "col": 13,
-        "len": 10,
-        "answer": "inflection",
-        "clue": "point where the curve changes concavity"
+        "num": 1,
+        "row": 1,
+        "col": 10,
+        "len": 3,
+        "answer": "ray",
+        "clue": "a line that has one endpoint and goes on infinitely in only one direction"
       },
       {
         "num": 4,
         "row": 4,
-        "col": 13,
-        "len": 7,
-        "answer": "mapping",
-        "clue": "a diagram used to determine whether a relation is a function or not a function"
+        "col": 9,
+        "len": 5,
+        "answer": "point",
+        "clue": "a dot and named by a capital letter"
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 15,
+        "len": 13,
+        "answer": "anglebisector",
+        "clue": "a line or ray that divides an angle into two congruent angles"
       },
       {
         "num": 7,
         "row": 6,
-        "col": 6,
-        "len": 8,
-        "answer": "compound",
-        "clue": "two simple inequalities joined by \"and\" or \"or\""
+        "col": 7,
+        "len": 9,
+        "answer": "postulate",
+        "clue": "the basic structure from which lemmas and theorems are derived"
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 16,
-        "len": 9,
-        "answer": "parameter",
-        "clue": "number that summarizes data for an entire population"
-      },
-      {
-        "num": 10,
         "row": 8,
-        "col": 10,
+        "col": 8,
         "len": 7,
-        "answer": "outlier",
-        "clue": "a number in a set of data that is either way smaller or way bigger than most of the data"
+        "answer": "inverse",
+        "clue": "to the opposite of another operation."
       },
       {
-        "num": 11,
-        "row": 8,
-        "col": 18,
-        "len": 8,
-        "answer": "implicit",
-        "clue": "differentiation by separating variables"
+        "num": 12,
+        "row": 11,
+        "col": 7,
+        "len": 10,
+        "answer": "similarity",
+        "clue": "if their corresponding angles are congruent"
       },
       {
         "num": 13,
-        "row": 10,
+        "row": 13,
         "col": 1,
         "len": 10,
-        "answer": "riemannsum",
-        "clue": "(2 words) approximation of the area of a function using rectangles under the curve"
-      },
-      {
-        "num": 14,
-        "row": 11,
-        "col": 19,
-        "len": 7,
-        "answer": "boxplot",
-        "clue": "a graph using a number line to show distribution of the data set; created by finding medians"
-      },
-      {
-        "num": 15,
-        "row": 12,
-        "col": 6,
-        "len": 5,
-        "answer": "ratio",
-        "clue": "comparison of two numbers"
+        "answer": "rightangle",
+        "clue": "the angle bounded by two lines perpendicular to each other"
       },
       {
         "num": 16,
-        "row": 12,
-        "col": 14,
-        "len": 3,
-        "answer": "ray",
-        "clue": "a line with a start point but no endpoint"
+        "row": 16,
+        "col": 18,
+        "len": 4,
+        "answer": "line",
+        "clue": "infinitely long collection of points extending in two opposite directions"
       },
       {
         "num": 17,
-        "row": 14,
-        "col": 11,
-        "len": 8,
-        "answer": "abscissa",
-        "clue": "first coordinate in an ordered pair"
+        "row": 17,
+        "col": 7,
+        "len": 7,
+        "answer": "decagon",
+        "clue": "a plane figure with ten straight sides and angles."
       },
       {
         "num": 18,
-        "row": 16,
-        "col": 14,
-        "len": 6,
-        "answer": "census",
-        "clue": "collection of data from every element of a population"
+        "row": 19,
+        "col": 13,
+        "len": 7,
+        "answer": "theorem",
+        "clue": "a proposition or statement that is demonstrated."
+      },
+      {
+        "num": 19,
+        "row": 20,
+        "col": 6,
+        "len": 4,
+        "answer": "kite",
+        "clue": "a parallelogram also has two pairs of equal-length sides, but they are opposite to each other"
       }
     ],
     "down": [
       {
-        "num": 1,
+        "num": 2,
         "row": 1,
-        "col": 21,
-        "len": 6,
-        "answer": "volume",
-        "clue": "space occupied by a solid"
+        "col": 11,
+        "len": 8,
+        "answer": "altitude",
+        "clue": "the perpendicular segment from a vertex of a triangle to the opposite side"
       },
       {
         "num": 3,
         "row": 2,
-        "col": 18,
-        "len": 8,
-        "answer": "centroid",
-        "clue": "a 3D point defining the geometric center of a solid"
-      },
-      {
-        "num": 4,
-        "row": 4,
-        "col": 13,
-        "len": 6,
-        "answer": "modulo",
-        "clue": "remainder when a number is divided by another value"
+        "col": 27,
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "the distance around the edge of a shape."
       },
       {
         "num": 5,
         "row": 4,
-        "col": 24,
-        "len": 9,
-        "answer": "partition",
-        "clue": "a set divided into non-empty subsets such that each element of the set is in exactly one subset"
+        "col": 13,
+        "len": 11,
+        "answer": "transversal",
+        "clue": "a line that intersects two or more other lines."
       },
       {
         "num": 6,
-        "row": 5,
-        "col": 7,
-        "len": 9,
-        "answer": "collinear",
-        "clue": "when points are on the same line"
+        "row": 4,
+        "col": 15,
+        "len": 4,
+        "answer": "area",
+        "clue": "used to define the amount of space taken up by a 2D shape or surface."
       },
       {
         "num": 9,
-        "row": 7,
+        "row": 9,
         "col": 15,
+        "len": 11,
+        "answer": "obtuseangle",
+        "clue": "exceeding 90 degrees but less than 180 degrees."
+      },
+      {
+        "num": 10,
+        "row": 9,
+        "col": 21,
+        "len": 15,
+        "answer": "distanceformula",
+        "clue": "gives the distances between pairs of points in terms of their coordinates"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 10,
         "len": 10,
-        "answer": "derivative",
-        "clue": "slope or rate of change of a function"
+        "answer": "linearpair",
+        "clue": "a pair of adjacent angles formed when two lines intersect."
       },
       {
-        "num": 12,
-        "row": 8,
-        "col": 20,
+        "num": 14,
+        "row": 15,
+        "col": 7,
+        "len": 8,
+        "answer": "midpoint",
+        "clue": "a point at or near the middle of, or equidistant from, both ends, as of a line"
+      },
+      {
+        "num": 15,
+        "row": 15,
+        "col": 18,
         "len": 5,
-        "answer": "proof",
-        "clue": "argument used to convice that a mathematical statement is true"
-      },
-      {
-        "num": 17,
-        "row": 14,
-        "col": 11,
-        "len": 4,
-        "answer": "axis",
-        "clue": "an imaginary line through a body, about which it rotates"
+        "answer": "plane",
+        "clue": "a flat, two-dimensional surface that extends infinitely far."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8371",
-  "slug": "math-8371",
-  "fetched_at": "2026-07-14T19:13:00.107019+00:00",
-  "date": "2026-09-05"
+  "source_url": "https://crosswordlabs.com/view/math-8393",
+  "slug": "math-8393",
+  "fetched_at": "2026-07-14T19:15:18.758005+00:00",
+  "date": "2026-09-06"
 }
