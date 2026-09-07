@@ -120,15 +120,29 @@ def _frontmatter(md):
 
 
 def _box_section(md, marker):
-    """Body after a header line containing `marker`, up to the next ━━ header or ---."""
-    idx = md.find(marker)
-    if idx < 0:
-        return ""
-    nl = md.find("\n", idx)
-    rest = md[nl + 1:] if nl > 0 else ""
+    """Body after a header line containing `marker`, up to the next section
+    boundary (━━━ header, ## markdown header, or ---).
+
+    Accepts BOTH header styles — canonical `━━━ 🔴 ALERT ━━━` and the markdown
+    `## 🔴 ALERT` an agent may write (2026-09-07: the markdown style made every
+    section over-capture the rest of the brief into the alert/summary)."""
+    m = re.search(rf"^(?:━+.*?|#+.*?){re.escape(marker)}", md, re.M)
+    if not m:
+        idx = md.find(marker)
+        if idx < 0:
+            return ""
+        nl = md.find("\n", idx)
+        rest = md[nl + 1:] if nl > 0 else ""
+    else:
+        nl = md.find("\n", m.end())
+        rest = md[nl + 1:] if nl > 0 else ""
     out = []
     for ln in rest.split("\n"):
-        if ln.lstrip().startswith("━") or ln.strip() == "---" or set(ln.strip()) == {"-"}:
+        if ln.lstrip().startswith("━"):
+            break
+        if re.match(r"^#{1,6}\s", ln):
+            break
+        if ln.strip() == "---" or set(ln.strip()) == {"-"}:
             break
         out.append(ln)
     return "\n".join(out).strip()

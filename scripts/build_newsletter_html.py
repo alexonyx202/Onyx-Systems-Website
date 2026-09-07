@@ -247,12 +247,30 @@ def extract_comedy_break_title(md):
     return "COMEDY BREAK"
 
 
+def _find_header(md, marker_prefix):
+    """Index of the section header line containing `marker_prefix`, or -1.
+
+    A header is either a canonical box line (starts with ━) or a markdown
+    header (starts with #). Matching header lines only prevents a marker that
+    appears in body text (e.g. the word "ALERT" inside a sentence) from being
+    mistaken for the section start."""
+    m = re.search(rf"^(?:━+.*?|#+.*?){re.escape(marker_prefix)}", md, re.M)
+    return m.start() if m else md.find(marker_prefix)
+
+
 def find_section(md, marker_prefix):
-    """Return the TEXT BODY after a `━━━ <marker_prefix> ... ━━━` header line.
+    """Return the TEXT BODY after the section header for `marker_prefix`.
+
+    Accepts BOTH header styles so a brief written either way renders
+    identically (2026-09-07 fix — an agent wrote `## 🔴 ALERT` markdown headers
+    and every section over-captured the rest of the document):
+      - canonical:  ━━━ 🔴 ALERT ━━━   /  ━━━ 💡 DAILY TIP: Title ━━━
+      - markdown:   ## 🔴 ALERT        /  ## 💡 DAILY TIP: Title
     The header line itself (which may include a title after the marker) is NOT
-    included in the body. Stops at the next ━━━ boundary or '---' or EOF.
+    included in the body. Stops at the next section boundary (━━━ line, ##
+    markdown header), a horizontal rule (---), or EOF.
     Returns (title, body): title = text after marker_prefix on the header line (if any)."""
-    idx = md.find(marker_prefix)
+    idx = _find_header(md, marker_prefix)
     if idx < 0:
         return "", ""
     # header line runs from idx to the next newline
@@ -260,15 +278,20 @@ def find_section(md, marker_prefix):
     header = md[idx:nl] if nl > 0 else md[idx:]
     # title = everything after the marker_prefix on the header line
     title = header[len(marker_prefix):].strip().strip("━").strip()
+    # "MARKER: Title" leaves a leading colon in the title (markdown style)
+    if title.startswith(":"):
+        title = title[1:].strip()
     # body starts after the header newline
     rest = md[nl + 1:] if nl > 0 else ""
-    # A section runs until the next box-drawing header line (starts with ━) or a
-    # horizontal rule (---). The old boundary regex failed to match headers that
-    # carry text after the leading ━, which made every section over-capture the
-    # rest of the document. Split on header/rule lines instead.
+    # A section runs until the next section header line (box-drawing ━ or a
+    # markdown # header) or a horizontal rule (---). The old boundary regex
+    # only split on ━/--- lines, so a brief written with ## headers made every
+    # section over-capture the rest of the document.
     seg_lines = []
     for ln in rest.split("\n"):
         if ln.lstrip().startswith("━"):
+            break
+        if re.match(r"^#{1,6}\s", ln):
             break
         if ln.strip() == "---" or set(ln.strip()) == {"-"}:
             break

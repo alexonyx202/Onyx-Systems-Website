@@ -142,6 +142,80 @@ JARGON_PATTERNS = [
     r"\bheap read\b", r"\bstate race\b", r"\bmips\b",
 ]
 
+# Leaked-markdown / section-marker signals — a summary/excerpt/truth that
+# contains any of these is carrying content from OTHER newsletter sections
+# (2026-09-07: a brief written with `## 🔴 ALERT` markdown headers made every
+# section over-capture the rest of the document; the whole newsletter ended up
+# inside today's daily-brief excerpt and the gate did not catch it).
+LEAK_MARKERS = [
+    "## ",           # raw markdown section header leaked into a field
+    "TODAY IN TECH",
+    "DAILY TIP",
+    "COMEDY BREAK",
+    "![Far Side",
+    "![Header Logo",
+    "![Business Card",
+    "farside_",
+]
+
+# A summary/excerpt/truth longer than this is a whole-document leak, not a
+# summary (today's broken excerpt was ~2,100 chars; real summaries run <= ~600).
+MAX_FIELD_LEN = 750
+
+
+def scan_leaks(path, arrays):
+    """Flag any entry field that carries leaked newsletter-section content.
+
+    Every string field (title/headline/excerpt/summary/tip/truth/...) is
+    checked for section markers and suspicious length. Catches the failure
+    mode where a badly-formatted brief makes the parser over-capture the
+    whole document into one field."""
+    if not os.path.exists(path):
+        return []
+    data = json.load(open(path, encoding="utf-8"))
+    fails = []
+    fname = os.path.basename(path)
+    for arr in arrays:
+        for e in data.get(arr, []):
+            eid = e.get("id") or e.get("date") or "?"
+            for k, v in e.items():
+                if not isinstance(v, str):
+                    continue
+                for mk in LEAK_MARKERS:
+                    if mk in v:
+                        fails.append(
+                            f"[{fname} {eid}] field {k!r} contains leaked section "
+                            f"marker {mk!r} — other newsletter sections bled into this field"
+                        )
+                if len(v) > MAX_FIELD_LEN:
+                    fails.append(
+                        f"[{fname} {eid}] field {k!r} suspiciously long "
+                        f"({len(v)} chars > {MAX_FIELD_LEN}) — likely whole-document leak"
+                    )
+    return fails
+
+
+def check_newsletter_html():
+    """Verify the rendered newsletter.html is not section-mangled.
+
+    A clean build contains no raw markdown (## ...) and each section heading
+    appears exactly once. When a brief is parsed wrong, leaked sections show
+    up as raw `##` headers and duplicated section titles inside the wrong
+    <div>s (2026-09-07 regression)."""
+    path = os.path.join(ROOT, "newsletter.html")
+    if not os.path.exists(path):
+        return []
+    html = open(path, encoding="utf-8").read()
+    fails = []
+    if re.search(r"##\s", html):
+        fails.append("[newsletter.html] contains raw markdown (## ...) — sections over-captured; rebuild from a properly-formatted brief")
+    for marker in ("TODAY IN TECH", "DAILY TIP", "COMEDY BREAK"):
+        n = html.count(marker)
+        if n > 1:
+            fails.append(f"[newsletter.html] {marker!r} appears {n}x — content leaked across sections")
+    return fails
+
+
 def has_jargon(text):
     """Check if text contains forbidden jargon (case-insensitive, word boundaries)."""
     if not text:
@@ -261,9 +335,12 @@ def scan_file(path, arrays=("posts", "news")):
 def main():
     feed = os.path.join(ROOT, "data", "feed.json")
     fails = scan_file(feed, ("posts", "news"))
+    fails += scan_leaks(feed, ("posts", "news"))
     if "--all" in sys.argv:
         news = os.path.join(ROOT, "data", "news.json")
         fails += scan_file(news, ("items",))
+        fails += scan_leaks(news, ("items",))
+        fails += check_newsletter_html()
     if fails:
         print("COMPLETENESS GATE FAILED — incomplete entries detected:")
         for f in fails:
