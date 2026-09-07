@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-07-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-07",
+      "title": "Hackers Are Taking Over Home Routers Right Now — Check Yours Today",
+      "tag": "Daily Brief",
+      "excerpt": "Security researchers just caught criminals breaking into a popular brand of internet router and taking complete control — no password needed. If crooks get into your router, they can watch everything you do online and steer you to fake websites that steal your logins. Your best defense takes two minutes: unplug your router, count to ten, plug it back in, then check its settings for a software update — or call your internet company and ask them to update it for you.\n\n\n\n## 📰 TODAY IN TECH\n\n• Apple holds its big yearly announcement this Wednesday, September 9 — new products across its lineup are expected. If you've been waiting to upgrade, watch for price drops on last year's models right after. (Source: Reuters, Aug. 26, 2026)\n\n• Microsoft's next big Windows refresh has entered final testing and should reach regular computers this fall. No action needed on your end — it'll arrive through your normal updates when it's ready. (Source: BetaNews, Aug. 28, 2026)\n\n• Britain reports a massive jump in people losing money to hackers taking over their email and social media accounts — up more than 400% in one year. A strong, unique password on your email is your best armor. (Source: The Record, Sept. 4, 2026)\n\n## 💡 DAILY TIP: Add a Second Lock to Your Email\n\nOpen your email's settings and click the option called \"two-step verification.\" Turn it on — a short code gets texted to you after your password. Two minutes of setup, and a stolen password alone can't get into your email.\n\n## 😄 COMEDY BREAK\n\n![Far Side comic: \"Well, Mr. Rosenburg, your lab results look pretty good—although I might suggest your testosterone level is a tad high.\"](farside_2026-09-07.jpg)\n\n\"Well, Mr. Rosenburg, your lab results look pretty good—although I might suggest your testosterone level is a tad high.\"\n\n— Gary Larson, The Far Side®",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-07-composite.jpg",
+      "comic": "assets/img/news/2026-09-07-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-06-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-06",
@@ -166,26 +183,25 @@
       "image": "assets/img/news/2026-09-03-composite.jpg",
       "comic": "assets/img/news/2026-09-03-comic-square.jpg",
       "read_more": "#contact"
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-09-02-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-02",
-      "title": "FBI Warning: One Click Can Hand Scammers Your Email — No Password Needed",
-      "tag": "Daily Brief",
-      "excerpt": "The FBI put out a warning yesterday about a new trick: scammers send you a link that opens a real-looking Google or Microsoft screen asking, \"Allow this app access?\" One click hands them your email — your messages, your contacts, your password-reset emails — even though your password never changed, and even with two-step sign-in on. Change your password afterward and they still stay logged in. Fix in two minutes: open your email account settings and look for \"connected apps\" or \"third-party access,\" then remove anything you don't recognize. Never approve an access request you didn't start. (Source: According to the FBI's official Internet Crime Complaint Center, September 1, 2026)",
+      "id": "onyx-2026-09-07-post-1",
+      "type": "news",
+      "date": "2026-09-07",
+      "title": "The FTC just refreshed its phishing scam guide — learn the six tricks crooks use in fake emails, and report them free at reportfraud.ftc.gov",
+      "tag": "Tech Note",
+      "summary": "The Federal Trade Commission updated its free phishing guide on September 1, 2026. It walks through the six stories scammers tell — fake \"suspicious activity\" alerts, bogus invoices, phony refunds, and too-good coupons — and shows exactly what to do if you already clicked. Read it free at **consumer.ftc.gov** (search \"phishing scams\"), and forward any suspicious email to the FTC at **reportfraud.ftc.gov** — it takes under two minutes and helps shut the crooks down.",
+      "truth": "Every fake email I see at the counter uses one of those six tricks — a problem with your account, an invoice you don't recognize, a refund you didn't ask for. The story changes; the playbook doesn't. Once you can name the trick, the spell breaks. I keep the FTC guide bookmarked on customer machines so a suspicious email takes ten seconds to check instead of a panicked click.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-02-composite.jpg",
-      "comic": "assets/img/news/2026-09-02-comic-square.jpg",
-      "read_more": "#contact"
-    }
-  ],
-  "posts": [
+        "#PhishingScams",
+        "#FTC"
+      ]
+    },
     {
       "id": "onyx-2026-09-06-post-1",
       "type": "news",
@@ -243,18 +259,19 @@
       ]
     },
     {
-      "id": "onyx-2026-09-02-post-1",
-      "type": "news",
-      "date": "2026-09-02",
-      "title": "Google's free Security Checkup shows every device signed into your Gmail — run it in 2 minutes at myaccount.google.com/security-checkup",
-      "tag": "Tech Note",
-      "summary": "Run Google's free Security Checkup at myaccount.google.com/security-checkup. It lists every device signed into your Gmail and lets you sign out any device you don't recognize — it takes 2 minutes and Google walks you through it step by step.",
-      "truth": "Whoever gets into your email can reset your bank password, your Facebook, your Amazon — every \"forgot password\" email lands there. I see it all the time: a Gmail quietly still signed in on a computer sold at a yard sale two years ago. Looking at the device list is like checking who has a copy of your house key — you'd want to know.",
+      "id": "onyx-2026-09-07-post-2",
+      "type": "tip",
+      "date": "2026-09-07",
+      "title": "Bitwarden remembers your passwords so you can use a different one everywhere — free, download it from bitwarden.com",
+      "tag": "Tech Tip",
+      "summary": "Reusing the same password everywhere is how one leaked password empties an email account, then a bank account. **Bitwarden** is a free password manager: it remembers every password so you only need one strong master password. Download it free at **bitwarden.com**, install it, and let it save passwords as you sign in. It takes about ten minutes to set up, works on your browser, and there's no paid plan needed for the basics.",
+      "truth": "The scary email takeover numbers in the news almost always trace back to one reused password. I set up Bitwarden for customers who juggle a dozen accounts, and the relief on their face when they only have to remember one thing is worth the ten minutes. Your master password should be a short sentence nobody could guess — something like four unrelated words.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#EmailSecurity"
+        "#Bitwarden",
+        "#PasswordManager"
       ]
     },
     {
@@ -312,24 +329,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-02-post-2",
-      "type": "tip",
-      "date": "2026-09-02",
-      "title": "Copy text out of any screenshot — the Windows Snipping Tool's Text Actions does it in one click",
-      "tag": "Tech Tip",
-      "summary": "The Snipping Tool that's already on your Windows 11 computer can pull the words out of any screenshot. Press the Windows key + Shift + S to take a snip, click the Text Actions button at the top of the picture, then click Copy — now the words paste like normal text. Built into Windows, free, no download.",
-      "truth": "I used to watch customers retype an error message word for word off the screen because they didn't know their computer can read text out of pictures. The first time you drag a box around a screenshot and get real, copyable words, it feels like a magic trick — then you use it every single week.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsTips"
-      ]
     }
   ],
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

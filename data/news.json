@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "items": [
+    {
+      "id": "n-2026-09-07",
+      "type": "newsletter",
+      "date": "2026-09-07",
+      "title": "Hackers Are Taking Over Home Routers Right Now — Check Yours Today",
+      "tag": "Daily Brief",
+      "summary": "Security researchers just caught criminals breaking into a popular brand of internet router and taking complete control — no password needed. If crooks get into your router, they can watch everything you do online and steer you to fake websites that steal your logins. Your best defense takes two minutes: unplug your router, count to ten, plug it back in, then check its settings for a software update — or call your internet company and ask them to update it for you.\n\n\n\n## 📰 TODAY IN TECH\n\n• Apple holds its big yearly announcement this Wednesday, September 9 — new products across its lineup are expected. If you've been waiting to upgrade, watch for price drops on last year's models right after. (Source: Reuters, Aug. 26, 2026)\n\n• Microsoft's next big Windows refresh has entered final testing and should reach regular computers this fall. No action needed on your end — it'll arrive through your normal updates when it's ready. (Source: BetaNews, Aug. 28, 2026)\n\n• Britain reports a massive jump in people losing money to hackers taking over their email and social media accounts — up more than 400% in one year. A strong, unique password on your email is your best armor. (Source: The Record, Sept. 4, 2026)\n\n## 💡 DAILY TIP: Add a Second Lock to Your Email\n\nOpen your email's settings and click the option called \"two-step verification.\" Turn it on — a short code gets texted to you after your password. Two minutes of setup, and a stolen password alone can't get into your email.\n\n## 😄 COMEDY BREAK\n\n![Far Side comic: \"Well, Mr. Rosenburg, your lab results look pretty good—although I might suggest your testosterone level is a tad high.\"](farside_2026-09-07.jpg)\n\n\"Well, Mr. Rosenburg, your lab results look pretty good—although I might suggest your testosterone level is a tad high.\"\n\n— Gary Larson, The Far Side®",
+      "comic": "Newsletter - 2026-09-07-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-07-news1",
+      "type": "tech-note",
+      "date": "2026-09-07",
+      "title": "The FTC just refreshed its phishing scam guide — learn the six tricks crooks use in fake emails, and report them free at reportfraud.ftc.gov",
+      "tag": "Tech Note",
+      "summary": "The Federal Trade Commission updated its free phishing guide on September 1, 2026. It walks through the six stories scammers tell — fake \"suspicious activity\" alerts, bogus invoices, phony refunds, and too-good coupons — and shows exactly what to do if you already clicked. Read it free at **consumer.ftc.gov** (search \"phishing scams\"), and forward any suspicious email to the FTC at **reportfraud.ftc.gov** — it takes under two minutes and helps shut the crooks down."
+    },
+    {
+      "id": "t-2026-09-07-tip1",
+      "type": "tech-note",
+      "date": "2026-09-07",
+      "title": "Bitwarden remembers your passwords so you can use a different one everywhere — free, download it from bitwarden.com",
+      "tag": "Tech Tip",
+      "summary": "Reusing the same password everywhere is how one leaked password empties an email account, then a bank account. **Bitwarden** is a free password manager: it remembers every password so you only need one strong master password. Download it free at **bitwarden.com**, install it, and let it save passwords as you sign in. It takes about ten minutes to set up, works on your browser, and there's no paid plan needed for the basics."
+    },
     {
       "id": "n-2026-09-06",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "That slow old laptop isn't done yet — ChromeOS Flex is Google's free operating system that makes it fast again",
       "tag": "Tech Tip",
       "summary": "ChromeOS Flex is Google's free operating system built for older computers, and it can help a slow old laptop feel quick again. It's free at chromeos.google/products/chromeos-flex — Google gives you the download and the steps to put it on a USB stick, and the laptop starts up from that stick. If that sounds like more than you want to tackle, that's exactly what I'm here for."
-    },
-    {
-      "id": "n-2026-09-03",
-      "type": "newsletter",
-      "date": "2026-09-03",
-      "title": "Fake Car-Dealership Websites Are Taking Deposits — FTC Warns",
-      "tag": "Daily Brief",
-      "summary": "The Federal Trade Commission is warning about scammers cloning real car-dealership websites. They copy the logo, car photos, and customer reviews, then take an upfront deposit for a vehicle that doesn't exist. Buyers show up at the lot and find no record of their order or money. Before paying: search the dealer's name plus the word \"scam,\" and insist on seeing the car in person or having an independent inspector check it. Never send a deposit by wire transfer. Report fake dealer sites at ReportFraud.ftc.gov. (Source: FTC, Sept. 1, 2026)",
-      "comic": "Newsletter - 2026-09-03-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-03-news1",
-      "type": "tech-note",
-      "date": "2026-09-03",
-      "title": "The Windows 11 September update finally brings back the movable taskbar — put it back at the top in Settings, free from Microsoft",
-      "tag": "Tech Note",
-      "summary": "Microsoft's September update for Windows 11 is rolling out now, and it brings back the choice owners have asked for since 2021: you can move the taskbar back to the top of the screen or to either side. Check for the update at Settings → Windows Update, then open Settings → Personalization → Taskbar → Taskbar behaviors and pick where you want it. It's free, built into Windows, and takes about a minute once the update is installed."
-    },
-    {
-      "id": "t-2026-09-03-tip1",
-      "type": "tech-note",
-      "date": "2026-09-03",
-      "title": "Is your flash drive crawling? Plug it into the blue USB port — it's many times faster and it's already on your computer",
-      "tag": "Tech Tip",
-      "summary": "Look at the USB ports on your computer: some are black, some are blue. The blue ones are the fast kind — a flash drive or camera card reader can run many times quicker in them than in the old black ports. There's no software to download and nothing to install — just move the plug. If you don't have blue ports, the black ones still work fine; they're just slower."
     }
   ]
 }
