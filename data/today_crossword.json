@@ -1,183 +1,162 @@
 {
-  "title": "Math",
-  "size": 22,
+  "title": "math",
+  "size": 25,
   "grid": [
-    ".s..m.................",
-    ".q..i.................",
-    ".u..d.................",
-    ".a..p.................",
-    "proportion............",
-    ".e..i.................",
-    "..ninety....f.........",
-    "s.u.t...t...i.........",
-    "lcm.....w...f.........",
-    "o.e.d..weight.........",
-    "percent.l...y.........",
-    "e.a.c...v.............",
-    "..thirteen............",
-    "..o.m.................",
-    "..r.algorithm.........",
-    "....l..d...u..........",
-    ".......d...n..........",
-    "...........d..........",
-    "...........r..........",
-    ".....parallelogram....",
-    ".......a...d..........",
-    ".......y.............."
+    "................c........",
+    "................i........",
+    "..........p.....r........",
+    "..........y...s.c........",
+    "..........t.p.q.l........",
+    "..........h.acute........",
+    ".......o..a.r.a..l..c....",
+    "..s....c..g.a.rhiannon...",
+    "..c....t..o.l.e..u..n....",
+    "quadrilateral....t..g....",
+    "..l....g..e.e....z..right",
+    "..e....o..a.l....e..u....",
+    "..n....n..n.....angles...",
+    "..e..............h..n....",
+    ".................e..t....",
+    ".................i.......",
+    ".............obtuse......",
+    ".................e.......",
+    "................triangle.",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    "........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 5,
-        "col": 1,
-        "len": 10,
-        "answer": "proportion",
-        "clue": "it is a statement that equates twi ratios or rates."
-      },
-      {
-        "num": 4,
-        "row": 7,
-        "col": 3,
-        "len": 6,
-        "answer": "ninety",
-        "clue": "finf first number:3(x-5)>39"
-      },
-      {
-        "num": 8,
-        "row": 9,
-        "col": 1,
-        "len": 3,
-        "answer": "lcm",
-        "clue": "it is a and b is the smallest number that is a multiple of a and b."
+        "num": 5,
+        "row": 6,
+        "col": 13,
+        "len": 5,
+        "answer": "acute",
+        "clue": "Its and small angle"
       },
       {
         "num": 10,
-        "row": 10,
-        "col": 8,
-        "len": 6,
-        "answer": "weight",
-        "clue": "The mesaure of how heavy  something is."
+        "row": 8,
+        "col": 15,
+        "len": 8,
+        "answer": "rhiannon",
+        "clue": "Starts with R ends in N"
       },
       {
         "num": 11,
-        "row": 11,
+        "row": 10,
         "col": 1,
-        "len": 7,
-        "answer": "percent",
-        "clue": "A ratio or fraction with the denominator 100."
+        "len": 13,
+        "answer": "quadrilateral",
+        "clue": "polygon with 4 sides"
       },
       {
         "num": 12,
-        "row": 13,
-        "col": 3,
-        "len": 8,
-        "answer": "thirteen",
-        "clue": "solve:\u221a24+2\u221a27+6\u221a3-\u221a3=?"
+        "row": 11,
+        "col": 21,
+        "len": 5,
+        "answer": "right",
+        "clue": "90 degrees"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 5,
-        "len": 9,
-        "answer": "algorithm",
-        "clue": "A procesure or set of steps used to solve a mathematical computation."
+        "row": 13,
+        "col": 17,
+        "len": 6,
+        "answer": "angles",
+        "clue": "A degree"
       },
       {
-        "num": 16,
-        "row": 20,
-        "col": 6,
-        "len": 13,
-        "answer": "parallelogram",
-        "clue": "A quadrilateral with two sets of opposite sides that are parallel."
+        "num": 14,
+        "row": 17,
+        "col": 14,
+        "len": 6,
+        "answer": "obtuse",
+        "clue": "More than 90 agrees"
+      },
+      {
+        "num": 15,
+        "row": 19,
+        "col": 17,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "Has three sides"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 2,
+        "col": 17,
         "len": 6,
-        "answer": "square",
-        "clue": "A(1;1) B(1;4) C(4;4) D(4;1) which figure is obtained if we combine these points?"
+        "answer": "circle",
+        "clue": "Its round"
       },
       {
         "num": 2,
-        "row": 1,
-        "col": 5,
-        "len": 8,
-        "answer": "midpoint",
-        "clue": "A point that is exactly halfway between two locations."
+        "row": 3,
+        "col": 11,
+        "len": 11,
+        "answer": "pythagorean",
+        "clue": "Its a Theorem"
+      },
+      {
+        "num": 3,
+        "row": 4,
+        "col": 15,
+        "len": 6,
+        "answer": "square",
+        "clue": "Has 4 equal sides"
       },
       {
         "num": 4,
-        "row": 7,
-        "col": 3,
-        "len": 9,
-        "answer": "numerator",
-        "clue": "The top number in a fraction."
-      },
-      {
-        "num": 5,
-        "row": 7,
+        "row": 5,
         "col": 13,
-        "len": 5,
-        "answer": "fifty",
-        "clue": "if one of the consecutive angles is 40\u00b0. Find another angle."
+        "len": 8,
+        "answer": "parallel",
+        "clue": "To lines that dont intersect"
       },
       {
         "num": 6,
-        "row": 8,
-        "col": 1,
-        "len": 5,
-        "answer": "slope",
-        "clue": "y=kx+b what is \"k\"?"
+        "row": 7,
+        "col": 8,
+        "len": 7,
+        "answer": "octagon",
+        "clue": "polygon with 8 sides"
       },
       {
         "num": 7,
-        "row": 8,
-        "col": 9,
-        "len": 6,
-        "answer": "twelve",
-        "clue": "find the square root of 144."
+        "row": 7,
+        "col": 18,
+        "len": 13,
+        "answer": "lautzenheiser",
+        "clue": "Starts with L ends in R"
+      },
+      {
+        "num": 8,
+        "row": 7,
+        "col": 21,
+        "len": 9,
+        "answer": "congruent",
+        "clue": "Same shape or sides"
       },
       {
         "num": 9,
-        "row": 10,
-        "col": 5,
+        "row": 8,
+        "col": 3,
         "len": 7,
-        "answer": "decimal",
-        "clue": "A real number on the base ten standard numbering system."
-      },
-      {
-        "num": 14,
-        "row": 15,
-        "col": 8,
-        "len": 3,
-        "answer": "odd",
-        "clue": "A whole number taht id not divisible by 2."
-      },
-      {
-        "num": 15,
-        "row": 15,
-        "col": 12,
-        "len": 7,
-        "answer": "hundred",
-        "clue": "A play graund is 60m long and 40m wide. How much  distance does a girl run when she runs 5 times around the playground?"
-      },
-      {
-        "num": 17,
-        "row": 20,
-        "col": 8,
-        "len": 3,
-        "answer": "ray",
-        "clue": "Go on forever in one direction."
+        "answer": "scalene",
+        "clue": "All sides different lengths"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8452",
-  "slug": "math-8452",
-  "fetched_at": "2026-07-14T19:20:33.650153+00:00",
-  "date": "2026-09-07"
+  "source_url": "https://crosswordlabs.com/view/math-8474",
+  "slug": "math-8474",
+  "fetched_at": "2026-07-14T19:25:39.937223+00:00",
+  "date": "2026-09-08"
 }
