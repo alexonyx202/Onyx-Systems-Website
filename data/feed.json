@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-08-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-08",
+      "title": "A Shipping-Center Break-In Just Handed Scammers 81,000 Customer Lists",
+      "tag": "Daily Brief",
+      "excerpt": "A gadget-wallet maker called Trezor just revealed that a break-in at its shipping partner now touches 81,000 customers — names, home addresses, phone numbers, and order details, some from orders placed years ago. Lists like this are gold for scammers pretending to be real stores, so expect very convincing fake emails, calls, and letters. Don't trust a caller just because they know your name and what you bought — hang up and call the company back using the number on its real website.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-08-composite.jpg",
+      "comic": "assets/img/news/2026-09-08-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-07-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-07",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-04-composite.jpg",
       "comic": "assets/img/news/2026-09-04-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-03-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-03",
-      "title": "Fake Car-Dealership Websites Are Taking Deposits — FTC Warns",
-      "tag": "Daily Brief",
-      "excerpt": "The Federal Trade Commission is warning about scammers cloning real car-dealership websites. They copy the logo, car photos, and customer reviews, then take an upfront deposit for a vehicle that doesn't exist. Buyers show up at the lot and find no record of their order or money. Before paying: search the dealer's name plus the word \"scam,\" and insist on seeing the car in person or having an independent inspector check it. Never send a deposit by wire transfer. Report fake dealer sites at ReportFraud.ftc.gov. (Source: FTC, Sept. 1, 2026)",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-03-composite.jpg",
-      "comic": "assets/img/news/2026-09-03-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-08-post-1",
+      "type": "news",
+      "date": "2026-09-08",
+      "title": "Your laptop says it's full but your photos are already safe — OneDrive's \"Free up space\" clears the clutter without deleting anything",
+      "tag": "Tech Note",
+      "summary": "If your laptop keeps saying \"storage full,\" open your OneDrive folder, right-click the biggest folders (usually Pictures), and choose **\"Free up space.\"** The photo stays safe in the cloud at onedrive.com — your laptop keeps a small shortcut instead of the full copy. OneDrive is built into Windows 10 and 11, no download needed.",
+      "truth": "Most people don't realize that \"deleting\" and \"freeing up space\" are two different things. I see folks dragging their family photos into the Recycle Bin to free up room — that's how photo collections get lost forever. The honest answer is: your files can live in the cloud and your laptop can just keep a \"bookmark\" to them. Nothing is gone; it just isn't taking up room on the drive anymore. It's like keeping your photo albums in a safe-deposit box and taping a picture of the box to your fridge.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-07-post-1",
       "type": "news",
@@ -245,13 +259,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-03-post-1",
-      "type": "news",
-      "date": "2026-09-03",
-      "title": "The Windows 11 September update finally brings back the movable taskbar — put it back at the top in Settings, free from Microsoft",
-      "tag": "Tech Note",
-      "summary": "Microsoft's September update for Windows 11 is rolling out now, and it brings back the choice owners have asked for since 2021: you can move the taskbar back to the top of the screen or to either side. Check for the update at Settings → Windows Update, then open Settings → Personalization → Taskbar → Taskbar behaviors and pick where you want it. It's free, built into Windows, and takes about a minute once the update is installed.",
-      "truth": "I've heard this since Windows 11 came out: 'John, can you move that bar back to the top? It's been up there for twenty years.' For a long time the honest answer was no — Microsoft took that choice away. Now it's back the normal way, in an update, no tricks or workarounds. Open Settings → Personalization → Taskbar once yours arrives — and don't let anybody charge you to 'fix' it.",
+      "id": "onyx-2026-09-08-post-2",
+      "type": "tip",
+      "date": "2026-09-08",
+      "title": "Hate the giant Windows 11 Start menu? The latest free update lets you shrink it and move the taskbar — here's the setting",
+      "tag": "Tech Tip",
+      "summary": "Install the latest free update via **Settings > Windows Update > Check for updates**, then open **Settings > Personalization > Start** to shrink the menu and hide sections you never use, and **Settings > Personalization > Taskbar > Taskbar behaviors** to move it where you want it.",
+      "truth": "Here's something the tech world gets wrong: people aren't afraid of change — they're annoyed by change they didn't ask for. Microsoft moved everybody's cheese with the big Start menu, and folks came in convinced their computer was broken. It wasn't. The honest answer is that the controls to make Windows feel like *yours* have been there all along, and it takes about two minutes. I'd rather teach you the setting than have you live with something that bugs you every single day.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -315,23 +329,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-03-post-2",
-      "type": "tip",
-      "date": "2026-09-03",
-      "title": "Is your flash drive crawling? Plug it into the blue USB port — it's many times faster and it's already on your computer",
-      "tag": "Tech Tip",
-      "summary": "Look at the USB ports on your computer: some are black, some are blue. The blue ones are the fast kind — a flash drive or camera card reader can run many times quicker in them than in the old black ports. There's no software to download and nothing to install — just move the plug. If you don't have blue ports, the black ones still work fine; they're just slower.",
-      "truth": "I see this a few times a month: somebody says their flash drive is 'broken' or 'dying,' and it turns out it's been plugged into a slow port the whole time. A file that takes five minutes on the wrong port takes under a minute on the right one. Before you toss a drive or buy a new computer because things feel slow, try the blue port — it's the cheapest speed upgrade there is.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

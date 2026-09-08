@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "items": [
+    {
+      "id": "n-2026-09-08",
+      "type": "newsletter",
+      "date": "2026-09-08",
+      "title": "A Shipping-Center Break-In Just Handed Scammers 81,000 Customer Lists",
+      "tag": "Daily Brief",
+      "summary": "A gadget-wallet maker called Trezor just revealed that a break-in at its shipping partner now touches 81,000 customers — names, home addresses, phone numbers, and order details, some from orders placed years ago. Lists like this are gold for scammers pretending to be real stores, so expect very convincing fake emails, calls, and letters. Don't trust a caller just because they know your name and what you bought — hang up and call the company back using the number on its real website.",
+      "comic": "Newsletter - 2026-09-08-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-08-news1",
+      "type": "tech-note",
+      "date": "2026-09-08",
+      "title": "Your laptop says it's full but your photos are already safe — OneDrive's \"Free up space\" clears the clutter without deleting anything",
+      "tag": "Tech Note",
+      "summary": "If your laptop keeps saying \"storage full,\" open your OneDrive folder, right-click the biggest folders (usually Pictures), and choose **\"Free up space.\"** The photo stays safe in the cloud at onedrive.com — your laptop keeps a small shortcut instead of the full copy. OneDrive is built into Windows 10 and 11, no download needed."
+    },
+    {
+      "id": "t-2026-09-08-tip1",
+      "type": "tech-note",
+      "date": "2026-09-08",
+      "title": "Hate the giant Windows 11 Start menu? The latest free update lets you shrink it and move the taskbar — here's the setting",
+      "tag": "Tech Tip",
+      "summary": "Install the latest free update via **Settings > Windows Update > Check for updates**, then open **Settings > Personalization > Start** to shrink the menu and hide sections you never use, and **Settings > Personalization > Taskbar > Taskbar behaviors** to move it where you want it."
+    },
     {
       "id": "n-2026-09-07",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Firefox's new update shows how many trackers it blocked right in the address bar — free at firefox.com",
       "tag": "Tech Tip",
       "summary": "**Firefox**'s latest version, out September 1, puts a counter right in the address bar that shows how many ad trackers it stopped, and it loads pages faster with new AI help features on top. If you already use Firefox, it updates itself automatically — or download it free at **firefox.com**. Takes 2 minutes."
-    },
-    {
-      "id": "n-2026-09-04",
-      "type": "newsletter",
-      "date": "2026-09-04",
-      "title": "Fake QR Codes on Parking Meters Are Stealing Card Numbers — FTC Warns",
-      "tag": "Daily Brief",
-      "summary": "The FTC is warning about fake QR codes — the square black-and-white patterns you scan to pay for parking. Scammers print their own codes and stick them over the real ones on parking meters. Scan the wrong one and it opens a fake payment page that steals your card number. Before you pay, check the code: if it looks like a sticker slapped over the real sign, don't scan it. Type the parking service's web address yourself, pay at the machine, and report fakes at ReportFraud.ftc.gov.",
-      "comic": "Newsletter - 2026-09-04-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-04-news1",
-      "type": "tech-note",
-      "date": "2026-09-04",
-      "title": "Windows 11's Smart App Control stops bad apps before they run — turn it on free in Windows Security",
-      "tag": "Tech Note",
-      "summary": "Windows 11's Smart App Control checks every program before it opens and blocks the ones that look untrusted — and it's free, built right into Windows. Most computers just have it sitting there, turned off. To switch it on, open the Windows Security app that came with your computer, go to App & browser control, and turn on Smart App Control. It's about one click and it's from Microsoft. If your computer doesn't show the option, that's normal on some machines — bring it by and I'll set up the next-best protection for you."
-    },
-    {
-      "id": "t-2026-09-04-tip1",
-      "type": "tech-note",
-      "date": "2026-09-04",
-      "title": "That slow old laptop isn't done yet — ChromeOS Flex is Google's free operating system that makes it fast again",
-      "tag": "Tech Tip",
-      "summary": "ChromeOS Flex is Google's free operating system built for older computers, and it can help a slow old laptop feel quick again. It's free at chromeos.google/products/chromeos-flex — Google gives you the download and the steps to put it on a USB stick, and the laptop starts up from that stick. If that sounds like more than you want to tackle, that's exactly what I'm here for."
     }
   ]
 }
