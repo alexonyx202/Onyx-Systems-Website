@@ -154,11 +154,6 @@ def _heading_section(body, heading):
     if not m:
         return ""
     rest = body[m.end():]
-    # Headline values in the generated notes are bold on the following line.
-    if heading == "Headline":
-        value = re.search(r"\*\*(.+?)\*\*", rest, re.S)
-        if value:
-            return value.group(1).strip()
     # Skip blank lines after the heading marker
     rest = re.sub(r"^\s*\n", "", rest)
     # End at next ###, next **Bold:**, or end of body
@@ -180,6 +175,12 @@ def _hashtags(body):
     return out
 
 
+def _strip_bold(s):
+    """Drop inline **bold** markers — feed fields are plain text (matches the
+    published style; raw markdown must never leak into customer-facing text)."""
+    return re.sub(r"\*{1,3}([^*]*?)\*{1,3}", r"\1", s)
+
+
 def parse_newsletter(md_path):
     md = md_path.read_text(encoding="utf-8")
     fm = _frontmatter(md)
@@ -197,15 +198,17 @@ def parse_tech_notes(md_path):
         nm = re.search(r"^##\s*Post\s+\d+\s*(?:[—–-]\s*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
-        # Prefer the bold value following the ### Headline marker.
-        segment = body.split("### Headline", 1)[-1]
-        hm = re.search(r"\*\*([^*\n]+?)\*\*", segment)
-        real_headline = hm.group(1).strip() if hm else ""
+        # The headline is the text between "### Headline" and the next "###".
+        # It may be bold, plain, or wrapped — never guess it from the first bold
+        # span in the body (2026-09-09 regression: that grabbed a tip phrase
+        # like "Settings > Windows Update" instead of the real headline).
+        real_headline = _heading_section(body, "Headline")
+        real_headline = re.sub(r"\s+", " ", _strip_bold(real_headline)).strip()
         headline = real_headline if real_headline else header_label
         posts.append({
             "headline": headline,
-            "tip": _heading_section(body, "The Tip"),
-            "truth": _heading_section(body, "The Shop Owner's Truth"),
+            "tip": _strip_bold(_heading_section(body, "The Tip")).strip(),
+            "truth": _strip_bold(_heading_section(body, "The Shop Owner's Truth")).strip(),
             "tags": _hashtags(body) or BASE_TAGS,
         })
     return posts

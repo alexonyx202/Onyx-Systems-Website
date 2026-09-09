@@ -118,6 +118,10 @@ KNOWN_PRODUCTS = [
     # service named in today's Tech Note headline; obtain method stated (check the
     # real balance by signing in at sunpass.com, never via a text link).
     "sunpass",
+    # Extended 2026-09-09: Acer Vero 16 (tool-less serviceable laptop, specs at
+    # acer.com/us-en/laptops/vero) — real product named in today's Tech Note
+    # headline; obtain method stated (full specs + photo walkthrough at acer.com).
+    "acer", "vero 16",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
