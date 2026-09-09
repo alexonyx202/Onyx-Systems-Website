@@ -1,162 +1,180 @@
 {
   "title": "math",
-  "size": 25,
+  "size": 27,
   "grid": [
-    "................c........",
-    "................i........",
-    "..........p.....r........",
-    "..........y...s.c........",
-    "..........t.p.q.l........",
-    "..........h.acute........",
-    ".......o..a.r.a..l..c....",
-    "..s....c..g.a.rhiannon...",
-    "..c....t..o.l.e..u..n....",
-    "quadrilateral....t..g....",
-    "..l....g..e.e....z..right",
-    "..e....o..a.l....e..u....",
-    "..n....n..n.....angles...",
-    "..e..............h..n....",
-    ".................e..t....",
-    ".................i.......",
-    ".............obtuse......",
-    ".................e.......",
-    "................triangle.",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    ".........................",
-    "........................."
+    "....d......................",
+    "....e......................",
+    "..p.p......................",
+    "..a.r......................",
+    "vertex.....................",
+    "..a.c......................",
+    "..b.i......................",
+    "probability................",
+    "..l.t......maximum.........",
+    "..a.e......i.-.............",
+    "....solution.i.............",
+    "...........i.n.............",
+    "......r....m.t.............",
+    "......absolute.............",
+    "......n.o..m.r.o...........",
+    "......g.l....c.u...........",
+    "......equivalent...........",
+    "........t..p.p.c...........",
+    ".....d..i..p.t.o...........",
+    ".....o..o..r.s.m...........",
+    ".....m..n..e...e...........",
+    ".....axis..c...............",
+    ".....i.....i...............",
+    "growing....a...............",
+    "...........t...............",
+    "...........e...............",
+    "...........s..............."
   ],
   "clues": {
     "across": [
       {
-        "num": 5,
-        "row": 6,
-        "col": 13,
-        "len": 5,
-        "answer": "acute",
-        "clue": "Its and small angle"
-      },
-      {
-        "num": 10,
-        "row": 8,
-        "col": 15,
-        "len": 8,
-        "answer": "rhiannon",
-        "clue": "Starts with R ends in N"
-      },
-      {
-        "num": 11,
-        "row": 10,
+        "num": 3,
+        "row": 5,
         "col": 1,
-        "len": 13,
-        "answer": "quadrilateral",
-        "clue": "polygon with 4 sides"
+        "len": 6,
+        "answer": "vertex",
+        "clue": "the maximum or minimum value on a parabola"
+      },
+      {
+        "num": 4,
+        "row": 8,
+        "col": 1,
+        "len": 11,
+        "answer": "probability",
+        "clue": "how likey something is to happen"
+      },
+      {
+        "num": 5,
+        "row": 9,
+        "col": 12,
+        "len": 7,
+        "answer": "maximum",
+        "clue": "the vertex of a parabola that opens"
+      },
+      {
+        "num": 7,
+        "row": 11,
+        "col": 5,
+        "len": 8,
+        "answer": "solution",
+        "clue": "A value or values that make an Inequality true"
+      },
+      {
+        "num": 9,
+        "row": 14,
+        "col": 7,
+        "len": 8,
+        "answer": "absolute",
+        "clue": "The distance a number is from zero on a number line"
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 21,
-        "len": 5,
-        "answer": "right",
-        "clue": "90 degrees"
-      },
-      {
-        "num": 13,
-        "row": 13,
-        "col": 17,
-        "len": 6,
-        "answer": "angles",
-        "clue": "A degree"
-      },
-      {
-        "num": 14,
         "row": 17,
-        "col": 14,
-        "len": 6,
-        "answer": "obtuse",
-        "clue": "More than 90 agrees"
+        "col": 7,
+        "len": 10,
+        "answer": "equivalent",
+        "clue": "inequalities that have the same solution"
       },
       {
         "num": 15,
-        "row": 19,
-        "col": 17,
-        "len": 8,
-        "answer": "triangle",
-        "clue": "Has three sides"
+        "row": 22,
+        "col": 6,
+        "len": 4,
+        "answer": "axis",
+        "clue": "(mirror images"
+      },
+      {
+        "num": 16,
+        "row": 24,
+        "col": 1,
+        "len": 7,
+        "answer": "growing",
+        "clue": "Exponential Growth"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 17,
-        "len": 6,
-        "answer": "circle",
-        "clue": "Its round"
+        "col": 5,
+        "len": 11,
+        "answer": "depreciates",
+        "clue": "Exponential Decay"
       },
       {
         "num": 2,
         "row": 3,
-        "col": 11,
-        "len": 11,
-        "answer": "pythagorean",
-        "clue": "Its a Theorem"
-      },
-      {
-        "num": 3,
-        "row": 4,
-        "col": 15,
-        "len": 6,
-        "answer": "square",
-        "clue": "Has 4 equal sides"
-      },
-      {
-        "num": 4,
-        "row": 5,
-        "col": 13,
+        "col": 3,
         "len": 8,
-        "answer": "parallel",
-        "clue": "To lines that dont intersect"
+        "answer": "parabola",
+        "clue": "the graph of a quadratic function"
+      },
+      {
+        "num": 5,
+        "row": 9,
+        "col": 12,
+        "len": 7,
+        "answer": "minimum",
+        "clue": "the vertex of a parabola that opens upward"
       },
       {
         "num": 6,
-        "row": 7,
-        "col": 8,
-        "len": 7,
-        "answer": "octagon",
-        "clue": "polygon with 8 sides"
-      },
-      {
-        "num": 7,
-        "row": 7,
-        "col": 18,
-        "len": 13,
-        "answer": "lautzenheiser",
-        "clue": "Starts with L ends in R"
+        "row": 9,
+        "col": 14,
+        "len": 12,
+        "answer": "x-intercepts",
+        "clue": "where solutions (roots, zeros)"
       },
       {
         "num": 8,
-        "row": 7,
-        "col": 21,
-        "len": 9,
-        "answer": "congruent",
-        "clue": "Same shape or sides"
+        "row": 13,
+        "col": 7,
+        "len": 5,
+        "answer": "range",
+        "clue": "the set of all possible y values"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 3,
+        "num": 10,
+        "row": 14,
+        "col": 9,
+        "len": 9,
+        "answer": "solutions",
+        "clue": "values of x that makes f(x) equal zero"
+      },
+      {
+        "num": 11,
+        "row": 15,
+        "col": 16,
         "len": 7,
-        "answer": "scalene",
-        "clue": "All sides different lengths"
+        "answer": "outcome",
+        "clue": "The possible results from a probability"
+      },
+      {
+        "num": 13,
+        "row": 17,
+        "col": 12,
+        "len": 11,
+        "answer": "appreciates",
+        "clue": "Exponential Growth"
+      },
+      {
+        "num": 14,
+        "row": 19,
+        "col": 6,
+        "len": 6,
+        "answer": "domain",
+        "clue": "the set of all possible x values"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8474",
-  "slug": "math-8474",
-  "fetched_at": "2026-07-14T19:25:39.937223+00:00",
-  "date": "2026-09-08"
+  "source_url": "https://crosswordlabs.com/view/math-8609",
+  "slug": "math-8609",
+  "fetched_at": "2026-07-14T19:23:07.382364+00:00",
+  "date": "2026-09-09"
 }
