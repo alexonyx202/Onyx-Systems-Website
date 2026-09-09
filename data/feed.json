@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-09-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-09",
+      "title": "That 'Unpaid Ticket' Text Is a Scam — Delete It, Don't Tap It",
+      "tag": "Daily Brief",
+      "excerpt": "A wave of fake \"DMV\" text messages is hitting drivers across the country right now — texts claiming your license will be suspended for an unpaid ticket and demanding payment through a link. Florida's own DMV says it will NEVER text you demanding money or threatening suspension. If you tap the link, you hand your card to criminals. Delete the text, don't reply, and report it by forwarding to 7726.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-09-composite.jpg",
+      "comic": "assets/img/news/2026-09-09-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-08-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-08",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-05-composite.jpg",
       "comic": "assets/img/news/2026-09-05-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-04-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-04",
-      "title": "Fake QR Codes on Parking Meters Are Stealing Card Numbers — FTC Warns",
-      "tag": "Daily Brief",
-      "excerpt": "The FTC is warning about fake QR codes — the square black-and-white patterns you scan to pay for parking. Scammers print their own codes and stick them over the real ones on parking meters. Scan the wrong one and it opens a fake payment page that steals your card number. Before you pay, check the code: if it looks like a sticker slapped over the real sign, don't scan it. Type the parking service's web address yourself, pay at the machine, and report fakes at ReportFraud.ftc.gov.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-04-composite.jpg",
-      "comic": "assets/img/news/2026-09-04-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-09-post-1",
+      "type": "news",
+      "date": "2026-09-09",
+      "title": "Microsoft just sealed 974 security holes in one day — the update is free, here's how to confirm you got it",
+      "tag": "Tech Note",
+      "summary": "Open Settings > Windows Update on your PC and click Check for updates — Microsoft released its biggest security update ever on September 9, covering 974 holes in Windows, including ones criminals were already using. It's free, it's built into Windows, and it takes about ten minutes.",
+      "truth": "Here's a number that surprised even me: 974. That's how many security holes Microsoft patched in a single day this week — their biggest patch release ever. Most people don't realize that when your computer asks to \"restart to finish updating,\" it isn't nagging you for fun; it's locking the doors behind you. The honest answer is you don't need to understand what any of those holes are. You just need to let Windows close them. The folks who get in trouble are the ones who keep clicking \"remind me later\" for months.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-08-post-1",
       "type": "news",
@@ -245,13 +259,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-04-post-1",
-      "type": "news",
-      "date": "2026-09-04",
-      "title": "Windows 11's Smart App Control stops bad apps before they run — turn it on free in Windows Security",
-      "tag": "Tech Note",
-      "summary": "Windows 11's Smart App Control checks every program before it opens and blocks the ones that look untrusted — and it's free, built right into Windows. Most computers just have it sitting there, turned off. To switch it on, open the Windows Security app that came with your computer, go to App & browser control, and turn on Smart App Control. It's about one click and it's from Microsoft. If your computer doesn't show the option, that's normal on some machines — bring it by and I'll set up the next-best protection for you.",
-      "truth": "Most people don't realize the scariest moment isn't when a bad program is already running — it's the two seconds before, when the computer hasn't decided yet. I see this all the time: someone downloads a 'free PDF converter' or a 'driver updater' out of an ad, and it's junk from the first click. Smart App Control is Microsoft's bouncer at the door — it checks a program's reputation before letting it in and stops a lot of the junk before it ever touches your files. It's not magic, but it's one of the best free layers I know, and most people have it sitting there, turned off.",
+      "id": "onyx-2026-09-09-post-2",
+      "type": "tip",
+      "date": "2026-09-09",
+      "title": "Acer just made a laptop you can open like a car hood — the Vero 16 latches open with no tools",
+      "tag": "Tech Tip",
+      "summary": "Acer's new Vero 16 laptop has a latch on the bottom that pops open without a screwdriver, so its battery and storage are simple swaps anyone can do — see the full specs and a photo walkthrough at acer.com/us-en/laptops/vero/acer-vero-16.",
+      "truth": "I see this all the time: someone brings in a perfectly good laptop because one part wore out, and the only reason it's a big job is that the maker glued and screwed everything shut. Acer went the other way with the Vero 16 — the bottom opens with a latch, like the hood of your car, and the parts inside are meant to come out by hand. Most people don't realize how much of a computer's \"age\" is really just a worn-out part in a machine that was hard to open. I'd love to see more laptops built this way. Your mechanic agrees: easy access means cheaper bills.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -315,23 +329,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-04-post-2",
-      "type": "tip",
-      "date": "2026-09-04",
-      "title": "That slow old laptop isn't done yet — ChromeOS Flex is Google's free operating system that makes it fast again",
-      "tag": "Tech Tip",
-      "summary": "ChromeOS Flex is Google's free operating system built for older computers, and it can help a slow old laptop feel quick again. It's free at chromeos.google/products/chromeos-flex — Google gives you the download and the steps to put it on a USB stick, and the laptop starts up from that stick. If that sounds like more than you want to tackle, that's exactly what I'm here for.",
-      "truth": "I see this all the time: a perfectly good 8- or 10-year-old laptop sitting in a drawer because 'it got slow' — and the owner is about to spend six hundred dollars on a new one. Most people don't realize the hardware is usually fine; the software on it just got too heavy. ChromeOS Flex strips it back to the basics — email, Facebook, banking, photos — and it doesn't bog down the way an old install does. It's not for everyone: if you depend on one specific Windows program, keep it. But for the customer who just wants email and pictures, I've seen a ten-year-old laptop feel faster after Flex than it did the day it was new.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-08",
+  "updated": "2026-09-09",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

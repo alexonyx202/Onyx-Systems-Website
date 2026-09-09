@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-08",
+  "updated": "2026-09-09",
   "items": [
+    {
+      "id": "n-2026-09-09",
+      "type": "newsletter",
+      "date": "2026-09-09",
+      "title": "That 'Unpaid Ticket' Text Is a Scam — Delete It, Don't Tap It",
+      "tag": "Daily Brief",
+      "summary": "A wave of fake \"DMV\" text messages is hitting drivers across the country right now — texts claiming your license will be suspended for an unpaid ticket and demanding payment through a link. Florida's own DMV says it will NEVER text you demanding money or threatening suspension. If you tap the link, you hand your card to criminals. Delete the text, don't reply, and report it by forwarding to 7726.",
+      "comic": "Newsletter - 2026-09-09-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-09-news1",
+      "type": "tech-note",
+      "date": "2026-09-09",
+      "title": "Microsoft just sealed 974 security holes in one day — the update is free, here's how to confirm you got it",
+      "tag": "Tech Note",
+      "summary": "Open Settings > Windows Update on your PC and click Check for updates — Microsoft released its biggest security update ever on September 9, covering 974 holes in Windows, including ones criminals were already using. It's free, it's built into Windows, and it takes about ten minutes."
+    },
+    {
+      "id": "t-2026-09-09-tip1",
+      "type": "tech-note",
+      "date": "2026-09-09",
+      "title": "Acer just made a laptop you can open like a car hood — the Vero 16 latches open with no tools",
+      "tag": "Tech Tip",
+      "summary": "Acer's new Vero 16 laptop has a latch on the bottom that pops open without a screwdriver, so its battery and storage are simple swaps anyone can do — see the full specs and a photo walkthrough at acer.com/us-en/laptops/vero/acer-vero-16."
+    },
     {
       "id": "n-2026-09-08",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Windows 10 computers no longer get free security updates — check Windows Update for your free Windows 11 offer",
       "tag": "Tech Tip",
       "summary": "On a Windows 10 PC, click **Start > Settings > Update & Security > Windows Update** and choose **Check for updates**. If your PC can run Windows 11, Microsoft's free offer appears right there — no purchase, no new computer, and your files stay put. If you see an offer for \"Extended Security Updates\" instead, that's Microsoft's safety net for older PCs — and it doesn't last forever."
-    },
-    {
-      "id": "n-2026-09-05",
-      "type": "newsletter",
-      "date": "2026-09-05",
-      "title": "Fake 'Are You Human?' Checks Are Running Hidden Commands on Computers",
-      "tag": "Daily Brief",
-      "summary": "Those little boxes websites use to check \"Are you human?\" — scammers are putting up fakes. They ask you to press the Windows key and R, paste a code, and press Enter \"to verify.\" What really happens is a hidden command runs that can sneak a bad program in or open a doorway into your computer. Microsoft and the FTC are warning about this trick right now. A real human check never asks you to run anything. If you see that, close the tab.",
-      "comic": "Newsletter - 2026-09-05-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-05-news1",
-      "type": "tech-note",
-      "date": "2026-09-05",
-      "title": "153 million driver's licenses were stolen — check your free credit report at annualcreditreport.com",
-      "tag": "Tech Note",
-      "summary": "News broke this week that an identity-theft service is selling scanned driver's licenses for more than 153 million Americans and Canadians — and the FBI is investigating the company that collected them. Pull your free credit report at **annualcreditreport.com** (it's free every week, no catch), and freeze your credit for free at **Equifax**, **Experian**, and **TransUnion** so nobody can open a card or loan in your name."
-    },
-    {
-      "id": "t-2026-09-05-tip1",
-      "type": "tech-note",
-      "date": "2026-09-05",
-      "title": "Firefox's new update shows how many trackers it blocked right in the address bar — free at firefox.com",
-      "tag": "Tech Tip",
-      "summary": "**Firefox**'s latest version, out September 1, puts a counter right in the address bar that shows how many ad trackers it stopped, and it loads pages faster with new AI help features on top. If you already use Firefox, it updates itself automatically — or download it free at **firefox.com**. Takes 2 minutes."
     }
   ]
 }
