@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-10-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-10",
+      "title": "The Biggest Windows Security Update Ever Went Out Tuesday — Install It Tonight",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft just shipped its biggest security update ever — nearly 1,000 fixes in a single day, and two of the holes being patched were already under attack. If your computer hasn't updated since Tuesday, it's missing protection against bugs criminals are using right now. Updating takes a few minutes, then restart when it asks. Put it off and you're leaving the door unlocked. Do it tonight.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-10-composite.jpg",
+      "comic": "assets/img/news/2026-09-10-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-09-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-09",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-06-composite.jpg",
       "comic": "assets/img/news/2026-09-06-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-05-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-05",
-      "title": "Fake 'Are You Human?' Checks Are Running Hidden Commands on Computers",
-      "tag": "Daily Brief",
-      "excerpt": "Those little boxes websites use to check \"Are you human?\" — scammers are putting up fakes. They ask you to press the Windows key and R, paste a code, and press Enter \"to verify.\" What really happens is a hidden command runs that can sneak a bad program in or open a doorway into your computer. Microsoft and the FTC are warning about this trick right now. A real human check never asks you to run anything. If you see that, close the tab.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-05-composite.jpg",
-      "comic": "assets/img/news/2026-09-05-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-10-post-1",
+      "type": "news",
+      "date": "2026-09-10",
+      "title": "Chrome now updates every two weeks — check yours free in the Chrome menu under About Google Chrome",
+      "tag": "Tech Note",
+      "summary": "Google switched Google Chrome to a two-week update schedule as of September 8, which means the security fixes arrive twice as often — open Chrome, click the three-dot menu in the top corner, choose Help > About Google Chrome, and it checks and updates itself for free in under a minute.",
+      "truth": "Here's something that changed this week and most people will never hear about: Chrome, the browser half of Lake City uses, now updates every two weeks instead of every four. Google did it because the bad guys are using the same AI tools we are, and holes get found — and used — faster. The honest answer is you don't have to understand any of that. The trick is knowing your browser updates itself while it's open — an old update just sits there waiting if you haven't restarted Chrome in a month. One click in the menu, and it's done.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-09-post-1",
       "type": "news",
@@ -245,13 +259,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-05-post-1",
-      "type": "news",
-      "date": "2026-09-05",
-      "title": "153 million driver's licenses were stolen — check your free credit report at annualcreditreport.com",
-      "tag": "Tech Note",
-      "summary": "News broke this week that an identity-theft service is selling scanned driver's licenses for more than 153 million Americans and Canadians — and the FBI is investigating the company that collected them. Pull your free credit report at **annualcreditreport.com** (it's free every week, no catch), and freeze your credit for free at **Equifax**, **Experian**, and **TransUnion** so nobody can open a card or loan in your name.",
-      "truth": "Most people don't realize a stolen driver's license isn't about somebody driving as you — it's about opening credit cards and loans in your name. And here's the part that surprises everyone: freezing your credit doesn't change your life one bit. Your existing cards still work, you still buy what you normally buy — you just unfreeze for a day when you apply for something new, and freeze it again. It's 15 minutes of work at each of the three bureaus, it's free, and it's the closest thing to a lock on your front door that exists.",
+      "id": "onyx-2026-09-10-post-2",
+      "type": "tip",
+      "date": "2026-09-10",
+      "title": "iOS 27 arrives Monday September 14 — the free iPhone update with the new Siri, here's how to get it",
+      "tag": "Tech Tip",
+      "summary": "Apple releases iOS 27 this Monday, September 14 — free for iPhone 11 and newer — with the redesigned Siri that can follow up on questions and a battery-friendly overhaul; when it appears, go to Settings > General > Software Update on your iPhone and tap install (per Apple's release notes at apple.com).",
+      "truth": "Most people don't realize Apple gives away one of these big iPhone makeovers every fall — you paid for the phone, the next decade of updates is the free part. Monday's update brings the new Siri that actually keeps track of what you just asked it, so you can say \"and what about next weekend?\" like you would to a person. The honest answer is: don't rush it Monday night. Millions of people download at once, Apple's servers crawl, and some folks interrupt the install at the worst moment. Plug in, back up first, and let it run overnight.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -315,23 +329,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-05-post-2",
-      "type": "tip",
-      "date": "2026-09-05",
-      "title": "Firefox's new update shows how many trackers it blocked right in the address bar — free at firefox.com",
-      "tag": "Tech Tip",
-      "summary": "**Firefox**'s latest version, out September 1, puts a counter right in the address bar that shows how many ad trackers it stopped, and it loads pages faster with new AI help features on top. If you already use Firefox, it updates itself automatically — or download it free at **firefox.com**. Takes 2 minutes.",
-      "truth": "Most people don't realize your browser does two jobs at once: it shows you the page, and it quietly tells advertisers who you are and where you've been. Firefox blocks that second job by default now, and it shows you the count so you can see it working. The honest answer to \"is my computer safe?\" is: safer than it was last week — if you let your browser update itself.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-09",
+  "updated": "2026-09-10",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
