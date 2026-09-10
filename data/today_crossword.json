@@ -1,180 +1,190 @@
 {
   "title": "math",
-  "size": 27,
+  "size": 29,
   "grid": [
-    "....d......................",
-    "....e......................",
-    "..p.p......................",
-    "..a.r......................",
-    "vertex.....................",
-    "..a.c......................",
-    "..b.i......................",
-    "probability................",
-    "..l.t......maximum.........",
-    "..a.e......i.-.............",
-    "....solution.i.............",
-    "...........i.n.............",
-    "......r....m.t.............",
-    "......absolute.............",
-    "......n.o..m.r.o...........",
-    "......g.l....c.u...........",
-    "......equivalent...........",
-    "........t..p.p.c...........",
-    ".....d..i..p.t.o...........",
-    ".....o..o..r.s.m...........",
-    ".....m..n..e...e...........",
-    ".....axis..c...............",
-    ".....i.....i...............",
-    "growing....a...............",
-    "...........t...............",
-    "...........e...............",
-    "...........s..............."
+    "........c....................",
+    "........o....o...............",
+    "........r..cordinate.........",
+    "........d....g...............",
+    "..r.....i..a.i...............",
+    "..o...congurent..............",
+    "..t.....a..e.................",
+    "..absloutevalue..............",
+    "..t.....e....................",
+    "..i.....p....p...............",
+    "..o...v.a.r..a...............",
+    "..n..perimiter...............",
+    "......r.r.g..a...............",
+    "......t...i..l...............",
+    ".intiger..dialation..........",
+    "......x...t..e...............",
+    ".....t....reflection.........",
+    ".....r....a..................",
+    ".....a....n..................",
+    ".....n....s..................",
+    ".....scalefactor.............",
+    ".....l....o..................",
+    ".....a.correspondingangles...",
+    ".....t....m..................",
+    ".....i....a..................",
+    ".....o....t..................",
+    ".....n....i..................",
+    "..........o..................",
+    "intersecting................."
   ],
   "clues": {
     "across": [
       {
         "num": 3,
-        "row": 5,
-        "col": 1,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "the maximum or minimum value on a parabola"
-      },
-      {
-        "num": 4,
-        "row": 8,
-        "col": 1,
-        "len": 11,
-        "answer": "probability",
-        "clue": "how likey something is to happen"
-      },
-      {
-        "num": 5,
-        "row": 9,
+        "row": 3,
         "col": 12,
-        "len": 7,
-        "answer": "maximum",
-        "clue": "the vertex of a parabola that opens"
+        "len": 9,
+        "answer": "cordinate",
+        "clue": "the location of a cordinate pair"
+      },
+      {
+        "num": 6,
+        "row": 6,
+        "col": 7,
+        "len": 9,
+        "answer": "congurent",
+        "clue": "same shape and size"
       },
       {
         "num": 7,
-        "row": 11,
-        "col": 5,
-        "len": 8,
-        "answer": "solution",
-        "clue": "A value or values that make an Inequality true"
+        "row": 8,
+        "col": 3,
+        "len": 13,
+        "answer": "absloutevalue",
+        "clue": "a numbers distance from zero"
       },
       {
-        "num": 9,
-        "row": 14,
-        "col": 7,
-        "len": 8,
-        "answer": "absolute",
-        "clue": "The distance a number is from zero on a number line"
+        "num": 11,
+        "row": 12,
+        "col": 6,
+        "len": 9,
+        "answer": "perimiter",
+        "clue": "the outside of a grid"
       },
       {
         "num": 12,
-        "row": 17,
-        "col": 7,
-        "len": 10,
-        "answer": "equivalent",
-        "clue": "inequalities that have the same solution"
+        "row": 15,
+        "col": 2,
+        "len": 7,
+        "answer": "intiger",
+        "clue": "negative and positive numbers"
+      },
+      {
+        "num": 13,
+        "row": 15,
+        "col": 11,
+        "len": 9,
+        "answer": "dialation",
+        "clue": "the change of a shapes size"
       },
       {
         "num": 15,
-        "row": 22,
-        "col": 6,
-        "len": 4,
-        "answer": "axis",
-        "clue": "(mirror images"
+        "row": 17,
+        "col": 11,
+        "len": 10,
+        "answer": "reflection",
+        "clue": "a shape reflected across a line"
       },
       {
         "num": 16,
-        "row": 24,
+        "row": 21,
+        "col": 6,
+        "len": 11,
+        "answer": "scalefactor",
+        "clue": "how big or large a number is getting"
+      },
+      {
+        "num": 17,
+        "row": 23,
+        "col": 8,
+        "len": 19,
+        "answer": "correspondingangles",
+        "clue": "when the angles are the same"
+      },
+      {
+        "num": 18,
+        "row": 29,
         "col": 1,
-        "len": 7,
-        "answer": "growing",
-        "clue": "Exponential Growth"
+        "len": 12,
+        "answer": "intersecting",
+        "clue": "when two lines"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 5,
-        "len": 11,
-        "answer": "depreciates",
-        "clue": "Exponential Decay"
+        "col": 9,
+        "len": 13,
+        "answer": "cordinatepair",
+        "clue": "the point plotted on a cordinate plain"
       },
       {
         "num": 2,
-        "row": 3,
+        "row": 2,
+        "col": 14,
+        "len": 5,
+        "answer": "orgin",
+        "clue": "the meeting point of the x and y axis"
+      },
+      {
+        "num": 4,
+        "row": 5,
         "col": 3,
         "len": 8,
-        "answer": "parabola",
-        "clue": "the graph of a quadratic function"
+        "answer": "rotation",
+        "clue": "a shape turning across the grid"
       },
       {
         "num": 5,
-        "row": 9,
+        "row": 5,
         "col": 12,
-        "len": 7,
-        "answer": "minimum",
-        "clue": "the vertex of a parabola that opens upward"
-      },
-      {
-        "num": 6,
-        "row": 9,
-        "col": 14,
-        "len": 12,
-        "answer": "x-intercepts",
-        "clue": "where solutions (roots, zeros)"
+        "len": 4,
+        "answer": "area",
+        "clue": "the inside of a grid"
       },
       {
         "num": 8,
-        "row": 13,
+        "row": 10,
+        "col": 14,
+        "len": 8,
+        "answer": "parallel",
+        "clue": "when two lines never intersect"
+      },
+      {
+        "num": 9,
+        "row": 11,
         "col": 7,
-        "len": 5,
-        "answer": "range",
-        "clue": "the set of all possible y values"
+        "len": 6,
+        "answer": "vertex",
+        "clue": "angle"
       },
       {
         "num": 10,
-        "row": 14,
-        "col": 9,
-        "len": 9,
-        "answer": "solutions",
-        "clue": "values of x that makes f(x) equal zero"
-      },
-      {
-        "num": 11,
-        "row": 15,
-        "col": 16,
-        "len": 7,
-        "answer": "outcome",
-        "clue": "The possible results from a probability"
-      },
-      {
-        "num": 13,
-        "row": 17,
-        "col": 12,
-        "len": 11,
-        "answer": "appreciates",
-        "clue": "Exponential Growth"
+        "row": 11,
+        "col": 11,
+        "len": 19,
+        "answer": "rigidtransformation",
+        "clue": "rotation reflection traslation"
       },
       {
         "num": 14,
-        "row": 19,
+        "row": 17,
         "col": 6,
-        "len": 6,
-        "answer": "domain",
-        "clue": "the set of all possible x values"
+        "len": 11,
+        "answer": "translation",
+        "clue": "a shape sliding acroos the the grid"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8609",
-  "slug": "math-8609",
-  "fetched_at": "2026-07-14T19:23:07.382364+00:00",
-  "date": "2026-09-09"
+  "source_url": "https://crosswordlabs.com/view/math-8637",
+  "slug": "math-8637",
+  "fetched_at": "2026-07-14T19:20:37.704075+00:00",
+  "date": "2026-09-10"
 }
