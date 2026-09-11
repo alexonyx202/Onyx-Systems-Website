@@ -1,190 +1,129 @@
 {
-  "title": "math",
-  "size": 29,
+  "title": "Math",
+  "size": 16,
   "grid": [
-    "........c....................",
-    "........o....o...............",
-    "........r..cordinate.........",
-    "........d....g...............",
-    "..r.....i..a.i...............",
-    "..o...congurent..............",
-    "..t.....a..e.................",
-    "..absloutevalue..............",
-    "..t.....e....................",
-    "..i.....p....p...............",
-    "..o...v.a.r..a...............",
-    "..n..perimiter...............",
-    "......r.r.g..a...............",
-    "......t...i..l...............",
-    ".intiger..dialation..........",
-    "......x...t..e...............",
-    ".....t....reflection.........",
-    ".....r....a..................",
-    ".....a....n..................",
-    ".....n....s..................",
-    ".....scalefactor.............",
-    ".....l....o..................",
-    ".....a.correspondingangles...",
-    ".....t....m..................",
-    ".....i....a..................",
-    ".....o....t..................",
-    ".....n....i..................",
-    "..........o..................",
-    "intersecting................."
+    "....arithmetic..",
+    "plus.......r....",
+    "...q......divide",
+    ".pound.....g...=",
+    "...a.......o...m",
+    "...r.c.p...n...c",
+    ".average...o...2",
+    "...r.l.r...math.",
+    "...o.c.c...e....",
+    "...o.u.e...t....",
+    "...t.l.n...r....",
+    "....multiply....",
+    ".....s..........",
+    "................",
+    "................",
+    "................"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 3,
-        "col": 12,
-        "len": 9,
-        "answer": "cordinate",
-        "clue": "the location of a cordinate pair"
+        "num": 1,
+        "row": 1,
+        "col": 5,
+        "len": 10,
+        "answer": "arithmetic",
+        "clue": "Advanced math"
       },
       {
-        "num": 6,
-        "row": 6,
-        "col": 7,
-        "len": 9,
-        "answer": "congurent",
-        "clue": "same shape and size"
+        "num": 3,
+        "row": 2,
+        "col": 1,
+        "len": 4,
+        "answer": "plus",
+        "clue": "+"
+      },
+      {
+        "num": 5,
+        "row": 3,
+        "col": 11,
+        "len": 6,
+        "answer": "divide",
+        "clue": "/"
       },
       {
         "num": 7,
-        "row": 8,
-        "col": 3,
-        "len": 13,
-        "answer": "absloutevalue",
-        "clue": "a numbers distance from zero"
+        "row": 4,
+        "col": 2,
+        "len": 5,
+        "answer": "pound",
+        "clue": "Another way to say 'x'"
+      },
+      {
+        "num": 10,
+        "row": 7,
+        "col": 2,
+        "len": 7,
+        "answer": "average",
+        "clue": "all+all/#of values"
       },
       {
         "num": 11,
-        "row": 12,
-        "col": 6,
-        "len": 9,
-        "answer": "perimiter",
-        "clue": "the outside of a grid"
+        "row": 8,
+        "col": 12,
+        "len": 4,
+        "answer": "math",
+        "clue": "What you are doing"
       },
       {
         "num": 12,
-        "row": 15,
-        "col": 2,
-        "len": 7,
-        "answer": "intiger",
-        "clue": "negative and positive numbers"
-      },
-      {
-        "num": 13,
-        "row": 15,
-        "col": 11,
-        "len": 9,
-        "answer": "dialation",
-        "clue": "the change of a shapes size"
-      },
-      {
-        "num": 15,
-        "row": 17,
-        "col": 11,
-        "len": 10,
-        "answer": "reflection",
-        "clue": "a shape reflected across a line"
-      },
-      {
-        "num": 16,
-        "row": 21,
-        "col": 6,
-        "len": 11,
-        "answer": "scalefactor",
-        "clue": "how big or large a number is getting"
-      },
-      {
-        "num": 17,
-        "row": 23,
-        "col": 8,
-        "len": 19,
-        "answer": "correspondingangles",
-        "clue": "when the angles are the same"
-      },
-      {
-        "num": 18,
-        "row": 29,
-        "col": 1,
-        "len": 12,
-        "answer": "intersecting",
-        "clue": "when two lines"
+        "row": 12,
+        "col": 5,
+        "len": 8,
+        "answer": "multiply",
+        "clue": "x"
       }
     ],
     "down": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 9,
-        "len": 13,
-        "answer": "cordinatepair",
-        "clue": "the point plotted on a cordinate plain"
-      },
-      {
         "num": 2,
-        "row": 2,
-        "col": 14,
-        "len": 5,
-        "answer": "orgin",
-        "clue": "the meeting point of the x and y axis"
+        "row": 1,
+        "col": 12,
+        "len": 12,
+        "answer": "trigonometry",
+        "clue": "Finding the area of an odd triangle"
       },
       {
         "num": 4,
-        "row": 5,
-        "col": 3,
-        "len": 8,
-        "answer": "rotation",
-        "clue": "a shape turning across the grid"
+        "row": 2,
+        "col": 4,
+        "len": 10,
+        "answer": "squareroot",
+        "clue": "?x?=_"
       },
       {
-        "num": 5,
-        "row": 5,
-        "col": 12,
-        "len": 4,
-        "answer": "area",
-        "clue": "the inside of a grid"
+        "num": 6,
+        "row": 3,
+        "col": 16,
+        "len": 5,
+        "answer": "e=mc2",
+        "clue": "Albert Einstein's famous equation."
       },
       {
         "num": 8,
-        "row": 10,
-        "col": 14,
+        "row": 6,
+        "col": 6,
         "len": 8,
-        "answer": "parallel",
-        "clue": "when two lines never intersect"
+        "answer": "calculus",
+        "clue": "Expert math."
       },
       {
         "num": 9,
-        "row": 11,
-        "col": 7,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "angle"
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 11,
-        "len": 19,
-        "answer": "rigidtransformation",
-        "clue": "rotation reflection traslation"
-      },
-      {
-        "num": 14,
-        "row": 17,
-        "col": 6,
-        "len": 11,
-        "answer": "translation",
-        "clue": "a shape sliding acroos the the grid"
+        "row": 6,
+        "col": 8,
+        "len": 7,
+        "answer": "percent",
+        "clue": "%"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8637",
-  "slug": "math-8637",
-  "fetched_at": "2026-07-14T19:20:37.704075+00:00",
-  "date": "2026-09-10"
+  "source_url": "https://crosswordlabs.com/view/math-8765",
+  "slug": "math-8765",
+  "fetched_at": "2026-07-14T19:19:53.837350+00:00",
+  "date": "2026-09-11"
 }
