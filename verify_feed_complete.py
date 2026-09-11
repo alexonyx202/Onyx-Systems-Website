@@ -122,6 +122,16 @@ KNOWN_PRODUCTS = [
     # acer.com/us-en/laptops/vero) — real product named in today's Tech Note
     # headline; obtain method stated (full specs + photo walkthrough at acer.com).
     "acer", "vero 16",
+    # Extended 2026-09-10: iOS 27 / iPhone / Siri (Apple's free fall OS update,
+    # free for iPhone 11 and newer, arriving Sept 14) — real products named in
+    # today's Tech Note tip headline; obtain method stated (Settings > General >
+    # Software Update on the phone itself).
+    "ios", "iphone", "siri",
+    # Extended 2026-09-11: ChromeOS Flex (Google's free old-PC-to-Chromebook
+    # conversion OS, chromeos.google/products/chromeos-flex) and NAPS2
+    # (naps2.com) — real products named in today's computer-only Tech Note
+    # headlines; obtain methods stated (free USB download / naps2.com install).
+    "chromeos flex", "chromeos",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
