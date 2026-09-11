@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-11-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-11",
+      "title": "Letters Went Out to 4.1 Million Patients This Week — Expect the Scam Calls Too",
+      "tag": "Daily Brief",
+      "excerpt": "Letters are arriving this week for 4.1 million customers of AdaptHealth — the company that delivers home medical equipment like sleep apnea and oxygen machines. Thieves stole names, health details, and insurance information. Scammers buy lists like this fast, so expect calls offering to \"help you claim free credit monitoring.\" If you get a letter, use only the phone number printed on it — never one a caller gives you. And glance over your insurance statements for care you never received.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-11-composite.jpg",
+      "comic": "assets/img/news/2026-09-11-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-10-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-10",
@@ -166,26 +183,25 @@
       "image": "assets/img/news/2026-09-07-composite.jpg",
       "comic": "assets/img/news/2026-09-07-comic-square.jpg",
       "read_more": "#contact"
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-09-06-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-06",
-      "title": "Scans of 153 Million Driver's Licenses Are Being Sold Online",
-      "tag": "Daily Brief",
-      "excerpt": "Criminals are selling pictures of more than 153 million driver's licenses stolen from a company that checks IDs for car rentals and stores — the FBI is investigating. With your license picture, a stranger can open cards or loans in your name. Do this today: pull your free credit report at annualcreditreport.com and freeze your credit for free at Equifax, Experian, and TransUnion — it stops new accounts cold. Expect a second wave: scam emails and calls offering to \"help\" you with this breach. Hang up and delete.",
+      "id": "onyx-2026-09-11-post-1",
+      "type": "news",
+      "date": "2026-09-11",
+      "title": "Your scanner needs its disc back? NAPS2 is the free download at naps2.com that makes any scanner work on a fresh computer",
+      "tag": "Tech Note",
+      "summary": "NAPS2 (short for \"Not Another PDF Scanner 2\") is completely free scanner software — download it at naps2.com, click Install, and it works with HP, Canon, Epson, and Brother scanners, saving scans straight to searchable PDFs. No manufacturer disc, no account, no ads.",
+      "truth": "I see this all the time: somebody gets a new computer, dusts off their scanner, and spends an hour hunting for the installation disc that came with it eight years ago. The scanner itself is fine — the disc was just the key. The honest answer is you don't need the disc or the manufacturer's bloated software suite that wants to run ten things at startup. NAPS2 is what I install on my own shop scanner: it's small, it's free, and it turns a stack of receipts, insurance papers, or old family photos into tidy PDFs with one button. Most people don't realize \"it doesn't work anymore\" usually just means \"it never got installed.\"",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-06-composite.jpg",
-      "comic": "assets/img/news/2026-09-06-comic-square.jpg",
-      "read_more": "#contact"
-    }
-  ],
-  "posts": [
+        "#Scanner",
+        "#FreeSoftware"
+      ]
+    },
     {
       "id": "onyx-2026-09-10-post-1",
       "type": "news",
@@ -245,17 +261,19 @@
       ]
     },
     {
-      "id": "onyx-2026-09-06-post-1",
-      "type": "news",
-      "date": "2026-09-06",
-      "title": "That \"unpaid SunPass toll\" text is fake — delete it and check your real balance at sunpass.com",
-      "tag": "Tech Note",
-      "summary": "The real SunPass never demands payment over a text message, and Florida's Attorney General has shut down fake toll sites before. Don't tap the link — delete the message, then check what you actually owe by signing in at **sunpass.com** or calling 1-888-TOLL-FLA (1-888-865-5352). Report the message free at **reportfraud.ftc.gov**.",
-      "truth": "These texts work because they land on a day you actually drove to Gainesville or Orlando, and six dollars sounds believable. The crooks only need one panicked tap. Here's the honest rule: no toll agency in Florida will ever ask you to settle up by tapping a link in a text — real invoices come by mail and inside your account. Delete first, then check the real balance yourself. More than one customer has told me they paid a fake toll site before something felt off.",
+      "id": "onyx-2026-09-11-post-2",
+      "type": "tip",
+      "date": "2026-09-11",
+      "title": "That old Windows computer your kid outgrew? Google's free ChromeOS Flex gives it a second life as a fast, simple Chromebook",
+      "tag": "Tech Tip",
+      "summary": "Google offers ChromeOS Flex completely free at chromeos.google/products/chromeos-flex — download it to a USB stick, plug it into your old Windows computer, and it becomes a fast, safe Chromebook-style machine that starts up in seconds and updates itself automatically.",
+      "truth": "Most people don't realize the slow part of an old computer is usually the aging Windows setup, not the machine itself. Google's free program wipes that old system and replaces it with the same quick, simple software Chromebooks run — web, email, photos, YouTube, all just there, and it updates itself so there's nothing to manage. The honest answer is it's not for everyone: it won't run Windows programs like QuickBooks desktop, and that's a dealbreaker for some folks. But for the kitchen computer that only ever opened a browser anyway, it's the difference between the closet and the counter — without spending a dime.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair"
+        "#ComputerRepair",
+        "#ChromeOSFlex",
+        "#FreeUpgrade"
       ]
     },
     {
@@ -315,23 +333,9 @@
         "#Bitwarden",
         "#PasswordManager"
       ]
-    },
-    {
-      "id": "onyx-2026-09-06-post-2",
-      "type": "tip",
-      "date": "2026-09-06",
-      "title": "Windows 10 computers no longer get free security updates — check Windows Update for your free Windows 11 offer",
-      "tag": "Tech Tip",
-      "summary": "On a Windows 10 PC, click **Start > Settings > Update & Security > Windows Update** and choose **Check for updates**. If your PC can run Windows 11, Microsoft's free offer appears right there — no purchase, no new computer, and your files stay put. If you see an offer for \"Extended Security Updates\" instead, that's Microsoft's safety net for older PCs — and it doesn't last forever.",
-      "truth": "Most people don't realize what \"no more updates\" really means: your banks, your email, and your protection programs all lean on that update stream, and an unpatched Windows 10 computer will still turn on and \"work fine\" right up until it doesn't. The honest answer is that plenty of these machines can make the free jump to Windows 11 today — but nobody gets told unless they look.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
