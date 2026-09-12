@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "items": [
+    {
+      "id": "n-2026-09-12",
+      "type": "newsletter",
+      "date": "2026-09-12",
+      "title": "Scammers Posing as Microsoft Support Are After Your Password — Hang Up",
+      "tag": "Daily Brief",
+      "summary": "Microsoft issued a warning Friday: crooks are calling people while pretending to be the computer's support team — sometimes claiming to be Microsoft — saying your account needs an urgent \"security update.\" Then they text you a link to a sign-in page that looks exactly like the real one. Real Microsoft never calls first. Hang up, delete the text, and if you already typed your password, change it now — then call me.",
+      "comic": "Newsletter - 2026-09-12-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-12-news1",
+      "type": "tech-note",
+      "date": "2026-09-12",
+      "title": "Is someone in your email right now? Check your Sent folder, then open your account's recent activity page to see every device that signed in",
+      "tag": "Tech Note",
+      "summary": "Check your Sent folder for messages you never wrote, then open your email provider's recent-activity page to see every device that has signed in: for Gmail it's myaccount.google.com/security, for Outlook or Hotmail it's account.microsoft.com/security. Anything you don't recognize means it's time to change your password — or come see me."
+    },
+    {
+      "id": "t-2026-09-12-tip1",
+      "type": "tech-note",
+      "date": "2026-09-12",
+      "title": "Rapid Fiber Internet is done building — every Suwannee Valley Electric member can now get fiber internet; check your address at svec-coop.com",
+      "tag": "Tech Tip",
+      "summary": "Suwannee Valley Electric's Rapid Fiber Internet finished its $93 million build this month — true fiber internet is now available to all of SVEC's members across our area. Check your address free at svec-coop.com/rapid-fiber-internet, or call SVEC at 800-447-4509 to ask when your home can connect."
+    },
     {
       "id": "n-2026-09-11",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Acer just made a laptop you can open like a car hood — the Vero 16 latches open with no tools",
       "tag": "Tech Tip",
       "summary": "Acer's new Vero 16 laptop has a latch on the bottom that pops open without a screwdriver, so its battery and storage are simple swaps anyone can do — see the full specs and a photo walkthrough at acer.com/us-en/laptops/vero/acer-vero-16."
-    },
-    {
-      "id": "n-2026-09-08",
-      "type": "newsletter",
-      "date": "2026-09-08",
-      "title": "A Shipping-Center Break-In Just Handed Scammers 81,000 Customer Lists",
-      "tag": "Daily Brief",
-      "summary": "A gadget-wallet maker called Trezor just revealed that a break-in at its shipping partner now touches 81,000 customers — names, home addresses, phone numbers, and order details, some from orders placed years ago. Lists like this are gold for scammers pretending to be real stores, so expect very convincing fake emails, calls, and letters. Don't trust a caller just because they know your name and what you bought — hang up and call the company back using the number on its real website.",
-      "comic": "Newsletter - 2026-09-08-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-08-news1",
-      "type": "tech-note",
-      "date": "2026-09-08",
-      "title": "Your laptop says it's full but your photos are already safe — OneDrive's \"Free up space\" clears the clutter without deleting anything",
-      "tag": "Tech Note",
-      "summary": "If your laptop keeps saying \"storage full,\" open your OneDrive folder, right-click the biggest folders (usually Pictures), and choose **\"Free up space.\"** The photo stays safe in the cloud at onedrive.com — your laptop keeps a small shortcut instead of the full copy. OneDrive is built into Windows 10 and 11, no download needed."
-    },
-    {
-      "id": "t-2026-09-08-tip1",
-      "type": "tech-note",
-      "date": "2026-09-08",
-      "title": "Hate the giant Windows 11 Start menu? The latest free update lets you shrink it and move the taskbar — here's the setting",
-      "tag": "Tech Tip",
-      "summary": "Install the latest free update via **Settings > Windows Update > Check for updates**, then open **Settings > Personalization > Start** to shrink the menu and hide sections you never use, and **Settings > Personalization > Taskbar > Taskbar behaviors** to move it where you want it."
     }
   ]
 }
