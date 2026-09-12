@@ -1,129 +1,156 @@
 {
-  "title": "Math",
-  "size": 16,
+  "title": "math",
+  "size": 11,
   "grid": [
-    "....arithmetic..",
-    "plus.......r....",
-    "...q......divide",
-    ".pound.....g...=",
-    "...a.......o...m",
-    "...r.c.p...n...c",
-    ".average...o...2",
-    "...r.l.r...math.",
-    "...o.c.c...e....",
-    "...o.u.e...t....",
-    "...t.l.n...r....",
-    "....multiply....",
-    ".....s..........",
-    "................",
-    "................",
-    "................"
+    "........95.",
+    ".........8.",
+    "........25.",
+    "....29..7..",
+    ".....166116",
+    "...325...5.",
+    "..22...900.",
+    "317....7...",
+    ".5.........",
+    "...........",
+    "..........."
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 5,
-        "len": 10,
-        "answer": "arithmetic",
-        "clue": "Advanced math"
+        "col": 9,
+        "len": 2,
+        "answer": "95",
+        "clue": "5 X 19"
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 1,
-        "len": 4,
-        "answer": "plus",
-        "clue": "+"
-      },
-      {
-        "num": 5,
         "row": 3,
-        "col": 11,
-        "len": 6,
-        "answer": "divide",
-        "clue": "/"
+        "col": 9,
+        "len": 2,
+        "answer": "25",
+        "clue": "5 X 5"
       },
       {
-        "num": 7,
+        "num": 4,
         "row": 4,
-        "col": 2,
-        "len": 5,
-        "answer": "pound",
-        "clue": "Another way to say 'x'"
+        "col": 5,
+        "len": 2,
+        "answer": "29",
+        "clue": "48 - 19"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 6,
+        "len": 6,
+        "answer": "166116",
+        "clue": "654 X 254"
+      },
+      {
+        "num": 8,
+        "row": 6,
+        "col": 4,
+        "len": 3,
+        "answer": "325",
+        "clue": "65 X 5"
+      },
+      {
+        "num": 9,
+        "row": 7,
+        "col": 3,
+        "len": 2,
+        "answer": "22",
+        "clue": "44 divided by 2"
       },
       {
         "num": 10,
         "row": 7,
-        "col": 2,
-        "len": 7,
-        "answer": "average",
-        "clue": "all+all/#of values"
+        "col": 8,
+        "len": 3,
+        "answer": "900",
+        "clue": "9 X 5"
       },
       {
         "num": 11,
         "row": 8,
-        "col": 12,
-        "len": 4,
-        "answer": "math",
-        "clue": "What you are doing"
-      },
-      {
-        "num": 12,
-        "row": 12,
-        "col": 5,
-        "len": 8,
-        "answer": "multiply",
-        "clue": "x"
+        "col": 1,
+        "len": 3,
+        "answer": "317",
+        "clue": "915 divided by 3"
       }
     ],
     "down": [
       {
         "num": 2,
         "row": 1,
-        "col": 12,
-        "len": 12,
-        "answer": "trigonometry",
-        "clue": "Finding the area of an odd triangle"
+        "col": 10,
+        "len": 3,
+        "answer": "585",
+        "clue": "65 X 9"
       },
       {
-        "num": 4,
-        "row": 2,
-        "col": 4,
-        "len": 10,
-        "answer": "squareroot",
-        "clue": "?x?=_"
-      },
-      {
-        "num": 6,
+        "num": 3,
         "row": 3,
-        "col": 16,
-        "len": 5,
-        "answer": "e=mc2",
-        "clue": "Albert Einstein's famous equation."
+        "col": 9,
+        "len": 3,
+        "answer": "271",
+        "clue": "1897 divided by 7"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 6,
+        "len": 3,
+        "answer": "915",
+        "clue": "183 X 5"
+      },
+      {
+        "num": 7,
+        "row": 5,
+        "col": 10,
+        "len": 3,
+        "answer": "150",
+        "clue": "900 divided by 6"
       },
       {
         "num": 8,
         "row": 6,
-        "col": 6,
-        "len": 8,
-        "answer": "calculus",
-        "clue": "Expert math."
+        "col": 4,
+        "len": 2,
+        "answer": "32",
+        "clue": "96 divided by 3"
       },
       {
         "num": 9,
-        "row": 6,
+        "row": 7,
+        "col": 3,
+        "len": 2,
+        "answer": "27",
+        "clue": "270 divided by 10"
+      },
+      {
+        "num": 10,
+        "row": 7,
         "col": 8,
-        "len": 7,
-        "answer": "percent",
-        "clue": "%"
+        "len": 2,
+        "answer": "97",
+        "clue": "776 divided by 8"
+      },
+      {
+        "num": 12,
+        "row": 8,
+        "col": 2,
+        "len": 2,
+        "answer": "15",
+        "clue": "3 X 5"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8765",
-  "slug": "math-8765",
-  "fetched_at": "2026-07-14T19:19:53.837350+00:00",
-  "date": "2026-09-11"
+  "source_url": "https://crosswordlabs.com/view/math-8771",
+  "slug": "math-8771",
+  "fetched_at": "2026-07-14T19:23:01.630197+00:00",
+  "date": "2026-09-12"
 }
