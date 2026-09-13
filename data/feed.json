@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-13-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-13",
+      "title": "Scammers Can Fake Your Grandchild's Voice Now — Here's the Family Fix",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are calling grandparents in a voice that sounds exactly like their grandchild — because a computer cloned it. The Better Business Bureau warned families this week, just before Grandparents' Day: crooks lift a few seconds of audio and family details from social media, then fake a crash or an arrest and beg for money fast. Hang up and call your grandchild back yourself, and set up a family code word. Then lock your Facebook photos to friends-only — that's where they shop for voices.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-13-composite.jpg",
+      "comic": "assets/img/news/2026-09-13-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-12-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-12",
@@ -166,26 +183,37 @@
       "image": "assets/img/news/2026-09-09-composite.jpg",
       "comic": "assets/img/news/2026-09-09-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-08-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-08",
-      "title": "A Shipping-Center Break-In Just Handed Scammers 81,000 Customer Lists",
-      "tag": "Daily Brief",
-      "excerpt": "A gadget-wallet maker called Trezor just revealed that a break-in at its shipping partner now touches 81,000 customers — names, home addresses, phone numbers, and order details, some from orders placed years ago. Lists like this are gold for scammers pretending to be real stores, so expect very convincing fake emails, calls, and letters. Don't trust a caller just because they know your name and what you bought — hang up and call the company back using the number on its real website.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-08-composite.jpg",
-      "comic": "assets/img/news/2026-09-08-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-13-post-3",
+      "type": "news",
+      "date": "2026-09-13",
+      "title": "Your LG TV reports what you watch to advertisers — turn it off free in Settings > General > System > Advanced Settings > Live Plus",
+      "tag": "Tech Note",
+      "summary": "A new investigation put it back in the news this week: LG smart TVs record a fingerprint of everything you watch — cable, streaming, even over-the-air — and send it home so advertisers can target you. The fix is one free switch, no account needed: press the Settings (gear) button on the remote, go to General > System > Advanced Settings > Live Plus, and turn it off. On Samsung TVs the similar switch lives under Settings > General > Terms & Privacy.",
+      "truth": "Here's the one that surprises everybody: the TV is a computer, and the biggest screen in the house is also the chattiest. Someone buying a television based on selling your viewing habits — what time you watch, what channel, whether it's football or the news — and you'd never know it, because it never asks twice. The honest answer is I'm not saying smash your TV; I'm saying a six-hundred-dollar TV doesn't need a second income. Two minutes with the remote and it goes back to being just a TV. The picture doesn't change one bit. You'll never miss the setting, and neither will the advertisers — they're the only ones who lose.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-09-13-post-5",
+      "type": "tip",
+      "date": "2026-09-13",
+      "title": "Update Chrome, VLC, Zoom, and a dozen apps in one click — Ninite is free at ninite.com",
+      "tag": "Tech Tip",
+      "summary": "Go to ninite.com, check the boxes for the free apps you already use — Chrome, Firefox, VLC, Zoom, and dozens more — and it builds you one installer. Run it once and Ninite installs or updates everything together; no toolbars, no junk offers. Keep that one file on your desktop, run it again about once a month, and every app on the list refreshes itself. Free for home use.",
+      "truth": "Here's the part almost nobody believes: your computer doesn't usually get broken by viruses walking in the front door — it gets broken by old programs standing in the back doorway. Criminals poke at well-known free apps that haven't been updated in a year, because the maker already published the fix and you just haven't gotten it. Updating twelve apps by hand is a Saturday morning you don't have. The honest answer is there's a website built for exactly this problem, it's been around for well over a decade, and it refuses to bundle junk — that refusal is the whole reason I trust it. One click, one download, one run, and the sneaky back doors close.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-12-post-1",
       "type": "news",
@@ -245,20 +273,6 @@
       ]
     },
     {
-      "id": "onyx-2026-09-08-post-1",
-      "type": "news",
-      "date": "2026-09-08",
-      "title": "Your laptop says it's full but your photos are already safe — OneDrive's \"Free up space\" clears the clutter without deleting anything",
-      "tag": "Tech Note",
-      "summary": "If your laptop keeps saying \"storage full,\" open your OneDrive folder, right-click the biggest folders (usually Pictures), and choose **\"Free up space.\"** The photo stays safe in the cloud at onedrive.com — your laptop keeps a small shortcut instead of the full copy. OneDrive is built into Windows 10 and 11, no download needed.",
-      "truth": "Most people don't realize that \"deleting\" and \"freeing up space\" are two different things. I see folks dragging their family photos into the Recycle Bin to free up room — that's how photo collections get lost forever. The honest answer is: your files can live in the cloud and your laptop can just keep a \"bookmark\" to them. Nothing is gone; it just isn't taking up room on the drive anymore. It's like keeping your photo albums in a safe-deposit box and taping a picture of the box to your fridge.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
       "id": "onyx-2026-09-12-post-2",
       "type": "tip",
       "date": "2026-09-12",
@@ -287,51 +301,9 @@
         "#ChromeOSFlex",
         "#FreeUpgrade"
       ]
-    },
-    {
-      "id": "onyx-2026-09-10-post-2",
-      "type": "tip",
-      "date": "2026-09-10",
-      "title": "iOS 27 arrives Monday September 14 — the free iPhone update with the new Siri, here's how to get it",
-      "tag": "Tech Tip",
-      "summary": "Apple releases iOS 27 this Monday, September 14 — free for iPhone 11 and newer — with the redesigned Siri that can follow up on questions and a battery-friendly overhaul; when it appears, go to Settings > General > Software Update on your iPhone and tap install (per Apple's release notes at apple.com).",
-      "truth": "Most people don't realize Apple gives away one of these big iPhone makeovers every fall — you paid for the phone, the next decade of updates is the free part. Monday's update brings the new Siri that actually keeps track of what you just asked it, so you can say \"and what about next weekend?\" like you would to a person. The honest answer is: don't rush it Monday night. Millions of people download at once, Apple's servers crawl, and some folks interrupt the install at the worst moment. Plug in, back up first, and let it run overnight.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-09-09-post-2",
-      "type": "tip",
-      "date": "2026-09-09",
-      "title": "Acer just made a laptop you can open like a car hood — the Vero 16 latches open with no tools",
-      "tag": "Tech Tip",
-      "summary": "Acer's new Vero 16 laptop has a latch on the bottom that pops open without a screwdriver, so its battery and storage are simple swaps anyone can do — see the full specs and a photo walkthrough at acer.com/us-en/laptops/vero/acer-vero-16.",
-      "truth": "I see this all the time: someone brings in a perfectly good laptop because one part wore out, and the only reason it's a big job is that the maker glued and screwed everything shut. Acer went the other way with the Vero 16 — the bottom opens with a latch, like the hood of your car, and the parts inside are meant to come out by hand. Most people don't realize how much of a computer's \"age\" is really just a worn-out part in a machine that was hard to open. I'd love to see more laptops built this way. Your mechanic agrees: easy access means cheaper bills.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-09-08-post-2",
-      "type": "tip",
-      "date": "2026-09-08",
-      "title": "Hate the giant Windows 11 Start menu? The latest free update lets you shrink it and move the taskbar — here's the setting",
-      "tag": "Tech Tip",
-      "summary": "Install the latest free update via **Settings > Windows Update > Check for updates**, then open **Settings > Personalization > Start** to shrink the menu and hide sections you never use, and **Settings > Personalization > Taskbar > Taskbar behaviors** to move it where you want it.",
-      "truth": "Here's something the tech world gets wrong: people aren't afraid of change — they're annoyed by change they didn't ask for. Microsoft moved everybody's cheese with the big Start menu, and folks came in convinced their computer was broken. It wasn't. The honest answer is that the controls to make Windows feel like *yours* have been there all along, and it takes about two minutes. I'd rather teach you the setting than have you live with something that bugs you every single day.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-12",
+  "updated": "2026-09-13",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

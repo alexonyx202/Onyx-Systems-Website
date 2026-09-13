@@ -132,6 +132,11 @@ KNOWN_PRODUCTS = [
     # (naps2.com) — real products named in today's computer-only Tech Note
     # headlines; obtain methods stated (free USB download / naps2.com install).
     "chromeos flex", "chromeos",
+    # Extended 2026-09-13: LG TV (LG smart TV, LG.com support) and its Live Plus
+    # ACR tracking switch — real product named in today's Tech Note headline;
+    # obtain method stated (turn off in Settings > General > System > Advanced
+    # Settings > Live Plus). Computer-adjacent big-screen device, not mobile.
+    "lg tv", "live plus",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
