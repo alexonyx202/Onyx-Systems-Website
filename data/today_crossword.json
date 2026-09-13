@@ -1,156 +1,161 @@
 {
-  "title": "math",
-  "size": 11,
+  "title": "Math",
+  "size": 24,
   "grid": [
-    "........95.",
-    ".........8.",
-    "........25.",
-    "....29..7..",
-    ".....166116",
-    "...325...5.",
-    "..22...900.",
-    "317....7...",
-    ".5.........",
-    "...........",
-    "..........."
+    "...................i....",
+    ".......c.........zero...",
+    ".......h.....r.....r....",
+    "....interestrate..mean..",
+    ".......c.v...n.....g....",
+    ".......k.e...g..m..u....",
+    ".......i.r..personal....",
+    ".......n.y......d..a..s.",
+    "...o...g.median.everyday",
+    "...n.....o............v.",
+    "discretionary.........i.",
+    "...e.....t............n.",
+    "...p.....h............g.",
+    "...e..................s.",
+    "...r....................",
+    "...y....................",
+    "..debt..................",
+    "...a....................",
+    "...r....................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 9,
-        "len": 2,
-        "answer": "95",
-        "clue": "5 X 19"
-      },
-      {
         "num": 3,
-        "row": 3,
-        "col": 9,
-        "len": 2,
-        "answer": "25",
-        "clue": "5 X 5"
-      },
-      {
-        "num": 4,
-        "row": 4,
-        "col": 5,
-        "len": 2,
-        "answer": "29",
-        "clue": "48 - 19"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 6,
-        "len": 6,
-        "answer": "166116",
-        "clue": "654 X 254"
-      },
-      {
-        "num": 8,
-        "row": 6,
-        "col": 4,
-        "len": 3,
-        "answer": "325",
-        "clue": "65 X 5"
-      },
-      {
-        "num": 9,
-        "row": 7,
-        "col": 3,
-        "len": 2,
-        "answer": "22",
-        "clue": "44 divided by 2"
-      },
-      {
-        "num": 10,
-        "row": 7,
-        "col": 8,
-        "len": 3,
-        "answer": "900",
-        "clue": "9 X 5"
-      },
-      {
-        "num": 11,
-        "row": 8,
-        "col": 1,
-        "len": 3,
-        "answer": "317",
-        "clue": "915 divided by 3"
-      }
-    ],
-    "down": [
-      {
-        "num": 2,
-        "row": 1,
-        "col": 10,
-        "len": 3,
-        "answer": "585",
-        "clue": "65 X 9"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 9,
-        "len": 3,
-        "answer": "271",
-        "clue": "1897 divided by 7"
+        "row": 2,
+        "col": 18,
+        "len": 4,
+        "answer": "zero",
+        "clue": "type of budget that requires your budget to use all your income in specific categories"
       },
       {
         "num": 5,
         "row": 4,
-        "col": 6,
-        "len": 3,
-        "answer": "915",
-        "clue": "183 X 5"
+        "col": 5,
+        "len": 12,
+        "answer": "interestrate",
+        "clue": "Interest is based on"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 10,
-        "len": 3,
-        "answer": "150",
-        "clue": "900 divided by 6"
-      },
-      {
-        "num": 8,
-        "row": 6,
-        "col": 4,
-        "len": 2,
-        "answer": "32",
-        "clue": "96 divided by 3"
+        "row": 4,
+        "col": 19,
+        "len": 4,
+        "answer": "mean",
+        "clue": "Average of Values"
       },
       {
         "num": 9,
         "row": 7,
-        "col": 3,
-        "len": 2,
-        "answer": "27",
-        "clue": "270 divided by 10"
-      },
-      {
-        "num": 10,
-        "row": 7,
-        "col": 8,
-        "len": 2,
-        "answer": "97",
-        "clue": "776 divided by 8"
+        "col": 13,
+        "len": 8,
+        "answer": "personal",
+        "clue": "the budget you spend your money on how you want"
       },
       {
         "num": 12,
+        "row": 9,
+        "col": 10,
+        "len": 6,
+        "answer": "median",
+        "clue": "Middle term"
+      },
+      {
+        "num": 13,
+        "row": 9,
+        "col": 17,
+        "len": 8,
+        "answer": "everyday",
+        "clue": "when does Daily comp occur"
+      },
+      {
+        "num": 14,
+        "row": 11,
+        "col": 1,
+        "len": 13,
+        "answer": "discretionary",
+        "clue": "Expenses  Non essential expenses you don't need"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 3,
+        "len": 4,
+        "answer": "debt",
+        "clue": "Going over what you should've spent and could afford"
+      }
+    ],
+    "down": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 20,
+        "len": 9,
+        "answer": "irregular",
+        "clue": "spending Expenses that occur at various times during the year."
+      },
+      {
+        "num": 2,
+        "row": 2,
+        "col": 8,
+        "len": 8,
+        "answer": "checking",
+        "clue": "The account you use for daily spending"
+      },
+      {
+        "num": 4,
+        "row": 3,
+        "col": 14,
+        "len": 5,
+        "answer": "range",
+        "clue": "difference between highest of the lowest and highest value"
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 10,
+        "len": 10,
+        "answer": "everymonth",
+        "clue": "Monthly compounding occurs"
+      },
+      {
+        "num": 8,
+        "row": 6,
+        "col": 17,
+        "len": 4,
+        "answer": "mode",
+        "clue": "most frequent value"
+      },
+      {
+        "num": 10,
         "row": 8,
-        "col": 2,
-        "len": 2,
-        "answer": "15",
-        "clue": "3 X 5"
+        "col": 23,
+        "len": 7,
+        "answer": "savings",
+        "clue": "The account you rarely touch and best fit for your emergency fund, for large purchases"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 4,
+        "len": 11,
+        "answer": "onceperyear",
+        "clue": "Annual Interest rate occurs"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8771",
-  "slug": "math-8771",
-  "fetched_at": "2026-07-14T19:23:01.630197+00:00",
-  "date": "2026-09-12"
+  "source_url": "https://crosswordlabs.com/view/math-8891",
+  "slug": "math-8891",
+  "fetched_at": "2026-07-14T19:27:08.400574+00:00",
+  "date": "2026-09-13"
 }
