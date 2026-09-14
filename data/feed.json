@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-14-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-14",
+      "title": "Fake Deal Sites Surge After Apple's iPhone Launch — How to Pay Smart",
+      "tag": "Daily Brief",
+      "excerpt": "Looking for a deal on a hot new gadget? The Guardian warned Sunday about fake shopping sites built to cash in on Apple's new iPhone launch — researchers watched more than 200 copycat websites appear in a single day. They look convincing, and they often insist on payment by bank transfer or digital currency, skipping the protection your card gives you. Buy only from stores you know, pay by credit card, and treat a too-good price as a warning sign. Already paid? Call your bank right away.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-14-composite.jpg",
+      "comic": "assets/img/news/2026-09-14-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-13-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-13",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-10-composite.jpg",
       "comic": "assets/img/news/2026-09-10-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-09-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-09",
-      "title": "That 'Unpaid Ticket' Text Is a Scam — Delete It, Don't Tap It",
-      "tag": "Daily Brief",
-      "excerpt": "A wave of fake \"DMV\" text messages is hitting drivers across the country right now — texts claiming your license will be suspended for an unpaid ticket and demanding payment through a link. Florida's own DMV says it will NEVER text you demanding money or threatening suspension. If you tap the link, you hand your card to criminals. Delete the text, don't reply, and report it by forwarding to 7726.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-09-composite.jpg",
-      "comic": "assets/img/news/2026-09-09-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-14-post-1",
+      "type": "news",
+      "date": "2026-09-14",
+      "title": "Your inkjet printer dried up again? A Brother laser printer prints on the first try even after months of sitting — Wirecutter's 2026 home-office pick starts around $210 at brother-usa.com",
+      "tag": "Tech Note",
+      "summary": "Laser printers use toner powder, not liquid ink, so there's nothing to dry out and clog. Wirecutter's 2026 pick for the best home-office laser printer is a Brother — about $210 at brother-usa.com, Best Buy, or Amazon — and a black toner cartridge lasts thousands of pages.",
+      "truth": "I see this all the time: somebody buys a cheap inkjet, prints two pages a month, and every month the ink dries a little more until the thing refuses to print the morning they need a boarding pass or a tax form. Then they buy new cartridges that cost half what the printer did. The honest answer is the cheap printer is the most expensive one in the room. A laser printer costs more up front and almost nothing after that — the powder never dries out, even if the printer sits all summer. Most people don't realize a single black toner cartridge can outlast a stack of ink cartridges that cost twice as much. If you would rather buy than keep nursing ink cartridges, Wirecutter's pick runs about $210 at brother-usa.com, Best Buy, or Amazon.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-13-post-3",
       "type": "news",
@@ -194,20 +208,6 @@
       "tag": "Tech Note",
       "summary": "A new investigation put it back in the news this week: LG smart TVs record a fingerprint of everything you watch — cable, streaming, even over-the-air — and send it home so advertisers can target you. The fix is one free switch, no account needed: press the Settings (gear) button on the remote, go to General > System > Advanced Settings > Live Plus, and turn it off. On Samsung TVs the similar switch lives under Settings > General > Terms & Privacy.",
       "truth": "Here's the one that surprises everybody: the TV is a computer, and the biggest screen in the house is also the chattiest. Someone buying a television based on selling your viewing habits — what time you watch, what channel, whether it's football or the news — and you'd never know it, because it never asks twice. The honest answer is I'm not saying smash your TV; I'm saying a six-hundred-dollar TV doesn't need a second income. Two minutes with the remote and it goes back to being just a TV. The picture doesn't change one bit. You'll never miss the setting, and neither will the advertisers — they're the only ones who lose.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-09-13-post-5",
-      "type": "tip",
-      "date": "2026-09-13",
-      "title": "Update Chrome, VLC, Zoom, and a dozen apps in one click — Ninite is free at ninite.com",
-      "tag": "Tech Tip",
-      "summary": "Go to ninite.com, check the boxes for the free apps you already use — Chrome, Firefox, VLC, Zoom, and dozens more — and it builds you one installer. Run it once and Ninite installs or updates everything together; no toolbars, no junk offers. Keep that one file on your desktop, run it again about once a month, and every app on the list refreshes itself. Free for home use.",
-      "truth": "Here's the part almost nobody believes: your computer doesn't usually get broken by viruses walking in the front door — it gets broken by old programs standing in the back doorway. Criminals poke at well-known free apps that haven't been updated in a year, because the maker already published the fix and you just haven't gotten it. Updating twelve apps by hand is a Saturday morning you don't have. The honest answer is there's a website built for exactly this problem, it's been around for well over a decade, and it refuses to bundle junk — that refusal is the whole reason I trust it. One click, one download, one run, and the sneaky back doors close.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -259,13 +259,27 @@
       ]
     },
     {
-      "id": "onyx-2026-09-09-post-1",
-      "type": "news",
-      "date": "2026-09-09",
-      "title": "Microsoft just sealed 974 security holes in one day — the update is free, here's how to confirm you got it",
-      "tag": "Tech Note",
-      "summary": "Open Settings > Windows Update on your PC and click Check for updates — Microsoft released its biggest security update ever on September 9, covering 974 holes in Windows, including ones criminals were already using. It's free, it's built into Windows, and it takes about ten minutes.",
-      "truth": "Here's a number that surprised even me: 974. That's how many security holes Microsoft patched in a single day this week — their biggest patch release ever. Most people don't realize that when your computer asks to \"restart to finish updating,\" it isn't nagging you for fun; it's locking the doors behind you. The honest answer is you don't need to understand what any of those holes are. You just need to let Windows close them. The folks who get in trouble are the ones who keep clicking \"remind me later\" for months.",
+      "id": "onyx-2026-09-14-post-2",
+      "type": "tip",
+      "date": "2026-09-14",
+      "title": "Homework help for $4 a month — Khan Academy's Khanmigo is an AI tutor that explains instead of answering, at khanmigo.ai",
+      "tag": "Tech Tip",
+      "summary": "Khanmigo is the AI tutor built by Khan Academy, the nonprofit that has offered free school lessons for years. It walks kids through problems step by step instead of doing the work for them. Sign up at khanmigo.ai — $4 a month for families — and the whole library of Khan Academy lessons underneath it stays free.",
+      "truth": "Most parents I talk to are caught between two fears: they don't want their kid copying answers off some chatbot, and they can't sit at the kitchen table re-learning seventh-grade math every night. Khanmigo was built for exactly that spot — it's the tutor that says \"let's work through it together\" instead of just handing over the answer, and it's run by a nonprofit, not an ad company. The honest answer is four dollars a month is less than one trip to the vending machine fund, and it buys a patient tutor that never sighs, never says \"we already covered this,\" and is available at 9 p.m. when the worksheet is due tomorrow.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-09-13-post-5",
+      "type": "tip",
+      "date": "2026-09-13",
+      "title": "Update Chrome, VLC, Zoom, and a dozen apps in one click — Ninite is free at ninite.com",
+      "tag": "Tech Tip",
+      "summary": "Go to ninite.com, check the boxes for the free apps you already use — Chrome, Firefox, VLC, Zoom, and dozens more — and it builds you one installer. Run it once and Ninite installs or updates everything together; no toolbars, no junk offers. Keep that one file on your desktop, run it again about once a month, and every app on the list refreshes itself. Free for home use.",
+      "truth": "Here's the part almost nobody believes: your computer doesn't usually get broken by viruses walking in the front door — it gets broken by old programs standing in the back doorway. Criminals poke at well-known free apps that haven't been updated in a year, because the maker already published the fix and you just haven't gotten it. Updating twelve apps by hand is a Saturday morning you don't have. The honest answer is there's a website built for exactly this problem, it's been around for well over a decade, and it refuses to bundle junk — that refusal is the whole reason I trust it. One click, one download, one run, and the sneaky back doors close.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -303,7 +317,7 @@
       ]
     }
   ],
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
