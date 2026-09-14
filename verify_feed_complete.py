@@ -137,6 +137,10 @@ KNOWN_PRODUCTS = [
     # obtain method stated (turn off in Settings > General > System > Advanced
     # Settings > Live Plus). Computer-adjacent big-screen device, not mobile.
     "lg tv", "live plus",
+    # Extended 2026-09-14: Brother laser printer (Wirecutter 2026 home-office pick,
+    # brother-usa.com) and Khan Academy's Khanmigo AI tutor (khanmigo.ai) — real
+    # products named in today's Tech Note headlines; obtain methods stated.
+    "brother", "khanmigo", "khan academy",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -253,7 +257,7 @@ OBTAIN = [
     "set up", "set-up", "turn on", "use ", "try ", "upload", "roll back",
     "rollback", "patch", "update", "isolate", "fix ", "book", "call",
     "text ", "tether", "connect", "configure", "add ", "create",
-    "sysctl",
+    "sysctl", "sign up",
 ]
 
 def check_entry(fname, eid, headline, body, entry_type=None):
