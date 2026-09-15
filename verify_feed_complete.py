@@ -141,6 +141,10 @@ KNOWN_PRODUCTS = [
     # brother-usa.com) and Khan Academy's Khanmigo AI tutor (khanmigo.ai) — real
     # products named in today's Tech Note headlines; obtain methods stated.
     "brother", "khanmigo", "khan academy",
+    # Extended 2026-09-15: iFixit (ifixit.com — free step-by-step repair guides for
+    # laptops/desktops) — real product named in today's Tech Note headline;
+    # obtain method stated (free guides at ifixit.com).
+    "ifixit",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -155,7 +159,11 @@ JARGON_PATTERNS = [
     r"\bdocker\b", r"\bcontainer\b", r"\bkubernetes\b", r"\bpodman\b",
     r"\btls\b", r"\bssl\b", r"\bsmb\b", r"\bnfs\b", r"\bgpo\b", r"\bad fs\b", r"\badfs\b", r"\bamsi\b", r"\besu\b", r"\bpreempt_rt\b",
     r"\bopenssl\b", r"\bpgp\b", r"\bgpg\b", r"\bsignature\b",
-    r"\bmake\b", r"\bnproc\b", r"\bolddefconfig\b", r"\bmodule_install\b",
+    # NOTE: `\bmake\b` was REMOVED 2026-09-15 — it targeted the Linux kernel
+    # `make` build tool (alongside nproc/olddefconfig) but false-positived on
+    # ordinary English ("make the words bigger"), failing the Grandma Test gate
+    # on legitimate plain-language posts.
+    r"\bnproc\b", r"\bolddefconfig\b", r"\bmodule_install\b",
     r"\bcompile\b", r"\bcompiler\b", r"\bgcc\b", r"\bclang\b", r"\brustc\b",
     r"\bbenchmark\b", r"\bscore\b", r"\bfps\b", r"\btflops\b",
     r"\bnvme\b", r"\bram\b", r"\bddr[345]\b", r"\bgpu\b", r"\bcpu\b",

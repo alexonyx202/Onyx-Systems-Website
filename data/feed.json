@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-15-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-15",
+      "title": "Scammers Fooled a Bank Into Handing Over 50,000 Customers' Private Files",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers just fooled the online bank Revolut into handing over private files for about 50,000 customers — birth dates, addresses, phone numbers, copies of passports and driver's licenses, even the selfies taken to verify accounts. How? They posed as a government agency using a real government email address, so the request looked completely legitimate. Expect very convincing follow-up scams that quote your real details. Don't trust caller ID or an official-looking email: hang up and call the company back at the number on your card or statement.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-15-composite.jpg",
+      "comic": "assets/img/news/2026-09-15-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-14-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-14",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-11-composite.jpg",
       "comic": "assets/img/news/2026-09-11-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-10-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-10",
-      "title": "The Biggest Windows Security Update Ever Went Out Tuesday — Install It Tonight",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft just shipped its biggest security update ever — nearly 1,000 fixes in a single day, and two of the holes being patched were already under attack. If your computer hasn't updated since Tuesday, it's missing protection against bugs criminals are using right now. Updating takes a few minutes, then restart when it asks. Put it off and you're leaving the door unlocked. Do it tonight.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-10-composite.jpg",
-      "comic": "assets/img/news/2026-09-10-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+ "id": "onyx-2026-09-15-post-1",
+ "type": "news",
+ "date": "2026-09-15",
+ "title": "Before you give up on that slow old laptop, look it up on iFixit — free step-by-step guides at ifixit.com",
+ "tag": "Tech Note",
+ "summary": "iFixit is a free website — ifixit.com — with thousands of step-by-step guides and pictures for bringing laptops and desktops back to life. Look up your machine, see what the job takes, and decide whether it's a 20-minute afternoon job or one for the shop. Parts and small toolkits are sold there too.",
+ "truth": "Most people don't realize how much of a computer can be brought back from the dead — a worn-out battery, a clogged fan, a dying drive, all fixable. The companies that build these machines would rather you never learned that, because a replacement sale beats a repair every time. iFixit is the free counterweight: a repair manual the manufacturers never gave you, with real photos and honest difficulty ratings. The honest answer is even if you never turn a single screw yourself, ten minutes on iFixit turns you into an informed customer — you'll know whether you're being quoted a fair job or a fairy tale.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-14-post-1",
       "type": "news",
@@ -245,13 +259,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-10-post-1",
-      "type": "news",
-      "date": "2026-09-10",
-      "title": "Chrome now updates every two weeks — check yours free in the Chrome menu under About Google Chrome",
-      "tag": "Tech Note",
-      "summary": "Google switched Google Chrome to a two-week update schedule as of September 8, which means the security fixes arrive twice as often — open Chrome, click the three-dot menu in the top corner, choose Help > About Google Chrome, and it checks and updates itself for free in under a minute.",
-      "truth": "Here's something that changed this week and most people will never hear about: Chrome, the browser half of Lake City uses, now updates every two weeks instead of every four. Google did it because the bad guys are using the same AI tools we are, and holes get found — and used — faster. The honest answer is you don't have to understand any of that. The trick is knowing your browser updates itself while it's open — an old update just sits there waiting if you haven't restarted Chrome in a month. One click in the menu, and it's done.",
+      "id": "onyx-2026-09-15-post-2",
+      "type": "tip",
+      "date": "2026-09-15",
+      "title": "Hard-to-read websites? Firefox's built-in Reader View turns any article into big, clear text — one click, free at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Firefox is a free web browser, and its Reader View is built right in: when a website is a mess of ads and sidebars, click the page-shaped icon at the right end of the address bar and Reader View strips the page down to plain text. Click the Aa button to make the words bigger, or have the page read aloud to you. Firefox is free at firefox.com.",
+      "truth": "The internet used to feel like a library. Now half the time it feels like a carnival — pop-ups, videos autoplaying, three sidebars fighting over your attention. Most people don't realize the mess is the website's fault, not their eyes and not their computer, and that the cure is one click in the browser. Reader View throws all the junk out and hands you the article like a clean printed page. The honest answer is I use it every morning myself — and the read-aloud button means I can \"read\" the news while the coffee brews.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -317,7 +331,7 @@
       ]
     }
   ],
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
