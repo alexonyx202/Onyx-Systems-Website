@@ -145,6 +145,11 @@ KNOWN_PRODUCTS = [
     # laptops/desktops) — real product named in today's Tech Note headline;
     # obtain method stated (free guides at ifixit.com).
     "ifixit",
+    # Extended 2026-09-16: Career Online High School (the accredited online-diploma
+    # program public libraries sponsor through Gale/Cengage) — a real named
+    # service in today's Tech Note headline; obtain method stated (call the
+    # Columbia County Public Library / enroll at columbiacountyfla.com).
+    "career online high school",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -316,6 +321,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # FBI-investigated, BleepingComputer/KrebsOnSecurity) is a security alert (exempt).
     "driver's license", "driver's licenses", "drivers license", "drivers licenses",
     "license scan", "153 million",
+    # Extended 2026-09-16: fake antivirus auto-renewal receipt phishing alert
+    # (Malwarebytes, Sept. 16 2026 — no real charge, the "cancel" page is a
+    # credential-harvesting form) is a security alert (exempt).
+    "antivirus renewal", "renewal email", "renewal receipt", "auto-renewed",
     ]
     if any(s in low for s in SKIP):
         return fails
