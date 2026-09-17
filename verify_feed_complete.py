@@ -325,6 +325,12 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # (Malwarebytes, Sept. 16 2026 — no real charge, the "cancel" page is a
     # credential-harvesting form) is a security alert (exempt).
     "antivirus renewal", "renewal email", "renewal receipt", "auto-renewed",
+    # Extended 2026-09-17: "Your rewards points are expiring" fake-text phishing
+    # alert (Malwarebytes, Sept. 17 2026 — 1,000+ variants impersonating rewards
+    # programs, link opens a credential-stealing sign-in page) is a security alert
+    # (exempt: there is no product to name, and the action IS stated — don't use
+    # the link, type the company's real address into your browser and sign in).
+    "rewards points", "points are expiring",
     ]
     if any(s in low for s in SKIP):
         return fails

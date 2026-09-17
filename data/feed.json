@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-17-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-17",
+      "title": "Those 'Your Rewards Points Are Expiring' Texts Are Fake",
+      "tag": "Daily Brief",
+      "excerpt": "A wave of fake text messages is telling people their rewards points are about to expire, with a believable balance and a deadline to make it feel urgent. The link inside opens a fake sign-in page that steals your email address and password. Researchers counted more than a thousand versions of the same message. Don't use the link. Open the company's official website instead by typing its address into your browser, then sign in there and check for yourself.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-17-composite.jpg",
+      "comic": "assets/img/news/2026-09-17-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-16-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-16",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-13-composite.jpg",
       "comic": "assets/img/news/2026-09-13-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-12-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-12",
-      "title": "Scammers Posing as Microsoft Support Are After Your Password — Hang Up",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft issued a warning Friday: crooks are calling people while pretending to be the computer's support team — sometimes claiming to be Microsoft — saying your account needs an urgent \"security update.\" Then they text you a link to a sign-in page that looks exactly like the real one. Real Microsoft never calls first. Hang up, delete the text, and if you already typed your password, change it now — then call me.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-12-composite.jpg",
-      "comic": "assets/img/news/2026-09-12-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-17-post-1",
+      "type": "news",
+      "date": "2026-09-17",
+      "title": "Stop ChatGPT, Gemini, and Claude from training their AI on your chats — three free settings, about two minutes each",
+      "tag": "Tech Note",
+      "summary": "In ChatGPT, open Settings → Data Controls and turn off Improve the model for everyone. In Gemini, open Settings and turn off Keep Activity (or go to myactivity.google.com and turn off Gemini Apps Activity). In Claude, open Settings → Privacy and turn off the model improvement setting. Nothing breaks when you do this and nothing costs money — you keep using the app exactly as before, and your conversations stop feeding the next version of it.",
+      "truth": "People tell me, \"I only ask it silly stuff, who cares.\" Most people don't realize the chats that really matter are the ones you'd never say out loud: helping word a letter to your doctor, pasting in a bill to figure out a charge, typing in your own address to fill out a form. That's exactly the material that gets kept and reviewed. The honest answer is that a chatbot is a conversation with a company, not a conversation with a friend. You can still use it every single day and tell it not to take notes.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-16-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-12-post-1",
-      "type": "news",
-      "date": "2026-09-12",
-      "title": "Is someone in your email right now? Check your Sent folder, then open your account's recent activity page to see every device that signed in",
-      "tag": "Tech Note",
-      "summary": "Check your Sent folder for messages you never wrote, then open your email provider's recent-activity page to see every device that has signed in: for Gmail it's myaccount.google.com/security, for Outlook or Hotmail it's account.microsoft.com/security. Anything you don't recognize means it's time to change your password — or come see me.",
-      "truth": "Here's the trick I wish every customer knew: when crooks break into an email, they don't leave a note — but they do leave footprints. Almost every email account keeps a list of every device that signed in, where it was, and when, and almost nobody ever looks at it. The honest answer is the \"weird thing\" people notice — friends saying you sent them a strange link, a password reset email they never asked for — is usually the third or fourth clue, not the first. Two minutes in that activity list and you'll know for sure. Most of the time it's just you, your phone, and your tablet, and you'll sleep better.",
+      "id": "onyx-2026-09-17-post-2",
+      "type": "tip",
+      "date": "2026-09-17",
+      "title": "Update Firefox free to get a PDF reader that opens up to 45% faster — click Menu, then Help, then About Firefox",
+      "tag": "Tech Tip",
+      "summary": "The newest Firefox came out September 15, and Mozilla says the PDF reader built into it now starts up to 45% faster, with a big drop in memory and processor use when a page is showing large photos. To get it: open Firefox, click the Menu button (the three lines in the top right corner), then Help, then About Firefox. It checks and installs the newest version for free, and your tabs, bookmarks, and saved passwords all stay exactly where they are.",
+      "truth": "Most people don't realize they're reading their power bills, insurance papers, and lab results in a PDF reader that came free inside their web browser — so upgrading the browser upgrades the reader. I watch folks email a document to themselves just to open it on another machine because the one on the desk feels slow. The honest answer is that a browser update isn't housekeeping you can skip. It's the single easiest thing you can do for both speed and safety at the same time, and it costs you one click and a restart.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-12-post-2",
-      "type": "tip",
-      "date": "2026-09-12",
-      "title": "Rapid Fiber Internet is done building — every Suwannee Valley Electric member can now get fiber internet; check your address at svec-coop.com",
-      "tag": "Tech Tip",
-      "summary": "Suwannee Valley Electric's Rapid Fiber Internet finished its $93 million build this month — true fiber internet is now available to all of SVEC's members across our area. Check your address free at svec-coop.com/rapid-fiber-internet, or call SVEC at 800-447-4509 to ask when your home can connect.",
-      "truth": "I've heard \"the internet out here is just slow\" so many times that folks stopped asking why. The honest answer is it was never your computer — out in the country around Lake City, most connections travel miles of old copper lines that were never built for video calls and streaming. Rapid Fiber spent the last four years burying brand-new fiber lines past more than 28,000 homes, and they finished the job this month. If you've been paying for sluggish internet and blaming yourself, check that map. Fiber means video calls that don't freeze, movies that don't buffer, and one less thing between your family and the rest of the world.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

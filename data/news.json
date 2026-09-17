@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "items": [
+    {
+      "id": "n-2026-09-17",
+      "type": "newsletter",
+      "date": "2026-09-17",
+      "title": "Those 'Your Rewards Points Are Expiring' Texts Are Fake",
+      "tag": "Daily Brief",
+      "summary": "A wave of fake text messages is telling people their rewards points are about to expire, with a believable balance and a deadline to make it feel urgent. The link inside opens a fake sign-in page that steals your email address and password. Researchers counted more than a thousand versions of the same message. Don't use the link. Open the company's official website instead by typing its address into your browser, then sign in there and check for yourself.",
+      "comic": "Newsletter - 2026-09-17-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-17-news1",
+      "type": "tech-note",
+      "date": "2026-09-17",
+      "title": "Stop ChatGPT, Gemini, and Claude from training their AI on your chats — three free settings, about two minutes each",
+      "tag": "Tech Note",
+      "summary": "In ChatGPT, open Settings → Data Controls and turn off Improve the model for everyone. In Gemini, open Settings and turn off Keep Activity (or go to myactivity.google.com and turn off Gemini Apps Activity). In Claude, open Settings → Privacy and turn off the model improvement setting. Nothing breaks when you do this and nothing costs money — you keep using the app exactly as before, and your conversations stop feeding the next version of it."
+    },
+    {
+      "id": "t-2026-09-17-tip1",
+      "type": "tech-note",
+      "date": "2026-09-17",
+      "title": "Update Firefox free to get a PDF reader that opens up to 45% faster — click Menu, then Help, then About Firefox",
+      "tag": "Tech Tip",
+      "summary": "The newest Firefox came out September 15, and Mozilla says the PDF reader built into it now starts up to 45% faster, with a big drop in memory and processor use when a page is showing large photos. To get it: open Firefox, click the Menu button (the three lines in the top right corner), then Help, then About Firefox. It checks and installs the newest version for free, and your tabs, bookmarks, and saved passwords all stay exactly where they are."
+    },
     {
       "id": "n-2026-09-16",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Homework help for $4 a month — Khan Academy's Khanmigo is an AI tutor that explains instead of answering, at khanmigo.ai",
       "tag": "Tech Tip",
       "summary": "Khanmigo is the AI tutor built by Khan Academy, the nonprofit that has offered free school lessons for years. It walks kids through problems step by step instead of doing the work for them. Sign up at khanmigo.ai — $4 a month for families — and the whole library of Khan Academy lessons underneath it stays free."
-    },
-    {
-      "id": "t-2026-09-13-news1",
-      "type": "tech-note",
-      "date": "2026-09-13",
-      "title": "Your LG TV reports what you watch to advertisers — turn it off free in Settings > General > System > Advanced Settings > Live Plus",
-      "tag": "Tech Note",
-      "summary": "A new investigation put it back in the news this week: LG smart TVs record a fingerprint of everything you watch — cable, streaming, even over-the-air — and send it home so advertisers can target you. The fix is one free switch, no account needed: press the Settings (gear) button on the remote, go to General > System > Advanced Settings > Live Plus, and turn it off. On Samsung TVs the similar switch lives under Settings > General > Terms & Privacy."
-    },
-    {
-      "id": "t-2026-09-13-tip1",
-      "type": "tech-note",
-      "date": "2026-09-13",
-      "title": "Update Chrome, VLC, Zoom, and a dozen apps in one click — Ninite is free at ninite.com",
-      "tag": "Tech Tip",
-      "summary": "Go to ninite.com, check the boxes for the free apps you already use — Chrome, Firefox, VLC, Zoom, and dozens more — and it builds you one installer. Run it once and Ninite installs or updates everything together; no toolbars, no junk offers. Keep that one file on your desktop, run it again about once a month, and every app on the list refreshes itself. Free for home use."
-    },
-    {
-      "id": "n-2026-09-13",
-      "type": "newsletter",
-      "date": "2026-09-13",
-      "title": "Scammers Can Fake Your Grandchild's Voice Now — Here's the Family Fix",
-      "tag": "Daily Brief",
-      "summary": "Scammers are calling grandparents in a voice that sounds exactly like their grandchild — because a computer cloned it. The Better Business Bureau warned families this week, just before Grandparents' Day: crooks lift a few seconds of audio and family details from social media, then fake a crash or an arrest and beg for money fast. Hang up and call your grandchild back yourself, and set up a family code word. Then lock your Facebook photos to friends-only — that's where they shop for voices.",
-      "comic": "Newsletter - 2026-09-13-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }
