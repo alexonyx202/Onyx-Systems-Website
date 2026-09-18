@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "items": [
+    {
+      "id": "n-2026-09-18",
+      "type": "newsletter",
+      "date": "2026-09-18",
+      "title": "That 'Your Parcel Couldn't Be Delivered — Pay $4.95' Message Is Fake",
+      "tag": "Daily Brief",
+      "summary": "A fresh batch of fake messages says a parcel couldn't be delivered and you owe about five dollars to get it moving. The link opens a page that copies the post office's official look, then asks for your name, your phone number, and finally your bank card. That's an email scam, not a shipping notice. The real Postal Service, UPS, and FedEx never text a link for a small fee. Don't click — open the carrier's real website and check your tracking number there.",
+      "comic": "Newsletter - 2026-09-18-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-18-news1",
+      "type": "tech-note",
+      "date": "2026-09-18",
+      "title": "Your computer's drive can warn you before it quits — Windows 11 shows its free health report in Settings > System > Storage",
+      "tag": "Tech Note",
+      "summary": "Click Start, type Storage, and open Storage settings. Then click Advanced storage settings, then Disks & volumes, click the drive your files live on, click Properties, and read the Drive health line. If it says Healthy, you're fine. If it says Caution or Bad, that drive is on its way out — copy what you can't lose onto something else today, not next month."
+    },
+    {
+      "id": "t-2026-09-18-tip1",
+      "type": "tech-note",
+      "date": "2026-09-18",
+      "title": "Windows 11's free September update lets you move the taskbar to the top of the screen and shut Bing off in Search — get it at Settings > Windows Update",
+      "tag": "Tech Tip",
+      "summary": "Install it from Settings > Windows Update and restart. Then, to move the taskbar: Settings > Personalization > Taskbar > Taskbar behaviors > Taskbar position, and pick Left, Top, Right, or Bottom. There's also a smaller taskbar size in that same section if the bar feels too tall. To stop the Start menu from covering half your screen: Settings > Personalization > Start > Start menu size, and choose Small. To make Search instant and quiet: Settings > Privacy & security > Search, open Show suggested search results, and turn off Web Searches and Microsoft Store suggestions."
+    },
     {
       "id": "n-2026-09-17",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Hard-to-read websites? Firefox's built-in Reader View turns any article into big, clear text — one click, free at firefox.com",
       "tag": "Tech Tip",
       "summary": "Firefox is a free web browser, and its Reader View is built right in: when a website is a mess of ads and sidebars, click the page-shaped icon at the right end of the address bar and Reader View strips the page down to plain text. Click the Aa button to make the words bigger, or have the page read aloud to you. Firefox is free at firefox.com."
-    },
-    {
-      "id": "n-2026-09-14",
-      "type": "newsletter",
-      "date": "2026-09-14",
-      "title": "Fake Deal Sites Surge After Apple's iPhone Launch — How to Pay Smart",
-      "tag": "Daily Brief",
-      "summary": "Looking for a deal on a hot new gadget? The Guardian warned Sunday about fake shopping sites built to cash in on Apple's new iPhone launch — researchers watched more than 200 copycat websites appear in a single day. They look convincing, and they often insist on payment by bank transfer or digital currency, skipping the protection your card gives you. Buy only from stores you know, pay by credit card, and treat a too-good price as a warning sign. Already paid? Call your bank right away.",
-      "comic": "Newsletter - 2026-09-14-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-14-news1",
-      "type": "tech-note",
-      "date": "2026-09-14",
-      "title": "Your inkjet printer dried up again? A Brother laser printer prints on the first try even after months of sitting — Wirecutter's 2026 home-office pick starts around $210 at brother-usa.com",
-      "tag": "Tech Note",
-      "summary": "Laser printers use toner powder, not liquid ink, so there's nothing to dry out and clog. Wirecutter's 2026 pick for the best home-office laser printer is a Brother — about $210 at brother-usa.com, Best Buy, or Amazon — and a black toner cartridge lasts thousands of pages."
-    },
-    {
-      "id": "t-2026-09-14-tip1",
-      "type": "tech-note",
-      "date": "2026-09-14",
-      "title": "Homework help for $4 a month — Khan Academy's Khanmigo is an AI tutor that explains instead of answering, at khanmigo.ai",
-      "tag": "Tech Tip",
-      "summary": "Khanmigo is the AI tutor built by Khan Academy, the nonprofit that has offered free school lessons for years. It walks kids through problems step by step instead of doing the work for them. Sign up at khanmigo.ai — $4 a month for families — and the whole library of Khan Academy lessons underneath it stays free."
     }
   ]
 }

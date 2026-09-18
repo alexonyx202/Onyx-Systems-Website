@@ -331,6 +331,13 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # (exempt: there is no product to name, and the action IS stated — don't use
     # the link, type the company's real address into your browser and sign in).
     "rewards points", "points are expiring",
+    # Extended 2026-09-18: fake parcel-delivery "you owe $4.95 to release your
+    # package" phishing alert (Malwarebytes, Sept. 18 2026 — the link opens a
+    # page copying the Postal Service's official look, then harvests name, phone
+    # and bank card) is a security alert (exempt: there is no product to name,
+    # and the action IS stated — don't click; open the carrier's real website and
+    # check the tracking number there).
+    "parcel", "phishing",
     ]
     if any(s in low for s in SKIP):
         return fails

@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-18-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-18",
+      "title": "That 'Your Parcel Couldn't Be Delivered — Pay $4.95' Message Is Fake",
+      "tag": "Daily Brief",
+      "excerpt": "A fresh batch of fake messages says a parcel couldn't be delivered and you owe about five dollars to get it moving. The link opens a page that copies the post office's official look, then asks for your name, your phone number, and finally your bank card. That's an email scam, not a shipping notice. The real Postal Service, UPS, and FedEx never text a link for a small fee. Don't click — open the carrier's real website and check your tracking number there.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-18-composite.jpg",
+      "comic": "assets/img/news/2026-09-18-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-17-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-17",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-14-composite.jpg",
       "comic": "assets/img/news/2026-09-14-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-13-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-13",
-      "title": "Scammers Can Fake Your Grandchild's Voice Now — Here's the Family Fix",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are calling grandparents in a voice that sounds exactly like their grandchild — because a computer cloned it. The Better Business Bureau warned families this week, just before Grandparents' Day: crooks lift a few seconds of audio and family details from social media, then fake a crash or an arrest and beg for money fast. Hang up and call your grandchild back yourself, and set up a family code word. Then lock your Facebook photos to friends-only — that's where they shop for voices.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-13-composite.jpg",
-      "comic": "assets/img/news/2026-09-13-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-18-post-1",
+      "type": "news",
+      "date": "2026-09-18",
+      "title": "Your computer's drive can warn you before it quits — Windows 11 shows its free health report in Settings > System > Storage",
+      "tag": "Tech Note",
+      "summary": "Click Start, type Storage, and open Storage settings. Then click Advanced storage settings, then Disks & volumes, click the drive your files live on, click Properties, and read the Drive health line. If it says Healthy, you're fine. If it says Caution or Bad, that drive is on its way out — copy what you can't lose onto something else today, not next month.",
+      "truth": "Most people think their photos and paperwork die when the computer dies. They don't. They die when the little drive inside the computer dies, and that drive almost always tells you it's failing weeks ahead of time — a slowdown here, a weird clicking or grinding sound there, a warning that's been sitting in Settings that nobody ever opened. The honest answer is that a $60 replacement today is a lot cheaper than $400 to a data recovery lab later. I've never once had a customer tell me they wished they'd waited. I also install and open CrystalDiskInfo — free from crystalmark.info — and read the one-word health status and the drive's temperature.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-17-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-13-post-3",
-      "type": "news",
-      "date": "2026-09-13",
-      "title": "Your LG TV reports what you watch to advertisers — turn it off free in Settings > General > System > Advanced Settings > Live Plus",
-      "tag": "Tech Note",
-      "summary": "A new investigation put it back in the news this week: LG smart TVs record a fingerprint of everything you watch — cable, streaming, even over-the-air — and send it home so advertisers can target you. The fix is one free switch, no account needed: press the Settings (gear) button on the remote, go to General > System > Advanced Settings > Live Plus, and turn it off. On Samsung TVs the similar switch lives under Settings > General > Terms & Privacy.",
-      "truth": "Here's the one that surprises everybody: the TV is a computer, and the biggest screen in the house is also the chattiest. Someone buying a television based on selling your viewing habits — what time you watch, what channel, whether it's football or the news — and you'd never know it, because it never asks twice. The honest answer is I'm not saying smash your TV; I'm saying a six-hundred-dollar TV doesn't need a second income. Two minutes with the remote and it goes back to being just a TV. The picture doesn't change one bit. You'll never miss the setting, and neither will the advertisers — they're the only ones who lose.",
+      "id": "onyx-2026-09-18-post-2",
+      "type": "tip",
+      "date": "2026-09-18",
+      "title": "Windows 11's free September update lets you move the taskbar to the top of the screen and shut Bing off in Search — get it at Settings > Windows Update",
+      "tag": "Tech Tip",
+      "summary": "Install it from Settings > Windows Update and restart. Then, to move the taskbar: Settings > Personalization > Taskbar > Taskbar behaviors > Taskbar position, and pick Left, Top, Right, or Bottom. There's also a smaller taskbar size in that same section if the bar feels too tall. To stop the Start menu from covering half your screen: Settings > Personalization > Start > Start menu size, and choose Small. To make Search instant and quiet: Settings > Privacy & security > Search, open Show suggested search results, and turn off Web Searches and Microsoft Store suggestions.",
+      "truth": "I see this all the time — folks who came off Windows 10 and never got comfortable on Windows 11, and it's almost always the same two complaints: the taskbar is nailed to the bottom of the screen, and the Start menu covers everything. For five years Microsoft said no. This month they finally said yes, and it didn't cost a thing. Most people don't realize the updates they keep clicking past are where the good stuff hides. The honest answer: the biggest improvement to your computer this year arrived free, and it took one restart.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-13-post-5",
-      "type": "tip",
-      "date": "2026-09-13",
-      "title": "Update Chrome, VLC, Zoom, and a dozen apps in one click — Ninite is free at ninite.com",
-      "tag": "Tech Tip",
-      "summary": "Go to ninite.com, check the boxes for the free apps you already use — Chrome, Firefox, VLC, Zoom, and dozens more — and it builds you one installer. Run it once and Ninite installs or updates everything together; no toolbars, no junk offers. Keep that one file on your desktop, run it again about once a month, and every app on the list refreshes itself. Free for home use.",
-      "truth": "Here's the part almost nobody believes: your computer doesn't usually get broken by viruses walking in the front door — it gets broken by old programs standing in the back doorway. Criminals poke at well-known free apps that haven't been updated in a year, because the maker already published the fix and you just haven't gotten it. Updating twelve apps by hand is a Saturday morning you don't have. The honest answer is there's a website built for exactly this problem, it's been around for well over a decade, and it refuses to bundle junk — that refusal is the whole reason I trust it. One click, one download, one run, and the sneaky back doors close.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
