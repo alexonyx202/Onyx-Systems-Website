@@ -1,161 +1,178 @@
 {
   "title": "Math",
-  "size": 24,
+  "size": 25,
   "grid": [
-    "...................i....",
-    ".......c.........zero...",
-    ".......h.....r.....r....",
-    "....interestrate..mean..",
-    ".......c.v...n.....g....",
-    ".......k.e...g..m..u....",
-    ".......i.r..personal....",
-    ".......n.y......d..a..s.",
-    "...o...g.median.everyday",
-    "...n.....o............v.",
-    "discretionary.........i.",
-    "...e.....t............n.",
-    "...p.....h............g.",
-    "...e..................s.",
-    "...r....................",
-    "...y....................",
-    "..debt..................",
-    "...a....................",
-    "...r....................",
-    "........................",
-    "........................",
-    "........................",
-    "........................",
-    "........................"
+    "..........up.............",
+    "...........-.............",
+    "...........v.............",
+    ".........standard........",
+    "...........l....o........",
+    "...........u....w..d.....",
+    "........parentfunction...",
+    ".........x....o....r.....",
+    ".......y-intercept.e.....",
+    ".........s....u....c.....",
+    ".......roots..s.vertex...",
+    ".........f.........r.....",
+    ".........s........lie....",
+    ".........y.........x.....",
+    "vertexform...............",
+    ".........m...............",
+    ".........e...............",
+    ".p.quadratic.............",
+    ".a...-...r...............",
+    ".r...v...y...............",
+    ".a...a...................",
+    ".b...l...................",
+    "nosolution...............",
+    ".l...e...................",
+    ".a......................."
   ],
   "clues": {
     "across": [
       {
+        "num": 1,
+        "row": 1,
+        "col": 11,
+        "len": 2,
+        "answer": "up",
+        "clue": "What way does the graph open (when graphing) if the A-Value is positive?"
+      },
+      {
         "num": 3,
-        "row": 2,
-        "col": 18,
-        "len": 4,
-        "answer": "zero",
-        "clue": "type of budget that requires your budget to use all your income in specific categories"
+        "row": 4,
+        "col": 10,
+        "len": 8,
+        "answer": "standard",
+        "clue": "Generally, when finding attributes from _____form we use f(x)=ax\u00b2+bx+c"
       },
       {
-        "num": 5,
-        "row": 4,
-        "col": 5,
-        "len": 12,
-        "answer": "interestrate",
-        "clue": "Interest is based on"
-      },
-      {
-        "num": 7,
-        "row": 4,
-        "col": 19,
-        "len": 4,
-        "answer": "mean",
-        "clue": "Average of Values"
+        "num": 6,
+        "row": 7,
+        "col": 9,
+        "len": 14,
+        "answer": "parentfunction",
+        "clue": "What is f(x)=x\u00b2 ?"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 13,
-        "len": 8,
-        "answer": "personal",
-        "clue": "the budget you spend your money on how you want"
+        "row": 9,
+        "col": 8,
+        "len": 11,
+        "answer": "y-intercept",
+        "clue": "The point where the parabola crosses the y-axis."
+      },
+      {
+        "num": 10,
+        "row": 11,
+        "col": 8,
+        "len": 5,
+        "answer": "roots",
+        "clue": "The points where the parabola crosses the x-axis."
+      },
+      {
+        "num": 11,
+        "row": 11,
+        "col": 17,
+        "len": 6,
+        "answer": "vertex",
+        "clue": "The minimum or maximum point of parabola."
       },
       {
         "num": 12,
-        "row": 9,
-        "col": 10,
-        "len": 6,
-        "answer": "median",
-        "clue": "Middle term"
+        "row": 13,
+        "col": 19,
+        "len": 3,
+        "answer": "lie",
+        "clue": "Insiders ___."
       },
       {
         "num": 13,
-        "row": 9,
-        "col": 17,
-        "len": 8,
-        "answer": "everyday",
-        "clue": "when does Daily comp occur"
-      },
-      {
-        "num": 14,
-        "row": 11,
+        "row": 15,
         "col": 1,
-        "len": 13,
-        "answer": "discretionary",
-        "clue": "Expenses  Non essential expenses you don't need"
+        "len": 10,
+        "answer": "vertexform",
+        "clue": "Generally, when finding attributes from _________ we use f(x)=a(x-h)\u00b2+k"
       },
       {
         "num": 15,
-        "row": 17,
-        "col": 3,
-        "len": 4,
-        "answer": "debt",
-        "clue": "Going over what you should've spent and could afford"
+        "row": 18,
+        "col": 4,
+        "len": 9,
+        "answer": "quadratic",
+        "clue": "In almost all ______ word problems, the equations will be given to you along with one of the variables."
+      },
+      {
+        "num": 17,
+        "row": 23,
+        "col": 1,
+        "len": 10,
+        "answer": "nosolution",
+        "clue": "What kind of solution is it when the line doesn\u00b4t touch the parabola."
       }
     ],
     "down": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 20,
-        "len": 9,
-        "answer": "irregular",
-        "clue": "spending Expenses that occur at various times during the year."
-      },
-      {
         "num": 2,
-        "row": 2,
-        "col": 8,
-        "len": 8,
-        "answer": "checking",
-        "clue": "The account you use for daily spending"
+        "row": 1,
+        "col": 12,
+        "len": 7,
+        "answer": "p-value",
+        "clue": "Is found by using 1/4(a)"
       },
       {
         "num": 4,
-        "row": 3,
-        "col": 14,
-        "len": 5,
-        "answer": "range",
-        "clue": "difference between highest of the lowest and highest value"
+        "row": 4,
+        "col": 17,
+        "len": 4,
+        "answer": "down",
+        "clue": "What way does the graph open (when graphing) if the A-Value is negative?"
       },
       {
-        "num": 6,
-        "row": 4,
+        "num": 5,
+        "row": 6,
+        "col": 20,
+        "len": 9,
+        "answer": "directrix",
+        "clue": "A line outside the parabola, perpendicular to the AOS and is (p) units from the vertex."
+      },
+      {
+        "num": 7,
+        "row": 7,
         "col": 10,
-        "len": 10,
-        "answer": "everymonth",
-        "clue": "Monthly compounding occurs"
+        "len": 14,
+        "answer": "axisofsymmetry",
+        "clue": "Vertical line that goes through the vertex."
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 17,
-        "len": 4,
-        "answer": "mode",
-        "clue": "most frequent value"
+        "row": 7,
+        "col": 15,
+        "len": 5,
+        "answer": "focus",
+        "clue": "A point inside the parabola, located on the Axis Of Symmetry and that is (p) units from the vertex."
       },
       {
-        "num": 10,
-        "row": 8,
-        "col": 23,
+        "num": 14,
+        "row": 18,
+        "col": 2,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "The set of all points that equidistant from a given point and a given line."
+      },
+      {
+        "num": 16,
+        "row": 18,
+        "col": 6,
         "len": 7,
-        "answer": "savings",
-        "clue": "The account you rarely touch and best fit for your emergency fund, for large purchases"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 4,
-        "len": 11,
-        "answer": "onceperyear",
-        "clue": "Annual Interest rate occurs"
+        "answer": "a-value",
+        "clue": "The value that appears first and is squared in Standard Form."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8895",
-  "slug": "math-8895",
-  "fetched_at": "2026-07-14T19:26:12.959189+00:00",
-  "date": "2026-09-17"
+  "source_url": "https://crosswordlabs.com/view/math-8901",
+  "slug": "math-8901",
+  "fetched_at": "2026-07-14T19:21:54.059191+00:00",
+  "date": "2026-09-18"
 }
