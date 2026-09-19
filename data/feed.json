@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-19-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-19",
+      "title": "Scammers Are Cashing In on a Real Government Refund — Don't Fall for It",
+      "tag": "Daily Brief",
+      "excerpt": "A real refund program is sending money to people who got signed up for a subscription they didn't want — and crooks are already using the news to trick folks out of their bank details. The Federal Trade Commission says it will never call, text, or email you to offer a refund, and never asks you to pay a fee to collect. If you get a message about money you're owed, that's a scam. Don't reply and don't click. Go to ftc.gov/refunds and look up the program yourself.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-19-composite.jpg",
+      "comic": "assets/img/news/2026-09-19-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-18-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-18",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-15-composite.jpg",
       "comic": "assets/img/news/2026-09-15-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-14-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-14",
-      "title": "Fake Deal Sites Surge After Apple's iPhone Launch — How to Pay Smart",
-      "tag": "Daily Brief",
-      "excerpt": "Looking for a deal on a hot new gadget? The Guardian warned Sunday about fake shopping sites built to cash in on Apple's new iPhone launch — researchers watched more than 200 copycat websites appear in a single day. They look convincing, and they often insist on payment by bank transfer or digital currency, skipping the protection your card gives you. Buy only from stores you know, pay by credit card, and treat a too-good price as a warning sign. Already paid? Call your bank right away.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-14-composite.jpg",
-      "comic": "assets/img/news/2026-09-14-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-19-post-1",
+      "type": "news",
+      "date": "2026-09-19",
+      "title": "Criminals are selling scans of 153 million driver's licenses — freeze your credit free with Equifax, Experian, and TransUnion",
+      "tag": "Tech Note",
+      "summary": "A dark-web service is selling digital scans of more than 153 million driver's licenses from the U.S. and Canada, and the FBI has opened an investigation. You can't un-leak a license, but you can lock your credit so nobody opens a loan or a card in your name. Go to equifax.com, experian.com, and transunion.com, sign up for a free account, and click Freeze — do all three, because it's free by law and takes about ten minutes total. If you'd rather see your reports first, go to annualcreditreport.com, the one government-approved site for free reports.",
+      "truth": "Most people think a credit freeze stops them from using their own credit. It doesn't. A freeze only stops new accounts from being opened in your name — you can unfreeze it in about a minute from your phone when you're buying a car or a house. I see people freeze one bureau and think they're done. You need all three, because a lender is only required to check one, and the crook will pick the one you forgot. The honest answer: a freeze is the single most effective thing an ordinary person can do after a leak like this, and it costs nothing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-18-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-14-post-1",
-      "type": "news",
-      "date": "2026-09-14",
-      "title": "Your inkjet printer dried up again? A Brother laser printer prints on the first try even after months of sitting — Wirecutter's 2026 home-office pick starts around $210 at brother-usa.com",
-      "tag": "Tech Note",
-      "summary": "Laser printers use toner powder, not liquid ink, so there's nothing to dry out and clog. Wirecutter's 2026 pick for the best home-office laser printer is a Brother — about $210 at brother-usa.com, Best Buy, or Amazon — and a black toner cartridge lasts thousands of pages.",
-      "truth": "I see this all the time: somebody buys a cheap inkjet, prints two pages a month, and every month the ink dries a little more until the thing refuses to print the morning they need a boarding pass or a tax form. Then they buy new cartridges that cost half what the printer did. The honest answer is the cheap printer is the most expensive one in the room. A laser printer costs more up front and almost nothing after that — the powder never dries out, even if the printer sits all summer. Most people don't realize a single black toner cartridge can outlast a stack of ink cartridges that cost twice as much. If you would rather buy than keep nursing ink cartridges, Wirecutter's pick runs about $210 at brother-usa.com, Best Buy, or Amazon.",
+      "id": "onyx-2026-09-19-post-2",
+      "type": "tip",
+      "date": "2026-09-19",
+      "title": "Windows 11's Recall takes a picture of your screen every few seconds — turn it off free in Settings > Privacy & security > Recall & snapshots",
+      "tag": "Tech Tip",
+      "summary": "On newer \"Copilot+\" Windows 11 computers, a feature called Recall quietly saves snapshots of everything on your screen so you can search your own history later. Most people never turned it on and never agreed to it. To check: click Start, type Recall & snapshots, and open Settings > Privacy & security > Recall & snapshots. Turn off Save snapshots — or click Pause and delete what's already saved. If the setting isn't there, your computer simply doesn't have it, and you're done.",
+      "truth": "The honest answer is that Recall isn't evil — it's a camera roll of your screen, and that roll includes your bank page, your e-mail, and whatever the grandkids sent you. The problem is that if anyone ever gets into your computer, they get all of it in one place. Most people don't realize it's on by default on those machines. I turn it off unless a customer specifically asks for it, because in all this time, not one person has come back and said, \"I wish you'd left it on.\"",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-14-post-2",
-      "type": "tip",
-      "date": "2026-09-14",
-      "title": "Homework help for $4 a month — Khan Academy's Khanmigo is an AI tutor that explains instead of answering, at khanmigo.ai",
-      "tag": "Tech Tip",
-      "summary": "Khanmigo is the AI tutor built by Khan Academy, the nonprofit that has offered free school lessons for years. It walks kids through problems step by step instead of doing the work for them. Sign up at khanmigo.ai — $4 a month for families — and the whole library of Khan Academy lessons underneath it stays free.",
-      "truth": "Most parents I talk to are caught between two fears: they don't want their kid copying answers off some chatbot, and they can't sit at the kitchen table re-learning seventh-grade math every night. Khanmigo was built for exactly that spot — it's the tutor that says \"let's work through it together\" instead of just handing over the answer, and it's run by a nonprofit, not an ad company. The honest answer is four dollars a month is less than one trip to the vending machine fund, and it buys a patient tutor that never sighs, never says \"we already covered this,\" and is available at 9 p.m. when the worksheet is due tomorrow.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
