@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-20-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-20",
+      "title": "A Bad Browser Add-On Can Now Act As You in Chrome or Edge — Remove Add-Ons You Don't Recognize",
+      "tag": "Daily Brief",
+      "excerpt": "Bad add-ons for the program you use to go on the internet can now take over the smart helper built into it. Researchers showed one add-on — installed like any other — letting the helper read files, open pages, and act as the person using it, with no click at all. No fake page and no scam message to spot, because the add-on is really installed. Fix it in two minutes: open your browser's menu, find the list of add-ons, and remove anything you don't recognize.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-20-composite.jpg",
+      "comic": "assets/img/news/2026-09-20-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-19-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-19",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-16-composite.jpg",
       "comic": "assets/img/news/2026-09-16-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-15-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-15",
-      "title": "Scammers Fooled a Bank Into Handing Over 50,000 Customers' Private Files",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers just fooled the online bank Revolut into handing over private files for about 50,000 customers — birth dates, addresses, phone numbers, copies of passports and driver's licenses, even the selfies taken to verify accounts. How? They posed as a government agency using a real government email address, so the request looked completely legitimate. Expect very convincing follow-up scams that quote your real details. Don't trust caller ID or an official-looking email: hang up and call the company back at the number on your card or statement.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-15-composite.jpg",
-      "comic": "assets/img/news/2026-09-15-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-20-post-1",
+      "type": "news",
+      "date": "2026-09-20",
+      "title": "Microsoft's September Windows update muted the sound and froze games on some PCs — get the free emergency patch in Settings > Windows Update",
+      "tag": "Tech Note",
+      "summary": "Microsoft's big September Windows update has been rough on a small number of computers — people reported speakers and headsets going silent, a black screen after signing in, and games freezing. Microsoft has already released a free emergency patch. Click Start, then open Settings > Windows Update and click Check for updates; install everything it offers and restart. If your sound or screen is still dead afterward, you can undo just that one change: Settings > Windows Update > Update history > Uninstall updates.",
+      "truth": "The honest answer is one you might not expect from a repair shop: don't skip this update. It closed about a thousand security holes, and \"waiting it out\" is how people get hurt. The trouble that made the news hit a small slice of machines, mostly gaming computers, and Microsoft patched the worst of it within days. The pattern I see over and over is the same — the folks who install their updates calmly stay out of trouble, and the ones who ignore them for a year are the ones who end up paying me. Update, then use your computer as normal.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-19-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-15-post-1",
-      "type": "news",
-      "date": "2026-09-15",
-      "title": "Before you give up on that slow old laptop, look it up on iFixit — free step-by-step guides at ifixit.com",
-      "tag": "Tech Note",
-      "summary": "iFixit is a free website — ifixit.com — with thousands of step-by-step guides and pictures for bringing laptops and desktops back to life. Look up your machine, see what the job takes, and decide whether it's a 20-minute afternoon job or one for the shop. Parts and small toolkits are sold there too.",
-      "truth": "Most people don't realize how much of a computer can be brought back from the dead — a worn-out battery, a clogged fan, a dying drive, all fixable. The companies that build these machines would rather you never learned that, because a replacement sale beats a repair every time. iFixit is the free counterweight: a repair manual the manufacturers never gave you, with real photos and honest difficulty ratings. The honest answer is even if you never turn a single screw yourself, ten minutes on iFixit turns you into an informed customer — you'll know whether you're being quoted a fair job or a fairy tale.",
+      "id": "onyx-2026-09-20-post-2",
+      "type": "tip",
+      "date": "2026-09-20",
+      "title": "Your colorful gaming keyboard or mouse can crash your games — Microsoft says unplug it and update the lights app (Corsair iCUE, Razer Synapse, or Logitech G HUB)",
+      "tag": "Tech Tip",
+      "summary": "Microsoft traced a wave of game freezes and blue screens to the software that runs the colored lights on keyboards, mice, and headsets. If your games suddenly hang or crash, unplug the light-up accessory and restart — if the crashing stops, that accessory is your culprit. Then open the app that controls it (Corsair iCUE, Razer Synapse, Logitech G HUB, MSI Center, or ASUS Armoury Crate) and run its update, or uninstall it and let the device fall back to its built-in colors. It's free either way.",
+      "truth": "Most people don't realize the pretty lights come with a program that reaches deep inside Windows — much deeper than it ever needs to. The lights themselves are harmless; the app behind them is what fights with games. And here's the part nobody tells you: if a friend or a grandkid built your gaming computer and loaded five different lighting apps on it, that's the machine that's going to act up. One lighting app is plenty. If you never touch the colors anyway, removing the app costs you nothing at all.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-15-post-2",
-      "type": "tip",
-      "date": "2026-09-15",
-      "title": "Hard-to-read websites? Firefox's built-in Reader View turns any article into big, clear text — one click, free at firefox.com",
-      "tag": "Tech Tip",
-      "summary": "Firefox is a free web browser, and its Reader View is built right in: when a website is a mess of ads and sidebars, click the page-shaped icon at the right end of the address bar and Reader View strips the page down to plain text. Click the Aa button to make the words bigger, or have the page read aloud to you. Firefox is free at firefox.com.",
-      "truth": "The internet used to feel like a library. Now half the time it feels like a carnival — pop-ups, videos autoplaying, three sidebars fighting over your attention. Most people don't realize the mess is the website's fault, not their eyes and not their computer, and that the cure is one click in the browser. Reader View throws all the junk out and hands you the article like a clean printed page. The honest answer is I use it every morning myself — and the read-aloud button means I can \"read\" the news while the coffee brews.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-19",
+  "updated": "2026-09-20",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

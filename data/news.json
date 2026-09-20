@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-19",
+  "updated": "2026-09-20",
   "items": [
+    {
+      "id": "n-2026-09-20",
+      "type": "newsletter",
+      "date": "2026-09-20",
+      "title": "A Bad Browser Add-On Can Now Act As You in Chrome or Edge — Remove Add-Ons You Don't Recognize",
+      "tag": "Daily Brief",
+      "summary": "Bad add-ons for the program you use to go on the internet can now take over the smart helper built into it. Researchers showed one add-on — installed like any other — letting the helper read files, open pages, and act as the person using it, with no click at all. No fake page and no scam message to spot, because the add-on is really installed. Fix it in two minutes: open your browser's menu, find the list of add-ons, and remove anything you don't recognize.",
+      "comic": "Newsletter - 2026-09-20-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-20-news1",
+      "type": "tech-note",
+      "date": "2026-09-20",
+      "title": "Microsoft's September Windows update muted the sound and froze games on some PCs — get the free emergency patch in Settings > Windows Update",
+      "tag": "Tech Note",
+      "summary": "Microsoft's big September Windows update has been rough on a small number of computers — people reported speakers and headsets going silent, a black screen after signing in, and games freezing. Microsoft has already released a free emergency patch. Click Start, then open Settings > Windows Update and click Check for updates; install everything it offers and restart. If your sound or screen is still dead afterward, you can undo just that one change: Settings > Windows Update > Update history > Uninstall updates."
+    },
+    {
+      "id": "t-2026-09-20-tip1",
+      "type": "tech-note",
+      "date": "2026-09-20",
+      "title": "Your colorful gaming keyboard or mouse can crash your games — Microsoft says unplug it and update the lights app (Corsair iCUE, Razer Synapse, or Logitech G HUB)",
+      "tag": "Tech Tip",
+      "summary": "Microsoft traced a wave of game freezes and blue screens to the software that runs the colored lights on keyboards, mice, and headsets. If your games suddenly hang or crash, unplug the light-up accessory and restart — if the crashing stops, that accessory is your culprit. Then open the app that controls it (Corsair iCUE, Razer Synapse, Logitech G HUB, MSI Center, or ASUS Armoury Crate) and run its update, or uninstall it and let the device fall back to its built-in colors. It's free either way."
+    },
     {
       "id": "n-2026-09-19",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Update Firefox free to get a PDF reader that opens up to 45% faster — click Menu, then Help, then About Firefox",
       "tag": "Tech Tip",
       "summary": "The newest Firefox came out September 15, and Mozilla says the PDF reader built into it now starts up to 45% faster, with a big drop in memory and processor use when a page is showing large photos. To get it: open Firefox, click the Menu button (the three lines in the top right corner), then Help, then About Firefox. It checks and installs the newest version for free, and your tabs, bookmarks, and saved passwords all stay exactly where they are."
-    },
-    {
-      "id": "n-2026-09-16",
-      "type": "newsletter",
-      "date": "2026-09-16",
-      "title": "That Antivirus Renewal Email Is Fake — Check Your Bank Statement First",
-      "tag": "Daily Brief",
-      "summary": "Scammers are emailing people a convincing receipt that says their antivirus subscription just auto-renewed for about $130, with a handy link to cancel it. There is no subscription and no charge. The cancel page is a fake form that collects your name, email address and number so a fake support agent can call you next. Don't click the link and don't fill in that form. Check your own bank statement instead — no charge means nothing to cancel.",
-      "comic": "Newsletter - 2026-09-16-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-16-news1",
-      "type": "tech-note",
-      "date": "2026-09-16",
-      "title": "Is your Windows 11 computer about to stop getting free security updates? Microsoft's October 13 deadline takes 30 seconds to check in Settings",
-      "tag": "Tech Note",
-      "summary": "On October 13, Microsoft stops sending free security updates to the older version of Windows 11 that shipped back in 2024. The fix is free and it's just an update: open Settings > Windows Update, click Check for updates, and install everything it offers — your files and programs stay exactly where they are. Not sure which version you have? Press the Start button and type About your PC; it's written right there in plain text."
-    },
-    {
-      "id": "t-2026-09-16-tip1",
-      "type": "tech-note",
-      "date": "2026-09-16",
-      "title": "Columbia County's library pays for Career Online High School — a free, accredited high school diploma you finish from your kitchen table",
-      "tag": "Tech Tip",
-      "summary": "Call the Columbia County Public Library at (386) 758-2111 and ask about Career Online High School. It's a real, accredited high school diploma plus a career certificate, done entirely online at your own pace, and the grant pays the whole cost — you don't pay a dime. The library has a page with the enrollment steps on columbiacountyfla.com (search \"Career Online High School\" on the site)."
     }
   ]
 }

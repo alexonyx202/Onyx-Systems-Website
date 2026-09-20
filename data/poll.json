@@ -1,23 +1,27 @@
 {
   "poll": {
-    "weekOf": "2026-09-13",
-    "question": "Best time for a house call?",
+    "weekOf": "2026-09-20",
+    "question": "What's your biggest tech headache right now?",
     "options": [
       {
-        "id": "morning",
-        "label": "Morning"
+        "id": "slow",
+        "label": "Sluggish, slow computer"
       },
       {
-        "id": "after5",
-        "label": "After 5 PM"
+        "id": "virus",
+        "label": "Virus / pop-ups"
       },
       {
-        "id": "weekend",
-        "label": "Weekend"
+        "id": "wifi",
+        "label": "Wi-Fi that drops"
       },
       {
-        "id": "drop",
-        "label": "I'll drop it off"
+        "id": "data",
+        "label": "Scared I'll lose my files"
+      },
+      {
+        "id": "mac",
+        "label": "My Mac needs help"
       }
     ]
   }
