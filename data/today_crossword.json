@@ -1,178 +1,198 @@
 {
   "title": "Math",
-  "size": 25,
+  "size": 21,
   "grid": [
-    "..........up.............",
-    "...........-.............",
-    "...........v.............",
-    ".........standard........",
-    "...........l....o........",
-    "...........u....w..d.....",
-    "........parentfunction...",
-    ".........x....o....r.....",
-    ".......y-intercept.e.....",
-    ".........s....u....c.....",
-    ".......roots..s.vertex...",
-    ".........f.........r.....",
-    ".........s........lie....",
-    ".........y.........x.....",
-    "vertexform...............",
-    ".........m...............",
-    ".........e...............",
-    ".p.quadratic.............",
-    ".a...-...r...............",
-    ".r...v...y...............",
-    ".a...a...................",
-    ".b...l...................",
-    "nosolution...............",
-    ".l...e...................",
-    ".a......................."
+    "......product........",
+    ".........i.........p.",
+    "....m....s.........y.",
+    "....intercept...theta",
+    "....d....r.......y.h.",
+    "....p....i.......p.a.",
+    "....o.term.......o.g.",
+    "....i....i...relation",
+    "....n....n....l..e.r.",
+    "function.a....e..n.e.",
+    ".........n....m..u.a.",
+    ".....e...twelve..s.n.",
+    ".....q.g......n..e...",
+    ".....u.r...vertex....",
+    "....parabola..s......",
+    ".....t.s...r.........",
+    ".....i.p..right......",
+    ".....o.....a.........",
+    ".....n...s.b.........",
+    "........foil.........",
+    ".........h.e........."
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 11,
-        "len": 2,
-        "answer": "up",
-        "clue": "What way does the graph open (when graphing) if the A-Value is positive?"
+        "col": 7,
+        "len": 7,
+        "answer": "product",
+        "clue": "answer..."
       },
       {
-        "num": 3,
+        "num": 5,
         "row": 4,
-        "col": 10,
-        "len": 8,
-        "answer": "standard",
-        "clue": "Generally, when finding attributes from _____form we use f(x)=ax\u00b2+bx+c"
+        "col": 5,
+        "len": 9,
+        "answer": "intercept",
+        "clue": "a point..."
       },
       {
         "num": 6,
+        "row": 4,
+        "col": 17,
+        "len": 5,
+        "answer": "theta",
+        "clue": "greek letter.."
+      },
+      {
+        "num": 8,
         "row": 7,
-        "col": 9,
-        "len": 14,
-        "answer": "parentfunction",
-        "clue": "What is f(x)=x\u00b2 ?"
+        "col": 7,
+        "len": 4,
+        "answer": "term",
+        "clue": "an expression.."
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 8,
-        "len": 11,
-        "answer": "y-intercept",
-        "clue": "The point where the parabola crosses the y-axis."
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 8,
-        "len": 5,
-        "answer": "roots",
-        "clue": "The points where the parabola crosses the x-axis."
+        "row": 8,
+        "col": 14,
+        "len": 8,
+        "answer": "relation",
+        "clue": "a set"
       },
       {
         "num": 11,
-        "row": 11,
-        "col": 17,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "The minimum or maximum point of parabola."
-      },
-      {
-        "num": 12,
-        "row": 13,
-        "col": 19,
-        "len": 3,
-        "answer": "lie",
-        "clue": "Insiders ___."
+        "row": 10,
+        "col": 1,
+        "len": 8,
+        "answer": "function",
+        "clue": "a special"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 1,
-        "len": 10,
-        "answer": "vertexform",
-        "clue": "Generally, when finding attributes from _________ we use f(x)=a(x-h)\u00b2+k"
+        "row": 12,
+        "col": 10,
+        "len": 6,
+        "answer": "twelve",
+        "clue": "solve 2.."
       },
       {
         "num": 15,
-        "row": 18,
-        "col": 4,
-        "len": 9,
-        "answer": "quadratic",
-        "clue": "In almost all ______ word problems, the equations will be given to you along with one of the variables."
+        "row": 14,
+        "col": 12,
+        "len": 6,
+        "answer": "vertex",
+        "clue": "formula= y"
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 5,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "a symm..."
       },
       {
         "num": 17,
-        "row": 23,
-        "col": 1,
-        "len": 10,
-        "answer": "nosolution",
-        "clue": "What kind of solution is it when the line doesn\u00b4t touch the parabola."
+        "row": 17,
+        "col": 11,
+        "len": 5,
+        "answer": "right",
+        "clue": "angle triangle is used for finding length"
+      },
+      {
+        "num": 19,
+        "row": 20,
+        "col": 9,
+        "len": 4,
+        "answer": "foil",
+        "clue": "first, outside.."
       }
     ],
     "down": [
       {
         "num": 2,
         "row": 1,
-        "col": 12,
-        "len": 7,
-        "answer": "p-value",
-        "clue": "Is found by using 1/4(a)"
+        "col": 10,
+        "len": 12,
+        "answer": "discriminant",
+        "clue": "inside quadratic.."
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 20,
+        "len": 11,
+        "answer": "pythagorean",
+        "clue": "...theorem(a2.."
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 17,
-        "len": 4,
-        "answer": "down",
-        "clue": "What way does the graph open (when graphing) if the A-Value is negative?"
-      },
-      {
-        "num": 5,
-        "row": 6,
-        "col": 20,
-        "len": 9,
-        "answer": "directrix",
-        "clue": "A line outside the parabola, perpendicular to the AOS and is (p) units from the vertex."
+        "row": 3,
+        "col": 5,
+        "len": 8,
+        "answer": "midpoint",
+        "clue": "m=x..."
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 10,
-        "len": 14,
-        "answer": "axisofsymmetry",
-        "clue": "Vertical line that goes through the vertex."
+        "row": 4,
+        "col": 18,
+        "len": 10,
+        "answer": "hypotenuse",
+        "clue": "longest.."
       },
       {
-        "num": 8,
-        "row": 7,
+        "num": 10,
+        "row": 8,
         "col": 15,
-        "len": 5,
-        "answer": "focus",
-        "clue": "A point inside the parabola, located on the Axis Of Symmetry and that is (p) units from the vertex."
+        "len": 8,
+        "answer": "elements",
+        "clue": "individual..."
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 6,
+        "len": 8,
+        "answer": "equation",
+        "clue": "a math..."
       },
       {
         "num": 14,
-        "row": 18,
-        "col": 2,
-        "len": 8,
-        "answer": "parabola",
-        "clue": "The set of all points that equidistant from a given point and a given line."
+        "row": 13,
+        "col": 8,
+        "len": 5,
+        "answer": "grasp",
+        "clue": "given,r.."
       },
       {
-        "num": 16,
-        "row": 18,
-        "col": 6,
-        "len": 7,
-        "answer": "a-value",
-        "clue": "The value that appears first and is squared in Standard Form."
+        "num": 15,
+        "row": 14,
+        "col": 12,
+        "len": 8,
+        "answer": "variable",
+        "clue": "a letter.."
+      },
+      {
+        "num": 18,
+        "row": 19,
+        "col": 10,
+        "len": 3,
+        "answer": "soh",
+        "clue": "sin=opp.."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8903",
-  "slug": "math-8903",
-  "fetched_at": "2026-07-14T19:21:32.624679+00:00",
-  "date": "2026-09-20"
+  "source_url": "https://crosswordlabs.com/view/math-8907",
+  "slug": "math-8907",
+  "fetched_at": "2026-07-14T19:16:33.314563+00:00",
+  "date": "2026-09-21"
 }
