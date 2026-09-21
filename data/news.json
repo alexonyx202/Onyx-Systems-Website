@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "items": [
+    {
+      "id": "n-2026-09-21",
+      "type": "newsletter",
+      "date": "2026-09-21",
+      "title": "Microsoft's September Patches May Have Quietly Stopped Your Backups",
+      "tag": "Daily Brief",
+      "summary": "Microsoft says the patches it sent out this month can quietly stop the tool that copies your files for you. On some computers the last-backup date freezes, Windows keeps asking you to reconnect a perfectly good drive, and older versions of your files disappear. No scam to spot here — nothing was stolen; the safety net just stopped working. Press Start, type File History, and check that date. If it's stale, copy your Documents, Pictures and Desktop onto a USB drive until Microsoft ships a fix.",
+      "comic": "Newsletter - 2026-09-21-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-21-news1",
+      "type": "tech-note",
+      "date": "2026-09-21",
+      "title": "Chrome will start warning you about old-style \"not private\" websites in October — turn on Always Use Secure Connections now in Chrome's Settings",
+      "tag": "Tech Note",
+      "summary": "Starting in October, Google Chrome will begin warning you before it opens an older-style website that doesn't have the little padlock. You can turn that protection on right now instead of waiting. Open Chrome, click the three dots at the top right, then Settings > Privacy and security > Security, and switch on Always use secure connections. It's free and takes under a minute."
+    },
+    {
+      "id": "t-2026-09-21-tip1",
+      "type": "tech-note",
+      "date": "2026-09-21",
+      "title": "That shocking photo might be AI — Chrome's built-in \"About this image\" check tells you in one right-click, free and built in",
+      "tag": "Tech Tip",
+      "summary": "If a picture in your feed looks too wild to be true, you can check it. In Chrome, right-click the photo and choose About this image. Google looks for a hidden, invisible mark called SynthID that it adds to pictures made with its AI tools, and it tells you what it finds. It's free and already built into Chrome — nothing to install."
+    },
     {
       "id": "n-2026-09-20",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Windows 11's free September update lets you move the taskbar to the top of the screen and shut Bing off in Search — get it at Settings > Windows Update",
       "tag": "Tech Tip",
       "summary": "Install it from Settings > Windows Update and restart. Then, to move the taskbar: Settings > Personalization > Taskbar > Taskbar behaviors > Taskbar position, and pick Left, Top, Right, or Bottom. There's also a smaller taskbar size in that same section if the bar feels too tall. To stop the Start menu from covering half your screen: Settings > Personalization > Start > Start menu size, and choose Small. To make Search instant and quiet: Settings > Privacy & security > Search, open Show suggested search results, and turn off Web Searches and Microsoft Store suggestions."
-    },
-    {
-      "id": "n-2026-09-17",
-      "type": "newsletter",
-      "date": "2026-09-17",
-      "title": "Those 'Your Rewards Points Are Expiring' Texts Are Fake",
-      "tag": "Daily Brief",
-      "summary": "A wave of fake text messages is telling people their rewards points are about to expire, with a believable balance and a deadline to make it feel urgent. The link inside opens a fake sign-in page that steals your email address and password. Researchers counted more than a thousand versions of the same message. Don't use the link. Open the company's official website instead by typing its address into your browser, then sign in there and check for yourself.",
-      "comic": "Newsletter - 2026-09-17-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-17-news1",
-      "type": "tech-note",
-      "date": "2026-09-17",
-      "title": "Stop ChatGPT, Gemini, and Claude from training their AI on your chats — three free settings, about two minutes each",
-      "tag": "Tech Note",
-      "summary": "In ChatGPT, open Settings → Data Controls and turn off Improve the model for everyone. In Gemini, open Settings and turn off Keep Activity (or go to myactivity.google.com and turn off Gemini Apps Activity). In Claude, open Settings → Privacy and turn off the model improvement setting. Nothing breaks when you do this and nothing costs money — you keep using the app exactly as before, and your conversations stop feeding the next version of it."
-    },
-    {
-      "id": "t-2026-09-17-tip1",
-      "type": "tech-note",
-      "date": "2026-09-17",
-      "title": "Update Firefox free to get a PDF reader that opens up to 45% faster — click Menu, then Help, then About Firefox",
-      "tag": "Tech Tip",
-      "summary": "The newest Firefox came out September 15, and Mozilla says the PDF reader built into it now starts up to 45% faster, with a big drop in memory and processor use when a page is showing large photos. To get it: open Firefox, click the Menu button (the three lines in the top right corner), then Help, then About Firefox. It checks and installs the newest version for free, and your tabs, bookmarks, and saved passwords all stay exactly where they are."
     }
   ]
 }
