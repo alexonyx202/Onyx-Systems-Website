@@ -1,198 +1,160 @@
 {
-  "title": "Math",
-  "size": 21,
+  "title": "math",
+  "size": 23,
   "grid": [
-    "......product........",
-    ".........i.........p.",
-    "....m....s.........y.",
-    "....intercept...theta",
-    "....d....r.......y.h.",
-    "....p....i.......p.a.",
-    "....o.term.......o.g.",
-    "....i....i...relation",
-    "....n....n....l..e.r.",
-    "function.a....e..n.e.",
-    ".........n....m..u.a.",
-    ".....e...twelve..s.n.",
-    ".....q.g......n..e...",
-    ".....u.r...vertex....",
-    "....parabola..s......",
-    ".....t.s...r.........",
-    ".....i.p..right......",
-    ".....o.....a.........",
-    ".....n...s.b.........",
-    "........foil.........",
-    ".........h.e........."
+    "................math...",
+    ".............v...c.....",
+    ".............e...u...g.",
+    "...........r.r...t...e.",
+    ".......m...intersection",
+    ".......i...g.i.a.....m.",
+    ".......d.b.h.c.y.plane.",
+    ".......point.a.......t.",
+    "l......o.s...l.......r.",
+    "i..collinear.........y.",
+    "n......n.c.............",
+    "endpoint.t.............",
+    "....b..................",
+    "....t..................",
+    "....u..................",
+    "....s..................",
+    "....e..................",
+    ".......................",
+    ".......................",
+    ".......................",
+    ".......................",
+    ".......................",
+    "......................."
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 7,
-        "len": 7,
-        "answer": "product",
-        "clue": "answer..."
-      },
-      {
-        "num": 5,
-        "row": 4,
-        "col": 5,
-        "len": 9,
-        "answer": "intercept",
-        "clue": "a point..."
-      },
-      {
-        "num": 6,
-        "row": 4,
         "col": 17,
-        "len": 5,
-        "answer": "theta",
-        "clue": "greek letter.."
-      },
-      {
-        "num": 8,
-        "row": 7,
-        "col": 7,
         "len": 4,
-        "answer": "term",
-        "clue": "an expression.."
+        "answer": "math",
+        "clue": "mental abuse to humans"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 14,
-        "len": 8,
-        "answer": "relation",
-        "clue": "a set"
+        "num": 7,
+        "row": 5,
+        "col": 12,
+        "len": 12,
+        "answer": "intersection",
+        "clue": "a point or line common to lines or surfaces that intersect."
+      },
+      {
+        "num": 10,
+        "row": 7,
+        "col": 18,
+        "len": 5,
+        "answer": "plane",
+        "clue": "a two-dimensional doubly ruled surface spanned by two linearly independent vectors."
       },
       {
         "num": 11,
-        "row": 10,
-        "col": 1,
-        "len": 8,
-        "answer": "function",
-        "clue": "a special"
+        "row": 8,
+        "col": 8,
+        "len": 5,
+        "answer": "point",
+        "clue": "a primitive notion that models an exact location in the space,"
       },
       {
         "num": 13,
+        "row": 10,
+        "col": 4,
+        "len": 9,
+        "answer": "collinear",
+        "clue": "Three or more points that lie on the same line"
+      },
+      {
+        "num": 14,
         "row": 12,
-        "col": 10,
-        "len": 6,
-        "answer": "twelve",
-        "clue": "solve 2.."
-      },
-      {
-        "num": 15,
-        "row": 14,
-        "col": 12,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "formula= y"
-      },
-      {
-        "num": 16,
-        "row": 15,
-        "col": 5,
+        "col": 1,
         "len": 8,
-        "answer": "parabola",
-        "clue": "a symm..."
-      },
-      {
-        "num": 17,
-        "row": 17,
-        "col": 11,
-        "len": 5,
-        "answer": "right",
-        "clue": "angle triangle is used for finding length"
-      },
-      {
-        "num": 19,
-        "row": 20,
-        "col": 9,
-        "len": 4,
-        "answer": "foil",
-        "clue": "first, outside.."
+        "answer": "endpoint",
+        "clue": "a point or value that marks the end of a ray or one of the ends of a line segment or interval."
       }
     ],
     "down": [
       {
         "num": 2,
         "row": 1,
-        "col": 10,
-        "len": 12,
-        "answer": "discriminant",
-        "clue": "inside quadratic.."
+        "col": 18,
+        "len": 5,
+        "answer": "acute",
+        "clue": "measure less than 90 degrees"
       },
       {
         "num": 3,
         "row": 2,
-        "col": 20,
-        "len": 11,
-        "answer": "pythagorean",
-        "clue": "...theorem(a2.."
+        "col": 14,
+        "len": 8,
+        "answer": "vertical",
+        "clue": "that the top is directly above the bottom."
       },
       {
         "num": 4,
         "row": 3,
-        "col": 5,
+        "col": 22,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "a branch of mathematics that studies the sizes, shapes, positions angles"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 12,
+        "len": 5,
+        "answer": "right",
+        "clue": "oppisate of left"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 8,
         "len": 8,
         "answer": "midpoint",
-        "clue": "m=x..."
+        "clue": "the point on a line segment or an arc that is equidistant"
       },
       {
-        "num": 7,
-        "row": 4,
-        "col": 18,
-        "len": 10,
-        "answer": "hypotenuse",
-        "clue": "longest.."
+        "num": 8,
+        "row": 5,
+        "col": 16,
+        "len": 3,
+        "answer": "ray",
+        "clue": "a vector from a point to a point"
       },
       {
-        "num": 10,
-        "row": 8,
-        "col": 15,
-        "len": 8,
-        "answer": "elements",
-        "clue": "individual..."
+        "num": 9,
+        "row": 7,
+        "col": 10,
+        "len": 6,
+        "answer": "bisect",
+        "clue": "to divide into two equal parts. to cut or split into two."
       },
       {
         "num": 12,
-        "row": 12,
-        "col": 6,
-        "len": 8,
-        "answer": "equation",
-        "clue": "a math..."
-      },
-      {
-        "num": 14,
-        "row": 13,
-        "col": 8,
-        "len": 5,
-        "answer": "grasp",
-        "clue": "given,r.."
+        "row": 9,
+        "col": 1,
+        "len": 4,
+        "answer": "line",
+        "clue": "extends in both directions without end"
       },
       {
         "num": 15,
-        "row": 14,
-        "col": 12,
-        "len": 8,
-        "answer": "variable",
-        "clue": "a letter.."
-      },
-      {
-        "num": 18,
-        "row": 19,
-        "col": 10,
-        "len": 3,
-        "answer": "soh",
-        "clue": "sin=opp.."
+        "row": 12,
+        "col": 5,
+        "len": 6,
+        "answer": "obtuse",
+        "clue": "measure more then 180"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8907",
-  "slug": "math-8907",
-  "fetched_at": "2026-07-14T19:16:33.314563+00:00",
-  "date": "2026-09-21"
+  "source_url": "https://crosswordlabs.com/view/math-8961",
+  "slug": "math-8961",
+  "fetched_at": "2026-07-14T19:24:44.232936+00:00",
+  "date": "2026-09-22"
 }
