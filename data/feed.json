@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-22-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-22",
+      "title": "That Call About a Warrant Is a Scam — Real Police Never Demand Money",
+      "tag": "Daily Brief",
+      "excerpt": "If your phone rings and the caller says you missed jury duty, or that a judge signed a paper for your arrest, hang up — it's a scam. Callers fake the real number of your local sheriff's office, keep you on the line, and take payment in gift cards, wires or cash. Police never phone you to collect money. Hang up, then call the sheriff's office at a number you look up yourself.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-22-composite.jpg",
+      "comic": "assets/img/news/2026-09-22-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-21-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-21",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-18-composite.jpg",
       "comic": "assets/img/news/2026-09-18-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-17-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-17",
-      "title": "Those 'Your Rewards Points Are Expiring' Texts Are Fake",
-      "tag": "Daily Brief",
-      "excerpt": "A wave of fake text messages is telling people their rewards points are about to expire, with a believable balance and a deadline to make it feel urgent. The link inside opens a fake sign-in page that steals your email address and password. Researchers counted more than a thousand versions of the same message. Don't use the link. Open the company's official website instead by typing its address into your browser, then sign in there and check for yourself.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-17-composite.jpg",
-      "comic": "assets/img/news/2026-09-17-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-22-post-1",
+      "type": "news",
+      "date": "2026-09-22",
+      "title": "A file called photo.jpg.exe is not a photo — turn on \"File name extensions\" in Windows File Explorer to see a file's real name",
+      "tag": "Tech Note",
+      "summary": "Open any folder, click View at the top of the window, point to Show, and click File name extensions. Now every file shows its real ending. A file named photo.jpg is a picture; one named photo.jpg.exe is a program wearing a picture's name. Windows hides those endings by default, and that's exactly what scammers count on. It's free, it's already on every Windows PC, and it takes about ten seconds.",
+      "truth": "Most people think Windows hides file endings to keep things tidy. The honest answer is that hiding them is what makes the trick work. I see this all the time: someone opens what looks like a photo, a receipt, or an invoice from an email, double-clicks it, and instead of a picture, a program starts running. You don't need an antivirus to catch that one — you just need to see the real name before you click. Turn File name extensions on today — open any folder, click View at the top, point to Show, and you're done.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-21-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-17-post-1",
-      "type": "news",
-      "date": "2026-09-17",
-      "title": "Stop ChatGPT, Gemini, and Claude from training their AI on your chats — three free settings, about two minutes each",
-      "tag": "Tech Note",
-      "summary": "In ChatGPT, open Settings → Data Controls and turn off Improve the model for everyone. In Gemini, open Settings and turn off Keep Activity (or go to myactivity.google.com and turn off Gemini Apps Activity). In Claude, open Settings → Privacy and turn off the model improvement setting. Nothing breaks when you do this and nothing costs money — you keep using the app exactly as before, and your conversations stop feeding the next version of it.",
-      "truth": "People tell me, \"I only ask it silly stuff, who cares.\" Most people don't realize the chats that really matter are the ones you'd never say out loud: helping word a letter to your doctor, pasting in a bill to figure out a charge, typing in your own address to fill out a form. That's exactly the material that gets kept and reviewed. The honest answer is that a chatbot is a conversation with a company, not a conversation with a friend. You can still use it every single day and tell it not to take notes.",
+      "id": "onyx-2026-09-22-post-2",
+      "type": "tip",
+      "date": "2026-09-22",
+      "title": "That Amazon \"deal\" price may be higher than it was last month — CamelCamelCamel shows the real price history free at camelcamelcamel.com",
+      "tag": "Tech Tip",
+      "summary": "Copy the web address of the Amazon item you're looking at, paste it into the search box at camelcamelcamel.com (yes, that's the real name), and you'll get a simple chart of what it actually cost over the past months — including the lowest price it has ever been. You can set a free alert, and it will email you when the price really drops. You don't need an account just to look up a price.",
+      "truth": "Most people don't realize a \"sale\" price is sometimes higher than the normal price was a few weeks earlier. That matters right now, with the holiday deal season about to start and gadget prices bouncing around all year. The honest answer is that the only way to know if a deal is real is to look at the history — and the history is free. Don't take the red tag's word for it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-17-post-2",
-      "type": "tip",
-      "date": "2026-09-17",
-      "title": "Update Firefox free to get a PDF reader that opens up to 45% faster — click Menu, then Help, then About Firefox",
-      "tag": "Tech Tip",
-      "summary": "The newest Firefox came out September 15, and Mozilla says the PDF reader built into it now starts up to 45% faster, with a big drop in memory and processor use when a page is showing large photos. To get it: open Firefox, click the Menu button (the three lines in the top right corner), then Help, then About Firefox. It checks and installs the newest version for free, and your tabs, bookmarks, and saved passwords all stay exactly where they are.",
-      "truth": "Most people don't realize they're reading their power bills, insurance papers, and lab results in a PDF reader that came free inside their web browser — so upgrading the browser upgrades the reader. I watch folks email a document to themselves just to open it on another machine because the one on the desk feels slow. The honest answer is that a browser update isn't housekeeping you can skip. It's the single easiest thing you can do for both speed and safety at the same time, and it costs you one click and a restart.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-21",
+  "updated": "2026-09-22",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

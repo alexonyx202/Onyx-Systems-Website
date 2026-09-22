@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-21",
+  "updated": "2026-09-22",
   "items": [
+    {
+      "id": "n-2026-09-22",
+      "type": "newsletter",
+      "date": "2026-09-22",
+      "title": "That Call About a Warrant Is a Scam — Real Police Never Demand Money",
+      "tag": "Daily Brief",
+      "summary": "If your phone rings and the caller says you missed jury duty, or that a judge signed a paper for your arrest, hang up — it's a scam. Callers fake the real number of your local sheriff's office, keep you on the line, and take payment in gift cards, wires or cash. Police never phone you to collect money. Hang up, then call the sheriff's office at a number you look up yourself.",
+      "comic": "Newsletter - 2026-09-22-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-22-news1",
+      "type": "tech-note",
+      "date": "2026-09-22",
+      "title": "A file called photo.jpg.exe is not a photo — turn on \"File name extensions\" in Windows File Explorer to see a file's real name",
+      "tag": "Tech Note",
+      "summary": "Open any folder, click View at the top of the window, point to Show, and click File name extensions. Now every file shows its real ending. A file named photo.jpg is a picture; one named photo.jpg.exe is a program wearing a picture's name. Windows hides those endings by default, and that's exactly what scammers count on. It's free, it's already on every Windows PC, and it takes about ten seconds."
+    },
+    {
+      "id": "t-2026-09-22-tip1",
+      "type": "tech-note",
+      "date": "2026-09-22",
+      "title": "That Amazon \"deal\" price may be higher than it was last month — CamelCamelCamel shows the real price history free at camelcamelcamel.com",
+      "tag": "Tech Tip",
+      "summary": "Copy the web address of the Amazon item you're looking at, paste it into the search box at camelcamelcamel.com (yes, that's the real name), and you'll get a simple chart of what it actually cost over the past months — including the lowest price it has ever been. You can set a free alert, and it will email you when the price really drops. You don't need an account just to look up a price."
+    },
     {
       "id": "n-2026-09-21",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Windows 11's Recall takes a picture of your screen every few seconds — turn it off free in Settings > Privacy & security > Recall & snapshots",
       "tag": "Tech Tip",
       "summary": "On newer \"Copilot+\" Windows 11 computers, a feature called Recall quietly saves snapshots of everything on your screen so you can search your own history later. Most people never turned it on and never agreed to it. To check: click Start, type Recall & snapshots, and open Settings > Privacy & security > Recall & snapshots. Turn off Save snapshots — or click Pause and delete what's already saved. If the setting isn't there, your computer simply doesn't have it, and you're done."
-    },
-    {
-      "id": "n-2026-09-18",
-      "type": "newsletter",
-      "date": "2026-09-18",
-      "title": "That 'Your Parcel Couldn't Be Delivered — Pay $4.95' Message Is Fake",
-      "tag": "Daily Brief",
-      "summary": "A fresh batch of fake messages says a parcel couldn't be delivered and you owe about five dollars to get it moving. The link opens a page that copies the post office's official look, then asks for your name, your phone number, and finally your bank card. That's an email scam, not a shipping notice. The real Postal Service, UPS, and FedEx never text a link for a small fee. Don't click — open the carrier's real website and check your tracking number there.",
-      "comic": "Newsletter - 2026-09-18-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-18-news1",
-      "type": "tech-note",
-      "date": "2026-09-18",
-      "title": "Your computer's drive can warn you before it quits — Windows 11 shows its free health report in Settings > System > Storage",
-      "tag": "Tech Note",
-      "summary": "Click Start, type Storage, and open Storage settings. Then click Advanced storage settings, then Disks & volumes, click the drive your files live on, click Properties, and read the Drive health line. If it says Healthy, you're fine. If it says Caution or Bad, that drive is on its way out — copy what you can't lose onto something else today, not next month."
-    },
-    {
-      "id": "t-2026-09-18-tip1",
-      "type": "tech-note",
-      "date": "2026-09-18",
-      "title": "Windows 11's free September update lets you move the taskbar to the top of the screen and shut Bing off in Search — get it at Settings > Windows Update",
-      "tag": "Tech Tip",
-      "summary": "Install it from Settings > Windows Update and restart. Then, to move the taskbar: Settings > Personalization > Taskbar > Taskbar behaviors > Taskbar position, and pick Left, Top, Right, or Bottom. There's also a smaller taskbar size in that same section if the bar feels too tall. To stop the Start menu from covering half your screen: Settings > Personalization > Start > Start menu size, and choose Small. To make Search instant and quiet: Settings > Privacy & security > Search, open Show suggested search results, and turn off Web Searches and Microsoft Store suggestions."
     }
   ]
 }

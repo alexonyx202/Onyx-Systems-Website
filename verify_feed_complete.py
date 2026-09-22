@@ -150,6 +150,12 @@ KNOWN_PRODUCTS = [
     # service in today's Tech Note headline; obtain method stated (call the
     # Columbia County Public Library / enroll at columbiacountyfla.com).
     "career online high school",
+    # Extended 2026-09-22: CamelCamelCamel (camelcamelcamel.com — the free Amazon
+    # price-history checker, plus its The Camelizer browser add-on) — a real product
+    # named in today's Tech Note tip headline; obtain method stated (paste the item's
+    # web address into the search box at camelcamelcamel.com). Added while selecting
+    # the day's computer-only notes over the phone-centric default extraction.
+    "camelcamelcamel", "the camelizer",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
