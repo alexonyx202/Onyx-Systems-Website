@@ -239,6 +239,20 @@ def clean_tip_body(tip_body):
     return '\n'.join(cleaned).strip()
 
 
+def md_inline(text):
+    """Render the inline markdown emphasis a brief may use (**bold**, *em*).
+
+    Briefs are authored in markdown, but the template injects section bodies
+    straight into HTML <p>/<li> elements. Without this conversion a brief that
+    bolds a word (e.g. "Press the **Start** button") shipped the literal ** to
+    customers (2026-09-23). Bold runs first so the single-asterisk pass cannot
+    re-match inside the generated <strong> tags.
+    """
+    text = re.sub(r"\*\*(?=\S)(.+?)(?<=\S)\*\*", r"<strong>\1</strong>", text, flags=re.S)
+    text = re.sub(r"\*(?=\S)([^*]+?)(?<=\S)\*", r"<em>\1</em>", text, flags=re.S)
+    return text
+
+
 def extract_comedy_break_title(md):
     """Extract the COMEDY BREAK section title from markdown."""
     m = re.search(r'━━━\s*😄\s*(COMEDY BREAK)\s*━━━', md)
@@ -424,9 +438,9 @@ def main():
     alert_title, alert_body = find_section(md, "ALERT")
     tip_title, tip_body = find_section(md, "DAILY TIP")
     _, today = find_section(md, "TODAY IN TECH")
-    alert_body = alert_body.strip()
-    tip_body = clean_tip_body(tip_body.strip())
-    tech_bullets = bullets(today) or bullets(alert_body)
+    alert_body = md_inline(alert_body.strip())
+    tip_body = md_inline(clean_tip_body(tip_body.strip()))
+    tech_bullets = [md_inline(b) for b in (bullets(today) or bullets(alert_body))]
     d = datetime.date.fromisoformat(date_str)
     build_stamp = d.strftime("%Y%m%d")
     weekday = d.strftime("%A")
