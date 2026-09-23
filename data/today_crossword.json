@@ -1,160 +1,162 @@
 {
-  "title": "math",
-  "size": 23,
+  "title": "Math",
+  "size": 25,
   "grid": [
-    "................math...",
-    ".............v...c.....",
-    ".............e...u...g.",
-    "...........r.r...t...e.",
-    ".......m...intersection",
-    ".......i...g.i.a.....m.",
-    ".......d.b.h.c.y.plane.",
-    ".......point.a.......t.",
-    "l......o.s...l.......r.",
-    "i..collinear.........y.",
-    "n......n.c.............",
-    "endpoint.t.............",
-    "....b..................",
-    "....t..................",
-    "....u..................",
-    "....s..................",
-    "....e..................",
-    ".......................",
-    ".......................",
-    ".......................",
-    ".......................",
-    ".......................",
-    "......................."
+    ".............s...........",
+    ".............p...........",
+    ".............h...........",
+    ".........angle...........",
+    ".............r...........",
+    "........square...........",
+    "...........d.............",
+    "......m....d.............",
+    ".k....u...litre..........",
+    ".i....l....t.............",
+    ".l....t....i.............",
+    ".o...division............",
+    ".g....p....n.............",
+    "triangle.................",
+    ".a....i.d..s.............",
+    ".m.circle..u.............",
+    "...o..a.g..b.............",
+    "...n..t.r..t.............",
+    "..centimeter.............",
+    "......o.e..a.............",
+    "......n....c.............",
+    "...........t.............",
+    ".......millimeter........",
+    "...........o.............",
+    "...........n............."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 17,
-        "len": 4,
-        "answer": "math",
-        "clue": "mental abuse to humans"
+        "num": 2,
+        "row": 4,
+        "col": 10,
+        "len": 5,
+        "answer": "angle",
+        "clue": "a bend in a straight line"
+      },
+      {
+        "num": 3,
+        "row": 6,
+        "col": 9,
+        "len": 6,
+        "answer": "square",
+        "clue": "one side of a cube"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 12,
-        "len": 12,
-        "answer": "intersection",
-        "clue": "a point or line common to lines or surfaces that intersect."
+        "row": 9,
+        "col": 11,
+        "len": 5,
+        "answer": "litre",
+        "clue": "1000 millilitres"
       },
       {
-        "num": 10,
-        "row": 7,
-        "col": 18,
-        "len": 5,
-        "answer": "plane",
-        "clue": "a two-dimensional doubly ruled surface spanned by two linearly independent vectors."
+        "num": 8,
+        "row": 12,
+        "col": 6,
+        "len": 8,
+        "answer": "division",
+        "clue": "opposite of multiplication"
       },
       {
-        "num": 11,
-        "row": 8,
-        "col": 8,
-        "len": 5,
-        "answer": "point",
-        "clue": "a primitive notion that models an exact location in the space,"
+        "num": 9,
+        "row": 14,
+        "col": 1,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "a tortilla chip"
+      },
+      {
+        "num": 12,
+        "row": 16,
+        "col": 4,
+        "len": 6,
+        "answer": "circle",
+        "clue": "a round shape"
       },
       {
         "num": 13,
-        "row": 10,
-        "col": 4,
-        "len": 9,
-        "answer": "collinear",
-        "clue": "Three or more points that lie on the same line"
+        "row": 19,
+        "col": 3,
+        "len": 10,
+        "answer": "centimeter",
+        "clue": "100 of it is needed to make 1 meter"
       },
       {
         "num": 14,
-        "row": 12,
-        "col": 1,
-        "len": 8,
-        "answer": "endpoint",
-        "clue": "a point or value that marks the end of a ray or one of the ends of a line segment or interval."
+        "row": 23,
+        "col": 8,
+        "len": 10,
+        "answer": "millimeter",
+        "clue": "10 is needed to make a centimeter"
       }
     ],
     "down": [
       {
-        "num": 2,
+        "num": 1,
         "row": 1,
-        "col": 18,
-        "len": 5,
-        "answer": "acute",
-        "clue": "measure less than 90 degrees"
-      },
-      {
-        "num": 3,
-        "row": 2,
         "col": 14,
-        "len": 8,
-        "answer": "vertical",
-        "clue": "that the top is directly above the bottom."
+        "len": 6,
+        "answer": "sphere",
+        "clue": "a rounded solid"
       },
       {
         "num": 4,
-        "row": 3,
-        "col": 22,
+        "row": 6,
+        "col": 12,
         "len": 8,
-        "answer": "geometry",
-        "clue": "a branch of mathematics that studies the sizes, shapes, positions angles"
+        "answer": "addition",
+        "clue": "opposite of subtraction"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 12,
-        "len": 5,
-        "answer": "right",
-        "clue": "oppisate of left"
+        "row": 8,
+        "col": 7,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "opposite of division"
       },
       {
         "num": 6,
-        "row": 5,
-        "col": 8,
+        "row": 9,
+        "col": 2,
         "len": 8,
-        "answer": "midpoint",
-        "clue": "the point on a line segment or an arc that is equidistant"
+        "answer": "kilogram",
+        "clue": "1000 grams"
       },
       {
-        "num": 8,
-        "row": 5,
-        "col": 16,
-        "len": 3,
-        "answer": "ray",
-        "clue": "a vector from a point to a point"
-      },
-      {
-        "num": 9,
-        "row": 7,
-        "col": 10,
+        "num": 10,
+        "row": 15,
+        "col": 9,
         "len": 6,
-        "answer": "bisect",
-        "clue": "to divide into two equal parts. to cut or split into two."
+        "answer": "degree",
+        "clue": "used to measure angles"
+      },
+      {
+        "num": 11,
+        "row": 15,
+        "col": 12,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "opposite of addition"
       },
       {
         "num": 12,
-        "row": 9,
-        "col": 1,
+        "row": 16,
+        "col": 4,
         "len": 4,
-        "answer": "line",
-        "clue": "extends in both directions without end"
-      },
-      {
-        "num": 15,
-        "row": 12,
-        "col": 5,
-        "len": 6,
-        "answer": "obtuse",
-        "clue": "measure more then 180"
+        "answer": "cone",
+        "clue": "ice cream"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8961",
-  "slug": "math-8961",
-  "fetched_at": "2026-07-14T19:24:44.232936+00:00",
-  "date": "2026-09-22"
+  "source_url": "https://crosswordlabs.com/view/math-8969",
+  "slug": "math-8969",
+  "fetched_at": "2026-07-14T19:27:07.821788+00:00",
+  "date": "2026-09-23"
 }
