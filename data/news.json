@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-22",
+  "updated": "2026-09-23",
   "items": [
+    {
+      "id": "n-2026-09-23",
+      "type": "newsletter",
+      "date": "2026-09-23",
+      "title": "A New Flaw Can Stop the Antivirus Built Into Windows From Updating",
+      "tag": "Daily Brief",
+      "summary": "Microsoft Defender, the free antivirus built into every Windows computer, has a newly found flaw. It lets someone who is already on your machine quietly block Defender from picking up its daily protection updates — so the PC still looks protected while it slowly falls behind. Microsoft has not shipped a fix yet. Check it now: press Start, type **Windows Security**, open **Virus & threat protection**, and click **Check for updates**.",
+      "comic": "Newsletter - 2026-09-23-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-23-news1",
+      "type": "tech-note",
+      "date": "2026-09-23",
+      "title": "Google just opened pre-orders for Googlebook, the new $899 laptop that runs phone apps instead of your Windows software — see the five models at googlebook.google",
+      "tag": "Tech Note",
+      "summary": "Googlebooks are on pre-order now, and the first ones ship October 4. The cheapest is the Acer Googlebook 14 at $899; the other four start at $999 and up. They run the same apps as your Android phone from the Play Store — not the software you bought on a disc or installed for Windows. So open googlebook.google on your computer, click through the five models, and make a list of the software you really use. If everything you do is email, Facebook, and the web, one will suit you fine. If you have something that only runs on Windows, this is not the machine for it."
+    },
+    {
+      "id": "t-2026-09-23-tip1",
+      "type": "tech-note",
+      "date": "2026-09-23",
+      "title": "Bright screens giving you a headache? Windows 11 has free built-in contrast themes — open Settings > Accessibility > Contrast themes and pick one in one click",
+      "tag": "Tech Tip",
+      "summary": "Press Start, type contrast themes, and press Enter. On the page that opens, choose a look from the Contrast themes drop-down — Aquatic, Desert, Dusk, or Night sky — and click Apply. The whole screen turns darker with strong, easy-to-read text. When you want your old look back, set the drop-down to None. It is already on your Windows 11 computer, it costs nothing, and it takes about a minute. On a Windows 10 machine the same setting lives under Settings > Ease of Access > High contrast."
+    },
     {
       "id": "n-2026-09-22",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Your colorful gaming keyboard or mouse can crash your games — Microsoft says unplug it and update the lights app (Corsair iCUE, Razer Synapse, or Logitech G HUB)",
       "tag": "Tech Tip",
       "summary": "Microsoft traced a wave of game freezes and blue screens to the software that runs the colored lights on keyboards, mice, and headsets. If your games suddenly hang or crash, unplug the light-up accessory and restart — if the crashing stops, that accessory is your culprit. Then open the app that controls it (Corsair iCUE, Razer Synapse, Logitech G HUB, MSI Center, or ASUS Armoury Crate) and run its update, or uninstall it and let the device fall back to its built-in colors. It's free either way."
-    },
-    {
-      "id": "n-2026-09-19",
-      "type": "newsletter",
-      "date": "2026-09-19",
-      "title": "Scammers Are Cashing In on a Real Government Refund — Don't Fall for It",
-      "tag": "Daily Brief",
-      "summary": "A real refund program is sending money to people who got signed up for a subscription they didn't want — and crooks are already using the news to trick folks out of their bank details. The Federal Trade Commission says it will never call, text, or email you to offer a refund, and never asks you to pay a fee to collect. If you get a message about money you're owed, that's a scam. Don't reply and don't click. Go to ftc.gov/refunds and look up the program yourself.",
-      "comic": "Newsletter - 2026-09-19-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-19-news1",
-      "type": "tech-note",
-      "date": "2026-09-19",
-      "title": "Criminals are selling scans of 153 million driver's licenses — freeze your credit free with Equifax, Experian, and TransUnion",
-      "tag": "Tech Note",
-      "summary": "A dark-web service is selling digital scans of more than 153 million driver's licenses from the U.S. and Canada, and the FBI has opened an investigation. You can't un-leak a license, but you can lock your credit so nobody opens a loan or a card in your name. Go to equifax.com, experian.com, and transunion.com, sign up for a free account, and click Freeze — do all three, because it's free by law and takes about ten minutes total. If you'd rather see your reports first, go to annualcreditreport.com, the one government-approved site for free reports."
-    },
-    {
-      "id": "t-2026-09-19-tip1",
-      "type": "tech-note",
-      "date": "2026-09-19",
-      "title": "Windows 11's Recall takes a picture of your screen every few seconds — turn it off free in Settings > Privacy & security > Recall & snapshots",
-      "tag": "Tech Tip",
-      "summary": "On newer \"Copilot+\" Windows 11 computers, a feature called Recall quietly saves snapshots of everything on your screen so you can search your own history later. Most people never turned it on and never agreed to it. To check: click Start, type Recall & snapshots, and open Settings > Privacy & security > Recall & snapshots. Turn off Save snapshots — or click Pause and delete what's already saved. If the setting isn't there, your computer simply doesn't have it, and you're done."
     }
   ]
 }
