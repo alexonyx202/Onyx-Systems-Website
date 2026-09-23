@@ -393,6 +393,25 @@ STAMP_PATHS = [
 ]
 
 
+# A commit claims a "brief" only if it actually stages today's brief content. The
+# 2026-09-21 06:48 ghost push shipped widget/state files under a "brief + news/tips
+# + widgets" subject because the message was hardcoded; the subject is now derived
+# from the staged diff so it can only match its real content.
+BRIEF_MARKERS = ("newsletter.html", "data/feed.json", "data/news.json", "assets/img/news/")
+
+
+def _commit_subject(staged_files, date_iso):
+    """Commit subject that matches the staged content: brief wording only when the
+    diff actually carries brief content (newsletter page, feed/news data, or comic
+    images); otherwise an explicit widgets/stamp-only subject."""
+    has_brief = any(
+        p in BRIEF_MARKERS or p.startswith("assets/img/news/") for p in staged_files
+    )
+    if has_brief:
+        return f"daily: {date_iso} brief + news/tips + widgets (+ build stamp)"
+    return f"daily: {date_iso} widgets + build stamp refresh (no new brief)"
+
+
 def commit_and_push(date_iso):
     # Roll today's build date into the freshness tokens first so the daily
     # commit carries a current stamp. Idempotent: on a no-op it just re-adds
@@ -407,7 +426,12 @@ def commit_and_push(date_iso):
     if r.returncode == 0:
         print("No changes to commit.")
         return
-    _run(["git", "commit", "-m", f"daily: {date_iso} brief + news/tips + widgets (+ build stamp)"], cwd=str(REPO))
+    staged = _run(["git", "diff", "--cached", "--name-only"], cwd=str(REPO)).stdout.split()
+    subject = _commit_subject(staged, date_iso)
+    if "no new brief" in subject:
+        print("NOTE: staging carries no brief content — committing as a widgets/stamp-only "
+              "refresh (subject will NOT claim a brief).", file=sys.stderr)
+    _run(["git", "commit", "-m", subject], cwd=str(REPO))
     _run(["git", "push", "origin", "main"], cwd=str(REPO))
     print(f"Pushed to origin/main ({date_iso}).")
 
