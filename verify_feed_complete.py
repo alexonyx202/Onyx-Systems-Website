@@ -156,6 +156,11 @@ KNOWN_PRODUCTS = [
     # web address into the search box at camelcamelcamel.com). Added while selecting
     # the day's computer-only notes over the phone-centric default extraction.
     "camelcamelcamel", "the camelizer",
+    # Extended 2026-09-23: Weber / June Oven (the $1,500 countertop oven whose cloud
+    # servers Weber switched off) — real named brand/product in today's Daily Brief
+    # alert headline; the alert states the obtain/check method (open each smart
+    # device's app and confirm it works without the maker's account).
+    "weber", "june oven",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
