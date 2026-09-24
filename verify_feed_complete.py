@@ -161,6 +161,16 @@ KNOWN_PRODUCTS = [
     # alert headline; the alert states the obtain/check method (open each smart
     # device's app and confirm it works without the maker's account).
     "weber", "june oven",
+    # Extended 2026-09-24: ASUS (asus.com — the eShop breach alert names the brand,
+    # and the alert body states the action: type asus.com yourself, never use the
+    # number from the message) and Dell / Lenovo (dell.com/support and
+    # pcsupport.lenovo.com — the free factory-warranty lookup note, selected over
+    # the phone-centric default extraction so the post stays computer-only).
+    # "hp" is deliberately NOT added: a 2-character token would match unrelated
+    # headlines and weaken this gate, and the same headline already names Dell and
+    # Lenovo, so its product check still passes honestly. Headlines were left
+    # intact here — never weakened into teasers to satisfy the gate.
+    "asus", "dell", "lenovo",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

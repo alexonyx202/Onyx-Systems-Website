@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "items": [
+    {
+      "id": "n-2026-09-24",
+      "type": "newsletter",
+      "date": "2026-09-24",
+      "title": "ASUS Store Hack — Expect Fake Order Emails",
+      "tag": "Daily Brief",
+      "summary": "ASUS, the company that makes laptops and computer parts, says someone got into its online store and took customers' names, email addresses, phone numbers, and order records. No card numbers were taken. The danger now is fake messages that quote your real order to sound believable. If an email or a call asks you to confirm an ASUS order, don't click and don't call the number it gives you — open your browser and type asus.com yourself. I've seen these; they always rush you.",
+      "comic": "Newsletter - 2026-09-24-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-24-news1",
+      "type": "tech-note",
+      "date": "2026-09-24",
+      "title": "Is your computer still under factory warranty? Dell, HP and Lenovo look it up free from the serial number on the sticker",
+      "tag": "Tech Note",
+      "summary": "Turn the laptop over, or look at the back of a desktop tower, and find the white sticker with the serial number. On a Dell it is called the Service Tag — seven letters and numbers. Type it into the maker's own page: dell.com/support for Dell, support.hp.com for HP, and pcsupport.lenovo.com for Lenovo (look for warranty lookup there). It shows the exact date your coverage ends, in seconds, with no account to create. Write that date on a piece of tape and stick it to the bottom of the machine. It settles arguments later."
+    },
+    {
+      "id": "t-2026-09-24-tip1",
+      "type": "tech-note",
+      "date": "2026-09-24",
+      "title": "Grandma's cassette tapes won't last forever — Audacity is the free app at audacityteam.org that records them onto your computer as MP3s",
+      "tag": "Tech Tip",
+      "summary": "Go to audacityteam.org and download Audacity — it is free, open source, and runs on Windows and Mac. You will need a cord from the tape deck's headphone or line-out jack into your computer's microphone or line-in jack (a few dollars at Walmart or on Amazon). Open Audacity, press Record, press Play on the tape deck, and let the whole side run through. Then use File > Export to save it as an MP3 you can email, put on a flash drive, or burn to a CD. Nothing is uploaded anywhere — the whole thing happens on your own machine, with no account and no internet needed."
+    },
     {
       "id": "n-2026-09-23",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "That shocking photo might be AI — Chrome's built-in \"About this image\" check tells you in one right-click, free and built in",
       "tag": "Tech Tip",
       "summary": "If a picture in your feed looks too wild to be true, you can check it. In Chrome, right-click the photo and choose About this image. Google looks for a hidden, invisible mark called SynthID that it adds to pictures made with its AI tools, and it tells you what it finds. It's free and already built into Chrome — nothing to install."
-    },
-    {
-      "id": "n-2026-09-20",
-      "type": "newsletter",
-      "date": "2026-09-20",
-      "title": "A Bad Browser Add-On Can Now Act As You in Chrome or Edge — Remove Add-Ons You Don't Recognize",
-      "tag": "Daily Brief",
-      "summary": "Bad add-ons for the program you use to go on the internet can now take over the smart helper built into it. Researchers showed one add-on — installed like any other — letting the helper read files, open pages, and act as the person using it, with no click at all. No fake page and no scam message to spot, because the add-on is really installed. Fix it in two minutes: open your browser's menu, find the list of add-ons, and remove anything you don't recognize.",
-      "comic": "Newsletter - 2026-09-20-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-20-news1",
-      "type": "tech-note",
-      "date": "2026-09-20",
-      "title": "Microsoft's September Windows update muted the sound and froze games on some PCs — get the free emergency patch in Settings > Windows Update",
-      "tag": "Tech Note",
-      "summary": "Microsoft's big September Windows update has been rough on a small number of computers — people reported speakers and headsets going silent, a black screen after signing in, and games freezing. Microsoft has already released a free emergency patch. Click Start, then open Settings > Windows Update and click Check for updates; install everything it offers and restart. If your sound or screen is still dead afterward, you can undo just that one change: Settings > Windows Update > Update history > Uninstall updates."
-    },
-    {
-      "id": "t-2026-09-20-tip1",
-      "type": "tech-note",
-      "date": "2026-09-20",
-      "title": "Your colorful gaming keyboard or mouse can crash your games — Microsoft says unplug it and update the lights app (Corsair iCUE, Razer Synapse, or Logitech G HUB)",
-      "tag": "Tech Tip",
-      "summary": "Microsoft traced a wave of game freezes and blue screens to the software that runs the colored lights on keyboards, mice, and headsets. If your games suddenly hang or crash, unplug the light-up accessory and restart — if the crashing stops, that accessory is your culprit. Then open the app that controls it (Corsair iCUE, Razer Synapse, Logitech G HUB, MSI Center, or ASUS Armoury Crate) and run its update, or uninstall it and let the device fall back to its built-in colors. It's free either way."
     }
   ]
 }

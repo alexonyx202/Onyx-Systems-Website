@@ -1506,7 +1506,10 @@ Promise.all([
 
 /* ---------- LOCAL EVENTS FEED ---------- */
 fetch('data/events.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
-  var list=(d.events||[]).slice().sort(function(a,b){return a.date<b.date?-1:1;});
+  // data/events.json is a bare ARRAY (the curator + publish_today.py prune_events
+  // both write an array). Accept either shape so the widget renders instead of
+  // silently showing "No local events listed right now."
+  var list=(Array.isArray(d)?d:(d.events||[])).slice().sort(function(a,b){return a.date<b.date?-1:1;});
   var box=document.getElementById('evtList');
   if(!box)return;
   if(!list.length){ box.textContent='No local events listed right now.'; return; }

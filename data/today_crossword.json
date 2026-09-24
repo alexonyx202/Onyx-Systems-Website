@@ -1,164 +1,167 @@
 {
   "title": "Math",
-  "size": 27,
+  "size": 30,
   "grid": [
-    "......m....................",
-    ".....genelg\u00f6relilik........",
-    "......c.......e............",
-    "......m.......o.a..........",
-    "......u.......n.k....h.....",
-    "......a.hypatia.s....\u00fc.....",
-    "..s...y.......r.i....l.....",
-    "..\u00fc...\u0131.......d.y.k..y.....",
-    "..m...f....mezopotamya.....",
-    "..e...\u00fc.......f.m.o..\u015f.....",
-    "..r...n.......i...s..e.....",
-    "bilgikuram\u0131...b...t..n.....",
-    "..e...n.....o.o...e..k.....",
-    "..r.........r.n...o.form\u00fcl.",
-    "...........parametre.n.....",
-    "............n.c...i........",
-    "............t.c...stokastik",
-    "............\u0131.i...i....e...",
-    ".......................l...",
-    ".......................m...",
-    ".......................a...",
-    ".......................s...",
-    ".......................o...",
-    ".......................y...",
-    ".......................s...",
-    ".......................a...",
-    ".......................l..."
+    "........r......r..............",
+    "magnitude......a.........d....",
+    "........c......temperature....",
+    "........increase.........p....",
+    "........p...q............o....",
+    "........r...u............speed",
+    "........o...a.w..........i....",
+    "........c...t.i...v......t....",
+    "........a..distance...........",
+    "........l...o.h.e.l..d........",
+    "............n.d.g.o..e........",
+    "..............r.a.c..c........",
+    "..............a.t.i..r........",
+    "..............w.integer.......",
+    "................v.y..a........",
+    "................e..positive...",
+    ".....................e........",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    ".............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
+        "num": 3,
         "row": 2,
-        "col": 6,
-        "len": 14,
-        "answer": "genelg\u00f6relilik",
-        "clue": "1916 y\u0131l\u0131nda Albert Einstein taraf\u0131ndan yay\u0131mlanan k\u00fctle\u00e7ekimin geometrik kuram\u0131 nedir?"
+        "col": 1,
+        "len": 9,
+        "answer": "magnitude",
+        "clue": "a numerical quantity or value"
+      },
+      {
+        "num": 5,
+        "row": 3,
+        "col": 16,
+        "len": 11,
+        "answer": "temperature",
+        "clue": "the degree of hotness or coldness in an environment"
       },
       {
         "num": 6,
-        "row": 6,
+        "row": 4,
         "col": 9,
-        "len": 7,
-        "answer": "hypatia",
-        "clue": "Aritmetik \u00fczerine 13 ciltlik bir yorum yapan ki\u015fi kimdir?"
+        "len": 8,
+        "answer": "increase",
+        "clue": "become or make greater in size"
       },
       {
-        "num": 9,
+        "num": 8,
+        "row": 6,
+        "col": 26,
+        "len": 5,
+        "answer": "speed",
+        "clue": "rate which someone or something is able to move"
+      },
+      {
+        "num": 11,
         "row": 9,
         "col": 12,
-        "len": 11,
-        "answer": "mezopotamya",
-        "clue": "G\u00fcn\u00fcm\u00fczdeki en eski matematiksel metinler nerededir?"
-      },
-      {
-        "num": 10,
-        "row": 12,
-        "col": 1,
-        "len": 11,
-        "answer": "bilgikuram\u0131",
-        "clue": "Claude E. Shannon taraf\u0131ndan g\u00fcvenli \u015fekilde veri s\u0131k\u0131\u015ft\u0131rma, depolama ve iletme gibi sinyal i\u015fleme i\u015flemlerinin k\u0131s\u0131tlar\u0131n\u0131 bulmak i\u00e7in geli\u015ftirilen kuram\u0131n ad\u0131 nedir?"
-      },
-      {
-        "num": 12,
-        "row": 14,
-        "col": 21,
-        "len": 6,
-        "answer": "form\u00fcl",
-        "clue": "Genellikle matematiksel bir dizinin veya yap\u0131lan fen deneylerinin matematiksel ili\u015fkilerinin standart bir \u015fekilde yaz\u0131larak g\u00f6sterimine ne ad verilir?"
-      },
-      {
-        "num": 13,
-        "row": 15,
-        "col": 12,
-        "len": 9,
-        "answer": "parametre",
-        "clue": "Sistemi tan\u0131mlarken veya performans\u0131n\u0131, durumunu de\u011ferlendirirken yararl\u0131 veya kritik olan bir sistem unsur nedir?"
+        "len": 8,
+        "answer": "distance",
+        "clue": "space between two things or people"
       },
       {
         "num": 14,
-        "row": 17,
-        "col": 19,
-        "len": 9,
-        "answer": "stokastik",
-        "clue": "De\u011fi\u015fken, rastlant\u0131sal anlam\u0131na gelen s\u0131fat"
+        "row": 14,
+        "col": 17,
+        "len": 7,
+        "answer": "integer",
+        "clue": "a number that is not a fraction"
+      },
+      {
+        "num": 15,
+        "row": 16,
+        "col": 20,
+        "len": 8,
+        "answer": "positive",
+        "clue": "a number greater than zero"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 7,
-        "len": 13,
-        "answer": "mecmuay\u0131f\u00fcnun",
-        "clue": "1862-67 y\u0131llar\u0131 aras\u0131nda, bilim ve teknikteki geli\u015fmeleri \u00e7evirilerle topluma tan\u0131tan ilk dergi nedir?"
+        "col": 9,
+        "len": 10,
+        "answer": "reciprocal",
+        "clue": "related to another so that their product is one"
       },
       {
-        "num": 3,
-        "row": 2,
-        "col": 15,
-        "len": 17,
-        "answer": "leonardofibonacci",
-        "clue": "S\u0131f\u0131r rakam\u0131n\u0131 ilk kez kim kullanm\u0131\u015ft\u0131r?"
+        "num": 2,
+        "row": 1,
+        "col": 16,
+        "len": 4,
+        "answer": "rate",
+        "clue": "speed with which something moves"
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 17,
+        "row": 2,
+        "col": 26,
         "len": 7,
-        "answer": "aksiyom",
-        "clue": "Do\u011fru oldu\u011fu ispats\u0131z kabul edilen matematiksel ifade nedir?"
-      },
-      {
-        "num": 5,
-        "row": 5,
-        "col": 22,
-        "len": 11,
-        "answer": "h\u00fclya\u015fenkon",
-        "clue": "\u0130ki ciltlik \u201cSoyut Cebir Dersleri\u201d adl\u0131 kitab\u0131n\u0131 yay\u0131mlayan ki\u015fi kimdir?"
+        "answer": "deposit",
+        "clue": "sum of money placed or kept in a bank account"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 3,
+        "row": 4,
+        "col": 13,
         "len": 8,
-        "answer": "s\u00fcmerler",
-        "clue": "D\u00fcnyadaki ilk rakamlar\u0131 kim kulland\u0131?"
+        "answer": "equation",
+        "clue": "statement that the values of two mathematical expressions are equal"
       },
       {
-        "num": 8,
+        "num": 9,
+        "row": 7,
+        "col": 15,
+        "len": 8,
+        "answer": "withdraw",
+        "clue": "take (money) out of an account"
+      },
+      {
+        "num": 10,
         "row": 8,
         "col": 19,
-        "len": 11,
-        "answer": "kaosteorisi",
-        "clue": "Fiziksel ger\u00e7eklik par\u00e7alar\u0131n\u0131n bir b\u00fct\u00fcn olarak e\u011filimini a\u00e7\u0131klamaya yarayan bir y\u00f6ntemin ad\u0131 nedir?"
+        "len": 8,
+        "answer": "velocity",
+        "clue": "speed of something in a given direction"
       },
       {
-        "num": 11,
-        "row": 13,
-        "col": 13,
-        "len": 6,
-        "answer": "orant\u0131",
-        "clue": "Matematikte iki de\u011fi\u015fken aras\u0131ndaki ili\u015fkiye ne ad verilir?"
+        "num": 12,
+        "row": 9,
+        "col": 17,
+        "len": 8,
+        "answer": "negative",
+        "clue": "a number less than zero"
       },
       {
-        "num": 15,
-        "row": 17,
-        "col": 24,
-        "len": 11,
-        "answer": "selmasoysal",
-        "clue": "T\u00fcrkiye\u2019nin ilk kad\u0131n matematik profes\u00f6r\u00fc kimdir?"
+        "num": 13,
+        "row": 10,
+        "col": 22,
+        "len": 8,
+        "answer": "decrease",
+        "clue": "becoming smaller or fewer"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-8995",
-  "slug": "math-8995",
-  "fetched_at": "2026-07-14T19:25:22.011889+00:00",
+  "source_url": "https://crosswordlabs.com/view/math-9052",
+  "slug": "math-9052",
+  "fetched_at": "2026-07-14T19:25:21.432252+00:00",
   "date": "2026-09-24"
 }

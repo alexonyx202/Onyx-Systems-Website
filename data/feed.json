@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-24-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-24",
+      "title": "ASUS Store Hack — Expect Fake Order Emails",
+      "tag": "Daily Brief",
+      "excerpt": "ASUS, the company that makes laptops and computer parts, says someone got into its online store and took customers' names, email addresses, phone numbers, and order records. No card numbers were taken. The danger now is fake messages that quote your real order to sound believable. If an email or a call asks you to confirm an ASUS order, don't click and don't call the number it gives you — open your browser and type asus.com yourself. I've seen these; they always rush you.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-24-composite.jpg",
+      "comic": "assets/img/news/2026-09-24-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-23-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-23",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-20-composite.jpg",
       "comic": "assets/img/news/2026-09-20-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-19-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-19",
-      "title": "Scammers Are Cashing In on a Real Government Refund — Don't Fall for It",
-      "tag": "Daily Brief",
-      "excerpt": "A real refund program is sending money to people who got signed up for a subscription they didn't want — and crooks are already using the news to trick folks out of their bank details. The Federal Trade Commission says it will never call, text, or email you to offer a refund, and never asks you to pay a fee to collect. If you get a message about money you're owed, that's a scam. Don't reply and don't click. Go to ftc.gov/refunds and look up the program yourself.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-19-composite.jpg",
-      "comic": "assets/img/news/2026-09-19-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-24-post-1",
+      "type": "news",
+      "date": "2026-09-24",
+      "title": "Is your computer still under factory warranty? Dell, HP and Lenovo look it up free from the serial number on the sticker",
+      "tag": "Tech Note",
+      "summary": "Turn the laptop over, or look at the back of a desktop tower, and find the white sticker with the serial number. On a Dell it is called the Service Tag — seven letters and numbers. Type it into the maker's own page: dell.com/support for Dell, support.hp.com for HP, and pcsupport.lenovo.com for Lenovo (look for warranty lookup there). It shows the exact date your coverage ends, in seconds, with no account to create. Write that date on a piece of tape and stick it to the bottom of the machine. It settles arguments later.",
+      "truth": "Most people don't realize they are sitting on coverage they already paid for. The honest answer is that a three-year-old machine can still have a year of factory warranty left, and the owner has no idea, because nobody ever told them. That sticker is the first thing I check in the shop: before I quote a price, I check whether the maker should be paying for the part instead of you. I see this all the time — somebody buys a used laptop at a yard sale or from a friend and never asks about the warranty, when in fact the leftover coverage traveled right along with the machine. Two minutes and that number tells you whether a fix is on you or on Dell.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-23-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-19-post-1",
-      "type": "news",
-      "date": "2026-09-19",
-      "title": "Criminals are selling scans of 153 million driver's licenses — freeze your credit free with Equifax, Experian, and TransUnion",
-      "tag": "Tech Note",
-      "summary": "A dark-web service is selling digital scans of more than 153 million driver's licenses from the U.S. and Canada, and the FBI has opened an investigation. You can't un-leak a license, but you can lock your credit so nobody opens a loan or a card in your name. Go to equifax.com, experian.com, and transunion.com, sign up for a free account, and click Freeze — do all three, because it's free by law and takes about ten minutes total. If you'd rather see your reports first, go to annualcreditreport.com, the one government-approved site for free reports.",
-      "truth": "Most people think a credit freeze stops them from using their own credit. It doesn't. A freeze only stops new accounts from being opened in your name — you can unfreeze it in about a minute from your phone when you're buying a car or a house. I see people freeze one bureau and think they're done. You need all three, because a lender is only required to check one, and the crook will pick the one you forgot. The honest answer: a freeze is the single most effective thing an ordinary person can do after a leak like this, and it costs nothing.",
+      "id": "onyx-2026-09-24-post-2",
+      "type": "tip",
+      "date": "2026-09-24",
+      "title": "Grandma's cassette tapes won't last forever — Audacity is the free app at audacityteam.org that records them onto your computer as MP3s",
+      "tag": "Tech Tip",
+      "summary": "Go to audacityteam.org and download Audacity — it is free, open source, and runs on Windows and Mac. You will need a cord from the tape deck's headphone or line-out jack into your computer's microphone or line-in jack (a few dollars at Walmart or on Amazon). Open Audacity, press Record, press Play on the tape deck, and let the whole side run through. Then use File > Export to save it as an MP3 you can email, put on a flash drive, or burn to a CD. Nothing is uploaded anywhere — the whole thing happens on your own machine, with no account and no internet needed.",
+      "truth": "Most people don't realize a cassette tape has a shelf life. The tape stretches, the little felt pad inside falls off, the rubber belt in the player turns to goo, and the machines that play them stopped being made a long time ago. That wedding tape, the sermon, the grandkids singing at church in 1988 — the tape is the only copy and it is quietly dying in a closet. The honest answer is that the fix costs nothing but an afternoon and a five-dollar cable. And it is not just tapes: the same free program takes the sound off a record player or a VHS tape. I see this all the time — somebody brings in an old tape deck hoping the computer can read it. The computer can't read it, but it can most certainly listen to it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-19-post-2",
-      "type": "tip",
-      "date": "2026-09-19",
-      "title": "Windows 11's Recall takes a picture of your screen every few seconds — turn it off free in Settings > Privacy & security > Recall & snapshots",
-      "tag": "Tech Tip",
-      "summary": "On newer \"Copilot+\" Windows 11 computers, a feature called Recall quietly saves snapshots of everything on your screen so you can search your own history later. Most people never turned it on and never agreed to it. To check: click Start, type Recall & snapshots, and open Settings > Privacy & security > Recall & snapshots. Turn off Save snapshots — or click Pause and delete what's already saved. If the setting isn't there, your computer simply doesn't have it, and you're done.",
-      "truth": "The honest answer is that Recall isn't evil — it's a camera roll of your screen, and that roll includes your bank page, your e-mail, and whatever the grandkids sent you. The problem is that if anyone ever gets into your computer, they get all of it in one place. Most people don't realize it's on by default on those machines. I turn it off unless a customer specifically asks for it, because in all this time, not one person has come back and said, \"I wish you'd left it on.\"",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
