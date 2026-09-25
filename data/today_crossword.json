@@ -1,37 +1,19 @@
 {
-  "title": "Math",
-  "size": 30,
+  "title": "math",
+  "size": 12,
   "grid": [
-    "........r......r..............",
-    "magnitude......a.........d....",
-    "........c......temperature....",
-    "........increase.........p....",
-    "........p...q............o....",
-    "........r...u............speed",
-    "........o...a.w..........i....",
-    "........c...t.i...v......t....",
-    "........a..distance...........",
-    "........l...o.h.e.l..d........",
-    "............n.d.g.o..e........",
-    "..............r.a.c..c........",
-    "..............a.t.i..r........",
-    "..............w.integer.......",
-    "................v.y..a........",
-    "................e..positive...",
-    ".....................e........",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    ".............................."
+    "..1...2.....",
+    "-601..513...",
+    "..5....1....",
+    ".243..502.3.",
+    "81.49.8.5529",
+    "....780..4..",
+    "....7.......",
+    "............",
+    "............",
+    "............",
+    "............",
+    "............"
   ],
   "clues": {
     "across": [
@@ -39,129 +21,153 @@
         "num": 3,
         "row": 2,
         "col": 1,
-        "len": 9,
-        "answer": "magnitude",
-        "clue": "a numerical quantity or value"
+        "len": 4,
+        "answer": "-601",
+        "clue": "(-658)+(57)"
       },
       {
-        "num": 5,
-        "row": 3,
-        "col": 16,
-        "len": 11,
-        "answer": "temperature",
-        "clue": "the degree of hotness or coldness in an environment"
+        "num": 4,
+        "row": 2,
+        "col": 7,
+        "len": 3,
+        "answer": "513",
+        "clue": "456 + 57"
       },
       {
         "num": 6,
         "row": 4,
-        "col": 9,
-        "len": 8,
-        "answer": "increase",
-        "clue": "become or make greater in size"
+        "col": 2,
+        "len": 3,
+        "answer": "243",
+        "clue": "(245) + 12 - 14"
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 26,
-        "len": 5,
-        "answer": "speed",
-        "clue": "rate which someone or something is able to move"
+        "row": 4,
+        "col": 7,
+        "len": 3,
+        "answer": "502",
+        "clue": "535 - 33"
       },
       {
         "num": 11,
-        "row": 9,
-        "col": 12,
-        "len": 8,
-        "answer": "distance",
-        "clue": "space between two things or people"
+        "row": 5,
+        "col": 1,
+        "len": 2,
+        "answer": "81",
+        "clue": "25 - 14 + (92)"
+      },
+      {
+        "num": 12,
+        "row": 5,
+        "col": 4,
+        "len": 2,
+        "answer": "49",
+        "clue": "430 + (-79) * 68"
       },
       {
         "num": 14,
-        "row": 14,
-        "col": 17,
-        "len": 7,
-        "answer": "integer",
-        "clue": "a number that is not a fraction"
+        "row": 5,
+        "col": 9,
+        "len": 4,
+        "answer": "5529",
+        "clue": "97 * 57"
       },
       {
-        "num": 15,
-        "row": 16,
-        "col": 20,
-        "len": 8,
-        "answer": "positive",
-        "clue": "a number greater than zero"
+        "num": 16,
+        "row": 6,
+        "col": 5,
+        "len": 3,
+        "answer": "780",
+        "clue": "98 + 682"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 10,
-        "answer": "reciprocal",
-        "clue": "related to another so that their product is one"
+        "col": 3,
+        "len": 4,
+        "answer": "1054",
+        "clue": "76 + 978"
       },
       {
         "num": 2,
         "row": 1,
-        "col": 16,
-        "len": 4,
-        "answer": "rate",
-        "clue": "speed with which something moves"
+        "col": 7,
+        "len": 2,
+        "answer": "25",
+        "clue": "(-7) - 21 + 3"
       },
       {
-        "num": 4,
+        "num": 5,
         "row": 2,
-        "col": 26,
-        "len": 7,
-        "answer": "deposit",
-        "clue": "sum of money placed or kept in a bank account"
+        "col": 8,
+        "len": 3,
+        "answer": "110",
+        "clue": "788 + 978"
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 2,
+        "len": 2,
+        "answer": "21",
+        "clue": "-13 - (-34)"
       },
       {
         "num": 7,
         "row": 4,
-        "col": 13,
-        "len": 8,
-        "answer": "equation",
-        "clue": "statement that the values of two mathematical expressions are equal"
+        "col": 4,
+        "len": 2,
+        "answer": "34",
+        "clue": "-23 + 57"
+      },
+      {
+        "num": 8,
+        "row": 4,
+        "col": 7,
+        "len": 3,
+        "answer": "580",
+        "clue": "345 + 235"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 15,
-        "len": 8,
-        "answer": "withdraw",
-        "clue": "take (money) out of an account"
+        "row": 4,
+        "col": 9,
+        "len": 2,
+        "answer": "25",
+        "clue": "(-7) - 21 + 3"
       },
       {
         "num": 10,
-        "row": 8,
-        "col": 19,
-        "len": 8,
-        "answer": "velocity",
-        "clue": "speed of something in a given direction"
-      },
-      {
-        "num": 12,
-        "row": 9,
-        "col": 17,
-        "len": 8,
-        "answer": "negative",
-        "clue": "a number less than zero"
+        "row": 4,
+        "col": 11,
+        "len": 2,
+        "answer": "32",
+        "clue": "52 - (43) + 23"
       },
       {
         "num": 13,
-        "row": 10,
-        "col": 22,
-        "len": 8,
-        "answer": "decrease",
-        "clue": "becoming smaller or fewer"
+        "row": 5,
+        "col": 5,
+        "len": 3,
+        "answer": "977",
+        "clue": "953 + 24"
+      },
+      {
+        "num": 15,
+        "row": 5,
+        "col": 10,
+        "len": 2,
+        "answer": "54",
+        "clue": "34 + 5 * (4)"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9052",
-  "slug": "math-9052",
-  "fetched_at": "2026-07-14T19:25:21.432252+00:00",
-  "date": "2026-09-24"
+  "source_url": "https://crosswordlabs.com/view/math-9154",
+  "slug": "math-9154",
+  "fetched_at": "2026-07-14T19:21:33.203255+00:00",
+  "date": "2026-09-25"
 }
