@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-09-25",
   "items": [
+    {
+      "id": "n-2026-09-25",
+      "type": "newsletter",
+      "date": "2026-09-25",
+      "title": "600,000 Card Numbers Stolen From Online Checkouts",
+      "tag": "Daily Brief",
+      "summary": "Thieves have been slipping a few lines of sneaky code onto the checkout pages of more than a hundred online shops, so every card number typed in gets quietly copied to them. Over 600,000 cards have been taken since July, according to security researchers. The shops look normal — you can't spot this scam by looking. Check your last card statement today and report anything you don't recognize. I've switched to a credit card for online shopping, never a debit card — it's far easier to get your money back.",
+      "comic": "Newsletter - 2026-09-25-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-25-news1",
+      "type": "tech-note",
+      "date": "2026-09-25",
+      "title": "Is your computer running slow? Microsoft's free PC Manager tidies it up in one click — get it from the Microsoft Store or pcmanager.microsoft.com",
+      "tag": "Tech Note",
+      "summary": "Go to pcmanager.microsoft.com — or open the Microsoft Store, search Microsoft PC Manager, and install it. It is free, and it is made by Microsoft rather than by some outfit selling you a yearly plan. Open it and press the big Boost button. It sweeps out temporary junk files, shows you which apps open by themselves the moment you turn the computer on, and runs a quick health check in one tap. Works on Windows 10 and Windows 11."
+    },
+    {
+      "id": "t-2026-09-25-tip1",
+      "type": "tech-note",
+      "date": "2026-09-25",
+      "title": "Google just plugged 108 security holes in Chrome — update yours free in one minute at chrome://settings/help",
+      "tag": "Tech Tip",
+      "summary": "Open Chrome, type chrome://settings/help into the address bar, and press Enter. Chrome looks for the newest version on its own, so you are not hunting for a download. If it says Chrome is up to date, you are done. If a newer version is waiting, it installs and shows you a Relaunch button — click it once and your browser reopens, already protected. Free, about a minute, and no account needed."
+    },
     {
       "id": "n-2026-09-24",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "That Amazon \"deal\" price may be higher than it was last month — CamelCamelCamel shows the real price history free at camelcamelcamel.com",
       "tag": "Tech Tip",
       "summary": "Copy the web address of the Amazon item you're looking at, paste it into the search box at camelcamelcamel.com (yes, that's the real name), and you'll get a simple chart of what it actually cost over the past months — including the lowest price it has ever been. You can set a free alert, and it will email you when the price really drops. You don't need an account just to look up a price."
-    },
-    {
-      "id": "n-2026-09-21",
-      "type": "newsletter",
-      "date": "2026-09-21",
-      "title": "Microsoft's September Patches May Have Quietly Stopped Your Backups",
-      "tag": "Daily Brief",
-      "summary": "Microsoft says the patches it sent out this month can quietly stop the tool that copies your files for you. On some computers the last-backup date freezes, Windows keeps asking you to reconnect a perfectly good drive, and older versions of your files disappear. No scam to spot here — nothing was stolen; the safety net just stopped working. Press Start, type File History, and check that date. If it's stale, copy your Documents, Pictures and Desktop onto a USB drive until Microsoft ships a fix.",
-      "comic": "Newsletter - 2026-09-21-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-21-news1",
-      "type": "tech-note",
-      "date": "2026-09-21",
-      "title": "Chrome will start warning you about old-style \"not private\" websites in October — turn on Always Use Secure Connections now in Chrome's Settings",
-      "tag": "Tech Note",
-      "summary": "Starting in October, Google Chrome will begin warning you before it opens an older-style website that doesn't have the little padlock. You can turn that protection on right now instead of waiting. Open Chrome, click the three dots at the top right, then Settings > Privacy and security > Security, and switch on Always use secure connections. It's free and takes under a minute."
-    },
-    {
-      "id": "t-2026-09-21-tip1",
-      "type": "tech-note",
-      "date": "2026-09-21",
-      "title": "That shocking photo might be AI — Chrome's built-in \"About this image\" check tells you in one right-click, free and built in",
-      "tag": "Tech Tip",
-      "summary": "If a picture in your feed looks too wild to be true, you can check it. In Chrome, right-click the photo and choose About this image. Google looks for a hidden, invisible mark called SynthID that it adds to pictures made with its AI tools, and it tells you what it finds. It's free and already built into Chrome — nothing to install."
     }
   ]
 }
