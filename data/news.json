@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "items": [
+    {
+      "id": "n-2026-09-26",
+      "type": "newsletter",
+      "date": "2026-09-26",
+      "title": "A Fake 'Free Upgrade' Login Window Wants Your Password",
+      "tag": "Daily Brief",
+      "summary": "Scammers are offering a free upgrade to a paid AI tool, then showing a fake Google sign-in window to \"claim\" it. That window is drawn inside the website — it isn't really Google — so anything you type goes straight to the crooks. A real Google sign-in opens in your browser's own window, never floating inside a page. If one pops up inside a website, close the tab and never type your password. I type google.com myself whenever I'm unsure.",
+      "comic": "Newsletter - 2026-09-26-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-26-news1",
+      "type": "tech-note",
+      "date": "2026-09-26",
+      "title": "Your robot vacuum has a camera — the government just flagged a security flaw in Eufy robot vacuums, so update yours free in the eufy Clean app",
+      "tag": "Tech Note",
+      "summary": "Open the free eufy Clean app — the same app you use to start and schedule your vacuum. Tap your vacuum on the screen, tap the three dots in the top right corner, and choose Firmware Update. Before you do, put the vacuum back on its charging base and make sure your home Wi-Fi is steady. It takes a few minutes, it is free, and you do not need to buy anything."
+    },
+    {
+      "id": "t-2026-09-26-tip1",
+      "type": "tech-note",
+      "date": "2026-09-26",
+      "title": "Firefox now gets a fresh, safer version every two weeks instead of once a month — keep yours current free in Menu, Help, About Firefox",
+      "tag": "Tech Tip",
+      "summary": "Open Firefox, click the Menu button in the top right corner — it is the three little lines — then click Help, then click About Firefox. A small window opens and Firefox checks for the newest version by itself. If one is waiting it downloads on its own, and you click Restart to update. That is the whole thing: free, no account, about a minute."
+    },
     {
       "id": "n-2026-09-25",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "New laptops are about to cost 5% to 20% more — Windows' own Settings > System > About shows whether yours can go another year",
       "tag": "Tech Tip",
       "summary": "Click Start, type about, and open About your PC — the same page as Settings > System > About. It names your processor and shows how much working space your apps have to run in. Write those two lines down on paper. Now here is the news: Acer's chief executive said this week that computer prices will climb another 5% to 20% by the end of 2026, because the parts inside have been getting more expensive all year. So before you spend on a new machine, let somebody look at the one you own. If it is healthy inside, a good going-over and a fresh setup can keep it running for years — and if you truly do need a new one, buying sooner is cheaper than buying in December."
-    },
-    {
-      "id": "n-2026-09-22",
-      "type": "newsletter",
-      "date": "2026-09-22",
-      "title": "That Call About a Warrant Is a Scam — Real Police Never Demand Money",
-      "tag": "Daily Brief",
-      "summary": "If your phone rings and the caller says you missed jury duty, or that a judge signed a paper for your arrest, hang up — it's a scam. Callers fake the real number of your local sheriff's office, keep you on the line, and take payment in gift cards, wires or cash. Police never phone you to collect money. Hang up, then call the sheriff's office at a number you look up yourself.",
-      "comic": "Newsletter - 2026-09-22-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-22-news1",
-      "type": "tech-note",
-      "date": "2026-09-22",
-      "title": "A file called photo.jpg.exe is not a photo — turn on \"File name extensions\" in Windows File Explorer to see a file's real name",
-      "tag": "Tech Note",
-      "summary": "Open any folder, click View at the top of the window, point to Show, and click File name extensions. Now every file shows its real ending. A file named photo.jpg is a picture; one named photo.jpg.exe is a program wearing a picture's name. Windows hides those endings by default, and that's exactly what scammers count on. It's free, it's already on every Windows PC, and it takes about ten seconds."
-    },
-    {
-      "id": "t-2026-09-22-tip1",
-      "type": "tech-note",
-      "date": "2026-09-22",
-      "title": "That Amazon \"deal\" price may be higher than it was last month — CamelCamelCamel shows the real price history free at camelcamelcamel.com",
-      "tag": "Tech Tip",
-      "summary": "Copy the web address of the Amazon item you're looking at, paste it into the search box at camelcamelcamel.com (yes, that's the real name), and you'll get a simple chart of what it actually cost over the past months — including the lowest price it has ever been. You can set a free alert, and it will email you when the price really drops. You don't need an account just to look up a price."
     }
   ]
 }

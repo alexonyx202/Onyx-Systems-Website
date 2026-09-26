@@ -171,6 +171,11 @@ KNOWN_PRODUCTS = [
     # Lenovo, so its product check still passes honestly. Headlines were left
     # intact here — never weakened into teasers to satisfy the gate.
     "asus", "dell", "lenovo",
+    # Extended 2026-09-26: Eufy (Anker's robot vacuum line — the free eufy Clean
+    # app's Firmware Update fixes the Sept 24 2026 government-flagged camera flaw).
+    # Real product named in today's Tech Note headline; obtain method stated
+    # (tap the vacuum in the eufy Clean app > three dots > Firmware Update).
+    "eufy",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

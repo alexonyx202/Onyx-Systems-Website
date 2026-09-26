@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-26-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-26",
+      "title": "A Fake 'Free Upgrade' Login Window Wants Your Password",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are offering a free upgrade to a paid AI tool, then showing a fake Google sign-in window to \"claim\" it. That window is drawn inside the website — it isn't really Google — so anything you type goes straight to the crooks. A real Google sign-in opens in your browser's own window, never floating inside a page. If one pops up inside a website, close the tab and never type your password. I type google.com myself whenever I'm unsure.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-26-composite.jpg",
+      "comic": "assets/img/news/2026-09-26-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-25-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-25",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-22-composite.jpg",
       "comic": "assets/img/news/2026-09-22-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-21-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-21",
-      "title": "Microsoft's September Patches May Have Quietly Stopped Your Backups",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft says the patches it sent out this month can quietly stop the tool that copies your files for you. On some computers the last-backup date freezes, Windows keeps asking you to reconnect a perfectly good drive, and older versions of your files disappear. No scam to spot here — nothing was stolen; the safety net just stopped working. Press Start, type File History, and check that date. If it's stale, copy your Documents, Pictures and Desktop onto a USB drive until Microsoft ships a fix.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-21-composite.jpg",
-      "comic": "assets/img/news/2026-09-21-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-26-post-1",
+      "type": "news",
+      "date": "2026-09-26",
+      "title": "Your robot vacuum has a camera — the government just flagged a security flaw in Eufy robot vacuums, so update yours free in the eufy Clean app",
+      "tag": "Tech Note",
+      "summary": "Open the free eufy Clean app — the same app you use to start and schedule your vacuum. Tap your vacuum on the screen, tap the three dots in the top right corner, and choose Firmware Update. Before you do, put the vacuum back on its charging base and make sure your home Wi-Fi is steady. It takes a few minutes, it is free, and you do not need to buy anything.",
+      "truth": "Most people don't realize that a robot vacuum is not really a vacuum — it is a small computer on wheels that happens to suck up dust. It runs its own program, it lives on your home Wi-Fi, and the better ones have a camera and a microphone. That is fine, and it is why they work so well — but anything with a camera on your network needs the same care you give your computer. On September 24th our own government's cybersecurity agency warned about this exact model line. It is not a reason to panic or to throw the vacuum away. It is a reason to open the app and press one button. I see this all the time — the device is fine, the owner just did not know it was a computer.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-25-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-21-post-1",
-      "type": "news",
-      "date": "2026-09-21",
-      "title": "Chrome will start warning you about old-style \"not private\" websites in October — turn on Always Use Secure Connections now in Chrome's Settings",
-      "tag": "Tech Note",
-      "summary": "Starting in October, Google Chrome will begin warning you before it opens an older-style website that doesn't have the little padlock. You can turn that protection on right now instead of waiting. Open Chrome, click the three dots at the top right, then Settings > Privacy and security > Security, and switch on Always use secure connections. It's free and takes under a minute.",
-      "truth": "Here's the part that surprises people: the padlock is not about whether a website is honest — it's about whether the connection is private. A fake page can have a padlock too. But when the padlock is missing, what you type and the passwords you enter can be read by someone in the middle, and that's how folks get burned on public Wi-Fi at coffee shops, laundromats, and hotels. Turning this on means Chrome taps you on the shoulder before it walks you onto the unlit side of the street. Do it once and it's done.",
+      "id": "onyx-2026-09-26-post-2",
+      "type": "tip",
+      "date": "2026-09-26",
+      "title": "Firefox now gets a fresh, safer version every two weeks instead of once a month — keep yours current free in Menu, Help, About Firefox",
+      "tag": "Tech Tip",
+      "summary": "Open Firefox, click the Menu button in the top right corner — it is the three little lines — then click Help, then click About Firefox. A small window opens and Firefox checks for the newest version by itself. If one is waiting it downloads on its own, and you click Restart to update. That is the whole thing: free, no account, about a minute.",
+      "truth": "Most people don't realize that a web browser is the most-used program on the whole computer. You read the news, check the bank, look at the grandkids' pictures, and pay a bill, all inside one window. Security researchers find holes in browsers constantly, and the makers patch them — which is why, starting this September, Firefox decided to ship a fresh version every two weeks instead of once a month. The browser you are using right now is the front door to everything you do online, and a door that gets its lock changed twice as often is harder to walk through. None of that matters unless you take the update. I see this all the time — a computer that is up to date except for the one program the person uses every single day.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-21-post-2",
-      "type": "tip",
-      "date": "2026-09-21",
-      "title": "That shocking photo might be AI — Chrome's built-in \"About this image\" check tells you in one right-click, free and built in",
-      "tag": "Tech Tip",
-      "summary": "If a picture in your feed looks too wild to be true, you can check it. In Chrome, right-click the photo and choose About this image. Google looks for a hidden, invisible mark called SynthID that it adds to pictures made with its AI tools, and it tells you what it finds. It's free and already built into Chrome — nothing to install.",
-      "truth": "Most people don't realize how good the fakes have gotten. A few years ago you could spot a fake photo by the extra fingers. Not anymore. The honest answer is that you can no longer trust your eyes alone, so stop and check before you believe a wild picture — and especially before you forward it. One thing to know: this check only catches pictures that were made by Google's AI tools. If it says no mark was found, that does not prove the photo is real. It just means Google didn't find its own watermark.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
