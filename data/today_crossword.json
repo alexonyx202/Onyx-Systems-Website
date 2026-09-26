@@ -1,173 +1,200 @@
 {
-  "title": "math",
-  "size": 12,
+  "title": "Math",
+  "size": 23,
   "grid": [
-    "..1...2.....",
-    "-601..513...",
-    "..5....1....",
-    ".243..502.3.",
-    "81.49.8.5529",
-    "....780..4..",
-    "....7.......",
-    "............",
-    "............",
-    "............",
-    "............",
-    "............"
+    "...................h...",
+    "...................y...",
+    ".......t.c.........p...",
+    ".......r.o.algebra.o...",
+    "statistics.......d.tan.",
+    ".......g..m......d.e...",
+    ".......o.subtraction...",
+    ".......n..l......t.u...",
+    ".......o..t......i.s...",
+    ".......median..geometry",
+    ".......e..p......n...a.",
+    ".......t..l........sin.",
+    ".......r.division..q.g.",
+    ".......y..c.......cubed",
+    ".........calculus..a...",
+    "..........t.....q..r...",
+    "..........i.....u.mean.",
+    ".........mode...a......",
+    "..........n.....r......",
+    "................e......",
+    "................d......",
+    ".......................",
+    "......................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 2,
-        "col": 1,
-        "len": 4,
-        "answer": "-601",
-        "clue": "(-658)+(57)"
-      },
-      {
         "num": 4,
-        "row": 2,
-        "col": 7,
-        "len": 3,
-        "answer": "513",
-        "clue": "456 + 57"
+        "row": 4,
+        "col": 12,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "the study of mathematical symbols and the rules for manipulating these symbols."
       },
       {
         "num": 6,
-        "row": 4,
-        "col": 2,
-        "len": 3,
-        "answer": "243",
-        "clue": "(245) + 12 - 14"
+        "row": 5,
+        "col": 1,
+        "len": 10,
+        "answer": "statistics",
+        "clue": "a branch of mathematics dealing with the collection, analysis, and interpretation."
       },
       {
-        "num": 8,
-        "row": 4,
-        "col": 7,
+        "num": 7,
+        "row": 5,
+        "col": 20,
         "len": 3,
-        "answer": "502",
-        "clue": "535 - 33"
+        "answer": "tan",
+        "clue": "A function in trigonometry when you take the opposite leg over the adjacent leg."
+      },
+      {
+        "num": 9,
+        "row": 7,
+        "col": 10,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "The action of subtracting something from something else"
+      },
+      {
+        "num": 10,
+        "row": 10,
+        "col": 8,
+        "len": 6,
+        "answer": "median",
+        "clue": "The middle number in a group of numbers, in order from least to greatest."
       },
       {
         "num": 11,
-        "row": 5,
-        "col": 1,
-        "len": 2,
-        "answer": "81",
-        "clue": "25 - 14 + (92)"
+        "row": 10,
+        "col": 16,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "It is concerned with properties of space that are related to distance, shape, size, and relative position of figures."
       },
       {
-        "num": 12,
-        "row": 5,
-        "col": 4,
-        "len": 2,
-        "answer": "49",
-        "clue": "430 + (-79) * 68"
+        "num": 13,
+        "row": 12,
+        "col": 20,
+        "len": 3,
+        "answer": "sin",
+        "clue": "A function in trigonometry when you take the opposite leg over the hypotenuse."
       },
       {
         "num": 14,
-        "row": 5,
-        "col": 9,
-        "len": 4,
-        "answer": "5529",
-        "clue": "97 * 57"
+        "row": 13,
+        "col": 10,
+        "len": 8,
+        "answer": "division",
+        "clue": "The process of dividing one thing by another"
+      },
+      {
+        "num": 15,
+        "row": 14,
+        "col": 19,
+        "len": 5,
+        "answer": "cubed",
+        "clue": "When a number is multiplied by itself 3 times."
       },
       {
         "num": 16,
-        "row": 6,
-        "col": 5,
-        "len": 3,
-        "answer": "780",
-        "clue": "98 + 682"
+        "row": 15,
+        "col": 10,
+        "len": 8,
+        "answer": "calculus",
+        "clue": "A branch of math created by Issac Newton."
+      },
+      {
+        "num": 18,
+        "row": 17,
+        "col": 19,
+        "len": 4,
+        "answer": "mean",
+        "clue": "The average of a group of numbers."
+      },
+      {
+        "num": 19,
+        "row": 18,
+        "col": 10,
+        "len": 4,
+        "answer": "mode",
+        "clue": "The number most often represented in a group of numbers."
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 3,
-        "len": 4,
-        "answer": "1054",
-        "clue": "76 + 978"
+        "col": 20,
+        "len": 10,
+        "answer": "hypotenuse",
+        "clue": "The longest side of a triangle."
       },
       {
         "num": 2,
-        "row": 1,
-        "col": 7,
-        "len": 2,
-        "answer": "25",
-        "clue": "(-7) - 21 + 3"
+        "row": 3,
+        "col": 8,
+        "len": 12,
+        "answer": "trigonometry",
+        "clue": "a branch of mathematics that studies relationships between side lengths and angles of triangles"
+      },
+      {
+        "num": 3,
+        "row": 3,
+        "col": 10,
+        "len": 3,
+        "answer": "cos",
+        "clue": "A function in trigonometry when you take the adjacent leg over the hypotenuse."
       },
       {
         "num": 5,
-        "row": 2,
-        "col": 8,
-        "len": 3,
-        "answer": "110",
-        "clue": "788 + 978"
-      },
-      {
-        "num": 6,
         "row": 4,
-        "col": 2,
-        "len": 2,
-        "answer": "21",
-        "clue": "-13 - (-34)"
-      },
-      {
-        "num": 7,
-        "row": 4,
-        "col": 4,
-        "len": 2,
-        "answer": "34",
-        "clue": "-23 + 57"
+        "col": 18,
+        "len": 8,
+        "answer": "addition",
+        "clue": "The action of adding something to something else."
       },
       {
         "num": 8,
-        "row": 4,
-        "col": 7,
-        "len": 3,
-        "answer": "580",
-        "clue": "345 + 235"
-      },
-      {
-        "num": 9,
-        "row": 4,
-        "col": 9,
-        "len": 2,
-        "answer": "25",
-        "clue": "(-7) - 21 + 3"
-      },
-      {
-        "num": 10,
-        "row": 4,
+        "row": 6,
         "col": 11,
-        "len": 2,
-        "answer": "32",
-        "clue": "52 - (43) + 23"
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "The process of multiplying two things."
+      },
+      {
+        "num": 12,
+        "row": 10,
+        "col": 22,
+        "len": 5,
+        "answer": "range",
+        "clue": "The difference between the largest and smallest number in a group of numbers."
       },
       {
         "num": 13,
-        "row": 5,
-        "col": 5,
-        "len": 3,
-        "answer": "977",
-        "clue": "953 + 24"
+        "row": 12,
+        "col": 20,
+        "len": 6,
+        "answer": "square",
+        "clue": "root A value of a number that when multiplied by itself gives the number."
       },
       {
-        "num": 15,
-        "row": 5,
-        "col": 10,
-        "len": 2,
-        "answer": "54",
-        "clue": "34 + 5 * (4)"
+        "num": 17,
+        "row": 15,
+        "col": 17,
+        "len": 7,
+        "answer": "squared",
+        "clue": "When a number is multiplied by itself twice."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9154",
-  "slug": "math-9154",
-  "fetched_at": "2026-07-14T19:21:33.203255+00:00",
-  "date": "2026-09-25"
+  "source_url": "https://crosswordlabs.com/view/math-9194",
+  "slug": "math-9194",
+  "fetched_at": "2026-07-14T19:14:31.985268+00:00",
+  "date": "2026-09-26"
 }
