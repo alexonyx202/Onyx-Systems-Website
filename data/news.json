@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-26",
+  "updated": "2026-09-27",
   "items": [
+    {
+      "id": "n-2026-09-27",
+      "type": "newsletter",
+      "date": "2026-09-27",
+      "title": "Fake Bill-Pay Ads Are Stealing People's Payments",
+      "tag": "Daily Brief",
+      "summary": "Scammers are buying the ads at the top of search results when you look up a bill — power, water, or internet. You click a fake payment page that looks just like your provider's, pay it, and the money goes straight to a crook while your real bill sits unpaid. I check the address bar and type my provider's exact website myself instead of trusting the first ad. Pay only through the bill you were mailed, and report fakes at ReportFraud.ftc.gov.",
+      "comic": "Newsletter - 2026-09-27-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-27-news1",
+      "type": "tech-note",
+      "date": "2026-09-27",
+      "title": "Windows 11 Search can finally drop Bing — flip off \"web results\" free in Settings > Privacy & security > Search",
+      "tag": "Tech Note",
+      "summary": "Click Start, open Settings, click Privacy & security, then click Search. Turn off the switch called web results (and, if you like, the one called search highlights). That keeps the little search box focused on your own programs and files instead of fetching ads and web pages every time you type. It is free, it is already built into Windows, and it takes about a minute."
+    },
+    {
+      "id": "t-2026-09-27-tip1",
+      "type": "tech-note",
+      "date": "2026-09-27",
+      "title": "Windows has free built-in troubleshooters that solve sound, printer, and Wi-Fi problems for you — open Settings > System > Troubleshoot and click Run",
+      "tag": "Tech Tip",
+      "summary": "Click Start, open Settings, click System, then click Troubleshoot. Under Other troubleshooters, find the problem you are having — no sound, printer not working, Wi-Fi dropping — and click Run next to it. Windows will find the common cause and fix it for you. It is free, it is already on your computer, and nothing to buy or download."
+    },
     {
       "id": "n-2026-09-26",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Grandma's cassette tapes won't last forever — Audacity is the free app at audacityteam.org that records them onto your computer as MP3s",
       "tag": "Tech Tip",
       "summary": "Go to audacityteam.org and download Audacity — it is free, open source, and runs on Windows and Mac. You will need a cord from the tape deck's headphone or line-out jack into your computer's microphone or line-in jack (a few dollars at Walmart or on Amazon). Open Audacity, press Record, press Play on the tape deck, and let the whole side run through. Then use File > Export to save it as an MP3 you can email, put on a flash drive, or burn to a CD. Nothing is uploaded anywhere — the whole thing happens on your own machine, with no account and no internet needed."
-    },
-    {
-      "id": "n-2026-09-23",
-      "type": "newsletter",
-      "date": "2026-09-23",
-      "title": "Weber Shut Off Its June Oven's App — Check Whether Your Own Smart Gadgets Still Work",
-      "tag": "Daily Brief",
-      "summary": "Last Tuesday, Weber switched off the servers behind its June countertop oven. People paid up to $1,500, and now the app, the camera, and the guided cooking are gone — the oven only bakes. Nothing broke; the company just turned it off. Any gadget in your house that runs on the maker's servers can be next. The two-minute check: open the app for each smart device you own. If it cannot work without signing in to the company's account, that gadget has an expiration date.",
-      "comic": "Newsletter - 2026-09-23-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-23-news1",
-      "type": "tech-note",
-      "date": "2026-09-23",
-      "title": "Google put Gemini on your Windows PC for free — install it from gemini.google/desktop and press Alt+Space to ask it anything",
-      "tag": "Tech Note",
-      "summary": "Go to gemini.google/desktop and download the free Gemini app for Windows (it runs on Windows 10 and 11). Then press Alt and Space together, and a small box opens right on top of whatever you are doing. Ask it to rewrite an email so it sounds kinder, explain a letter you got in the mail, put a long article into three sentences, or give you a recipe from what is already in your fridge. It is free with your Google account, and it stays out of the way until you call for it."
-    },
-    {
-      "id": "t-2026-09-23-tip1",
-      "type": "tech-note",
-      "date": "2026-09-23",
-      "title": "New laptops are about to cost 5% to 20% more — Windows' own Settings > System > About shows whether yours can go another year",
-      "tag": "Tech Tip",
-      "summary": "Click Start, type about, and open About your PC — the same page as Settings > System > About. It names your processor and shows how much working space your apps have to run in. Write those two lines down on paper. Now here is the news: Acer's chief executive said this week that computer prices will climb another 5% to 20% by the end of 2026, because the parts inside have been getting more expensive all year. So before you spend on a new machine, let somebody look at the one you own. If it is healthy inside, a good going-over and a fresh setup can keep it running for years — and if you truly do need a new one, buying sooner is cheaper than buying in December."
     }
   ]
 }

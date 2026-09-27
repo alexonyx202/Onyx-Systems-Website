@@ -336,7 +336,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     "expired websites", "crooks are buying",
     # Extended 2026-08-23: FTC bill-pay impersonator scam alert (fake ads at the
     # top of Google/Bing posing as electric company/bank) is a security alert (exempt).
-    "bill-payment", "bill pay",
+    # Extended 2026-09-27: the hyphenated spelling "bill-pay" (today's alert headline
+    # "Fake Bill-Pay Ads Are Stealing People's Payments") slipped past "bill pay" /
+    # "bill-payment", re-flagging the same exempt scam alert — add the hyphen form.
+    "bill-payment", "bill pay", "bill-pay", "bill-pay ads",
     # Extended 2026-08-29: Genetic testing data breach (Baylor Genetics) is a
     # security alert — no product name required.
     "breach", "genetic testing",
