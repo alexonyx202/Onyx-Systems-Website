@@ -1,200 +1,199 @@
 {
-  "title": "Math",
-  "size": 23,
+  "title": "math",
+  "size": 22,
   "grid": [
-    "...................h...",
-    "...................y...",
-    ".......t.c.........p...",
-    ".......r.o.algebra.o...",
-    "statistics.......d.tan.",
-    ".......g..m......d.e...",
-    ".......o.subtraction...",
-    ".......n..l......t.u...",
-    ".......o..t......i.s...",
-    ".......median..geometry",
-    ".......e..p......n...a.",
-    ".......t..l........sin.",
-    ".......r.division..q.g.",
-    ".......y..c.......cubed",
-    ".........calculus..a...",
-    "..........t.....q..r...",
-    "..........i.....u.mean.",
-    ".........mode...a......",
-    "..........n.....r......",
-    "................e......",
-    "................d......",
-    ".......................",
-    "......................."
+    "........c....m........",
+    "........i....i........",
+    "........r....d........",
+    "........c....s........",
+    ".....obtuse..e........",
+    "........m....g........",
+    "........f....m........",
+    "........e....e........",
+    "...ray..r..c.n........",
+    "....n...e..octagon.h..",
+    "..right.n..n.......e..",
+    "....l...c..t.......x..",
+    "...perimeter....a..a..",
+    "..c...s....a..pentagon",
+    "..o...o....p..a.g..o..",
+    "..n...s....o..r.l..n..",
+    "..g..acute.square.....",
+    "..r...e....i..l.......",
+    "..u...l....t..l.......",
+    "..e...e....inverse....",
+    "converse...v..l.......",
+    "..t......area........."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 4,
-        "col": 12,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "the study of mathematical symbols and the rules for manipulating these symbols."
+        "num": 3,
+        "row": 5,
+        "col": 6,
+        "len": 6,
+        "answer": "obtuse",
+        "clue": "angle   picture obtuse"
       },
       {
-        "num": 6,
-        "row": 5,
-        "col": 1,
-        "len": 10,
-        "answer": "statistics",
-        "clue": "a branch of mathematics dealing with the collection, analysis, and interpretation."
+        "num": 4,
+        "row": 9,
+        "col": 4,
+        "len": 3,
+        "answer": "ray",
+        "clue": "picture ray"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 20,
-        "len": 3,
-        "answer": "tan",
-        "clue": "A function in trigonometry when you take the opposite leg over the adjacent leg."
+        "row": 10,
+        "col": 12,
+        "len": 7,
+        "answer": "octagon",
+        "clue": "picture octo"
       },
       {
         "num": 9,
-        "row": 7,
-        "col": 10,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "The action of subtracting something from something else"
+        "row": 11,
+        "col": 3,
+        "len": 5,
+        "answer": "right",
+        "clue": "angle   picture right"
       },
       {
         "num": 10,
-        "row": 10,
-        "col": 8,
-        "len": 6,
-        "answer": "median",
-        "clue": "The middle number in a group of numbers, in order from least to greatest."
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 16,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "It is concerned with properties of space that are related to distance, shape, size, and relative position of figures."
-      },
-      {
-        "num": 13,
-        "row": 12,
-        "col": 20,
-        "len": 3,
-        "answer": "sin",
-        "clue": "A function in trigonometry when you take the opposite leg over the hypotenuse."
+        "row": 13,
+        "col": 4,
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "definition perimeter"
       },
       {
         "num": 14,
-        "row": 13,
-        "col": 10,
+        "row": 14,
+        "col": 15,
         "len": 8,
-        "answer": "division",
-        "clue": "The process of dividing one thing by another"
+        "answer": "pentagon",
+        "clue": "picture pent"
       },
       {
         "num": 15,
-        "row": 14,
-        "col": 19,
+        "row": 17,
+        "col": 6,
         "len": 5,
-        "answer": "cubed",
-        "clue": "When a number is multiplied by itself 3 times."
+        "answer": "acute",
+        "clue": "angle   picture acute"
       },
       {
         "num": 16,
-        "row": 15,
-        "col": 10,
-        "len": 8,
-        "answer": "calculus",
-        "clue": "A branch of math created by Issac Newton."
+        "row": 17,
+        "col": 12,
+        "len": 6,
+        "answer": "square",
+        "clue": "picture square"
+      },
+      {
+        "num": 17,
+        "row": 20,
+        "col": 12,
+        "len": 7,
+        "answer": "inverse",
+        "clue": "notp-notq"
       },
       {
         "num": 18,
-        "row": 17,
-        "col": 19,
-        "len": 4,
-        "answer": "mean",
-        "clue": "The average of a group of numbers."
+        "row": 21,
+        "col": 1,
+        "len": 8,
+        "answer": "converse",
+        "clue": "q-p"
       },
       {
         "num": 19,
-        "row": 18,
+        "row": 22,
         "col": 10,
         "len": 4,
-        "answer": "mode",
-        "clue": "The number most often represented in a group of numbers."
+        "answer": "area",
+        "clue": "definition area"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 20,
-        "len": 10,
-        "answer": "hypotenuse",
-        "clue": "The longest side of a triangle."
+        "col": 9,
+        "len": 13,
+        "answer": "circumference",
+        "clue": "definition circumfrence"
       },
       {
         "num": 2,
-        "row": 3,
-        "col": 8,
-        "len": 12,
-        "answer": "trigonometry",
-        "clue": "a branch of mathematics that studies relationships between side lengths and angles of triangles"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 10,
-        "len": 3,
-        "answer": "cos",
-        "clue": "A function in trigonometry when you take the adjacent leg over the hypotenuse."
+        "row": 1,
+        "col": 14,
+        "len": 10,
+        "answer": "midsegment",
+        "clue": "picture midseg"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 18,
-        "len": 8,
-        "answer": "addition",
-        "clue": "The action of adding something to something else."
+        "row": 9,
+        "col": 5,
+        "len": 5,
+        "answer": "angle",
+        "clue": "picture angle"
+      },
+      {
+        "num": 6,
+        "row": 9,
+        "col": 12,
+        "len": 14,
+        "answer": "contrapositive",
+        "clue": "notq-notp"
       },
       {
         "num": 8,
-        "row": 6,
-        "col": 11,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "The process of multiplying two things."
+        "row": 10,
+        "col": 20,
+        "len": 7,
+        "answer": "hexagon",
+        "clue": "picture hex"
+      },
+      {
+        "num": 11,
+        "row": 13,
+        "col": 7,
+        "len": 9,
+        "answer": "isosceles",
+        "clue": "triangle   picture iso"
       },
       {
         "num": 12,
-        "row": 10,
-        "col": 22,
+        "row": 13,
+        "col": 17,
         "len": 5,
-        "answer": "range",
-        "clue": "The difference between the largest and smallest number in a group of numbers."
+        "answer": "angle",
+        "clue": "picture angle"
       },
       {
         "num": 13,
-        "row": 12,
-        "col": 20,
-        "len": 6,
-        "answer": "square",
-        "clue": "root A value of a number that when multiplied by itself gives the number."
+        "row": 14,
+        "col": 3,
+        "len": 9,
+        "answer": "congruent",
+        "clue": "picture congruet"
       },
       {
-        "num": 17,
-        "row": 15,
-        "col": 17,
-        "len": 7,
-        "answer": "squared",
-        "clue": "When a number is multiplied by itself twice."
+        "num": 14,
+        "row": 14,
+        "col": 15,
+        "len": 8,
+        "answer": "parallel",
+        "clue": "lines   picture parallel"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9194",
-  "slug": "math-9194",
-  "fetched_at": "2026-07-14T19:14:31.985268+00:00",
-  "date": "2026-09-26"
+  "source_url": "https://crosswordlabs.com/view/math-9207",
+  "slug": "math-9207",
+  "fetched_at": "2026-07-14T19:19:15.469607+00:00",
+  "date": "2026-09-27"
 }
