@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-28",
   "items": [
+    {
+      "id": "n-2026-09-28",
+      "type": "newsletter",
+      "date": "2026-09-28",
+      "title": "Microsoft Pulled the Update That Switched Off Word and Excel",
+      "tag": "Daily Brief",
+      "summary": "Microsoft pulled a faulty update that switched off Word and Excel on home computers — people opened a document and were told their software was unlicensed, or found it gone. One repair shop had five customers hit within ten minutes, and I've had calls here too. Don't pay to fix it, and be wary of any message offering to do it for you — that's where the scam starts. Open Word or Excel, click Reactivate, and sign in with the account you normally use; if it's gone, reinstall the copy you bought.",
+      "comic": "Newsletter - 2026-09-28-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-28-news1",
+      "type": "tech-note",
+      "date": "2026-09-28",
+      "title": "Stop renting Microsoft Office — LibreOffice is the free office suite at libreoffice.org that opens Word, Excel and PowerPoint files and never sends your documents to AI",
+      "tag": "Tech Note",
+      "summary": "Download LibreOffice free from libreoffice.org, install it, and it opens your Word, Excel and PowerPoint files just like the paid versions. There is no subscription, no account, and no AI reading your documents — it works completely on your own computer, even offline."
+    },
+    {
+      "id": "t-2026-09-28-tip1",
+      "type": "tech-note",
+      "date": "2026-09-28",
+      "title": "Can't hear the TV or a video on your computer? Windows 11's free Live Captions types out the words — turn it on with Windows key + Ctrl + L",
+      "tag": "Tech Tip",
+      "summary": "On a Windows 11 computer, press the Windows key, Ctrl, and L at the same time to turn on Live Captions, or open Settings > Accessibility > Captions and flip the Live captions switch. It is free and built in, and it shows on-screen text for any sound your computer plays — a video, a call, or a DVD."
+    },
     {
       "id": "n-2026-09-27",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Google just plugged 108 security holes in Chrome — update yours free in one minute at chrome://settings/help",
       "tag": "Tech Tip",
       "summary": "Open Chrome, type chrome://settings/help into the address bar, and press Enter. Chrome looks for the newest version on its own, so you are not hunting for a download. If it says Chrome is up to date, you are done. If a newer version is waiting, it installs and shows you a Relaunch button — click it once and your browser reopens, already protected. Free, about a minute, and no account needed."
-    },
-    {
-      "id": "n-2026-09-24",
-      "type": "newsletter",
-      "date": "2026-09-24",
-      "title": "ASUS Store Hack — Expect Fake Order Emails",
-      "tag": "Daily Brief",
-      "summary": "ASUS, the company that makes laptops and computer parts, says someone got into its online store and took customers' names, email addresses, phone numbers, and order records. No card numbers were taken. The danger now is fake messages that quote your real order to sound believable. If an email or a call asks you to confirm an ASUS order, don't click and don't call the number it gives you — open your browser and type asus.com yourself. I've seen these; they always rush you.",
-      "comic": "Newsletter - 2026-09-24-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-24-news1",
-      "type": "tech-note",
-      "date": "2026-09-24",
-      "title": "Is your computer still under factory warranty? Dell, HP and Lenovo look it up free from the serial number on the sticker",
-      "tag": "Tech Note",
-      "summary": "Turn the laptop over, or look at the back of a desktop tower, and find the white sticker with the serial number. On a Dell it is called the Service Tag — seven letters and numbers. Type it into the maker's own page: dell.com/support for Dell, support.hp.com for HP, and pcsupport.lenovo.com for Lenovo (look for warranty lookup there). It shows the exact date your coverage ends, in seconds, with no account to create. Write that date on a piece of tape and stick it to the bottom of the machine. It settles arguments later."
-    },
-    {
-      "id": "t-2026-09-24-tip1",
-      "type": "tech-note",
-      "date": "2026-09-24",
-      "title": "Grandma's cassette tapes won't last forever — Audacity is the free app at audacityteam.org that records them onto your computer as MP3s",
-      "tag": "Tech Tip",
-      "summary": "Go to audacityteam.org and download Audacity — it is free, open source, and runs on Windows and Mac. You will need a cord from the tape deck's headphone or line-out jack into your computer's microphone or line-in jack (a few dollars at Walmart or on Amazon). Open Audacity, press Record, press Play on the tape deck, and let the whole side run through. Then use File > Export to save it as an MP3 you can email, put on a flash drive, or burn to a CD. Nothing is uploaded anywhere — the whole thing happens on your own machine, with no account and no internet needed."
     }
   ]
 }

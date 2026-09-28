@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-28-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-28",
+      "title": "Microsoft Pulled the Update That Switched Off Word and Excel",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft pulled a faulty update that switched off Word and Excel on home computers — people opened a document and were told their software was unlicensed, or found it gone. One repair shop had five customers hit within ten minutes, and I've had calls here too. Don't pay to fix it, and be wary of any message offering to do it for you — that's where the scam starts. Open Word or Excel, click Reactivate, and sign in with the account you normally use; if it's gone, reinstall the copy you bought.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-28-composite.jpg",
+      "comic": "assets/img/news/2026-09-28-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-27",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-24-composite.jpg",
       "comic": "assets/img/news/2026-09-24-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-23-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-23",
-      "title": "Weber Shut Off Its June Oven's App — Check Whether Your Own Smart Gadgets Still Work",
-      "tag": "Daily Brief",
-      "excerpt": "Last Tuesday, Weber switched off the servers behind its June countertop oven. People paid up to $1,500, and now the app, the camera, and the guided cooking are gone — the oven only bakes. Nothing broke; the company just turned it off. Any gadget in your house that runs on the maker's servers can be next. The two-minute check: open the app for each smart device you own. If it cannot work without signing in to the company's account, that gadget has an expiration date.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-23-composite.jpg",
-      "comic": "assets/img/news/2026-09-23-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-28-post-1",
+      "type": "news",
+      "date": "2026-09-28",
+      "title": "Stop renting Microsoft Office — LibreOffice is the free office suite at libreoffice.org that opens Word, Excel and PowerPoint files and never sends your documents to AI",
+      "tag": "Tech Note",
+      "summary": "Download LibreOffice free from libreoffice.org, install it, and it opens your Word, Excel and PowerPoint files just like the paid versions. There is no subscription, no account, and no AI reading your documents — it works completely on your own computer, even offline.",
+      "truth": "Most people don't realize that the letters, the church newsletter, and the spreadsheet they keep the club's dues in do not require a monthly fee. The bills and cards people get in the mail are almost never for the typing program itself — they are for a subscription that renewed on its own, and the free suite has been doing that same everyday work for years. And here is the part I like best: LibreOffice does not run your documents through somebody else's AI. It doesn't send your writing anywhere, and it doesn't need the internet at all. For a customer typing a letter to the insurance company or a list of medications, that is exactly what you want.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-27-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-23-post-1",
-      "type": "news",
-      "date": "2026-09-23",
-      "title": "Google put Gemini on your Windows PC for free — install it from gemini.google/desktop and press Alt+Space to ask it anything",
-      "tag": "Tech Note",
-      "summary": "Go to gemini.google/desktop and download the free Gemini app for Windows (it runs on Windows 10 and 11). Then press Alt and Space together, and a small box opens right on top of whatever you are doing. Ask it to rewrite an email so it sounds kinder, explain a letter you got in the mail, put a long article into three sentences, or give you a recipe from what is already in your fridge. It is free with your Google account, and it stays out of the way until you call for it.",
-      "truth": "Most people think of AI as a website you go visit. The honest answer is that it is now about as hard as pressing two keys — and that changes how useful it is. The question I get every week is \"should I be using it?\" My answer: for words, yes, use it freely. It is very good at explaining a confusing letter, fixing the tone of an email to a grandchild, or telling you what a confusing error message means. What it should never see is your passwords, your Social Security number, or your bank login. I see this all the time: folks are either scared of it or they trust it with everything. The right place is in the middle.",
+      "id": "onyx-2026-09-28-post-2",
+      "type": "tip",
+      "date": "2026-09-28",
+      "title": "Can't hear the TV or a video on your computer? Windows 11's free Live Captions types out the words — turn it on with Windows key + Ctrl + L",
+      "tag": "Tech Tip",
+      "summary": "On a Windows 11 computer, press the Windows key, Ctrl, and L at the same time to turn on Live Captions, or open Settings > Accessibility > Captions and flip the Live captions switch. It is free and built in, and it shows on-screen text for any sound your computer plays — a video, a call, or a DVD.",
+      "truth": "Most people don't realize that the biggest reason folks give up on a computer is their ears, not the machine. A customer turns the volume all the way up, the family says it's too loud, and they still miss the words. Meanwhile Windows has had a free feature for years that simply types out whatever is playing, live, right on the screen — and almost nobody turns it on because nobody told them it was there. The honest answer is that this is not only for people with hearing loss. It helps when the speaker is muffled, when a show has a heavy accent, or when you are in a room where you can't turn the sound up. It costs nothing, it is already on the computer, and it lives behind one keyboard shortcut.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-23-post-2",
-      "type": "tip",
-      "date": "2026-09-23",
-      "title": "New laptops are about to cost 5% to 20% more — Windows' own Settings > System > About shows whether yours can go another year",
-      "tag": "Tech Tip",
-      "summary": "Click Start, type about, and open About your PC — the same page as Settings > System > About. It names your processor and shows how much working space your apps have to run in. Write those two lines down on paper. Now here is the news: Acer's chief executive said this week that computer prices will climb another 5% to 20% by the end of 2026, because the parts inside have been getting more expensive all year. So before you spend on a new machine, let somebody look at the one you own. If it is healthy inside, a good going-over and a fresh setup can keep it running for years — and if you truly do need a new one, buying sooner is cheaper than buying in December.",
-      "truth": "Most people don't realize that the two lines on that About page are the whole story. The honest answer is that a computer which feels slow is usually not worn out — it is tripping over years of piled-up software, and no new laptop on the shelf magically avoids that. I see this all the time: somebody buys a new machine, moves everything over the way it was, and three months later it feels just as slow as the old one did. Meanwhile the old machine was a five-minute look away from being fine. Prices are climbing because the memory inside every computer got dramatically more expensive this year — that is real, and it is not coming back down soon. Which makes the old question worth asking first: does yours actually need leaving?",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-27",
+  "updated": "2026-09-28",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
