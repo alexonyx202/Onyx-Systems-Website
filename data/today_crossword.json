@@ -1,199 +1,166 @@
 {
-  "title": "math",
-  "size": 22,
+  "title": "Math",
+  "size": 29,
   "grid": [
-    "........c....m........",
-    "........i....i........",
-    "........r....d........",
-    "........c....s........",
-    ".....obtuse..e........",
-    "........m....g........",
-    "........f....m........",
-    "........e....e........",
-    "...ray..r..c.n........",
-    "....n...e..octagon.h..",
-    "..right.n..n.......e..",
-    "....l...c..t.......x..",
-    "...perimeter....a..a..",
-    "..c...s....a..pentagon",
-    "..o...o....p..a.g..o..",
-    "..n...s....o..r.l..n..",
-    "..g..acute.square.....",
-    "..r...e....i..l.......",
-    "..u...l....t..l.......",
-    "..e...e....inverse....",
-    "converse...v..l.......",
-    "..t......area........."
+    ".....................s.......",
+    ".....................a.......",
+    ".....................m.......",
+    ".....................p.......",
+    "...........o.........l.......",
+    "...........u.r.r.....e...o..o",
+    "discriminant.e.a.....s...r..n",
+    "...........c.l.d...impossible",
+    "...........o.a.i..h..a...g...",
+    "...........mutuallyexclusive.",
+    "...........e.i.n..p..e...n...",
+    ".........d.s.o....o..........",
+    ".........e...null.t..........",
+    ".........p.......certain.....",
+    ".........e........n..........",
+    ".........n........u..........",
+    ".........d........s..........",
+    ".........exhaustive..........",
+    ".........n...................",
+    ".....function................",
+    ".............................",
+    ".............................",
+    ".............................",
+    ".............................",
+    ".............................",
+    ".............................",
+    ".............................",
+    ".............................",
+    "............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 5,
-        "col": 6,
-        "len": 6,
-        "answer": "obtuse",
-        "clue": "angle   picture obtuse"
-      },
-      {
-        "num": 4,
-        "row": 9,
-        "col": 4,
-        "len": 3,
-        "answer": "ray",
-        "clue": "picture ray"
-      },
-      {
         "num": 7,
-        "row": 10,
-        "col": 12,
-        "len": 7,
-        "answer": "octagon",
-        "clue": "picture octo"
+        "row": 7,
+        "col": 1,
+        "len": 12,
+        "answer": "discriminant",
+        "clue": "the value of D=b^2-4ac"
       },
       {
-        "num": 9,
-        "row": 11,
-        "col": 3,
-        "len": 5,
-        "answer": "right",
-        "clue": "angle   picture right"
+        "num": 8,
+        "row": 8,
+        "col": 20,
+        "len": 10,
+        "answer": "impossible",
+        "clue": "On a probability line, what is equal to 0?"
       },
       {
         "num": 10,
+        "row": 10,
+        "col": 12,
+        "len": 17,
+        "answer": "mutuallyexclusive",
+        "clue": "Denoting two events that cannot occur at the same time"
+      },
+      {
+        "num": 12,
         "row": 13,
-        "col": 4,
-        "len": 9,
-        "answer": "perimeter",
-        "clue": "definition perimeter"
+        "col": 14,
+        "len": 4,
+        "answer": "null",
+        "clue": "The set having no elements"
+      },
+      {
+        "num": 13,
+        "row": 14,
+        "col": 18,
+        "len": 7,
+        "answer": "certain",
+        "clue": "On a probability line, what is equal to 1?"
       },
       {
         "num": 14,
-        "row": 14,
-        "col": 15,
-        "len": 8,
-        "answer": "pentagon",
-        "clue": "picture pent"
+        "row": 18,
+        "col": 10,
+        "len": 10,
+        "answer": "exhaustive",
+        "clue": "If probability of all events add up to 1"
       },
       {
         "num": 15,
-        "row": 17,
-        "col": 6,
-        "len": 5,
-        "answer": "acute",
-        "clue": "angle   picture acute"
-      },
-      {
-        "num": 16,
-        "row": 17,
-        "col": 12,
-        "len": 6,
-        "answer": "square",
-        "clue": "picture square"
-      },
-      {
-        "num": 17,
         "row": 20,
-        "col": 12,
-        "len": 7,
-        "answer": "inverse",
-        "clue": "notp-notq"
-      },
-      {
-        "num": 18,
-        "row": 21,
-        "col": 1,
+        "col": 6,
         "len": 8,
-        "answer": "converse",
-        "clue": "q-p"
-      },
-      {
-        "num": 19,
-        "row": 22,
-        "col": 10,
-        "len": 4,
-        "answer": "area",
-        "clue": "definition area"
+        "answer": "function",
+        "clue": "each x-value only has one y-value"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 13,
-        "answer": "circumference",
-        "clue": "definition circumfrence"
+        "col": 22,
+        "len": 11,
+        "answer": "samplespace",
+        "clue": "The set of all possible outcomes of an experiment"
       },
       {
         "num": 2,
-        "row": 1,
+        "row": 5,
+        "col": 12,
+        "len": 8,
+        "answer": "outcomes",
+        "clue": "When a coin is tossed, their are two possible ______"
+      },
+      {
+        "num": 3,
+        "row": 6,
         "col": 14,
-        "len": 10,
-        "answer": "midsegment",
-        "clue": "picture midseg"
+        "len": 8,
+        "answer": "relation",
+        "clue": "a relationship between two variables; ordered pairs"
+      },
+      {
+        "num": 4,
+        "row": 6,
+        "col": 16,
+        "len": 6,
+        "answer": "radian",
+        "clue": "arc length/radius"
       },
       {
         "num": 5,
-        "row": 9,
-        "col": 5,
-        "len": 5,
-        "answer": "angle",
-        "clue": "picture angle"
+        "row": 6,
+        "col": 26,
+        "len": 6,
+        "answer": "origin",
+        "clue": "The point where the x-axis and y-axis cross"
       },
       {
         "num": 6,
-        "row": 9,
-        "col": 12,
-        "len": 14,
-        "answer": "contrapositive",
-        "clue": "notq-notp"
+        "row": 6,
+        "col": 29,
+        "len": 3,
+        "answer": "one",
+        "clue": "maximum value for sin(x)"
       },
       {
-        "num": 8,
-        "row": 10,
-        "col": 20,
-        "len": 7,
-        "answer": "hexagon",
-        "clue": "picture hex"
+        "num": 9,
+        "row": 9,
+        "col": 19,
+        "len": 10,
+        "answer": "hypotenuse",
+        "clue": "the longest side of a right triangle, opposite the right angle"
       },
       {
         "num": 11,
-        "row": 13,
-        "col": 7,
+        "row": 12,
+        "col": 10,
         "len": 9,
-        "answer": "isosceles",
-        "clue": "triangle   picture iso"
-      },
-      {
-        "num": 12,
-        "row": 13,
-        "col": 17,
-        "len": 5,
-        "answer": "angle",
-        "clue": "picture angle"
-      },
-      {
-        "num": 13,
-        "row": 14,
-        "col": 3,
-        "len": 9,
-        "answer": "congruent",
-        "clue": "picture congruet"
-      },
-      {
-        "num": 14,
-        "row": 14,
-        "col": 15,
-        "len": 8,
-        "answer": "parallel",
-        "clue": "lines   picture parallel"
+        "answer": "dependent",
+        "clue": "What is an event that is affected by other events?"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9207",
-  "slug": "math-9207",
-  "fetched_at": "2026-07-14T19:19:15.469607+00:00",
-  "date": "2026-09-27"
+  "source_url": "https://crosswordlabs.com/view/math-9257",
+  "slug": "math-9257",
+  "fetched_at": "2026-07-14T19:25:37.621622+00:00",
+  "date": "2026-09-28"
 }
