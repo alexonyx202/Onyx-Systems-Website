@@ -1,166 +1,210 @@
 {
   "title": "Math",
-  "size": 29,
+  "size": 25,
   "grid": [
-    ".....................s.......",
-    ".....................a.......",
-    ".....................m.......",
-    ".....................p.......",
-    "...........o.........l.......",
-    "...........u.r.r.....e...o..o",
-    "discriminant.e.a.....s...r..n",
-    "...........c.l.d...impossible",
-    "...........o.a.i..h..a...g...",
-    "...........mutuallyexclusive.",
-    "...........e.i.n..p..e...n...",
-    ".........d.s.o....o..........",
-    ".........e...null.t..........",
-    ".........p.......certain.....",
-    ".........e........n..........",
-    ".........n........u..........",
-    ".........d........s..........",
-    ".........exhaustive..........",
-    ".........n...................",
-    ".....function................",
-    ".............................",
-    ".............................",
-    ".............................",
-    ".............................",
-    ".............................",
-    ".............................",
-    ".............................",
-    ".............................",
-    "............................."
+    "........2................",
+    "........63...............",
+    "........,................",
+    ".......15=n..............",
+    "..1.....3................",
+    "..7.....2...x............",
+    "..,...1.....=..1.........",
+    "a10=3x4^9=786,432........",
+    "..5...2.8...0..1.........",
+    ".-19,682.....13,021......",
+    "...............1.........",
+    "r=5...7........2....9....",
+    "..2...5......s40=2,380...",
+    "....................3..x.",
+    ".................n=10.x=1",
+    ".......................3.",
+    "....................4....",
+    "..................t20=41.",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    ".........................",
+    "........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 7,
-        "row": 7,
-        "col": 1,
-        "len": 12,
-        "answer": "discriminant",
-        "clue": "the value of D=b^2-4ac"
+        "num": 2,
+        "row": 2,
+        "col": 9,
+        "len": 2,
+        "answer": "63",
+        "clue": "1+2+4+8..., n=6"
+      },
+      {
+        "num": 3,
+        "row": 4,
+        "col": 8,
+        "len": 4,
+        "answer": "15=n",
+        "clue": "35,31,27,233,...,-21"
       },
       {
         "num": 8,
         "row": 8,
-        "col": 20,
-        "len": 10,
-        "answer": "impossible",
-        "clue": "On a probability line, what is equal to 0?"
+        "col": 1,
+        "len": 17,
+        "answer": "a10=3x4^9=786,432",
+        "clue": "768,3,072,12,288"
       },
       {
         "num": 10,
         "row": 10,
-        "col": 12,
-        "len": 17,
-        "answer": "mutuallyexclusive",
-        "clue": "Denoting two events that cannot occur at the same time"
+        "col": 2,
+        "len": 7,
+        "answer": "-19,682",
+        "clue": "-2-6-18-54...,n=9"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 14,
+        "len": 6,
+        "answer": "13,021",
+        "clue": "1-5+25-125...,n=7"
       },
       {
         "num": 12,
+        "row": 12,
+        "col": 1,
+        "len": 3,
+        "answer": "r=5",
+        "clue": "2,10,50,250"
+      },
+      {
+        "num": 16,
         "row": 13,
         "col": 14,
-        "len": 4,
-        "answer": "null",
-        "clue": "The set having no elements"
+        "len": 9,
+        "answer": "s40=2,380",
+        "clue": "1+4+7+10"
       },
       {
-        "num": 13,
-        "row": 14,
+        "num": 18,
+        "row": 15,
         "col": 18,
-        "len": 7,
-        "answer": "certain",
-        "clue": "On a probability line, what is equal to 1?"
+        "len": 4,
+        "answer": "n=10",
+        "clue": "3,6,12,24,...,1,536"
       },
       {
-        "num": 14,
+        "num": 19,
+        "row": 15,
+        "col": 23,
+        "len": 3,
+        "answer": "x=1",
+        "clue": "4x+1(x+2)=7"
+      },
+      {
+        "num": 21,
         "row": 18,
-        "col": 10,
-        "len": 10,
-        "answer": "exhaustive",
-        "clue": "If probability of all events add up to 1"
-      },
-      {
-        "num": 15,
-        "row": 20,
-        "col": 6,
-        "len": 8,
-        "answer": "function",
-        "clue": "each x-value only has one y-value"
+        "col": 19,
+        "len": 6,
+        "answer": "t20=41",
+        "clue": "3,5,7,9"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 22,
-        "len": 11,
-        "answer": "samplespace",
-        "clue": "The set of all possible outcomes of an experiment"
-      },
-      {
-        "num": 2,
-        "row": 5,
-        "col": 12,
-        "len": 8,
-        "answer": "outcomes",
-        "clue": "When a coin is tossed, their are two possible ______"
-      },
-      {
-        "num": 3,
-        "row": 6,
-        "col": 14,
-        "len": 8,
-        "answer": "relation",
-        "clue": "a relationship between two variables; ordered pairs"
+        "col": 9,
+        "len": 6,
+        "answer": "26,532",
+        "clue": ""
       },
       {
         "num": 4,
-        "row": 6,
-        "col": 16,
+        "row": 5,
+        "col": 3,
         "len": 6,
-        "answer": "radian",
-        "clue": "arc length/radius"
+        "answer": "17,051",
+        "clue": ""
       },
       {
         "num": 5,
         "row": 6,
-        "col": 26,
-        "len": 6,
-        "answer": "origin",
-        "clue": "The point where the x-axis and y-axis cross"
+        "col": 13,
+        "len": 4,
+        "answer": "x=60",
+        "clue": "1/10-1/12=1/x"
       },
       {
         "num": 6,
-        "row": 6,
-        "col": 29,
-        "len": 3,
-        "answer": "one",
-        "clue": "maximum value for sin(x)"
+        "row": 7,
+        "col": 7,
+        "len": 4,
+        "answer": "1428",
+        "clue": ""
+      },
+      {
+        "num": 7,
+        "row": 7,
+        "col": 16,
+        "len": 7,
+        "answer": "131,120",
+        "clue": "a1=4,an=8,748,r=3"
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 19,
-        "len": 10,
-        "answer": "hypotenuse",
-        "clue": "the longest side of a right triangle, opposite the right angle"
+        "row": 8,
+        "col": 9,
+        "len": 2,
+        "answer": "98",
+        "clue": ""
       },
       {
-        "num": 11,
+        "num": 13,
         "row": 12,
-        "col": 10,
-        "len": 9,
-        "answer": "dependent",
-        "clue": "What is an event that is affected by other events?"
+        "col": 3,
+        "len": 2,
+        "answer": "52",
+        "clue": ""
+      },
+      {
+        "num": 14,
+        "row": 12,
+        "col": 7,
+        "len": 2,
+        "answer": "75",
+        "clue": ""
+      },
+      {
+        "num": 15,
+        "row": 12,
+        "col": 21,
+        "len": 4,
+        "answer": "9830",
+        "clue": ""
+      },
+      {
+        "num": 17,
+        "row": 14,
+        "col": 24,
+        "len": 3,
+        "answer": "x=3",
+        "clue": ""
+      },
+      {
+        "num": 20,
+        "row": 17,
+        "col": 21,
+        "len": 2,
+        "answer": "40",
+        "clue": ""
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9257",
-  "slug": "math-9257",
-  "fetched_at": "2026-07-14T19:25:37.621622+00:00",
-  "date": "2026-09-28"
+  "source_url": "https://crosswordlabs.com/view/math-9277",
+  "slug": "math-9277",
+  "fetched_at": "2026-07-14T19:21:53.479118+00:00",
+  "date": "2026-09-29"
 }
