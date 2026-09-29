@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "items": [
+    {
+      "id": "n-2026-09-29",
+      "type": "newsletter",
+      "date": "2026-09-29",
+      "title": "If Someone Wants You to Pay With Gift Cards, It's a Scam",
+      "tag": "Daily Brief",
+      "summary": "Police put out a fresh warning this week that gift-card scams are going after older adults and draining savings. Here is a rule that never fails: no real bank, sheriff's office, insurance company, or store will ever ask you to pay a bill with gift cards. Once you read the numbers off the back, the money is gone and there is no refund. If a caller keeps you on the line and pushes you to go buy cards, hang up — I've never once seen a real bill that worked that way.",
+      "comic": "Newsletter - 2026-09-29-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-29-news1",
+      "type": "tech-note",
+      "date": "2026-09-29",
+      "title": "Cannot open a file someone emailed you? 7-Zip is the free file opener at 7-zip.org that unpacks ZIP and RAR files — no account, no ads, nothing to pay",
+      "tag": "Tech Note",
+      "summary": "Go to 7-zip.org and click the big Download link for Windows near the top of the page, install it, and you are done. From then on, right-click any ZIP or RAR file and choose 7-Zip, then Extract Here. The contents appear right next to the file, free, forever."
+    },
+    {
+      "id": "t-2026-09-29-tip1",
+      "type": "tech-note",
+      "date": "2026-09-29",
+      "title": "Your family pictures live in one place only — Windows File History keeps an automatic second copy on a $60 portable drive from Walmart; press Start, type File History, and click Turn on",
+      "tag": "Tech Tip",
+      "summary": "Buy a portable drive — Seagate, Western Digital, and Toshiba all make good ones, and they run about $60 at Walmart or Best Buy — then plug it into the computer with the cord that comes in the box. Press the Start button, type File History, open it, and click Turn on. From then on, Windows copies your Documents, Pictures, and Desktop onto that drive every hour, by itself, without you clicking anything ever again."
+    },
     {
       "id": "n-2026-09-28",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Firefox now gets a fresh, safer version every two weeks instead of once a month — keep yours current free in Menu, Help, About Firefox",
       "tag": "Tech Tip",
       "summary": "Open Firefox, click the Menu button in the top right corner — it is the three little lines — then click Help, then click About Firefox. A small window opens and Firefox checks for the newest version by itself. If one is waiting it downloads on its own, and you click Restart to update. That is the whole thing: free, no account, about a minute."
-    },
-    {
-      "id": "n-2026-09-25",
-      "type": "newsletter",
-      "date": "2026-09-25",
-      "title": "600,000 Card Numbers Stolen From Online Checkouts",
-      "tag": "Daily Brief",
-      "summary": "Thieves have been slipping a few lines of sneaky code onto the checkout pages of more than a hundred online shops, so every card number typed in gets quietly copied to them. Over 600,000 cards have been taken since July, according to security researchers. The shops look normal — you can't spot this scam by looking. Check your last card statement today and report anything you don't recognize. I've switched to a credit card for online shopping, never a debit card — it's far easier to get your money back.",
-      "comic": "Newsletter - 2026-09-25-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-25-news1",
-      "type": "tech-note",
-      "date": "2026-09-25",
-      "title": "Is your computer running slow? Microsoft's free PC Manager tidies it up in one click — get it from the Microsoft Store or pcmanager.microsoft.com",
-      "tag": "Tech Note",
-      "summary": "Go to pcmanager.microsoft.com — or open the Microsoft Store, search Microsoft PC Manager, and install it. It is free, and it is made by Microsoft rather than by some outfit selling you a yearly plan. Open it and press the big Boost button. It sweeps out temporary junk files, shows you which apps open by themselves the moment you turn the computer on, and runs a quick health check in one tap. Works on Windows 10 and Windows 11."
-    },
-    {
-      "id": "t-2026-09-25-tip1",
-      "type": "tech-note",
-      "date": "2026-09-25",
-      "title": "Google just plugged 108 security holes in Chrome — update yours free in one minute at chrome://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Open Chrome, type chrome://settings/help into the address bar, and press Enter. Chrome looks for the newest version on its own, so you are not hunting for a download. If it says Chrome is up to date, you are done. If a newer version is waiting, it installs and shows you a Relaunch button — click it once and your browser reopens, already protected. Free, about a minute, and no account needed."
     }
   ]
 }
