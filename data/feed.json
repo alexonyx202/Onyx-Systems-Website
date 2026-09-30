@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-09-30-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-09-30",
+      "title": "A 'New Plastic Medicare Card' in the Mail Is a Scam",
+      "tag": "Daily Brief",
+      "excerpt": "An official-looking plastic Medicare card is landing in mailboxes, with a phone number to \"activate\" your new benefits — and that call is the whole scam. Real Medicare cards are paper, and nobody from Medicare will ever call, text, or email asking for your Medicare, Social Security, or bank number. Don't ring a number printed on the letter — type medicare.gov into your browser yourself, or use 800-633-4227, the number I check before I trust it. Already shared it? Report it at ftc.gov.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-09-30-composite.jpg",
+      "comic": "assets/img/news/2026-09-30-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-09-29-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-09-29",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-26-composite.jpg",
       "comic": "assets/img/news/2026-09-26-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-25-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-25",
-      "title": "600,000 Card Numbers Stolen From Online Checkouts",
-      "tag": "Daily Brief",
-      "excerpt": "Thieves have been slipping a few lines of sneaky code onto the checkout pages of more than a hundred online shops, so every card number typed in gets quietly copied to them. Over 600,000 cards have been taken since July, according to security researchers. The shops look normal — you can't spot this scam by looking. Check your last card statement today and report anything you don't recognize. I've switched to a credit card for online shopping, never a debit card — it's far easier to get your money back.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-25-composite.jpg",
-      "comic": "assets/img/news/2026-09-25-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-09-30-post-1",
+      "type": "news",
+      "date": "2026-09-30",
+      "title": "Is your email in a data breach? Check free in seconds at haveibeenpwned.com and turn on alerts so a scammer never gets there first",
+      "tag": "Tech Note",
+      "summary": "Open haveibeenpwned.com in your browser, type your email address in the box, and click the button. It is free, it takes about ten seconds, and you do not have to create an account or hand over a password. Then scroll down the page and click Notify me, so it sends you an email the day your address shows up in a future leak.",
+      "truth": "Most people don't realize that when a store, a hospital, or an insurance company gets broken into, the list of emails and passwords that gets stolen is often posted for sale where anyone can buy it. Your email address being on that list is not the whole problem — the problem is what a thief does with it next, which is trying your old password on your bank, your Facebook, and your email, because so many people use the same one everywhere. The honest answer is that a leaked email address by itself is not an emergency; a leaked password that you still use is. That is why the check is free and worth ten seconds of your morning.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-09-29-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-25-post-1",
-      "type": "news",
-      "date": "2026-09-25",
-      "title": "Is your computer running slow? Microsoft's free PC Manager tidies it up in one click — get it from the Microsoft Store or pcmanager.microsoft.com",
-      "tag": "Tech Note",
-      "summary": "Go to pcmanager.microsoft.com — or open the Microsoft Store, search Microsoft PC Manager, and install it. It is free, and it is made by Microsoft rather than by some outfit selling you a yearly plan. Open it and press the big Boost button. It sweeps out temporary junk files, shows you which apps open by themselves the moment you turn the computer on, and runs a quick health check in one tap. Works on Windows 10 and Windows 11.",
-      "truth": "Most people don't realize the thing making a computer feel tired is not its age. It is the pile-up. Every piece of software you ever installed adds a little helper that starts itself the second you sign in, and after two or three years there can be thirty of them all shoving toward the front door at once. The honest answer is that the machine is usually fine — it is just being asked to do too much at the same second. I see this all the time: somebody is about to pay 600 dollars for a new laptop at a big-box store when the real trouble is a five-minute tidy-up. Try the free tidy-up first. If it does not help, then we talk about new hardware, and you will know for sure instead of guessing.",
+      "id": "onyx-2026-09-30-post-2",
+      "type": "tip",
+      "date": "2026-09-30",
+      "title": "Tired of ads following you everywhere? Brave is the free browser at brave.com that blocks them by itself — nothing to add, nothing to pay",
+      "tag": "Tech Tip",
+      "summary": "Go to brave.com and click the Download button, install it, and then use it exactly like your current browser. Brave blocks ads and the trackers that follow you from site to site on its own, the moment you install it. You do not add anything, you do not change any settings, and you never pay a cent.",
+      "truth": "Most people don't realize that the slow, cluttered feeling on the internet is not your computer wearing out — it is ads. Every news page you open can load a dozen videos and pictures you never asked for, and each of those little ad workers takes a bite out of your machine. But here is the part that actually matters: those same ads are how most people get tricked, because a fake \"your antivirus expired\" pop-up is usually nothing more than a bad ad on an otherwise ordinary site. The honest answer is that blocking ads is not just about a tidier page — it is one of the simplest safety habits there is.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-25-post-2",
-      "type": "tip",
-      "date": "2026-09-25",
-      "title": "Google just plugged 108 security holes in Chrome — update yours free in one minute at chrome://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Open Chrome, type chrome://settings/help into the address bar, and press Enter. Chrome looks for the newest version on its own, so you are not hunting for a download. If it says Chrome is up to date, you are done. If a newer version is waiting, it installs and shows you a Relaunch button — click it once and your browser reopens, already protected. Free, about a minute, and no account needed.",
-      "truth": "That little dot at the top right corner of the window is not decoration — it means a newer version is sitting there ready and not yet in use. The honest answer is that on a web browser, the distance between protected and exposed is often one click that nobody ever noticed. I see this all the time: a machine comes in and the browser has been months behind, and the owner did nothing wrong — they just never closed the window, because they always keep a dozen tabs open for the bank and the church and the grandkids. Google shipped 108 safeguards at once this week. That is a lot of doors being locked while yours waits on a restart you did not know you owed.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

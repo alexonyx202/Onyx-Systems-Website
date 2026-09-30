@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "items": [
+    {
+      "id": "n-2026-09-30",
+      "type": "newsletter",
+      "date": "2026-09-30",
+      "title": "A 'New Plastic Medicare Card' in the Mail Is a Scam",
+      "tag": "Daily Brief",
+      "summary": "An official-looking plastic Medicare card is landing in mailboxes, with a phone number to \"activate\" your new benefits — and that call is the whole scam. Real Medicare cards are paper, and nobody from Medicare will ever call, text, or email asking for your Medicare, Social Security, or bank number. Don't ring a number printed on the letter — type medicare.gov into your browser yourself, or use 800-633-4227, the number I check before I trust it. Already shared it? Report it at ftc.gov.",
+      "comic": "Newsletter - 2026-09-30-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-09-30-news1",
+      "type": "tech-note",
+      "date": "2026-09-30",
+      "title": "Is your email in a data breach? Check free in seconds at haveibeenpwned.com and turn on alerts so a scammer never gets there first",
+      "tag": "Tech Note",
+      "summary": "Open haveibeenpwned.com in your browser, type your email address in the box, and click the button. It is free, it takes about ten seconds, and you do not have to create an account or hand over a password. Then scroll down the page and click Notify me, so it sends you an email the day your address shows up in a future leak."
+    },
+    {
+      "id": "t-2026-09-30-tip1",
+      "type": "tech-note",
+      "date": "2026-09-30",
+      "title": "Tired of ads following you everywhere? Brave is the free browser at brave.com that blocks them by itself — nothing to add, nothing to pay",
+      "tag": "Tech Tip",
+      "summary": "Go to brave.com and click the Download button, install it, and then use it exactly like your current browser. Brave blocks ads and the trackers that follow you from site to site on its own, the moment you install it. You do not add anything, you do not change any settings, and you never pay a cent."
+    },
     {
       "id": "n-2026-09-29",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Windows has free built-in troubleshooters that solve sound, printer, and Wi-Fi problems for you — open Settings > System > Troubleshoot and click Run",
       "tag": "Tech Tip",
       "summary": "Click Start, open Settings, click System, then click Troubleshoot. Under Other troubleshooters, find the problem you are having — no sound, printer not working, Wi-Fi dropping — and click Run next to it. Windows will find the common cause and fix it for you. It is free, it is already on your computer, and nothing to buy or download."
-    },
-    {
-      "id": "n-2026-09-26",
-      "type": "newsletter",
-      "date": "2026-09-26",
-      "title": "A Fake 'Free Upgrade' Login Window Wants Your Password",
-      "tag": "Daily Brief",
-      "summary": "Scammers are offering a free upgrade to a paid AI tool, then showing a fake Google sign-in window to \"claim\" it. That window is drawn inside the website — it isn't really Google — so anything you type goes straight to the crooks. A real Google sign-in opens in your browser's own window, never floating inside a page. If one pops up inside a website, close the tab and never type your password. I type google.com myself whenever I'm unsure.",
-      "comic": "Newsletter - 2026-09-26-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-26-news1",
-      "type": "tech-note",
-      "date": "2026-09-26",
-      "title": "Your robot vacuum has a camera — the government just flagged a security flaw in Eufy robot vacuums, so update yours free in the eufy Clean app",
-      "tag": "Tech Note",
-      "summary": "Open the free eufy Clean app — the same app you use to start and schedule your vacuum. Tap your vacuum on the screen, tap the three dots in the top right corner, and choose Firmware Update. Before you do, put the vacuum back on its charging base and make sure your home Wi-Fi is steady. It takes a few minutes, it is free, and you do not need to buy anything."
-    },
-    {
-      "id": "t-2026-09-26-tip1",
-      "type": "tech-note",
-      "date": "2026-09-26",
-      "title": "Firefox now gets a fresh, safer version every two weeks instead of once a month — keep yours current free in Menu, Help, About Firefox",
-      "tag": "Tech Tip",
-      "summary": "Open Firefox, click the Menu button in the top right corner — it is the three little lines — then click Help, then click About Firefox. A small window opens and Firefox checks for the newest version by itself. If one is waiting it downloads on its own, and you click Restart to update. That is the whole thing: free, no account, about a minute."
     }
   ]
 }
