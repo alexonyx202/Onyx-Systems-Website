@@ -1,6 +1,32 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-01",
   "items": [
+    {
+      "id": "n-2026-10-01",
+      "type": "newsletter",
+      "date": "2026-10-01",
+      "title": "A Fake \\\"You're Invited\\\" Email Is the New Way In",
+      "tag": "Daily Brief",
+      "summary": "Scammers are breaking into regular email accounts and sending fake invitations — a birthday party, a fundraiser, a wedding — from someone you actually know. Click \"view the invitation\" and it asks you to sign in with Google, Apple, or Microsoft; that login screen is fake, and the password you type goes straight to the crooks. A real invitation never asks you to log in just to see it. I tell folks to check with the sender by a quick call first.",
+      "comic": "Newsletter - 2026-10-01-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-01-news1",
+      "type": "tech-note",
+      "date": "2026-10-01",
+      "title": "Firefox just got a cleaner new look that can tuck your tabs down the left side — update free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Open Firefox, click the Menu button (the three lines in the top-right corner), then Help, then About Firefox — it checks for the new version and installs it for you in about two minutes. Don't have Firefox yet? Go to firefox.com and click Download; it's free and it's made by Mozilla."
+    },
+    {
+      "id": "t-2026-10-01-tip1",
+      "type": "tech-note",
+      "date": "2026-10-01",
+      "title": "Someone using your Google account? Google's free Security Checkup at myaccount.google.com/security-checkup shows every device signed in",
+      "tag": "Tech Tip",
+      "summary": "Open myaccount.google.com/security-checkup in your browser, sign in with your Google account, and follow the short list it shows you. It reviews the devices signed in to your account, the apps that have access to it, and any password it thinks is weak or reused — and it walks you through fixing each one. No download, no cost, about two minutes."
+    },
     {
       "id": "n-2026-09-30",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Can't hear the TV or a video on your computer? Windows 11's free Live Captions types out the words — turn it on with Windows key + Ctrl + L",
       "tag": "Tech Tip",
       "summary": "On a Windows 11 computer, press the Windows key, Ctrl, and L at the same time to turn on Live Captions, or open Settings > Accessibility > Captions and flip the Live captions switch. It is free and built in, and it shows on-screen text for any sound your computer plays — a video, a call, or a DVD."
-    },
-    {
-      "id": "n-2026-09-27",
-      "type": "newsletter",
-      "date": "2026-09-27",
-      "title": "Fake Bill-Pay Ads Are Stealing People's Payments",
-      "tag": "Daily Brief",
-      "summary": "Scammers are buying the ads at the top of search results when you look up a bill — power, water, or internet. You click a fake payment page that looks just like your provider's, pay it, and the money goes straight to a crook while your real bill sits unpaid. I check the address bar and type my provider's exact website myself instead of trusting the first ad. Pay only through the bill you were mailed, and report fakes at ReportFraud.ftc.gov.",
-      "comic": "Newsletter - 2026-09-27-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-27-news1",
-      "type": "tech-note",
-      "date": "2026-09-27",
-      "title": "Windows 11 Search can finally drop Bing — flip off \"web results\" free in Settings > Privacy & security > Search",
-      "tag": "Tech Note",
-      "summary": "Click Start, open Settings, click Privacy & security, then click Search. Turn off the switch called web results (and, if you like, the one called search highlights). That keeps the little search box focused on your own programs and files instead of fetching ads and web pages every time you type. It is free, it is already built into Windows, and it takes about a minute."
-    },
-    {
-      "id": "t-2026-09-27-tip1",
-      "type": "tech-note",
-      "date": "2026-09-27",
-      "title": "Windows has free built-in troubleshooters that solve sound, printer, and Wi-Fi problems for you — open Settings > System > Troubleshoot and click Run",
-      "tag": "Tech Tip",
-      "summary": "Click Start, open Settings, click System, then click Troubleshoot. Under Other troubleshooters, find the problem you are having — no sound, printer not working, Wi-Fi dropping — and click Run next to it. Windows will find the common cause and fix it for you. It is free, it is already on your computer, and nothing to buy or download."
     }
   ]
 }
