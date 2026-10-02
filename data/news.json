@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "items": [
+    {
+      "id": "n-2026-10-02",
+      "type": "newsletter",
+      "date": "2026-10-02",
+      "title": "An Emergency Apple Fix for a Flaw Hackers Are Already Using",
+      "tag": "Daily Brief",
+      "summary": "Apple rushed out an emergency update this week for a flaw hackers are already using against Apple computers. The fix stops a harmful file — one you might open from an email or a download — from running hidden code. The real repair is free from Apple, so ignore any pop-up telling you to call a number; that is a scam. It takes two minutes: open the Apple menu, click System Settings, then General, then Software Update. I've seen computers sit months behind — please update today.",
+      "comic": "Newsletter - 2026-10-02-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-02-news1",
+      "type": "tech-note",
+      "date": "2026-10-02",
+      "title": "Chrome now asks before opening an unsafe website — update yours free at chrome://settings/help",
+      "tag": "Tech Note",
+      "summary": "Chrome is turning on a safer way to browse this month: it tries the secure version of a site first, and if the site can't do secure, it stops and asks you before opening it — you'll see a warning instead of walking in blind. To be sure you have it, open Chrome, click the three dots in the top-right corner, then Help, then About Google Chrome. It updates itself in about a minute. Not sure you have Chrome? Go to google.com/chrome and click Download. Free, from Google."
+    },
+    {
+      "id": "t-2026-10-02-tip1",
+      "type": "tech-note",
+      "date": "2026-10-02",
+      "title": "ChatGPT is now free inside Microsoft Word — get the add-in free at chatgpt.com/apps/word or Word's Insert > Get Add-ins",
+      "tag": "Tech Tip",
+      "summary": "Open Microsoft Word, click Insert at the top, then Get Add-ins, and search ChatGPT to install it — free. (You can also go to chatgpt.com/apps/word and click Install.) A ChatGPT panel appears on the right side of your document. You can ask it to fix a sentence, shorten a paragraph, write a first draft of a thank-you note or a complaint letter, or explain a word in a contract. You only need a free ChatGPT account, and the free plan includes a set amount of use each month."
+    },
     {
       "id": "n-2026-10-01",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Your family pictures live in one place only — Windows File History keeps an automatic second copy on a $60 portable drive from Walmart; press Start, type File History, and click Turn on",
       "tag": "Tech Tip",
       "summary": "Buy a portable drive — Seagate, Western Digital, and Toshiba all make good ones, and they run about $60 at Walmart or Best Buy — then plug it into the computer with the cord that comes in the box. Press the Start button, type File History, open it, and click Turn on. From then on, Windows copies your Documents, Pictures, and Desktop onto that drive every hour, by itself, without you clicking anything ever again."
-    },
-    {
-      "id": "n-2026-09-28",
-      "type": "newsletter",
-      "date": "2026-09-28",
-      "title": "Microsoft Pulled the Update That Switched Off Word and Excel",
-      "tag": "Daily Brief",
-      "summary": "Microsoft pulled a faulty update that switched off Word and Excel on home computers — people opened a document and were told their software was unlicensed, or found it gone. One repair shop had five customers hit within ten minutes, and I've had calls here too. Don't pay to fix it, and be wary of any message offering to do it for you — that's where the scam starts. Open Word or Excel, click Reactivate, and sign in with the account you normally use; if it's gone, reinstall the copy you bought.",
-      "comic": "Newsletter - 2026-09-28-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-28-news1",
-      "type": "tech-note",
-      "date": "2026-09-28",
-      "title": "Stop renting Microsoft Office — LibreOffice is the free office suite at libreoffice.org that opens Word, Excel and PowerPoint files and never sends your documents to AI",
-      "tag": "Tech Note",
-      "summary": "Download LibreOffice free from libreoffice.org, install it, and it opens your Word, Excel and PowerPoint files just like the paid versions. There is no subscription, no account, and no AI reading your documents — it works completely on your own computer, even offline."
-    },
-    {
-      "id": "t-2026-09-28-tip1",
-      "type": "tech-note",
-      "date": "2026-09-28",
-      "title": "Can't hear the TV or a video on your computer? Windows 11's free Live Captions types out the words — turn it on with Windows key + Ctrl + L",
-      "tag": "Tech Tip",
-      "summary": "On a Windows 11 computer, press the Windows key, Ctrl, and L at the same time to turn on Live Captions, or open Settings > Accessibility > Captions and flip the Live captions switch. It is free and built in, and it shows on-screen text for any sound your computer plays — a video, a call, or a DVD."
     }
   ]
 }

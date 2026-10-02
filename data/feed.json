@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-02-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-02",
+      "title": "An Emergency Apple Fix for a Flaw Hackers Are Already Using",
+      "tag": "Daily Brief",
+      "excerpt": "Apple rushed out an emergency update this week for a flaw hackers are already using against Apple computers. The fix stops a harmful file — one you might open from an email or a download — from running hidden code. The real repair is free from Apple, so ignore any pop-up telling you to call a number; that is a scam. It takes two minutes: open the Apple menu, click System Settings, then General, then Software Update. I've seen computers sit months behind — please update today.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-02-composite.jpg",
+      "comic": "assets/img/news/2026-10-02-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-01-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-01",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-28-composite.jpg",
       "comic": "assets/img/news/2026-09-28-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-27-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-27",
-      "title": "Fake Bill-Pay Ads Are Stealing People's Payments",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are buying the ads at the top of search results when you look up a bill — power, water, or internet. You click a fake payment page that looks just like your provider's, pay it, and the money goes straight to a crook while your real bill sits unpaid. I check the address bar and type my provider's exact website myself instead of trusting the first ad. Pay only through the bill you were mailed, and report fakes at ReportFraud.ftc.gov.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-27-composite.jpg",
-      "comic": "assets/img/news/2026-09-27-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-02-post-1",
+      "type": "news",
+      "date": "2026-10-02",
+      "title": "Chrome now asks before opening an unsafe website — update yours free at chrome://settings/help",
+      "tag": "Tech Note",
+      "summary": "Chrome is turning on a safer way to browse this month: it tries the secure version of a site first, and if the site can't do secure, it stops and asks you before opening it — you'll see a warning instead of walking in blind. To be sure you have it, open Chrome, click the three dots in the top-right corner, then Help, then About Google Chrome. It updates itself in about a minute. Not sure you have Chrome? Go to google.com/chrome and click Download. Free, from Google.",
+      "truth": "A little padlock in the address bar is the whole difference between a private note and a postcard anyone can read. You don't need to understand the technical part at all — you just need the browser to slow you down for one second before you type a password or a card number into a page that isn't locked. That one pause is what catches the mistake.\n\nI see this all the time: a customer types their bank login on a page that looked normal, and only the tiny \"Not secure\" text said otherwise. Starting this month Chrome does the noticing for you. When it asks, the safe answer is almost always to go back and try the site again by typing the address fresh, or to skip it entirely and call the business instead.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-01-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-27-post-1",
-      "type": "news",
-      "date": "2026-09-27",
-      "title": "Windows 11 Search can finally drop Bing — flip off \"web results\" free in Settings > Privacy & security > Search",
-      "tag": "Tech Note",
-      "summary": "Click Start, open Settings, click Privacy & security, then click Search. Turn off the switch called web results (and, if you like, the one called search highlights). That keeps the little search box focused on your own programs and files instead of fetching ads and web pages every time you type. It is free, it is already built into Windows, and it takes about a minute.",
-      "truth": "Most people don't realize that when the search box on your computer feels slow, it is often not searching your computer at all — it is quietly reaching out to the internet and pulling back web results and advertisements you never asked for. You type \"calculator\" and it shows you the program, yes, but it also shows you a shopping suggestion and a headline. Starting this September, Windows finally put a plain off switch in the settings for people who just want to find their own stuff. The honest answer is that this will not make a tired old machine new again. But it does make the most-used box on the computer feel calm and private, and it takes one click.",
+      "id": "onyx-2026-10-02-post-2",
+      "type": "tip",
+      "date": "2026-10-02",
+      "title": "ChatGPT is now free inside Microsoft Word — get the add-in free at chatgpt.com/apps/word or Word's Insert > Get Add-ins",
+      "tag": "Tech Tip",
+      "summary": "Open Microsoft Word, click Insert at the top, then Get Add-ins, and search ChatGPT to install it — free. (You can also go to chatgpt.com/apps/word and click Install.) A ChatGPT panel appears on the right side of your document. You can ask it to fix a sentence, shorten a paragraph, write a first draft of a thank-you note or a complaint letter, or explain a word in a contract. You only need a free ChatGPT account, and the free plan includes a set amount of use each month.",
+      "truth": "The hardest part of writing is the blank page, not the writing. You should never let a computer send anything for you without reading it first, but there is nothing wrong with using one to get you unstuck. A rough note becomes a clean paragraph in seconds, and you still decide if it sounds like you.\n\nI see this all the time: a customer needs a letter to an insurance company, a landlord, or the school, and they sit there stuck for an hour. With ChatGPT right inside Word, you type \"help me write a polite letter asking for a refund, here are the facts\" and it gives you a starting point you can edit. My one rule: never put your Social Security number, bank numbers, or passwords into any AI chat. Everything else is fair game.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-27-post-2",
-      "type": "tip",
-      "date": "2026-09-27",
-      "title": "Windows has free built-in troubleshooters that solve sound, printer, and Wi-Fi problems for you — open Settings > System > Troubleshoot and click Run",
-      "tag": "Tech Tip",
-      "summary": "Click Start, open Settings, click System, then click Troubleshoot. Under Other troubleshooters, find the problem you are having — no sound, printer not working, Wi-Fi dropping — and click Run next to it. Windows will find the common cause and fix it for you. It is free, it is already on your computer, and nothing to buy or download.",
-      "truth": "Most people don't realize that a huge share of \"broken\" computers are not broken at all — they are just stuck. A printer that will not print is usually a jammed-up print job, not a dead printer. A Wi-Fi that keeps dropping is usually a tiny setting that got switched, not a dead card. And the tool that fixes most of it has been sitting inside Windows the whole time, free, waiting to be clicked. The honest answer is that people buy a new printer or pay for a mystery \"tune-up\" service over a problem that a built-in helper fixes in two minutes. I am not against selling you something when you truly need it. I am against selling you something you already own.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
