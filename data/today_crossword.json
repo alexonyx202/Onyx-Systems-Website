@@ -1,152 +1,215 @@
 {
   "title": "Math",
-  "size": 15,
+  "size": 30,
   "grid": [
-    "2.8...213......",
-    "7.1....9.......",
-    "94921875.......",
-    "9.2.6..3.7.....",
-    "3...3.31886....",
-    "6...8..2.1.....",
-    "....4915.2.....",
-    "......1..5.....",
-    ".....656100....",
-    "......3.1.0....",
-    "......4.7812500",
-    "......3.1.5....",
-    "......3.8.6....",
-    "......6.7.24576",
-    "........5.5...."
+    "...............s...q....v.....",
+    "...............u...u....a.s.m.",
+    "...............median.parallel",
+    "...................d..r.i.o.a.",
+    "...................r..o.a.p.n.",
+    "...............c...i..d.b.e...",
+    "...............i...l..u.l.....",
+    "...............r...a..c.e.....",
+    "......y.....r..constant.......",
+    "......-.....a..u...e..........",
+    "......i.....diameter..........",
+    "......n.....i..f...angle......",
+    "......t.....u..e...l..........",
+    "......e.....s.graph...........",
+    "......r.p......e..............",
+    "......coefficient.............",
+    ".volume.r......c..............",
+    "......p.i...mode..............",
+    "percent.m.....................",
+    "........e.....................",
+    "........t.....................",
+    "......area....................",
+    "........r.....................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    ".............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 1,
-        "col": 7,
-        "len": 3,
-        "answer": "213",
-        "clue": "213,213,213..14thterm?"
-      },
-      {
-        "num": 5,
+        "num": 6,
         "row": 3,
-        "col": 1,
+        "col": 16,
+        "len": 6,
+        "answer": "median",
+        "clue": "the middle number in a set of numbers"
+      },
+      {
+        "num": 7,
+        "row": 3,
+        "col": 23,
         "len": 8,
-        "answer": "94921875",
-        "clue": "400,300,225..6thterm?"
-      },
-      {
-        "num": 8,
-        "row": 5,
-        "col": 7,
-        "len": 5,
-        "answer": "31886",
-        "clue": "-9,27,,-81..12thterm?"
-      },
-      {
-        "num": 9,
-        "row": 7,
-        "col": 5,
-        "len": 4,
-        "answer": "4915",
-        "clue": "3,-6,12..15thterm?"
+        "answer": "parallel",
+        "clue": "lines that are directly across from each other and are unable to meet"
       },
       {
         "num": 11,
         "row": 9,
-        "col": 6,
-        "len": 6,
-        "answer": "656100",
-        "clue": "100,300,900..9thterm?"
+        "col": 16,
+        "len": 8,
+        "answer": "constant",
+        "clue": "a fixed value that often stands alone"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 13,
+        "len": 8,
+        "answer": "diameter",
+        "clue": "a line going from circumference to circumference and passing through the center of the circle"
+      },
+      {
+        "num": 13,
+        "row": 12,
+        "col": 20,
+        "len": 5,
+        "answer": "angle",
+        "clue": "a figure formed by two rays and a vertex"
       },
       {
         "num": 14,
-        "row": 11,
-        "col": 9,
-        "len": 7,
-        "answer": "7812500",
-        "clue": "4,20,100..10thterm?"
+        "row": 14,
+        "col": 15,
+        "len": 5,
+        "answer": "graph",
+        "clue": "a way to organize and display data"
       },
       {
-        "num": 15,
-        "row": 14,
-        "col": 11,
-        "len": 5,
-        "answer": "24576",
-        "clue": "6,24,96..7thterm?"
+        "num": 16,
+        "row": 16,
+        "col": 7,
+        "len": 11,
+        "answer": "coefficient",
+        "clue": "a number placed before a variable"
+      },
+      {
+        "num": 17,
+        "row": 17,
+        "col": 2,
+        "len": 6,
+        "answer": "volume",
+        "clue": "the amount of space an object takes up"
+      },
+      {
+        "num": 18,
+        "row": 18,
+        "col": 13,
+        "len": 4,
+        "answer": "mode",
+        "clue": "the number that appears most frequently in a data set"
+      },
+      {
+        "num": 19,
+        "row": 19,
+        "col": 1,
+        "len": 7,
+        "answer": "percent",
+        "clue": "one part of every hundred"
+      },
+      {
+        "num": 20,
+        "row": 22,
+        "col": 7,
+        "len": 4,
+        "answer": "area",
+        "clue": "the amount of space inside a 2d shape"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 1,
-        "len": 6,
-        "answer": "279936",
-        "clue": "-1,6,-36..8thterm?"
+        "col": 16,
+        "len": 3,
+        "answer": "sum",
+        "clue": "the result to an addition problem"
       },
       {
         "num": 2,
         "row": 1,
-        "col": 3,
-        "len": 4,
-        "answer": "8192",
-        "clue": "8,-16,32..11thterm?"
+        "col": 20,
+        "len": 13,
+        "answer": "quadrilateral",
+        "clue": "a four sided polygon"
+      },
+      {
+        "num": 3,
+        "row": 1,
+        "col": 25,
+        "len": 8,
+        "answer": "variable",
+        "clue": "a letter or symbol that replaces a number"
       },
       {
         "num": 4,
-        "row": 1,
-        "col": 8,
-        "len": 7,
-        "answer": "1953125",
-        "clue": "-1,5,-25..10terms?"
+        "row": 2,
+        "col": 27,
+        "len": 5,
+        "answer": "slope",
+        "clue": "the ratio of rise/run"
       },
       {
-        "num": 6,
-        "row": 3,
-        "col": 5,
-        "len": 5,
-        "answer": "16384",
-        "clue": "-2,4,-8..14thterm?"
+        "num": 5,
+        "row": 2,
+        "col": 29,
+        "len": 4,
+        "answer": "mean",
+        "clue": "the sum of the values divided by the number of values"
       },
       {
         "num": 7,
-        "row": 4,
-        "col": 10,
-        "len": 6,
-        "answer": "781250",
-        "clue": "2,-10,50..9thterm?"
+        "row": 3,
+        "col": 23,
+        "len": 7,
+        "answer": "product",
+        "clue": "the result to a multiplication problem"
+      },
+      {
+        "num": 8,
+        "row": 6,
+        "col": 16,
+        "len": 13,
+        "answer": "circumference",
+        "clue": "the perimeter of a circle"
+      },
+      {
+        "num": 9,
+        "row": 9,
+        "col": 7,
+        "len": 11,
+        "answer": "y-intercept",
+        "clue": "a point on the y-axis that the slope of the line passes through"
       },
       {
         "num": 10,
-        "row": 7,
-        "col": 7,
-        "len": 8,
-        "answer": "11534336",
-        "clue": "550,440,352..9thterm?"
+        "row": 9,
+        "col": 13,
+        "len": 6,
+        "answer": "radius",
+        "clue": "a line that goes from the center of a circle to the circumference of the circle"
       },
       {
-        "num": 12,
-        "row": 9,
+        "num": 15,
+        "row": 15,
         "col": 9,
-        "len": 7,
-        "answer": "1171875",
-        "clue": "1,200,300,75..6thterm?"
-      },
-      {
-        "num": 13,
-        "row": 9,
-        "col": 11,
-        "len": 7,
-        "answer": "0015625",
-        "clue": "1,0.5,0.25..7thterm?"
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "the distance around the edge of a shape"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9376",
-  "slug": "math-9376",
-  "fetched_at": "2026-07-14T19:25:38.785648+00:00",
-  "date": "2026-10-02"
+  "source_url": "https://crosswordlabs.com/view/math-9520",
+  "slug": "math-9520",
+  "fetched_at": "2026-07-14T19:15:20.487217+00:00",
+  "date": "2026-10-03"
 }
