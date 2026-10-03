@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-02",
+  "updated": "2026-10-03",
   "items": [
+    {
+      "id": "n-2026-10-03",
+      "type": "newsletter",
+      "date": "2026-10-03",
+      "title": "Fake Recall Texts Want Your Card",
+      "tag": "Daily Brief",
+      "summary": "Scammers are texting and emailing that something you bought was recalled for safety and that you are owed money back. Tap the link and it asks you to sign in or type a card number — that is the whole trick, and it is spreading fast right now. Real recalls never arrive as a link in a surprise message. Check the product yourself, free, at cpsc.gov/recalls, or open the store's app and look at your orders. My rule is simple: don't click, check it yourself.",
+      "comic": "Newsletter - 2026-10-03-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-03-news1",
+      "type": "tech-note",
+      "date": "2026-10-03",
+      "title": "Your hard drive warns you before it dies — CrystalDiskInfo is the free health checker at crystalmark.info",
+      "tag": "Tech Note",
+      "summary": "Download CrystalDiskInfo free from crystalmark.info (it's the Crystal Dew World site), open it, and look at the big word at the top of the window. A blue Good means your drive is healthy. A yellow Caution or a red Bad means it's on its way out, and you should copy your pictures and documents off it today. It's free, it works with no internet connection, and reading it takes about a minute."
+    },
+    {
+      "id": "t-2026-10-03-tip1",
+      "type": "tech-note",
+      "date": "2026-10-03",
+      "title": "Using the same password everywhere? Google's free Password Checkup at passwords.google.com/checkup finds the weak ones",
+      "tag": "Tech Tip",
+      "summary": "Open your browser and go to passwords.google.com/checkup. Sign in with your Google account and click Checkup. It shows you every saved password that is too weak, reused on more than one website, or already leaked in a data breach — and it walks you through changing each one, site by site. It's free, it's built into your Google account, and there's nothing to download."
+    },
     {
       "id": "n-2026-10-02",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Tired of ads following you everywhere? Brave is the free browser at brave.com that blocks them by itself — nothing to add, nothing to pay",
       "tag": "Tech Tip",
       "summary": "Go to brave.com and click the Download button, install it, and then use it exactly like your current browser. Brave blocks ads and the trackers that follow you from site to site on its own, the moment you install it. You do not add anything, you do not change any settings, and you never pay a cent."
-    },
-    {
-      "id": "n-2026-09-29",
-      "type": "newsletter",
-      "date": "2026-09-29",
-      "title": "If Someone Wants You to Pay With Gift Cards, It's a Scam",
-      "tag": "Daily Brief",
-      "summary": "Police put out a fresh warning this week that gift-card scams are going after older adults and draining savings. Here is a rule that never fails: no real bank, sheriff's office, insurance company, or store will ever ask you to pay a bill with gift cards. Once you read the numbers off the back, the money is gone and there is no refund. If a caller keeps you on the line and pushes you to go buy cards, hang up — I've never once seen a real bill that worked that way.",
-      "comic": "Newsletter - 2026-09-29-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-09-29-news1",
-      "type": "tech-note",
-      "date": "2026-09-29",
-      "title": "Cannot open a file someone emailed you? 7-Zip is the free file opener at 7-zip.org that unpacks ZIP and RAR files — no account, no ads, nothing to pay",
-      "tag": "Tech Note",
-      "summary": "Go to 7-zip.org and click the big Download link for Windows near the top of the page, install it, and you are done. From then on, right-click any ZIP or RAR file and choose 7-Zip, then Extract Here. The contents appear right next to the file, free, forever."
-    },
-    {
-      "id": "t-2026-09-29-tip1",
-      "type": "tech-note",
-      "date": "2026-09-29",
-      "title": "Your family pictures live in one place only — Windows File History keeps an automatic second copy on a $60 portable drive from Walmart; press Start, type File History, and click Turn on",
-      "tag": "Tech Tip",
-      "summary": "Buy a portable drive — Seagate, Western Digital, and Toshiba all make good ones, and they run about $60 at Walmart or Best Buy — then plug it into the computer with the cord that comes in the box. Press the Start button, type File History, open it, and click Turn on. From then on, Windows copies your Documents, Pictures, and Desktop onto that drive every hour, by itself, without you clicking anything ever again."
     }
   ]
 }
