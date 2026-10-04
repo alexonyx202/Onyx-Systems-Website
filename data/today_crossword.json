@@ -1,215 +1,203 @@
 {
-  "title": "Math",
-  "size": 30,
+  "title": "math",
+  "size": 26,
   "grid": [
-    "...............s...q....v.....",
-    "...............u...u....a.s.m.",
-    "...............median.parallel",
-    "...................d..r.i.o.a.",
-    "...................r..o.a.p.n.",
-    "...............c...i..d.b.e...",
-    "...............i...l..u.l.....",
-    "...............r...a..c.e.....",
-    "......y.....r..constant.......",
-    "......-.....a..u...e..........",
-    "......i.....diameter..........",
-    "......n.....i..f...angle......",
-    "......t.....u..e...l..........",
-    "......e.....s.graph...........",
-    "......r.p......e..............",
-    "......coefficient.............",
-    ".volume.r......c..............",
-    "......p.i...mode..............",
-    "percent.m.....................",
-    "........e.....................",
-    "........t.....................",
-    "......area....................",
-    "........r.....................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    ".............................."
+    "............c....d........",
+    "...........concavity......",
+    "......s.....s....f......s.",
+    "p-series..s.e....f......i.",
+    "......c...e.c....e......n.",
+    "......a.c.q.a..derivative.",
+    "......n.o.u.n....e........",
+    "......tangent....n........",
+    ".....m..t.n..a...t........",
+    ".....a..i.c..n...i........",
+    ".....c..n.e..theta.....c..",
+    ".....l..u....i...b...slope",
+    "....harmonic.d...l.....s..",
+    ".....u..u..o.e..geometric.",
+    "...series..t.r.........n..",
+    ".....i.....a.i.........e..",
+    ".....n.....n.v............",
+    ".........lagrange.........",
+    "...........e.t............",
+    "...........n.i............",
+    "...........t.v............",
+    ".............e............",
+    "..........................",
+    "..........................",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
+        "num": 3,
+        "row": 2,
+        "col": 12,
+        "len": 9,
+        "answer": "concavity",
+        "clue": "if f'(x) is increasing, this is up"
+      },
+      {
         "num": 6,
-        "row": 3,
+        "row": 4,
+        "col": 1,
+        "len": 8,
+        "answer": "p-series",
+        "clue": "1/n^p"
+      },
+      {
+        "num": 9,
+        "row": 6,
         "col": 16,
-        "len": 6,
-        "answer": "median",
-        "clue": "the middle number in a set of numbers"
+        "len": 10,
+        "answer": "derivative",
+        "clue": "rate of change of a function"
       },
       {
-        "num": 7,
-        "row": 3,
-        "col": 23,
-        "len": 8,
-        "answer": "parallel",
-        "clue": "lines that are directly across from each other and are unable to meet"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 16,
-        "len": 8,
-        "answer": "constant",
-        "clue": "a fixed value that often stands alone"
-      },
-      {
-        "num": 12,
-        "row": 11,
-        "col": 13,
-        "len": 8,
-        "answer": "diameter",
-        "clue": "a line going from circumference to circumference and passing through the center of the circle"
+        "num": 10,
+        "row": 8,
+        "col": 7,
+        "len": 7,
+        "answer": "tangent",
+        "clue": "1/cotangent"
       },
       {
         "num": 13,
-        "row": 12,
-        "col": 20,
+        "row": 11,
+        "col": 14,
         "len": 5,
-        "answer": "angle",
-        "clue": "a figure formed by two rays and a vertex"
+        "answer": "theta",
+        "clue": "greek symbol for angle"
       },
       {
-        "num": 14,
-        "row": 14,
-        "col": 15,
+        "num": 15,
+        "row": 12,
+        "col": 22,
         "len": 5,
-        "answer": "graph",
-        "clue": "a way to organize and display data"
+        "answer": "slope",
+        "clue": "change in y/change in x"
       },
       {
         "num": 16,
-        "row": 16,
-        "col": 7,
-        "len": 11,
-        "answer": "coefficient",
-        "clue": "a number placed before a variable"
-      },
-      {
-        "num": 17,
-        "row": 17,
-        "col": 2,
-        "len": 6,
-        "answer": "volume",
-        "clue": "the amount of space an object takes up"
+        "row": 13,
+        "col": 5,
+        "len": 8,
+        "answer": "harmonic",
+        "clue": "name of series for 1/n"
       },
       {
         "num": 18,
-        "row": 18,
-        "col": 13,
-        "len": 4,
-        "answer": "mode",
-        "clue": "the number that appears most frequently in a data set"
+        "row": 14,
+        "col": 17,
+        "len": 9,
+        "answer": "geometric",
+        "clue": "series for ar^n"
       },
       {
         "num": 19,
-        "row": 19,
-        "col": 1,
-        "len": 7,
-        "answer": "percent",
-        "clue": "one part of every hundred"
+        "row": 15,
+        "col": 4,
+        "len": 6,
+        "answer": "series",
+        "clue": "a1 + a2 + a3 + a4 + ... + an"
       },
       {
         "num": 20,
-        "row": 22,
-        "col": 7,
-        "len": 4,
-        "answer": "area",
-        "clue": "the amount of space inside a 2d shape"
+        "row": 18,
+        "col": 10,
+        "len": 8,
+        "answer": "lagrange",
+        "clue": "M(x-c)^n+1/(n+1)!"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 16,
-        "len": 3,
-        "answer": "sum",
-        "clue": "the result to an addition problem"
+        "col": 13,
+        "len": 8,
+        "answer": "cosecant",
+        "clue": "1/sin"
       },
       {
         "num": 2,
         "row": 1,
-        "col": 20,
-        "len": 13,
-        "answer": "quadrilateral",
-        "clue": "a four sided polygon"
-      },
-      {
-        "num": 3,
-        "row": 1,
-        "col": 25,
-        "len": 8,
-        "answer": "variable",
-        "clue": "a letter or symbol that replaces a number"
+        "col": 18,
+        "len": 14,
+        "answer": "differentiable",
+        "clue": "if f'(x) exists"
       },
       {
         "num": 4,
-        "row": 2,
-        "col": 27,
-        "len": 5,
-        "answer": "slope",
-        "clue": "the ratio of rise/run"
+        "row": 3,
+        "col": 7,
+        "len": 6,
+        "answer": "secant",
+        "clue": "1/cos"
       },
       {
         "num": 5,
-        "row": 2,
-        "col": 29,
+        "row": 3,
+        "col": 25,
         "len": 4,
-        "answer": "mean",
-        "clue": "the sum of the values divided by the number of values"
+        "answer": "sine",
+        "clue": "opposite/hypotenuse"
       },
       {
         "num": 7,
-        "row": 3,
-        "col": 23,
-        "len": 7,
-        "answer": "product",
-        "clue": "the result to a multiplication problem"
+        "row": 4,
+        "col": 11,
+        "len": 8,
+        "answer": "sequence",
+        "clue": "a1  , a2 , a3 , a4 , ... , an"
       },
       {
         "num": 8,
         "row": 6,
-        "col": 16,
-        "len": 13,
-        "answer": "circumference",
-        "clue": "the perimeter of a circle"
-      },
-      {
-        "num": 9,
-        "row": 9,
-        "col": 7,
-        "len": 11,
-        "answer": "y-intercept",
-        "clue": "a point on the y-axis that the slope of the line passes through"
-      },
-      {
-        "num": 10,
-        "row": 9,
-        "col": 13,
-        "len": 6,
-        "answer": "radius",
-        "clue": "a line that goes from the center of a circle to the circumference of the circle"
-      },
-      {
-        "num": 15,
-        "row": 15,
         "col": 9,
+        "len": 10,
+        "answer": "continuous",
+        "clue": "a function that has no jumps or holes"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 6,
         "len": 9,
-        "answer": "perimeter",
-        "clue": "the distance around the edge of a shape"
+        "answer": "maclaurin",
+        "clue": "a series centered at x = 0"
+      },
+      {
+        "num": 12,
+        "row": 9,
+        "col": 14,
+        "len": 14,
+        "answer": "antiderivative",
+        "clue": "another word for integral"
+      },
+      {
+        "num": 14,
+        "row": 11,
+        "col": 24,
+        "len": 6,
+        "answer": "cosine",
+        "clue": "adjacent/hypotenuse"
+      },
+      {
+        "num": 17,
+        "row": 13,
+        "col": 12,
+        "len": 9,
+        "answer": "cotangent",
+        "clue": "1/tangent"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9520",
-  "slug": "math-9520",
-  "fetched_at": "2026-07-14T19:15:20.487217+00:00",
-  "date": "2026-10-03"
+  "source_url": "https://crosswordlabs.com/view/math-9559",
+  "slug": "math-9559",
+  "fetched_at": "2026-07-14T19:16:35.059474+00:00",
+  "date": "2026-10-04"
 }
