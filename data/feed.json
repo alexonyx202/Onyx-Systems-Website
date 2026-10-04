@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-04-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-04",
+      "title": "Fake Bank Fraud Alerts Want Your Money",
+      "tag": "Daily Brief",
+      "excerpt": "Someone calls or texts pretending to be your bank. They say there is suspicious activity and you must move your money to a \"safe\" account right now. That is the whole scam — and it is surging again this week. Real banks never ask you to move money to protect it. Hang up, then call your bank yourself using the number on your card or your last statement. I tell every customer the same thing: check first, every time.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-04-composite.jpg",
+      "comic": "assets/img/news/2026-10-04-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-03-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-03",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-09-30-composite.jpg",
       "comic": "assets/img/news/2026-09-30-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-29-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-29",
-      "title": "If Someone Wants You to Pay With Gift Cards, It's a Scam",
-      "tag": "Daily Brief",
-      "excerpt": "Police put out a fresh warning this week that gift-card scams are going after older adults and draining savings. Here is a rule that never fails: no real bank, sheriff's office, insurance company, or store will ever ask you to pay a bill with gift cards. Once you read the numbers off the back, the money is gone and there is no refund. If a caller keeps you on the line and pushes you to go buy cards, hang up — I've never once seen a real bill that worked that way.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-29-composite.jpg",
-      "comic": "assets/img/news/2026-09-29-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-04-post-1",
+      "type": "news",
+      "date": "2026-10-04",
+      "title": "Nobody from the government will call or text you demanding money — report it free at ic3.gov, the FBI's own complaint site",
+      "tag": "Tech Note",
+      "summary": "If someone calls or texts claiming to be the police, the FBI, the IRS, or Social Security and says you owe money, missed jury duty, or have a warrant out, hang up. Real government offices do not call demanding payment, and they never ask for gift cards, cash, or cryptocurrency. If it already happened to you, file a free report at ic3.gov — that's the FBI's own complaint website. The FBI says scammers ran this exact play thousands of times and stole more than a billion and a half dollars from people between January 2025 and July 2026.",
+      "truth": "Most people don't realize the scariest part of this scam isn't the phone call — it's that the caller knows your name, your town, and sometimes the last four of your Social Security number. That's why it feels real. The honest answer is that no amount of information they read back to you changes one simple fact: the government does not collect debts by phone, and it will never tell you to keep it secret from your family.\n\nI see this all the time: a customer comes in shaken because \"the sheriff's office\" called about a warrant and told them not to tell anyone. The moment someone tells you not to tell your family, you're talking to a criminal.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-03-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-29-post-1",
-      "type": "news",
-      "date": "2026-09-29",
-      "title": "Cannot open a file someone emailed you? 7-Zip is the free file opener at 7-zip.org that unpacks ZIP and RAR files — no account, no ads, nothing to pay",
-      "tag": "Tech Note",
-      "summary": "Go to 7-zip.org and click the big Download link for Windows near the top of the page, install it, and you are done. From then on, right-click any ZIP or RAR file and choose 7-Zip, then Extract Here. The contents appear right next to the file, free, forever.",
-      "truth": "Most people don't realize that a zipped file is just a suitcase. It is one file on the outside with a whole folder of files packed inside, and somebody has to unpack it. Windows can open the most common kind — the ZIP — but it cannot touch a RAR, and a RAR is exactly what people send when they are sending a big folder of tax papers, church records, or family pictures. The honest answer is that nothing is wrong with your computer and nothing is wrong with the file — your computer simply does not have the right tool yet. And be careful where you get one: the look-alike openers covered in ads want a monthly fee. The real 7-Zip is a small, quiet piece of software that one programmer has given away free for over twenty years.",
+      "id": "onyx-2026-10-04-post-2",
+      "type": "tip",
+      "date": "2026-10-04",
+      "title": "Windows 11's new Point-in-Time Restore can undo a bad update or a wrong click — turn it on free at Settings > System > Recovery",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > Recovery, click Point-in-time restore, then View or edit, and turn it on. From then on, Windows quietly keeps a snapshot of your whole computer — your programs, your settings, and your own files — so if a bad update or a wrong click wrecks things, you can roll the whole machine back to how it was this morning. It's free, it's built into Windows 11, and turning it on takes about two minutes.",
+      "truth": "Most people don't realize that the old Windows \"restore point\" never saved your files — it only reset Windows itself, so your pictures and documents stayed broken. This new one is different: it captures your personal files too, and it keeps a few days of history. The honest answer is that this is the closest thing to a real undo button Windows has ever had, and almost nobody has turned it on.\n\nI see this all the time: a customer installs something, or an update goes sideways, and the machine won't behave. With this on, that's a five-minute rollback instead of a reinstall and a bill. It won't replace a real backup, but it will save you a very bad afternoon.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-29-post-2",
-      "type": "tip",
-      "date": "2026-09-29",
-      "title": "Your family pictures live in one place only — Windows File History keeps an automatic second copy on a $60 portable drive from Walmart; press Start, type File History, and click Turn on",
-      "tag": "Tech Tip",
-      "summary": "Buy a portable drive — Seagate, Western Digital, and Toshiba all make good ones, and they run about $60 at Walmart or Best Buy — then plug it into the computer with the cord that comes in the box. Press the Start button, type File History, open it, and click Turn on. From then on, Windows copies your Documents, Pictures, and Desktop onto that drive every hour, by itself, without you clicking anything ever again.",
-      "truth": "Most people don't realize that their pictures live in exactly one place — a spinning metal disc inside the laptop — and that this one piece is both the most likely to fail and the only piece that cannot be ordered new. I can order a screen. I can order a hinge. Aunt Ruth's birthday from 2011 is a different story. The other thing people get wrong is believing that a cloud account is the same as a second copy. The honest answer is that it is not: if a picture gets deleted in the cloud, it is usually deleted everywhere, and there is a monthly bill attached to those limits. An hourly copy that sits on a shelf in your hall closet and needs no internet — that is the real thing.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-04",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
