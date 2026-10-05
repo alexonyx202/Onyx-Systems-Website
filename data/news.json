@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "items": [
+    {
+      "id": "n-2026-10-05",
+      "type": "newsletter",
+      "date": "2026-10-05",
+      "title": "Fake FBI Agents Are Calling — Hang Up and Check",
+      "tag": "Daily Brief",
+      "summary": "Crooks are making fake calls, saying they are FBI, DEA, or Secret Service agents. They make a real agency's phone number show up on your screen and use a real agent's name, then push you to move your money to keep it \"safe.\" The FBI says never send money to anyone claiming to be a federal agent. If this happens to you, it's a scam — hang up and call the agency yourself at a number you look up. I've had two customers ask me about calls like this just this week.",
+      "comic": "Newsletter - 2026-10-05-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-05-news1",
+      "type": "tech-note",
+      "date": "2026-10-05",
+      "title": "Sound and look better on video calls — a Logitech webcam with a built-in microphone is about 40 dollars at logitech.com or Amazon",
+      "tag": "Tech Note",
+      "summary": "Buy a Logitech webcam — the C270 is about 40 dollars and the C920 is about 60 — from logitech.com, Amazon, or Walmart. Plug the USB cable into your computer and you're done; there's nothing to install on Windows or a Mac. You get a much sharper picture and a microphone that doesn't echo, so family, doctors, and work calls can actually see and hear you."
+    },
+    {
+      "id": "t-2026-10-05-tip1",
+      "type": "tech-note",
+      "date": "2026-10-05",
+      "title": "Type and click without touching the keyboard — Windows Voice Access is built into Windows 11, free at Settings > Accessibility > Speech",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > Accessibility > Speech and turn on Voice access. Then just talk: say \"open my email,\" \"click Save,\" or \"type Dear Mary\" and Windows does it for you. It's built into Windows 11, costs nothing, needs no account, and works even without internet. If your hands ache, your keyboard is acting up, or you'd simply rather talk than type, this turns your computer into a hands-free machine."
+    },
     {
       "id": "n-2026-10-04",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "ChatGPT is now free inside Microsoft Word — get the add-in free at chatgpt.com/apps/word or Word's Insert > Get Add-ins",
       "tag": "Tech Tip",
       "summary": "Open Microsoft Word, click Insert at the top, then Get Add-ins, and search ChatGPT to install it — free. (You can also go to chatgpt.com/apps/word and click Install.) A ChatGPT panel appears on the right side of your document. You can ask it to fix a sentence, shorten a paragraph, write a first draft of a thank-you note or a complaint letter, or explain a word in a contract. You only need a free ChatGPT account, and the free plan includes a set amount of use each month."
-    },
-    {
-      "id": "n-2026-10-01",
-      "type": "newsletter",
-      "date": "2026-10-01",
-      "title": "A Fake \\\"You're Invited\\\" Email Is the New Way In",
-      "tag": "Daily Brief",
-      "summary": "Scammers are breaking into regular email accounts and sending fake invitations — a birthday party, a fundraiser, a wedding — from someone you actually know. Click \"view the invitation\" and it asks you to sign in with Google, Apple, or Microsoft; that login screen is fake, and the password you type goes straight to the crooks. A real invitation never asks you to log in just to see it. I tell folks to check with the sender by a quick call first.",
-      "comic": "Newsletter - 2026-10-01-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-01-news1",
-      "type": "tech-note",
-      "date": "2026-10-01",
-      "title": "Firefox just got a cleaner new look that can tuck your tabs down the left side — update free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Open Firefox, click the Menu button (the three lines in the top-right corner), then Help, then About Firefox — it checks for the new version and installs it for you in about two minutes. Don't have Firefox yet? Go to firefox.com and click Download; it's free and it's made by Mozilla."
-    },
-    {
-      "id": "t-2026-10-01-tip1",
-      "type": "tech-note",
-      "date": "2026-10-01",
-      "title": "Someone using your Google account? Google's free Security Checkup at myaccount.google.com/security-checkup shows every device signed in",
-      "tag": "Tech Tip",
-      "summary": "Open myaccount.google.com/security-checkup in your browser, sign in with your Google account, and follow the short list it shows you. It reviews the devices signed in to your account, the apps that have access to it, and any password it thinks is weak or reused — and it walks you through fixing each one. No download, no cost, about two minutes."
     }
   ]
 }

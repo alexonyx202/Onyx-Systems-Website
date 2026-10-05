@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-05-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-05",
+      "title": "Fake FBI Agents Are Calling — Hang Up and Check",
+      "tag": "Daily Brief",
+      "excerpt": "Crooks are making fake calls, saying they are FBI, DEA, or Secret Service agents. They make a real agency's phone number show up on your screen and use a real agent's name, then push you to move your money to keep it \"safe.\" The FBI says never send money to anyone claiming to be a federal agent. If this happens to you, it's a scam — hang up and call the agency yourself at a number you look up. I've had two customers ask me about calls like this just this week.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-05-composite.jpg",
+      "comic": "assets/img/news/2026-10-05-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-04",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-10-01-composite.jpg",
       "comic": "assets/img/news/2026-10-01-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-09-30-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-09-30",
-      "title": "A 'New Plastic Medicare Card' in the Mail Is a Scam",
-      "tag": "Daily Brief",
-      "excerpt": "An official-looking plastic Medicare card is landing in mailboxes, with a phone number to \"activate\" your new benefits — and that call is the whole scam. Real Medicare cards are paper, and nobody from Medicare will ever call, text, or email asking for your Medicare, Social Security, or bank number. Don't ring a number printed on the letter — type medicare.gov into your browser yourself, or use 800-633-4227, the number I check before I trust it. Already shared it? Report it at ftc.gov.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-09-30-composite.jpg",
-      "comic": "assets/img/news/2026-09-30-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-05-post-1",
+      "type": "news",
+      "date": "2026-10-05",
+      "title": "Sound and look better on video calls — a Logitech webcam with a built-in microphone is about 40 dollars at logitech.com or Amazon",
+      "tag": "Tech Note",
+      "summary": "Buy a Logitech webcam — the C270 is about 40 dollars and the C920 is about 60 — from logitech.com, Amazon, or Walmart. Plug the USB cable into your computer and you're done; there's nothing to install on Windows or a Mac. You get a much sharper picture and a microphone that doesn't echo, so family, doctors, and work calls can actually see and hear you.",
+      "truth": "Most people don't realize the camera built into a laptop was the cheapest part the maker could buy. That's why you look dim, grainy, and washed out while the person you're talking to looks fine — they have a better camera, not a better face. The honest answer is that a 40-dollar webcam is one of the biggest quality-of-life upgrades a home computer can get, and it plugs into a USB port in five seconds.\n\nI see this all the time: a customer apologizes for \"looking bad\" on every video call. It's never them. It's the camera.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-04-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-09-30-post-1",
-      "type": "news",
-      "date": "2026-09-30",
-      "title": "Is your email in a data breach? Check free in seconds at haveibeenpwned.com and turn on alerts so a scammer never gets there first",
-      "tag": "Tech Note",
-      "summary": "Open haveibeenpwned.com in your browser, type your email address in the box, and click the button. It is free, it takes about ten seconds, and you do not have to create an account or hand over a password. Then scroll down the page and click Notify me, so it sends you an email the day your address shows up in a future leak.",
-      "truth": "Most people don't realize that when a store, a hospital, or an insurance company gets broken into, the list of emails and passwords that gets stolen is often posted for sale where anyone can buy it. Your email address being on that list is not the whole problem — the problem is what a thief does with it next, which is trying your old password on your bank, your Facebook, and your email, because so many people use the same one everywhere. The honest answer is that a leaked email address by itself is not an emergency; a leaked password that you still use is. That is why the check is free and worth ten seconds of your morning.",
+      "id": "onyx-2026-10-05-post-2",
+      "type": "tip",
+      "date": "2026-10-05",
+      "title": "Type and click without touching the keyboard — Windows Voice Access is built into Windows 11, free at Settings > Accessibility > Speech",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > Accessibility > Speech and turn on Voice access. Then just talk: say \"open my email,\" \"click Save,\" or \"type Dear Mary\" and Windows does it for you. It's built into Windows 11, costs nothing, needs no account, and works even without internet. If your hands ache, your keyboard is acting up, or you'd simply rather talk than type, this turns your computer into a hands-free machine.",
+      "truth": "Most people don't realize Windows already has a full voice-control feature — they picture expensive software or a subscription, so they never look. It's sitting right there in Settings. It won't read your mind, and you do have to speak a little clearly, but for anyone whose hands hurt or who types slowly, it's the difference between fighting the computer and just using it.\n\nI see this all the time: someone with arthritis or a recovering wrist injury, quietly struggling every day. Two minutes in Settings changes their whole afternoon.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-09-30-post-2",
-      "type": "tip",
-      "date": "2026-09-30",
-      "title": "Tired of ads following you everywhere? Brave is the free browser at brave.com that blocks them by itself — nothing to add, nothing to pay",
-      "tag": "Tech Tip",
-      "summary": "Go to brave.com and click the Download button, install it, and then use it exactly like your current browser. Brave blocks ads and the trackers that follow you from site to site on its own, the moment you install it. You do not add anything, you do not change any settings, and you never pay a cent.",
-      "truth": "Most people don't realize that the slow, cluttered feeling on the internet is not your computer wearing out — it is ads. Every news page you open can load a dozen videos and pictures you never asked for, and each of those little ad workers takes a bite out of your machine. But here is the part that actually matters: those same ads are how most people get tricked, because a fake \"your antivirus expired\" pop-up is usually nothing more than a bad ad on an otherwise ordinary site. The honest answer is that blocking ads is not just about a tidier page — it is one of the simplest safety habits there is.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
