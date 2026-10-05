@@ -367,6 +367,35 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # and the action IS stated — don't click; open the carrier's real website and
     # check the tracking number there).
     "parcel", "phishing",
+    # Extended 2026-10-01: fake "you're invited" event-invitation phishing alert
+    # (Pennsylvania Attorney General consumer alert, Sept. 30 2026 — the fake
+    # Google/Apple/Microsoft sign-in page behind "view the invitation" harvests
+    # the password). Security alert (exempt: there is no product to name, and the
+    # action IS stated — a real invitation never asks you to log in; check with
+    # the sender by phone first).
+    "you're invited", "you\u2019re invited", "fake invitation", "event invitation",
+    # Extended 2026-10-03: fake product-recall text/email phishing alert (AARP
+    # Fraud Watch Network, Sept. 24 2026 + FTC consumer alert, Sept. 28 2026 —
+    # "something you bought was recalled, you're owed money back" leads to a
+    # credential/card-harvesting sign-in page). Security alert (exempt: there is
+    # no product to name, and the action IS stated — don't click; check the
+    # product yourself free at cpsc.gov/recalls or open the store's app).
+    "fake recall", "recall texts", "recalled for safety", "recall scam",
+    # Extended 2026-10-04: government-impersonation scam alert (FBI IC3 — crooks
+    # call/text claiming to be the police, the FBI, the IRS, or Social Security
+    # and demand payment for a fake warrant or missed jury duty; the free report
+    # is filed at ic3.gov). Security alert (exempt: there is no product to name,
+    # and the action IS stated — hang up and report it at ic3.gov; no real agency
+    # ever collects a debt by phone or text).
+    "government will call", "demanding money", "ic3.gov", "fbi's own complaint",
+    # Extended 2026-10-05: FBI-agent impersonation phone-scam alert (FBI warning,
+    # reported by Yahoo Finance and Moneywise Oct. 3 — crooks spoof a real
+    # agency's number and a real agent's name, then push victims to move their
+    # money to keep it "safe"). Security alert (exempt: there is no product to
+    # name, and the action IS stated — never send money to anyone claiming to be
+    # a federal agent; hang up and call the agency yourself at a number you look
+    # up).
+    "fake fbi", "fbi agents are calling", "secret service",
     ]
     if any(s in low for s in SKIP):
         return fails

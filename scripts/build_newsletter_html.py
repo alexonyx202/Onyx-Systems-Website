@@ -145,14 +145,22 @@ def extract_comic_caption(md, date_str=None):
                         and _looks_like_valid_caption(ocr_text)):
                     caption_words = set(re.findall(r"[a-z']+", caption.lower()))
                     ocr_words = set(re.findall(r"[a-z']+", ocr_text.lower()))
-                    # If they share NO words but OCR looks valid, the markdown
-                    # caption is wrong — use OCR (never ship a mismatched caption).
+                    # If they share NO words but the band OCR looks valid, distrust
+                    # the markdown caption ONLY if the comic itself does not back it
+                    # up. The band crop (farside_caption.py) can grab a NEIGHBORING
+                    # panel's caption on multi-comic archive pages — 2026-10-04 a
+                    # "Time Log" strip (markdown caption correct, and present in the
+                    # full image OCR) was overridden with "are generally credited
+                    # with the Sistine Chapel floor.", a different panel. So require
+                    # >=2 shared words with the FULL comic before keeping markdown.
                     if caption_words & ocr_words:
                         pass  # They agree, keep markdown caption
                     elif not caption_words & ocr_words and len(ocr_words) > 5:
-                        ocr_caption = ocr_text.strip().strip('"\'')
-                        if len(ocr_caption) > 10:
-                            caption = ocr_caption
+                        full_words = _full_comic_ocr_words(comic_img)
+                        if len(caption_words & full_words) < 2:
+                            ocr_caption = ocr_text.strip().strip('"\'')
+                            if len(ocr_caption) > 10:
+                                caption = ocr_caption
             except (Exception, subprocess.TimeoutExpired):
                 pass
     return caption
@@ -199,6 +207,26 @@ def _looks_like_valid_caption(text: str) -> bool:
         return False
     
     return True
+
+
+def _full_comic_ocr_words(comic_img):
+    """OCR the WHOLE comic image and return its lowercase word set.
+
+    Used to corroborate a markdown caption: a real caption is readable in the
+    comic itself. The band-crop OCR (farside_caption.py) can return a different
+    panel's caption on multi-comic archive pages, so a zero-overlap disagreement
+    alone is NOT proof the markdown caption is wrong. Returns an empty set on any
+    failure (caller then keeps the markdown caption, never a fabricated one).
+    """
+    try:
+        import subprocess
+        r = subprocess.run(
+            ["tesseract", comic_img, "stdout", "--psm", "6"],
+            capture_output=True, text=True, timeout=90,
+        )
+        return set(re.findall(r"[a-z']+", r.stdout.lower()))
+    except Exception:
+        return set()
 
 
 def extract_header_logo(md):
