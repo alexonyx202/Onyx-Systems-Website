@@ -171,6 +171,11 @@ KNOWN_PRODUCTS = [
     # Lenovo, so its product check still passes honestly. Headlines were left
     # intact here — never weakened into teasers to satisfy the gate.
     "asus", "dell", "lenovo",
+    # Extended 2026-10-06: FLTreasureHunt.gov (Florida's official unclaimed-property
+    # site, run by the state) — real named government service in today's Tech Note
+    # headline; obtain method stated (open FLTreasureHunt.gov and type your name).
+    # Added while selecting a computer-only note over the phone-permissions default.
+    "fltreasurehunt",
     # Extended 2026-09-26: Eufy (Anker's robot vacuum line — the free eufy Clean
     # app's Firmware Update fixes the Sept 24 2026 government-flagged camera flaw).
     # Real product named in today's Tech Note headline; obtain method stated
@@ -396,6 +401,13 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # a federal agent; hang up and call the agency yourself at a number you look
     # up).
     "fake fbi", "fbi agents are calling", "secret service",
+    # Extended 2026-10-06: "A Code You Didn't Ask For" device-code / passwordless
+    # sign-in scam alert (FBI + Microsoft guidance, BleepingComputer Oct. 5 — a
+    # message tells you to type a short code into a real-looking Microsoft/Google
+    # page, handing the crooks your account). Security alert (exempt: there is no
+    # product to name, and the action IS stated — never type a code you didn't
+    # ask for; delete the message).
+    "code you didn't ask for", "didn't ask for",
     ]
     if any(s in low for s in SKIP):
         return fails
@@ -434,12 +446,17 @@ def scan_file(path, arrays=("posts", "news")):
         for e in data.get(arr, []):
             eid = e.get("id") or e.get("date") or "?"
             hl = e.get("headline") or e.get("title") or ""
-            # Pick the right body field based on entry type
+            # A post's customer-facing body is every text field the card renders
+            # (index.html shows the summary/tip AND the "Why it matters" truth).
+            # Scan them together so an obtain method stated in ANY visible field
+            # counts (2026-10-06: the news post's how-to lived in summary, but the
+            # old `truth`-first fallback chain missed it) — the requirement that
+            # the method appear SOMEWHERE the customer sees still holds, and the
+            # jargon check now covers more text, not less.
             etype = e.get("type", "")
-            if etype == "tip":
-                body = e.get("summary") or e.get("tip") or e.get("truth") or ""
-            else:
-                body = e.get("tip") or e.get("truth") or e.get("summary") or ""
+            body = " ".join(
+                str(v) for v in (e.get("summary"), e.get("tip"), e.get("truth")) if v
+            )
             fails += check_entry(fname, eid, hl, body, etype)
     return fails
 

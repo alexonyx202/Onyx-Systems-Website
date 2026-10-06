@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-06-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-06",
+      "title": "A Code You Didn't Ask For — Don't Type It In",
+      "tag": "Daily Brief",
+      "excerpt": "There's a new way crooks get into your computer and your online accounts without ever learning your password. You get a message with a short code and a link to a real-looking Microsoft or Google page, telling you to type the code in to \"confirm\" or \"protect\" your account. Do that, and you've just let them in. My rule is simple: never type a code you didn't ask for. Got one? Delete the message — that's the whole fix.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-06-composite.jpg",
+      "comic": "assets/img/news/2026-10-06-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-05-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-05",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-10-02-composite.jpg",
       "comic": "assets/img/news/2026-10-02-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-01-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-01",
-      "title": "A Fake \\\"You're Invited\\\" Email Is the New Way In",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are breaking into regular email accounts and sending fake invitations — a birthday party, a fundraiser, a wedding — from someone you actually know. Click \"view the invitation\" and it asks you to sign in with Google, Apple, or Microsoft; that login screen is fake, and the password you type goes straight to the crooks. A real invitation never asks you to log in just to see it. I tell folks to check with the sender by a quick call first.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-01-composite.jpg",
-      "comic": "assets/img/news/2026-10-01-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-06-post-1",
+      "type": "news",
+      "date": "2026-10-06",
+      "title": "Forgot money in an old bank account or utility deposit? Search your name free at FLTreasureHunt.gov, Florida's own unclaimed-money site",
+      "tag": "Tech Note",
+      "summary": "Open FLTreasureHunt.gov — that's Florida's official unclaimed-property website, run by the state — and type your name. Try a maiden name and old addresses too. If an old bank account, utility deposit, insurance refund, or final paycheck is sitting there, it shows up, and you claim it straight through the state for free. The search takes about a minute.",
+      "truth": "Most people don't realize Florida is holding billions of dollars in forgotten money — deposits, refunds, last paychecks — left behind when people moved or passed away. It doesn't go away, and it's yours to claim.\n\nThe part that makes me mad is the look-alike companies that mail you a letter offering to \"recover\" your money for a fee. The state does it for free. If somebody wants money up front to hand you your own money, walk away.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-05-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-10-01-post-1",
-      "type": "news",
-      "date": "2026-10-01",
-      "title": "Firefox just got a cleaner new look that can tuck your tabs down the left side — update free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Open Firefox, click the Menu button (the three lines in the top-right corner), then Help, then About Firefox — it checks for the new version and installs it for you in about two minutes. Don't have Firefox yet? Go to firefox.com and click Download; it's free and it's made by Mozilla.",
-      "truth": "Most people don't realize how much of their day lives inside one square of glass — email, banking, the pharmacy, the grandkids' photos. And yet the program you look through all day is the one people update last. An old browser is one of the easiest ways for a stranger to get onto your computer, because the fixes for the tricks they use are sitting right there in the update you keep putting off.\n\nI see this all the time: someone tells me their computer is \"fine\" — until we look at the browser and it hasn't been touched in two years. The new Firefox look is nice, but the real reason to update today is the security that rides along with it.",
+      "id": "onyx-2026-10-06-post-2",
+      "type": "tip",
+      "date": "2026-10-06",
+      "title": "Trouble hearing video calls? Windows 11 Live Captions puts the words on the screen free — press the Windows key + Ctrl + L",
+      "tag": "Tech Tip",
+      "summary": "Press Windows key + Ctrl + L, or open Settings > Accessibility > Captions and turn on Live captions. Windows then listens to whatever audio is playing on your PC — a YouTube video, a Zoom or church meeting, a phone call through the computer — and types it on screen as it happens. It's built into Windows 11, it's free, and no account is needed.",
+      "truth": "Most people don't realize the subtitles they wish they had are already sitting inside Windows. They figure they'd have to buy an app, or ask whoever is running the meeting to turn captions on, so they just strain and nod along.\n\nThe honest answer is that it's one keyboard shortcut away, and it works on any sound the computer plays. Here's the part folks miss: it's not only for hearing trouble. I use it when a video has muffled audio or a heavy accent, or when I'm somewhere I can't turn the volume up.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-10-01-post-2",
-      "type": "tip",
-      "date": "2026-10-01",
-      "title": "Someone using your Google account? Google's free Security Checkup at myaccount.google.com/security-checkup shows every device signed in",
-      "tag": "Tech Tip",
-      "summary": "Open myaccount.google.com/security-checkup in your browser, sign in with your Google account, and follow the short list it shows you. It reviews the devices signed in to your account, the apps that have access to it, and any password it thinks is weak or reused — and it walks you through fixing each one. No download, no cost, about two minutes.",
-      "truth": "Most people don't realize that when a stranger gets your Google password, they don't just read your email — they quietly sit there, and Gmail is the key that resets the password on almost everything else you own. The honest answer is that you cannot hear someone logging into your account from a thousand miles away, but you can look. That is all this page is: a free look at who is inside, and a button to shut the door.\n\nI see this all the time: a customer swears nothing is wrong, and then we open this page and find a device they don't recognize signed in from another state. Sometimes it's harmless — an old phone they forgot about. Sometimes it isn't. Either way, you want to be the one who finds it first, not your bank.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "today_word": {
     "word": "Driver",
     "pos": "noun",

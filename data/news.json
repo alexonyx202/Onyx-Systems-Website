@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "items": [
+    {
+      "id": "n-2026-10-06",
+      "type": "newsletter",
+      "date": "2026-10-06",
+      "title": "A Code You Didn't Ask For — Don't Type It In",
+      "tag": "Daily Brief",
+      "summary": "There's a new way crooks get into your computer and your online accounts without ever learning your password. You get a message with a short code and a link to a real-looking Microsoft or Google page, telling you to type the code in to \"confirm\" or \"protect\" your account. Do that, and you've just let them in. My rule is simple: never type a code you didn't ask for. Got one? Delete the message — that's the whole fix.",
+      "comic": "Newsletter - 2026-10-06-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-06-news1",
+      "type": "tech-note",
+      "date": "2026-10-06",
+      "title": "Forgot money in an old bank account or utility deposit? Search your name free at FLTreasureHunt.gov, Florida's own unclaimed-money site",
+      "tag": "Tech Note",
+      "summary": "Open FLTreasureHunt.gov — that's Florida's official unclaimed-property website, run by the state — and type your name. Try a maiden name and old addresses too. If an old bank account, utility deposit, insurance refund, or final paycheck is sitting there, it shows up, and you claim it straight through the state for free. The search takes about a minute."
+    },
+    {
+      "id": "t-2026-10-06-tip1",
+      "type": "tech-note",
+      "date": "2026-10-06",
+      "title": "Trouble hearing video calls? Windows 11 Live Captions puts the words on the screen free — press the Windows key + Ctrl + L",
+      "tag": "Tech Tip",
+      "summary": "Press Windows key + Ctrl + L, or open Settings > Accessibility > Captions and turn on Live captions. Windows then listens to whatever audio is playing on your PC — a YouTube video, a Zoom or church meeting, a phone call through the computer — and types it on screen as it happens. It's built into Windows 11, it's free, and no account is needed."
+    },
     {
       "id": "n-2026-10-05",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Using the same password everywhere? Google's free Password Checkup at passwords.google.com/checkup finds the weak ones",
       "tag": "Tech Tip",
       "summary": "Open your browser and go to passwords.google.com/checkup. Sign in with your Google account and click Checkup. It shows you every saved password that is too weak, reused on more than one website, or already leaked in a data breach — and it walks you through changing each one, site by site. It's free, it's built into your Google account, and there's nothing to download."
-    },
-    {
-      "id": "n-2026-10-02",
-      "type": "newsletter",
-      "date": "2026-10-02",
-      "title": "An Emergency Apple Fix for a Flaw Hackers Are Already Using",
-      "tag": "Daily Brief",
-      "summary": "Apple rushed out an emergency update this week for a flaw hackers are already using against Apple computers. The fix stops a harmful file — one you might open from an email or a download — from running hidden code. The real repair is free from Apple, so ignore any pop-up telling you to call a number; that is a scam. It takes two minutes: open the Apple menu, click System Settings, then General, then Software Update. I've seen computers sit months behind — please update today.",
-      "comic": "Newsletter - 2026-10-02-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-02-news1",
-      "type": "tech-note",
-      "date": "2026-10-02",
-      "title": "Chrome now asks before opening an unsafe website — update yours free at chrome://settings/help",
-      "tag": "Tech Note",
-      "summary": "Chrome is turning on a safer way to browse this month: it tries the secure version of a site first, and if the site can't do secure, it stops and asks you before opening it — you'll see a warning instead of walking in blind. To be sure you have it, open Chrome, click the three dots in the top-right corner, then Help, then About Google Chrome. It updates itself in about a minute. Not sure you have Chrome? Go to google.com/chrome and click Download. Free, from Google."
-    },
-    {
-      "id": "t-2026-10-02-tip1",
-      "type": "tech-note",
-      "date": "2026-10-02",
-      "title": "ChatGPT is now free inside Microsoft Word — get the add-in free at chatgpt.com/apps/word or Word's Insert > Get Add-ins",
-      "tag": "Tech Tip",
-      "summary": "Open Microsoft Word, click Insert at the top, then Get Add-ins, and search ChatGPT to install it — free. (You can also go to chatgpt.com/apps/word and click Install.) A ChatGPT panel appears on the right side of your document. You can ask it to fix a sentence, shorten a paragraph, write a first draft of a thank-you note or a complaint letter, or explain a word in a contract. You only need a free ChatGPT account, and the free plan includes a set amount of use each month."
     }
   ]
 }
