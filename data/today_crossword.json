@@ -1,205 +1,203 @@
 {
   "title": "math",
-  "size": 28,
+  "size": 26,
   "grid": [
-    ".......s....................",
-    ".......e....d.c.............",
-    ".......c....e.o.............",
-    "..c.s.maclaurin.............",
-    "..o.e..n..n.i.t.............",
-    "..s.r..t..t.v.i.............",
-    "..e.i.....i.a.n.............",
-    "..c.e.c...d.t.u.............",
-    "..a.slope.e.i.o.............",
-    "..n...t...r.v.u.............",
-    "..theta..sine.s.............",
-    "......n...v.................",
-    "......g...a.................",
-    ".....geometric..............",
-    "......n...i.................",
-    "......t...v..s..............",
-    ".......p-series.............",
-    ".............q..............",
-    ".............u..............",
-    "differentiable..............",
-    ".............n..............",
-    ".......t.....concavity......",
-    "......lagrange..o...........",
-    ".......n........s...........",
-    ".......g........i...........",
-    ".......e...harmonic.........",
-    ".......n........e...........",
-    ".......t...................."
+    "............c....d........",
+    "...........concavity......",
+    "......s.....s....f......s.",
+    "p-series..s.e....f......i.",
+    "......c...e.c....e......n.",
+    "......a.c.q.a..derivative.",
+    "......n.o.u.n....e........",
+    "......tangent....n........",
+    ".....m..t.n..a...t........",
+    ".....a..i.c..n...i........",
+    ".....c..n.e..theta.....c..",
+    ".....l..u....i...b...slope",
+    "....harmonic.d...l.....s..",
+    ".....u..u..o.e..geometric.",
+    "...series..t.r.........n..",
+    ".....i.....a.i.........e..",
+    ".....n.....n.v............",
+    ".........lagrange.........",
+    "...........e.t............",
+    "...........n.i............",
+    "...........t.v............",
+    ".............e............",
+    "..........................",
+    "..........................",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 6,
-        "row": 4,
-        "col": 7,
-        "len": 9,
-        "answer": "maclaurin",
-        "clue": "a series centered at x = 0"
-      },
-      {
-        "num": 9,
-        "row": 9,
-        "col": 5,
-        "len": 5,
-        "answer": "slope",
-        "clue": "change in y/change in x"
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 3,
-        "len": 5,
-        "answer": "theta",
-        "clue": "greek symbol for angle"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 10,
-        "len": 4,
-        "answer": "sine",
-        "clue": "opposite/hypotenuse"
-      },
-      {
-        "num": 12,
-        "row": 14,
-        "col": 6,
-        "len": 9,
-        "answer": "geometric",
-        "clue": "series for ar^n"
-      },
-      {
-        "num": 14,
-        "row": 17,
-        "col": 8,
-        "len": 8,
-        "answer": "p-series",
-        "clue": "1/n^p"
-      },
-      {
-        "num": 15,
-        "row": 20,
-        "col": 1,
-        "len": 14,
-        "answer": "differentiable",
-        "clue": "if f'(c) exists for all c in -infinity<c<infinity"
-      },
-      {
-        "num": 17,
-        "row": 22,
-        "col": 14,
+        "num": 3,
+        "row": 2,
+        "col": 12,
         "len": 9,
         "answer": "concavity",
         "clue": "if f'(x) is increasing, this is up"
       },
       {
-        "num": 19,
-        "row": 23,
-        "col": 7,
+        "num": 6,
+        "row": 4,
+        "col": 1,
         "len": 8,
-        "answer": "lagrange",
-        "clue": "M(x-c)^n+1/(n+1)!"
+        "answer": "p-series",
+        "clue": "1/n^p"
       },
       {
-        "num": 20,
-        "row": 26,
-        "col": 12,
+        "num": 9,
+        "row": 6,
+        "col": 16,
+        "len": 10,
+        "answer": "derivative",
+        "clue": "rate of change of a function"
+      },
+      {
+        "num": 10,
+        "row": 8,
+        "col": 7,
+        "len": 7,
+        "answer": "tangent",
+        "clue": "1/cotangent"
+      },
+      {
+        "num": 13,
+        "row": 11,
+        "col": 14,
+        "len": 5,
+        "answer": "theta",
+        "clue": "greek symbol for angle"
+      },
+      {
+        "num": 15,
+        "row": 12,
+        "col": 22,
+        "len": 5,
+        "answer": "slope",
+        "clue": "change in y/change in x"
+      },
+      {
+        "num": 16,
+        "row": 13,
+        "col": 5,
         "len": 8,
         "answer": "harmonic",
         "clue": "name of series for 1/n"
+      },
+      {
+        "num": 18,
+        "row": 14,
+        "col": 17,
+        "len": 9,
+        "answer": "geometric",
+        "clue": "series for ar^n"
+      },
+      {
+        "num": 19,
+        "row": 15,
+        "col": 4,
+        "len": 6,
+        "answer": "series",
+        "clue": "a1 + a2 + a3 + a4 + ... + an"
+      },
+      {
+        "num": 20,
+        "row": 18,
+        "col": 10,
+        "len": 8,
+        "answer": "lagrange",
+        "clue": "M(x-c)^n+1/(n+1)!"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 8,
-        "len": 6,
-        "answer": "secant",
-        "clue": "1/cos"
-      },
-      {
-        "num": 2,
-        "row": 2,
         "col": 13,
-        "len": 10,
-        "answer": "derivative",
-        "clue": "rate of change of a function"
-      },
-      {
-        "num": 3,
-        "row": 2,
-        "col": 15,
-        "len": 10,
-        "answer": "continuous",
-        "clue": "a function that has no jumps or holes"
-      },
-      {
-        "num": 4,
-        "row": 4,
-        "col": 3,
         "len": 8,
         "answer": "cosecant",
         "clue": "1/sin"
       },
       {
-        "num": 5,
-        "row": 4,
-        "col": 5,
+        "num": 2,
+        "row": 1,
+        "col": 18,
+        "len": 14,
+        "answer": "differentiable",
+        "clue": "if f'(c) exists for all c in -infinity<c<infinity"
+      },
+      {
+        "num": 4,
+        "row": 3,
+        "col": 7,
         "len": 6,
-        "answer": "series",
-        "clue": "a1 + a2 + a3 + a4 + ... + an"
+        "answer": "secant",
+        "clue": "1/cos"
+      },
+      {
+        "num": 5,
+        "row": 3,
+        "col": 25,
+        "len": 4,
+        "answer": "sine",
+        "clue": "opposite/hypotenuse"
       },
       {
         "num": 7,
         "row": 4,
         "col": 11,
-        "len": 14,
-        "answer": "antiderivative",
-        "clue": "another word for integral"
-      },
-      {
-        "num": 8,
-        "row": 8,
-        "col": 7,
-        "len": 9,
-        "answer": "cotangent",
-        "clue": "1/tangent"
-      },
-      {
-        "num": 13,
-        "row": 16,
-        "col": 14,
         "len": 8,
         "answer": "sequence",
         "clue": "a1  , a2 , a3 , a4 , ... , an"
       },
       {
-        "num": 16,
-        "row": 22,
-        "col": 8,
-        "len": 7,
-        "answer": "tangent",
-        "clue": "1/cotangent"
+        "num": 8,
+        "row": 6,
+        "col": 9,
+        "len": 10,
+        "answer": "continuous",
+        "clue": "a function that has no jumps or holes"
       },
       {
-        "num": 18,
-        "row": 22,
-        "col": 17,
+        "num": 11,
+        "row": 9,
+        "col": 6,
+        "len": 9,
+        "answer": "maclaurin",
+        "clue": "a series centered at x = 0"
+      },
+      {
+        "num": 12,
+        "row": 9,
+        "col": 14,
+        "len": 14,
+        "answer": "antiderivative",
+        "clue": "another word for integral"
+      },
+      {
+        "num": 14,
+        "row": 11,
+        "col": 24,
         "len": 6,
         "answer": "cosine",
         "clue": "adjacent/hypotenuse"
+      },
+      {
+        "num": 17,
+        "row": 13,
+        "col": 12,
+        "len": 9,
+        "answer": "cotangent",
+        "clue": "1/tangent"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9561",
-  "slug": "math-9561",
-  "fetched_at": "2026-07-14T19:15:19.909442+00:00",
-  "date": "2026-10-06"
+  "source_url": "https://crosswordlabs.com/view/math-9562",
+  "slug": "math-9562",
+  "fetched_at": "2026-07-14T19:18:23.310190+00:00",
+  "date": "2026-10-07"
 }
