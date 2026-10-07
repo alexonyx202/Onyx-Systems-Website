@@ -181,6 +181,12 @@ KNOWN_PRODUCTS = [
     # Real product named in today's Tech Note headline; obtain method stated
     # (tap the vacuum in the eufy Clean app > three dots > Firmware Update).
     "eufy",
+    # Extended 2026-10-07: Crucial System Scanner (crucial.com — Crucial/Micron's
+    # free, no-account tool that reads your exact parts and upgrade ceiling). Real
+    # product named in today's Tech Note tip headline; obtain method stated (go to
+    # crucial.com, download and run the scanner). Added while keeping the headline
+    # intact — the brand name simply was not in the whitelist yet.
+    "crucial", "crucial.com", "crucial system scanner",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -408,6 +414,13 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # product to name, and the action IS stated — never type a code you didn't
     # ask for; delete the message).
     "code you didn't ask for", "didn't ask for",
+    # Extended 2026-10-07: fake "I'm not a robot" CAPTCHA-click box alert
+    # (FTC warning on fake-CAPTCHA scams + browser-attack report, BleepingComputer
+    # Oct. 6 — the box tells you to press keys and paste a command, which starts a
+    # bad program). Same security-alert family as the 2026-09-05 "are you human" /
+    # "captcha" exemption: no product to name, and the action IS stated (close the
+    # tab; real checks never ask you to press keys or paste anything).
+    "not a robot", "i'm not a robot",
     ]
     if any(s in low for s in SKIP):
         return fails

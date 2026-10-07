@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "items": [
+    {
+      "id": "n-2026-10-07",
+      "type": "newsletter",
+      "date": "2026-10-07",
+      "title": "That 'I'm Not a Robot' Box Is a Trick",
+      "tag": "Daily Brief",
+      "summary": "Fake \"I'm not a robot\" boxes are showing up in search results and on random websites. They look harmless, but they tell you to press a few keys and paste something into a little box to prove you're a person. Do that and you've just started a bad program on your computer. Real checks never ask you to press keys or paste anything — so close the tab. I've had two machines come in this month with exactly this. According to a new report, most now arrive straight from search results.",
+      "comic": "Newsletter - 2026-10-07-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-07-news1",
+      "type": "tech-note",
+      "date": "2026-10-07",
+      "title": "Microsoft is turning on a free Windows safety feature called Core isolation this month — check yours at Windows Security > Device security",
+      "tag": "Tech Note",
+      "summary": "Click Start, type Windows Security, and open it. Choose Device security, then click Core isolation details and look at the switch under Core isolation. Microsoft started switching this protection on automatically this month, through the ordinary Windows updates your computer already gets — but not every computer qualifies. If yours is off, turn it on and restart. It is built into Windows, it is free, and there is nothing to buy."
+    },
+    {
+      "id": "t-2026-10-07-tip1",
+      "type": "tech-note",
+      "date": "2026-10-07",
+      "title": "Computer prices are way up this year because of AI — before you buy anything new, run the free Crucial System Scanner at crucial.com",
+      "tag": "Tech Tip",
+      "summary": "Open your browser and go to crucial.com. Click the System Scanner link, download the free tool, and run it. In about two minutes it reads your exact make and model, shows what parts you already have, and tells you the most your computer can hold. No account, no cost, nothing to sign up for. That way you know what you own before you walk into a store or hand over a credit card."
+    },
     {
       "id": "n-2026-10-06",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Windows 11's new Point-in-Time Restore can undo a bad update or a wrong click — turn it on free at Settings > System > Recovery",
       "tag": "Tech Tip",
       "summary": "Open Settings > System > Recovery, click Point-in-time restore, then View or edit, and turn it on. From then on, Windows quietly keeps a snapshot of your whole computer — your programs, your settings, and your own files — so if a bad update or a wrong click wrecks things, you can roll the whole machine back to how it was this morning. It's free, it's built into Windows 11, and turning it on takes about two minutes."
-    },
-    {
-      "id": "n-2026-10-03",
-      "type": "newsletter",
-      "date": "2026-10-03",
-      "title": "Fake Recall Texts Want Your Card",
-      "tag": "Daily Brief",
-      "summary": "Scammers are texting and emailing that something you bought was recalled for safety and that you are owed money back. Tap the link and it asks you to sign in or type a card number — that is the whole trick, and it is spreading fast right now. Real recalls never arrive as a link in a surprise message. Check the product yourself, free, at cpsc.gov/recalls, or open the store's app and look at your orders. My rule is simple: don't click, check it yourself.",
-      "comic": "Newsletter - 2026-10-03-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-03-news1",
-      "type": "tech-note",
-      "date": "2026-10-03",
-      "title": "Your hard drive warns you before it dies — CrystalDiskInfo is the free health checker at crystalmark.info",
-      "tag": "Tech Note",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info (it's the Crystal Dew World site), open it, and look at the big word at the top of the window. A blue Good means your drive is healthy. A yellow Caution or a red Bad means it's on its way out, and you should copy your pictures and documents off it today. It's free, it works with no internet connection, and reading it takes about a minute."
-    },
-    {
-      "id": "t-2026-10-03-tip1",
-      "type": "tech-note",
-      "date": "2026-10-03",
-      "title": "Using the same password everywhere? Google's free Password Checkup at passwords.google.com/checkup finds the weak ones",
-      "tag": "Tech Tip",
-      "summary": "Open your browser and go to passwords.google.com/checkup. Sign in with your Google account and click Checkup. It shows you every saved password that is too weak, reused on more than one website, or already leaked in a data breach — and it walks you through changing each one, site by site. It's free, it's built into your Google account, and there's nothing to download."
     }
   ]
 }

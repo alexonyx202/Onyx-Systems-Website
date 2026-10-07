@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-07-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-07",
+      "title": "That 'I'm Not a Robot' Box Is a Trick",
+      "tag": "Daily Brief",
+      "excerpt": "Fake \"I'm not a robot\" boxes are showing up in search results and on random websites. They look harmless, but they tell you to press a few keys and paste something into a little box to prove you're a person. Do that and you've just started a bad program on your computer. Real checks never ask you to press keys or paste anything — so close the tab. I've had two machines come in this month with exactly this. According to a new report, most now arrive straight from search results.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-07-composite.jpg",
+      "comic": "assets/img/news/2026-10-07-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-06-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-06",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-10-03-composite.jpg",
       "comic": "assets/img/news/2026-10-03-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-02-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-02",
-      "title": "An Emergency Apple Fix for a Flaw Hackers Are Already Using",
-      "tag": "Daily Brief",
-      "excerpt": "Apple rushed out an emergency update this week for a flaw hackers are already using against Apple computers. The fix stops a harmful file — one you might open from an email or a download — from running hidden code. The real repair is free from Apple, so ignore any pop-up telling you to call a number; that is a scam. It takes two minutes: open the Apple menu, click System Settings, then General, then Software Update. I've seen computers sit months behind — please update today.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-02-composite.jpg",
-      "comic": "assets/img/news/2026-10-02-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-07-post-1",
+      "type": "news",
+      "date": "2026-10-07",
+      "title": "Microsoft is turning on a free Windows safety feature called Core isolation this month — check yours at Windows Security > Device security",
+      "tag": "Tech Note",
+      "summary": "Click Start, type Windows Security, and open it. Choose Device security, then click Core isolation details and look at the switch under Core isolation. Microsoft started switching this protection on automatically this month, through the ordinary Windows updates your computer already gets — but not every computer qualifies. If yours is off, turn it on and restart. It is built into Windows, it is free, and there is nothing to buy.",
+      "truth": "Most people don't realize the nastiest attacks aren't the ones you can see — they are programs that quietly tamper with the deepest part of Windows so nothing can get a clean look at them. October is Cybersecurity Awareness Month, and the honest answer is that the best protection you have was already sitting inside your computer, switched off. It is one switch and one restart, and nobody has to pay for it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-06-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-10-02-post-1",
-      "type": "news",
-      "date": "2026-10-02",
-      "title": "Chrome now asks before opening an unsafe website — update yours free at chrome://settings/help",
-      "tag": "Tech Note",
-      "summary": "Chrome is turning on a safer way to browse this month: it tries the secure version of a site first, and if the site can't do secure, it stops and asks you before opening it — you'll see a warning instead of walking in blind. To be sure you have it, open Chrome, click the three dots in the top-right corner, then Help, then About Google Chrome. It updates itself in about a minute. Not sure you have Chrome? Go to google.com/chrome and click Download. Free, from Google.",
-      "truth": "A little padlock in the address bar is the whole difference between a private note and a postcard anyone can read. You don't need to understand the technical part at all — you just need the browser to slow you down for one second before you type a password or a card number into a page that isn't locked. That one pause is what catches the mistake.\n\nI see this all the time: a customer types their bank login on a page that looked normal, and only the tiny \"Not secure\" text said otherwise. Starting this month Chrome does the noticing for you. When it asks, the safe answer is almost always to go back and try the site again by typing the address fresh, or to skip it entirely and call the business instead.",
+      "id": "onyx-2026-10-07-post-2",
+      "type": "tip",
+      "date": "2026-10-07",
+      "title": "Computer prices are way up this year because of AI — before you buy anything new, run the free Crucial System Scanner at crucial.com",
+      "tag": "Tech Tip",
+      "summary": "Open your browser and go to crucial.com. Click the System Scanner link, download the free tool, and run it. In about two minutes it reads your exact make and model, shows what parts you already have, and tells you the most your computer can hold. No account, no cost, nothing to sign up for. That way you know what you own before you walk into a store or hand over a credit card.",
+      "truth": "Most people don't realize why a new computer costs so much more this year. It isn't the shop and it isn't the government — the big AI data centers are buying up memory chips and storage by the truckload, and prices on parts and finished machines have climbed a lot. The honest answer is that this is the worst year in a long time to buy new, and most folks who think they need a new computer really don't.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-10-02-post-2",
-      "type": "tip",
-      "date": "2026-10-02",
-      "title": "ChatGPT is now free inside Microsoft Word — get the add-in free at chatgpt.com/apps/word or Word's Insert > Get Add-ins",
-      "tag": "Tech Tip",
-      "summary": "Open Microsoft Word, click Insert at the top, then Get Add-ins, and search ChatGPT to install it — free. (You can also go to chatgpt.com/apps/word and click Install.) A ChatGPT panel appears on the right side of your document. You can ask it to fix a sentence, shorten a paragraph, write a first draft of a thank-you note or a complaint letter, or explain a word in a contract. You only need a free ChatGPT account, and the free plan includes a set amount of use each month.",
-      "truth": "The hardest part of writing is the blank page, not the writing. You should never let a computer send anything for you without reading it first, but there is nothing wrong with using one to get you unstuck. A rough note becomes a clean paragraph in seconds, and you still decide if it sounds like you.\n\nI see this all the time: a customer needs a letter to an insurance company, a landlord, or the school, and they sit there stuck for an hour. With ChatGPT right inside Word, you type \"help me write a polite letter asking for a refund, here are the facts\" and it gives you a starting point you can edit. My one rule: never put your Social Security number, bank numbers, or passwords into any AI chat. Everything else is fair game.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
