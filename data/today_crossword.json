@@ -1,203 +1,152 @@
 {
-  "title": "math",
-  "size": 26,
+  "title": "Math",
+  "size": 15,
   "grid": [
-    "............c....d........",
-    "...........concavity......",
-    "......s.....s....f......s.",
-    "p-series..s.e....f......i.",
-    "......c...e.c....e......n.",
-    "......a.c.q.a..derivative.",
-    "......n.o.u.n....e........",
-    "......tangent....n........",
-    ".....m..t.n..a...t........",
-    ".....a..i.c..n...i........",
-    ".....c..n.e..theta.....c..",
-    ".....l..u....i...b...slope",
-    "....harmonic.d...l.....s..",
-    ".....u..u..o.e..geometric.",
-    "...series..t.r.........n..",
-    ".....i.....a.i.........e..",
-    ".....n.....n.v............",
-    ".........lagrange.........",
-    "...........e.t............",
-    "...........n.i............",
-    "...........t.v............",
-    ".............e............",
-    "..........................",
-    "..........................",
-    "..........................",
-    ".........................."
+    "..........o....",
+    ".....flip.c....",
+    ".....i..o.t...l",
+    ".....b..w.a...e",
+    "..g.solve.g...g",
+    "..r..n..rhombus",
+    ".compass..n....",
+    "..w..c.........",
+    "rate.c....k....",
+    "..h..infinity..",
+    "..........t....",
+    "......space....",
+    "........p......",
+    ".......deck....",
+    "........x......"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
+        "num": 2,
         "row": 2,
-        "col": 12,
-        "len": 9,
-        "answer": "concavity",
-        "clue": "if f'(x) is increasing, this is up"
+        "col": 6,
+        "len": 4,
+        "answer": "flip",
+        "clue": "After I broke the vase I knew my mom would _____."
       },
       {
         "num": 6,
-        "row": 4,
-        "col": 1,
-        "len": 8,
-        "answer": "p-series",
-        "clue": "1/n^p"
+        "row": 5,
+        "col": 5,
+        "len": 5,
+        "answer": "solve",
+        "clue": "You are trying to ___ this crossword by reading this clue and now you\u2019ve read all the way to see what I\u2019m going to say, this is the clue."
+      },
+      {
+        "num": 7,
+        "row": 6,
+        "col": 9,
+        "len": 7,
+        "answer": "rhombus",
+        "clue": "What rhymes with Columbus?"
+      },
+      {
+        "num": 8,
+        "row": 7,
+        "col": 2,
+        "len": 7,
+        "answer": "compass",
+        "clue": "We use a ______to navigate through seas"
       },
       {
         "num": 9,
-        "row": 6,
-        "col": 16,
-        "len": 10,
-        "answer": "derivative",
-        "clue": "rate of change of a function"
+        "row": 9,
+        "col": 1,
+        "len": 4,
+        "answer": "rate",
+        "clue": "For great low _____ you can get online, go to the general and save some time"
       },
       {
-        "num": 10,
-        "row": 8,
-        "col": 7,
-        "len": 7,
-        "answer": "tangent",
-        "clue": "1/cotangent"
+        "num": 11,
+        "row": 10,
+        "col": 6,
+        "len": 8,
+        "answer": "infinity",
+        "clue": "To _______ and beyond!"
       },
       {
-        "num": 13,
-        "row": 11,
-        "col": 14,
-        "len": 5,
-        "answer": "theta",
-        "clue": "greek symbol for angle"
-      },
-      {
-        "num": 15,
+        "num": 12,
         "row": 12,
-        "col": 22,
+        "col": 7,
         "len": 5,
-        "answer": "slope",
-        "clue": "change in y/change in x"
+        "answer": "space",
+        "clue": "In the movie ______ Jam: A New Legacy, Lebron James met Bugs Bunny"
       },
       {
-        "num": 16,
-        "row": 13,
-        "col": 5,
-        "len": 8,
-        "answer": "harmonic",
-        "clue": "name of series for 1/n"
-      },
-      {
-        "num": 18,
+        "num": 14,
         "row": 14,
-        "col": 17,
-        "len": 9,
-        "answer": "geometric",
-        "clue": "series for ar^n"
-      },
-      {
-        "num": 19,
-        "row": 15,
-        "col": 4,
-        "len": 6,
-        "answer": "series",
-        "clue": "a1 + a2 + a3 + a4 + ... + an"
-      },
-      {
-        "num": 20,
-        "row": 18,
-        "col": 10,
-        "len": 8,
-        "answer": "lagrange",
-        "clue": "M(x-c)^n+1/(n+1)!"
+        "col": 8,
+        "len": 4,
+        "answer": "deck",
+        "clue": "of Cards    In Casinos they use a _______ of cards to play games"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 13,
-        "len": 8,
-        "answer": "cosecant",
-        "clue": "1/sin"
+        "col": 11,
+        "len": 7,
+        "answer": "octagon",
+        "clue": "A shape that has eight sides is called an _____"
       },
       {
         "num": 2,
-        "row": 1,
-        "col": 18,
-        "len": 14,
-        "answer": "differentiable",
-        "clue": "if f'(c) exists for all c in -infinity<c<infinity"
+        "row": 2,
+        "col": 6,
+        "len": 9,
+        "answer": "fibonacci",
+        "clue": "sequence 1 1 2 3 5 8 13 21 34 55 89 144 233"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 9,
+        "len": 5,
+        "answer": "power",
+        "clue": "After a long game of sports, I like to drink _____ade."
       },
       {
         "num": 4,
         "row": 3,
-        "col": 7,
-        "len": 6,
-        "answer": "secant",
-        "clue": "1/cos"
+        "col": 15,
+        "len": 4,
+        "answer": "legs",
+        "clue": "A spider has 8 ____."
       },
       {
         "num": 5,
-        "row": 3,
-        "col": 25,
-        "len": 4,
-        "answer": "sine",
-        "clue": "opposite/hypotenuse"
-      },
-      {
-        "num": 7,
-        "row": 4,
-        "col": 11,
-        "len": 8,
-        "answer": "sequence",
-        "clue": "a1  , a2 , a3 , a4 , ... , an"
-      },
-      {
-        "num": 8,
-        "row": 6,
-        "col": 9,
-        "len": 10,
-        "answer": "continuous",
-        "clue": "a function that has no jumps or holes"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 6,
-        "len": 9,
-        "answer": "maclaurin",
-        "clue": "a series centered at x = 0"
-      },
-      {
-        "num": 12,
-        "row": 9,
-        "col": 14,
-        "len": 14,
-        "answer": "antiderivative",
-        "clue": "another word for integral"
-      },
-      {
-        "num": 14,
-        "row": 11,
-        "col": 24,
+        "row": 5,
+        "col": 3,
         "len": 6,
-        "answer": "cosine",
-        "clue": "adjacent/hypotenuse"
+        "answer": "growth",
+        "clue": "The plants _____ was noticeable."
       },
       {
-        "num": 17,
-        "row": 13,
-        "col": 12,
-        "len": 9,
-        "answer": "cotangent",
-        "clue": "1/tangent"
+        "num": 10,
+        "row": 9,
+        "col": 11,
+        "len": 4,
+        "answer": "kite",
+        "clue": "I went to the park to fly my _______."
+      },
+      {
+        "num": 13,
+        "row": 12,
+        "col": 9,
+        "len": 4,
+        "answer": "apex",
+        "clue": "___ Legends came out on the 4th of February 2019"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9562",
-  "slug": "math-9562",
-  "fetched_at": "2026-07-14T19:18:23.310190+00:00",
-  "date": "2026-10-07"
+  "source_url": "https://crosswordlabs.com/view/math-9576",
+  "slug": "math-9576",
+  "fetched_at": "2026-07-14T19:26:57.394935+00:00",
+  "date": "2026-10-08"
 }
