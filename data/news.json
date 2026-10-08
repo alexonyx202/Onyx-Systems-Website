@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "items": [
+    {
+      "id": "n-2026-10-08",
+      "type": "newsletter",
+      "date": "2026-10-08",
+      "title": "A Big Online Store Got Hacked — Change That Password",
+      "tag": "Daily Brief",
+      "summary": "A hacker broke into ASOS, the big online clothing store, and walked off with customer information. The company confirmed the break-in this week after shoppers started seeing strange messages. If you have an ASOS account, change that password today — and never reuse it anywhere else. Crooks who steal one password try it on your email and your bank next. I've had customers lose an account for exactly this reason. Two minutes now saves a world of grief.",
+      "comic": "Newsletter - 2026-10-08-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-08-news1",
+      "type": "tech-note",
+      "date": "2026-10-08",
+      "title": "Need to split or combine a PDF? Firefox's free built-in PDF editor does it at firefox.com — no Adobe needed",
+      "tag": "Tech Note",
+      "summary": "Update Firefox free at firefox.com (or click Menu → Help → About to get the newest version). Open any PDF in Firefox, click the little page-thumbnail icon in the top-left corner, and you get a toolbar that can split, merge, reorder, rotate, and add pages. Then save it. You never upload the file to a website and you never pay a subscription — it all happens on your own computer."
+    },
+    {
+      "id": "t-2026-10-08-tip1",
+      "type": "tech-note",
+      "date": "2026-10-08",
+      "title": "Stop reusing one password everywhere — Proton Pass is the free password manager that fills in your logins, at proton.me/pass",
+      "tag": "Tech Tip",
+      "summary": "Go to proton.me/pass and create a free account. Proton Pass remembers every password, makes up strong new ones for you, and fills them in automatically on your computer. The free plan has no limit on how many passwords you can store, and you only have to remember the one that unlocks the app."
+    },
     {
       "id": "n-2026-10-07",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Type and click without touching the keyboard — Windows Voice Access is built into Windows 11, free at Settings > Accessibility > Speech",
       "tag": "Tech Tip",
       "summary": "Open Settings > Accessibility > Speech and turn on Voice access. Then just talk: say \"open my email,\" \"click Save,\" or \"type Dear Mary\" and Windows does it for you. It's built into Windows 11, costs nothing, needs no account, and works even without internet. If your hands ache, your keyboard is acting up, or you'd simply rather talk than type, this turns your computer into a hands-free machine."
-    },
-    {
-      "id": "n-2026-10-04",
-      "type": "newsletter",
-      "date": "2026-10-04",
-      "title": "Fake Bank Fraud Alerts Want Your Money",
-      "tag": "Daily Brief",
-      "summary": "Someone calls or texts pretending to be your bank. They say there is suspicious activity and you must move your money to a \"safe\" account right now. That is the whole scam — and it is surging again this week. Real banks never ask you to move money to protect it. Hang up, then call your bank yourself using the number on your card or your last statement. I tell every customer the same thing: check first, every time.",
-      "comic": "Newsletter - 2026-10-04-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-04-news1",
-      "type": "tech-note",
-      "date": "2026-10-04",
-      "title": "Nobody from the government will call or text you demanding money — report it free at ic3.gov, the FBI's own complaint site",
-      "tag": "Tech Note",
-      "summary": "If someone calls or texts claiming to be the police, the FBI, the IRS, or Social Security and says you owe money, missed jury duty, or have a warrant out, hang up. Real government offices do not call demanding payment, and they never ask for gift cards, cash, or cryptocurrency. If it already happened to you, file a free report at ic3.gov — that's the FBI's own complaint website. The FBI says scammers ran this exact play thousands of times and stole more than a billion and a half dollars from people between January 2025 and July 2026."
-    },
-    {
-      "id": "t-2026-10-04-tip1",
-      "type": "tech-note",
-      "date": "2026-10-04",
-      "title": "Windows 11's new Point-in-Time Restore can undo a bad update or a wrong click — turn it on free at Settings > System > Recovery",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > System > Recovery, click Point-in-time restore, then View or edit, and turn it on. From then on, Windows quietly keeps a snapshot of your whole computer — your programs, your settings, and your own files — so if a bad update or a wrong click wrecks things, you can roll the whole machine back to how it was this morning. It's free, it's built into Windows 11, and turning it on takes about two minutes."
     }
   ]
 }

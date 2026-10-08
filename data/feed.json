@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-08-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-08",
+      "title": "A Big Online Store Got Hacked — Change That Password",
+      "tag": "Daily Brief",
+      "excerpt": "A hacker broke into ASOS, the big online clothing store, and walked off with customer information. The company confirmed the break-in this week after shoppers started seeing strange messages. If you have an ASOS account, change that password today — and never reuse it anywhere else. Crooks who steal one password try it on your email and your bank next. I've had customers lose an account for exactly this reason. Two minutes now saves a world of grief.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-08-composite.jpg",
+      "comic": "assets/img/news/2026-10-08-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-07-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-07",
@@ -166,26 +183,23 @@
       "image": "assets/img/news/2026-10-04-composite.jpg",
       "comic": "assets/img/news/2026-10-04-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-03-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-03",
-      "title": "Fake Recall Texts Want Your Card",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are texting and emailing that something you bought was recalled for safety and that you are owed money back. Tap the link and it asks you to sign in or type a card number — that is the whole trick, and it is spreading fast right now. Real recalls never arrive as a link in a surprise message. Check the product yourself, free, at cpsc.gov/recalls, or open the store's app and look at your orders. My rule is simple: don't click, check it yourself.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-03-composite.jpg",
-      "comic": "assets/img/news/2026-10-03-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-08-post-1",
+      "type": "news",
+      "date": "2026-10-08",
+      "title": "Need to split or combine a PDF? Firefox's free built-in PDF editor does it at firefox.com — no Adobe needed",
+      "tag": "Tech Note",
+      "summary": "Update Firefox free at firefox.com (or click Menu → Help → About to get the newest version). Open any PDF in Firefox, click the little page-thumbnail icon in the top-left corner, and you get a toolbar that can split, merge, reorder, rotate, and add pages. Then save it. You never upload the file to a website and you never pay a subscription — it all happens on your own computer.",
+      "truth": "Most people don't realize the PDF they're afraid to open is something they could already handle. I see this all the time — someone paying about $20 a month for Adobe just to rotate one scanned page or combine two forms. The honest answer is that you've already paid for a browser once, and Firefox can now edit PDFs for free. Because it happens right on your machine, your tax return, your medical form, or your bank statement never has to be handed to some stranger's website.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-07-post-1",
       "type": "news",
@@ -243,13 +257,13 @@
       ]
     },
     {
-      "id": "onyx-2026-10-03-post-1",
-      "type": "news",
-      "date": "2026-10-03",
-      "title": "Your hard drive warns you before it dies — CrystalDiskInfo is the free health checker at crystalmark.info",
-      "tag": "Tech Note",
-      "summary": "Download CrystalDiskInfo free from crystalmark.info (it's the Crystal Dew World site), open it, and look at the big word at the top of the window. A blue Good means your drive is healthy. A yellow Caution or a red Bad means it's on its way out, and you should copy your pictures and documents off it today. It's free, it works with no internet connection, and reading it takes about a minute.",
-      "truth": "Most people don't realize that a hard drive almost never dies without warning. It starts making small mistakes long before it stops working, and it keeps a private log of those mistakes that this free program reads for you in plain English. A failing drive is one of the very few computer problems that is truly urgent — every day you wait is one day closer to losing every photo and every family video at once.\n\nI see this all the time: a customer brings in a slow computer, and the real problem is a drive that's been quietly telling on itself for months. Nothing feels broken, so nobody checks. That's exactly why I open it and check every customer who walks in — a one-minute look now is worth more than any recovery bill later.",
+      "id": "onyx-2026-10-08-post-2",
+      "type": "tip",
+      "date": "2026-10-08",
+      "title": "Stop reusing one password everywhere — Proton Pass is the free password manager that fills in your logins, at proton.me/pass",
+      "tag": "Tech Tip",
+      "summary": "Go to proton.me/pass and create a free account. Proton Pass remembers every password, makes up strong new ones for you, and fills them in automatically on your computer. The free plan has no limit on how many passwords you can store, and you only have to remember the one that unlocks the app.",
+      "truth": "Most people don't realize that \"I use the same password everywhere\" is exactly how one leaked website turns into ten hacked accounts. If the same password protects your email, someone who steals it can reset everything else — and that is the account a scammer wants most. When a customer is ready, I install Proton Pass on their computer and we move the logins over a few at a time, starting with email and banking. The honest answer is that the fix takes one afternoon, and then you never think about it again.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +325,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-10-03-post-2",
-      "type": "tip",
-      "date": "2026-10-03",
-      "title": "Using the same password everywhere? Google's free Password Checkup at passwords.google.com/checkup finds the weak ones",
-      "tag": "Tech Tip",
-      "summary": "Open your browser and go to passwords.google.com/checkup. Sign in with your Google account and click Checkup. It shows you every saved password that is too weak, reused on more than one website, or already leaked in a data breach — and it walks you through changing each one, site by site. It's free, it's built into your Google account, and there's nothing to download.",
-      "truth": "Most people don't realize that the danger isn't one website getting hacked — it's that the same password opens the same door everywhere. When one company has a leak, criminals take that email-and-password pair and try it on your bank, your email, and your Facebook within minutes. The honest answer is that you don't need a different password for all fifty sites you visit; you need a different one for the five that matter most, and this free check tells you exactly which five are in trouble.\n\nI see this all the time: a customer swears they were \"hacked,\" and what actually happened is that one old password was reused on a site that leaked years ago. Nobody ever told them. A five-minute checkup would have caught it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
