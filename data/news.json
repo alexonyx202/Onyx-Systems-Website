@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "items": [
+    {
+      "id": "n-2026-10-09",
+      "type": "newsletter",
+      "date": "2026-10-09",
+      "title": "Windows Update Triggers a Crash — The October Patch is Here",
+      "tag": "Daily Brief",
+      "summary": "Microsoft confirmed this week that a October 2026 Windows update can cause some programs and games to crash when they play certain sound files. The problem only hits a narrow set of audio paths — not every machine — but if you installed updates in the last 48 hours and noticed sudden crashes, that's likely it. Don't reinstall anything, don't roll back your drivers, and don't call support yet. Microsoft is shipping a fix in the next update, expected within days. The honest answer is that these bugs are real, they're temporary, and the correct move is to wait for the patch rather than chase the problem with a new install.",
+      "comic": "Newsletter - 2026-10-09-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-09-news1",
+      "type": "tech-note",
+      "date": "2026-10-09",
+      "title": "A Windows October 2026 update can crash some programs when they play audio — Microsoft has a fix coming, don't reinstall yet",
+      "tag": "Tech Note",
+      "summary": "On your Windows PC, open Settings → Windows Update and click Check for updates. Microsoft has confirmed that the October 2026 patch can cause certain programs and games to crash when they play specific sound files — the fix is coming in a few days, so don't uninstall the update and don't reinstall audio drivers. When the fixed update appears (usually labeled as a cumulative update), install it and the crashes will stop. If you need sound now, most browsers and video players are unaffected — use those while you wait."
+    },
+    {
+      "id": "t-2026-10-09-tip1",
+      "type": "tech-note",
+      "date": "2026-10-09",
+      "title": "Your Android phone has a free October security update — open Settings > System > System update to install 25 fixes right now",
+      "tag": "Tech Tip",
+      "summary": "On your Android phone, open Settings → System → System update and tap Check for update. Google's October 2026 update fixes about 25 security problems in the part of the phone that keeps apps separated and safe. It's free, it takes about 10 minutes, and you can do it on Wi-Fi tonight. On Samsung it's Settings → Software update; on Google Pixel it's Settings → System → Software update."
+    },
     {
       "id": "n-2026-10-08",
       "type": "newsletter",
@@ -78,32 +104,6 @@
       "title": "Type a few words and get a picture — Microsoft Designer's free AI Image Creator makes birthday cards and posters at designer.microsoft.com",
       "tag": "Tech Tip",
       "summary": "In any browser go to designer.microsoft.com, sign in with a free Microsoft account (the same one you use for email, if you have it), and type what you want to see — \"a birthday card for my granddaughter who loves horses,\" or \"a flyer for our church fish fry on Saturday.\" Click Create and a few seconds later you'll have finished-looking pictures you can download, print, or share. It is free to use, and you don't need to know anything about art or computers."
-    },
-    {
-      "id": "n-2026-10-05",
-      "type": "newsletter",
-      "date": "2026-10-05",
-      "title": "Fake FBI Agents Are Calling — Hang Up and Check",
-      "tag": "Daily Brief",
-      "summary": "Crooks are making fake calls, saying they are FBI, DEA, or Secret Service agents. They make a real agency's phone number show up on your screen and use a real agent's name, then push you to move your money to keep it \"safe.\" The FBI says never send money to anyone claiming to be a federal agent. If this happens to you, it's a scam — hang up and call the agency yourself at a number you look up. I've had two customers ask me about calls like this just this week.",
-      "comic": "Newsletter - 2026-10-05-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-05-news1",
-      "type": "tech-note",
-      "date": "2026-10-05",
-      "title": "Sound and look better on video calls — a Logitech webcam with a built-in microphone is about 40 dollars at logitech.com or Amazon",
-      "tag": "Tech Note",
-      "summary": "Buy a Logitech webcam — the C270 is about 40 dollars and the C920 is about 60 — from logitech.com, Amazon, or Walmart. Plug the USB cable into your computer and you're done; there's nothing to install on Windows or a Mac. You get a much sharper picture and a microphone that doesn't echo, so family, doctors, and work calls can actually see and hear you."
-    },
-    {
-      "id": "t-2026-10-05-tip1",
-      "type": "tech-note",
-      "date": "2026-10-05",
-      "title": "Type and click without touching the keyboard — Windows Voice Access is built into Windows 11, free at Settings > Accessibility > Speech",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > Accessibility > Speech and turn on Voice access. Then just talk: say \"open my email,\" \"click Save,\" or \"type Dear Mary\" and Windows does it for you. It's built into Windows 11, costs nothing, needs no account, and works even without internet. If your hands ache, your keyboard is acting up, or you'd simply rather talk than type, this turns your computer into a hands-free machine."
     }
   ]
 }
