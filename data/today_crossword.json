@@ -1,169 +1,205 @@
 {
   "title": "Math",
-  "size": 24,
+  "size": 28,
   "grid": [
-    "..........i..p..........",
-    "..........n..o..........",
-    "..........j..l..........",
-    "..........euler.........",
-    "..........c..s..........",
-    ".......b..t.............",
-    "......galois............",
-    ".......s..v.............",
-    ".....k.i.zero...........",
-    "....dense...............",
-    ".....r..................",
-    "..twins....v............",
-    "..o..e.....e............",
-    "normal.f...r............",
-    "..s...curvature.........",
-    ".pi....n...e............",
-    "..o....d...x............",
-    ".integral...............",
-    ".......m................",
-    ".......e................",
-    ".......n................",
-    ".......t................",
-    ".......a................",
-    ".......l................"
+    "............r...............",
+    "............i...............",
+    "............g...............",
+    "............h...............",
+    "............t...............",
+    "............a...............",
+    "..........linearpair.....e..",
+    "............g...o...a....q..",
+    "............l...sqaure...u..",
+    "............e.p.t...e....i..",
+    "..............y.u...a....l..",
+    "..........point.l........a..",
+    ".........o....h.a........t..",
+    "......p..b.c..a.t........e.t",
+    "isoscelestriangle........r.h",
+    "......a..u.r..o..........a.e",
+    "......n..s.c..r.....p....l.o",
+    "...inverse.u..e....perimeter",
+    ".........a.m..a.....n....r.e",
+    "....median.f..n.....t....i.m",
+    ".........g.e..t.....a....a..",
+    ".........l.r..h.....g....n..",
+    ".........e.e..e..r..o....g..",
+    "...........n..octagon....l..",
+    "...........c..r..y.......e..",
+    "..........segment...........",
+    "..............m.............",
+    "............................"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 4,
-        "col": 11,
-        "len": 5,
-        "answer": "euler",
-        "clue": "worked himself blind (last name)"
-      },
-      {
-        "num": 5,
+        "num": 2,
         "row": 7,
-        "col": 7,
-        "len": 6,
-        "answer": "galois",
-        "clue": "last found in a duel space"
+        "col": 11,
+        "len": 10,
+        "answer": "linearpair",
+        "clue": "drawing"
       },
       {
-        "num": 7,
+        "num": 6,
         "row": 9,
-        "col": 10,
-        "len": 4,
-        "answer": "zero",
-        "clue": "an integer with infinitely many divisors"
+        "col": 17,
+        "len": 6,
+        "answer": "sqaure",
+        "clue": "this shape can be a rectangle but a rectangle can not be it"
       },
       {
         "num": 8,
-        "row": 10,
-        "col": 5,
-        "len": 5,
-        "answer": "dense",
-        "clue": "closure is everything"
-      },
-      {
-        "num": 9,
         "row": 12,
-        "col": 3,
+        "col": 11,
         "len": 5,
-        "answer": "twins",
-        "clue": "17 and 19, 29 and 31"
-      },
-      {
-        "num": 11,
-        "row": 14,
-        "col": 1,
-        "len": 6,
-        "answer": "normal",
-        "clue": "commutes with its conjugate, or contains all conjugates, or invariant under conjugation, or ..."
+        "answer": "point",
+        "clue": "dot drawing"
       },
       {
         "num": 13,
         "row": 15,
-        "col": 7,
-        "len": 9,
-        "answer": "curvature",
-        "clue": "Gauss's Theorema Egregium says something about this"
-      },
-      {
-        "num": 14,
-        "row": 16,
-        "col": 2,
-        "len": 2,
-        "answer": "pi",
-        "clue": "famously transcendental"
+        "col": 1,
+        "len": 17,
+        "answer": "isoscelestriangle",
+        "clue": "triangle drawing 2"
       },
       {
         "num": 15,
         "row": 18,
-        "col": 2,
-        "len": 8,
-        "answer": "integral",
-        "clue": "Riemann vs Lebesgue"
+        "col": 4,
+        "len": 7,
+        "answer": "inverse",
+        "clue": "opposite of another operation"
+      },
+      {
+        "num": 16,
+        "row": 18,
+        "col": 20,
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "all sides totaled together"
+      },
+      {
+        "num": 17,
+        "row": 20,
+        "col": 5,
+        "len": 6,
+        "answer": "median",
+        "clue": "middle number in a set of numbers"
+      },
+      {
+        "num": 19,
+        "row": 24,
+        "col": 15,
+        "len": 7,
+        "answer": "octagon",
+        "clue": "8 sided shape"
+      },
+      {
+        "num": 20,
+        "row": 26,
+        "col": 11,
+        "len": 7,
+        "answer": "segment",
+        "clue": "AC line"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 11,
-        "len": 9,
-        "answer": "injective",
-        "clue": "different before, different after"
+        "col": 13,
+        "len": 10,
+        "answer": "rightangle",
+        "clue": "90 degrees"
       },
       {
-        "num": 2,
-        "row": 1,
-        "col": 14,
-        "len": 5,
-        "answer": "poles",
-        "clue": "f(z)=z^n has n of these at infinity"
+        "num": 3,
+        "row": 7,
+        "col": 17,
+        "len": 9,
+        "answer": "postulate",
+        "clue": "basic structure in which theories are made"
       },
       {
         "num": 4,
-        "row": 6,
-        "col": 8,
-        "len": 5,
-        "answer": "basis",
-        "clue": "every vector space has one, given the choice"
+        "row": 7,
+        "col": 26,
+        "len": 19,
+        "answer": "equilateraltriangle",
+        "clue": "drawing"
       },
       {
-        "num": 6,
-        "row": 9,
-        "col": 6,
-        "len": 6,
-        "answer": "kernel",
-        "clue": "\"a ___ of truth\", in a vector space"
+        "num": 5,
+        "row": 8,
+        "col": 21,
+        "len": 4,
+        "answer": "area",
+        "clue": "base times height is sued to find what"
+      },
+      {
+        "num": 7,
+        "row": 10,
+        "col": 15,
+        "len": 18,
+        "answer": "pythagoreantheorem",
+        "clue": "a square plus b square equals c"
       },
       {
         "num": 9,
-        "row": 12,
-        "col": 3,
-        "len": 7,
-        "answer": "torsion",
-        "clue": "finiteness in a group"
+        "row": 13,
+        "col": 10,
+        "len": 11,
+        "answer": "obtuseangle",
+        "clue": "any angle over 90 degrees"
       },
       {
         "num": 10,
-        "row": 12,
+        "row": 14,
+        "col": 7,
+        "len": 5,
+        "answer": "plane",
+        "clue": "two dimensional surface that extends infinitely"
+      },
+      {
+        "num": 11,
+        "row": 14,
         "col": 12,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "a (nonempty) graph has at least one"
+        "len": 13,
+        "answer": "circumference",
+        "clue": "2pir is used to find what"
       },
       {
         "num": 12,
         "row": 14,
-        "col": 8,
-        "len": 11,
-        "answer": "fundamental",
-        "clue": "this group counts holes, sort of"
+        "col": 28,
+        "len": 7,
+        "answer": "theorem",
+        "clue": "all right triangles equal 90 degrees"
+      },
+      {
+        "num": 14,
+        "row": 17,
+        "col": 21,
+        "len": 8,
+        "answer": "pentagon",
+        "clue": "drawing"
+      },
+      {
+        "num": 18,
+        "row": 23,
+        "col": 18,
+        "len": 3,
+        "answer": "ray",
+        "clue": "dot with line drawing"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9633",
-  "slug": "math-9633",
-  "fetched_at": "2026-07-14T19:23:02.203913+00:00",
-  "date": "2026-10-09"
+  "source_url": "https://crosswordlabs.com/view/math-9642",
+  "slug": "math-9642",
+  "fetched_at": "2026-07-14T19:20:25.547727+00:00",
+  "date": "2026-10-10"
 }
