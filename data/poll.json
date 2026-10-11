@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-10-04",
-    "question": "Which upgrade would help you most?",
+    "weekOf": "2026-10-11",
+    "question": "Windows, Mac, or both?",
     "options": [
       {
-        "id": "ssd",
-        "label": "Faster SSD"
+        "id": "win",
+        "label": "Windows"
       },
       {
-        "id": "ram",
-        "label": "More RAM"
+        "id": "mac",
+        "label": "Mac"
       },
       {
-        "id": "net",
-        "label": "Better Wi-Fi"
+        "id": "both",
+        "label": "Both"
       },
       {
-        "id": "clean",
-        "label": "A good cleanup"
+        "id": "chrome",
+        "label": "Chromebook"
       }
     ]
   }

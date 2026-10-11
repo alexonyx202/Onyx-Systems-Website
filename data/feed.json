@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-11-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-11",
+      "title": "Fake Virus Popup Scam",
+      "tag": "Daily Brief",
+      "excerpt": "That \"Virus Detected\" Popup Is a Total Fake.\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It's a lie.\n\nWhat to do: Close the browser tab. If it won't close, hold your power button for…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-11-composite.jpg",
+      "comic": "assets/img/news/2026-10-11-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-09-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-09",
@@ -166,26 +183,24 @@
       "image": "assets/img/news/2026-10-06-composite.jpg",
       "comic": "assets/img/news/2026-10-06-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-05-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-05",
-      "title": "Fake FBI Agents Are Calling — Hang Up and Check",
-      "tag": "Daily Brief",
-      "excerpt": "Crooks are making fake calls, saying they are FBI, DEA, or Secret Service agents. They make a real agency's phone number show up on your screen and use a real agent's name, then push you to move your money to keep it \"safe.\" The FBI says never send money to anyone claiming to be a federal agent. If this happens to you, it's a scam — hang up and call the agency yourself at a number you look up. I've had two customers ask me about calls like this just this week.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-05-composite.jpg",
-      "comic": "assets/img/news/2026-10-05-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-11-post-1",
+      "type": "news",
+      "date": "2026-10-11",
+      "title": "Fake hurricane charity scams targeting Floridians — report free at ReportFraud.ftc.gov",
+      "tag": "Tech Note",
+      "summary": "CISA and the FTC warn: scammers pose as hurricane charities after every storm. Never donate via gift card, crypto, or wire transfer. Verify charities at Give.org or CharityNavigator.org, and report scams free at ReportFraud.ftc.gov.\n\n#DailyBrief #OnyxSystems #LakeCityFL #ComputerRepair",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-10-09-post-1",
       "type": "news",
@@ -243,13 +258,13 @@
       ]
     },
     {
-      "id": "onyx-2026-10-05-post-1",
-      "type": "news",
-      "date": "2026-10-05",
-      "title": "Sound and look better on video calls — a Logitech webcam with a built-in microphone is about 40 dollars at logitech.com or Amazon",
-      "tag": "Tech Note",
-      "summary": "Buy a Logitech webcam — the C270 is about 40 dollars and the C920 is about 60 — from logitech.com, Amazon, or Walmart. Plug the USB cable into your computer and you're done; there's nothing to install on Windows or a Mac. You get a much sharper picture and a microphone that doesn't echo, so family, doctors, and work calls can actually see and hear you.",
-      "truth": "Most people don't realize the camera built into a laptop was the cheapest part the maker could buy. That's why you look dim, grainy, and washed out while the person you're talking to looks fine — they have a better camera, not a better face. The honest answer is that a 40-dollar webcam is one of the biggest quality-of-life upgrades a home computer can get, and it plugs into a USB port in five seconds.\n\nI see this all the time: a customer apologizes for \"looking bad\" on every video call. It's never them. It's the camera.",
+      "id": "onyx-2026-10-11-post-2",
+      "type": "tip",
+      "date": "2026-10-11",
+      "title": "Firefox 157.0.1 warns when something is reading your encrypted traffic — free update at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted web traffic. Update free at firefox.com or use the built-in updater (Menu → Help → About Firefox).",
+      "truth": "Most people have no idea their \"secure\" banking session can be read by something else on their computer. I see this all the time — antivirus, parental controls, or malware quietly decrypting HTTPS. Firefox is the only browser that tells you straight up.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -311,23 +326,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-10-05-post-2",
-      "type": "tip",
-      "date": "2026-10-05",
-      "title": "Type and click without touching the keyboard — Windows Voice Access is built into Windows 11, free at Settings > Accessibility > Speech",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > Accessibility > Speech and turn on Voice access. Then just talk: say \"open my email,\" \"click Save,\" or \"type Dear Mary\" and Windows does it for you. It's built into Windows 11, costs nothing, needs no account, and works even without internet. If your hands ache, your keyboard is acting up, or you'd simply rather talk than type, this turns your computer into a hands-free machine.",
-      "truth": "Most people don't realize Windows already has a full voice-control feature — they picture expensive software or a subscription, so they never look. It's sitting right there in Settings. It won't read your mind, and you do have to speak a little clearly, but for anyone whose hands hurt or who types slowly, it's the difference between fighting the computer and just using it.\n\nI see this all the time: someone with arthritis or a recovering wrist injury, quietly struggling every day. Two minutes in Settings changes their whole afternoon.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-09",
+  "updated": "2026-10-11",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
