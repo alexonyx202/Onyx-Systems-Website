@@ -1,6 +1,56 @@
 {
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "items": [
+    {
+      "id": "n-2026-10-12",
+      "type": "newsletter",
+      "date": "2026-10-12",
+      "title": "Fake Ransomware Recovery Service Charges Victims Twice — DoJ Charges Florida Firm",
+      "tag": "Daily Brief",
+      "summary": "A Florida \"ransomware recovery\" company just got charged by the Department of Justice for taking victims' money, paying the hackers a fraction of it, and keeping the rest. MonsterCloud told people it had \"proprietary tools\" to decrypt files — but court documents say they had no s",
+      "comic": "Newsletter - 2026-10-12-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-12-post-1",
+      "type": "tech-note",
+      "date": "2026-10-12",
+      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now at zammad.org",
+      "tag": "Tech Note",
+      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch."
+    },
+    {
+      "id": "t-2026-10-12-post-2",
+      "type": "tech-note",
+      "date": "2026-10-12",
+      "title": "Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
+      "tag": "Tech Note",
+      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked."
+    },
+    {
+      "id": "t-2026-10-12-post-3",
+      "type": "tech-note",
+      "date": "2026-10-12",
+      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
+      "tag": "Tech Note",
+      "summary": "Sign up for free outage alerts at clayelectric.com or text OUT to 855-939-3840. Get real-time text/email alerts the moment power goes out at your address. The MyClayElectric app also shows a live outage map."
+    },
+    {
+      "id": "t-2026-10-12-post-4",
+      "type": "tech-note",
+      "date": "2026-10-12",
+      "title": "Windows 11 24H2 loses security updates October 13 — check your version at Settings > System > About and upgrade free",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > About > check Windows version. If you're on 24H2 Home/Pro, go to Settings > Windows Update and upgrade to 25H2. Free, automatic, keeps you protected. Deadline is tomorrow, October 13."
+    },
+    {
+      "id": "t-2026-10-12-post-5",
+      "type": "tech-note",
+      "date": "2026-10-12",
+      "title": "Windows 11 Storage Sense automatically frees 5-50 GB monthly — turn it on in Settings > System > Storage",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > Storage > turn on Storage Sense. Windows automatically deletes temp files, empties Recycle Bin, and cleans Downloads folder on a schedule you set. Free, built-in, no download needed. Runs when disk space is low or daily/weekly/monthly."
+    },
     {
       "id": "n-2026-10-11",
       "type": "newsletter",
@@ -52,58 +102,6 @@
       "title": "Speed up a sluggish Windows PC for free with Microsoft PC Manager — Microsoft's own one-click cleaner, at pcmanager.microsoft.com",
       "tag": "Tech Tip",
       "summary": "Download Microsoft PC Manager free from pcmanager.microsoft.com or from the Microsoft Store (search \"Microsoft PC Manager\"). Open it and click Cleanup — it sweeps out junk files, shows you which programs are slowing your startup, and runs Microsoft's own virus scan, all from one window. No subscription, no account needed, and no pop-up ads after every click."
-    },
-    {
-      "id": "n-2026-10-08",
-      "type": "newsletter",
-      "date": "2026-10-08",
-      "title": "A Big Online Store Got Hacked — Change That Password",
-      "tag": "Daily Brief",
-      "summary": "A hacker broke into ASOS, the big online clothing store, and walked off with customer information. The company confirmed the break-in this week after shoppers started seeing strange messages. If you have an ASOS account, change that password today — and never reuse it anywhere else. Crooks who steal one password try it on your email and your bank next. I've had customers lose an account for exactly this reason. Two minutes now saves a world of grief.",
-      "comic": "Newsletter - 2026-10-08-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-08-news1",
-      "type": "tech-note",
-      "date": "2026-10-08",
-      "title": "Need to split or combine a PDF? Firefox's free built-in PDF editor does it at firefox.com — no Adobe needed",
-      "tag": "Tech Note",
-      "summary": "Update Firefox free at firefox.com (or click Menu → Help → About to get the newest version). Open any PDF in Firefox, click the little page-thumbnail icon in the top-left corner, and you get a toolbar that can split, merge, reorder, rotate, and add pages. Then save it. You never upload the file to a website and you never pay a subscription — it all happens on your own computer."
-    },
-    {
-      "id": "t-2026-10-08-tip1",
-      "type": "tech-note",
-      "date": "2026-10-08",
-      "title": "Stop reusing one password everywhere — Proton Pass is the free password manager that fills in your logins, at proton.me/pass",
-      "tag": "Tech Tip",
-      "summary": "Go to proton.me/pass and create a free account. Proton Pass remembers every password, makes up strong new ones for you, and fills them in automatically on your computer. The free plan has no limit on how many passwords you can store, and you only have to remember the one that unlocks the app."
-    },
-    {
-      "id": "n-2026-10-07",
-      "type": "newsletter",
-      "date": "2026-10-07",
-      "title": "That 'I'm Not a Robot' Box Is a Trick",
-      "tag": "Daily Brief",
-      "summary": "Fake \"I'm not a robot\" boxes are showing up in search results and on random websites. They look harmless, but they tell you to press a few keys and paste something into a little box to prove you're a person. Do that and you've just started a bad program on your computer. Real checks never ask you to press keys or paste anything — so close the tab. I've had two machines come in this month with exactly this. According to a new report, most now arrive straight from search results.",
-      "comic": "Newsletter - 2026-10-07-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-07-news1",
-      "type": "tech-note",
-      "date": "2026-10-07",
-      "title": "Microsoft is turning on a free Windows safety feature called Core isolation this month — check yours at Windows Security > Device security",
-      "tag": "Tech Note",
-      "summary": "Click Start, type Windows Security, and open it. Choose Device security, then click Core isolation details and look at the switch under Core isolation. Microsoft started switching this protection on automatically this month, through the ordinary Windows updates your computer already gets — but not every computer qualifies. If yours is off, turn it on and restart. It is built into Windows, it is free, and there is nothing to buy."
-    },
-    {
-      "id": "t-2026-10-07-tip1",
-      "type": "tech-note",
-      "date": "2026-10-07",
-      "title": "Computer prices are way up this year because of AI — before you buy anything new, run the free Crucial System Scanner at crucial.com",
-      "tag": "Tech Tip",
-      "summary": "Open your browser and go to crucial.com. Click the System Scanner link, download the free tool, and run it. In about two minutes it reads your exact make and model, shows what parts you already have, and tells you the most your computer can hold. No account, no cost, nothing to sign up for. That way you know what you own before you walk into a store or hand over a credit card."
     }
   ]
 }

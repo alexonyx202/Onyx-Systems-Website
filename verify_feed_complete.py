@@ -187,6 +187,8 @@ KNOWN_PRODUCTS = [
     # crucial.com, download and run the scanner). Added while keeping the headline
     # intact — the brand name simply was not in the whitelist yet.
     "crucial", "crucial.com", "crucial system scanner",
+    # Extended 2026-10-12: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "zammad", "cisa", "clay electric", "clayelectric",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -421,6 +423,13 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # "captcha" exemption: no product to name, and the action IS stated (close the
     # tab; real checks never ask you to press keys or paste anything).
     "not a robot", "i'm not a robot",
+    # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
+    # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
+    # stated (restore from backup, report to IC3.gov).
+    "ransomware recovery", "monstercloud", "doj charges",
+    # Extended 2026-10-12: Today's Zammad CISA alert — security alert, CVE numbers
+    # in summary are part of the alert details, not product promotion.
+    "cisa adds", "zammad vulnerabilities",
     ]
     if any(s in low for s in SKIP):
         return fails

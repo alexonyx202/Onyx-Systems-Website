@@ -192,10 +192,12 @@ def parse_newsletter(md_path):
 def parse_tech_notes(md_path):
     md = md_path.read_text(encoding="utf-8")
     posts = []
-    for m in re.finditer(r"^##\s*Post\s+(\d+)\s*(?:[—–-]\s*)?(.*)$", md, re.M):
+    # Match "## Post N:" or "## Post N —" or "## Post N -" or "## Post N" (with optional header label)
+    for m in re.finditer(r"^##\s*Post\s+(\d+)\s*(?:[:—–-]\s*)?(.*)$", md, re.M):
         start = m.end()
-        header_label = m.group(2).strip()  # e.g. "SECURITY", "LOCAL-N-FL"
-        nm = re.search(r"^##\s*Post\s+\d+\s*(?:[—–-]\s*)?.*$", md[start:], re.M)
+        header_label = m.group(2).strip()  # e.g. "DAILY BRIEF SUMMARY", "SECURITY", "LOCAL-N-FL"
+        # Find next "## Post N" to delimit this post's body
+        nm = re.search(r"^##\s*Post\s+\d+\s*(?:[:—–-]\s*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
         # The headline is the text between "### Headline" and the next "###".
@@ -213,6 +215,13 @@ def parse_tech_notes(md_path):
         })
     return posts
 
+
+def _truncate(text: str, max_len: int = 500) -> str:
+    """Truncate text to max_len, preserving word boundaries."""
+    if len(text) <= max_len:
+        return text
+    truncated = text[:max_len].rsplit(' ', 1)[0]
+    return truncated + "…"
 
 def build_entries(date_iso):
     nl_md = resolve_newsletter(date_iso)
@@ -232,7 +241,7 @@ def build_entries(date_iso):
         "date": date_iso,
         "title": nl["title"] or f"Daily Computer Brief — {date_iso}",
         "tag": "Daily Brief",
-        "excerpt": nl["alert"],
+        "excerpt": _truncate(nl["alert"]),
         "tags": BASE_TAGS + ["#DailyBrief"],
         "image": f"assets/img/news/{date_iso}-composite.jpg",
         "comic": f"assets/img/news/{date_iso}-comic-square.jpg",

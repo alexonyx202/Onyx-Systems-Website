@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-12-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-12",
+      "title": "Fake Ransomware Recovery Service Charges Victims Twice — DoJ Charges Florida Firm",
+      "tag": "Daily Brief",
+      "excerpt": "A Florida \"ransomware recovery\" company just got charged by the Department of Justice for taking victims' money, paying the hackers a fraction of it, and keeping the rest. MonsterCloud told people it had \"proprietary tools\" to decrypt files — but court documents say they had no such technology. One client paid $150,000; the hackers got $8,200. The owner pocketed the difference.\n\nThe rule: nobody can magically unlock ransomware without the key. If a company claims they can, they're either lying or paying the criminals themselves. Real recovery means restoring from a clean backup.\n\nWhat to do: if ransomware hits, don't panic-call a recovery firm. Disconnect the computer, call a local tech you trust, and restore from backup. Report it to IC...",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-12-composite.jpg",
+      "comic": "assets/img/news/2026-10-12-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-11-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-11",
@@ -186,6 +203,88 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-12-post-1",
+      "type": "news",
+      "date": "2026-10-12",
+      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now at zammad.org",
+      "tag": "Tech Note",
+      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-10-12-post-2",
+      "type": "news",
+      "date": "2026-10-12",
+      "title": "Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
+      "tag": "Tech Note",
+      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked.",
+      "truth": "Most people pay for antivirus that nags them daily, but the best ransomware protection is already sitting in Windows Security — turned off by default. I turn this on for every customer during a tune-up. It's the first thing I check.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#RansomwareProtection",
+        "#Windows11"
+      ]
+    },
+    {
+      "id": "onyx-2026-10-12-post-3",
+      "type": "news",
+      "date": "2026-10-12",
+      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
+      "tag": "Tech Note",
+      "summary": "Sign up for free outage alerts at clayelectric.com or text OUT to 855-939-3840. Get real-time text/email alerts the moment power goes out at your address. The MyClayElectric app also shows a live outage map.",
+      "truth": "Around here, the power flickers and everyone wonders \"is it just me?\" Clay Electric's texts answer that instantly. I've had customers drive in thinking their computer died, when really the whole block was dark. This saves you a trip.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ClayElectric",
+        "#StormPrep",
+        "#NorthFlorida"
+      ]
+    },
+    {
+      "id": "onyx-2026-10-12-post-4",
+      "type": "tip",
+      "date": "2026-10-12",
+      "title": "Windows 11 24H2 loses security updates October 13 — check your version at Settings > System > About and upgrade free",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > About > check Windows version. If you're on 24H2 Home/Pro, go to Settings > Windows Update and upgrade to 25H2. Free, automatic, keeps you protected. Deadline is tomorrow, October 13.",
+      "truth": "I see computers every week that haven't updated in months. The owner has no idea they're exposed. This deadline isn't optional — after October 13, no more security patches for 24H2 Home and Pro. That means zero-day exploits go unpatched.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#SecurityUpdates",
+        "#24H2"
+      ]
+    },
+    {
+      "id": "onyx-2026-10-12-post-5",
+      "type": "tip",
+      "date": "2026-10-12",
+      "title": "Windows 11 Storage Sense automatically frees 5-50 GB monthly — turn it on in Settings > System > Storage",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > System > Storage > turn on Storage Sense. Windows automatically deletes temp files, empties Recycle Bin, and cleans Downloads folder on a schedule you set. Free, built-in, no download needed. Runs when disk space is low or daily/weekly/monthly.",
+      "truth": "\"My computer is full\" is one of the top calls I get. Half the time it's gigabytes of temp files and old Downloads nobody needs. Storage Sense handles it quietly in the background. I enable it on every machine that comes through the shop.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#StorageSense",
+        "#Windows11",
+        "#FreeTools"
+      ]
+    },
     {
       "id": "onyx-2026-10-11-post-1",
       "type": "news",
@@ -328,335 +427,354 @@
       ]
     }
   ],
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "today_word": {
-    "word": "Driver",
-    "pos": "noun",
-    "definition": "A small program that lets the operating system talk to a piece of hardware like a printer or GPU.",
-    "example": "A missing driver left the webcam dark.",
-    "date": "2026-08-09"
+    "word": "Virtual",
+    "pos": "adjective",
+    "definition": "Simulated in software rather than physical — like a machine that isn't really a box.",
+    "example": "The virtual server boots in seconds, no hardware needed.",
+    "date": "2026-10-12"
   },
   "today_crossword": {
-    "title": "40 Handshapes Vocab",
-    "size": 25,
+    "title": "Math",
+    "size": 28,
     "grid": [
-      "................math.....",
-      "..................o......",
-      "..................m.s....",
-      "..............e.s.o.u..c.",
-      "..............m.q.r.n..a.",
-      "......b.o.g...e.u.r.r..n.",
-      ".....either.c.r.ironic.d.",
-      "......g.i.e.a.g.r.w.s..l.",
-      "........sweetheart.tease.",
-      ".....m..e.n...n.e........",
-      "....nephew....c.l........",
-      ".....a....candy..........",
-      ".....train...............",
-      ".......w.................",
-      "...c.b.k...p.............",
-      ".p.u.o.w...a.............",
-      "yesterday..p.............",
-      ".r.e.i.r...e.............",
-      ".f...n.department........",
-      ".e...g.........e.........",
-      ".c.............w.........",
-      ".t.......library.........",
-      "...............o.........",
-      "..............brown......",
-      "...............k........."
+      "................e...........",
+      "........i.......x...........",
+      "........m.......p.....set...",
+      "........p.......e.....t.....",
+      "........o.......r.....a.....",
+      ".....e..s......distinct.....",
+      ".....l..s....d..m.....i....c",
+      ".....e..independent.p.s....h",
+      ".....m..b....p..n...e.t..p.o",
+      ".....exclusive..t...r.i..r.o",
+      ".....n..e....n......m.c..o.s",
+      ".....t.....f.distinguishable",
+      "........i..l.e......t....a..",
+      "...combination......a....b..",
+      "........t..p.t..event..i.i..",
+      ".decrease...........i..null.",
+      "...o....roll.....union.c.i..",
+      "...m....s...........n..r.t..",
+      ".c.m.sure...o..........e.y..",
+      ".i.o....chance.........a....",
+      ".random.t...c..........s....",
+      ".c..r...i...u..........e....",
+      "mutual..o...r...............",
+      ".l..w...n...................",
+      ".a..........................",
+      ".r..........................",
+      "............................",
+      "............................"
     ],
     "clues": {
       "across": [
         {
-          "num": 1,
-          "row": 1,
-          "col": 17,
-          "len": 4,
-          "answer": "math",
-          "clue": "math"
+          "num": 3,
+          "row": 3,
+          "col": 23,
+          "len": 3,
+          "answer": "set",
+          "clue": "Any collection of objects"
         },
         {
-          "num": 10,
-          "row": 7,
+          "num": 5,
+          "row": 6,
+          "col": 16,
+          "len": 8,
+          "answer": "distinct",
+          "clue": "Different in nature from something else"
+        },
+        {
+          "num": 8,
+          "row": 8,
+          "col": 9,
+          "len": 11,
+          "answer": "independent",
+          "clue": "Not affected by the outcome of the other event."
+        },
+        {
+          "num": 11,
+          "row": 10,
           "col": 6,
-          "len": 6,
-          "answer": "either",
-          "clue": "either"
-        },
-        {
-          "num": 12,
-          "row": 7,
-          "col": 17,
-          "len": 6,
-          "answer": "ironic",
-          "clue": "ironic"
+          "len": 9,
+          "answer": "exclusive",
+          "clue": "Restricted or limited to the person, group, or area concerned"
         },
         {
           "num": 13,
-          "row": 9,
-          "col": 9,
-          "len": 10,
-          "answer": "sweetheart",
-          "clue": "sweetheart"
+          "row": 12,
+          "col": 14,
+          "len": 15,
+          "answer": "distinguishable",
+          "clue": "Permutations that can be distinguished from one another"
         },
         {
-          "num": 14,
-          "row": 9,
-          "col": 20,
-          "len": 5,
-          "answer": "tease",
-          "clue": "tease"
+          "num": 15,
+          "row": 14,
+          "col": 4,
+          "len": 11,
+          "answer": "combination",
+          "clue": "Where the order of the selection does not matter"
         },
         {
           "num": 16,
-          "row": 11,
-          "col": 5,
-          "len": 6,
-          "answer": "nephew",
-          "clue": "nephew"
-        },
-        {
-          "num": 17,
-          "row": 12,
-          "col": 11,
+          "row": 15,
+          "col": 17,
           "len": 5,
-          "answer": "candy",
-          "clue": "candy"
+          "answer": "event",
+          "clue": "A set of possible outcomes"
         },
         {
           "num": 18,
-          "row": 13,
-          "col": 6,
+          "row": 16,
+          "col": 2,
+          "len": 8,
+          "answer": "decrease",
+          "clue": "Become smaller or fewer"
+        },
+        {
+          "num": 20,
+          "row": 16,
+          "col": 24,
+          "len": 4,
+          "answer": "null",
+          "clue": "Zero, or having zero things"
+        },
+        {
+          "num": 21,
+          "row": 17,
+          "col": 9,
+          "len": 4,
+          "answer": "roll",
+          "clue": "Turning over and over on an axis"
+        },
+        {
+          "num": 22,
+          "row": 17,
+          "col": 18,
           "len": 5,
-          "answer": "train",
-          "clue": "train"
+          "answer": "union",
+          "clue": "Is a set of elements made from all the elements in two sets"
         },
         {
           "num": 24,
-          "row": 17,
-          "col": 1,
-          "len": 9,
-          "answer": "yesterday",
-          "clue": "yesterday"
+          "row": 19,
+          "col": 6,
+          "len": 4,
+          "answer": "sure",
+          "clue": "Certainly"
         },
         {
-          "num": 25,
-          "row": 19,
-          "col": 8,
-          "len": 10,
-          "answer": "department",
-          "clue": "department"
+          "num": 26,
+          "row": 20,
+          "col": 9,
+          "len": 6,
+          "answer": "chance",
+          "clue": "The possibility of something happening"
         },
         {
           "num": 27,
-          "row": 22,
-          "col": 10,
-          "len": 7,
-          "answer": "library",
-          "clue": "library"
+          "row": 21,
+          "col": 2,
+          "len": 6,
+          "answer": "random",
+          "clue": "Chosen without method"
         },
         {
-          "num": 28,
-          "row": 24,
-          "col": 15,
-          "len": 5,
-          "answer": "brown",
-          "clue": "brown"
+          "num": 29,
+          "row": 23,
+          "col": 1,
+          "len": 6,
+          "answer": "mutual",
+          "clue": "Held in common by two or more parties"
         }
       ],
       "down": [
         {
-          "num": 2,
+          "num": 1,
           "row": 1,
-          "col": 19,
-          "len": 8,
-          "answer": "tomorrow",
-          "clue": "tomorrow"
+          "col": 17,
+          "len": 10,
+          "answer": "experiment",
+          "clue": "Is an activity that can be infinitely repeated and has a well-defined set of possible outcomes."
+        },
+        {
+          "num": 2,
+          "row": 2,
+          "col": 9,
+          "len": 10,
+          "answer": "impossible",
+          "clue": "Not able to occur, exist, or be done"
         },
         {
           "num": 3,
           "row": 3,
-          "col": 21,
-          "len": 7,
-          "answer": "sunrise",
-          "clue": "sunrise"
+          "col": 23,
+          "len": 10,
+          "answer": "statistics",
+          "clue": "Collecting and analyzing numerical data in large quantities"
         },
         {
           "num": 4,
-          "row": 4,
-          "col": 15,
-          "len": 9,
-          "answer": "emergency",
-          "clue": "emergency"
-        },
-        {
-          "num": 5,
-          "row": 4,
-          "col": 17,
-          "len": 8,
-          "answer": "squirrel",
-          "clue": "squirrel"
+          "row": 6,
+          "col": 6,
+          "len": 7,
+          "answer": "element",
+          "clue": "A part or aspect of something"
         },
         {
           "num": 6,
-          "row": 4,
-          "col": 24,
-          "len": 6,
-          "answer": "candle",
-          "clue": "candle"
+          "row": 7,
+          "col": 14,
+          "len": 9,
+          "answer": "dependent",
+          "clue": "Is affected by the outcome of the other event"
         },
         {
           "num": 7,
-          "row": 6,
-          "col": 7,
-          "len": 3,
-          "answer": "big",
-          "clue": "big"
-        },
-        {
-          "num": 8,
-          "row": 6,
-          "col": 9,
+          "row": 7,
+          "col": 28,
           "len": 6,
-          "answer": "ohisee",
-          "clue": "ohisee"
+          "answer": "choose",
+          "clue": "Pick out or select something as being the best or most appropriate"
         },
         {
           "num": 9,
-          "row": 6,
-          "col": 11,
-          "len": 5,
-          "answer": "green",
-          "clue": "green"
+          "row": 8,
+          "col": 21,
+          "len": 11,
+          "answer": "permutation",
+          "clue": "Where the order of the selection matters"
         },
         {
-          "num": 11,
-          "row": 7,
-          "col": 13,
-          "len": 3,
-          "answer": "cat",
-          "clue": "cat"
+          "num": 10,
+          "row": 9,
+          "col": 26,
+          "len": 11,
+          "answer": "probability",
+          "clue": "How likely an event is to occur"
         },
         {
-          "num": 15,
-          "row": 10,
-          "col": 6,
+          "num": 12,
+          "row": 12,
+          "col": 12,
           "len": 4,
-          "answer": "meat",
-          "clue": "meat"
+          "answer": "flip",
+          "clue": "Turn over"
+        },
+        {
+          "num": 14,
+          "row": 13,
+          "col": 9,
+          "len": 12,
+          "answer": "intersection",
+          "clue": "A set of elements that is in both two sets"
+        },
+        {
+          "num": 17,
+          "row": 15,
+          "col": 24,
+          "len": 8,
+          "answer": "increase",
+          "clue": "Become greater"
         },
         {
           "num": 19,
-          "row": 13,
-          "col": 8,
-          "len": 7,
-          "answer": "awkward",
-          "clue": "awkward"
-        },
-        {
-          "num": 20,
-          "row": 15,
+          "row": 16,
           "col": 4,
-          "len": 4,
-          "answer": "cute",
-          "clue": "cute"
-        },
-        {
-          "num": 21,
-          "row": 15,
-          "col": 6,
           "len": 6,
-          "answer": "boring",
-          "clue": "boring"
-        },
-        {
-          "num": 22,
-          "row": 15,
-          "col": 12,
-          "len": 5,
-          "answer": "paper",
-          "clue": "paper"
+          "answer": "common",
+          "clue": "Prevalent"
         },
         {
           "num": 23,
-          "row": 16,
+          "row": 19,
           "col": 2,
-          "len": 7,
-          "answer": "perfect",
-          "clue": "perfect"
+          "len": 8,
+          "answer": "circular",
+          "clue": "The number of ways to arrange n distinct objects along a fixed circle"
         },
         {
-          "num": 26,
+          "num": 25,
           "row": 19,
-          "col": 16,
-          "len": 7,
-          "answer": "newyork",
-          "clue": "newyork"
+          "col": 13,
+          "len": 5,
+          "answer": "occur",
+          "clue": "To happen or to take place"
+        },
+        {
+          "num": 28,
+          "row": 21,
+          "col": 5,
+          "len": 4,
+          "answer": "draw",
+          "clue": "An act of selecting randomly"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/40-handshapes-vocab",
-    "slug": "40-handshapes-vocab",
-    "fetched_at": "2026-07-14T19:12:05.644411+00:00",
-    "date": "2026-08-09"
+    "source_url": "https://crosswordlabs.com/view/math-9688",
+    "slug": "math-9688",
+    "fetched_at": "2026-07-14T19:14:35.448750+00:00",
+    "date": "2026-10-12"
   },
   "today_trivia": {
-    "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
-    "category": "Hardware",
-    "date": "2026-08-09"
+    "q": "What does 'URL' stand for?",
+    "a": "Uniform Resource Locator — the address of a page or file on the web.",
+    "category": "Web",
+    "date": "2026-10-12"
   },
   "today_joke": {
-    "q": "What do you call a fake computer chip?",
-    "a": "A microprocessor impostor.",
-    "date": "2026-08-09"
+    "q": "What's a computer's favorite snack?",
+    "a": "Microchips.",
+    "date": "2026-10-12"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-08-02",
-      "question": "How old is your main computer?",
+      "weekOf": "2026-10-11",
+      "question": "Windows, Mac, or both?",
       "options": [
         {
-          "id": "lt1",
-          "label": "Under 1 year"
+          "id": "win",
+          "label": "Windows"
         },
         {
-          "id": "1to3",
-          "label": "1–3 years"
+          "id": "mac",
+          "label": "Mac"
         },
         {
-          "id": "3to5",
-          "label": "3–5 years"
+          "id": "both",
+          "label": "Both"
         },
         {
-          "id": "gt5",
-          "label": "5+ years"
+          "id": "chrome",
+          "label": "Chromebook"
         }
       ]
     }
   },
   "today_poll": {
     "poll": {
-      "weekOf": "2026-08-09",
-      "question": "What do you mostly use your computer for?",
+      "weekOf": "2026-10-11",
+      "question": "Windows, Mac, or both?",
       "options": [
         {
-          "id": "email",
-          "label": "Email & web"
+          "id": "win",
+          "label": "Windows"
         },
         {
-          "id": "work",
-          "label": "Work / school"
+          "id": "mac",
+          "label": "Mac"
         },
         {
-          "id": "photo",
-          "label": "Photos & videos"
+          "id": "both",
+          "label": "Both"
         },
         {
-          "id": "game",
-          "label": "Gaming"
+          "id": "chrome",
+          "label": "Chromebook"
         }
       ]
     }

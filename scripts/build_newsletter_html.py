@@ -76,10 +76,87 @@ def resolve_md(date_str):
     return None, date_str
 
 
+# Patterns that indicate a PLACEHOLDER/DESCRIPTIVE caption rather than the actual
+# Far Side punchline. The newsletter generator sometimes writes narrative
+# descriptions ("today's comic — a tense scene with a dog") instead of the real
+# caption. We must detect these and treat them as missing so OCR (or omission)
+# is used instead. 2026-10-09: added "today's comic", "scene with", "shows a",
+# "depicts", "features a" — all markers of AI-generated image descriptions,
+# never real Larson captions.
 PLACEHOLDER_CAPTIONS = re.compile(
-    r"(no caption|visual comic|no usable caption|placeholder|couldn.?t (read|extract)|unable to (read|extract))",
+    r"(no caption|visual comic|no usable caption|placeholder|couldn.?t (read|extract)|"
+    r"unable to (read|extract)|today'?s comic|a scene with|shows a|depicts?|features a|"
+    r"a tense scene|a funny scene|a humorous scene|classic larson|far side humor)",
     re.IGNORECASE,
 )
+
+
+def _looks_like_real_farside_caption(text: str) -> bool:
+    """Heuristic: does this look like a REAL Far Side caption (punchline/dialogue)
+    vs a descriptive placeholder?
+
+    Real Far Side captions are typically:
+    - Short punchlines or dialogue ("I seeeeeee you!", "Give up, Sir James...")
+    - Ironic observations ("Vegetarian towns of the Old West")
+    - Speech/thought bubbles content
+
+    They are NOT:
+    - Descriptive narratives ("today's comic shows a dog...")
+    - Meta-commentary ("classic Larson humor that pairs well with...")
+    - Image descriptions ("a tense scene with a dog")
+
+    Returns True if it looks like a real caption, False if it looks like a
+    placeholder/description that should be treated as missing.
+    """
+    if not text or len(text) < 5:
+        return False
+
+    t = text.lower().strip()
+
+    # Explicit placeholder patterns (should have been caught by PLACEHOLDER_CAPTIONS
+    # but this is a second line of defense)
+    if PLACEHOLDER_CAPTIONS.search(t):
+        return False
+
+    # Real captions often have dialogue markers
+    has_quotes = '"' in text or '"' in text or '"' in text
+    has_exclamation = '!' in t
+    has_question = '?' in t
+    has_ellipsis = '...' in t or '\u2026' in t
+
+    # Real captions are typically sentence-like with proper punctuation
+    ends_with_punct = bool(re.search(r'[.!?]$', t.strip()))
+
+    # Count words
+    words = re.findall(r"[a-z']+", t)
+    if len(words) < 2:
+        return False
+
+    # Real captions often have pronouns (I, you, he, she, we, they)
+    has_pronoun = bool(re.search(r'\b(i|you|he|she|we|they|my|your|his|her|our|their)\b', t))
+
+    # Real captions often have verbs
+    has_verb = bool(re.search(r'\b(is|are|was|were|am|do|does|did|can|could|would|should|will|have|has|had|say|said|tell|told|think|thought|know|knew|see|saw|look|looked|get|got|give|gave|take|took|make|made|go|went|come|came|want|wanted|need|needed|like|liked|love|loved|hate|hated)\b', t))
+
+    # Score: real captions typically have dialogue punctuation OR pronouns+verbs
+    # Descriptive placeholders typically have neither
+    dialogue_score = sum([has_quotes, has_exclamation, has_question, has_ellipsis, ends_with_punct])
+    sentence_score = sum([has_pronoun, has_verb, ends_with_punct])
+
+    # Must have at least some dialogue/sentence structure
+    if dialogue_score == 0 and sentence_score < 2:
+        return False
+
+    # Reject if it starts with descriptive phrases
+    descriptive_starts = (
+        "today's comic", "this comic", "the comic", "a scene", "the scene",
+        "a dog", "a cat", "a man", "a woman", "the man", "the woman",
+        "classic", "far side", "gary larson", "larson"
+    )
+    if any(t.startswith(s) for s in descriptive_starts):
+        return False
+
+    return True
 
 
 def extract_comic_caption(md, date_str=None):
@@ -104,10 +181,13 @@ def extract_comic_caption(md, date_str=None):
         m = re.search(r'Far Side comic:\s*"([^"]+)"', md)
         caption = m.group(1).strip() if m else ""
 
-    # Placeholder = missing. Resolve from the actual comic via farside_caption.py,
-    # which (after the 2026-08-09 fix) OCRs the source archive page when the crop
-    # has no caption band — recovering the real caption instead of "no caption".
-    if not caption or PLACEHOLDER_CAPTIONS.search(caption):
+    # Placeholder = missing. This includes:
+    #   - Explicit placeholders ("no caption", "visual comic", etc.)
+    #   - Descriptive narratives ("today's comic — a tense scene with a dog")
+    #   - Any caption that doesn't look like a real Far Side punchline
+    # We treat all these as MISSING and try OCR. If OCR fails, return "" to
+    # omit the caption line entirely — NEVER ship a fabricated/descriptive caption.
+    if not caption or PLACEHOLDER_CAPTIONS.search(caption) or not _looks_like_real_farside_caption(caption):
         caption = ""
         if date_str:
             comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
@@ -128,7 +208,8 @@ def extract_comic_caption(md, date_str=None):
                     pass
         return caption
 
-    # Caption present in markdown: verify it against the actual comic image.
+    # Caption present in markdown AND looks like a real Far Side caption:
+    # verify it against the actual comic image via OCR.
     if date_str:
         comic_img = os.path.join("/home/ai/Documents/Obsidian Vault/Daily", f"farside_{date_str}.jpg")
         if os.path.exists(comic_img):
