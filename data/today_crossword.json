@@ -1,285 +1,287 @@
 {
   "title": "Math",
-  "size": 28,
+  "size": 30,
   "grid": [
-    "................e...........",
-    "........i.......x...........",
-    "........m.......p.....set...",
-    "........p.......e.....t.....",
-    "........o.......r.....a.....",
-    ".....e..s......distinct.....",
-    ".....l..s....d..m.....i....c",
-    ".....e..independent.p.s....h",
-    ".....m..b....p..n...e.t..p.o",
-    ".....exclusive..t...r.i..r.o",
-    ".....n..e....n......m.c..o.s",
-    ".....t.....f.distinguishable",
-    "........i..l.e......t....a..",
-    "...combination......a....b..",
-    "........t..p.t..event..i.i..",
-    ".decrease...........i..null.",
-    "...o....roll.....union.c.i..",
-    "...m....s...........n..r.t..",
-    ".c.m.sure...o..........e.y..",
-    ".i.o....chance.........a....",
-    ".random.t...c..........s....",
-    ".c..r...i...u..........e....",
-    "mutual..o...r...............",
-    ".l..w...n...................",
-    ".a..........................",
-    ".r..........................",
-    "............................",
-    "............................"
+    "..i........................s..",
+    "..n........m............d..t..",
+    "..d...d..p.u.....decrease..a..",
+    "..experiment............p..t.i",
+    "..p...a..r.u......intersection",
+    "..e...w..m.a............n..s.c",
+    "..n......u.l.c........u.d..t.r",
+    "..distinct...o...c.chance..i.e",
+    "..e......a...m...i....i.n..c.a",
+    "random...t...b...r..i.o.t..s.s",
+    "..t......i.e.i...common......e",
+    "........roll.n...u..p.........",
+    ".........n.e.a...l..o.........",
+    "...........m.t...a..s.s.......",
+    "...........e.i...r..s.u..c....",
+    "...........n.o.n....i.r..h....",
+    "........distinguishable..occur",
+    "...............l.e..l..f.o....",
+    "........probability.exclusive.",
+    ".......................i.e..v.",
+    ".......................p....e.",
+    "............................n.",
+    "............................t.",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    ".............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
+        "num": 7,
         "row": 3,
-        "col": 23,
-        "len": 3,
-        "answer": "set",
-        "clue": "Any collection of objects"
-      },
-      {
-        "num": 5,
-        "row": 6,
-        "col": 16,
-        "len": 8,
-        "answer": "distinct",
-        "clue": "Different in nature from something else"
-      },
-      {
-        "num": 8,
-        "row": 8,
-        "col": 9,
-        "len": 11,
-        "answer": "independent",
-        "clue": "Not affected by the outcome of the other event."
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 6,
-        "len": 9,
-        "answer": "exclusive",
-        "clue": "Restricted or limited to the person, group, or area concerned"
-      },
-      {
-        "num": 13,
-        "row": 12,
-        "col": 14,
-        "len": 15,
-        "answer": "distinguishable",
-        "clue": "Permutations that can be distinguished from one another"
-      },
-      {
-        "num": 15,
-        "row": 14,
-        "col": 4,
-        "len": 11,
-        "answer": "combination",
-        "clue": "Where the order of the selection does not matter"
-      },
-      {
-        "num": 16,
-        "row": 15,
-        "col": 17,
-        "len": 5,
-        "answer": "event",
-        "clue": "A set of possible outcomes"
-      },
-      {
-        "num": 18,
-        "row": 16,
-        "col": 2,
+        "col": 18,
         "len": 8,
         "answer": "decrease",
         "clue": "Become smaller or fewer"
       },
       {
-        "num": 20,
-        "row": 16,
-        "col": 24,
-        "len": 4,
-        "answer": "null",
-        "clue": "Zero, or having zero things"
+        "num": 8,
+        "row": 4,
+        "col": 3,
+        "len": 10,
+        "answer": "experiment",
+        "clue": "Is an activity that can be infinitely repeated and has a well-defined set of possible outcomes."
       },
       {
-        "num": 21,
-        "row": 17,
+        "num": 10,
+        "row": 5,
+        "col": 19,
+        "len": 12,
+        "answer": "intersection",
+        "clue": "A set of elements that is in both two sets"
+      },
+      {
+        "num": 13,
+        "row": 8,
+        "col": 3,
+        "len": 8,
+        "answer": "distinct",
+        "clue": "Different in nature from something else"
+      },
+      {
+        "num": 15,
+        "row": 8,
+        "col": 20,
+        "len": 6,
+        "answer": "chance",
+        "clue": "The possibility of something happening"
+      },
+      {
+        "num": 16,
+        "row": 10,
+        "col": 1,
+        "len": 6,
+        "answer": "random",
+        "clue": "Chosen without method"
+      },
+      {
+        "num": 19,
+        "row": 11,
+        "col": 18,
+        "len": 6,
+        "answer": "common",
+        "clue": "Prevalent"
+      },
+      {
+        "num": 20,
+        "row": 12,
         "col": 9,
         "len": 4,
         "answer": "roll",
         "clue": "Turning over and over on an axis"
       },
       {
-        "num": 22,
-        "row": 17,
-        "col": 18,
-        "len": 5,
-        "answer": "union",
-        "clue": "Is a set of elements made from all the elements in two sets"
-      },
-      {
         "num": 24,
-        "row": 19,
-        "col": 6,
-        "len": 4,
-        "answer": "sure",
-        "clue": "Certainly"
+        "row": 17,
+        "col": 9,
+        "len": 15,
+        "answer": "distinguishable",
+        "clue": "Permutations that can be distinguished from one another"
       },
       {
         "num": 26,
-        "row": 20,
-        "col": 9,
-        "len": 6,
-        "answer": "chance",
-        "clue": "The possibility of something happening"
-      },
-      {
-        "num": 27,
-        "row": 21,
-        "col": 2,
-        "len": 6,
-        "answer": "random",
-        "clue": "Chosen without method"
-      },
-      {
-        "num": 29,
-        "row": 23,
-        "col": 1,
-        "len": 6,
-        "answer": "mutual",
-        "clue": "Held in common by two or more parties"
-      }
-    ],
-    "down": [
-      {
-        "num": 1,
-        "row": 1,
-        "col": 17,
-        "len": 10,
-        "answer": "experiment",
-        "clue": "Is an activity that can be infinitely repeated and has a well-defined set of possible outcomes."
-      },
-      {
-        "num": 2,
-        "row": 2,
-        "col": 9,
-        "len": 10,
-        "answer": "impossible",
-        "clue": "Not able to occur, exist, or be done"
-      },
-      {
-        "num": 3,
-        "row": 3,
-        "col": 23,
-        "len": 10,
-        "answer": "statistics",
-        "clue": "Collecting and analyzing numerical data in large quantities"
-      },
-      {
-        "num": 4,
-        "row": 6,
-        "col": 6,
-        "len": 7,
-        "answer": "element",
-        "clue": "A part or aspect of something"
-      },
-      {
-        "num": 6,
-        "row": 7,
-        "col": 14,
-        "len": 9,
-        "answer": "dependent",
-        "clue": "Is affected by the outcome of the other event"
-      },
-      {
-        "num": 7,
-        "row": 7,
-        "col": 28,
-        "len": 6,
-        "answer": "choose",
-        "clue": "Pick out or select something as being the best or most appropriate"
-      },
-      {
-        "num": 9,
-        "row": 8,
-        "col": 21,
-        "len": 11,
-        "answer": "permutation",
-        "clue": "Where the order of the selection matters"
-      },
-      {
-        "num": 10,
-        "row": 9,
+        "row": 17,
         "col": 26,
-        "len": 11,
-        "answer": "probability",
-        "clue": "How likely an event is to occur"
-      },
-      {
-        "num": 12,
-        "row": 12,
-        "col": 12,
-        "len": 4,
-        "answer": "flip",
-        "clue": "Turn over"
-      },
-      {
-        "num": 14,
-        "row": 13,
-        "col": 9,
-        "len": 12,
-        "answer": "intersection",
-        "clue": "A set of elements that is in both two sets"
-      },
-      {
-        "num": 17,
-        "row": 15,
-        "col": 24,
-        "len": 8,
-        "answer": "increase",
-        "clue": "Become greater"
-      },
-      {
-        "num": 19,
-        "row": 16,
-        "col": 4,
-        "len": 6,
-        "answer": "common",
-        "clue": "Prevalent"
-      },
-      {
-        "num": 23,
-        "row": 19,
-        "col": 2,
-        "len": 8,
-        "answer": "circular",
-        "clue": "The number of ways to arrange n distinct objects along a fixed circle"
-      },
-      {
-        "num": 25,
-        "row": 19,
-        "col": 13,
         "len": 5,
         "answer": "occur",
         "clue": "To happen or to take place"
       },
       {
         "num": 28,
-        "row": 21,
-        "col": 5,
+        "row": 19,
+        "col": 9,
+        "len": 11,
+        "answer": "probability",
+        "clue": "How likely an event is to occur"
+      },
+      {
+        "num": 29,
+        "row": 19,
+        "col": 21,
+        "len": 9,
+        "answer": "exclusive",
+        "clue": "Restricted or limited to the person, group, or area concerned"
+      }
+    ],
+    "down": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 3,
+        "len": 11,
+        "answer": "independent",
+        "clue": "Not affected by the outcome of the other event."
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 28,
+        "len": 10,
+        "answer": "statistics",
+        "clue": "Collecting and analyzing numerical data in large quantities"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 12,
+        "len": 6,
+        "answer": "mutual",
+        "clue": "Held in common by two or more parties"
+      },
+      {
+        "num": 4,
+        "row": 2,
+        "col": 25,
+        "len": 9,
+        "answer": "dependent",
+        "clue": "Is affected by the outcome of the other event"
+      },
+      {
+        "num": 5,
+        "row": 3,
+        "col": 7,
         "len": 4,
         "answer": "draw",
         "clue": "An act of selecting randomly"
+      },
+      {
+        "num": 6,
+        "row": 3,
+        "col": 10,
+        "len": 11,
+        "answer": "permutation",
+        "clue": "Where the order of the selection matters"
+      },
+      {
+        "num": 9,
+        "row": 4,
+        "col": 30,
+        "len": 8,
+        "answer": "increase",
+        "clue": "Become greater"
+      },
+      {
+        "num": 11,
+        "row": 7,
+        "col": 14,
+        "len": 11,
+        "answer": "combination",
+        "clue": "Where the order of the selection does not matter"
+      },
+      {
+        "num": 12,
+        "row": 7,
+        "col": 23,
+        "len": 5,
+        "answer": "union",
+        "clue": "Is a set of elements made from all the elements in two sets"
+      },
+      {
+        "num": 14,
+        "row": 8,
+        "col": 18,
+        "len": 8,
+        "answer": "circular",
+        "clue": "The number of ways to arrange n distinct objects along a fixed circle"
+      },
+      {
+        "num": 17,
+        "row": 10,
+        "col": 21,
+        "len": 10,
+        "answer": "impossible",
+        "clue": "Not able to occur, exist, or be done"
+      },
+      {
+        "num": 18,
+        "row": 11,
+        "col": 12,
+        "len": 7,
+        "answer": "element",
+        "clue": "A part or aspect of something"
+      },
+      {
+        "num": 21,
+        "row": 14,
+        "col": 23,
+        "len": 4,
+        "answer": "sure",
+        "clue": "Certainly"
+      },
+      {
+        "num": 22,
+        "row": 15,
+        "col": 26,
+        "len": 6,
+        "answer": "choose",
+        "clue": "Pick out or select something as being the best or most appropriate"
+      },
+      {
+        "num": 23,
+        "row": 16,
+        "col": 16,
+        "len": 4,
+        "answer": "null",
+        "clue": "Zero, or having zero things"
+      },
+      {
+        "num": 25,
+        "row": 17,
+        "col": 18,
+        "len": 3,
+        "answer": "set",
+        "clue": "Any collection of objects"
+      },
+      {
+        "num": 27,
+        "row": 18,
+        "col": 24,
+        "len": 4,
+        "answer": "flip",
+        "clue": "Turn over"
+      },
+      {
+        "num": 30,
+        "row": 19,
+        "col": 29,
+        "len": 5,
+        "answer": "event",
+        "clue": "A set of possible outcomes"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9688",
-  "slug": "math-9688",
-  "fetched_at": "2026-07-14T19:14:35.448750+00:00",
-  "date": "2026-10-12"
+  "source_url": "https://crosswordlabs.com/view/math-9689",
+  "slug": "math-9689",
+  "fetched_at": "2026-07-14T19:18:21.567277+00:00",
+  "date": "2026-10-13"
 }
