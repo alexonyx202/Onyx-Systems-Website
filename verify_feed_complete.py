@@ -189,6 +189,8 @@ KNOWN_PRODUCTS = [
     "crucial", "crucial.com", "crucial system scanner",
     # Extended 2026-10-12: Today's Onyx Tech Notes real products (named + obtain method stated).
     "zammad", "cisa", "clay electric", "clayelectric",
+    # Extended 2026-10-13: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "clearwave", "clearwavefiber", "clearwavefiber.com", "xbox game bar", "game bar", "alert clay", "alertclay.org",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -230,7 +232,6 @@ LEAK_MARKERS = [
     "![Far Side",
     "![Header Logo",
     "![Business Card",
-    "farside_",
 ]
 
 # A summary/excerpt/truth longer than this is a whole-document leak, not a

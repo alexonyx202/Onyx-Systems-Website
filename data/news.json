@@ -1,6 +1,64 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "items": [
+    {
+      "id": "n-2026-10-13",
+      "type": "newsletter",
+      "date": "2026-10-13",
+      "title": "Character.AI Bankruptcy: Watch for Phishing Emails",
+      "tag": "Daily Brief",
+      "summary": "Character.AI — the popular AI chatbot platform — just filed for bankruptcy today. Scammers will jump on this immediately. Expect fake emails claiming to be from \"Character.AI Support\" about account closures, data retrieval, or refunds. They'll include links that steal your login ",
+      "comic": "farside_2026-10-13.jpg",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-13-post-1",
+      "type": "tech-note",
+      "date": "2026-10-13",
+      "title": "Windows has free built-in ransomware protection — turn on Controlled Folder Access in Windows Security",
+      "tag": "Security",
+      "summary": "Windows 10 and 11 include Controlled Folder Access, a free ransomware shield that stops unauthorized programs from encrypting your files. It's off by default. Turn it on: Open Windows Security (press Start and type \"Windows Security\") → Virus & threat protection → Manage ransomware protection → Turn on Controlled Folder Access.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-13-post-2",
+      "type": "tech-note",
+      "date": "2026-10-13",
+      "title": "Clearwave Fiber brings 100% fiber internet to Lake City — check your address at clearwavefiber.com",
+      "tag": "Local",
+      "summary": "Clearwave Fiber now offers 100% fiber internet in Lake City with symmetrical speeds up to 1 Gbps, no contracts, no data caps. Check if your address qualifies: go to clearwavefiber.com/address-search and enter your Lake City address. Plans start at 100 Mbps for $50/month.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-13-post-3",
+      "type": "tech-note",
+      "date": "2026-10-13",
+      "title": "Windows 11 has a free built-in screen recorder — press Win+G to capture anything",
+      "tag": "Software Tip",
+      "summary": "Windows 11 includes the Xbox Game Bar, a free screen recorder that captures any app window with audio. Press the Windows key + G to open it, then click the record button (or press Win+Alt+R). Videos save to Videos\\Captures. No download, no watermark, no time limit.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-13-post-4",
+      "type": "tech-note",
+      "date": "2026-10-13",
+      "title": "Alert Clay sends free emergency texts for hurricanes and evacuations — sign up at alertclay.org",
+      "tag": "Safety",
+      "summary": "Clay County's free Alert Clay system sends emergency texts for hurricanes, evacuations, boil-water notices, and other threats. Sign up at claycountygov.com/community/alert-clay or text your zip code to 888777. You choose text, email, or phone call alerts.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-10-12",
       "type": "newsletter",
@@ -60,48 +118,6 @@
       "summary": "That \"Virus Detected\" Popup Is a Total Fake.\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It's a lie.\n\nWhat to do: Close the browser tab. If it won't close, hold your power button for…",
       "comic": "Newsletter - 2026-10-11-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-11-news1",
-      "type": "tech-note",
-      "date": "2026-10-11",
-      "title": "Fake hurricane charity scams targeting Floridians — report free at ReportFraud.ftc.gov",
-      "tag": "Tech Note",
-      "summary": "CISA and the FTC warn: scammers pose as hurricane charities after every storm. Never donate via gift card, crypto, or wire transfer. Verify charities at Give.org or CharityNavigator.org, and report scams free at ReportFraud.ftc.gov.\n\n#DailyBrief #OnyxSystems #LakeCityFL #ComputerRepair"
-    },
-    {
-      "id": "t-2026-10-11-tip1",
-      "type": "tech-note",
-      "date": "2026-10-11",
-      "title": "Firefox 157.0.1 warns when something is reading your encrypted traffic — free update at firefox.com",
-      "tag": "Tech Tip",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted web traffic. Update free at firefox.com or use the built-in updater (Menu → Help → About Firefox)."
-    },
-    {
-      "id": "n-2026-10-09",
-      "type": "newsletter",
-      "date": "2026-10-09",
-      "title": "Windows Update Triggers a Crash — The October Patch is Here",
-      "tag": "Daily Brief",
-      "summary": "Microsoft confirmed this week that a October 2026 Windows update can cause some programs and games to crash when they play certain sound files. The problem only hits a narrow set of audio paths — not every machine — but if you installed updates in the last 48 hours and noticed sudden crashes, that's likely it. Don't reinstall anything, don't roll back your drivers, and don't call support yet. Microsoft is shipping a fix in the next update, expected within days. The honest answer is that these bugs are real, they're temporary, and the correct move is to wait for the patch rather than chase the problem with a new install.",
-      "comic": "Newsletter - 2026-10-09-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-09-news1",
-      "type": "tech-note",
-      "date": "2026-10-09",
-      "title": "Apple just shipped a new iPhone security update that closes a flaw people were already attacked with — install it free at Settings > General > Software Update",
-      "tag": "Tech Note",
-      "summary": "Pick up your iPhone, open Settings → General → Software Update, and tap Update Now. Apple's newest security update fixes a hole that has already been used in real attacks against real people, not just a theoretical problem. It takes about 10 minutes on Wi-Fi and it's completely free. Do it tonight."
-    },
-    {
-      "id": "t-2026-10-09-tip1",
-      "type": "tech-note",
-      "date": "2026-10-09",
-      "title": "Speed up a sluggish Windows PC for free with Microsoft PC Manager — Microsoft's own one-click cleaner, at pcmanager.microsoft.com",
-      "tag": "Tech Tip",
-      "summary": "Download Microsoft PC Manager free from pcmanager.microsoft.com or from the Microsoft Store (search \"Microsoft PC Manager\"). Open it and click Cleanup — it sweeps out junk files, shows you which programs are slowing your startup, and runs Microsoft's own virus scan, all from one window. No subscription, no account needed, and no pop-up ads after every click."
     }
   ]
 }
