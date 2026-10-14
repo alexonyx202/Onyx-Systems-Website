@@ -1,6 +1,48 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "items": [
+    {
+      "id": "n-2026-10-14",
+      "type": "newsletter",
+      "date": "2026-10-14",
+      "title": "Your Router Could Be Hijacked by a Malicious VPN File",
+      "tag": "Daily Brief",
+      "summary": "ASUS has warned that a malicious VPN configuration file can hijack certain routers. If you import a VPN config from an untrusted source — a download, a forum post, a friend's export — the router can be tricked into running commands that give an attacker full control. The flaw (CV",
+      "comic": "Newsletter - 2026-10-14-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-14-win24h2",
+      "type": "tech-note",
+      "date": "2026-10-14",
+      "title": "Windows 11 24H2 Home and Pro reach end of updates October 13 — upgrade free to stay protected",
+      "tag": "Security",
+      "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates."
+    },
+    {
+      "id": "t-2026-10-14-firefox156",
+      "type": "tech-note",
+      "date": "2026-10-14",
+      "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
+      "tag": "Software",
+      "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox."
+    },
+    {
+      "id": "t-2026-10-14-clayalerts",
+      "type": "tech-note",
+      "date": "2026-10-14",
+      "title": "Clay Electric outage alerts text you when power goes out at your address — free at clayelectric.com",
+      "tag": "Security",
+      "summary": "Clay Electric's free outage alert system sends you a text or email the moment power goes out at your specific address — no more guessing. Sign up free at clayelectric.com/co-op-launches-outage-alert-system."
+    },
+    {
+      "id": "t-2026-10-14-everything",
+      "type": "tech-note",
+      "date": "2026-10-14",
+      "title": "Find any file on your PC instantly — Everything Search by voidtools is free at voidtools.com",
+      "tag": "Tip",
+      "summary": "Windows Search is slow. Everything Search by voidtools indexes your entire drive in seconds and finds files as you type — no waiting. Download free at voidtools.com (get the 64-bit installer for most PCs)."
+    },
     {
       "id": "n-2026-10-13",
       "type": "newsletter",
@@ -76,48 +118,6 @@
       "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now at zammad.org",
       "tag": "Tech Note",
       "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch."
-    },
-    {
-      "id": "t-2026-10-12-post-2",
-      "type": "tech-note",
-      "date": "2026-10-12",
-      "title": "Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
-      "tag": "Tech Note",
-      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked."
-    },
-    {
-      "id": "t-2026-10-12-post-3",
-      "type": "tech-note",
-      "date": "2026-10-12",
-      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
-      "tag": "Tech Note",
-      "summary": "Sign up for free outage alerts at clayelectric.com or text OUT to 855-939-3840. Get real-time text/email alerts the moment power goes out at your address. The MyClayElectric app also shows a live outage map."
-    },
-    {
-      "id": "t-2026-10-12-post-4",
-      "type": "tech-note",
-      "date": "2026-10-12",
-      "title": "Windows 11 24H2 loses security updates October 13 — check your version at Settings > System > About and upgrade free",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > System > About > check Windows version. If you're on 24H2 Home/Pro, go to Settings > Windows Update and upgrade to 25H2. Free, automatic, keeps you protected. Deadline is tomorrow, October 13."
-    },
-    {
-      "id": "t-2026-10-12-post-5",
-      "type": "tech-note",
-      "date": "2026-10-12",
-      "title": "Windows 11 Storage Sense automatically frees 5-50 GB monthly — turn it on in Settings > System > Storage",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > System > Storage > turn on Storage Sense. Windows automatically deletes temp files, empties Recycle Bin, and cleans Downloads folder on a schedule you set. Free, built-in, no download needed. Runs when disk space is low or daily/weekly/monthly."
-    },
-    {
-      "id": "n-2026-10-11",
-      "type": "newsletter",
-      "date": "2026-10-11",
-      "title": "Fake Virus Popup Scam",
-      "tag": "Daily Brief",
-      "summary": "That \"Virus Detected\" Popup Is a Total Fake.\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It's a lie.\n\nWhat to do: Close the browser tab. If it won't close, hold your power button for…",
-      "comic": "Newsletter - 2026-10-11-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }
