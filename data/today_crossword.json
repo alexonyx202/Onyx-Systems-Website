@@ -1,287 +1,204 @@
 {
-  "title": "Math",
-  "size": 30,
+  "title": "math",
+  "size": 27,
   "grid": [
-    "..i........................s..",
-    "..n........m............d..t..",
-    "..d...d..p.u.....decrease..a..",
-    "..experiment............p..t.i",
-    "..p...a..r.u......intersection",
-    "..e...w..m.a............n..s.c",
-    "..n......u.l.c........u.d..t.r",
-    "..distinct...o...c.chance..i.e",
-    "..e......a...m...i....i.n..c.a",
-    "random...t...b...r..i.o.t..s.s",
-    "..t......i.e.i...common......e",
-    "........roll.n...u..p.........",
-    ".........n.e.a...l..o.........",
-    "...........m.t...a..s.s.......",
-    "...........e.i...r..s.u..c....",
-    "...........n.o.n....i.r..h....",
-    "........distinguishable..occur",
-    "...............l.e..l..f.o....",
-    "........probability.exclusive.",
-    ".......................i.e..v.",
-    ".......................p....e.",
-    "............................n.",
-    "............................t.",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    ".............................."
+    ".............y-intercepts..",
+    "....................o...l..",
+    "....................o...o..",
+    "....................r...p..",
+    "....................d...e..",
+    ".........v.q........i......",
+    ".........e.u........n...d..",
+    ".........r.a.h...b.parabola",
+    ".........t.n.i...a..t...m..",
+    ".........e.t.s...s..e...a..",
+    ".........x-intercepts...i..",
+    "...........t.o..........n..",
+    ".......c...a.g.............",
+    ".......o.m.t.r.............",
+    "....categorical............",
+    ".......f.d.v.m.............",
+    ".......f.e.e...............",
+    ".....p.i...................",
+    "...v.o.c...................",
+    "...a.i.i...................",
+    ".m.range.m.................",
+    ".e.i.t.n.e.................",
+    "data...t.d.................",
+    ".n.b.....i.................",
+    "...l.....a.................",
+    "...exponential.............",
+    "..........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 7,
-        "row": 3,
-        "col": 18,
-        "len": 8,
-        "answer": "decrease",
-        "clue": "Become smaller or fewer"
+        "num": 1,
+        "row": 1,
+        "col": 14,
+        "len": 12,
+        "answer": "y-intercepts",
+        "clue": "where the line cross the y axis"
       },
       {
-        "num": 8,
-        "row": 4,
-        "col": 3,
-        "len": 10,
-        "answer": "experiment",
-        "clue": "Is an activity that can be infinitely repeated and has a well-defined set of possible outcomes."
+        "num": 9,
+        "row": 8,
+        "col": 20,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "a symmetrical curve formed from the equation  y = a(x-h)2 + k."
       },
       {
         "num": 10,
-        "row": 5,
-        "col": 19,
+        "row": 11,
+        "col": 10,
         "len": 12,
-        "answer": "intersection",
-        "clue": "A set of elements that is in both two sets"
+        "answer": "x-intercepts",
+        "clue": "where the line crosses the x axis."
       },
       {
         "num": 13,
-        "row": 8,
-        "col": 3,
-        "len": 8,
-        "answer": "distinct",
-        "clue": "Different in nature from something else"
+        "row": 15,
+        "col": 5,
+        "len": 11,
+        "answer": "categorical",
+        "clue": "data that can be organized into different categories."
       },
       {
-        "num": 15,
-        "row": 8,
-        "col": 20,
-        "len": 6,
-        "answer": "chance",
-        "clue": "The possibility of something happening"
-      },
-      {
-        "num": 16,
-        "row": 10,
-        "col": 1,
-        "len": 6,
-        "answer": "random",
-        "clue": "Chosen without method"
+        "num": 17,
+        "row": 21,
+        "col": 4,
+        "len": 5,
+        "answer": "range",
+        "clue": "difference between the lowest and highest values"
       },
       {
         "num": 19,
-        "row": 11,
-        "col": 18,
-        "len": 6,
-        "answer": "common",
-        "clue": "Prevalent"
+        "row": 23,
+        "col": 1,
+        "len": 4,
+        "answer": "data",
+        "clue": "A collection of related measurements."
       },
       {
         "num": 20,
-        "row": 12,
-        "col": 9,
-        "len": 4,
-        "answer": "roll",
-        "clue": "Turning over and over on an axis"
-      },
-      {
-        "num": 24,
-        "row": 17,
-        "col": 9,
-        "len": 15,
-        "answer": "distinguishable",
-        "clue": "Permutations that can be distinguished from one another"
-      },
-      {
-        "num": 26,
-        "row": 17,
-        "col": 26,
-        "len": 5,
-        "answer": "occur",
-        "clue": "To happen or to take place"
-      },
-      {
-        "num": 28,
-        "row": 19,
-        "col": 9,
+        "row": 26,
+        "col": 4,
         "len": 11,
-        "answer": "probability",
-        "clue": "How likely an event is to occur"
-      },
-      {
-        "num": 29,
-        "row": 19,
-        "col": 21,
-        "len": 9,
-        "answer": "exclusive",
-        "clue": "Restricted or limited to the person, group, or area concerned"
+        "answer": "exponential",
+        "clue": "formed from the equation y = abx"
       }
     ],
     "down": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 3,
-        "len": 11,
-        "answer": "independent",
-        "clue": "Not affected by the outcome of the other event."
-      },
-      {
         "num": 2,
         "row": 1,
-        "col": 28,
-        "len": 10,
-        "answer": "statistics",
-        "clue": "Collecting and analyzing numerical data in large quantities"
+        "col": 21,
+        "len": 11,
+        "answer": "coordinates",
+        "clue": "A point on a 2-dimensional plane is described by a pair (x,y)."
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 12,
-        "len": 6,
-        "answer": "mutual",
-        "clue": "Held in common by two or more parties"
+        "row": 1,
+        "col": 25,
+        "len": 5,
+        "answer": "slope",
+        "clue": "y=Mx+B is the formula used for slope."
       },
       {
         "num": 4,
-        "row": 2,
-        "col": 25,
-        "len": 9,
-        "answer": "dependent",
-        "clue": "Is affected by the outcome of the other event"
+        "row": 6,
+        "col": 10,
+        "len": 6,
+        "answer": "vertex",
+        "clue": "the lowest point in any parabola."
       },
       {
         "num": 5,
-        "row": 3,
-        "col": 7,
-        "len": 4,
-        "answer": "draw",
-        "clue": "An act of selecting randomly"
+        "row": 6,
+        "col": 12,
+        "len": 12,
+        "answer": "quantitative",
+        "clue": "data that have units and can be measured are called"
       },
       {
         "num": 6,
-        "row": 3,
-        "col": 10,
-        "len": 11,
-        "answer": "permutation",
-        "clue": "Where the order of the selection matters"
+        "row": 7,
+        "col": 25,
+        "len": 6,
+        "answer": "domain",
+        "clue": "all real numbers if it's not a word problem."
       },
       {
-        "num": 9,
-        "row": 4,
-        "col": 30,
-        "len": 8,
-        "answer": "increase",
-        "clue": "Become greater"
+        "num": 7,
+        "row": 8,
+        "col": 14,
+        "len": 9,
+        "answer": "histogram",
+        "clue": "Rectangles of equal width above a number line, where each rectangles\u2019s height shows the number of data values in that portion of the number line."
+      },
+      {
+        "num": 8,
+        "row": 8,
+        "col": 18,
+        "len": 4,
+        "answer": "base",
+        "clue": "A number that is raised to a power."
       },
       {
         "num": 11,
-        "row": 7,
-        "col": 14,
+        "row": 13,
+        "col": 8,
         "len": 11,
-        "answer": "combination",
-        "clue": "Where the order of the selection does not matter"
+        "answer": "coefficient",
+        "clue": ""
       },
       {
         "num": 12,
-        "row": 7,
-        "col": 23,
-        "len": 5,
-        "answer": "union",
-        "clue": "Is a set of elements made from all the elements in two sets"
+        "row": 14,
+        "col": 10,
+        "len": 4,
+        "answer": "mode",
+        "clue": "the value of the number that appears more often"
       },
       {
         "num": 14,
-        "row": 8,
-        "col": 18,
-        "len": 8,
-        "answer": "circular",
-        "clue": "The number of ways to arrange n distinct objects along a fixed circle"
+        "row": 18,
+        "col": 6,
+        "len": 5,
+        "answer": "point",
+        "clue": "A location in the coordinate plane. A point has coordinates (x,y)"
       },
       {
-        "num": 17,
-        "row": 10,
-        "col": 21,
-        "len": 10,
-        "answer": "impossible",
-        "clue": "Not able to occur, exist, or be done"
+        "num": 15,
+        "row": 19,
+        "col": 4,
+        "len": 8,
+        "answer": "variable",
+        "clue": "is any characteristic, number, or quantity that can be counted or measured"
+      },
+      {
+        "num": 16,
+        "row": 21,
+        "col": 2,
+        "len": 4,
+        "answer": "mean",
+        "clue": "the sum of the elements of a data set divided by the total number of numbers of the set."
       },
       {
         "num": 18,
-        "row": 11,
-        "col": 12,
-        "len": 7,
-        "answer": "element",
-        "clue": "A part or aspect of something"
-      },
-      {
-        "num": 21,
-        "row": 14,
-        "col": 23,
-        "len": 4,
-        "answer": "sure",
-        "clue": "Certainly"
-      },
-      {
-        "num": 22,
-        "row": 15,
-        "col": 26,
+        "row": 21,
+        "col": 10,
         "len": 6,
-        "answer": "choose",
-        "clue": "Pick out or select something as being the best or most appropriate"
-      },
-      {
-        "num": 23,
-        "row": 16,
-        "col": 16,
-        "len": 4,
-        "answer": "null",
-        "clue": "Zero, or having zero things"
-      },
-      {
-        "num": 25,
-        "row": 17,
-        "col": 18,
-        "len": 3,
-        "answer": "set",
-        "clue": "Any collection of objects"
-      },
-      {
-        "num": 27,
-        "row": 18,
-        "col": 24,
-        "len": 4,
-        "answer": "flip",
-        "clue": "Turn over"
-      },
-      {
-        "num": 30,
-        "row": 19,
-        "col": 29,
-        "len": 5,
-        "answer": "event",
-        "clue": "A set of possible outcomes"
+        "answer": "median",
+        "clue": "the middle number"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9689",
-  "slug": "math-9689",
-  "fetched_at": "2026-07-14T19:18:21.567277+00:00",
-  "date": "2026-10-13"
+  "source_url": "https://crosswordlabs.com/view/math-9859",
+  "slug": "math-9859",
+  "fetched_at": "2026-07-14T19:17:09.150870+00:00",
+  "date": "2026-10-14"
 }
