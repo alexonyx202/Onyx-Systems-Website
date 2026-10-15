@@ -1,6 +1,76 @@
 {
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "items": [
+    {
+      "id": "n-2026-10-15",
+      "type": "newsletter",
+      "date": "2026-10-15",
+      "title": "That CAPTCHA Asking You to Press Windows+R Is a Scam",
+      "tag": "Daily Brief",
+      "summary": "A fake CAPTCHA pops up and tells you to press the Windows key + R, paste something, and hit Enter. **Don't do it.** That \"verification\" is a trap — it pastes malicious code into Windows Run and executes it. Real CAPTCHAs never ask for keyboard commands. Ever.",
+      "comic": "Newsletter - 2026-10-15-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-15",
+      "type": "tech-note",
+      "date": "2026-10-15",
+      "title": "CISA warns: These vulnerabilities are being exploited right now — patch your software",
+      "tag": "OnyxSystems",
+      "summary": "CISA added Microsoft SharePoint CVE-2026-65660 and Windows Shell CVE-2026-96951 to its Known Exploited Vulnerabilities catalog this week. Update Windows at Settings > Windows Update. If you run on-premises SharePoint Server 2016, 2019, or Subscription Edition, install the August 2026 security update from the Microsoft Update Catalog.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-15-p2",
+      "type": "tech-note",
+      "date": "2026-10-15",
+      "title": "CISA warns: These vulnerabilities are being exploited right now — patch your software",
+      "tag": "OnyxSystems",
+      "summary": "CISA added Microsoft SharePoint CVE-2026-65660 and Windows Shell CVE-2026-96951 to its Known Exploited Vulnerabilities catalog this week. Update Windows at Settings > Windows Update. If you run on-premises SharePoint Server 2016, 2019, or Subscription Edition, install the August 2026 security update from the Microsoft Update Catalog.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-15-p3",
+      "type": "tech-note",
+      "date": "2026-10-15",
+      "title": "Firefox 157 brings a fresh look and Compact Mode — free update at firefox.com",
+      "tag": "OnyxSystems",
+      "summary": "Firefox 157 adds a modern visual redesign called Nova and a Compact Mode that reduces toolbar and tab spacing to leave more room for web content. Update free at firefox.com or click the menu button (three lines) > Help > About Firefox to install automatically.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-15-p4",
+      "type": "tech-note",
+      "date": "2026-10-15",
+      "title": "Clearwave Fiber expands in Lake City — check if your address qualifies at clearwavefiber.com",
+      "tag": "OnyxSystems",
+      "summary": "Clearwave Fiber is bringing high-speed fiber internet to more Lake City neighborhoods. Check availability for your address free at clearwavefiber.com. Fiber gives you symmetrical upload and download speeds — great for video calls, backups, and working from home.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-15-p5",
+      "type": "tech-note",
+      "date": "2026-10-15",
+      "title": "Stop paying for WinZip — 7-Zip 26.04 is the free file compressor that handles every format at 7-zip.org",
+      "tag": "OnyxSystems",
+      "summary": "7-Zip 26.04 (released October 5, 2026) is free, open-source, and opens every archive format including ZIP, RAR, 7z, TAR, GZIP, and more. It compresses better than WinZip and has no ads, no trial nags, no subscriptions. Download the 64-bit Windows installer free at 7-zip.org.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-10-14",
       "type": "newsletter",
@@ -52,72 +122,6 @@
       "summary": "Character.AI — the popular AI chatbot platform — just filed for bankruptcy today. Scammers will jump on this immediately. Expect fake emails claiming to be from \"Character.AI Support\" about account closures, data retrieval, or refunds. They'll include links that steal your login ",
       "comic": "farside_2026-10-13.jpg",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-13-post-1",
-      "type": "tech-note",
-      "date": "2026-10-13",
-      "title": "Windows has free built-in ransomware protection — turn on Controlled Folder Access in Windows Security",
-      "tag": "Security",
-      "summary": "Windows 10 and 11 include Controlled Folder Access, a free ransomware shield that stops unauthorized programs from encrypting your files. It's off by default. Turn it on: Open Windows Security (press Start and type \"Windows Security\") → Virus & threat protection → Manage ransomware protection → Turn on Controlled Folder Access.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-13-post-2",
-      "type": "tech-note",
-      "date": "2026-10-13",
-      "title": "Clearwave Fiber brings 100% fiber internet to Lake City — check your address at clearwavefiber.com",
-      "tag": "Local",
-      "summary": "Clearwave Fiber now offers 100% fiber internet in Lake City with symmetrical speeds up to 1 Gbps, no contracts, no data caps. Check if your address qualifies: go to clearwavefiber.com/address-search and enter your Lake City address. Plans start at 100 Mbps for $50/month.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-13-post-3",
-      "type": "tech-note",
-      "date": "2026-10-13",
-      "title": "Windows 11 has a free built-in screen recorder — press Win+G to capture anything",
-      "tag": "Software Tip",
-      "summary": "Windows 11 includes the Xbox Game Bar, a free screen recorder that captures any app window with audio. Press the Windows key + G to open it, then click the record button (or press Win+Alt+R). Videos save to Videos\\Captures. No download, no watermark, no time limit.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-13-post-4",
-      "type": "tech-note",
-      "date": "2026-10-13",
-      "title": "Alert Clay sends free emergency texts for hurricanes and evacuations — sign up at alertclay.org",
-      "tag": "Safety",
-      "summary": "Clay County's free Alert Clay system sends emergency texts for hurricanes, evacuations, boil-water notices, and other threats. Sign up at claycountygov.com/community/alert-clay or text your zip code to 888777. You choose text, email, or phone call alerts.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "n-2026-10-12",
-      "type": "newsletter",
-      "date": "2026-10-12",
-      "title": "Fake Ransomware Recovery Service Charges Victims Twice — DoJ Charges Florida Firm",
-      "tag": "Daily Brief",
-      "summary": "A Florida \"ransomware recovery\" company just got charged by the Department of Justice for taking victims' money, paying the hackers a fraction of it, and keeping the rest. MonsterCloud told people it had \"proprietary tools\" to decrypt files — but court documents say they had no s",
-      "comic": "Newsletter - 2026-10-12-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-12-post-1",
-      "type": "tech-note",
-      "date": "2026-10-12",
-      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now at zammad.org",
-      "tag": "Tech Note",
-      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch."
     }
   ]
 }
