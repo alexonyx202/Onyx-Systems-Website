@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "items": [
+    {
+      "id": "n-2026-10-16",
+      "type": "newsletter",
+      "date": "2026-10-16",
+      "title": "Daily Computer Brief — 2026-10-16",
+      "tag": "Daily Brief",
+      "summary": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "comic": "Newsletter - 2026-10-16-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-16-news1",
+      "type": "tech-note",
+      "date": "2026-10-16",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the update free at firefox.com"
+    },
+    {
+      "id": "t-2026-10-16-tip1",
+      "type": "tech-note",
+      "date": "2026-10-16",
+      "title": "Windows 10 Support Ends October 14, 2026 — Free Upgrade to Windows 11 at Settings > Update",
+      "tag": "Tech Tip",
+      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update"
+    },
     {
       "id": "n-2026-10-15",
       "type": "newsletter",
@@ -96,32 +122,6 @@
       "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
       "tag": "Software",
       "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox."
-    },
-    {
-      "id": "t-2026-10-14-clayalerts",
-      "type": "tech-note",
-      "date": "2026-10-14",
-      "title": "Clay Electric outage alerts text you when power goes out at your address — free at clayelectric.com",
-      "tag": "Security",
-      "summary": "Clay Electric's free outage alert system sends you a text or email the moment power goes out at your specific address — no more guessing. Sign up free at clayelectric.com/co-op-launches-outage-alert-system."
-    },
-    {
-      "id": "t-2026-10-14-everything",
-      "type": "tech-note",
-      "date": "2026-10-14",
-      "title": "Find any file on your PC instantly — Everything Search by voidtools is free at voidtools.com",
-      "tag": "Tip",
-      "summary": "Windows Search is slow. Everything Search by voidtools indexes your entire drive in seconds and finds files as you type — no waiting. Download free at voidtools.com (get the 64-bit installer for most PCs)."
-    },
-    {
-      "id": "n-2026-10-13",
-      "type": "newsletter",
-      "date": "2026-10-13",
-      "title": "Character.AI Bankruptcy: Watch for Phishing Emails",
-      "tag": "Daily Brief",
-      "summary": "Character.AI — the popular AI chatbot platform — just filed for bankruptcy today. Scammers will jump on this immediately. Expect fake emails claiming to be from \"Character.AI Support\" about account closures, data retrieval, or refunds. They'll include links that steal your login ",
-      "comic": "farside_2026-10-13.jpg",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }

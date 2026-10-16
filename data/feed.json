@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-16-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-16",
+      "title": "Daily Computer Brief — 2026-10-16",
+      "tag": "Daily Brief",
+      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-16-composite.jpg",
+      "comic": "assets/img/news/2026-10-16-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "n-2026-10-15",
       "type": "newsletter",
       "date": "2026-10-15",
@@ -136,103 +153,24 @@
       "tag": "Software",
       "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox.",
       "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-clayalerts",
-      "type": "tip",
-      "date": "2026-10-14",
-      "title": "Clay Electric outage alerts text you when power goes out at your address — free at clayelectric.com",
-      "tag": "Security",
-      "summary": "Clay Electric's free outage alert system sends you a text or email the moment power goes out at your specific address — no more guessing. Sign up free at clayelectric.com/co-op-launches-outage-alert-system.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-everything",
-      "type": "tip",
-      "date": "2026-10-14",
-      "title": "Find any file on your PC instantly — Everything Search by voidtools is free at voidtools.com",
-      "tag": "Tip",
-      "summary": "Windows Search is slow. Everything Search by voidtools indexes your entire drive in seconds and finds files as you type — no waiting. Download free at voidtools.com (get the 64-bit installer for most PCs).",
-      "truth": ""
-    },
-    {
-      "id": "onyx-2026-10-13-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-13",
-      "title": "CISA warns: actively exploited flaws in FortiMail, Citrix NetScaler, and Check Point — patch now",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added five actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog this week, including FortiMail CVE-2026-104286 and Citrix NetScaler flaws. Federal agencies have until October 11 to patch. Check the CISA KEV catalog at cisa.gov/known-exploited-vulnerabilities-catalog and update any affected software immediately."
-    },
-    {
-      "id": "onyx-2026-10-12-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-12",
-      "title": "Fake Ransomware Recovery Service Charges Victims Twice — DoJ Charges Florida Firm",
-      "tag": "Daily Brief",
-      "excerpt": "A Florida \"ransomware recovery\" company just got charged by the Department of Justice for taking victims' money, paying the hackers a fraction of it, and keeping the rest. MonsterCloud told people it had \"proprietary tools\" to decrypt files — but court documents say they had no such technology. One client paid $150,000; the hackers got $8,200. The owner pocketed the difference.\n\nThe rule: nobody can magically unlock ransomware without the key. If a company claims they can, they're either lying or paying the criminals themselves. Real recovery means restoring from a clean backup.\n\nWhat to do: if ransomware hits, don't panic-call a recovery firm. Disconnect the computer, call a local tech you trust, and restore from backup. Report it to IC...",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-12-composite.jpg",
-      "comic": "assets/img/news/2026-10-12-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-11-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-11",
-      "title": "Fake Virus Popup Scam",
-      "tag": "Daily Brief",
-      "excerpt": "That \"Virus Detected\" Popup Is a Total Fake.\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It's a lie.\n\nWhat to do: Close the browser tab. If it won't close, hold your power button for…",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-11-composite.jpg",
-      "comic": "assets/img/news/2026-10-11-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-09-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-09",
-      "title": "Windows Update Triggers a Crash — The October Patch is Here",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft confirmed this week that a October 2026 Windows update can cause some programs and games to crash when they play certain sound files. The problem only hits a narrow set of audio paths — not every machine — but if you installed updates in the last 48 hours and noticed sudden crashes, that's likely it. Don't reinstall anything, don't roll back your drivers, and don't call support yet. Microsoft is shipping a fix in the next update, expected within days. The honest answer is that these bugs are real, they're temporary, and the correct move is to wait for the patch rather than chase the problem with a new install.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-09-composite.jpg",
-      "comic": "assets/img/news/2026-10-09-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-08-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-08",
-      "title": "A Big Online Store Got Hacked — Change That Password",
-      "tag": "Daily Brief",
-      "excerpt": "A hacker broke into ASOS, the big online clothing store, and walked off with customer information. The company confirmed the break-in this week after shoppers started seeing strange messages. If you have an ASOS account, change that password today — and never reuse it anywhere else. Crooks who steal one password try it on your email and your bank next. I've had customers lose an account for exactly this reason. Two minutes now saves a world of grief.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-08-composite.jpg",
-      "comic": "assets/img/news/2026-10-08-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-16-post-1",
+      "type": "news",
+      "date": "2026-10-16",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the update free at firefox.com",
+      "truth": "This doesn't mean Firefox can't protect you — it means your PC might be compromised in other ways. Most attacks don't come through the browser. They come through the software you installed. I see this every week: someone installs \"free\" software and it quietly installs a monitoring tool. The fix is to uninstall it at Settings > Apps > Installed Apps. Look for anything you don't recognize.\nTags: #Firefox #Security #FreeUpdate #OnyxSystems",
+      "tags": [
+        "#Firefox",
+        "#Security",
+        "#FreeUpdate",
+        "#OnyxSystems"
+      ]
+    },
     {
       "id": "t-2026-10-15",
       "type": "news",
@@ -241,6 +179,48 @@
       "tag": "OnyxSystems",
       "summary": "CISA added Microsoft SharePoint CVE-2026-65660 and Windows Shell CVE-2026-96951 to its Known Exploited Vulnerabilities catalog this week. Update Windows at Settings > Windows Update. If you run on-premises SharePoint Server 2016, 2019, or Subscription Edition, install the August 2026 security update from the Microsoft Update Catalog.",
       "truth": ""
+    },
+    {
+      "id": "t-2026-10-14-win24h2",
+      "type": "news",
+      "date": "2026-10-14",
+      "title": "Windows 11 24H2 Home and Pro reach end of updates October 13 — upgrade free to stay protected",
+      "tag": "Security",
+      "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates.",
+      "truth": ""
+    },
+    {
+      "id": "t-2026-10-14-firefox156",
+      "type": "news",
+      "date": "2026-10-14",
+      "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
+      "tag": "Software",
+      "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox.",
+      "truth": ""
+    },
+    {
+      "id": "onyx-2026-10-13-news-1",
+      "type": "news",
+      "date": "2026-10-13",
+      "title": "Windows has free built-in ransomware protection — turn on Controlled Folder Access in Windows Security",
+      "tag": "Security",
+      "summary": "Windows 10 and 11 include Controlled Folder Access, a free ransomware shield that stops unauthorized programs from encrypting your files. It's off by default. Turn it on: Open Windows Security (press Start and type \"Windows Security\") → Virus & threat protection → Manage ransomware protection → Turn on Controlled Folder Access.",
+      "truth": "I see ransomware aftermath weekly. The ones who had this turned on? Their photos and documents survived. The ones who didn't? They paid or lost everything. This feature is free, built in, and takes 30 seconds."
+    },
+    {
+      "id": "onyx-2026-10-16-post-2",
+      "type": "tip",
+      "date": "2026-10-16",
+      "title": "Windows 10 Support Ends October 14, 2026 — Free Upgrade to Windows 11 at Settings > Update",
+      "tag": "Tech Tip",
+      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update",
+      "truth": "I see people putting this off every week. \"I'll deal with it later.\" The problem is that October 14 isn't a deadline — it's the start of an exposure window. Every day after that, your computer is vulnerable to every new security flaw. The upgrade takes 45 minutes. Do it this weekend.\nTags: #Windows10 #EndOfSupport #Windows11 #OnyxSystems",
+      "tags": [
+        "#Windows10",
+        "#EndOfSupport",
+        "#Windows11",
+        "#OnyxSystems"
+      ]
     },
     {
       "id": "t-2026-10-15-p2",
@@ -277,188 +257,9 @@
       "tag": "OnyxSystems",
       "summary": "7-Zip 26.04 (released October 5, 2026) is free, open-source, and opens every archive format including ZIP, RAR, 7z, TAR, GZIP, and more. It compresses better than WinZip and has no ads, no trial nags, no subscriptions. Download the 64-bit Windows installer free at 7-zip.org.",
       "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-win24h2",
-      "type": "news",
-      "date": "2026-10-14",
-      "title": "Windows 11 24H2 Home and Pro reach end of updates October 13 — upgrade free to stay protected",
-      "tag": "Security",
-      "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-firefox156",
-      "type": "news",
-      "date": "2026-10-14",
-      "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
-      "tag": "Software",
-      "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-clayalerts",
-      "type": "tip",
-      "date": "2026-10-14",
-      "title": "Clay Electric outage alerts text you when power goes out at your address — free at clayelectric.com",
-      "tag": "Security",
-      "summary": "Clay Electric's free outage alert system sends you a text or email the moment power goes out at your specific address — no more guessing. Sign up free at clayelectric.com/co-op-launches-outage-alert-system.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-everything",
-      "type": "tip",
-      "date": "2026-10-14",
-      "title": "Find any file on your PC instantly — Everything Search by voidtools is free at voidtools.com",
-      "tag": "Tip",
-      "summary": "Windows Search is slow. Everything Search by voidtools indexes your entire drive in seconds and finds files as you type — no waiting. Download free at voidtools.com (get the 64-bit installer for most PCs).",
-      "truth": ""
-    },
-    {
-      "id": "onyx-2026-10-13-news-1",
-      "type": "news",
-      "date": "2026-10-13",
-      "title": "Windows has free built-in ransomware protection — turn on Controlled Folder Access in Windows Security",
-      "tag": "Security",
-      "summary": "Windows 10 and 11 include Controlled Folder Access, a free ransomware shield that stops unauthorized programs from encrypting your files. It's off by default. Turn it on: Open Windows Security (press Start and type \"Windows Security\") → Virus & threat protection → Manage ransomware protection → Turn on Controlled Folder Access.",
-      "truth": "I see ransomware aftermath weekly. The ones who had this turned on? Their photos and documents survived. The ones who didn't? They paid or lost everything. This feature is free, built in, and takes 30 seconds."
-    },
-    {
-      "id": "onyx-2026-10-12-post-1",
-      "type": "news",
-      "date": "2026-10-12",
-      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now at zammad.org",
-      "tag": "Tech Note",
-      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch.",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-12-post-2",
-      "type": "news",
-      "date": "2026-10-12",
-      "title": "Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
-      "tag": "Tech Note",
-      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked.",
-      "truth": "Most people pay for antivirus that nags them daily, but the best ransomware protection is already sitting in Windows Security — turned off by default. I turn this on for every customer during a tune-up. It's the first thing I check.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#RansomwareProtection",
-        "#Windows11"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-12-post-3",
-      "type": "news",
-      "date": "2026-10-12",
-      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
-      "tag": "Tech Note",
-      "summary": "Sign up for free outage alerts at clayelectric.com or text OUT to 855-939-3840. Get real-time text/email alerts the moment power goes out at your address. The MyClayElectric app also shows a live outage map.",
-      "truth": "Around here, the power flickers and everyone wonders \"is it just me?\" Clay Electric's texts answer that instantly. I've had customers drive in thinking their computer died, when really the whole block was dark. This saves you a trip.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ClayElectric",
-        "#StormPrep",
-        "#NorthFlorida"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-11-post-1",
-      "type": "news",
-      "date": "2026-10-11",
-      "title": "Fake hurricane charity scams targeting Floridians — report free at ReportFraud.ftc.gov",
-      "tag": "Tech Note",
-      "summary": "CISA and the FTC warn: scammers pose as hurricane charities after every storm. Never donate via gift card, crypto, or wire transfer. Verify charities at Give.org or CharityNavigator.org, and report scams free at ReportFraud.ftc.gov.\n\n#DailyBrief #OnyxSystems #LakeCityFL #ComputerRepair",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-13-tip-1",
-      "type": "tip",
-      "date": "2026-10-13",
-      "title": "Windows 11 has a free built-in screen recorder — press Win+G to capture anything",
-      "tag": "Software Tip",
-      "summary": "Windows 11 includes the Xbox Game Bar, a free screen recorder that captures any app window with audio. Press the Windows key + G to open it, then click the record button (or press Win+Alt+R). Videos save to Videos\\Captures. No download, no watermark, no time limit.",
-      "truth": "Customers ask me for screen recorder recommendations all the time. They're surprised when I show them the one already on their PC. It records tutorials, bug reports, Zoom calls, gameplay — anything in an app window."
-    },
-    {
-      "id": "onyx-2026-10-12-post-4",
-      "type": "tip",
-      "date": "2026-10-12",
-      "title": "Windows 11 24H2 loses security updates October 13 — check your version at Settings > System > About and upgrade free",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > System > About > check Windows version. If you're on 24H2 Home/Pro, go to Settings > Windows Update and upgrade to 25H2. Free, automatic, keeps you protected. Deadline is tomorrow, October 13.",
-      "truth": "I see computers every week that haven't updated in months. The owner has no idea they're exposed. This deadline isn't optional — after October 13, no more security patches for 24H2 Home and Pro. That means zero-day exploits go unpatched.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#SecurityUpdates",
-        "#24H2"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-12-post-5",
-      "type": "tip",
-      "date": "2026-10-12",
-      "title": "Windows 11 Storage Sense automatically frees 5-50 GB monthly — turn it on in Settings > System > Storage",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > System > Storage > turn on Storage Sense. Windows automatically deletes temp files, empties Recycle Bin, and cleans Downloads folder on a schedule you set. Free, built-in, no download needed. Runs when disk space is low or daily/weekly/monthly.",
-      "truth": "\"My computer is full\" is one of the top calls I get. Half the time it's gigabytes of temp files and old Downloads nobody needs. Storage Sense handles it quietly in the background. I enable it on every machine that comes through the shop.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#StorageSense",
-        "#Windows11",
-        "#FreeTools"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-11-post-2",
-      "type": "tip",
-      "date": "2026-10-11",
-      "title": "Firefox 157.0.1 warns when something is reading your encrypted traffic — free update at firefox.com",
-      "tag": "Tech Tip",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted web traffic. Update free at firefox.com or use the built-in updater (Menu → Help → About Firefox).",
-      "truth": "Most people have no idea their \"secure\" banking session can be read by something else on their computer. I see this all the time — antivirus, parental controls, or malware quietly decrypting HTTPS. Firefox is the only browser that tells you straight up.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-09-post-2",
-      "type": "tip",
-      "date": "2026-10-09",
-      "title": "Speed up a sluggish Windows PC for free with Microsoft PC Manager — Microsoft's own one-click cleaner, at pcmanager.microsoft.com",
-      "tag": "Tech Tip",
-      "summary": "Download Microsoft PC Manager free from pcmanager.microsoft.com or from the Microsoft Store (search \"Microsoft PC Manager\"). Open it and click Cleanup — it sweeps out junk files, shows you which programs are slowing your startup, and runs Microsoft's own virus scan, all from one window. No subscription, no account needed, and no pop-up ads after every click.",
-      "truth": "I do not use the paid \"PC cleaners\" that show up in ads — most of them are the very thing slowing the machine down. The honest answer is that the best free cleanup tool for Windows is made by the people who built Windows. I see this all the time: a computer with three different \"speed booster\" programs fighting each other while the real junk just sits there untouched. One clean tool from a name you trust beats five from names you've never heard of.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "today_word": {
     "word": "Malware",
     "pos": "noun",
