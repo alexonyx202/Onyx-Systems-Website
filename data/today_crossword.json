@@ -1,163 +1,155 @@
 {
   "title": "math",
-  "size": 26,
+  "size": 18,
   "grid": [
-    ".....p....................",
-    ".....a....................",
-    "...zero...................",
-    ".....a....................",
-    ".p...b....................",
-    ".rational.................",
-    ".i...l....................",
-    ".median...................",
-    ".e..s.....................",
-    "....odd...................",
-    "....s.....................",
-    "....c.n.q.................",
-    "three.o.u....o............",
-    "w...linear...r............",
-    "o...e.z.d....i............",
-    "....s.e.r....g............",
-    "......r.absicissa.........",
-    "......o.t..r.n............",
-    "........i..r..............",
-    "........c..a..............",
-    "...........t..............",
-    "...........i..............",
-    "...........o..............",
-    "...........n..............",
-    "...........a..............",
-    "...........l.............."
+    "....l........three",
+    ".absicissa.m.w....",
+    "....n.....zero....",
+    "nonzero.p..d......",
+    "....a...r..i......",
+    "...irrational.....",
+    "........m..n......",
+    ".isosceles........",
+    "...d..............",
+    "quadratic.........",
+    "....a.............",
+    "....t.............",
+    "origin............",
+    "....o.............",
+    "....n.............",
+    ".parabola.........",
+    "....l.............",
+    ".................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 3,
-        "col": 4,
-        "len": 4,
-        "answer": "zero",
-        "clue": "If the graph of a polynomial does not interact"
-      },
-      {
-        "num": 4,
-        "row": 6,
-        "col": 2,
-        "len": 8,
-        "answer": "rational",
-        "clue": "Where p/q, q not equal to zero"
-      },
-      {
-        "num": 5,
-        "row": 8,
-        "col": 2,
-        "len": 6,
-        "answer": "median",
-        "clue": "A line perpendicular to the third side"
-      },
-      {
-        "num": 7,
-        "row": 10,
-        "col": 5,
-        "len": 3,
-        "answer": "odd",
-        "clue": "n-1 is divisible by 8, if n is ______ number"
-      },
-      {
-        "num": 10,
-        "row": 13,
-        "col": 1,
+        "row": 1,
+        "col": 14,
         "len": 5,
         "answer": "three",
         "clue": "The decimal expansion of rational no. 17/8 is"
       },
       {
-        "num": 12,
-        "row": 14,
-        "col": 5,
-        "len": 6,
-        "answer": "linear",
-        "clue": "A polynomial of degree 1"
-      },
-      {
-        "num": 13,
-        "row": 17,
-        "col": 9,
+        "num": 3,
+        "row": 2,
+        "col": 2,
         "len": 9,
         "answer": "absicissa",
         "clue": "The distance of a point from y-axis"
-      }
-    ],
-    "down": [
-      {
-        "num": 1,
-        "row": 1,
-        "col": 6,
-        "len": 8,
-        "answer": "parabola",
-        "clue": "u or  v shaped curves on a graph is called as"
       },
       {
-        "num": 3,
-        "row": 5,
-        "col": 2,
-        "len": 5,
-        "answer": "prime",
-        "clue": "Number which have 1 and the number itself as"
+        "num": 5,
+        "row": 3,
+        "col": 11,
+        "len": 4,
+        "answer": "zero",
+        "clue": "If the graph of a polynomial does not interact"
       },
       {
         "num": 6,
-        "row": 8,
-        "col": 5,
-        "len": 9,
-        "answer": "isosceles",
-        "clue": "A triangle having two sides equal"
-      },
-      {
-        "num": 8,
-        "row": 12,
-        "col": 7,
+        "row": 4,
+        "col": 1,
         "len": 7,
         "answer": "nonzero",
         "clue": "The product of two numbers is always_____"
       },
       {
+        "num": 8,
+        "row": 6,
+        "col": 4,
+        "len": 10,
+        "answer": "irrational",
+        "clue": "is 5-3 ration or irrational"
+      },
+      {
         "num": 9,
-        "row": 12,
-        "col": 9,
+        "row": 8,
+        "col": 2,
+        "len": 9,
+        "answer": "isosceles",
+        "clue": "A triangle having two sides equal"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 1,
         "len": 9,
         "answer": "quadratic",
         "clue": "A polynomial of degree 2 is called as ______"
       },
       {
-        "num": 10,
+        "num": 13,
         "row": 13,
         "col": 1,
-        "len": 3,
-        "answer": "two",
-        "clue": "If HCF of 55m-99, then value of m is"
-      },
-      {
-        "num": 11,
-        "row": 13,
-        "col": 14,
         "len": 6,
         "answer": "origin",
         "clue": "Point oof intersection of x axis and y axis"
       },
       {
         "num": 14,
-        "row": 17,
+        "row": 16,
+        "col": 2,
+        "len": 8,
+        "answer": "parabola",
+        "clue": "u or  v shaped curves on a graph is called as"
+      }
+    ],
+    "down": [
+      {
+        "num": 1,
+        "row": 1,
+        "col": 5,
+        "len": 6,
+        "answer": "linear",
+        "clue": "A polynomial of degree 1"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 14,
+        "len": 3,
+        "answer": "two",
+        "clue": "If HCF of 55m-99, then value of m is"
+      },
+      {
+        "num": 4,
+        "row": 2,
         "col": 12,
-        "len": 10,
-        "answer": "irrational",
-        "clue": "is 5-3 ration or irrational"
+        "len": 6,
+        "answer": "median",
+        "clue": "A line perpendicular to the third side"
+      },
+      {
+        "num": 7,
+        "row": 4,
+        "col": 9,
+        "len": 5,
+        "answer": "prime",
+        "clue": "Number which have 1 and the number itself as"
+      },
+      {
+        "num": 10,
+        "row": 8,
+        "col": 4,
+        "len": 3,
+        "answer": "odd",
+        "clue": "n-1 is divisible by 8, if n is ______ number"
+      },
+      {
+        "num": 12,
+        "row": 10,
+        "col": 5,
+        "len": 8,
+        "answer": "rational",
+        "clue": "Where p/q, q not equal to zero"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9865",
-  "slug": "math-9865",
-  "fetched_at": "2026-07-14T19:26:28.511373+00:00",
-  "date": "2026-10-15"
+  "source_url": "https://crosswordlabs.com/view/math-9866",
+  "slug": "math-9866",
+  "fetched_at": "2026-07-14T19:26:29.095828+00:00",
+  "date": "2026-10-16"
 }
