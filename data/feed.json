@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-17-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-17",
+      "title": "Daily Computer Brief — 2026-10-17",
+      "tag": "Daily Brief",
+      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-17-composite.jpg",
+      "comic": "assets/img/news/2026-10-17-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-16-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-16",
@@ -144,18 +161,24 @@
       "tag": "Security",
       "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates.",
       "truth": ""
-    },
-    {
-      "id": "t-2026-10-14-firefox156",
-      "type": "news",
-      "date": "2026-10-14",
-      "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
-      "tag": "Software",
-      "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox.",
-      "truth": ""
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-17-post-1",
+      "type": "news",
+      "date": "2026-10-17",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 157.0.1 adds shield warning for traffic interception. Click shield to see which software is reading your encrypted data. Get free update at firefox.com\nTags: #Firefox #Security #FreeUpdate #OnyxSystems",
+      "truth": "",
+      "tags": [
+        "#Firefox",
+        "#Security",
+        "#FreeUpdate",
+        "#OnyxSystems"
+      ]
+    },
     {
       "id": "onyx-2026-10-16-post-1",
       "type": "news",
@@ -199,13 +222,18 @@
       "truth": ""
     },
     {
-      "id": "onyx-2026-10-13-news-1",
-      "type": "news",
-      "date": "2026-10-13",
-      "title": "Windows has free built-in ransomware protection — turn on Controlled Folder Access in Windows Security",
-      "tag": "Security",
-      "summary": "Windows 10 and 11 include Controlled Folder Access, a free ransomware shield that stops unauthorized programs from encrypting your files. It's off by default. Turn it on: Open Windows Security (press Start and type \"Windows Security\") → Virus & threat protection → Manage ransomware protection → Turn on Controlled Folder Access.",
-      "truth": "I see ransomware aftermath weekly. The ones who had this turned on? Their photos and documents survived. The ones who didn't? They paid or lost everything. This feature is free, built in, and takes 30 seconds."
+      "id": "onyx-2026-10-17-post-2",
+      "type": "tip",
+      "date": "2026-10-17",
+      "title": "Windows 10 Support Ends October 14 — Free Upgrade at Settings > Update",
+      "tag": "Tech Tip",
+      "summary": "Windows 10 stops receiving security updates after October 14. Upgrade to Windows 11 for free at Settings > Windows Update. Free upgrade available now at Settings > Windows Update\nTags: #Windows10 #Windows11 #OnyxSystems",
+      "truth": "",
+      "tags": [
+        "#Windows10",
+        "#Windows11",
+        "#OnyxSystems"
+      ]
     },
     {
       "id": "onyx-2026-10-16-post-2",
@@ -248,18 +276,9 @@
       "tag": "OnyxSystems",
       "summary": "Clearwave Fiber is bringing high-speed fiber internet to more Lake City neighborhoods. Check availability for your address free at clearwavefiber.com. Fiber gives you symmetrical upload and download speeds — great for video calls, backups, and working from home.",
       "truth": ""
-    },
-    {
-      "id": "t-2026-10-15-p5",
-      "type": "tip",
-      "date": "2026-10-15",
-      "title": "Stop paying for WinZip — 7-Zip 26.04 is the free file compressor that handles every format at 7-zip.org",
-      "tag": "OnyxSystems",
-      "summary": "7-Zip 26.04 (released October 5, 2026) is free, open-source, and opens every archive format including ZIP, RAR, 7z, TAR, GZIP, and more. It compresses better than WinZip and has no ads, no trial nags, no subscriptions. Download the 64-bit Windows installer free at 7-zip.org.",
-      "truth": ""
     }
   ],
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "today_word": {
     "word": "Malware",
     "pos": "noun",

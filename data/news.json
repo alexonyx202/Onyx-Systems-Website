@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "items": [
+    {
+      "id": "n-2026-10-17",
+      "type": "newsletter",
+      "date": "2026-10-17",
+      "title": "Daily Computer Brief — 2026-10-17",
+      "tag": "Daily Brief",
+      "summary": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "comic": "Newsletter - 2026-10-17-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-17-news1",
+      "type": "tech-note",
+      "date": "2026-10-17",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 157.0.1 adds shield warning for traffic interception. Click shield to see which software is reading your encrypted data. Get free update at firefox.com\nTags: #Firefox #Security #FreeUpdate #OnyxSystems"
+    },
+    {
+      "id": "t-2026-10-17-tip1",
+      "type": "tech-note",
+      "date": "2026-10-17",
+      "title": "Windows 10 Support Ends October 14 — Free Upgrade at Settings > Update",
+      "tag": "Tech Tip",
+      "summary": "Windows 10 stops receiving security updates after October 14. Upgrade to Windows 11 for free at Settings > Windows Update. Free upgrade available now at Settings > Windows Update\nTags: #Windows10 #Windows11 #OnyxSystems"
+    },
     {
       "id": "n-2026-10-16",
       "type": "newsletter",
@@ -96,32 +122,6 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "n-2026-10-14",
-      "type": "newsletter",
-      "date": "2026-10-14",
-      "title": "Your Router Could Be Hijacked by a Malicious VPN File",
-      "tag": "Daily Brief",
-      "summary": "ASUS has warned that a malicious VPN configuration file can hijack certain routers. If you import a VPN config from an untrusted source — a download, a forum post, a friend's export — the router can be tricked into running commands that give an attacker full control. The flaw (CV",
-      "comic": "Newsletter - 2026-10-14-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-14-win24h2",
-      "type": "tech-note",
-      "date": "2026-10-14",
-      "title": "Windows 11 24H2 Home and Pro reach end of updates October 13 — upgrade free to stay protected",
-      "tag": "Security",
-      "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates."
-    },
-    {
-      "id": "t-2026-10-14-firefox156",
-      "type": "tech-note",
-      "date": "2026-10-14",
-      "title": "Firefox 156 adds new tab widgets and memory improvements — free update at firefox.com",
-      "tag": "Software",
-      "summary": "Firefox 156 is out with new tab widgets you can turn on or off, plus better memory usage and speed on heavy pages. Update free at firefox.com or use the built-in updater at Menu > Help > About Firefox."
     }
   ]
 }
