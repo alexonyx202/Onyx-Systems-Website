@@ -1,154 +1,251 @@
 {
-  "title": "math",
-  "size": 17,
+  "title": "Math",
+  "size": 18,
   "grid": [
-    "..........z......",
-    ".......linear....",
-    "..........r......",
-    "......rational...",
-    "........w........",
-    "........origin...",
-    ".......i..s......",
-    ".....parabola....",
-    ".......r..s......",
-    "..quadratic......",
-    "m......t..e......",
-    "e......i..l......",
-    "d...p.nonzero....",
-    "i...r..n..s.d....",
-    "abscissa....d....",
-    "n...m..l.........",
-    ".three..........."
+    "..$......7........",
+    "..9.....22........",
+    "..6..-8.5.........",
+    "..0.1...4.19......",
+    "$8.70.$5.55.......",
+    "..0...1.3.%.......",
+    "..0.50.24.........",
+    "......4.i....l....",
+    "......0.n....i....",
+    "........(....k....",
+    ".803.84(squared)..",
+    ".....2..q....l....",
+    "...12%..u....y....",
+    ".122....a.........",
+    "........r.........",
+    "...5.nope.........",
+    "...%....d.........",
+    "........)........."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 2,
-        "col": 8,
-        "len": 6,
-        "answer": "linear",
-        "clue": "A polynomial of degree 1"
-      },
-      {
         "num": 3,
-        "row": 4,
-        "col": 7,
-        "len": 8,
-        "answer": "rational",
-        "clue": "Where p/q, q not equal to zero"
+        "row": 2,
+        "col": 9,
+        "len": 2,
+        "answer": "22",
+        "clue": "Margo missed 24.6 of her free throw shots in a season. During the season, she shot a total of 90 free throws. Which of the following is the best estimate of the number of free throws margo missed? 18, 12, 22, 25"
       },
       {
-        "num": 5,
-        "row": 6,
-        "col": 9,
-        "len": 6,
-        "answer": "origin",
-        "clue": "Point oof intersection of x axis and y axis"
+        "num": 4,
+        "row": 3,
+        "col": 6,
+        "len": 2,
+        "answer": "-8",
+        "clue": ""
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 11,
+        "len": 2,
+        "answer": "19",
+        "clue": "A courier service charges a $5 pickup fee, plus %0.15 per mile. The total charge to deliver a package was 7.85. How many miles did the courier service travel to deliver the package?"
+      },
+      {
+        "num": 7,
+        "row": 5,
+        "col": 1,
+        "len": 2,
+        "answer": "$8",
+        "clue": ""
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 6,
-        "len": 8,
-        "answer": "parabola",
-        "clue": "u or  v shaped curves on a graph is called as"
+        "row": 5,
+        "col": 4,
+        "len": 2,
+        "answer": "70",
+        "clue": ""
       },
       {
         "num": 9,
-        "row": 10,
-        "col": 3,
-        "len": 9,
-        "answer": "quadratic",
-        "clue": "A polynomial of degree 2 is called as ______"
+        "row": 5,
+        "col": 7,
+        "len": 2,
+        "answer": "$5",
+        "clue": ""
       },
       {
-        "num": 12,
-        "row": 13,
-        "col": 7,
-        "len": 7,
-        "answer": "nonzero",
-        "clue": "The product of two numbers is always_____"
+        "num": 10,
+        "row": 5,
+        "col": 10,
+        "len": 2,
+        "answer": "55",
+        "clue": ""
+      },
+      {
+        "num": 13,
+        "row": 7,
+        "col": 5,
+        "len": 2,
+        "answer": "50",
+        "clue": ""
       },
       {
         "num": 14,
-        "row": 15,
-        "col": 1,
-        "len": 8,
-        "answer": "abscissa",
-        "clue": "The distance of a point from y-axis"
+        "row": 7,
+        "col": 8,
+        "len": 2,
+        "answer": "24",
+        "clue": ""
       },
       {
-        "num": 15,
-        "row": 17,
+        "num": 17,
+        "row": 11,
         "col": 2,
-        "len": 5,
-        "answer": "three",
-        "clue": "The decimal expansion of rational no. 17/8 is"
+        "len": 3,
+        "answer": "803",
+        "clue": ""
+      },
+      {
+        "num": 18,
+        "row": 11,
+        "col": 6,
+        "len": 11,
+        "answer": "84(squared)",
+        "clue": ""
+      },
+      {
+        "num": 19,
+        "row": 13,
+        "col": 4,
+        "len": 3,
+        "answer": "12%",
+        "clue": "A hospital bill is estimated to be $462.00. It ends up actually costing the patient $525.00. What is the percent error in the bill?"
+      },
+      {
+        "num": 20,
+        "row": 14,
+        "col": 2,
+        "len": 3,
+        "answer": "122",
+        "clue": "Two triangles are supplementary to each other. If the first angle measures 58, then which of the following could be the measure of the second triangle? 122, 32, 58, 180"
+      },
+      {
+        "num": 22,
+        "row": 16,
+        "col": 6,
+        "len": 4,
+        "answer": "nope",
+        "clue": "Will side lengths like 5,5 and 9 form a triangle?"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 11,
+        "col": 3,
         "len": 4,
-        "answer": "zero",
-        "clue": "If the graph of a polynomial does not interact"
+        "answer": "$960",
+        "clue": ""
       },
       {
-        "num": 4,
-        "row": 4,
+        "num": 2,
+        "row": 1,
+        "col": 10,
+        "len": 2,
+        "answer": "72",
+        "clue": "the record low temperature in Fargo, ND is -37 F. The record high is 109 F. What is the difference in the record high and the record low areas?"
+      },
+      {
+        "num": 3,
+        "row": 2,
         "col": 9,
         "len": 3,
-        "answer": "two",
-        "clue": "If HCF of 55m-99, then value of m is"
+        "answer": "254",
+        "clue": ""
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 5,
+        "len": 2,
+        "answer": "10",
+        "clue": ""
       },
       {
         "num": 6,
-        "row": 6,
+        "row": 4,
         "col": 11,
-        "len": 9,
-        "answer": "isosceles",
-        "clue": "A triangle having two sides equal"
+        "len": 3,
+        "answer": "15%",
+        "clue": "The price of a tablet was increased from $180 to $207,By what percentage was the price of the tablet increased?"
       },
       {
-        "num": 7,
-        "row": 7,
-        "col": 8,
-        "len": 10,
-        "answer": "irrational",
-        "clue": "is 5-3 ration or irrational"
-      },
-      {
-        "num": 10,
-        "row": 11,
-        "col": 1,
-        "len": 6,
-        "answer": "median",
-        "clue": "A line perpendicular to the third side"
+        "num": 9,
+        "row": 5,
+        "col": 7,
+        "len": 2,
+        "answer": "$1",
+        "clue": ""
       },
       {
         "num": 11,
-        "row": 13,
-        "col": 5,
-        "len": 5,
-        "answer": "prime",
-        "clue": "Number which have 1 and the number itself as"
+        "row": 6,
+        "col": 3,
+        "len": 2,
+        "answer": "00",
+        "clue": ""
       },
       {
-        "num": 13,
-        "row": 13,
-        "col": 13,
+        "num": 12,
+        "row": 6,
+        "col": 9,
+        "len": 13,
+        "answer": "34in(squared)",
+        "clue": ""
+      },
+      {
+        "num": 15,
+        "row": 8,
+        "col": 7,
+        "len": 2,
+        "answer": "40",
+        "clue": ""
+      },
+      {
+        "num": 16,
+        "row": 8,
+        "col": 14,
+        "len": 6,
+        "answer": "likely",
+        "clue": "A student takes notes in class, completes the assignments, attends tutoring, and prepares for the test. Is it likely, unlikely, impossible, or certain they will pass the test?"
+      },
+      {
+        "num": 18,
+        "row": 11,
+        "col": 6,
         "len": 3,
-        "answer": "odd",
-        "clue": "n-1 is divisible by 8, if n is ______ number"
+        "answer": "82%",
+        "clue": "Todd plans to swim 18 laps in the pool. Each lap is 50 yards. So far Todd has swam 738 yards. What percentage of the total has Todd completed?"
+      },
+      {
+        "num": 19,
+        "row": 13,
+        "col": 4,
+        "len": 2,
+        "answer": "12",
+        "clue": ""
+      },
+      {
+        "num": 21,
+        "row": 16,
+        "col": 4,
+        "len": 2,
+        "answer": "5%",
+        "clue": ""
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9867",
-  "slug": "math-9867",
-  "fetched_at": "2026-07-14T19:25:20.854524+00:00",
-  "date": "2026-10-17"
+  "source_url": "https://crosswordlabs.com/view/math-9936",
+  "slug": "math-9936",
+  "fetched_at": "2026-07-14T19:19:35.679119+00:00",
+  "date": "2026-10-18"
 }
