@@ -103,9 +103,9 @@
       "id": "onyx-2026-10-17-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-17",
-      "title": "Fake Virus Popup Scam",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
       "tag": "Daily Brief",
-      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "excerpt": "Firefox 157.0.1 Adds Shield Warning for Encrypted Traffic Interception — Free at firefox.com\n\nFirefox 157.0.1 introduces a new shield icon that warns when software on your PC intercepts your encrypted traffic — including corporate monitoring tools and malware. Click the shield to see what's doing it. Most people have no idea their secure banking session can be read by something else on their computer. The fix is simple: install the update, check the shield, and remove anything you don't…",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -203,21 +203,6 @@
       ]
     },
     {
-      "id": "onyx-2026-10-12-post-1",
-      "type": "news",
-      "date": "2026-10-12",
-      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now",
-      "tag": "Tech Note",
-      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch.",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
       "id": "t-2026-10-15",
       "type": "news",
       "date": "2026-10-15",
@@ -234,6 +219,21 @@
       "tag": "Security",
       "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates.",
       "truth": ""
+    },
+    {
+      "id": "onyx-2026-10-12-post-1",
+      "type": "news",
+      "date": "2026-10-12",
+      "title": "CISA adds two actively exploited Zammad vulnerabilities to danger list — update your software now",
+      "tag": "Tech Note",
+      "summary": "CISA added Zammad Session Fixation (CVE-2026-102489) and Improper Privilege Management (CVE-2026-102490) to its Known Exploited Vulnerabilities catalog on October 2. If your organization uses Zammad helpdesk software, update immediately at zammad.org. Federal agencies have until October 11 to patch.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
     },
     {
       "id": "onyx-2026-10-17-post-2",
@@ -265,22 +265,6 @@
       ]
     },
     {
-      "id": "onyx-2026-10-12-post-2",
-      "type": "tip",
-      "date": "2026-10-12",
-      "title": "**Headline:** Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
-      "tag": "Tech Tip",
-      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked.",
-      "truth": "Most people pay for antivirus that nags them daily, but the best ransomware protection is already sitting in Windows Security — turned off by default. I turn this on for every customer during a tune-up. It's the first thing I check.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#RansomwareProtection",
-        "#Windows11"
-      ]
-    },
-    {
       "id": "t-2026-10-15-p2",
       "type": "tip",
       "date": "2026-10-15",
@@ -297,6 +281,22 @@
       "tag": "OnyxSystems",
       "summary": "Firefox 157 adds a modern visual redesign called Nova and a Compact Mode that reduces toolbar and tab spacing to leave more room for web content. Update free at firefox.com or click the menu button (three lines) > Help > About Firefox to install automatically.",
       "truth": ""
+    },
+    {
+      "id": "onyx-2026-10-12-post-2",
+      "type": "tip",
+      "date": "2026-10-12",
+      "title": "**Headline:** Windows 11 has a free built-in ransomware shield — Controlled Folder Access stops file encryption in seconds",
+      "tag": "Tech Tip",
+      "summary": "Open Windows Security > Virus & threat protection > Manage ransomware protection > turn on Controlled folder access. Free, built into Windows 11, protects Documents, Pictures, Desktop folders automatically. Allow trusted apps if they get blocked.",
+      "truth": "Most people pay for antivirus that nags them daily, but the best ransomware protection is already sitting in Windows Security — turned off by default. I turn this on for every customer during a tune-up. It's the first thing I check.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#RansomwareProtection",
+        "#Windows11"
+      ]
     }
   ],
   "updated": "2026-10-17",
