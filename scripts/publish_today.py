@@ -332,8 +332,17 @@ def update_news(daily_brief, news_post, tip_post):
 def prune_events(date_iso):
     path = REPO / "data" / "events.json"
     evs = _read_json(path) or []
-    kept = [e for e in evs if str(e.get("date", "")) >= date_iso]
-    dropped = [e for e in evs if str(e.get("date", "")) < date_iso]
+    kept = []
+    dropped = []
+    for e in evs:
+        if isinstance(e, dict):
+            e_date = e.get("date", "")
+        else:
+            e_date = str(e)
+        if e_date >= date_iso:
+            kept.append(e)
+        else:
+            dropped.append(e)
     tmp = str(path) + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(kept, f, indent=1)

@@ -1,6 +1,48 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "items": [
+    {
+      "id": "n-2026-10-18",
+      "type": "newsletter",
+      "date": "2026-10-18",
+      "title": "That 'Microsoft Support' Call Is a Scam — Hang Up Immediately",
+      "tag": "Daily Brief",
+      "summary": "Your phone rings. The caller says they are from Microsoft or Windows Support. They claim your computer has a virus, a security problem, or an expired license — and they need remote access to fix it. Sometimes they ask for a credit card or gift cards to \"renew\" your protection.",
+      "comic": "Newsletter - 2026-10-18-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-18-p2",
+      "type": "tech-note",
+      "date": "2026-10-18",
+      "title": "Two Critical Vulnerabilities Added to CISA Must-Patch List — Fortinet Firewalls and BeyondTrust Remote Support",
+      "tag": "Security",
+      "summary": "If your organization uses Fortinet firewalls or BeyondTrust Remote Support, apply the latest patches immediately at support.fortinet.com and beyondtrust.com/support — both fix flaws attackers are actively exploiting right now (CVE-2025-61624 and CVE-2026-102764)."
+    },
+    {
+      "id": "t-2026-10-18-p3",
+      "type": "tech-note",
+      "date": "2026-10-18",
+      "title": "Firefox 158 Adds Smart Window Form Filling and JPEG XL Support — Free Update at firefox.com",
+      "tag": "Browser",
+      "summary": "Update Firefox at firefox.com or click Menu > Help > About Firefox — Smart Window now suggests form data from your open tabs and saved autofill, and JPEG XL images load faster with better quality than WebP."
+    },
+    {
+      "id": "t-2026-10-18-p4",
+      "type": "tech-note",
+      "date": "2026-10-18",
+      "title": "Windows Sandbox Gives You a Free Disposable PC Inside Windows — Enable It at Windows Features",
+      "tag": "Security",
+      "summary": "Open Windows Features (type 'Windows Features' in Start), check Windows Sandbox, restart — you get a clean temporary desktop where anything you download, install, or break disappears when you close the window."
+    },
+    {
+      "id": "t-2026-10-18-p5",
+      "type": "tech-note",
+      "date": "2026-10-18",
+      "title": "Rufus Makes a Bootable Windows USB in Minutes — Free at rufus.ie",
+      "tag": "Tools",
+      "summary": "Download Rufus at rufus.ie, pick your Windows ISO and USB drive (8 GB minimum), click Start — a bootable Windows installer is ready in minutes, no command line required."
+    },
     {
       "id": "n-2026-10-17",
       "type": "newsletter",
@@ -62,66 +104,6 @@
       "summary": "A fake CAPTCHA pops up and tells you to press the Windows key + R, paste something, and hit Enter. **Don't do it.** That \"verification\" is a trap — it pastes malicious code into Windows Run and executes it. Real CAPTCHAs never ask for keyboard commands. Ever.",
       "comic": "Newsletter - 2026-10-15-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-15",
-      "type": "tech-note",
-      "date": "2026-10-15",
-      "title": "CISA warns: These vulnerabilities are being exploited right now — patch your software",
-      "tag": "OnyxSystems",
-      "summary": "CISA added Microsoft SharePoint CVE-2026-65660 and Windows Shell CVE-2026-96951 to its Known Exploited Vulnerabilities catalog this week. Update Windows at Settings > Windows Update. If you run on-premises SharePoint Server 2016, 2019, or Subscription Edition, install the August 2026 security update from the Microsoft Update Catalog.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-15-p2",
-      "type": "tech-note",
-      "date": "2026-10-15",
-      "title": "CISA warns: These vulnerabilities are being exploited right now — patch your software",
-      "tag": "OnyxSystems",
-      "summary": "CISA added Microsoft SharePoint CVE-2026-65660 and Windows Shell CVE-2026-96951 to its Known Exploited Vulnerabilities catalog this week. Update Windows at Settings > Windows Update. If you run on-premises SharePoint Server 2016, 2019, or Subscription Edition, install the August 2026 security update from the Microsoft Update Catalog.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-15-p3",
-      "type": "tech-note",
-      "date": "2026-10-15",
-      "title": "Firefox 157 brings a fresh look and Compact Mode — free update at firefox.com",
-      "tag": "OnyxSystems",
-      "summary": "Firefox 157 adds a modern visual redesign called Nova and a Compact Mode that reduces toolbar and tab spacing to leave more room for web content. Update free at firefox.com or click the menu button (three lines) > Help > About Firefox to install automatically.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-15-p4",
-      "type": "tech-note",
-      "date": "2026-10-15",
-      "title": "Clearwave Fiber expands in Lake City — check if your address qualifies at clearwavefiber.com",
-      "tag": "OnyxSystems",
-      "summary": "Clearwave Fiber is bringing high-speed fiber internet to more Lake City neighborhoods. Check availability for your address free at clearwavefiber.com. Fiber gives you symmetrical upload and download speeds — great for video calls, backups, and working from home.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-15-p5",
-      "type": "tech-note",
-      "date": "2026-10-15",
-      "title": "Stop paying for WinZip — 7-Zip 26.04 is the free file compressor that handles every format at 7-zip.org",
-      "tag": "OnyxSystems",
-      "summary": "7-Zip 26.04 (released October 5, 2026) is free, open-source, and opens every archive format including ZIP, RAR, 7z, TAR, GZIP, and more. It compresses better than WinZip and has no ads, no trial nags, no subscriptions. Download the 64-bit Windows installer free at 7-zip.org.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ]
 }
