@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-17-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-17",
+      "title": "Fake Virus Popup Scam",
+      "tag": "Daily Brief",
+      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-17-composite.jpg",
+      "comic": "assets/img/news/2026-10-17-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-16-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-16",
@@ -134,23 +151,6 @@
       "read_more": "#contact"
     },
     {
-      "id": "onyx-2026-10-17-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-17",
-      "title": "Daily Computer Brief — 2026-10-17",
-      "tag": "Daily Brief",
-      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-17-composite.jpg",
-      "comic": "assets/img/news/2026-10-17-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
       "id": "n-2026-10-15",
       "type": "newsletter",
       "date": "2026-10-15",
@@ -172,6 +172,21 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-17-post-1",
+      "type": "news",
+      "date": "2026-10-17",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the free update at firefox.com",
+      "truth": "This doesn't mean Firefox can't protect you — it means your PC might be compromised in other ways. Most attacks don't come through the browser. They come through the software you installed. I see this every week: someone installs \"free\" software and it quietly installs a monitoring tool. The fix is to uninstall it at Settings > Apps > Installed Apps. Look for anything you don't recognize.\nTags: #Firefox #Security #FreeUpdate #OnyxSystems",
+      "tags": [
+        "#Firefox",
+        "#Security",
+        "#FreeUpdate",
+        "#OnyxSystems"
+      ]
+    },
     {
       "id": "onyx-2026-10-16-post-1",
       "type": "news",
@@ -203,21 +218,6 @@
       ]
     },
     {
-      "id": "onyx-2026-10-17-post-1",
-      "type": "news",
-      "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 157.0.1 adds shield warning for traffic interception. Click shield to see which software is reading your encrypted data. Get free update at firefox.com\nTags: #Firefox #Security #FreeUpdate #OnyxSystems",
-      "truth": "",
-      "tags": [
-        "#Firefox",
-        "#Security",
-        "#FreeUpdate",
-        "#OnyxSystems"
-      ]
-    },
-    {
       "id": "t-2026-10-15",
       "type": "news",
       "date": "2026-10-15",
@@ -234,6 +234,20 @@
       "tag": "Security",
       "summary": "Microsoft ended updates for Windows 11 24H2 Home and Pro on October 13. Check your version at Settings > System > About — if you are on 24H2 Home or Pro, upgrade to 25H2 or later via Settings > Windows Update to keep receiving security updates.",
       "truth": ""
+    },
+    {
+      "id": "onyx-2026-10-17-post-2",
+      "type": "tip",
+      "date": "2026-10-17",
+      "title": "Windows 10 Support Ends October 14 — Free Upgrade to Windows 11 at Settings > Update",
+      "tag": "Tech Tip",
+      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update",
+      "truth": "I see people putting this off every week. \"I'll deal with it later.\" The problem is that October 14 isn't a deadline — it's the start of an exposure window. Every day after that, your computer is vulnerable to every new security flaw. The upgrade takes 45 minutes. Do it this weekend.\nTags: #Windows10 #Windows11 #OnyxSystems",
+      "tags": [
+        "#Windows10",
+        "#Windows11",
+        "#OnyxSystems"
+      ]
     },
     {
       "id": "onyx-2026-10-16-post-2",
@@ -267,20 +281,6 @@
       ]
     },
     {
-      "id": "onyx-2026-10-17-post-2",
-      "type": "tip",
-      "date": "2026-10-17",
-      "title": "Windows 10 Support Ends October 14 — Free Upgrade at Settings > Update",
-      "tag": "Tech Tip",
-      "summary": "Windows 10 stops receiving security updates after October 14. Upgrade to Windows 11 for free at Settings > Windows Update. Free upgrade available now at Settings > Windows Update\nTags: #Windows10 #Windows11 #OnyxSystems",
-      "truth": "",
-      "tags": [
-        "#Windows10",
-        "#Windows11",
-        "#OnyxSystems"
-      ]
-    },
-    {
       "id": "t-2026-10-15-p2",
       "type": "tip",
       "date": "2026-10-15",
@@ -299,7 +299,7 @@
       "truth": ""
     }
   ],
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "today_word": {
     "word": "Malware",
     "pos": "noun",
