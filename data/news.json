@@ -1,6 +1,48 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "items": [
+    {
+      "id": "n-2026-10-19",
+      "type": "newsletter",
+      "date": "2026-10-19",
+      "title": "Hurricane Charity Scams Are Targeting Floridians — Here's How to Spot Them",
+      "tag": "Daily Brief",
+      "summary": "Hurricane season runs through November, and scammers know it. After every storm, fake charity websites, crowdfunding campaigns, and phone calls flood in — all pretending to help victims.",
+      "comic": "Newsletter - 2026-10-19-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-19-p2",
+      "type": "tech-note",
+      "date": "2026-10-19",
+      "title": "Rapid Fiber gigabit internet now available to all Suwannee Valley Electric Cooperative members in North Florida — check your address at rapidfiber.net",
+      "tag": "Local",
+      "summary": "The $93 million SVEC fiber rollout is complete. Go to rapidfiber.net, enter your address, and see if gigabit fiber (up to 1 Gbps symmetric) has reached your Lake City or Columbia County street. No contract required, installation is free for members."
+    },
+    {
+      "id": "t-2026-10-19-p3",
+      "type": "tech-note",
+      "date": "2026-10-19",
+      "title": "Stop reusing passwords — Bitwarden is the free password manager that now supports passkeys at bitwarden.com",
+      "tag": "Security",
+      "summary": "Get Bitwarden free at bitwarden.com — it generates strong unique passwords for every site, fills them automatically, and now supports passkeys (passwordless login) for Google, Microsoft, Apple, and dozens of other sites. Works on Windows, Mac, Linux, iPhone, Android. Open source, end-to-end encrypted."
+    },
+    {
+      "id": "t-2026-10-19-p4",
+      "type": "tech-note",
+      "date": "2026-10-19",
+      "title": "Stop Windows spying on you free — O&O ShutUp10++ disables telemetry and tracking in one click at oo-software.com",
+      "tag": "Privacy",
+      "summary": "Download O&O ShutUp10++ free at oo-software.com/en/shutup10 (no install needed — just run the .exe). Click \"Apply recommended settings\" and it disables 200+ Windows telemetry, advertising ID, location tracking, Wi-Fi sense, Cortana data collection, and more. Works on Windows 10 and 11. Updated September 2026."
+    },
+    {
+      "id": "t-2026-10-19-p5",
+      "type": "tech-note",
+      "date": "2026-10-19",
+      "title": "Stop fighting weird video formats — VLC Media Player is the free Swiss Army knife that plays literally everything at videolan.org",
+      "tag": "Tools",
+      "summary": "Download VLC free at videolan.org — it plays DVDs, Blu-rays (with libdvdcss), weird camera formats (.MTS, .M2TS), corrupted downloads, network streams, and obscure codecs without any codec packs. No ads, no spyware, no \"pro\" upsell. Windows, Mac, Linux, Android, iOS."
+    },
     {
       "id": "n-2026-10-18",
       "type": "newsletter",
@@ -60,50 +102,6 @@
       "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
       "tag": "Tech Note",
       "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the free update at firefox.com"
-    },
-    {
-      "id": "t-2026-10-17-tip1",
-      "type": "tech-note",
-      "date": "2026-10-17",
-      "title": "Windows 10 Support Ends October 14 — Free Upgrade to Windows 11 at Settings > Update",
-      "tag": "Tech Tip",
-      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update"
-    },
-    {
-      "id": "n-2026-10-16",
-      "type": "newsletter",
-      "date": "2026-10-16",
-      "title": "Fake Virus Popup Scam",
-      "tag": "Daily Brief",
-      "summary": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
-      "comic": "Newsletter - 2026-10-16-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-16-news1",
-      "type": "tech-note",
-      "date": "2026-10-16",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the update free at firefox.com"
-    },
-    {
-      "id": "t-2026-10-16-tip1",
-      "type": "tech-note",
-      "date": "2026-10-16",
-      "title": "Windows 10 Support Ends October 14, 2026 — Free Upgrade to Windows 11 at Settings > Update",
-      "tag": "Tech Tip",
-      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update"
-    },
-    {
-      "id": "n-2026-10-15",
-      "type": "newsletter",
-      "date": "2026-10-15",
-      "title": "That CAPTCHA Asking You to Press Windows+R Is a Scam",
-      "tag": "Daily Brief",
-      "summary": "A fake CAPTCHA pops up and tells you to press the Windows key + R, paste something, and hit Enter. **Don't do it.** That \"verification\" is a trap — it pastes malicious code into Windows Run and executes it. Real CAPTCHAs never ask for keyboard commands. Ever.",
-      "comic": "Newsletter - 2026-10-15-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }
