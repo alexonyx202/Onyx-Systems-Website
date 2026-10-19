@@ -1,251 +1,197 @@
 {
-  "title": "Math",
-  "size": 18,
+  "title": "math",
+  "size": 28,
   "grid": [
-    "..$......7........",
-    "..9.....22........",
-    "..6..-8.5.........",
-    "..0.1...4.19......",
-    "$8.70.$5.55.......",
-    "..0...1.3.%.......",
-    "..0.50.24.........",
-    "......4.i....l....",
-    "......0.n....i....",
-    "........(....k....",
-    ".803.84(squared)..",
-    ".....2..q....l....",
-    "...12%..u....y....",
-    ".122....a.........",
-    "........r.........",
-    "...5.nope.........",
-    "...%....d.........",
-    "........)........."
+    "........................n...",
+    "........................u...",
+    "...............vertexform...",
+    "........................b...",
+    "...........e.....sequence...",
+    "...........q......x.....r...",
+    "...........u...g..p.........",
+    ".........standardform.d.....",
+    "...........t...o..n...e.....",
+    "......binomial.w..e...c.....",
+    ".......n...o...trinomial....",
+    "polynomial.n...h..t...y.....",
+    ".......t..........i.........",
+    ".......i..........a.........",
+    "......calculator..l.........",
+    ".......l....................",
+    ".......algebra..............",
+    ".......m.e..................",
+    "......monomial..............",
+    ".......u.m...i..............",
+    ".......n.e...n..............",
+    ".......t.t...e..............",
+    "....f....r...a..............",
+    "..quadratic..r..............",
+    "....c....c..................",
+    "....t.......................",
+    "....o.......................",
+    "....r......................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 2,
-        "col": 9,
-        "len": 2,
-        "answer": "22",
-        "clue": "Margo missed 24.6 of her free throw shots in a season. During the season, she shot a total of 90 free throws. Which of the following is the best estimate of the number of free throws margo missed? 18, 12, 22, 25"
+        "num": 2,
+        "row": 3,
+        "col": 16,
+        "len": 10,
+        "answer": "vertexform",
+        "clue": "y = a ( x \u2212 h ) 2 + k"
       },
       {
         "num": 4,
-        "row": 3,
-        "col": 6,
-        "len": 2,
-        "answer": "-8",
-        "clue": ""
-      },
-      {
-        "num": 6,
-        "row": 4,
-        "col": 11,
-        "len": 2,
-        "answer": "19",
-        "clue": "A courier service charges a $5 pickup fee, plus %0.15 per mile. The total charge to deliver a package was 7.85. How many miles did the courier service travel to deliver the package?"
+        "row": 5,
+        "col": 18,
+        "len": 8,
+        "answer": "sequence",
+        "clue": "the following of one thing after another"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 1,
-        "len": 2,
-        "answer": "$8",
-        "clue": ""
-      },
-      {
-        "num": 8,
-        "row": 5,
-        "col": 4,
-        "len": 2,
-        "answer": "70",
-        "clue": ""
+        "row": 8,
+        "col": 10,
+        "len": 12,
+        "answer": "standardform",
+        "clue": "Ax+By=C."
       },
       {
         "num": 9,
-        "row": 5,
+        "row": 10,
         "col": 7,
-        "len": 2,
-        "answer": "$5",
-        "clue": ""
+        "len": 8,
+        "answer": "binomial",
+        "clue": "a mathematical expression consisting of 2 terms"
       },
       {
-        "num": 10,
-        "row": 5,
-        "col": 10,
-        "len": 2,
-        "answer": "55",
-        "clue": ""
+        "num": 11,
+        "row": 11,
+        "col": 16,
+        "len": 9,
+        "answer": "trinomial",
+        "clue": "a mathematical expression consisting of 3 terms"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 1,
+        "len": 10,
+        "answer": "polynomial",
+        "clue": "a math expression consisting of many  terms"
       },
       {
         "num": 13,
-        "row": 7,
-        "col": 5,
-        "len": 2,
-        "answer": "50",
-        "clue": ""
+        "row": 15,
+        "col": 7,
+        "len": 10,
+        "answer": "calculator",
+        "clue": "method to find almost all algebra solutions"
       },
       {
         "num": 14,
-        "row": 7,
+        "row": 17,
         "col": 8,
-        "len": 2,
-        "answer": "24",
-        "clue": ""
+        "len": 7,
+        "answer": "algebra",
+        "clue": "Math subject we are in right now"
       },
       {
-        "num": 17,
-        "row": 11,
-        "col": 2,
-        "len": 3,
-        "answer": "803",
-        "clue": ""
-      },
-      {
-        "num": 18,
-        "row": 11,
-        "col": 6,
-        "len": 11,
-        "answer": "84(squared)",
-        "clue": ""
+        "num": 16,
+        "row": 19,
+        "col": 7,
+        "len": 8,
+        "answer": "monomial",
+        "clue": "a mathematical expression consisting of 1 term"
       },
       {
         "num": 19,
-        "row": 13,
-        "col": 4,
-        "len": 3,
-        "answer": "12%",
-        "clue": "A hospital bill is estimated to be $462.00. It ends up actually costing the patient $525.00. What is the percent error in the bill?"
-      },
-      {
-        "num": 20,
-        "row": 14,
-        "col": 2,
-        "len": 3,
-        "answer": "122",
-        "clue": "Two triangles are supplementary to each other. If the first angle measures 58, then which of the following could be the measure of the second triangle? 122, 32, 58, 180"
-      },
-      {
-        "num": 22,
-        "row": 16,
-        "col": 6,
-        "len": 4,
-        "answer": "nope",
-        "clue": "Will side lengths like 5,5 and 9 form a triangle?"
+        "row": 24,
+        "col": 3,
+        "len": 9,
+        "answer": "quadratic",
+        "clue": "something that pertains to squares"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 3,
-        "len": 4,
-        "answer": "$960",
-        "clue": ""
-      },
-      {
-        "num": 2,
-        "row": 1,
-        "col": 10,
-        "len": 2,
-        "answer": "72",
-        "clue": "the record low temperature in Fargo, ND is -37 F. The record high is 109 F. What is the difference in the record high and the record low areas?"
+        "col": 25,
+        "len": 6,
+        "answer": "number",
+        "clue": "a quantity or amount."
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 9,
-        "len": 3,
-        "answer": "254",
-        "clue": ""
+        "row": 5,
+        "col": 12,
+        "len": 8,
+        "answer": "equation",
+        "clue": "mathematical expression"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 5,
-        "len": 2,
-        "answer": "10",
-        "clue": ""
+        "row": 5,
+        "col": 19,
+        "len": 11,
+        "answer": "exponential",
+        "clue": "of or relating to an exponent."
       },
       {
         "num": 6,
-        "row": 4,
-        "col": 11,
-        "len": 3,
-        "answer": "15%",
-        "clue": "The price of a tablet was increased from $180 to $207,By what percentage was the price of the tablet increased?"
+        "row": 7,
+        "col": 16,
+        "len": 6,
+        "answer": "growth",
+        "clue": "an increasing value"
       },
       {
-        "num": 9,
-        "row": 5,
-        "col": 7,
-        "len": 2,
-        "answer": "$1",
-        "clue": ""
+        "num": 8,
+        "row": 8,
+        "col": 23,
+        "len": 5,
+        "answer": "decay",
+        "clue": "a decreasing value"
       },
       {
-        "num": 11,
-        "row": 6,
-        "col": 3,
-        "len": 2,
-        "answer": "00",
-        "clue": ""
-      },
-      {
-        "num": 12,
-        "row": 6,
-        "col": 9,
+        "num": 10,
+        "row": 10,
+        "col": 8,
         "len": 13,
-        "answer": "34in(squared)",
-        "clue": ""
+        "answer": "initialamount",
+        "clue": "respect to the Proposition 1A Receivable"
       },
       {
         "num": 15,
-        "row": 8,
-        "col": 7,
-        "len": 2,
-        "answer": "40",
-        "clue": ""
+        "row": 17,
+        "col": 10,
+        "len": 9,
+        "answer": "geometric",
+        "clue": "increasing in a geometric progression"
       },
       {
-        "num": 16,
-        "row": 8,
+        "num": 17,
+        "row": 19,
         "col": 14,
         "len": 6,
-        "answer": "likely",
-        "clue": "A student takes notes in class, completes the assignments, attends tutoring, and prepares for the test. Is it likely, unlikely, impossible, or certain they will pass the test?"
+        "answer": "linear",
+        "clue": "made up of, relating to, or like a line"
       },
       {
         "num": 18,
-        "row": 11,
-        "col": 6,
-        "len": 3,
-        "answer": "82%",
-        "clue": "Todd plans to swim 18 laps in the pool. Each lap is 50 yards. So far Todd has swam 738 yards. What percentage of the total has Todd completed?"
-      },
-      {
-        "num": 19,
-        "row": 13,
-        "col": 4,
-        "len": 2,
-        "answer": "12",
-        "clue": ""
-      },
-      {
-        "num": 21,
-        "row": 16,
-        "col": 4,
-        "len": 2,
-        "answer": "5%",
-        "clue": ""
+        "row": 23,
+        "col": 5,
+        "len": 6,
+        "answer": "factor",
+        "clue": "number multipliedwith another given another"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9936",
-  "slug": "math-9936",
-  "fetched_at": "2026-07-14T19:19:35.679119+00:00",
-  "date": "2026-10-18"
+  "source_url": "https://crosswordlabs.com/view/math-9946",
+  "slug": "math-9946",
+  "fetched_at": "2026-07-14T19:19:46.913523+00:00",
+  "date": "2026-10-19"
 }
