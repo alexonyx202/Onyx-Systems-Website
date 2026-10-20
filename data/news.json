@@ -1,6 +1,56 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "items": [
+    {
+      "id": "n-2026-10-20",
+      "type": "newsletter",
+      "date": "2026-10-20",
+      "title": "Chrome Emergency Patch: 7 Critical Flaws Fixed — Update Now",
+      "tag": "Daily Brief",
+      "summary": "Google just pushed an emergency Chrome update fixing 37 security holes — seven of them rated Critical. These are memory-corruption bugs that let a malicious website run code on your computer just by you visiting the page. No clicks needed. The affected versions are Chrome 155 bef",
+      "comic": "Newsletter - 2026-10-20-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-20",
+      "type": "tech-note",
+      "date": "2026-10-20",
+      "title": "CISA adds four actively exploited vulnerabilities — patch Palo Alto, Cisco, Ahsay now",
+      "tag": "Security Alert",
+      "summary": "CISA added four new KEV entries October 14: Palo Alto PAN-OS code injection (CVE-2026-0322), Cisco Secure Email path traversal (CVE-2026-76519), AhsayCBS auth bypass (CVE-2026-105133) and command injection (CVE-2026-105134). Check if you're affected and update at cisa.gov/known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "id": "t-2026-10-20-p2",
+      "type": "tech-note",
+      "date": "2026-10-20",
+      "title": "LibreOffice 26.8.1 is free and opens Word, Excel, PowerPoint files",
+      "tag": "Tools",
+      "summary": "Download LibreOffice 26.8.1 free at libreoffice.org/download — includes Writer for documents, Calc for spreadsheets, Impress for presentations, Draw for diagrams, and Base for databases. Opens DOCX, XLSX, PPTX files natively. Runs on Windows, Mac, Linux."
+    },
+    {
+      "id": "t-2026-10-20-p3",
+      "type": "tech-note",
+      "date": "2026-10-20",
+      "title": "OBS Studio free screen recorder captures your screen for tech support",
+      "tag": "Tools",
+      "summary": "Download OBS Studio free at obsproject.com — records your screen, webcam, and audio in one click. Perfect for showing a tech exactly what's going wrong. No watermarks, no time limits, runs on Windows, Mac, Linux."
+    },
+    {
+      "id": "t-2026-10-20-p4",
+      "type": "tech-note",
+      "date": "2026-10-20",
+      "title": "Clearwave Fiber expanding in Lake City — check your address at clearwavefiber.com",
+      "tag": "Local",
+      "summary": "Check Clearwave Fiber at clearwavefiber.com or the FCC Broadband Map at broadbandmap.fcc.gov — type your Lake City address to see if fiber is available. Clay Electric members: sign up for outage texts at clayelectric.com so you know when power (and internet) goes down."
+    },
+    {
+      "id": "t-2026-10-20-p5",
+      "type": "tech-note",
+      "date": "2026-10-20",
+      "title": "Bitwarden free password manager adds passkeys — stop reusing passwords",
+      "tag": "Security",
+      "summary": "Get Bitwarden free at bitwarden.com — stores unlimited passwords, generates passkeys for passwordless login, syncs across all your devices, open source and audited. Browser extension auto-fills logins. Two-minute setup."
+    },
     {
       "id": "n-2026-10-19",
       "type": "newsletter",
@@ -52,56 +102,6 @@
       "summary": "Your phone rings. The caller says they are from Microsoft or Windows Support. They claim your computer has a virus, a security problem, or an expired license — and they need remote access to fix it. Sometimes they ask for a credit card or gift cards to \"renew\" your protection.",
       "comic": "Newsletter - 2026-10-18-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-18-p2",
-      "type": "tech-note",
-      "date": "2026-10-18",
-      "title": "Two Critical Vulnerabilities Added to CISA Must-Patch List — Fortinet Firewalls and BeyondTrust Remote Support",
-      "tag": "Security",
-      "summary": "If your organization uses Fortinet firewalls or BeyondTrust Remote Support, apply the latest patches immediately at support.fortinet.com and beyondtrust.com/support — both fix flaws attackers are actively exploiting right now (CVE-2025-61624 and CVE-2026-102764)."
-    },
-    {
-      "id": "t-2026-10-18-p3",
-      "type": "tech-note",
-      "date": "2026-10-18",
-      "title": "Firefox 158 Adds Smart Window Form Filling and JPEG XL Support — Free Update at firefox.com",
-      "tag": "Browser",
-      "summary": "Update Firefox at firefox.com or click Menu > Help > About Firefox — Smart Window now suggests form data from your open tabs and saved autofill, and JPEG XL images load faster with better quality than WebP."
-    },
-    {
-      "id": "t-2026-10-18-p4",
-      "type": "tech-note",
-      "date": "2026-10-18",
-      "title": "Windows Sandbox Gives You a Free Disposable PC Inside Windows — Enable It at Windows Features",
-      "tag": "Security",
-      "summary": "Open Windows Features (type 'Windows Features' in Start), check Windows Sandbox, restart — you get a clean temporary desktop where anything you download, install, or break disappears when you close the window."
-    },
-    {
-      "id": "t-2026-10-18-p5",
-      "type": "tech-note",
-      "date": "2026-10-18",
-      "title": "Rufus Makes a Bootable Windows USB in Minutes — Free at rufus.ie",
-      "tag": "Tools",
-      "summary": "Download Rufus at rufus.ie, pick your Windows ISO and USB drive (8 GB minimum), click Start — a bootable Windows installer is ready in minutes, no command line required."
-    },
-    {
-      "id": "n-2026-10-17",
-      "type": "newsletter",
-      "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
-      "tag": "Daily Brief",
-      "summary": "Firefox 157.0.1 Adds Shield Warning for Encrypted Traffic Interception — Free at firefox.com\n\nFirefox 157.0.1 introduces a new shield icon that warns when software on your PC intercepts your encrypted traffic — including corporate monitoring tools and malware. Click the shield to see what's doing it. Most people have no idea their secure banking session can be read by something else on their computer. The fix is simple: install the update, check the shield, and remove anything you don't…",
-      "comic": "Newsletter - 2026-10-17-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-17-news1",
-      "type": "tech-note",
-      "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the free update at firefox.com"
     }
   ]
 }

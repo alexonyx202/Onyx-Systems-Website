@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,12 +100,24 @@
   ],
   "news": [
     {
+      "id": "n-2026-10-20",
+      "type": "newsletter",
+      "date": "2026-10-20",
+      "title": "Chrome Emergency Patch: 7 Critical Flaws Fixed \u2014 Update Now",
+      "tag": "Daily Brief",
+      "excerpt": "Google just pushed an emergency Chrome update fixing 37 security holes \u2014 seven of them rated Critical. These are memory-corruption bugs that let a malicious website run code on your computer just by you visiting the page. No clicks needed. The affected versions are Chrome 155 bef",
+      "tags": [],
+      "image": "assets/img/news/2026-10-20-composite.jpg",
+      "comic": "assets/img/news/2026-10-20-comic-square.jpg",
+      "read_more": "https://onyxpc.us/#contact"
+    },
+    {
       "id": "n-2026-10-19",
       "type": "newsletter",
       "date": "2026-10-19",
-      "title": "Hurricane Charity Scams Are Targeting Floridians — Here's How to Spot Them",
+      "title": "Hurricane Charity Scams Are Targeting Floridians \u2014 Here's How to Spot Them",
       "tag": "Daily Brief",
-      "excerpt": "Hurricane season runs through November, and scammers know it. After every storm, fake charity websites, crowdfunding campaigns, and phone calls flood in — all pretending to help victims. They'll pressure you to donate right now. They'll ask for gift cards, wire transfers, or cryptocurrency. Real charities never ask for those. They'll use names that sound almost like real organizations (e.g., \"Florida Hurricane Relief Fund\" vs. the real \"Florida Disaster Fund\"). What to do: Before donating, verify the charity at ftc.gov/charity or guidestar.org. Pay by credit card only — it has fraud protection. If someone calls pushing for immediate payment, hang up.",
+      "excerpt": "Hurricane season runs through November, and scammers know it. After every storm, fake charity websites, crowdfunding campaigns, and phone calls flood in \u2014 all pretending to help victims. They'll pressure you to donate right now. They'll ask for gift cards, wire transfers, or cryptocurrency. Real charities never ask for those. They'll use names that sound almost like real organizations (e.g., \"Florida Hurricane Relief Fund\" vs. the real \"Florida Disaster Fund\"). What to do: Before donating, verify the charity at ftc.gov/charity or guidestar.org. Pay by credit card only \u2014 it has fraud protection. If someone calls pushing for immediate payment, hang up.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -120,9 +132,9 @@
       "id": "n-2026-10-18",
       "type": "newsletter",
       "date": "2026-10-18",
-      "title": "That 'Microsoft Support' Call Is a Scam — Hang Up Immediately",
+      "title": "That 'Microsoft Support' Call Is a Scam \u2014 Hang Up Immediately",
       "tag": "Daily Brief",
-      "excerpt": "Your phone rings. The caller says they are from Microsoft or Windows Support. They claim your computer has a virus, a security problem, or an expired license — and they need remote access to fix it. Sometimes they ask for a credit card or gift cards to \"renew\" your protection.",
+      "excerpt": "Your phone rings. The caller says they are from Microsoft or Windows Support. They claim your computer has a virus, a security problem, or an expired license \u2014 and they need remote access to fix it. Sometimes they ask for a credit card or gift cards to \"renew\" your protection.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -137,9 +149,9 @@
       "id": "n-2026-10-17",
       "type": "newsletter",
       "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic — Free at firefox.com",
+      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic \u2014 Free at firefox.com",
       "tag": "Daily Brief",
-      "excerpt": "Firefox 157.0.1 Adds Shield Warning for Encrypted Traffic Interception — Free at firefox.com\n\nFirefox 157.0.1 introduces a new shield icon that warns when software on your PC intercepts your encrypted traffic — including corporate monitoring tools and malware. Click the shield to see what's doing it. Most people have no idea their secure banking session can be read by something else on their computer. The fix is simple: install the update, check the shield, and remove anything you don't…",
+      "excerpt": "Firefox 157.0.1 Adds Shield Warning for Encrypted Traffic Interception \u2014 Free at firefox.com\n\nFirefox 157.0.1 introduces a new shield icon that warns when software on your PC intercepts your encrypted traffic \u2014 including corporate monitoring tools and malware. Click the shield to see what's doing it. Most people have no idea their secure banking session can be read by something else on their computer. The fix is simple: install the update, check the shield, and remove anything you don't\u2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -156,7 +168,7 @@
       "date": "2026-10-16",
       "title": "Fake Virus Popup Scam",
       "tag": "Daily Brief",
-      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage — just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your…",
+      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage \u2014 just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your\u2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -166,31 +178,41 @@
       "image": "assets/img/news/2026-10-16-composite.jpg",
       "comic": "assets/img/news/2026-10-16-comic-square.jpg",
       "read_more": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-15",
-      "type": "newsletter",
-      "date": "2026-10-15",
-      "title": "That CAPTCHA Asking You to Press Windows+R Is a Scam",
-      "tag": "Daily Brief",
-      "excerpt": "A fake CAPTCHA pops up and tells you to press the Windows key + R, paste something, and hit Enter. **Don't do it.** That \"verification\" is a trap — it pastes malicious code into Windows Run and executes it. Real CAPTCHAs never ask for keyboard commands. Ever.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-15-composite.jpg",
-      "comic": "assets/img/news/2026-10-15-comic-square.jpg",
-      "read_more": "https://onyxpc.us/#contact"
     }
   ],
   "posts": [
     {
+      "id": "t-2026-10-20-p5",
+      "type": "news",
+      "date": "2026-10-20",
+      "title": "Bitwarden free password manager adds passkeys \u2014 stop reusing passwords",
+      "tag": "Security",
+      "summary": "Get Bitwarden free at bitwarden.com \u2014 stores unlimited passwords, generates passkeys for passwordless login, syncs across all your devices, open source and audited. Browser extension auto-fills logins. Two-minute setup.",
+      "truth": ""
+    },
+    {
+      "id": "t-2026-10-20-p4",
+      "type": "news",
+      "date": "2026-10-20",
+      "title": "Clearwave Fiber expanding in Lake City \u2014 check your address at clearwavefiber.com",
+      "tag": "Local",
+      "summary": "Check Clearwave Fiber at clearwavefiber.com or the FCC Broadband Map at broadbandmap.fcc.gov \u2014 type your Lake City address to see if fiber is available. Clay Electric members: sign up for outage texts at clayelectric.com so you know when power (and internet) goes down.",
+      "truth": ""
+    },
+    {
+      "id": "t-2026-10-20",
+      "type": "news",
+      "date": "2026-10-20",
+      "title": "CISA adds four actively exploited vulnerabilities \u2014 patch Palo Alto, Cisco, Ahsay now",
+      "tag": "Security Alert",
+      "summary": "CISA added four new KEV entries October 14: Palo Alto PAN-OS code injection (CVE-2026-0322), Cisco Secure Email path traversal (CVE-2026-76519), AhsayCBS auth bypass (CVE-2026-105133) and command injection (CVE-2026-105134). Check if you're affected and update at cisa.gov/known-exploited-vulnerabilities-catalog",
+      "truth": ""
+    },
+    {
       "id": "t-2026-10-19-p2",
       "type": "news",
       "date": "2026-10-19",
-      "title": "Rapid Fiber gigabit internet now available to all Suwannee Valley Electric Cooperative members in North Florida — check your address at rapidfiber.net",
+      "title": "Rapid Fiber gigabit internet now available to all Suwannee Valley Electric Cooperative members in North Florida \u2014 check your address at rapidfiber.net",
       "tag": "Local",
       "summary": "The $93 million SVEC fiber rollout is complete. Go to rapidfiber.net, enter your address, and see if gigabit fiber (up to 1 Gbps symmetric) has reached your Lake City or Columbia County street. No contract required, installation is free for members.",
       "truth": "",
@@ -203,12 +225,44 @@
       ]
     },
     {
+      "id": "t-2026-10-18-p2",
+      "type": "news",
+      "date": "2026-10-18",
+      "title": "Two Critical Vulnerabilities Added to CISA Must-Patch List \u2014 Fortinet Firewalls and BeyondTrust Remote Support",
+      "tag": "Security",
+      "summary": "If your organization uses Fortinet firewalls or BeyondTrust Remote Support, apply the latest patches immediately at support.fortinet.com and beyondtrust.com/support \u2014 both fix flaws attackers are actively exploiting right now (CVE-2025-61624 and CVE-2026-102764).",
+      "truth": "",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "t-2026-10-20-p3",
+      "type": "tip",
+      "date": "2026-10-20",
+      "title": "OBS Studio free screen recorder captures your screen for tech support",
+      "tag": "Tools",
+      "summary": "Download OBS Studio free at obsproject.com \u2014 records your screen, webcam, and audio in one click. Perfect for showing a tech exactly what's going wrong. No watermarks, no time limits, runs on Windows, Mac, Linux.",
+      "truth": ""
+    },
+    {
+      "id": "t-2026-10-20-p2",
+      "type": "tip",
+      "date": "2026-10-20",
+      "title": "LibreOffice 26.8.1 is free and opens Word, Excel, PowerPoint files",
+      "tag": "Tools",
+      "summary": "Download LibreOffice 26.8.1 free at libreoffice.org/download \u2014 includes Writer for documents, Calc for spreadsheets, Impress for presentations, Draw for diagrams, and Base for databases. Opens DOCX, XLSX, PPTX files natively. Runs on Windows, Mac, Linux.",
+      "truth": ""
+    },
+    {
       "id": "t-2026-10-19-p3",
       "type": "tip",
       "date": "2026-10-19",
-      "title": "Stop reusing passwords — Bitwarden is the free password manager that now supports passkeys at bitwarden.com",
+      "title": "Stop reusing passwords \u2014 Bitwarden is the free password manager that now supports passkeys at bitwarden.com",
       "tag": "Security",
-      "summary": "Get Bitwarden free at bitwarden.com — it generates strong unique passwords for every site, fills them automatically, and now supports passkeys (passwordless login) for Google, Microsoft, Apple, and dozens of other sites. Works on Windows, Mac, Linux, iPhone, Android. Open source, end-to-end encrypted.",
+      "summary": "Get Bitwarden free at bitwarden.com \u2014 it generates strong unique passwords for every site, fills them automatically, and now supports passkeys (passwordless login) for Google, Microsoft, Apple, and dozens of other sites. Works on Windows, Mac, Linux, iPhone, Android. Open source, end-to-end encrypted.",
       "truth": "",
       "tags": [
         "#OnyxSystems",
@@ -222,9 +276,9 @@
       "id": "t-2026-10-19-p4",
       "type": "tip",
       "date": "2026-10-19",
-      "title": "Stop Windows spying on you free — O&O ShutUp10++ disables telemetry and tracking in one click at oo-software.com",
+      "title": "Stop Windows spying on you free \u2014 O&O ShutUp10++ disables telemetry and tracking in one click at oo-software.com",
       "tag": "Privacy",
-      "summary": "Download O&O ShutUp10++ free at oo-software.com/en/shutup10 (no install needed — just run the .exe). Click \"Apply recommended settings\" and it disables 200+ Windows telemetry, advertising ID, location tracking, Wi-Fi sense, Cortana data collection, and more. Works on Windows 10 and 11. Updated September 2026.",
+      "summary": "Download O&O ShutUp10++ free at oo-software.com/en/shutup10 (no install needed \u2014 just run the .exe). Click \"Apply recommended settings\" and it disables 200+ Windows telemetry, advertising ID, location tracking, Wi-Fi sense, Cortana data collection, and more. Works on Windows 10 and 11. Updated September 2026.",
       "truth": "",
       "tags": [
         "#OnyxSystems",
@@ -238,9 +292,9 @@
       "id": "t-2026-10-19-p5",
       "type": "tip",
       "date": "2026-10-19",
-      "title": "Stop fighting weird video formats — VLC Media Player is the free Swiss Army knife that plays literally everything at videolan.org",
+      "title": "Stop fighting weird video formats \u2014 VLC Media Player is the free Swiss Army knife that plays literally everything at videolan.org",
       "tag": "Tools",
-      "summary": "Download VLC free at videolan.org — it plays DVDs, Blu-rays (with libdvdcss), weird camera formats (.MTS, .M2TS), corrupted downloads, network streams, and obscure codecs without any codec packs. No ads, no spyware, no \"pro\" upsell. Windows, Mac, Linux, Android, iOS.",
+      "summary": "Download VLC free at videolan.org \u2014 it plays DVDs, Blu-rays (with libdvdcss), weird camera formats (.MTS, .M2TS), corrupted downloads, network streams, and obscure codecs without any codec packs. No ads, no spyware, no \"pro\" upsell. Windows, Mac, Linux, Android, iOS.",
       "truth": "",
       "tags": [
         "#OnyxSystems",
@@ -249,127 +303,15 @@
         "#VLC",
         "#VideoPlayer"
       ]
-    },
-    {
-      "id": "t-2026-10-18-p2",
-      "type": "news",
-      "date": "2026-10-18",
-      "title": "Two Critical Vulnerabilities Added to CISA Must-Patch List — Fortinet Firewalls and BeyondTrust Remote Support",
-      "tag": "Security",
-      "summary": "If your organization uses Fortinet firewalls or BeyondTrust Remote Support, apply the latest patches immediately at support.fortinet.com and beyondtrust.com/support — both fix flaws attackers are actively exploiting right now (CVE-2025-61624 and CVE-2026-102764).",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-18-p3",
-      "type": "news",
-      "date": "2026-10-18",
-      "title": "Firefox 158 Adds Smart Window Form Filling and JPEG XL Support — Free Update at firefox.com",
-      "tag": "Browser",
-      "summary": "Update Firefox at firefox.com or click Menu > Help > About Firefox — Smart Window now suggests form data from your open tabs and saved autofill, and JPEG XL images load faster with better quality than WebP.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-18-p4",
-      "type": "news",
-      "date": "2026-10-18",
-      "title": "Windows Sandbox Gives You a Free Disposable PC Inside Windows — Enable It at Windows Features",
-      "tag": "Security",
-      "summary": "Open Windows Features (type 'Windows Features' in Start), check Windows Sandbox, restart — you get a clean temporary desktop where anything you download, install, or break disappears when you close the window.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-18-p5",
-      "type": "news",
-      "date": "2026-10-18",
-      "title": "Rufus Makes a Bootable Windows USB in Minutes — Free at rufus.ie",
-      "tag": "Tools",
-      "summary": "Download Rufus at rufus.ie, pick your Windows ISO and USB drive (8 GB minimum), click Start — a bootable Windows installer is ready in minutes, no command line required.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-17-news1",
-      "type": "news",
-      "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the free update at firefox.com",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-17-tip1",
-      "type": "tip",
-      "date": "2026-10-17",
-      "title": "Windows 10 Support Ends October 14 — Free Upgrade to Windows 11 at Settings > Update",
-      "tag": "Tech Tip",
-      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-16-news1",
-      "type": "news",
-      "date": "2026-10-16",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Your Encrypted Traffic — Free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 157.0.1 adds a new shield icon warning when software on your PC (like corporate monitoring tools or malware) intercepts your encrypted traffic. Click the shield to see which software is doing it, then decide whether to allow it or remove it. Most people have no idea their \"secure\" banking session can be read by something else on their computer. Get the update free at firefox.com",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "t-2026-10-16-tip1",
-      "type": "tip",
-      "date": "2026-10-16",
-      "title": "Windows 10 Support Ends October 14, 2026 — Free Upgrade to Windows 11 at Settings > Update",
-      "tag": "Tech Tip",
-      "summary": "After October 14, 2026, Windows 10 stops receiving security updates. Your computer will keep working, but it won't be safe to use online. Upgrade to Windows 11 for free at Settings > Windows Update > Check for Updates. Most PCs from 2018 or newer are eligible. Get the free upgrade at Settings > Windows Update",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "today_word": {
-    "word": "Encryption",
+    "word": "Firmware",
     "pos": "noun",
-    "definition": "Scrambling data so only someone with the key can read it — the backbone of private messaging and shopping.",
-    "example": "Encryption keeps your card number safe at checkout.",
-    "date": "2026-10-19"
+    "definition": "The low-level software baked into a device that tells its hardware how to boot and behave.",
+    "example": "A firmware update made the printer print faster.",
+    "date": "2026-10-20"
   },
   "today_crossword": {
     "title": "math",
@@ -412,7 +354,7 @@
           "col": 16,
           "len": 10,
           "answer": "vertexform",
-          "clue": "y = a ( x − h ) 2 + k"
+          "clue": "y = a ( x \u2212 h ) 2 + k"
         },
         {
           "num": 4,
@@ -563,64 +505,68 @@
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-9946",
-    "slug": "math-9946",
-    "fetched_at": "2026-07-14T19:19:46.913523+00:00",
-    "date": "2026-10-19"
+    "source_url": "https://crosswordlabs.com/view/math-9947",
+    "slug": "math-9947",
+    "fetched_at": "2026-07-14T19:19:47.492523+00:00",
+    "date": "2026-10-20"
   },
   "today_trivia": {
-    "q": "What is 'virtual memory'?",
-    "a": "Using disk space as extra RAM when physical memory runs low.",
+    "q": "What does 'compile' mean?",
+    "a": "To translate human-written code into machine code the CPU can run.",
     "category": "Software",
-    "date": "2026-10-19"
+    "date": "2026-10-20"
   },
   "today_joke": {
-    "q": "What do you call a fake Italian computer?",
-    "a": "A Mac-arony.",
-    "date": "2026-10-19"
+    "q": "Why do Windows and Linux get along?",
+    "a": "They both agree Macs are prettier. (We fix all three, promise.)",
+    "date": "2026-10-20"
   },
   "poll": {
-    "weekOf": "2026-10-18",
-    "question": "How old is your main computer?",
-    "options": [
-      {
-        "id": "lt1",
-        "label": "Under 1 year"
-      },
-      {
-        "id": "1to3",
-        "label": "1–3 years"
-      },
-      {
-        "id": "3to5",
-        "label": "3–5 years"
-      },
-      {
-        "id": "gt5",
-        "label": "5+ years"
-      }
-    ]
+    "poll": {
+      "weekOf": "2026-10-18",
+      "question": "How old is your main computer?",
+      "options": [
+        {
+          "id": "lt1",
+          "label": "Under 1 year"
+        },
+        {
+          "id": "1to3",
+          "label": "1\u20133 years"
+        },
+        {
+          "id": "3to5",
+          "label": "3\u20135 years"
+        },
+        {
+          "id": "gt5",
+          "label": "5+ years"
+        }
+      ]
+    }
   },
   "today_poll": {
-    "weekOf": "2026-10-18",
-    "question": "How old is your main computer?",
-    "options": [
-      {
-        "id": "lt1",
-        "label": "Under 1 year"
-      },
-      {
-        "id": "1to3",
-        "label": "1–3 years"
-      },
-      {
-        "id": "3to5",
-        "label": "3–5 years"
-      },
-      {
-        "id": "gt5",
-        "label": "5+ years"
-      }
-    ]
+    "poll": {
+      "weekOf": "2026-10-18",
+      "question": "How old is your main computer?",
+      "options": [
+        {
+          "id": "lt1",
+          "label": "Under 1 year"
+        },
+        {
+          "id": "1to3",
+          "label": "1\u20133 years"
+        },
+        {
+          "id": "3to5",
+          "label": "3\u20135 years"
+        },
+        {
+          "id": "gt5",
+          "label": "5+ years"
+        }
+      ]
+    }
   }
 }
