@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-21-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-21",
+      "title": "FBI Impersonation Scams Hit 61,000 Victims \u2014 $1.6 Billion Lost",
+      "tag": "Daily Brief",
+      "excerpt": "The FBI says scammers impersonating government officials have hit nearly 61,000 people since January 2025, stealing over $1.6 billion. They call or email pretending to be the FBI, IRS, Social Security, or local police \u2014 saying you owe money, your identity was stolen, or there's a warrant. They demand payment by wire, gift card, or crypto.\n\nWhat to do: Hang up. Government agencies never call demanding money or threatening arrest. If you're worried, look up the real number yourself and call back.\u2026",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-21-composite.jpg",
+      "comic": "assets/img/news/2026-10-21-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "n-2026-10-20",
       "type": "newsletter",
       "date": "2026-10-20",
@@ -161,26 +178,26 @@
       "image": "assets/img/news/2026-10-17-composite.jpg",
       "comic": "assets/img/news/2026-10-17-comic-square.jpg",
       "read_more": "https://onyxpc.us/#contact"
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "n-2026-10-16",
-      "type": "newsletter",
-      "date": "2026-10-16",
-      "title": "Fake Virus Popup Scam",
-      "tag": "Daily Brief",
-      "excerpt": "Fake Virus Popup Scam\n\nYou're browsing the web and suddenly a loud siren blares from your speakers. A giant red popup fills the screen: \"WARNING: 47 VIRUS DETECTED. Your files are being stolen. Call Microsoft Support NOW: 1-888-XXX-XXXX.\"\n\nHere's the truth: Microsoft doesn't work this way. That popup is a webpage \u2014 just a picture. It can't see your files. It can't hurt anything. It can't make any phone calls. If you see a popup like this, close your browser tab. If it won't close, hold your\u2026",
+      "id": "onyx-2026-10-21-post-1",
+      "type": "news",
+      "date": "2026-10-21",
+      "title": "Comcast fiber reaches 3,300 Columbia County homes with 2,000 more coming by December",
+      "tag": "Tech Note",
+      "summary": "Comcast expanded fiber to 3,300 homes and businesses in Columbia County via a state partnership, with 2,000 more locations under construction for completion by year-end. Check if your address qualifies at xfinity.com.",
+      "truth": "",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-16-composite.jpg",
-      "comic": "assets/img/news/2026-10-16-comic-square.jpg",
-      "read_more": "https://onyxpc.us/#contact"
-    }
-  ],
-  "posts": [
+        "#DailyBrief",
+        "#ColumbiaCounty",
+        "#Broadband"
+      ]
+    },
     {
       "id": "t-2026-10-20-p5",
       "type": "news",
@@ -225,17 +242,20 @@
       ]
     },
     {
-      "id": "t-2026-10-18-p2",
-      "type": "news",
-      "date": "2026-10-18",
-      "title": "Two Critical Vulnerabilities Added to CISA Must-Patch List \u2014 Fortinet Firewalls and BeyondTrust Remote Support",
-      "tag": "Security",
-      "summary": "If your organization uses Fortinet firewalls or BeyondTrust Remote Support, apply the latest patches immediately at support.fortinet.com and beyondtrust.com/support \u2014 both fix flaws attackers are actively exploiting right now (CVE-2025-61624 and CVE-2026-102764).",
-      "truth": "",
+      "id": "onyx-2026-10-21-post-2",
+      "type": "tip",
+      "date": "2026-10-21",
+      "title": "Career Online High School: free accredited diploma through Columbia County Library",
+      "tag": "Tech Tip",
+      "summary": "Columbia County Public Library provides free Career Online High School diplomas and career certificates for adults. Scholarships available. Apply at ccpl.aspendiscovery.org or call (386) 758-2111.",
+      "truth": "I see adults put off education because they think it's too late or too expensive. This program removes both barriers \u2014 it's free, accredited, and fits around your schedule. The only thing it costs is time.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair"
+        "#ComputerRepair",
+        "#ColumbiaCountyLibrary",
+        "#Education",
+        "#FreeDiploma"
       ]
     },
     {
@@ -287,25 +307,9 @@
         "#WindowsPrivacy",
         "#ShutUp10"
       ]
-    },
-    {
-      "id": "t-2026-10-19-p5",
-      "type": "tip",
-      "date": "2026-10-19",
-      "title": "Stop fighting weird video formats \u2014 VLC Media Player is the free Swiss Army knife that plays literally everything at videolan.org",
-      "tag": "Tools",
-      "summary": "Download VLC free at videolan.org \u2014 it plays DVDs, Blu-rays (with libdvdcss), weird camera formats (.MTS, .M2TS), corrupted downloads, network streams, and obscure codecs without any codec packs. No ads, no spyware, no \"pro\" upsell. Windows, Mac, Linux, Android, iOS.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VLC",
-        "#VideoPlayer"
-      ]
     }
   ],
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "today_word": {
     "word": "Firmware",
     "pos": "noun",

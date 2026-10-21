@@ -191,6 +191,8 @@ KNOWN_PRODUCTS = [
     "zammad", "cisa", "clay electric", "clayelectric",
     # Extended 2026-10-13: Today's Onyx Tech Notes real products (named + obtain method stated).
     "clearwave", "clearwavefiber", "clearwavefiber.com", "xbox game bar", "game bar", "alert clay", "alertclay.org",
+    # Extended 2026-10-21: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "comcast", "xfinity",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
