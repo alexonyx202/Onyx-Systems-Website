@@ -1,197 +1,200 @@
 {
-  "title": "math",
-  "size": 28,
+  "title": "Math",
+  "size": 23,
   "grid": [
-    "........................n...",
-    "........................u...",
-    "...............vertexform...",
-    "........................b...",
-    "...........e.....sequence...",
-    "...........q......x.....r...",
-    "...........u...g..p.........",
-    ".........standardform.d.....",
-    "...........t...o..n...e.....",
-    "......binomial.w..e...c.....",
-    ".......n...o...trinomial....",
-    "polynomial.n...h..t...y.....",
-    ".......t..........i.........",
-    ".......i..........a.........",
-    "......calculator..l.........",
-    ".......l....................",
-    ".......algebra..............",
-    ".......m.e..................",
-    "......monomial..............",
-    ".......u.m...i..............",
-    ".......n.e...n..............",
-    ".......t.t...e..............",
-    "....f....r...a..............",
-    "..quadratic..r..............",
-    "....c....c..................",
-    "....t.......................",
-    "....o.......................",
-    "....r......................."
+    "...s...................",
+    "..multiply.............",
+    "...m..n.......d........",
+    "......t.......i........",
+    "......e.......f........",
+    "......graph...f..n..y.s",
+    "......e.......e..u..-.u",
+    "......remainder..m..i.b",
+    "..z.........e.e..b..n.t",
+    "..e....v....n.numerator",
+    "variable.s..o.c..r....a",
+    "..o....r.l..m.e.......c",
+    "...fraction.i.........t",
+    ".....d.e.p..n.d........",
+    ".....d.x.equation......",
+    "............t.v........",
+    "............o.i........",
+    "...........product.....",
+    "..............e........",
+    ".......................",
+    ".......................",
+    ".......................",
+    "......................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 3,
-        "col": 16,
-        "len": 10,
-        "answer": "vertexform",
-        "clue": "y = a ( x \u2212 h ) 2 + k"
-      },
-      {
-        "num": 4,
-        "row": 5,
-        "col": 18,
+        "row": 2,
+        "col": 3,
         "len": 8,
-        "answer": "sequence",
-        "clue": "the following of one thing after another"
+        "answer": "multiply",
+        "clue": "Obtain number from another for a specific amount"
       },
       {
-        "num": 7,
-        "row": 8,
-        "col": 10,
-        "len": 12,
-        "answer": "standardform",
-        "clue": "Ax+By=C."
+        "num": 5,
+        "row": 6,
+        "col": 7,
+        "len": 5,
+        "answer": "graph",
+        "clue": "Diagram with two variables"
       },
       {
         "num": 9,
-        "row": 10,
+        "row": 8,
         "col": 7,
-        "len": 8,
-        "answer": "binomial",
-        "clue": "a mathematical expression consisting of 2 terms"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 16,
         "len": 9,
-        "answer": "trinomial",
-        "clue": "a mathematical expression consisting of 3 terms"
-      },
-      {
-        "num": 12,
-        "row": 12,
-        "col": 1,
-        "len": 10,
-        "answer": "polynomial",
-        "clue": "a math expression consisting of many  terms"
+        "answer": "remainder",
+        "clue": "What's left over in division"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 7,
-        "len": 10,
-        "answer": "calculator",
-        "clue": "method to find almost all algebra solutions"
+        "row": 10,
+        "col": 15,
+        "len": 9,
+        "answer": "numerator",
+        "clue": "Parts taken in fraction"
       },
       {
         "num": 14,
-        "row": 17,
-        "col": 8,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "Math subject we are in right now"
+        "row": 11,
+        "col": 1,
+        "len": 8,
+        "answer": "variable",
+        "clue": "Variable in equation"
       },
       {
         "num": 16,
-        "row": 19,
-        "col": 7,
+        "row": 13,
+        "col": 4,
         "len": 8,
-        "answer": "monomial",
-        "clue": "a mathematical expression consisting of 1 term"
+        "answer": "fraction",
+        "clue": "Fraction of whole"
       },
       {
         "num": 19,
-        "row": 24,
-        "col": 3,
-        "len": 9,
-        "answer": "quadratic",
-        "clue": "something that pertains to squares"
+        "row": 15,
+        "col": 10,
+        "len": 8,
+        "answer": "equation",
+        "clue": "Math process"
+      },
+      {
+        "num": 20,
+        "row": 18,
+        "col": 12,
+        "len": 7,
+        "answer": "product",
+        "clue": "Answer to multiplication"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 25,
-        "len": 6,
-        "answer": "number",
-        "clue": "a quantity or amount."
+        "col": 4,
+        "len": 3,
+        "answer": "sum",
+        "clue": "Answer to addition"
       },
       {
         "num": 3,
-        "row": 5,
-        "col": 12,
-        "len": 8,
-        "answer": "equation",
-        "clue": "mathematical expression"
+        "row": 2,
+        "col": 7,
+        "len": 7,
+        "answer": "integer",
+        "clue": "Whole number"
       },
       {
-        "num": 5,
-        "row": 5,
-        "col": 19,
-        "len": 11,
-        "answer": "exponential",
-        "clue": "of or relating to an exponent."
+        "num": 4,
+        "row": 3,
+        "col": 15,
+        "len": 10,
+        "answer": "difference",
+        "clue": "Answer to subtraction"
       },
       {
         "num": 6,
-        "row": 7,
-        "col": 16,
+        "row": 6,
+        "col": 18,
         "len": 6,
-        "answer": "growth",
-        "clue": "an increasing value"
+        "answer": "number",
+        "clue": "Used in equations"
+      },
+      {
+        "num": 7,
+        "row": 6,
+        "col": 21,
+        "len": 5,
+        "answer": "y-int",
+        "clue": "Where like passes y"
       },
       {
         "num": 8,
-        "row": 8,
+        "row": 6,
         "col": 23,
-        "len": 5,
-        "answer": "decay",
-        "clue": "a decreasing value"
+        "len": 8,
+        "answer": "subtract",
+        "clue": "Take away"
       },
       {
         "num": 10,
+        "row": 8,
+        "col": 13,
+        "len": 11,
+        "answer": "denominator",
+        "clue": "Whole in fraction"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 3,
+        "len": 4,
+        "answer": "zero",
+        "clue": "Line passes X"
+      },
+      {
+        "num": 12,
         "row": 10,
         "col": 8,
-        "len": 13,
-        "answer": "initialamount",
-        "clue": "respect to the Proposition 1A Receivable"
+        "len": 6,
+        "answer": "vertex",
+        "clue": "Highest point"
       },
       {
         "num": 15,
-        "row": 17,
+        "row": 11,
         "col": 10,
-        "len": 9,
-        "answer": "geometric",
-        "clue": "increasing in a geometric progression"
+        "len": 5,
+        "answer": "slope",
+        "clue": "Measure of line incline"
       },
       {
         "num": 17,
-        "row": 19,
-        "col": 14,
-        "len": 6,
-        "answer": "linear",
-        "clue": "made up of, relating to, or like a line"
+        "row": 13,
+        "col": 6,
+        "len": 3,
+        "answer": "add",
+        "clue": "Bigger add ons"
       },
       {
         "num": 18,
-        "row": 23,
-        "col": 5,
+        "row": 14,
+        "col": 15,
         "len": 6,
-        "answer": "factor",
-        "clue": "number multipliedwith another given another"
+        "answer": "divide",
+        "clue": "Separate"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-9947",
-  "slug": "math-9947",
-  "fetched_at": "2026-07-14T19:19:47.492523+00:00",
-  "date": "2026-10-20"
+  "source_url": "https://crosswordlabs.com/view/math-9985",
+  "slug": "math-9985",
+  "fetched_at": "2026-07-14T19:18:02.325604+00:00",
+  "date": "2026-10-21"
 }
