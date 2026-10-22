@@ -193,6 +193,8 @@ KNOWN_PRODUCTS = [
     "clearwave", "clearwavefiber", "clearwavefiber.com", "xbox game bar", "game bar", "alert clay", "alertclay.org",
     # Extended 2026-10-21: Today's Onyx Tech Notes real products (named + obtain method stated).
     "comcast", "xfinity",
+    # Extended 2026-10-22: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "libby",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

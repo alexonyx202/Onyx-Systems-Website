@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-22-daily-brief",
+      "type": "newsletter",
+      "date": "2026-10-22",
+      "title": "CISA Adds Two Actively Exploited Zero-Days \u2014 Patch These Now",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft's October Patch Tuesday fixed over 1,400 vulnerabilities including two actively exploited zero-days (CVE-2026-96951 in Windows and an Ivanti VPN flaw). Open Settings \u2192 Windows Update and install the current cumulative update today.",
+      "tags": [
+        "security",
+        "patch-tuesday",
+        "windows",
+        "cisa"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-10-21-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-21",
@@ -161,26 +179,35 @@
       "image": "assets/img/news/2026-10-18-composite.jpg",
       "comic": "assets/img/news/2026-10-18-comic-square.jpg",
       "read_more": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-17",
-      "type": "newsletter",
-      "date": "2026-10-17",
-      "title": "Firefox 157.0.1 Warns When Malware Reads Encrypted Traffic \u2014 Free at firefox.com",
-      "tag": "Daily Brief",
-      "excerpt": "Firefox 157.0.1 Adds Shield Warning for Encrypted Traffic Interception \u2014 Free at firefox.com\n\nFirefox 157.0.1 introduces a new shield icon that warns when software on your PC intercepts your encrypted traffic \u2014 including corporate monitoring tools and malware. Click the shield to see what's doing it. Most people have no idea their secure banking session can be read by something else on their computer. The fix is simple: install the update, check the shield, and remove anything you don't\u2026",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-17-composite.jpg",
-      "comic": "assets/img/news/2026-10-17-comic-square.jpg",
-      "read_more": "https://onyxpc.us/#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-22-jan-ai",
+      "type": "news",
+      "date": "2026-10-22",
+      "title": "Run ChatGPT-style AI on your PC free and offline \u2014 Jan.ai downloads models in one click",
+      "tag": "Tech Note",
+      "summary": "Download Jan.ai free at jan.ai (Windows, Mac, or Linux). Install it, open the Model Hub (the cube icon on the left), and click \"Download\" on any model \u2014 Llama 3.2 3B for older computers (needs about 4 GB memory), Qwen 2.5 7B for newer ones (about 8 GB memory). It runs 100% offline \u2014 your conversations never leave your computer. No account, no subscription, no internet required after the model downloads.",
+      "truth": "People think AI requires a $2,000 graphics card and a PhD. It doesn't. I run Llama 3.2 on a 5-year-old office desktop with 16 GB memory and it's perfectly usable for writing emails, summarizing PDFs, and answering questions. The model lives on your hard drive, not in the cloud.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "onyx-2026-10-22-library",
+      "type": "news",
+      "date": "2026-10-22",
+      "title": "Your free Columbia County library card unlocks the Libby app for free e-books and audiobooks",
+      "tag": "Tech Note",
+      "summary": "Visit any Columbia County library branch (Main Library at 308 NW Columbia Ave in Lake City, Fort White Branch, or West Branch) with a photo ID and proof of address. Get a free library card, then access the Libby app for free e-books and audiobooks on your phone or tablet, Career Online High School for a free accredited high school diploma, and the Florida Electronic Library databases for research. All free with your card.",
+      "truth": "Most people think the library is just for books. It's not \u2014 it's a tech support center you've already paid for with your taxes. I've sent customers there for help setting up email, learning video calls, and printing documents when their home printer dies.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "onyx-2026-10-21-post-1",
       "type": "news",
@@ -217,29 +244,43 @@
       "truth": ""
     },
     {
-      "id": "t-2026-10-20",
-      "type": "news",
-      "date": "2026-10-20",
-      "title": "CISA adds four actively exploited vulnerabilities \u2014 patch Palo Alto, Cisco, Ahsay now",
-      "tag": "Security Alert",
-      "summary": "CISA added four new KEV entries October 14: Palo Alto PAN-OS code injection (CVE-2026-0322), Cisco Secure Email path traversal (CVE-2026-76519), AhsayCBS auth bypass (CVE-2026-105133) and command injection (CVE-2026-105134). Check if you're affected and update at cisa.gov/known-exploited-vulnerabilities-catalog",
-      "truth": ""
+      "id": "onyx-2026-10-22-vlc",
+      "type": "tip",
+      "date": "2026-10-22",
+      "title": "Stop fighting weird video formats \u2014 VLC Media Player is the free Swiss Army knife that plays literally everything",
+      "tag": "Tech Tip",
+      "summary": "Download VLC free at videolan.org/vlc \u2014 choose \"Windows 64-bit\" for most computers. Install it, and it will play any video or audio file you throw at it: MKV, AVI, MP4, MOV, FLAC, MP3, DVDs, Blu-rays, network streams, even broken or incomplete downloads. No codec packs, no ads, no tracking, no subscriptions. Ever.",
+      "truth": "I've seen people pay for \"video converter\" software to make a file play in Windows Media Player. VLC plays the original file without converting. The only format it struggles with is DRM-protected commercial movies (iTunes, some streaming downloads) \u2014 and that's by design, not a bug.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
     },
     {
-      "id": "t-2026-10-19-p2",
-      "type": "news",
-      "date": "2026-10-19",
-      "title": "Rapid Fiber gigabit internet now available to all Suwannee Valley Electric Cooperative members in North Florida \u2014 check your address at rapidfiber.net",
-      "tag": "Local",
-      "summary": "The $93 million SVEC fiber rollout is complete. Go to rapidfiber.net, enter your address, and see if gigabit fiber (up to 1 Gbps symmetric) has reached your Lake City or Columbia County street. No contract required, installation is free for members.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#NorthFlorida",
-        "#FiberInternet"
-      ]
+      "id": "onyx-2026-10-22-storage-sense",
+      "type": "tip",
+      "date": "2026-10-22",
+      "title": "Windows can clean up your disk automatically \u2014 Storage Sense frees space while you sleep",
+      "tag": "Tech Tip",
+      "summary": "Turn on Storage Sense at Settings > System > Storage. Flip the switch to On, then click \"Storage Sense\" to choose how often it runs (Daily, Weekly, Monthly, or \"When low on disk space\") and what to clean: temporary files, Recycle Bin (after 30 days by default), and Downloads folder (if you want). It's free, built into Windows 10 and 11, and runs automatically in the background.",
+      "truth": "People buy \"PC cleaner\" software that does exactly what Storage Sense does for free \u2014 and the paid ones often delete things they shouldn't. Microsoft's built-in tool is conservative: it only removes files Windows knows are safe to delete.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "onyx-2026-10-22-libreoffice",
+      "type": "tip",
+      "date": "2026-10-22",
+      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is free, opens every file, and now has themes",
+      "tag": "Tech Tip",
+      "summary": "LibreOffice 25.2 is free at libreoffice.org. Download the Windows 64-bit installer, run it, and you can open Word, Excel, and PowerPoint files without paying Microsoft a dime. New in 25.2: built-in themes (Light, Dark, and custom colors) so you can make it look exactly how you want \u2014 go to Tools > Options > Appearance to pick one.",
+      "truth": "I see people paying $70\u2013$100 a year for Office 365 just to open a few documents. LibreOffice has opened every Office file I've thrown at it for 15 years. The only time it struggles is with heavily macro-laden Excel sheets \u2014 and most people don't use those.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
     },
     {
       "id": "onyx-2026-10-21-post-2",
@@ -266,50 +307,9 @@
       "tag": "Tools",
       "summary": "Download OBS Studio free at obsproject.com \u2014 records your screen, webcam, and audio in one click. Perfect for showing a tech exactly what's going wrong. No watermarks, no time limits, runs on Windows, Mac, Linux.",
       "truth": ""
-    },
-    {
-      "id": "t-2026-10-20-p2",
-      "type": "tip",
-      "date": "2026-10-20",
-      "title": "LibreOffice 26.8.1 is free and opens Word, Excel, PowerPoint files",
-      "tag": "Tools",
-      "summary": "Download LibreOffice 26.8.1 free at libreoffice.org/download \u2014 includes Writer for documents, Calc for spreadsheets, Impress for presentations, Draw for diagrams, and Base for databases. Opens DOCX, XLSX, PPTX files natively. Runs on Windows, Mac, Linux.",
-      "truth": ""
-    },
-    {
-      "id": "t-2026-10-19-p3",
-      "type": "tip",
-      "date": "2026-10-19",
-      "title": "Stop reusing passwords \u2014 Bitwarden is the free password manager that now supports passkeys at bitwarden.com",
-      "tag": "Security",
-      "summary": "Get Bitwarden free at bitwarden.com \u2014 it generates strong unique passwords for every site, fills them automatically, and now supports passkeys (passwordless login) for Google, Microsoft, Apple, and dozens of other sites. Works on Windows, Mac, Linux, iPhone, Android. Open source, end-to-end encrypted.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#PasswordSecurity",
-        "#Bitwarden"
-      ]
-    },
-    {
-      "id": "t-2026-10-19-p4",
-      "type": "tip",
-      "date": "2026-10-19",
-      "title": "Stop Windows spying on you free \u2014 O&O ShutUp10++ disables telemetry and tracking in one click at oo-software.com",
-      "tag": "Privacy",
-      "summary": "Download O&O ShutUp10++ free at oo-software.com/en/shutup10 (no install needed \u2014 just run the .exe). Click \"Apply recommended settings\" and it disables 200+ Windows telemetry, advertising ID, location tracking, Wi-Fi sense, Cortana data collection, and more. Works on Windows 10 and 11. Updated September 2026.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsPrivacy",
-        "#ShutUp10"
-      ]
     }
   ],
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "today_word": {
     "word": "Firmware",
     "pos": "noun",
