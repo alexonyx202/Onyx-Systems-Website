@@ -1,202 +1,104 @@
 {
-  "title": "Math Adventures: Exploring the World of Numbers and Operations!",
-  "size": 25,
+  "title": "math and other stuffs",
+  "size": 15,
   "grid": [
-    "........EStimate.........",
-    ".........u...............",
-    ".......S.b...............",
-    "....B..o.j...............",
-    "..Formulae...............",
-    "....a..v.c...............",
-    "....Cube.t...............",
-    "....k.....CubEd..........",
-    "....e........x.L.........",
-    "SubstiTutIon.p.i.........",
-    "....s.h..n...r.k.........",
-    "......o.Perimeter........",
-    ".U....u..q...s...........",
-    "IndiCes..u...s....D......",
-    ".k..o.a..a...i....i......",
-    ".n..m.n..l...o....s......",
-    ".o..m.d..i.HundredthS....",
-    ".w..o.t..t........r.q....",
-    ".n..n.h..y........i.u....",
-    "......s...........b.a....",
-    "................Squared..",
-    "..................t.e....",
-    "..................i......",
-    "..................v......",
-    "..................e......"
+    ".......c.......",
+    ".......i......a",
+    "......principal",
+    ".......c.u....g",
+    ".......l.math.e",
+    "variable.b....b",
+    "........teacher",
+    ".........r.h..a",
+    ".........s.a...",
+    "...........r...",
+    "......geometry.",
+    "...............",
+    "...............",
+    "...............",
+    "..............."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 9,
-        "len": 8,
-        "answer": "EStimate",
-        "clue": "A quick, close-enough guess that saves brainpower."
+        "num": 3,
+        "row": 3,
+        "col": 7,
+        "len": 9,
+        "answer": "principal",
+        "clue": "a higher up in education"
       },
       {
         "num": 5,
         "row": 5,
-        "col": 3,
-        "len": 8,
-        "answer": "Formulae",
-        "clue": "Math\u2019s cheat codes for solving problems quickly."
+        "col": 10,
+        "len": 4,
+        "answer": "math",
+        "clue": "we have a class for it"
       },
       {
         "num": 6,
-        "row": 7,
-        "col": 5,
-        "len": 4,
-        "answer": "Cube",
-        "clue": "Root The number you multiply thrice to get the cube\u2014math\u2019s treasure chest key."
+        "row": 6,
+        "col": 1,
+        "len": 8,
+        "answer": "variable",
+        "clue": "a important factor that makes algebra what it is"
       },
       {
         "num": 7,
-        "row": 8,
-        "col": 11,
-        "len": 5,
-        "answer": "CubEd",
-        "clue": "Multiply it by itself twice\u2014a 3D cube with equal sides."
-      },
-      {
-        "num": 10,
-        "row": 10,
-        "col": 1,
-        "len": 12,
-        "answer": "SubstiTutIon",
-        "clue": "Swap a letter for a number and solve the puzzle!"
-      },
-      {
-        "num": 13,
-        "row": 12,
+        "row": 7,
         "col": 9,
-        "len": 9,
-        "answer": "Perimeter",
-        "clue": "The \"fence length\" around your shape or space."
-      },
-      {
-        "num": 15,
-        "row": 14,
-        "col": 1,
         "len": 7,
-        "answer": "IndiCes",
-        "clue": "The little number that\u2019s bossing the big number around!"
+        "answer": "teacher",
+        "clue": "an educator"
       },
       {
-        "num": 18,
-        "row": 17,
-        "col": 12,
-        "len": 10,
-        "answer": "HundredthS",
-        "clue": "A tiny piece of a whole, like the change in a dollar."
-      },
-      {
-        "num": 20,
-        "row": 21,
-        "col": 17,
-        "len": 7,
-        "answer": "Squared",
-        "clue": "Multiply it by itself\u2014like making a square garden plot."
+        "num": 9,
+        "row": 11,
+        "col": 7,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "math with shapes"
       }
     ],
     "down": [
       {
-        "num": 2,
+        "num": 1,
         "row": 1,
-        "col": 10,
-        "len": 7,
-        "answer": "Subject",
-        "clue": "The main character in an equation who tells the story."
+        "col": 8,
+        "len": 6,
+        "answer": "circle",
+        "clue": "pi"
       },
       {
-        "num": 3,
-        "row": 3,
-        "col": 8,
-        "len": 5,
-        "answer": "Solve",
-        "clue": "Find the answer to the math mystery\u2014it\u2019s detective work!"
+        "num": 2,
+        "row": 2,
+        "col": 15,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "math with variables"
       },
       {
         "num": 4,
-        "row": 4,
-        "col": 5,
-        "len": 8,
-        "answer": "BraCkets",
-        "clue": "The math version of \"handle with care\" for expressions."
+        "row": 3,
+        "col": 10,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "the base of all math"
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 14,
-        "len": 10,
-        "answer": "Expression",
-        "clue": "A math sentence with no equals sign\u2014it\u2019s just talking, not deciding!"
-      },
-      {
-        "num": 9,
-        "row": 9,
-        "col": 16,
-        "len": 4,
-        "answer": "Like",
-        "clue": "Terms Twins in algebra\u2014they look alike and belong together."
-      },
-      {
-        "num": 11,
-        "row": 10,
-        "col": 7,
-        "len": 11,
-        "answer": "Thousandths",
-        "clue": "Even tinier than hundredths\u2014money so small, it\u2019s almost invisible!"
-      },
-      {
-        "num": 12,
-        "row": 10,
-        "col": 10,
-        "len": 10,
-        "answer": "Inequality",
-        "clue": "When two sides aren\u2019t equal, but you compare them anyway!"
-      },
-      {
-        "num": 14,
-        "row": 13,
-        "col": 2,
-        "len": 7,
-        "answer": "Unknown",
-        "clue": "The mystery letter waiting to be solved in math equations."
-      },
-      {
-        "num": 16,
-        "row": 14,
-        "col": 5,
-        "len": 6,
-        "answer": "Common",
-        "clue": "Factors Numbers two friends (or more) share in common."
-      },
-      {
-        "num": 17,
-        "row": 14,
-        "col": 19,
-        "len": 12,
-        "answer": "Distributive",
-        "clue": "Law Sharing is caring, even in math! Multiply to everyone in the bracket."
-      },
-      {
-        "num": 19,
-        "row": 17,
-        "col": 21,
-        "len": 6,
-        "answer": "Square",
-        "clue": "Root What times itself makes the square? The square's secret ingredient."
+        "row": 7,
+        "col": 12,
+        "len": 5,
+        "answer": "chart",
+        "clue": "what we just did"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-adventures-exploring-the-world-of-numbers-and-operations",
-  "slug": "math-adventures-exploring-the-world-of-numbers-and-operations",
-  "fetched_at": "2026-07-14T19:18:40.802418+00:00",
-  "date": "2026-10-22"
+  "source_url": "https://crosswordlabs.com/view/math-and-other-stuffs",
+  "slug": "math-and-other-stuffs",
+  "fetched_at": "2026-07-14T19:25:01.100690+00:00",
+  "date": "2026-10-23"
 }
