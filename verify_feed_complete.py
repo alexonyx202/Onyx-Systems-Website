@@ -195,6 +195,8 @@ KNOWN_PRODUCTS = [
     "comcast", "xfinity",
     # Extended 2026-10-22: Today's Onyx Tech Notes real products (named + obtain method stated).
     "libby",
+    # Extended 2026-10-23: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "veeam", "veeam agent", "macrium", "macrium reflect",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

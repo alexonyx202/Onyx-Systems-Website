@@ -1,6 +1,72 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "items": [
+    {
+      "id": "n-2026-10-23",
+      "type": "newsletter",
+      "date": "2026-10-23",
+      "title": "FTC Impersonators Are Calling — They Will Threaten to Deactivate Your Phone",
+      "tag": "Daily Brief",
+      "summary": "The FTC is not calling to deactivate your phone number.\n\nScammers are posing as FTC officials and claiming a phone was registered under your name and used for scams in another country. They read off a fake badge ID and threaten to disconnect your phone unless you cooperate. Then they transfer you to a \"police officer\" who asks for your ID and personal information for a \"report.\" Later they claim you're under arrest and need to send money for a security deposit. None of this is real.\n\nWhat to…",
+      "comic": "Newsletter - 2026-10-23-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-23-news1",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
+      "tag": "Tech Note",
+      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
+    },
+    {
+      "id": "t-2026-10-23-tip1",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "CISA adds four actively exploited flaws to must-patch list — Check Point, Arista, and F5 devices at risk",
+      "tag": "Tech Tip",
+      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now — patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
+    },
+    {
+      "id": "t-2026-10-23-brief",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
+      "tag": "Daily Brief",
+      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
+    },
+    {
+      "id": "t-2026-10-23-cisa",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "CISA adds four actively exploited flaws to must-patch list — Check Point, Arista, and F5 devices at risk",
+      "tag": "Security",
+      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now — patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
+    },
+    {
+      "id": "t-2026-10-23-firefox",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "Firefox 159 Beta puts saved passwords in the sidebar by default — no extra tool needed, free at firefox.com",
+      "tag": "Software/Browser",
+      "summary": "Update to Firefox 159 (Beta channel, stable October 27) — your saved logins now appear in the sidebar automatically without adding the Passwords tool first. Also new: native macOS share picker with AirDrop and Messages, and Ctrl+Shift+A to search open tabs. Free at firefox.com."
+    },
+    {
+      "id": "t-2026-10-23-backup",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "Stop losing files forever — Veeam Agent Free and Macrium Reflect Free make full system images free at veeam.com and macrium.com",
+      "tag": "Practical/Shop",
+      "summary": "Download Veeam Agent Free at veeam.com or Macrium Reflect Free at macrium.com — create a complete system image backup to an external drive in 30 minutes. Both do full disk imaging (OS + programs + files), incremental updates, and bare-metal restore. No subscription, no cloud required."
+    },
+    {
+      "id": "t-2026-10-23-fiber",
+      "type": "tech-note",
+      "date": "2026-10-23",
+      "title": "Clearwave Fiber brings 10-gig all-fiber internet to Lake City — check availability at wire3.com",
+      "tag": "Local-N-FL",
+      "summary": "Visit wire3.com and enter your Lake City address to see if 10-gig symmetric fiber is available at your location. Clearwave Fiber is building a 100% fiber network in Lake City with several thousand residents already able to connect. No cable, no DSL — pure fiber to the home."
+    },
     {
       "id": "n-2026-10-22",
       "type": "newsletter",
@@ -36,74 +102,6 @@
       "title": "Career Online High School: free accredited diploma through Columbia County Library",
       "tag": "Tech Tip",
       "summary": "Columbia County Public Library provides free Career Online High School diplomas and career certificates for adults. Scholarships available. Apply at ccpl.aspendiscovery.org or call (386) 758-2111."
-    },
-    {
-      "id": "n-2026-10-20",
-      "type": "newsletter",
-      "date": "2026-10-20",
-      "title": "Chrome Emergency Patch: 7 Critical Flaws Fixed — Update Now",
-      "tag": "Daily Brief",
-      "summary": "Google just pushed an emergency Chrome update fixing 37 security holes — seven of them rated Critical. These are memory-corruption bugs that let a malicious website run code on your computer just by you visiting the page. No clicks needed. The affected versions are Chrome 155 bef",
-      "comic": "Newsletter - 2026-10-20-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-20",
-      "type": "tech-note",
-      "date": "2026-10-20",
-      "title": "CISA adds four actively exploited vulnerabilities — patch Palo Alto, Cisco, Ahsay now",
-      "tag": "Security Alert",
-      "summary": "CISA added four new KEV entries October 14: Palo Alto PAN-OS code injection (CVE-2026-0322), Cisco Secure Email path traversal (CVE-2026-76519), AhsayCBS auth bypass (CVE-2026-105133) and command injection (CVE-2026-105134). Check if you're affected and update at cisa.gov/known-exploited-vulnerabilities-catalog"
-    },
-    {
-      "id": "t-2026-10-20-p2",
-      "type": "tech-note",
-      "date": "2026-10-20",
-      "title": "LibreOffice 26.8.1 is free and opens Word, Excel, PowerPoint files",
-      "tag": "Tools",
-      "summary": "Download LibreOffice 26.8.1 free at libreoffice.org/download — includes Writer for documents, Calc for spreadsheets, Impress for presentations, Draw for diagrams, and Base for databases. Opens DOCX, XLSX, PPTX files natively. Runs on Windows, Mac, Linux."
-    },
-    {
-      "id": "t-2026-10-20-p3",
-      "type": "tech-note",
-      "date": "2026-10-20",
-      "title": "OBS Studio free screen recorder captures your screen for tech support",
-      "tag": "Tools",
-      "summary": "Download OBS Studio free at obsproject.com — records your screen, webcam, and audio in one click. Perfect for showing a tech exactly what's going wrong. No watermarks, no time limits, runs on Windows, Mac, Linux."
-    },
-    {
-      "id": "t-2026-10-20-p4",
-      "type": "tech-note",
-      "date": "2026-10-20",
-      "title": "Clearwave Fiber expanding in Lake City — check your address at clearwavefiber.com",
-      "tag": "Local",
-      "summary": "Check Clearwave Fiber at clearwavefiber.com or the FCC Broadband Map at broadbandmap.fcc.gov — type your Lake City address to see if fiber is available. Clay Electric members: sign up for outage texts at clayelectric.com so you know when power (and internet) goes down."
-    },
-    {
-      "id": "t-2026-10-20-p5",
-      "type": "tech-note",
-      "date": "2026-10-20",
-      "title": "Bitwarden free password manager adds passkeys — stop reusing passwords",
-      "tag": "Security",
-      "summary": "Get Bitwarden free at bitwarden.com — stores unlimited passwords, generates passkeys for passwordless login, syncs across all your devices, open source and audited. Browser extension auto-fills logins. Two-minute setup."
-    },
-    {
-      "id": "n-2026-10-19",
-      "type": "newsletter",
-      "date": "2026-10-19",
-      "title": "Hurricane Charity Scams Are Targeting Floridians — Here's How to Spot Them",
-      "tag": "Daily Brief",
-      "summary": "Hurricane season runs through November, and scammers know it. After every storm, fake charity websites, crowdfunding campaigns, and phone calls flood in — all pretending to help victims.",
-      "comic": "Newsletter - 2026-10-19-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-19-p2",
-      "type": "tech-note",
-      "date": "2026-10-19",
-      "title": "Rapid Fiber gigabit internet now available to all Suwannee Valley Electric Cooperative members in North Florida — check your address at rapidfiber.net",
-      "tag": "Local",
-      "summary": "The $93 million SVEC fiber rollout is complete. Go to rapidfiber.net, enter your address, and see if gigabit fiber (up to 1 Gbps symmetric) has reached your Lake City or Columbia County street. No contract required, installation is free for members."
     }
   ]
 }
