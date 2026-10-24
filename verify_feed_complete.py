@@ -343,7 +343,7 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         # Extended 2026-08-14: FCC-impersonation scam brief is a security alert (exempt).
         "fcc",
         # Extended 2026-07-23: tech support scam alert is a security alert (exempt).
-        "scam", "tech support",
+        "scam", "tech support", "shipping",
         # Extended 2026-07-24: massive credential leak alert is a security alert (exempt).
         "stolen", "password", "credential", "pwned",
         # Extended 2026-07-27: AI voice-cloning grandparent scam alert is a security alert (exempt).

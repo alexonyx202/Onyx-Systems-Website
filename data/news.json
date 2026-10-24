@@ -1,13 +1,47 @@
 {
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "items": [
+    {
+      "id": "n-2026-10-24",
+      "type": "newsletter",
+      "date": "2026-10-24",
+      "title": "Fake Shipping Texts Flooding Phones \u2014 Don't Tap the Link",
+      "tag": "Daily Brief",
+      "summary": "Fake shipping texts are flooding phones right now \u2014 messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or l",
+      "comic": "Newsletter - 2026-10-24-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-24",
+      "type": "tech-note",
+      "date": "2026-10-24",
+      "title": "WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free \u2014 no cleanup tools no tracking",
+      "tag": "Tool",
+      "summary": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
+      "cta": {
+        "label": "Download WinTuner",
+        "href": "https://github.com/Mwoodring2/WinTuner/releases"
+      }
+    },
+    {
+      "id": "t-2026-10-24-jan",
+      "type": "tech-note",
+      "date": "2026-10-24",
+      "title": "Run a private ChatGPT on your PC free with Jan AI \u2014 download at jan.ai no technical skills needed",
+      "tag": "Tool",
+      "summary": "Download Jan AI free at jan.ai, install like any Windows app, pick a model (Phi-4 14B runs on 8GB memory), and start chatting offline \u2014 no account, no cloud, no technical skills needed.",
+      "cta": {
+        "label": "Download Jan AI",
+        "href": "https://jan.ai"
+      }
+    },
     {
       "id": "n-2026-10-23",
       "type": "newsletter",
       "date": "2026-10-23",
-      "title": "FTC Impersonators Are Calling — They Will Threaten to Deactivate Your Phone",
+      "title": "FTC Impersonators Are Calling \u2014 They Will Threaten to Deactivate Your Phone",
       "tag": "Daily Brief",
-      "summary": "The FTC is not calling to deactivate your phone number.\n\nScammers are posing as FTC officials and claiming a phone was registered under your name and used for scams in another country. They read off a fake badge ID and threaten to disconnect your phone unless you cooperate. Then they transfer you to a \"police officer\" who asks for your ID and personal information for a \"report.\" Later they claim you're under arrest and need to send money for a security deposit. None of this is real.\n\nWhat to…",
+      "summary": "The FTC is not calling to deactivate your phone number.\n\nScammers are posing as FTC officials and claiming a phone was registered under your name and used for scams in another country. They read off a fake badge ID and threaten to disconnect your phone unless you cooperate. Then they transfer you to a \"police officer\" who asks for your ID and personal information for a \"report.\" Later they claim you're under arrest and need to send money for a security deposit. None of this is real.\n\nWhat to\u2026",
       "comic": "Newsletter - 2026-10-23-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
     },
@@ -17,15 +51,15 @@
       "date": "2026-10-23",
       "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
       "tag": "Tech Note",
-      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
+      "summary": "CISA added four actively exploited vulnerabilities \u2014 update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default \u2014 free update at firefox.com."
     },
     {
       "id": "t-2026-10-23-tip1",
       "type": "tech-note",
       "date": "2026-10-23",
-      "title": "CISA adds four actively exploited flaws to must-patch list — Check Point, Arista, and F5 devices at risk",
+      "title": "CISA adds four actively exploited flaws to must-patch list \u2014 Check Point, Arista, and F5 devices at risk",
       "tag": "Tech Tip",
-      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now — patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
+      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now \u2014 patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
     },
     {
       "id": "t-2026-10-23-brief",
@@ -33,75 +67,49 @@
       "date": "2026-10-23",
       "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
       "tag": "Daily Brief",
-      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
+      "summary": "CISA added four actively exploited vulnerabilities \u2014 update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default \u2014 free update at firefox.com."
     },
     {
       "id": "t-2026-10-23-cisa",
       "type": "tech-note",
       "date": "2026-10-23",
-      "title": "CISA adds four actively exploited flaws to must-patch list — Check Point, Arista, and F5 devices at risk",
+      "title": "CISA adds four actively exploited flaws to must-patch list \u2014 Check Point, Arista, and F5 devices at risk",
       "tag": "Security",
-      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now — patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
+      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now \u2014 patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
     },
     {
       "id": "t-2026-10-23-firefox",
       "type": "tech-note",
       "date": "2026-10-23",
-      "title": "Firefox 159 Beta puts saved passwords in the sidebar by default — no extra tool needed, free at firefox.com",
+      "title": "Firefox 159 Beta puts saved passwords in the sidebar by default \u2014 no extra tool needed, free at firefox.com",
       "tag": "Software/Browser",
-      "summary": "Update to Firefox 159 (Beta channel, stable October 27) — your saved logins now appear in the sidebar automatically without adding the Passwords tool first. Also new: native macOS share picker with AirDrop and Messages, and Ctrl+Shift+A to search open tabs. Free at firefox.com."
+      "summary": "Update to Firefox 159 (Beta channel, stable October 27) \u2014 your saved logins now appear in the sidebar automatically without adding the Passwords tool first. Also new: native macOS share picker with AirDrop and Messages, and Ctrl+Shift+A to search open tabs. Free at firefox.com."
     },
     {
       "id": "t-2026-10-23-backup",
       "type": "tech-note",
       "date": "2026-10-23",
-      "title": "Stop losing files forever — Veeam Agent Free and Macrium Reflect Free make full system images free at veeam.com and macrium.com",
+      "title": "Stop losing files forever \u2014 Veeam Agent Free and Macrium Reflect Free make full system images free at veeam.com and macrium.com",
       "tag": "Practical/Shop",
-      "summary": "Download Veeam Agent Free at veeam.com or Macrium Reflect Free at macrium.com — create a complete system image backup to an external drive in 30 minutes. Both do full disk imaging (OS + programs + files), incremental updates, and bare-metal restore. No subscription, no cloud required."
+      "summary": "Download Veeam Agent Free at veeam.com or Macrium Reflect Free at macrium.com \u2014 create a complete system image backup to an external drive in 30 minutes. Both do full disk imaging (OS + programs + files), incremental updates, and bare-metal restore. No subscription, no cloud required."
     },
     {
       "id": "t-2026-10-23-fiber",
       "type": "tech-note",
       "date": "2026-10-23",
-      "title": "Clearwave Fiber brings 10-gig all-fiber internet to Lake City — check availability at wire3.com",
+      "title": "Clearwave Fiber brings 10-gig all-fiber internet to Lake City \u2014 check availability at wire3.com",
       "tag": "Local-N-FL",
-      "summary": "Visit wire3.com and enter your Lake City address to see if 10-gig symmetric fiber is available at your location. Clearwave Fiber is building a 100% fiber network in Lake City with several thousand residents already able to connect. No cable, no DSL — pure fiber to the home."
+      "summary": "Visit wire3.com and enter your Lake City address to see if 10-gig symmetric fiber is available at your location. Clearwave Fiber is building a 100% fiber network in Lake City with several thousand residents already able to connect. No cable, no DSL \u2014 pure fiber to the home."
     },
     {
       "id": "n-2026-10-22",
       "type": "newsletter",
       "date": "2026-10-22",
-      "title": "CISA Adds Two Actively Exploited Zero-Days — Patch These Now",
+      "title": "CISA Adds Two Actively Exploited Zero-Days \u2014 Patch These Now",
       "tag": "Daily Brief",
       "summary": "The government's cyber defense agency (CISA) just added two vulnerabilities to its \"must-patch-now\" list because hackers are actively exploiting them. One is a Windows flaw (CVE-2026-96951) that lets attackers run malicious code by tricking you into opening a bad file. The other ",
       "comic": "Newsletter - 2026-10-22-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-21",
-      "type": "newsletter",
-      "date": "2026-10-21",
-      "title": "FBI Impersonation Scams Hit 61,000 Victims — $1.6 Billion Lost",
-      "tag": "Daily Brief",
-      "summary": "The FBI says scammers impersonating government officials have hit nearly 61,000 people since January 2025, stealing over $1.6 billion. They call or email pretending to be the FBI, IRS, Social Security, or local police — saying you owe money, your identity was stolen, or there's a warrant. They demand payment by wire, gift card, or crypto.\n\nWhat to do: Hang up. Government agencies never call demanding money or threatening arrest. If you're worried, look up the real number yourself and call back.…",
-      "comic": "Newsletter - 2026-10-21-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-21-news1",
-      "type": "tech-note",
-      "date": "2026-10-21",
-      "title": "Comcast fiber reaches 3,300 Columbia County homes with 2,000 more coming by December",
-      "tag": "Tech Note",
-      "summary": "Comcast expanded fiber to 3,300 homes and businesses in Columbia County via a state partnership, with 2,000 more locations under construction for completion by year-end. Check if your address qualifies at xfinity.com."
-    },
-    {
-      "id": "t-2026-10-21-tip1",
-      "type": "tech-note",
-      "date": "2026-10-21",
-      "title": "Career Online High School: free accredited diploma through Columbia County Library",
-      "tag": "Tech Tip",
-      "summary": "Columbia County Public Library provides free Career Online High School diplomas and career certificates for adults. Scholarships available. Apply at ccpl.aspendiscovery.org or call (386) 758-2111."
     }
   ]
 }
