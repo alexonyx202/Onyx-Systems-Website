@@ -1,104 +1,163 @@
 {
-  "title": "math and other stuffs",
-  "size": 15,
+  "title": "Math Crossword:)",
+  "size": 26,
   "grid": [
-    ".......c.......",
-    ".......i......a",
-    "......principal",
-    ".......c.u....g",
-    ".......l.math.e",
-    "variable.b....b",
-    "........teacher",
-    ".........r.h..a",
-    ".........s.a...",
-    "...........r...",
-    "......geometry.",
-    "...............",
-    "...............",
-    "...............",
-    "..............."
+    ".........h................",
+    ".......pie................",
+    ".........x.g.p............",
+    ".......trapezoid..........",
+    "radius...g.o.l.i..........",
+    ".....u...o.m.y.v..........",
+    ".....m...n.e.g.e..........",
+    ".....m.....t.o.-..........",
+    ".....e.....r.n.i.a........",
+    "....probably...s.l.m......",
+    "...............i.i.u......",
+    "...............o.n.l......",
+    ".............tangent......",
+    "...................i......",
+    "...................p......",
+    "...................l......",
+    "...................i......",
+    "...................e......",
+    "................a..r......",
+    "...........calculous......",
+    "................g.........",
+    "................e.........",
+    "................b.........",
+    "................r.........",
+    "................o.........",
+    "................subtract.."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 3,
-        "col": 7,
-        "len": 9,
-        "answer": "principal",
-        "clue": "a higher up in education"
+        "num": 2,
+        "row": 2,
+        "col": 8,
+        "len": 3,
+        "answer": "pie",
+        "clue": "a yummy desert"
       },
       {
         "num": 5,
-        "row": 5,
-        "col": 10,
-        "len": 4,
-        "answer": "math",
-        "clue": "we have a class for it"
-      },
-      {
-        "num": 6,
-        "row": 6,
-        "col": 1,
-        "len": 8,
-        "answer": "variable",
-        "clue": "a important factor that makes algebra what it is"
+        "row": 4,
+        "col": 8,
+        "len": 9,
+        "answer": "trapezoid",
+        "clue": "What geometric shape is lying in wait?"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 9,
-        "len": 7,
-        "answer": "teacher",
-        "clue": "an educator"
+        "row": 5,
+        "col": 1,
+        "len": 6,
+        "answer": "radius",
+        "clue": "half of a circle"
       },
       {
-        "num": 9,
-        "row": 11,
-        "col": 7,
+        "num": 10,
+        "row": 10,
+        "col": 5,
         "len": 8,
-        "answer": "geometry",
-        "clue": "math with shapes"
+        "answer": "probably",
+        "clue": "Did you hear the one about the statistician?"
+      },
+      {
+        "num": 12,
+        "row": 13,
+        "col": 14,
+        "len": 7,
+        "answer": "tangent",
+        "clue": "What do you call a mathematician who spent all summer at the beach?"
+      },
+      {
+        "num": 14,
+        "row": 20,
+        "col": 12,
+        "len": 9,
+        "answer": "calculous",
+        "clue": "properties of derivatives and integrals of functions"
+      },
+      {
+        "num": 15,
+        "row": 26,
+        "col": 17,
+        "len": 8,
+        "answer": "subtract",
+        "clue": "taking away"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 8,
-        "len": 6,
-        "answer": "circle",
-        "clue": "pi"
+        "col": 10,
+        "len": 7,
+        "answer": "hexagon",
+        "clue": "What geometric shape removes spells and curses?"
       },
       {
-        "num": 2,
-        "row": 2,
-        "col": 15,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "math with variables"
+        "num": 3,
+        "row": 3,
+        "col": 12,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "study of shapes"
       },
       {
         "num": 4,
         "row": 3,
-        "col": 10,
+        "col": 14,
         "len": 7,
-        "answer": "numbers",
-        "clue": "the base of all math"
+        "answer": "polygon",
+        "clue": "What did the math teacher say when his parrot escaped?"
+      },
+      {
+        "num": 6,
+        "row": 4,
+        "col": 16,
+        "len": 10,
+        "answer": "dive-ision",
+        "clue": "What\u2019s a swimmer\u2019s favorite math?"
       },
       {
         "num": 8,
-        "row": 7,
-        "col": 12,
+        "row": 5,
+        "col": 6,
+        "len": 6,
+        "answer": "summer",
+        "clue": "What is a math teacher\u2019s favorite sum?"
+      },
+      {
+        "num": 9,
+        "row": 9,
+        "col": 18,
         "len": 5,
-        "answer": "chart",
-        "clue": "what we just did"
+        "answer": "aline",
+        "clue": "What shape is usually waiting for you inside a Starbucks?"
+      },
+      {
+        "num": 11,
+        "row": 10,
+        "col": 20,
+        "len": 11,
+        "answer": "multipliers",
+        "clue": "What\u2019s the best tool for math?"
+      },
+      {
+        "num": 13,
+        "row": 19,
+        "col": 17,
+        "len": 8,
+        "answer": "algebros",
+        "clue": "What do you call dudes who love math?"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-and-other-stuffs",
-  "slug": "math-and-other-stuffs",
-  "fetched_at": "2026-07-14T19:25:01.100690+00:00",
-  "date": "2026-10-23"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-1348",
+  "slug": "math-crossword-1348",
+  "fetched_at": "2026-07-14T19:11:46.018968+00:00",
+  "date": "2026-10-24"
 }
