@@ -100,6 +100,22 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-25-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-25",
+      "title": "Password manager breach exposes millions \u2014 check if your passwords were stolen at haveibeenpwned.com",
+      "tag": "Daily Brief",
+      "excerpt": "A major password manager breach this month exposed millions of stored credentials. Go to haveibeenpwned.com and enter your email to see if your passwords were compromised. If they were, change them immediately on every site where you reused them.",
+      "tags": [
+        "Security",
+        "Passwords"
+      ],
+      "cta": {
+        "label": "Check Your Email",
+        "href": "https://haveibeenpwned.com"
+      }
+    },
+    {
       "id": "news-2026-10-24",
       "date": "2026-10-24",
       "headline": "Fake Shipping Texts Flooding Phones \u2014 Don't Tap the Link",
@@ -160,60 +176,41 @@
       "image": "assets/img/news/2026-10-21-composite.jpg",
       "comic": "assets/img/news/2026-10-21-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "n-2026-10-20",
-      "type": "newsletter",
-      "date": "2026-10-20",
-      "title": "Chrome Emergency Patch: 7 Critical Flaws Fixed \u2014 Update Now",
-      "tag": "Daily Brief",
-      "excerpt": "Google just pushed an emergency Chrome update fixing 37 security holes \u2014 seven of them rated Critical. These are memory-corruption bugs that let a malicious website run code on your computer just by you visiting the page. No clicks needed. The affected versions are Chrome 155 bef",
-      "tags": [],
-      "image": "assets/img/news/2026-10-20-composite.jpg",
-      "comic": "assets/img/news/2026-10-20-comic-square.jpg",
-      "read_more": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-19",
-      "type": "newsletter",
-      "date": "2026-10-19",
-      "title": "Hurricane Charity Scams Are Targeting Floridians \u2014 Here's How to Spot Them",
-      "tag": "Daily Brief",
-      "excerpt": "Hurricane season runs through November, and scammers know it. After every storm, fake charity websites, crowdfunding campaigns, and phone calls flood in \u2014 all pretending to help victims. They'll pressure you to donate right now. They'll ask for gift cards, wire transfers, or cryptocurrency. Real charities never ask for those. They'll use names that sound almost like real organizations (e.g., \"Florida Hurricane Relief Fund\" vs. the real \"Florida Disaster Fund\"). What to do: Before donating, verify the charity at ftc.gov/charity or guidestar.org. Pay by credit card only \u2014 it has fraud protection. If someone calls pushing for immediate payment, hang up.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-19-composite.jpg",
-      "comic": "assets/img/news/2026-10-19-comic-square.jpg",
-      "read_more": "https://onyxpc.us/#contact"
     }
   ],
   "posts": [
     {
-      "id": "onyx-2026-10-24-jan",
-      "date": "2026-10-24",
-      "headline": "Run a private ChatGPT on your PC free with Jan AI \u2014 download at jan.ai no technical skills needed",
-      "tip": "Download Jan AI free at jan.ai, install like any Windows app, pick a model (Phi-4 14B runs on 8GB memory), and start chatting offline \u2014 no account, no cloud, no technical skills needed.",
-      "tag": "Tool",
-      "truth": "Download Jan AI free at jan.ai, install like any Windows app, pick a model (Phi-4 14B runs on 8GB memory), and start chatting offline \u2014 no account, no cloud, no technical skills needed.",
+      "id": "onyx-2026-10-25-news-16",
+      "type": "news",
+      "date": "2026-10-25",
+      "title": "Clearwave Fiber expands in Lake City \u2014 check if your address qualifies at clearwavefiber.com",
+      "tag": "Local News",
+      "summary": "Clearwave Fiber is bringing fiber internet to more Lake City neighborhoods. Visit clearwavefiber.com to check if your address qualifies for service.",
+      "truth": "Fiber is a game-changer for rural areas. If you're stuck on DSL or satellite, this is worth checking.",
+      "tags": [
+        "Internet",
+        "Lake City"
+      ],
       "cta": {
-        "label": "Download Jan AI",
-        "href": "https://jan.ai"
+        "label": "Check Availability",
+        "href": "https://clearwavefiber.com"
       }
     },
     {
-      "id": "onyx-2026-10-24",
-      "date": "2026-10-24",
-      "headline": "WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free \u2014 no cleanup tools no tracking",
-      "tip": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
-      "tag": "Tool",
-      "truth": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
+      "id": "onyx-2026-10-25-news-13",
+      "type": "news",
+      "date": "2026-10-25",
+      "title": "Windows 11 23H2 Enterprise and Education lose security updates after November \u2014 check your edition",
+      "tag": "Security Alert",
+      "summary": "Windows 11 23H2 Enterprise and Education editions get their final security update in November 2026. Open Settings > System > About > Windows specifications to see your edition. If you're on 23H2 Enterprise or Education, start planning your upgrade to 24H2 or later.",
+      "truth": "Most people don't realize their Windows edition has an expiration date. I see businesses running 23H2 who think they're fine because \"it still works\" \u2014 but without security patches, one unpatched flaw is all it takes.",
+      "tags": [
+        "Windows",
+        "Security"
+      ],
       "cta": {
-        "label": "Download WinTuner",
-        "href": "https://github.com/Mwoodring2/WinTuner/releases"
+        "label": "Check Windows Edition",
+        "href": "ms-settings:about"
       }
     },
     {
@@ -229,21 +226,6 @@
         "#LakeCityFL",
         "#ComputerRepair",
         "#DailyBrief"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-23-post-2",
-      "type": "tip",
-      "date": "2026-10-23",
-      "title": "CISA adds four actively exploited flaws to must-patch list \u2014 Check Point, Arista, and F5 devices at risk",
-      "tag": "Tech Tip",
-      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now \u2014 patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert.",
-      "truth": "Most people think \"I don't have enterprise gear, this doesn't apply to me.\" But if your router runs on any of these platforms \u2014 or your IT provider uses them \u2014 you're exposed. I've seen small businesses get hit because their managed service provider hadn't patched a VPN gateway in months.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Security"
       ]
     },
     {
@@ -273,6 +255,55 @@
       }
     },
     {
+      "id": "onyx-2026-10-25-tip-15",
+      "type": "tip",
+      "date": "2026-10-25",
+      "title": "Stop Windows tracking you free with O&O ShutUp10++ at ooshutup10.com",
+      "tag": "Privacy Tip",
+      "summary": "O&O ShutUp10++ is a free portable tool that lets you disable Windows telemetry, data collection, and tracking in one click. Download from ooshutup10.com.",
+      "truth": "I run this on every Windows machine that comes through the shop. Takes 30 seconds and stops a massive amount of background data collection.",
+      "tags": [
+        "Privacy",
+        "Windows"
+      ],
+      "cta": {
+        "label": "Download ShutUp10++",
+        "href": "https://ooshutup10.com"
+      }
+    },
+    {
+      "id": "onyx-2026-10-25-tip-14",
+      "type": "tip",
+      "date": "2026-10-25",
+      "title": "File Explorer now previews HTML files and remembers your folders free in October Windows Update",
+      "tag": "Tech Tip",
+      "summary": "The October 2026 Windows 11 update (KB5127648) adds HTML file previews in File Explorer and remembers your folder settings. Free via Windows Update.",
+      "truth": "This is one of those quiet quality-of-life updates that makes a real difference if you work with web files. No more opening files just to see what's in them.",
+      "tags": [
+        "Windows",
+        "File Explorer"
+      ],
+      "cta": {
+        "label": "Check for Updates",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "onyx-2026-10-23-post-2",
+      "type": "tip",
+      "date": "2026-10-23",
+      "title": "CISA adds four actively exploited flaws to must-patch list \u2014 Check Point, Arista, and F5 devices at risk",
+      "tag": "Tech Tip",
+      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now \u2014 patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert.",
+      "truth": "Most people think \"I don't have enterprise gear, this doesn't apply to me.\" But if your router runs on any of these platforms \u2014 or your IT provider uses them \u2014 you're exposed. I've seen small businesses get hit because their managed service provider hadn't patched a VPN gateway in months.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Security"
+      ]
+    },
+    {
       "id": "onyx-2026-10-22-vlc",
       "type": "tip",
       "date": "2026-10-22",
@@ -297,65 +328,9 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-22-libreoffice",
-      "type": "tip",
-      "date": "2026-10-22",
-      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is free, opens every file, and now has themes",
-      "tag": "Tech Tip",
-      "summary": "LibreOffice 25.2 is free at libreoffice.org. Download the Windows 64-bit installer, run it, and you can open Word, Excel, and PowerPoint files without paying Microsoft a dime. New in 25.2: built-in themes (Light, Dark, and custom colors) so you can make it look exactly how you want \u2014 go to Tools > Options > Appearance to pick one.",
-      "truth": "I see people paying $70\u2013$100 a year for Office 365 just to open a few documents. LibreOffice has opened every Office file I've thrown at it for 15 years. The only time it struggles is with heavily macro-laden Excel sheets \u2014 and most people don't use those.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "onyx-2026-10-21-post-1",
-      "type": "news",
-      "date": "2026-10-21",
-      "title": "Comcast fiber reaches 3,300 Columbia County homes with 2,000 more coming by December",
-      "tag": "Tech Note",
-      "summary": "Comcast expanded fiber to 3,300 homes and businesses in Columbia County via a state partnership, with 2,000 more locations under construction for completion by year-end. Check if your address qualifies at xfinity.com.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief",
-        "#ColumbiaCounty",
-        "#Broadband"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-21-post-2",
-      "type": "tip",
-      "date": "2026-10-21",
-      "title": "Career Online High School: free accredited diploma through Columbia County Library",
-      "tag": "Tech Tip",
-      "summary": "Columbia County Public Library provides free Career Online High School diplomas and career certificates for adults. Scholarships available. Apply at ccpl.aspendiscovery.org or call (386) 758-2111.",
-      "truth": "I see adults put off education because they think it's too late or too expensive. This program removes both barriers \u2014 it's free, accredited, and fits around your schedule. The only thing it costs is time.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ColumbiaCountyLibrary",
-        "#Education",
-        "#FreeDiploma"
-      ]
-    },
-    {
-      "id": "t-2026-10-20-p5",
-      "type": "news",
-      "date": "2026-10-20",
-      "title": "Bitwarden free password manager adds passkeys \u2014 stop reusing passwords",
-      "tag": "Security",
-      "summary": "Get Bitwarden free at bitwarden.com \u2014 stores unlimited passwords, generates passkeys for passwordless login, syncs across all your devices, open source and audited. Browser extension auto-fills logins. Two-minute setup.",
-      "truth": ""
     }
   ],
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "today_word": {
     "word": "Firmware",
     "pos": "noun",
