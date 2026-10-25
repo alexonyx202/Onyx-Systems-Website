@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-10-18",
-    "question": "How old is your main computer?",
+    "weekOf": "2026-10-25",
+    "question": "Biggest reason you put off computer help?",
     "options": [
       {
-        "id": "lt1",
-        "label": "Under 1 year"
+        "id": "cost",
+        "label": "Worried about cost"
       },
       {
-        "id": "1to3",
-        "label": "1\u20133 years"
+        "id": "time",
+        "label": "No time"
       },
       {
-        "id": "3to5",
-        "label": "3\u20135 years"
+        "id": "trust",
+        "label": "Don't trust shops"
       },
       {
-        "id": "gt5",
-        "label": "5+ years"
+        "id": "diy",
+        "label": "I'll fix it myself"
       }
     ]
   }
