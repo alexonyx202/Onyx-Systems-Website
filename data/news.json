@@ -1,6 +1,64 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "items": [
+    {
+      "id": "n-2026-10-26",
+      "type": "newsletter",
+      "date": "2026-10-26",
+      "title": "Outdated Software Is an Open Door — Here Is What to Update Now",
+      "tag": "Daily Brief",
+      "summary": "Outdated software is the open door attackers walk through. Old versions of Adobe Reader, Java, browser plugins, and utility tools have known holes that automated scripts scan for constantly. You don't need to be targeted — just running an old version is enough.",
+      "comic": "Newsletter - 2026-10-26-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-26-firefox",
+      "type": "tech-note",
+      "date": "2026-10-26",
+      "title": "Firefox 158 gets a fresh Nova look and brings back Compact Mode — free update at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Update Firefox to version 158 at firefox.com or click Menu > Help > About Firefox. The Nova redesign refreshes tabs and toolbars with a cleaner look, and Compact Mode returns to fit more on screen — just right-click the toolbar and choose Customize Toolbar > Density > Compact.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-26-fiber",
+      "type": "tech-note",
+      "date": "2026-10-26",
+      "title": "Fiber internet may already be at your Lake City address — check free on the FCC Broadband Map",
+      "tag": "Tech Note",
+      "summary": "Visit broadbandmap.fcc.gov and enter your Lake City address to see every fiber, cable, and DSL provider available. ClearWave Fiber, AT&T Fiber, and Xfinity all serve parts of Columbia County — the map shows exactly what's at your doorstep.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-26-pdf24",
+      "type": "tech-note",
+      "date": "2026-10-26",
+      "title": "Stop paying for Adobe Acrobat — PDF24 edits merges and splits PDFs free and offline",
+      "tag": "Tech Tip",
+      "summary": "Download PDF24 from pdf24.org (PCWorld's top free PDF editor pick for 2026). It works entirely offline, merges, splits, edits, converts, and adds signatures — no cloud upload, no watermark, no subscription, no account needed.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-10-26-win24h2",
+      "type": "tech-note",
+      "date": "2026-10-26",
+      "title": "Windows 11 24H2 has known bugs — Microsoft lists workarounds at learn.microsoft.com",
+      "tag": "Tech Note",
+      "summary": "Check the known issues for Windows 11 24H2 at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2. Current bugs include USB audio Code 10, Remote Desktop 0xC000000D, and AC-3 audio. Microsoft provides workarounds for each.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-10-25",
       "type": "newsletter",
@@ -80,52 +138,6 @@
         "label": "Download WinTuner",
         "href": "https://github.com/Mwoodring2/WinTuner/releases"
       }
-    },
-    {
-      "id": "t-2026-10-24-jan",
-      "type": "tech-note",
-      "date": "2026-10-24",
-      "title": "Run a private ChatGPT on your PC free with Jan AI — download at jan.ai no technical skills needed",
-      "tag": "Tool",
-      "summary": "Download Jan AI free at jan.ai, install like any Windows app, pick a model (Phi-4 14B runs on 8GB memory), and start chatting offline — no account, no cloud, no technical skills needed.",
-      "cta": {
-        "label": "Download Jan AI",
-        "href": "https://jan.ai"
-      }
-    },
-    {
-      "id": "n-2026-10-23",
-      "type": "newsletter",
-      "date": "2026-10-23",
-      "title": "FTC Impersonators Are Calling — They Will Threaten to Deactivate Your Phone",
-      "tag": "Daily Brief",
-      "summary": "The FTC is not calling to deactivate your phone number.\n\nScammers are posing as FTC officials and claiming a phone was registered under your name and used for scams in another country. They read off a fake badge ID and threaten to disconnect your phone unless you cooperate. Then they transfer you to a \"police officer\" who asks for your ID and personal information for a \"report.\" Later they claim you're under arrest and need to send money for a security deposit. None of this is real.\n\nWhat to…",
-      "comic": "Newsletter - 2026-10-23-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-23-news1",
-      "type": "tech-note",
-      "date": "2026-10-23",
-      "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
-      "tag": "Tech Note",
-      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
-    },
-    {
-      "id": "t-2026-10-23-tip1",
-      "type": "tech-note",
-      "date": "2026-10-23",
-      "title": "CISA adds four actively exploited flaws to must-patch list — Check Point, Arista, and F5 devices at risk",
-      "tag": "Tech Tip",
-      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now — patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert."
-    },
-    {
-      "id": "t-2026-10-23-brief",
-      "type": "tech-note",
-      "date": "2026-10-23",
-      "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
-      "tag": "Daily Brief",
-      "summary": "CISA added four actively exploited vulnerabilities — update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default — free update at firefox.com."
     }
   ]
 }

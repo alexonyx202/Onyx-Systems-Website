@@ -100,6 +100,18 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-26-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-26",
+      "title": "Windows 11 October update breaks USB audio and Remote Desktop \u2014 here's the workaround",
+      "tag": "Daily Brief",
+      "excerpt": "Windows 11 KB5127648 (October 2026 Patch Tuesday) breaks USB audio (Code 10 error) and Remote Desktop (0xC000000D). If your sound or remote access stopped working after the update, check for the update at Settings > Windows Update. Microsoft lists workarounds at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-10-25-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-25",
@@ -159,26 +171,36 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-21-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-21",
-      "title": "FBI Impersonation Scams Hit 61,000 Victims \u2014 $1.6 Billion Lost",
-      "tag": "Daily Brief",
-      "excerpt": "The FBI says scammers impersonating government officials have hit nearly 61,000 people since January 2025, stealing over $1.6 billion. They call or email pretending to be the FBI, IRS, Social Security, or local police \u2014 saying you owe money, your identity was stolen, or there's a warrant. They demand payment by wire, gift card, or crypto.\n\nWhat to do: Hang up. Government agencies never call demanding money or threatening arrest. If you're worried, look up the real number yourself and call back.\u2026",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-21-composite.jpg",
-      "comic": "assets/img/news/2026-10-21-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-26-news-14",
+      "type": "news",
+      "date": "2026-10-26",
+      "title": "Windows 11 24H2 has known bugs \u2014 Microsoft lists workarounds at learn.microsoft.com",
+      "tag": "Tech Note",
+      "summary": "Check the known issues for Windows 11 24H2 at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2. Current bugs include USB audio Code 10, Remote Desktop 0xC000000D, and AC-3 audio. Microsoft provides workarounds for each.",
+      "truth": "Every major Windows update breaks something for someone. 24H2 is solid for most, but if you use USB headphones or Remote Desktop daily, you'll hit these. The workarounds are simple \u2014 but you have to know they exist."
+    },
+    {
+      "id": "onyx-2026-10-26-news-12",
+      "type": "news",
+      "date": "2026-10-26",
+      "title": "Fiber internet may already be at your Lake City address \u2014 check free on the FCC Broadband Map",
+      "tag": "Tech Note",
+      "summary": "Visit broadbandmap.fcc.gov and enter your Lake City address to see every fiber, cable, and DSL provider available. ClearWave Fiber, AT&T Fiber, and Xfinity all serve parts of Columbia County \u2014 the map shows exactly what's at your doorstep.",
+      "truth": "Customers ask me all the time why their internet is slow. Half the time they're on old DSL when fiber already runs past their house. The FCC map is the only place that shows reality, not marketing."
+    },
+    {
+      "id": "onyx-2026-10-26-news-11",
+      "type": "news",
+      "date": "2026-10-26",
+      "title": "Firefox 158 gets a fresh Nova look and brings back Compact Mode \u2014 free update at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Update Firefox to version 158 at firefox.com or click Menu > Help > About Firefox. The Nova redesign refreshes tabs and toolbars with a cleaner look, and Compact Mode returns to fit more on screen \u2014 just right-click the toolbar and choose Customize Toolbar > Density > Compact.",
+      "truth": "I run Firefox on every shop machine. The Nova redesign isn't just pretty \u2014 it actually makes the browser feel snappier, and Compact Mode gives me back vertical space I didn't know I was missing."
+    },
     {
       "id": "onyx-2026-10-25-news-16",
       "type": "news",
@@ -214,45 +236,13 @@
       }
     },
     {
-      "id": "onyx-2026-10-23-post-1",
-      "type": "news",
-      "date": "2026-10-23",
-      "title": "Daily Brief: CISA adds four exploited flaws + Firefox 159 puts passwords in sidebar automatically",
-      "tag": "Tech Note",
-      "summary": "CISA added four actively exploited vulnerabilities \u2014 update Check Point, Arista VeloCloud, and F5 BIG-IP devices now at vendor sites. Firefox 159 Beta now shows saved passwords in the sidebar by default \u2014 free update at firefox.com.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-22-jan-ai",
-      "type": "news",
-      "date": "2026-10-22",
-      "title": "Run ChatGPT-style AI on your PC free and offline \u2014 Jan.ai downloads models in one click",
-      "tag": "Tech Note",
-      "summary": "Download Jan.ai free at jan.ai (Windows, Mac, or Linux). Install it, open the Model Hub (the cube icon on the left), and click \"Download\" on any model \u2014 Llama 3.2 3B for older computers (needs about 4 GB memory), Qwen 2.5 7B for newer ones (about 8 GB memory). It runs 100% offline \u2014 your conversations never leave your computer. No account, no subscription, no internet required after the model downloads.",
-      "truth": "People think AI requires a $2,000 graphics card and a PhD. It doesn't. I run Llama 3.2 on a 5-year-old office desktop with 16 GB memory and it's perfectly usable for writing emails, summarizing PDFs, and answering questions. The model lives on your hard drive, not in the cloud.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "onyx-2026-10-22-library",
-      "type": "news",
-      "date": "2026-10-22",
-      "title": "Your free Columbia County library card unlocks the Libby app for free e-books and audiobooks",
-      "tag": "Tech Note",
-      "summary": "Visit any Columbia County library branch (Main Library at 308 NW Columbia Ave in Lake City, Fort White Branch, or West Branch) with a photo ID and proof of address. Get a free library card, then access the Libby app for free e-books and audiobooks on your phone or tablet, Career Online High School for a free accredited high school diploma, and the Florida Electronic Library databases for research. All free with your card.",
-      "truth": "Most people think the library is just for books. It's not \u2014 it's a tech support center you've already paid for with your taxes. I've sent customers there for help setting up email, learning video calls, and printing documents when their home printer dies.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
+      "id": "onyx-2026-10-26-tip-13",
+      "type": "tip",
+      "date": "2026-10-26",
+      "title": "Stop paying for Adobe Acrobat \u2014 PDF24 edits merges and splits PDFs free and offline",
+      "tag": "Tech Tip",
+      "summary": "Download PDF24 from pdf24.org (PCWorld's top free PDF editor pick for 2026). It works entirely offline, merges, splits, edits, converts, and adds signatures \u2014 no cloud upload, no watermark, no subscription, no account needed.",
+      "truth": "Adobe wants $239 a year for Acrobat Pro. PDF24 does 90% of what most people need \u2014 merge scanned docs, split a big PDF, fill a form, sign a contract \u2014 and it never phones home. I install it on every customer PC."
     },
     {
       "id": "onyx-2026-10-25-tip-15",
@@ -315,281 +305,274 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-22-storage-sense",
-      "type": "tip",
-      "date": "2026-10-22",
-      "title": "Windows can clean up your disk automatically \u2014 Storage Sense frees space while you sleep",
-      "tag": "Tech Tip",
-      "summary": "Turn on Storage Sense at Settings > System > Storage. Flip the switch to On, then click \"Storage Sense\" to choose how often it runs (Daily, Weekly, Monthly, or \"When low on disk space\") and what to clean: temporary files, Recycle Bin (after 30 days by default), and Downloads folder (if you want). It's free, built into Windows 10 and 11, and runs automatically in the background.",
-      "truth": "People buy \"PC cleaner\" software that does exactly what Storage Sense does for free \u2014 and the paid ones often delete things they shouldn't. Microsoft's built-in tool is conservative: it only removes files Windows knows are safe to delete.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ],
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "today_word": {
-    "word": "Firmware",
+    "word": "Sandbox",
     "pos": "noun",
-    "definition": "The low-level software baked into a device that tells its hardware how to boot and behave.",
-    "example": "A firmware update made the printer print faster.",
-    "date": "2026-10-20"
+    "definition": "An isolated space where untrusted software can run without touching the rest of your system.",
+    "example": "The browser opens downloads in a sandbox.",
+    "date": "2026-10-26"
   },
   "today_crossword": {
-    "title": "math",
-    "size": 28,
+    "title": "Math crossword",
+    "size": 26,
     "grid": [
-      "........................n...",
-      "........................u...",
-      "...............vertexform...",
-      "........................b...",
-      "...........e.....sequence...",
-      "...........q......x.....r...",
-      "...........u...g..p.........",
-      ".........standardform.d.....",
-      "...........t...o..n...e.....",
-      "......binomial.w..e...c.....",
-      ".......n...o...trinomial....",
-      "polynomial.n...h..t...y.....",
-      ".......t..........i.........",
-      ".......i..........a.........",
-      "......calculator..l.........",
-      ".......l....................",
-      ".......algebra..............",
-      ".......m.e..................",
-      "......monomial..............",
-      ".......u.m...i..............",
-      ".......n.e...n..............",
-      ".......t.t...e..............",
-      "....f....r...a..............",
-      "..quadratic..r..............",
-      "....c....c..................",
-      "....t.......................",
-      "....o.......................",
-      "....r......................."
+      ".............s............",
+      ".............q............",
+      ".............u............",
+      ".............a....clock...",
+      ".............r.d..a.......",
+      "............decimals......",
+      "...............v..c.......",
+      "...............i.number..a",
+      "..........pemdas..l..q...l",
+      ".........w.....i..a..u...g",
+      ".........o...m.o..triangle",
+      "........fractions.o..l...b",
+      ".........d...s....r......r",
+      ".............s...........a",
+      "..........math............",
+      ".............o............",
+      "....a...cone.p............",
+      "....d...i....k............",
+      "....d...r....i............",
+      "multiplication............",
+      "....t...l.h..s............",
+      "....i...e.r...............",
+      "....o.....e...............",
+      "....n.numbers.............",
+      "..........................",
+      ".........................."
     ],
     "clues": {
       "across": [
         {
           "num": 2,
-          "row": 3,
-          "col": 16,
-          "len": 10,
-          "answer": "vertexform",
-          "clue": "y = a ( x \u2212 h ) 2 + k"
+          "row": 4,
+          "col": 19,
+          "len": 5,
+          "answer": "clock",
+          "clue": "time"
         },
         {
           "num": 4,
-          "row": 5,
-          "col": 18,
+          "row": 6,
+          "col": 13,
           "len": 8,
-          "answer": "sequence",
-          "clue": "the following of one thing after another"
+          "answer": "decimals",
+          "clue": "dots in your math"
         },
         {
-          "num": 7,
+          "num": 5,
           "row": 8,
-          "col": 10,
-          "len": 12,
-          "answer": "standardform",
-          "clue": "Ax+By=C."
+          "col": 18,
+          "len": 6,
+          "answer": "number",
+          "clue": "line     endless straight line"
         },
         {
-          "num": 9,
-          "row": 10,
-          "col": 7,
-          "len": 8,
-          "answer": "binomial",
-          "clue": "a mathematical expression consisting of 2 terms"
+          "num": 8,
+          "row": 9,
+          "col": 11,
+          "len": 6,
+          "answer": "pemdas",
+          "clue": "song we did"
         },
         {
           "num": 11,
           "row": 11,
-          "col": 16,
-          "len": 9,
-          "answer": "trinomial",
-          "clue": "a mathematical expression consisting of 3 terms"
+          "col": 19,
+          "len": 8,
+          "answer": "triangle",
+          "clue": "egyptian pyramids"
         },
         {
           "num": 12,
           "row": 12,
-          "col": 1,
-          "len": 10,
-          "answer": "polynomial",
-          "clue": "a math expression consisting of many  terms"
+          "col": 9,
+          "len": 9,
+          "answer": "fractions",
+          "clue": "numbers on top of each other"
         },
         {
           "num": 13,
           "row": 15,
-          "col": 7,
-          "len": 10,
-          "answer": "calculator",
-          "clue": "method to find almost all algebra solutions"
+          "col": 11,
+          "len": 4,
+          "answer": "math",
+          "clue": "involves everything in here"
         },
         {
-          "num": 14,
+          "num": 15,
           "row": 17,
-          "col": 8,
-          "len": 7,
-          "answer": "algebra",
-          "clue": "Math subject we are in right now"
+          "col": 9,
+          "len": 4,
+          "answer": "cone",
+          "clue": "ice-cream"
         },
         {
           "num": 16,
-          "row": 19,
-          "col": 7,
-          "len": 8,
-          "answer": "monomial",
-          "clue": "a mathematical expression consisting of 1 term"
+          "row": 20,
+          "col": 1,
+          "len": 14,
+          "answer": "multiplication",
+          "clue": "x"
         },
         {
-          "num": 19,
+          "num": 18,
           "row": 24,
-          "col": 3,
-          "len": 9,
-          "answer": "quadratic",
-          "clue": "something that pertains to squares"
+          "col": 7,
+          "len": 7,
+          "answer": "numbers",
+          "clue": "digits"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 25,
+          "col": 14,
           "len": 6,
-          "answer": "number",
-          "clue": "a quantity or amount."
+          "answer": "square",
+          "clue": "a box"
+        },
+        {
+          "num": 2,
+          "row": 4,
+          "col": 19,
+          "len": 10,
+          "answer": "calculator",
+          "clue": "used to calculate faster"
         },
         {
           "num": 3,
           "row": 5,
-          "col": 12,
+          "col": 16,
           "len": 8,
-          "answer": "equation",
-          "clue": "mathematical expression"
-        },
-        {
-          "num": 5,
-          "row": 5,
-          "col": 19,
-          "len": 11,
-          "answer": "exponential",
-          "clue": "of or relating to an exponent."
+          "answer": "division",
+          "clue": "\u00f7"
         },
         {
           "num": 6,
-          "row": 7,
-          "col": 16,
-          "len": 6,
-          "answer": "growth",
-          "clue": "an increasing value"
+          "row": 8,
+          "col": 22,
+          "len": 5,
+          "answer": "equal",
+          "clue": "the answer"
         },
         {
-          "num": 8,
+          "num": 7,
           "row": 8,
-          "col": 23,
-          "len": 5,
-          "answer": "decay",
-          "clue": "a decreasing value"
+          "col": 26,
+          "len": 7,
+          "answer": "algebra",
+          "clue": "advanced math"
+        },
+        {
+          "num": 9,
+          "row": 10,
+          "col": 10,
+          "len": 4,
+          "answer": "word",
+          "clue": "problem   problem  solving problems"
         },
         {
           "num": 10,
-          "row": 10,
-          "col": 8,
-          "len": 13,
-          "answer": "initialamount",
-          "clue": "respect to the Proposition 1A Receivable"
+          "row": 11,
+          "col": 14,
+          "len": 11,
+          "answer": "misshopkins",
+          "clue": "The teacher"
+        },
+        {
+          "num": 14,
+          "row": 17,
+          "col": 5,
+          "len": 8,
+          "answer": "addition",
+          "clue": "+"
         },
         {
           "num": 15,
           "row": 17,
-          "col": 10,
-          "len": 9,
-          "answer": "geometric",
-          "clue": "increasing in a geometric progression"
+          "col": 9,
+          "len": 6,
+          "answer": "circle",
+          "clue": "line has no corners but never stops"
         },
         {
           "num": 17,
-          "row": 19,
-          "col": 14,
-          "len": 6,
-          "answer": "linear",
-          "clue": "made up of, relating to, or like a line"
-        },
-        {
-          "num": 18,
-          "row": 23,
-          "col": 5,
-          "len": 6,
-          "answer": "factor",
-          "clue": "number multipliedwith another given another"
+          "row": 20,
+          "col": 11,
+          "len": 5,
+          "answer": "three",
+          "clue": "digit    10/20/40/34"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-9947",
-    "slug": "math-9947",
-    "fetched_at": "2026-07-14T19:19:47.492523+00:00",
-    "date": "2026-10-20"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-1461",
+    "slug": "math-crossword-1461",
+    "fetched_at": "2026-07-14T19:10:43.597411+00:00",
+    "date": "2026-10-26"
   },
   "today_trivia": {
-    "q": "What does 'compile' mean?",
-    "a": "To translate human-written code into machine code the CPU can run.",
-    "category": "Software",
-    "date": "2026-10-20"
+    "q": "What's the difference between HTTPS and HTTP?",
+    "a": "The 'S' means secure: the connection is encrypted (TLS), so nobody on the Wi-Fi can read what you send.",
+    "category": "Security",
+    "date": "2026-10-26"
   },
   "today_joke": {
-    "q": "Why do Windows and Linux get along?",
-    "a": "They both agree Macs are prettier. (We fix all three, promise.)",
-    "date": "2026-10-20"
+    "q": "Why did the monitor get glasses?",
+    "a": "It couldn't see the pixels clearly.",
+    "date": "2026-10-26"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-10-18",
-      "question": "How old is your main computer?",
+      "weekOf": "2026-10-25",
+      "question": "Biggest reason you put off computer help?",
       "options": [
         {
-          "id": "lt1",
-          "label": "Under 1 year"
+          "id": "cost",
+          "label": "Worried about cost"
         },
         {
-          "id": "1to3",
-          "label": "1\u20133 years"
+          "id": "time",
+          "label": "No time"
         },
         {
-          "id": "3to5",
-          "label": "3\u20135 years"
+          "id": "trust",
+          "label": "Don't trust shops"
         },
         {
-          "id": "gt5",
-          "label": "5+ years"
+          "id": "diy",
+          "label": "I'll fix it myself"
         }
       ]
     }
   },
   "today_poll": {
     "poll": {
-      "weekOf": "2026-10-18",
-      "question": "How old is your main computer?",
+      "weekOf": "2026-10-25",
+      "question": "Biggest reason you put off computer help?",
       "options": [
         {
-          "id": "lt1",
-          "label": "Under 1 year"
+          "id": "cost",
+          "label": "Worried about cost"
         },
         {
-          "id": "1to3",
-          "label": "1\u20133 years"
+          "id": "time",
+          "label": "No time"
         },
         {
-          "id": "3to5",
-          "label": "3\u20135 years"
+          "id": "trust",
+          "label": "Don't trust shops"
         },
         {
-          "id": "gt5",
-          "label": "5+ years"
+          "id": "diy",
+          "label": "I'll fix it myself"
         }
       ]
     }
