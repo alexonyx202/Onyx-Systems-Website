@@ -1,125 +1,203 @@
 {
-  "title": "Math Crossword",
-  "size": 20,
+  "title": "Math crossword",
+  "size": 26,
   "grid": [
-    "..s.................",
-    "..i.................",
-    "..m.................",
-    "..u.................",
-    "..l.................",
-    "..a.................",
-    "integer.............",
-    "..i..q......g.......",
-    "..o..u......e.......",
-    "..n..a..n...o.......",
-    ".....t.outcome......",
-    ".....i..m...e.......",
-    "...probability......",
-    ".p.i.n..e...r.......",
-    ".e......r...y.......",
-    ".r......l...........",
-    ".c.certain..........",
-    ".e......n...........",
-    ".negative...........",
-    ".t.................."
+    ".............s............",
+    ".............q............",
+    ".............u............",
+    ".............a....clock...",
+    ".............r.d..a.......",
+    "............decimals......",
+    "...............v..c.......",
+    "...............i.number..a",
+    "..........pemdas..l..q...l",
+    ".........w.....i..a..u...g",
+    ".........o...m.o..triangle",
+    "........fractions.o..l...b",
+    ".........d...s....r......r",
+    ".............s...........a",
+    "..........math............",
+    ".............o............",
+    "....a...cone.p............",
+    "....d...i....k............",
+    "....d...r....i............",
+    "multiplication............",
+    "....t...l.h..s............",
+    "....i...e.r...............",
+    "....o.....e...............",
+    "....n.numbers.............",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 7,
-        "col": 1,
-        "len": 7,
-        "answer": "integer",
-        "clue": "A positive or negative number used in math problems"
+        "row": 4,
+        "col": 19,
+        "len": 5,
+        "answer": "clock",
+        "clue": "time"
       },
       {
-        "num": 6,
-        "row": 11,
-        "col": 8,
-        "len": 7,
-        "answer": "outcome",
-        "clue": "a possibility of an event occurring in a math problem"
-      },
-      {
-        "num": 7,
-        "row": 13,
-        "col": 4,
-        "len": 11,
-        "answer": "probability",
-        "clue": "the chances of an outcome"
-      },
-      {
-        "num": 9,
-        "row": 17,
-        "col": 4,
-        "len": 7,
-        "answer": "certain",
-        "clue": "One of the probability chances that has a one hundred percent chance of happening"
-      },
-      {
-        "num": 10,
-        "row": 19,
-        "col": 2,
+        "num": 4,
+        "row": 6,
+        "col": 13,
         "len": 8,
-        "answer": "negative",
-        "clue": "A number that falls below zero that is also used a lot in math problems"
+        "answer": "decimals",
+        "clue": "dots in your math"
+      },
+      {
+        "num": 5,
+        "row": 8,
+        "col": 18,
+        "len": 6,
+        "answer": "number",
+        "clue": "line     endless straight line"
+      },
+      {
+        "num": 8,
+        "row": 9,
+        "col": 11,
+        "len": 6,
+        "answer": "pemdas",
+        "clue": "song we did"
+      },
+      {
+        "num": 11,
+        "row": 11,
+        "col": 19,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "egyptian pyramids"
+      },
+      {
+        "num": 12,
+        "row": 12,
+        "col": 9,
+        "len": 9,
+        "answer": "fractions",
+        "clue": "numbers on top of each other"
+      },
+      {
+        "num": 13,
+        "row": 15,
+        "col": 11,
+        "len": 4,
+        "answer": "math",
+        "clue": "involves everything in here"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 9,
+        "len": 4,
+        "answer": "cone",
+        "clue": "ice-cream"
+      },
+      {
+        "num": 16,
+        "row": 20,
+        "col": 1,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "x"
+      },
+      {
+        "num": 18,
+        "row": 24,
+        "col": 7,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "digits"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 3,
+        "col": 14,
+        "len": 6,
+        "answer": "square",
+        "clue": "a box"
+      },
+      {
+        "num": 2,
+        "row": 4,
+        "col": 19,
         "len": 10,
-        "answer": "simulation",
-        "clue": "A type of testing to help figure out a type of event in math problems"
+        "answer": "calculator",
+        "clue": "used to calculate faster"
       },
       {
         "num": 3,
-        "row": 7,
-        "col": 6,
+        "row": 5,
+        "col": 16,
         "len": 8,
-        "answer": "equation",
-        "clue": "A type of math problem used a lot"
+        "answer": "division",
+        "clue": "\u00f7"
       },
       {
-        "num": 4,
+        "num": 6,
         "row": 8,
-        "col": 13,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "Math problems that are more shape related than numbers"
-      },
-      {
-        "num": 5,
-        "row": 10,
-        "col": 9,
-        "len": 10,
-        "answer": "numberline",
-        "clue": "A type of graphing where a line is used mostly to pinpoint a number."
+        "col": 22,
+        "len": 5,
+        "answer": "equal",
+        "clue": "the answer"
       },
       {
         "num": 7,
-        "row": 13,
-        "col": 4,
-        "len": 2,
-        "answer": "pi",
-        "clue": "An algorithm that includes a series of numbers that start off with 3.14"
+        "row": 8,
+        "col": 26,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "advanced math"
       },
       {
-        "num": 8,
-        "row": 14,
-        "col": 2,
-        "len": 7,
-        "answer": "percent",
-        "clue": "A number that is in any situation that is refered to as out of one hundred"
+        "num": 9,
+        "row": 10,
+        "col": 10,
+        "len": 4,
+        "answer": "word",
+        "clue": "problem   problem  solving problems"
+      },
+      {
+        "num": 10,
+        "row": 11,
+        "col": 14,
+        "len": 11,
+        "answer": "misshopkins",
+        "clue": "The teacher"
+      },
+      {
+        "num": 14,
+        "row": 17,
+        "col": 5,
+        "len": 8,
+        "answer": "addition",
+        "clue": "+"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 9,
+        "len": 6,
+        "answer": "circle",
+        "clue": "line has no corners but never stops"
+      },
+      {
+        "num": 17,
+        "row": 20,
+        "col": 11,
+        "len": 5,
+        "answer": "three",
+        "clue": "digit    10/20/40/34"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-1454",
-  "slug": "math-crossword-1454",
-  "fetched_at": "2026-07-14T19:22:55.305340+00:00",
-  "date": "2026-10-25"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-1461",
+  "slug": "math-crossword-1461",
+  "fetched_at": "2026-07-14T19:10:43.597411+00:00",
+  "date": "2026-10-26"
 }
