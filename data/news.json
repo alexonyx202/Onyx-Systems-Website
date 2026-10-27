@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "items": [
+    {
+      "id": "n-2026-10-27",
+      "type": "newsletter",
+      "date": "2026-10-27",
+      "title": "That 'Microsoft Support' Call Is a Scam — Hang Up",
+      "tag": "Daily Brief",
+      "summary": "Your phone rings. The caller says they're from Microsoft Support (or",
+      "comic": "Newsletter - 2026-10-27-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
     {
       "id": "n-2026-10-26",
       "type": "newsletter",
@@ -126,18 +136,6 @@
       "summary": "Fake shipping texts are flooding phones right now — messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or l",
       "comic": "Newsletter - 2026-10-24-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-24",
-      "type": "tech-note",
-      "date": "2026-10-24",
-      "title": "WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free — no cleanup tools no tracking",
-      "tag": "Tool",
-      "summary": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
-      "cta": {
-        "label": "Download WinTuner",
-        "href": "https://github.com/Mwoodring2/WinTuner/releases"
-      }
     }
   ]
 }

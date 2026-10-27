@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-27-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-27",
+      "title": "Microsoft October 2026 Patch Tuesday fixes 1,413 flaws including exploited Windows Shell zero-day \u2014 update at Settings > Windows Update",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft released its October 2026 security update fixing 1,413 vulnerabilities including one actively exploited Windows Shell zero-day (CVE-2026-96951) that lets attackers bypass Mark of the Web warnings. Open Settings \u2192 Windows Update \u2192 turn on \"Get the latest updates as soon as they're available\" \u2192 select Check for updates to install it now.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-10-26-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-26",
@@ -153,27 +171,45 @@
       "image": "assets/img/news/2026-10-23-composite.jpg",
       "comic": "assets/img/news/2026-10-23-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-22-daily-brief",
-      "type": "newsletter",
-      "date": "2026-10-22",
-      "title": "CISA Adds Two Actively Exploited Zero-Days \u2014 Patch These Now",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft's October Patch Tuesday fixed over 1,400 vulnerabilities including two actively exploited zero-days (CVE-2026-96951 in Windows and an Ivanti VPN flaw). Open Settings \u2192 Windows Update and install the current cumulative update today.",
-      "tags": [
-        "security",
-        "patch-tuesday",
-        "windows",
-        "cisa"
-      ],
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-27-news-2",
+      "type": "news",
+      "date": "2026-10-27",
+      "title": "Fiber internet just reached 3,300+ homes in Columbia County \u2014 check if your Lake City address qualifies at Xfinity.com/MyTown",
+      "tag": "Tech Note",
+      "summary": "Comcast announced in August 2026 that Xfinity high-speed fiber internet is now available to more than 3,300 homes and businesses in Columbia County, including Ellisville, Fort White, Mikesville, Springville, Suwannee Valley, and Winfield. Another 2,000+ locations are under construction through end of 2026. Enter your address at Xfinity.com/MyTown to see if you're eligible.",
+      "truth": "I've been telling Lake City customers for years: fiber changes everything. Not just speed \u2014 reliability, latency, and the ability to work from home without the \"frozen screen\" moments. If fiber hits your street, get it. The difference between cable and fiber is the difference between hoping your Zoom call works and knowing it will.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://xfinity.com/mytown"
+      }
+    },
+    {
+      "id": "onyx-2026-10-27-news-1",
+      "type": "news",
+      "date": "2026-10-27",
+      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is the free suite that opens every Word, Excel, and PowerPoint file at libreoffice.org",
+      "tag": "Tech Note",
+      "summary": "LibreOffice 25.2 (released October 2026) is a free, open-source office suite for Windows, Mac, and Linux that includes Writer (documents), Calc (spreadsheets), and Impress (presentations) \u2014 it opens and saves Microsoft Office formats perfectly. Download it free at libreoffice.org \u2014 no account, no subscription, no ads.",
+      "truth": "I've installed LibreOffice on hundreds of customer machines over the years. The people who switch never go back to paying Microsoft $100+ a year. It's not \"good enough\" \u2014 it's genuinely excellent, and it respects your privacy by not phoning home with telemetry.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Download LibreOffice",
+        "href": "https://libreoffice.org"
+      }
+    },
     {
       "id": "onyx-2026-10-26-news-14",
       "type": "news",
@@ -202,37 +238,39 @@
       "truth": "I run Firefox on every shop machine. The Nova redesign isn't just pretty \u2014 it actually makes the browser feel snappier, and Compact Mode gives me back vertical space I didn't know I was missing."
     },
     {
-      "id": "onyx-2026-10-25-news-16",
-      "type": "news",
-      "date": "2026-10-25",
-      "title": "Clearwave Fiber expands in Lake City \u2014 check if your address qualifies at clearwavefiber.com",
-      "tag": "Local News",
-      "summary": "Clearwave Fiber is bringing fiber internet to more Lake City neighborhoods. Visit clearwavefiber.com to check if your address qualifies for service.",
-      "truth": "Fiber is a game-changer for rural areas. If you're stuck on DSL or satellite, this is worth checking.",
+      "id": "onyx-2026-10-27-tip-2",
+      "type": "tip",
+      "date": "2026-10-27",
+      "title": "Windows 11 24H2 Home and Pro lose security updates October 13, 2026 \u2014 upgrade free to 26H2 at Settings > Windows Update",
+      "tag": "Tech Tip",
+      "summary": "If your Windows 11 PC shows version 24H2 (press Windows+R, type winver, press Enter), the Home and Pro editions stopped receiving security updates on October 13, 2026. The free fix: open Settings \u2192 Windows Update \u2192 turn on \"Get the latest updates as soon as they're available\" \u2192 Check for updates \u2192 if Windows 11 2026 Update (26H2) appears, click Download and install. It's a small enablement package, one restart, and you get two more years of updates.",
+      "truth": "This deadline snuck up on a lot of people. Microsoft released 26H2 on September 29 but used a controlled rollout, so many 24H2 PCs still don't see it in Windows Update. Don't panic \u2014 your PC won't stop working, but each month without patches is a risk. I've had customers bring in machines that got hit by malware that a simple update would have blocked.",
       "tags": [
-        "Internet",
-        "Lake City"
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
       ],
       "cta": {
-        "label": "Check Availability",
-        "href": "https://clearwavefiber.com"
+        "label": "Check Windows Version",
+        "href": "ms-settings:about"
       }
     },
     {
-      "id": "onyx-2026-10-25-news-13",
-      "type": "news",
-      "date": "2026-10-25",
-      "title": "Windows 11 23H2 Enterprise and Education lose security updates after November \u2014 check your edition",
-      "tag": "Security Alert",
-      "summary": "Windows 11 23H2 Enterprise and Education editions get their final security update in November 2026. Open Settings > System > About > Windows specifications to see your edition. If you're on 23H2 Enterprise or Education, start planning your upgrade to 24H2 or later.",
-      "truth": "Most people don't realize their Windows edition has an expiration date. I see businesses running 23H2 who think they're fine because \"it still works\" \u2014 but without security patches, one unpatched flaw is all it takes.",
+      "id": "onyx-2026-10-27-tip-1",
+      "type": "tip",
+      "date": "2026-10-27",
+      "title": "Your slow laptop probably doesn't need replacing \u2014 a $100 SSD upgrade makes it faster than new at any repair shop",
+      "tag": "Tech Tip",
+      "summary": "The 50% rule: if a repair costs less than half the price of a comparable new laptop, fix it. A typical SSD upgrade with data transfer runs ~$100\u2013$150 at a local shop, while a decent new laptop starts at $500+. For laptops 2\u20134 years old, an SSD swap is the single biggest performance boost per dollar \u2014 boot times drop from minutes to seconds.",
+      "truth": "I see it weekly \u2014 someone brings in a \"dead\" laptop ready to buy new, I put in a $100 SSD, and they leave with a machine that feels faster than the day they bought it. The processor and memory were never the bottleneck; the spinning hard drive was. Manufacturers put cheap mechanical drives in mid-range laptops to hit price points. We fix that.",
       "tags": [
-        "Windows",
-        "Security"
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
       ],
       "cta": {
-        "label": "Check Windows Edition",
-        "href": "ms-settings:about"
+        "label": "Call for SSD Upgrade",
+        "href": "tel:+13867557772"
       }
     },
     {
@@ -277,257 +315,248 @@
         "label": "Check for Updates",
         "href": "ms-settings:windowsupdate"
       }
-    },
-    {
-      "id": "onyx-2026-10-23-post-2",
-      "type": "tip",
-      "date": "2026-10-23",
-      "title": "CISA adds four actively exploited flaws to must-patch list \u2014 Check Point, Arista, and F5 devices at risk",
-      "tag": "Tech Tip",
-      "summary": "Update Check Point security gateways, Arista VeloCloud Orchestrator, and F5 BIG-IP APM devices now \u2014 patches at check point.com, arista.com, and f5.com respectively. These four vulnerabilities (CVE-2026-85102, CVE-2026-93616, CVE-2026-93952, CVE-2026-94127) are being actively exploited per CISA's September 22 alert.",
-      "truth": "Most people think \"I don't have enterprise gear, this doesn't apply to me.\" But if your router runs on any of these platforms \u2014 or your IT provider uses them \u2014 you're exposed. I've seen small businesses get hit because their managed service provider hadn't patched a VPN gateway in months.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Security"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-22-vlc",
-      "type": "tip",
-      "date": "2026-10-22",
-      "title": "Stop fighting weird video formats \u2014 VLC Media Player is the free Swiss Army knife that plays literally everything",
-      "tag": "Tech Tip",
-      "summary": "Download VLC free at videolan.org/vlc \u2014 choose \"Windows 64-bit\" for most computers. Install it, and it will play any video or audio file you throw at it: MKV, AVI, MP4, MOV, FLAC, MP3, DVDs, Blu-rays, network streams, even broken or incomplete downloads. No codec packs, no ads, no tracking, no subscriptions. Ever.",
-      "truth": "I've seen people pay for \"video converter\" software to make a file play in Windows Media Player. VLC plays the original file without converting. The only format it struggles with is DRM-protected commercial movies (iTunes, some streaming downloads) \u2014 and that's by design, not a bug.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ],
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "today_word": {
-    "word": "Sandbox",
+    "word": "Uptime",
     "pos": "noun",
-    "definition": "An isolated space where untrusted software can run without touching the rest of your system.",
-    "example": "The browser opens downloads in a sandbox.",
-    "date": "2026-10-26"
+    "definition": "How long a system has been running without a crash or reboot \u2014 a measure of reliability.",
+    "example": "The server hit 400 days of uptime.",
+    "date": "2026-10-27"
   },
   "today_crossword": {
-    "title": "Math crossword",
-    "size": 26,
+    "title": "Math Crossword",
+    "size": 29,
     "grid": [
-      ".............s............",
-      ".............q............",
-      ".............u............",
-      ".............a....clock...",
-      ".............r.d..a.......",
-      "............decimals......",
-      "...............v..c.......",
-      "...............i.number..a",
-      "..........pemdas..l..q...l",
-      ".........w.....i..a..u...g",
-      ".........o...m.o..triangle",
-      "........fractions.o..l...b",
-      ".........d...s....r......r",
-      ".............s...........a",
-      "..........math............",
-      ".............o............",
-      "....a...cone.p............",
-      "....d...i....k............",
-      "....d...r....i............",
-      "multiplication............",
-      "....t...l.h..s............",
-      "....i...e.r...............",
-      "....o.....e...............",
-      "....n.numbers.............",
-      "..........................",
-      ".........................."
+      "........WaterMelon...........",
+      ".............u...............",
+      ".............l...............",
+      "...........Water.............",
+      ".............i...............",
+      ".............p...............",
+      ".............l...............",
+      "......Geometry...............",
+      "...C..r......................",
+      "...h..a.....Food.............",
+      "..Divide....u................",
+      "...p..u.P...n.A..............",
+      "Jobs.DavidSon.l..............",
+      "......t.z.u.y.g..............",
+      "......e.z.b...e..............",
+      ".......Martin.Bacon..........",
+      "..........r...r..............",
+      ".........Gateway.............",
+      "..........c..................",
+      "......Addition...............",
+      "..........i..................",
+      ".....M.S..o..................",
+      "...Fraction..................",
+      ".....t.u.....................",
+      ".....h.d.....................",
+      ".......e.....................",
+      ".......n.....................",
+      ".......Teacher...............",
+      ".......s....................."
     ],
     "clues": {
       "across": [
         {
-          "num": 2,
+          "num": 1,
+          "row": 1,
+          "col": 9,
+          "len": 10,
+          "answer": "WaterMelon",
+          "clue": "Mr. Martin's favorite fruit.( Starts with W)"
+        },
+        {
+          "num": 3,
           "row": 4,
-          "col": 19,
+          "col": 12,
           "len": 5,
-          "answer": "clock",
-          "clue": "time"
+          "answer": "Water",
+          "clue": "Only drink allowed to bring in."
         },
         {
           "num": 4,
-          "row": 6,
-          "col": 13,
-          "len": 8,
-          "answer": "decimals",
-          "clue": "dots in your math"
-        },
-        {
-          "num": 5,
           "row": 8,
-          "col": 18,
-          "len": 6,
-          "answer": "number",
-          "clue": "line     endless straight line"
+          "col": 7,
+          "len": 8,
+          "answer": "Geometry",
+          "clue": "Sophomore Math Class"
         },
         {
-          "num": 8,
-          "row": 9,
-          "col": 11,
+          "num": 6,
+          "row": 10,
+          "col": 13,
+          "len": 4,
+          "answer": "Food",
+          "clue": "What do you eat?"
+        },
+        {
+          "num": 7,
+          "row": 11,
+          "col": 3,
           "len": 6,
-          "answer": "pemdas",
-          "clue": "song we did"
+          "answer": "Divide",
+          "clue": "another word for splitting numbers."
+        },
+        {
+          "num": 10,
+          "row": 13,
+          "col": 1,
+          "len": 4,
+          "answer": "Jobs",
+          "clue": "Another word for work."
         },
         {
           "num": 11,
-          "row": 11,
-          "col": 19,
+          "row": 13,
+          "col": 6,
           "len": 8,
-          "answer": "triangle",
-          "clue": "egyptian pyramids"
-        },
-        {
-          "num": 12,
-          "row": 12,
-          "col": 9,
-          "len": 9,
-          "answer": "fractions",
-          "clue": "numbers on top of each other"
+          "answer": "DavidSon",
+          "clue": "Paraprofessional name."
         },
         {
           "num": 13,
-          "row": 15,
-          "col": 11,
-          "len": 4,
-          "answer": "math",
-          "clue": "involves everything in here"
+          "row": 16,
+          "col": 8,
+          "len": 6,
+          "answer": "Martin",
+          "clue": "Teachers name."
+        },
+        {
+          "num": 14,
+          "row": 16,
+          "col": 15,
+          "len": 5,
+          "answer": "Bacon",
+          "clue": "Mr. Martin's favorite food. (Starts with B)"
         },
         {
           "num": 15,
-          "row": 17,
-          "col": 9,
-          "len": 4,
-          "answer": "cone",
-          "clue": "ice-cream"
+          "row": 18,
+          "col": 10,
+          "len": 7,
+          "answer": "Gateway",
+          "clue": "Schools name."
         },
         {
           "num": 16,
           "row": 20,
-          "col": 1,
-          "len": 14,
-          "answer": "multiplication",
-          "clue": "x"
+          "col": 7,
+          "len": 8,
+          "answer": "Addition",
+          "clue": "another word for Sum."
         },
         {
-          "num": 18,
-          "row": 24,
-          "col": 7,
+          "num": 19,
+          "row": 23,
+          "col": 4,
+          "len": 8,
+          "answer": "Fraction",
+          "clue": "a 1/2 is a type of?"
+        },
+        {
+          "num": 20,
+          "row": 28,
+          "col": 8,
           "len": 7,
-          "answer": "numbers",
-          "clue": "digits"
+          "answer": "Teacher",
+          "clue": "What you call a person who teaches."
         }
       ],
       "down": [
         {
-          "num": 1,
+          "num": 2,
           "row": 1,
           "col": 14,
-          "len": 6,
-          "answer": "square",
-          "clue": "a box"
-        },
-        {
-          "num": 2,
-          "row": 4,
-          "col": 19,
-          "len": 10,
-          "answer": "calculator",
-          "clue": "used to calculate faster"
-        },
-        {
-          "num": 3,
-          "row": 5,
-          "col": 16,
           "len": 8,
-          "answer": "division",
-          "clue": "\u00f7"
+          "answer": "Multiply",
+          "clue": "an operation that augments.( Begins with an M)"
+        },
+        {
+          "num": 4,
+          "row": 8,
+          "col": 7,
+          "len": 8,
+          "answer": "Graduate",
+          "clue": "To finish High school is to?"
+        },
+        {
+          "num": 5,
+          "row": 9,
+          "col": 4,
+          "len": 5,
+          "answer": "Chips",
+          "clue": "Type of snack thats crunchy. (Starts with C)"
         },
         {
           "num": 6,
-          "row": 8,
-          "col": 22,
+          "row": 10,
+          "col": 13,
           "len": 5,
-          "answer": "equal",
-          "clue": "the answer"
+          "answer": "Funny",
+          "clue": "Mr. Martin's Personality trait( Starts with F)"
         },
         {
-          "num": 7,
-          "row": 8,
-          "col": 26,
-          "len": 7,
-          "answer": "algebra",
-          "clue": "advanced math"
+          "num": 8,
+          "row": 12,
+          "col": 9,
+          "len": 5,
+          "answer": "Pizza",
+          "clue": "Lunch that students have every Tuesday and Thursday."
         },
         {
           "num": 9,
-          "row": 10,
-          "col": 10,
-          "len": 4,
-          "answer": "word",
-          "clue": "problem   problem  solving problems"
+          "row": 12,
+          "col": 15,
+          "len": 7,
+          "answer": "AlgeBra",
+          "clue": "Freshman Math Class."
         },
         {
-          "num": 10,
-          "row": 11,
-          "col": 14,
+          "num": 12,
+          "row": 13,
+          "col": 11,
           "len": 11,
-          "answer": "misshopkins",
-          "clue": "The teacher"
-        },
-        {
-          "num": 14,
-          "row": 17,
-          "col": 5,
-          "len": 8,
-          "answer": "addition",
-          "clue": "+"
-        },
-        {
-          "num": 15,
-          "row": 17,
-          "col": 9,
-          "len": 6,
-          "answer": "circle",
-          "clue": "line has no corners but never stops"
+          "answer": "Subtraction",
+          "clue": "another word for deduct."
         },
         {
           "num": 17,
-          "row": 20,
-          "col": 11,
-          "len": 5,
-          "answer": "three",
-          "clue": "digit    10/20/40/34"
+          "row": 22,
+          "col": 6,
+          "len": 4,
+          "answer": "Math",
+          "clue": "General core class you're in."
+        },
+        {
+          "num": 18,
+          "row": 22,
+          "col": 8,
+          "len": 8,
+          "answer": "StudenTs",
+          "clue": "what are the people the Teacher teaches."
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-1461",
-    "slug": "math-crossword-1461",
-    "fetched_at": "2026-07-14T19:10:43.597411+00:00",
-    "date": "2026-10-26"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-1824",
+    "slug": "math-crossword-1824",
+    "fetched_at": "2026-07-14T19:21:08.916124+00:00",
+    "date": "2026-10-27"
   },
   "today_trivia": {
-    "q": "What's the difference between HTTPS and HTTP?",
-    "a": "The 'S' means secure: the connection is encrypted (TLS), so nobody on the Wi-Fi can read what you send.",
-    "category": "Security",
-    "date": "2026-10-26"
+    "q": "Roughly how many characters can a 7-bit ASCII code encode?",
+    "a": "128 \u2014 enough for English letters, digits, and basic punctuation.",
+    "category": "Basics",
+    "date": "2026-10-27"
   },
   "today_joke": {
-    "q": "Why did the monitor get glasses?",
-    "a": "It couldn't see the pixels clearly.",
-    "date": "2026-10-26"
+    "q": "What do you call a computer that's always broke?",
+    "a": "A deficit.",
+    "date": "2026-10-27"
   },
   "poll": {
     "poll": {
