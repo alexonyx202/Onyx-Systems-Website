@@ -1,222 +1,167 @@
 {
-  "title": "Math Crossword",
-  "size": 29,
+  "title": "math crossword",
+  "size": 30,
   "grid": [
-    "........WaterMelon...........",
-    ".............u...............",
-    ".............l...............",
-    "...........Water.............",
-    ".............i...............",
-    ".............p...............",
-    ".............l...............",
-    "......Geometry...............",
-    "...C..r......................",
-    "...h..a.....Food.............",
-    "..Divide....u................",
-    "...p..u.P...n.A..............",
-    "Jobs.DavidSon.l..............",
-    "......t.z.u.y.g..............",
-    "......e.z.b...e..............",
-    ".......Martin.Bacon..........",
-    "..........r...r..............",
-    ".........Gateway.............",
-    "..........c..................",
-    "......Addition...............",
-    "..........i..................",
-    ".....M.S..o..................",
-    "...Fraction..................",
-    ".....t.u.....................",
-    ".....h.d.....................",
-    ".......e.....................",
-    ".......n.....................",
-    ".......Teacher...............",
-    ".......s....................."
+    "............m.................",
+    "............o.................",
+    "............n......f..........",
+    "........g..polynomial.........",
+    "........r...m......c..........",
+    "........o...i.....standardform",
+    ".......quadratic...o..........",
+    "........p.i.l..u...r..........",
+    "........i.s....b...i..........",
+    "......constant.i...n..........",
+    "........g.r....c...g..........",
+    "..........i...................",
+    "..........b...................",
+    "......g.d.u...s...............",
+    "coefficient...q...............",
+    "......f.g.i...u...............",
+    ".......trinomial..............",
+    "........e.g...r...............",
+    "........e..linear.............",
+    "..............s...............",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    ".............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 9,
-        "len": 10,
-        "answer": "WaterMelon",
-        "clue": "Mr. Martin's favorite fruit.( Starts with W)"
-      },
-      {
-        "num": 3,
+        "num": 4,
         "row": 4,
         "col": 12,
-        "len": 5,
-        "answer": "Water",
-        "clue": "Only drink allowed to bring in."
+        "len": 10,
+        "answer": "polynomial",
+        "clue": "a math expression with various terms"
       },
       {
-        "num": 4,
-        "row": 8,
-        "col": 7,
-        "len": 8,
-        "answer": "Geometry",
-        "clue": "Sophomore Math Class"
+        "num": 5,
+        "row": 6,
+        "col": 19,
+        "len": 12,
+        "answer": "standardform",
+        "clue": "order of terms from highest exponent to lowest and in alphabetical order"
       },
       {
         "num": 6,
+        "row": 7,
+        "col": 8,
+        "len": 9,
+        "answer": "quadratic",
+        "clue": "a math expression with the degree of 2"
+      },
+      {
+        "num": 9,
         "row": 10,
-        "col": 13,
-        "len": 4,
-        "answer": "Food",
-        "clue": "What do you eat?"
-      },
-      {
-        "num": 7,
-        "row": 11,
-        "col": 3,
-        "len": 6,
-        "answer": "Divide",
-        "clue": "another word for splitting numbers."
-      },
-      {
-        "num": 10,
-        "row": 13,
-        "col": 1,
-        "len": 4,
-        "answer": "Jobs",
-        "clue": "Another word for work."
-      },
-      {
-        "num": 11,
-        "row": 13,
-        "col": 6,
+        "col": 7,
         "len": 8,
-        "answer": "DavidSon",
-        "clue": "Paraprofessional name."
+        "answer": "constant",
+        "clue": "a fixed value"
       },
       {
         "num": 13,
-        "row": 16,
-        "col": 8,
-        "len": 6,
-        "answer": "Martin",
-        "clue": "Teachers name."
+        "row": 15,
+        "col": 1,
+        "len": 11,
+        "answer": "coefficient",
+        "clue": "written with the variable or multiplied by a variable"
       },
       {
         "num": 14,
-        "row": 16,
-        "col": 15,
-        "len": 5,
-        "answer": "Bacon",
-        "clue": "Mr. Martin's favorite food. (Starts with B)"
+        "row": 17,
+        "col": 8,
+        "len": 9,
+        "answer": "trinomial",
+        "clue": "a math expression with 3 terms"
       },
       {
         "num": 15,
-        "row": 18,
-        "col": 10,
-        "len": 7,
-        "answer": "Gateway",
-        "clue": "Schools name."
-      },
-      {
-        "num": 16,
-        "row": 20,
-        "col": 7,
-        "len": 8,
-        "answer": "Addition",
-        "clue": "another word for Sum."
-      },
-      {
-        "num": 19,
-        "row": 23,
-        "col": 4,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "a 1/2 is a type of?"
-      },
-      {
-        "num": 20,
-        "row": 28,
-        "col": 8,
-        "len": 7,
-        "answer": "Teacher",
-        "clue": "What you call a person who teaches."
+        "row": 19,
+        "col": 12,
+        "len": 6,
+        "answer": "linear",
+        "clue": "a math expression with the degree of 1"
       }
     ],
     "down": [
       {
-        "num": 2,
+        "num": 1,
         "row": 1,
-        "col": 14,
-        "len": 8,
-        "answer": "Multiply",
-        "clue": "an operation that augments.( Begins with an M)"
-      },
-      {
-        "num": 4,
-        "row": 8,
-        "col": 7,
-        "len": 8,
-        "answer": "Graduate",
-        "clue": "To finish High school is to?"
-      },
-      {
-        "num": 5,
-        "row": 9,
-        "col": 4,
-        "len": 5,
-        "answer": "Chips",
-        "clue": "Type of snack thats crunchy. (Starts with C)"
-      },
-      {
-        "num": 6,
-        "row": 10,
         "col": 13,
-        "len": 5,
-        "answer": "Funny",
-        "clue": "Mr. Martin's Personality trait( Starts with F)"
+        "len": 8,
+        "answer": "monomial",
+        "clue": "a number or variable with one term"
+      },
+      {
+        "num": 2,
+        "row": 3,
+        "col": 20,
+        "len": 9,
+        "answer": "factoring",
+        "clue": "a way to simplify a polynomial"
+      },
+      {
+        "num": 3,
+        "row": 4,
+        "col": 9,
+        "len": 8,
+        "answer": "grouping",
+        "clue": "a way to factor a polynomial with four terms"
+      },
+      {
+        "num": 7,
+        "row": 7,
+        "col": 11,
+        "len": 12,
+        "answer": "distributing",
+        "clue": "a way to check the factored problem"
       },
       {
         "num": 8,
-        "row": 12,
-        "col": 9,
+        "row": 7,
+        "col": 16,
         "len": 5,
-        "answer": "Pizza",
-        "clue": "Lunch that students have every Tuesday and Thursday."
+        "answer": "cubic",
+        "clue": "a math expresion with the degree of 3"
       },
       {
-        "num": 9,
-        "row": 12,
-        "col": 15,
-        "len": 7,
-        "answer": "AlgeBra",
-        "clue": "Freshman Math Class."
+        "num": 10,
+        "row": 14,
+        "col": 7,
+        "len": 3,
+        "answer": "gcf",
+        "clue": "the greatest common factor"
+      },
+      {
+        "num": 11,
+        "row": 14,
+        "col": 9,
+        "len": 6,
+        "answer": "degree",
+        "clue": "highest exponent"
       },
       {
         "num": 12,
-        "row": 13,
-        "col": 11,
-        "len": 11,
-        "answer": "Subtraction",
-        "clue": "another word for deduct."
-      },
-      {
-        "num": 17,
-        "row": 22,
-        "col": 6,
-        "len": 4,
-        "answer": "Math",
-        "clue": "General core class you're in."
-      },
-      {
-        "num": 18,
-        "row": 22,
-        "col": 8,
-        "len": 8,
-        "answer": "StudenTs",
-        "clue": "what are the people the Teacher teaches."
+        "row": 14,
+        "col": 15,
+        "len": 7,
+        "answer": "squares",
+        "clue": "a number multiplied by itself written with a exponent"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-1824",
-  "slug": "math-crossword-1824",
-  "fetched_at": "2026-07-14T19:21:08.916124+00:00",
-  "date": "2026-10-27"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-2258",
+  "slug": "math-crossword-2258",
+  "fetched_at": "2026-07-14T19:11:52.419877+00:00",
+  "date": "2026-10-28"
 }
