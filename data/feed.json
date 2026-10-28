@@ -100,6 +100,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-28-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-28",
+      "title": "CISA adds critical PHP flaws to exploited list \u2014 patch now at php.net",
+      "tag": "Daily Brief",
+      "excerpt": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#CyberSecurity"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-10-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-27",
@@ -154,26 +172,29 @@
       "source": "Onyx Daily Brief",
       "readMore": "https://onyxpc.us/#contact",
       "comic": "Newsletter - 2026-10-24-comic-square.png"
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-10-23-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-23",
-      "title": "FTC Impersonators Are Calling \u2014 They Will Threaten to Deactivate Your Phone",
-      "tag": "Daily Brief",
-      "excerpt": "The FTC is not calling to deactivate your phone number.\n\nScammers are posing as FTC officials and claiming a phone was registered under your name and used for scams in another country. They read off a fake badge ID and threaten to disconnect your phone unless you cooperate. Then they transfer you to a \"police officer\" who asks for your ID and personal information for a \"report.\" Later they claim you're under arrest and need to send money for a security deposit. None of this is real.\n\nWhat to\u2026",
+      "id": "onyx-2026-10-28-news-1",
+      "type": "news",
+      "date": "2026-10-28",
+      "title": "Microsoft Edge 156 patches security holes \u2014 update free at edge://settings/help",
+      "tag": "Tech Note",
+      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu \u2192 Help and feedback \u2192 About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
+      "truth": "Most people ignore browser updates until something breaks. I see it weekly \u2014 outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief"
+        "#MicrosoftEdge",
+        "#BrowserSecurity"
       ],
-      "image": "assets/img/news/2026-10-23-composite.jpg",
-      "comic": "assets/img/news/2026-10-23-comic-square.jpg",
-      "read_more": "#contact"
-    }
-  ],
-  "posts": [
+      "cta": {
+        "label": "Check for Updates",
+        "href": "edge://settings/help"
+      }
+    },
     {
       "id": "onyx-2026-10-27-news-2",
       "type": "news",
@@ -229,13 +250,66 @@
       "truth": "Customers ask me all the time why their internet is slow. Half the time they're on old DSL when fiber already runs past their house. The FCC map is the only place that shows reality, not marketing."
     },
     {
-      "id": "onyx-2026-10-26-news-11",
-      "type": "news",
-      "date": "2026-10-26",
-      "title": "Firefox 158 gets a fresh Nova look and brings back Compact Mode \u2014 free update at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Update Firefox to version 158 at firefox.com or click Menu > Help > About Firefox. The Nova redesign refreshes tabs and toolbars with a cleaner look, and Compact Mode returns to fit more on screen \u2014 just right-click the toolbar and choose Customize Toolbar > Density > Compact.",
-      "truth": "I run Firefox on every shop machine. The Nova redesign isn't just pretty \u2014 it actually makes the browser feel snappier, and Compact Mode gives me back vertical space I didn't know I was missing."
+      "id": "onyx-2026-10-28-tip-3",
+      "type": "tip",
+      "date": "2026-10-28",
+      "title": "Make a bootable USB free \u2014 BalenaEtcher flashes OS images safely at balenaetcher.io",
+      "tag": "Tech Tip",
+      "summary": "Download BalenaEtcher free from balenaetcher.io (Windows, Mac, or Linux). Plug in your USB drive, select your ISO file, select the drive, click Flash. It validates the write so you know the drive will boot. No command line, no guesswork.",
+      "truth": "I've fixed more \"bricked\" USB drives from people using dd or Rufus wrong than I can count. Etcher hides your system drives by default so you can't accidentally wipe your hard drive. That one feature has saved customers' data dozens of times.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#BalenaEtcher",
+        "#BootableUSB",
+        "#FreeTools"
+      ],
+      "cta": {
+        "label": "Download Etcher",
+        "href": "https://balenaetcher.io"
+      }
+    },
+    {
+      "id": "onyx-2026-10-28-tip-2",
+      "type": "tip",
+      "date": "2026-10-28",
+      "title": "Make games run smoother free \u2014 Windows 11 Game Mode and hardware graphics scheduling hide a free performance boost in Settings",
+      "tag": "Tech Tip",
+      "summary": "Open Settings \u2192 Gaming \u2192 Game Mode. Turn on Game Mode. Then scroll to Hardware-accelerated graphics scheduling and turn that on too. Restart. Games get priority access to your processor and graphics card \u2014 no new hardware needed.",
+      "truth": "People spend $500 on a video card but leave the free Windows gaming toggles off. I've seen 10\u201315% speed gains just from flipping these two switches. Works on any graphics card from the last 5 years.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#Gaming",
+        "#FreePerformance"
+      ],
+      "cta": {
+        "label": "Open Gaming Settings",
+        "href": "ms-settings:gaming-gamemode"
+      }
+    },
+    {
+      "id": "onyx-2026-10-28-tip-1",
+      "type": "tip",
+      "date": "2026-10-28",
+      "title": "Stop fighting weird video formats \u2014 VLC Media Player plays everything free at videolan.org",
+      "tag": "Tech Tip",
+      "summary": "Download VLC 3.0.24 free from videolan.org/vlc/download-windows.html. Pick the 64-bit installer for modern PCs. It plays DVDs, Blu-rays, MKV, MP4, AVI, streaming links, and obscure formats without codec packs. No ads, no tracking, no subscription.",
+      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them \u2014 and it's been clean for 20 years.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#VLC",
+        "#FreeSoftware"
+      ],
+      "cta": {
+        "label": "Download VLC",
+        "href": "https://videolan.org"
+      }
     },
     {
       "id": "onyx-2026-10-27-tip-2",
@@ -272,291 +346,193 @@
         "label": "Call for SSD Upgrade",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-26-tip-13",
-      "type": "tip",
-      "date": "2026-10-26",
-      "title": "Stop paying for Adobe Acrobat \u2014 PDF24 edits merges and splits PDFs free and offline",
-      "tag": "Tech Tip",
-      "summary": "Download PDF24 from pdf24.org (PCWorld's top free PDF editor pick for 2026). It works entirely offline, merges, splits, edits, converts, and adds signatures \u2014 no cloud upload, no watermark, no subscription, no account needed.",
-      "truth": "Adobe wants $239 a year for Acrobat Pro. PDF24 does 90% of what most people need \u2014 merge scanned docs, split a big PDF, fill a form, sign a contract \u2014 and it never phones home. I install it on every customer PC."
-    },
-    {
-      "id": "onyx-2026-10-25-tip-15",
-      "type": "tip",
-      "date": "2026-10-25",
-      "title": "Stop Windows tracking you free with O&O ShutUp10++ at ooshutup10.com",
-      "tag": "Privacy Tip",
-      "summary": "O&O ShutUp10++ is a free portable tool that lets you disable Windows telemetry, data collection, and tracking in one click. Download from ooshutup10.com.",
-      "truth": "I run this on every Windows machine that comes through the shop. Takes 30 seconds and stops a massive amount of background data collection.",
-      "tags": [
-        "Privacy",
-        "Windows"
-      ],
-      "cta": {
-        "label": "Download ShutUp10++",
-        "href": "https://ooshutup10.com"
-      }
-    },
-    {
-      "id": "onyx-2026-10-25-tip-14",
-      "type": "tip",
-      "date": "2026-10-25",
-      "title": "File Explorer now previews HTML files and remembers your folders free in October Windows Update",
-      "tag": "Tech Tip",
-      "summary": "The October 2026 Windows 11 update (KB5127648) adds HTML file previews in File Explorer and remembers your folder settings. Free via Windows Update.",
-      "truth": "This is one of those quiet quality-of-life updates that makes a real difference if you work with web files. No more opening files just to see what's in them.",
-      "tags": [
-        "Windows",
-        "File Explorer"
-      ],
-      "cta": {
-        "label": "Check for Updates",
-        "href": "ms-settings:windowsupdate"
-      }
     }
   ],
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "today_word": {
-    "word": "Uptime",
+    "word": "Driver",
     "pos": "noun",
-    "definition": "How long a system has been running without a crash or reboot \u2014 a measure of reliability.",
-    "example": "The server hit 400 days of uptime.",
-    "date": "2026-10-27"
+    "definition": "A small program that lets the operating system talk to a piece of hardware like a printer or GPU.",
+    "example": "A missing driver left the webcam dark.",
+    "date": "2026-10-28"
   },
   "today_crossword": {
-    "title": "Math Crossword",
-    "size": 29,
+    "title": "math crossword",
+    "size": 30,
     "grid": [
-      "........WaterMelon...........",
-      ".............u...............",
-      ".............l...............",
-      "...........Water.............",
-      ".............i...............",
-      ".............p...............",
-      ".............l...............",
-      "......Geometry...............",
-      "...C..r......................",
-      "...h..a.....Food.............",
-      "..Divide....u................",
-      "...p..u.P...n.A..............",
-      "Jobs.DavidSon.l..............",
-      "......t.z.u.y.g..............",
-      "......e.z.b...e..............",
-      ".......Martin.Bacon..........",
-      "..........r...r..............",
-      ".........Gateway.............",
-      "..........c..................",
-      "......Addition...............",
-      "..........i..................",
-      ".....M.S..o..................",
-      "...Fraction..................",
-      ".....t.u.....................",
-      ".....h.d.....................",
-      ".......e.....................",
-      ".......n.....................",
-      ".......Teacher...............",
-      ".......s....................."
+      "............m.................",
+      "............o.................",
+      "............n......f..........",
+      "........g..polynomial.........",
+      "........r...m......c..........",
+      "........o...i.....standardform",
+      ".......quadratic...o..........",
+      "........p.i.l..u...r..........",
+      "........i.s....b...i..........",
+      "......constant.i...n..........",
+      "........g.r....c...g..........",
+      "..........i...................",
+      "..........b...................",
+      "......g.d.u...s...............",
+      "coefficient...q...............",
+      "......f.g.i...u...............",
+      ".......trinomial..............",
+      "........e.g...r...............",
+      "........e..linear.............",
+      "..............s...............",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      "..............................",
+      ".............................."
     ],
     "clues": {
       "across": [
         {
-          "num": 1,
-          "row": 1,
-          "col": 9,
-          "len": 10,
-          "answer": "WaterMelon",
-          "clue": "Mr. Martin's favorite fruit.( Starts with W)"
-        },
-        {
-          "num": 3,
+          "num": 4,
           "row": 4,
           "col": 12,
-          "len": 5,
-          "answer": "Water",
-          "clue": "Only drink allowed to bring in."
+          "len": 10,
+          "answer": "polynomial",
+          "clue": "a math expression with various terms"
         },
         {
-          "num": 4,
-          "row": 8,
-          "col": 7,
-          "len": 8,
-          "answer": "Geometry",
-          "clue": "Sophomore Math Class"
+          "num": 5,
+          "row": 6,
+          "col": 19,
+          "len": 12,
+          "answer": "standardform",
+          "clue": "order of terms from highest exponent to lowest and in alphabetical order"
         },
         {
           "num": 6,
+          "row": 7,
+          "col": 8,
+          "len": 9,
+          "answer": "quadratic",
+          "clue": "a math expression with the degree of 2"
+        },
+        {
+          "num": 9,
           "row": 10,
-          "col": 13,
-          "len": 4,
-          "answer": "Food",
-          "clue": "What do you eat?"
-        },
-        {
-          "num": 7,
-          "row": 11,
-          "col": 3,
-          "len": 6,
-          "answer": "Divide",
-          "clue": "another word for splitting numbers."
-        },
-        {
-          "num": 10,
-          "row": 13,
-          "col": 1,
-          "len": 4,
-          "answer": "Jobs",
-          "clue": "Another word for work."
-        },
-        {
-          "num": 11,
-          "row": 13,
-          "col": 6,
+          "col": 7,
           "len": 8,
-          "answer": "DavidSon",
-          "clue": "Paraprofessional name."
+          "answer": "constant",
+          "clue": "a fixed value"
         },
         {
           "num": 13,
-          "row": 16,
-          "col": 8,
-          "len": 6,
-          "answer": "Martin",
-          "clue": "Teachers name."
+          "row": 15,
+          "col": 1,
+          "len": 11,
+          "answer": "coefficient",
+          "clue": "written with the variable or multiplied by a variable"
         },
         {
           "num": 14,
-          "row": 16,
-          "col": 15,
-          "len": 5,
-          "answer": "Bacon",
-          "clue": "Mr. Martin's favorite food. (Starts with B)"
+          "row": 17,
+          "col": 8,
+          "len": 9,
+          "answer": "trinomial",
+          "clue": "a math expression with 3 terms"
         },
         {
           "num": 15,
-          "row": 18,
-          "col": 10,
-          "len": 7,
-          "answer": "Gateway",
-          "clue": "Schools name."
-        },
-        {
-          "num": 16,
-          "row": 20,
-          "col": 7,
-          "len": 8,
-          "answer": "Addition",
-          "clue": "another word for Sum."
-        },
-        {
-          "num": 19,
-          "row": 23,
-          "col": 4,
-          "len": 8,
-          "answer": "Fraction",
-          "clue": "a 1/2 is a type of?"
-        },
-        {
-          "num": 20,
-          "row": 28,
-          "col": 8,
-          "len": 7,
-          "answer": "Teacher",
-          "clue": "What you call a person who teaches."
+          "row": 19,
+          "col": 12,
+          "len": 6,
+          "answer": "linear",
+          "clue": "a math expression with the degree of 1"
         }
       ],
       "down": [
         {
-          "num": 2,
+          "num": 1,
           "row": 1,
-          "col": 14,
-          "len": 8,
-          "answer": "Multiply",
-          "clue": "an operation that augments.( Begins with an M)"
-        },
-        {
-          "num": 4,
-          "row": 8,
-          "col": 7,
-          "len": 8,
-          "answer": "Graduate",
-          "clue": "To finish High school is to?"
-        },
-        {
-          "num": 5,
-          "row": 9,
-          "col": 4,
-          "len": 5,
-          "answer": "Chips",
-          "clue": "Type of snack thats crunchy. (Starts with C)"
-        },
-        {
-          "num": 6,
-          "row": 10,
           "col": 13,
-          "len": 5,
-          "answer": "Funny",
-          "clue": "Mr. Martin's Personality trait( Starts with F)"
+          "len": 8,
+          "answer": "monomial",
+          "clue": "a number or variable with one term"
+        },
+        {
+          "num": 2,
+          "row": 3,
+          "col": 20,
+          "len": 9,
+          "answer": "factoring",
+          "clue": "a way to simplify a polynomial"
+        },
+        {
+          "num": 3,
+          "row": 4,
+          "col": 9,
+          "len": 8,
+          "answer": "grouping",
+          "clue": "a way to factor a polynomial with four terms"
+        },
+        {
+          "num": 7,
+          "row": 7,
+          "col": 11,
+          "len": 12,
+          "answer": "distributing",
+          "clue": "a way to check the factored problem"
         },
         {
           "num": 8,
-          "row": 12,
-          "col": 9,
+          "row": 7,
+          "col": 16,
           "len": 5,
-          "answer": "Pizza",
-          "clue": "Lunch that students have every Tuesday and Thursday."
+          "answer": "cubic",
+          "clue": "a math expresion with the degree of 3"
         },
         {
-          "num": 9,
-          "row": 12,
-          "col": 15,
-          "len": 7,
-          "answer": "AlgeBra",
-          "clue": "Freshman Math Class."
+          "num": 10,
+          "row": 14,
+          "col": 7,
+          "len": 3,
+          "answer": "gcf",
+          "clue": "the greatest common factor"
+        },
+        {
+          "num": 11,
+          "row": 14,
+          "col": 9,
+          "len": 6,
+          "answer": "degree",
+          "clue": "highest exponent"
         },
         {
           "num": 12,
-          "row": 13,
-          "col": 11,
-          "len": 11,
-          "answer": "Subtraction",
-          "clue": "another word for deduct."
-        },
-        {
-          "num": 17,
-          "row": 22,
-          "col": 6,
-          "len": 4,
-          "answer": "Math",
-          "clue": "General core class you're in."
-        },
-        {
-          "num": 18,
-          "row": 22,
-          "col": 8,
-          "len": 8,
-          "answer": "StudenTs",
-          "clue": "what are the people the Teacher teaches."
+          "row": 14,
+          "col": 15,
+          "len": 7,
+          "answer": "squares",
+          "clue": "a number multiplied by itself written with a exponent"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-1824",
-    "slug": "math-crossword-1824",
-    "fetched_at": "2026-07-14T19:21:08.916124+00:00",
-    "date": "2026-10-27"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-2258",
+    "slug": "math-crossword-2258",
+    "fetched_at": "2026-07-14T19:11:52.419877+00:00",
+    "date": "2026-10-28"
   },
   "today_trivia": {
-    "q": "Roughly how many characters can a 7-bit ASCII code encode?",
-    "a": "128 \u2014 enough for English letters, digits, and basic punctuation.",
-    "category": "Basics",
-    "date": "2026-10-27"
+    "q": "What does 'GPU' stand for?",
+    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
+    "category": "Hardware",
+    "date": "2026-10-28"
   },
   "today_joke": {
-    "q": "What do you call a computer that's always broke?",
-    "a": "A deficit.",
-    "date": "2026-10-27"
+    "q": "Why did the geek cross the road?",
+    "a": "To get to the other side... of the firewall.",
+    "date": "2026-10-28"
   },
   "poll": {
     "poll": {
