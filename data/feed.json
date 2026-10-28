@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,10 +100,27 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-24-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-24",
+      "title": "Fake Shipping Texts Flooding Phones — Don't Tap the Link",
+      "tag": "Daily Brief",
+      "excerpt": "Fake shipping texts are flooding phones right now — messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or login info by text.\n\nWhat to do: Delete the text. If you're expecting a shipment, go to the carrier's website directly (type the address yourself) or use their official app. Forward suspicious texts to 7726 (SPAM) so…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-24-composite.jpg",
+      "comic": "assets/img/news/2026-10-24-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-28-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list \u2014 patch now at php.net",
+      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
       "tag": "Daily Brief",
       "excerpt": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
       "tags": [
@@ -121,9 +138,9 @@
       "id": "onyx-2026-10-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-27",
-      "title": "Microsoft October 2026 Patch Tuesday fixes 1,413 flaws including exploited Windows Shell zero-day \u2014 update at Settings > Windows Update",
+      "title": "Microsoft October 2026 Patch Tuesday fixes 1,413 flaws including exploited Windows Shell zero-day — update at Settings > Windows Update",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft released its October 2026 security update fixing 1,413 vulnerabilities including one actively exploited Windows Shell zero-day (CVE-2026-96951) that lets attackers bypass Mark of the Web warnings. Open Settings \u2192 Windows Update \u2192 turn on \"Get the latest updates as soon as they're available\" \u2192 select Check for updates to install it now.",
+      "excerpt": "Microsoft released its October 2026 security update fixing 1,413 vulnerabilities including one actively exploited Windows Shell zero-day (CVE-2026-96951) that lets attackers bypass Mark of the Web warnings. Open Settings → Windows Update → turn on \"Get the latest updates as soon as they're available\" → select Check for updates to install it now.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -139,7 +156,7 @@
       "id": "onyx-2026-10-26-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-26",
-      "title": "Windows 11 October update breaks USB audio and Remote Desktop \u2014 here's the workaround",
+      "title": "Windows 11 October update breaks USB audio and Remote Desktop — here's the workaround",
       "tag": "Daily Brief",
       "excerpt": "Windows 11 KB5127648 (October 2026 Patch Tuesday) breaks USB audio (Code 10 error) and Remote Desktop (0xC000000D). If your sound or remote access stopped working after the update, check for the update at Settings > Windows Update. Microsoft lists workarounds at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2.",
       "cta": {
@@ -151,7 +168,7 @@
       "id": "onyx-2026-10-25-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-25",
-      "title": "Password manager breach exposes millions \u2014 check if your passwords were stolen at haveibeenpwned.com",
+      "title": "Password manager breach exposes millions — check if your passwords were stolen at haveibeenpwned.com",
       "tag": "Daily Brief",
       "excerpt": "A major password manager breach this month exposed millions of stored credentials. Go to haveibeenpwned.com and enter your email to see if your passwords were compromised. If they were, change them immediately on every site where you reused them.",
       "tags": [
@@ -162,27 +179,32 @@
         "label": "Check Your Email",
         "href": "https://haveibeenpwned.com"
       }
-    },
-    {
-      "id": "news-2026-10-24",
-      "date": "2026-10-24",
-      "headline": "Fake Shipping Texts Flooding Phones \u2014 Don't Tap the Link",
-      "summary": "Fake shipping texts are flooding phones right now \u2014 messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or l",
-      "tag": "Daily Brief",
-      "source": "Onyx Daily Brief",
-      "readMore": "https://onyxpc.us/#contact",
-      "comic": "Newsletter - 2026-10-24-comic-square.png"
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-10-24-post-1",
+      "type": "news",
+      "date": "2026-10-24",
+      "title": "Major data breach exposes millions of passwords — check if your email is affected free at haveibeenpwned.com",
+      "tag": "Tech Note",
+      "summary": "Go to haveibeenpwned.com, enter your email, and see if your passwords were leaked. If they were, change those passwords immediately on every site where you reused them.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
       "id": "onyx-2026-10-28-news-1",
       "type": "news",
       "date": "2026-10-28",
-      "title": "Microsoft Edge 156 patches security holes \u2014 update free at edge://settings/help",
+      "title": "Microsoft Edge 156 patches security holes — update free at edge://settings/help",
       "tag": "Tech Note",
-      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu \u2192 Help and feedback \u2192 About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
-      "truth": "Most people ignore browser updates until something breaks. I see it weekly \u2014 outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
+      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
+      "truth": "Most people ignore browser updates until something breaks. I see it weekly — outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -199,10 +221,10 @@
       "id": "onyx-2026-10-27-news-2",
       "type": "news",
       "date": "2026-10-27",
-      "title": "Fiber internet just reached 3,300+ homes in Columbia County \u2014 check if your Lake City address qualifies at Xfinity.com/MyTown",
+      "title": "Fiber internet just reached 3,300+ homes in Columbia County — check if your Lake City address qualifies at Xfinity.com/MyTown",
       "tag": "Tech Note",
       "summary": "Comcast announced in August 2026 that Xfinity high-speed fiber internet is now available to more than 3,300 homes and businesses in Columbia County, including Ellisville, Fort White, Mikesville, Springville, Suwannee Valley, and Winfield. Another 2,000+ locations are under construction through end of 2026. Enter your address at Xfinity.com/MyTown to see if you're eligible.",
-      "truth": "I've been telling Lake City customers for years: fiber changes everything. Not just speed \u2014 reliability, latency, and the ability to work from home without the \"frozen screen\" moments. If fiber hits your street, get it. The difference between cable and fiber is the difference between hoping your Zoom call works and knowing it will.",
+      "truth": "I've been telling Lake City customers for years: fiber changes everything. Not just speed — reliability, latency, and the ability to work from home without the \"frozen screen\" moments. If fiber hits your street, get it. The difference between cable and fiber is the difference between hoping your Zoom call works and knowing it will.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -217,10 +239,10 @@
       "id": "onyx-2026-10-27-news-1",
       "type": "news",
       "date": "2026-10-27",
-      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is the free suite that opens every Word, Excel, and PowerPoint file at libreoffice.org",
+      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is the free suite that opens every Word, Excel, and PowerPoint file at libreoffice.org",
       "tag": "Tech Note",
-      "summary": "LibreOffice 25.2 (released October 2026) is a free, open-source office suite for Windows, Mac, and Linux that includes Writer (documents), Calc (spreadsheets), and Impress (presentations) \u2014 it opens and saves Microsoft Office formats perfectly. Download it free at libreoffice.org \u2014 no account, no subscription, no ads.",
-      "truth": "I've installed LibreOffice on hundreds of customer machines over the years. The people who switch never go back to paying Microsoft $100+ a year. It's not \"good enough\" \u2014 it's genuinely excellent, and it respects your privacy by not phoning home with telemetry.",
+      "summary": "LibreOffice 25.2 (released October 2026) is a free, open-source office suite for Windows, Mac, and Linux that includes Writer (documents), Calc (spreadsheets), and Impress (presentations) — it opens and saves Microsoft Office formats perfectly. Download it free at libreoffice.org — no account, no subscription, no ads.",
+      "truth": "I've installed LibreOffice on hundreds of customer machines over the years. The people who switch never go back to paying Microsoft $100+ a year. It's not \"good enough\" — it's genuinely excellent, and it respects your privacy by not phoning home with telemetry.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -235,25 +257,30 @@
       "id": "onyx-2026-10-26-news-14",
       "type": "news",
       "date": "2026-10-26",
-      "title": "Windows 11 24H2 has known bugs \u2014 Microsoft lists workarounds at learn.microsoft.com",
+      "title": "Windows 11 24H2 has known bugs — Microsoft lists workarounds at learn.microsoft.com",
       "tag": "Tech Note",
       "summary": "Check the known issues for Windows 11 24H2 at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2. Current bugs include USB audio Code 10, Remote Desktop 0xC000000D, and AC-3 audio. Microsoft provides workarounds for each.",
-      "truth": "Every major Windows update breaks something for someone. 24H2 is solid for most, but if you use USB headphones or Remote Desktop daily, you'll hit these. The workarounds are simple \u2014 but you have to know they exist."
+      "truth": "Every major Windows update breaks something for someone. 24H2 is solid for most, but if you use USB headphones or Remote Desktop daily, you'll hit these. The workarounds are simple — but you have to know they exist."
     },
     {
-      "id": "onyx-2026-10-26-news-12",
-      "type": "news",
-      "date": "2026-10-26",
-      "title": "Fiber internet may already be at your Lake City address \u2014 check free on the FCC Broadband Map",
-      "tag": "Tech Note",
-      "summary": "Visit broadbandmap.fcc.gov and enter your Lake City address to see every fiber, cable, and DSL provider available. ClearWave Fiber, AT&T Fiber, and Xfinity all serve parts of Columbia County \u2014 the map shows exactly what's at your doorstep.",
-      "truth": "Customers ask me all the time why their internet is slow. Half the time they're on old DSL when fiber already runs past their house. The FCC map is the only place that shows reality, not marketing."
+      "id": "onyx-2026-10-24-post-2",
+      "type": "tip",
+      "date": "2026-10-24",
+      "title": "**Headline:** WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free — no risky cleaners no telemetry",
+      "tag": "Tech Tip",
+      "summary": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
+      "truth": "I see PCs every week \"optimized\" by system cleaners that broke more than they fixed. WinTuner is different — it only surfaces tools Microsoft already built in, shows you the risk level of every tweak, and logs every change so you can undo it. That's the optimizer I'd run on my own machine.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
     },
     {
       "id": "onyx-2026-10-28-tip-3",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Make a bootable USB free \u2014 BalenaEtcher flashes OS images safely at balenaetcher.io",
+      "title": "Make a bootable USB free — BalenaEtcher flashes OS images safely at balenaetcher.io",
       "tag": "Tech Tip",
       "summary": "Download BalenaEtcher free from balenaetcher.io (Windows, Mac, or Linux). Plug in your USB drive, select your ISO file, select the drive, click Flash. It validates the write so you know the drive will boot. No command line, no guesswork.",
       "truth": "I've fixed more \"bricked\" USB drives from people using dd or Rufus wrong than I can count. Etcher hides your system drives by default so you can't accidentally wipe your hard drive. That one feature has saved customers' data dozens of times.",
@@ -274,10 +301,10 @@
       "id": "onyx-2026-10-28-tip-2",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Make games run smoother free \u2014 Windows 11 Game Mode and hardware graphics scheduling hide a free performance boost in Settings",
+      "title": "Make games run smoother free — Windows 11 Game Mode and hardware graphics scheduling hide a free performance boost in Settings",
       "tag": "Tech Tip",
-      "summary": "Open Settings \u2192 Gaming \u2192 Game Mode. Turn on Game Mode. Then scroll to Hardware-accelerated graphics scheduling and turn that on too. Restart. Games get priority access to your processor and graphics card \u2014 no new hardware needed.",
-      "truth": "People spend $500 on a video card but leave the free Windows gaming toggles off. I've seen 10\u201315% speed gains just from flipping these two switches. Works on any graphics card from the last 5 years.",
+      "summary": "Open Settings → Gaming → Game Mode. Turn on Game Mode. Then scroll to Hardware-accelerated graphics scheduling and turn that on too. Restart. Games get priority access to your processor and graphics card — no new hardware needed.",
+      "truth": "People spend $500 on a video card but leave the free Windows gaming toggles off. I've seen 10–15% speed gains just from flipping these two switches. Works on any graphics card from the last 5 years.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -295,10 +322,10 @@
       "id": "onyx-2026-10-28-tip-1",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Stop fighting weird video formats \u2014 VLC Media Player plays everything free at videolan.org",
+      "title": "Stop fighting weird video formats — VLC Media Player plays everything free at videolan.org",
       "tag": "Tech Tip",
       "summary": "Download VLC 3.0.24 free from videolan.org/vlc/download-windows.html. Pick the 64-bit installer for modern PCs. It plays DVDs, Blu-rays, MKV, MP4, AVI, streaming links, and obscure formats without codec packs. No ads, no tracking, no subscription.",
-      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them \u2014 and it's been clean for 20 years.",
+      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them — and it's been clean for 20 years.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -315,10 +342,10 @@
       "id": "onyx-2026-10-27-tip-2",
       "type": "tip",
       "date": "2026-10-27",
-      "title": "Windows 11 24H2 Home and Pro lose security updates October 13, 2026 \u2014 upgrade free to 26H2 at Settings > Windows Update",
+      "title": "Windows 11 24H2 Home and Pro lose security updates October 13, 2026 — upgrade free to 26H2 at Settings > Windows Update",
       "tag": "Tech Tip",
-      "summary": "If your Windows 11 PC shows version 24H2 (press Windows+R, type winver, press Enter), the Home and Pro editions stopped receiving security updates on October 13, 2026. The free fix: open Settings \u2192 Windows Update \u2192 turn on \"Get the latest updates as soon as they're available\" \u2192 Check for updates \u2192 if Windows 11 2026 Update (26H2) appears, click Download and install. It's a small enablement package, one restart, and you get two more years of updates.",
-      "truth": "This deadline snuck up on a lot of people. Microsoft released 26H2 on September 29 but used a controlled rollout, so many 24H2 PCs still don't see it in Windows Update. Don't panic \u2014 your PC won't stop working, but each month without patches is a risk. I've had customers bring in machines that got hit by malware that a simple update would have blocked.",
+      "summary": "If your Windows 11 PC shows version 24H2 (press Windows+R, type winver, press Enter), the Home and Pro editions stopped receiving security updates on October 13, 2026. The free fix: open Settings → Windows Update → turn on \"Get the latest updates as soon as they're available\" → Check for updates → if Windows 11 2026 Update (26H2) appears, click Download and install. It's a small enablement package, one restart, and you get two more years of updates.",
+      "truth": "This deadline snuck up on a lot of people. Microsoft released 26H2 on September 29 but used a controlled rollout, so many 24H2 PCs still don't see it in Windows Update. Don't panic — your PC won't stop working, but each month without patches is a risk. I've had customers bring in machines that got hit by malware that a simple update would have blocked.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -328,27 +355,9 @@
         "label": "Check Windows Version",
         "href": "ms-settings:about"
       }
-    },
-    {
-      "id": "onyx-2026-10-27-tip-1",
-      "type": "tip",
-      "date": "2026-10-27",
-      "title": "Your slow laptop probably doesn't need replacing \u2014 a $100 SSD upgrade makes it faster than new at any repair shop",
-      "tag": "Tech Tip",
-      "summary": "The 50% rule: if a repair costs less than half the price of a comparable new laptop, fix it. A typical SSD upgrade with data transfer runs ~$100\u2013$150 at a local shop, while a decent new laptop starts at $500+. For laptops 2\u20134 years old, an SSD swap is the single biggest performance boost per dollar \u2014 boot times drop from minutes to seconds.",
-      "truth": "I see it weekly \u2014 someone brings in a \"dead\" laptop ready to buy new, I put in a $100 SSD, and they leave with a machine that feels faster than the day they bought it. The processor and memory were never the bottleneck; the spinning hard drive was. Manufacturers put cheap mechanical drives in mid-range laptops to hit price points. We fix that.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Call for SSD Upgrade",
-        "href": "tel:+13867557772"
-      }
     }
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-24",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
@@ -525,7 +534,7 @@
   },
   "today_trivia": {
     "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit \u2014 built to crunch many simple math ops at once, which is also why it powers AI.",
+    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
     "category": "Hardware",
     "date": "2026-10-28"
   },
