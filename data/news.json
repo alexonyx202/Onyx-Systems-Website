@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-28",
   "items": [
     {
       "id": "n-2026-10-28",
@@ -7,9 +7,25 @@
       "date": "2026-10-28",
       "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
       "tag": "Daily Brief",
-      "summary": "Google just patched Chrome's seventh actively exploited zero-day of 2026.",
+      "summary": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
       "comic": "Newsletter - 2026-10-28-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-28-news1",
+      "type": "tech-note",
+      "date": "2026-10-28",
+      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
+      "tag": "Tech Note",
+      "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads."
+    },
+    {
+      "id": "t-2026-10-28-tip1",
+      "type": "tech-note",
+      "date": "2026-10-28",
+      "title": "**Headline:** Microsoft Edge 156 patches security holes — update free at edge://settings/help",
+      "tag": "Tech Tip",
+      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted."
     },
     {
       "id": "n-2026-10-27",
@@ -111,30 +127,6 @@
       "cta": {
         "label": "Check for Updates",
         "href": "ms-settings:windowsupdate"
-      }
-    },
-    {
-      "id": "t-2026-10-25-shutup10",
-      "type": "tech-note",
-      "date": "2026-10-25",
-      "title": "Stop Windows tracking free with O&O ShutUp10++ at ooshutup10.com",
-      "tag": "Privacy Tip",
-      "summary": "O&O ShutUp10++ is a free portable tool that disables Windows telemetry, data collection, and tracking in one click. Download from ooshutup10.com.",
-      "cta": {
-        "label": "Download ShutUp10++",
-        "href": "https://ooshutup10.com"
-      }
-    },
-    {
-      "id": "t-2026-10-25-clearwave-fiber",
-      "type": "tech-note",
-      "date": "2026-10-25",
-      "title": "Clearwave Fiber expands in Lake City — check eligibility at clearwavefiber.com",
-      "tag": "Local News",
-      "summary": "Clearwave Fiber is bringing fiber internet to more Lake City neighborhoods. Visit clearwavefiber.com to check if your address qualifies for service.",
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://clearwavefiber.com"
       }
     }
   ]

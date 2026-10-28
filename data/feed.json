@@ -100,6 +100,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-28-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-28",
+      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
+      "tag": "Daily Brief",
+      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-10-28-composite.jpg",
+      "comic": "assets/img/news/2026-10-28-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-10-24-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-24",
@@ -115,24 +132,6 @@
       "image": "assets/img/news/2026-10-24-composite.jpg",
       "comic": "assets/img/news/2026-10-24-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-28-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#CyberSecurity"
-      ],
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     },
     {
       "id": "onyx-2026-10-27-daily-brief-auto",
@@ -182,6 +181,22 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-28-post-1",
+      "type": "news",
+      "date": "2026-10-28",
+      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
+      "tag": "Tech Note",
+      "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#CyberSecurity"
+      ]
+    },
     {
       "id": "onyx-2026-10-24-post-1",
       "type": "news",
@@ -254,13 +269,21 @@
       }
     },
     {
-      "id": "onyx-2026-10-26-news-14",
-      "type": "news",
-      "date": "2026-10-26",
-      "title": "Windows 11 24H2 has known bugs — Microsoft lists workarounds at learn.microsoft.com",
-      "tag": "Tech Note",
-      "summary": "Check the known issues for Windows 11 24H2 at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2. Current bugs include USB audio Code 10, Remote Desktop 0xC000000D, and AC-3 audio. Microsoft provides workarounds for each.",
-      "truth": "Every major Windows update breaks something for someone. 24H2 is solid for most, but if you use USB headphones or Remote Desktop daily, you'll hit these. The workarounds are simple — but you have to know they exist."
+      "id": "onyx-2026-10-28-post-2",
+      "type": "tip",
+      "date": "2026-10-28",
+      "title": "**Headline:** Microsoft Edge 156 patches security holes — update free at edge://settings/help",
+      "tag": "Tech Tip",
+      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
+      "truth": "Most people ignore browser updates until something breaks. I see it weekly — outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
+      "tags": [
+        "#1",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#MicrosoftEdge",
+        "#BrowserSecurity"
+      ]
     },
     {
       "id": "onyx-2026-10-24-post-2",
@@ -337,27 +360,9 @@
         "label": "Download VLC",
         "href": "https://videolan.org"
       }
-    },
-    {
-      "id": "onyx-2026-10-27-tip-2",
-      "type": "tip",
-      "date": "2026-10-27",
-      "title": "Windows 11 24H2 Home and Pro lose security updates October 13, 2026 — upgrade free to 26H2 at Settings > Windows Update",
-      "tag": "Tech Tip",
-      "summary": "If your Windows 11 PC shows version 24H2 (press Windows+R, type winver, press Enter), the Home and Pro editions stopped receiving security updates on October 13, 2026. The free fix: open Settings → Windows Update → turn on \"Get the latest updates as soon as they're available\" → Check for updates → if Windows 11 2026 Update (26H2) appears, click Download and install. It's a small enablement package, one restart, and you get two more years of updates.",
-      "truth": "This deadline snuck up on a lot of people. Microsoft released 26H2 on September 29 but used a controlled rollout, so many 24H2 PCs still don't see it in Windows Update. Don't panic — your PC won't stop working, but each month without patches is a risk. I've had customers bring in machines that got hit by malware that a simple update would have blocked.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Check Windows Version",
-        "href": "ms-settings:about"
-      }
     }
   ],
-  "updated": "2026-10-24",
+  "updated": "2026-10-28",
   "today_word": {
     "word": "Driver",
     "pos": "noun",
