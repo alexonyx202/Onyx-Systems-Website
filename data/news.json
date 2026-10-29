@@ -1,6 +1,64 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "items": [
+    {
+      "id": "n-2026-10-29",
+      "type": "newsletter",
+      "date": "2026-10-29",
+      "title": "That 'Verify You're Human' Box Is a Trap — Here's How to Spot It",
+      "tag": "Daily Brief",
+      "summary": "That \"Verify You're Human\" Box Is a Trap — Here's How to Spot It",
+      "comic": "Newsletter - 2026-10-29-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-29-firefox",
+      "type": "tech-note",
+      "date": "2026-10-29",
+      "title": "Firefox 159 patches 167 security holes and adds website watch feature — free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Mozilla released Firefox 159 on October 28, 2026 addressing 167 vulnerabilities (108 high severity) and enabling the sidebar password manager by default. The new Smart Window feature watches websites for changes like price drops or new content. Get it free at firefox.com or via Firefox menu > Help > About Firefox.",
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
+      "id": "t-2026-10-29-fiber",
+      "type": "tech-note",
+      "date": "2026-10-29",
+      "title": "Clearwave Fiber and Xfinity expand service to 3300 Columbia County addresses — check yours at clearwavefiber.com",
+      "tag": "Tech Note",
+      "summary": "Clearwave Fiber has expanded its all-fiber infrastructure in Lake City with several thousand residents now able to get fiber internet. Xfinity and Comcast Business also announced high-speed service for 3,300+ homes and businesses in Columbia County. Check your address at clearwavefiber.com or xfinity.com to see if service reached your street.",
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://clearwavefiber.com"
+      }
+    },
+    {
+      "id": "t-2026-10-29-win24h2",
+      "type": "tech-note",
+      "date": "2026-10-29",
+      "title": "Windows 11 24H2 Home Pro editions reached final security update October 13 — KB5127648 is the last one",
+      "tag": "Tech Note",
+      "summary": "Microsoft confirmed Windows 11 24H2 Home and Pro editions reached end of servicing on October 13, 2026. The October Patch Tuesday update KB5127648 is the final monthly security update these editions will receive. No further security patches after this. Check your edition at Settings > System > About and plan your next steps.",
+      "cta": {
+        "label": "Check Windows Edition",
+        "href": "ms-settings:about"
+      }
+    },
+    {
+      "id": "t-2026-10-29-ai",
+      "type": "tech-note",
+      "date": "2026-10-29",
+      "title": "Run private AI chatbots on your computer free offline — Ollama LM Studio Jan GPT4All compared",
+      "tag": "Tech Note",
+      "summary": "Want ChatGPT-like AI without the cloud? Four free tools let you run models locally: Ollama (command line, ollama.com), LM Studio (graphical, lmstudio.ai), Jan (chat interface, jan.ai), and GPT4All (simple desktop app, gpt4all.io). All work offline, no account needed, your data never leaves your computer. Download any from their official sites.",
+      "cta": {
+        "label": "Try LM Studio",
+        "href": "https://lmstudio.ai"
+      }
+    },
     {
       "id": "n-2026-10-28",
       "type": "newsletter",
@@ -69,64 +127,6 @@
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-26-pdf24",
-      "type": "tech-note",
-      "date": "2026-10-26",
-      "title": "Stop paying for Adobe Acrobat — PDF24 edits merges and splits PDFs free and offline",
-      "tag": "Tech Tip",
-      "summary": "Download PDF24 from pdf24.org (PCWorld's top free PDF editor pick for 2026). It works entirely offline, merges, splits, edits, converts, and adds signatures — no cloud upload, no watermark, no subscription, no account needed.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-10-26-win24h2",
-      "type": "tech-note",
-      "date": "2026-10-26",
-      "title": "Windows 11 24H2 has known bugs — Microsoft lists workarounds at learn.microsoft.com",
-      "tag": "Tech Note",
-      "summary": "Check the known issues for Windows 11 24H2 at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2. Current bugs include USB audio Code 10, Remote Desktop 0xC000000D, and AC-3 audio. Microsoft provides workarounds for each.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "n-2026-10-25",
-      "type": "newsletter",
-      "date": "2026-10-25",
-      "title": "Tax Refund Scam Texts Are Flooding Phones — The IRS Never Texts You a Link",
-      "tag": "Daily Brief",
-      "summary": "Text messages claiming \"Your tax refund is ready — click here to claim\" are hitting phones across North Florida right now. The link goes to a fake IRS page that steals your Social Security number, date of birth, and bank info. The IRS never texts or emails you a link to claim a r",
-      "comic": "Newsletter - 2026-10-25-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-25-win23h2-eol",
-      "type": "tech-note",
-      "date": "2026-10-25",
-      "title": "Windows 11 23H2 Enterprise and Education lose security updates after November",
-      "tag": "Security Alert",
-      "summary": "Windows 11 23H2 Enterprise and Education editions get their final security update in November 2026. Check your edition at Settings > System > About > Windows specifications. If on 23H2 Enterprise or Education, plan upgrade to 24H2 or later.",
-      "cta": {
-        "label": "Check Windows Edition",
-        "href": "ms-settings:about"
-      }
-    },
-    {
-      "id": "t-2026-10-25-file-explorer-html",
-      "type": "tech-note",
-      "date": "2026-10-25",
-      "title": "File Explorer now previews HTML files and remembers folders free in October Windows Update",
-      "tag": "Tech Tip",
-      "summary": "The October 2026 Windows 11 update (KB5127648) adds HTML file previews in File Explorer and remembers your folder settings. Free via Windows Update.",
-      "cta": {
-        "label": "Check for Updates",
-        "href": "ms-settings:windowsupdate"
       }
     }
   ]

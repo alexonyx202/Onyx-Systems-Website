@@ -67,7 +67,7 @@ KNOWN_PRODUCTS = [
     # Linux Kernel (named product) + sysctl (kernel hardening tool, real obtain method).
     "linux kernel", "sysctl",
     # Extended 2026-07-25: Ollama (local AI runtime) — real product named + obtain method stated.
-    "ollama",
+    "ollama", "lm studio", "jan", "jan.ai",
     # Extended 2026-07-27: router/wifi (networking device) — real product category named + obtain method stated.
     "router", "wifi", "wi-fi", "wi fi",
     # Extended 2026-07-28: Jan.ai (local AI runtime) — real product named + obtain method stated.
@@ -218,7 +218,7 @@ JARGON_PATTERNS = [
     r"\bnproc\b", r"\bolddefconfig\b", r"\bmodule_install\b",
     r"\bcompile\b", r"\bcompiler\b", r"\bgcc\b", r"\bclang\b", r"\brustc\b",
     r"\bbenchmark\b", r"\bscore\b", r"\bfps\b", r"\btflops\b",
-    r"\bnvme\b", r"\bram\b", r"\bddr[345]\b", r"\bgpu\b", r"\bcpu\b",
+    r"\bnvme\b", r"\bddr[345]\b", r"\bgpu\b", r"\bcpu\b",
     r"\bsharepoint\b", r"\bexchange\b", r"\bwsus\b", r"\bhyper-v\b", r"\bkvm\b", r"\bhyperv\b",
     r"\bmiprs\b", r"\bksmbd\b", r"\bnfs\b", r"\bacl\b", r"\bsev\b",
     r"\bvirtio\b", r"\bnested virtualization\b", r"\bpage overflow\b", r"\bbounds check\b",
@@ -430,6 +430,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # "captcha" exemption: no product to name, and the action IS stated (close the
     # tab; real checks never ask you to press keys or paste anything).
     "not a robot", "i'm not a robot",
+    # Extended 2026-10-29: ClickFix "Verify You're Human" scam alert — security
+    # alert (exempt): no product to name, action IS stated (close the tab; real
+    # checks never ask you to press keys or paste commands).
+    "verify you're human", "clickfix",
     # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
     # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
     # stated (restore from backup, report to IC3.gov).

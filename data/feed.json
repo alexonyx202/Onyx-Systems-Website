@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,12 +100,26 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-29-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-29",
+      "title": "CISA flags exploited Windows zero-day \u2014 patch at Settings > Windows Update by October 16",
+      "tag": "Daily Brief",
+      "excerpt": "CISA added CVE-2026-96207, an actively exploited Windows Shell zero-day, to its Known Exploited Vulnerabilities catalog on October 13. Microsoft fixed it in the October Patch Tuesday release (1,413 total vulnerabilities addressed). Federal agencies must apply the patch by October 16; you should update promptly. Open Settings > Windows Update and check for updates now.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ]
+    },
+    {
       "id": "onyx-2026-10-28-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-28",
-      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
+      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited \u2014 Update Now",
       "tag": "Daily Brief",
-      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
+      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did \u2014 and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer \u2014 no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three\u2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -120,9 +134,9 @@
       "id": "onyx-2026-10-24-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-24",
-      "title": "Fake Shipping Texts Flooding Phones — Don't Tap the Link",
+      "title": "Fake Shipping Texts Flooding Phones \u2014 Don't Tap the Link",
       "tag": "Daily Brief",
-      "excerpt": "Fake shipping texts are flooding phones right now — messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or login info by text.\n\nWhat to do: Delete the text. If you're expecting a shipment, go to the carrier's website directly (type the address yourself) or use their official app. Forward suspicious texts to 7726 (SPAM) so…",
+      "excerpt": "Fake shipping texts are flooding phones right now \u2014 messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or login info by text.\n\nWhat to do: Delete the text. If you're expecting a shipment, go to the carrier's website directly (type the address yourself) or use their official app. Forward suspicious texts to 7726 (SPAM) so\u2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -137,9 +151,9 @@
       "id": "onyx-2026-10-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-27",
-      "title": "Microsoft October 2026 Patch Tuesday fixes 1,413 flaws including exploited Windows Shell zero-day — update at Settings > Windows Update",
+      "title": "Microsoft October 2026 Patch Tuesday fixes 1,413 flaws including exploited Windows Shell zero-day \u2014 update at Settings > Windows Update",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft released its October 2026 security update fixing 1,413 vulnerabilities including one actively exploited Windows Shell zero-day (CVE-2026-96951) that lets attackers bypass Mark of the Web warnings. Open Settings → Windows Update → turn on \"Get the latest updates as soon as they're available\" → select Check for updates to install it now.",
+      "excerpt": "Microsoft released its October 2026 security update fixing 1,413 vulnerabilities including one actively exploited Windows Shell zero-day (CVE-2026-96951) that lets attackers bypass Mark of the Web warnings. Open Settings \u2192 Windows Update \u2192 turn on \"Get the latest updates as soon as they're available\" \u2192 select Check for updates to install it now.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -155,37 +169,93 @@
       "id": "onyx-2026-10-26-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-26",
-      "title": "Windows 11 October update breaks USB audio and Remote Desktop — here's the workaround",
+      "title": "Windows 11 October update breaks USB audio and Remote Desktop \u2014 here's the workaround",
       "tag": "Daily Brief",
       "excerpt": "Windows 11 KB5127648 (October 2026 Patch Tuesday) breaks USB audio (Code 10 error) and Remote Desktop (0xC000000D). If your sound or remote access stopped working after the update, check for the update at Settings > Windows Update. Microsoft lists workarounds at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2.",
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-25-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-25",
-      "title": "Password manager breach exposes millions — check if your passwords were stolen at haveibeenpwned.com",
-      "tag": "Daily Brief",
-      "excerpt": "A major password manager breach this month exposed millions of stored credentials. Go to haveibeenpwned.com and enter your email to see if your passwords were compromised. If they were, change them immediately on every site where you reused them.",
-      "tags": [
-        "Security",
-        "Passwords"
-      ],
-      "cta": {
-        "label": "Check Your Email",
-        "href": "https://haveibeenpwned.com"
-      }
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-10-29-news-4",
+      "type": "news",
+      "date": "2026-10-29",
+      "title": "Run private AI chatbots on your computer free offline \u2014 Ollama LM Studio Jan GPT4All compared",
+      "tag": "Tech Note",
+      "summary": "Want ChatGPT-like AI without the cloud? Four free tools let you run models locally: Ollama (command line, ollama.com), LM Studio (graphical, lmstudio.ai), Jan (chat interface, jan.ai), and GPT4All (simple desktop app, gpt4all.io). All work offline, no account needed, your data never leaves your computer. Download any from their official sites.",
+      "truth": "Customers ask me about AI constantly. Most don't realize you can run a capable chatbot on a regular laptop with 8GB RAM \u2014 no subscription, no internet, total privacy. I run LM Studio on my shop machine for drafting emails and summarizing repair notes. It's not magic, but it's genuinely useful and costs nothing.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Try LM Studio",
+        "href": "https://lmstudio.ai"
+      }
+    },
+    {
+      "id": "onyx-2026-10-29-news-3",
+      "type": "news",
+      "date": "2026-10-29",
+      "title": "Windows 11 24H2 Home Pro editions reached final security update October 13 \u2014 KB5127648 is the last one",
+      "tag": "Tech Note",
+      "summary": "Microsoft confirmed Windows 11 24H2 Home and Pro editions reached end of servicing on October 13, 2026. The October Patch Tuesday update KB5127648 is the final monthly security update these editions will receive. No further security patches after this. Check your edition at Settings > System > About and plan your next steps.",
+      "truth": "This is the biggest Windows deadline I've seen in years. Home and Pro users on 24H2 will stop getting security fixes entirely after October 13. Enterprise and Education editions get more time, but most of my customers run Home or Pro. If you're on 24H2, you need a plan \u2014 upgrade to 25H2, move to a supported edition, or accept the risk.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Check Windows Edition",
+        "href": "ms-settings:about"
+      }
+    },
+    {
+      "id": "onyx-2026-10-29-news-2",
+      "type": "news",
+      "date": "2026-10-29",
+      "title": "Clearwave Fiber and Xfinity expand service to 3300 Columbia County addresses \u2014 check yours at clearwavefiber.com",
+      "tag": "Tech Note",
+      "summary": "Clearwave Fiber has expanded its all-fiber infrastructure in Lake City with several thousand residents now able to get fiber internet. Xfinity and Comcast Business also announced high-speed service for 3,300+ homes and businesses in Columbia County. Check your address at clearwavefiber.com or xfinity.com to see if service reached your street.",
+      "truth": "I get asked weekly: \"When is fiber coming to my road?\" The answer changed this month \u2014 Clearwave and Xfinity are both actively building in Columbia County. If you've been stuck on DSL or cable, it's worth checking your address again. The map has changed.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://clearwavefiber.com"
+      }
+    },
+    {
+      "id": "onyx-2026-10-29-news-1",
+      "type": "news",
+      "date": "2026-10-29",
+      "title": "Firefox 159 patches 167 security holes and adds website watch feature \u2014 free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Mozilla released Firefox 159 on October 28, 2026 addressing 167 vulnerabilities (108 high severity) and enabling the sidebar password manager by default. The new Smart Window feature watches websites for changes like price drops or new content. Get it free at firefox.com or via Firefox menu > Help > About Firefox.",
+      "truth": "Most people ignore browser updates until something breaks. Firefox 159 isn't just a security patch \u2014 the Smart Window feature is genuinely useful for anyone who tracks prices or follows blogs. I've started using it myself to watch for client laptop deals.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
       "id": "onyx-2026-10-28-post-1",
       "type": "news",
       "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
+      "title": "CISA adds critical PHP flaws to exploited list \u2014 patch now at php.net",
       "tag": "Tech Note",
       "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
       "truth": "",
@@ -198,84 +268,13 @@
       ]
     },
     {
-      "id": "onyx-2026-10-24-post-1",
-      "type": "news",
-      "date": "2026-10-24",
-      "title": "Major data breach exposes millions of passwords — check if your email is affected free at haveibeenpwned.com",
-      "tag": "Tech Note",
-      "summary": "Go to haveibeenpwned.com, enter your email, and see if your passwords were leaked. If they were, change those passwords immediately on every site where you reused them.",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-28-news-1",
-      "type": "news",
-      "date": "2026-10-28",
-      "title": "Microsoft Edge 156 patches security holes — update free at edge://settings/help",
-      "tag": "Tech Note",
-      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
-      "truth": "Most people ignore browser updates until something breaks. I see it weekly — outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#MicrosoftEdge",
-        "#BrowserSecurity"
-      ],
-      "cta": {
-        "label": "Check for Updates",
-        "href": "edge://settings/help"
-      }
-    },
-    {
-      "id": "onyx-2026-10-27-news-2",
-      "type": "news",
-      "date": "2026-10-27",
-      "title": "Fiber internet just reached 3,300+ homes in Columbia County — check if your Lake City address qualifies at Xfinity.com/MyTown",
-      "tag": "Tech Note",
-      "summary": "Comcast announced in August 2026 that Xfinity high-speed fiber internet is now available to more than 3,300 homes and businesses in Columbia County, including Ellisville, Fort White, Mikesville, Springville, Suwannee Valley, and Winfield. Another 2,000+ locations are under construction through end of 2026. Enter your address at Xfinity.com/MyTown to see if you're eligible.",
-      "truth": "I've been telling Lake City customers for years: fiber changes everything. Not just speed — reliability, latency, and the ability to work from home without the \"frozen screen\" moments. If fiber hits your street, get it. The difference between cable and fiber is the difference between hoping your Zoom call works and knowing it will.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://xfinity.com/mytown"
-      }
-    },
-    {
-      "id": "onyx-2026-10-27-news-1",
-      "type": "news",
-      "date": "2026-10-27",
-      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is the free suite that opens every Word, Excel, and PowerPoint file at libreoffice.org",
-      "tag": "Tech Note",
-      "summary": "LibreOffice 25.2 (released October 2026) is a free, open-source office suite for Windows, Mac, and Linux that includes Writer (documents), Calc (spreadsheets), and Impress (presentations) — it opens and saves Microsoft Office formats perfectly. Download it free at libreoffice.org — no account, no subscription, no ads.",
-      "truth": "I've installed LibreOffice on hundreds of customer machines over the years. The people who switch never go back to paying Microsoft $100+ a year. It's not \"good enough\" — it's genuinely excellent, and it respects your privacy by not phoning home with telemetry.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Download LibreOffice",
-        "href": "https://libreoffice.org"
-      }
-    },
-    {
       "id": "onyx-2026-10-28-post-2",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "**Headline:** Microsoft Edge 156 patches security holes — update free at edge://settings/help",
+      "title": "**Headline:** Microsoft Edge 156 patches security holes \u2014 update free at edge://settings/help",
       "tag": "Tech Tip",
-      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
-      "truth": "Most people ignore browser updates until something breaks. I see it weekly — outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
+      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu \u2192 Help and feedback \u2192 About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
+      "truth": "Most people ignore browser updates until something breaks. I see it weekly \u2014 outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
       "tags": [
         "#1",
         "#OnyxSystems",
@@ -289,10 +288,10 @@
       "id": "onyx-2026-10-24-post-2",
       "type": "tip",
       "date": "2026-10-24",
-      "title": "**Headline:** WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free — no risky cleaners no telemetry",
+      "title": "**Headline:** WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free \u2014 no risky cleaners no telemetry",
       "tag": "Tech Tip",
       "summary": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
-      "truth": "I see PCs every week \"optimized\" by system cleaners that broke more than they fixed. WinTuner is different — it only surfaces tools Microsoft already built in, shows you the risk level of every tweak, and logs every change so you can undo it. That's the optimizer I'd run on my own machine.",
+      "truth": "I see PCs every week \"optimized\" by system cleaners that broke more than they fixed. WinTuner is different \u2014 it only surfaces tools Microsoft already built in, shows you the risk level of every tweak, and logs every change so you can undo it. That's the optimizer I'd run on my own machine.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -303,7 +302,7 @@
       "id": "onyx-2026-10-28-tip-3",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Make a bootable USB free — BalenaEtcher flashes OS images safely at balenaetcher.io",
+      "title": "Make a bootable USB free \u2014 BalenaEtcher flashes OS images safely at balenaetcher.io",
       "tag": "Tech Tip",
       "summary": "Download BalenaEtcher free from balenaetcher.io (Windows, Mac, or Linux). Plug in your USB drive, select your ISO file, select the drive, click Flash. It validates the write so you know the drive will boot. No command line, no guesswork.",
       "truth": "I've fixed more \"bricked\" USB drives from people using dd or Rufus wrong than I can count. Etcher hides your system drives by default so you can't accidentally wipe your hard drive. That one feature has saved customers' data dozens of times.",
@@ -324,10 +323,10 @@
       "id": "onyx-2026-10-28-tip-2",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Make games run smoother free — Windows 11 Game Mode and hardware graphics scheduling hide a free performance boost in Settings",
+      "title": "Make games run smoother free \u2014 Windows 11 Game Mode and hardware graphics scheduling hide a free performance boost in Settings",
       "tag": "Tech Tip",
-      "summary": "Open Settings → Gaming → Game Mode. Turn on Game Mode. Then scroll to Hardware-accelerated graphics scheduling and turn that on too. Restart. Games get priority access to your processor and graphics card — no new hardware needed.",
-      "truth": "People spend $500 on a video card but leave the free Windows gaming toggles off. I've seen 10–15% speed gains just from flipping these two switches. Works on any graphics card from the last 5 years.",
+      "summary": "Open Settings \u2192 Gaming \u2192 Game Mode. Turn on Game Mode. Then scroll to Hardware-accelerated graphics scheduling and turn that on too. Restart. Games get priority access to your processor and graphics card \u2014 no new hardware needed.",
+      "truth": "People spend $500 on a video card but leave the free Windows gaming toggles off. I've seen 10\u201315% speed gains just from flipping these two switches. Works on any graphics card from the last 5 years.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -345,10 +344,10 @@
       "id": "onyx-2026-10-28-tip-1",
       "type": "tip",
       "date": "2026-10-28",
-      "title": "Stop fighting weird video formats — VLC Media Player plays everything free at videolan.org",
+      "title": "Stop fighting weird video formats \u2014 VLC Media Player plays everything free at videolan.org",
       "tag": "Tech Tip",
       "summary": "Download VLC 3.0.24 free from videolan.org/vlc/download-windows.html. Pick the 64-bit installer for modern PCs. It plays DVDs, Blu-rays, MKV, MP4, AVI, streaming links, and obscure formats without codec packs. No ads, no tracking, no subscription.",
-      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them — and it's been clean for 20 years.",
+      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them \u2014 and it's been clean for 20 years.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -362,191 +361,227 @@
       }
     }
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "today_word": {
-    "word": "Driver",
+    "word": "Spam",
     "pos": "noun",
-    "definition": "A small program that lets the operating system talk to a piece of hardware like a printer or GPU.",
-    "example": "A missing driver left the webcam dark.",
-    "date": "2026-10-28"
+    "definition": "Unwanted bulk messages \u2014 junk mail, fake offers, and the noise that clogs your inbox.",
+    "example": "The filter caught 30 spam emails overnight.",
+    "date": "2026-10-29"
   },
   "today_crossword": {
-    "title": "math crossword",
-    "size": 30,
+    "title": "Math Crossword",
+    "size": 26,
     "grid": [
-      "............m.................",
-      "............o.................",
-      "............n......f..........",
-      "........g..polynomial.........",
-      "........r...m......c..........",
-      "........o...i.....standardform",
-      ".......quadratic...o..........",
-      "........p.i.l..u...r..........",
-      "........i.s....b...i..........",
-      "......constant.i...n..........",
-      "........g.r....c...g..........",
-      "..........i...................",
-      "..........b...................",
-      "......g.d.u...s...............",
-      "coefficient...q...............",
-      "......f.g.i...u...............",
-      ".......trinomial..............",
-      "........e.g...r...............",
-      "........e..linear.............",
-      "..............s...............",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      "..............................",
-      ".............................."
+      ".............F............",
+      ".............r............",
+      "............RangE.........",
+      ".............c..x.........",
+      ".............t..p.........",
+      ".............i.PolYnomial.",
+      ".......R.....o..n.-.......",
+      ".......e.....n.NegativE...",
+      ".......c........n.x...q...",
+      "Inequality..Point.i...u.L.",
+      ".......p..........s.X-axis",
+      ".....VariablE.........t.n.",
+      ".......o....x.CoMmutative.",
+      ".......c....p...e.....o.r.",
+      ".......a....r...a.....n...",
+      ".......l...Median.........",
+      "............s.............",
+      ".........Constant.........",
+      "....S.......i.............",
+      "....l.......o.............",
+      "...Coefficient............",
+      "....p.....................",
+      "....e.....................",
+      "..........................",
+      "..........................",
+      ".........................."
     ],
     "clues": {
       "across": [
         {
+          "num": 2,
+          "row": 3,
+          "col": 13,
+          "len": 5,
+          "answer": "RangE",
+          "clue": "The largest and smallest number of a data collection"
+        },
+        {
           "num": 4,
-          "row": 4,
-          "col": 12,
-          "len": 10,
-          "answer": "polynomial",
-          "clue": "a math expression with various terms"
-        },
-        {
-          "num": 5,
           "row": 6,
-          "col": 19,
-          "len": 12,
-          "answer": "standardform",
-          "clue": "order of terms from highest exponent to lowest and in alphabetical order"
+          "col": 16,
+          "len": 10,
+          "answer": "PolYnomial",
+          "clue": "Multi-termed expression"
         },
         {
-          "num": 6,
-          "row": 7,
-          "col": 8,
-          "len": 9,
-          "answer": "quadratic",
-          "clue": "a math expression with the degree of 2"
+          "num": 7,
+          "row": 8,
+          "col": 16,
+          "len": 8,
+          "answer": "NegativE",
+          "clue": "A number that is less than zero"
         },
         {
           "num": 9,
           "row": 10,
-          "col": 7,
-          "len": 8,
-          "answer": "constant",
-          "clue": "a fixed value"
+          "col": 1,
+          "len": 10,
+          "answer": "Inequality",
+          "clue": "A math problem that uses < or >"
+        },
+        {
+          "num": 10,
+          "row": 10,
+          "col": 13,
+          "len": 5,
+          "answer": "Point",
+          "clue": "A dot on a coordinate plane that is a part of a set of coordinates"
+        },
+        {
+          "num": 12,
+          "row": 11,
+          "col": 21,
+          "len": 6,
+          "answer": "X-axis",
+          "clue": "A line that goes left and right and makes up a coordinate plane"
         },
         {
           "num": 13,
-          "row": 15,
-          "col": 1,
-          "len": 11,
-          "answer": "coefficient",
-          "clue": "written with the variable or multiplied by a variable"
-        },
-        {
-          "num": 14,
-          "row": 17,
-          "col": 8,
-          "len": 9,
-          "answer": "trinomial",
-          "clue": "a math expression with 3 terms"
+          "row": 12,
+          "col": 6,
+          "len": 8,
+          "answer": "VariablE",
+          "clue": "Represents a number or is just a placeholder ex: X & Y"
         },
         {
           "num": 15,
-          "row": 19,
+          "row": 13,
+          "col": 15,
+          "len": 11,
+          "answer": "CoMmutative",
+          "clue": "AxB=BxA"
+        },
+        {
+          "num": 17,
+          "row": 16,
           "col": 12,
           "len": 6,
-          "answer": "linear",
-          "clue": "a math expression with the degree of 1"
+          "answer": "Median",
+          "clue": "The middle number of a data collection"
+        },
+        {
+          "num": 18,
+          "row": 18,
+          "col": 10,
+          "len": 8,
+          "answer": "Constant",
+          "clue": "A number"
+        },
+        {
+          "num": 20,
+          "row": 21,
+          "col": 4,
+          "len": 11,
+          "answer": "Coefficient",
+          "clue": "A number in front of a variable"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 13,
+          "col": 14,
           "len": 8,
-          "answer": "monomial",
-          "clue": "a number or variable with one term"
-        },
-        {
-          "num": 2,
-          "row": 3,
-          "col": 20,
-          "len": 9,
-          "answer": "factoring",
-          "clue": "a way to simplify a polynomial"
+          "answer": "Fraction",
+          "clue": "A numerator divided by a Denominator"
         },
         {
           "num": 3,
-          "row": 4,
-          "col": 9,
+          "row": 3,
+          "col": 17,
           "len": 8,
-          "answer": "grouping",
-          "clue": "a way to factor a polynomial with four terms"
+          "answer": "Exponent",
+          "clue": "Multiplies a number by itself"
         },
         {
-          "num": 7,
+          "num": 5,
+          "row": 6,
+          "col": 19,
+          "len": 6,
+          "answer": "Y-axis",
+          "clue": "A line that goes up and down and makes up a coordinate plane"
+        },
+        {
+          "num": 6,
           "row": 7,
-          "col": 11,
-          "len": 12,
-          "answer": "distributing",
-          "clue": "a way to check the factored problem"
+          "col": 8,
+          "len": 10,
+          "answer": "Reciprocal",
+          "clue": "The opposite of something, usually used with fractions"
         },
         {
           "num": 8,
-          "row": 7,
-          "col": 16,
-          "len": 5,
-          "answer": "cubic",
-          "clue": "a math expresion with the degree of 3"
-        },
-        {
-          "num": 10,
-          "row": 14,
-          "col": 7,
-          "len": 3,
-          "answer": "gcf",
-          "clue": "the greatest common factor"
+          "row": 8,
+          "col": 23,
+          "len": 8,
+          "answer": "Equation",
+          "clue": "Math problem with an answer"
         },
         {
           "num": 11,
-          "row": 14,
-          "col": 9,
-          "len": 6,
-          "answer": "degree",
-          "clue": "highest exponent"
+          "row": 10,
+          "col": 25,
+          "len": 5,
+          "answer": "Liner",
+          "clue": "A straight line on a graph"
         },
         {
-          "num": 12,
-          "row": 14,
-          "col": 15,
-          "len": 7,
-          "answer": "squares",
-          "clue": "a number multiplied by itself written with a exponent"
+          "num": 14,
+          "row": 12,
+          "col": 13,
+          "len": 10,
+          "answer": "Expression",
+          "clue": "A math problem without an answer"
+        },
+        {
+          "num": 16,
+          "row": 13,
+          "col": 17,
+          "len": 4,
+          "answer": "Mean",
+          "clue": "The average of data collection"
+        },
+        {
+          "num": 19,
+          "row": 19,
+          "col": 5,
+          "len": 5,
+          "answer": "Slope",
+          "clue": "A line that passes through points"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-2258",
-    "slug": "math-crossword-2258",
-    "fetched_at": "2026-07-14T19:11:52.419877+00:00",
-    "date": "2026-10-28"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-2366",
+    "slug": "math-crossword-2366",
+    "fetched_at": "2026-07-14T19:23:34.049264+00:00",
+    "date": "2026-10-29"
   },
   "today_trivia": {
-    "q": "What does 'GPU' stand for?",
-    "a": "Graphics Processing Unit — built to crunch many simple math ops at once, which is also why it powers AI.",
-    "category": "Hardware",
-    "date": "2026-10-28"
+    "q": "What year was the first Raspberry Pi released?",
+    "a": "2012 \u2014 it kicked off the modern maker and retro-computing boom.",
+    "category": "History",
+    "date": "2026-10-29"
   },
   "today_joke": {
-    "q": "Why did the geek cross the road?",
-    "a": "To get to the other side... of the firewall.",
-    "date": "2026-10-28"
+    "q": "What's a RAM's favorite movie?",
+    "a": "Memory.",
+    "date": "2026-10-29"
   },
   "poll": {
     "poll": {
