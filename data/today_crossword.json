@@ -1,167 +1,203 @@
 {
-  "title": "math crossword",
-  "size": 30,
+  "title": "Math Crossword",
+  "size": 26,
   "grid": [
-    "............m.................",
-    "............o.................",
-    "............n......f..........",
-    "........g..polynomial.........",
-    "........r...m......c..........",
-    "........o...i.....standardform",
-    ".......quadratic...o..........",
-    "........p.i.l..u...r..........",
-    "........i.s....b...i..........",
-    "......constant.i...n..........",
-    "........g.r....c...g..........",
-    "..........i...................",
-    "..........b...................",
-    "......g.d.u...s...............",
-    "coefficient...q...............",
-    "......f.g.i...u...............",
-    ".......trinomial..............",
-    "........e.g...r...............",
-    "........e..linear.............",
-    "..............s...............",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    ".............................."
+    ".............F............",
+    ".............r............",
+    "............RangE.........",
+    ".............c..x.........",
+    ".............t..p.........",
+    ".............i.PolYnomial.",
+    ".......R.....o..n.-.......",
+    ".......e.....n.NegativE...",
+    ".......c........n.x...q...",
+    "Inequality..Point.i...u.L.",
+    ".......p..........s.X-axis",
+    ".....VariablE.........t.n.",
+    ".......o....x.CoMmutative.",
+    ".......c....p...e.....o.r.",
+    ".......a....r...a.....n...",
+    ".......l...Median.........",
+    "............s.............",
+    ".........Constant.........",
+    "....S.......i.............",
+    "....l.......o.............",
+    "...Coefficient............",
+    "....p.....................",
+    "....e.....................",
+    "..........................",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
+        "num": 2,
+        "row": 3,
+        "col": 13,
+        "len": 5,
+        "answer": "RangE",
+        "clue": "The largest and smallest number of a data collection"
+      },
+      {
         "num": 4,
-        "row": 4,
-        "col": 12,
-        "len": 10,
-        "answer": "polynomial",
-        "clue": "a math expression with various terms"
-      },
-      {
-        "num": 5,
         "row": 6,
-        "col": 19,
-        "len": 12,
-        "answer": "standardform",
-        "clue": "order of terms from highest exponent to lowest and in alphabetical order"
+        "col": 16,
+        "len": 10,
+        "answer": "PolYnomial",
+        "clue": "Multi-termed expression"
       },
       {
-        "num": 6,
-        "row": 7,
-        "col": 8,
-        "len": 9,
-        "answer": "quadratic",
-        "clue": "a math expression with the degree of 2"
+        "num": 7,
+        "row": 8,
+        "col": 16,
+        "len": 8,
+        "answer": "NegativE",
+        "clue": "A number that is less than zero"
       },
       {
         "num": 9,
         "row": 10,
-        "col": 7,
-        "len": 8,
-        "answer": "constant",
-        "clue": "a fixed value"
+        "col": 1,
+        "len": 10,
+        "answer": "Inequality",
+        "clue": "A math problem that uses < or >"
+      },
+      {
+        "num": 10,
+        "row": 10,
+        "col": 13,
+        "len": 5,
+        "answer": "Point",
+        "clue": "A dot on a coordinate plane that is a part of a set of coordinates"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 21,
+        "len": 6,
+        "answer": "X-axis",
+        "clue": "A line that goes left and right and makes up a coordinate plane"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 1,
-        "len": 11,
-        "answer": "coefficient",
-        "clue": "written with the variable or multiplied by a variable"
-      },
-      {
-        "num": 14,
-        "row": 17,
-        "col": 8,
-        "len": 9,
-        "answer": "trinomial",
-        "clue": "a math expression with 3 terms"
+        "row": 12,
+        "col": 6,
+        "len": 8,
+        "answer": "VariablE",
+        "clue": "Represents a number or is just a placeholder ex: X & Y"
       },
       {
         "num": 15,
-        "row": 19,
+        "row": 13,
+        "col": 15,
+        "len": 11,
+        "answer": "CoMmutative",
+        "clue": "AxB=BxA"
+      },
+      {
+        "num": 17,
+        "row": 16,
         "col": 12,
         "len": 6,
-        "answer": "linear",
-        "clue": "a math expression with the degree of 1"
+        "answer": "Median",
+        "clue": "The middle number of a data collection"
+      },
+      {
+        "num": 18,
+        "row": 18,
+        "col": 10,
+        "len": 8,
+        "answer": "Constant",
+        "clue": "A number"
+      },
+      {
+        "num": 20,
+        "row": 21,
+        "col": 4,
+        "len": 11,
+        "answer": "Coefficient",
+        "clue": "A number in front of a variable"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 13,
+        "col": 14,
         "len": 8,
-        "answer": "monomial",
-        "clue": "a number or variable with one term"
-      },
-      {
-        "num": 2,
-        "row": 3,
-        "col": 20,
-        "len": 9,
-        "answer": "factoring",
-        "clue": "a way to simplify a polynomial"
+        "answer": "Fraction",
+        "clue": "A numerator divided by a Denominator"
       },
       {
         "num": 3,
-        "row": 4,
-        "col": 9,
+        "row": 3,
+        "col": 17,
         "len": 8,
-        "answer": "grouping",
-        "clue": "a way to factor a polynomial with four terms"
+        "answer": "Exponent",
+        "clue": "Multiplies a number by itself"
       },
       {
-        "num": 7,
+        "num": 5,
+        "row": 6,
+        "col": 19,
+        "len": 6,
+        "answer": "Y-axis",
+        "clue": "A line that goes up and down and makes up a coordinate plane"
+      },
+      {
+        "num": 6,
         "row": 7,
-        "col": 11,
-        "len": 12,
-        "answer": "distributing",
-        "clue": "a way to check the factored problem"
+        "col": 8,
+        "len": 10,
+        "answer": "Reciprocal",
+        "clue": "The opposite of something, usually used with fractions"
       },
       {
         "num": 8,
-        "row": 7,
-        "col": 16,
-        "len": 5,
-        "answer": "cubic",
-        "clue": "a math expresion with the degree of 3"
-      },
-      {
-        "num": 10,
-        "row": 14,
-        "col": 7,
-        "len": 3,
-        "answer": "gcf",
-        "clue": "the greatest common factor"
+        "row": 8,
+        "col": 23,
+        "len": 8,
+        "answer": "Equation",
+        "clue": "Math problem with an answer"
       },
       {
         "num": 11,
-        "row": 14,
-        "col": 9,
-        "len": 6,
-        "answer": "degree",
-        "clue": "highest exponent"
+        "row": 10,
+        "col": 25,
+        "len": 5,
+        "answer": "Liner",
+        "clue": "A straight line on a graph"
       },
       {
-        "num": 12,
-        "row": 14,
-        "col": 15,
-        "len": 7,
-        "answer": "squares",
-        "clue": "a number multiplied by itself written with a exponent"
+        "num": 14,
+        "row": 12,
+        "col": 13,
+        "len": 10,
+        "answer": "Expression",
+        "clue": "A math problem without an answer"
+      },
+      {
+        "num": 16,
+        "row": 13,
+        "col": 17,
+        "len": 4,
+        "answer": "Mean",
+        "clue": "The average of data collection"
+      },
+      {
+        "num": 19,
+        "row": 19,
+        "col": 5,
+        "len": 5,
+        "answer": "Slope",
+        "clue": "A line that passes through points"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-2258",
-  "slug": "math-crossword-2258",
-  "fetched_at": "2026-07-14T19:11:52.419877+00:00",
-  "date": "2026-10-28"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-2366",
+  "slug": "math-crossword-2366",
+  "fetched_at": "2026-07-14T19:23:34.049264+00:00",
+  "date": "2026-10-29"
 }
