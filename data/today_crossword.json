@@ -1,203 +1,286 @@
 {
-  "title": "Math Crossword",
-  "size": 26,
+  "title": "math crossword",
+  "size": 29,
   "grid": [
-    ".............F............",
-    ".............r............",
-    "............RangE.........",
-    ".............c..x.........",
-    ".............t..p.........",
-    ".............i.PolYnomial.",
-    ".......R.....o..n.-.......",
-    ".......e.....n.NegativE...",
-    ".......c........n.x...q...",
-    "Inequality..Point.i...u.L.",
-    ".......p..........s.X-axis",
-    ".....VariablE.........t.n.",
-    ".......o....x.CoMmutative.",
-    ".......c....p...e.....o.r.",
-    ".......a....r...a.....n...",
-    ".......l...Median.........",
-    "............s.............",
-    ".........Constant.........",
-    "....S.......i.............",
-    "....l.......o.............",
-    "...Coefficient............",
-    "....p.....................",
-    "....e.....................",
-    "..........................",
-    "..........................",
-    ".........................."
+    "..a.v.......g................",
+    "..d.a.......r..x.............",
+    "..d.r..V....a..-..v..........",
+    "..i.i..o....Parallel_lineS...",
+    "..t.a..l....h..x..r......o...",
+    "..i.b..u.......i..t......l...",
+    "..o.l..m.......s..e......v...",
+    ".intercePt_form...x.Obtuse...",
+    "........e........._..........",
+    "...algebra........f..........",
+    "........i.q.......o..P.......",
+    "........m.u.......r..e.......",
+    ".......Negative_number.......",
+    "........t.d..........c.......",
+    "........e.r.....m....e.......",
+    ".......Area.....u...Intercept",
+    ".d........t.....l....t.......",
+    "Pi........i..Acute...........",
+    ".v....F...c.....i........g...",
+    ".i.m..r..._.....p........e...",
+    ".standard_form..l........o...",
+    ".i.t..c...o.....i......R.m...",
+    ".o.h..t.Perpendicular_lines..",
+    ".n....i...m.....a......g.t...",
+    "......o..subtraction...h.r...",
+    "......n...l.....i......t.y...",
+    "........y-axis..o............",
+    "..............Tangent_line...",
+    "............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 13,
-        "len": 5,
-        "answer": "RangE",
-        "clue": "The largest and smallest number of a data collection"
-      },
-      {
-        "num": 4,
-        "row": 6,
-        "col": 16,
-        "len": 10,
-        "answer": "PolYnomial",
-        "clue": "Multi-termed expression"
-      },
-      {
         "num": 7,
-        "row": 8,
-        "col": 16,
-        "len": 8,
-        "answer": "NegativE",
-        "clue": "A number that is less than zero"
+        "row": 4,
+        "col": 13,
+        "len": 14,
+        "answer": "Parallel_lineS",
+        "clue": "lines that never intersect (space=_)"
       },
       {
         "num": 9,
-        "row": 10,
-        "col": 1,
-        "len": 10,
-        "answer": "Inequality",
-        "clue": "A math problem that uses < or >"
+        "row": 8,
+        "col": 2,
+        "len": 14,
+        "answer": "intercePt_form",
+        "clue": "y=a(x-r)(x-r)(spaces are _!)"
       },
       {
-        "num": 10,
-        "row": 10,
-        "col": 13,
-        "len": 5,
-        "answer": "Point",
-        "clue": "A dot on a coordinate plane that is a part of a set of coordinates"
+        "num": 11,
+        "row": 8,
+        "col": 21,
+        "len": 6,
+        "answer": "Obtuse",
+        "clue": "a angle greater than 90 degrees less than 180"
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 21,
-        "len": 6,
-        "answer": "X-axis",
-        "clue": "A line that goes left and right and makes up a coordinate plane"
-      },
-      {
-        "num": 13,
-        "row": 12,
-        "col": 6,
-        "len": 8,
-        "answer": "VariablE",
-        "clue": "Represents a number or is just a placeholder ex: X & Y"
+        "row": 10,
+        "col": 4,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "a form of math commonly associated with variables"
       },
       {
         "num": 15,
         "row": 13,
-        "col": 15,
-        "len": 11,
-        "answer": "CoMmutative",
-        "clue": "AxB=BxA"
+        "col": 8,
+        "len": 15,
+        "answer": "Negative_number",
+        "clue": "a number below zero (spaces are _)"
       },
       {
         "num": 17,
         "row": 16,
-        "col": 12,
-        "len": 6,
-        "answer": "Median",
-        "clue": "The middle number of a data collection"
+        "col": 8,
+        "len": 4,
+        "answer": "Area",
+        "clue": "the 2d space a object takes up"
       },
       {
         "num": 18,
-        "row": 18,
-        "col": 10,
-        "len": 8,
-        "answer": "Constant",
-        "clue": "A number"
+        "row": 16,
+        "col": 21,
+        "len": 9,
+        "answer": "Intercept",
+        "clue": "to cross a line"
       },
       {
         "num": 20,
+        "row": 18,
+        "col": 1,
+        "len": 2,
+        "answer": "Pi",
+        "clue": "circumference over diameter"
+      },
+      {
+        "num": 21,
+        "row": 18,
+        "col": 14,
+        "len": 5,
+        "answer": "Acute",
+        "clue": "a angle less than 90 degrees"
+      },
+      {
+        "num": 25,
         "row": 21,
-        "col": 4,
+        "col": 2,
+        "len": 13,
+        "answer": "standard_form",
+        "clue": "y=ax^2+bx+c (spaces are underscores!)"
+      },
+      {
+        "num": 27,
+        "row": 23,
+        "col": 9,
+        "len": 19,
+        "answer": "Perpendicular_lines",
+        "clue": "lines that cross once (space=_)"
+      },
+      {
+        "num": 28,
+        "row": 25,
+        "col": 10,
         "len": 11,
-        "answer": "Coefficient",
-        "clue": "A number in front of a variable"
+        "answer": "subtraction",
+        "clue": "taking a number out of another number"
+      },
+      {
+        "num": 29,
+        "row": 27,
+        "col": 9,
+        "len": 6,
+        "answer": "y-axis",
+        "clue": "the main vertical line on a graph"
+      },
+      {
+        "num": 30,
+        "row": 28,
+        "col": 15,
+        "len": 12,
+        "answer": "Tangent_line",
+        "clue": "a line hitting only one point of a circle (space=_)"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 14,
+        "col": 3,
         "len": 8,
-        "answer": "Fraction",
-        "clue": "A numerator divided by a Denominator"
+        "answer": "addition",
+        "clue": "putting two numbers together"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 5,
+        "len": 8,
+        "answer": "variable",
+        "clue": "this math term is shown as a x most of the time"
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 17,
-        "len": 8,
-        "answer": "Exponent",
-        "clue": "Multiplies a number by itself"
+        "row": 1,
+        "col": 13,
+        "len": 5,
+        "answer": "graPh",
+        "clue": "a plane with boxes that repeats"
+      },
+      {
+        "num": 4,
+        "row": 2,
+        "col": 16,
+        "len": 6,
+        "answer": "x-axis",
+        "clue": "the main horizontal line on a graph"
       },
       {
         "num": 5,
-        "row": 6,
-        "col": 19,
+        "row": 3,
+        "col": 8,
         "len": 6,
-        "answer": "Y-axis",
-        "clue": "A line that goes up and down and makes up a coordinate plane"
+        "answer": "Volume",
+        "clue": "the area a 3d object takes up"
       },
       {
         "num": 6,
-        "row": 7,
-        "col": 8,
-        "len": 10,
-        "answer": "Reciprocal",
-        "clue": "The opposite of something, usually used with fractions"
+        "row": 3,
+        "col": 19,
+        "len": 11,
+        "answer": "vertex_form",
+        "clue": "y=a(x-h)^2+k (spaces are _!)"
       },
       {
         "num": 8,
-        "row": 8,
-        "col": 23,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "Math problem with an answer"
+        "row": 4,
+        "col": 26,
+        "len": 5,
+        "answer": "Solve",
+        "clue": "finish a equation"
       },
       {
-        "num": 11,
-        "row": 10,
-        "col": 25,
-        "len": 5,
-        "answer": "Liner",
-        "clue": "A straight line on a graph"
+        "num": 10,
+        "row": 8,
+        "col": 9,
+        "len": 9,
+        "answer": "Perimeter",
+        "clue": "the length of all sides added up"
+      },
+      {
+        "num": 13,
+        "row": 11,
+        "col": 11,
+        "len": 17,
+        "answer": "quadratic_formula",
+        "clue": "a equation that has everything over 2*a (spaces as _!)"
       },
       {
         "num": 14,
-        "row": 12,
-        "col": 13,
-        "len": 10,
-        "answer": "Expression",
-        "clue": "A math problem without an answer"
+        "row": 11,
+        "col": 22,
+        "len": 7,
+        "answer": "Percent",
+        "clue": "%"
       },
       {
         "num": 16,
-        "row": 13,
+        "row": 15,
         "col": 17,
-        "len": 4,
-        "answer": "Mean",
-        "clue": "The average of data collection"
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "repeated addition"
       },
       {
         "num": 19,
+        "row": 17,
+        "col": 2,
+        "len": 8,
+        "answer": "division",
+        "clue": "repeated subtraction"
+      },
+      {
+        "num": 22,
         "row": 19,
-        "col": 5,
+        "col": 7,
+        "len": 8,
+        "answer": "Fraction",
+        "clue": "a form to show less than one but it can be used to show greater than one but it gets called a improper fraction"
+      },
+      {
+        "num": 23,
+        "row": 19,
+        "col": 26,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "a form of math commonly associated with shapes"
+      },
+      {
+        "num": 24,
+        "row": 20,
+        "col": 4,
+        "len": 4,
+        "answer": "math",
+        "clue": "what this crossword is about"
+      },
+      {
+        "num": 26,
+        "row": 22,
+        "col": 24,
         "len": 5,
-        "answer": "Slope",
-        "clue": "A line that passes through points"
+        "answer": "Right",
+        "clue": "a angle that is 90 degrees"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-2366",
-  "slug": "math-crossword-2366",
-  "fetched_at": "2026-07-14T19:23:34.049264+00:00",
-  "date": "2026-10-29"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-2537",
+  "slug": "math-crossword-2537",
+  "fetched_at": "2026-07-14T19:27:26.696715+00:00",
+  "date": "2026-10-30"
 }
