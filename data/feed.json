@@ -100,6 +100,20 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-10-30-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-10-30",
+      "title": "CISA alert: Adobe Commerce and Google Brotli flaws actively exploited \u2014 patch immediately",
+      "tag": "Daily Brief",
+      "excerpt": "Update Adobe Commerce/Magento and your browser to latest versions \u2014 check cisa.gov/known-exploited-vulnerabilities-catalog for details",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ]
+    },
+    {
       "id": "onyx-2026-10-29-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-29",
@@ -164,21 +178,69 @@
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
       }
-    },
-    {
-      "id": "onyx-2026-10-26-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-26",
-      "title": "Windows 11 October update breaks USB audio and Remote Desktop \u2014 here's the workaround",
-      "tag": "Daily Brief",
-      "excerpt": "Windows 11 KB5127648 (October 2026 Patch Tuesday) breaks USB audio (Code 10 error) and Remote Desktop (0xC000000D). If your sound or remote access stopped working after the update, check for the update at Settings > Windows Update. Microsoft lists workarounds at learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-10-30-news-3",
+      "type": "news",
+      "date": "2026-10-30",
+      "title": "Comcast fiber expansion brings high-speed internet to rural Columbia County through state partnership",
+      "tag": "Tech Note",
+      "summary": "Check your address at xfinity.com \u2014 Comcast's public-private partnership added 3,300+ Lake City area homes with more coming through 2026",
+      "truth": "Slow internet isn't a computer problem \u2014 it's an infrastructure problem. I've had customers buy new PCs thinking that'll fix buffering video, when their 10 Mbps DSL is the bottleneck. Comcast's fiber build (started August 2026) is changing that for Ellisville, Fort White, Mikesville, and Lake City proper. Check your address \u2014 you might qualify now.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Broadband",
+        "#ColumbiaCounty"
+      ],
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://xfinity.com"
+      }
+    },
+    {
+      "id": "onyx-2026-10-30-news-2",
+      "type": "news",
+      "date": "2026-10-30",
+      "title": "Firefox 159 adds Smart Window price-drop alerts and sidebar passwords \u2014 free update at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Update Firefox to 159 at firefox.com or via menu > Help > About Firefox to get Smart Window page-watching and passwords in the sidebar",
+      "truth": "Firefox keeps adding features people actually use instead of bloat. Smart Window lets you type /watch on any page \u2014 price drops, restocks, ticket availability \u2014 and Firefox notifies you. Passwords now live in the sidebar by default, no extra clicks. It's the browser that respects your time.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Privacy"
+      ],
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
+      "id": "onyx-2026-10-30-news-1",
+      "type": "news",
+      "date": "2026-10-30",
+      "title": "Record-breaking Microsoft Patch Tuesday: 1,411 vulnerabilities fixed including 3 zero-days",
+      "tag": "Tech Note",
+      "summary": "Run Windows Update at Settings > Windows Update \u2014 the October Patch Tuesday release includes fixes for one actively exploited and two publicly disclosed zero-day vulnerabilities",
+      "truth": "Most people ignore Windows updates until something breaks. I see it every week \u2014 a computer gets hit by something that Microsoft patched months ago. The October update is massive (1,411 flaws!) and includes an actively exploited zero-day in Windows Shell that lets attackers bypass Mark of the Web. Don't wait.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#WindowsUpdate",
+        "#Security"
+      ],
+      "cta": {
+        "label": "Open Windows Update",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
     {
       "id": "onyx-2026-10-29-news-4",
       "type": "news",
@@ -216,56 +278,24 @@
       }
     },
     {
-      "id": "onyx-2026-10-29-news-2",
-      "type": "news",
-      "date": "2026-10-29",
-      "title": "Clearwave Fiber and Xfinity expand service to 3300 Columbia County addresses \u2014 check yours at clearwavefiber.com",
-      "tag": "Tech Note",
-      "summary": "Clearwave Fiber has expanded its all-fiber infrastructure in Lake City with several thousand residents now able to get fiber internet. Xfinity and Comcast Business also announced high-speed service for 3,300+ homes and businesses in Columbia County. Check your address at clearwavefiber.com or xfinity.com to see if service reached your street.",
-      "truth": "I get asked weekly: \"When is fiber coming to my road?\" The answer changed this month \u2014 Clearwave and Xfinity are both actively building in Columbia County. If you've been stuck on DSL or cable, it's worth checking your address again. The map has changed.",
+      "id": "onyx-2026-10-30-tip-1",
+      "type": "tip",
+      "date": "2026-10-30",
+      "title": "Windows Storage Sense deletes old Downloads and Recycle Bin files automatically \u2014 free in Settings",
+      "tag": "Tech Tip",
+      "summary": "Go to Settings > System > Storage > Storage Sense and turn it on \u2014 set it to clean Downloads after 30 days and Recycle Bin after 14 days",
+      "truth": "The number one reason computers slow down isn't age \u2014 it's a stuffed C: drive. I've seen 50 GB of installers sitting in Downloads from 2022. Storage Sense handles this quietly in the background. Turn it on once, forget it exists.",
       "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://clearwavefiber.com"
-      }
-    },
-    {
-      "id": "onyx-2026-10-29-news-1",
-      "type": "news",
-      "date": "2026-10-29",
-      "title": "Firefox 159 patches 167 security holes and adds website watch feature \u2014 free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Mozilla released Firefox 159 on October 28, 2026 addressing 167 vulnerabilities (108 high severity) and enabling the sidebar password manager by default. The new Smart Window feature watches websites for changes like price drops or new content. Get it free at firefox.com or via Firefox menu > Help > About Firefox.",
-      "truth": "Most people ignore browser updates until something breaks. Firefox 159 isn't just a security patch \u2014 the Smart Window feature is genuinely useful for anyone who tracks prices or follows blogs. I've started using it myself to watch for client laptop deals.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Download Firefox",
-        "href": "https://firefox.com"
-      }
-    },
-    {
-      "id": "onyx-2026-10-28-post-1",
-      "type": "news",
-      "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list \u2014 patch now at php.net",
-      "tag": "Tech Note",
-      "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#CyberSecurity"
-      ]
+        "#WindowsTips",
+        "#Storage"
+      ],
+      "cta": {
+        "label": "Open Storage Settings",
+        "href": "ms-settings:storagesense"
+      }
     },
     {
       "id": "onyx-2026-10-28-post-2",
@@ -339,29 +369,9 @@
         "label": "Open Gaming Settings",
         "href": "ms-settings:gaming-gamemode"
       }
-    },
-    {
-      "id": "onyx-2026-10-28-tip-1",
-      "type": "tip",
-      "date": "2026-10-28",
-      "title": "Stop fighting weird video formats \u2014 VLC Media Player plays everything free at videolan.org",
-      "tag": "Tech Tip",
-      "summary": "Download VLC 3.0.24 free from videolan.org/vlc/download-windows.html. Pick the 64-bit installer for modern PCs. It plays DVDs, Blu-rays, MKV, MP4, AVI, streaming links, and obscure formats without codec packs. No ads, no tracking, no subscription.",
-      "truth": "Customers bring me laptops loaded with three different \"codec packs\" they downloaded from shady sites. Every one of them came with spyware. VLC replaces all of them \u2014 and it's been clean for 20 years.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#VLC",
-        "#FreeSoftware"
-      ],
-      "cta": {
-        "label": "Download VLC",
-        "href": "https://videolan.org"
-      }
     }
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "today_word": {
     "word": "Spam",
     "pos": "noun",
