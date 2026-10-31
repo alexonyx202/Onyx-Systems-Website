@@ -1,6 +1,72 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-31",
   "items": [
+    {
+      "id": "n-2026-10-31",
+      "type": "newsletter",
+      "date": "2026-10-31",
+      "title": "That Parking Meter QR Code Could Empty Your Account",
+      "tag": "Daily Brief",
+      "summary": "That Parking Meter QR Code Could Empty Your Account.",
+      "comic": "Newsletter - 2026-10-31-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-10-31-daily-brief",
+      "type": "tech-note",
+      "date": "2026-10-31",
+      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
+      "tag": "Daily Brief",
+      "summary": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026"
+    },
+    {
+      "id": "t-2026-10-31-post2",
+      "type": "tech-note",
+      "date": "2026-10-31",
+      "title": "Windows 11 Live Captions transcribes any audio free — great for videos without subtitles",
+      "tag": "Tech Note",
+      "summary": "Windows 11 has a free built-in Live Captions feature that transcribes any audio playing on your PC in real time. Press Win+Ctrl+L to turn it on. It works offline for English and works on any video, podcast, or meeting. No upload, no account, no cost. Free at microsoft.com/windows/tips/live-captions or just press Win+Ctrl+L.",
+      "cta": {
+        "label": "Microsoft Live Captions Guide",
+        "href": "https://microsoft.com/windows/tips/live-captions"
+      }
+    },
+    {
+      "id": "t-2026-10-31-post3",
+      "type": "tech-note",
+      "date": "2026-10-31",
+      "title": "Windows 11 25H2 and 26H2 are the new supported versions — free upgrade at Settings > Windows Update if you are on 24H2 Home or Pro",
+      "tag": "Tech Note",
+      "summary": "Windows 11 24H2 Home and Pro reached end of updates October 13 2026. Microsoft now supports 25H2 and 26H2 with monthly security patches. The upgrade is free — go to Settings > Windows Update and check for updates. If your PC says it's up to date on 24H2 you need to manually trigger the version upgrade. Source: Microsoft Support KB5127648 October 13 2026",
+      "cta": {
+        "label": "Windows 11 Update Guide",
+        "href": "https://microsoft.com/software-download/windows11"
+      }
+    },
+    {
+      "id": "t-2026-10-31-post4",
+      "type": "tech-note",
+      "date": "2026-10-31",
+      "title": "Best free password manager 2026 — Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
+      "tag": "Tech Note",
+      "summary": "Bitwarden offers unlimited passwords and devices for free with open-source code at bitwarden.com. Proton Pass adds email aliases and built-in two-factor authentication free at proton.me/pass. Both work on Windows, Mac, Linux, phones. Source: Security.org, TechDeft, ITsFOSS 2026 comparisons",
+      "cta": {
+        "label": "Try Bitwarden",
+        "href": "https://bitwarden.com"
+      }
+    },
+    {
+      "id": "t-2026-10-31-post5",
+      "type": "tech-note",
+      "date": "2026-10-31",
+      "title": "One click in Windows Security turns on free ransomware protection — Controlled Folder Access blocks unauthorized encryption",
+      "tag": "Tech Note",
+      "summary": "Windows 11 has a free ransomware shield built in called Controlled Folder Access. It stops unknown apps from encrypting your documents, pictures, and desktop folders. Open Windows Security (type \"Windows Security\" in Start), click Virus & threat protection, then Manage ransomware protection, and turn on Controlled Folder Access. Takes 30 seconds. Source: Microsoft Support, How-To Geek, Pureinfotech",
+      "cta": {
+        "label": "Open Windows Security",
+        "href": "ms-settings:windowsdefender"
+      }
+    },
     {
       "id": "n-2026-10-30",
       "type": "newsletter",
@@ -67,64 +133,6 @@
       "cta": {
         "label": "Try LM Studio",
         "href": "https://lmstudio.ai"
-      }
-    },
-    {
-      "id": "n-2026-10-28",
-      "type": "newsletter",
-      "date": "2026-10-28",
-      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
-      "tag": "Daily Brief",
-      "summary": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
-      "comic": "Newsletter - 2026-10-28-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-28-news1",
-      "type": "tech-note",
-      "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list — patch now at php.net",
-      "tag": "Tech Note",
-      "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads."
-    },
-    {
-      "id": "t-2026-10-28-tip1",
-      "type": "tech-note",
-      "date": "2026-10-28",
-      "title": "**Headline:** Microsoft Edge 156 patches security holes — update free at edge://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu → Help and feedback → About Microsoft Edge. It checks and installs updates automatically. Restart when prompted."
-    },
-    {
-      "id": "n-2026-10-27",
-      "type": "newsletter",
-      "date": "2026-10-27",
-      "title": "That 'Microsoft Support' Call Is a Scam — Hang Up",
-      "tag": "Daily Brief",
-      "summary": "Your phone rings. The caller says they're from Microsoft Support (or",
-      "comic": "Newsletter - 2026-10-27-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-26",
-      "type": "newsletter",
-      "date": "2026-10-26",
-      "title": "Outdated Software Is an Open Door — Here Is What to Update Now",
-      "tag": "Daily Brief",
-      "summary": "Outdated software is the open door attackers walk through. Old versions of Adobe Reader, Java, browser plugins, and utility tools have known holes that automated scripts scan for constantly. You don't need to be targeted — just running an old version is enough.",
-      "comic": "Newsletter - 2026-10-26-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-26-firefox",
-      "type": "tech-note",
-      "date": "2026-10-26",
-      "title": "Firefox 158 gets a fresh Nova look and brings back Compact Mode — free update at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Update Firefox to version 158 at firefox.com or click Menu > Help > About Firefox. The Nova redesign refreshes tabs and toolbars with a cleaner look, and Compact Mode returns to fit more on screen — just right-click the toolbar and choose Customize Toolbar > Density > Compact.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
       }
     }
   ]

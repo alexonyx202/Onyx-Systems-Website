@@ -434,6 +434,10 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # alert (exempt): no product to name, action IS stated (close the tab; real
     # checks never ask you to press keys or paste commands).
     "verify you're human", "clickfix",
+    # Extended 2026-10-31: fake parking meter QR code scam alert (FBI IC3, FTC.gov
+    # — October 2026). Security alert: no product to name, action IS stated
+    # (don't scan random codes on public fixtures; use official app or keypad).
+    "parking meter", "qr code", "fake code",
     # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
     # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
     # stated (restore from backup, report to IC3.gov).
