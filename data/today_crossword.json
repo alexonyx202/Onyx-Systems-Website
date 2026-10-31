@@ -1,286 +1,175 @@
 {
   "title": "math crossword",
-  "size": 29,
+  "size": 30,
   "grid": [
-    "..a.v.......g................",
-    "..d.a.......r..x.............",
-    "..d.r..V....a..-..v..........",
-    "..i.i..o....Parallel_lineS...",
-    "..t.a..l....h..x..r......o...",
-    "..i.b..u.......i..t......l...",
-    "..o.l..m.......s..e......v...",
-    ".intercePt_form...x.Obtuse...",
-    "........e........._..........",
-    "...algebra........f..........",
-    "........i.q.......o..P.......",
-    "........m.u.......r..e.......",
-    ".......Negative_number.......",
-    "........t.d..........c.......",
-    "........e.r.....m....e.......",
-    ".......Area.....u...Intercept",
-    ".d........t.....l....t.......",
-    "Pi........i..Acute...........",
-    ".v....F...c.....i........g...",
-    ".i.m..r..._.....p........e...",
-    ".standard_form..l........o...",
-    ".i.t..c...o.....i......R.m...",
-    ".o.h..t.Perpendicular_lines..",
-    ".n....i...m.....a......g.t...",
-    "......o..subtraction...h.r...",
-    "......n...l.....i......t.y...",
-    "........y-axis..o............",
-    "..............Tangent_line...",
-    "............................."
+    ".....p........................",
+    ".....o.v......................",
+    ".....l.a......................",
+    ".....y.l...q..................",
+    ".....n.u...u..................",
+    "..exponential.................",
+    ".....m.....d............linear",
+    "function...r.f.a.m......o.....",
+    ".....a...l.a.o.r.a......g.....",
+    ".....l...intercept......a.....",
+    ".........n.i.m.a.r.r..r.r.....",
+    ".........e.c.....inequality...",
+    ".................x.l..n.t.....",
+    "...................a..g.h.....",
+    "...................t.terms....",
+    "...................i..........",
+    "...................o..........",
+    "...................n..........",
+    "...................s..........",
+    "...................h..........",
+    "...................i..........",
+    "...................p..........",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    ".............................."
   ],
   "clues": {
     "across": [
       {
-        "num": 7,
-        "row": 4,
-        "col": 13,
-        "len": 14,
-        "answer": "Parallel_lineS",
-        "clue": "lines that never intersect (space=_)"
+        "num": 4,
+        "row": 6,
+        "col": 3,
+        "len": 11,
+        "answer": "exponential",
+        "clue": "rapidly growing function"
       },
       {
-        "num": 9,
+        "num": 5,
+        "row": 7,
+        "col": 25,
+        "len": 6,
+        "answer": "linear",
+        "clue": "line goes through graph"
+      },
+      {
+        "num": 6,
         "row": 8,
-        "col": 2,
-        "len": 14,
-        "answer": "intercePt_form",
-        "clue": "y=a(x-r)(x-r)(spaces are _!)"
+        "col": 1,
+        "len": 8,
+        "answer": "function",
+        "clue": "inverse"
       },
       {
         "num": 11,
-        "row": 8,
-        "col": 21,
-        "len": 6,
-        "answer": "Obtuse",
-        "clue": "a angle greater than 90 degrees less than 180"
+        "row": 10,
+        "col": 10,
+        "len": 9,
+        "answer": "intercept",
+        "clue": "first step solving equation"
       },
       {
-        "num": 12,
-        "row": 10,
-        "col": 4,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "a form of math commonly associated with variables"
+        "num": 14,
+        "row": 12,
+        "col": 18,
+        "len": 10,
+        "answer": "inequality",
+        "clue": "expressions"
       },
       {
         "num": 15,
-        "row": 13,
-        "col": 8,
-        "len": 15,
-        "answer": "Negative_number",
-        "clue": "a number below zero (spaces are _)"
-      },
-      {
-        "num": 17,
-        "row": 16,
-        "col": 8,
-        "len": 4,
-        "answer": "Area",
-        "clue": "the 2d space a object takes up"
-      },
-      {
-        "num": 18,
-        "row": 16,
-        "col": 21,
-        "len": 9,
-        "answer": "Intercept",
-        "clue": "to cross a line"
-      },
-      {
-        "num": 20,
-        "row": 18,
-        "col": 1,
-        "len": 2,
-        "answer": "Pi",
-        "clue": "circumference over diameter"
-      },
-      {
-        "num": 21,
-        "row": 18,
-        "col": 14,
+        "row": 15,
+        "col": 22,
         "len": 5,
-        "answer": "Acute",
-        "clue": "a angle less than 90 degrees"
-      },
-      {
-        "num": 25,
-        "row": 21,
-        "col": 2,
-        "len": 13,
-        "answer": "standard_form",
-        "clue": "y=ax^2+bx+c (spaces are underscores!)"
-      },
-      {
-        "num": 27,
-        "row": 23,
-        "col": 9,
-        "len": 19,
-        "answer": "Perpendicular_lines",
-        "clue": "lines that cross once (space=_)"
-      },
-      {
-        "num": 28,
-        "row": 25,
-        "col": 10,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "taking a number out of another number"
-      },
-      {
-        "num": 29,
-        "row": 27,
-        "col": 9,
-        "len": 6,
-        "answer": "y-axis",
-        "clue": "the main vertical line on a graph"
-      },
-      {
-        "num": 30,
-        "row": 28,
-        "col": 15,
-        "len": 12,
-        "answer": "Tangent_line",
-        "clue": "a line hitting only one point of a circle (space=_)"
+        "answer": "terms",
+        "clue": "addition"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 3,
-        "len": 8,
-        "answer": "addition",
-        "clue": "putting two numbers together"
+        "col": 6,
+        "len": 10,
+        "answer": "polynomial",
+        "clue": "more than two terms"
       },
       {
         "num": 2,
-        "row": 1,
-        "col": 5,
-        "len": 8,
-        "answer": "variable",
-        "clue": "this math term is shown as a x most of the time"
+        "row": 2,
+        "col": 8,
+        "len": 5,
+        "answer": "value",
+        "clue": "functions math used to find object"
       },
       {
         "num": 3,
-        "row": 1,
-        "col": 13,
-        "len": 5,
-        "answer": "graPh",
-        "clue": "a plane with boxes that repeats"
-      },
-      {
-        "num": 4,
-        "row": 2,
-        "col": 16,
-        "len": 6,
-        "answer": "x-axis",
-        "clue": "the main horizontal line on a graph"
+        "row": 4,
+        "col": 12,
+        "len": 9,
+        "answer": "quadratic",
+        "clue": "a type of polynomial"
       },
       {
         "num": 5,
-        "row": 3,
-        "col": 8,
-        "len": 6,
-        "answer": "Volume",
-        "clue": "the area a 3d object takes up"
+        "row": 7,
+        "col": 25,
+        "len": 9,
+        "answer": "logarithm",
+        "clue": "math used to functions"
       },
       {
-        "num": 6,
-        "row": 3,
-        "col": 19,
-        "len": 11,
-        "answer": "vertex_form",
-        "clue": "y=a(x-h)^2+k (spaces are _!)"
+        "num": 7,
+        "row": 8,
+        "col": 14,
+        "len": 4,
+        "answer": "form",
+        "clue": "way of writing operations"
       },
       {
         "num": 8,
-        "row": 4,
-        "col": 26,
-        "len": 5,
-        "answer": "Solve",
-        "clue": "finish a equation"
+        "row": 8,
+        "col": 16,
+        "len": 4,
+        "answer": "area",
+        "clue": "two sided shape"
+      },
+      {
+        "num": 9,
+        "row": 8,
+        "col": 18,
+        "len": 6,
+        "answer": "matrix",
+        "clue": "rectangular of numbers"
       },
       {
         "num": 10,
-        "row": 8,
-        "col": 9,
-        "len": 9,
-        "answer": "Perimeter",
-        "clue": "the length of all sides added up"
+        "row": 9,
+        "col": 10,
+        "len": 4,
+        "answer": "line",
+        "clue": "straight  path"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 20,
+        "len": 12,
+        "answer": "relationship",
+        "clue": "between input function"
       },
       {
         "num": 13,
         "row": 11,
-        "col": 11,
-        "len": 17,
-        "answer": "quadratic_formula",
-        "clue": "a equation that has everything over 2*a (spaces as _!)"
-      },
-      {
-        "num": 14,
-        "row": 11,
-        "col": 22,
-        "len": 7,
-        "answer": "Percent",
-        "clue": "%"
-      },
-      {
-        "num": 16,
-        "row": 15,
-        "col": 17,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "repeated addition"
-      },
-      {
-        "num": 19,
-        "row": 17,
-        "col": 2,
-        "len": 8,
-        "answer": "division",
-        "clue": "repeated subtraction"
-      },
-      {
-        "num": 22,
-        "row": 19,
-        "col": 7,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "a form to show less than one but it can be used to show greater than one but it gets called a improper fraction"
-      },
-      {
-        "num": 23,
-        "row": 19,
-        "col": 26,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "a form of math commonly associated with shapes"
-      },
-      {
-        "num": 24,
-        "row": 20,
-        "col": 4,
-        "len": 4,
-        "answer": "math",
-        "clue": "what this crossword is about"
-      },
-      {
-        "num": 26,
-        "row": 22,
-        "col": 24,
+        "col": 23,
         "len": 5,
-        "answer": "Right",
-        "clue": "a angle that is 90 degrees"
+        "answer": "range",
+        "clue": "set of values"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-2537",
-  "slug": "math-crossword-2537",
-  "fetched_at": "2026-07-14T19:27:26.696715+00:00",
-  "date": "2026-10-30"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-2551",
+  "slug": "math-crossword-2551",
+  "fetched_at": "2026-07-14T19:22:28.742017+00:00",
+  "date": "2026-10-31"
 }
