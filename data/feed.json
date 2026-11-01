@@ -100,6 +100,14 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-01-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-01",
+      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
+      "tag": "Daily Brief",
+      "excerpt": "CISA added two actively exploited vulnerabilities (GitLab CVE-2026-97229, Cisco CVE-2026-76418) to its Known Exploited Vulnerabilities catalog on Oct 29. If you run GitLab or Cisco firewalls, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security."
+    },
+    {
       "id": "onyx-2026-10-31-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-31",
@@ -158,26 +166,27 @@
         "#ComputerRepair",
         "#DailyBrief"
       ]
-    },
-    {
-      "id": "onyx-2026-10-24-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-24",
-      "title": "Fake Shipping Texts Flooding Phones \u2014 Don't Tap the Link",
-      "tag": "Daily Brief",
-      "excerpt": "Fake shipping texts are flooding phones right now \u2014 messages claiming a parcel from a major carrier couldn't be delivered and asking you to tap a link to reschedule. The link leads to a fake page that steals your login info and payment details. Carriers never ask for payment or login info by text.\n\nWhat to do: Delete the text. If you're expecting a shipment, go to the carrier's website directly (type the address yourself) or use their official app. Forward suspicious texts to 7726 (SPAM) so\u2026",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-24-composite.jpg",
-      "comic": "assets/img/news/2026-10-24-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-01-news-2",
+      "type": "news",
+      "date": "2026-11-01",
+      "title": "Fiber internet expanding in Lake City \u2014 Clearwave Fiber now at 20% availability, check your address",
+      "tag": "Tech Note",
+      "summary": "BroadbandNow data (Oct 31, 2026) shows Clearwave Fiber at 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber reaches 80%, Xfinity cable/fiber at 68.8%. Check your exact address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
+      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time \u2014 they're usually surprised."
+    },
+    {
+      "id": "onyx-2026-11-01-news-1",
+      "type": "news",
+      "date": "2026-11-01",
+      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords \u2014 free update at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu \u2192 Help \u2192 About Firefox.",
+      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default \u2014 no tracking, no data harvesting, just a browser that works for you."
+    },
     {
       "id": "onyx-2026-10-31-news-3",
       "type": "news",
@@ -239,20 +248,22 @@
       }
     },
     {
-      "id": "onyx-2026-10-28-post-1",
-      "type": "news",
-      "date": "2026-10-28",
-      "title": "CISA adds critical PHP flaws to exploited list \u2014 patch now at php.net",
-      "tag": "Tech Note",
-      "summary": "CISA added two PHP vulnerabilities (CVE-2026-109618, CVE-2026-109619) to its Known Exploited Vulnerabilities catalog on October 26. Attackers are actively using these \"php2shell\" flaws for remote code execution. If you run a website or server with PHP, update to the latest PHP version immediately at php.net/downloads.",
-      "truth": "",
-      "tags": [
-        "#DailyBrief",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#CyberSecurity"
-      ]
+      "id": "onyx-2026-11-01-tip-2",
+      "type": "tip",
+      "date": "2026-11-01",
+      "title": "Windows can stop ransomware from encrypting your files free \u2014 Controlled Folder Access is built in",
+      "tag": "Tech Tip",
+      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings \u2192 Privacy & security \u2192 Windows Security \u2192 Virus & threat protection \u2192 Manage ransomware protection \u2192 On.",
+      "truth": "I turn this on for every customer. It's free, built in, and stops the one thing that makes people cry \u2014 losing their photos and documents to ransomware."
+    },
+    {
+      "id": "onyx-2026-11-01-tip-1",
+      "type": "tip",
+      "date": "2026-11-01",
+      "title": "Windows has free built-in troubleshooters for internet audio printer and updates \u2014 no download needed",
+      "tag": "Tech Tip",
+      "summary": "Windows 11 includes free troubleshooters for internet connections, audio problems, printer issues, Windows Update, and more. Find them at Settings \u2192 System \u2192 Troubleshoot \u2192 Other troubleshooters. Click \"Run\" next to any problem area.",
+      "truth": "I watch customers spend hours Googling fixes for things Windows can diagnose itself. The built-in troubleshooters aren't magic, but they solve about half the calls I get \u2014 for free."
     },
     {
       "id": "onyx-2026-10-31-tip-1",
@@ -310,44 +321,9 @@
         "label": "Open Storage Settings",
         "href": "ms-settings:storagesense"
       }
-    },
-    {
-      "id": "onyx-2026-10-24-post-2",
-      "type": "tip",
-      "date": "2026-10-24",
-      "title": "**Headline:** WinTuner is the safe Windows 11 optimizer that launches 23 built-in tools free \u2014 no risky cleaners no telemetry",
-      "tag": "Tech Tip",
-      "summary": "Download WinTuner free at github.com/Mwoodring2/WinTuner, run as administrator, and use its unified search to launch God Mode tools, clean temp files, and apply reversible tweaks with full undo support.",
-      "truth": "I see PCs every week \"optimized\" by system cleaners that broke more than they fixed. WinTuner is different \u2014 it only surfaces tools Microsoft already built in, shows you the risk level of every tweak, and logs every change so you can undo it. That's the optimizer I'd run on my own machine.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-28-tip-3",
-      "type": "tip",
-      "date": "2026-10-28",
-      "title": "Make a bootable USB free \u2014 BalenaEtcher flashes OS images safely at balenaetcher.io",
-      "tag": "Tech Tip",
-      "summary": "Download BalenaEtcher free from balenaetcher.io (Windows, Mac, or Linux). Plug in your USB drive, select your ISO file, select the drive, click Flash. It validates the write so you know the drive will boot. No command line, no guesswork.",
-      "truth": "I've fixed more \"bricked\" USB drives from people using dd or Rufus wrong than I can count. Etcher hides your system drives by default so you can't accidentally wipe your hard drive. That one feature has saved customers' data dozens of times.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#BalenaEtcher",
-        "#BootableUSB",
-        "#FreeTools"
-      ],
-      "cta": {
-        "label": "Download Etcher",
-        "href": "https://balenaetcher.io"
-      }
     }
   ],
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "today_word": {
     "word": "Spam",
     "pos": "noun",
