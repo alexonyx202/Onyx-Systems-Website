@@ -1,87 +1,130 @@
 {
-  "title": "math crossword",
-  "size": 30,
+  "title": "Math Crossword",
+  "size": 25,
   "grid": [
-    ".....p........................",
-    ".....o.v......................",
-    ".....l.a......................",
-    ".....y.l...q..................",
-    ".....n.u...u..................",
-    "..exponential.................",
-    ".....m.....d............linear",
-    "function...r.f.a.m......o.....",
-    ".....a...l.a.o.r.a......g.....",
-    ".....l...intercept......a.....",
-    ".........n.i.m.a.r.r..r.r.....",
-    ".........e.c.....inequality...",
-    ".................x.l..n.t.....",
-    "...................a..g.h.....",
-    "...................t.terms....",
-    "...................i..........",
-    "...................o..........",
-    "...................n..........",
-    "...................s..........",
-    "...................h..........",
-    "...................i..........",
-    "...................p..........",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    "..............................",
-    ".............................."
+    ".....M...................",
+    ".....c...................",
+    ".....N...................",
+    ".....i...................",
+    "PRoduct..................",
+    ".i...h............C......",
+    ".o.QuotieNt.......u......",
+    ".l...l...u.....S..b......",
+    ".o...a...m...Obtuse......",
+    ".....s...e.....a.........",
+    ".........Rodgers.SuM.....",
+    ".........a.....s...i.....",
+    ".....Right.....f...c.....",
+    ".........o..A..u...h.D...",
+    ".....Square.Coordinate...",
+    "............u..t...l.n...",
+    "............t..Hanns.o...",
+    ".......Integer.....k.Math",
+    "...................i.i...",
+    ".....................n...",
+    "...................T.a...",
+    "...................o.t...",
+    "...............Equation..",
+    "...................a.r...",
+    "...................l....."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 6,
-        "col": 3,
-        "len": 11,
-        "answer": "exponential",
-        "clue": "rapidly growing function"
+        "num": 2,
+        "row": 5,
+        "col": 1,
+        "len": 7,
+        "answer": "PRoduct",
+        "clue": "A quantity obtained by multiplication"
       },
       {
         "num": 5,
         "row": 7,
-        "col": 25,
-        "len": 6,
-        "answer": "linear",
-        "clue": "line goes through graph"
-      },
-      {
-        "num": 6,
-        "row": 8,
-        "col": 1,
+        "col": 4,
         "len": 8,
-        "answer": "function",
-        "clue": "inverse"
+        "answer": "QuotieNt",
+        "clue": "The number obtained by division"
       },
       {
-        "num": 11,
-        "row": 10,
+        "num": 8,
+        "row": 9,
+        "col": 14,
+        "len": 6,
+        "answer": "Obtuse",
+        "clue": "An angle more than 90 degrees"
+      },
+      {
+        "num": 9,
+        "row": 11,
         "col": 10,
-        "len": 9,
-        "answer": "intercept",
-        "clue": "first step solving equation"
+        "len": 7,
+        "answer": "Rodgers",
+        "clue": "The nicest math teacher"
       },
       {
-        "num": 14,
-        "row": 12,
+        "num": 10,
+        "row": 11,
         "col": 18,
-        "len": 10,
-        "answer": "inequality",
-        "clue": "expressions"
+        "len": 3,
+        "answer": "SuM",
+        "clue": "A quantity obtained by the addition of a group of numbers"
+      },
+      {
+        "num": 12,
+        "row": 13,
+        "col": 6,
+        "len": 5,
+        "answer": "Right",
+        "clue": "An angle that equals 90 degrees"
       },
       {
         "num": 15,
         "row": 15,
-        "col": 22,
+        "col": 6,
+        "len": 6,
+        "answer": "Square",
+        "clue": "A polygon with four equal sides and four right angles"
+      },
+      {
+        "num": 16,
+        "row": 15,
+        "col": 13,
+        "len": 10,
+        "answer": "Coordinate",
+        "clue": "A number that identifies a position relative to an axis"
+      },
+      {
+        "num": 17,
+        "row": 17,
+        "col": 16,
         "len": 5,
-        "answer": "terms",
-        "clue": "addition"
+        "answer": "Hanns",
+        "clue": "Upstairs math teacher"
+      },
+      {
+        "num": 18,
+        "row": 18,
+        "col": 8,
+        "len": 7,
+        "answer": "Integer",
+        "clue": "Any natura number or its negative, or zero"
+      },
+      {
+        "num": 19,
+        "row": 18,
+        "col": 22,
+        "len": 4,
+        "answer": "Math",
+        "clue": "The best subject in school"
+      },
+      {
+        "num": 21,
+        "row": 23,
+        "col": 16,
+        "len": 8,
+        "answer": "Equation",
+        "clue": "A mathematical statement with two expressions that are the same and has an equal sign"
       }
     ],
     "down": [
@@ -90,86 +133,78 @@
         "row": 1,
         "col": 6,
         "len": 10,
-        "answer": "polynomial",
-        "clue": "more than two terms"
-      },
-      {
-        "num": 2,
-        "row": 2,
-        "col": 8,
-        "len": 5,
-        "answer": "value",
-        "clue": "functions math used to find object"
+        "answer": "McNicholas",
+        "clue": "Fun Friday Game Maker"
       },
       {
         "num": 3,
-        "row": 4,
-        "col": 12,
-        "len": 9,
-        "answer": "quadratic",
-        "clue": "a type of polynomial"
+        "row": 5,
+        "col": 2,
+        "len": 5,
+        "answer": "Riolo",
+        "clue": "The loudest and coolest math teacher"
       },
       {
-        "num": 5,
+        "num": 4,
+        "row": 6,
+        "col": 19,
+        "len": 4,
+        "answer": "Cube",
+        "clue": "The product of three equal terms"
+      },
+      {
+        "num": 6,
         "row": 7,
-        "col": 25,
+        "col": 10,
         "len": 9,
-        "answer": "logarithm",
-        "clue": "math used to functions"
+        "answer": "NumeRator",
+        "clue": "The top number of a fraction"
       },
       {
         "num": 7,
         "row": 8,
-        "col": 14,
-        "len": 4,
-        "answer": "form",
-        "clue": "way of writing operations"
-      },
-      {
-        "num": 8,
-        "row": 8,
         "col": 16,
-        "len": 4,
-        "answer": "area",
-        "clue": "two sided shape"
+        "len": 10,
+        "answer": "StassfurtH",
+        "clue": "The 7th grade math teacher with all the puzzles"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 18,
-        "len": 6,
-        "answer": "matrix",
-        "clue": "rectangular of numbers"
-      },
-      {
-        "num": 10,
-        "row": 9,
-        "col": 10,
-        "len": 4,
-        "answer": "line",
-        "clue": "straight  path"
-      },
-      {
-        "num": 12,
+        "num": 11,
         "row": 11,
         "col": 20,
-        "len": 12,
-        "answer": "relationship",
-        "clue": "between input function"
+        "len": 9,
+        "answer": "Michalski",
+        "clue": "Math teacher who is the biggest Yankee Fan"
       },
       {
         "num": 13,
-        "row": 11,
-        "col": 23,
+        "row": 14,
+        "col": 13,
         "len": 5,
-        "answer": "range",
-        "clue": "set of values"
+        "answer": "ACute",
+        "clue": "An angle less than 90 degrees"
+      },
+      {
+        "num": 14,
+        "row": 14,
+        "col": 22,
+        "len": 11,
+        "answer": "DenoMinator",
+        "clue": "The bottom number of a fraction"
+      },
+      {
+        "num": 20,
+        "row": 21,
+        "col": 20,
+        "len": 5,
+        "answer": "Total",
+        "clue": "The whole amount"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-2551",
-  "slug": "math-crossword-2551",
-  "fetched_at": "2026-07-14T19:22:28.742017+00:00",
-  "date": "2026-10-31"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-2685",
+  "slug": "math-crossword-2685",
+  "fetched_at": "2026-07-14T19:10:23.938976+00:00",
+  "date": "2026-11-01"
 }
