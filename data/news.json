@@ -1,6 +1,64 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "items": [
+    {
+      "id": "n-2026-11-01",
+      "type": "newsletter",
+      "date": "2026-11-01",
+      "title": "FBI Warns: Election Scams Targeting Voters Ahead of Tuesday",
+      "tag": "Daily Brief",
+      "summary": "With the midterm election days away, scammers are flooding inboxes and phones with fake voter registration links, bogus polling place changes, and \"urgent\" donation requests. The FBI's IC3 warned on October 15 that these schemes spike right before Election Day — they'll text you ",
+      "comic": "Newsletter - 2026-11-01-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-01",
+      "type": "tech-note",
+      "date": "2026-11-01",
+      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
+      "tag": "News",
+      "summary": "Firefox 159 adds Smart Window to watch pages for price drops, puts saved passwords in the sidebar, and uses native macOS sharing. Update free at firefox.com or Menu → Help → About Firefox.",
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
+      "id": "t-2026-11-01-2",
+      "type": "tech-note",
+      "date": "2026-11-01",
+      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
+      "tag": "News",
+      "summary": "Clearwave Fiber reaches 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber at 80%, Xfinity at 68.8%. Check your address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://broadbandnow.com/Florida/Lake-City"
+      }
+    },
+    {
+      "id": "t-2026-11-01-3",
+      "type": "tech-note",
+      "date": "2026-11-01",
+      "title": "Windows has free built-in troubleshooters for internet audio printer and updates — no download needed",
+      "tag": "Tip",
+      "summary": "Windows 11 includes free troubleshooters for internet, audio, printer, Windows Update, and more. Find them at Settings → System → Troubleshoot → Other troubleshooters. Click Run next to any problem area.",
+      "cta": {
+        "label": "Open Troubleshooters",
+        "href": "ms-settings:troubleshoot"
+      }
+    },
+    {
+      "id": "t-2026-11-01-4",
+      "type": "tech-note",
+      "date": "2026-11-01",
+      "title": "Windows can stop ransomware from encrypting your files free — Controlled Folder Access is built in",
+      "tag": "Tip",
+      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings → Privacy & security → Windows Security → Virus & threat protection → Manage ransomware protection → On.",
+      "cta": {
+        "label": "Enable Protection",
+        "href": "ms-settings:windowsdefender"
+      }
+    },
     {
       "id": "n-2026-10-31",
       "type": "newsletter",
@@ -76,64 +134,6 @@
       "summary": "You get a text out of the blue: \"Hi! We reviewed your resume and want to offer you a remote data-entry position. $45/hour, flexible hours, start this week. Reply 'YES' for details.\" It feels lucky. It's not. The FTC says fake job offers are exploding — $367 million in reported lo",
       "comic": "Newsletter - 2026-10-30-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-10-29",
-      "type": "newsletter",
-      "date": "2026-10-29",
-      "title": "That 'Verify You're Human' Box Is a Trap — Here's How to Spot It",
-      "tag": "Daily Brief",
-      "summary": "That \"Verify You're Human\" Box Is a Trap — Here's How to Spot It",
-      "comic": "Newsletter - 2026-10-29-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-29-firefox",
-      "type": "tech-note",
-      "date": "2026-10-29",
-      "title": "Firefox 159 patches 167 security holes and adds website watch feature — free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Mozilla released Firefox 159 on October 28, 2026 addressing 167 vulnerabilities (108 high severity) and enabling the sidebar password manager by default. The new Smart Window feature watches websites for changes like price drops or new content. Get it free at firefox.com or via Firefox menu > Help > About Firefox.",
-      "cta": {
-        "label": "Download Firefox",
-        "href": "https://firefox.com"
-      }
-    },
-    {
-      "id": "t-2026-10-29-fiber",
-      "type": "tech-note",
-      "date": "2026-10-29",
-      "title": "Clearwave Fiber and Xfinity expand service to 3300 Columbia County addresses — check yours at clearwavefiber.com",
-      "tag": "Tech Note",
-      "summary": "Clearwave Fiber has expanded its all-fiber infrastructure in Lake City with several thousand residents now able to get fiber internet. Xfinity and Comcast Business also announced high-speed service for 3,300+ homes and businesses in Columbia County. Check your address at clearwavefiber.com or xfinity.com to see if service reached your street.",
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://clearwavefiber.com"
-      }
-    },
-    {
-      "id": "t-2026-10-29-win24h2",
-      "type": "tech-note",
-      "date": "2026-10-29",
-      "title": "Windows 11 24H2 Home Pro editions reached final security update October 13 — KB5127648 is the last one",
-      "tag": "Tech Note",
-      "summary": "Microsoft confirmed Windows 11 24H2 Home and Pro editions reached end of servicing on October 13, 2026. The October Patch Tuesday update KB5127648 is the final monthly security update these editions will receive. No further security patches after this. Check your edition at Settings > System > About and plan your next steps.",
-      "cta": {
-        "label": "Check Windows Edition",
-        "href": "ms-settings:about"
-      }
-    },
-    {
-      "id": "t-2026-10-29-ai",
-      "type": "tech-note",
-      "date": "2026-10-29",
-      "title": "Run private AI chatbots on your computer free offline — Ollama LM Studio Jan GPT4All compared",
-      "tag": "Tech Note",
-      "summary": "Want ChatGPT-like AI without the cloud? Four free tools let you run models locally: Ollama (command line, ollama.com), LM Studio (graphical, lmstudio.ai), Jan (chat interface, jan.ai), and GPT4All (simple desktop app, gpt4all.io). All work offline, no account needed, your data never leaves your computer. Download any from their official sites.",
-      "cta": {
-        "label": "Try LM Studio",
-        "href": "https://lmstudio.ai"
-      }
     }
   ]
 }

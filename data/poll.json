@@ -1,23 +1,23 @@
 {
   "poll": {
-    "weekOf": "2026-10-25",
-    "question": "Biggest reason you put off computer help?",
+    "weekOf": "2026-11-01",
+    "question": "What do you mostly use your computer for?",
     "options": [
       {
-        "id": "cost",
-        "label": "Worried about cost"
+        "id": "email",
+        "label": "Email & web"
       },
       {
-        "id": "time",
-        "label": "No time"
+        "id": "work",
+        "label": "Work / school"
       },
       {
-        "id": "trust",
-        "label": "Don't trust shops"
+        "id": "photo",
+        "label": "Photos & videos"
       },
       {
-        "id": "diy",
-        "label": "I'll fix it myself"
+        "id": "game",
+        "label": "Gaming"
       }
     ]
   }
