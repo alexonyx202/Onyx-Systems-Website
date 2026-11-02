@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,10 +100,21 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-02-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-02",
+      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
+      "tag": "Daily Brief",
+      "excerpt": "CISA added two actively exploited vulnerabilities (Adobe Commerce CVE-2026-XXXXX, Google Brotli CVE-2026-YYYYY) to its Known Exploited Vulnerabilities catalog. If you run Adobe Commerce/Magento or use Google Brotli, patch immediately at about.adobe.com and github.com/google/brotli.",
+      "image": "assets/img/news/2026-11-02-composite.jpg",
+      "comic": "assets/img/news/2026-11-02-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-01-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-01",
-      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
+      "title": "CISA warns: GitLab and Cisco flaws under active attack — update now at vendor sites",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities (GitLab CVE-2026-97229, Cisco CVE-2026-76418) to its Known Exploited Vulnerabilities catalog on Oct 29. If you run GitLab or Cisco firewalls, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security."
     },
@@ -111,7 +122,7 @@
       "id": "onyx-2026-10-31-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-31",
-      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list \u2014 Adobe Commerce, Google Brotli, Collabora Online",
+      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
       "tag": "Daily Brief",
       "excerpt": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026",
       "tags": [
@@ -126,9 +137,9 @@
       "id": "onyx-2026-10-28-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-28",
-      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited \u2014 Update Now",
+      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
       "tag": "Daily Brief",
-      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did \u2014 and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer \u2014 no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three\u2026",
+      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -143,9 +154,9 @@
       "id": "onyx-2026-10-30-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-30",
-      "title": "CISA alert: Adobe Commerce and Google Brotli flaws actively exploited \u2014 patch immediately",
+      "title": "CISA alert: Adobe Commerce and Google Brotli flaws actively exploited — patch immediately",
       "tag": "Daily Brief",
-      "excerpt": "Update Adobe Commerce/Magento and your browser to latest versions \u2014 check cisa.gov/known-exploited-vulnerabilities-catalog for details",
+      "excerpt": "Update Adobe Commerce/Magento and your browser to latest versions — check cisa.gov/known-exploited-vulnerabilities-catalog for details",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -157,7 +168,7 @@
       "id": "onyx-2026-10-29-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-29",
-      "title": "CISA flags exploited Windows zero-day \u2014 patch at Settings > Windows Update by October 16",
+      "title": "CISA flags exploited Windows zero-day — patch at Settings > Windows Update by October 16",
       "tag": "Daily Brief",
       "excerpt": "CISA added CVE-2026-96207, an actively exploited Windows Shell zero-day, to its Known Exploited Vulnerabilities catalog on October 13. Microsoft fixed it in the October Patch Tuesday release (1,413 total vulnerabilities addressed). Federal agencies must apply the patch by October 16; you should update promptly. Open Settings > Windows Update and check for updates now.",
       "tags": [
@@ -170,31 +181,53 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-02-news-1",
+      "type": "news",
+      "date": "2026-11-02",
+      "title": "AI voice clones can sound like your family — use a safe word and call back on a saved number",
+      "tag": "Tech Note",
+      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now — ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
+      "truth": "I've had customers walk in shaking after getting a call that sounded exactly like their grandkid in trouble. The voice was perfect. The panic was real. The only thing that stopped them was calling the real number.",
+      "cta": {
+        "label": "FTC Voice Cloning Guide",
+        "href": "https://consumer.ftc.gov/articles/voice-cloning-scams"
+      }
+    },
+    {
+      "id": "onyx-2026-11-02-tip-1",
+      "type": "tip",
+      "date": "2026-11-02",
+      "title": "Windows 11 has free built-in backup — File History and OneDrive protect your files automatically",
+      "tag": "Tech Tip",
+      "summary": "Turn on File History at Settings > System > Storage > Advanced storage settings > Backup options (plug in an external drive first). Turn on OneDrive folder backup at OneDrive settings > Sync and backup > Manage backup — both free and built into Windows. Microsoft just fixed a File History bug in the October 2026 update.",
+      "truth": "I see people lose everything — photos, taxes, business records — because \"I meant to back up.\" The built-in tools do it while you sleep. No subscription. No extra software."
+    },
+    {
       "id": "onyx-2026-11-01-news-2",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Fiber internet expanding in Lake City \u2014 Clearwave Fiber now at 20% availability, check your address",
+      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
       "tag": "Tech Note",
       "summary": "BroadbandNow data (Oct 31, 2026) shows Clearwave Fiber at 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber reaches 80%, Xfinity cable/fiber at 68.8%. Check your exact address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
-      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time \u2014 they're usually surprised."
+      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time — they're usually surprised."
     },
     {
       "id": "onyx-2026-11-01-news-1",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords \u2014 free update at firefox.com",
+      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
       "tag": "Tech Note",
-      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu \u2192 Help \u2192 About Firefox.",
-      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default \u2014 no tracking, no data harvesting, just a browser that works for you."
+      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu → Help → About Firefox.",
+      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default — no tracking, no data harvesting, just a browser that works for you."
     },
     {
       "id": "onyx-2026-10-31-news-3",
       "type": "news",
       "date": "2026-10-31",
-      "title": "Best free password manager 2026 \u2014 Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
+      "title": "Best free password manager 2026 — Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
       "tag": "Tech Note",
       "summary": "Bitwarden offers unlimited passwords and devices for free with open-source code at bitwarden.com. Proton Pass adds email aliases and built-in two-factor authentication free at proton.me/pass. Both work on Windows, Mac, Linux, phones. Source: Security.org, TechDeft, ITsFOSS 2026 comparisons",
-      "truth": "People reuse the same three passwords everywhere because they can't remember more. A password manager fixes this completely. Bitwarden's free tier is genuinely unlimited \u2014 no device limit, no password limit. Proton Pass is the choice if you want email aliases (hide your real email when signing up) and 2FA built in without a separate app.",
+      "truth": "People reuse the same three passwords everywhere because they can't remember more. A password manager fixes this completely. Bitwarden's free tier is genuinely unlimited — no device limit, no password limit. Proton Pass is the choice if you want email aliases (hide your real email when signing up) and 2FA built in without a separate app.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -211,10 +244,10 @@
       "id": "onyx-2026-10-31-news-2",
       "type": "news",
       "date": "2026-10-31",
-      "title": "Windows 11 25H2 and 26H2 are the new supported versions \u2014 free upgrade at Settings > Windows Update if you are on 24H2 Home or Pro",
+      "title": "Windows 11 25H2 and 26H2 are the new supported versions — free upgrade at Settings > Windows Update if you are on 24H2 Home or Pro",
       "tag": "Tech Note",
-      "summary": "Windows 11 24H2 Home and Pro reached end of updates October 13 2026. Microsoft now supports 25H2 and 26H2 with monthly security patches. The upgrade is free \u2014 go to Settings > Windows Update and check for updates. If your PC says it's up to date on 24H2 you need to manually trigger the version upgrade. Source: Microsoft Support KB5127648 October 13 2026",
-      "truth": "I've had customers bring in PCs that \"work fine\" but haven't had a security patch in months. Windows won't always offer the version upgrade automatically \u2014 you have to click \"Check for updates\" and sometimes toggle \"Get the latest updates as soon as they're available\" in Advanced options.",
+      "summary": "Windows 11 24H2 Home and Pro reached end of updates October 13 2026. Microsoft now supports 25H2 and 26H2 with monthly security patches. The upgrade is free — go to Settings > Windows Update and check for updates. If your PC says it's up to date on 24H2 you need to manually trigger the version upgrade. Source: Microsoft Support KB5127648 October 13 2026",
+      "truth": "I've had customers bring in PCs that \"work fine\" but haven't had a security patch in months. Windows won't always offer the version upgrade automatically — you have to click \"Check for updates\" and sometimes toggle \"Get the latest updates as soon as they're available\" in Advanced options.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -231,10 +264,10 @@
       "id": "onyx-2026-10-31-news-1",
       "type": "news",
       "date": "2026-10-31",
-      "title": "Windows 11 Live Captions transcribes any audio free \u2014 great for videos without subtitles",
+      "title": "Windows 11 Live Captions transcribes any audio free — great for videos without subtitles",
       "tag": "Tech Note",
       "summary": "Windows 11 has a free built-in Live Captions feature that transcribes any audio playing on your PC in real time. Press Win+Ctrl+L to turn it on. It works offline for English and works on any video, podcast, or meeting. No upload, no account, no cost. Free at microsoft.com/windows/tips/live-captions or just press Win+Ctrl+L.",
-      "truth": "Most people don't realize this feature exists \u2014 it's been in Windows 11 since 2022 and keeps getting better. I show it to customers who struggle to hear videos or watch content in noisy environments, and they're always surprised it's free and offline.",
+      "truth": "Most people don't realize this feature exists — it's been in Windows 11 since 2022 and keeps getting better. I show it to customers who struggle to hear videos or watch content in noisy environments, and they're always surprised it's free and offline.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -251,28 +284,28 @@
       "id": "onyx-2026-11-01-tip-2",
       "type": "tip",
       "date": "2026-11-01",
-      "title": "Windows can stop ransomware from encrypting your files free \u2014 Controlled Folder Access is built in",
+      "title": "Windows can stop ransomware from encrypting your files free — Controlled Folder Access is built in",
       "tag": "Tech Tip",
-      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings \u2192 Privacy & security \u2192 Windows Security \u2192 Virus & threat protection \u2192 Manage ransomware protection \u2192 On.",
-      "truth": "I turn this on for every customer. It's free, built in, and stops the one thing that makes people cry \u2014 losing their photos and documents to ransomware."
+      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings → Privacy & security → Windows Security → Virus & threat protection → Manage ransomware protection → On.",
+      "truth": "I turn this on for every customer. It's free, built in, and stops the one thing that makes people cry — losing their photos and documents to ransomware."
     },
     {
       "id": "onyx-2026-11-01-tip-1",
       "type": "tip",
       "date": "2026-11-01",
-      "title": "Windows has free built-in troubleshooters for internet audio printer and updates \u2014 no download needed",
+      "title": "Windows has free built-in troubleshooters for internet audio printer and updates — no download needed",
       "tag": "Tech Tip",
-      "summary": "Windows 11 includes free troubleshooters for internet connections, audio problems, printer issues, Windows Update, and more. Find them at Settings \u2192 System \u2192 Troubleshoot \u2192 Other troubleshooters. Click \"Run\" next to any problem area.",
-      "truth": "I watch customers spend hours Googling fixes for things Windows can diagnose itself. The built-in troubleshooters aren't magic, but they solve about half the calls I get \u2014 for free."
+      "summary": "Windows 11 includes free troubleshooters for internet connections, audio problems, printer issues, Windows Update, and more. Find them at Settings → System → Troubleshoot → Other troubleshooters. Click \"Run\" next to any problem area.",
+      "truth": "I watch customers spend hours Googling fixes for things Windows can diagnose itself. The built-in troubleshooters aren't magic, but they solve about half the calls I get — for free."
     },
     {
       "id": "onyx-2026-10-31-tip-1",
       "type": "tip",
       "date": "2026-10-31",
-      "title": "One click in Windows Security turns on free ransomware protection \u2014 Controlled Folder Access blocks unauthorized encryption",
+      "title": "One click in Windows Security turns on free ransomware protection — Controlled Folder Access blocks unauthorized encryption",
       "tag": "Tech Tip",
       "summary": "Windows 11 has a free ransomware shield built in called Controlled Folder Access. It stops unknown apps from encrypting your documents, pictures, and desktop folders. Open Windows Security (type \"Windows Security\" in Start), click Virus & threat protection, then Manage ransomware protection, and turn on Controlled Folder Access. Takes 30 seconds. Source: Microsoft Support, How-To Geek, Pureinfotech",
-      "truth": "Ransomware doesn't care if you're a \"small target.\" It's automated \u2014 it hits everyone. Controlled Folder Access is the one setting that actually stops the encryption from happening. It's free, already installed, and I turn it on for every single customer. Most people have never heard of it.",
+      "truth": "Ransomware doesn't care if you're a \"small target.\" It's automated — it hits everyone. Controlled Folder Access is the one setting that actually stops the encryption from happening. It's free, already installed, and I turn it on for every single customer. Most people have never heard of it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -284,311 +317,230 @@
         "label": "Open Windows Security",
         "href": "ms-settings:windowsdefender"
       }
-    },
-    {
-      "id": "onyx-2026-10-28-post-2",
-      "type": "tip",
-      "date": "2026-10-28",
-      "title": "**Headline:** Microsoft Edge 156 patches security holes \u2014 update free at edge://settings/help",
-      "tag": "Tech Tip",
-      "summary": "Microsoft released Edge 156 on October 22 (main release) and 156.0.4314.50 on October 26 with security fixes. Open Edge, click the three-dot menu \u2192 Help and feedback \u2192 About Microsoft Edge. It checks and installs updates automatically. Restart when prompted.",
-      "truth": "Most people ignore browser updates until something breaks. I see it weekly \u2014 outdated browsers are the #1 way malware gets in. Updating takes 30 seconds and costs nothing.",
-      "tags": [
-        "#1",
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#MicrosoftEdge",
-        "#BrowserSecurity"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-30-tip-1",
-      "type": "tip",
-      "date": "2026-10-30",
-      "title": "Windows Storage Sense deletes old Downloads and Recycle Bin files automatically \u2014 free in Settings",
-      "tag": "Tech Tip",
-      "summary": "Go to Settings > System > Storage > Storage Sense and turn it on \u2014 set it to clean Downloads after 30 days and Recycle Bin after 14 days",
-      "truth": "The number one reason computers slow down isn't age \u2014 it's a stuffed C: drive. I've seen 50 GB of installers sitting in Downloads from 2022. Storage Sense handles this quietly in the background. Turn it on once, forget it exists.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsTips",
-        "#Storage"
-      ],
-      "cta": {
-        "label": "Open Storage Settings",
-        "href": "ms-settings:storagesense"
-      }
     }
   ],
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "today_word": {
-    "word": "Spam",
+    "word": "Patch",
     "pos": "noun",
-    "definition": "Unwanted bulk messages \u2014 junk mail, fake offers, and the noise that clogs your inbox.",
-    "example": "The filter caught 30 spam emails overnight.",
-    "date": "2026-10-29"
+    "definition": "A small update that fixes a bug or closes a security hole in software.",
+    "example": "Install the patch before the flaw gets exploited.",
+    "date": "2026-11-02"
   },
   "today_crossword": {
     "title": "Math Crossword",
-    "size": 26,
+    "size": 22,
     "grid": [
-      ".............F............",
-      ".............r............",
-      "............RangE.........",
-      ".............c..x.........",
-      ".............t..p.........",
-      ".............i.PolYnomial.",
-      ".......R.....o..n.-.......",
-      ".......e.....n.NegativE...",
-      ".......c........n.x...q...",
-      "Inequality..Point.i...u.L.",
-      ".......p..........s.X-axis",
-      ".....VariablE.........t.n.",
-      ".......o....x.CoMmutative.",
-      ".......c....p...e.....o.r.",
-      ".......a....r...a.....n...",
-      ".......l...Median.........",
-      "............s.............",
-      ".........Constant.........",
-      "....S.......i.............",
-      "....l.......o.............",
-      "...Coefficient............",
-      "....p.....................",
-      "....e.....................",
-      "..........................",
-      "..........................",
-      ".........................."
+      "...........g..........",
+      "...........e..........",
+      "..........point.......",
+      "...........m..........",
+      ".......percent........",
+      "...........t.r........",
+      "....mrsowder.i........",
+      "....u......y.a........",
+      "parallel.....n........",
+      "....t........g........",
+      "....i........l........",
+      "....parentheses.......",
+      "....l.........u.......",
+      "....i.........b.......",
+      "....c.........t.......",
+      "....a..a......r.......",
+      "....t.plus..mean......",
+      "....i..g....o.c.......",
+      "....o..e....d.t.......",
+      "....numbers.e.........",
+      ".......r..............",
+      "....equal............."
     ],
     "clues": {
       "across": [
         {
           "num": 2,
           "row": 3,
-          "col": 13,
+          "col": 11,
           "len": 5,
-          "answer": "RangE",
-          "clue": "The largest and smallest number of a data collection"
+          "answer": "point",
+          "clue": "A dot on a graph"
         },
         {
-          "num": 4,
-          "row": 6,
-          "col": 16,
-          "len": 10,
-          "answer": "PolYnomial",
-          "clue": "Multi-termed expression"
+          "num": 3,
+          "row": 5,
+          "col": 8,
+          "len": 7,
+          "answer": "percent",
+          "clue": "%"
+        },
+        {
+          "num": 5,
+          "row": 7,
+          "col": 5,
+          "len": 8,
+          "answer": "mrsowder",
+          "clue": "a wonderful man"
+        },
+        {
+          "num": 6,
+          "row": 9,
+          "col": 1,
+          "len": 8,
+          "answer": "parallel",
+          "clue": "line lines that do not interact"
         },
         {
           "num": 7,
-          "row": 8,
-          "col": 16,
-          "len": 8,
-          "answer": "NegativE",
-          "clue": "A number that is less than zero"
-        },
-        {
-          "num": 9,
-          "row": 10,
-          "col": 1,
-          "len": 10,
-          "answer": "Inequality",
-          "clue": "A math problem that uses < or >"
+          "row": 12,
+          "col": 5,
+          "len": 11,
+          "answer": "parentheses",
+          "clue": "()"
         },
         {
           "num": 10,
-          "row": 10,
+          "row": 17,
+          "col": 7,
+          "len": 4,
+          "answer": "plus",
+          "clue": "to add"
+        },
+        {
+          "num": 11,
+          "row": 17,
           "col": 13,
-          "len": 5,
-          "answer": "Point",
-          "clue": "A dot on a coordinate plane that is a part of a set of coordinates"
+          "len": 4,
+          "answer": "mean",
+          "clue": "the adverage"
         },
         {
           "num": 12,
-          "row": 11,
-          "col": 21,
-          "len": 6,
-          "answer": "X-axis",
-          "clue": "A line that goes left and right and makes up a coordinate plane"
+          "row": 20,
+          "col": 5,
+          "len": 7,
+          "answer": "numbers",
+          "clue": "123456789"
         },
         {
           "num": 13,
-          "row": 12,
-          "col": 6,
-          "len": 8,
-          "answer": "VariablE",
-          "clue": "Represents a number or is just a placeholder ex: X & Y"
-        },
-        {
-          "num": 15,
-          "row": 13,
-          "col": 15,
-          "len": 11,
-          "answer": "CoMmutative",
-          "clue": "AxB=BxA"
-        },
-        {
-          "num": 17,
-          "row": 16,
-          "col": 12,
-          "len": 6,
-          "answer": "Median",
-          "clue": "The middle number of a data collection"
-        },
-        {
-          "num": 18,
-          "row": 18,
-          "col": 10,
-          "len": 8,
-          "answer": "Constant",
-          "clue": "A number"
-        },
-        {
-          "num": 20,
-          "row": 21,
-          "col": 4,
-          "len": 11,
-          "answer": "Coefficient",
-          "clue": "A number in front of a variable"
+          "row": 22,
+          "col": 5,
+          "len": 5,
+          "answer": "equal",
+          "clue": "="
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 14,
+          "col": 12,
           "len": 8,
-          "answer": "Fraction",
-          "clue": "A numerator divided by a Denominator"
+          "answer": "geometry",
+          "clue": "Math but shapes"
         },
         {
-          "num": 3,
-          "row": 3,
-          "col": 17,
+          "num": 4,
+          "row": 5,
+          "col": 14,
           "len": 8,
-          "answer": "Exponent",
-          "clue": "Multiplies a number by itself"
+          "answer": "triangle",
+          "clue": "a 3 sided shape"
         },
         {
           "num": 5,
-          "row": 6,
-          "col": 19,
-          "len": 6,
-          "answer": "Y-axis",
-          "clue": "A line that goes up and down and makes up a coordinate plane"
-        },
-        {
-          "num": 6,
           "row": 7,
-          "col": 8,
-          "len": 10,
-          "answer": "Reciprocal",
-          "clue": "The opposite of something, usually used with fractions"
+          "col": 5,
+          "len": 14,
+          "answer": "multiplication",
+          "clue": "times"
         },
         {
           "num": 8,
-          "row": 8,
-          "col": 23,
+          "row": 12,
+          "col": 15,
           "len": 8,
-          "answer": "Equation",
-          "clue": "Math problem with an answer"
+          "answer": "subtract",
+          "clue": "to take away"
+        },
+        {
+          "num": 9,
+          "row": 16,
+          "col": 8,
+          "len": 7,
+          "answer": "algebra",
+          "clue": "A Math"
         },
         {
           "num": 11,
-          "row": 10,
-          "col": 25,
-          "len": 5,
-          "answer": "Liner",
-          "clue": "A straight line on a graph"
-        },
-        {
-          "num": 14,
-          "row": 12,
+          "row": 17,
           "col": 13,
-          "len": 10,
-          "answer": "Expression",
-          "clue": "A math problem without an answer"
-        },
-        {
-          "num": 16,
-          "row": 13,
-          "col": 17,
           "len": 4,
-          "answer": "Mean",
-          "clue": "The average of data collection"
-        },
-        {
-          "num": 19,
-          "row": 19,
-          "col": 5,
-          "len": 5,
-          "answer": "Slope",
-          "clue": "A line that passes through points"
+          "answer": "mode",
+          "clue": "most often"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-2366",
-    "slug": "math-crossword-2366",
-    "fetched_at": "2026-07-14T19:23:34.049264+00:00",
-    "date": "2026-10-29"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-702",
+    "slug": "math-crossword-702",
+    "fetched_at": "2026-07-14T19:21:25.690583+00:00",
+    "date": "2026-11-02"
   },
   "today_trivia": {
-    "q": "What year was the first Raspberry Pi released?",
-    "a": "2012 \u2014 it kicked off the modern maker and retro-computing boom.",
-    "category": "History",
-    "date": "2026-10-29"
+    "q": "What is the difference between a modem and a router?",
+    "a": "A modem brings the internet in from your provider; a router shares that connection with your devices.",
+    "category": "Network",
+    "date": "2026-11-02"
   },
   "today_joke": {
-    "q": "What's a RAM's favorite movie?",
-    "a": "Memory.",
-    "date": "2026-10-29"
+    "q": "What did the tech say to the frozen screen?",
+    "a": "Hold still, I've got this.",
+    "date": "2026-11-02"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-10-25",
-      "question": "Biggest reason you put off computer help?",
+      "weekOf": "2026-11-01",
+      "question": "What do you mostly use your computer for?",
       "options": [
         {
-          "id": "cost",
-          "label": "Worried about cost"
+          "id": "email",
+          "label": "Email & web"
         },
         {
-          "id": "time",
-          "label": "No time"
+          "id": "work",
+          "label": "Work / school"
         },
         {
-          "id": "trust",
-          "label": "Don't trust shops"
+          "id": "photo",
+          "label": "Photos & videos"
         },
         {
-          "id": "diy",
-          "label": "I'll fix it myself"
+          "id": "game",
+          "label": "Gaming"
         }
       ]
     }
   },
   "today_poll": {
     "poll": {
-      "weekOf": "2026-10-25",
-      "question": "Biggest reason you put off computer help?",
+      "weekOf": "2026-11-01",
+      "question": "What do you mostly use your computer for?",
       "options": [
         {
-          "id": "cost",
-          "label": "Worried about cost"
+          "id": "email",
+          "label": "Email & web"
         },
         {
-          "id": "time",
-          "label": "No time"
+          "id": "work",
+          "label": "Work / school"
         },
         {
-          "id": "trust",
-          "label": "Don't trust shops"
+          "id": "photo",
+          "label": "Photos & videos"
         },
         {
-          "id": "diy",
-          "label": "I'll fix it myself"
+          "id": "game",
+          "label": "Gaming"
         }
       ]
     }

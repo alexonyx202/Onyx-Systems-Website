@@ -438,6 +438,11 @@ def check_entry(fname, eid, headline, body, entry_type=None):
     # — October 2026). Security alert: no product to name, action IS stated
     # (don't scan random codes on public fixtures; use official app or keypad).
     "parking meter", "qr code", "fake code",
+    # Extended 2026-11-02: package delivery text/email phishing alert (USPS/UPS/FedEx
+    # impersonation — fake delivery failure messages with credential-stealing links).
+    # Security alert: no product to name, action IS stated (don't click; go to the
+    # carrier's real website/app and check tracking there).
+    "package delivery", "delivery failed", "reschedule delivery",
     # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
     # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
     # stated (restore from backup, report to IC3.gov).
