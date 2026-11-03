@@ -595,7 +595,7 @@ def main():
   ul{{margin:8px 0 0;padding-left:20px}}
   li{{margin:6px 0}}
   .comic{{text-align:center;margin:30px 0}}
-  .comic img{{max-width:760px;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}}
+  .comic img{{max-width:760px;width:100%;height:auto;max-height:520px;object-fit:contain;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}}
   .comic .cap{{font-style:italic;color:var(--muted);margin-top:10px;font-size:14px}}
   .card{{text-align:center;margin:30px 0}}
   .card img{{max-width:760px;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}}
