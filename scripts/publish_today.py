@@ -216,12 +216,12 @@ def parse_tech_notes(md_path):
     return posts
 
 
-def _truncate(text: str, max_len: int = 500) -> str:
+def _truncate(text: str, max_len: int = 800) -> str:
     """Truncate text to max_len, preserving word boundaries."""
     if len(text) <= max_len:
         return text
     truncated = text[:max_len].rsplit(' ', 1)[0]
-    return truncated + "…"
+    return truncated + "..."
 
 def build_entries(date_iso):
     nl_md = resolve_newsletter(date_iso)
