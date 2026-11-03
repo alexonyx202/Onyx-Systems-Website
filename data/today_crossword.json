@@ -1,159 +1,203 @@
 {
-  "title": "Math Crossword",
-  "size": 22,
+  "title": "Math crossword",
+  "size": 26,
   "grid": [
-    "...........g..........",
-    "...........e..........",
-    "..........point.......",
-    "...........m..........",
-    ".......percent........",
-    "...........t.r........",
-    "....mrsowder.i........",
-    "....u......y.a........",
-    "parallel.....n........",
-    "....t........g........",
-    "....i........l........",
-    "....parentheses.......",
-    "....l.........u.......",
-    "....i.........b.......",
-    "....c.........t.......",
-    "....a..a......r.......",
-    "....t.plus..mean......",
-    "....i..g....o.c.......",
-    "....o..e....d.t.......",
-    "....numbers.e.........",
-    ".......r..............",
-    "....equal............."
+    "...............clock......",
+    "..t....d..........a.......",
+    "..word.i....multiplication",
+    "..o..e.v..........c.......",
+    ".....c.i.........numbers..",
+    "....misshopkins...l.......",
+    ".....m.i......q...a.......",
+    ".....a.o......u...t.......",
+    ".....l.n....fractions.....",
+    "pemdas........r.r.r.......",
+    ".q.......circle.i.........",
+    ".u..........o...addition..",
+    ".a..........n.m.n.........",
+    ".l..........e.algebra.....",
+    "..............t.l.........",
+    ".............three........",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 11,
+        "num": 1,
+        "row": 1,
+        "col": 16,
         "len": 5,
-        "answer": "point",
-        "clue": "A dot on a graph"
-      },
-      {
-        "num": 3,
-        "row": 5,
-        "col": 8,
-        "len": 7,
-        "answer": "percent",
-        "clue": "%"
+        "answer": "clock",
+        "clue": "circle"
       },
       {
         "num": 5,
-        "row": 7,
-        "col": 5,
-        "len": 8,
-        "answer": "mrsowder",
-        "clue": "a wonderful man"
-      },
-      {
-        "num": 6,
-        "row": 9,
-        "col": 1,
-        "len": 8,
-        "answer": "parallel",
-        "clue": "line lines that do not interact"
+        "row": 3,
+        "col": 3,
+        "len": 4,
+        "answer": "word",
+        "clue": "problem   solving problems"
       },
       {
         "num": 7,
-        "row": 12,
-        "col": 5,
-        "len": 11,
-        "answer": "parentheses",
-        "clue": "()"
+        "row": 3,
+        "col": 13,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "x"
       },
       {
-        "num": 10,
-        "row": 17,
-        "col": 7,
-        "len": 4,
-        "answer": "plus",
-        "clue": "to add"
+        "num": 8,
+        "row": 5,
+        "col": 18,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "digits"
+      },
+      {
+        "num": 9,
+        "row": 6,
+        "col": 5,
+        "len": 11,
+        "answer": "misshopkins",
+        "clue": "The teacher"
       },
       {
         "num": 11,
-        "row": 17,
+        "row": 9,
         "col": 13,
-        "len": 4,
-        "answer": "mean",
-        "clue": "the adverage"
-      },
-      {
-        "num": 12,
-        "row": 20,
-        "col": 5,
-        "len": 7,
-        "answer": "numbers",
-        "clue": "123456789"
+        "len": 9,
+        "answer": "fractions",
+        "clue": "numbers on top of each other"
       },
       {
         "num": 13,
-        "row": 22,
-        "col": 5,
+        "row": 10,
+        "col": 1,
+        "len": 6,
+        "answer": "pemdas",
+        "clue": "song we did"
+      },
+      {
+        "num": 15,
+        "row": 11,
+        "col": 10,
+        "len": 6,
+        "answer": "circle",
+        "clue": "doesn't have sides"
+      },
+      {
+        "num": 17,
+        "row": 12,
+        "col": 17,
+        "len": 8,
+        "answer": "addition",
+        "clue": "+"
+      },
+      {
+        "num": 19,
+        "row": 14,
+        "col": 15,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "hard math"
+      },
+      {
+        "num": 20,
+        "row": 16,
+        "col": 14,
         "len": 5,
-        "answer": "equal",
-        "clue": "="
+        "answer": "three",
+        "clue": "digit    10/20/40/34"
       }
     ],
     "down": [
       {
-        "num": 1,
+        "num": 2,
         "row": 1,
-        "col": 12,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "Math but shapes"
+        "col": 19,
+        "len": 10,
+        "answer": "calculator",
+        "clue": "used to calculate faster"
+      },
+      {
+        "num": 3,
+        "row": 2,
+        "col": 3,
+        "len": 3,
+        "answer": "two",
+        "clue": "digit      first year of a teen"
       },
       {
         "num": 4,
-        "row": 5,
-        "col": 14,
+        "row": 2,
+        "col": 8,
+        "len": 8,
+        "answer": "division",
+        "clue": "\u00f7"
+      },
+      {
+        "num": 6,
+        "row": 3,
+        "col": 6,
+        "len": 8,
+        "answer": "decimals",
+        "clue": "dots in your math"
+      },
+      {
+        "num": 10,
+        "row": 6,
+        "col": 15,
+        "len": 6,
+        "answer": "square",
+        "clue": "a box"
+      },
+      {
+        "num": 12,
+        "row": 9,
+        "col": 17,
         "len": 8,
         "answer": "triangle",
-        "clue": "a 3 sided shape"
+        "clue": "egypt pyramid"
       },
       {
-        "num": 5,
-        "row": 7,
-        "col": 5,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "times"
+        "num": 14,
+        "row": 10,
+        "col": 2,
+        "len": 5,
+        "answer": "equal",
+        "clue": "the answer"
       },
       {
-        "num": 8,
-        "row": 12,
-        "col": 15,
-        "len": 8,
-        "answer": "subtract",
-        "clue": "to take away"
-      },
-      {
-        "num": 9,
-        "row": 16,
-        "col": 8,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "A Math"
-      },
-      {
-        "num": 11,
-        "row": 17,
+        "num": 16,
+        "row": 11,
         "col": 13,
         "len": 4,
-        "answer": "mode",
-        "clue": "most often"
+        "answer": "cone",
+        "clue": "ice-cream"
+      },
+      {
+        "num": 18,
+        "row": 13,
+        "col": 15,
+        "len": 4,
+        "answer": "math",
+        "clue": "involves everything in here"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-702",
-  "slug": "math-crossword-702",
-  "fetched_at": "2026-07-14T19:21:25.690583+00:00",
-  "date": "2026-11-02"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-749",
+  "slug": "math-crossword-749",
+  "fetched_at": "2026-07-14T19:10:32.567415+00:00",
+  "date": "2026-11-03"
 }
