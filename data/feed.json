@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,10 +100,18 @@
   ],
   "news": [
     {
+      "id": "n-2026-11-03",
+      "type": "newsletter",
+      "date": "2026-11-03",
+      "title": "Microsoft Patched a Critical Office Flaw \u2014 Check If You're Protected",
+      "tag": "Daily Brief",
+      "excerpt": "Microsoft fixed a dangerous Office flaw last month \u2014 opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c"
+    },
+    {
       "id": "onyx-2026-11-02-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-02",
-      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
+      "title": "CISA adds two actively exploited flaws to must-patch list \u2014 Adobe Commerce and Google Brotli",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities (Adobe Commerce CVE-2026-XXXXX, Google Brotli CVE-2026-YYYYY) to its Known Exploited Vulnerabilities catalog. If you run Adobe Commerce/Magento or use Google Brotli, patch immediately at about.adobe.com and github.com/google/brotli.",
       "image": "assets/img/news/2026-11-02-composite.jpg",
@@ -114,7 +122,7 @@
       "id": "onyx-2026-11-01-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-01",
-      "title": "CISA warns: GitLab and Cisco flaws under active attack — update now at vendor sites",
+      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities (GitLab CVE-2026-97229, Cisco CVE-2026-76418) to its Known Exploited Vulnerabilities catalog on Oct 29. If you run GitLab or Cisco firewalls, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security."
     },
@@ -122,7 +130,7 @@
       "id": "onyx-2026-10-31-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-31",
-      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
+      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list \u2014 Adobe Commerce, Google Brotli, Collabora Online",
       "tag": "Daily Brief",
       "excerpt": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026",
       "tags": [
@@ -137,9 +145,9 @@
       "id": "onyx-2026-10-28-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-28",
-      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited — Update Now",
+      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited \u2014 Update Now",
       "tag": "Daily Brief",
-      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did — and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer — no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three…",
+      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did \u2014 and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer \u2014 no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three\u2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -149,44 +157,29 @@
       "image": "assets/img/news/2026-10-28-composite.jpg",
       "comic": "assets/img/news/2026-10-28-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-10-30-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-30",
-      "title": "CISA alert: Adobe Commerce and Google Brotli flaws actively exploited — patch immediately",
-      "tag": "Daily Brief",
-      "excerpt": "Update Adobe Commerce/Magento and your browser to latest versions — check cisa.gov/known-exploited-vulnerabilities-catalog for details",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ]
-    },
-    {
-      "id": "onyx-2026-10-29-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-29",
-      "title": "CISA flags exploited Windows zero-day — patch at Settings > Windows Update by October 16",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added CVE-2026-96207, an actively exploited Windows Shell zero-day, to its Known Exploited Vulnerabilities catalog on October 13. Microsoft fixed it in the October Patch Tuesday release (1,413 total vulnerabilities addressed). Federal agencies must apply the patch by October 16; you should update promptly. Open Settings > Windows Update and check for updates now.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ]
     }
   ],
   "posts": [
     {
+      "id": "t-2026-11-03",
+      "type": "news",
+      "date": "2026-11-03",
+      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is free and opens every file you have",
+      "tag": "Free Software",
+      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math \u2014 completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
+      "truth": "",
+      "cta": {
+        "label": "Download LibreOffice",
+        "href": "https://libreoffice.org"
+      }
+    },
+    {
       "id": "onyx-2026-11-02-news-1",
       "type": "news",
       "date": "2026-11-02",
-      "title": "AI voice clones can sound like your family — use a safe word and call back on a saved number",
+      "title": "AI voice clones can sound like your family \u2014 use a safe word and call back on a saved number",
       "tag": "Tech Note",
-      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now — ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
+      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now \u2014 ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
       "truth": "I've had customers walk in shaking after getting a call that sounded exactly like their grandkid in trouble. The voice was perfect. The panic was real. The only thing that stopped them was calling the real number.",
       "cta": {
         "label": "FTC Voice Cloning Guide",
@@ -194,40 +187,31 @@
       }
     },
     {
-      "id": "onyx-2026-11-02-tip-1",
-      "type": "tip",
-      "date": "2026-11-02",
-      "title": "Windows 11 has free built-in backup — File History and OneDrive protect your files automatically",
-      "tag": "Tech Tip",
-      "summary": "Turn on File History at Settings > System > Storage > Advanced storage settings > Backup options (plug in an external drive first). Turn on OneDrive folder backup at OneDrive settings > Sync and backup > Manage backup — both free and built into Windows. Microsoft just fixed a File History bug in the October 2026 update.",
-      "truth": "I see people lose everything — photos, taxes, business records — because \"I meant to back up.\" The built-in tools do it while you sleep. No subscription. No extra software."
-    },
-    {
       "id": "onyx-2026-11-01-news-2",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
+      "title": "Fiber internet expanding in Lake City \u2014 Clearwave Fiber now at 20% availability, check your address",
       "tag": "Tech Note",
       "summary": "BroadbandNow data (Oct 31, 2026) shows Clearwave Fiber at 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber reaches 80%, Xfinity cable/fiber at 68.8%. Check your exact address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
-      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time — they're usually surprised."
+      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time \u2014 they're usually surprised."
     },
     {
       "id": "onyx-2026-11-01-news-1",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
+      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords \u2014 free update at firefox.com",
       "tag": "Tech Note",
-      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu → Help → About Firefox.",
-      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default — no tracking, no data harvesting, just a browser that works for you."
+      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu \u2192 Help \u2192 About Firefox.",
+      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default \u2014 no tracking, no data harvesting, just a browser that works for you."
     },
     {
       "id": "onyx-2026-10-31-news-3",
       "type": "news",
       "date": "2026-10-31",
-      "title": "Best free password manager 2026 — Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
+      "title": "Best free password manager 2026 \u2014 Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
       "tag": "Tech Note",
       "summary": "Bitwarden offers unlimited passwords and devices for free with open-source code at bitwarden.com. Proton Pass adds email aliases and built-in two-factor authentication free at proton.me/pass. Both work on Windows, Mac, Linux, phones. Source: Security.org, TechDeft, ITsFOSS 2026 comparisons",
-      "truth": "People reuse the same three passwords everywhere because they can't remember more. A password manager fixes this completely. Bitwarden's free tier is genuinely unlimited — no device limit, no password limit. Proton Pass is the choice if you want email aliases (hide your real email when signing up) and 2FA built in without a separate app.",
+      "truth": "People reuse the same three passwords everywhere because they can't remember more. A password manager fixes this completely. Bitwarden's free tier is genuinely unlimited \u2014 no device limit, no password limit. Proton Pass is the choice if you want email aliases (hide your real email when signing up) and 2FA built in without a separate app.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -241,85 +225,68 @@
       }
     },
     {
-      "id": "onyx-2026-10-31-news-2",
-      "type": "news",
-      "date": "2026-10-31",
-      "title": "Windows 11 25H2 and 26H2 are the new supported versions — free upgrade at Settings > Windows Update if you are on 24H2 Home or Pro",
-      "tag": "Tech Note",
-      "summary": "Windows 11 24H2 Home and Pro reached end of updates October 13 2026. Microsoft now supports 25H2 and 26H2 with monthly security patches. The upgrade is free — go to Settings > Windows Update and check for updates. If your PC says it's up to date on 24H2 you need to manually trigger the version upgrade. Source: Microsoft Support KB5127648 October 13 2026",
-      "truth": "I've had customers bring in PCs that \"work fine\" but haven't had a security patch in months. Windows won't always offer the version upgrade automatically — you have to click \"Check for updates\" and sometimes toggle \"Get the latest updates as soon as they're available\" in Advanced options.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#SecurityUpdates"
-      ],
+      "id": "t-2026-11-03-voiceaccess",
+      "type": "tip",
+      "date": "2026-11-03",
+      "title": "Talk to your computer and it types for you \u2014 Windows Voice Access is free, built in, and works offline",
+      "tag": "Accessibility",
+      "summary": "Windows 11 includes Voice Access \u2014 dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline \u2014 no internet, no account, no data sent to Microsoft.",
+      "truth": "",
       "cta": {
-        "label": "Windows 11 Update Guide",
-        "href": "https://microsoft.com/software-download/windows11"
+        "label": "Enable Voice Access",
+        "href": "ms-settings:accessibility-speech"
       }
     },
     {
-      "id": "onyx-2026-10-31-news-1",
-      "type": "news",
-      "date": "2026-10-31",
-      "title": "Windows 11 Live Captions transcribes any audio free — great for videos without subtitles",
-      "tag": "Tech Note",
-      "summary": "Windows 11 has a free built-in Live Captions feature that transcribes any audio playing on your PC in real time. Press Win+Ctrl+L to turn it on. It works offline for English and works on any video, podcast, or meeting. No upload, no account, no cost. Free at microsoft.com/windows/tips/live-captions or just press Win+Ctrl+L.",
-      "truth": "Most people don't realize this feature exists — it's been in Windows 11 since 2022 and keeps getting better. I show it to customers who struggle to hear videos or watch content in noisy environments, and they're always surprised it's free and offline.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Accessibility"
-      ],
+      "id": "t-2026-11-03-bitwarden",
+      "type": "tip",
+      "date": "2026-11-03",
+      "title": "Stop reusing passwords \u2014 Bitwarden is the free password manager that works on every device",
+      "tag": "Security",
+      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password \u2014 Bitwarden generates, saves, and fills the rest.",
+      "truth": "",
       "cta": {
-        "label": "Microsoft Live Captions Guide",
-        "href": "https://microsoft.com/windows/tips/live-captions"
+        "label": "Get Bitwarden Free",
+        "href": "https://bitwarden.com"
       }
     },
     {
-      "id": "onyx-2026-11-01-tip-2",
+      "id": "t-2026-11-03-clipboard",
       "type": "tip",
-      "date": "2026-11-01",
-      "title": "Windows can stop ransomware from encrypting your files free — Controlled Folder Access is built in",
-      "tag": "Tech Tip",
-      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings → Privacy & security → Windows Security → Virus & threat protection → Manage ransomware protection → On.",
-      "truth": "I turn this on for every customer. It's free, built in, and stops the one thing that makes people cry — losing their photos and documents to ransomware."
-    },
-    {
-      "id": "onyx-2026-11-01-tip-1",
-      "type": "tip",
-      "date": "2026-11-01",
-      "title": "Windows has free built-in troubleshooters for internet audio printer and updates — no download needed",
-      "tag": "Tech Tip",
-      "summary": "Windows 11 includes free troubleshooters for internet connections, audio problems, printer issues, Windows Update, and more. Find them at Settings → System → Troubleshoot → Other troubleshooters. Click \"Run\" next to any problem area.",
-      "truth": "I watch customers spend hours Googling fixes for things Windows can diagnose itself. The built-in troubleshooters aren't magic, but they solve about half the calls I get — for free."
-    },
-    {
-      "id": "onyx-2026-10-31-tip-1",
-      "type": "tip",
-      "date": "2026-10-31",
-      "title": "One click in Windows Security turns on free ransomware protection — Controlled Folder Access blocks unauthorized encryption",
-      "tag": "Tech Tip",
-      "summary": "Windows 11 has a free ransomware shield built in called Controlled Folder Access. It stops unknown apps from encrypting your documents, pictures, and desktop folders. Open Windows Security (type \"Windows Security\" in Start), click Virus & threat protection, then Manage ransomware protection, and turn on Controlled Folder Access. Takes 30 seconds. Source: Microsoft Support, How-To Geek, Pureinfotech",
-      "truth": "Ransomware doesn't care if you're a \"small target.\" It's automated — it hits everyone. Controlled Folder Access is the one setting that actually stops the encryption from happening. It's free, already installed, and I turn it on for every single customer. Most people have never heard of it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Ransomware",
-        "#WindowsSecurity"
-      ],
+      "date": "2026-11-03",
+      "title": "Copy multiple things, paste any of them \u2014 Windows Clipboard History is free and built in",
+      "tag": "Windows Tip",
+      "summary": "Press Windows key + V to open Clipboard History. If off, click Turn on. Now every copy (Ctrl+C) saves text, links, small screenshots. Press Win+V to see last 25 items and click any to paste. Pin frequent snippets.",
+      "truth": "",
       "cta": {
-        "label": "Open Windows Security",
-        "href": "ms-settings:windowsdefender"
+        "label": "Enable Clipboard History",
+        "href": "ms-settings:clipboard"
       }
+    },
+    {
+      "id": "t-2026-11-03-quickassist",
+      "type": "tip",
+      "date": "2026-11-03",
+      "title": "Get free remote help built into Windows \u2014 Quick Assist lets someone you trust see and control your PC",
+      "tag": "Windows Tip",
+      "summary": "Windows 11 includes Quick Assist \u2014 a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
+      "truth": "",
+      "cta": {
+        "label": "Open Quick Assist",
+        "href": "ms-quickassist:"
+      }
+    },
+    {
+      "id": "onyx-2026-11-02-tip-1",
+      "type": "tip",
+      "date": "2026-11-02",
+      "title": "Windows 11 has free built-in backup \u2014 File History and OneDrive protect your files automatically",
+      "tag": "Tech Tip",
+      "summary": "Turn on File History at Settings > System > Storage > Advanced storage settings > Backup options (plug in an external drive first). Turn on OneDrive folder backup at OneDrive settings > Sync and backup > Manage backup \u2014 both free and built into Windows. Microsoft just fixed a File History bug in the October 2026 update.",
+      "truth": "I see people lose everything \u2014 photos, taxes, business records \u2014 because \"I meant to back up.\" The built-in tools do it while you sleep. No subscription. No extra software."
     }
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "today_word": {
     "word": "Patch",
     "pos": "noun",

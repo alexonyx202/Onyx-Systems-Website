@@ -1,6 +1,76 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "items": [
+    {
+      "id": "n-2026-11-03",
+      "type": "newsletter",
+      "date": "2026-11-03",
+      "title": "Microsoft Patched a Critical Office Flaw — Check If You're Protected",
+      "tag": "Daily Brief",
+      "summary": "Microsoft fixed a dangerous Office flaw last month — opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c",
+      "comic": "Newsletter - 2026-11-03-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-03",
+      "type": "tech-note",
+      "date": "2026-11-03",
+      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is free and opens every file you have",
+      "tag": "Free Software",
+      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math — completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
+      "cta": {
+        "label": "Download LibreOffice",
+        "href": "https://libreoffice.org"
+      }
+    },
+    {
+      "id": "t-2026-11-03-quickassist",
+      "type": "tech-note",
+      "date": "2026-11-03",
+      "title": "Get free remote help built into Windows — Quick Assist lets someone you trust see and control your PC",
+      "tag": "Windows Tip",
+      "summary": "Windows 11 includes Quick Assist — a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
+      "cta": {
+        "label": "Open Quick Assist",
+        "href": "ms-quickassist:"
+      }
+    },
+    {
+      "id": "t-2026-11-03-clipboard",
+      "type": "tech-note",
+      "date": "2026-11-03",
+      "title": "Copy multiple things, paste any of them — Windows Clipboard History is free and built in",
+      "tag": "Windows Tip",
+      "summary": "Press Windows key + V to open Clipboard History. If off, click Turn on. Now every copy (Ctrl+C) saves text, links, small screenshots. Press Win+V to see last 25 items and click any to paste. Pin frequent snippets.",
+      "cta": {
+        "label": "Enable Clipboard History",
+        "href": "ms-settings:clipboard"
+      }
+    },
+    {
+      "id": "t-2026-11-03-bitwarden",
+      "type": "tech-note",
+      "date": "2026-11-03",
+      "title": "Stop reusing passwords — Bitwarden is the free password manager that works on every device",
+      "tag": "Security",
+      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password — Bitwarden generates, saves, and fills the rest.",
+      "cta": {
+        "label": "Get Bitwarden Free",
+        "href": "https://bitwarden.com"
+      }
+    },
+    {
+      "id": "t-2026-11-03-voiceaccess",
+      "type": "tech-note",
+      "date": "2026-11-03",
+      "title": "Talk to your computer and it types for you — Windows Voice Access is free, built in, and works offline",
+      "tag": "Accessibility",
+      "summary": "Windows 11 includes Voice Access — dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline — no internet, no account, no data sent to Microsoft.",
+      "cta": {
+        "label": "Enable Voice Access",
+        "href": "ms-settings:accessibility-speech"
+      }
+    },
     {
       "id": "n-2026-11-02",
       "type": "newsletter",
@@ -66,72 +136,6 @@
       "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings → Privacy & security → Windows Security → Virus & threat protection → Manage ransomware protection → On.",
       "cta": {
         "label": "Enable Protection",
-        "href": "ms-settings:windowsdefender"
-      }
-    },
-    {
-      "id": "n-2026-10-31",
-      "type": "newsletter",
-      "date": "2026-10-31",
-      "title": "That Parking Meter QR Code Could Empty Your Account",
-      "tag": "Daily Brief",
-      "summary": "That Parking Meter QR Code Could Empty Your Account.",
-      "comic": "Newsletter - 2026-10-31-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-10-31-daily-brief",
-      "type": "tech-note",
-      "date": "2026-10-31",
-      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
-      "tag": "Daily Brief",
-      "summary": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026"
-    },
-    {
-      "id": "t-2026-10-31-post2",
-      "type": "tech-note",
-      "date": "2026-10-31",
-      "title": "Windows 11 Live Captions transcribes any audio free — great for videos without subtitles",
-      "tag": "Tech Note",
-      "summary": "Windows 11 has a free built-in Live Captions feature that transcribes any audio playing on your PC in real time. Press Win+Ctrl+L to turn it on. It works offline for English and works on any video, podcast, or meeting. No upload, no account, no cost. Free at microsoft.com/windows/tips/live-captions or just press Win+Ctrl+L.",
-      "cta": {
-        "label": "Microsoft Live Captions Guide",
-        "href": "https://microsoft.com/windows/tips/live-captions"
-      }
-    },
-    {
-      "id": "t-2026-10-31-post3",
-      "type": "tech-note",
-      "date": "2026-10-31",
-      "title": "Windows 11 25H2 and 26H2 are the new supported versions — free upgrade at Settings > Windows Update if you are on 24H2 Home or Pro",
-      "tag": "Tech Note",
-      "summary": "Windows 11 24H2 Home and Pro reached end of updates October 13 2026. Microsoft now supports 25H2 and 26H2 with monthly security patches. The upgrade is free — go to Settings > Windows Update and check for updates. If your PC says it's up to date on 24H2 you need to manually trigger the version upgrade. Source: Microsoft Support KB5127648 October 13 2026",
-      "cta": {
-        "label": "Windows 11 Update Guide",
-        "href": "https://microsoft.com/software-download/windows11"
-      }
-    },
-    {
-      "id": "t-2026-10-31-post4",
-      "type": "tech-note",
-      "date": "2026-10-31",
-      "title": "Best free password manager 2026 — Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
-      "tag": "Tech Note",
-      "summary": "Bitwarden offers unlimited passwords and devices for free with open-source code at bitwarden.com. Proton Pass adds email aliases and built-in two-factor authentication free at proton.me/pass. Both work on Windows, Mac, Linux, phones. Source: Security.org, TechDeft, ITsFOSS 2026 comparisons",
-      "cta": {
-        "label": "Try Bitwarden",
-        "href": "https://bitwarden.com"
-      }
-    },
-    {
-      "id": "t-2026-10-31-post5",
-      "type": "tech-note",
-      "date": "2026-10-31",
-      "title": "One click in Windows Security turns on free ransomware protection — Controlled Folder Access blocks unauthorized encryption",
-      "tag": "Tech Note",
-      "summary": "Windows 11 has a free ransomware shield built in called Controlled Folder Access. It stops unknown apps from encrypting your documents, pictures, and desktop folders. Open Windows Security (type \"Windows Security\" in Start), click Virus & threat protection, then Manage ransomware protection, and turn on Controlled Folder Access. Takes 30 seconds. Source: Microsoft Support, How-To Geek, Pureinfotech",
-      "cta": {
-        "label": "Open Windows Security",
         "href": "ms-settings:windowsdefender"
       }
     }
