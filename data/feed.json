@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -100,18 +100,35 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-04-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-04",
+      "title": "That 'Gift Card Payment' Demand Is a Scam — Hang Up",
+      "tag": "Daily Brief",
+      "excerpt": "The phone rings. The caller says you owe money — taxes, a utility bill, a court fine — and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov — October 2026",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-04-composite.jpg",
+      "comic": "assets/img/news/2026-11-04-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "n-2026-11-03",
       "type": "newsletter",
       "date": "2026-11-03",
-      "title": "Microsoft Patched a Critical Office Flaw \u2014 Check If You're Protected",
+      "title": "Microsoft Patched a Critical Office Flaw — Check If You're Protected",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft fixed a dangerous Office flaw last month \u2014 opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c"
+      "excerpt": "Microsoft fixed a dangerous Office flaw last month — opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c"
     },
     {
       "id": "onyx-2026-11-02-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-02",
-      "title": "CISA adds two actively exploited flaws to must-patch list \u2014 Adobe Commerce and Google Brotli",
+      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities (Adobe Commerce CVE-2026-XXXXX, Google Brotli CVE-2026-YYYYY) to its Known Exploited Vulnerabilities catalog. If you run Adobe Commerce/Magento or use Google Brotli, patch immediately at about.adobe.com and github.com/google/brotli.",
       "image": "assets/img/news/2026-11-02-composite.jpg",
@@ -122,7 +139,7 @@
       "id": "onyx-2026-11-01-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-01",
-      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
+      "title": "CISA warns: GitLab and Cisco flaws under active attack — update now at vendor sites",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities (GitLab CVE-2026-97229, Cisco CVE-2026-76418) to its Known Exploited Vulnerabilities catalog on Oct 29. If you run GitLab or Cisco firewalls, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security."
     },
@@ -130,7 +147,7 @@
       "id": "onyx-2026-10-31-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-10-31",
-      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list \u2014 Adobe Commerce, Google Brotli, Collabora Online",
+      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
       "tag": "Daily Brief",
       "excerpt": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026",
       "tags": [
@@ -140,33 +157,31 @@
         "#DailyBrief",
         "#SecurityAlert"
       ]
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-10-28-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-28",
-      "title": "Chrome's 7th Zero-Day This Year Is Actively Exploited \u2014 Update Now",
-      "tag": "Daily Brief",
-      "excerpt": "Google just patched Chrome's seventh actively exploited zero-day of 2026.\nThat's seven times this year that attackers found a hole in Chrome\nbefore Google did \u2014 and used it against real people.\n\nThe flaw (vulnerability) lives in Chrome's V8 JavaScript engine.\nVisit a malicious website and the code runs on your computer \u2014 no\nclicks, no downloads, just loading the page. Google confirmed active\nexploitation. CISA added it to their \"must-patch-now\" list.\n\nWhat to do: Open Chrome. Click the three\u2026",
+      "id": "onyx-2026-11-04-post-1",
+      "type": "news",
+      "date": "2026-11-04",
+      "title": "Daily Brief — Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
+      "tag": "Tech Note",
+      "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com.",
+      "truth": "",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
         "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-10-28-composite.jpg",
-      "comic": "assets/img/news/2026-10-28-comic-square.jpg",
-      "read_more": "#contact"
-    }
-  ],
-  "posts": [
+      ]
+    },
     {
       "id": "t-2026-11-03",
       "type": "news",
       "date": "2026-11-03",
-      "title": "Stop paying for Microsoft Office \u2014 LibreOffice 25.2 is free and opens every file you have",
+      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is free and opens every file you have",
       "tag": "Free Software",
-      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math \u2014 completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
+      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math — completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
       "truth": "",
       "cta": {
         "label": "Download LibreOffice",
@@ -177,9 +192,9 @@
       "id": "onyx-2026-11-02-news-1",
       "type": "news",
       "date": "2026-11-02",
-      "title": "AI voice clones can sound like your family \u2014 use a safe word and call back on a saved number",
+      "title": "AI voice clones can sound like your family — use a safe word and call back on a saved number",
       "tag": "Tech Note",
-      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now \u2014 ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
+      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now — ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
       "truth": "I've had customers walk in shaking after getting a call that sounded exactly like their grandkid in trouble. The voice was perfect. The panic was real. The only thing that stopped them was calling the real number.",
       "cta": {
         "label": "FTC Voice Cloning Guide",
@@ -190,47 +205,41 @@
       "id": "onyx-2026-11-01-news-2",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Fiber internet expanding in Lake City \u2014 Clearwave Fiber now at 20% availability, check your address",
+      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
       "tag": "Tech Note",
       "summary": "BroadbandNow data (Oct 31, 2026) shows Clearwave Fiber at 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber reaches 80%, Xfinity cable/fiber at 68.8%. Check your exact address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
-      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time \u2014 they're usually surprised."
+      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time — they're usually surprised."
     },
     {
       "id": "onyx-2026-11-01-news-1",
       "type": "news",
       "date": "2026-11-01",
-      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords \u2014 free update at firefox.com",
+      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
       "tag": "Tech Note",
-      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu \u2192 Help \u2192 About Firefox.",
-      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default \u2014 no tracking, no data harvesting, just a browser that works for you."
+      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu → Help → About Firefox.",
+      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default — no tracking, no data harvesting, just a browser that works for you."
     },
     {
-      "id": "onyx-2026-10-31-news-3",
-      "type": "news",
-      "date": "2026-10-31",
-      "title": "Best free password manager 2026 \u2014 Bitwarden unlimited devices open source or Proton Pass with email aliases and built-in 2FA",
-      "tag": "Tech Note",
-      "summary": "Bitwarden offers unlimited passwords and devices for free with open-source code at bitwarden.com. Proton Pass adds email aliases and built-in two-factor authentication free at proton.me/pass. Both work on Windows, Mac, Linux, phones. Source: Security.org, TechDeft, ITsFOSS 2026 comparisons",
-      "truth": "People reuse the same three passwords everywhere because they can't remember more. A password manager fixes this completely. Bitwarden's free tier is genuinely unlimited \u2014 no device limit, no password limit. Proton Pass is the choice if you want email aliases (hide your real email when signing up) and 2FA built in without a separate app.",
+      "id": "onyx-2026-11-04-post-2",
+      "type": "tip",
+      "date": "2026-11-04",
+      "title": "**Headline:** Windows 11 November update KB5127936 brings customizable right-click menu to File Explorer",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > Windows Update and click Check for updates to get KB5127936, or download it from the Microsoft Update Catalog at catalog.update.microsoft.com. After installing, right-click in File Explorer and choose \"Customize menu\" to turn built-in commands on or off, add \"Print,\" choose which app extensions appear, or hide the app extensions submenu entirely.",
+      "truth": "Most people never right-click more than \"Open\" and \"Delete.\" This update finally lets you clean up the clutter so the commands you actually use are right there — no more digging through a mile-long menu.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#PasswordManager",
-        "#Security"
-      ],
-      "cta": {
-        "label": "Try Bitwarden",
-        "href": "https://bitwarden.com"
-      }
+        "#ComputerRepair"
+      ]
     },
     {
       "id": "t-2026-11-03-voiceaccess",
       "type": "tip",
       "date": "2026-11-03",
-      "title": "Talk to your computer and it types for you \u2014 Windows Voice Access is free, built in, and works offline",
+      "title": "Talk to your computer and it types for you — Windows Voice Access is free, built in, and works offline",
       "tag": "Accessibility",
-      "summary": "Windows 11 includes Voice Access \u2014 dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline \u2014 no internet, no account, no data sent to Microsoft.",
+      "summary": "Windows 11 includes Voice Access — dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline — no internet, no account, no data sent to Microsoft.",
       "truth": "",
       "cta": {
         "label": "Enable Voice Access",
@@ -241,9 +250,9 @@
       "id": "t-2026-11-03-bitwarden",
       "type": "tip",
       "date": "2026-11-03",
-      "title": "Stop reusing passwords \u2014 Bitwarden is the free password manager that works on every device",
+      "title": "Stop reusing passwords — Bitwarden is the free password manager that works on every device",
       "tag": "Security",
-      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password \u2014 Bitwarden generates, saves, and fills the rest.",
+      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password — Bitwarden generates, saves, and fills the rest.",
       "truth": "",
       "cta": {
         "label": "Get Bitwarden Free",
@@ -254,7 +263,7 @@
       "id": "t-2026-11-03-clipboard",
       "type": "tip",
       "date": "2026-11-03",
-      "title": "Copy multiple things, paste any of them \u2014 Windows Clipboard History is free and built in",
+      "title": "Copy multiple things, paste any of them — Windows Clipboard History is free and built in",
       "tag": "Windows Tip",
       "summary": "Press Windows key + V to open Clipboard History. If off, click Turn on. Now every copy (Ctrl+C) saves text, links, small screenshots. Press Win+V to see last 25 items and click any to paste. Pin frequent snippets.",
       "truth": "",
@@ -267,26 +276,17 @@
       "id": "t-2026-11-03-quickassist",
       "type": "tip",
       "date": "2026-11-03",
-      "title": "Get free remote help built into Windows \u2014 Quick Assist lets someone you trust see and control your PC",
+      "title": "Get free remote help built into Windows — Quick Assist lets someone you trust see and control your PC",
       "tag": "Windows Tip",
-      "summary": "Windows 11 includes Quick Assist \u2014 a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
+      "summary": "Windows 11 includes Quick Assist — a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
       "truth": "",
       "cta": {
         "label": "Open Quick Assist",
         "href": "ms-quickassist:"
       }
-    },
-    {
-      "id": "onyx-2026-11-02-tip-1",
-      "type": "tip",
-      "date": "2026-11-02",
-      "title": "Windows 11 has free built-in backup \u2014 File History and OneDrive protect your files automatically",
-      "tag": "Tech Tip",
-      "summary": "Turn on File History at Settings > System > Storage > Advanced storage settings > Backup options (plug in an external drive first). Turn on OneDrive folder backup at OneDrive settings > Sync and backup > Manage backup \u2014 both free and built into Windows. Microsoft just fixed a File History bug in the October 2026 update.",
-      "truth": "I see people lose everything \u2014 photos, taxes, business records \u2014 because \"I meant to back up.\" The built-in tools do it while you sleep. No subscription. No extra software."
     }
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "today_word": {
     "word": "Patch",
     "pos": "noun",

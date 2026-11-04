@@ -1,6 +1,32 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "items": [
+    {
+      "id": "n-2026-11-04",
+      "type": "newsletter",
+      "date": "2026-11-04",
+      "title": "That 'Gift Card Payment' Demand Is a Scam — Hang Up",
+      "tag": "Daily Brief",
+      "summary": "The phone rings. The caller says you owe money — taxes, a utility bill, a court fine — and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov — October 2026",
+      "comic": "Newsletter - 2026-11-04-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-04-news1",
+      "type": "tech-note",
+      "date": "2026-11-04",
+      "title": "Daily Brief — Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
+      "tag": "Tech Note",
+      "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com."
+    },
+    {
+      "id": "t-2026-11-04-tip1",
+      "type": "tech-note",
+      "date": "2026-11-04",
+      "title": "**Headline:** Windows 11 November update KB5127936 brings customizable right-click menu to File Explorer",
+      "tag": "Tech Tip",
+      "summary": "Open Settings > Windows Update and click Check for updates to get KB5127936, or download it from the Microsoft Update Catalog at catalog.update.microsoft.com. After installing, right-click in File Explorer and choose \"Customize menu\" to turn built-in commands on or off, add \"Print,\" choose which app extensions appear, or hide the app extensions submenu entirely."
+    },
     {
       "id": "n-2026-11-03",
       "type": "newsletter",
@@ -101,42 +127,6 @@
       "cta": {
         "label": "Download Firefox",
         "href": "https://firefox.com"
-      }
-    },
-    {
-      "id": "t-2026-11-01-2",
-      "type": "tech-note",
-      "date": "2026-11-01",
-      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
-      "tag": "News",
-      "summary": "Clearwave Fiber reaches 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber at 80%, Xfinity at 68.8%. Check your address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://broadbandnow.com/Florida/Lake-City"
-      }
-    },
-    {
-      "id": "t-2026-11-01-3",
-      "type": "tech-note",
-      "date": "2026-11-01",
-      "title": "Windows has free built-in troubleshooters for internet audio printer and updates — no download needed",
-      "tag": "Tip",
-      "summary": "Windows 11 includes free troubleshooters for internet, audio, printer, Windows Update, and more. Find them at Settings → System → Troubleshoot → Other troubleshooters. Click Run next to any problem area.",
-      "cta": {
-        "label": "Open Troubleshooters",
-        "href": "ms-settings:troubleshoot"
-      }
-    },
-    {
-      "id": "t-2026-11-01-4",
-      "type": "tech-note",
-      "date": "2026-11-01",
-      "title": "Windows can stop ransomware from encrypting your files free — Controlled Folder Access is built in",
-      "tag": "Tip",
-      "summary": "Windows 11 has a free ransomware shield called Controlled Folder Access. It blocks unauthorized apps from encrypting your Documents, Pictures, and other folders. Turn it on: Settings → Privacy & security → Windows Security → Virus & threat protection → Manage ransomware protection → On.",
-      "cta": {
-        "label": "Enable Protection",
-        "href": "ms-settings:windowsdefender"
       }
     }
   ]
