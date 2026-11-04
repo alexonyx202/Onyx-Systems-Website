@@ -1,203 +1,198 @@
 {
   "title": "Math crossword",
-  "size": 26,
+  "size": 21,
   "grid": [
-    "...............clock......",
-    "..t....d..........a.......",
-    "..word.i....multiplication",
-    "..o..e.v..........c.......",
-    ".....c.i.........numbers..",
-    "....misshopkins...l.......",
-    ".....m.i......q...a.......",
-    ".....a.o......u...t.......",
-    ".....l.n....fractions.....",
-    "pemdas........r.r.r.......",
-    ".q.......circle.i.........",
-    ".u..........o...addition..",
-    ".a..........n.m.n.........",
-    ".l..........e.algebra.....",
-    "..............t.l.........",
-    ".............three........",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    ".........................."
+    "...a...........d.....",
+    "...l...........i.....",
+    "...g......math.v.....",
+    "three...c.i....i.....",
+    "...b....l.s.c..s..w..",
+    "..fractions.addition.",
+    "...a....c.h.l..o..r..",
+    "........k.o.c..n..d..",
+    "..........p.u.t....s.",
+    "..........k.l.r....q.",
+    "...multiplication..u.",
+    "..........n.t.a.u..a.",
+    ".....pemdas.o.numbers",
+    "......q.e...r.g.b..e.",
+    "......u.c.....l.e....",
+    "......a.i..cone.r....",
+    "......l.m..i.........",
+    "........a..r.........",
+    "........l..c.........",
+    "........s..l.........",
+    "...........e........."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 16,
-        "len": 5,
-        "answer": "clock",
-        "clue": "circle"
-      },
-      {
-        "num": 5,
+        "num": 3,
         "row": 3,
-        "col": 3,
+        "col": 11,
         "len": 4,
-        "answer": "word",
-        "clue": "problem   solving problems"
+        "answer": "math",
+        "clue": "involves everything in here"
       },
       {
-        "num": 7,
-        "row": 3,
-        "col": 13,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "x"
+        "num": 4,
+        "row": 4,
+        "col": 1,
+        "len": 5,
+        "answer": "three",
+        "clue": "digit    10/20/40/34"
       },
       {
         "num": 8,
-        "row": 5,
-        "col": 18,
-        "len": 7,
-        "answer": "numbers",
-        "clue": "digits"
-      },
-      {
-        "num": 9,
         "row": 6,
-        "col": 5,
-        "len": 11,
-        "answer": "misshopkins",
-        "clue": "The teacher"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 13,
+        "col": 3,
         "len": 9,
         "answer": "fractions",
         "clue": "numbers on top of each other"
       },
       {
-        "num": 13,
-        "row": 10,
-        "col": 1,
-        "len": 6,
-        "answer": "pemdas",
-        "clue": "song we did"
-      },
-      {
-        "num": 15,
-        "row": 11,
-        "col": 10,
-        "len": 6,
-        "answer": "circle",
-        "clue": "doesn't have sides"
-      },
-      {
-        "num": 17,
-        "row": 12,
-        "col": 17,
+        "num": 9,
+        "row": 6,
+        "col": 13,
         "len": 8,
         "answer": "addition",
         "clue": "+"
       },
       {
-        "num": 19,
-        "row": 14,
-        "col": 15,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "hard math"
+        "num": 12,
+        "row": 11,
+        "col": 4,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "x"
       },
       {
-        "num": 20,
+        "num": 14,
+        "row": 13,
+        "col": 6,
+        "len": 6,
+        "answer": "pemdas",
+        "clue": "song we did"
+      },
+      {
+        "num": 17,
+        "row": 13,
+        "col": 15,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "digits"
+      },
+      {
+        "num": 18,
         "row": 16,
-        "col": 14,
-        "len": 5,
-        "answer": "three",
-        "clue": "digit    10/20/40/34"
+        "col": 12,
+        "len": 4,
+        "answer": "cone",
+        "clue": "ice-cream"
       }
     ],
     "down": [
       {
+        "num": 1,
+        "row": 1,
+        "col": 4,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "advanced math"
+      },
+      {
         "num": 2,
         "row": 1,
-        "col": 19,
-        "len": 10,
-        "answer": "calculator",
-        "clue": "used to calculate faster"
-      },
-      {
-        "num": 3,
-        "row": 2,
-        "col": 3,
-        "len": 3,
-        "answer": "two",
-        "clue": "digit      first year of a teen"
-      },
-      {
-        "num": 4,
-        "row": 2,
-        "col": 8,
+        "col": 16,
         "len": 8,
         "answer": "division",
         "clue": "\u00f7"
       },
       {
-        "num": 6,
+        "num": 3,
         "row": 3,
-        "col": 6,
-        "len": 8,
-        "answer": "decimals",
-        "clue": "dots in your math"
+        "col": 11,
+        "len": 11,
+        "answer": "misshopkins",
+        "clue": "The teacher"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 9,
+        "len": 5,
+        "answer": "clock",
+        "clue": "time"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 13,
+        "len": 10,
+        "answer": "calculator",
+        "clue": "used to calculate faster"
+      },
+      {
+        "num": 7,
+        "row": 5,
+        "col": 19,
+        "len": 4,
+        "answer": "word",
+        "clue": "problem   problem  solving problems"
       },
       {
         "num": 10,
-        "row": 6,
+        "row": 9,
         "col": 15,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "egyptian pyramids"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 20,
         "len": 6,
         "answer": "square",
         "clue": "a box"
       },
       {
-        "num": 12,
-        "row": 9,
+        "num": 13,
+        "row": 11,
         "col": 17,
-        "len": 8,
-        "answer": "triangle",
-        "clue": "egypt pyramid"
+        "len": 6,
+        "answer": "number",
+        "clue": "line     endless straight line"
       },
       {
-        "num": 14,
-        "row": 10,
-        "col": 2,
+        "num": 15,
+        "row": 13,
+        "col": 7,
         "len": 5,
         "answer": "equal",
         "clue": "the answer"
       },
       {
         "num": 16,
-        "row": 11,
-        "col": 13,
-        "len": 4,
-        "answer": "cone",
-        "clue": "ice-cream"
+        "row": 13,
+        "col": 9,
+        "len": 8,
+        "answer": "decimals",
+        "clue": "dots in your math"
       },
       {
         "num": 18,
-        "row": 13,
-        "col": 15,
-        "len": 4,
-        "answer": "math",
-        "clue": "involves everything in here"
+        "row": 16,
+        "col": 12,
+        "len": 6,
+        "answer": "circle",
+        "clue": "line has no corners but never stops"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-749",
-  "slug": "math-crossword-749",
-  "fetched_at": "2026-07-14T19:10:32.567415+00:00",
-  "date": "2026-11-03"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-750",
+  "slug": "math-crossword-750",
+  "fetched_at": "2026-07-14T19:10:39.543167+00:00",
+  "date": "2026-11-04"
 }
