@@ -1,198 +1,160 @@
 {
-  "title": "Math crossword",
-  "size": 21,
+  "title": "Math crossword puzzle",
+  "size": 23,
   "grid": [
-    "...a...........d.....",
-    "...l...........i.....",
-    "...g......math.v.....",
-    "three...c.i....i.....",
-    "...b....l.s.c..s..w..",
-    "..fractions.addition.",
-    "...a....c.h.l..o..r..",
-    "........k.o.c..n..d..",
-    "..........p.u.t....s.",
-    "..........k.l.r....q.",
-    "...multiplication..u.",
-    "..........n.t.a.u..a.",
-    ".....pemdas.o.numbers",
-    "......q.e...r.g.b..e.",
-    "......u.c.....l.e....",
-    "......a.i..cone.r....",
-    "......l.m..i.........",
-    "........a..r.........",
-    "........l..c.........",
-    "........s..l.........",
-    "...........e........."
+    "..................T....",
+    "..................r....",
+    "...............Variable",
+    "..................n....",
+    "..................o....",
+    "..................m....",
+    ".............B....i....",
+    "......D......i....a....",
+    "......e..PolynomiAl....",
+    "......g......o...x.S...",
+    "......r......m.I.i.o...",
+    "......ExPression.s.l...",
+    "......e.o....a.t...u...",
+    "........s....l.Equation",
+    "..Identity.....g...i...",
+    "........u......e...o...",
+    "........l.....Origin...",
+    "...Quadrant............",
+    "........t..............",
+    "Coefficient............",
+    ".......................",
+    ".......................",
+    "......................."
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
+        "num": 2,
         "row": 3,
-        "col": 11,
-        "len": 4,
-        "answer": "math",
-        "clue": "involves everything in here"
+        "col": 16,
+        "len": 8,
+        "answer": "Variable",
+        "clue": "A letter that stands for a number (like x or y)"
       },
       {
-        "num": 4,
-        "row": 4,
-        "col": 1,
-        "len": 5,
-        "answer": "three",
-        "clue": "digit    10/20/40/34"
-      },
-      {
-        "num": 8,
-        "row": 6,
-        "col": 3,
-        "len": 9,
-        "answer": "fractions",
-        "clue": "numbers on top of each other"
+        "num": 5,
+        "row": 9,
+        "col": 10,
+        "len": 10,
+        "answer": "PolynomiAl",
+        "clue": "A math expression with one or more terms."
       },
       {
         "num": 9,
-        "row": 6,
-        "col": 13,
+        "row": 12,
+        "col": 7,
+        "len": 10,
+        "answer": "ExPression",
+        "clue": "A math phrase with numbers and variables but no equals sign"
+      },
+      {
+        "num": 11,
+        "row": 14,
+        "col": 16,
         "len": 8,
-        "answer": "addition",
-        "clue": "+"
+        "answer": "Equation",
+        "clue": "A math sentence with an equals sign"
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 4,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "x"
+        "row": 15,
+        "col": 3,
+        "len": 8,
+        "answer": "Identity",
+        "clue": "A math equation that is always true for all values."
+      },
+      {
+        "num": 13,
+        "row": 17,
+        "col": 15,
+        "len": 6,
+        "answer": "Origin",
+        "clue": "The point  where x and y axes meet."
       },
       {
         "num": 14,
-        "row": 13,
-        "col": 6,
-        "len": 6,
-        "answer": "pemdas",
-        "clue": "song we did"
+        "row": 18,
+        "col": 4,
+        "len": 8,
+        "answer": "Quadrant",
+        "clue": "One of the four parts of a graph."
       },
       {
-        "num": 17,
-        "row": 13,
-        "col": 15,
-        "len": 7,
-        "answer": "numbers",
-        "clue": "digits"
-      },
-      {
-        "num": 18,
-        "row": 16,
-        "col": 12,
-        "len": 4,
-        "answer": "cone",
-        "clue": "ice-cream"
+        "num": 15,
+        "row": 20,
+        "col": 1,
+        "len": 11,
+        "answer": "Coefficient",
+        "clue": "The number in front of a variable"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 4,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "advanced math"
-      },
-      {
-        "num": 2,
-        "row": 1,
-        "col": 16,
-        "len": 8,
-        "answer": "division",
-        "clue": "\u00f7"
+        "col": 19,
+        "len": 9,
+        "answer": "Trinomial",
+        "clue": "An expression with three terms."
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 11,
-        "len": 11,
-        "answer": "misshopkins",
-        "clue": "The teacher"
+        "row": 7,
+        "col": 14,
+        "len": 8,
+        "answer": "Binomial",
+        "clue": "An expression with two terms."
       },
       {
-        "num": 5,
-        "row": 4,
-        "col": 9,
-        "len": 5,
-        "answer": "clock",
-        "clue": "time"
+        "num": 4,
+        "row": 8,
+        "col": 7,
+        "len": 6,
+        "answer": "DegrEe",
+        "clue": "The highest power of the variable in a term or polynomial."
       },
       {
         "num": 6,
-        "row": 5,
-        "col": 13,
-        "len": 10,
-        "answer": "calculator",
-        "clue": "used to calculate faster"
+        "row": 9,
+        "col": 18,
+        "len": 4,
+        "answer": "Axis",
+        "clue": "A line on a graph"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 19,
-        "len": 4,
-        "answer": "word",
-        "clue": "problem   problem  solving problems"
+        "row": 10,
+        "col": 20,
+        "len": 8,
+        "answer": "Solution",
+        "clue": "The value that makes an equation true."
+      },
+      {
+        "num": 8,
+        "row": 11,
+        "col": 16,
+        "len": 7,
+        "answer": "IntEger",
+        "clue": "A number with no decimal, like -2, 0, or 5."
       },
       {
         "num": 10,
-        "row": 9,
-        "col": 15,
-        "len": 8,
-        "answer": "triangle",
-        "clue": "egyptian pyramids"
-      },
-      {
-        "num": 11,
-        "row": 9,
-        "col": 20,
-        "len": 6,
-        "answer": "square",
-        "clue": "a box"
-      },
-      {
-        "num": 13,
-        "row": 11,
-        "col": 17,
-        "len": 6,
-        "answer": "number",
-        "clue": "line     endless straight line"
-      },
-      {
-        "num": 15,
-        "row": 13,
-        "col": 7,
-        "len": 5,
-        "answer": "equal",
-        "clue": "the answer"
-      },
-      {
-        "num": 16,
-        "row": 13,
+        "row": 12,
         "col": 9,
-        "len": 8,
-        "answer": "decimals",
-        "clue": "dots in your math"
-      },
-      {
-        "num": 18,
-        "row": 16,
-        "col": 12,
-        "len": 6,
-        "answer": "circle",
-        "clue": "line has no corners but never stops"
+        "len": 9,
+        "answer": "Postulate",
+        "clue": "A basic rule in geometry accepted without proof."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-750",
-  "slug": "math-crossword-750",
-  "fetched_at": "2026-07-14T19:10:39.543167+00:00",
-  "date": "2026-11-04"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle-863",
+  "slug": "math-crossword-puzzle-863",
+  "fetched_at": "2026-07-14T19:21:59.246628+00:00",
+  "date": "2026-11-05"
 }
