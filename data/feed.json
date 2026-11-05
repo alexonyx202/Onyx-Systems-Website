@@ -3,11 +3,11 @@
     "name": "Onyx Systems",
     "tagline": "Your Hometown Computer Repair Experts",
     "phone": "(386) 755-7772",
-    "phone_href": "tel:+13867557772",
+    "phone_href": "tel:+138****7772",
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -24,88 +24,34 @@
       "text": "John had my laptop running like new the same week. Honest about what it needed and what it didn't. Hard to find service like this in a small town.",
       "source": "Google",
       "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Came out after hours to get our shop computer back up. Reasonable price, no nonsense. We send everyone his way now.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Explained everything in plain English and saved photos I thought were gone. Genuinely good guy who knows his stuff.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Brought in a dead PC everyone else wanted to replace. John repaired it for a fair price. Nearly 30 years in business shows.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Honest, fast, and local. Set up 2FA on all my accounts and didn't try to sell me a thing I didn't need.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Friendly, knowledgeable, and fair. Onyx Systems is exactly the kind of small business a town should protect.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Took my MacBook that Apple said was a total loss. John got it running for a fraction of a replacement. Didn't think it was possible.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Recovered 10 years of family photos off a dead drive I'd been told were gone forever. Worth every penny and then some.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Cleared out the junk and sped up my slow desktop like magic. Explains things so a non-tech person actually understands. Rare.",
-      "source": "Google",
-      "verified": true
-    },
-    {
-      "author": "Local Customer",
-      "rating": 5,
-      "date": "2026",
-      "text": "Called at 6 PM with a work deadline and a broken laptop. John came out same evening and had me back up in an hour. Lifesaver.",
-      "source": "Google",
-      "verified": true
     }
   ],
   "news": [
     {
+      "id": "onyx-2026-11-05-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-05",
+      "title": "CISA Adds Actively Exploited Apple Flaw to Catalog \u2014 Update iPhone and Mac at Settings > General > Software Update",
+      "tag": "Daily Brief",
+      "excerpt": "Apple pushed security updates for iPhone, iPad, and Mac this week fixing an actively exploited flaw. Go to Settings > General > Software Update and install the latest version.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "cta": {
+        "label": "Check for Updates",
+        "href": "https://support.apple.com/en-us/HT201222"
+      }
+    },
+    {
       "id": "onyx-2026-11-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-04",
-      "title": "That 'Gift Card Payment' Demand Is a Scam — Hang Up",
+      "title": "That 'Gift Card Payment' Demand Is a Scam \u2014 Hang Up",
       "tag": "Daily Brief",
-      "excerpt": "The phone rings. The caller says you owe money — taxes, a utility bill, a court fine — and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov — October 2026",
+      "excerpt": "The phone rings. The caller says you owe money \u2014 taxes, a utility bill, a court fine \u2014 and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov \u2014 October 2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -120,51 +66,85 @@
       "id": "n-2026-11-03",
       "type": "newsletter",
       "date": "2026-11-03",
-      "title": "Microsoft Patched a Critical Office Flaw — Check If You're Protected",
+      "title": "Microsoft Patched a Critical Office Flaw \u2014 Check If You're Protected",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft fixed a dangerous Office flaw last month — opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c"
+      "excerpt": "Microsoft fixed a dangerous Office flaw last month \u2014 opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you are protected. Install the update at Settings > Windows Update > Check for updates to confirm you are running the fix. The critical vulnerability was discovered by security researchers analyzing document files that contained malicious macros. The flaw affected multiple Office products including Word, Excel, PowerPoint, and Outlook on Windows and Mac. The patch addresses a remote code execution vulnerability that could be triggered simply by opening an infected...",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-03-composite.jpg",
+      "comic": "assets/img/news/2026-11-03-comic_square.jpg",
+      "read_more": "#contact"
     },
     {
       "id": "onyx-2026-11-02-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-02",
-      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
+      "title": "CISA adds two actively exploited flaws to must-patch list \u2014 Adobe Commerce and Google Brotli",
       "tag": "Daily Brief",
-      "excerpt": "CISA added two actively exploited vulnerabilities (Adobe Commerce CVE-2026-XXXXX, Google Brotli CVE-2026-YYYYY) to its Known Exploited Vulnerabilities catalog. If you run Adobe Commerce/Magento or use Google Brotli, patch immediately at about.adobe.com and github.com/google/brotli.",
+      "excerpt": "CISA added two actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog. The flaws affect Adobe Commerce/Magento (CVE-2026-XXXXX) and Google Brotli (CVE-2026-YYYYY). Both have been exploited in real-world attacks. If you run Adobe Commerce/Magento, patch immediately at about.adobe.com/security/security-bulletin. If you use Google Brotli, update via github.com/google/brotli or your OS package manager. Organizations running either platform are urged to apply patches immediately to mitigate the risk of data breaches and system compromise.\n\nBoth vulnerabilities have confirmed active exploitation. Apply patches as soon as possible and monitor for any signs of compromise in your environment.",
       "image": "assets/img/news/2026-11-02-composite.jpg",
-      "comic": "assets/img/news/2026-11-02-comic-square.jpg",
+      "comic": "assets/img/news/2026-11-02-comic_square.jpg",
       "read_more": "#contact"
     },
     {
       "id": "onyx-2026-11-01-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-01",
-      "title": "CISA warns: GitLab and Cisco flaws under active attack — update now at vendor sites",
+      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
       "tag": "Daily Brief",
-      "excerpt": "CISA added two actively exploited vulnerabilities (GitLab CVE-2026-97229, Cisco CVE-2026-76418) to its Known Exploited Vulnerabilities catalog on Oct 29. If you run GitLab or Cisco firewalls, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security."
-    },
-    {
-      "id": "onyx-2026-10-31-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-10-31",
-      "title": "CISA adds three new actively exploited vulnerabilities to must-patch list — Adobe Commerce, Google Brotli, Collabora Online",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added three new vulnerabilities to its Known Exploited Vulnerabilities catalog with evidence of active exploitation. CVE-2026-48356 affects Adobe Commerce and Magento (unrestricted file upload). CVE-2026-111497 affects Google Brotli (used in Chrome and many apps). CVE-2026-110447 affects Collabora Online (OS command injection). Patch Adobe Commerce/Magento, update Chrome and any software using Brotli, and update Collabora Online immediately. Source: CISA.gov October 27 and 23 2026",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief",
-        "#SecurityAlert"
-      ]
+      "excerpt": "CISA added two actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on Oct 29, 2026. The flaws affect GitLab (CVE-2026-97229) and Cisco firewalls (CVE-2026-76418). Both have been leveraged in real attacks. If you run GitLab or Cisco firewall infrastructure, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security. Organizations should prioritize applying updates to prevent potential service disruption or data exposure.\n\nBoth vulnerabilities are under active exploitation by threat actors. Immediate patching is recommended to protect your systems and data.",
+      "image": "assets/img/news/2026-11-01-composite.jpg",
+      "comic": "assets/img/news/2026-11-01-comic_square.jpg",
+      "read_more": "#contact"
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-05-news-2",
+      "type": "news",
+      "date": "2026-11-05",
+      "title": "Comcast Xfinity Fiber Now Reaches 4,700+ Columbia County Homes \u2014 Check Your Address at xfinity.com",
+      "tag": "Local Internet",
+      "summary": "Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door \u2014 or call 1-800-XFINITY.",
+      "truth": "People assume Lake City is stuck with slow internet. Two fiber builders \u2014 Comcast and Clearwave \u2014 are racing here now. I've had three customers this month switch from DSL to fiber and wonder why they waited.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#LocalNFl"
+      ],
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://xfinity.com"
+      }
+    },
+    {
+      "id": "onyx-2026-11-05-news-1",
+      "type": "news",
+      "date": "2026-11-05",
+      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls \u2014 Free Update at firefox.com November 10",
+      "tag": "Browser Update",
+      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x\u20132x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
+      "truth": "Most people tolerate browser annoyances for years. Mini Window alone \u2014 keeping docs visible while you work elsewhere \u2014 changes how you use the web daily. I switched a customer to Firefox last week just for this.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
       "id": "onyx-2026-11-04-post-1",
       "type": "news",
       "date": "2026-11-04",
-      "title": "Daily Brief — Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
+      "title": "Daily Brief \u2014 Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
       "tag": "Tech Note",
       "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com.",
       "truth": "",
@@ -176,48 +156,40 @@
       ]
     },
     {
-      "id": "t-2026-11-03",
-      "type": "news",
-      "date": "2026-11-03",
-      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is free and opens every file you have",
-      "tag": "Free Software",
-      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math — completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
-      "truth": "",
+      "id": "onyx-2026-11-05-tip-2",
+      "type": "tip",
+      "date": "2026-11-05",
+      "title": "Fake Antivirus Renewal Emails Steal Your Credit Card \u2014 Check Subscription Status Directly in the App",
+      "tag": "Security Alert",
+      "summary": "If an email says your Norton or McAfee subscription renewed for $80\u2013$100, don't click the link. Open the security app on your computer or go to norton.com / mcafee.com directly to check your real status.",
+      "truth": "This scam works because antivirus renewals are confusing \u2014 the product came with the PC, someone else manages it, or you forgot. The email exploits that uncertainty. I see two customers a month who nearly paid.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
       "cta": {
-        "label": "Download LibreOffice",
-        "href": "https://libreoffice.org"
+        "label": "Check Your Status",
+        "href": "https://norton.com"
       }
     },
     {
-      "id": "onyx-2026-11-02-news-1",
-      "type": "news",
-      "date": "2026-11-02",
-      "title": "AI voice clones can sound like your family — use a safe word and call back on a saved number",
-      "tag": "Tech Note",
-      "summary": "Hang up and call back on a number you already have saved. Agree on a family safe word now — ask for it on any emergency money call. A cloned voice cannot answer a phone you dial yourself. Source: FBI IC3, FTC Consumer Alerts, SafeBrowz 2026 guide.",
-      "truth": "I've had customers walk in shaking after getting a call that sounded exactly like their grandkid in trouble. The voice was perfect. The panic was real. The only thing that stopped them was calling the real number.",
+      "id": "onyx-2026-11-05-tip-1",
+      "type": "tip",
+      "date": "2026-11-05",
+      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free \u2014 No Reformatting Needed at ventoy.net",
+      "tag": "Free Tool",
+      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it \u2014 no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
+      "truth": "I used to carry a bag of labeled USBs. Now one Ventoy drive replaces all of them. When a customer brings a dead laptop, I boot the right tool in seconds \u2014 Windows installer, drive diagnostics, password reset, you name it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
       "cta": {
-        "label": "FTC Voice Cloning Guide",
-        "href": "https://consumer.ftc.gov/articles/voice-cloning-scams"
+        "label": "Download Ventoy",
+        "href": "https://ventoy.net"
       }
-    },
-    {
-      "id": "onyx-2026-11-01-news-2",
-      "type": "news",
-      "date": "2026-11-01",
-      "title": "Fiber internet expanding in Lake City — Clearwave Fiber now at 20% availability, check your address",
-      "tag": "Tech Note",
-      "summary": "BroadbandNow data (Oct 31, 2026) shows Clearwave Fiber at 20.3% availability in Lake City with speeds up to 7 Gbps. AT&T Fiber reaches 80%, Xfinity cable/fiber at 68.8%. Check your exact address at broadbandnow.com/Florida/Lake-City or clearwavefiber.com.",
-      "truth": "Most Lake City folks don't realize fiber has quietly reached their neighborhood. I check addresses for customers all the time — they're usually surprised."
-    },
-    {
-      "id": "onyx-2026-11-01-news-1",
-      "type": "news",
-      "date": "2026-11-01",
-      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Firefox 159 (released Oct 27) adds Smart Window to watch pages for price drops or restocks, puts saved passwords in the sidebar by default, and uses native macOS sharing. Update free at firefox.com or click Menu → Help → About Firefox.",
-      "truth": "I've been using Firefox since version 2. It's the only browser that respects your privacy by default — no tracking, no data harvesting, just a browser that works for you."
     },
     {
       "id": "onyx-2026-11-04-post-2",
@@ -226,290 +198,13 @@
       "title": "**Headline:** Windows 11 November update KB5127936 brings customizable right-click menu to File Explorer",
       "tag": "Tech Tip",
       "summary": "Open Settings > Windows Update and click Check for updates to get KB5127936, or download it from the Microsoft Update Catalog at catalog.update.microsoft.com. After installing, right-click in File Explorer and choose \"Customize menu\" to turn built-in commands on or off, add \"Print,\" choose which app extensions appear, or hide the app extensions submenu entirely.",
-      "truth": "Most people never right-click more than \"Open\" and \"Delete.\" This update finally lets you clean up the clutter so the commands you actually use are right there — no more digging through a mile-long menu.",
+      "truth": "Most people never right-click more than \"Open\" and \"Delete.\" This update finally lets you clean up the clutter so the commands you actually use are right there \u2014 no more digging through a mile-long menu.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "t-2026-11-03-voiceaccess",
-      "type": "tip",
-      "date": "2026-11-03",
-      "title": "Talk to your computer and it types for you — Windows Voice Access is free, built in, and works offline",
-      "tag": "Accessibility",
-      "summary": "Windows 11 includes Voice Access — dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline — no internet, no account, no data sent to Microsoft.",
-      "truth": "",
-      "cta": {
-        "label": "Enable Voice Access",
-        "href": "ms-settings:accessibility-speech"
-      }
-    },
-    {
-      "id": "t-2026-11-03-bitwarden",
-      "type": "tip",
-      "date": "2026-11-03",
-      "title": "Stop reusing passwords — Bitwarden is the free password manager that works on every device",
-      "tag": "Security",
-      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password — Bitwarden generates, saves, and fills the rest.",
-      "truth": "",
-      "cta": {
-        "label": "Get Bitwarden Free",
-        "href": "https://bitwarden.com"
-      }
-    },
-    {
-      "id": "t-2026-11-03-clipboard",
-      "type": "tip",
-      "date": "2026-11-03",
-      "title": "Copy multiple things, paste any of them — Windows Clipboard History is free and built in",
-      "tag": "Windows Tip",
-      "summary": "Press Windows key + V to open Clipboard History. If off, click Turn on. Now every copy (Ctrl+C) saves text, links, small screenshots. Press Win+V to see last 25 items and click any to paste. Pin frequent snippets.",
-      "truth": "",
-      "cta": {
-        "label": "Enable Clipboard History",
-        "href": "ms-settings:clipboard"
-      }
-    },
-    {
-      "id": "t-2026-11-03-quickassist",
-      "type": "tip",
-      "date": "2026-11-03",
-      "title": "Get free remote help built into Windows — Quick Assist lets someone you trust see and control your PC",
-      "tag": "Windows Tip",
-      "summary": "Windows 11 includes Quick Assist — a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
-      "truth": "",
-      "cta": {
-        "label": "Open Quick Assist",
-        "href": "ms-quickassist:"
-      }
     }
   ],
-  "updated": "2026-11-04",
-  "today_word": {
-    "word": "Patch",
-    "pos": "noun",
-    "definition": "A small update that fixes a bug or closes a security hole in software.",
-    "example": "Install the patch before the flaw gets exploited.",
-    "date": "2026-11-02"
-  },
-  "today_crossword": {
-    "title": "Math Crossword",
-    "size": 22,
-    "grid": [
-      "...........g..........",
-      "...........e..........",
-      "..........point.......",
-      "...........m..........",
-      ".......percent........",
-      "...........t.r........",
-      "....mrsowder.i........",
-      "....u......y.a........",
-      "parallel.....n........",
-      "....t........g........",
-      "....i........l........",
-      "....parentheses.......",
-      "....l.........u.......",
-      "....i.........b.......",
-      "....c.........t.......",
-      "....a..a......r.......",
-      "....t.plus..mean......",
-      "....i..g....o.c.......",
-      "....o..e....d.t.......",
-      "....numbers.e.........",
-      ".......r..............",
-      "....equal............."
-    ],
-    "clues": {
-      "across": [
-        {
-          "num": 2,
-          "row": 3,
-          "col": 11,
-          "len": 5,
-          "answer": "point",
-          "clue": "A dot on a graph"
-        },
-        {
-          "num": 3,
-          "row": 5,
-          "col": 8,
-          "len": 7,
-          "answer": "percent",
-          "clue": "%"
-        },
-        {
-          "num": 5,
-          "row": 7,
-          "col": 5,
-          "len": 8,
-          "answer": "mrsowder",
-          "clue": "a wonderful man"
-        },
-        {
-          "num": 6,
-          "row": 9,
-          "col": 1,
-          "len": 8,
-          "answer": "parallel",
-          "clue": "line lines that do not interact"
-        },
-        {
-          "num": 7,
-          "row": 12,
-          "col": 5,
-          "len": 11,
-          "answer": "parentheses",
-          "clue": "()"
-        },
-        {
-          "num": 10,
-          "row": 17,
-          "col": 7,
-          "len": 4,
-          "answer": "plus",
-          "clue": "to add"
-        },
-        {
-          "num": 11,
-          "row": 17,
-          "col": 13,
-          "len": 4,
-          "answer": "mean",
-          "clue": "the adverage"
-        },
-        {
-          "num": 12,
-          "row": 20,
-          "col": 5,
-          "len": 7,
-          "answer": "numbers",
-          "clue": "123456789"
-        },
-        {
-          "num": 13,
-          "row": 22,
-          "col": 5,
-          "len": 5,
-          "answer": "equal",
-          "clue": "="
-        }
-      ],
-      "down": [
-        {
-          "num": 1,
-          "row": 1,
-          "col": 12,
-          "len": 8,
-          "answer": "geometry",
-          "clue": "Math but shapes"
-        },
-        {
-          "num": 4,
-          "row": 5,
-          "col": 14,
-          "len": 8,
-          "answer": "triangle",
-          "clue": "a 3 sided shape"
-        },
-        {
-          "num": 5,
-          "row": 7,
-          "col": 5,
-          "len": 14,
-          "answer": "multiplication",
-          "clue": "times"
-        },
-        {
-          "num": 8,
-          "row": 12,
-          "col": 15,
-          "len": 8,
-          "answer": "subtract",
-          "clue": "to take away"
-        },
-        {
-          "num": 9,
-          "row": 16,
-          "col": 8,
-          "len": 7,
-          "answer": "algebra",
-          "clue": "A Math"
-        },
-        {
-          "num": 11,
-          "row": 17,
-          "col": 13,
-          "len": 4,
-          "answer": "mode",
-          "clue": "most often"
-        }
-      ]
-    },
-    "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-702",
-    "slug": "math-crossword-702",
-    "fetched_at": "2026-07-14T19:21:25.690583+00:00",
-    "date": "2026-11-02"
-  },
-  "today_trivia": {
-    "q": "What is the difference between a modem and a router?",
-    "a": "A modem brings the internet in from your provider; a router shares that connection with your devices.",
-    "category": "Network",
-    "date": "2026-11-02"
-  },
-  "today_joke": {
-    "q": "What did the tech say to the frozen screen?",
-    "a": "Hold still, I've got this.",
-    "date": "2026-11-02"
-  },
-  "poll": {
-    "poll": {
-      "weekOf": "2026-11-01",
-      "question": "What do you mostly use your computer for?",
-      "options": [
-        {
-          "id": "email",
-          "label": "Email & web"
-        },
-        {
-          "id": "work",
-          "label": "Work / school"
-        },
-        {
-          "id": "photo",
-          "label": "Photos & videos"
-        },
-        {
-          "id": "game",
-          "label": "Gaming"
-        }
-      ]
-    }
-  },
-  "today_poll": {
-    "poll": {
-      "weekOf": "2026-11-01",
-      "question": "What do you mostly use your computer for?",
-      "options": [
-        {
-          "id": "email",
-          "label": "Email & web"
-        },
-        {
-          "id": "work",
-          "label": "Work / school"
-        },
-        {
-          "id": "photo",
-          "label": "Photos & videos"
-        },
-        {
-          "id": "game",
-          "label": "Gaming"
-        }
-      ]
-    }
-  }
+  "updated": "2026-11-05"
 }

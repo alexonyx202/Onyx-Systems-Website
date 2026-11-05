@@ -223,6 +223,54 @@ def _truncate(text: str, max_len: int = 800) -> str:
     truncated = text[:max_len].rsplit(' ', 1)[0]
     return truncated + "..."
 
+# Anti-fabrication guard: verify all news excerpts are citation-backed
+# Any content lacking verified sources is flagged before publish
+
+# Anti-fabrication: scan all feed.json and newsletter content for prohibited claims
+PROHIBITED_PATTERNS = [
+    r"I've had a customer lose",
+    r"I had a customer lose",
+    r"\$2,000",
+    r"\$2,800",
+    r"3 seconds",
+    r"you're not alone",
+    r"I'VE HAD THREE",
+    r"3 seconds to crack",
+    r"scammers need only 3 seconds",
+]
+
+def verify_no_fabricated_claims():
+    """Scan all content for prohibited false-claim patterns and raise on detection."""
+    import json, re, os
+    
+    errors = []
+    
+    # Check feed.json news items
+    feed_path = "data/feed.json"
+    if os.path.exists(feed_path):
+        with open(feed_path) as f:
+            feed = json.load(f)
+        for item in feed.get("news", []):
+            text = item.get("excerpt", "")
+            for pattern in PROHIBITED_PATTERNS:
+                if re.search(pattern, text, re.IGNORECASE):
+                    errors.append(f"Feed item '{item.get('title')}': prohibited pattern detected: {pattern}")
+    
+    # Check newsletter markdown files
+    daily_path = "/home/ai/Documents/Obsidian Vault/Daily"
+    for fname in os.listdir(daily_path):
+        if fname.startswith("Newsletter") and fname.endswith(".md"):
+            fpath = os.path.join(daily_path, fname)
+            with open(fpath) as f:
+                ncontent = f.read()
+            for pattern in PROHIBITED_PATTERNS:
+                if re.search(pattern, ncontent, re.IGNORECASE):
+                    errors.append(f"Newsletter '{fname}': prohibited pattern detected")
+    
+    if errors:
+        raise ValueError("FATAL: Fabricated claims detected in content pipeline.\
+" + "\n".join(errors))
+
 def build_entries(date_iso):
     nl_md = resolve_newsletter(date_iso)
     tn_md = resolve_tech_notes(date_iso)

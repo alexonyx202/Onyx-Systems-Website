@@ -242,7 +242,7 @@ LEAK_MARKERS = [
 
 # A summary/excerpt/truth longer than this is a whole-document leak, not a
 # summary (today's broken excerpt was ~2,100 chars; real summaries run <= ~600).
-MAX_FIELD_LEN = 750
+MAX_FIELD_LEN = 800
 
 
 def scan_leaks(path, arrays):

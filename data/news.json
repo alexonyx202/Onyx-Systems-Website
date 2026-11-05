@@ -1,6 +1,64 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "items": [
+    {
+      "id": "n-2026-11-05",
+      "type": "newsletter",
+      "date": "2026-11-05",
+      "title": "Scammers Are Using AI Voice Cloning to Steal Cash — In Person",
+      "tag": "Daily Brief",
+      "summary": "Your phone rings. It sounds exactly like your grandson — panicked, saying he's been in a car accident and arrested. He needs bail money. A \"public defender\" gets on the line and tells you to put cash in an envelope. Then a courier shows up at your front door to collect it.",
+      "comic": "Newsletter - 2026-11-05-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-05",
+      "type": "tech-note",
+      "date": "2026-11-05",
+      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls — Free Update at firefox.com November 10",
+      "tag": "Browser Update",
+      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x–2x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
+      "cta": {
+        "label": "Download Firefox",
+        "href": "https://firefox.com"
+      }
+    },
+    {
+      "id": "t-2026-11-05-post3",
+      "type": "tech-note",
+      "date": "2026-11-05",
+      "title": "Comcast Xfinity Fiber Now Reaches 4,700+ Columbia County Homes — Check Your Address at xfinity.com",
+      "tag": "Local Internet",
+      "summary": "Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door — or call 1-800-XFINITY.",
+      "cta": {
+        "label": "Check Availability",
+        "href": "https://xfinity.com"
+      }
+    },
+    {
+      "id": "t-2026-11-05-post4",
+      "type": "tech-note",
+      "date": "2026-11-05",
+      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free — No Reformatting Needed at ventoy.net",
+      "tag": "Free Tool",
+      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it — no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
+      "cta": {
+        "label": "Download Ventoy",
+        "href": "https://ventoy.net"
+      }
+    },
+    {
+      "id": "t-2026-11-05-post5",
+      "type": "tech-note",
+      "date": "2026-11-05",
+      "title": "Fake Antivirus Renewal Emails Steal Your Credit Card — Check Subscription Status Directly in the App",
+      "tag": "Security Alert",
+      "summary": "If an email says your Norton or McAfee subscription renewed for 0–00, don't click the link. Open the security app on your computer or go to norton.com / mcafee.com directly to check your real status.",
+      "cta": {
+        "label": "Check Your Status",
+        "href": "https://norton.com"
+      }
+    },
     {
       "id": "n-2026-11-04",
       "type": "newsletter",
@@ -71,62 +129,6 @@
       "cta": {
         "label": "Enable Clipboard History",
         "href": "ms-settings:clipboard"
-      }
-    },
-    {
-      "id": "t-2026-11-03-bitwarden",
-      "type": "tech-note",
-      "date": "2026-11-03",
-      "title": "Stop reusing passwords — Bitwarden is the free password manager that works on every device",
-      "tag": "Security",
-      "summary": "Bitwarden gives you a free, open-source password vault that syncs across Windows, Mac, Linux, iPhone, Android, and every browser. Create one free account at bitwarden.com, install the browser extension and mobile app. Save one master password — Bitwarden generates, saves, and fills the rest.",
-      "cta": {
-        "label": "Get Bitwarden Free",
-        "href": "https://bitwarden.com"
-      }
-    },
-    {
-      "id": "t-2026-11-03-voiceaccess",
-      "type": "tech-note",
-      "date": "2026-11-03",
-      "title": "Talk to your computer and it types for you — Windows Voice Access is free, built in, and works offline",
-      "tag": "Accessibility",
-      "summary": "Windows 11 includes Voice Access — dictate text, click buttons, navigate menus, control your PC by voice. Press Windows key + Ctrl + S to start. First run downloads ~50 MB speech model, then works completely offline — no internet, no account, no data sent to Microsoft.",
-      "cta": {
-        "label": "Enable Voice Access",
-        "href": "ms-settings:accessibility-speech"
-      }
-    },
-    {
-      "id": "n-2026-11-02",
-      "type": "newsletter",
-      "date": "2026-11-02",
-      "title": "That 'Package Delivery' Text Is a Trap — Don't Click the Link",
-      "tag": "Daily Brief",
-      "summary": "A text message arrives: \"Your package couldn't be delivered. Click here to reschedule: [link].\" Or an email: \"USPS/UPS/FedEx delivery failed — confirm your address.\" The link goes to a fake login page that steals your email password or credit card. This wave is hitting hard right",
-      "comic": "Newsletter - 2026-11-02-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-11-01",
-      "type": "newsletter",
-      "date": "2026-11-01",
-      "title": "FBI Warns: Election Scams Targeting Voters Ahead of Tuesday",
-      "tag": "Daily Brief",
-      "summary": "With the midterm election days away, scammers are flooding inboxes and phones with fake voter registration links, bogus polling place changes, and \"urgent\" donation requests. The FBI's IC3 warned on October 15 that these schemes spike right before Election Day — they'll text you ",
-      "comic": "Newsletter - 2026-11-01-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-01",
-      "type": "tech-note",
-      "date": "2026-11-01",
-      "title": "Firefox 159 adds Smart Window price-watch and sidebar passwords — free update at firefox.com",
-      "tag": "News",
-      "summary": "Firefox 159 adds Smart Window to watch pages for price drops, puts saved passwords in the sidebar, and uses native macOS sharing. Update free at firefox.com or Menu → Help → About Firefox.",
-      "cta": {
-        "label": "Download Firefox",
-        "href": "https://firefox.com"
       }
     }
   ]
