@@ -1,6 +1,64 @@
 {
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "items": [
+    {
+      "id": "n-2026-11-06",
+      "type": "newsletter",
+      "date": "2026-11-06",
+      "title": "Password Manager Breach — mSecure Users Told to Change All Passwords",
+      "tag": "Daily Brief",
+      "summary": "Password manager mSecure just told all users to change every password stored in their vault — but won't say what actually happened. On November 3, mSeven Software emailed customers about \"suspicious activity\" and said to immediately change passwords, reset two-factor authenticati",
+      "comic": "Newsletter - 2026-11-06-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-06",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "Windows Voice Typing (Win+H) types for you free — built into Windows 11",
+      "tag": "Tip",
+      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-06-clipboard",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "Windows Clipboard History (Win+V) remembers everything you copy — free built-in",
+      "tag": "Tip",
+      "summary": "Press Win+V to see your clipboard history — pin items you reuse, sync across your devices, clear with one click.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-06-notepadpp",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "Notepad++ is the free editor that opens everything — code logs configs at notepad-plus-plus.org",
+      "tag": "News",
+      "summary": "Install Notepad++ from notepad-plus-plus.org — free, syntax highlights 80+ languages, handles huge files Notepad chokes on.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-06-library",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "Columbia County Library card unlocks free LinkedIn Learning ebooks and databases",
+      "tag": "News",
+      "summary": "Get a free library card at columbiacountylib.org or walk in at 135 NE Hernando Ave Suite 203 — access LinkedIn Learning courses, Libby ebooks/audiobooks, research databases, and streaming video.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-11-05",
       "type": "newsletter",
@@ -76,60 +134,6 @@
       "title": "Daily Brief — Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
       "tag": "Tech Note",
       "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com."
-    },
-    {
-      "id": "t-2026-11-04-tip1",
-      "type": "tech-note",
-      "date": "2026-11-04",
-      "title": "**Headline:** Windows 11 November update KB5127936 brings customizable right-click menu to File Explorer",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > Windows Update and click Check for updates to get KB5127936, or download it from the Microsoft Update Catalog at catalog.update.microsoft.com. After installing, right-click in File Explorer and choose \"Customize menu\" to turn built-in commands on or off, add \"Print,\" choose which app extensions appear, or hide the app extensions submenu entirely."
-    },
-    {
-      "id": "n-2026-11-03",
-      "type": "newsletter",
-      "date": "2026-11-03",
-      "title": "Microsoft Patched a Critical Office Flaw — Check If You're Protected",
-      "tag": "Daily Brief",
-      "summary": "Microsoft fixed a dangerous Office flaw last month — opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you're c",
-      "comic": "Newsletter - 2026-11-03-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-03",
-      "type": "tech-note",
-      "date": "2026-11-03",
-      "title": "Stop paying for Microsoft Office — LibreOffice 25.2 is free and opens every file you have",
-      "tag": "Free Software",
-      "summary": "LibreOffice 25.2 gives you Writer, Calc, Impress, Draw, Base, and Math — completely free, no subscription. Download the Windows installer at libreoffice.org (choose 64-bit MSI). It opens .docx, .xlsx, .pptx and saves back to those formats.",
-      "cta": {
-        "label": "Download LibreOffice",
-        "href": "https://libreoffice.org"
-      }
-    },
-    {
-      "id": "t-2026-11-03-quickassist",
-      "type": "tech-note",
-      "date": "2026-11-03",
-      "title": "Get free remote help built into Windows — Quick Assist lets someone you trust see and control your PC",
-      "tag": "Windows Tip",
-      "summary": "Windows 11 includes Quick Assist — a free, built-in tool for safe remote help. No download, no account, no third-party software. Open Start, type Quick Assist, click Help someone, share the 6-digit code.",
-      "cta": {
-        "label": "Open Quick Assist",
-        "href": "ms-quickassist:"
-      }
-    },
-    {
-      "id": "t-2026-11-03-clipboard",
-      "type": "tech-note",
-      "date": "2026-11-03",
-      "title": "Copy multiple things, paste any of them — Windows Clipboard History is free and built in",
-      "tag": "Windows Tip",
-      "summary": "Press Windows key + V to open Clipboard History. If off, click Turn on. Now every copy (Ctrl+C) saves text, links, small screenshots. Press Win+V to see last 25 items and click any to paste. Pin frequent snippets.",
-      "cta": {
-        "label": "Enable Clipboard History",
-        "href": "ms-settings:clipboard"
-      }
     }
   ]
 }

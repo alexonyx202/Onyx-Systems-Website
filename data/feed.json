@@ -28,6 +28,24 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-06-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-06",
+      "title": "CISA warns WordPress sites under active attack \u2014 plus Windows 11 24H2 Home/Pro no longer get security updates",
+      "tag": "Daily Brief",
+      "excerpt": "WordPress Core vulnerability is being exploited right now \u2014 update WordPress at wordpress.org or your hosting panel. Also: Windows 11 24H2 Home and Pro reached end of updates October 13 \u2014 go to Settings > Windows Update and check for the 26H2 upgrade to stay protected.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "cta": {
+        "label": "Update WordPress",
+        "href": "https://wordpress.org"
+      }
+    },
+    {
       "id": "onyx-2026-11-05-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-05",
@@ -89,20 +107,45 @@
       "image": "assets/img/news/2026-11-02-composite.jpg",
       "comic": "assets/img/news/2026-11-02-comic_square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-01-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-01",
-      "title": "CISA warns: GitLab and Cisco flaws under active attack \u2014 update now at vendor sites",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added two actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on Oct 29, 2026. The flaws affect GitLab (CVE-2026-97229) and Cisco firewalls (CVE-2026-76418). Both have been leveraged in real attacks. If you run GitLab or Cisco firewall infrastructure, apply vendor patches immediately at about.gitlab.com/releases/ and cisco.com/security. Organizations should prioritize applying updates to prevent potential service disruption or data exposure.\n\nBoth vulnerabilities are under active exploitation by threat actors. Immediate patching is recommended to protect your systems and data.",
-      "image": "assets/img/news/2026-11-01-composite.jpg",
-      "comic": "assets/img/news/2026-11-01-comic_square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-06-news-2",
+      "type": "news",
+      "date": "2026-11-06",
+      "title": "Columbia County Library card unlocks free LinkedIn Learning ebooks and databases",
+      "tag": "News",
+      "summary": "Get a free library card at columbiacountylib.org or walk in at 135 NE Hernando Ave Suite 203 \u2014 access LinkedIn Learning courses, Libby ebooks/audiobooks, research databases, and streaming video.",
+      "truth": "People pay hundreds for LinkedIn Learning \u2014 it's free with your library card. Same for Consumer Reports, Ancestry, newspapers, language learning. Best deal in Lake City.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Get Library Card",
+        "href": "https://columbiacountylib.org"
+      }
+    },
+    {
+      "id": "onyx-2026-11-06-news-1",
+      "type": "news",
+      "date": "2026-11-06",
+      "title": "Notepad++ is the free editor that opens everything \u2014 code logs configs at notepad-plus-plus.org",
+      "tag": "News",
+      "summary": "Install Notepad++ from notepad-plus-plus.org \u2014 free, syntax highlights 80+ languages, handles huge files Notepad chokes on.",
+      "truth": "Customers bring me .log, .xml, .json, .ini files that Notepad mangles \u2014 Notepad++ opens them clean, color-coded, and searchable. It's the first thing I install on every shop machine.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Download Notepad++",
+        "href": "https://notepad-plus-plus.org"
+      }
+    },
     {
       "id": "onyx-2026-11-05-news-2",
       "type": "news",
@@ -156,6 +199,42 @@
       ]
     },
     {
+      "id": "onyx-2026-11-06-tip-2",
+      "type": "tip",
+      "date": "2026-11-06",
+      "title": "Windows Clipboard History (Win+V) remembers everything you copy \u2014 free built-in",
+      "tag": "Tip",
+      "summary": "Press Win+V to see your clipboard history \u2014 pin items you reuse, sync across your devices, clear with one click.",
+      "truth": "I watch people copy-paste the same thing five times a day \u2014 Win+V lets you grab yesterday's copied text instantly. It's the most underused Windows feature.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "onyx-2026-11-06-tip-1",
+      "type": "tip",
+      "date": "2026-11-06",
+      "title": "Windows Voice Typing (Win+H) types for you free \u2014 built into Windows 11",
+      "tag": "Tip",
+      "summary": "Press Win+H anywhere to dictate text \u2014 no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
+      "truth": "Most people don't realize Windows has had solid dictation for years \u2014 I show this to customers who struggle with typing and they're amazed it's free and already there.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-11-05-tip-2",
       "type": "tip",
       "date": "2026-11-05",
@@ -206,5 +285,5 @@
       ]
     }
   ],
-  "updated": "2026-11-05"
+  "updated": "2026-11-06"
 }

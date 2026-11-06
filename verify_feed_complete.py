@@ -197,6 +197,8 @@ KNOWN_PRODUCTS = [
     "libby",
     # Extended 2026-10-23: Today's Onyx Tech Notes real products (named + obtain method stated).
     "veeam", "veeam agent", "macrium", "macrium reflect",
+    # Extended 2026-11-06: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "linkedin learning", "columbia county library", "columbiacountylib.org",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -316,7 +318,7 @@ OBTAIN = [
     "set up", "set-up", "turn on", "use ", "try ", "upload", "roll back",
     "rollback", "patch", "update", "isolate", "fix ", "book", "call",
     "text ", "tether", "connect", "configure", "add ", "create",
-    "sysctl", "sign up",
+    "sysctl", "sign up", "press ",
 ]
 
 def check_entry(fname, eid, headline, body, entry_type=None):
