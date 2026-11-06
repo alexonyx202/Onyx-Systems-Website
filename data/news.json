@@ -7,9 +7,25 @@
       "date": "2026-11-06",
       "title": "Password Manager Breach — mSecure Users Told to Change All Passwords",
       "tag": "Daily Brief",
-      "summary": "Password manager mSecure just told all users to change every password stored in their vault — but won't say what actually happened. On November 3, mSeven Software emailed customers about \"suspicious activity\" and said to immediately change passwords, reset two-factor authenticati",
+      "summary": "Password manager mSecure just told all users to change every password stored in their vault — but won't say what actually happened. On November 3, mSeven Software emailed customers about \"suspicious activity\" and said to immediately change passwords, reset two-factor authentication, and remove passkeys. They didn't say when it happened, what was accessed, or if your data was stolen. Because the scope is unknown, assume the worst: change your most important passwords first (email, banking, work) through each service's official website. Use a different, strong password for each. Consider moving to a different password manager until mSecure explains what happened.\n\nSource: Malwarebytes — November 4–6, 2026",
       "comic": "Newsletter - 2026-11-06-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-06-news1",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "**Headline:** CISA warns WordPress sites under active attack — plus Windows 11 24H2 Home/Pro no longer get security updates",
+      "tag": "Tech Note",
+      "summary": "WordPress Core vulnerability is being exploited right now — update WordPress at wordpress.org or your hosting panel. Also: Windows 11 24H2 Home and Pro reached end of updates October 13 — go to Settings > Windows Update and check for the 26H2 upgrade to stay protected."
+    },
+    {
+      "id": "t-2026-11-06-tip1",
+      "type": "tech-note",
+      "date": "2026-11-06",
+      "title": "**Headline:** Windows Voice Typing (Win+H) types for you free — built into Windows 11",
+      "tag": "Tech Tip",
+      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'."
     },
     {
       "id": "t-2026-11-06",
@@ -116,24 +132,6 @@
         "label": "Check Your Status",
         "href": "https://norton.com"
       }
-    },
-    {
-      "id": "n-2026-11-04",
-      "type": "newsletter",
-      "date": "2026-11-04",
-      "title": "That 'Gift Card Payment' Demand Is a Scam — Hang Up",
-      "tag": "Daily Brief",
-      "summary": "The phone rings. The caller says you owe money — taxes, a utility bill, a court fine — and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov — October 2026",
-      "comic": "Newsletter - 2026-11-04-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-04-news1",
-      "type": "tech-note",
-      "date": "2026-11-04",
-      "title": "Daily Brief — Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
-      "tag": "Tech Note",
-      "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com."
     }
   ]
 }

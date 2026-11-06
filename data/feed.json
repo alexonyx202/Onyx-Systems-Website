@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-08-09",
     "social": {
@@ -31,25 +31,24 @@
       "id": "onyx-2026-11-06-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-06",
-      "title": "CISA warns WordPress sites under active attack \u2014 plus Windows 11 24H2 Home/Pro no longer get security updates",
+      "title": "Password Manager Breach — mSecure Users Told to Change All Passwords",
       "tag": "Daily Brief",
-      "excerpt": "WordPress Core vulnerability is being exploited right now \u2014 update WordPress at wordpress.org or your hosting panel. Also: Windows 11 24H2 Home and Pro reached end of updates October 13 \u2014 go to Settings > Windows Update and check for the 26H2 upgrade to stay protected.",
+      "excerpt": "Password manager mSecure just told all users to change every password stored in their vault — but won't say what actually happened. On November 3, mSeven Software emailed customers about \"suspicious activity\" and said to immediately change passwords, reset two-factor authentication, and remove passkeys. They didn't say when it happened, what was accessed, or if your data was stolen. Because the scope is unknown, assume the worst: change your most important passwords first (email, banking, work) through each service's official website. Use a different, strong password for each. Consider moving to a different password manager until mSecure explains what happened.\n\nSource: Malwarebytes — November 4–6, 2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
         "#DailyBrief"
       ],
-      "cta": {
-        "label": "Update WordPress",
-        "href": "https://wordpress.org"
-      }
+      "image": "assets/img/news/2026-11-06-composite.jpg",
+      "comic": "assets/img/news/2026-11-06-comic-square.jpg",
+      "read_more": "#contact"
     },
     {
       "id": "onyx-2026-11-05-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-05",
-      "title": "CISA Adds Actively Exploited Apple Flaw to Catalog \u2014 Update iPhone and Mac at Settings > General > Software Update",
+      "title": "CISA Adds Actively Exploited Apple Flaw to Catalog — Update iPhone and Mac at Settings > General > Software Update",
       "tag": "Daily Brief",
       "excerpt": "Apple pushed security updates for iPhone, iPad, and Mac this week fixing an actively exploited flaw. Go to Settings > General > Software Update and install the latest version.",
       "tags": [
@@ -67,9 +66,9 @@
       "id": "onyx-2026-11-04-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-04",
-      "title": "That 'Gift Card Payment' Demand Is a Scam \u2014 Hang Up",
+      "title": "That 'Gift Card Payment' Demand Is a Scam — Hang Up",
       "tag": "Daily Brief",
-      "excerpt": "The phone rings. The caller says you owe money \u2014 taxes, a utility bill, a court fine \u2014 and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov \u2014 October 2026",
+      "excerpt": "The phone rings. The caller says you owe money — taxes, a utility bill, a court fine — and the only way to pay today is with gift cards. \"Go to the store, buy Apple or Google Play cards, read me the numbers on the back.\"\n\nNo real government agency or legitimate company asks for gift cards. Ever. Gift cards are for gifts. Once you read the numbers, the money is gone and you can't get it back.\n\nWhat to do: Hang up. If you're worried you owe something, look up the official number yourself and call. Never pay anyone with gift cards. Never read card numbers to anyone on the phone.\n\nThe rule: Gift cards are for presents. If someone demands them as payment, it's a scam. Every single time.\n\nSource: FTC.gov — October 2026",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -84,9 +83,9 @@
       "id": "n-2026-11-03",
       "type": "newsletter",
       "date": "2026-11-03",
-      "title": "Microsoft Patched a Critical Office Flaw \u2014 Check If You're Protected",
+      "title": "Microsoft Patched a Critical Office Flaw — Check If You're Protected",
       "tag": "Daily Brief",
-      "excerpt": "Microsoft fixed a dangerous Office flaw last month \u2014 opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you are protected. Install the update at Settings > Windows Update > Check for updates to confirm you are running the fix. The critical vulnerability was discovered by security researchers analyzing document files that contained malicious macros. The flaw affected multiple Office products including Word, Excel, PowerPoint, and Outlook on Windows and Mac. The patch addresses a remote code execution vulnerability that could be triggered simply by opening an infected...",
+      "excerpt": "Microsoft fixed a dangerous Office flaw last month — opening a booby-trapped document could let someone run commands on your PC. The patch came through the regular update channel. Open Word or Excel, click File > Account > Update Options, and choose Update Now to confirm you are protected. Install the update at Settings > Windows Update > Check for updates to confirm you are running the fix. The critical vulnerability was discovered by security researchers analyzing document files that contained malicious macros. The flaw affected multiple Office products including Word, Excel, PowerPoint, and Outlook on Windows and Mac. The patch addresses a remote code execution vulnerability that could be triggered simply by opening an infected...",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -101,7 +100,7 @@
       "id": "onyx-2026-11-02-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-02",
-      "title": "CISA adds two actively exploited flaws to must-patch list \u2014 Adobe Commerce and Google Brotli",
+      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
       "tag": "Daily Brief",
       "excerpt": "CISA added two actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog. The flaws affect Adobe Commerce/Magento (CVE-2026-XXXXX) and Google Brotli (CVE-2026-YYYYY). Both have been exploited in real-world attacks. If you run Adobe Commerce/Magento, patch immediately at about.adobe.com/security/security-bulletin. If you use Google Brotli, update via github.com/google/brotli or your OS package manager. Organizations running either platform are urged to apply patches immediately to mitigate the risk of data breaches and system compromise.\n\nBoth vulnerabilities have confirmed active exploitation. Apply patches as soon as possible and monitor for any signs of compromise in your environment.",
       "image": "assets/img/news/2026-11-02-composite.jpg",
@@ -111,13 +110,28 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-06-post-1",
+      "type": "news",
+      "date": "2026-11-06",
+      "title": "**Headline:** CISA warns WordPress sites under active attack — plus Windows 11 24H2 Home/Pro no longer get security updates",
+      "tag": "Tech Note",
+      "summary": "WordPress Core vulnerability is being exploited right now — update WordPress at wordpress.org or your hosting panel. Also: Windows 11 24H2 Home and Pro reached end of updates October 13 — go to Settings > Windows Update and check for the 26H2 upgrade to stay protected.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
       "id": "onyx-2026-11-06-news-2",
       "type": "news",
       "date": "2026-11-06",
       "title": "Columbia County Library card unlocks free LinkedIn Learning ebooks and databases",
       "tag": "News",
-      "summary": "Get a free library card at columbiacountylib.org or walk in at 135 NE Hernando Ave Suite 203 \u2014 access LinkedIn Learning courses, Libby ebooks/audiobooks, research databases, and streaming video.",
-      "truth": "People pay hundreds for LinkedIn Learning \u2014 it's free with your library card. Same for Consumer Reports, Ancestry, newspapers, language learning. Best deal in Lake City.",
+      "summary": "Get a free library card at columbiacountylib.org or walk in at 135 NE Hernando Ave Suite 203 — access LinkedIn Learning courses, Libby ebooks/audiobooks, research databases, and streaming video.",
+      "truth": "People pay hundreds for LinkedIn Learning — it's free with your library card. Same for Consumer Reports, Ancestry, newspapers, language learning. Best deal in Lake City.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -132,10 +146,10 @@
       "id": "onyx-2026-11-06-news-1",
       "type": "news",
       "date": "2026-11-06",
-      "title": "Notepad++ is the free editor that opens everything \u2014 code logs configs at notepad-plus-plus.org",
+      "title": "Notepad++ is the free editor that opens everything — code logs configs at notepad-plus-plus.org",
       "tag": "News",
-      "summary": "Install Notepad++ from notepad-plus-plus.org \u2014 free, syntax highlights 80+ languages, handles huge files Notepad chokes on.",
-      "truth": "Customers bring me .log, .xml, .json, .ini files that Notepad mangles \u2014 Notepad++ opens them clean, color-coded, and searchable. It's the first thing I install on every shop machine.",
+      "summary": "Install Notepad++ from notepad-plus-plus.org — free, syntax highlights 80+ languages, handles huge files Notepad chokes on.",
+      "truth": "Customers bring me .log, .xml, .json, .ini files that Notepad mangles — Notepad++ opens them clean, color-coded, and searchable. It's the first thing I install on every shop machine.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -150,10 +164,10 @@
       "id": "onyx-2026-11-05-news-2",
       "type": "news",
       "date": "2026-11-05",
-      "title": "Comcast Xfinity Fiber Now Reaches 4,700+ Columbia County Homes \u2014 Check Your Address at xfinity.com",
+      "title": "Comcast Xfinity Fiber Now Reaches 4,700+ Columbia County Homes — Check Your Address at xfinity.com",
       "tag": "Local Internet",
-      "summary": "Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door \u2014 or call 1-800-XFINITY.",
-      "truth": "People assume Lake City is stuck with slow internet. Two fiber builders \u2014 Comcast and Clearwave \u2014 are racing here now. I've had three customers this month switch from DSL to fiber and wonder why they waited.",
+      "summary": "Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door — or call 1-800-XFINITY.",
+      "truth": "People assume Lake City is stuck with slow internet. Two fiber builders — Comcast and Clearwave — are racing here now. I've had three customers this month switch from DSL to fiber and wonder why they waited.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -169,10 +183,10 @@
       "id": "onyx-2026-11-05-news-1",
       "type": "news",
       "date": "2026-11-05",
-      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls \u2014 Free Update at firefox.com November 10",
+      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls — Free Update at firefox.com November 10",
       "tag": "Browser Update",
-      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x\u20132x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
-      "truth": "Most people tolerate browser annoyances for years. Mini Window alone \u2014 keeping docs visible while you work elsewhere \u2014 changes how you use the web daily. I switched a customer to Firefox last week just for this.",
+      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x–2x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
+      "truth": "Most people tolerate browser annoyances for years. Mini Window alone — keeping docs visible while you work elsewhere — changes how you use the web daily. I switched a customer to Firefox last week just for this.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -184,28 +198,27 @@
       }
     },
     {
-      "id": "onyx-2026-11-04-post-1",
-      "type": "news",
-      "date": "2026-11-04",
-      "title": "Daily Brief \u2014 Windows 11 November update adds File Explorer upgrades and Firefox 160 arrives",
-      "tag": "Tech Note",
-      "summary": "Windows 11 KB5127936 rolls out November 10 with a customizable right-click menu in File Explorer; Firefox 160 launches the same day with privacy improvements and a refreshed design. Get the Windows update at Settings > Windows Update > Check for updates. Download Firefox 160 free at firefox.com.",
-      "truth": "",
+      "id": "onyx-2026-11-06-post-2",
+      "type": "tip",
+      "date": "2026-11-06",
+      "title": "**Headline:** Windows Voice Typing (Win+H) types for you free — built into Windows 11",
+      "tag": "Tech Tip",
+      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
+      "truth": "Most people don't realize Windows has had solid dictation for years — I show this to customers who struggle with typing and they're amazed it's free and already there.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
+        "#ComputerRepair"
       ]
     },
     {
       "id": "onyx-2026-11-06-tip-2",
       "type": "tip",
       "date": "2026-11-06",
-      "title": "Windows Clipboard History (Win+V) remembers everything you copy \u2014 free built-in",
+      "title": "Windows Clipboard History (Win+V) remembers everything you copy — free built-in",
       "tag": "Tip",
-      "summary": "Press Win+V to see your clipboard history \u2014 pin items you reuse, sync across your devices, clear with one click.",
-      "truth": "I watch people copy-paste the same thing five times a day \u2014 Win+V lets you grab yesterday's copied text instantly. It's the most underused Windows feature.",
+      "summary": "Press Win+V to see your clipboard history — pin items you reuse, sync across your devices, clear with one click.",
+      "truth": "I watch people copy-paste the same thing five times a day — Win+V lets you grab yesterday's copied text instantly. It's the most underused Windows feature.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -220,10 +233,10 @@
       "id": "onyx-2026-11-06-tip-1",
       "type": "tip",
       "date": "2026-11-06",
-      "title": "Windows Voice Typing (Win+H) types for you free \u2014 built into Windows 11",
+      "title": "Windows Voice Typing (Win+H) types for you free — built into Windows 11",
       "tag": "Tip",
-      "summary": "Press Win+H anywhere to dictate text \u2014 no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
-      "truth": "Most people don't realize Windows has had solid dictation for years \u2014 I show this to customers who struggle with typing and they're amazed it's free and already there.",
+      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
+      "truth": "Most people don't realize Windows has had solid dictation for years — I show this to customers who struggle with typing and they're amazed it's free and already there.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -238,10 +251,10 @@
       "id": "onyx-2026-11-05-tip-2",
       "type": "tip",
       "date": "2026-11-05",
-      "title": "Fake Antivirus Renewal Emails Steal Your Credit Card \u2014 Check Subscription Status Directly in the App",
+      "title": "Fake Antivirus Renewal Emails Steal Your Credit Card — Check Subscription Status Directly in the App",
       "tag": "Security Alert",
-      "summary": "If an email says your Norton or McAfee subscription renewed for $80\u2013$100, don't click the link. Open the security app on your computer or go to norton.com / mcafee.com directly to check your real status.",
-      "truth": "This scam works because antivirus renewals are confusing \u2014 the product came with the PC, someone else manages it, or you forgot. The email exploits that uncertainty. I see two customers a month who nearly paid.",
+      "summary": "If an email says your Norton or McAfee subscription renewed for $80–$100, don't click the link. Open the security app on your computer or go to norton.com / mcafee.com directly to check your real status.",
+      "truth": "This scam works because antivirus renewals are confusing — the product came with the PC, someone else manages it, or you forgot. The email exploits that uncertainty. I see two customers a month who nearly paid.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -256,10 +269,10 @@
       "id": "onyx-2026-11-05-tip-1",
       "type": "tip",
       "date": "2026-11-05",
-      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free \u2014 No Reformatting Needed at ventoy.net",
+      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free — No Reformatting Needed at ventoy.net",
       "tag": "Free Tool",
-      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it \u2014 no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
-      "truth": "I used to carry a bag of labeled USBs. Now one Ventoy drive replaces all of them. When a customer brings a dead laptop, I boot the right tool in seconds \u2014 Windows installer, drive diagnostics, password reset, you name it.",
+      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it — no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
+      "truth": "I used to carry a bag of labeled USBs. Now one Ventoy drive replaces all of them. When a customer brings a dead laptop, I boot the right tool in seconds — Windows installer, drive diagnostics, password reset, you name it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -269,20 +282,6 @@
         "label": "Download Ventoy",
         "href": "https://ventoy.net"
       }
-    },
-    {
-      "id": "onyx-2026-11-04-post-2",
-      "type": "tip",
-      "date": "2026-11-04",
-      "title": "**Headline:** Windows 11 November update KB5127936 brings customizable right-click menu to File Explorer",
-      "tag": "Tech Tip",
-      "summary": "Open Settings > Windows Update and click Check for updates to get KB5127936, or download it from the Microsoft Update Catalog at catalog.update.microsoft.com. After installing, right-click in File Explorer and choose \"Customize menu\" to turn built-in commands on or off, add \"Print,\" choose which app extensions appear, or hide the app extensions submenu entirely.",
-      "truth": "Most people never right-click more than \"Open\" and \"Delete.\" This update finally lets you clean up the clutter so the commands you actually use are right there \u2014 no more digging through a mile-long menu.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
     }
   ],
   "updated": "2026-11-06"
