@@ -1,160 +1,173 @@
 {
-  "title": "Math crossword puzzle",
-  "size": 23,
+  "title": "Math Crossword Puzzle",
+  "size": 28,
   "grid": [
-    "..................T....",
-    "..................r....",
-    "...............Variable",
-    "..................n....",
-    "..................o....",
-    "..................m....",
-    ".............B....i....",
-    "......D......i....a....",
-    "......e..PolynomiAl....",
-    "......g......o...x.S...",
-    "......r......m.I.i.o...",
-    "......ExPression.s.l...",
-    "......e.o....a.t...u...",
-    "........s....l.Equation",
-    "..Identity.....g...i...",
-    "........u......e...o...",
-    "........l.....Origin...",
-    "...Quadrant............",
-    "........t..............",
-    "Coefficient............",
-    ".......................",
-    ".......................",
-    "......................."
+    "........C...................",
+    "........o...................",
+    "........e...................",
+    "........f.V.................",
+    "........f.a.................",
+    ".....F..i.r.................",
+    "Factor..c.i.................",
+    ".....a..i.a.................",
+    ".....c..e.b.....S...........",
+    "...Rational..P..l...........",
+    ".....i..t.Equation.Q........",
+    ".....o.......r..p..u........",
+    "....AnGle....Algebra........",
+    "......r......b.....d........",
+    "......a......o.....r........",
+    "....Exponet..l.....a........",
+    "......h......a.....t........",
+    "...................i...I....",
+    "................Function....",
+    ".......................t....",
+    ".....................Theorem",
+    ".......................g....",
+    ".......................e....",
+    ".......................r....",
+    "............................",
+    "............................",
+    "............................",
+    "............................"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 16,
+        "num": 4,
+        "row": 7,
+        "col": 1,
+        "len": 6,
+        "answer": "Factor",
+        "clue": "- A number multiplied to get a product"
+      },
+      {
+        "num": 6,
+        "row": 10,
+        "col": 4,
         "len": 8,
-        "answer": "Variable",
-        "clue": "A letter that stands for a number (like x or y)"
+        "answer": "Rational",
+        "clue": "- A number written as a fraction"
       },
       {
-        "num": 5,
-        "row": 9,
-        "col": 10,
-        "len": 10,
-        "answer": "PolynomiAl",
-        "clue": "A math expression with one or more terms."
-      },
-      {
-        "num": 9,
-        "row": 12,
-        "col": 7,
-        "len": 10,
-        "answer": "ExPression",
-        "clue": "A math phrase with numbers and variables but no equals sign"
-      },
-      {
-        "num": 11,
-        "row": 14,
-        "col": 16,
+        "num": 8,
+        "row": 11,
+        "col": 11,
         "len": 8,
         "answer": "Equation",
-        "clue": "A math sentence with an equals sign"
+        "clue": "- A math sentence with an equals sign"
+      },
+      {
+        "num": 10,
+        "row": 13,
+        "col": 5,
+        "len": 5,
+        "answer": "AnGle",
+        "clue": "- Formed     by two rays meeting at a point"
       },
       {
         "num": 12,
-        "row": 15,
-        "col": 3,
-        "len": 8,
-        "answer": "Identity",
-        "clue": "A math equation that is always true for all values."
+        "row": 13,
+        "col": 14,
+        "len": 7,
+        "answer": "Algebra",
+        "clue": "- Branch of math using variables and equations"
       },
       {
         "num": 13,
-        "row": 17,
-        "col": 15,
-        "len": 6,
-        "answer": "Origin",
-        "clue": "The point  where x and y axes meet."
-      },
-      {
-        "num": 14,
-        "row": 18,
-        "col": 4,
-        "len": 8,
-        "answer": "Quadrant",
-        "clue": "One of the four parts of a graph."
+        "row": 16,
+        "col": 5,
+        "len": 7,
+        "answer": "Exponet",
+        "clue": "- Shows repeated multiplication"
       },
       {
         "num": 15,
-        "row": 20,
-        "col": 1,
-        "len": 11,
-        "answer": "Coefficient",
-        "clue": "The number in front of a variable"
+        "row": 19,
+        "col": 17,
+        "len": 8,
+        "answer": "Function",
+        "clue": "- A relation where each input has one output"
+      },
+      {
+        "num": 16,
+        "row": 21,
+        "col": 22,
+        "len": 7,
+        "answer": "Theorem",
+        "clue": "- A proven math rule"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 19,
-        "len": 9,
-        "answer": "Trinomial",
-        "clue": "An expression with three terms."
+        "col": 9,
+        "len": 11,
+        "answer": "Coefficient",
+        "clue": "- A number multiplying a variable"
+      },
+      {
+        "num": 2,
+        "row": 4,
+        "col": 11,
+        "len": 8,
+        "answer": "VariablE",
+        "clue": "- A symbol that represents a value"
       },
       {
         "num": 3,
-        "row": 7,
-        "col": 14,
+        "row": 6,
+        "col": 6,
         "len": 8,
-        "answer": "Binomial",
-        "clue": "An expression with two terms."
+        "answer": "Fraction",
+        "clue": "- Represents part of a whole"
       },
       {
-        "num": 4,
-        "row": 8,
-        "col": 7,
-        "len": 6,
-        "answer": "DegrEe",
-        "clue": "The highest power of the variable in a term or polynomial."
-      },
-      {
-        "num": 6,
+        "num": 5,
         "row": 9,
-        "col": 18,
-        "len": 4,
-        "answer": "Axis",
-        "clue": "A line on a graph"
+        "col": 17,
+        "len": 5,
+        "answer": "Slope",
+        "clue": "- Rate of change of a line"
       },
       {
         "num": 7,
         "row": 10,
-        "col": 20,
+        "col": 14,
         "len": 8,
-        "answer": "Solution",
-        "clue": "The value that makes an equation true."
+        "answer": "ParAbola",
+        "clue": "- U-shaped graph of a quadratic equation"
       },
       {
-        "num": 8,
+        "num": 9,
         "row": 11,
-        "col": 16,
-        "len": 7,
-        "answer": "IntEger",
-        "clue": "A number with no decimal, like -2, 0, or 5."
+        "col": 20,
+        "len": 9,
+        "answer": "Quadratic",
+        "clue": "- Polynomial with degree 2"
       },
       {
-        "num": 10,
-        "row": 12,
-        "col": 9,
-        "len": 9,
-        "answer": "Postulate",
-        "clue": "A basic rule in geometry accepted without proof."
+        "num": 11,
+        "row": 13,
+        "col": 7,
+        "len": 5,
+        "answer": "Graph",
+        "clue": "- Visual display of data or equations"
+      },
+      {
+        "num": 14,
+        "row": 18,
+        "col": 24,
+        "len": 7,
+        "answer": "Integer",
+        "clue": "- a whole number that can be postitive or negative"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle-864",
-  "slug": "math-crossword-puzzle-864",
-  "fetched_at": "2026-07-14T19:21:41.874331+00:00",
-  "date": "2026-11-06"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle-932",
+  "slug": "math-crossword-puzzle-932",
+  "fetched_at": "2026-07-14T19:23:14.900822+00:00",
+  "date": "2026-11-07"
 }
