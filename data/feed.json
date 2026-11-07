@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-07-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-07",
+      "title": "Scammers Are Faking Official-Looking Notices — Here's the Tell",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers Are Faking Official-Looking Notices — Here's the Tell.\n\nYou get an email or see a webpage that looks exactly like it's from\nyour bank, the IRS, or a government agency. The logo is perfect.\nThe formatting is perfect. It says \"Immediate action required\" and\nthreatens account closure, legal trouble, or lost benefits if you\ndon't respond today.\n\nThe giveaway: they ask for something no legitimate organization\nwould ever request by email. Your Social Security number. Your\nbank login. A payment in gift cards or wire transfer. Remote access\nto your computer.\n\nReal banks and government agencies don't operate this way. They\nalready have your information. They don't threaten instant disaster.\nThey don't demand gift cards.\n\nWhat to do: Don't click any links in the message. Don't call...",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-07-composite.jpg",
+      "comic": "assets/img/news/2026-11-07-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-06-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-06",
@@ -95,20 +112,24 @@
       "image": "assets/img/news/2026-11-03-composite.jpg",
       "comic": "assets/img/news/2026-11-03-comic_square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-02-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-02",
-      "title": "CISA adds two actively exploited flaws to must-patch list — Adobe Commerce and Google Brotli",
-      "tag": "Daily Brief",
-      "excerpt": "CISA added two actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog. The flaws affect Adobe Commerce/Magento (CVE-2026-XXXXX) and Google Brotli (CVE-2026-YYYYY). Both have been exploited in real-world attacks. If you run Adobe Commerce/Magento, patch immediately at about.adobe.com/security/security-bulletin. If you use Google Brotli, update via github.com/google/brotli or your OS package manager. Organizations running either platform are urged to apply patches immediately to mitigate the risk of data breaches and system compromise.\n\nBoth vulnerabilities have confirmed active exploitation. Apply patches as soon as possible and monitor for any signs of compromise in your environment.",
-      "image": "assets/img/news/2026-11-02-composite.jpg",
-      "comic": "assets/img/news/2026-11-02-comic_square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-07-post-1",
+      "type": "news",
+      "date": "2026-11-07",
+      "title": "Fake Windows update popup locks your screen — Microsoft never puts a phone number in an error",
+      "tag": "Tech Note",
+      "summary": "That \"Critical Windows Update\" popup with a 1-800 number is a scam. Microsoft never includes phone numbers in warnings. Close the browser tab (Ctrl+W). If it won't close, hold your power button for 15 seconds until the screen goes black, then turn it back on.",
+      "truth": "",
+      "tags": [
+        "#DailyBrief",
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
     {
       "id": "onyx-2026-11-06-post-1",
       "type": "news",
@@ -180,22 +201,18 @@
       }
     },
     {
-      "id": "onyx-2026-11-05-news-1",
-      "type": "news",
-      "date": "2026-11-05",
-      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls — Free Update at firefox.com November 10",
-      "tag": "Browser Update",
-      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x–2x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
-      "truth": "Most people tolerate browser annoyances for years. Mini Window alone — keeping docs visible while you work elsewhere — changes how you use the web daily. I switched a customer to Firefox last week just for this.",
+      "id": "onyx-2026-11-07-post-2",
+      "type": "tip",
+      "date": "2026-11-07",
+      "title": "Stop renting Microsoft Office for $100 a year — LibreOffice is free and opens every Word Excel PowerPoint file",
+      "tag": "Tech Tip",
+      "summary": "Download LibreOffice free at libreoffice.org. It includes Writer (Word), Calc (Excel), Impress (PowerPoint), Draw, Base, and Math. Opens and saves Microsoft Office formats. No subscription, no account needed.",
+      "truth": "I install LibreOffice on every tune-up. Customers come back amazed they've been paying for Office when this does everything they need — letters, budgets, slideshows — for zero dollars.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Download Firefox",
-        "href": "https://firefox.com"
-      }
+      ]
     },
     {
       "id": "onyx-2026-11-06-post-2",
@@ -264,25 +281,7 @@
         "label": "Check Your Status",
         "href": "https://norton.com"
       }
-    },
-    {
-      "id": "onyx-2026-11-05-tip-1",
-      "type": "tip",
-      "date": "2026-11-05",
-      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free — No Reformatting Needed at ventoy.net",
-      "tag": "Free Tool",
-      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it — no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
-      "truth": "I used to carry a bag of labeled USBs. Now one Ventoy drive replaces all of them. When a customer brings a dead laptop, I boot the right tool in seconds — Windows installer, drive diagnostics, password reset, you name it.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ],
-      "cta": {
-        "label": "Download Ventoy",
-        "href": "https://ventoy.net"
-      }
     }
   ],
-  "updated": "2026-11-06"
+  "updated": "2026-11-07"
 }

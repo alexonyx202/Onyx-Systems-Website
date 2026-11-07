@@ -1,6 +1,48 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "items": [
+    {
+      "id": "n-2026-11-07",
+      "type": "newsletter",
+      "date": "2026-11-07",
+      "title": "Scammers Are Faking Official-Looking Notices — Here's the Tell",
+      "tag": "Daily Brief",
+      "summary": "Scammers Are Faking Official-Looking Notices — Here's the Tell.",
+      "comic": "Newsletter - 2026-11-07-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-07-libreoffice",
+      "type": "tech-note",
+      "date": "2026-11-07",
+      "title": "Stop renting Microsoft Office for $100 a year — LibreOffice is free and opens every Word Excel PowerPoint file",
+      "tag": "Tip",
+      "summary": "Download LibreOffice free at libreoffice.org. It includes Writer (Word), Calc (Excel), Impress (PowerPoint), Draw, Base, and Math. Opens and saves Microsoft Office formats. No subscription, no account needed."
+    },
+    {
+      "id": "t-2026-11-07-filehistory",
+      "type": "tech-note",
+      "date": "2026-11-07",
+      "title": "Windows File History backs up your files automatically — free built-in, just plug in a drive",
+      "tag": "Tip",
+      "summary": "Open Settings > System > Storage > Advanced storage settings > Backup options. Turn on File History, plug in a USB drive, and pick it as your backup drive. Windows saves copies of your files every hour."
+    },
+    {
+      "id": "t-2026-11-07-ollama",
+      "type": "tech-note",
+      "date": "2026-11-07",
+      "title": "Run a private AI chatbot on your PC free and offline — Ollama installs in minutes at ollama.com",
+      "tag": "Tip",
+      "summary": "Go to ollama.com and download the Windows installer. Press Start, type 'cmd', press Enter, then type: ollama run llama3.2. Your private AI chatbot runs locally with no account, no cloud, no subscription."
+    },
+    {
+      "id": "t-2026-11-07-bitwarden",
+      "type": "tech-note",
+      "date": "2026-11-07",
+      "title": "Bitwarden remembers all your passwords free — unlimited devices, open source, at bitwarden.com",
+      "tag": "Tip",
+      "summary": "Go to bitwarden.com and create a free account. Install the browser extension and phone app. Bitwarden fills your logins, generates strong passwords, and syncs across unlimited devices. Open source, independently audited."
+    },
     {
       "id": "n-2026-11-06",
       "type": "newsletter",
@@ -73,64 +115,6 @@
       "cta": {
         "label": "Call (386) 755-7772",
         "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "n-2026-11-05",
-      "type": "newsletter",
-      "date": "2026-11-05",
-      "title": "Scammers Are Using AI Voice Cloning to Steal Cash — In Person",
-      "tag": "Daily Brief",
-      "summary": "Your phone rings. It sounds exactly like your grandson — panicked, saying he's been in a car accident and arrested. He needs bail money. A \"public defender\" gets on the line and tells you to put cash in an envelope. Then a courier shows up at your front door to collect it.",
-      "comic": "Newsletter - 2026-11-05-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-05",
-      "type": "tech-note",
-      "date": "2026-11-05",
-      "title": "Firefox 160 Beta Brings Mini Window Multitasking and Playback Speed Controls — Free Update at firefox.com November 10",
-      "tag": "Browser Update",
-      "summary": "Firefox 160 launches November 10 with Mini Window (pop any tab into an always-on-top window), PiP playback speed 0.25x–2x, and stronger Android local-network privacy. Download free at firefox.com or join Beta at firefox.com/channel/desktop/ for early access.",
-      "cta": {
-        "label": "Download Firefox",
-        "href": "https://firefox.com"
-      }
-    },
-    {
-      "id": "t-2026-11-05-post3",
-      "type": "tech-note",
-      "date": "2026-11-05",
-      "title": "Comcast Xfinity Fiber Now Reaches 4,700+ Columbia County Homes — Check Your Address at xfinity.com",
-      "tag": "Local Internet",
-      "summary": "Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door — or call 1-800-XFINITY.",
-      "cta": {
-        "label": "Check Availability",
-        "href": "https://xfinity.com"
-      }
-    },
-    {
-      "id": "t-2026-11-05-post4",
-      "type": "tech-note",
-      "date": "2026-11-05",
-      "title": "Ventoy Makes a Bootable USB With Multiple ISOs Free — No Reformatting Needed at ventoy.net",
-      "tag": "Free Tool",
-      "summary": "Download Ventoy free at ventoy.net, run Ventoy2Disk.exe, pick your USB, and drag ISO files onto it — no reformatting between installs. One drive boots Windows 11, Linux, MemTest86, and rescue tools.",
-      "cta": {
-        "label": "Download Ventoy",
-        "href": "https://ventoy.net"
-      }
-    },
-    {
-      "id": "t-2026-11-05-post5",
-      "type": "tech-note",
-      "date": "2026-11-05",
-      "title": "Fake Antivirus Renewal Emails Steal Your Credit Card — Check Subscription Status Directly in the App",
-      "tag": "Security Alert",
-      "summary": "If an email says your Norton or McAfee subscription renewed for 0–00, don't click the link. Open the security app on your computer or go to norton.com / mcafee.com directly to check your real status.",
-      "cta": {
-        "label": "Check Your Status",
-        "href": "https://norton.com"
       }
     }
   ]
