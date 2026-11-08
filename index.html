@@ -1277,11 +1277,6 @@ document.addEventListener('DOMContentLoaded',function(){
     var next=root.getAttribute('data-theme')==='light'?'dark':'light';
     localStorage.setItem(key,next); apply(next);
     }); // click closes
-    btn.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      if(grid.hasAttribute('hidden')) grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
-      sync();
-    });
 })();
 
 /* ---------- Reveal ---------- */
@@ -1766,6 +1761,11 @@ function renderAll(d){
     if(grid.hasAttribute('hidden'))grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
     sync();
   });
+    btn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      if(grid.hasAttribute('hidden')) grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
+      sync();
+    });
   sync();
 })();
 
