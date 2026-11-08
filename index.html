@@ -1276,7 +1276,12 @@ document.addEventListener('DOMContentLoaded',function(){
   if(btn)btn.addEventListener('click',function(){
     var next=root.getAttribute('data-theme')==='light'?'dark':'light';
     localStorage.setItem(key,next); apply(next);
-  });
+    }); // click closes
+    btn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      if(grid.hasAttribute('hidden')) grid.removeAttribute('hidden'); else grid.setAttribute('hidden','');
+      sync();
+    });
 })();
 
 /* ---------- Reveal ---------- */
