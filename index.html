@@ -1692,29 +1692,7 @@ function renderAll(d){
       var headline = cleanTitle(p.title || p.headline || '');
       var tipText = p.summary || p.tip || '';
       var body=isNews
-        ? (p.truth?'<div class="tip"><b>Why it matters:</b> '+esc(p.truth)+'</div>
-<!-- Google Review Request Section -->
-<section class="review-request" style="background: var(--card); padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px;">
-  <h3 style="margin-bottom: 1rem; color: var(--accent);">Happy with Our Service?</h3>
-  <p style="margin-bottom: 1rem; color: var(--muted-foreground);">
-    Your feedback helps other Lake City customers find reliable computer repair. We appreciate your business!
-  </p>
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <a href="https://g.page/onyx-systems/review" target="_blank" 
-       style="flex: 1; min-width: 150px; padding: 0.75rem 1rem; background: var(--accent); color: white; 
-              text-align: center; text-decoration: none; border-radius: 4px; font-weight: 500;">
-      Leave Google Review
-    </a>
-    <a href="https://www.yelp.com/search?finddesc=computer+repair&findloc=Lake+City,+FL" target="_blank"
-       style="flex: 1; min-width: 150px; padding: 0.75rem 1rem; background: var(--muted-foreground); color: white;
-              text-align: center; text-decoration: none; border-radius: 4px; font-weight: 500;">
-      Leave Yelp Review
-    </a>
-  </div>
-  <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--muted-foreground);">
-    We appreciate your business and look forward to helping you keep your technology running smoothly!
-  </p>
-</section>':'')
+        ? (p.truth?'<div class="tip"><b>Why it matters:</b> '+esc(p.truth)+'</div>':'')
         : '<div class="tip"><b>Try this:</b> '+esc(tipText)+'</div>';
       return '<div class="post-card '+(isNews?'post-news':'post-tip')+'">'+
         '<span class="ntag '+(isNews?'ntag-news':'ntag-tip')+'">'+tag+'</span>'+
