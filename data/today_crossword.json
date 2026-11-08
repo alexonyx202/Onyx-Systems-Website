@@ -1,173 +1,143 @@
 {
   "title": "Math Crossword Puzzle",
-  "size": 28,
+  "size": 14,
   "grid": [
-    "........C...................",
-    "........o...................",
-    "........e...................",
-    "........f.V.................",
-    "........f.a.................",
-    ".....F..i.r.................",
-    "Factor..c.i.................",
-    ".....a..i.a.................",
-    ".....c..e.b.....S...........",
-    "...Rational..P..l...........",
-    ".....i..t.Equation.Q........",
-    ".....o.......r..p..u........",
-    "....AnGle....Algebra........",
-    "......r......b.....d........",
-    "......a......o.....r........",
-    "....Exponet..l.....a........",
-    "......h......a.....t........",
-    "...................i...I....",
-    "................Function....",
-    ".......................t....",
-    ".....................Theorem",
-    ".......................g....",
-    ".......................e....",
-    ".......................r....",
-    "............................",
-    "............................",
-    "............................",
-    "............................"
+    "ten...........",
+    "w.............",
+    "one.....d.....",
+    ".i..multiply..",
+    ".n..i...v.....",
+    "seven..six....",
+    "....u...d..t..",
+    ".plus...eight.",
+    "...........r..",
+    "...........e..",
+    "........five..",
+    "........o.....",
+    "........u.....",
+    "........r....."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 7,
+        "num": 1,
+        "row": 1,
         "col": 1,
-        "len": 6,
-        "answer": "Factor",
-        "clue": "- A number multiplied to get a product"
+        "len": 3,
+        "answer": "ten",
+        "clue": "The number 10"
+      },
+      {
+        "num": 2,
+        "row": 3,
+        "col": 1,
+        "len": 3,
+        "answer": "one",
+        "clue": "The number 1"
+      },
+      {
+        "num": 5,
+        "row": 4,
+        "col": 5,
+        "len": 8,
+        "answer": "multiply",
+        "clue": "Math symbol x"
       },
       {
         "num": 6,
-        "row": 10,
-        "col": 4,
-        "len": 8,
-        "answer": "Rational",
-        "clue": "- A number written as a fraction"
+        "row": 6,
+        "col": 1,
+        "len": 5,
+        "answer": "seven",
+        "clue": "The number 7"
       },
       {
-        "num": 8,
-        "row": 11,
-        "col": 11,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "- A math sentence with an equals sign"
+        "num": 7,
+        "row": 6,
+        "col": 8,
+        "len": 3,
+        "answer": "six",
+        "clue": "The number 6"
+      },
+      {
+        "num": 9,
+        "row": 8,
+        "col": 2,
+        "len": 4,
+        "answer": "plus",
+        "clue": "Math symbol +"
       },
       {
         "num": 10,
-        "row": 13,
-        "col": 5,
+        "row": 8,
+        "col": 9,
         "len": 5,
-        "answer": "AnGle",
-        "clue": "- Formed     by two rays meeting at a point"
+        "answer": "eight",
+        "clue": "The number 8"
       },
       {
-        "num": 12,
-        "row": 13,
-        "col": 14,
-        "len": 7,
-        "answer": "Algebra",
-        "clue": "- Branch of math using variables and equations"
-      },
-      {
-        "num": 13,
-        "row": 16,
-        "col": 5,
-        "len": 7,
-        "answer": "Exponet",
-        "clue": "- Shows repeated multiplication"
-      },
-      {
-        "num": 15,
-        "row": 19,
-        "col": 17,
-        "len": 8,
-        "answer": "Function",
-        "clue": "- A relation where each input has one output"
-      },
-      {
-        "num": 16,
-        "row": 21,
-        "col": 22,
-        "len": 7,
-        "answer": "Theorem",
-        "clue": "- A proven math rule"
+        "num": 11,
+        "row": 11,
+        "col": 9,
+        "len": 4,
+        "answer": "five",
+        "clue": "The number 5"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 11,
-        "answer": "Coefficient",
-        "clue": "- A number multiplying a variable"
-      },
-      {
-        "num": 2,
-        "row": 4,
-        "col": 11,
-        "len": 8,
-        "answer": "VariablE",
-        "clue": "- A symbol that represents a value"
+        "col": 1,
+        "len": 3,
+        "answer": "two",
+        "clue": "The number 2"
       },
       {
         "num": 3,
-        "row": 6,
-        "col": 6,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "- Represents part of a whole"
+        "row": 3,
+        "col": 2,
+        "len": 4,
+        "answer": "nine",
+        "clue": "The number 9"
+      },
+      {
+        "num": 4,
+        "row": 3,
+        "col": 9,
+        "len": 6,
+        "answer": "divide",
+        "clue": "Math symbol /"
       },
       {
         "num": 5,
-        "row": 9,
-        "col": 17,
+        "row": 4,
+        "col": 5,
         "len": 5,
-        "answer": "Slope",
-        "clue": "- Rate of change of a line"
+        "answer": "minus",
+        "clue": "Math symbol -"
       },
       {
-        "num": 7,
-        "row": 10,
-        "col": 14,
-        "len": 8,
-        "answer": "ParAbola",
-        "clue": "- U-shaped graph of a quadratic equation"
-      },
-      {
-        "num": 9,
-        "row": 11,
-        "col": 20,
-        "len": 9,
-        "answer": "Quadratic",
-        "clue": "- Polynomial with degree 2"
+        "num": 8,
+        "row": 7,
+        "col": 12,
+        "len": 5,
+        "answer": "three",
+        "clue": "The number 3"
       },
       {
         "num": 11,
-        "row": 13,
-        "col": 7,
-        "len": 5,
-        "answer": "Graph",
-        "clue": "- Visual display of data or equations"
-      },
-      {
-        "num": 14,
-        "row": 18,
-        "col": 24,
-        "len": 7,
-        "answer": "Integer",
-        "clue": "- a whole number that can be postitive or negative"
+        "row": 11,
+        "col": 9,
+        "len": 4,
+        "answer": "four",
+        "clue": "The number 4"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle-932",
-  "slug": "math-crossword-puzzle-932",
-  "fetched_at": "2026-07-14T19:23:14.900822+00:00",
-  "date": "2026-11-07"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle108",
+  "slug": "math-crossword-puzzle108",
+  "fetched_at": "2026-07-14T19:11:00.956777+00:00",
+  "date": "2026-11-08"
 }
