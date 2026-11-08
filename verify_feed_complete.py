@@ -33,7 +33,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # Phrases that signal a HIDDEN-NAME teaser headline (failure mode #3 / #1)
 TEASER = [
     "this free suite", "this free tool", "this free app", "this free login",
-    "one free app", "a free tool", "a free app", "the free alternative",
+    "a free tool", "a free app", "the free alternative",
     "the free suite", "a free suite", "software you can get free",
     "which password manager actually wins", "do this first", "here's which",
     "this free", "the free app", "a free program",
@@ -199,6 +199,11 @@ KNOWN_PRODUCTS = [
     "veeam", "veeam agent", "macrium", "macrium reflect",
     # Extended 2026-11-06: Today's Onyx Tech Notes real products (named + obtain method stated).
     "linkedin learning", "columbia county library", "columbiacountylib.org",
+    # Extended 2026-11-08: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "davinci resolve", "davinci", "resolve", "thunderbird", "thunderbird.net",
+    "powertoys", "microsoft powertoys", "github.com/microsoft/powertoys",
+    "clickfix", "sonicwall", "sonicwall.com",
+    "columbiacountyfl.gov", "clayelectric.com",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
