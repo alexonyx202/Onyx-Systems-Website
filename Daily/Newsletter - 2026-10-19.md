@@ -23,7 +23,7 @@ They'll pressure you to donate right now. They'll ask for gift cards, wire trans
 
 What to do: Before donating, verify the charity at ftc.gov/charity or guidestar.org. Pay by credit card only — it has fraud protection. If someone calls pushing for immediate payment, hang up.
 
-I've had two customers this month who nearly fell for this. The urgency tactic works because you want to help.
+The urgency tactic works because you want to help.
 
 Source: FTC Consumer Alert, Alachua Chronicle — August/October 2026
 

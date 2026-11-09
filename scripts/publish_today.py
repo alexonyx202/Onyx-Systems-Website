@@ -223,53 +223,92 @@ def _truncate(text: str, max_len: int = 800) -> str:
     truncated = text[:max_len].rsplit(' ', 1)[0]
     return truncated + "..."
 
-# Anti-fabrication guard: verify all news excerpts are citation-backed
-# Any content lacking verified sources is flagged before publish
-
-# Anti-fabrication: scan all feed.json and newsletter content for prohibited claims
+# Anti-fabrication guard: scan TODAY's newsletter + tech notes + feed entries
+# for fabricated first-person work claims (Newsletter Skill Rule 1).
+# A first-person claim with a specific number (numeric work anecdote,
+# "I had three customers lose data") is unverifiable and prohibited — use
+# general language instead ("I see this a lot").
+# NOTE: bare "you're not alone" is NOT prohibited (standard warm close);
+# the prohibited part is the numeric anecdote attached to it.
+# Scanning is scoped to today's files only — historical editions are not
+# re-litigated, or the gate would fail forever on past copy.
 PROHIBITED_PATTERNS = [
-    r"I've had a customer lose",
-    r"I had a customer lose",
+    # FIRST-PERSON BAN (John, 2026-11-09): never speak for John, never
+    # fabricate anything about John, his work, or customers. Customer-facing
+    # text (alert, tip, close, tech bullets, feed summary/truth) must be
+    # factual news / known computer tips only — no "I", "I'm", "I've",
+    # "my", "we", or "our" statements about John or the shop.
+    r"\bI\b",
+    r"\bI'm\b",
+    r"\bI've\b",
+    r"\bmy\b",
+    r"\bwe\b",
+    r"\bour\b",
+    r"\bI(?:'ve| have| had)\b[^.\n]{0,80}?\b(?:three|two|four|five|six|seven|eight|nine|ten|\d+)\s+(?:customers|scams|computers|clients|people|fake|bank-text|bank)",
+    r"\bI(?:'ve| have)\s+(?:cleaned up|fixed|seen|helped|had)\b[^.\n]{0,60}?\b(?:three|two|four|five|\d+)\b",
+    r"\b(?:three|two|four|five)\s+(?:customers|fake bank-text scams|scams)\b",
+    r"\bLast year I had\b",
+    r"columbiacountyfl\.gov/alerts",
+    r"text ALERT to 888-777",
     r"\$2,000",
     r"\$2,800",
-    r"3 seconds",
-    r"you're not alone",
-    r"I'VE HAD THREE",
     r"3 seconds to crack",
     r"scammers need only 3 seconds",
 ]
 
-def verify_no_fabricated_claims():
-    """Scan all content for prohibited false-claim patterns and raise on detection."""
-    import json, re, os
-    
+def _scan_text(label, text, errors):
+    for pattern in PROHIBITED_PATTERNS:
+        if re.search(pattern, text, re.IGNORECASE):
+            errors.append(label + ": prohibited fabricated-claim pattern: " + pattern)
+
+def verify_no_fabricated_claims(date_iso=None):
+    """Scan TODAY's content for fabricated claims. Raise ValueError on hit.
+
+    date_iso: only scan files/entries for this date (default: today ET).
+    This function MUST be called by main()/verify() -- it was previously
+    defined but never called, which is how the 2026-11-08 fabricated
+    a fabricated numeric close line shipped.
+    """
+    if date_iso is None:
+        date_iso = _today_et().isoformat()
+
     errors = []
-    
-    # Check feed.json news items
-    feed_path = "data/feed.json"
-    if os.path.exists(feed_path):
-        with open(feed_path) as f:
-            feed = json.load(f)
-        for item in feed.get("news", []):
-            text = item.get("excerpt", "")
-            for pattern in PROHIBITED_PATTERNS:
-                if re.search(pattern, text, re.IGNORECASE):
-                    errors.append(f"Feed item '{item.get('title')}': prohibited pattern detected: {pattern}")
-    
-    # Check newsletter markdown files
-    daily_path = "/home/ai/Documents/Obsidian Vault/Daily"
-    for fname in os.listdir(daily_path):
-        if fname.startswith("Newsletter") and fname.endswith(".md"):
-            fpath = os.path.join(daily_path, fname)
-            with open(fpath) as f:
-                ncontent = f.read()
-            for pattern in PROHIBITED_PATTERNS:
-                if re.search(pattern, ncontent, re.IGNORECASE):
-                    errors.append(f"Newsletter '{fname}': prohibited pattern detected")
-    
+
+    # 1) feed.json -- entries for today (news + posts)
+    feed_path = REPO / "data" / "feed.json"
+    if feed_path.exists():
+        feed = _read_json(feed_path) or {}
+        for item in feed.get("news", []) + feed.get("posts", []):
+            if item.get("date") != date_iso:
+                continue
+            text = " ".join(str(item.get(k, "")) for k in ("title", "excerpt", "summary", "truth"))
+            _scan_text("Feed '" + str(item.get("id")) + "'", text, errors)
+
+    # 2) today's newsletter + tech-notes markdown (vault, source of truth)
+    for base, prefix in ((DAILY, "Newsletter - " + date_iso), (POSTS, "Onyx-Tech-Notes-" + date_iso)):
+        if not base.exists():
+            continue
+        for fpath in sorted(base.glob(prefix + "*.md")):
+            _scan_text(fpath.name, fpath.read_text(encoding="utf-8", errors="replace"), errors)
+
+    # 3) rendered newsletter.html (what the website actually serves)
+    html_path = REPO / "newsletter.html"
+    if html_path.exists():
+        _scan_text("newsletter.html", html_path.read_text(encoding="utf-8", errors="replace"), errors)
+
+    # 4) source-citation check: every Today-in-Tech bullet must carry a URL.
+    # Vague citations like "(Source: X -- November 2026)" are how the false
+    # Defender / Clearwave bullets shipped -- no URL, no verification.
+    nl_md = resolve_newsletter(date_iso)
+    if nl_md and nl_md.exists():
+        md = nl_md.read_text(encoding="utf-8", errors="replace")
+        for ln in md.splitlines():
+            if ln.strip().startswith("\u2022"):
+                if "Source:" not in ln or "http" not in ln:
+                    errors.append(nl_md.name + ": tech bullet lacks a Source URL: " + ln.strip()[:90])
+
     if errors:
-        raise ValueError("FATAL: Fabricated claims detected in content pipeline.\
-" + "\n".join(errors))
+        raise ValueError("FATAL: Fabricated / uncited claims in today's content:\n" + "\n".join(errors))
 
 def build_entries(date_iso):
     nl_md = resolve_newsletter(date_iso)
@@ -426,7 +465,15 @@ def render_and_images(date_iso):
             Image.open(src).convert("RGB").save(dst, "JPEG", quality=82)
 
 
-def verify():
+def verify(date_iso=None):
+    # Anti-fabrication gate FIRST — a fabricated claim must never reach the
+    # completeness gate, let alone GitHub Pages (2026-11-08: this guard
+    # existed but was never called, so a false anecdote shipped).
+    try:
+        verify_no_fabricated_claims(date_iso)
+    except ValueError as e:
+        print(str(e), file=sys.stderr)
+        return 1
     r = _run(["python3", "verify_feed_complete.py", "--all"], cwd=str(REPO), check=False)
     print(r.stdout.strip())
     if r.returncode != 0:
@@ -540,7 +587,7 @@ def main(argv=None):
             print(f"  tags:    {', '.join(e['tags'])}")
 
     print("\n--- completeness gate ---")
-    rc = verify()
+    rc = verify(date_iso)
     if rc != 0:
         print("❌ completeness gate FAILED — fix the flagged entries and re-run "
               "`python3 scripts/publish_today.py --verify-only --push`.")

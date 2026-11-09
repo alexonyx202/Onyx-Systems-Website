@@ -40,7 +40,7 @@
 
 **The Tip:** Comcast announced Xfinity and Comcast Business fiber is now available to over 4,700 homes and businesses in Columbia County. Go to xfinity.com, enter your address, and see if gigabit fiber is at your door — or call 1-800-XFINITY.
 
-**The Shop Owner's Truth:** People assume Lake City is stuck with slow internet. Two fiber builders — Comcast and Clearwave — are racing here now. I've had three customers this month switch from DSL to fiber and wonder why they waited.
+**The Shop Owner's Truth:** People assume Lake City is stuck with slow internet. Two fiber builders — Comcast and Clearwave — are racing here now. These scams are going around.
 
 **What I Actually Do:** Walk them through xfinity.com address check, compare Clearwave at clearwavefiber.com, and if they're on old wiring, I'll swap their router for a Wi-Fi 6 model that actually handles gigabit.
 

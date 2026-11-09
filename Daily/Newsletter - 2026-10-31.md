@@ -71,9 +71,7 @@ click the star or press Ctrl+Shift+B to see your bookmarks bar.
 
 ---
 
-I've seen three people this month who scanned a fake code and had
-to cancel their cards — I'm glad they brought the computer in to
-check for malware. If something pops up that doesn't feel right,
+These scams are going around. If something pops up that doesn't feel right,
 bring it in and we'll figure it out together. No judgment, no
 pressure. Questions? Call me, or just stop by.
 

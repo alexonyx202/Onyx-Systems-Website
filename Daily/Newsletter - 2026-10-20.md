@@ -48,7 +48,7 @@ A print job frozen in the queue blocks everything behind it. Click the Start but
 
 ---
 
-If this one hit home, you're not alone — I've helped three customers this month whose reused passwords got them in trouble. Bring it in if you'd rather have a pro look at it; I'm happy to figure it out together, no judgment and no pressure. Questions? Call me, or just stop by.
+Reused passwords are a common way accounts get compromised. Use a different, strong password for each account. Questions? Call (386) 755-7772 or stop by 757 SW State Rd 247, Ste 108, Lake City, FL.
 
 — John @ ONYX SYSTEMS ✌️
 

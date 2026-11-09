@@ -48,7 +48,7 @@ In Gmail or Outlook, click the search box at the top and type what you need — 
 
 ---
 
-If this one hit home, you're not alone — I've cleaned up three of these fake CAPTCHA scams already this month. Bring it in if you'd rather have a pro look at it; I'm happy to figure it out together, no judgment and no pressure. Questions? Call me, or just stop by.
+If this one hit home, you're not alone — These scams are going around. Bring it in if you'd rather have a pro look at it; I'm happy to figure it out together, no judgment and no pressure. Questions? Call me, or just stop by.
 
 — John @ ONYX SYSTEMS ✌️
 

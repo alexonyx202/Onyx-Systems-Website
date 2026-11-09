@@ -484,6 +484,32 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         fails.append(f"[{fname} {eid}] JARGON in body (fails Grandma Test): '{pattern}'")
     return fails
 
+FABRICATED_PATTERNS = [
+    # FIRST-PERSON BAN (John, 2026-11-09): never speak for John.
+    r"\bI\b",
+    r"\bI'm\b",
+    r"\bI've\b",
+    r"\bmy\b",
+    r"\bwe\b",
+    r"\bour\b",
+    r"\bI(?:'ve| have| had)\b[^.\n]{0,80}?\b(?:three|two|four|five|six|seven|eight|nine|ten|\d+)\s+(?:customers|scams|computers|clients|people|fake|bank-text|bank)",
+    r"\bI(?:'ve| have)\s+(?:cleaned up|fixed|seen|helped|had)\b[^.\n]{0,60}?\b(?:three|two|four|five|\d+)\b",
+    r"\b(?:three|two|four|five)\s+(?:customers|fake bank-text scams|scams)\b",
+    r"\bLast year I had\b",
+    r"columbiacountyfl\.gov/alerts",
+    r"text ALERT to 888-777",
+]
+
+def check_fabricated(fname, eid, text):
+    """Anti-fabrication gate (2026-11-08): a first-person numeric work claim
+    (a numeric first-person work anecdote) is unverifiable and must never ship.
+    Mirrors scripts/publish_today.py PROHIBITED_PATTERNS — keep in sync."""
+    fails = []
+    for pat in FABRICATED_PATTERNS:
+        if re.search(pat, text, re.IGNORECASE):
+            fails.append(f"{fname} [{eid}]: FABRICATED CLAIM — first-person numeric anecdote or known-false claim matched: {pat}")
+    return fails
+
 def scan_file(path, arrays=("posts", "news")):
     if not os.path.exists(path):
         print(f"SKIP (missing): {path}")
@@ -507,6 +533,7 @@ def scan_file(path, arrays=("posts", "news")):
                 str(v) for v in (e.get("summary"), e.get("tip"), e.get("truth")) if v
             )
             fails += check_entry(fname, eid, hl, body, etype)
+            fails += check_fabricated(fname, eid, hl + " " + body)
     return fails
 
 def main():
