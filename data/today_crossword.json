@@ -1,143 +1,165 @@
 {
-  "title": "Math Crossword Puzzle",
-  "size": 14,
+  "title": "math crossword puzzle",
+  "size": 28,
   "grid": [
-    "ten...........",
-    "w.............",
-    "one.....d.....",
-    ".i..multiply..",
-    ".n..i...v.....",
-    "seven..six....",
-    "....u...d..t..",
-    ".plus...eight.",
-    "...........r..",
-    "...........e..",
-    "........five..",
-    "........o.....",
-    "........u.....",
-    "........r....."
+    "........math................",
+    "........u...................",
+    "........l...................",
+    "......math-book.............",
+    "........i...................",
+    "....h...plus-sign.n.........",
+    "....o...l.........u.........",
+    "....m...i......m..m.........",
+    "....e...c......o..b..m......",
+    "....w...addition..e..u......",
+    "....o...t......e.problems...",
+    "subtraction....y..s..t......",
+    "....k...o............i......",
+    "........n............p......",
+    "........-............l......",
+    "........subtraction-sign....",
+    "........i............c......",
+    "........g............a......",
+    "........n............t....d.",
+    ".....................i....i.",
+    "...............division-sign",
+    "...............i.....n....i.",
+    "...............v..........t.",
+    "...............i..........s.",
+    "...............s............",
+    "...............i............",
+    "...............o............",
+    "...............n............"
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 1,
-        "len": 3,
-        "answer": "ten",
-        "clue": "The number 10"
+        "col": 9,
+        "len": 4,
+        "answer": "math",
+        "clue": "a subject you use numbers in"
       },
       {
         "num": 2,
-        "row": 3,
-        "col": 1,
-        "len": 3,
-        "answer": "one",
-        "clue": "The number 1"
-      },
-      {
-        "num": 5,
         "row": 4,
-        "col": 5,
+        "col": 7,
+        "len": 9,
+        "answer": "math-book",
+        "clue": "a book you use in math"
+      },
+      {
+        "num": 4,
+        "row": 6,
+        "col": 9,
+        "len": 9,
+        "answer": "plus-sign",
+        "clue": "you use this sign when you add"
+      },
+      {
+        "num": 8,
+        "row": 10,
+        "col": 9,
         "len": 8,
-        "answer": "multiply",
-        "clue": "Math symbol x"
-      },
-      {
-        "num": 6,
-        "row": 6,
-        "col": 1,
-        "len": 5,
-        "answer": "seven",
-        "clue": "The number 7"
-      },
-      {
-        "num": 7,
-        "row": 6,
-        "col": 8,
-        "len": 3,
-        "answer": "six",
-        "clue": "The number 6"
+        "answer": "addition",
+        "clue": "you use this to get the sum"
       },
       {
         "num": 9,
-        "row": 8,
-        "col": 2,
-        "len": 4,
-        "answer": "plus",
-        "clue": "Math symbol +"
+        "row": 11,
+        "col": 18,
+        "len": 8,
+        "answer": "problems",
+        "clue": "if you are having troubles you are having what"
       },
       {
         "num": 10,
-        "row": 8,
-        "col": 9,
-        "len": 5,
-        "answer": "eight",
-        "clue": "The number 8"
+        "row": 12,
+        "col": 1,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "you use this to get the diference"
       },
       {
         "num": 11,
-        "row": 11,
+        "row": 16,
         "col": 9,
-        "len": 4,
-        "answer": "five",
-        "clue": "The number 5"
+        "len": 16,
+        "answer": "subtraction-sign",
+        "clue": "you use this when you subtract"
+      },
+      {
+        "num": 13,
+        "row": 21,
+        "col": 16,
+        "len": 13,
+        "answer": "division-sign",
+        "clue": "you use this sign when you divide"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 1,
-        "len": 3,
-        "answer": "two",
-        "clue": "The number 2"
+        "col": 9,
+        "len": 19,
+        "answer": "multiplication-sign",
+        "clue": "you use this sign when you multiply"
       },
       {
         "num": 3,
-        "row": 3,
-        "col": 2,
-        "len": 4,
-        "answer": "nine",
-        "clue": "The number 9"
-      },
-      {
-        "num": 4,
-        "row": 3,
-        "col": 9,
-        "len": 6,
-        "answer": "divide",
-        "clue": "Math symbol /"
+        "row": 6,
+        "col": 5,
+        "len": 8,
+        "answer": "homework",
+        "clue": "work you do at home"
       },
       {
         "num": 5,
-        "row": 4,
-        "col": 5,
-        "len": 5,
-        "answer": "minus",
-        "clue": "Math symbol -"
+        "row": 6,
+        "col": 19,
+        "len": 7,
+        "answer": "numbers",
+        "clue": "another word for digit"
       },
       {
-        "num": 8,
-        "row": 7,
-        "col": 12,
+        "num": 6,
+        "row": 8,
+        "col": 16,
         "len": 5,
-        "answer": "three",
-        "clue": "The number 3"
+        "answer": "money",
+        "clue": "you spend this at the store"
       },
       {
-        "num": 11,
-        "row": 11,
-        "col": 9,
-        "len": 4,
-        "answer": "four",
-        "clue": "The number 4"
+        "num": 7,
+        "row": 9,
+        "col": 22,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "you use this ti get the product"
+      },
+      {
+        "num": 12,
+        "row": 19,
+        "col": 27,
+        "len": 6,
+        "answer": "digits",
+        "clue": "another word for numbers"
+      },
+      {
+        "num": 13,
+        "row": 21,
+        "col": 16,
+        "len": 8,
+        "answer": "division",
+        "clue": "you use this to get the quoteint"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle108",
-  "slug": "math-crossword-puzzle108",
-  "fetched_at": "2026-07-14T19:11:00.956777+00:00",
-  "date": "2026-11-08"
+  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle6",
+  "slug": "math-crossword-puzzle6",
+  "fetched_at": "2026-07-14T19:24:58.780992+00:00",
+  "date": "2026-11-09"
 }
