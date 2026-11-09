@@ -28,6 +28,27 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-09-daily-brief",
+      "type": "newsletter",
+      "date": "2026-11-09",
+      "title": "Fake Windows 11 24H2 Update Scam Steals Data — Patch Tuesday Tomorrow",
+      "tag": "Daily Brief",
+      "excerpt": "A convincing fake Windows 11 24H2 update page is circulating. It mimics a Microsoft support site, uses a believable cumulative-update name, and offers a blue download button for an 83 MB installer. The file is a malicious MSI built with legitimate tools that hides an infostealer ",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "DailyBrief"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      },
+      "image": "assets/img/news/2026-11-09-composite.jpg",
+      "comic": "assets/img/news/2026-11-09-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-08-daily-brief",
       "type": "newsletter",
       "date": "2026-11-08",
@@ -118,6 +139,120 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-09-post1",
+      "type": "news",
+      "date": "2026-11-09",
+      "title": "Chrome 157 Security Update Fixes 213 Bugs Including 7 Critical — Update at chrome://settings/help",
+      "tag": "Security",
+      "summary": "Chrome 157 patches 213 security holes including seven critical flaws in graphics, memory handling, and browser features. Update now at chrome://settings/help — it takes two minutes and protects against memory corruption and graphics exploits.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "Security"
+      ],
+      "cta": {
+        "label": "Update Chrome",
+        "href": "chrome://settings/help"
+      }
+    },
+    {
+      "id": "onyx-2026-11-09-post2",
+      "type": "news",
+      "date": "2026-11-09",
+      "title": "Thunderbird Puts Every Email Account in One Free App — No Subscription at thunderbird.net",
+      "tag": "Software",
+      "summary": "Thunderbird manages Gmail, Outlook, Yahoo, and custom accounts in one unified inbox. Free, open-source, no subscription at thunderbird.net — works on Windows, Mac, and Linux.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "Software"
+      ],
+      "cta": {
+        "label": "Download Thunderbird",
+        "href": "https://thunderbird.net"
+      }
+    },
+    {
+      "id": "onyx-2026-11-09-post3",
+      "type": "news",
+      "date": "2026-11-09",
+      "title": "DaVinci Resolve Free Edits 4K Video with No Watermark — Download at blackmagicdesign.com",
+      "tag": "Software",
+      "summary": "DaVinci Resolve Free includes professional editing, color grading, VFX, and audio up to 4K 60fps. No watermark, no subscription, no time limit. Download at blackmagicdesign.com.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "Software"
+      ],
+      "cta": {
+        "label": "Download DaVinci Resolve",
+        "href": "https://blackmagicdesign.com"
+      }
+    },
+    {
+      "id": "onyx-2026-11-09-post4",
+      "type": "news",
+      "date": "2026-11-09",
+      "title": "Microsoft PowerToys Gives You 25+ Free Windows Power Tools — Install from Microsoft Store",
+      "tag": "Software",
+      "summary": "PowerToys adds bulk file rename, keyboard remapping, always-on-top window, color picker, image resizer, and 20+ utilities to Windows. Free at Microsoft Store or github.com/microsoft/PowerToys — one install, all tools.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "Software"
+      ],
+      "cta": {
+        "label": "Get PowerToys",
+        "href": "https://github.com/microsoft/PowerToys"
+      }
+    },
+    {
+      "id": "onyx-2026-11-09-post5",
+      "type": "news",
+      "date": "2026-11-09",
+      "title": "CISA Confirms Three New Actively Exploited Flaws This Week — SonicWall, Apple, WordPress",
+      "tag": "Security",
+      "summary": "CISA added three vulnerabilities to its Known Exploited list this week: SonicWall SSLVPN, an Apple authentication flaw, and a WordPress race condition. Update affected systems now — check the CISA KEV catalog for details.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "Security"
+      ],
+      "cta": {
+        "label": "Check CISA KEV Catalog",
+        "href": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    },
+    {
+      "id": "onyx-2026-11-09-dailybrief",
+      "type": "tip",
+      "date": "2026-11-09",
+      "title": "DAILY BRIEF — Chrome 157 Patches 213 Flaws, CISA Flags SonicWall/Apple/WordPress",
+      "tag": "Daily Brief",
+      "summary": "Chrome 157 fixes 213 security bugs including 7 critical — update at chrome://settings/help. CISA confirms three new actively exploited flaws: SonicWall SSLVPN, Apple authentication, WordPress core. Patch affected systems immediately.",
+      "truth": "",
+      "tags": [
+        "OnyxSystems",
+        "LakeCityFL",
+        "ComputerRepair",
+        "DailyBrief"
+      ],
+      "cta": {
+        "label": "Read Full Brief",
+        "href": "https://onyxpc.us/#contact"
+      }
+    },
     {
       "id": "onyx-2026-11-08-davinci",
       "type": "news",
@@ -303,167 +438,189 @@
       }
     }
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-09",
   "word": {
-    "word": "Ethernet",
+    "word": "Gateway",
     "pos": "noun",
-    "definition": "Wired networking that uses a cable for a fast, steady connection.",
-    "example": "She switched to Ethernet and the lag vanished.",
-    "date": "2026-11-08"
+    "definition": "The device that connects your local network to the wider internet — usually your router.",
+    "example": "The gateway handed out a fresh IP after the reboot.",
+    "date": "2026-11-09"
   },
   "crossword": {
-    "title": "Math Crossword Puzzle",
-    "size": 14,
+    "title": "math crossword puzzle",
+    "size": 28,
     "grid": [
-      "ten...........",
-      "w.............",
-      "one.....d.....",
-      ".i..multiply..",
-      ".n..i...v.....",
-      "seven..six....",
-      "....u...d..t..",
-      ".plus...eight.",
-      "...........r..",
-      "...........e..",
-      "........five..",
-      "........o.....",
-      "........u.....",
-      "........r....."
+      "........math................",
+      "........u...................",
+      "........l...................",
+      "......math-book.............",
+      "........i...................",
+      "....h...plus-sign.n.........",
+      "....o...l.........u.........",
+      "....m...i......m..m.........",
+      "....e...c......o..b..m......",
+      "....w...addition..e..u......",
+      "....o...t......e.problems...",
+      "subtraction....y..s..t......",
+      "....k...o............i......",
+      "........n............p......",
+      "........-............l......",
+      "........subtraction-sign....",
+      "........i............c......",
+      "........g............a......",
+      "........n............t....d.",
+      ".....................i....i.",
+      "...............division-sign",
+      "...............i.....n....i.",
+      "...............v..........t.",
+      "...............i..........s.",
+      "...............s............",
+      "...............i............",
+      "...............o............",
+      "...............n............"
     ],
     "clues": {
       "across": [
         {
           "num": 1,
           "row": 1,
-          "col": 1,
-          "len": 3,
-          "answer": "ten",
-          "clue": "The number 10"
+          "col": 9,
+          "len": 4,
+          "answer": "math",
+          "clue": "a subject you use numbers in"
         },
         {
           "num": 2,
-          "row": 3,
-          "col": 1,
-          "len": 3,
-          "answer": "one",
-          "clue": "The number 1"
-        },
-        {
-          "num": 5,
           "row": 4,
-          "col": 5,
+          "col": 7,
+          "len": 9,
+          "answer": "math-book",
+          "clue": "a book you use in math"
+        },
+        {
+          "num": 4,
+          "row": 6,
+          "col": 9,
+          "len": 9,
+          "answer": "plus-sign",
+          "clue": "you use this sign when you add"
+        },
+        {
+          "num": 8,
+          "row": 10,
+          "col": 9,
           "len": 8,
-          "answer": "multiply",
-          "clue": "Math symbol x"
-        },
-        {
-          "num": 6,
-          "row": 6,
-          "col": 1,
-          "len": 5,
-          "answer": "seven",
-          "clue": "The number 7"
-        },
-        {
-          "num": 7,
-          "row": 6,
-          "col": 8,
-          "len": 3,
-          "answer": "six",
-          "clue": "The number 6"
+          "answer": "addition",
+          "clue": "you use this to get the sum"
         },
         {
           "num": 9,
-          "row": 8,
-          "col": 2,
-          "len": 4,
-          "answer": "plus",
-          "clue": "Math symbol +"
+          "row": 11,
+          "col": 18,
+          "len": 8,
+          "answer": "problems",
+          "clue": "if you are having troubles you are having what"
         },
         {
           "num": 10,
-          "row": 8,
-          "col": 9,
-          "len": 5,
-          "answer": "eight",
-          "clue": "The number 8"
+          "row": 12,
+          "col": 1,
+          "len": 11,
+          "answer": "subtraction",
+          "clue": "you use this to get the diference"
         },
         {
           "num": 11,
-          "row": 11,
+          "row": 16,
           "col": 9,
-          "len": 4,
-          "answer": "five",
-          "clue": "The number 5"
+          "len": 16,
+          "answer": "subtraction-sign",
+          "clue": "you use this when you subtract"
+        },
+        {
+          "num": 13,
+          "row": 21,
+          "col": 16,
+          "len": 13,
+          "answer": "division-sign",
+          "clue": "you use this sign when you divide"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 1,
-          "len": 3,
-          "answer": "two",
-          "clue": "The number 2"
+          "col": 9,
+          "len": 19,
+          "answer": "multiplication-sign",
+          "clue": "you use this sign when you multiply"
         },
         {
           "num": 3,
-          "row": 3,
-          "col": 2,
-          "len": 4,
-          "answer": "nine",
-          "clue": "The number 9"
-        },
-        {
-          "num": 4,
-          "row": 3,
-          "col": 9,
-          "len": 6,
-          "answer": "divide",
-          "clue": "Math symbol /"
+          "row": 6,
+          "col": 5,
+          "len": 8,
+          "answer": "homework",
+          "clue": "work you do at home"
         },
         {
           "num": 5,
-          "row": 4,
-          "col": 5,
-          "len": 5,
-          "answer": "minus",
-          "clue": "Math symbol -"
+          "row": 6,
+          "col": 19,
+          "len": 7,
+          "answer": "numbers",
+          "clue": "another word for digit"
         },
         {
-          "num": 8,
-          "row": 7,
-          "col": 12,
+          "num": 6,
+          "row": 8,
+          "col": 16,
           "len": 5,
-          "answer": "three",
-          "clue": "The number 3"
+          "answer": "money",
+          "clue": "you spend this at the store"
         },
         {
-          "num": 11,
-          "row": 11,
-          "col": 9,
-          "len": 4,
-          "answer": "four",
-          "clue": "The number 4"
+          "num": 7,
+          "row": 9,
+          "col": 22,
+          "len": 14,
+          "answer": "multiplication",
+          "clue": "you use this ti get the product"
+        },
+        {
+          "num": 12,
+          "row": 19,
+          "col": 27,
+          "len": 6,
+          "answer": "digits",
+          "clue": "another word for numbers"
+        },
+        {
+          "num": 13,
+          "row": 21,
+          "col": 16,
+          "len": 8,
+          "answer": "division",
+          "clue": "you use this to get the quoteint"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle108",
-    "slug": "math-crossword-puzzle108",
-    "fetched_at": "2026-07-14T19:11:00.956777+00:00",
-    "date": "2026-11-08"
+    "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle6",
+    "slug": "math-crossword-puzzle6",
+    "fetched_at": "2026-07-14T19:24:58.780992+00:00",
+    "date": "2026-11-09"
   },
   "trivia": {
-    "q": "What does 'defragment' mean for a hard drive?",
-    "a": "Reordering scattered file pieces so they sit contiguously again, speeding up reads on an HDD.",
-    "category": "Hardware",
-    "date": "2026-11-08"
+    "q": "What is a 'botnet'?",
+    "a": "A network of hijacked devices controlled together, often used to flood websites with traffic.",
+    "category": "Security",
+    "date": "2026-11-09"
   },
   "joke": {
-    "q": "How do you comfort a JavaScript bug?",
-    "a": "You console it.",
-    "date": "2026-11-08"
+    "q": "Why did the database administrator leave his wife?",
+    "a": "She had too many relationships.",
+    "date": "2026-11-09"
   },
   "poll": {
     "poll": {

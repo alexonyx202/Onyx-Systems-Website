@@ -1,6 +1,88 @@
 {
-  "updated": "2026-11-08",
+  "updated": "2026-11-09",
   "items": [
+    {
+      "id": "n-2026-11-09",
+      "type": "newsletter",
+      "date": "2026-11-09",
+      "title": "Fake Windows 11 24H2 Update Scam Steals Data — Patch Tuesday Tomorrow",
+      "tag": "Daily Brief",
+      "summary": "A convincing fake Windows 11 24H2 update page is circulating. It mimics a Microsoft support site, uses a believable cumulative-update name, and offers a blue download button for an 83 MB installer. The file is a malicious MSI built with legitimate tools that hides an infostealer ",
+      "comic": "Newsletter - 2026-11-09-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-09-post1",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "Chrome 157 Security Update Fixes 213 Bugs Including 7 Critical — Update at chrome://settings/help",
+      "tag": "Security",
+      "summary": "Chrome 157 patches 213 security holes including seven critical flaws in graphics, memory handling, and browser features. Update now at chrome://settings/help — it takes two minutes and protects against memory corruption and graphics exploits.",
+      "cta": {
+        "label": "Update Chrome",
+        "href": "chrome://settings/help"
+      }
+    },
+    {
+      "id": "t-2026-11-09-post2",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "Thunderbird Puts Every Email Account in One Free App — No Subscription at thunderbird.net",
+      "tag": "Software",
+      "summary": "Thunderbird manages Gmail, Outlook, Yahoo, and custom accounts in one unified inbox. Free, open-source, no subscription at thunderbird.net — works on Windows, Mac, and Linux.",
+      "cta": {
+        "label": "Download Thunderbird",
+        "href": "https://thunderbird.net"
+      }
+    },
+    {
+      "id": "t-2026-11-09-post3",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "DaVinci Resolve Free Edits 4K Video with No Watermark — Download at blackmagicdesign.com",
+      "tag": "Software",
+      "summary": "DaVinci Resolve Free includes professional editing, color grading, VFX, and audio up to 4K 60fps. No watermark, no subscription, no time limit. Download at blackmagicdesign.com.",
+      "cta": {
+        "label": "Download DaVinci Resolve",
+        "href": "https://blackmagicdesign.com"
+      }
+    },
+    {
+      "id": "t-2026-11-09-post4",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "Microsoft PowerToys Gives You 25+ Free Windows Power Tools — Install from Microsoft Store",
+      "tag": "Software",
+      "summary": "PowerToys adds bulk file rename, keyboard remapping, always-on-top window, color picker, image resizer, and 20+ utilities to Windows. Free at Microsoft Store or github.com/microsoft/PowerToys — one install, all tools.",
+      "cta": {
+        "label": "Get PowerToys",
+        "href": "https://github.com/microsoft/PowerToys"
+      }
+    },
+    {
+      "id": "t-2026-11-09-post5",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "CISA Confirms Three New Actively Exploited Flaws This Week — SonicWall, Apple, WordPress",
+      "tag": "Security",
+      "summary": "CISA added three vulnerabilities to its Known Exploited list this week: SonicWall SSLVPN, an Apple authentication flaw, and a WordPress race condition. Update affected systems now — check the CISA KEV catalog for details.",
+      "cta": {
+        "label": "Check CISA KEV Catalog",
+        "href": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    },
+    {
+      "id": "t-2026-11-09-dailybrief",
+      "type": "tech-note",
+      "date": "2026-11-09",
+      "title": "DAILY BRIEF — Chrome 157 Patches 213 Flaws, CISA Flags SonicWall/Apple/WordPress",
+      "tag": "Daily Brief",
+      "summary": "Chrome 157 fixes 213 security bugs including 7 critical — update at chrome://settings/help. CISA confirms three new actively exploited flaws: SonicWall SSLVPN, Apple authentication, WordPress core. Patch affected systems immediately.",
+      "cta": {
+        "label": "Read Full Brief",
+        "href": "https://onyxpc.us/#contact"
+      }
+    },
     {
       "id": "n-2026-11-08",
       "type": "newsletter",
@@ -44,68 +126,6 @@
       "title": "Stop renting Microsoft Office for $100 a year — LibreOffice is free and opens every Word Excel PowerPoint file",
       "tag": "Tip",
       "summary": "Download LibreOffice free at libreoffice.org. It includes Writer (Word), Calc (Excel), Impress (PowerPoint), Draw, Base, and Math. Opens and saves Microsoft Office formats. No subscription, no account needed."
-    },
-    {
-      "id": "t-2026-11-07-filehistory",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "Windows File History backs up your files automatically — free built-in, just plug in a drive",
-      "tag": "Tip",
-      "summary": "Open Settings > System > Storage > Advanced storage settings > Backup options. Turn on File History, plug in a USB drive, and pick it as your backup drive. Windows saves copies of your files every hour."
-    },
-    {
-      "id": "t-2026-11-07-ollama",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "Run a private AI chatbot on your PC free and offline — Ollama installs in minutes at ollama.com",
-      "tag": "Tip",
-      "summary": "Go to ollama.com and download the Windows installer. Press Start, type 'cmd', press Enter, then type: ollama run llama3.2. Your private AI chatbot runs locally with no account, no cloud, no subscription."
-    },
-    {
-      "id": "t-2026-11-07-bitwarden",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "Bitwarden remembers all your passwords free — unlimited devices, open source, at bitwarden.com",
-      "tag": "Tip",
-      "summary": "Go to bitwarden.com and create a free account. Install the browser extension and phone app. Bitwarden fills your logins, generates strong passwords, and syncs across unlimited devices. Open source, independently audited."
-    },
-    {
-      "id": "n-2026-11-06",
-      "type": "newsletter",
-      "date": "2026-11-06",
-      "title": "Password Manager Breach — mSecure Users Told to Change All Passwords",
-      "tag": "Daily Brief",
-      "summary": "Password manager mSecure just told all users to change every password stored in their vault — but won't say what actually happened. On November 3, mSeven Software emailed customers about \"suspicious activity\" and said to immediately change passwords, reset two-factor authentication, and remove passkeys. They didn't say when it happened, what was accessed, or if your data was stolen. Because the scope is unknown, assume the worst: change your most important passwords first (email, banking, work) through each service's official website. Use a different, strong password for each. Consider moving to a different password manager until mSecure explains what happened.\n\nSource: Malwarebytes — November 4–6, 2026",
-      "comic": "Newsletter - 2026-11-06-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-06-news1",
-      "type": "tech-note",
-      "date": "2026-11-06",
-      "title": "**Headline:** CISA warns WordPress sites under active attack — plus Windows 11 24H2 Home/Pro no longer get security updates",
-      "tag": "Tech Note",
-      "summary": "WordPress Core vulnerability is being exploited right now — update WordPress at wordpress.org or your hosting panel. Also: Windows 11 24H2 Home and Pro reached end of updates October 13 — go to Settings > Windows Update and check for the 26H2 upgrade to stay protected."
-    },
-    {
-      "id": "t-2026-11-06-tip1",
-      "type": "tech-note",
-      "date": "2026-11-06",
-      "title": "**Headline:** Windows Voice Typing (Win+H) types for you free — built into Windows 11",
-      "tag": "Tech Tip",
-      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'."
-    },
-    {
-      "id": "t-2026-11-06",
-      "type": "tech-note",
-      "date": "2026-11-06",
-      "title": "Windows Voice Typing (Win+H) types for you free — built into Windows 11",
-      "tag": "Tip",
-      "summary": "Press Win+H anywhere to dictate text — no install needed, works offline, handles punctuation commands like 'period' 'comma' 'new line'.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ]
 }
