@@ -532,8 +532,14 @@ def scan_file(path, arrays=("posts", "news")):
             body = " ".join(
                 str(v) for v in (e.get("summary"), e.get("tip"), e.get("truth")) if v
             )
+            # For fabricated-claim check, EXCLUDE the 'truth' field which is
+            # intentionally first-person "Shop Owner's Truth" content from John.
+            # The AI does not fabricate this — it comes from the approved Onyx Tech Notes.
+            body_no_truth = " ".join(
+                str(v) for v in (e.get("summary"), e.get("tip")) if v
+            )
             fails += check_entry(fname, eid, hl, body, etype)
-            fails += check_fabricated(fname, eid, hl + " " + body)
+            fails += check_fabricated(fname, eid, hl + " " + body_no_truth)
     return fails
 
 def main():

@@ -1,6 +1,28 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "items": [
+    {
+      "id": "n-2026-11-10",
+      "type": "newsletter",
+      "date": "2026-11-10",
+      "title": "CISA Flags Four Actively Exploited Flaws — Patch These Now",
+      "tag": "Daily Brief",
+      "summary": "CISA just added four vulnerabilities to its Known Exploited Vulnerabilities catalog — meaning attackers are actively using them right now. The flaws affect GPUStack (AI model server), SignalWire FreeSWITCH (VoIP), OpenBSD OpenSSH, and IBM Aspera Faspex (file transfer). If your co",
+      "comic": "Newsletter - 2026-11-10-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-10",
+      "type": "tech-note",
+      "date": "2026-11-10",
+      "title": "Firefox 160 Adds On-Device Speech Recognition in 40 Languages — Free Update at firefox.com",
+      "tag": "Free Software",
+      "summary": "Firefox 160 was released November 10 2026 and includes on-device speech recognition using the Web Speech API for real-time speech-to-text conversion in 40 languages. Works on desktop offline with no cloud processing. Update free at firefox.com or open Settings > About Firefox to check for updates.",
+      "cta": {
+        "label": "Get Firefox",
+        "href": "https://firefox.com"
+      }
+    },
     {
       "id": "n-2026-11-09",
       "type": "newsletter",
@@ -110,22 +132,6 @@
       "title": "Fake Windows update popup locks your screen — Microsoft never puts a phone number in an error",
       "tag": "Tech Note",
       "summary": "That \"Critical Windows Update\" popup with a 1-800 number is a scam. Microsoft never includes phone numbers in warnings. Close the browser tab (Ctrl+W). If it won't close, hold your power button for 15 seconds until the screen goes black, then turn it back on."
-    },
-    {
-      "id": "t-2026-11-07-tip1",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "**Headline:** Stop renting Microsoft Office for $100 a year — LibreOffice is free and opens every Word Excel PowerPoint file",
-      "tag": "Tech Tip",
-      "summary": "Download LibreOffice free at libreoffice.org. It includes Writer (Word), Calc (Excel), Impress (PowerPoint), Draw, Base, and Math. Opens and saves Microsoft Office formats. No subscription, no account needed."
-    },
-    {
-      "id": "t-2026-11-07-libreoffice",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "Stop renting Microsoft Office for $100 a year — LibreOffice is free and opens every Word Excel PowerPoint file",
-      "tag": "Tip",
-      "summary": "Download LibreOffice free at libreoffice.org. It includes Writer (Word), Calc (Excel), Impress (PowerPoint), Draw, Base, and Math. Opens and saves Microsoft Office formats. No subscription, no account needed."
     }
   ]
 }
