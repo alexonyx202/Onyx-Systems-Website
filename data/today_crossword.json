@@ -1,165 +1,114 @@
 {
-  "title": "math crossword puzzle",
-  "size": 28,
+  "title": "Math Crossword",
+  "size": 17,
   "grid": [
-    "........math................",
-    "........u...................",
-    "........l...................",
-    "......math-book.............",
-    "........i...................",
-    "....h...plus-sign.n.........",
-    "....o...l.........u.........",
-    "....m...i......m..m.........",
-    "....e...c......o..b..m......",
-    "....w...addition..e..u......",
-    "....o...t......e.problems...",
-    "subtraction....y..s..t......",
-    "....k...o............i......",
-    "........n............p......",
-    "........-............l......",
-    "........subtraction-sign....",
-    "........i............c......",
-    "........g............a......",
-    "........n............t....d.",
-    ".....................i....i.",
-    "...............division-sign",
-    "...............i.....n....i.",
-    "...............v..........t.",
-    "...............i..........s.",
-    "...............s............",
-    "...............i............",
-    "...............o............",
-    "...............n............"
+    ".....division....",
+    ".........u.......",
+    ".........b.......",
+    ".....addition....",
+    ".........r.......",
+    ".........a.......",
+    ".........calculus",
+    "....a....t.......",
+    "..multiplication.",
+    "....g..e.o.......",
+    "number.r.n.......",
+    "....b..i.........",
+    "....r..m.........",
+    ".area..e.........",
+    ".......t.........",
+    "......geometry...",
+    ".......r........."
   ],
   "clues": {
     "across": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 4,
-        "answer": "math",
-        "clue": "a subject you use numbers in"
+        "col": 6,
+        "len": 8,
+        "answer": "division",
+        "clue": "to divide"
       },
       {
-        "num": 2,
+        "num": 3,
         "row": 4,
-        "col": 7,
-        "len": 9,
-        "answer": "math-book",
-        "clue": "a book you use in math"
+        "col": 6,
+        "len": 8,
+        "answer": "addition",
+        "clue": "to add"
       },
       {
         "num": 4,
-        "row": 6,
-        "col": 9,
-        "len": 9,
-        "answer": "plus-sign",
-        "clue": "you use this sign when you add"
+        "row": 7,
+        "col": 10,
+        "len": 8,
+        "answer": "calculus",
+        "clue": "a part in math in which you use properties"
+      },
+      {
+        "num": 6,
+        "row": 9,
+        "col": 3,
+        "len": 14,
+        "answer": "multiplication",
+        "clue": "to multiply"
       },
       {
         "num": 8,
-        "row": 10,
-        "col": 9,
-        "len": 8,
-        "answer": "addition",
-        "clue": "you use this to get the sum"
+        "row": 11,
+        "col": 1,
+        "len": 6,
+        "answer": "number",
+        "clue": "a symbol in math used by counting"
       },
       {
         "num": 9,
-        "row": 11,
-        "col": 18,
-        "len": 8,
-        "answer": "problems",
-        "clue": "if you are having troubles you are having what"
+        "row": 14,
+        "col": 2,
+        "len": 4,
+        "answer": "area",
+        "clue": "length x width"
       },
       {
         "num": 10,
-        "row": 12,
-        "col": 1,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "you use this to get the diference"
-      },
-      {
-        "num": 11,
         "row": 16,
-        "col": 9,
-        "len": 16,
-        "answer": "subtraction-sign",
-        "clue": "you use this when you subtract"
-      },
-      {
-        "num": 13,
-        "row": 21,
-        "col": 16,
-        "len": 13,
-        "answer": "division-sign",
-        "clue": "you use this sign when you divide"
+        "col": 7,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "a part in math which you use shapes"
       }
     ],
     "down": [
       {
-        "num": 1,
+        "num": 2,
         "row": 1,
-        "col": 9,
-        "len": 19,
-        "answer": "multiplication-sign",
-        "clue": "you use this sign when you multiply"
-      },
-      {
-        "num": 3,
-        "row": 6,
-        "col": 5,
-        "len": 8,
-        "answer": "homework",
-        "clue": "work you do at home"
+        "col": 10,
+        "len": 11,
+        "answer": "subtraction",
+        "clue": "minus"
       },
       {
         "num": 5,
-        "row": 6,
-        "col": 19,
-        "len": 7,
-        "answer": "numbers",
-        "clue": "another word for digit"
-      },
-      {
-        "num": 6,
         "row": 8,
-        "col": 16,
-        "len": 5,
-        "answer": "money",
-        "clue": "you spend this at the store"
+        "col": 5,
+        "len": 7,
+        "answer": "algebra",
+        "clue": "a part of math which uses letters"
       },
       {
         "num": 7,
         "row": 9,
-        "col": 22,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "you use this ti get the product"
-      },
-      {
-        "num": 12,
-        "row": 19,
-        "col": 27,
-        "len": 6,
-        "answer": "digits",
-        "clue": "another word for numbers"
-      },
-      {
-        "num": 13,
-        "row": 21,
-        "col": 16,
-        "len": 8,
-        "answer": "division",
-        "clue": "you use this to get the quoteint"
+        "col": 8,
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "the boarder around a area"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword-puzzle6",
-  "slug": "math-crossword-puzzle6",
-  "fetched_at": "2026-07-14T19:24:58.780992+00:00",
-  "date": "2026-11-09"
+  "source_url": "https://crosswordlabs.com/view/math-crossword259",
+  "slug": "math-crossword259",
+  "fetched_at": "2026-07-14T19:22:55.872838+00:00",
+  "date": "2026-11-10"
 }
