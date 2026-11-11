@@ -1,114 +1,152 @@
 {
   "title": "Math Crossword",
-  "size": 17,
+  "size": 15,
   "grid": [
-    ".....division....",
-    ".........u.......",
-    ".........b.......",
-    ".....addition....",
-    ".........r.......",
-    ".........a.......",
-    ".........calculus",
-    "....a....t.......",
-    "..multiplication.",
-    "....g..e.o.......",
-    "number.r.n.......",
-    "....b..i.........",
-    "....r..m.........",
-    ".area..e.........",
-    ".......t.........",
-    "......geometry...",
-    ".......r........."
+    "........d......",
+    ".....numeric...",
+    "data....c......",
+    "...decimal.....",
+    "g..d....g.pi...",
+    "ruler...o.a.g..",
+    "a..n..congruent",
+    "p..d......a.o..",
+    "h.........l.m..",
+    ".......d..l.e..",
+    "......percent..",
+    ".....a.g..l.r..",
+    ".....r.r....y..",
+    "....meter......",
+    ".....a.e......."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
+        "num": 2,
+        "row": 2,
         "col": 6,
-        "len": 8,
-        "answer": "division",
-        "clue": "to divide"
+        "len": 7,
+        "answer": "numeric",
+        "clue": "having to do with numbers"
       },
       {
         "num": 3,
+        "row": 3,
+        "col": 1,
+        "len": 4,
+        "answer": "data",
+        "clue": "information used in graphing"
+      },
+      {
+        "num": 5,
         "row": 4,
-        "col": 6,
-        "len": 8,
-        "answer": "addition",
-        "clue": "to add"
+        "col": 4,
+        "len": 7,
+        "answer": "decimal",
+        "clue": "a number with a whole number and part of a number (tenths, hundredths, etc.)"
       },
       {
-        "num": 4,
-        "row": 7,
-        "col": 10,
-        "len": 8,
-        "answer": "calculus",
-        "clue": "a part in math in which you use properties"
-      },
-      {
-        "num": 6,
-        "row": 9,
-        "col": 3,
-        "len": 14,
-        "answer": "multiplication",
-        "clue": "to multiply"
+        "num": 7,
+        "row": 5,
+        "col": 11,
+        "len": 2,
+        "answer": "pi",
+        "clue": "3.14"
       },
       {
         "num": 8,
-        "row": 11,
+        "row": 6,
         "col": 1,
-        "len": 6,
-        "answer": "number",
-        "clue": "a symbol in math used by counting"
-      },
-      {
-        "num": 9,
-        "row": 14,
-        "col": 2,
-        "len": 4,
-        "answer": "area",
-        "clue": "length x width"
+        "len": 5,
+        "answer": "ruler",
+        "clue": "used in math; measures 12 inches"
       },
       {
         "num": 10,
-        "row": 16,
+        "row": 7,
         "col": 7,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "a part in math which you use shapes"
+        "len": 9,
+        "answer": "congruent",
+        "clue": "equivalent to or equal to"
+      },
+      {
+        "num": 12,
+        "row": 11,
+        "col": 7,
+        "len": 7,
+        "answer": "percent",
+        "clue": "part of 100"
+      },
+      {
+        "num": 14,
+        "row": 14,
+        "col": 5,
+        "len": 5,
+        "answer": "meter",
+        "clue": "the basic unit of length in the metric system"
       }
     ],
     "down": [
       {
-        "num": 2,
+        "num": 1,
         "row": 1,
-        "col": 10,
-        "len": 11,
-        "answer": "subtraction",
-        "clue": "minus"
+        "col": 9,
+        "len": 7,
+        "answer": "decagon",
+        "clue": "a 10 sided polygon"
       },
       {
-        "num": 5,
-        "row": 8,
-        "col": 5,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "a part of math which uses letters"
+        "num": 4,
+        "row": 3,
+        "col": 4,
+        "len": 6,
+        "answer": "addend",
+        "clue": "a number used in addition"
+      },
+      {
+        "num": 6,
+        "row": 5,
+        "col": 1,
+        "len": 5,
+        "answer": "graph",
+        "clue": "in math it displays data"
       },
       {
         "num": 7,
-        "row": 9,
+        "row": 5,
+        "col": 11,
+        "len": 8,
+        "answer": "parallel",
+        "clue": "lines that are side by side with no chance of intersecting"
+      },
+      {
+        "num": 9,
+        "row": 6,
+        "col": 13,
+        "len": 8,
+        "answer": "geometry",
+        "clue": "an area of math that works with 2 dimensional and 3 dimensional figures"
+      },
+      {
+        "num": 11,
+        "row": 10,
         "col": 8,
-        "len": 9,
-        "answer": "perimeter",
-        "clue": "the boarder around a area"
+        "len": 6,
+        "answer": "degree",
+        "clue": "measurement used with temperature and with geometry"
+      },
+      {
+        "num": 13,
+        "row": 12,
+        "col": 6,
+        "len": 4,
+        "answer": "area",
+        "clue": "found when you multiply length and width"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword259",
-  "slug": "math-crossword259",
-  "fetched_at": "2026-07-14T19:22:55.872838+00:00",
-  "date": "2026-11-10"
+  "source_url": "https://crosswordlabs.com/view/math-crossword344",
+  "slug": "math-crossword344",
+  "fetched_at": "2026-07-14T19:26:07.144680+00:00",
+  "date": "2026-11-11"
 }
