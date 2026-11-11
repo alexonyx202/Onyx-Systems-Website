@@ -1,6 +1,32 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "items": [
+    {
+      "id": "n-2026-11-11",
+      "type": "newsletter",
+      "date": "2026-11-11",
+      "title": "CISA Flags Four Actively Exploited Flaws — Patch These Now",
+      "tag": "Daily Brief",
+      "summary": "CISA just added four vulnerabilities to its Known Exploited Vulnerabilities catalog — meaning attackers are actively using them right now. The flaws affect GPUStack (AI model server), SignalWire FreeSWITCH (VoIP), OpenBSD OpenSSH, and IBM Aspera Faspex (file transfer). If your computer runs any of these, update immediately.\n\nWhat to do: Check for updates on every program you use. Turn on automatic updates in your system settings and in each application's settings. Most of these patches are already available from the vendors.\n\nWhy it matters: Actively exploited flaws are the ones criminals use first. Delaying updates leaves the door open.",
+      "comic": "Newsletter - 2026-11-11-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-11-news1",
+      "type": "tech-note",
+      "date": "2026-11-11",
+      "title": "CISA Flags Four Actively Exploited Flaws — GPUStack FreeSWITCH OpenSSH Aspera Faspex",
+      "tag": "Tech Note",
+      "summary": "CISA added four vulnerabilities to its Known Exploited Vulnerabilities catalog on November 9 2026 based on active exploitation. The flaws affect GPUStack (CVE-2026-102895) SignalWire FreeSWITCH (CVE-2026-116779) OpenBSD OpenSSH (CVE-2026-123158) and IBM Aspera Faspex (CVE-2026-123218). Organizations should prioritize patching these immediately. Check the catalog at cisa.gov/known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "id": "t-2026-11-11-tip1",
+      "type": "tech-note",
+      "date": "2026-11-11",
+      "title": "**Headline:** Firefox 160 Adds On-Device Speech Recognition in 40 Languages — Free Update at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Firefox 160 was released November 10 2026 and includes on-device speech recognition using the Web Speech API for real-time speech-to-text conversion in 40 languages. Works on desktop offline with no cloud processing. Update free at firefox.com or open Settings > About Firefox to check for updates."
+    },
     {
       "id": "n-2026-11-10",
       "type": "newsletter",
@@ -104,34 +130,6 @@
         "label": "Read Full Brief",
         "href": "https://onyxpc.us/#contact"
       }
-    },
-    {
-      "id": "n-2026-11-08",
-      "type": "newsletter",
-      "date": "2026-11-08",
-      "title": "Fake Bank Fraud Alert Texts Are Flooding Phones — Don't Tap the Link",
-      "tag": "Daily Brief",
-      "summary": "Scammers are sending fake \"fraud alert\" texts that look exactly like they're from your bank. The message claims a suspicious transaction happened on your debit card and asks you to verify it. If you reply, they'll try to steal your online banking username, password, and the one-t",
-      "comic": "Newsletter - 2026-11-08-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-11-07",
-      "type": "newsletter",
-      "date": "2026-11-07",
-      "title": "Scammers Are Faking Official-Looking Notices — Here's the Tell",
-      "tag": "Daily Brief",
-      "summary": "Scammers Are Faking Official-Looking Notices — Here's the Tell.\n\nYou get an email or see a webpage that looks exactly like it's from\nyour bank, the IRS, or a government agency. The logo is perfect.\nThe formatting is perfect. It says \"Immediate action required\" and\nthreatens account closure, legal trouble, or lost benefits if you\ndon't respond today.\n\nThe giveaway: they ask for something no legitimate organization\nwould ever request by email. Your Social Security number. Your\nbank login. A payment in gift cards or wire transfer. Remote access\nto your computer.\n\nReal banks and government agencies don't operate this way. They\nalready have your information. They don't threaten instant disaster.\nThey don't demand gift cards.\n\nWhat to do: Don't click any links in the message. Don't call...",
-      "comic": "Newsletter - 2026-11-07-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-07-news1",
-      "type": "tech-note",
-      "date": "2026-11-07",
-      "title": "Fake Windows update popup locks your screen — Microsoft never puts a phone number in an error",
-      "tag": "Tech Note",
-      "summary": "That \"Critical Windows Update\" popup with a 1-800 number is a scam. Microsoft never includes phone numbers in warnings. Close the browser tab (Ctrl+W). If it won't close, hold your power button for 15 seconds until the screen goes black, then turn it back on."
     }
   ]
 }
