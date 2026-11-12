@@ -1,152 +1,228 @@
 {
-  "title": "Math Crossword",
-  "size": 15,
+  "title": "Math Crossyword",
+  "size": 27,
   "grid": [
-    "........d......",
-    ".....numeric...",
-    "data....c......",
-    "...decimal.....",
-    "g..d....g.pi...",
-    "ruler...o.a.g..",
-    "a..n..congruent",
-    "p..d......a.o..",
-    "h.........l.m..",
-    ".......d..l.e..",
-    "......percent..",
-    ".....a.g..l.r..",
-    ".....r.r....y..",
-    "....meter......",
-    ".....a.e......."
+    "......................G....",
+    ".....................Length",
+    "......................o....",
+    "......................m....",
+    "......................e.C..",
+    ".......TranslatioN....t.a..",
+    ".................u...Graph.",
+    ".................m....y.a..",
+    ".................b......c..",
+    "...............Area.....i..",
+    ".................r......t..",
+    "...............R.SymMetry,.",
+    ".......Reflection...e......",
+    "...............t....a......",
+    "..........Decimals..s......",
+    "....P..........t....u......",
+    "...Mass.....Perimeter......",
+    "....r...V...a..o....e......",
+    "..Transformations...m......",
+    "....l...l...t......Net,....",
+    "M...l...u...e.......n......",
+    "Angle...m..Probability.....",
+    "t...l.Pie...n..............",
+    "h..........................",
+    "...........................",
+    "...........................",
+    "..........................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
         "row": 2,
-        "col": 6,
-        "len": 7,
-        "answer": "numeric",
-        "clue": "having to do with numbers"
+        "col": 22,
+        "len": 6,
+        "answer": "Length",
+        "clue": "Related to Num.5"
       },
       {
-        "num": 3,
-        "row": 3,
-        "col": 1,
-        "len": 4,
-        "answer": "data",
-        "clue": "information used in graphing"
+        "num": 4,
+        "row": 6,
+        "col": 8,
+        "len": 11,
+        "answer": "TranslatioN",
+        "clue": "Moves the shape"
       },
       {
-        "num": 5,
-        "row": 4,
-        "col": 4,
-        "len": 7,
-        "answer": "decimal",
-        "clue": "a number with a whole number and part of a number (tenths, hundredths, etc.)"
+        "num": 6,
+        "row": 7,
+        "col": 22,
+        "len": 5,
+        "answer": "Graph",
+        "clue": "A way to show math info"
       },
       {
         "num": 7,
-        "row": 5,
-        "col": 11,
-        "len": 2,
-        "answer": "pi",
-        "clue": "3.14"
+        "row": 10,
+        "col": 16,
+        "len": 4,
+        "answer": "Area",
+        "clue": "The inside of a 2D polygon"
       },
       {
-        "num": 8,
-        "row": 6,
-        "col": 1,
-        "len": 5,
-        "answer": "ruler",
-        "clue": "used in math; measures 12 inches"
-      },
-      {
-        "num": 10,
-        "row": 7,
-        "col": 7,
+        "num": 9,
+        "row": 12,
+        "col": 18,
         "len": 9,
-        "answer": "congruent",
-        "clue": "equivalent to or equal to"
+        "answer": "SymMetry,",
+        "clue": "Where 2 sides of a shape are the same"
+      },
+      {
+        "num": 11,
+        "row": 13,
+        "col": 8,
+        "len": 10,
+        "answer": "Reflection",
+        "clue": "Flips the shape"
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 7,
-        "len": 7,
-        "answer": "percent",
-        "clue": "part of 100"
+        "row": 15,
+        "col": 11,
+        "len": 8,
+        "answer": "Decimals",
+        "clue": "Num.2 in pieces"
       },
       {
         "num": 14,
-        "row": 14,
-        "col": 5,
+        "row": 17,
+        "col": 4,
+        "len": 4,
+        "answer": "Mass",
+        "clue": "Another way to say weight"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 13,
+        "len": 9,
+        "answer": "Perimeter",
+        "clue": "Num.9 but only the outside"
+      },
+      {
+        "num": 17,
+        "row": 19,
+        "col": 3,
+        "len": 15,
+        "answer": "Transformations",
+        "clue": "Changes shapes"
+      },
+      {
+        "num": 18,
+        "row": 20,
+        "col": 20,
+        "len": 4,
+        "answer": "Net,",
+        "clue": "A 2D version of a 3D shape with each shape attached Estimate, To make an educated guess"
+      },
+      {
+        "num": 20,
+        "row": 22,
+        "col": 1,
         "len": 5,
-        "answer": "meter",
-        "clue": "the basic unit of length in the metric system"
+        "answer": "Angle",
+        "clue": "2 lines that meet to make this"
+      },
+      {
+        "num": 21,
+        "row": 22,
+        "col": 12,
+        "len": 11,
+        "answer": "Probability",
+        "clue": "The chance of something happening or not happening"
+      },
+      {
+        "num": 22,
+        "row": 23,
+        "col": 7,
+        "len": 3,
+        "answer": "Pie",
+        "clue": "Also called a circle graph"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 9,
-        "len": 7,
-        "answer": "decagon",
-        "clue": "a 10 sided polygon"
-      },
-      {
-        "num": 4,
-        "row": 3,
-        "col": 4,
-        "len": 6,
-        "answer": "addend",
-        "clue": "a number used in addition"
-      },
-      {
-        "num": 6,
-        "row": 5,
-        "col": 1,
-        "len": 5,
-        "answer": "graph",
-        "clue": "in math it displays data"
-      },
-      {
-        "num": 7,
-        "row": 5,
-        "col": 11,
+        "col": 23,
         "len": 8,
-        "answer": "parallel",
-        "clue": "lines that are side by side with no chance of intersecting"
+        "answer": "Geometry",
+        "clue": "Polygons"
       },
       {
-        "num": 9,
+        "num": 3,
+        "row": 5,
+        "col": 25,
+        "len": 8,
+        "answer": "Capacity",
+        "clue": "How much something can hold"
+      },
+      {
+        "num": 5,
         "row": 6,
-        "col": 13,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "an area of math that works with 2 dimensional and 3 dimensional figures"
+        "col": 18,
+        "len": 7,
+        "answer": "NumberS",
+        "clue": "Math uses a lot of these"
       },
       {
-        "num": 11,
-        "row": 10,
-        "col": 8,
-        "len": 6,
-        "answer": "degree",
-        "clue": "measurement used with temperature and with geometry"
+        "num": 8,
+        "row": 12,
+        "col": 16,
+        "len": 8,
+        "answer": "Rotation",
+        "clue": "Turns the shape"
+      },
+      {
+        "num": 10,
+        "row": 12,
+        "col": 21,
+        "len": 11,
+        "answer": "Measurement",
+        "clue": "The act of figuring out how long or tall something is Fractions, Num.4 but in shapes"
       },
       {
         "num": 13,
-        "row": 12,
-        "col": 6,
+        "row": 16,
+        "col": 5,
+        "len": 8,
+        "answer": "Parallel",
+        "clue": "2 lines that never meet"
+      },
+      {
+        "num": 15,
+        "row": 17,
+        "col": 13,
+        "len": 7,
+        "answer": "Pattern",
+        "clue": "A repeating action"
+      },
+      {
+        "num": 16,
+        "row": 18,
+        "col": 9,
+        "len": 6,
+        "answer": "Volume",
+        "clue": "Num. 11 but the entire thing"
+      },
+      {
+        "num": 19,
+        "row": 21,
+        "col": 1,
         "len": 4,
-        "answer": "area",
-        "clue": "found when you multiply length and width"
+        "answer": "MAth",
+        "clue": "What this crossword is about"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossword344",
-  "slug": "math-crossword344",
-  "fetched_at": "2026-07-14T19:26:07.144680+00:00",
-  "date": "2026-11-11"
+  "source_url": "https://crosswordlabs.com/view/math-crossyword-4",
+  "slug": "math-crossyword-4",
+  "fetched_at": "2026-07-14T19:23:34.646096+00:00",
+  "date": "2026-11-12"
 }
