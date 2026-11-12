@@ -1,6 +1,52 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "items": [
+    {
+      "id": "n-2026-11-12",
+      "type": "newsletter",
+      "date": "2026-11-12",
+      "title": "Fake Free Software Downloads Hide Password-Stealing Malware — Microsoft Warns",
+      "tag": "Daily Brief",
+      "summary": "You search for a cracked version of a paid program, a free game, or a",
+      "comic": "Newsletter - 2026-11-12-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-12-news1",
+      "type": "tech-note",
+      "date": "2026-11-12",
+      "title": "Microsoft November Patch Tuesday Fixes 1,235 Flaws Including Actively Exploited Outlook Zero-Day",
+      "tag": "Security Update",
+      "summary": "Microsoft's November Patch Tuesday addresses 1,235 security vulnerabilities, including one actively exploited zero-day in Outlook that steals login credentials when a malicious file is opened. The update also includes fixes for Windows, Office, and Edge. Update now via Settings > Windows Update.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-12-news2",
+      "type": "tech-note",
+      "date": "2026-11-12",
+      "title": "Windows 11 November Update Adds Cloud Rebuild Recovery and Redesigned Right-Click Menus",
+      "tag": "Windows Update",
+      "summary": "Windows 11 November update adds Cloud Rebuild recovery, redesigned right-click menus, and fixes for Remote Desktop and printing. Rollout is gradual — check Settings > Windows Update to see if it's available for your device.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-12-tip1",
+      "type": "tech-note",
+      "date": "2026-11-12",
+      "title": "Restart Once a Week to Clear Memory Leaks and Stuck Updates",
+      "tag": "Performance Tip",
+      "summary": "Hold your power button for 15 seconds until the screen goes black, wait a moment, then turn it back on. This clears memory leaks, stuck updates, and sluggish performance. Do it every Friday and your computer will stay snappy.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-11-11",
       "type": "newsletter",
@@ -87,30 +133,6 @@
       "cta": {
         "label": "Get PowerToys",
         "href": "https://github.com/microsoft/PowerToys"
-      }
-    },
-    {
-      "id": "t-2026-11-09-post5",
-      "type": "tech-note",
-      "date": "2026-11-09",
-      "title": "CISA Confirms Three New Actively Exploited Flaws This Week — SonicWall, Apple, WordPress",
-      "tag": "Security",
-      "summary": "CISA added three vulnerabilities to its Known Exploited list this week: SonicWall SSLVPN, an Apple authentication flaw, and a WordPress race condition. Update affected systems now — check the CISA KEV catalog for details.",
-      "cta": {
-        "label": "Check CISA KEV Catalog",
-        "href": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
-      }
-    },
-    {
-      "id": "t-2026-11-09-dailybrief",
-      "type": "tech-note",
-      "date": "2026-11-09",
-      "title": "DAILY BRIEF — Chrome 157 Patches 213 Flaws, CISA Flags SonicWall/Apple/WordPress",
-      "tag": "Daily Brief",
-      "summary": "Chrome 157 fixes 213 security bugs including 7 critical — update at chrome://settings/help. CISA confirms three new actively exploited flaws: SonicWall SSLVPN, Apple authentication, WordPress core. Patch affected systems immediately.",
-      "cta": {
-        "label": "Read Full Brief",
-        "href": "https://onyxpc.us/#contact"
       }
     }
   ]
