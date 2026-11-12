@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "title": "Onyx Systems | Total Computer Care, Lake City FL",
+    "description": "Honest computer & IT repair in Lake City, FL. Windows, Mac, Linux & ChromeOS. Virus removal, data recovery, free diagnostics. Local since 1997. Call (386) 755-7772.",
+    "meta_desc_len": 164,
+    "title_len": 48,
+    "canonical": "https://onyxpc.us/",
+    "og_image": "https://onyxpc.us/og-image.png"
+  },
+  "headings": {
+    "h1": "TOTAL COMPUTER CARE",
+    "h1_count": 1,
+    "h2_count": 7,
+    "h3_count": 20,
+    "has_id_attributes": true
+  },
+  "img_audit": {
+    "total_img": 25,
+    "missing_alt": 1,
+    "empty_alt_decorative": 10,
+    "descriptive_alt": 14,
+    "duplicate_alt": [
+      "Onyx Systems",
+      "Onyx Systems business card"
+    ],
+    "seo_critical_imgs": [
+      "Onyx Systems \u2014 Computer Care Center, Lake City FL",
+      "Onyx Systems storefront in Lake City, FL",
+      "Onyx Systems business card"
+    ]
+  },
+  "keywords": {
+    "Lake City": 9,
+    "computer repair": 1,
+    "IT support": 0,
+    "virus removal": 1,
+    "data recovery": 1,
+    "near me": 0,
+    "North Florida": 4,
+    "FL": 4
+  },
+  "cta_analysis": {
+    "hero_cta": "\ud83d\udcde Call John \u2014 (386) 755-7772",
+    "mobile_call_bar": "\ud83d\udcde Call (386) 755-7772",
+    "near_me_in_cta": false,
+    "tel_links": [
+      "tel:+138****7772"
+    ],
+    "tel_masked": true
+  },
+  "schema_issues": {
+    "second_schema_areaServed": "State (FL)",
+    "geo_consistency": "minor mismatch",
+    "missing_aggregateRating": true,
+    "priority_fix": "change areaServed to city list"
+  },
+  "page_performance": {
+    "html_size": 148080,
+    "inline_css": 58333,
+    "inline_js": 68869,
+    "inline_resources": "moderate",
+    "external_script": "assets/js/crossword.js"
+  },
+  "mobile_fixes": {
+    "overflow_probe": "passed",
+    "nav_scroll_spy": "implemented",
+    "weather_hero_responsive": true
+  },
+  "priority_fixes": [
+    "Add 'near me' keyword to CTAs",
+    "Add more 'computer repair' mentions",
+    "Add 'IT support' keyword",
+    "Trim meta description to 155-158 chars",
+    "Fix second schema areaServed",
+    "Add descriptive alt for the single missing image"
+  ],
+  "quick_wins": [
+    "Replace hero CTA 'Find us' with 'Find us near me'",
+    "Add 'Call now for Lake City FL computer repair' to mobile CTA",
+    "Replace 'FL' in footer with 'Lake City, FL'"
+  ],
+  "audit_summary": "Overall SEO health moderate with minor but actionable issues. No critical defects. Focus on keyword 'near me' missing and slight meta description over-length."
+}

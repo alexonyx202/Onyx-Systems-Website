@@ -348,6 +348,24 @@ def clean_tip_body(tip_body):
     return '\n'.join(cleaned).strip()
 
 
+def _linkify(text):
+    """Convert markdown links [text](url) and bare URLs into clickable <a> anchors.
+
+    2026-11-11: briefs now cite sources as bare URLs (e.g. ``https://...``) that must
+    render as clickable hyperlinks on the published site (user requirement: if a link
+    is posted, it must work as a hyperlink; plain-text URLs were not acceptable).
+    Markdown links are converted first, then bare URLs. Escapes HTML entities so a
+    stray < > does not inject markup.
+    """
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', text)
+    text = re.sub(
+        r"(?<![A-Za-z0-9])((?:https?://)[^\s<>\"'<>]+[^\s<>\"'<>])",
+        r'<a href="\1">\1</a>',
+        text,
+    )
+    return text
+
+
 def md_inline(text):
     """Render the inline markdown emphasis a brief may use (**bold**, *em*).
 
@@ -355,11 +373,12 @@ def md_inline(text):
     straight into HTML <p>/<li> elements. Without this conversion a brief that
     bolds a word (e.g. "Press the **Start** button") shipped the literal ** to
     customers (2026-09-23). Bold runs first so the single-asterisk pass cannot
-    re-match inside the generated <strong> tags.
+    re-match inside the generated <strong> tags. URL linkify runs last so bare
+    source URLs become real <a href> hyperlinks (2026-11-11).
     """
     text = re.sub(r"\*\*(?=\S)(.+?)(?<=\S)\*\*", r"<strong>\1</strong>", text, flags=re.S)
     text = re.sub(r"\*(?=\S)([^*]+?)(?<=\S)\*", r"<em>\1</em>", text, flags=re.S)
-    return text
+    return _linkify(text)
 
 
 def extract_comedy_break_title(md):
@@ -607,7 +626,7 @@ def main():
 <body>
 <article class="wrap doc">
   <div class="mast">
-    <div class="brand"><img src="{header_logo}" alt="ONYX SYSTEMS"></div>
+    <div class="brand"><img src="{header_logo}" alt="ONYX SYSTEMS" onerror="this.src='google-logo.svg';this.onerror=null"></div>
     <div class="tagline">{tagline}</div>
     <div class="date">{weekday}, {month} {ordinal}, {d.year}</div>
   </div>
@@ -643,9 +662,14 @@ def main():
 """
     # Copy brand assets to site root so newsletter.html references work
     brand_src = os.path.join(REPO, "assets", "img", "brand")
-    for asset_name in ("header.png", "business-card.png"):
+    for asset_name in ("header.png", "business-card.png", "google-logo.svg"):
         src = os.path.join(brand_src, asset_name)
-        dst_name = "onyxsystems-header.png" if asset_name == "header.png" else "Onyx_Card.png"
+        if asset_name == "header.png":
+            dst_name = "onyxsystems-header.png"
+        elif asset_name == "business-card.png":
+            dst_name = "Onyx_Card.png"
+        else:
+            dst_name = asset_name
         dst = os.path.join(REPO, dst_name)
         if os.path.exists(src):
             shutil.copy2(src, dst)

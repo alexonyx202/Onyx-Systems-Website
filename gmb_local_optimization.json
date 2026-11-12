@@ -1,0 +1,304 @@
+{
+  "gmb_optimization": [
+    {
+      "area": "Business identity",
+      "task": "Complete primary business name",
+      "target": "Onyx Systems | Total Computer Care",
+      "rationale": "Provides clarity and includes service descriptor; matches website title; improves local SEO",
+      "action": "Update Google Business Profile business name to 'Onyx Systems | Total Computer Care', verify consistency across all citations and onyxpc.us branding; preserve short-form 'Onyx Systems' for service area listings where appropriate",
+      "priority": "P0"
+    },
+    {
+      "area": "NAP finalization",
+      "task": "Exact address",
+      "target": "757 SW State Rd 247 Ste 108, Lake City, FL 32025",
+      "rationale": "Task-provided address is current storefront; used in schema, website, and citations; must match across all listings",
+      "action": "Confirm address in Google Business Profile, Yelp, BBB, Angi, Thumbtack, Nextdoor, Apple Maps, Bing Places; update any mismatches",
+      "priority": "P0"
+    },
+    {
+      "area": "NAP finalization",
+      "task": "Phone number",
+      "target": "(386) 755-7772",
+      "rationale": "Current onyxpc.us and site; BBB shows mismatch (386) 395-7772; correction critical for call conversion and citation consistency",
+      "action": "Update phone on Google Business Profile, Yelp, BBB, Angi, Thumbtack, Nextdoor, Apple Maps, Bing Places, Superpages, Yellow Pages to (386) 755-7772",
+      "priority": "P0"
+    },
+    {
+      "area": "Hours",
+      "task": "Business hours",
+      "target": "Mon–Fri 9:30 AM–5:30 PM; Sat 10:00 AM–2:00 PM; Sun closed",
+      "rationale": "Task-specified hours; matches loc-info card and majority of citations; schema currently has inconsistent hours (09:00-18:00, Sa 10:00-15:00)",
+      "action": "Update Google Business Profile hours; fix both schema blocks (first LocalBusiness schema: Mo-Fr 09:30-17:30, Sa 00:00-00:00; second schema: Mo-Fr 09:00-18:00, Sa 10:00-15:00) to match target",
+      "priority": "P1"
+    },
+    {
+      "area": "Categories",
+      "task": "Primary and secondary categories",
+      "target": "Primary: Computer Repair; Secondary: Electronics Repair",
+      "rationale": "Task-provided categories; Google allows up to 5 primary categories; adding Electronics Repair expands visibility for TV/appliance repairs",
+      "action": "In Google Business Profile, set 'Computer Repair' as primary category; add 'Electronics Repair' as secondary; ensure Yelp, BBB (category mismatch: 'Computer Dealers'), other directories reflect the correct categories",
+      "priority": "P0"
+    },
+    {
+      "area": "Profile content & enrichment",
+      "task": "Add high-quality photos",
+      "target": "Minimum 10 photos showing storefront, technicians, repairs, office space, team, equipment, before/after",
+      "rationale": "Google encourages photos; improves click-through rate; local customers want visual credibility; current photo library includes storefront, business card, team, shop interior",
+      "action": "Upload 10+ new photos to Google Business Profile; tag with service themes (repairs, diagnostics, tech support); ensure photos reflect services and team",
+      "priority": "P1"
+    },
+    {
+      "area": "Profile content & enrichment",
+      "task": "Write description",
+      "target": "Concise 150-250 character description emphasizing same-day repairs, free diagnostics, local since 1997, honest pricing",
+      "rationale": "Current schema description is generic '24/7 computer repair...' mismatch with site; better description needed for SEO and conversion",
+      "action": "Update Google Business Profile description; align with site services: 'Since 1997, Onyx Systems | Total Computer Care offers same-day computer repairs, free diagnostics, honest pricing. Local experts for Windows, Mac, Linux, ChromeOS, virus removal, data recovery. Call (386) 755-7772.'",
+      "priority": "P1"
+    },
+    {
+      "area": "Website ↔ GBP sync",
+      "task": "Fix schema inconsistencies",
+      "target": "Two LocalBusiness schemas in index.html to match target NAP/hours/geometry and ensure geo coordinates point to actual storefront",
+      "rationale": "First schema: address, hours Mo-Fr 09:30-17:30, Sa 00:00-00:00; geo correct (30.1715,-82.6737) but schema contains extra/second block with mismatched hours and geo; both need to reflect target and consistent data",
+      "action": "Edit index.html: update first schema hours to Mo-Fr 09:30-17:30, Sa 10:00-14:00; second schema hours to Mo-Fr 09:30-17:30, Sa 10:00-14:00; set geo to 30.1715,-82.6737; ensure both blocks use same address and phone; add 'Electronics Repair' to makesOffer list",
+      "priority": "P1"
+    },
+    {
+      "area": "Website ↔ GBP sync",
+      "task": "Validate website URL consistency",
+      "target": "Website URL https://onyxpc.us",
+      "rationale": "Site already points to onyxpc.us; GBP website URL must be set to same to avoid confusion and improve SEO",
+      "action": "In Google Business Profile, update website URL to https://onyxpc.us; confirm all internal links (contact, reviews) use consistent protocol (https)",
+      "priority": "P2"
+    }
+  ],
+  "citation_plan": [
+    {
+      "directory": "Google Business Profile",
+      "status": "exists_verified_partial",
+      "listing_url": "https://g.page/onyx-systems",
+      "action": "Complete NAP: fix phone, set hours, add categories. Add photos, description, posts, Q&A. Ensure website URL is https://onyxpc.us.",
+      "nap_status": "Name OK, address matches, phone mismatch with BBB, hours need update",
+      "priority": "P0"
+    },
+    {
+      "directory": "Yelp",
+      "status": "unclaimed_not_found",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City FL')",
+      "action": "Claim business, verify NAP, add categories, set hours, enable reviews. Submit for verification.",
+      "nap_status": "Not yet present; need to create/new NAP",
+      "priority": "P0"
+    },
+    {
+      "directory": "Better Business Bureau (BBB)",
+      "status": "exists_with_issues",
+      "listing_url": "https://www.bbb.org/us/fl/lake-city/profile/computer-dealers/onyx-systems-0403-9002473",
+      "action": "Update phone number from (386) 395-7772 to (386) 755-7772; change category from 'Computer Dealers' to 'Computer Repair'; ensure address matches; note not BBB accredited (acceptable for local business).",
+      "nap_status": "Phone mismatch, category mismatch, address OK",
+      "priority": "P0"
+    },
+    {
+      "directory": "Angi (Angie's List)",
+      "status": "unclaimed_not_found",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City FL')",
+      "action": "Create Angi profile, fill NAP, add service categories (Computer Repair, Electronics Repair), set hours, upload photos, enable communication.",
+      "nap_status": "No existing listing",
+      "priority": "P1"
+    },
+    {
+      "directory": "Thumbtack",
+      "status": "unclaimed_not_found",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City FL')",
+      "action": "Claim/Submit to Thumbtack, verify NAP, add categories, list services, enable request for proposals.",
+      "nap_status": "No existing listing",
+      "priority": "P1"
+    },
+    {
+      "directory": "Nextdoor",
+      "status": "exists_verified",
+      "listing_url": "https://nextdoor.com/pages/onyx-systems-lake-city-fl-1/",
+      "action": "Verify NAP, ensure service area coverage includes all targeted neighborhoods (Columbia, Suwannee, etc.). Add recent posts about computer repair services.",
+      "nap_status": "Phone shows (386) 755-7772; address matches; categories not present but description includes services",
+      "priority": "P2"
+    },
+    {
+      "directory": "Facebook Business Page",
+      "status": "exists_unclaimed",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City')",
+      "action": "Claim/Convert Facebook Page (Onyx Systems Lake City, FL) to Business Page, fill NAP, set hours, add categories, enable reviews.",
+      "nap_status": "Page exists but not verified; NAP not fully optimized",
+      "priority": "P2"
+    },
+    {
+      "directory": "Apple Maps / Apple Business Connect",
+      "status": "unclaimed_not_found",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City FL')",
+      "action": "Submit business to Apple Business Connect, verify NAP, add categories, set hours, upload photos. Ensure location appears in Apple Maps.",
+      "nap_status": "No existing listing",
+      "priority": "P2"
+    },
+    {
+      "directory": "Bing Places for Business",
+      "status": "unclaimed_not_found",
+      "listing_url": "N/A (search: 'Onyx Systems Lake City FL')",
+      "action": "Claim/submit on Bing Places, fill NAP, categories, hours; set to https://onyxpc.us",
+      "nap_status": "No existing listing",
+      "priority": "P2"
+    },
+    {
+      "directory": "Superpages",
+      "status": "exists_with_listing",
+      "listing_url": "https://www.superpages.com/lake-city-fl/bpp/onyx-systems-4614972",
+      "action": "Verify NAP (address matches, phone mismatch with BBB); update phone to (386) 755-7772; ensure categories include Computer Repair, Electronics Repair; respond to reviews; claim business page.",
+      "nap_status": "Phone mismatch (shows 4614972? Actually contact info not visible), address appears correct",
+      "priority": "P2"
+    }
+  ],
+  "review_templates": [
+    {
+      "type": "email",
+      "name": "Post-Repair Thank You + Google Review Request",
+      "subject": "Thanks for trusting Onyx Systems, {customer_name}!",
+      "body_markdown": "Hi {customer_name},\n\nGlad we got your {device} back in working order — {repair_summary}. Thank you for choosing Onyx Systems | Total Computer Care for your computer needs.\n\nIf you were satisfied with the service, I'd be grateful for a quick Google review. It helps a local shop like ours rank higher for neighbors who need tech help. A 5-star review takes less than a minute.\n\n★ Leave a review: {gmb_review_link}\n\nNo pressure at all. If something isn't right, just call or text (386) 755-7772 and I'll make it right before you even think about leaving a rating.\n\nThank you,\nJohn\nOnyx Systems | Total Computer Care\n(386) 755-7772\nhttps://onyxpc.us",
+      "variables": [
+        "customer_name",
+        "device",
+        "repair_summary",
+        "gmb_review_link"
+      ],
+      "channel": "email"
+    },
+    {
+      "type": "email",
+      "name": "Post-Service NPS + Review Fallback (if no rating provided)",
+      "subject": "Quick feedback helps us improve, {customer_name}",
+      "body_markdown": "Hi {customer_name},\n\nI hope your recent visit to Onyx Systems went smoothly. If you could spare 2 minutes, I'd appreciate your feedback on our service. Your response helps us serve the Lake City community better.\n\n→ Provide feedback & optionally leave a review: {feedback_link}\n\nIf you have a story to share or want to tell us about a technician, feel free to reply to this email.\n\nBest regards,\nJohn\n(386) 755-7772)",
+      "variables": [
+        "customer_name",
+        "feedback_link"
+      ],
+      "channel": "email"
+    },
+    {
+      "type": "sms",
+      "name": "Post-Repair SMS Review Request",
+      "body": "Hey {customer_name}! John here. Glad your {device} is fixed! If you were pleased, a quick Google review would help us a lot: {gmb_review_link}. Takes ~30 sec. If anything's off, call/text (386) 755-7772. — Onyx Systems",
+      "variables": [
+        "customer_name",
+        "device",
+        "gmb_review_link"
+      ],
+      "channel": "sms"
+    },
+    {
+      "type": "sms",
+      "name": "Google Review Invitation Confirmation (reply to confirm)",
+      "body": "Got it! You're all set to leave a Google review for Onyx Systems. {gmb_review_link} If you change your mind, just reply STOP. — Onyx Systems",
+      "variables": [
+        "gmb_review_link"
+      ],
+      "channel": "sms"
+    },
+    {
+      "type": "invitation",
+      "name": "Google Review Invitation Message 1 — Direct",
+      "channel": "all",
+      "message": "Hi {customer_name}! We fixed your {device} and wanted to give you a heads-up: if you were happy with the repair, a Google review would help other Lake City folks find us. Quick click, zero effort. → {gmb_review_link}. Thanks for being a part of our community!"
+    },
+    {
+      "type": "invitation",
+      "name": "Google Review Invitation Message 2 — Service-Specific",
+      "channel": "all",
+      "message": "Your {service_type} at Onyx Systems is complete. If you enjoyed working with us, a 5-star Google review would mean a lot to our small, locally owned shop. → {gmb_review_link}. Appreciate your support!"
+    },
+    {
+      "type": "invitation",
+      "name": "Google Review Invitation Message 3 — Local Impact",
+      "channel": "all",
+      "message": "We're a Lake City family business. Supporting local shops keeps jobs in our community. A quick Google review for Onyx Systems helps other neighbors find reliable tech help. → {gmb_review_link}. Thanks for being part of the community!"
+    },
+    {
+      "type": "invitation",
+      "name": "Google Review Invitation Message 4 — Handoff Reminder",
+      "channel": "in-person",
+      "message": "Your {device} is ready! Before you go, if you were happy with the service, a Google review would help other locals find Onyx Systems. We appreciate your feedback! → {gmb_review_link}"
+    },
+    {
+      "type": "invitation",
+      "name": "Google Review Invitation Message 5 — 24-Hour Follow-up",
+      "channel": "email",
+      "message": "Just wanted to follow up and see how your {device} is working after the {repair_type}. If everything is running smoothly, a quick Google review would help other North Florida customers find Onyx Systems. → {gmb_review_link}. Appreciate it!"
+    }
+  ],
+  "partnership_emails": [
+    {
+      "partner_type": "Coffee Shop",
+      "recipient_role": "Owner/Manager",
+      "subject": "Cross-Promotion Opportunity: Onyx Systems Tech Help for Your Customers",
+      "body": "Hi {owner_name},\n\nMy name is John Gunther, owner of Onyx Systems | Total Computer Care on State Road 247. We specialize in computer repair, virus removal, data recovery, and tech support for Lake City and North Florida.\n\nI noticed your coffee shop is a hub for the community, and thought we could partner to benefit both of our customer bases.\n\n**Proposed partnership:**\n• Print a small flyer/QR code on your tables showcasing Onyx Systems' services, offering a **10% discount** for coffee shop patrons who mention you.\n• For every 10 referrals, Onyx Systems provides a **complimentary PC health check** for one of your regular customers (scheduled after business hours).\n• We can also offer tech support for your POS system, Wi-Fi setup, or network services at a partner rate.\n\n**What you get:**\n• Increased foot traffic from tech-savvy customers seeking reliable computer help.\n• Free promotion by providing a useful service to your patrons.\n• Referral pipeline for our services.\n\n**What we get:**\n• Access to your customer base for tech services.\n• Cross-promotion in our daily newsletter and website.\n\nWould you be interested in a quick 15-minute call to explore this partnership? I'm flexible with timing.\n\nBest regards,\nJohn Gunther\nOnyx Systems | Total Computer Care\n(386) 755-7772\nhttps://onyxpc.us"
+    },
+    {
+      "partner_type": "Senior Center",
+      "recipient_role": "Program Director / Activity Coordinator",
+      "subject": "Free Tech Workshops for Seniors — Onyx Systems Community Partnership",
+      "body": "Hi {director_name},\n\nI'm John Gunther, owner of Onyx Systems | Total Computer Care in Lake City (757 SW State Rd 247 Ste 108). Since 1997, we've helped local residents with computer repair, virus removal, data recovery, and tech tutoring.\n\nI'm reaching out to propose a **free technology workshop series** for your senior community members. Many seniors face challenges with scams, software updates, video calling, and basic computer maintenance — and we'd like to help bridge that gap.\n\n**Workshop topics (each 45-60 min, scheduled monthly or quarterly):**\n• **\"Spot the Scam\"** — How to identify phishing, fake tech support calls, and gift card scams.\n• **\"Stay Connected\"** — Setting up and using video calling (FaceTime, Zoom, Google Meet) to keep in touch with family.\n• **\"Computer Health Check\"** — Simple steps to keep a computer running smoothly (updates, cleanup, backups).\n• **\"Ask the Tech\"** — Open Q&A where attendees bring their specific questions.\n\n**What Onyx Systems provides:**\n• Experienced instructor (John, 29 years local tech experience).\n• All presentation materials and handouts.\n• Free diagnostics for any attendee's device after the workshop.\n• Senior discount (15% off any repair service).\n\n**What we need from you:**\n• A room with a projector/screen or TV (we bring laptop and clicker).\n• Promotion in your newsletter/bulletin 2 weeks before each session.\n• 10-15 attendee minimum for a viable session.\n\n**Community benefit:** Empowers seniors to use technology safely and confidently; builds trust between Onyx Systems and the senior community for future repair needs.\n\nWould you be open to a brief call to discuss scheduling? I'm happy to tailor topics to your members' interests.\n\nBest regards,\nJohn Gunther\nOnyx Systems | Total Computer Care\n(386) 755-7772\nhttps://onyxpc.us"
+    },
+    {
+      "partner_type": "IT Shop / MSP",
+      "recipient_role": "Owner / Technical Director",
+      "subject": "Referral Partnership: Onyx Systems + {partner_name} — Complementary Services",
+      "body": "Hi {owner_name},\n\nI'm John Gunther, owner of Onyx Systems | Total Computer Care in Lake City. We focus on **consumer and small-business computer repair**: hardware diagnostics, virus/malware removal, data recovery, OS installs/upgrades (Windows, macOS, Linux, ChromeOS), and on-site IT support for homes and small offices.\n\nI see {partner_name} handles more enterprise-focused IT services — managed services, server infrastructure, network design, and security compliance. Our services don't compete; they complement. I'd like to propose a **formal referral partnership**.\n\n**How it works:**\n• **You refer** clients who need break/fix hardware repair, data recovery, or consumer device support → Onyx Systems handles it; you get a **10% referral fee** (or reciprocal credit).\n• **We refer** clients who outgrow break/fix and need managed IT, server setup, or compliance → {partner_name} handles it; we get a **10% referral fee** (or reciprocal credit).\n• Both parties maintain their own client relationships; we act as trusted specialists for the respective tier.\n\n**Why this makes sense for Lake City/North Florida:**\n• The 30-mile service area (Columbia, Suwannee, Gilchrist, Baker, Union counties) has limited specialized tech providers.\n• A referral network ensures every prospect lands with the right skill set, faster.\n• Joint marketing: co-branded one-pager for local chambers, cross-promotion in newsletters, shared booth at local business expos.\n\n**Next steps:**\n1. Quick 15-min call to align on referral process and fee structure.\n2. Exchange ideal client profiles and service boundary definitions.\n3. Draft a simple MOU (non-exclusive, 90-day trial).\n\nIf this aligns with your growth strategy, let's set up a call. I'm flexible — mornings or late afternoons work best.\n\nBest regards,\nJohn Gunther\nOnyx Systems | Total Computer Care\n(386) 755-7772\nhttps://onyxpc.us"
+    }
+  ],
+  "priority_actions": [
+    {
+      "rank": 1,
+      "action": "Update Google Business Profile NAP, hours, categories, upload 10+ photos, add description, enable reviews, set website URL to https://onyxpc.us",
+      "owner": "John (owner)",
+      "deadline": "Within 5 business days"
+    },
+    {
+      "rank": 2,
+      "action": "Fix both LocalBusiness schemas in onyxpc.us index.html to match target NAP/hours/geo, add 'Electronics Repair' to makesOffer, remove duplicate blocks or unify",
+      "owner": "John (owner)",
+      "deadline": "Within 7 business days"
+    },
+    {
+      "rank": 3,
+      "action": "Correct BBB profile: update phone number to (386) 755-7772, change category to Computer Repair, verify address",
+      "owner": "John (owner)",
+      "deadline": "Within 10 business days"
+    },
+    {
+      "rank": 4,
+      "action": "Claim and optimize Yelp profile: NAP, categories, hours, enable reviews; claim Superpages listing: update phone and categories",
+      "owner": "John (owner)",
+      "deadline": "Within 2 weeks"
+    },
+    {
+      "rank": 5,
+      "action": "Submit to Angi, Thumbtack, Apple Business Connect, Bing Places: claim with correct NAP, categories, hours, photos",
+      "owner": "John (owner)",
+      "deadline": "Within 3 weeks"
+    },
+    {
+      "rank": 6,
+      "action": "Launch review request workflow: set up email/SMS templates, schedule follow-up outreach for recent customers, automate review invitations",
+      "owner": "John (owner)",
+      "deadline": "Within 4 weeks"
+    },
+    {
+      "rank": 7,
+      "action": "Send partnership outreach emails to coffee shop, senior center, IT shop; track responses and schedule collaboration meetings",
+      "owner": "John (owner)",
+      "deadline": "Within 6 weeks"
+    },
+    {
+      "rank": 8,
+      "action": "Monitor GBP analytics weekly: track impressions, clicks, phone calls, review sentiment; adjust strategy as needed",
+      "owner": "John (owner)",
+      "deadline": "Ongoing"
+    }
+  ]
+}

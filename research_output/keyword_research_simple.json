@@ -1,0 +1,92 @@
+{
+  "priority_keywords": [
+    {
+      "keyword": "computer repair Lake City FL",
+      "intent": "Primary local service search — customers looking for general computer repair and IT help in Lake City",
+      "competition": "High — multiple established shops (Onyx, Baya, StarTech) plus Yelp listings; 65+ Google reviews across market",
+      "search_volume_estimate": 150
+    },
+    {
+      "keyword": "laptop repair near me Lake City FL",
+      "intent": "Immediate local repair request — users searching for nearby laptop-specific fixers; high conversion intent",
+      "competition": "High — 'near me' triggers hyper-local traffic; Baya and StarTech both advertise same-day/laptop services",
+      "search_volume_estimate": 110
+    },
+    {
+      "keyword": "same day repair Lake City FL",
+      "intent": "Urgency-driven service seeking same-day availability; differentiates from competitors who require appointments",
+      "competition": "Low — few shops advertise same-day without appointment; Onyx requires call-first but offers same-day most jobs",
+      "search_volume_estimate": 80
+    },
+    {
+      "keyword": "data recovery Lake City FL",
+      "intent": "Growing niche demand — lost files, ransomware recovery; Baya already lists it but Onyx lacks dedicated landing page",
+      "competition": "Medium — Baya has data recovery section; Onyx mentions it briefly in FAQ",
+      "search_volume_estimate": 50
+    },
+    {
+      "keyword": "PC Tune-Up Lake City FL",
+      "intent": "Performance optimization and Windows tuning — popular paid service mentioned by Baya; gap for Onyx which only mentions basic repairs",
+      "competition": "Medium-Low — Baya promotes heavily; Onyx minimal mention",
+      "search_volume_estimate": 40
+    },
+    {
+      "keyword": "virus removal Lake City FL",
+      "intent": "Security-focused repair — critical post-pandemic concern; Onyx covers it but not prominently",
+      "competition": "Medium — HelloTech and Baya list it; StarTech less prominent",
+      "search_volume_estimate": 35
+    },
+    {
+      "keyword": "free diagnostics Lake City FL",
+      "intent": "Trust signal — 'no guesswork', 'free diagnostics' is a key selling point used by Baya and Onyx",
+      "competition": "High — Baya and Onyx both promote free diagnostics; limited differentiation",
+      "search_volume_estimate": 25
+    },
+    {
+      "keyword": "computer repair North Florida",
+      "intent": "Geographic expansion keyword — captures customers outside Lake City proper; Onyx says 'Lake City & North Florida' but doesn't rank for broader terms",
+      "competition": "Low-Medium — Onyx uses specific city name; opportunity for regional reach",
+      "search_volume_estimate": 20
+    },
+    {
+      "keyword": "mobile repair Lake City FL",
+      "intent": "Emerging demand — mobile devices getting damaged; no competitor explicitly targets mobile repair",
+      "competition": "Very Low — none of the three main competitors advertise mobile repair",
+      "search_volume_estimate": 15
+    },
+    {
+      "keyword": "computer repair surrounding areas Lake City FL",
+      "intent": "Broad service area claim — Onyx uses 'Lake City, Live Oak, Branford, Jasper, Macclenny & Gainesville area'; gap for targeted neighborhood ads",
+      "competition": "High — Onyx claims broad coverage; competitors target specific neighborhoods",
+      "search_volume_estimate": 12
+    }
+  ],
+  "content_gaps": [
+    {
+      "keyword": "mobile repair",
+      "description": "No competitor among top 3 (Onyx, Baya, StarTech) explicitly advertises mobile phone/iPad repair. Mobile devices are exploding in demand."
+    },
+    {
+      "keyword": "remote diagnostics",
+      "description": "All competitors offer in-person visits. No online diagnostic tool or video consultation option available."
+    },
+    {
+      "keyword": "24/7 emergency support",
+      "description": "Onyx requires calling first; competitors like Baya offer 'no appointment needed' but no emergency after-hours messaging."
+    }
+  ],
+  "recommendations": [
+    {
+      "action": "Create mobile repair page",
+      "rationale": "Zero competition among top 3 competitors. Target 'mobile repair near me' and 'iPad repair' queries."
+    },
+    {
+      "action": "Add video-based remote diagnostics",
+      "rationale": "Build a simple video call booking flow. Competitors don't emphasize this either."
+    },
+    {
+      "action": "Promote 24/7 emergency support line",
+      "rationale": "Differentiate from competitors requiring call-first; promote walk-in hours."
+    }
+  ]
+}
