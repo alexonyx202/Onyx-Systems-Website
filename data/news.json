@@ -5,27 +5,19 @@
       "id": "n-2026-11-11",
       "type": "newsletter",
       "date": "2026-11-11",
-      "title": "CISA Flags Four Actively Exploited Flaws — Patch These Now",
+      "title": "Big Security Updates Today — Microsoft, Google & Apple Released Patches",
       "tag": "Daily Brief",
-      "summary": "CISA just added four vulnerabilities to its Known Exploited Vulnerabilities catalog — meaning attackers are actively using them right now. The flaws affect GPUStack (AI model server), SignalWire FreeSWITCH (VoIP), OpenBSD OpenSSH, and IBM Aspera Faspex (file transfer). If your computer runs any of these, update immediately.\n\nWhat to do: Check for updates on every program you use. Turn on automatic updates in your system settings and in each application's settings. Most of these patches are already available from the vendors.\n\nWhy it matters: Actively exploited flaws are the ones criminals use first. Delaying updates leaves the door open.",
+      "summary": "BIG UPDATE DAY: Microsoft, Google, and Apple released important security updates TODAY to protect your computer from real threats.\n\nMicrosoft just released patches for Windows and Office — these fix problems that could let hackers cause trouble. Google added a new scam protection to Chrome. Apple fixed issues on iPhone and Mac.\n\nWhat to do: Turn on automatic updates and let them run overnight. You don't have to do anything special. Most updates install while you sleep.\n\nWhy it matters: Hackers target computers that haven't been updated. Updates close the doors they try to open.",
       "comic": "Newsletter - 2026-11-11-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-11-news1",
-      "type": "tech-note",
-      "date": "2026-11-11",
-      "title": "CISA Flags Four Actively Exploited Flaws — GPUStack FreeSWITCH OpenSSH Aspera Faspex",
-      "tag": "Tech Note",
-      "summary": "CISA added four vulnerabilities to its Known Exploited Vulnerabilities catalog on November 9 2026 based on active exploitation. The flaws affect GPUStack (CVE-2026-102895) SignalWire FreeSWITCH (CVE-2026-116779) OpenBSD OpenSSH (CVE-2026-123158) and IBM Aspera Faspex (CVE-2026-123218). Organizations should prioritize patching these immediately. Check the catalog at cisa.gov/known-exploited-vulnerabilities-catalog"
     },
     {
       "id": "t-2026-11-11-tip1",
       "type": "tech-note",
       "date": "2026-11-11",
-      "title": "Microsoft Releases November Patch Tuesday Updates — Windows, Office, Edge",
+      "title": "Microsoft Released Security Updates for Windows and Office Today — Here's What Changed for You",
       "tag": "Tech Tip",
-      "summary": "Microsoft released its November 2026 Patch Tuesday updates this afternoon covering Windows 11, Windows 10, Office, and Microsoft Edge. The updates address 78 security vulnerabilities across the product line including 6 rated Critical. Install via Settings > Windows Update and restart when prompted."
+      "summary": "Microsoft released its monthly security updates for Windows 11, Windows 10, Office, and Edge today. These updates fix problems that could let hackers cause trouble. Let the update run overnight and restart when asked."
     },
     {
       "id": "t-2026-11-10",
