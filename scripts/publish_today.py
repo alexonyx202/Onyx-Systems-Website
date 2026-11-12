@@ -364,6 +364,36 @@ def build_entries(date_iso):
 # data updates (idempotent: dedupe by id, then prepend + cap)
 # ---------------------------------------------------------------------------
 
+def _dedupe_by_title(items, label=""):
+    """Remove entries with duplicate titles, keeping the newest by date.
+
+    Two newsletter days can carry identical headline text (e.g. a recurring CISA
+    alert). ID-based deduping alone lets both survive, so the website shows the
+    same card twice. This pass keeps only the entry with the latest date per
+    title. Returns (deduped_list, n_removed).
+    """
+    seen = {}
+    kept = []
+    removed = 0
+    for it in items:
+        t = it.get("title", "")
+        if t in seen:
+            prev = seen[t]
+            # Keep whichever is newer by date (string compare works for ISO dates)
+            if it.get("date", "") > prev.get("date", ""):
+                # Replace previous with this newer one
+                kept = [k for k in kept if k is not prev]
+                kept.append(it)
+                seen[t] = it
+            removed += 1
+            if label:
+                print(f"[dedupe] removed duplicate '{t[:60]}' (kept {seen[t].get('date')})")
+        else:
+            seen[t] = it
+            kept.append(it)
+    return kept, removed
+
+
 def update_feed(daily_brief, news_post, tip_post):
     path = REPO / "data" / "feed.json"
     feed = _read_json(path) or {"site": {}, "news": [], "posts": [], "reviews": []}
@@ -371,12 +401,16 @@ def update_feed(daily_brief, news_post, tip_post):
     feed["news"] = [n for n in feed.get("news", []) if n.get("id") != daily_brief["id"]]
     feed["news"].insert(0, daily_brief)
     feed["news"] = feed["news"][:NEWS_MAX]
+    # Dedupe by title (recurrent alerts produce identical headlines on different days)
+    feed["news"], _ = _dedupe_by_title(feed["news"], label="feed.news")
 
     posts = [p for p in feed.get("posts", []) if p.get("id") not in (news_post["id"], tip_post["id"])]
     news_group = [p for p in posts if p.get("type") == "news"]
     tip_group = [p for p in posts if p.get("type") == "tip"]
     news_group.insert(0, news_post)
     tip_group.insert(0, tip_post)
+    news_group, _ = _dedupe_by_title(news_group, label="feed.posts.news")
+    tip_group, _ = _dedupe_by_title(tip_group, label="feed.posts.tip")
     feed["posts"] = news_group[:POSTS_NEWS_MAX] + tip_group[:POSTS_TIP_MAX]
 
     feed["updated"] = daily_brief["date"]
@@ -410,6 +444,8 @@ def update_news(daily_brief, news_post, tip_post):
     items = [it for it in data.get("items", []) if it.get("id") not in ids]
     items = entries + items  # brief first, then news, then tip (stable sort keeps order)
     items.sort(key=lambda x: x.get("date", ""), reverse=True)
+    # Dedupe by title across days (recurrent alert / same tip repeated)
+    items, _ = _dedupe_by_title(items, label="news.items")
     data["items"] = items[:NEWS_JSON_MAX]
     data["updated"] = date_iso
     _write_json(path, data)
@@ -465,6 +501,31 @@ def render_and_images(date_iso):
             Image.open(src).convert("RGB").save(dst, "JPEG", quality=82)
 
 
+def _check_duplicate_titles(date_iso):
+    """Fail if feed.json or news.json contains duplicate daily-brief titles
+    referencing the same source date range (recurrent alerts). Returns list of errors."""
+    errors = []
+    feed_path = REPO / "data" / "feed.json"
+    news_path = REPO / "data" / "news.json"
+
+    for path, arrays in ((feed_path, ("news", "posts")), (news_path, ("items",))):
+        if not path.exists():
+            continue
+        d = _read_json(path) or {}
+        titles = {}
+        for arr in arrays:
+            for it in d.get(arr, []):
+                t = it.get("title", "")
+                if t:
+                    titles.setdefault(t, []).append((it.get("id"), it.get("date")))
+        for t, entries in titles.items():
+            if len(entries) > 1:
+                ids = ", ".join(e[0] for e in entries)
+                dates = sorted({e[1] for e in entries})
+                errors.append(f"{path.name}: duplicate title across entries: {t[:70]!r} -> {ids} (dates: {', '.join(dates)})")
+    return errors
+
+
 def verify(date_iso=None):
     # Anti-fabrication gate FIRST — a fabricated claim must never reach the
     # completeness gate, let alone GitHub Pages (2026-11-08: this guard
@@ -474,11 +535,17 @@ def verify(date_iso=None):
     except ValueError as e:
         print(str(e), file=sys.stderr)
         return 1
+    dup_errors = _check_duplicate_titles(date_iso)
+    if dup_errors:
+        for e in dup_errors:
+            print("FATAL: " + e, file=sys.stderr)
+        return 1
     r = _run(["python3", "verify_feed_complete.py", "--all"], cwd=str(REPO), check=False)
     print(r.stdout.strip())
     if r.returncode != 0:
         print(r.stderr.strip(), file=sys.stderr)
     return r.returncode
+
 
 
 # Files the daily publish owns. commit_and_push stages ONLY these — never
