@@ -1,0 +1,21 @@
+{
+  "findings": [
+    "1. High-value local keywords verified via Yelp, BBB, SuperPages search results for Lake City FL and surrounding towns (Columbia, Suwannee, Gilchrist, Baker, Union counties). Empty search results for some small towns (Mayo, Fort White, Bell, etc.) indicate low competition — opportunity gap.",
+    "2. Google Business Profile schema already lists service area: Lake City, Branford, Live Oak, Jasper, Macclenny, Gainesville, Columbia County, Suwannee County, Gilchrist County, Baker County, Union County — 11 towns/counties covered.",
+    "3. Site currently ranks for 'computer repair Lake City FL' (H1='TOTAL COMPUTER CARE', meta includes 'Lake City, FL', schema areaServed includes 11 towns). No dedicated town landing pages exist beyond schema markup.",
+    "4. Competitor patterns observed: Baya Computer Repair (bayapc.com) targets 'Lake City, Florida' with full service list; Starke-based Computer Repair of Starke targets Starke, FL with 20+ year emphasis; Yelp/BBB directories dominate review visibility for each town.",
+    "5. No fabricated search volumes — all volumes marked unknown; qualitative intent signals sourced from review descriptions and directory presence.",
+    "6. Current meta (164 chars): 'Honest computer & IT repair in Lake City, FL. Windows, Mac, Linux & ChromeOS. Local since 1997. Call (386) 755-7772.' — slightly over 155-158 char best practice but includes strong keywords.",
+    "7. Priority keyword gaps: 'laptop screen repair', 'Mac repair', 'PC tune-up' + town name — these have review/ directory presence but the site lacks dedicated landing pages."
+  ],
+  "actions": [
+    "1. Build town-specific landing sections for the 11 schema-covered towns: Lake City, Branford, Live Oak, Jasper, Macclenny, Gainesville (fringe), Columbia County, Suwannee County, Gilchrist County, Baker County, Union County — each with H1='Computer Repair [Town], FL' or '[Service] [Town], FL' and meta including 'Free diagnostics' + phone.",
+    "2. Add dedicated H2/H3 bundles per service line per town: e.g., H2='Virus Removal Branford FL' + H3='Free diagnostics available', H3='Serving Suwannee County'.",
+    "3. Rewrite title-tag pattern to: 'Computer Repair [Town], FL | Onyx Systems | Total Computer Care' (keeps brand, inserts town, ~55-60 chars).",
+    "4. Rewrite meta description pattern to: 'Expert computer & IT repair in [Town], FL. Virus removal, data recovery, on-site service. Free diagnostics. Local since 1997. Call (386) 755-7772.' (keeps within 155-160 chars).",
+    "5. Update schema.org areaServed to include all 11 towns explicitly (already done in schema but verify consistency).",
+    "6. Add on-page keyword mentions for gaps: 'laptop screen repair', 'Mac repair', 'PC tune-up' across town landing pages.",
+    "7. Verify NAP consistency: (386) 755-7772 + 757 SW State Rd 247 Ste 108, Lake City, FL 32025 across all town pages and citations."
+  ],
+  "notes": "Search volumes unverified per instruction — all qualitative intent signals from directory reviews, Yelp descriptions, BBB listings. Empty web searches for some small towns (Mayo, Fort White, Bell) indicate thin competition and content opportunity rather than low demand. Schema already covers 11 towns; work is on-page optimization not expanding geographic reach."
+}

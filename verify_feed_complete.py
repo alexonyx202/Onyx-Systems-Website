@@ -9,8 +9,8 @@ Exits non-zero if ANY post/news/headline is INCOMPLETE per the canonical
   1. NAMES THE PRODUCT  — headline/title names the specific product/tool
                            (LibreOffice, Pixlr, uBlock Origin, Proton VPN,
                             Bitwarden, Ente Auth, OBS Studio, PDF24, BalenaEtcher,
-                            LocalSend…), NOT vague teasing ("this free suite",
-                           "a free tool", "one free app", "the free alternative").
+                            Balena, LocalSend…), NOT vague teasing ("this free suite",
+                            "a free tool", "one free app", "the free alternative").
   2. STATES HOW TO OBTAIN — the body/tip/summary states the exact obtain method:
                              a real URL (.com/.org/.io), an app/command name, a
                              Settings path, or (for news/alerts) the concrete action
@@ -18,6 +18,12 @@ Exits non-zero if ANY post/news/headline is INCOMPLETE per the canonical
                              "Use a free tool" with no HOW is incomplete.
   3. HEADLINE COMPLETE — the headline/title itself names the product + payoff.
                              Teaser headlines that hide the name are FORBIDDEN.
+
+Additional validation for metadata consistency:
+  4. UPDATED FIELD VALID — the top-level "updated" field must match the dates in
+                           the feed content and reflect today’s date (prevents stale
+                           timestamps like "2026-11-11" when the actual content is
+                           from "2026-11-12").
 
 If ANY entry fails, prints the offending file/id/headline and exits 1 so the cron
 stops BEFORE the (already-committed) broken feed is pushed to GitHub Pages.
@@ -78,7 +84,8 @@ KNOWN_PRODUCTS = [
     "visipics",
     # Extended 2026-08-08: Today's Onyx Tech Notes real products
     "crystaldiskinfo", "crystalmark.info",
-    # Extended 2026-08-10: SanDisk (genuine name-brand flash drives, sandisk.com) — real product named + obtain method stated.
+    # Extended 2026-08-10: SanDisk (genuine name-brand flash drives, sandisk.com) —
+    # real product named + obtain method stated.
     "sandisk",
     # Extended 2026-08-12: Florida Dept. of Revenue (floridarevenue.com/backtoschool) —
     # the official Back-to-School Sales Tax Holiday rules page, a real named government source.
@@ -91,11 +98,11 @@ KNOWN_PRODUCTS = [
     "coin cell",
     # Extended 2026-08-17: WeTransfer (wetransfer.com file sharing) and the three
     # credit bureaus Equifax/Experian/TransUnion (freeze at each bureau's site) —
-    # real products named in today's posts (computer-only picks, obtain method stated).
+    # real products named in today's Tech Note headline, obtain method stated.
     "wetransfer", "equifax", "experian", "transunion",
     # Extended 2026-08-21: CareCloud (healthcare IT company, named in data-breach alert headline).
     "carecloud",
-    # Extended 2026-08-23: NAPS2 (Not Another PDF Scanner 2, naps2.org) — real free
+    # Extended 2026-08-23: NAPS2 (Not Another PDF Scanner 2, naps2.org) — real
     # scanner-to-PDF product named in today's Tech Note headline, obtain method stated.
     "naps2", "naps2.org",
     # Extended 2026-08-26: TP-Link Kasa Smart Plug EP25 (Amazon/Walmart) —
@@ -114,7 +121,7 @@ KNOWN_PRODUCTS = [
     # universally-named port standard in today's Tech Note tip headline; the obtain
     # method is stated (plug the flash drive into the blue port).
     "usb",
-    # Extended 2026-09-06: SunPass (Florida's toll system, sunpass.com) — real
+    # Extended 2026-09-05: SunPass (Florida's toll system, sunpass.com) — real
     # service named in today's Tech Note headline; obtain method stated (check the
     # real balance by signing in at sunpass.com, never via a text link).
     "sunpass",
@@ -326,6 +333,7 @@ OBTAIN = [
     "sysctl", "sign up", "press ",
 ]
 
+
 def check_entry(fname, eid, headline, body, entry_type=None):
     """Return list of failure reasons (empty = pass)."""
     fails = []
@@ -341,7 +349,7 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "onsite", "open", "hours", "announcement", "welcome",
         "zero-days", "zero days", "ftc agent", "patch chrome",
         "patch ", "alert",        "wants your money", "crashstealer",
-        # Extended 2026-08-18: AmnesiaStealer fake-\"download\"-page browser-hijack
+        # Extended 2026-08-18: AmnesiaStealer fake-"download"-page browser-hijack
         # alert (BleepingComputer) is a security alert (exempt), like crashstealer.
         "take over your browser",
         "loaded with junk", "came loaded", "trialware", "debloat",
@@ -359,104 +367,104 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         "rural broadband", "broadband funding",
         # Extended 2026-08-04: how-to process tips (restart, maintenance, cleanup) are exempt per master prompt.
         "restart", "maintenance", "cleanup", "disk cleanup", "clear temporary",    # Extended 2026-08-17: expired-domain scam alert (crooks buying lapsed
-    # websites and turning saved sites into malware/scam traps) is a security alert (exempt).
-    "expired websites", "crooks are buying",
-    # Extended 2026-08-23: FTC bill-pay impersonator scam alert (fake ads at the
-    # top of Google/Bing posing as electric company/bank) is a security alert (exempt).
-    # Extended 2026-09-27: the hyphenated spelling "bill-pay" (today's alert headline
-    # "Fake Bill-Pay Ads Are Stealing People's Payments") slipped past "bill pay" /
-    # "bill-payment", re-flagging the same exempt scam alert — add the hyphen form.
-    "bill-payment", "bill pay", "bill-pay", "bill-pay ads",
-    # Extended 2026-08-29: Genetic testing data breach (Baylor Genetics) is a
-    # security alert — no product name required.
-    "breach", "genetic testing",
-    # Extended 2026-09-05: fake "Are you human?" CAPTCHA-check scam brief
-    # (Microsoft + FTC warning) is a security alert (exempt).
-    "are you human", "captcha",
-    # Extended 2026-09-06: 153-million driver's-license scan breach (IDSCAN,
-    # FBI-investigated, BleepingComputer/KrebsOnSecurity) is a security alert (exempt).
-    "driver's license", "driver's licenses", "drivers license", "drivers licenses",
-    "license scan", "153 million",
-    # Extended 2026-09-16: fake antivirus auto-renewal receipt phishing alert
-    # (Malwarebytes, Sept. 16 2026 — no real charge, the "cancel" page is a
-    # credential-harvesting form) is a security alert (exempt).
-    "antivirus renewal", "renewal email", "renewal receipt", "auto-renewed",
-    # Extended 2026-09-17: "Your rewards points are expiring" fake-text phishing
-    # alert (Malwarebytes, Sept. 17 2026 — 1,000+ variants impersonating rewards
-    # programs, link opens a credential-stealing sign-in page) is a security alert
-    # (exempt: there is no product to name, and the action IS stated — don't use
-    # the link, type the company's real address into your browser and sign in).
-    "rewards points", "points are expiring",
-    # Extended 2026-09-18: fake parcel-delivery "you owe $4.95 to release your
-    # package" phishing alert (Malwarebytes, Sept. 18 2026 — the link opens a
-    # page copying the Postal Service's official look, then harvests name, phone
-    # and bank card) is a security alert (exempt: there is no product to name,
-    # and the action IS stated — don't click; open the carrier's real website and
-    # check the tracking number there).
-    "parcel", "phishing",
-    # Extended 2026-10-01: fake "you're invited" event-invitation phishing alert
-    # (Pennsylvania Attorney General consumer alert, Sept. 30 2026 — the fake
-    # Google/Apple/Microsoft sign-in page behind "view the invitation" harvests
-    # the password). Security alert (exempt: there is no product to name, and the
-    # action IS stated — a real invitation never asks you to log in; check with
-    # the sender by phone first).
-    "you're invited", "you\u2019re invited", "fake invitation", "event invitation",
-    # Extended 2026-10-03: fake product-recall text/email phishing alert (AARP
-    # Fraud Watch Network, Sept. 24 2026 + FTC consumer alert, Sept. 28 2026 —
-    # "something you bought was recalled, you're owed money back" leads to a
-    # credential/card-harvesting sign-in page). Security alert (exempt: there is
-    # no product to name, and the action IS stated — don't click; check the
-    # product yourself free at cpsc.gov/recalls or open the store's app).
-    "fake recall", "recall texts", "recalled for safety", "recall scam",
-    # Extended 2026-10-04: government-impersonation scam alert (FBI IC3 — crooks
-    # call/text claiming to be the police, the FBI, the IRS, or Social Security
-    # and demand payment for a fake warrant or missed jury duty; the free report
-    # is filed at ic3.gov). Security alert (exempt: there is no product to name,
-    # and the action IS stated — hang up and report it at ic3.gov; no real agency
-    # ever collects a debt by phone or text).
-    "government will call", "demanding money", "ic3.gov", "fbi's own complaint",
-    # Extended 2026-10-05: FBI-agent impersonation phone-scam alert (FBI warning,
-    # reported by Yahoo Finance and Moneywise Oct. 3 — crooks spoof a real
-    # agency's number and a real agent's name, then push victims to move their
-    # money to keep it "safe"). Security alert (exempt: there is no product to
-    # name, and the action IS stated — never send money to anyone claiming to be
-    # a federal agent; hang up and call the agency yourself at a number you look
-    # up).
-    "fake fbi", "fbi agents are calling", "secret service",
-    # Extended 2026-10-06: "A Code You Didn't Ask For" device-code / passwordless
-    # sign-in scam alert (FBI + Microsoft guidance, BleepingComputer Oct. 5 — a
-    # message tells you to type a short code into a real-looking Microsoft/Google
-    # page, handing the crooks your account). Security alert (exempt: there is no
-    # product to name, and the action IS stated — never type a code you didn't
-    # ask for; delete the message).
-    "code you didn't ask for", "didn't ask for",
-    # Extended 2026-10-07: fake "I'm not a robot" CAPTCHA-click box alert
-    # (FTC warning on fake-CAPTCHA scams + browser-attack report, BleepingComputer
-    # Oct. 6 — the box tells you to press keys and paste a command, which starts a
-    # bad program). Same security-alert family as the 2026-09-05 "are you human" /
-    # "captcha" exemption: no product to name, and the action IS stated (close the
-    # tab; real checks never ask you to press keys or paste anything).
-    "not a robot", "i'm not a robot",
-    # Extended 2026-10-29: ClickFix "Verify You're Human" scam alert — security
-    # alert (exempt): no product to name, action IS stated (close the tab; real
-    # checks never ask you to press keys or paste commands).
-    "verify you're human", "clickfix",
-    # Extended 2026-10-31: fake parking meter QR code scam alert (FBI IC3, FTC.gov
-    # — October 2026). Security alert: no product to name, action IS stated
-    # (don't scan random codes on public fixtures; use official app or keypad).
-    "parking meter", "qr code", "fake code",
-    # Extended 2026-11-02: package delivery text/email phishing alert (USPS/UPS/FedEx
-    # impersonation — fake delivery failure messages with credential-stealing links).
-    # Security alert: no product to name, action IS stated (don't click; go to the
-    # carrier's real website/app and check tracking there).
-    "package delivery", "delivery failed", "reschedule delivery",
-    # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
-    # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
-    # stated (restore from backup, report to IC3.gov).
-    "ransomware recovery", "monstercloud", "doj charges",
-    # Extended 2026-10-12: Today's Zammad CISA alert — security alert, CVE numbers
-    # in summary are part of the alert details, not product promotion.
-    "cisa adds", "zammad vulnerabilities",
+        # websites and turning saved sites into malware/scam traps) is a security alert (exempt).
+        "expired websites", "crooks are buying",
+        # Extended 2026-08-23: FTC bill-pay impersonator scam alert (fake ads at the
+        # top of Google/Bing posing as electric company/bank) is a security alert (exempt).
+        # Extended 2026-09-27: the hyphenated spelling "bill-pay" (today's alert headline
+        # "Fake Bill-Pay Ads Are Stealing People's Payments") slipped past "bill pay" /
+        # "bill-payment", re-flagging the same exempt scam alert — add the hyphen form.
+        "bill-payment", "bill pay", "bill-pay", "bill-pay ads",
+        # Extended 2026-08-29: Genetic testing data breach (Baylor Genetics) is a
+        # security alert — no product name required.
+        "breach", "genetic testing",
+        # Extended 2026-09-05: fake "Are you human?" CAPTCHA-check scam brief
+        # (Microsoft + FTC warning) is a security alert (exempt).
+        "are you human", "captcha",
+        # Extended 2026-09-06: 153-million driver's-license scan breach (IDSCAN,
+        # FBI-investigated, BleepingComputer/KrebsOnSecurity) is a security alert (exempt).
+        "driver's license", "driver's licenses", "drivers license", "drivers licenses",
+        "license scan", "153 million",
+        # Extended 2026-09-16: fake antivirus auto-renewal receipt phishing alert
+        # (Malwarebytes, Sept. 16 2026 — no real charge, the "cancel" page is a
+        # credential-harvesting form) is a security alert (exempt).
+        "antivirus renewal", "renewal email", "renewal receipt", "auto-renewed",
+        # Extended 2026-09-17: "Your rewards points are expiring" fake-text phishing
+        # alert (Malwarebytes, Sept. 17 2026 — 1,000+ variants impersonating rewards
+        # programs, link opens a credential-stealing sign-in page) is a security alert
+        # (exempt: there is no product to name, and the action IS stated — don't click;
+        # check with the sender by phone first).
+        "rewards points", "points are expiring",
+        # Extended 2026-09-18: fake parcel-delivery "you owe $4.95 to release your
+        # package" phishing alert (Malwarebytes, Sept. 18 2026 — the link opens a
+        # page copying the Postal Service's official look, then harvests name, phone
+        # and bank card) is a security alert (exempt: there is no product to name,
+        # and the action IS stated — don't click; check the carrier's real website
+        # and check tracking there).
+        "parcel", "phishing",
+        # Extended 2026-10-01: fake "you're invited" event-invitation phishing alert
+        # (Pennsylvania Attorney General consumer alert, Sept. 30 2026 — the fake
+        # Google/Apple/Microsoft sign-in page behind "view the invitation" harvests
+        # the password). Security alert (exempt: there is no product to name, and the
+        # action IS stated — hang up and report it at ic3.gov; no real agency
+        # ever collects a debt by phone or text).
+        "you're invited", "you\u2019re invited", "fake invitation", "event invitation",
+        # Extended 2026-10-03: fake product-recall text/email phishing alert (AARP
+        # Fraud Watch Network, Sept. 24 2026 + FTC consumer alert, Sept. 28 2026 —
+        # "something you bought was recalled, you're owed money back" leads to a
+        # credential/card-harvesting sign-in page). Security alert (exempt: there
+        # is no product to name, and the action IS stated — don't click; check the
+        # product yourself free at cpsc.gov/recalls or open the store's app).
+        "fake recall", "recall texts", "recalled for safety", "recall scam",
+        # Extended 2026-10-04: government-impersonation scam alert (FBI IC3 — crooks
+        # call/text claiming to be the police, the FBI, the IRS, or Social Security
+        # and demand payment for a fake warrant or missed jury duty; the free report
+        # is filed at ic3.gov). Security alert (exempt: there is no product to name,
+        # and the action IS stated — hang up and report it at ic3.gov; no real agency
+        # ever collects a debt by phone or text).
+        "government will call", "demanding money", "ic3.gov", "fbi's own complaint",
+        # Extended 2026-10-05: FBI-agent impersonation phone-scam alert (FBI warning,
+        # reported by Yahoo Finance and Moneywise Oct. 5 — crooks spoof a real
+        # agency's number and a real agent's name, then push victims to move their
+        # money to keep it "safe"). Security alert (exempt: there is no product to
+        # name, and the action IS stated — never send money to anyone claiming to be
+        # a federal agent; hang up and call the agency yourself at a number you look
+        # up).
+        "fake fbi", "fbi agents are calling", "secret service",
+        # Extended 2026-10-06: "A Code You Didn't Ask For" device-code / passwordless
+        # sign-in scam alert (FBI + Microsoft guidance, BleepingComputer Oct. 5 — a
+        # message tells you to type a short code into a real-looking Microsoft/Google
+        # page, handing the crooks your account). Security alert (exempt: there is no
+        # product to name, and the action IS stated — never type a code you didn't
+        # ask for; delete the message).
+        "code you didn't ask for", "didn't ask for",
+        # Extended 2026-10-07: fake "I'm not a robot" CAPTCHA-click box alert
+        # (FTC warning on fake-CAPTCHA scams + browser-attack report, BleepingComputer
+        # Oct. 6 — the box tells you to press keys and paste a command, which starts a
+        # bad program). Same security-alert family as the 2026-09-05 "are you human" /
+        # "captcha" exemption: no product to name, and the action IS stated (close the
+        # tab; real checks never ask you to press keys or paste anything).
+        "not a robot", "i'm not a robot",
+        # Extended 2026-10-29: ClickFix "Verify You're Human" scam alert — security
+        # alert (exempt): no product to name, action IS stated (close the tab; real
+        # checks never ask you to press keys or paste commands).
+        "verify you're human", "clickfix",
+        # Extended 2026-10-31: fake parking meter QR code scam alert (FBI IC3, FTC.gov
+        # — October 2026). Security alert: no product to name, action IS stated
+        # (don't scan random codes on public fixtures; use official app or keypad).
+        "parking meter", "qr code", "fake code",
+        # Extended 2026-11-02: package delivery text/email phishing alert (USPS/UPS/FedEx
+        # impersonation — fake delivery failure messages with credential-stealing links).
+        # Security alert: no product to name, action IS stated (don't click; go to the
+        # carrier's real website/app and check tracking there).
+        "package delivery", "delivery failed", "reschedule delivery",
+        # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
+        # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
+        # stated (restore from backup, report to IC3.gov).
+        "ransomware recovery", "monstercloud", "doj charges",
+        # Extended 2026-10-12: Today's Zammad CISA alert — security alert, CVE numbers
+        # in summary are part of the alert details, not product promotion.
+        "cisa adds", "zammad vulnerabilities",
     ]
     if any(s in low for s in SKIP):
         return fails
@@ -484,6 +492,52 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         fails.append(f"[{fname} {eid}] JARGON in body (fails Grandma Test): '{pattern}'")
     return fails
 
+
+def check_updated_field(feed_path):
+    """Validate the feed.json top-level 'updated' field matches content dates.
+
+    This prevents stale timestamps like the 2026-11-11 issue where the content
+    was actually from 2026-11-12. The 'updated' field should match today's date
+    and be consistent with the first news and posts entries.
+    """
+    try:
+        with open(feed_path, encoding="utf-8") as f:
+            feed = json.load(f)
+    except Exception as e:
+        return [f"[{os.path.basename(feed_path)}] ERROR reading file: {e}"]
+
+    fails = []
+    updated = feed.get("updated")
+    if not updated:
+        fails.append(f"[{os.path.basename(feed_path)}] Missing 'updated' field")
+        return fails
+
+    # Check if updated matches today's date format (YYYY-MM-DD)
+    today = os.environ.get("TODAY_DATE", "2026-11-12")
+    if updated != today:
+        fails.append(
+            f"[{os.path.basename(feed_path)}] STALE 'updated' field: {updated} "
+            f"(should be {today} — content is from {today})"
+        )
+
+    # Cross-check against first news and posts entries if they exist
+    news_entries = feed.get("news", [])
+    posts_entries = feed.get("posts", [])
+
+    for entries, label in [(news_entries, "news"), (posts_entries, "posts")]:
+        if entries:
+            first_date = entries[0].get("date")
+            if first_date and updated != first_date:
+                fails.append(
+                    f"[{os.path.basename(feed_path)}] 'updated' field ({updated}) "
+                    f"does not match first {label}[0] date ({first_date})"
+                )
+
+    return fails
+
+
+
+# FABRICATED_PATTERNS — anti-fabrication gate (2026-11-08): first-person numeric work claim
 FABRICATED_PATTERNS = [
     # FIRST-PERSON BAN (John, 2026-11-09): never speak for John.
     r"\bI\b",
@@ -498,6 +552,10 @@ FABRICATED_PATTERNS = [
     r"\bLast year I had\b",
     r"columbiacountyfl\.gov/alerts",
     r"text ALERT to 888-777",
+    r"\$2,000",
+    r"\$2,800",
+    r"3 seconds to crack",
+    r"scammers need only 3 seconds",
 ]
 
 def check_fabricated(fname, eid, text):
@@ -509,6 +567,7 @@ def check_fabricated(fname, eid, text):
         if re.search(pat, text, re.IGNORECASE):
             fails.append(f"{fname} [{eid}]: FABRICATED CLAIM — first-person numeric anecdote or known-false claim matched: {pat}")
     return fails
+
 
 def scan_file(path, arrays=("posts", "news")):
     if not os.path.exists(path):
@@ -542,15 +601,20 @@ def scan_file(path, arrays=("posts", "news")):
             fails += check_fabricated(fname, eid, hl + " " + body_no_truth)
     return fails
 
+
 def main():
     feed = os.path.join(ROOT, "data", "feed.json")
     fails = scan_file(feed, ("posts", "news"))
     fails += scan_leaks(feed, ("posts", "news"))
+    # CRITICAL: Validate the updated field matches today's date and content
+    fails += check_updated_field(feed)
+
     if "--all" in sys.argv:
         news = os.path.join(ROOT, "data", "news.json")
         fails += scan_file(news, ("items",))
         fails += scan_leaks(news, ("items",))
         fails += check_newsletter_html()
+
     if fails:
         print("COMPLETENESS GATE FAILED — incomplete entries detected:")
         for f in fails:
@@ -558,6 +622,7 @@ def main():
         print("\nABORT: do NOT push this feed. Fix the flagged entries first.")
         sys.exit(1)
     print("COMPLETENESS GATE PASSED — all feed headlines name a product and state how to get it.")
+    print("✅ Feed 'updated' field validation passed.")
 
 if __name__ == "__main__":
     main()
