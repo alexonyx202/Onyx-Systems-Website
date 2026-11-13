@@ -1,228 +1,206 @@
 {
-  "title": "Math Crossyword",
-  "size": 27,
+  "title": "Math dept",
+  "size": 21,
   "grid": [
-    "......................G....",
-    ".....................Length",
-    "......................o....",
-    "......................m....",
-    "......................e.C..",
-    ".......TranslatioN....t.a..",
-    ".................u...Graph.",
-    ".................m....y.a..",
-    ".................b......c..",
-    "...............Area.....i..",
-    ".................r......t..",
-    "...............R.SymMetry,.",
-    ".......Reflection...e......",
-    "...............t....a......",
-    "..........Decimals..s......",
-    "....P..........t....u......",
-    "...Mass.....Perimeter......",
-    "....r...V...a..o....e......",
-    "..Transformations...m......",
-    "....l...l...t......Net,....",
-    "M...l...u...e.......n......",
-    "Angle...m..Probability.....",
-    "t...l.Pie...n..............",
-    "h..........................",
-    "...........................",
-    "...........................",
-    "..........................."
+    "...........C.........",
+    "...........i.J..J....",
+    ".........Donna.mouSe.",
+    "...C.T.....q.n..s.a..",
+    "...u.e.S.....u..Emmas",
+    "..Brennan....a..f....",
+    "...c.n.r..theresa....",
+    "...i.i.acre..y..k....",
+    "...o.s....n..........",
+    "......g.K.t..........",
+    "...Mccreesh..........",
+    "......a.v............",
+    "Aladdin.i............",
+    "......Donna..........",
+    "......f..............",
+    "......a..............",
+    ".....step............",
+    "......h..............",
+    "...five..............",
+    "......r..............",
+    "....................."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 2,
-        "col": 22,
-        "len": 6,
-        "answer": "Length",
-        "clue": "Related to Num.5"
-      },
-      {
         "num": 4,
-        "row": 6,
-        "col": 8,
-        "len": 11,
-        "answer": "TranslatioN",
-        "clue": "Moves the shape"
-      },
-      {
-        "num": 6,
-        "row": 7,
-        "col": 22,
+        "row": 3,
+        "col": 10,
         "len": 5,
-        "answer": "Graph",
-        "clue": "A way to show math info"
+        "answer": "Donna",
+        "clue": "Most likely to forget where they placed their key for the test"
       },
       {
-        "num": 7,
-        "row": 10,
+        "num": 5,
+        "row": 3,
         "col": 16,
-        "len": 4,
-        "answer": "Area",
-        "clue": "The inside of a 2D polygon"
+        "len": 5,
+        "answer": "mouSe",
+        "clue": "critter that ran across the room when Donna was planning lesson with Mccreesh twenty years ago"
       },
       {
-        "num": 9,
-        "row": 12,
-        "col": 18,
-        "len": 9,
-        "answer": "SymMetry,",
-        "clue": "Where 2 sides of a shape are the same"
+        "num": 10,
+        "row": 5,
+        "col": 17,
+        "len": 5,
+        "answer": "Emmas",
+        "clue": "deli that Donna would go and pick up our lunch orders every Friday"
       },
       {
         "num": 11,
-        "row": 13,
-        "col": 8,
-        "len": 10,
-        "answer": "Reflection",
-        "clue": "Flips the shape"
+        "row": 6,
+        "col": 3,
+        "len": 7,
+        "answer": "Brennan",
+        "clue": "Junior high that Donna went to"
       },
       {
         "num": 12,
-        "row": 15,
+        "row": 7,
         "col": 11,
-        "len": 8,
-        "answer": "Decimals",
-        "clue": "Num.2 in pieces"
+        "len": 7,
+        "answer": "theresa",
+        "clue": "Donna's favorite math director"
       },
       {
-        "num": 14,
-        "row": 17,
-        "col": 4,
+        "num": 13,
+        "row": 8,
+        "col": 8,
         "len": 4,
-        "answer": "Mass",
-        "clue": "Another way to say weight"
+        "answer": "acre",
+        "clue": "The amount of land that Donna owns"
       },
       {
-        "num": 15,
-        "row": 17,
-        "col": 13,
-        "len": 9,
-        "answer": "Perimeter",
-        "clue": "Num.9 but only the outside"
+        "num": 16,
+        "row": 11,
+        "col": 4,
+        "len": 8,
+        "answer": "Mccreesh",
+        "clue": "Teacher who used to play street hockey with Donna's man"
       },
       {
         "num": 17,
-        "row": 19,
-        "col": 3,
-        "len": 15,
-        "answer": "Transformations",
-        "clue": "Changes shapes"
+        "row": 13,
+        "col": 1,
+        "len": 7,
+        "answer": "Aladdin",
+        "clue": "Movie that highlighted Donna's wedding song"
       },
       {
         "num": 18,
-        "row": 20,
-        "col": 20,
+        "row": 14,
+        "col": 7,
+        "len": 5,
+        "answer": "Donna",
+        "clue": "Most likely to forget where they placed their key for the test"
+      },
+      {
+        "num": 19,
+        "row": 17,
+        "col": 6,
         "len": 4,
-        "answer": "Net,",
-        "clue": "A 2D version of a 3D shape with each shape attached Estimate, To make an educated guess"
+        "answer": "step",
+        "clue": "Club that Donna used to head up"
       },
       {
         "num": 20,
-        "row": 22,
-        "col": 1,
-        "len": 5,
-        "answer": "Angle",
-        "clue": "2 lines that meet to make this"
-      },
-      {
-        "num": 21,
-        "row": 22,
-        "col": 12,
-        "len": 11,
-        "answer": "Probability",
-        "clue": "The chance of something happening or not happening"
-      },
-      {
-        "num": 22,
-        "row": 23,
-        "col": 7,
-        "len": 3,
-        "answer": "Pie",
-        "clue": "Also called a circle graph"
+        "row": 19,
+        "col": 4,
+        "len": 4,
+        "answer": "five",
+        "clue": "Number of students in Donna's topics class last year or number of boyfriend's she had in high school"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 23,
-        "len": 8,
-        "answer": "Geometry",
-        "clue": "Polygons"
+        "col": 12,
+        "len": 4,
+        "answer": "Cinq",
+        "clue": "Most likely to be the cause of every argument"
+      },
+      {
+        "num": 2,
+        "row": 2,
+        "col": 14,
+        "len": 7,
+        "answer": "January",
+        "clue": "month of Donna's birth"
       },
       {
         "num": 3,
-        "row": 5,
-        "col": 25,
-        "len": 8,
-        "answer": "Capacity",
-        "clue": "How much something can hold"
+        "row": 2,
+        "col": 17,
+        "len": 7,
+        "answer": "JosEfak",
+        "clue": "Most likely to turn on the AC in December"
       },
       {
-        "num": 5,
-        "row": 6,
-        "col": 18,
-        "len": 7,
-        "answer": "NumberS",
-        "clue": "Math uses a lot of these"
+        "num": 6,
+        "row": 3,
+        "col": 19,
+        "len": 3,
+        "answer": "Sam",
+        "clue": "Donna's former assistant"
+      },
+      {
+        "num": 7,
+        "row": 4,
+        "col": 4,
+        "len": 6,
+        "answer": "Curcio",
+        "clue": "math teacher most likely to take over Donna's honors geometry"
       },
       {
         "num": 8,
-        "row": 12,
-        "col": 16,
-        "len": 8,
-        "answer": "Rotation",
-        "clue": "Turns the shape"
+        "row": 4,
+        "col": 6,
+        "len": 6,
+        "answer": "Tennis",
+        "clue": "Sport that Donna's son Mikey played in high school and college"
       },
       {
-        "num": 10,
-        "row": 12,
-        "col": 21,
+        "num": 9,
+        "row": 5,
+        "col": 8,
+        "len": 4,
+        "answer": "Sara",
+        "clue": "Math teacher most likely to retire next"
+      },
+      {
+        "num": 12,
+        "row": 7,
+        "col": 11,
+        "len": 5,
+        "answer": "tenth",
+        "clue": "Period that Donna used to have math tutorial"
+      },
+      {
+        "num": 14,
+        "row": 10,
+        "col": 7,
         "len": 11,
-        "answer": "Measurement",
-        "clue": "The act of figuring out how long or tall something is Fractions, Num.4 but in shapes"
-      },
-      {
-        "num": 13,
-        "row": 16,
-        "col": 5,
-        "len": 8,
-        "answer": "Parallel",
-        "clue": "2 lines that never meet"
+        "answer": "granDfather",
+        "clue": "relative that a student asked Donna if she went to school with"
       },
       {
         "num": 15,
-        "row": 17,
-        "col": 13,
-        "len": 7,
-        "answer": "Pattern",
-        "clue": "A repeating action"
-      },
-      {
-        "num": 16,
-        "row": 18,
+        "row": 10,
         "col": 9,
-        "len": 6,
-        "answer": "Volume",
-        "clue": "Num. 11 but the entire thing"
-      },
-      {
-        "num": 19,
-        "row": 21,
-        "col": 1,
-        "len": 4,
-        "answer": "MAth",
-        "clue": "What this crossword is about"
+        "len": 5,
+        "answer": "Kevin",
+        "clue": "First name of Donna's favorite colleague"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-crossyword-4",
-  "slug": "math-crossyword-4",
-  "fetched_at": "2026-07-14T19:23:34.646096+00:00",
-  "date": "2026-11-12"
+  "source_url": "https://crosswordlabs.com/view/math-dept-3",
+  "slug": "math-dept-3",
+  "fetched_at": "2026-07-14T19:20:30.734785+00:00",
+  "date": "2026-11-13"
 }
