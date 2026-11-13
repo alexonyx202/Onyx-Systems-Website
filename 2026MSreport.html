@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Microsoft Windows Update Report — Onyx Systems</title>
+  <style>
+    body {font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; line-height: 1.6;}
+    h1 {color: #16161a; border-bottom: 2px solid #c2703d; padding-bottom: 10px;}
+    h2 {color: #c2703d; margin-top: 30px; border-left: 4px solid #c2703d; padding-left: 10px;}
+    .warning {background: #fff3cd; border: 1px solid #ffeeba; padding: 12px; border-radius: 6px; margin: 20px 0;}
+    .info {background: #d6e9f8; border: 1px solid #bce8f1; padding: 12px; border-radius: 6px; margin: 20px 0;}
+    .action {background: #e2e3e5; border: 1px solid #d6d8db; padding: 12px; border-radius: 6px; margin: 20px 0;}
+    code {background: #f4f4f4; padding: 2px 4px; border-radius: 3px; font-family: monospace;}
+    table {width: 100%; border-collapse: collapse; margin: 20px 0;}
+    th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}
+    th {background: #f2f2f2;}
+    .footer {font-size: 0.8em; color: #666; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px;}
+  </style>
+</head>
+<body>
+  <h1>2026 Microsoft Windows Update Report</h1>
+  <p><em>Prepared for Onyx Systems customers · November 13, 2026</em></p>
+
+  <div class="warning">
+    <strong>⚠️ Critical warning:</strong> Microsoft's monthly updates have caused significant problems this year — from broken Wi-Fi and printers to updates that simply won't install. Your computer needs these security fixes, but installing them recently means gambling on whether something else breaks. Read on for the pattern and how to protect yourself.
+  </div>
+
+  <h2>The Short Version</h2>
+  <p>Every second Tuesday of the month, Microsoft releases security fixes for Windows. In October and November 2026, those fixes came with problems: work Wi-Fi that wouldn't let people log in, printers that refused to install, accounting programs that started crashing, and — in November — an update that simply wouldn't install on some PCs.</p>
+  <p>The awkward part is that you can't just skip these updates. They repair real security holes — over a thousand of them each month. Skipping them leaves your computer exposed; installing them has recently meant gambling on whether something else breaks.</p>
+  <p><strong>The one habit that avoids most problems:</strong> <strong>Don't install on day one.</strong> Wait three or four days, then check the news. Most problems were visible within 48 hours. Waiting costs you almost nothing and avoids nearly all of it.</p>
+
+  <h2>October: The Update That Broke Wi-Fi, Printers, and a Database</h2>
+  <p>On October 13, Microsoft released <strong>KB5127648</strong>, fixing over 1,400 security weaknesses — including one attackers were already using in the wild. This was not an update to skip.</p>
+  <ul>
+    <li><strong>Work Wi-Fi broke.</strong> Computers using 802.1X PEAP authentication (domain login instead of shared password) failed to connect. Home Wi-Fi kept working, making it look like an office problem.</li>
+    <li><strong>Printers wouldn't install.</strong> Adding a printer through Active Directory failed with "The parameter is incorrect." Existing printers kept working.</li>
+    <li><strong>Remote connections failed.</strong> Staff connecting to work PCs from home hit error codes instead of desktops.</li>
+    <li><strong>Two unresolved issues from September</strong>: USB microphones/headsets showing as broken in Device Manager, and a database problem that piled up open connections until servers slowed. Microsoft didn't confirm the database issue until November 11 — nearly a month later.</li>
+    <li><strong>Optional preview update</strong> (KB5127936, October 28) fixed the remote-connection problem but, according to Microsoft's own November documentation, "set up the failure that followed two weeks later."</li>
+  </ul>
+  <p><em>October's update fixed a September bug, introduced a printer bug, and quietly planted the seed for November's mess. That's a full quarter of effort producing a net loss.</em></p>
+
+  <h2>November: The Update That Wouldn't Install</h2>
+  <p>November 10 brought <strong>KB5132061</strong>, with roughly 1,100 security fixes (about 64 critical). It cleaned up several earlier problems: broken USB audio devices, the printer error, a remote-desktop certificate issue.</p>
+  <ul>
+    <li><strong>Installations started failing.</strong> On some PCs the update stalled partway through (68%–99%), and retrying didn't help. Others failed outright with one of three error codes.</li>
+    <li><strong>Microsoft confirmed the problem on November 11</strong> — a day after release — and identified the cause: computers that had installed October's optional preview update. Machines that skipped it were fine.</li>
+    <li><strong>Instead of withdrawing the update</strong>, Microsoft fixed it remotely. Starting November 11, affected PCs began receiving an automatic repair, expected to land within 24–48 hours, after which the update installs normally. <strong>No action required from you.</strong></li>
+    <li><strong>Sage 50 accounting software began crashing</strong> for users who installed the November update. Sage confirmed this on November 11 and advised customers to uninstall the Windows update. Microsoft has not acknowledged it.</li>
+    <li><strong>Other reports</strong> (unconfirmed): WordPerfect macros failing at law firms, boot failures on some older PCs in a school network, display flickering on a high-end laptop.</li>
+  </ul>
+  <p><em>Microsoft's solution to a broken installer was to fix it remotely. Impressive engineering, in the same way that locking your keys in the car and calling a locksmith is impressive.</em></p>
+
+  <h2>2026 So Far, In Plain Terms</h2>
+  <table>
+    <tr><th>Month</th><th>What Went Wrong</th><th>Where It Stands</th></tr>
+    <tr><td>January</td><td>Some PCs wouldn't boot at all after updating; graphics glitches; remote and cloud sign-in failures</td><td>Partly patched, fully fixed only in February</td></tr>
+    <tr><td>February</td><td>Updates refused to install; some networks stopped handing out addresses</td><td>Eventually resolved</td></tr>
+    <tr><td>March</td><td>An optional preview update was withdrawn for the same install failures</td><td>Pulled — the one time Microsoft hit the brakes</td></tr>
+    <tr><td>September</td><td>Microphones and headsets broke; some audio and domain sign-in stopped working</td><td>Emergency patch for part of it; the rest waited until November</td></tr>
+    <tr><td>October</td><td>Work Wi-Fi, printers, remote connections, database slowdowns</td><td>Partly fixed in November</td></tr>
+    <tr><td>November</td><td>Update wouldn't install; accounting software crashed</td><td>Auto-repair from Nov 11; Sage issue still unacknowledged</td></tr>
+  </table>
+
+  <h2>Why This Keeps Happening</h2>
+  <p>Three things combine badly:</p>
+  <ol>
+    <li><strong>Security fixes are mandatory, but testing is optional.</strong> Microsoft cannot skip the fixes — the vulnerabilities are real and sometimes already exploited. But the optional preview updates, which exist so enthusiasts and IT teams can test early, keep becoming the trigger for the next month's failures.</li>
+    <li><strong>Problems surface after release, not before.</strong> Nearly every issue in this report appeared within 24 to 48 hours of shipping. That's what happens when millions of machines with wildly different hardware and software meet an update at once.</li>
+    <li><strong>The fixes are increasingly remote.</strong> Microsoft is now repairing bad updates from its own servers instead of reissuing the files. It's fast and requires nothing from you — but it also means you can't tell from the patch notes whether you're getting something tested or something patched in flight.</li>
+  </ol>
+
+  <h2>What You Can Do</h2>
+  <ul>
+    <li><strong>Skip the optional preview updates.</strong> This is the single highest-value habit. They're never required for security, and the October preview is the confirmed cause of November's failures. Your computer will simply wait for the mandatory monthly update instead.</li>
+    <li><strong>Don't install on day one.</strong> Most of these problems were visible within 48 hours. Waiting three or four days, then checking the news, costs you almost nothing and avoids nearly all of it.</li>
+    <li><strong>Back up before Patch Tuesday, not after.</strong> The second Tuesday of each month is when the risk arrives. A current backup is the difference between an inconvenience and a bad week.</li>
+    <li><strong>Know how to undo an update.</strong> In Windows, Settings → Windows Update → Update history lets you uninstall a recent update. Sage's own advice to its customers was exactly that — so learn where the button is before you're panicking.</li>
+    <li><strong>Check that you're still receiving updates at all.</strong> Windows 11 version 24H2 stopped getting updates for home users on October 13, 2026. A PC can look perfectly current and be receiving nothing. If your machine is more than a couple of years old, confirm its version is still supported.</li>
+  </ul>
+
+  <h2>What We Don't Know</h2>
+  <ul>
+    <li><strong>How many PCs were affected.</strong> Microsoft describes it as a "limited number," and no independent measurement exists. Claims of "thousands of machines" are not supported by evidence.</li>
+    <li><strong>Whether the automatic repair finished.</strong> Microsoft said it would update its documentation when the rollout completed. We found no confirmation that it had, as of November 13.</li>
+    <li><strong>Why the installation failed.</strong> Microsoft never published a cause, and popular theories (disabling Windows Sandbox, for instance) were contradicted by users whose installs failed either way.</li>
+    <li><strong>Which reports are real.</strong> Everything attributed to Microsoft or Sage is officially confirmed. The Wi-Fi issue, WordPerfect, the school boot failures and the laptop display problems are reported by users and should be labelled as such.</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <p>Microsoft support articles for KB5127648, KB5132061, KB5127936 and KB5134133; Microsoft's Windows release health pages for Windows 11 versions 24H2, 25H2 and 26H2; Sage's support article on Sage 50 crashes; reporting by BleepingComputer, Windows Latest, Windows Report, The Register, Keytos and Thomas Marcussen; Windows Insider blog posts from March and July 2026.</p>
+
+  <h2>A Year of Windows Updates, Ranked by How Badly They Broke Things</h2>
+  <ol>
+    <li><strong>January — KB5074109: the PC wouldn't start.</strong> Some machines failed to boot entirely after installing, with an error reading UNMOUNTABLE_BOOT_VOLUME. There is no workaround for a computer that won't turn on. Partly patched through January, not fully resolved until February.</li>
+    <li><strong>October — KB5127648: the office Wi-Fi stopped letting people in.</strong> Domain-joined computers using 802.1X PEAP authentication stopped connecting. Home Wi-Fi kept working, so it looked like an office problem. Entire sites lost network access until someone found the registry workaround. Reported by administrators rather than confirmed by Microsoft — label it accordingly, but the volume of independent reports was substantial.</li>
+    <li><strong>November — KB5132061: the security update that wouldn't install.</strong> Not destructive, but corrosive. Installs hung at 68–99%, retries looped, and the errors were unhelpful. The real cost wasn't the failed install; it was the weeks a machine spent running without ~1,100 security fixes while its owner thought an update was pending. Triggered by October's optional preview update, confirmed by Microsoft, fixed server-side from November 11.</li>
+    <li><strong>October–November — the SQL Server connection leak.</strong> Linked-server queries left connections open to Oracle and PostgreSQL until performance degraded. Slow, invisible, and enterprise-only — which is why it took Microsoft until November 11 to confirm something that started on October 13. The permanent fix was promised "in the next few days" and hadn't shipped as of November 13.</li>
+    <li><strong>November — Sage 50 stopped working.</strong> For an accounting department in November, this is arguably number one. For everyone else, it's irrelevant. Sage confirmed the crashes on November 11 and told customers to uninstall the Windows update; Microsoft has said nothing.</li>
+    <li><strong>September — microphones and headsets stopped working.</strong> USB Audio 1.0 devices showed error code 10 in Device Manager. An emergency out-of-band patch fixed part of it on September 14; the remainder waited until November's update. Two months of "my headset is broken" tickets.</li>
+    <li><strong>October — printers wouldn't install.</strong> Adding an Active Directory-published printer failed with "The parameter is incorrect." Existing printers were unaffected, so this mainly hit new machine setups. Annoying, diagnosable, fixed in November.</li>
+    <li><strong>March — the update that got pulled.</strong> No damage, because Microsoft withdrew optional preview KB5079391 after the same install-error family appeared. It ranks this low on harm and this high on significance: it's the only time this year the brakes were applied.</li>
+    <li><strong>October — remote desktop failed for non-administrator accounts.</strong> Error 0xC000000D when connecting with Administrator protection enabled. Genuinely disruptive where it applied, but the condition was specific enough that most environments never saw it.</li>
+    <li><strong>All year — the small stuff.</strong> Event ID 2042 logged on every boot. Roughly 9 GB of disk swallowed by retry loops. Display flickering on one high-end laptop. None of it breaks anything; all of it erodes the assumption that updates are safe to leave alone.</li>
+    <li><strong>Dishonourable mention: WordPerfect X8 macros failing at law firms after the November update.</strong> Unconfirmed by both Corel and Microsoft, so it stays off the ranked list — but if you're the firm, it's the only entry that matters.</li>
+  </ol>
+
+  <p><em>John D. Gunther</em><br>
+  <em>Owner · OnyxSystems.US</em></p>
+
+  <div class="footer">
+    <p>This report is provided by Onyx Systems | Total Computer Care, Lake City, FL.<br>
+    Phone: (386) 755-7772 | Website: <a href="https://onyxpc.us">onyxpc.us</a><br>
+    © 2026 Onyx Systems. All rights reserved.</p>
+  </div>
+</body>
+</html>
