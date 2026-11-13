@@ -569,6 +569,42 @@ def main():
     alert_body = md_inline(alert_body.strip())
     tip_body = md_inline(clean_tip_body(tip_body.strip()))
     tech_bullets = [md_inline(b) for b in (bullets(today) or bullets(alert_body))]
+
+    # ── MS Windows Update Report banner (Nov 13–30 only) ──────────────────
+    msreport = ""
+    if date_str.startswith("2026-11-") and 13 <= int(date_str[8:10]) <= 30:
+        msreport = """<!-- FLASHING RED BUTTON - TOP OF NEWSLETTER -->
+  <div style="text-align:center;margin:16px 0 24px">
+    <a href="2026MSreport.html" target="_blank" rel="noopener" style="
+      display:inline-flex;align-items:center;gap:10px;
+      padding:16px 28px;border-radius:9999px;
+      background:linear-gradient(135deg,#dc2626,#b91c1c);
+      color:#fff;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+      text-decoration:none;box-shadow:0 4px 14px rgba(220,38,38,.5);
+      animation:msFlash 2.5s infinite;position:relative;overflow:hidden">
+      <span style="position:relative;z-index:1">🚨 READ THE FULL 2026 WINDOWS UPDATE REPORT</span>
+      <span style="position:absolute;top:0;left:-75%;width:50%;height:100%;
+        background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+        transform:skewX(-25deg);animation:msShimmer 3s infinite"></span>
+    </a>
+  </div>
+  <style>
+    @keyframes msFlash {
+      0%,100%{background:linear-gradient(135deg,#dc2626,#b91c1c);}
+      50%{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 6px 20px rgba(239,68,68,.7);}
+    }
+    @keyframes msShimmer {0%{left:-75%;}100%{left:125%;}}
+    @media (prefers-reduced-motion:reduce){a[href="2026MSreport.html"],a[href="2026MSreport.html"] span{animation:none!important;}}
+  </style>
+
+  <!-- SIMPLIFIED CUSTOMER-FRIENDLY LEAD -->
+  <div class="section alert ms-report" style="border-color:#f3c9c2;background:#fdf3f1">
+    <h2 style="color:#b3261e;margin-top:0">🚨 This Week's Critical Alert: Windows Updates Are Breaking Things</h2>
+    <p style="font-size:18px;font-weight:600;margin:12px 0"><strong>Microsoft's October and November updates broke Wi‑Fi, printers, and accounting software — and the November update wouldn't even install on some computers.</strong></p>
+    <p>If your work Wi‑Fi stopped connecting, a printer wouldn't add, or your accounting program started crashing: it's not your computer. It's the Windows updates.</p>
+    <p style="margin-top:16px;padding:12px;background:#fff3cd;border-radius:8px;border:1px solid #ffeeba"><strong>What to do right now:</strong> Don't install updates the day they come out. Wait 3–4 days. If you already updated and something's broken, <a href="2026MSreport.html" target="_blank" style="color:#b3261e;font-weight:700;text-decoration:underline">click here for the full report with step‑by‑step fixes</a>.</p>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px"><em>Full technical details: <a href="2026MSreport.html" target="_blank">2026 Microsoft Windows Update Report</a> · Sources: Microsoft, Sage, BleepingComputer, The Register — Nov 13, 2026</em></p>
+  </div>"""
     d = datetime.date.fromisoformat(date_str)
     build_stamp = d.strftime("%Y%m%d")
     weekday = d.strftime("%A")
@@ -631,6 +667,7 @@ def main():
     <div class="date">{weekday}, {month} {ordinal}, {d.year}</div>
   </div>
   <h1>Your Daily Computer Brief</h1>
+  {msreport}
   <div class="section alert">
     <h2>🔴 ALERT</h2>
     <p>{alert_body}</p>
