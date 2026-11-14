@@ -256,7 +256,32 @@ PROHIBITED_PATTERNS = [
     r"scammers need only 3 seconds",
 ]
 
+def _clean_for_scan(text):
+    """Neutralize false-positive triggers before fabricated-claim scanning.
+
+    The first-person ban polices John's voice in customer-facing prose. Three
+    legitimate things trip it otherwise:
+      1. URLs like "i-tested-windows-11-..." contain a standalone "i".
+      2. The Far Side comic caption ("Turn back, I say! HALT") is a verbatim
+         Gary Larson quote, not John speaking.
+      3. <img alt="...I say..."> renders the same caption in HTML.
+    Stripping URLs and the comic block keeps the gate honest without letting
+    real fabrications through.
+    """
+    # 1) strip URLs (both md and html forms)
+    text = re.sub(r"https?://[^\s\"'<>)\]]+", "", text)
+    text = re.sub(r"www\.[^\s\"'<>)\]]+", "", text)
+    # 2) markdown COMEDY BREAK section (header line through next section/footer)
+    text = re.sub(
+        r"(?:^|\n)[^\n]*COMEDY BREAK[^\n]*\n.*?(?=\n━━━|\n---|\Z)",
+        "\n", text, flags=re.S | re.IGNORECASE)
+    # 3) html comic div + caption div (nested: cap div closes first)
+    text = re.sub(r'<div class="comic">.*?</div>', "", text, flags=re.S | re.IGNORECASE)
+    text = re.sub(r'<div class="cap">.*?</div>', "", text, flags=re.S | re.IGNORECASE)
+    return text
+
 def _scan_text(label, text, errors):
+    text = _clean_for_scan(text)
     for pattern in PROHIBITED_PATTERNS:
         if re.search(pattern, text, re.IGNORECASE):
             errors.append(label + ": prohibited fabricated-claim pattern: " + pattern)
@@ -297,15 +322,29 @@ def verify_no_fabricated_claims(date_iso=None):
         _scan_text("newsletter.html", html_path.read_text(encoding="utf-8", errors="replace"), errors)
 
     # 4) source-citation check: every Today-in-Tech bullet must carry a URL.
-    # Vague citations like "(Source: X -- November 2026)" are how the false
-    # Defender / Clearwave bullets shipped -- no URL, no verification.
+    # A bullet may wrap onto continuation lines (the Source URL sits on the
+    # next line) — check the whole block (the "•" line through the next blank
+    # line), not just the first physical line.
     nl_md = resolve_newsletter(date_iso)
     if nl_md and nl_md.exists():
         md = nl_md.read_text(encoding="utf-8", errors="replace")
+        blocks = []
+        cur = None
         for ln in md.splitlines():
-            if ln.strip().startswith("\u2022"):
-                if "Source:" not in ln or "http" not in ln:
-                    errors.append(nl_md.name + ": tech bullet lacks a Source URL: " + ln.strip()[:90])
+            if ln.strip().startswith("•"):
+                if cur is not None:
+                    blocks.append(cur)
+                cur = [ln]
+            elif cur is not None and ln.strip() == "":
+                blocks.append(cur); cur = None
+            elif cur is not None:
+                cur.append(ln)
+        if cur is not None:
+            blocks.append(cur)
+        for block in blocks:
+            text_block = "\n".join(block)
+            if "Source:" not in text_block or "http" not in text_block:
+                errors.append(nl_md.name + ": tech bullet lacks a Source URL: " + text_block.strip().splitlines()[0][:90])
 
     if errors:
         raise ValueError("FATAL: Fabricated / uncited claims in today's content:\n" + "\n".join(errors))

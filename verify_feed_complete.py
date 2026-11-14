@@ -33,6 +33,7 @@ USAGE:
   python3 verify_feed_complete.py --all    # also checks data/news.json
 """
 import json, os, re, sys
+from datetime import date as _date
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -513,7 +514,10 @@ def check_updated_field(feed_path):
         return fails
 
     # Check if updated matches today's date format (YYYY-MM-DD)
-    today = os.environ.get("TODAY_DATE", "2026-11-12")
+    # TODAY_DATE may be passed by a caller; otherwise use the real current
+    # date. A hardcoded fallback goes stale within a day and false-fails
+    # every feed after that.
+    today = os.environ.get("TODAY_DATE") or _date.today().isoformat()
     if updated != today:
         fails.append(
             f"[{os.path.basename(feed_path)}] STALE 'updated' field: {updated} "
