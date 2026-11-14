@@ -227,8 +227,8 @@
       "date": "2026-11-14",
       "title": "**Headline:** Windows 11 October Update KB5127648 Breaks Wi-Fi and VPN — Here's the Temporary Fix",
       "tag": "Tech Tip",
-      "summary": "If your Wi-Fi or VPN stopped authenticating after the October 13 update (KB5127648), open Registry Editor (`regedit`), go to `HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0`, set `BlockNtlmv1SSO` to `0`, and restart. This restores Audit mode so legacy NTLMv1-based networks work again. Microsoft warns this weakens security — only use temporarily while IT migrates the network.",
-      "truth": "I've had three Lake City businesses call this week because their corporate Wi-Fi and VPN quit working after Patch Tuesday. The culprit is Microsoft's new default enforcement of NTLMv1 restrictions. Most folks don't realize their network gear is the problem — not their computer.",
+      "summary": "If your Wi-Fi or VPN stopped authenticating after the October 13 update (KB5127648), this NTLMv1 restriction may be the cause. Windows Group Policy can restore access. Onyx technicians can check and resolve this for you — call (386) 755-7772 for help.",
+      "truth": "After Patch Tuesday, Microsoft's default NTLMv1 restrictions can break corporate Wi-Fi and VPN authentication on business networks. The network gear — not the computer — is usually the problem.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
