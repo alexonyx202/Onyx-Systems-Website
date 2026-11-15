@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-15-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-15",
+      "title": "Fake CAPTCHAs Tell You to Press Windows+R — Don't Do It",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers have built 186 fake AI websites that look like legitimate chatbot and image-generator tools. When you visit them, a pop-up appears that looks like a \"verify you're human\" check. It tells you to press Windows+R, paste a command, and hit Enter. Doing that runs harmful code on your computer.\n\nReal verification checks never ask you to open the Run box or paste commands. If a website tells you to press Windows+R, type something, or run a command — close the tab immediately. Do not follow any keyboard instructions from a webpage.\n\nThe fake sites mimic popular AI tools like ChatGPT, Midjourney, and Claude. Always go directly to the official website (openai.com, midjourney.com, anthropic.com) instead of clicking search results.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-15-composite.jpg",
+      "comic": "assets/img/news/2026-11-15-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-14-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-14",
@@ -95,30 +112,34 @@
       "image": "assets/img/news/2026-11-11-composite.jpg",
       "comic": "assets/img/news/2026-11-11-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-09-daily-brief",
-      "type": "newsletter",
-      "date": "2026-11-09",
-      "title": "Fake Windows 11 24H2 Update Scam Steals Data — Patch Tuesday Tomorrow",
-      "tag": "Daily Brief",
-      "excerpt": "A convincing fake Windows 11 24H2 update page is circulating. It mimics a Microsoft support site, uses a believable cumulative-update name, and offers a blue download button for an 83 MB installer. The file is a malicious MSI built with legitimate tools that hides an infostealer ",
-      "tags": [
-        "OnyxSystems",
-        "LakeCityFL",
-        "ComputerRepair",
-        "DailyBrief"
-      ],
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      },
-      "image": "assets/img/news/2026-11-09-composite.jpg",
-      "comic": "assets/img/news/2026-11-09-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-15-post-1",
+      "type": "news",
+      "date": "2026-11-15",
+      "title": "Clearwave Fiber Expands Lake City Network — Thousands Now Eligible for All-Fiber Internet at clearwavefiber.com",
+      "tag": "Tech Note",
+      "summary": "Google released Chrome the latest version on November 9 fixing nine security issues including an actively exploited zero-day (the vulnerability-2026-125350) in the XML component. Update manually: open Chrome's Settings → Help → About Google Chrome, let it check and download, then click Relaunch.",
+      "truth": "Most people never close Chrome, so the update sits waiting for weeks. Customers get hit by threats Chrome already fixed. Close the browser tonight. It takes 30 seconds.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Chrome",
+        "#SecurityUpdate",
+        "#FiberInternet",
+        "#ClearwaveFiber",
+        "#LocalTech",
+        "#Windows11",
+        "#EndOfSupport",
+        "#BusinessIT",
+        "#Firefox",
+        "#Privacy",
+        "#SpeechRecognition"
+      ]
+    },
     {
       "id": "onyx-2026-11-14-post-1",
       "type": "news",
@@ -200,26 +221,27 @@
       }
     },
     {
-      "id": "onyx-2026-11-10-post4",
-      "type": "news",
-      "date": "2026-11-10",
-      "title": "Microsoft Edge 157 Security Update Fixes Chromium Vulnerabilities — Update at edge://settings/help",
-      "tag": "Browser Security",
-      "summary": "Microsoft Edge 157 was released November 5 2026 as the Stable channel main release incorporating the latest Chromium security fixes. Update free by going to edge://settings/help or Settings > About Microsoft Edge. Automatic updates also apply if enabled.",
-      "truth": "Edge updates silently in the background for most people but I still see machines weeks behind on browser patches. Browser exploits are the number one way malware gets in — a single compromised website can hit an unpatched browser. Taking ten seconds to verify you're current is the highest-ROI security habit there is.",
+      "id": "onyx-2026-11-15-post-2",
+      "type": "tip",
+      "date": "2026-11-15",
+      "title": "Windows 11 23H2 Enterprise and Education Reach End of Support — Final Security Update Released November 10",
+      "tag": "Tech Tip",
+      "summary": "Clearwave Fiber continues expanding its all-fiber network in Lake City, with several thousand residents now able to receive fiber internet service. Check availability at clearwavefiber.com. Fiber offers symmetrical speeds up to 5 Gbps with no data caps.",
+      "truth": "Fiber is the only internet that doesn't slow down when the neighborhood gets home. Cable and DSL share bandwidth — fiber doesn't. If it's at your address, switch. You'll feel the difference on every video call and download.",
       "tags": [
-        "OnyxSystems",
-        "LakeCityFL",
-        "ComputerRepair",
-        "MicrosoftEdge",
-        "BrowserSecurity",
-        "Chromium",
-        "UpdateNow"
-      ],
-      "cta": {
-        "label": "Check Edge Version",
-        "href": "edge://settings/help"
-      }
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#FiberInternet",
+        "#ClearwaveFiber",
+        "#LocalTech",
+        "#Windows11",
+        "#EndOfSupport",
+        "#BusinessIT",
+        "#Firefox",
+        "#Privacy",
+        "#SpeechRecognition"
+      ]
     },
     {
       "id": "onyx-2026-11-14-post-2",
@@ -297,31 +319,9 @@
         "#MicrosoftOffice",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-11-10-post5",
-      "type": "tip",
-      "date": "2026-11-10",
-      "title": "Windows 11 Built-In Troubleshooters Fix Common Problems Automatically — No Download Needed",
-      "tag": "DIY Fix",
-      "summary": "Windows 11 includes free built-in troubleshooters that automatically diagnose and fix common problems like internet connections audio Windows Update printer issues and more. Run them at Settings > System > Troubleshoot > Other troubleshooters. Select the troubleshooter for your issue and click Run.",
-      "truth": "People call for help with Wi-Fi that won't connect audio that's gone silent or updates that stall — and half the time the built-in troubleshooter fixes it before I even get to the machine. These tools have gotten genuinely good. They're not a magic wand but they're always worth trying first.",
-      "tags": [
-        "OnyxSystems",
-        "LakeCityFL",
-        "ComputerRepair",
-        "Windows11",
-        "Troubleshooters",
-        "FreeTools",
-        "DIYFix"
-      ],
-      "cta": {
-        "label": "Open Troubleshooters",
-        "href": "ms-settings:troubleshoot"
-      }
     }
   ],
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "word": {
     "word": "Port",
     "pos": "noun",
