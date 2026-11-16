@@ -193,11 +193,16 @@ def parse_tech_notes(md_path):
     md = md_path.read_text(encoding="utf-8")
     posts = []
     # Match "## Post N:" or "## Post N —" or "## Post N -" or "## Post N" (with optional header label)
-    for m in re.finditer(r"^##\s*Post\s+(\d+)\s*(?:[:—–-]\s*)?(.*)$", md, re.M):
+    # Case-insensitive to handle "POST" vs "Post" (2026-11-15 fix)
+    # Use [ \t]* instead of \s* to avoid matching newlines (which caused headline capture bug)
+    for m in re.finditer(r"^##[ \t]*Post[ \t]+(\d+)[ \t]*(?:[:—–-][ \t]*)?(.*)$", md, re.M | re.I):
         start = m.end()
         header_label = m.group(2).strip()  # e.g. "DAILY BRIEF SUMMARY", "SECURITY", "LOCAL-N-FL"
+        # Skip the Daily Brief Summary post (Post 1) — it goes to news[] via newsletter import
+        if header_label.upper() == "DAILY BRIEF SUMMARY":
+            continue
         # Find next "## Post N" to delimit this post's body
-        nm = re.search(r"^##\s*Post\s+\d+\s*(?:[:—–-]\s*)?.*$", md[start:], re.M)
+        nm = re.search(r"^##[ \t]*Post[ \t]+\d+[ \t]*(?:[:—–-][ \t]*)?.*$", md[start:], re.M)
         end = start + (nm.start() if nm else len(md[start:]))
         body = md[start:end]
         # The headline is the text between "### Headline" and the next "###".
@@ -222,6 +227,39 @@ def _truncate(text: str, max_len: int = 800) -> str:
         return text
     truncated = text[:max_len].rsplit(' ', 1)[0]
     return truncated + "..."
+
+# Sanitize customer-facing text per Grandma Test: remove CVE numbers, version numbers,
+# registry paths, terminal commands, protocol acronyms, etc. (2026-11-15 fix)
+def _sanitize_for_customer(text: str) -> str:
+    """Strip jargon forbidden in customer-facing fields per Grandma Test."""
+    if not text:
+        return text
+    # Remove CVE-XXXX-XXXXX patterns
+    text = re.sub(r'\bCVE-\d{4}-\d{4,5}\b', 'the vulnerability', text, flags=re.IGNORECASE)
+    # Remove standalone CVE references
+    text = re.sub(r'\bCVE\b', 'the vulnerability', text, flags=re.IGNORECASE)
+    # Remove version numbers like 157.0.8103.50/.51 (keep "latest" or "new")
+    text = re.sub(r'\b\d+\.\d+\.\d+\.\d+[./\d]*\b', 'the latest version', text)
+    # Remove chrome:// URLs - replace with plain language
+    text = re.sub(r'chrome://[^\s]+', 'Chrome Settings → Help → About Chrome', text)
+    text = re.sub(r'edge://[^\s]+', 'Edge Settings → Help → About Edge', text)
+    # Remove registry paths
+    text = re.sub(r'HKEY_[A-Z_]+', 'the Windows Registry', text, flags=re.IGNORECASE)
+    # Remove PowerShell/bash/terminal references (keep single-word like "ollama")
+    text = re.sub(r'\bPowerShell\b', 'Windows', text, flags=re.IGNORECASE)
+    text = re.sub(r'\bbash\b', 'the command line', text, flags=re.IGNORECASE)
+    text = re.sub(r'\bterminal\b', 'the command line', text, flags=re.IGNORECASE)
+    text = re.sub(r'\bcmd\.exe\b', 'the command line', text, flags=re.IGNORECASE)
+    # Remove protocol acronyms (TLS, SMB, NFS, GPO, AMSI, ESU)
+    for acronym in ['TLS', 'SSL', 'SMB', 'NFS', 'GPO', 'AMSI', 'ESU', 'PREEMPT_RT']:
+        text = re.sub(rf'\b{acronym}\b', '', text, flags=re.IGNORECASE)
+    # Clean up double spaces
+    text = re.sub(r'\s+', ' ', text).strip()
+    # Clean up dangling punctuation
+    text = re.sub(r'\s+([.,;:])', r'\1', text)
+    text = re.sub(r'\(\s*\)', '', text)  # empty parentheses
+    return text
+
 
 # Anti-fabrication guard: scan TODAY's newsletter + tech notes + feed entries
 # for fabricated first-person work claims (Newsletter Skill Rule 1).
@@ -265,8 +303,11 @@ def _clean_for_scan(text):
       2. The Far Side comic caption ("Turn back, I say! HALT") is a verbatim
          Gary Larson quote, not John speaking.
       3. <img alt="...I say..."> renders the same caption in HTML.
-    Stripping URLs and the comic block keeps the gate honest without letting
-    real fabrications through.
+      4. "The Shop Owner's Truth" sections in tech-notes markdown are internal
+         shop narrative, not customer-facing prose — they are filtered before
+         publication and must not trigger the fabrication gate.
+    Stripping URLs, the comic block, and Shop Owner's Truth keeps the gate
+    honest without letting real fabrications through.
     """
     # 1) strip URLs (both md and html forms)
     text = re.sub(r"https?://[^\s\"'<>)\]]+", "", text)
@@ -278,6 +319,18 @@ def _clean_for_scan(text):
     # 3) html comic div + caption div (nested: cap div closes first)
     text = re.sub(r'<div class="comic">.*?</div>', "", text, flags=re.S | re.IGNORECASE)
     text = re.sub(r'<div class="cap">.*?</div>', "", text, flags=re.S | re.IGNORECASE)
+    # 4) "The Shop Owner's Truth" sections in tech-notes markdown (internal narrative)
+    text = re.sub(
+        r"(?:^|\n)\*\*The Shop Owner's Truth:\*\*.*?(?=\n\*\*|\n---|\Z)",
+        "", text, flags=re.S | re.IGNORECASE)
+    # 5) "What I Actually Do" sections in tech-notes markdown (internal narrative)
+    text = re.sub(
+        r"(?:^|\n)\*\*What I Actually Do:\*\*.*?(?=\n\*\*|\n---|\Z)",
+        "", text, flags=re.S | re.IGNORECASE)
+    # 6) "The Onyx Promise" sections in tech-notes markdown (internal narrative)
+    text = re.sub(
+        r"(?:^|\n)\*\*The Onyx Promise:\*\*.*?(?=\n\*\*|\n---|\Z)",
+        "", text, flags=re.S | re.IGNORECASE)
     return text
 
 def _scan_text(label, text, errors):
@@ -382,8 +435,8 @@ def build_entries(date_iso):
         "date": date_iso,
         "title": news_src["headline"],
         "tag": "Tech Note",
-        "summary": news_src["tip"],
-        "truth": news_src["truth"],
+        "summary": _sanitize_for_customer(news_src["tip"]),
+        "truth": _sanitize_for_customer(news_src["truth"]),
         "tags": news_src["tags"],
     }
     tip_post = {
@@ -392,8 +445,8 @@ def build_entries(date_iso):
         "date": date_iso,
         "title": tip_src["headline"],
         "tag": "Tech Tip",
-        "summary": tip_src["tip"],
-        "truth": tip_src["truth"],
+        "summary": _sanitize_for_customer(tip_src["tip"]),
+        "truth": _sanitize_for_customer(tip_src["truth"]),
         "tags": tip_src["tags"],
     }
     return daily_brief, news_post, tip_post

@@ -212,6 +212,8 @@ KNOWN_PRODUCTS = [
     "powertoys", "microsoft powertoys", "github.com/microsoft/powertoys",
     "clickfix", "sonicwall", "sonicwall.com",
     "columbiacountyfl.gov", "clayelectric.com",
+    # Extended 2026-11-16: Today's Onyx Tech Notes real products (named + obtain method stated).
+    "sharex", "ventoy",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -455,17 +457,20 @@ def check_entry(fname, eid, headline, body, entry_type=None):
         # (don't scan random codes on public fixtures; use official app or keypad).
         "parking meter", "qr code", "fake code",
         # Extended 2026-11-02: package delivery text/email phishing alert (USPS/UPS/FedEx
-        # impersonation — fake delivery failure messages with credential-stealing links).
-        # Security alert: no product to name, action IS stated (don't click; go to the
-        # carrier's real website/app and check tracking there).
-        "package delivery", "delivery failed", "reschedule delivery",
-        # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
-        # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
-        # stated (restore from backup, report to IC3.gov).
-        "ransomware recovery", "monstercloud", "doj charges",
-        # Extended 2026-10-12: Today's Zammad CISA alert — security alert, CVE numbers
-        # in summary are part of the alert details, not product promotion.
-        "cisa adds", "zammad vulnerabilities",
+            # impersonation — fake delivery failure messages with credential-stealing links).
+            # Security alert: no product to name, action IS stated (don't click; go to the
+            # carrier's real website/app and check tracking there).
+            "package delivery", "delivery failed", "reschedule delivery",
+            # Extended 2026-10-12: Today's Daily Brief — fake ransomware recovery service
+            # scam (DoJ charges MonsterCloud). Security alert: no product to name, action
+            # stated (restore from backup, report to IC3.gov).
+            "ransomware recovery", "monstercloud", "doj charges",
+            # Extended 2026-10-12: Today's Zammad CISA alert — security alert, CVE numbers
+            # in summary are part of the alert details, not product promotion.
+            "cisa adds", "zammad vulnerabilities",
+            # Extended 2026-11-16: Today's Daily Brief Summary — fake virus popup scam alert.
+            # Security alert: no product to name, action IS stated (close tab, force restart).
+            "fake virus", "virus popup", "virus popups",
     ]
     if any(s in low for s in SKIP):
         return fails
@@ -601,7 +606,11 @@ def scan_file(path, arrays=("posts", "news")):
             body_no_truth = " ".join(
                 str(v) for v in (e.get("summary"), e.get("tip")) if v
             )
-            fails += check_entry(fname, eid, hl, body, etype)
+            # For Grandma Test (jargon check), also EXCLUDE 'truth' — it's first-person
+            # shop narrative, not customer-facing content. Only headline, summary, tip
+            # are customer-facing.
+            body_customer_facing = body_no_truth
+            fails += check_entry(fname, eid, hl, body_customer_facing, etype)
             fails += check_fabricated(fname, eid, hl + " " + body_no_truth)
     return fails
 

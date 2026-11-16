@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-16-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-16",
+      "title": "Fake virus popups are flooding screens — Microsoft will never put a phone number in a warning",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers blast loud fake \"virus detected\" popups with a phone number — close the browser tab or hold the power button 15 seconds to force a restart. Microsoft, Apple, and Google never include phone numbers in real warnings. Source: FTC.gov, Microsoft Support — November 2026.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-16-composite.jpg",
+      "comic": "assets/img/news/2026-11-16-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-15-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-15",
@@ -115,6 +132,121 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-16-post-1",
+      "type": "news",
+      "date": "2026-11-16",
+      "title": "Fake virus popups are flooding screens — Microsoft will never put a phone number in a warning",
+      "tag": "Daily Brief Summary",
+      "summary": "Scammers blast loud fake \"virus detected\" popups with a phone number — close the browser tab or hold the power button 15 seconds to force a restart. Microsoft, Apple, and Google never include phone numbers in real warnings. Source: FTC.gov, Microsoft Support — November 2026.",
+      "truth": "We'll never sell you software you don't need. If a popup scares you, bring the computer in — we'll check it free and tell you the truth.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-16-post-2",
+      "type": "news",
+      "date": "2026-11-16",
+      "title": "One USB stick for every ISO — Ventoy boots them all free without reformatting",
+      "tag": "Tech Note",
+      "summary": "Ventoy is free at ventoy.net — install it on a USB drive, copy as many ISO files as you want (Windows, Linux, rescue disks), and boot into a clean menu to pick which one to run. No reformatting between ISOs.",
+      "truth": "Most techs still carry a drawer of single-use USB sticks. One Ventoy drive replaces all of them — I keep Windows 11, Windows 10, Ubuntu, and a dozen rescue ISOs on one 64 GB stick.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Ventoy",
+        "#BootableUSB"
+      ],
+      "cta": {
+        "label": "Get Ventoy",
+        "href": "https://ventoy.net"
+      }
+    },
+    {
+      "id": "onyx-2026-11-16-post-3",
+      "type": "news",
+      "date": "2026-11-16",
+      "title": "Windows has a free remote help tool built in — Quick Assist connects you safely",
+      "tag": "Tech Note",
+      "summary": "Quick Assist is built into Windows 11 — press Start, type Quick Assist, and open it to get a 6-digit code for someone you trust to help you remotely. No download, no account, no third-party tool.",
+      "truth": "People pay for TeamViewer or AnyDesk subscriptions when Windows already has a secure, Microsoft-signed remote tool. I use Quick Assist to help customers 20 miles away — it just works.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#QuickAssist",
+        "#Windows11"
+      ],
+      "cta": {
+        "label": "Open Quick Assist",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "onyx-2026-11-16-post-4",
+      "type": "news",
+      "date": "2026-11-16",
+      "title": "Free portable tool stops Windows tracking cold — O&O ShutUp10++ puts every privacy switch in one window",
+      "tag": "Tech Note",
+      "summary": "O&O ShutUp10++ is free at oo-software.com — download the portable version, run it, and click \"Apply recommended settings\" to block Windows telemetry, data collection, and advertising IDs in one click.",
+      "truth": "Windows has dozens of privacy settings scattered across menus. This tool gathers them all, explains what each one does, and lets you undo anything. I run it on every computer that comes through the shop.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#O&OShutUp10",
+        "#Privacy"
+      ],
+      "cta": {
+        "label": "Get ShutUp10++",
+        "href": "https://oo-software.com/en/shutup10"
+      }
+    },
+    {
+      "id": "onyx-2026-11-16-post-5",
+      "type": "tip",
+      "date": "2026-11-16",
+      "title": "Stop struggling with the Snipping Tool — ShareX is the free screenshot and screen recorder that does it all",
+      "tag": "Tech Tip",
+      "summary": "ShareX is free at getsharex.com or the Microsoft Store — install it, press Print Screen, and capture any region, window, scrolling page, or screen recording with annotations, arrows, and text in seconds.",
+      "truth": "The built-in Snipping Tool is fine for one quick crop. But when a customer needs to show me a scrolling error message, record a glitch, or annotate a screenshot for support — ShareX does it all without the hassle.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#ShareX",
+        "#Screenshot"
+      ],
+      "cta": {
+        "label": "Get ShareX",
+        "href": "https://getsharex.com"
+      }
+    },
+    {
+      "id": "onyx-2026-11-16-post-6",
+      "type": "tip",
+      "date": "2026-11-16",
+      "title": "Stop paying for Microsoft Office — LibreOffice is the free alternative that opens every file",
+      "tag": "Tech Tip",
+      "summary": "LibreOffice is free at libreoffice.org — download the installer for Windows, Mac, or Linux and it opens Word, Excel, and PowerPoint files without a subscription, no account, and no forced AI features.",
+      "truth": "Most people only use 10% of Office features but pay $100/year for the privilege. LibreOffice handles every document I throw at it — resumes, budgets, presentations — and the files save back to Office formats perfectly.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#LibreOffice",
+        "#FreeSoftware"
+      ],
+      "cta": {
+        "label": "Get LibreOffice",
+        "href": "https://libreoffice.org"
+      }
+    },
     {
       "id": "onyx-2026-11-15-post-1",
       "type": "news",
@@ -321,309 +453,244 @@
       ]
     }
   ],
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "word": {
-    "word": "Port",
+    "word": "RAM",
     "pos": "noun",
-    "definition": "A numbered doorway on a device that a specific kind of network traffic uses.",
-    "example": "The game needed port 25565 opened to host friends.",
-    "date": "2026-11-14"
+    "definition": "Random Access Memory — fast, short-term working space the PC clears when you power off.",
+    "example": "Adding more RAM stopped the tab-crashing.",
+    "date": "2026-11-16"
   },
   "crossword": {
-    "title": "Math For College Readiness/Mrs McCue's Class Information",
-    "size": 23,
+    "title": "Math Lab Crossword",
+    "size": 22,
     "grid": [
-      "...............s.......",
-      ".............f.e.c.....",
-      ".............i.n.attend",
-      "...........partial.a...",
-      ".............s.o.c.r...",
-      "......m......t.r.u.d...",
-      "...o..a.....v....l.y...",
-      "...n..k..ruler...a.....",
-      "...-.pert...g..notebook",
-      "forty.-...r.e....o.....",
-      "...a..u...extra-credit.",
-      "...supplies.a......i.h.",
-      "...k.e....p.t......r.i.",
-      ".....n...detention.e.r.",
-      "..........c........c.t.",
-      "......c...t....n...t.y.",
-      ".....four-function.i...",
-      "......l...u....n...o...",
-      "......l...l..cheating..",
-      ".....pencil..l...e.s...",
-      "......g...y..a...n.....",
-      "......e......seat......",
-      ".............s........."
+      ".............first....",
+      "..........zero.....w..",
+      ".............r.....e..",
+      ".............m.....d..",
+      ".........w...undefined",
+      ".........i...l.....e..",
+      "........snowball...s..",
+      ".........t.........d..",
+      "...science...e.j...a..",
+      "...e.....ruben.e...y..",
+      "...v...r.....g.o......",
+      ".m.e..bingo.slope.....",
+      "hannah.s.r.a.i.a......",
+      ".t.....e.advisory.....",
+      ".h.......d.i.h.d......",
+      ".........e.d...y......",
+      "......................",
+      "......................",
+      "......................",
+      "......................",
+      "......................",
+      "......................"
     ],
     "clues": {
       "across": [
         {
-          "num": 4,
-          "row": 3,
-          "col": 18,
-          "len": 6,
-          "answer": "attend",
-          "clue": "best chance for succeeding if _____ all classes"
+          "num": 1,
+          "row": 1,
+          "col": 14,
+          "len": 5,
+          "answer": "first",
+          "clue": "lunch that Mrs. I has"
+        },
+        {
+          "num": 2,
+          "row": 2,
+          "col": 11,
+          "len": 4,
+          "answer": "zero",
+          "clue": "slope of a horizontal line"
+        },
+        {
+          "num": 5,
+          "row": 5,
+          "col": 14,
+          "len": 9,
+          "answer": "undefined",
+          "clue": "slope of a vertical line"
         },
         {
           "num": 6,
-          "row": 4,
-          "col": 12,
+          "row": 7,
+          "col": 9,
+          "len": 8,
+          "answer": "snowball",
+          "clue": "name of upcoming dance"
+        },
+        {
+          "num": 7,
+          "row": 9,
+          "col": 4,
           "len": 7,
-          "answer": "partial",
-          "clue": "credit given when work in not complete"
+          "answer": "science",
+          "clue": "a class where slope is called rate of change"
         },
         {
           "num": 10,
-          "row": 8,
+          "row": 10,
           "col": 10,
           "len": 5,
-          "answer": "ruler",
-          "clue": "straight edge used for graphing lines"
-        },
-        {
-          "num": 11,
-          "row": 9,
-          "col": 6,
-          "len": 4,
-          "answer": "pert",
-          "clue": "exam given to MCR at the end of school year"
-        },
-        {
-          "num": 12,
-          "row": 9,
-          "col": 16,
-          "len": 8,
-          "answer": "notebook",
-          "clue": "keep all work in it and bring to class daily"
+          "answer": "ruben",
+          "clue": "name of a boy in class"
         },
         {
           "num": 13,
-          "row": 10,
-          "col": 1,
+          "row": 12,
+          "col": 7,
           "len": 5,
-          "answer": "forty",
-          "clue": "percent of 9 weeks grade for Test grades"
+          "answer": "bingo",
+          "clue": "name of game with a free space"
         },
         {
           "num": 15,
-          "row": 11,
-          "col": 11,
-          "len": 12,
-          "answer": "extra-credit",
-          "clue": "ten points if a parent signs this paper"
+          "row": 12,
+          "col": 13,
+          "len": 5,
+          "answer": "slope",
+          "clue": "what you just took a quiz on"
+        },
+        {
+          "num": 16,
+          "row": 13,
+          "col": 1,
+          "len": 6,
+          "answer": "hannah",
+          "clue": "name of a girl in class"
         },
         {
           "num": 18,
-          "row": 12,
-          "col": 4,
-          "len": 8,
-          "answer": "supplies",
-          "clue": "notebook,pen,pencils"
-        },
-        {
-          "num": 20,
           "row": 14,
           "col": 10,
-          "len": 9,
-          "answer": "detention",
-          "clue": "to be served when tardy to class"
-        },
-        {
-          "num": 23,
-          "row": 17,
-          "col": 6,
-          "len": 13,
-          "answer": "four-function",
-          "clue": "only calculator permitted in MCR class"
-        },
-        {
-          "num": 24,
-          "row": 19,
-          "col": 14,
           "len": 8,
-          "answer": "cheating",
-          "clue": "shows poor judgement-zero credit"
-        },
-        {
-          "num": 26,
-          "row": 20,
-          "col": 6,
-          "len": 6,
-          "answer": "pencil",
-          "clue": "used to write math practice problems"
-        },
-        {
-          "num": 27,
-          "row": 22,
-          "col": 14,
-          "len": 4,
-          "answer": "seat",
-          "clue": "be here when the bell rings to start class"
+          "answer": "advisory",
+          "clue": "a class you only go to on Mondays"
         }
       ],
       "down": [
         {
           "num": 1,
           "row": 1,
-          "col": 16,
-          "len": 6,
-          "answer": "senior",
-          "clue": "all students in MCR have this ranking"
-        },
-        {
-          "num": 2,
-          "row": 2,
           "col": 14,
-          "len": 5,
-          "answer": "first",
-          "clue": "Which page should class info sheet be in notebook?"
+          "len": 7,
+          "answer": "formula",
+          "clue": "equation used to find slope"
         },
         {
           "num": 3,
           "row": 2,
-          "col": 18,
-          "len": 10,
-          "answer": "calculator",
-          "clue": "not permitted for use on PERT Exam"
+          "col": 20,
+          "len": 9,
+          "answer": "wednesday",
+          "clue": "hour late start"
         },
         {
-          "num": 5,
-          "row": 3,
-          "col": 20,
-          "len": 5,
-          "answer": "tardy",
-          "clue": "late to class"
+          "num": 4,
+          "row": 5,
+          "col": 10,
+          "len": 6,
+          "answer": "winter",
+          "clue": "name of break coming up"
         },
         {
           "num": 7,
-          "row": 6,
-          "col": 7,
-          "len": 7,
-          "answer": "make-up",
-          "clue": "your responsibility when absent"
+          "row": 9,
+          "col": 4,
+          "len": 5,
+          "answer": "seven",
+          "clue": "how many periods in a day"
         },
         {
           "num": 8,
-          "row": 7,
-          "col": 4,
+          "row": 9,
+          "col": 14,
           "len": 7,
-          "answer": "on-task",
-          "clue": "working on math in math class"
+          "answer": "english",
+          "clue": "a class where you write and read"
         },
         {
           "num": 9,
-          "row": 7,
-          "col": 13,
+          "row": 9,
+          "col": 16,
           "len": 8,
-          "answer": "vegetate",
-          "clue": "not working-unproductive"
+          "answer": "jeopardy",
+          "clue": "name of game played in Int 1 yesterday"
+        },
+        {
+          "num": 11,
+          "row": 11,
+          "col": 8,
+          "len": 4,
+          "answer": "rise",
+          "clue": "_____ over run"
+        },
+        {
+          "num": 12,
+          "row": 12,
+          "col": 2,
+          "len": 4,
+          "answer": "math",
+          "clue": "what you learn with Mrs. I"
         },
         {
           "num": 14,
-          "row": 10,
-          "col": 11,
-          "len": 12,
-          "answer": "respectfully",
-          "clue": "behave this way to teachers and students"
-        },
-        {
-          "num": 16,
-          "row": 11,
-          "col": 20,
-          "len": 10,
-          "answer": "directions",
-          "clue": "follow these to be successful in class"
+          "row": 12,
+          "col": 10,
+          "len": 5,
+          "answer": "grade",
+          "clue": "something you check every week in math lab"
         },
         {
           "num": 17,
-          "row": 11,
-          "col": 22,
-          "len": 6,
-          "answer": "thirty",
-          "clue": "percent of 9 weeks grade for CW/HW"
-        },
-        {
-          "num": 19,
-          "row": 12,
-          "col": 6,
-          "len": 3,
-          "answer": "pen",
-          "clue": "used to head CW and Test papers"
-        },
-        {
-          "num": 21,
-          "row": 16,
-          "col": 7,
-          "len": 7,
-          "answer": "college",
-          "clue": "Math For ______ Readiness"
-        },
-        {
-          "num": 22,
-          "row": 16,
-          "col": 16,
+          "row": 13,
+          "col": 12,
           "len": 4,
-          "answer": "nine",
-          "clue": "maximum unexcused absences before FA"
-        },
-        {
-          "num": 24,
-          "row": 19,
-          "col": 14,
-          "len": 5,
-          "answer": "class",
-          "clue": "most of our practice work will be done here"
-        },
-        {
-          "num": 25,
-          "row": 19,
-          "col": 18,
-          "len": 3,
-          "answer": "ten",
-          "clue": "maximum points given for completing an assignment"
+          "answer": "avid",
+          "clue": "non-math class that Mrs. I teaches"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-for-college-readinessmrs-mccues-class-information",
-    "slug": "math-for-college-readinessmrs-mccues-class-information",
-    "fetched_at": "2026-07-14T19:23:47.369530+00:00",
-    "date": "2026-11-14"
+    "source_url": "https://crosswordlabs.com/view/math-lab-crossword-4",
+    "slug": "math-lab-crossword-4",
+    "fetched_at": "2026-07-14T19:20:59.645492+00:00",
+    "date": "2026-11-16"
   },
   "trivia": {
-    "q": "What does 'DHCP' do?",
-    "a": "Automatically assigns IP addresses to devices joining a network.",
-    "category": "Network",
-    "date": "2026-11-14"
+    "q": "What does 'API' stand for?",
+    "a": "Application Programming Interface — a contract that lets two programs talk to each other.",
+    "category": "Software",
+    "date": "2026-11-16"
   },
   "joke": {
-    "q": "What did the laptop say to the power outlet?",
-    "a": "I'm feeling drained, can you charge me up?",
-    "date": "2026-11-14"
+    "q": "Why did the computer join a band?",
+    "a": "It had great processing power.",
+    "date": "2026-11-16"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-11-08",
-      "question": "How's your Wi-Fi at home?",
+      "weekOf": "2026-11-15",
+      "question": "Have you ever been phished?",
       "options": [
         {
-          "id": "great",
-          "label": "Rock solid"
+          "id": "yes",
+          "label": "Yes, I fell for one"
         },
         {
-          "id": "spots",
-          "label": "A few dead spots"
+          "id": "maybe",
+          "label": "Maybe — not sure"
         },
         {
-          "id": "drops",
-          "label": "Drops daily"
+          "id": "no",
+          "label": "No, I'm careful"
         },
         {
-          "id": "hotspot",
-          "label": "I use my phone"
+          "id": "what",
+          "label": "What's phishing?"
         }
       ]
     }

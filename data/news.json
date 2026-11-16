@@ -1,6 +1,76 @@
 {
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "items": [
+    {
+      "id": "n-2026-11-16",
+      "type": "newsletter",
+      "date": "2026-11-16",
+      "title": "Fake QR Codes on Parking Meters Steal Your Money and Data",
+      "tag": "Daily Brief",
+      "summary": "Scammers are pasting fake QR code stickers over the real ones on parking",
+      "comic": "Newsletter - 2026-11-16-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-16-post-2",
+      "type": "tech-note",
+      "date": "2026-11-16",
+      "title": "One USB stick for every ISO — Ventoy boots them all free without reformatting",
+      "tag": "Tech Note",
+      "summary": "Ventoy is free at ventoy.net — install it on a USB drive, copy as many ISO files as you want (Windows, Linux, rescue disks), and boot into a clean menu to pick which one to run. No reformatting between ISOs.",
+      "cta": {
+        "label": "Get Ventoy",
+        "href": "https://ventoy.net"
+      }
+    },
+    {
+      "id": "t-2026-11-16-post-3",
+      "type": "tech-note",
+      "date": "2026-11-16",
+      "title": "Windows has a free remote help tool built in — Quick Assist connects you safely",
+      "tag": "Tech Note",
+      "summary": "Quick Assist is built into Windows 11 — press Start, type Quick Assist, and open it to get a 6-digit code for someone you trust to help you remotely. No download, no account, no third-party tool.",
+      "cta": {
+        "label": "Open Quick Assist",
+        "href": "ms-settings:windowsupdate"
+      }
+    },
+    {
+      "id": "t-2026-11-16-post-4",
+      "type": "tech-note",
+      "date": "2026-11-16",
+      "title": "Free portable tool stops Windows tracking cold — O&O ShutUp10++ puts every privacy switch in one window",
+      "tag": "Tech Note",
+      "summary": "O&O ShutUp10++ is free at oo-software.com — download the portable version, run it, and click \"Apply recommended settings\" to block Windows telemetry, data collection, and advertising IDs in one click.",
+      "cta": {
+        "label": "Get ShutUp10++",
+        "href": "https://oo-software.com/en/shutup10"
+      }
+    },
+    {
+      "id": "t-2026-11-16-post-5",
+      "type": "tech-note",
+      "date": "2026-11-16",
+      "title": "Stop struggling with the Snipping Tool — ShareX is the free screenshot and screen recorder that does it all",
+      "tag": "Tech Tip",
+      "summary": "ShareX is free at getsharex.com or the Microsoft Store — install it, press Print Screen, and capture any region, window, scrolling page, or screen recording with annotations, arrows, and text in seconds.",
+      "cta": {
+        "label": "Get ShareX",
+        "href": "https://getsharex.com"
+      }
+    },
+    {
+      "id": "t-2026-11-16-post-6",
+      "type": "tech-note",
+      "date": "2026-11-16",
+      "title": "Stop paying for Microsoft Office — LibreOffice is the free alternative that opens every file",
+      "tag": "Tech Tip",
+      "summary": "LibreOffice is free at libreoffice.org — download the installer for Windows, Mac, or Linux and it opens Word, Excel, and PowerPoint files without a subscription, no account, and no forced AI features.",
+      "cta": {
+        "label": "Get LibreOffice",
+        "href": "https://libreoffice.org"
+      }
+    },
     {
       "id": "n-2026-11-15",
       "type": "newsletter",
@@ -52,74 +122,6 @@
       "title": "**Headline:** Windows 11 October Update KB5127648 Breaks Wi-Fi and VPN — Here's the Temporary Fix",
       "tag": "Tech Tip",
       "summary": "If your Wi-Fi or VPN stopped authenticating after the October 13 update (KB5127648), this NTLMv1 restriction may be the cause. Windows Group Policy can restore access. Onyx technicians can check and resolve this for you — call (386) 755-7772 for help."
-    },
-    {
-      "id": "n-2026-11-13",
-      "type": "newsletter",
-      "date": "2026-11-13",
-      "title": "Open Enrollment Scams Are Here — Don't Click That Link",
-      "tag": "Daily Brief",
-      "summary": "Open enrollment season runs through January 15, 2027, and scammers are flooding inboxes and phones with fake health insurance offers. The FCC warns that robocalls and texts pretending to be from \"Medicare,\" \"your insurance provider,\" or \"Healthcare.gov\" spike during this window. They pressure you to \"verify\" your Social Security number or pay a fee to keep coverage. Real insurers and government agencies never ask for payment or personal info over an unsolicited call or text. What to do: Hang up. Delete the text. If you need to check your coverage, go directly to Healthcare.gov or call the number on your insurance card. Never use a number or link from the message. Source: FCC.gov — November 1, 2026",
-      "comic": "assets/img/news/2026-11-13-comic-square.jpg",
-      "readMore": "#contact"
-    },
-    {
-      "id": "p-2026-11-13-1",
-      "type": "tech-note",
-      "date": "2026-11-13",
-      "title": "Firefox 160 Stable Released with Mailto Blocking, PiP Speed Controls, and MKV Support — Free at firefox.com",
-      "tag": "Browser Release",
-      "summary": "Firefox 160 stable was released on November 10, 2026, adding the ability to block websites from repeatedly asking to handle mailto: email links, playback speed controls (0.25x to 2.0x) in the Picture-in-Picture video player, support for Matroska (MKV) files with FLAC, MP3, or PCM audio, and a Mini Window feature for keeping tabs always on top. Update free at firefox.com or through Firefox's built-in updater.",
-      "cta": {
-        "label": "Get Firefox",
-        "href": "https://firefox.com"
-      }
-    },
-    {
-      "id": "p-2026-11-13-2",
-      "type": "tech-note",
-      "date": "2026-11-13",
-      "title": "Test Suspicious Files Safely in Windows Sandbox — Free Disposable PC Built Into Windows 11 Pro",
-      "tag": "Security Tip",
-      "summary": "Windows Sandbox gives you a lightweight disposable Windows environment to test untrusted apps, open suspicious email attachments, or visit questionable websites without risking your main system. It resets to a clean state every time you close it. Enable it in Windows 11 Pro/Enterprise via Settings > Apps > Optional features > More Windows features > Windows Sandbox, or run 'OptionalFeatures' and check the box.",
-      "cta": {
-        "label": "Enable Windows Sandbox",
-        "href": "ms-settings:optionalfeatures"
-      }
-    },
-    {
-      "id": "n-2026-11-12",
-      "type": "newsletter",
-      "date": "2026-11-12",
-      "title": "Fake Free Software Downloads Hide Password-Stealing Malware — Microsoft Warns",
-      "tag": "Daily Brief",
-      "summary": "You search for a cracked version of a paid program, a free game, or a",
-      "comic": "Newsletter - 2026-11-12-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-12-news1",
-      "type": "tech-note",
-      "date": "2026-11-12",
-      "title": "Microsoft November Patch Tuesday Fixes 1,235 Flaws Including Actively Exploited Outlook Zero-Day",
-      "tag": "Security Update",
-      "summary": "Microsoft's November Patch Tuesday addresses 1,235 security vulnerabilities, including one actively exploited zero-day in Outlook that steals login credentials when a malicious file is opened. The update also includes fixes for Windows, Office, and Edge. Update now via Settings > Windows Update.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
-    },
-    {
-      "id": "t-2026-11-12-news2",
-      "type": "tech-note",
-      "date": "2026-11-12",
-      "title": "Windows 11 November Update Adds Cloud Rebuild Recovery and Redesigned Right-Click Menus",
-      "tag": "Windows Update",
-      "summary": "Windows 11 November update adds Cloud Rebuild recovery, redesigned right-click menus, and fixes for Remote Desktop and printing. Rollout is gradual — check Settings > Windows Update to see if it's available for your device.",
-      "cta": {
-        "label": "Call (386) 755-7772",
-        "href": "tel:+13867557772"
-      }
     }
   ]
 }
