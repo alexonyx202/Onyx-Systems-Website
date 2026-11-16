@@ -1,246 +1,199 @@
 {
-  "title": "Math Knowledge",
-  "size": 29,
+  "title": "Math Lab Crossword",
+  "size": 22,
   "grid": [
-    ".....................f.......",
-    ".....................a.......",
-    "..................c..c.......",
-    "..............Ratio..t.......",
-    "..................e..o....V..",
-    "..................f.FraCtions",
-    "................d.f..s.e..l..",
-    ".............h..i.i....n.sum.",
-    ".............e..f.c....t..m..",
-    ".............x..f.i...Percent",
-    ".....c..g....a..e.e....r.....",
-    ".....y..e....g..r.n..v.p.....",
-    ".....l..o..quotient..e.o.....",
-    ".P...i..m....n..n....r.i.....",
-    ".r...n..e.c.....c....t.n.....",
-    ".i...distributivepRoperty....",
-    ".slope..r.r.......a..x.......",
-    ".m...r..y.c.......d..........",
-    "..........u......Diameter....",
-    "...b......m.......u..........",
-    "...i......f.......s..........",
-    "...Negative..................",
-    "...o......r..................",
-    "...m...algebra...............",
-    "...i......n..................",
-    "...a.product.................",
-    "FOIL......e..................",
-    ".............................",
-    "............................."
+    ".............first....",
+    "..........zero.....w..",
+    ".............r.....e..",
+    ".............m.....d..",
+    ".........w...undefined",
+    ".........i...l.....e..",
+    "........snowball...s..",
+    ".........t.........d..",
+    "...science...e.j...a..",
+    "...e.....ruben.e...y..",
+    "...v...r.....g.o......",
+    ".m.e..bingo.slope.....",
+    "hannah.s.r.a.i.a......",
+    ".t.....e.advisory.....",
+    ".h.......d.i.h.d......",
+    ".........e.d...y......",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................",
+    "......................"
   ],
   "clues": {
     "across": [
       {
-        "num": 3,
-        "row": 4,
-        "col": 15,
+        "num": 1,
+        "row": 1,
+        "col": 14,
         "len": 5,
-        "answer": "Ratio",
-        "clue": "a mathematical relationship between two numbers that must always be the same"
+        "answer": "first",
+        "clue": "lunch that Mrs. I has"
+      },
+      {
+        "num": 2,
+        "row": 2,
+        "col": 11,
+        "len": 4,
+        "answer": "zero",
+        "clue": "slope of a horizontal line"
       },
       {
         "num": 5,
-        "row": 6,
-        "col": 21,
+        "row": 5,
+        "col": 14,
         "len": 9,
-        "answer": "FraCtions",
-        "clue": "these are always division problems"
+        "answer": "undefined",
+        "clue": "slope of a vertical line"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 26,
-        "len": 3,
-        "answer": "sum",
-        "clue": "the answer to an addition problem"
+        "num": 6,
+        "row": 7,
+        "col": 9,
+        "len": 8,
+        "answer": "snowball",
+        "clue": "name of upcoming dance"
+      },
+      {
+        "num": 7,
+        "row": 9,
+        "col": 4,
+        "len": 7,
+        "answer": "science",
+        "clue": "a class where slope is called rate of change"
       },
       {
         "num": 10,
         "row": 10,
-        "col": 23,
-        "len": 7,
-        "answer": "Percent",
-        "clue": "a number that is always based on 100"
+        "col": 10,
+        "len": 5,
+        "answer": "ruben",
+        "clue": "name of a boy in class"
       },
       {
-        "num": 14,
-        "row": 13,
-        "col": 12,
-        "len": 8,
-        "answer": "quotient",
-        "clue": "the answer to a division problem"
+        "num": 13,
+        "row": 12,
+        "col": 7,
+        "len": 5,
+        "answer": "bingo",
+        "clue": "name of game with a free space"
       },
       {
-        "num": 17,
-        "row": 16,
-        "col": 6,
-        "len": 20,
-        "answer": "distributivepRoperty",
-        "clue": "you would use this to solve 8(9x + 3)"
-      },
-      {
-        "num": 19,
-        "row": 17,
-        "col": 2,
+        "num": 15,
+        "row": 12,
+        "col": 13,
         "len": 5,
         "answer": "slope",
-        "clue": "the tilt of a line"
+        "clue": "what you just took a quiz on"
       },
       {
-        "num": 20,
-        "row": 19,
-        "col": 18,
-        "len": 8,
-        "answer": "Diameter",
-        "clue": "the measurement all the way across a circle"
-      },
-      {
-        "num": 22,
-        "row": 22,
-        "col": 4,
-        "len": 8,
-        "answer": "Negative",
-        "clue": "a number that is the opposite of a positive number"
-      },
-      {
-        "num": 23,
-        "row": 24,
-        "col": 8,
-        "len": 7,
-        "answer": "algebra",
-        "clue": "the math that involves variables"
-      },
-      {
-        "num": 24,
-        "row": 26,
-        "col": 6,
-        "len": 7,
-        "answer": "product",
-        "clue": "the answer to a multiplication problem"
-      },
-      {
-        "num": 25,
-        "row": 27,
+        "num": 16,
+        "row": 13,
         "col": 1,
-        "len": 4,
-        "answer": "FOIL",
-        "clue": "you would use this to solve (-x + 9)(-5x - 8)"
+        "len": 6,
+        "answer": "hannah",
+        "clue": "name of a girl in class"
+      },
+      {
+        "num": 18,
+        "row": 14,
+        "col": 10,
+        "len": 8,
+        "answer": "advisory",
+        "clue": "a class you only go to on Mondays"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 22,
+        "col": 14,
         "len": 7,
-        "answer": "factors",
-        "clue": "the numbers multiplied together to get a product"
+        "answer": "formula",
+        "clue": "equation used to find slope"
       },
       {
-        "num": 2,
-        "row": 3,
-        "col": 19,
-        "len": 11,
-        "answer": "coefficient",
-        "clue": "the math term for the 7..... 7(6x - 5)"
+        "num": 3,
+        "row": 2,
+        "col": 20,
+        "len": 9,
+        "answer": "wednesday",
+        "clue": "hour late start"
       },
       {
         "num": 4,
         "row": 5,
-        "col": 27,
+        "col": 10,
         "len": 6,
-        "answer": "Volume",
-        "clue": "The space an object takes up"
-      },
-      {
-        "num": 6,
-        "row": 6,
-        "col": 24,
-        "len": 11,
-        "answer": "Centerpoint",
-        "clue": "the very middle of a circle"
+        "answer": "winter",
+        "clue": "name of break coming up"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 17,
-        "len": 10,
-        "answer": "difference",
-        "clue": "the answer to a subtraction problem"
+        "row": 9,
+        "col": 4,
+        "len": 5,
+        "answer": "seven",
+        "clue": "how many periods in a day"
       },
       {
         "num": 8,
-        "row": 8,
+        "row": 9,
         "col": 14,
         "len": 7,
-        "answer": "hexagon",
-        "clue": "a six-sided shape"
+        "answer": "english",
+        "clue": "a class where you write and read"
+      },
+      {
+        "num": 9,
+        "row": 9,
+        "col": 16,
+        "len": 8,
+        "answer": "jeopardy",
+        "clue": "name of game played in Int 1 yesterday"
       },
       {
         "num": 11,
         "row": 11,
-        "col": 6,
-        "len": 8,
-        "answer": "cylinder",
-        "clue": "the paper-towel tube math term"
+        "col": 8,
+        "len": 4,
+        "answer": "rise",
+        "clue": "_____ over run"
       },
       {
         "num": 12,
-        "row": 11,
-        "col": 9,
-        "len": 8,
-        "answer": "geometry",
-        "clue": "the math of shapes and angles"
-      },
-      {
-        "num": 13,
         "row": 12,
-        "col": 22,
-        "len": 6,
-        "answer": "vertex",
-        "clue": "the corner or point of a shape or object"
-      },
-      {
-        "num": 15,
-        "row": 14,
         "col": 2,
+        "len": 4,
+        "answer": "math",
+        "clue": "what you learn with Mrs. I"
+      },
+      {
+        "num": 14,
+        "row": 12,
+        "col": 10,
         "len": 5,
-        "answer": "Prism",
-        "clue": "a 3-D object that is not a pyramid or sphere"
+        "answer": "grade",
+        "clue": "something you check every week in math lab"
       },
       {
-        "num": 16,
-        "row": 15,
-        "col": 11,
-        "len": 13,
-        "answer": "circumference",
-        "clue": "the measurement around a circle's boundary"
-      },
-      {
-        "num": 18,
-        "row": 16,
-        "col": 19,
-        "len": 6,
-        "answer": "Radius",
-        "clue": "the measurement half-way across a circle"
-      },
-      {
-        "num": 21,
-        "row": 20,
-        "col": 4,
-        "len": 8,
-        "answer": "biNomiaL",
-        "clue": "this is an example of one (-3x + 4)"
+        "num": 17,
+        "row": 13,
+        "col": 12,
+        "len": 4,
+        "answer": "avid",
+        "clue": "non-math class that Mrs. I teaches"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-knowledge-3",
-  "slug": "math-knowledge-3",
-  "fetched_at": "2026-07-14T19:21:42.450085+00:00",
-  "date": "2026-11-15"
+  "source_url": "https://crosswordlabs.com/view/math-lab-crossword-4",
+  "slug": "math-lab-crossword-4",
+  "fetched_at": "2026-07-14T19:20:59.645492+00:00",
+  "date": "2026-11-16"
 }
