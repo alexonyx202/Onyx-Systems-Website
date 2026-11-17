@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "items": [
+    {
+      "id": "n-2026-11-17",
+      "type": "newsletter",
+      "date": "2026-11-17",
+      "title": "Fake Browser Update Pages Are Stealing Passwords",
+      "tag": "Daily Brief",
+      "summary": "That \"Install Browser Update\" Page Is a Trap.",
+      "comic": "Newsletter - 2026-11-17-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-17",
+      "type": "tech-note",
+      "date": "2026-11-17",
+      "title": "Microsoft November 2026 Patch Tuesday fixes 1,235 flaws including Outlook zero-day — update at Settings > Windows Update",
+      "tag": "Security Alert",
+      "summary": "Microsoft released its November 2026 Patch Tuesday on November 10 fixing a record 1,235 vulnerabilities including one actively exploited Outlook zero-day (CVE-2026-124194) that steals NTLM authentication hashes when a malicious message file is opened. Update now at Settings > Windows Update > Check for updates."
+    },
+    {
+      "id": "t-2026-11-17-libreoffice",
+      "type": "tech-note",
+      "date": "2026-11-17",
+      "title": "LibreOffice 26.2.7 is the stable free office suite that opens every file — download at libreoffice.org",
+      "tag": "Free Software",
+      "summary": "LibreOffice 26.2.7 released November 3, 2026 is the mature stable branch recommended for all users. It opens Word, Excel, PowerPoint, and PDF files free with no subscription. Download at libreoffice.org/download."
+    },
+    {
+      "id": "t-2026-11-17-clearwave",
+      "type": "tech-note",
+      "date": "2026-11-17",
+      "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds — check availability at clearwavefiber.com",
+      "tag": "Internet",
+      "summary": "Clearwave Fiber offers 100% fiber internet in Lake City with plans from 300 Mbps to 7 Gbps, symmetrical upload/download speeds, no contracts, no data caps, and local tech support. Check your address at clearwavefiber.com/address-search."
+    },
+    {
+      "id": "t-2026-11-17-7zip",
+      "type": "tech-note",
+      "date": "2026-11-17",
+      "title": "7-Zip 26.06 is the free file archiver that opens RAR, ISO, ZIP and 7z — download at 7-zip.org",
+      "tag": "Free Tools",
+      "summary": "7-Zip 26.06 released November 6, 2026 is a free, open-source file archiver with high compression, AES-256 encryption, and support for 7z, ZIP, RAR, ISO, and dozens more formats. Download at 7-zip.org/download.html (1.6 MB for 64-bit Windows)."
+    },
+    {
+      "id": "t-2026-11-17-bitwarden",
+      "type": "tech-note",
+      "date": "2026-11-17",
+      "title": "Bitwarden free password manager stores unlimited passwords and passkeys — sign up at bitwarden.com",
+      "tag": "Security",
+      "summary": "Bitwarden's free plan offers unlimited password storage, cross-device sync, passkey support, and breach monitoring. Create a free account at bitwarden.com/go/start-free/ and download apps for Windows, Mac, Linux, iOS, Android, and browser extensions."
+    },
     {
       "id": "n-2026-11-16",
       "type": "newsletter",
@@ -70,58 +120,6 @@
         "label": "Get LibreOffice",
         "href": "https://libreoffice.org"
       }
-    },
-    {
-      "id": "n-2026-11-15",
-      "type": "newsletter",
-      "date": "2026-11-15",
-      "title": "Fake CAPTCHAs Tell You to Press Windows+R — Don't Do It",
-      "tag": "Daily Brief",
-      "summary": "Scammers have built 186 fake AI websites that look like legitimate chatbot and image-generator tools. When you visit them, a pop-up appears that looks like a \"verify you're human\" check. It tells you to press Windows+R, paste a command, and hit Enter. Doing that runs harmful code on your computer.\n\nReal verification checks never ask you to open the Run box or paste commands. If a website tells you to press Windows+R, type something, or run a command — close the tab immediately. Do not follow any keyboard instructions from a webpage.\n\nThe fake sites mimic popular AI tools like ChatGPT, Midjourney, and Claude. Always go directly to the official website (openai.com, midjourney.com, anthropic.com) instead of clicking search results.",
-      "comic": "Newsletter - 2026-11-15-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-15-news1",
-      "type": "tech-note",
-      "date": "2026-11-15",
-      "title": "Chrome 157 Emergency Update Fixes Actively Exploited Zero-Day — Update at chrome://settings/help",
-      "tag": "Tech Note",
-      "summary": "Google released Chrome the latest version on November 9 fixing nine security issues including an actively exploited zero-day (the vulnerability-2026-125350) in the XML component. Update manually: open Chrome's Settings → Help → About Google Chrome, let it check and download, then click Relaunch."
-    },
-    {
-      "id": "t-2026-11-15-tip1",
-      "type": "tech-note",
-      "date": "2026-11-15",
-      "title": "Clearwave Fiber Expands Lake City Network — Thousands Now Eligible for All-Fiber Internet at clearwavefiber.com",
-      "tag": "Tech Tip",
-      "summary": "Clearwave Fiber continues expanding its all-fiber network in Lake City, with several thousand residents now able to receive fiber internet service. Check availability at clearwavefiber.com. Fiber offers symmetrical speeds up to 5 Gbps with no data caps."
-    },
-    {
-      "id": "n-2026-11-14",
-      "type": "newsletter",
-      "date": "2026-11-14",
-      "title": "Router Security Alert: Thousands of Devices Compromised — Check Yours Now",
-      "tag": "Daily Brief",
-      "summary": "Thousands of routers and network switches have been hijacked in recent weeks. \nAttackers are exploiting known flaws in Zyxel GS1900 switches and SonicWall \nVPN devices — nearly 1,000 Zyxel switches compromised worldwide, and SonicWall's \nSSL-VPN authentication bypass is being actively abused. CISA added six actively \nexploited vulnerabilities to its must-patch list on November 10, including \nflaws in Cisco BroadWorks and Barracuda email gateways.\n\nWhat to do: Log into your router or switch admin page (usually 192.168.1.1 or \n192.168.0.1 in your web browser). Check for a firmware update and install it \nimmediately. If your device is older than 5 years and no updates are available, \nreplace it. Change the default admin password if you haven't already.\n\nWhy it matters: A compromised router...",
-      "comic": "Newsletter - 2026-11-14-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-14-news1",
-      "type": "tech-note",
-      "date": "2026-11-14",
-      "title": "CISA Adds Six Actively Exploited Vulnerabilities — Update Chrome, Outlook, and Barracuda Now",
-      "tag": "Tech Note",
-      "summary": "CISA added six exploited vulnerabilities on November 10 affecting Google Chrome (CVE-2026-125350), Microsoft Outlook (CVE-2026-124194), Barracuda Email Security Gateway (CVE-2026-111560, CVE-2026-116606), Cisco BroadWorks (CVE-2026-20320), and Openwave Webtop (CVE-2026-111793). Update Chrome at `chrome://settings/help`, Outlook via Windows Update, and Barracuda appliances per vendor guidance."
-    },
-    {
-      "id": "t-2026-11-14-tip1",
-      "type": "tech-note",
-      "date": "2026-11-14",
-      "title": "**Headline:** Windows 11 October Update KB5127648 Breaks Wi-Fi and VPN — Here's the Temporary Fix",
-      "tag": "Tech Tip",
-      "summary": "If your Wi-Fi or VPN stopped authenticating after the October 13 update (KB5127648), this NTLMv1 restriction may be the cause. Windows Group Policy can restore access. Onyx technicians can check and resolve this for you — call (386) 755-7772 for help."
     }
   ]
 }
