@@ -1,199 +1,163 @@
 {
-  "title": "Math Lab Crossword",
-  "size": 22,
+  "title": "Math Madness",
+  "size": 26,
   "grid": [
-    ".............first....",
-    "..........zero.....w..",
-    ".............r.....e..",
-    ".............m.....d..",
-    ".........w...undefined",
-    ".........i...l.....e..",
-    "........snowball...s..",
-    ".........t.........d..",
-    "...science...e.j...a..",
-    "...e.....ruben.e...y..",
-    "...v...r.....g.o......",
-    ".m.e..bingo.slope.....",
-    "hannah.s.r.a.i.a......",
-    ".t.....e.advisory.....",
-    ".h.......d.i.h.d......",
-    ".........e.d...y......",
-    "......................",
-    "......................",
-    "......................",
-    "......................",
-    "......................",
-    "......................"
+    "...........j..............",
+    "...........u..............",
+    "...........s.gcf.d........",
+    "...........t...o.e........",
+    "..........difference......",
+    "...........f...m.o........",
+    ".....p.....y...u.minimum..",
+    ".....o.......h.l.i.....a..",
+    ".....l......domain..factor",
+    ".....y...e...r...a.....h..",
+    ".....n...x...i...t........",
+    ".....o...p...z...o........",
+    ".....m...r...o...remainder",
+    "substitute...n............",
+    ".....a...solution.........",
+    ".....l...s...a............",
+    ".........i...l............",
+    ".........o................",
+    ".........n................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    "..........................",
+    ".........................."
   ],
   "clues": {
     "across": [
       {
-        "num": 1,
-        "row": 1,
-        "col": 14,
-        "len": 5,
-        "answer": "first",
-        "clue": "lunch that Mrs. I has"
-      },
-      {
         "num": 2,
-        "row": 2,
-        "col": 11,
-        "len": 4,
-        "answer": "zero",
-        "clue": "slope of a horizontal line"
+        "row": 3,
+        "col": 14,
+        "len": 3,
+        "answer": "gcf",
+        "clue": "a type of factor"
       },
       {
         "num": 5,
         "row": 5,
-        "col": 14,
-        "len": 9,
-        "answer": "undefined",
-        "clue": "slope of a vertical line"
-      },
-      {
-        "num": 6,
-        "row": 7,
-        "col": 9,
-        "len": 8,
-        "answer": "snowball",
-        "clue": "name of upcoming dance"
+        "col": 11,
+        "len": 10,
+        "answer": "difference",
+        "clue": "opposite of addition"
       },
       {
         "num": 7,
-        "row": 9,
-        "col": 4,
+        "row": 7,
+        "col": 18,
         "len": 7,
-        "answer": "science",
-        "clue": "a class where slope is called rate of change"
+        "answer": "minimum",
+        "clue": "small"
       },
       {
         "num": 10,
-        "row": 10,
-        "col": 10,
-        "len": 5,
-        "answer": "ruben",
-        "clue": "name of a boy in class"
+        "row": 9,
+        "col": 13,
+        "len": 6,
+        "answer": "domain",
+        "clue": "part of a function"
+      },
+      {
+        "num": 11,
+        "row": 9,
+        "col": 21,
+        "len": 6,
+        "answer": "factor",
+        "clue": "numbers dispersed evenly"
       },
       {
         "num": 13,
-        "row": 12,
-        "col": 7,
-        "len": 5,
-        "answer": "bingo",
-        "clue": "name of game with a free space"
+        "row": 13,
+        "col": 18,
+        "len": 9,
+        "answer": "remainder",
+        "clue": "math leftovers"
+      },
+      {
+        "num": 14,
+        "row": 14,
+        "col": 1,
+        "len": 10,
+        "answer": "substitute",
+        "clue": "temporary space"
       },
       {
         "num": 15,
-        "row": 12,
-        "col": 13,
-        "len": 5,
-        "answer": "slope",
-        "clue": "what you just took a quiz on"
-      },
-      {
-        "num": 16,
-        "row": 13,
-        "col": 1,
-        "len": 6,
-        "answer": "hannah",
-        "clue": "name of a girl in class"
-      },
-      {
-        "num": 18,
-        "row": 14,
+        "row": 15,
         "col": 10,
         "len": 8,
-        "answer": "advisory",
-        "clue": "a class you only go to on Mondays"
+        "answer": "solution",
+        "clue": "answer"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 14,
+        "col": 12,
         "len": 7,
-        "answer": "formula",
-        "clue": "equation used to find slope"
+        "answer": "justify",
+        "clue": "layout of a process"
       },
       {
         "num": 3,
-        "row": 2,
-        "col": 20,
-        "len": 9,
-        "answer": "wednesday",
-        "clue": "hour late start"
+        "row": 3,
+        "col": 16,
+        "len": 7,
+        "answer": "formula",
+        "clue": "(x-h)=4p(y-k)"
       },
       {
         "num": 4,
-        "row": 5,
-        "col": 10,
-        "len": 6,
-        "answer": "winter",
-        "clue": "name of break coming up"
+        "row": 3,
+        "col": 18,
+        "len": 11,
+        "answer": "denominator",
+        "clue": "bottom of a fraction"
       },
       {
-        "num": 7,
-        "row": 9,
-        "col": 4,
-        "len": 5,
-        "answer": "seven",
-        "clue": "how many periods in a day"
+        "num": 6,
+        "row": 7,
+        "col": 6,
+        "len": 10,
+        "answer": "polynomial",
+        "clue": "an expression of terms"
       },
       {
         "num": 8,
-        "row": 9,
-        "col": 14,
-        "len": 7,
-        "answer": "english",
-        "clue": "a class where you write and read"
+        "row": 7,
+        "col": 24,
+        "len": 4,
+        "answer": "math",
+        "clue": "a subject with numbers"
       },
       {
         "num": 9,
-        "row": 9,
-        "col": 16,
-        "len": 8,
-        "answer": "jeopardy",
-        "clue": "name of game played in Int 1 yesterday"
-      },
-      {
-        "num": 11,
-        "row": 11,
-        "col": 8,
-        "len": 4,
-        "answer": "rise",
-        "clue": "_____ over run"
+        "row": 8,
+        "col": 14,
+        "len": 10,
+        "answer": "horizontal",
+        "clue": "the opposite of vertical"
       },
       {
         "num": 12,
-        "row": 12,
-        "col": 2,
-        "len": 4,
-        "answer": "math",
-        "clue": "what you learn with Mrs. I"
-      },
-      {
-        "num": 14,
-        "row": 12,
+        "row": 10,
         "col": 10,
-        "len": 5,
-        "answer": "grade",
-        "clue": "something you check every week in math lab"
-      },
-      {
-        "num": 17,
-        "row": 13,
-        "col": 12,
-        "len": 4,
-        "answer": "avid",
-        "clue": "non-math class that Mrs. I teaches"
+        "len": 10,
+        "answer": "expression",
+        "clue": "a phrase of numbers"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-lab-crossword-4",
-  "slug": "math-lab-crossword-4",
-  "fetched_at": "2026-07-14T19:20:59.645492+00:00",
-  "date": "2026-11-16"
+  "source_url": "https://crosswordlabs.com/view/math-madness-7",
+  "slug": "math-madness-7",
+  "fetched_at": "2026-07-14T19:26:37.763721+00:00",
+  "date": "2026-11-17"
 }
