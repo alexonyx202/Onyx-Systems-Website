@@ -1,163 +1,222 @@
 {
-  "title": "Math Madness",
-  "size": 26,
+  "title": "Math Makes Sense",
+  "size": 29,
   "grid": [
-    "...........j..............",
-    "...........u..............",
-    "...........s.gcf.d........",
-    "...........t...o.e........",
-    "..........difference......",
-    "...........f...m.o........",
-    ".....p.....y...u.minimum..",
-    ".....o.......h.l.i.....a..",
-    ".....l......domain..factor",
-    ".....y...e...r...a.....h..",
-    ".....n...x...i...t........",
-    ".....o...p...z...o........",
-    ".....m...r...o...remainder",
-    "substitute...n............",
-    ".....a...solution.........",
-    ".....l...s...a............",
-    ".........i...l............",
-    ".........o................",
-    ".........n................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    "..........................",
-    ".........................."
+    "..................d....s.....",
+    "..................i....p.....",
+    "..................a....h.....",
+    "...............v..g....e.....",
+    "...............equilateral...",
+    "...............r..o....e.....",
+    "...............t..n..........",
+    "...............i..a..........",
+    "...............c..l..........",
+    "...........c...a.............",
+    "...........u...l.............",
+    "...z.......b...l.............",
+    "...i..circle..xy.............",
+    "...g...n.......o.............",
+    "...z...t.r.....pie...........",
+    "triangle.i.....p.............",
+    "...g...r.g.....o.............",
+    ".......i.h.....s.............",
+    ".......obtusetriangle........",
+    ".......r.......t.............",
+    ".......a.......exteriorangles",
+    ".......n.....f.a.......c.....",
+    ".......g.....p.n.......u.....",
+    ".f.....l.....a.g...quiet.....",
+    ".u.....e.....t.l.......e.....",
+    ".numbersandletters...........",
+    ".n.a.q.......e...............",
+    ".y.t.a...square..............",
+    "...h.o.......n..............."
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 3,
-        "col": 14,
-        "len": 3,
-        "answer": "gcf",
-        "clue": "a type of factor"
-      },
-      {
-        "num": 5,
+        "num": 4,
         "row": 5,
-        "col": 11,
-        "len": 10,
-        "answer": "difference",
-        "clue": "opposite of addition"
+        "col": 16,
+        "len": 11,
+        "answer": "equilateral",
+        "clue": "Has 3 Equal Sides  And Equal Angles"
       },
       {
         "num": 7,
-        "row": 7,
-        "col": 18,
-        "len": 7,
-        "answer": "minimum",
-        "clue": "small"
+        "row": 13,
+        "col": 7,
+        "len": 6,
+        "answer": "circle",
+        "clue": "Circumference of A ?"
       },
       {
-        "num": 10,
-        "row": 9,
-        "col": 13,
-        "len": 6,
-        "answer": "domain",
-        "clue": "part of a function"
+        "num": 9,
+        "row": 13,
+        "col": 15,
+        "len": 2,
+        "answer": "xy",
+        "clue": "The lines in a graph"
       },
       {
         "num": 11,
-        "row": 9,
-        "col": 21,
-        "len": 6,
-        "answer": "factor",
-        "clue": "numbers dispersed evenly"
+        "row": 15,
+        "col": 16,
+        "len": 3,
+        "answer": "pie",
+        "clue": "3.1415926 is ?"
+      },
+      {
+        "num": 12,
+        "row": 16,
+        "col": 1,
+        "len": 8,
+        "answer": "triangle",
+        "clue": "Has 3 Sides and 3 Angles"
       },
       {
         "num": 13,
-        "row": 13,
-        "col": 18,
-        "len": 9,
-        "answer": "remainder",
-        "clue": "math leftovers"
+        "row": 19,
+        "col": 8,
+        "len": 14,
+        "answer": "obtusetriangle",
+        "clue": "A triangle with an angle over 90*"
       },
       {
         "num": 14,
-        "row": 14,
-        "col": 1,
-        "len": 10,
-        "answer": "substitute",
-        "clue": "temporary space"
+        "row": 21,
+        "col": 16,
+        "len": 14,
+        "answer": "exteriorangles",
+        "clue": "Angles on the outside"
       },
       {
-        "num": 15,
-        "row": 15,
+        "num": 18,
+        "row": 24,
+        "col": 20,
+        "len": 5,
+        "answer": "quiet",
+        "clue": "Our class is sometimes ?"
+      },
+      {
+        "num": 19,
+        "row": 26,
+        "col": 2,
+        "len": 17,
+        "answer": "numbersandletters",
+        "clue": "What do we use in Math"
+      },
+      {
+        "num": 22,
+        "row": 28,
         "col": 10,
-        "len": 8,
-        "answer": "solution",
-        "clue": "answer"
+        "len": 6,
+        "answer": "square",
+        "clue": "Has 4 Equal Sides and Angles"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 12,
-        "len": 7,
-        "answer": "justify",
-        "clue": "layout of a process"
+        "col": 19,
+        "len": 9,
+        "answer": "diagional",
+        "clue": "Down or up at a slant"
+      },
+      {
+        "num": 2,
+        "row": 1,
+        "col": 24,
+        "len": 6,
+        "answer": "sphere",
+        "clue": "The Shape of the Earth"
       },
       {
         "num": 3,
-        "row": 3,
+        "row": 4,
         "col": 16,
-        "len": 7,
-        "answer": "formula",
-        "clue": "(x-h)=4p(y-k)"
+        "len": 23,
+        "answer": "verticallyoppositeangle",
+        "clue": "How to find an Angle exactly opposite"
       },
       {
-        "num": 4,
-        "row": 3,
-        "col": 18,
-        "len": 11,
-        "answer": "denominator",
-        "clue": "bottom of a fraction"
+        "num": 5,
+        "row": 10,
+        "col": 12,
+        "len": 4,
+        "answer": "cube",
+        "clue": "6 sides, all equal"
       },
       {
         "num": 6,
-        "row": 7,
-        "col": 6,
-        "len": 10,
-        "answer": "polynomial",
-        "clue": "an expression of terms"
+        "row": 12,
+        "col": 4,
+        "len": 6,
+        "answer": "zigzag",
+        "clue": "Back and forth"
       },
       {
         "num": 8,
-        "row": 7,
+        "row": 13,
+        "col": 8,
+        "len": 14,
+        "answer": "interiorangles",
+        "clue": "Angles on the inside"
+      },
+      {
+        "num": 10,
+        "row": 15,
+        "col": 10,
+        "len": 5,
+        "answer": "right",
+        "clue": "Our teacher is ? most of the time"
+      },
+      {
+        "num": 15,
+        "row": 21,
         "col": 24,
+        "len": 5,
+        "answer": "acute",
+        "clue": "An angle smaller than 90*"
+      },
+      {
+        "num": 16,
+        "row": 22,
+        "col": 14,
+        "len": 8,
+        "answer": "fpattern",
+        "clue": "Parallel Lines and A transversal"
+      },
+      {
+        "num": 17,
+        "row": 24,
+        "col": 2,
+        "len": 5,
+        "answer": "funny",
+        "clue": "Our Teacher is often ?"
+      },
+      {
+        "num": 20,
+        "row": 26,
+        "col": 4,
         "len": 4,
         "answer": "math",
-        "clue": "a subject with numbers"
+        "clue": "The subject of this crossword"
       },
       {
-        "num": 9,
-        "row": 8,
-        "col": 14,
-        "len": 10,
-        "answer": "horizontal",
-        "clue": "the opposite of vertical"
-      },
-      {
-        "num": 12,
-        "row": 10,
-        "col": 10,
-        "len": 10,
-        "answer": "expression",
-        "clue": "a phrase of numbers"
+        "num": 21,
+        "row": 26,
+        "col": 6,
+        "len": 4,
+        "answer": "eqao",
+        "clue": "A test in Math every 3 Years"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-madness-7",
-  "slug": "math-madness-7",
-  "fetched_at": "2026-07-14T19:26:37.763721+00:00",
-  "date": "2026-11-17"
+  "source_url": "https://crosswordlabs.com/view/math-makes-sense2",
+  "slug": "math-makes-sense2",
+  "fetched_at": "2026-07-14T19:20:07.079838+00:00",
+  "date": "2026-11-18"
 }
