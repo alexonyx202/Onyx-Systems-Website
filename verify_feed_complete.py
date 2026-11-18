@@ -98,6 +98,9 @@ KNOWN_PRODUCTS = [
     # part named in today's Tech Note headline (losing time/date), obtain method stated.
     "coin cell",
     # Extended 2026-08-17: WeTransfer (wetransfer.com file sharing) and the three
+    # Extended 2026-11-18: C3BU (Columbia County Community Broadband Utility) — real
+    # local broadband utility named in today's Onyx Tech Notes headline + obtain method stated.
+    "c3bu", "columbia county community broadband", "community broadband",
     # credit bureaus Equifax/Experian/TransUnion (freeze at each bureau's site) —
     # real products named in today's Tech Note headline, obtain method stated.
     "wetransfer", "equifax", "experian", "transunion",
