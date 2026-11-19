@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-11-13",
+    "last_updated": "2026-11-19",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -27,6 +27,41 @@
     }
   ],
   "news": [
+    {
+      "id": "onyx-2026-11-19-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-19",
+      "title": "CISA Alert: Six Actively Exploited Vulnerabilities \u2014 Update Windows and Chrome Today",
+      "tag": "Daily Brief",
+      "excerpt": "CISA added six actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on November 10, including a Microsoft Outlook zero-day (CVE-2026-124194) and a Google Chrome use-after-free (CVE-2026-125350). Update Windows at Settings > Windows Update and Chrome at chrome://settings/help immediately.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief",
+        "#SecurityAlert"
+      ],
+      "image": "assets/img/news/2026-11-19-composite.jpg",
+      "comic": "assets/img/news/2026-11-19-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
+      "id": "onyx-2026-11-19-emerging-risks",
+      "type": "news",
+      "date": "2026-11-19",
+      "title": "Windows 11 Emerging Risks Flags Vulnerable Apps and Drivers Free in Windows Security",
+      "tag": "Security",
+      "summary": "Windows 11's new Emerging Risks feature in Windows Security scans your PC for vulnerable third-party apps, outdated drivers, and firmware \u2014 free and built in. Open Windows Security > App & browser control to see if anything on your system is flagged.",
+      "truth": "Most people don't realize their installed apps and drivers are the weak link \u2014 not Windows itself. Emerging Risks puts that visibility in one place so you can update the risky stuff before attackers find it.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#Security",
+        "#EmergingRisks"
+      ]
+    },
     {
       "id": "onyx-2026-11-18-daily-brief-auto",
       "type": "newsletter",
@@ -103,6 +138,23 @@
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-19-7zip",
+      "type": "tip",
+      "date": "2026-11-19",
+      "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
+      "tag": "Free Tools",
+      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org \u2014 no ads, no trial, just works.",
+      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years \u2014 small, fast, and it opens formats the paid tools choke on.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#7Zip",
+        "#FreeSoftware",
+        "#FileArchiver"
+      ]
+    },
     {
       "id": "onyx-2026-11-18-c3bu",
       "type": "news",
@@ -242,246 +294,168 @@
       }
     }
   ],
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "word": {
-    "word": "Socket",
+    "word": "Thread",
     "pos": "noun",
-    "definition": "A software endpoint \u2014 one end of a two-way connection between programs.",
-    "example": "The app opened a socket to stream the update.",
-    "date": "2026-11-18"
+    "definition": "One independent line of execution inside a program, running alongside others.",
+    "example": "Too many threads at once can thrash the CPU.",
+    "date": "2026-11-19"
   },
   "crossword": {
-    "title": "Math Makes Sense",
-    "size": 29,
+    "title": "math math",
+    "size": 15,
     "grid": [
-      "..................d....s.....",
-      "..................i....p.....",
-      "..................a....h.....",
-      "...............v..g....e.....",
-      "...............equilateral...",
-      "...............r..o....e.....",
-      "...............t..n..........",
-      "...............i..a..........",
-      "...............c..l..........",
-      "...........c...a.............",
-      "...........u...l.............",
-      "...z.......b...l.............",
-      "...i..circle..xy.............",
-      "...g...n.......o.............",
-      "...z...t.r.....pie...........",
-      "triangle.i.....p.............",
-      "...g...r.g.....o.............",
-      ".......i.h.....s.............",
-      ".......obtusetriangle........",
-      ".......r.......t.............",
-      ".......a.......exteriorangles",
-      ".......n.....f.a.......c.....",
-      ".......g.....p.n.......u.....",
-      ".f.....l.....a.g...quiet.....",
-      ".u.....e.....t.l.......e.....",
-      ".numbersandletters...........",
-      ".n.a.q.......e...............",
-      ".y.t.a...square..............",
-      "...h.o.......n..............."
+      ".....minus..l..",
+      "....d....u..i..",
+      "..height.b..n..",
+      "....v....times.",
+      "multiplier.....",
+      "....s....area..",
+      "....o....h..d..",
+      "..perimeter.d..",
+      "......i..n.....",
+      "....addend.....",
+      "......p........",
+      "......o.l......",
+      "...divide......",
+      "......n.g......",
+      "......t.s......"
     ],
     "clues": {
       "across": [
         {
-          "num": 4,
-          "row": 5,
-          "col": 16,
-          "len": 11,
-          "answer": "equilateral",
-          "clue": "Has 3 Equal Sides  And Equal Angles"
+          "num": 1,
+          "row": 1,
+          "col": 6,
+          "len": 5,
+          "answer": "minus",
+          "clue": "5-3=2,the \"-\""
+        },
+        {
+          "num": 5,
+          "row": 3,
+          "col": 3,
+          "len": 6,
+          "answer": "height",
+          "clue": "the line in \u25b3,someone in the middle,someone outside."
+        },
+        {
+          "num": 6,
+          "row": 4,
+          "col": 10,
+          "len": 5,
+          "answer": "times",
+          "clue": "3\u00d74=12,the \"\u00d7\"."
         },
         {
           "num": 7,
-          "row": 13,
-          "col": 7,
-          "len": 6,
-          "answer": "circle",
-          "clue": "Circumference of A ?"
+          "row": 5,
+          "col": 1,
+          "len": 10,
+          "answer": "multiplier",
+          "clue": "3\u00d74=12\uff0cthe \"4\"."
         },
         {
-          "num": 9,
-          "row": 13,
-          "col": 15,
-          "len": 2,
-          "answer": "xy",
-          "clue": "The lines in a graph"
+          "num": 8,
+          "row": 6,
+          "col": 10,
+          "len": 4,
+          "answer": "area",
+          "clue": "How many square centimeters of iron can make a box\uff1f"
         },
         {
-          "num": 11,
-          "row": 15,
-          "col": 16,
-          "len": 3,
-          "answer": "pie",
-          "clue": "3.1415926 is ?"
+          "num": 10,
+          "row": 8,
+          "col": 3,
+          "len": 9,
+          "answer": "perimeter",
+          "clue": "\u03c0r\u00b2=_____."
         },
         {
           "num": 12,
-          "row": 16,
-          "col": 1,
-          "len": 8,
-          "answer": "triangle",
-          "clue": "Has 3 Sides and 3 Angles"
-        },
-        {
-          "num": 13,
-          "row": 19,
-          "col": 8,
-          "len": 14,
-          "answer": "obtusetriangle",
-          "clue": "A triangle with an angle over 90*"
+          "row": 10,
+          "col": 5,
+          "len": 6,
+          "answer": "addend",
+          "clue": "2+3=5,the \"2\" and the \"3\"."
         },
         {
           "num": 14,
-          "row": 21,
-          "col": 16,
-          "len": 14,
-          "answer": "exteriorangles",
-          "clue": "Angles on the outside"
-        },
-        {
-          "num": 18,
-          "row": 24,
-          "col": 20,
-          "len": 5,
-          "answer": "quiet",
-          "clue": "Our class is sometimes ?"
-        },
-        {
-          "num": 19,
-          "row": 26,
-          "col": 2,
-          "len": 17,
-          "answer": "numbersandletters",
-          "clue": "What do we use in Math"
-        },
-        {
-          "num": 22,
-          "row": 28,
-          "col": 10,
+          "row": 13,
+          "col": 4,
           "len": 6,
-          "answer": "square",
-          "clue": "Has 4 Equal Sides and Angles"
+          "answer": "divide",
+          "clue": "12\u00f74=3,the \"\u00f7\"."
         }
       ],
       "down": [
         {
-          "num": 1,
-          "row": 1,
-          "col": 19,
-          "len": 9,
-          "answer": "diagional",
-          "clue": "Down or up at a slant"
-        },
-        {
           "num": 2,
           "row": 1,
-          "col": 24,
-          "len": 6,
-          "answer": "sphere",
-          "clue": "The Shape of the Earth"
+          "col": 10,
+          "len": 10,
+          "answer": "subtrahend",
+          "clue": "5-3=2,the \"2\"."
         },
         {
           "num": 3,
-          "row": 4,
-          "col": 16,
-          "len": 23,
-          "answer": "verticallyoppositeangle",
-          "clue": "How to find an Angle exactly opposite"
-        },
-        {
-          "num": 5,
-          "row": 10,
-          "col": 12,
+          "row": 1,
+          "col": 13,
           "len": 4,
-          "answer": "cube",
-          "clue": "6 sides, all equal"
+          "answer": "line",
+          "clue": "three_____can constitute a triangle."
         },
         {
-          "num": 6,
-          "row": 12,
-          "col": 4,
-          "len": 6,
-          "answer": "zigzag",
-          "clue": "Back and forth"
+          "num": 4,
+          "row": 2,
+          "col": 5,
+          "len": 7,
+          "answer": "divisor",
+          "clue": "12\u00f74=3,the \"4\"."
         },
         {
-          "num": 8,
-          "row": 13,
-          "col": 8,
-          "len": 14,
-          "answer": "interiorangles",
-          "clue": "Angles on the inside"
+          "num": 9,
+          "row": 6,
+          "col": 13,
+          "len": 3,
+          "answer": "add",
+          "clue": "2+3=5,the \"+\"."
         },
         {
-          "num": 10,
-          "row": 15,
-          "col": 10,
-          "len": 5,
-          "answer": "right",
-          "clue": "Our teacher is ? most of the time"
-        },
-        {
-          "num": 15,
-          "row": 21,
-          "col": 24,
-          "len": 5,
-          "answer": "acute",
-          "clue": "An angle smaller than 90*"
-        },
-        {
-          "num": 16,
-          "row": 22,
-          "col": 14,
+          "num": 11,
+          "row": 8,
+          "col": 7,
           "len": 8,
-          "answer": "fpattern",
-          "clue": "Parallel Lines and A transversal"
+          "answer": "midpoint",
+          "clue": "the point in the line's middle."
         },
         {
-          "num": 17,
-          "row": 24,
-          "col": 2,
-          "len": 5,
-          "answer": "funny",
-          "clue": "Our Teacher is often ?"
-        },
-        {
-          "num": 20,
-          "row": 26,
-          "col": 4,
+          "num": 13,
+          "row": 12,
+          "col": 9,
           "len": 4,
-          "answer": "math",
-          "clue": "The subject of this crossword"
-        },
-        {
-          "num": 21,
-          "row": 26,
-          "col": 6,
-          "len": 4,
-          "answer": "eqao",
-          "clue": "A test in Math every 3 Years"
+          "answer": "legs",
+          "clue": "square have four ____."
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-makes-sense2",
-    "slug": "math-makes-sense2",
-    "fetched_at": "2026-07-14T19:20:07.079838+00:00",
-    "date": "2026-11-18"
+    "source_url": "https://crosswordlabs.com/view/math-math-4",
+    "slug": "math-math-4",
+    "fetched_at": "2026-07-14T19:19:52.683790+00:00",
+    "date": "2026-11-19"
   },
   "trivia": {
-    "q": "What does 'JSON' stand for?",
-    "a": "JavaScript Object Notation \u2014 a lightweight text format for exchanging data.",
-    "category": "Software",
-    "date": "2026-11-18"
+    "q": "What is a 'QR code'?",
+    "a": "A square barcode a phone camera reads to open a link or info instantly.",
+    "category": "Basics",
+    "date": "2026-11-19"
   },
   "joke": {
-    "q": "How does a computer sneeze?",
-    "a": "Achoo.exe",
-    "date": "2026-11-18"
+    "q": "Why did the spreadsheet go to therapy?",
+    "a": "It had too many unresolved cells.",
+    "date": "2026-11-19"
   },
   "poll": {
     "poll": {
