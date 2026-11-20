@@ -9,7 +9,7 @@
     "city": "Lake City, FL",
     "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
-    "last_updated": "2026-11-19",
+    "last_updated": "2026-11-20",
     "social": {
       "google": "https://g.page/onyx-systems",
       "facebook": "",
@@ -27,6 +27,24 @@
     }
   ],
   "news": [
+    {
+      "id": "onyx-2026-11-20-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-20",
+      "title": "Apple Just Patched Actively Exploited Flaws \u2014 Update Your iPhone and Mac Now",
+      "tag": "Daily Brief",
+      "excerpt": "Apple released iOS 26.7.3, iPadOS 26.7.3, and macOS Golden Gate 27.2.1 on November 9, fixing eight vulnerabilities. One of them \u2014 a Brotli compression flaw (CVE-2026-111497) \u2014 was already on CISA's known-exploited list. Update via Settings > General > Software Update on iPhone/iPad or System Settings > General > Software Update on Mac.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief",
+        "#SecurityAlert"
+      ],
+      "image": "assets/img/news/2026-11-20-composite.jpg",
+      "comic": "assets/img/news/2026-11-20-comic-square.jpg",
+      "read_more": "#contact"
+    },
     {
       "id": "onyx-2026-11-19-daily-brief-auto",
       "type": "newsletter",
@@ -84,75 +102,24 @@
       "title": "Microsoft November 2026 Patch Tuesday fixes 1,235 flaws including Outlook zero-day \u2014 update at Settings > Windows Update",
       "tag": "Daily Brief",
       "excerpt": "Microsoft released its November 2026 Patch Tuesday on November 10 fixing a record 1,235 vulnerabilities including one actively exploited Outlook zero-day (CVE-2026-124194) that steals NTLM authentication hashes when a malicious message file is opened. Update now at Settings > Windows Update > Check for updates."
-    },
-    {
-      "id": "onyx-2026-11-16-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-16",
-      "title": "Fake virus popups are flooding screens \u2014 Microsoft will never put a phone number in a warning",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers blast loud fake \"virus detected\" popups with a phone number \u2014 close the browser tab or hold the power button 15 seconds to force a restart. Microsoft, Apple, and Google never include phone numbers in real warnings. Source: FTC.gov, Microsoft Support \u2014 November 2026.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-16-composite.jpg",
-      "comic": "assets/img/news/2026-11-16-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-15-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-15",
-      "title": "Fake CAPTCHAs Tell You to Press Windows+R \u2014 Don't Do It",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers have built 186 fake AI websites that look like legitimate chatbot and image-generator tools. When you visit them, a pop-up appears that looks like a \"verify you're human\" check. It tells you to press Windows+R, paste a command, and hit Enter. Doing that runs harmful code on your computer.\n\nReal verification checks never ask you to open the Run box or paste commands. If a website tells you to press Windows+R, type something, or run a command \u2014 close the tab immediately. Do not follow any keyboard instructions from a webpage.\n\nThe fake sites mimic popular AI tools like ChatGPT, Midjourney, and Claude. Always go directly to the official website (openai.com, midjourney.com, anthropic.com) instead of clicking search results.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-15-composite.jpg",
-      "comic": "assets/img/news/2026-11-15-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-14-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-14",
-      "title": "Router Security Alert: Thousands of Devices Compromised \u2014 Check Yours Now",
-      "tag": "Daily Brief",
-      "excerpt": "Thousands of routers and network switches have been hijacked in recent weeks. \nAttackers are exploiting known flaws in Zyxel GS1900 switches and SonicWall \nVPN devices \u2014 nearly 1,000 Zyxel switches compromised worldwide, and SonicWall's \nSSL-VPN authentication bypass is being actively abused. CISA added six actively \nexploited vulnerabilities to its must-patch list on November 10, including \nflaws in Cisco BroadWorks and Barracuda email gateways.\n\nWhat to do: Log into your router or switch admin page (usually 192.168.1.1 or \n192.168.0.1 in your web browser). Check for a firmware update and install it \nimmediately. If your device is older than 5 years and no updates are available, \nreplace it. Change the default admin password if you haven't already.\n\nWhy it matters: A compromised router...",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-14-composite.jpg",
-      "comic": "assets/img/news/2026-11-14-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
     {
-      "id": "onyx-2026-11-19-7zip",
-      "type": "tip",
-      "date": "2026-11-19",
-      "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
-      "tag": "Free Tools",
-      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org \u2014 no ads, no trial, just works.",
-      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years \u2014 small, fast, and it opens formats the paid tools choke on.",
+      "id": "onyx-2026-11-20-audio",
+      "type": "news",
+      "date": "2026-11-20",
+      "title": "Windows 11 November update fixes USB headphone and HDMI audio glitches \u2014 free update via Windows Update",
+      "tag": "Tech News",
+      "summary": "KB5132061 (released November 10) fixes audio dropouts on USB Audio 1.0 devices (many headsets and DACs) and AMD HDMI/DisplayPort audio on supported PCs. Open Settings > Windows Update and click Check for updates. Restart after installing.",
+      "truth": "Audio problems are the number one \"my computer is broken\" call that turns out to be a driver or update issue. This update fixes a whole class of them for free.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#7Zip",
-        "#FreeSoftware",
-        "#FileArchiver"
+        "#Windows11",
+        "#Audio",
+        "#PatchTuesday"
       ]
     },
     {
@@ -207,18 +174,71 @@
       "truth": "I've seen people pay $100+ a year for Office when LibreOffice handles their documents, spreadsheets, and presentations just fine. The only time you need Microsoft Office is if your workplace requires specific file formats or macros."
     },
     {
-      "id": "onyx-2026-11-16-post-1",
-      "type": "news",
-      "date": "2026-11-16",
-      "title": "Fake virus popups are flooding screens \u2014 Microsoft will never put a phone number in a warning",
-      "tag": "Daily Brief Summary",
-      "summary": "Scammers blast loud fake \"virus detected\" popups with a phone number \u2014 close the browser tab or hold the power button 15 seconds to force a restart. Microsoft, Apple, and Google never include phone numbers in real warnings. Source: FTC.gov, Microsoft Support \u2014 November 2026.",
-      "truth": "We'll never sell you software you don't need. If a popup scares you, bring the computer in \u2014 we'll check it free and tell you the truth.",
+      "id": "onyx-2026-11-20-cloudrebuild",
+      "type": "tip",
+      "date": "2026-11-20",
+      "title": "Windows 11 November update adds Cloud Rebuild \u2014 reinstall Windows without a USB drive via Settings > System > Recovery",
+      "tag": "Productivity",
+      "summary": "KB5132061 (released November 10) brings Cloud Rebuild to supported Windows 11 PCs. If Windows won't start, the recovery environment downloads a fresh Windows and drivers from Microsoft \u2014 no USB stick needed. Go to Settings > System > Recovery > Reinstall now. Back up your files first \u2014 Cloud Rebuild removes everything.",
+      "truth": "Half the \"dead\" laptops I see just need a clean Windows install. Cloud Rebuild means you don't need a second computer, an 8 GB USB stick, and 30 minutes of fuss to make one. It's built in.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief"
+        "#Windows11",
+        "#CloudRebuild",
+        "#Recovery"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-20-bitwarden",
+      "type": "tip",
+      "date": "2026-11-20",
+      "title": "Stop reusing passwords \u2014 Bitwarden Free gives you unlimited passwords on every device at bitwarden.com",
+      "tag": "Security",
+      "summary": "Bitwarden Free stores unlimited passwords, syncs across all your devices (Windows, Mac, Linux, iPhone, Android), and has browser extensions for Chrome, Firefox, Edge, and Safari. Download at bitwarden.com or your app store. The free tier includes password generator and 2FA for your Bitwarden account.",
+      "truth": "The biggest security hole isn't a virus \u2014 it's using the same password everywhere. One breach at a random forum exposes your bank, email, and everything else. A password manager is the only fix that actually works.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Bitwarden",
+        "#PasswordManager",
+        "#Security"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-20-ransomware",
+      "type": "tip",
+      "date": "2026-11-20",
+      "title": "Windows 11 has free ransomware protection built in \u2014 turn on Controlled Folder Access in Windows Security",
+      "tag": "Security",
+      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled folder access. It protects Documents, Pictures, and Desktop folders automatically. Free, no install needed.",
+      "truth": "Most people pay for third-party \"ransomware protection\" that does less than the free switch Microsoft already built in. I turn this on for every customer before they leave the shop.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#Security",
+        "#Ransomware"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-19-7zip",
+      "type": "tip",
+      "date": "2026-11-19",
+      "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
+      "tag": "Free Tools",
+      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org \u2014 no ads, no trial, just works.",
+      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years \u2014 small, fast, and it opens formats the paid tools choke on.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#7Zip",
+        "#FreeSoftware",
+        "#FileArchiver"
       ]
     },
     {
@@ -237,64 +257,9 @@
         "#Accessibility",
         "#Magnifier"
       ]
-    },
-    {
-      "id": "onyx-2026-11-18-rightclick",
-      "type": "tip",
-      "date": "2026-11-18",
-      "title": "Windows 11 November Update Lets You Customize the Right-Click Menu \u2014 Free in Settings",
-      "tag": "Productivity",
-      "summary": "After installing KB5132061 (November 2026 Patch Tuesday), right-click any file or folder, select Customize menu at the bottom, and turn built-in commands like \"Send to\" and \"Create shortcut\" on or off \u2014 no download needed.",
-      "truth": "The right-click menu has been cluttered for years with commands nobody uses. This update finally lets you strip it down to just what you need \u2014 I turn off \"Send to\" and \"Create shortcut\" on every machine because most people never use them.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#PatchTuesday",
-        "#Productivity"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-17-bitwarden",
-      "type": "tip",
-      "date": "2026-11-17",
-      "title": "Bitwarden free password manager stores unlimited passwords and passkeys \u2014 sign up at bitwarden.com",
-      "tag": "Security",
-      "summary": "Bitwarden's free plan offers unlimited password storage, cross-device sync, passkey support, and breach monitoring. Create a free account at bitwarden.com/go/start-free/ and download apps for Windows, Mac, Linux, iOS, Android, and browser extensions.",
-      "truth": "The biggest security risk isn't a hacker guessing your password \u2014 it's you reusing the same password everywhere. Bitwarden generates unique passwords for every site and fills them in automatically. One master password unlocks everything."
-    },
-    {
-      "id": "onyx-2026-11-17-7zip",
-      "type": "tip",
-      "date": "2026-11-17",
-      "title": "7-Zip 26.06 is the free file archiver that opens RAR, ISO, ZIP and 7z \u2014 download at 7-zip.org",
-      "tag": "Free Tools",
-      "summary": "7-Zip 26.06 released November 6, 2026 is a free, open-source file archiver with high compression, AES-256 encryption, and support for 7z, ZIP, RAR, ISO, and dozens more formats. Download at 7-zip.org/download.html (1.6 MB for 64-bit Windows).",
-      "truth": "People still buy WinRAR or struggle with Windows' built-in zip tool that can't open RAR or ISO files. 7-Zip handles everything free, compresses better, and adds right-click menu integration so you just right-click \u2192 7-Zip \u2192 Extract here."
-    },
-    {
-      "id": "onyx-2026-11-16-post-5",
-      "type": "tip",
-      "date": "2026-11-16",
-      "title": "Stop struggling with the Snipping Tool \u2014 ShareX is the free screenshot and screen recorder that does it all",
-      "tag": "Tech Tip",
-      "summary": "ShareX is free at getsharex.com or the Microsoft Store \u2014 install it, press Print Screen, and capture any region, window, scrolling page, or screen recording with annotations, arrows, and text in seconds.",
-      "truth": "The built-in Snipping Tool is fine for one quick crop. But when a customer needs to show me a scrolling error message, record a glitch, or annotate a screenshot for support \u2014 ShareX does it all without the hassle.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ShareX",
-        "#Screenshot"
-      ],
-      "cta": {
-        "label": "Get ShareX",
-        "href": "https://getsharex.com"
-      }
     }
   ],
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "word": {
     "word": "Thread",
     "pos": "noun",
