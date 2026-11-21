@@ -1,6 +1,32 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "items": [
+    {
+      "id": "n-2026-11-21",
+      "type": "newsletter",
+      "date": "2026-11-21",
+      "title": "Fake Jury Duty Calls Targeting North Florida — Hang Up",
+      "tag": "Daily Brief",
+      "summary": "Scammers are calling people in North Florida pretending to be court officials. They claim you missed jury duty and owe a fine. They demand immediate payment by gift card or wire transfer. Courts never call to demand money — they send official mail. If you get this call, hang up. Do not provide any personal information or payment.\n\nWhat to do: If you're unsure whether you have a real court obligation, look up the official clerk of court phone number yourself and call them. Never use a number the caller gives you. Report the scam call to the FTC at ReportFraud.ftc.gov.",
+      "comic": "Newsletter - 2026-11-21-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-21-news1",
+      "type": "tech-note",
+      "date": "2026-11-21",
+      "title": "Chris Titus Tech WinUtil free Windows tool installs apps, debloats, and manages updates in one click",
+      "tag": "Tech Note",
+      "summary": "WinUtil (run `irm christitus.com/win | iex` in the command line Admin, or download the EXE at cttstore.com) is a free, open-source Windows utility with 30+ million runs that lets you install hundreds of apps via Winget, apply safe privacy/performance tweaks, create a System Restore point automatically, and configure Windows Update to delay feature updates by 1 year and security updates by 4 days — all in one interface. Source: christitus.com/winutil-in-2026/ — November 2026."
+    },
+    {
+      "id": "t-2026-11-21-tip1",
+      "type": "tech-note",
+      "date": "2026-11-21",
+      "title": "Windows 11 24H2 Home and Pro stopped getting updates October 13 — upgrade to 26H2 free to stay secure",
+      "tag": "Tech Tip",
+      "summary": "As of October 13, 2026, Windows 11 version 24H2 Home and Pro editions reached end of updates — no more security patches. You must upgrade to Windows 11 26H2 (or 25H2) free via Settings > Windows Update > Check for updates to continue receiving monthly security fixes. Enterprise and Education editions remain supported until October 2027. Source: Microsoft Learn — status-windows-11-24h2 — updated November 19, 2026."
+    },
     {
       "id": "n-2026-11-20",
       "type": "newsletter",
@@ -80,32 +106,6 @@
       "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds — check availability at clearwavefiber.com",
       "tag": "Internet",
       "summary": "Clearwave Fiber offers 100% fiber internet in Lake City with plans from 300 Mbps to 7 Gbps, symmetrical upload/download speeds, no contracts, no data caps, and local tech support. Check your address at clearwavefiber.com/address-search."
-    },
-    {
-      "id": "t-2026-11-17-7zip",
-      "type": "tech-note",
-      "date": "2026-11-17",
-      "title": "7-Zip 26.06 is the free file archiver that opens RAR, ISO, ZIP and 7z — download at 7-zip.org",
-      "tag": "Free Tools",
-      "summary": "7-Zip 26.06 released November 6, 2026 is a free, open-source file archiver with high compression, AES-256 encryption, and support for 7z, ZIP, RAR, ISO, and dozens more formats. Download at 7-zip.org/download.html (1.6 MB for 64-bit Windows)."
-    },
-    {
-      "id": "t-2026-11-17-bitwarden",
-      "type": "tech-note",
-      "date": "2026-11-17",
-      "title": "Bitwarden free password manager stores unlimited passwords and passkeys — sign up at bitwarden.com",
-      "tag": "Security",
-      "summary": "Bitwarden's free plan offers unlimited password storage, cross-device sync, passkey support, and breach monitoring. Create a free account at bitwarden.com/go/start-free/ and download apps for Windows, Mac, Linux, iOS, Android, and browser extensions."
-    },
-    {
-      "id": "n-2026-11-16",
-      "type": "newsletter",
-      "date": "2026-11-16",
-      "title": "Fake QR Codes on Parking Meters Steal Your Money and Data",
-      "tag": "Daily Brief",
-      "summary": "Scammers are pasting fake QR code stickers over the real ones on parking",
-      "comic": "Newsletter - 2026-11-16-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }

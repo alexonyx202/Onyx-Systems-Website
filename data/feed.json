@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-11-20",
     "social": {
@@ -28,12 +28,29 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-21-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-21",
+      "title": "Fake Jury Duty Calls Targeting North Florida — Hang Up",
+      "tag": "Daily Brief",
+      "excerpt": "Scammers are calling people in North Florida pretending to be court officials. They claim you missed jury duty and owe a fine. They demand immediate payment by gift card or wire transfer. Courts never call to demand money — they send official mail. If you get this call, hang up. Do not provide any personal information or payment.\n\nWhat to do: If you're unsure whether you have a real court obligation, look up the official clerk of court phone number yourself and call them. Never use a number the caller gives you. Report the scam call to the FTC at ReportFraud.ftc.gov.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-21-composite.jpg",
+      "comic": "assets/img/news/2026-11-21-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-20-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-20",
-      "title": "Apple Just Patched Actively Exploited Flaws \u2014 Update Your iPhone and Mac Now",
+      "title": "Apple Just Patched Actively Exploited Flaws — Update Your iPhone and Mac Now",
       "tag": "Daily Brief",
-      "excerpt": "Apple released iOS 26.7.3, iPadOS 26.7.3, and macOS Golden Gate 27.2.1 on November 9, fixing eight vulnerabilities. One of them \u2014 a Brotli compression flaw (CVE-2026-111497) \u2014 was already on CISA's known-exploited list. Update via Settings > General > Software Update on iPhone/iPad or System Settings > General > Software Update on Mac.",
+      "excerpt": "Apple released iOS 26.7.3, iPadOS 26.7.3, and macOS Golden Gate 27.2.1 on November 9, fixing eight vulnerabilities. One of them — a Brotli compression flaw (CVE-2026-111497) — was already on CISA's known-exploited list. Update via Settings > General > Software Update on iPhone/iPad or System Settings > General > Software Update on Mac.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -49,7 +66,7 @@
       "id": "onyx-2026-11-19-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-19",
-      "title": "CISA Alert: Six Actively Exploited Vulnerabilities \u2014 Update Windows and Chrome Today",
+      "title": "CISA Alert: Six Actively Exploited Vulnerabilities — Update Windows and Chrome Today",
       "tag": "Daily Brief",
       "excerpt": "CISA added six actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on November 10, including a Microsoft Outlook zero-day (CVE-2026-124194) and a Google Chrome use-after-free (CVE-2026-125350). Update Windows at Settings > Windows Update and Chrome at chrome://settings/help immediately.",
       "tags": [
@@ -69,8 +86,8 @@
       "date": "2026-11-19",
       "title": "Windows 11 Emerging Risks Flags Vulnerable Apps and Drivers Free in Windows Security",
       "tag": "Security",
-      "summary": "Windows 11's new Emerging Risks feature in Windows Security scans your PC for vulnerable third-party apps, outdated drivers, and firmware \u2014 free and built in. Open Windows Security > App & browser control to see if anything on your system is flagged.",
-      "truth": "Most people don't realize their installed apps and drivers are the weak link \u2014 not Windows itself. Emerging Risks puts that visibility in one place so you can update the risky stuff before attackers find it.",
+      "summary": "Windows 11's new Emerging Risks feature in Windows Security scans your PC for vulnerable third-party apps, outdated drivers, and firmware — free and built in. Open Windows Security > App & browser control to see if anything on your system is flagged.",
+      "truth": "Most people don't realize their installed apps and drivers are the weak link — not Windows itself. Emerging Risks puts that visibility in one place so you can update the risky stuff before attackers find it.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -84,7 +101,7 @@
       "id": "onyx-2026-11-18-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-18",
-      "title": "CISA Adds Six Exploited Vulnerabilities \u2014 Microsoft Outlook Zero-Day Patched in November Update",
+      "title": "CISA Adds Six Exploited Vulnerabilities — Microsoft Outlook Zero-Day Patched in November Update",
       "tag": "Daily Brief",
       "excerpt": "Update Windows now at Settings > Windows Update to get the Microsoft Outlook zero-day fix (CVE-2026-124194) and five other actively exploited flaws listed in CISA's November 10, 2026 KEV Catalog alert.",
       "tags": [
@@ -94,22 +111,30 @@
         "#DailyBrief",
         "#SecurityAlert"
       ]
-    },
-    {
-      "id": "onyx-2026-11-17-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-17",
-      "title": "Microsoft November 2026 Patch Tuesday fixes 1,235 flaws including Outlook zero-day \u2014 update at Settings > Windows Update",
-      "tag": "Daily Brief",
-      "excerpt": "Microsoft released its November 2026 Patch Tuesday on November 10 fixing a record 1,235 vulnerabilities including one actively exploited Outlook zero-day (CVE-2026-124194) that steals NTLM authentication hashes when a malicious message file is opened. Update now at Settings > Windows Update > Check for updates."
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-21-post-1",
+      "type": "news",
+      "date": "2026-11-21",
+      "title": "Chris Titus Tech WinUtil free Windows tool installs apps, debloats, and manages updates in one click",
+      "tag": "Tech Note",
+      "summary": "WinUtil (run `irm christitus.com/win | iex` in the command line Admin, or download the EXE at cttstore.com) is a free, open-source Windows utility with 30+ million runs that lets you install hundreds of apps via Winget, apply safe privacy/performance tweaks, create a System Restore point automatically, and configure Windows Update to delay feature updates by 1 year and security updates by 4 days — all in one interface. Source: christitus.com/winutil-in-2026/ — November 2026.",
+      "truth": "Most \"PC tune-up\" software is snake oil. WinUtil is the real thing — built by a community of 200+ contributors, transparent, and reversible. I run the Standard Tweaks on every Windows machine that comes through the shop.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#WinUtil",
+        "#WindowsOptimization"
+      ]
+    },
+    {
       "id": "onyx-2026-11-20-audio",
       "type": "news",
       "date": "2026-11-20",
-      "title": "Windows 11 November update fixes USB headphone and HDMI audio glitches \u2014 free update via Windows Update",
+      "title": "Windows 11 November update fixes USB headphone and HDMI audio glitches — free update via Windows Update",
       "tag": "Tech News",
       "summary": "KB5132061 (released November 10) fixes audio dropouts on USB Audio 1.0 devices (many headsets and DACs) and AMD HDMI/DisplayPort audio on supported PCs. Open Settings > Windows Update and click Check for updates. Restart after installing.",
       "truth": "Audio problems are the number one \"my computer is broken\" call that turns out to be a driver or update issue. This update fixes a whole class of them for free.",
@@ -126,10 +151,10 @@
       "id": "onyx-2026-11-18-c3bu",
       "type": "news",
       "date": "2026-11-18",
-      "title": "Columbia County Community Broadband Utility Offers Fiber Internet \u2014 Check c3bu.net for Lake City Coverage",
+      "title": "Columbia County Community Broadband Utility Offers Fiber Internet — Check c3bu.net for Lake City Coverage",
       "tag": "Internet",
-      "summary": "Visit c3bu.net to see if Columbia County's community broadband utility offers fiber to your Lake City address \u2014 it's a local, open-network alternative to big ISPs.",
-      "truth": "I see customers paying for cable internet when fiber is available down the street. The community utility (C3BU) is building open-access fiber in Columbia County \u2014 worth checking before you renew a contract with a big provider.",
+      "summary": "Visit c3bu.net to see if Columbia County's community broadband utility offers fiber to your Lake City address — it's a local, open-network alternative to big ISPs.",
+      "truth": "I see customers paying for cable internet when fiber is available down the street. The community utility (C3BU) is building open-access fiber in Columbia County — worth checking before you renew a contract with a big provider.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -143,10 +168,10 @@
       "id": "onyx-2026-11-18-firefox",
       "type": "news",
       "date": "2026-11-18",
-      "title": "Firefox 160 Lets You Block Sites From Asking to Handle Email Links \u2014 Free at firefox.com",
+      "title": "Firefox 160 Lets You Block Sites From Asking to Handle Email Links — Free at firefox.com",
       "tag": "Free Software",
       "summary": "Download Firefox 160 at firefox.com to block repetitive mailto: prompts with a \"Never allow\" button and manage blocked sites in Settings > Privacy & Security.",
-      "truth": "Most people don't realize their browser is the first line of defense \u2014 not antivirus. Firefox 160's new mailto: blocking stops annoying permission spam before it starts, and the Mini Window feature keeps a video or chat visible while you work in another tab.",
+      "truth": "Most people don't realize their browser is the first line of defense — not antivirus. Firefox 160's new mailto: blocking stops annoying permission spam before it starts, and the Mini Window feature keeps a video or chat visible while you work in another tab.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -159,27 +184,34 @@
       "id": "onyx-2026-11-17-clearwave",
       "type": "news",
       "date": "2026-11-17",
-      "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds \u2014 check availability at clearwavefiber.com",
+      "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds — check availability at clearwavefiber.com",
       "tag": "Internet",
       "summary": "Clearwave Fiber offers 100% fiber internet in Lake City with plans from 300 Mbps to 7 Gbps, symmetrical upload/download speeds, no contracts, no data caps, and local tech support. Check your address at clearwavefiber.com/address-search.",
       "truth": "Most people in Lake City don't realize fiber has already reached their street. They're still paying for cable internet with slow upload speeds. The difference for video calls, cloud backups, and gaming is night and day."
     },
     {
-      "id": "onyx-2026-11-17-libreoffice",
-      "type": "news",
-      "date": "2026-11-17",
-      "title": "LibreOffice 26.2.7 is the stable free office suite that opens every file \u2014 download at libreoffice.org",
-      "tag": "Free Software",
-      "summary": "LibreOffice 26.2.7 released November 3, 2026 is the mature stable branch recommended for all users. It opens Word, Excel, PowerPoint, and PDF files free with no subscription. Download at libreoffice.org/download.",
-      "truth": "I've seen people pay $100+ a year for Office when LibreOffice handles their documents, spreadsheets, and presentations just fine. The only time you need Microsoft Office is if your workplace requires specific file formats or macros."
+      "id": "onyx-2026-11-21-post-2",
+      "type": "tip",
+      "date": "2026-11-21",
+      "title": "Windows 11 24H2 Home and Pro stopped getting updates October 13 — upgrade to 26H2 free to stay secure",
+      "tag": "Tech Tip",
+      "summary": "As of October 13, 2026, Windows 11 version 24H2 Home and Pro editions reached end of updates — no more security patches. You must upgrade to Windows 11 26H2 (or 25H2) free via Settings > Windows Update > Check for updates to continue receiving monthly security fixes. Enterprise and Education editions remain supported until October 2027. Source: Microsoft Learn — status-windows-11-24h2 — updated November 19, 2026.",
+      "truth": "People ignore \"end of support\" notices until something breaks. The October 13 cutoff means your 24H2 Home/Pro PC is now a security risk. The upgrade to 26H2 is free, fast (single restart), and keeps your files and apps.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Windows11",
+        "#EndOfSupport"
+      ]
     },
     {
       "id": "onyx-2026-11-20-cloudrebuild",
       "type": "tip",
       "date": "2026-11-20",
-      "title": "Windows 11 November update adds Cloud Rebuild \u2014 reinstall Windows without a USB drive via Settings > System > Recovery",
+      "title": "Windows 11 November update adds Cloud Rebuild — reinstall Windows without a USB drive via Settings > System > Recovery",
       "tag": "Productivity",
-      "summary": "KB5132061 (released November 10) brings Cloud Rebuild to supported Windows 11 PCs. If Windows won't start, the recovery environment downloads a fresh Windows and drivers from Microsoft \u2014 no USB stick needed. Go to Settings > System > Recovery > Reinstall now. Back up your files first \u2014 Cloud Rebuild removes everything.",
+      "summary": "KB5132061 (released November 10) brings Cloud Rebuild to supported Windows 11 PCs. If Windows won't start, the recovery environment downloads a fresh Windows and drivers from Microsoft — no USB stick needed. Go to Settings > System > Recovery > Reinstall now. Back up your files first — Cloud Rebuild removes everything.",
       "truth": "Half the \"dead\" laptops I see just need a clean Windows install. Cloud Rebuild means you don't need a second computer, an 8 GB USB stick, and 30 minutes of fuss to make one. It's built in.",
       "tags": [
         "#OnyxSystems",
@@ -194,10 +226,10 @@
       "id": "onyx-2026-11-20-bitwarden",
       "type": "tip",
       "date": "2026-11-20",
-      "title": "Stop reusing passwords \u2014 Bitwarden Free gives you unlimited passwords on every device at bitwarden.com",
+      "title": "Stop reusing passwords — Bitwarden Free gives you unlimited passwords on every device at bitwarden.com",
       "tag": "Security",
       "summary": "Bitwarden Free stores unlimited passwords, syncs across all your devices (Windows, Mac, Linux, iPhone, Android), and has browser extensions for Chrome, Firefox, Edge, and Safari. Download at bitwarden.com or your app store. The free tier includes password generator and 2FA for your Bitwarden account.",
-      "truth": "The biggest security hole isn't a virus \u2014 it's using the same password everywhere. One breach at a random forum exposes your bank, email, and everything else. A password manager is the only fix that actually works.",
+      "truth": "The biggest security hole isn't a virus — it's using the same password everywhere. One breach at a random forum exposes your bank, email, and everything else. A password manager is the only fix that actually works.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -211,7 +243,7 @@
       "id": "onyx-2026-11-20-ransomware",
       "type": "tip",
       "date": "2026-11-20",
-      "title": "Windows 11 has free ransomware protection built in \u2014 turn on Controlled Folder Access in Windows Security",
+      "title": "Windows 11 has free ransomware protection built in — turn on Controlled Folder Access in Windows Security",
       "tag": "Security",
       "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled folder access. It protects Documents, Pictures, and Desktop folders automatically. Free, no install needed.",
       "truth": "Most people pay for third-party \"ransomware protection\" that does less than the free switch Microsoft already built in. I turn this on for every customer before they leave the shop.",
@@ -230,8 +262,8 @@
       "date": "2026-11-19",
       "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
       "tag": "Free Tools",
-      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org \u2014 no ads, no trial, just works.",
-      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years \u2014 small, fast, and it opens formats the paid tools choke on.",
+      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org — no ads, no trial, just works.",
+      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years — small, fast, and it opens formats the paid tools choke on.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -240,26 +272,9 @@
         "#FreeSoftware",
         "#FileArchiver"
       ]
-    },
-    {
-      "id": "onyx-2026-11-18-magnifier",
-      "type": "tip",
-      "date": "2026-11-18",
-      "title": "Windows Magnifier Now Has Per-Monitor Zoom and Contrast Toggle \u2014 Free Accessibility Upgrade",
-      "tag": "Accessibility",
-      "summary": "Press Windows key + Plus (+) to open Magnifier, then use the toolbar to enable per-monitor zoom (each display gets its own zoom level) and the contrast theme toggle to reduce glare while keeping photos and videos in original colors.",
-      "truth": "People think Magnifier is only for vision impairment \u2014 it's actually the best way to read tiny text on a high-res screen without squinting. The new per-monitor zoom means you can zoom your laptop screen while leaving your external monitor at 100%.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Accessibility",
-        "#Magnifier"
-      ]
     }
   ],
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "word": {
     "word": "Thread",
     "pos": "noun",
@@ -303,7 +318,7 @@
           "col": 3,
           "len": 6,
           "answer": "height",
-          "clue": "the line in \u25b3,someone in the middle,someone outside."
+          "clue": "the line in △,someone in the middle,someone outside."
         },
         {
           "num": 6,
@@ -311,7 +326,7 @@
           "col": 10,
           "len": 5,
           "answer": "times",
-          "clue": "3\u00d74=12,the \"\u00d7\"."
+          "clue": "3×4=12,the \"×\"."
         },
         {
           "num": 7,
@@ -319,7 +334,7 @@
           "col": 1,
           "len": 10,
           "answer": "multiplier",
-          "clue": "3\u00d74=12\uff0cthe \"4\"."
+          "clue": "3×4=12，the \"4\"."
         },
         {
           "num": 8,
@@ -327,7 +342,7 @@
           "col": 10,
           "len": 4,
           "answer": "area",
-          "clue": "How many square centimeters of iron can make a box\uff1f"
+          "clue": "How many square centimeters of iron can make a box？"
         },
         {
           "num": 10,
@@ -335,7 +350,7 @@
           "col": 3,
           "len": 9,
           "answer": "perimeter",
-          "clue": "\u03c0r\u00b2=_____."
+          "clue": "πr²=_____."
         },
         {
           "num": 12,
@@ -351,7 +366,7 @@
           "col": 4,
           "len": 6,
           "answer": "divide",
-          "clue": "12\u00f74=3,the \"\u00f7\"."
+          "clue": "12÷4=3,the \"÷\"."
         }
       ],
       "down": [
@@ -377,7 +392,7 @@
           "col": 5,
           "len": 7,
           "answer": "divisor",
-          "clue": "12\u00f74=3,the \"4\"."
+          "clue": "12÷4=3,the \"4\"."
         },
         {
           "num": 9,
@@ -433,7 +448,7 @@
         },
         {
           "id": "maybe",
-          "label": "Maybe \u2014 not sure"
+          "label": "Maybe — not sure"
         },
         {
           "id": "no",
