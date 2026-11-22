@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-22-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-22",
+      "title": "Holiday Shopping Scams Hide in Your Search Results",
+      "tag": "Daily Brief",
+      "excerpt": "Holiday shopping scams are hiding at the top of your search results.\n\nWhen you search for a gift, the first links are often paid ads from scammers — not the real store. Click one and you could hand over your credit card or personal information to a fake site that looks almost identical to the real thing.\n\nWhat to do: Scroll past the top results. The organic listings below the ads are ranked by relevance, not by who paid the most. Better yet, type the store's web address directly into your browser. If you're not sure about a site, search the company name plus \"complaint\" or \"scam\" before you buy.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-22-composite.jpg",
+      "comic": "assets/img/news/2026-11-22-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-21-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-21",
@@ -96,24 +113,24 @@
         "#Security",
         "#EmergingRisks"
       ]
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-11-18-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-18",
-      "title": "CISA Adds Six Exploited Vulnerabilities — Microsoft Outlook Zero-Day Patched in November Update",
-      "tag": "Daily Brief",
-      "excerpt": "Update Windows now at Settings > Windows Update to get the Microsoft Outlook zero-day fix (CVE-2026-124194) and five other actively exploited flaws listed in CISA's November 10, 2026 KEV Catalog alert.",
+      "id": "onyx-2026-11-22-post-1",
+      "type": "news",
+      "date": "2026-11-22",
+      "title": "Windows 11 26H2 Is Free — Check If Your PC Qualifies with PC Health Check",
+      "tag": "Tech Note",
+      "summary": "Windows 11 26H2 is a free upgrade for eligible PCs. Open Settings → Windows Update → Check for updates, or download the free PC Health Check app at aka.ms/GetPCHealthCheckApp to see if your hardware meets the requirements (TPM 2.0, Secure Boot, 4 GB RAM, 64 GB storage). PCs on 24H2 or 25H2 upgrade with one restart via enablement package KB5121794; older versions (23H2, 22H2, Windows 10) use the Windows 11 Installation Assistant from microsoft.com/windows11 for a full upgrade. (Source: Microsoft Support, Techdows, September–November 2026)",
+      "truth": "Most people don't realize the upgrade is still free — Microsoft never charged for Windows 11 on qualifying hardware. I run the PC Health Check on every machine that comes in before recommending an upgrade.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#DailyBrief",
-        "#SecurityAlert"
+        "#Windows11"
       ]
-    }
-  ],
-  "posts": [
+    },
     {
       "id": "onyx-2026-11-21-post-1",
       "type": "news",
@@ -181,13 +198,19 @@
       ]
     },
     {
-      "id": "onyx-2026-11-17-clearwave",
-      "type": "news",
-      "date": "2026-11-17",
-      "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds — check availability at clearwavefiber.com",
-      "tag": "Internet",
-      "summary": "Clearwave Fiber offers 100% fiber internet in Lake City with plans from 300 Mbps to 7 Gbps, symmetrical upload/download speeds, no contracts, no data caps, and local tech support. Check your address at clearwavefiber.com/address-search.",
-      "truth": "Most people in Lake City don't realize fiber has already reached their street. They're still paying for cable internet with slow upload speeds. The difference for video calls, cloud backups, and gaming is night and day."
+      "id": "onyx-2026-11-22-post-2",
+      "type": "tip",
+      "date": "2026-11-22",
+      "title": "Firefox 160 Adds On-Device Speech-to-Text in 40 Languages — No Cloud Needed",
+      "tag": "Tech Tip",
+      "summary": "Firefox 160 (released November 10, 2026) includes the SpeechRecognition API for real-time, on-device speech-to-text in 40 languages — works offline, no data sent to servers. Update free at firefox.com or via Menu → Help → About Firefox. Also new: Mini Window for always-on-top tabs, Picture-in-Picture speed controls (0.25×–2×), and a \"Never allow\" button to block sites from repeatedly asking to handle mailto: links. (Source: Firefox 160 Release Notes, November 10, 2026)",
+      "truth": "This is the first time a major browser builds speech recognition directly into the engine instead of phoning home to Google or Microsoft. It's a privacy win that actually works.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox"
+      ]
     },
     {
       "id": "onyx-2026-11-21-post-2",
@@ -255,26 +278,9 @@
         "#Security",
         "#Ransomware"
       ]
-    },
-    {
-      "id": "onyx-2026-11-19-7zip",
-      "type": "tip",
-      "date": "2026-11-19",
-      "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
-      "tag": "Free Tools",
-      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org — no ads, no trial, just works.",
-      "truth": "People pay for WinRAR or WinZip when 7-Zip does everything they need for free. It's been the standard in this shop for 20 years — small, fast, and it opens formats the paid tools choke on.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#7Zip",
-        "#FreeSoftware",
-        "#FileArchiver"
-      ]
     }
   ],
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "word": {
     "word": "Thread",
     "pos": "noun",

@@ -1,6 +1,40 @@
 {
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "items": [
+    {
+      "id": "n-2026-11-22",
+      "type": "newsletter",
+      "date": "2026-11-22",
+      "title": "Holiday Shopping Scams Hide in Your Search Results",
+      "tag": "Daily Brief",
+      "summary": "Holiday shopping scams are hiding at the top of your search results.\n\nWhen you search for a gift, the first links are often paid ads from scammers — not the real store. Click one and you could hand over your credit card or personal information to a fake site that looks almost identical to the real thing.\n\nWhat to do: Scroll past the top results. The organic listings below the ads are ranked by relevance, not by who paid the most. Better yet, type the store's web address directly into your browser. If you're not sure about a site, search the company name plus \"complaint\" or \"scam\" before you buy.",
+      "comic": "Newsletter - 2026-11-22-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-22-news1",
+      "type": "tech-note",
+      "date": "2026-11-22",
+      "title": "Windows 11 26H2 Is Free — Check If Your PC Qualifies with PC Health Check",
+      "tag": "Tech Note",
+      "summary": "Windows 11 26H2 is a free upgrade for eligible PCs. Open Settings → Windows Update → Check for updates, or download the free PC Health Check app at aka.ms/GetPCHealthCheckApp to see if your hardware meets the requirements (TPM 2.0, Secure Boot, 4 GB RAM, 64 GB storage). PCs on 24H2 or 25H2 upgrade with one restart via enablement package KB5121794; older versions (23H2, 22H2, Windows 10) use the Windows 11 Installation Assistant from microsoft.com/windows11 for a full upgrade. (Source: Microsoft Support, Techdows, September–November 2026)"
+    },
+    {
+      "id": "t-2026-11-22-tip1",
+      "type": "tech-note",
+      "date": "2026-11-22",
+      "title": "Firefox 160 Adds On-Device Speech-to-Text in 40 Languages — No Cloud Needed",
+      "tag": "Tech Tip",
+      "summary": "Firefox 160 (released November 10, 2026) includes the SpeechRecognition API for real-time, on-device speech-to-text in 40 languages — works offline, no data sent to servers. Update free at firefox.com or via Menu → Help → About Firefox. Also new: Mini Window for always-on-top tabs, Picture-in-Picture speed controls (0.25×–2×), and a \"Never allow\" button to block sites from repeatedly asking to handle mailto: links. (Source: Firefox 160 Release Notes, November 10, 2026)"
+    },
+    {
+      "id": "t-2026-11-22-brief",
+      "type": "tech-note",
+      "date": "2026-11-22",
+      "title": "CISA Flags Eight Actively Exploited Flaws — Patch Outlook, Chrome, and Barracuda Now",
+      "tag": "Security Alert",
+      "summary": "CISA added eight vulnerabilities to its Known Exploited Vulnerabilities catalog including flaws in Microsoft Outlook (CVE-2026-124194), Google Chrome (CVE-2026-125350), Barracuda Email Security Gateway (CVE-2026-111560, CVE-2026-116606), Cisco BroadWorks (CVE-2026-20320), Openwave Webtop (CVE-2026-111793), UnrealIRCd (CVE-2026-114713), and Check Point products (CVE-2026-123039). Update Windows, Chrome, and Outlook immediately via Windows Update and each app's built-in updater."
+    },
     {
       "id": "n-2026-11-21",
       "type": "newsletter",
@@ -72,40 +106,6 @@
       "summary": "Scammers are paying to place fake ads at the top of your search results, social media feeds, and shopping sites. These imposter ads look like legitimate businesses or government agencies — but clicking them leads to scam sites that steal your money and personal information. The F",
       "comic": "Newsletter - 2026-11-18-comic-square.png",
       "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-11-17",
-      "type": "newsletter",
-      "date": "2026-11-17",
-      "title": "Fake Browser Update Pages Are Stealing Passwords",
-      "tag": "Daily Brief",
-      "summary": "That \"Install Browser Update\" Page Is a Trap.",
-      "comic": "Newsletter - 2026-11-17-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-17",
-      "type": "tech-note",
-      "date": "2026-11-17",
-      "title": "Microsoft November 2026 Patch Tuesday fixes 1,235 flaws including Outlook zero-day — update at Settings > Windows Update",
-      "tag": "Security Alert",
-      "summary": "Microsoft released its November 2026 Patch Tuesday on November 10 fixing a record 1,235 vulnerabilities including one actively exploited Outlook zero-day (CVE-2026-124194) that steals NTLM authentication hashes when a malicious message file is opened. Update now at Settings > Windows Update > Check for updates."
-    },
-    {
-      "id": "t-2026-11-17-libreoffice",
-      "type": "tech-note",
-      "date": "2026-11-17",
-      "title": "LibreOffice 26.2.7 is the stable free office suite that opens every file — download at libreoffice.org",
-      "tag": "Free Software",
-      "summary": "LibreOffice 26.2.7 released November 3, 2026 is the mature stable branch recommended for all users. It opens Word, Excel, PowerPoint, and PDF files free with no subscription. Download at libreoffice.org/download."
-    },
-    {
-      "id": "t-2026-11-17-clearwave",
-      "type": "tech-note",
-      "date": "2026-11-17",
-      "title": "Clearwave Fiber brings 100% fiber internet to Lake City with symmetrical speeds — check availability at clearwavefiber.com",
-      "tag": "Internet",
-      "summary": "Clearwave Fiber offers 100% fiber internet in Lake City with plans from 300 Mbps to 7 Gbps, symmetrical upload/download speeds, no contracts, no data caps, and local tech support. Check your address at clearwavefiber.com/address-search."
     }
   ]
 }
