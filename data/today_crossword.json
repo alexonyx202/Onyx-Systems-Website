@@ -1,207 +1,155 @@
 {
-  "title": "MATH MATH MATH",
-  "size": 30,
+  "title": "Math, Math, Math!!",
+  "size": 26,
   "grid": [
-    ".........................F....",
-    ".........................r....",
-    ".........................a....",
-    ".........................c....",
-    "...................PErCent....",
-    "....................q.o..i....",
-    "....................u.m..o....",
-    "....................a.m..n....",
-    "..........P.LikeFrActions.....",
-    ".G........a.......c.i.n.......",
-    "Denominator.......u.o.F.......",
-    ".o........a.....A.t.n.a.......",
-    ".Mean.AbsoluteValue...c.......",
-    ".e........l.....g.A...t.......",
-    ".t........e.....e.n...o..F....",
-    ".r........l.....b.g.BarGraph..",
-    ".y...Polygon....r.l...s..c....",
-    "..........g.....Area.....t....",
-    "..........r..............o....",
-    ".......HexagoN...........r....",
-    "..........m..u................",
-    ".............m....I...........",
-    "............Decagon...........",
-    ".............r....t...........",
-    ".............a....e...........",
-    ".............t....g...........",
-    ".............o....e...........",
-    ".............r....r...........",
-    "..................s...........",
-    "..................:..........."
+    "....................s.....",
+    ".................pert.....",
+    "....................a.....",
+    "....................n.....",
+    "....................d.....",
+    "....................a.....",
+    ".................patrick..",
+    "....................d.....",
+    "....................d.....",
+    ".................amber....",
+    "......b.d...........v.....",
+    "asymptote...........i.....",
+    "......c.r..........camel..",
+    "......q.i...p.......t.....",
+    "....s.u.v...a.......i.....",
+    "....a.i.a...s.......o.....",
+    "....monotomicfunction.....",
+    "........i...a....r........",
+    "........v...l....u........",
+    "........e........t........",
+    ".................h........",
+    ".................t........",
+    "..............binary......",
+    ".................b........",
+    ".................l........",
+    "..............mode........"
   ],
   "clues": {
     "across": [
       {
         "num": 2,
-        "row": 5,
-        "col": 20,
+        "row": 2,
+        "col": 18,
+        "len": 4,
+        "answer": "pert",
+        "clue": "formula for continuous compounding"
+      },
+      {
+        "num": 3,
+        "row": 7,
+        "col": 18,
         "len": 7,
-        "answer": "PErCent",
-        "clue": "A ratio or fraction with the denominator 100."
+        "answer": "patrick",
+        "clue": "Kid who sleeps a lot in class (F)"
       },
       {
-        "num": 6,
-        "row": 9,
-        "col": 13,
-        "len": 13,
-        "answer": "LikeFrActions",
-        "clue": "Fractions with the same denominator."
+        "num": 4,
+        "row": 10,
+        "col": 18,
+        "len": 5,
+        "answer": "amber",
+        "clue": "What Jurassic Park and Ms. Bocquin have in common"
       },
       {
-        "num": 9,
-        "row": 11,
+        "num": 7,
+        "row": 12,
         "col": 1,
-        "len": 11,
-        "answer": "Denominator",
-        "clue": "The bottom number of a fraction."
+        "len": 9,
+        "answer": "asymptote",
+        "clue": "line or curve that acts as the limit of another line or curve"
+      },
+      {
+        "num": 8,
+        "row": 13,
+        "col": 20,
+        "len": 5,
+        "answer": "camel",
+        "clue": "Desert animal from a logic problem"
       },
       {
         "num": 11,
-        "row": 13,
-        "col": 2,
-        "len": 4,
-        "answer": "Mean",
-        "clue": "Add up a series of numbers and divide the sum by the total number of values."
+        "row": 17,
+        "col": 5,
+        "len": 17,
+        "answer": "monotomicfunction",
+        "clue": "function that is always increasing or decreasing on a connected domain"
       },
       {
-        "num": 12,
-        "row": 13,
-        "col": 7,
-        "len": 13,
-        "answer": "AbsoluteValue",
-        "clue": "Always a positive number, refers to the distance of a number from 0."
+        "num": 13,
+        "row": 23,
+        "col": 15,
+        "len": 6,
+        "answer": "binary",
+        "clue": "Ones and zeroes"
       },
       {
         "num": 14,
-        "row": 16,
-        "col": 21,
-        "len": 8,
-        "answer": "BarGraph",
-        "clue": "A graph that represents data visually using bars of different heights or lengths."
-      },
-      {
-        "num": 15,
-        "row": 17,
-        "col": 6,
-        "len": 7,
-        "answer": "Polygon",
-        "clue": "Line segments joined together to form a closed figure."
-      },
-      {
-        "num": 16,
-        "row": 18,
-        "col": 17,
+        "row": 26,
+        "col": 15,
         "len": 4,
-        "answer": "Area",
-        "clue": "The two-dimensional space taken up by an object or shape, given in square units."
-      },
-      {
-        "num": 17,
-        "row": 20,
-        "col": 8,
-        "len": 7,
-        "answer": "HexagoN",
-        "clue": "A six-sided and six-angled polygon."
-      },
-      {
-        "num": 20,
-        "row": 23,
-        "col": 13,
-        "len": 7,
-        "answer": "Decagon",
-        "clue": "A polygon/shape with ten angles and ten straight lines."
+        "answer": "mode",
+        "clue": "most repeated number in data set"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 26,
-        "len": 8,
-        "answer": "Fraction",
-        "clue": "A quantity that is not whole that contains a numerator and denominator."
-      },
-      {
-        "num": 3,
-        "row": 5,
         "col": 21,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "A statement that shows the equality of two expressions by joining them with an equals sign."
-      },
-      {
-        "num": 4,
-        "row": 5,
-        "col": 23,
-        "len": 13,
-        "answer": "CommonFactors",
-        "clue": "A factor shared by two or more numbers, are numbers that divide exactly into two different numbers."
+        "len": 17,
+        "answer": "standarddeviation",
+        "clue": "measure of how dispersed the data"
       },
       {
         "num": 5,
-        "row": 9,
-        "col": 11,
-        "len": 13,
-        "answer": "Parallelogram",
-        "clue": "A quadrilateral with two sets of opposite sides that are parallel."
+        "row": 11,
+        "col": 7,
+        "len": 7,
+        "answer": "bocquin",
+        "clue": "Likes nachos"
       },
       {
-        "num": 7,
-        "row": 9,
-        "col": 19,
+        "num": 6,
+        "row": 11,
+        "col": 9,
         "len": 10,
-        "answer": "AcuteAngle",
-        "clue": "An angle whose measure is between 0\u00b0 and 90\u00b0 or with less than 90\u00b0 (or pi/2) radians."
+        "answer": "derivative",
+        "clue": "rate of change"
       },
       {
-        "num": 8,
-        "row": 10,
-        "col": 2,
-        "len": 8,
-        "answer": "GeoMetry",
-        "clue": "The study of lines, angles, shapes, and their properties."
+        "num": 9,
+        "row": 14,
+        "col": 13,
+        "len": 6,
+        "answer": "pascal",
+        "clue": "Has triangle"
       },
       {
         "num": 10,
-        "row": 12,
-        "col": 17,
-        "len": 7,
-        "answer": "AlgebrA",
-        "clue": "The branch of mathematics that substitutes letters for numbers to solve for unknown values."
-      },
-      {
-        "num": 13,
         "row": 15,
-        "col": 26,
-        "len": 6,
-        "answer": "Factor",
-        "clue": "A number that divides into another number exactly. The factors of 10 are 1, 2, 5, and 10 (1 x 10, 2 x 5, 5 x 2, 10 x 1)."
+        "col": 5,
+        "len": 3,
+        "answer": "sam",
+        "clue": "SG87"
       },
       {
-        "num": 18,
-        "row": 20,
-        "col": 14,
-        "len": 9,
-        "answer": "Numerator",
-        "clue": "The top number in a fraction."
-      },
-      {
-        "num": 19,
-        "row": 22,
-        "col": 19,
-        "len": 9,
-        "answer": "Integers:",
-        "clue": "All whole numbers, positive or negative, including zero."
+        "num": 12,
+        "row": 17,
+        "col": 18,
+        "len": 10,
+        "answer": "truthtable",
+        "clue": "pvq, TF, etc."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-math-math-13",
-  "slug": "math-math-math-13",
-  "fetched_at": "2026-07-14T19:10:11.773781+00:00",
-  "date": "2026-11-21"
+  "source_url": "https://crosswordlabs.com/view/math-math-math-5",
+  "slug": "math-math-math-5",
+  "fetched_at": "2026-07-14T19:12:09.714767+00:00",
+  "date": "2026-11-22"
 }
