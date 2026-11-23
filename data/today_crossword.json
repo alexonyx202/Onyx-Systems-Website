@@ -1,155 +1,181 @@
 {
-  "title": "Math, Math, Math!!",
-  "size": 26,
+  "title": "Math Math Math!",
+  "size": 28,
   "grid": [
-    "....................s.....",
-    ".................pert.....",
-    "....................a.....",
-    "....................n.....",
-    "....................d.....",
-    "....................a.....",
-    ".................patrick..",
-    "....................d.....",
-    "....................d.....",
-    ".................amber....",
-    "......b.d...........v.....",
-    "asymptote...........i.....",
-    "......c.r..........camel..",
-    "......q.i...p.......t.....",
-    "....s.u.v...a.......i.....",
-    "....a.i.a...s.......o.....",
-    "....monotomicfunction.....",
-    "........i...a....r........",
-    "........v...l....u........",
-    "........e........t........",
-    ".................h........",
-    ".................t........",
-    "..............binary......",
-    ".................b........",
-    ".................l........",
-    "..............mode........"
+    "........................p...",
+    "........................e...",
+    "........................r...",
+    "........................p...",
+    "........................e...",
+    "........................n...",
+    "...............p......p.d...",
+    "...array.......a......e.i...",
+    "...c...........r......r.c...",
+    "...u.....d.....a......i.u...",
+    "unitfraction...l......m.l...",
+    "...e.....v.....l......e.a...",
+    ".......prime..denominator...",
+    ".........d.....l......e.....",
+    ".........equation.....r.....",
+    ".........n.....g............",
+    ".........d...circumference..",
+    "...............a.....i......",
+    ".............sum.....g......",
+    "...................c.h......",
+    "...................obtuse...",
+    "...................m.a......",
+    "...................p.n......",
+    "..................congruent.",
+    "...................s.l......",
+    "...................i.e......",
+    "...................t........",
+    "...............value........"
   ],
   "clues": {
     "across": [
       {
-        "num": 2,
-        "row": 2,
-        "col": 18,
-        "len": 4,
-        "answer": "pert",
-        "clue": "formula for continuous compounding"
-      },
-      {
-        "num": 3,
-        "row": 7,
-        "col": 18,
-        "len": 7,
-        "answer": "patrick",
-        "clue": "Kid who sleeps a lot in class (F)"
-      },
-      {
         "num": 4,
-        "row": 10,
-        "col": 18,
+        "row": 8,
+        "col": 4,
         "len": 5,
-        "answer": "amber",
-        "clue": "What Jurassic Park and Ms. Bocquin have in common"
+        "answer": "array",
+        "clue": "An arrangement of object in equal rows"
+      },
+      {
+        "num": 6,
+        "row": 11,
+        "col": 1,
+        "len": 12,
+        "answer": "unitfraction",
+        "clue": "A fraction with 1 as it's numerator"
       },
       {
         "num": 7,
-        "row": 12,
-        "col": 1,
-        "len": 9,
-        "answer": "asymptote",
-        "clue": "line or curve that acts as the limit of another line or curve"
+        "row": 13,
+        "col": 8,
+        "len": 5,
+        "answer": "prime",
+        "clue": "A whole number greater than 0 that has exactly two factor pairs, 1 and itself."
       },
       {
         "num": 8,
         "row": 13,
-        "col": 20,
-        "len": 5,
-        "answer": "camel",
-        "clue": "Desert animal from a logic problem"
-      },
-      {
-        "num": 11,
-        "row": 17,
-        "col": 5,
-        "len": 17,
-        "answer": "monotomicfunction",
-        "clue": "function that is always increasing or decreasing on a connected domain"
-      },
-      {
-        "num": 13,
-        "row": 23,
         "col": 15,
-        "len": 6,
-        "answer": "binary",
-        "clue": "Ones and zeroes"
+        "len": 11,
+        "answer": "denominator",
+        "clue": "This part of a fraction indicates into how many equal parts the whole is divided"
+      },
+      {
+        "num": 9,
+        "row": 15,
+        "col": 10,
+        "len": 8,
+        "answer": "equation",
+        "clue": "A math sentence using the equal sign to state that two expressions represent the same number"
+      },
+      {
+        "num": 10,
+        "row": 17,
+        "col": 14,
+        "len": 13,
+        "answer": "circumference",
+        "clue": "The distance around a circle"
+      },
+      {
+        "num": 12,
+        "row": 19,
+        "col": 14,
+        "len": 3,
+        "answer": "sum",
+        "clue": "The answer to an addition problem."
       },
       {
         "num": 14,
-        "row": 26,
-        "col": 15,
-        "len": 4,
-        "answer": "mode",
-        "clue": "most repeated number in data set"
+        "row": 21,
+        "col": 20,
+        "len": 6,
+        "answer": "obtuse",
+        "clue": "an angle whose measure is greater than 90 degrees and less than 180 degrees"
+      },
+      {
+        "num": 15,
+        "row": 24,
+        "col": 19,
+        "len": 9,
+        "answer": "congruent",
+        "clue": "Polygons that have the same shape and size"
+      },
+      {
+        "num": 16,
+        "row": 28,
+        "col": 16,
+        "len": 5,
+        "answer": "value",
+        "clue": "The amount something is worth"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 21,
-        "len": 17,
-        "answer": "standarddeviation",
-        "clue": "measure of how dispersed the data"
+        "col": 25,
+        "len": 13,
+        "answer": "perpendicular",
+        "clue": "Two lines that are ______ if they intersect to form a right angle"
+      },
+      {
+        "num": 2,
+        "row": 7,
+        "col": 16,
+        "len": 13,
+        "answer": "parallelogram",
+        "clue": "A four-sided figure with opposite sides that are parallel"
+      },
+      {
+        "num": 3,
+        "row": 7,
+        "col": 23,
+        "len": 9,
+        "answer": "perimeter",
+        "clue": "The outside length of a given shape"
+      },
+      {
+        "num": 4,
+        "row": 8,
+        "col": 4,
+        "len": 5,
+        "answer": "acute",
+        "clue": "A triangle in which all three angles are acute"
       },
       {
         "num": 5,
-        "row": 11,
-        "col": 7,
-        "len": 7,
-        "answer": "bocquin",
-        "clue": "Likes nachos"
+        "row": 10,
+        "col": 10,
+        "len": 8,
+        "answer": "dividend",
+        "clue": "A quantity to be divided"
       },
       {
-        "num": 6,
-        "row": 11,
-        "col": 9,
-        "len": 10,
-        "answer": "derivative",
-        "clue": "rate of change"
-      },
-      {
-        "num": 9,
-        "row": 14,
-        "col": 13,
-        "len": 6,
-        "answer": "pascal",
-        "clue": "Has triangle"
-      },
-      {
-        "num": 10,
-        "row": 15,
-        "col": 5,
-        "len": 3,
-        "answer": "sam",
-        "clue": "SG87"
-      },
-      {
-        "num": 12,
+        "num": 11,
         "row": 17,
-        "col": 18,
+        "col": 22,
         "len": 10,
-        "answer": "truthtable",
-        "clue": "pvq, TF, etc."
+        "answer": "rightangle",
+        "clue": "An angle whose measure is 90 degrees"
+      },
+      {
+        "num": 13,
+        "row": 20,
+        "col": 20,
+        "len": 9,
+        "answer": "composite",
+        "clue": "A whole number with more than 2 factor pairs"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-math-math-5",
-  "slug": "math-math-math-5",
-  "fetched_at": "2026-07-14T19:12:09.714767+00:00",
-  "date": "2026-11-22"
+  "source_url": "https://crosswordlabs.com/view/math-math-math-8",
+  "slug": "math-math-math-8",
+  "fetched_at": "2026-07-14T19:10:37.801887+00:00",
+  "date": "2026-11-23"
 }
