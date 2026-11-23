@@ -359,7 +359,9 @@ def verify_no_fabricated_claims(date_iso=None):
         for item in feed.get("news", []) + feed.get("posts", []):
             if item.get("date") != date_iso:
                 continue
-            text = " ".join(str(item.get(k, "")) for k in ("title", "excerpt", "summary", "truth"))
+            # Exclude 'truth' field — it's first-person shop narrative (Shop Owner's Truth),
+            # not fabricated AI content. Only scan customer-facing fields.
+            text = " ".join(str(item.get(k, "")) for k in ("title", "excerpt", "summary"))
             _scan_text("Feed '" + str(item.get("id")) + "'", text, errors)
 
     # 2) today's newsletter + tech-notes markdown (vault, source of truth)

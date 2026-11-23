@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-23-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-23",
+      "title": "AI Voice Clone Scams Are Calling — Hang Up and Call Back on a Known Number",
+      "tag": "Daily Brief",
+      "excerpt": "AI voice clone scams are calling people right now. The caller sounds exactly like a family member — a grandchild, a child, a spouse — and says they're in trouble. They need money immediately for bail, a car repair, a medical emergency. It's not them. Scammers use AI to clone voices from social media videos.\n\nThe call feels real because the voice is real — it's a copy of someone you love. The scammer pressures you to act fast, send money, don't tell anyone.\n\nWhat to do: Hang up. Call the person back on a number you know is theirs. If you can't reach them, call another family member to check. Never send money or gift cards based on a surprise call, no matter how real the voice sounds.\n\nSource: FTC Consumer Alert — AI Voice Clone Scams (November 2026) — consumer.ftc.gov; Microsoft —...",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-23-composite.jpg",
+      "comic": "assets/img/news/2026-11-23-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-22-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-22",
@@ -96,26 +113,25 @@
       "image": "assets/img/news/2026-11-19-composite.jpg",
       "comic": "assets/img/news/2026-11-19-comic-square.jpg",
       "read_more": "#contact"
-    },
+    }
+  ],
+  "posts": [
     {
-      "id": "onyx-2026-11-19-emerging-risks",
+      "id": "onyx-2026-11-23-post-1",
       "type": "news",
-      "date": "2026-11-19",
-      "title": "Windows 11 Emerging Risks Flags Vulnerable Apps and Drivers Free in Windows Security",
-      "tag": "Security",
-      "summary": "Windows 11's new Emerging Risks feature in Windows Security scans your PC for vulnerable third-party apps, outdated drivers, and firmware — free and built in. Open Windows Security > App & browser control to see if anything on your system is flagged.",
-      "truth": "Most people don't realize their installed apps and drivers are the weak link — not Windows itself. Emerging Risks puts that visibility in one place so you can update the risky stuff before attackers find it.",
+      "date": "2026-11-23",
+      "title": "Microsoft November 2026 Patch Tuesday Fixes 600+ Security Flaws Including Outlook Zero-Day",
+      "tag": "Tech Note",
+      "summary": "Install the November 2026 Windows 11 cumulative update (KB5132061 for 24H2/25H2/26H2) via Settings > Windows Update to patch the actively exploited Outlook vulnerability the vulnerability-2026-124194 and 600+ other security flaws.",
+      "truth": "Most people ignore updates until something breaks. The Outlook zero-day lets attackers steal your login hash just by tricking you into opening a malicious file — this one gets exploited in the wild right now.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Windows11",
-        "#Security",
-        "#EmergingRisks"
+        "#WindowsUpdate",
+        "#Security"
       ]
-    }
-  ],
-  "posts": [
+    },
     {
       "id": "onyx-2026-11-22-post-1",
       "type": "news",
@@ -182,19 +198,19 @@
       ]
     },
     {
-      "id": "onyx-2026-11-18-firefox",
-      "type": "news",
-      "date": "2026-11-18",
-      "title": "Firefox 160 Lets You Block Sites From Asking to Handle Email Links — Free at firefox.com",
-      "tag": "Free Software",
-      "summary": "Download Firefox 160 at firefox.com to block repetitive mailto: prompts with a \"Never allow\" button and manage blocked sites in Settings > Privacy & Security.",
-      "truth": "Most people don't realize their browser is the first line of defense — not antivirus. Firefox 160's new mailto: blocking stops annoying permission spam before it starts, and the Mini Window feature keeps a video or chat visible while you work in another tab.",
+      "id": "onyx-2026-11-23-post-2",
+      "type": "tip",
+      "date": "2026-11-23",
+      "title": "Microsoft Defender Is Enough for Most Lake City Home Users — Free and Built Into Windows 11",
+      "tag": "Tech Tip",
+      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Microsoft Defender antivirus is on by default, updates automatically, and protects against viruses and ransomware without any subscription.",
+      "truth": "I've cleaned up plenty of machines running expired trial antivirus that stopped protecting months ago. Defender catches what those paid suites miss — and it doesn't nag you to renew.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
         "#ComputerRepair",
-        "#Firefox",
-        "#BrowserSecurity"
+        "#Antivirus",
+        "#WindowsSecurity"
       ]
     },
     {
@@ -261,26 +277,9 @@
         "#PasswordManager",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-11-20-ransomware",
-      "type": "tip",
-      "date": "2026-11-20",
-      "title": "Windows 11 has free ransomware protection built in — turn on Controlled Folder Access in Windows Security",
-      "tag": "Security",
-      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Click Virus & threat protection, then Manage ransomware protection. Turn on Controlled folder access. It protects Documents, Pictures, and Desktop folders automatically. Free, no install needed.",
-      "truth": "Most people pay for third-party \"ransomware protection\" that does less than the free switch Microsoft already built in. I turn this on for every customer before they leave the shop.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Security",
-        "#Ransomware"
-      ]
     }
   ],
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "word": {
     "word": "Thread",
     "pos": "noun",

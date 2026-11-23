@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "items": [
+    {
+      "id": "n-2026-11-23",
+      "type": "newsletter",
+      "date": "2026-11-23",
+      "title": "AI Voice Clone Scams Are Calling — Hang Up and Call Back on a Known Number",
+      "tag": "Daily Brief",
+      "summary": "AI voice clone scams are calling people right now. The caller sounds exactly like a family member — a grandchild, a child, a spouse — and says they're in trouble. They need money immediately for bail, a car repair, a medical emergency. It's not them. Scammers use AI to clone voices from social media videos.\n\nThe call feels real because the voice is real — it's a copy of someone you love. The scammer pressures you to act fast, send money, don't tell anyone.\n\nWhat to do: Hang up. Call the person back on a number you know is theirs. If you can't reach them, call another family member to check. Never send money or gift cards based on a surprise call, no matter how real the voice sounds.\n\nSource: FTC Consumer Alert — AI Voice Clone Scams (November 2026) — consumer.ftc.gov; Microsoft —...",
+      "comic": "Newsletter - 2026-11-23-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-23-news1",
+      "type": "tech-note",
+      "date": "2026-11-23",
+      "title": "Microsoft November 2026 Patch Tuesday Fixes 600+ Security Flaws Including Outlook Zero-Day",
+      "tag": "Tech Note",
+      "summary": "Install the November 2026 Windows 11 cumulative update (KB5132061 for 24H2/25H2/26H2) via Settings > Windows Update to patch the actively exploited Outlook vulnerability the vulnerability-2026-124194 and 600+ other security flaws."
+    },
+    {
+      "id": "t-2026-11-23-tip1",
+      "type": "tech-note",
+      "date": "2026-11-23",
+      "title": "Microsoft Defender Is Enough for Most Lake City Home Users — Free and Built Into Windows 11",
+      "tag": "Tech Tip",
+      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Microsoft Defender antivirus is on by default, updates automatically, and protects against viruses and ransomware without any subscription."
+    },
+    {
+      "id": "t-2026-11-23-privacy-badger",
+      "type": "tech-note",
+      "date": "2026-11-23",
+      "title": "Stop Trackers Following You — Privacy Badger Learns and Blocks Them Free at privacybadger.org",
+      "tag": "Tech Tip",
+      "summary": "Install Privacy Badger free from privacybadger.org (available for Firefox, Chrome, and Edge) — it automatically learns which trackers follow you across sites and blocks them, no settings needed.",
+      "cta": {
+        "label": "Get Privacy Badger",
+        "href": "https://privacybadger.org"
+      }
+    },
+    {
+      "id": "t-2026-11-23-everything-search",
+      "type": "tech-note",
+      "date": "2026-11-23",
+      "title": "Find Any File Instantly — Everything Search Indexes Your Whole Drive in Seconds Free at voidtools.com",
+      "tag": "Tech Tip",
+      "summary": "Download Everything Search free from voidtools.com — it indexes every file on your Windows drive in seconds and finds anything as you type, no waiting for Windows Search.",
+      "cta": {
+        "label": "Download Everything Search",
+        "href": "https://voidtools.com"
+      }
+    },
     {
       "id": "n-2026-11-22",
       "type": "newsletter",
@@ -60,52 +110,6 @@
       "title": "Windows 11 24H2 Home and Pro stopped getting updates October 13 — upgrade to 26H2 free to stay secure",
       "tag": "Tech Tip",
       "summary": "As of October 13, 2026, Windows 11 version 24H2 Home and Pro editions reached end of updates — no more security patches. You must upgrade to Windows 11 26H2 (or 25H2) free via Settings > Windows Update > Check for updates to continue receiving monthly security fixes. Enterprise and Education editions remain supported until October 2027. Source: Microsoft Learn — status-windows-11-24h2 — updated November 19, 2026."
-    },
-    {
-      "id": "n-2026-11-20",
-      "type": "newsletter",
-      "date": "2026-11-20",
-      "title": "Apple Just Patched Actively Exploited Flaws — Update Your iPhone and Mac Now",
-      "tag": "Daily Brief",
-      "summary": "Apple Just Patched Actively Exploited Flaws — Update Your iPhone and Mac Now.",
-      "comic": "farside_2026-11-20.jpg",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-11-19",
-      "type": "newsletter",
-      "date": "2026-11-19",
-      "title": "CISA Alert: Six Actively Exploited Vulnerabilities — Update Windows and Chrome Today",
-      "tag": "Daily Brief",
-      "summary": "CISA added six actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog on November 10, including a Microsoft Outlook zero-day (CVE-2026-124194) and a Google Chrome use-after-free (CVE-2026-125350). Update Windows at Settings > Windows Update and Chrome at chrome://settings/help immediately.",
-      "comic": "Newsletter - 2026-11-19-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-19-emerging-risks",
-      "type": "tech-note",
-      "date": "2026-11-19",
-      "title": "Windows 11 Emerging Risks Flags Vulnerable Apps and Drivers Free in Windows Security",
-      "tag": "Security",
-      "summary": "Windows 11's new Emerging Risks feature in Windows Security scans your PC for vulnerable third-party apps, outdated drivers, and firmware — free and built in. Open Windows Security > App & browser control to see if anything on your system is flagged."
-    },
-    {
-      "id": "t-2026-11-19-7zip",
-      "type": "tech-note",
-      "date": "2026-11-19",
-      "title": "7-Zip 26.06 Free File Archiver Opens Every Format at 7-zip.org",
-      "tag": "Free Tools",
-      "summary": "7-Zip 26.06 (released November 6, 2026) is the free, open-source file archiver that handles 7z, ZIP, RAR, TAR, ISO, and more with high compression. Download free at 7-zip.org — no ads, no trial, just works."
-    },
-    {
-      "id": "n-2026-11-18",
-      "type": "newsletter",
-      "date": "2026-11-18",
-      "title": "FTC Warns: Scammers Buy Fake Ads at Top of Search Results",
-      "tag": "Daily Brief",
-      "summary": "Scammers are paying to place fake ads at the top of your search results, social media feeds, and shopping sites. These imposter ads look like legitimate businesses or government agencies — but clicking them leads to scam sites that steal your money and personal information. The F",
-      "comic": "Newsletter - 2026-11-18-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
     }
   ]
 }
