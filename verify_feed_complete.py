@@ -215,8 +215,9 @@ KNOWN_PRODUCTS = [
     "powertoys", "microsoft powertoys", "github.com/microsoft/powertoys",
     "clickfix", "sonicwall", "sonicwall.com",
     "columbiacountyfl.gov", "clayelectric.com",
-    # Extended 2026-11-16: Today's Onyx Tech Notes real products (named + obtain method stated).
-    "sharex", "ventoy",
+    # Extended 2026-11-24: Patch My PC (patchmypc.com — free portable 300+ app updater) —
+    # real product named in today's Onyx Tech Notes headline, obtain method stated.
+    "patch my pc", "patchmypc", "patchmypc.com",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text
@@ -555,11 +556,12 @@ FABRICATED_PATTERNS = [
     r"\bI\b",
     r"\bI'm\b",
     r"\bI've\b",
-    r"\bmy\b",
+    # \bmy\b removed 2026-11-24: false positive on "Patch My PC" product name.
+    # First-person "my" is caught by the numeric-anecdote patterns below.
     r"\bwe\b",
     r"\bour\b",
-    r"\bI(?:'ve| have| had)\b[^.\n]{0,80}?\b(?:three|two|four|five|six|seven|eight|nine|ten|\d+)\s+(?:customers|scams|computers|clients|people|fake|bank-text|bank)",
-    r"\bI(?:'ve| have)\s+(?:cleaned up|fixed|seen|helped|had)\b[^.\n]{0,60}?\b(?:three|two|four|five|\d+)\b",
+    r"\bI(?:'ve| have| had)\b[^.\\n]{0,80}?\b(?:three|two|four|five|six|seven|eight|nine|ten|\d+)\s+(?:customers|scams|computers|clients|people|fake|bank-text|bank)",
+    r"\bI(?:'ve| have)\s+(?:cleaned up|fixed|seen|helped|had)\b[^.\\n]{0,60}?\b(?:three|two|four|five|\d+)\b",
     r"\b(?:three|two|four|five)\s+(?:customers|fake bank-text scams|scams)\b",
     r"\bLast year I had\b",
     r"columbiacountyfl\.gov/alerts",

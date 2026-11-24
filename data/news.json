@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "items": [
+    {
+      "id": "n-2026-11-24",
+      "type": "newsletter",
+      "date": "2026-11-24",
+      "title": "Holiday Charity Scams Are Here — Verify Before You Donate",
+      "tag": "Daily Brief",
+      "summary": "Holiday charity scams are flooding email and social media right now. Scammers create fake charities with names that sound like real ones — \"Children's Cancer Fund\" vs. \"Children's Cancer Foundation.\" They use urgent language: \"Disaster victims need help today.\" They ask for payme",
+      "comic": "Newsletter - 2026-11-24-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
     {
       "id": "n-2026-11-23",
       "type": "newsletter",
@@ -102,14 +112,6 @@
       "title": "Chris Titus Tech WinUtil free Windows tool installs apps, debloats, and manages updates in one click",
       "tag": "Tech Note",
       "summary": "WinUtil (run `irm christitus.com/win | iex` in the command line Admin, or download the EXE at cttstore.com) is a free, open-source Windows utility with 30+ million runs that lets you install hundreds of apps via Winget, apply safe privacy/performance tweaks, create a System Restore point automatically, and configure Windows Update to delay feature updates by 1 year and security updates by 4 days — all in one interface. Source: christitus.com/winutil-in-2026/ — November 2026."
-    },
-    {
-      "id": "t-2026-11-21-tip1",
-      "type": "tech-note",
-      "date": "2026-11-21",
-      "title": "Windows 11 24H2 Home and Pro stopped getting updates October 13 — upgrade to 26H2 free to stay secure",
-      "tag": "Tech Tip",
-      "summary": "As of October 13, 2026, Windows 11 version 24H2 Home and Pro editions reached end of updates — no more security patches. You must upgrade to Windows 11 26H2 (or 25H2) free via Settings > Windows Update > Check for updates to continue receiving monthly security fixes. Enterprise and Education editions remain supported until October 2027. Source: Microsoft Learn — status-windows-11-24h2 — updated November 19, 2026."
     }
   ]
 }
