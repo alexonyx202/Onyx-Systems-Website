@@ -1,181 +1,207 @@
 {
-  "title": "Math Math Math!",
-  "size": 28,
+  "title": "MATH MATH MATH",
+  "size": 30,
   "grid": [
-    "........................p...",
-    "........................e...",
-    "........................r...",
-    "........................p...",
-    "........................e...",
-    "........................n...",
-    "...............p......p.d...",
-    "...array.......a......e.i...",
-    "...c...........r......r.c...",
-    "...u.....d.....a......i.u...",
-    "unitfraction...l......m.l...",
-    "...e.....v.....l......e.a...",
-    ".......prime..denominator...",
-    ".........d.....l......e.....",
-    ".........equation.....r.....",
-    ".........n.....g............",
-    ".........d...circumference..",
-    "...............a.....i......",
-    ".............sum.....g......",
-    "...................c.h......",
-    "...................obtuse...",
-    "...................m.a......",
-    "...................p.n......",
-    "..................congruent.",
-    "...................s.l......",
-    "...................i.e......",
-    "...................t........",
-    "...............value........"
+    ".........................F....",
+    ".........................r....",
+    ".........................a....",
+    ".........................c....",
+    "...................PErCent....",
+    "....................q.o..i....",
+    "....................u.m..o....",
+    "....................a.m..n....",
+    "..........P.LikeFrActions.....",
+    ".G........a.......c.i.n.......",
+    "Denominator.......u.o.F.......",
+    ".o........a.....A.t.n.a.......",
+    ".Mean.AbsoluteValue...c.......",
+    ".e........l.....g.A...t.......",
+    ".t........e.....e.n...o..F....",
+    ".r........l.....b.g.BarGraph..",
+    ".y...Polygon....r.l...s..c....",
+    "..........g.....Area.....t....",
+    "..........r..............o....",
+    ".......HexagoN...........r....",
+    "..........m..u................",
+    ".............m....I...........",
+    "............Decagon...........",
+    ".............r....t...........",
+    ".............a....e...........",
+    ".............t....g...........",
+    ".............o....e...........",
+    ".............r....r...........",
+    "..................s...........",
+    "..................:..........."
   ],
   "clues": {
     "across": [
       {
-        "num": 4,
-        "row": 8,
-        "col": 4,
-        "len": 5,
-        "answer": "array",
-        "clue": "An arrangement of object in equal rows"
+        "num": 2,
+        "row": 5,
+        "col": 20,
+        "len": 7,
+        "answer": "PErCent",
+        "clue": "A ratio or fraction with the denominator 100."
       },
       {
         "num": 6,
-        "row": 11,
-        "col": 1,
-        "len": 12,
-        "answer": "unitfraction",
-        "clue": "A fraction with 1 as it's numerator"
-      },
-      {
-        "num": 7,
-        "row": 13,
-        "col": 8,
-        "len": 5,
-        "answer": "prime",
-        "clue": "A whole number greater than 0 that has exactly two factor pairs, 1 and itself."
-      },
-      {
-        "num": 8,
-        "row": 13,
-        "col": 15,
-        "len": 11,
-        "answer": "denominator",
-        "clue": "This part of a fraction indicates into how many equal parts the whole is divided"
+        "row": 9,
+        "col": 13,
+        "len": 13,
+        "answer": "LikeFrActions",
+        "clue": "Fractions with the same denominator."
       },
       {
         "num": 9,
-        "row": 15,
-        "col": 10,
-        "len": 8,
-        "answer": "equation",
-        "clue": "A math sentence using the equal sign to state that two expressions represent the same number"
+        "row": 11,
+        "col": 1,
+        "len": 11,
+        "answer": "Denominator",
+        "clue": "The bottom number of a fraction."
       },
       {
-        "num": 10,
-        "row": 17,
-        "col": 14,
-        "len": 13,
-        "answer": "circumference",
-        "clue": "The distance around a circle"
+        "num": 11,
+        "row": 13,
+        "col": 2,
+        "len": 4,
+        "answer": "Mean",
+        "clue": "Add up a series of numbers and divide the sum by the total number of values."
       },
       {
         "num": 12,
-        "row": 19,
-        "col": 14,
-        "len": 3,
-        "answer": "sum",
-        "clue": "The answer to an addition problem."
+        "row": 13,
+        "col": 7,
+        "len": 13,
+        "answer": "AbsoluteValue",
+        "clue": "Always a positive number, refers to the distance of a number from 0."
       },
       {
         "num": 14,
-        "row": 21,
-        "col": 20,
-        "len": 6,
-        "answer": "obtuse",
-        "clue": "an angle whose measure is greater than 90 degrees and less than 180 degrees"
+        "row": 16,
+        "col": 21,
+        "len": 8,
+        "answer": "BarGraph",
+        "clue": "A graph that represents data visually using bars of different heights or lengths."
       },
       {
         "num": 15,
-        "row": 24,
-        "col": 19,
-        "len": 9,
-        "answer": "congruent",
-        "clue": "Polygons that have the same shape and size"
+        "row": 17,
+        "col": 6,
+        "len": 7,
+        "answer": "Polygon",
+        "clue": "Line segments joined together to form a closed figure."
       },
       {
         "num": 16,
-        "row": 28,
-        "col": 16,
-        "len": 5,
-        "answer": "value",
-        "clue": "The amount something is worth"
+        "row": 18,
+        "col": 17,
+        "len": 4,
+        "answer": "Area",
+        "clue": "The two-dimensional space taken up by an object or shape, given in square units."
+      },
+      {
+        "num": 17,
+        "row": 20,
+        "col": 8,
+        "len": 7,
+        "answer": "HexagoN",
+        "clue": "A six-sided and six-angled polygon."
+      },
+      {
+        "num": 20,
+        "row": 23,
+        "col": 13,
+        "len": 7,
+        "answer": "Decagon",
+        "clue": "A polygon/shape with ten angles and ten straight lines."
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 25,
-        "len": 13,
-        "answer": "perpendicular",
-        "clue": "Two lines that are ______ if they intersect to form a right angle"
-      },
-      {
-        "num": 2,
-        "row": 7,
-        "col": 16,
-        "len": 13,
-        "answer": "parallelogram",
-        "clue": "A four-sided figure with opposite sides that are parallel"
+        "col": 26,
+        "len": 8,
+        "answer": "Fraction",
+        "clue": "A quantity that is not whole that contains a numerator and denominator."
       },
       {
         "num": 3,
-        "row": 7,
-        "col": 23,
-        "len": 9,
-        "answer": "perimeter",
-        "clue": "The outside length of a given shape"
+        "row": 5,
+        "col": 21,
+        "len": 8,
+        "answer": "Equation",
+        "clue": "A statement that shows the equality of two expressions by joining them with an equals sign."
       },
       {
         "num": 4,
-        "row": 8,
-        "col": 4,
-        "len": 5,
-        "answer": "acute",
-        "clue": "A triangle in which all three angles are acute"
+        "row": 5,
+        "col": 23,
+        "len": 13,
+        "answer": "CommonFactors",
+        "clue": "A factor shared by two or more numbers, are numbers that divide exactly into two different numbers."
       },
       {
         "num": 5,
-        "row": 10,
-        "col": 10,
-        "len": 8,
-        "answer": "dividend",
-        "clue": "A quantity to be divided"
+        "row": 9,
+        "col": 11,
+        "len": 13,
+        "answer": "Parallelogram",
+        "clue": "A quadrilateral with two sets of opposite sides that are parallel."
       },
       {
-        "num": 11,
-        "row": 17,
-        "col": 22,
+        "num": 7,
+        "row": 9,
+        "col": 19,
         "len": 10,
-        "answer": "rightangle",
-        "clue": "An angle whose measure is 90 degrees"
+        "answer": "AcuteAngle",
+        "clue": "An angle whose measure is between 0\u00b0 and 90\u00b0 or with less than 90\u00b0 (or pi/2) radians."
+      },
+      {
+        "num": 8,
+        "row": 10,
+        "col": 2,
+        "len": 8,
+        "answer": "GeoMetry",
+        "clue": "The study of lines, angles, shapes, and their properties."
+      },
+      {
+        "num": 10,
+        "row": 12,
+        "col": 17,
+        "len": 7,
+        "answer": "AlgebrA",
+        "clue": "The branch of mathematics that substitutes letters for numbers to solve for unknown values."
       },
       {
         "num": 13,
+        "row": 15,
+        "col": 26,
+        "len": 6,
+        "answer": "Factor",
+        "clue": "A number that divides into another number exactly. The factors of 10 are 1, 2, 5, and 10 (1 x 10, 2 x 5, 5 x 2, 10 x 1)."
+      },
+      {
+        "num": 18,
         "row": 20,
-        "col": 20,
+        "col": 14,
         "len": 9,
-        "answer": "composite",
-        "clue": "A whole number with more than 2 factor pairs"
+        "answer": "Numerator",
+        "clue": "The top number in a fraction."
+      },
+      {
+        "num": 19,
+        "row": 22,
+        "col": 19,
+        "len": 9,
+        "answer": "Integers:",
+        "clue": "All whole numbers, positive or negative, including zero."
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-math-math-8",
-  "slug": "math-math-math-8",
-  "fetched_at": "2026-07-14T19:10:37.801887+00:00",
-  "date": "2026-11-23"
+  "source_url": "https://crosswordlabs.com/view/math-math-math-9",
+  "slug": "math-math-math-9",
+  "fetched_at": "2026-07-14T19:10:15.833817+00:00",
+  "date": "2026-11-24"
 }
