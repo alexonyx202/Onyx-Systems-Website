@@ -1,6 +1,32 @@
 {
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "items": [
+    {
+      "id": "n-2026-11-25",
+      "type": "newsletter",
+      "date": "2026-11-25",
+      "title": "Accidental Payment Scam: Don't Send Money Back",
+      "tag": "Daily Brief",
+      "summary": "You get an unexpected payment — Venmo, Cash App, Zelle, or a text\nmessage says someone sent you money by mistake. Then a message follows:\n\"They accidentally sent you money, please send it back.\" If you send it\nback, you lose. The original payment may be fraudulent and get reversed\nby the bank, but the money you voluntarily sent is gone for good.\n\nWhat to do: Do not send money back. Leave the funds untouched and\ncontact your bank or payment service through its official app, website,\nor customer-service number. Do not trust screenshots or messages from\nthe sender as proof. Avoid clicking links from strangers — they lead to\nfake login pages.\n\nThis matters: Scammers use stolen cards or hacked accounts to send the\ninitial payment. When the real owner disputes it, the bank reverses...",
+      "comic": "Newsletter - 2026-11-25-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-25-news1",
+      "type": "tech-note",
+      "date": "2026-11-25",
+      "title": "Windows 11 November 2026 Patch Tuesday fixes 1,252 vulnerabilities including an exploited zero-day",
+      "tag": "Tech Note",
+      "summary": "Install KB5132061 from Windows Update (Settings > Windows Update) — it patches 68 critical flaws and one actively exploited zero-day in Windows 11 24H2, 25H2, and 26H2. Supported versions get build 26300.9974 (26H2), 26200.9974 (25H2), or 26100.9974 (24H2 Enterprise/Education)."
+    },
+    {
+      "id": "t-2026-11-25-tip1",
+      "type": "tech-note",
+      "date": "2026-11-25",
+      "title": "Columbia County Library gives you free movies and TV with Kanopy — stream Criterion Collection ad-free",
+      "tag": "Tech Tip",
+      "summary": "Get a free Columbia County Library card at any branch or ccpl.aspendiscovery.org — then use Libby for ebooks/audiobooks and Kanopy for free movies including the Criterion Collection, all with your library card. Kanopy gives you 12 tickets per month for award-winning films, documentaries, and Kanopy Kids unlimited."
+    },
     {
       "id": "n-2026-11-24",
       "type": "newsletter",
@@ -86,32 +112,6 @@
       "title": "Firefox 160 Adds On-Device Speech-to-Text in 40 Languages — No Cloud Needed",
       "tag": "Tech Tip",
       "summary": "Firefox 160 (released November 10, 2026) includes the SpeechRecognition API for real-time, on-device speech-to-text in 40 languages — works offline, no data sent to servers. Update free at firefox.com or via Menu → Help → About Firefox. Also new: Mini Window for always-on-top tabs, Picture-in-Picture speed controls (0.25×–2×), and a \"Never allow\" button to block sites from repeatedly asking to handle mailto: links. (Source: Firefox 160 Release Notes, November 10, 2026)"
-    },
-    {
-      "id": "t-2026-11-22-brief",
-      "type": "tech-note",
-      "date": "2026-11-22",
-      "title": "CISA Flags Eight Actively Exploited Flaws — Patch Outlook, Chrome, and Barracuda Now",
-      "tag": "Security Alert",
-      "summary": "CISA added eight vulnerabilities to its Known Exploited Vulnerabilities catalog including flaws in Microsoft Outlook (CVE-2026-124194), Google Chrome (CVE-2026-125350), Barracuda Email Security Gateway (CVE-2026-111560, CVE-2026-116606), Cisco BroadWorks (CVE-2026-20320), Openwave Webtop (CVE-2026-111793), UnrealIRCd (CVE-2026-114713), and Check Point products (CVE-2026-123039). Update Windows, Chrome, and Outlook immediately via Windows Update and each app's built-in updater."
-    },
-    {
-      "id": "n-2026-11-21",
-      "type": "newsletter",
-      "date": "2026-11-21",
-      "title": "Fake Jury Duty Calls Targeting North Florida — Hang Up",
-      "tag": "Daily Brief",
-      "summary": "Scammers are calling people in North Florida pretending to be court officials. They claim you missed jury duty and owe a fine. They demand immediate payment by gift card or wire transfer. Courts never call to demand money — they send official mail. If you get this call, hang up. Do not provide any personal information or payment.\n\nWhat to do: If you're unsure whether you have a real court obligation, look up the official clerk of court phone number yourself and call them. Never use a number the caller gives you. Report the scam call to the FTC at ReportFraud.ftc.gov.",
-      "comic": "Newsletter - 2026-11-21-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-21-news1",
-      "type": "tech-note",
-      "date": "2026-11-21",
-      "title": "Chris Titus Tech WinUtil free Windows tool installs apps, debloats, and manages updates in one click",
-      "tag": "Tech Note",
-      "summary": "WinUtil (run `irm christitus.com/win | iex` in the command line Admin, or download the EXE at cttstore.com) is a free, open-source Windows utility with 30+ million runs that lets you install hundreds of apps via Winget, apply safe privacy/performance tweaks, create a System Restore point automatically, and configure Windows Update to delay feature updates by 1 year and security updates by 4 days — all in one interface. Source: christitus.com/winutil-in-2026/ — November 2026."
     }
   ]
 }
