@@ -1,207 +1,245 @@
 {
-  "title": "MATH MATH MATH",
-  "size": 30,
+  "title": "MATH MATH MATH ALL AROUND",
+  "size": 28,
   "grid": [
-    ".........................F....",
-    ".........................r....",
-    ".........................a....",
-    ".........................c....",
-    "...................PErCent....",
-    "....................q.o..i....",
-    "....................u.m..o....",
-    "....................a.m..n....",
-    "..........P.LikeFrActions.....",
-    ".G........a.......c.i.n.......",
-    "Denominator.......u.o.F.......",
-    ".o........a.....A.t.n.a.......",
-    ".Mean.AbsoluteValue...c.......",
-    ".e........l.....g.A...t.......",
-    ".t........e.....e.n...o..F....",
-    ".r........l.....b.g.BarGraph..",
-    ".y...Polygon....r.l...s..c....",
-    "..........g.....Area.....t....",
-    "..........r..............o....",
-    ".......HexagoN...........r....",
-    "..........m..u................",
-    ".............m....I...........",
-    "............Decagon...........",
-    ".............r....t...........",
-    ".............a....e...........",
-    ".............t....g...........",
-    ".............o....e...........",
-    ".............r....r...........",
-    "..................s...........",
-    "..................:..........."
+    "...........................p",
+    "...........................i",
+    "......................sample",
+    "......................i.....",
+    ".........b...c........mode..",
+    ".........outcome......p.....",
+    ".........x...m........l.....",
+    ".............p.expression...",
+    ".............o.x......f.....",
+    ".............u.p......y.....",
+    ".......independent..........",
+    ".............d.r............",
+    "........s...d.histogram.....",
+    "......fair..o..m....a.e.....",
+    "........m.outlier...n.a.....",
+    "........p......n....g.n.....",
+    "........l.p....t....e.......",
+    ".s....theoretical...........",
+    ".i........o.r..l............",
+    ".m........b.e...............",
+    ".unfair...a.e...............",
+    ".l........b.................",
+    "mad....m..i.................",
+    ".t.....e..l.................",
+    ".i.....d..i.................",
+    "coefficient.................",
+    ".n.....a..y.................",
+    ".......n...................."
   ],
   "clues": {
     "across": [
       {
         "num": 2,
+        "row": 3,
+        "col": 23,
+        "len": 6,
+        "answer": "sample",
+        "clue": "space possible problems for probability"
+      },
+      {
+        "num": 5,
         "row": 5,
-        "col": 20,
-        "len": 7,
-        "answer": "PErCent",
-        "clue": "A ratio or fraction with the denominator 100."
+        "col": 23,
+        "len": 4,
+        "answer": "mode",
+        "clue": "I go to a lot of roller-coaster  festival and this one roller-coaster occurs the most"
       },
       {
         "num": 6,
-        "row": 9,
-        "col": 13,
-        "len": 13,
-        "answer": "LikeFrActions",
-        "clue": "Fractions with the same denominator."
+        "row": 6,
+        "col": 10,
+        "len": 7,
+        "answer": "outcome",
+        "clue": "there's a possibility for me reading all the Harry potter books in 2 years"
       },
       {
-        "num": 9,
+        "num": 7,
+        "row": 8,
+        "col": 16,
+        "len": 10,
+        "answer": "expression",
+        "clue": "the procession the process of making known ones thoughts or feelings"
+      },
+      {
+        "num": 8,
         "row": 11,
-        "col": 1,
+        "col": 8,
         "len": 11,
-        "answer": "Denominator",
-        "clue": "The bottom number of a fraction."
+        "answer": "independent",
+        "clue": "events   lots of country's fight for _________ its a big event"
       },
       {
         "num": 11,
         "row": 13,
-        "col": 2,
-        "len": 4,
-        "answer": "Mean",
-        "clue": "Add up a series of numbers and divide the sum by the total number of values."
-      },
-      {
-        "num": 12,
-        "row": 13,
-        "col": 7,
-        "len": 13,
-        "answer": "AbsoluteValue",
-        "clue": "Always a positive number, refers to the distance of a number from 0."
+        "col": 15,
+        "len": 9,
+        "answer": "histogram",
+        "clue": "a bar gram that shows range"
       },
       {
         "num": 14,
-        "row": 16,
-        "col": 21,
-        "len": 8,
-        "answer": "BarGraph",
-        "clue": "A graph that represents data visually using bars of different heights or lengths."
+        "row": 14,
+        "col": 7,
+        "len": 4,
+        "answer": "fair",
+        "clue": "me and my sister got our toes done and a design.so we both got the same thing"
       },
       {
         "num": 15,
-        "row": 17,
-        "col": 6,
+        "row": 15,
+        "col": 11,
         "len": 7,
-        "answer": "Polygon",
-        "clue": "Line segments joined together to form a closed figure."
+        "answer": "outlier",
+        "clue": "you are much greater or less than other people in a data set"
       },
       {
-        "num": 16,
+        "num": 18,
         "row": 18,
-        "col": 17,
-        "len": 4,
-        "answer": "Area",
-        "clue": "The two-dimensional space taken up by an object or shape, given in square units."
-      },
-      {
-        "num": 17,
-        "row": 20,
-        "col": 8,
-        "len": 7,
-        "answer": "HexagoN",
-        "clue": "A six-sided and six-angled polygon."
+        "col": 7,
+        "len": 11,
+        "answer": "theoretical",
+        "clue": "event  the ratio event of the number of possible outcomes"
       },
       {
         "num": 20,
+        "row": 21,
+        "col": 2,
+        "len": 6,
+        "answer": "unfair",
+        "clue": "when my sisters get ice-cream and I don't, that's _________"
+      },
+      {
+        "num": 21,
         "row": 23,
-        "col": 13,
-        "len": 7,
-        "answer": "Decagon",
-        "clue": "A polygon/shape with ten angles and ten straight lines."
+        "col": 1,
+        "len": 3,
+        "answer": "mad",
+        "clue": "measure of how spread out the data is"
+      },
+      {
+        "num": 23,
+        "row": 26,
+        "col": 1,
+        "len": 11,
+        "answer": "coefficient",
+        "clue": "number multiplied with a variable or unknown   quantity in algebraic term"
       }
     ],
     "down": [
       {
         "num": 1,
         "row": 1,
-        "col": 26,
+        "col": 28,
+        "len": 3,
+        "answer": "pie",
+        "clue": "multiple types of _____ like apple, cherry, or pumpkin"
+      },
+      {
+        "num": 2,
+        "row": 3,
+        "col": 23,
         "len": 8,
-        "answer": "Fraction",
-        "clue": "A quantity that is not whole that contains a numerator and denominator."
+        "answer": "simplify",
+        "clue": "make something simpler or easier to do or understand"
       },
       {
         "num": 3,
         "row": 5,
-        "col": 21,
-        "len": 8,
-        "answer": "Equation",
-        "clue": "A statement that shows the equality of two expressions by joining them with an equals sign."
+        "col": 10,
+        "len": 3,
+        "answer": "box",
+        "clue": "&whisker plot when you have the minimum ,maximum ,upper, lower quartile and the median together its"
       },
       {
         "num": 4,
         "row": 5,
-        "col": 23,
-        "len": 13,
-        "answer": "CommonFactors",
-        "clue": "A factor shared by two or more numbers, are numbers that divide exactly into two different numbers."
-      },
-      {
-        "num": 5,
-        "row": 9,
-        "col": 11,
-        "len": 13,
-        "answer": "Parallelogram",
-        "clue": "A quadrilateral with two sets of opposite sides that are parallel."
+        "col": 14,
+        "len": 8,
+        "answer": "compound",
+        "clue": "event to make a __________ event you have to have more simple events"
       },
       {
         "num": 7,
-        "row": 9,
-        "col": 19,
-        "len": 10,
-        "answer": "AcuteAngle",
-        "clue": "An angle whose measure is between 0\u00b0 and 90\u00b0 or with less than 90\u00b0 (or pi/2) radians."
+        "row": 8,
+        "col": 16,
+        "len": 12,
+        "answer": "experimental",
+        "clue": "probability  when an actual situation or problem is performed as an experiment"
       },
       {
-        "num": 8,
-        "row": 10,
-        "col": 2,
-        "len": 8,
-        "answer": "GeoMetry",
-        "clue": "The study of lines, angles, shapes, and their properties."
+        "num": 9,
+        "row": 13,
+        "col": 9,
+        "len": 6,
+        "answer": "simple",
+        "clue": "event a bake sale is usually call a ____________"
       },
       {
         "num": 10,
-        "row": 12,
-        "col": 17,
-        "len": 7,
-        "answer": "AlgebrA",
-        "clue": "The branch of mathematics that substitutes letters for numbers to solve for unknown values."
+        "row": 13,
+        "col": 13,
+        "len": 3,
+        "answer": "dot",
+        "clue": "plot lots of dots on this graph"
+      },
+      {
+        "num": 12,
+        "row": 13,
+        "col": 21,
+        "len": 5,
+        "answer": "range",
+        "clue": "there's a difference between the greatest and least of the numbers"
       },
       {
         "num": 13,
-        "row": 15,
-        "col": 26,
-        "len": 6,
-        "answer": "Factor",
-        "clue": "A number that divides into another number exactly. The factors of 10 are 1, 2, 5, and 10 (1 x 10, 2 x 5, 5 x 2, 10 x 1)."
+        "row": 13,
+        "col": 23,
+        "len": 4,
+        "answer": "mean",
+        "clue": "you cut the cheese cake add them together then you dived the peace's evenly"
       },
       {
-        "num": 18,
-        "row": 20,
-        "col": 14,
-        "len": 9,
-        "answer": "Numerator",
-        "clue": "The top number in a fraction."
+        "num": 16,
+        "row": 17,
+        "col": 11,
+        "len": 11,
+        "answer": "probability",
+        "clue": "there's one 6 on a cube ~________ = 1/6"
+      },
+      {
+        "num": 17,
+        "row": 18,
+        "col": 2,
+        "len": 10,
+        "answer": "simulation",
+        "clue": "mimic's the action given in a situation"
       },
       {
         "num": 19,
-        "row": 22,
-        "col": 19,
-        "len": 9,
-        "answer": "Integers:",
-        "clue": "All whole numbers, positive or negative, including zero."
+        "row": 18,
+        "col": 13,
+        "len": 4,
+        "answer": "tree",
+        "clue": "data  diagram  lots of animals live in this diagram"
+      },
+      {
+        "num": 22,
+        "row": 23,
+        "col": 8,
+        "len": 6,
+        "answer": "median",
+        "clue": "there's an upper and lower quartile and then there's the middle number called"
       }
     ]
   },
   "category": "math",
-  "source_url": "https://crosswordlabs.com/view/math-math-math-9",
-  "slug": "math-math-math-9",
-  "fetched_at": "2026-07-14T19:10:15.833817+00:00",
-  "date": "2026-11-24"
+  "source_url": "https://crosswordlabs.com/view/math-math-math-all-around",
+  "slug": "math-math-math-all-around",
+  "fetched_at": "2026-07-14T19:19:13.143579+00:00",
+  "date": "2026-11-25"
 }
