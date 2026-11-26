@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-26-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-26",
+      "title": "Outlook Zero-Day: Opening a Malicious Attachment Steals Your Login Hash",
+      "tag": "Daily Brief",
+      "excerpt": "A Microsoft Outlook zero-day (CVE-2026-124194) is being actively exploited. Opening a specially crafted email attachment — no links to click, just opening the file — causes Outlook to silently connect to an attacker's server and leak your Windows login hash. The attacker can then...",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-26-composite.jpg",
+      "comic": "assets/img/news/2026-11-26-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-25-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-25",
@@ -113,6 +130,76 @@
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-26-post-1",
+      "type": "news",
+      "date": "2026-11-26",
+      "title": "CISA warns SharePoint servers under active attack — patch CVE-2026-65660 and CVE-2026-67279 now",
+      "tag": "Tech Note",
+      "summary": "Apply the November 2026 Microsoft security update via Windows Update or the Microsoft Update Catalog — it patches the actively exploited SharePoint code injection and SSH workflow flaws.",
+      "truth": "",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-26-post-2",
+      "type": "news",
+      "date": "2026-11-26",
+      "title": "Firefox 160 blocks sites from hijacking your email links — new mailto permission control free at firefox.com",
+      "tag": "Tech Note",
+      "summary": "Update to Firefox 160 at firefox.com or Settings > General > Firefox Updates — the mailto block setting is in Privacy & Security > Applications > mailto.",
+      "truth": "I see so many customers who accidentally set some random site as their default email handler — this stops that cold.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-26-post-3",
+      "type": "news",
+      "date": "2026-11-26",
+      "title": "Windows 11 26H2 brings Hotpatch updates — security patches without restart for Enterprise at microsoft.com",
+      "tag": "Tech Note",
+      "summary": "Check Settings > Windows Update for the 26H2 enablement package — Hotpatch requires Enterprise edition and the latest baseline cumulative update (KB5121794 or later).",
+      "truth": "Most home users don't need Hotpatch, but if you run a business that can't afford downtime, this is the feature to upgrade for.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-26-post-4",
+      "type": "news",
+      "date": "2026-11-26",
+      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
+      "tag": "Tech Note",
+      "summary": "Sign up at clayelectric.com > MyClayElectric or text OUT to 855-939-3840 for real-time outage alerts to your phone.",
+      "truth": "Around here, the power flickers and people wonder if it's just them — this tells you instantly and lets you report it without calling.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-26-post-5",
+      "type": "tip",
+      "date": "2026-11-26",
+      "title": "Ventoy puts every ISO on one USB — free multi-boot tool at ventoy.net beats reformatting every time",
+      "tag": "Tech Note",
+      "summary": "Download Ventoy at ventoy.net, run it on your USB drive, then drag and drop ISO files — no reformatting needed.",
+      "truth": "I used to carry a bag of USB drives for every Windows version and Linux distro — now one Ventoy drive does it all.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
       "id": "onyx-2026-11-25-post-1",
       "type": "news",
       "date": "2026-11-25",
@@ -175,286 +262,170 @@
         "#Windows11",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-11-23-post-1",
-      "type": "news",
-      "date": "2026-11-23",
-      "title": "Microsoft November 2026 Patch Tuesday Fixes 600+ Security Flaws Including Outlook Zero-Day",
-      "tag": "Tech Note",
-      "summary": "Install the November 2026 Windows 11 cumulative update (KB5132061 for 24H2/25H2/26H2) via Settings > Windows Update to patch the actively exploited Outlook vulnerability the vulnerability-2026-124194 and 600+ other security flaws.",
-      "truth": "Most people ignore updates until something breaks. The Outlook zero-day lets attackers steal your login hash just by tricking you into opening a malicious file — this one gets exploited in the wild right now.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsUpdate",
-        "#Security"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-25-post-2",
-      "type": "tip",
-      "date": "2026-11-25",
-      "title": "Columbia County Library gives you free movies and TV with Kanopy — stream Criterion Collection ad-free",
-      "tag": "Tech Tip",
-      "summary": "Get a free Columbia County Library card at any branch or ccpl.aspendiscovery.org — then use Libby for ebooks/audiobooks and Kanopy for free movies including the Criterion Collection, all with your library card. Kanopy gives you 12 tickets per month for award-winning films, documentaries, and Kanopy Kids unlimited.",
-      "truth": "People pay for three streaming services and don't realize their library card unlocks a fourth with Criterion Collection classics, indie films, and great documentaries — all free. I've helped customers set this up on their TV and phone in ten minutes.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#ColumbiaCountyLibrary",
-        "#FreeMovies"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-24-post-5",
-      "type": "tip",
-      "date": "2026-11-24",
-      "title": "Patch My PC Home Updater updates 300-plus apps free and portable — no install needed",
-      "tag": "Tech Tip",
-      "summary": "Patch My PC Home Updater (free at patchmypc.com) is a portable tool that scans for outdated versions of over 300 common applications — browsers, runtimes, utilities, media players — and updates them all with one click. Download the portable exe, run it, click \"Update All,\" and walk away. No installation, no bloatware, no account.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#SoftwareUpdates",
-        "#Security"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-23-post-2",
-      "type": "tip",
-      "date": "2026-11-23",
-      "title": "Microsoft Defender Is Enough for Most Lake City Home Users — Free and Built Into Windows 11",
-      "tag": "Tech Tip",
-      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Microsoft Defender antivirus is on by default, updates automatically, and protects against viruses and ransomware without any subscription.",
-      "truth": "I've cleaned up plenty of machines running expired trial antivirus that stopped protecting months ago. Defender catches what those paid suites miss — and it doesn't nag you to renew.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Antivirus",
-        "#WindowsSecurity"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-22-post-2",
-      "type": "tip",
-      "date": "2026-11-22",
-      "title": "Firefox 160 Adds On-Device Speech-to-Text in 40 Languages — No Cloud Needed",
-      "tag": "Tech Tip",
-      "summary": "Firefox 160 (released November 10, 2026) includes the SpeechRecognition API for real-time, on-device speech-to-text in 40 languages — works offline, no data sent to servers. Update free at firefox.com or via Menu → Help → About Firefox. Also new: Mini Window for always-on-top tabs, Picture-in-Picture speed controls (0.25×–2×), and a \"Never allow\" button to block sites from repeatedly asking to handle mailto: links. (Source: Firefox 160 Release Notes, November 10, 2026)",
-      "truth": "This is the first time a major browser builds speech recognition directly into the engine instead of phoning home to Google or Microsoft. It's a privacy win that actually works.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-21-post-2",
-      "type": "tip",
-      "date": "2026-11-21",
-      "title": "Windows 11 24H2 Home and Pro stopped getting updates October 13 — upgrade to 26H2 free to stay secure",
-      "tag": "Tech Tip",
-      "summary": "As of October 13, 2026, Windows 11 version 24H2 Home and Pro editions reached end of updates — no more security patches. You must upgrade to Windows 11 26H2 (or 25H2) free via Settings > Windows Update > Check for updates to continue receiving monthly security fixes. Enterprise and Education editions remain supported until October 2027. Source: Microsoft Learn — status-windows-11-24h2 — updated November 19, 2026.",
-      "truth": "People ignore \"end of support\" notices until something breaks. The October 13 cutoff means your 24H2 Home/Pro PC is now a security risk. The upgrade to 26H2 is free, fast (single restart), and keeps your files and apps.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#EndOfSupport"
-      ]
     }
   ],
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "word": {
-    "word": "Thread",
+    "word": "Firewall",
     "pos": "noun",
-    "definition": "One independent line of execution inside a program, running alongside others.",
-    "example": "Too many threads at once can thrash the CPU.",
-    "date": "2026-11-19"
+    "definition": "A security barrier that controls what network traffic is allowed in and out of a device or network.",
+    "example": "The office firewall blocked the suspicious login attempt.",
+    "date": "2026-11-26"
   },
   "crossword": {
-    "title": "math math",
-    "size": 15,
+    "title": "math metrick",
+    "size": 18,
     "grid": [
-      ".....minus..l..",
-      "....d....u..i..",
-      "..height.b..n..",
-      "....v....times.",
-      "multiplier.....",
-      "....s....area..",
-      "....o....h..d..",
-      "..perimeter.d..",
-      "......i..n.....",
-      "....addend.....",
-      "......p........",
-      "......o.l......",
-      "...divide......",
-      "......n.g......",
-      "......t.s......"
+      ".........p........",
+      ".........i........",
+      "......1ton........",
+      "...f..g..t........",
+      "kilogram..........",
+      "...o..l.c.........",
+      "...t..l.e...g.....",
+      ".....pound..r.....",
+      "......n.t...a.....",
+      ".......millimeters",
+      "........m.........",
+      "....ounce.........",
+      "........t.........",
+      "........e.........",
+      "....meter.........",
+      "........s.........",
+      "..................",
+      ".................."
     ],
     "clues": {
       "across": [
         {
-          "num": 1,
-          "row": 1,
-          "col": 6,
-          "len": 5,
-          "answer": "minus",
-          "clue": "5-3=2,the \"-\""
-        },
-        {
-          "num": 5,
+          "num": 2,
           "row": 3,
-          "col": 3,
-          "len": 6,
-          "answer": "height",
-          "clue": "the line in △,someone in the middle,someone outside."
+          "col": 7,
+          "len": 4,
+          "answer": "1ton",
+          "clue": "a cow on the math talk board"
         },
         {
-          "num": 6,
-          "row": 4,
-          "col": 10,
-          "len": 5,
-          "answer": "times",
-          "clue": "3×4=12,the \"×\"."
+          "num": 4,
+          "row": 5,
+          "col": 1,
+          "len": 8,
+          "answer": "kilogram",
+          "clue": "1000 grams"
         },
         {
           "num": 7,
-          "row": 5,
-          "col": 1,
-          "len": 10,
-          "answer": "multiplier",
-          "clue": "3×4=12，the \"4\"."
+          "row": 8,
+          "col": 6,
+          "len": 5,
+          "answer": "pound",
+          "clue": "the ginypig one the math talk board"
         },
         {
           "num": 8,
-          "row": 6,
-          "col": 10,
-          "len": 4,
-          "answer": "area",
-          "clue": "How many square centimeters of iron can make a box？"
+          "row": 10,
+          "col": 8,
+          "len": 11,
+          "answer": "millimeters",
+          "clue": "ten times smaller than a centimeter"
+        },
+        {
+          "num": 9,
+          "row": 12,
+          "col": 5,
+          "len": 5,
+          "answer": "ounce",
+          "clue": "the mouse on the math talk board"
         },
         {
           "num": 10,
-          "row": 8,
-          "col": 3,
-          "len": 9,
-          "answer": "perimeter",
-          "clue": "πr²=_____."
-        },
-        {
-          "num": 12,
-          "row": 10,
+          "row": 15,
           "col": 5,
-          "len": 6,
-          "answer": "addend",
-          "clue": "2+3=5,the \"2\" and the \"3\"."
-        },
-        {
-          "num": 14,
-          "row": 13,
-          "col": 4,
-          "len": 6,
-          "answer": "divide",
-          "clue": "12÷4=3,the \"÷\"."
+          "len": 5,
+          "answer": "meter",
+          "clue": "has a (m) and (a) is in it"
         }
       ],
       "down": [
         {
-          "num": 2,
+          "num": 1,
           "row": 1,
           "col": 10,
-          "len": 10,
-          "answer": "subtrahend",
-          "clue": "5-3=2,the \"2\"."
+          "len": 4,
+          "answer": "pint",
+          "clue": "two cups"
+        },
+        {
+          "num": 2,
+          "row": 3,
+          "col": 7,
+          "len": 7,
+          "answer": "1gallon",
+          "clue": "4 quarts"
         },
         {
           "num": 3,
-          "row": 1,
-          "col": 13,
+          "row": 4,
+          "col": 4,
           "len": 4,
-          "answer": "line",
-          "clue": "three_____can constitute a triangle."
+          "answer": "foot",
+          "clue": "12 inches long"
         },
         {
-          "num": 4,
-          "row": 2,
-          "col": 5,
-          "len": 7,
-          "answer": "divisor",
-          "clue": "12÷4=3,the \"4\"."
-        },
-        {
-          "num": 9,
+          "num": 5,
           "row": 6,
-          "col": 13,
-          "len": 3,
-          "answer": "add",
-          "clue": "2+3=5,the \"+\"."
-        },
-        {
-          "num": 11,
-          "row": 8,
-          "col": 7,
-          "len": 8,
-          "answer": "midpoint",
-          "clue": "the point in the line's middle."
-        },
-        {
-          "num": 13,
-          "row": 12,
           "col": 9,
+          "len": 11,
+          "answer": "centimeters",
+          "clue": "the word meters is in it"
+        },
+        {
+          "num": 6,
+          "row": 7,
+          "col": 13,
           "len": 4,
-          "answer": "legs",
-          "clue": "square have four ____."
+          "answer": "gram",
+          "clue": "the bug on the math talk board"
         }
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-math-4",
-    "slug": "math-math-4",
-    "fetched_at": "2026-07-14T19:19:52.683790+00:00",
-    "date": "2026-11-19"
+    "source_url": "https://crosswordlabs.com/view/math-metrick-2",
+    "slug": "math-metrick-2",
+    "fetched_at": "2026-07-14T19:21:58.100667+00:00",
+    "date": "2026-11-26"
   },
   "trivia": {
-    "q": "What is a 'QR code'?",
-    "a": "A square barcode a phone camera reads to open a link or info instantly.",
-    "category": "Basics",
-    "date": "2026-11-19"
+    "q": "What does 'SSL/TLS' protect?",
+    "a": "The encrypted channel between your browser and a site, shown by the padlock icon.",
+    "category": "Security",
+    "date": "2026-11-26"
   },
   "joke": {
-    "q": "Why did the spreadsheet go to therapy?",
-    "a": "It had too many unresolved cells.",
-    "date": "2026-11-19"
+    "q": "How do computers say goodbye?",
+    "a": "Byte me.",
+    "date": "2026-11-26"
   },
   "poll": {
     "poll": {
-      "weekOf": "2026-11-15",
-      "question": "Have you ever been phished?",
+      "weekOf": "2026-11-22",
+      "question": "Would a yearly 'computer tune-up' interest you?",
       "options": [
         {
           "id": "yes",
-          "label": "Yes, I fell for one"
+          "label": "Yes, sign me up"
         },
         {
           "id": "maybe",
-          "label": "Maybe — not sure"
+          "label": "Depends on price"
         },
         {
-          "id": "no",
-          "label": "No, I'm careful"
+          "id": "diy",
+          "label": "I do it myself"
         },
         {
-          "id": "what",
-          "label": "What's phishing?"
+          "id": "never",
+          "label": "Not really"
         }
       ]
     }

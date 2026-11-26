@@ -1,6 +1,76 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "items": [
+    {
+      "id": "n-2026-11-26",
+      "type": "newsletter",
+      "date": "2026-11-26",
+      "title": "Outlook Zero-Day: Opening a Malicious Attachment Steals Your Login Hash",
+      "tag": "Daily Brief",
+      "summary": "A Microsoft Outlook zero-day (CVE-2026-124194) is being actively exploited. Opening a specially crafted email attachment — no links to click, just opening the file — causes Outlook to silently connect to an attacker's server and leak your Windows login hash. The attacker can then",
+      "comic": "Newsletter - 2026-11-26-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-26-1",
+      "type": "tech-note",
+      "date": "2026-11-26",
+      "title": "CISA warns SharePoint servers under active attack — patch CVE-2026-65660 and CVE-2026-67279 now",
+      "tag": "Security",
+      "summary": "Apply the November 2026 Microsoft security update via Windows Update or the Microsoft Update Catalog — it patches the actively exploited SharePoint code injection and SSH workflow flaws.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-26-2",
+      "type": "tech-note",
+      "date": "2026-11-26",
+      "title": "Firefox 160 blocks sites from hijacking your email links — new mailto permission control free at firefox.com",
+      "tag": "Security",
+      "summary": "Update to Firefox 160 at firefox.com or Settings > General > Firefox Updates — the mailto block setting is in Privacy & Security > Applications > mailto.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-26-3",
+      "type": "tech-note",
+      "date": "2026-11-26",
+      "title": "Windows 11 26H2 brings Hotpatch updates — security patches without restart for Enterprise at microsoft.com",
+      "tag": "Windows",
+      "summary": "Check Settings > Windows Update for the 26H2 enablement package — Hotpatch requires Enterprise edition and the latest baseline cumulative update (KB5121794 or later).",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-26-4",
+      "type": "tech-note",
+      "date": "2026-11-26",
+      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
+      "tag": "Local",
+      "summary": "Sign up at clayelectric.com > MyClayElectric or text OUT to 855-939-3840 for real-time outage alerts to your phone.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
+      "id": "t-2026-11-26-5",
+      "type": "tech-note",
+      "date": "2026-11-26",
+      "title": "Ventoy puts every ISO on one USB — free multi-boot tool at ventoy.net beats reformatting every time",
+      "tag": "Tools",
+      "summary": "Download Ventoy at ventoy.net, run it on your USB drive, then drag and drop ISO files — no reformatting needed.",
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
     {
       "id": "n-2026-11-25",
       "type": "newsletter",
@@ -54,64 +124,6 @@
       "title": "Microsoft November 2026 Patch Tuesday Fixes 600+ Security Flaws Including Outlook Zero-Day",
       "tag": "Tech Note",
       "summary": "Install the November 2026 Windows 11 cumulative update (KB5132061 for 24H2/25H2/26H2) via Settings > Windows Update to patch the actively exploited Outlook vulnerability the vulnerability-2026-124194 and 600+ other security flaws."
-    },
-    {
-      "id": "t-2026-11-23-tip1",
-      "type": "tech-note",
-      "date": "2026-11-23",
-      "title": "Microsoft Defender Is Enough for Most Lake City Home Users — Free and Built Into Windows 11",
-      "tag": "Tech Tip",
-      "summary": "Open Windows Security (press Start and type \"Windows Security\"). Microsoft Defender antivirus is on by default, updates automatically, and protects against viruses and ransomware without any subscription."
-    },
-    {
-      "id": "t-2026-11-23-privacy-badger",
-      "type": "tech-note",
-      "date": "2026-11-23",
-      "title": "Stop Trackers Following You — Privacy Badger Learns and Blocks Them Free at privacybadger.org",
-      "tag": "Tech Tip",
-      "summary": "Install Privacy Badger free from privacybadger.org (available for Firefox, Chrome, and Edge) — it automatically learns which trackers follow you across sites and blocks them, no settings needed.",
-      "cta": {
-        "label": "Get Privacy Badger",
-        "href": "https://privacybadger.org"
-      }
-    },
-    {
-      "id": "t-2026-11-23-everything-search",
-      "type": "tech-note",
-      "date": "2026-11-23",
-      "title": "Find Any File Instantly — Everything Search Indexes Your Whole Drive in Seconds Free at voidtools.com",
-      "tag": "Tech Tip",
-      "summary": "Download Everything Search free from voidtools.com — it indexes every file on your Windows drive in seconds and finds anything as you type, no waiting for Windows Search.",
-      "cta": {
-        "label": "Download Everything Search",
-        "href": "https://voidtools.com"
-      }
-    },
-    {
-      "id": "n-2026-11-22",
-      "type": "newsletter",
-      "date": "2026-11-22",
-      "title": "Holiday Shopping Scams Hide in Your Search Results",
-      "tag": "Daily Brief",
-      "summary": "Holiday shopping scams are hiding at the top of your search results.\n\nWhen you search for a gift, the first links are often paid ads from scammers — not the real store. Click one and you could hand over your credit card or personal information to a fake site that looks almost identical to the real thing.\n\nWhat to do: Scroll past the top results. The organic listings below the ads are ranked by relevance, not by who paid the most. Better yet, type the store's web address directly into your browser. If you're not sure about a site, search the company name plus \"complaint\" or \"scam\" before you buy.",
-      "comic": "Newsletter - 2026-11-22-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-22-news1",
-      "type": "tech-note",
-      "date": "2026-11-22",
-      "title": "Windows 11 26H2 Is Free — Check If Your PC Qualifies with PC Health Check",
-      "tag": "Tech Note",
-      "summary": "Windows 11 26H2 is a free upgrade for eligible PCs. Open Settings → Windows Update → Check for updates, or download the free PC Health Check app at aka.ms/GetPCHealthCheckApp to see if your hardware meets the requirements (TPM 2.0, Secure Boot, 4 GB RAM, 64 GB storage). PCs on 24H2 or 25H2 upgrade with one restart via enablement package KB5121794; older versions (23H2, 22H2, Windows 10) use the Windows 11 Installation Assistant from microsoft.com/windows11 for a full upgrade. (Source: Microsoft Support, Techdows, September–November 2026)"
-    },
-    {
-      "id": "t-2026-11-22-tip1",
-      "type": "tech-note",
-      "date": "2026-11-22",
-      "title": "Firefox 160 Adds On-Device Speech-to-Text in 40 Languages — No Cloud Needed",
-      "tag": "Tech Tip",
-      "summary": "Firefox 160 (released November 10, 2026) includes the SpeechRecognition API for real-time, on-device speech-to-text in 40 languages — works offline, no data sent to servers. Update free at firefox.com or via Menu → Help → About Firefox. Also new: Mini Window for always-on-top tabs, Picture-in-Picture speed controls (0.25×–2×), and a \"Never allow\" button to block sites from repeatedly asking to handle mailto: links. (Source: Firefox 160 Release Notes, November 10, 2026)"
     }
   ]
 }
