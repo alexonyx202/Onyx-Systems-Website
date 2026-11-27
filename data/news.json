@@ -1,6 +1,32 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "items": [
+    {
+      "id": "n-2026-11-27",
+      "type": "newsletter",
+      "date": "2026-11-27",
+      "title": "Fake Adobe Update Scams Exploit Real November Security Patches",
+      "tag": "Daily Brief",
+      "summary": "Adobe just released its November 2026 security patches across nine product families including Photoshop, Acrobat, and Creative Cloud. Scammers know this and are pushing fake \"Adobe update\" pop-ups and emails that look identical to the real thing — same logos, same wording, same urgency. Clicking them installs malicious code instead of the actual patch.\n\nWhat to do: Never update Adobe apps from a pop-up or email link. Open the Creative Cloud desktop app directly, or go to adobe.com and sign in to check for updates. Real Adobe updates never come through browser pop-ups.",
+      "comic": "Newsletter - 2026-11-27-comic-square.png",
+      "readMore": "https://onyxpc.us/#contact"
+    },
+    {
+      "id": "t-2026-11-27-news1",
+      "type": "tech-note",
+      "date": "2026-11-27",
+      "title": "Microsoft Defender now discovers local AI agents running on your PC — free and built into Windows 11",
+      "tag": "Tech Note",
+      "summary": "Open Windows Security > Virus & threat protection > Manage settings. Microsoft Defender automatically detects 50+ local AI agents like Ollama, LM Studio, and Jan and shows their configured model connections — no setup needed."
+    },
+    {
+      "id": "t-2026-11-27-tip1",
+      "type": "tech-note",
+      "date": "2026-11-27",
+      "title": "Firefox 160 address bar now shows Paste and Search when you paste a search term — free update at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Update Firefox to 160 via Menu > Help > About Firefox. Copy any text, click the address bar, and paste — Firefox now offers \"Paste and Search\" instead of \"Paste and Go\" when it detects a search term rather than a URL."
+    },
     {
       "id": "n-2026-11-26",
       "type": "newsletter",
@@ -96,34 +122,6 @@
       "title": "Columbia County Library gives you free movies and TV with Kanopy — stream Criterion Collection ad-free",
       "tag": "Tech Tip",
       "summary": "Get a free Columbia County Library card at any branch or ccpl.aspendiscovery.org — then use Libby for ebooks/audiobooks and Kanopy for free movies including the Criterion Collection, all with your library card. Kanopy gives you 12 tickets per month for award-winning films, documentaries, and Kanopy Kids unlimited."
-    },
-    {
-      "id": "n-2026-11-24",
-      "type": "newsletter",
-      "date": "2026-11-24",
-      "title": "Holiday Charity Scams Are Here — Verify Before You Donate",
-      "tag": "Daily Brief",
-      "summary": "Holiday charity scams are flooding email and social media right now. Scammers create fake charities with names that sound like real ones — \"Children's Cancer Fund\" vs. \"Children's Cancer Foundation.\" They use urgent language: \"Disaster victims need help today.\" They ask for payme",
-      "comic": "Newsletter - 2026-11-24-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "n-2026-11-23",
-      "type": "newsletter",
-      "date": "2026-11-23",
-      "title": "AI Voice Clone Scams Are Calling — Hang Up and Call Back on a Known Number",
-      "tag": "Daily Brief",
-      "summary": "AI voice clone scams are calling people right now. The caller sounds exactly like a family member — a grandchild, a child, a spouse — and says they're in trouble. They need money immediately for bail, a car repair, a medical emergency. It's not them. Scammers use AI to clone voices from social media videos.\n\nThe call feels real because the voice is real — it's a copy of someone you love. The scammer pressures you to act fast, send money, don't tell anyone.\n\nWhat to do: Hang up. Call the person back on a number you know is theirs. If you can't reach them, call another family member to check. Never send money or gift cards based on a surprise call, no matter how real the voice sounds.\n\nSource: FTC Consumer Alert — AI Voice Clone Scams (November 2026) — consumer.ftc.gov; Microsoft —...",
-      "comic": "Newsletter - 2026-11-23-comic-square.png",
-      "readMore": "https://onyxpc.us/#contact"
-    },
-    {
-      "id": "t-2026-11-23-news1",
-      "type": "tech-note",
-      "date": "2026-11-23",
-      "title": "Microsoft November 2026 Patch Tuesday Fixes 600+ Security Flaws Including Outlook Zero-Day",
-      "tag": "Tech Note",
-      "summary": "Install the November 2026 Windows 11 cumulative update (KB5132061 for 24H2/25H2/26H2) via Settings > Windows Update to patch the actively exploited Outlook vulnerability the vulnerability-2026-124194 and 600+ other security flaws."
     }
   ]
 }

@@ -28,6 +28,23 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-27-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-27",
+      "title": "Fake Adobe Update Scams Exploit Real November Security Patches",
+      "tag": "Daily Brief",
+      "excerpt": "Adobe just released its November 2026 security patches across nine product families including Photoshop, Acrobat, and Creative Cloud. Scammers know this and are pushing fake \"Adobe update\" pop-ups and emails that look identical to the real thing — same logos, same wording, same urgency. Clicking them installs malicious code instead of the actual patch.\n\nWhat to do: Never update Adobe apps from a pop-up or email link. Open the Creative Cloud desktop app directly, or go to adobe.com and sign in to check for updates. Real Adobe updates never come through browser pop-ups.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "image": "assets/img/news/2026-11-27-composite.jpg",
+      "comic": "assets/img/news/2026-11-27-comic-square.jpg",
+      "read_more": "#contact"
+    },
+    {
       "id": "onyx-2026-11-26-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-26",
@@ -92,43 +109,30 @@
       "image": "assets/img/news/2026-11-23-composite.jpg",
       "comic": "assets/img/news/2026-11-23-comic-square.jpg",
       "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-22-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-22",
-      "title": "Holiday Shopping Scams Hide in Your Search Results",
-      "tag": "Daily Brief",
-      "excerpt": "Holiday shopping scams are hiding at the top of your search results.\n\nWhen you search for a gift, the first links are often paid ads from scammers — not the real store. Click one and you could hand over your credit card or personal information to a fake site that looks almost identical to the real thing.\n\nWhat to do: Scroll past the top results. The organic listings below the ads are ranked by relevance, not by who paid the most. Better yet, type the store's web address directly into your browser. If you're not sure about a site, search the company name plus \"complaint\" or \"scam\" before you buy.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-22-composite.jpg",
-      "comic": "assets/img/news/2026-11-22-comic-square.jpg",
-      "read_more": "#contact"
-    },
-    {
-      "id": "onyx-2026-11-21-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-21",
-      "title": "Fake Jury Duty Calls Targeting North Florida — Hang Up",
-      "tag": "Daily Brief",
-      "excerpt": "Scammers are calling people in North Florida pretending to be court officials. They claim you missed jury duty and owe a fine. They demand immediate payment by gift card or wire transfer. Courts never call to demand money — they send official mail. If you get this call, hang up. Do not provide any personal information or payment.\n\nWhat to do: If you're unsure whether you have a real court obligation, look up the official clerk of court phone number yourself and call them. Never use a number the caller gives you. Report the scam call to the FTC at ReportFraud.ftc.gov.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-21-composite.jpg",
-      "comic": "assets/img/news/2026-11-21-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
+    {
+      "id": "onyx-2026-11-27-post-1",
+      "type": "news",
+      "date": "2026-11-27",
+      "title": "Microsoft Defender now discovers local AI agents running on your PC — free and built into Windows 11",
+      "tag": "Tech Note",
+      "summary": "Open Windows Security > Virus & threat protection > Manage settings. Microsoft Defender automatically detects 50+ local AI agents like Ollama, LM Studio, and Jan and shows their configured model connections — no setup needed.",
+      "truth": "Most people don't realize their AI chat apps are visible to Windows security. This is a good thing — it means Defender can flag if something suspicious starts running.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#AI",
+        "#Security",
+        "#Firefox",
+        "#Browser",
+        "#Backup",
+        "#Windows11",
+        "#Video"
+      ]
+    },
     {
       "id": "onyx-2026-11-26-post-1",
       "type": "news",
@@ -186,6 +190,25 @@
       ]
     },
     {
+      "id": "onyx-2026-11-27-post-2",
+      "type": "tip",
+      "date": "2026-11-27",
+      "title": "Firefox 160 address bar now shows Paste and Search when you paste a search term — free update at firefox.com",
+      "tag": "Tech Tip",
+      "summary": "Update Firefox to 160 via Menu > Help > About Firefox. Copy any text, click the address bar, and paste — Firefox now offers \"Paste and Search\" instead of \"Paste and Go\" when it detects a search term rather than a URL.",
+      "truth": "This is one of those small quality-of-life changes that makes you wonder how you lived without it. Stop copying, clicking search engine, pasting — just paste and search.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#Firefox",
+        "#Browser",
+        "#Backup",
+        "#Windows11",
+        "#Video"
+      ]
+    },
+    {
       "id": "onyx-2026-11-26-post-5",
       "type": "tip",
       "date": "2026-11-26",
@@ -198,73 +221,9 @@
         "#LakeCityFL",
         "#ComputerRepair"
       ]
-    },
-    {
-      "id": "onyx-2026-11-25-post-1",
-      "type": "news",
-      "date": "2026-11-25",
-      "title": "Windows 11 November 2026 Patch Tuesday fixes 1,252 vulnerabilities including an exploited zero-day",
-      "tag": "Tech Note",
-      "summary": "Install KB5132061 from Windows Update (Settings > Windows Update) — it patches 68 critical flaws and one actively exploited zero-day in Windows 11 24H2, 25H2, and 26H2. Supported versions get build 26300.9974 (26H2), 26200.9974 (25H2), or 26100.9974 (24H2 Enterprise/Education).",
-      "truth": "Most people ignore updates until something breaks. I see it every week — a computer comes in with a problem that a patch from two months ago would have prevented. The zero-day in this release is already being used in attacks. Don't wait.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#WindowsUpdate",
-        "#Security"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-24-post-4",
-      "type": "news",
-      "date": "2026-11-24",
-      "title": "Comcast Xfinity fiber expands to 3300 more Columbia County homes and businesses with 2000 more by year end",
-      "tag": "Tech Note",
-      "summary": "Comcast announced August 25 that Xfinity fiber-powered internet now reaches over 3,300 homes and businesses in Columbia County, with construction ongoing to add 2,000 more locations by end of 2026. Check if your Lake City address qualifies at xfinity.com — enter your address to see available plans and speeds.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#FiberInternet",
-        "#ColumbiaCounty"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-24-post-3",
-      "type": "news",
-      "date": "2026-11-24",
-      "title": "Firefox 160 Mini Window pops any tab into an always-on-top overlay for multitasking free",
-      "tag": "Tech Note",
-      "summary": "Firefox 160 (released November 10) adds Mini Window — right-click any tab and choose Open in Mini Window to keep a video, document, or page visible while you work in other apps. Also new: Picture-in-Picture playback speed controls (0.25x–2x), a \"Never Allow\" button to stop sites from pestering you to handle email links, and on-device speech recognition in 40 languages. Update free at firefox.com or Menu > Help > About Firefox.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Firefox",
-        "#Browser"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-24-post-2",
-      "type": "news",
-      "date": "2026-11-24",
-      "title": "Windows 11 November 2026 update brings Hotpatch security updates and Cloud Rebuild free",
-      "tag": "Tech Note",
-      "summary": "The November 2026 update (KB5132061) for Windows 11 24H2, 25H2, and 26H2 includes Hotpatch support — security updates that install without a restart — and Cloud Rebuild, which lets you reinstall Windows from the cloud without a USB drive. Get it now: open Settings > Windows Update and click Check for updates.",
-      "truth": "",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#Windows11",
-        "#Security"
-      ]
     }
   ],
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "word": {
     "word": "Firewall",
     "pos": "noun",
