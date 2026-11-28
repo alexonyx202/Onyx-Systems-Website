@@ -218,6 +218,9 @@ KNOWN_PRODUCTS = [
     # Extended 2026-11-24: Patch My PC (patchmypc.com — free portable 300+ app updater) —
     # real product named in today's Onyx Tech Notes headline, obtain method stated.
     "patch my pc", "patchmypc", "patchmypc.com",
+    # Extended 2026-11-28: Recuva (ccleaner.com/recuva — free Windows file recovery tool) —
+    # real product named in today's Onyx Tech Notes headline, obtain method stated.
+    "recuva",
 ]
 
 # Jargon / Grandma Test signals — forbidden in customer-facing text

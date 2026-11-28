@@ -7,7 +7,7 @@
     "email": "john@onyxpc.us",
     "address": "757 SW State Rd 247, Ste 108, Lake City, FL 32025",
     "city": "Lake City, FL",
-    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM — flexible to fit your schedule.",
+    "hours_note": "In shop by appointment / call first. Onsite service preferred after 5 PM \u2014 flexible to fit your schedule.",
     "founded": 1997,
     "last_updated": "2026-11-20",
     "social": {
@@ -28,12 +28,30 @@
   ],
   "news": [
     {
+      "id": "onyx-2026-11-28-daily-brief-auto",
+      "type": "newsletter",
+      "date": "2026-11-28",
+      "title": "That Virus Alert Popup Is a Scam \u2014 Microsoft Never Puts a Phone Number in a Warning",
+      "tag": "Daily Brief",
+      "excerpt": "Fake virus popups blast a siren and a phone number. Microsoft, Apple, and Google never put phone numbers in warnings. Close the browser tab. If it won't close, hold the power button 15 seconds. Source: FTC.gov, Microsoft Support",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair",
+        "#DailyBrief"
+      ],
+      "cta": {
+        "label": "Call (386) 755-7772",
+        "href": "tel:+13867557772"
+      }
+    },
+    {
       "id": "onyx-2026-11-27-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-27",
       "title": "Fake Adobe Update Scams Exploit Real November Security Patches",
       "tag": "Daily Brief",
-      "excerpt": "Adobe just released its November 2026 security patches across nine product families including Photoshop, Acrobat, and Creative Cloud. Scammers know this and are pushing fake \"Adobe update\" pop-ups and emails that look identical to the real thing — same logos, same wording, same urgency. Clicking them installs malicious code instead of the actual patch.\n\nWhat to do: Never update Adobe apps from a pop-up or email link. Open the Creative Cloud desktop app directly, or go to adobe.com and sign in to check for updates. Real Adobe updates never come through browser pop-ups.",
+      "excerpt": "Adobe just released its November 2026 security patches across nine product families including Photoshop, Acrobat, and Creative Cloud. Scammers know this and are pushing fake \"Adobe update\" pop-ups and emails that look identical to the real thing \u2014 same logos, same wording, same urgency. Clicking them installs malicious code instead of the actual patch.\n\nWhat to do: Never update Adobe apps from a pop-up or email link. Open the Creative Cloud desktop app directly, or go to adobe.com and sign in to check for updates. Real Adobe updates never come through browser pop-ups.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -50,7 +68,7 @@
       "date": "2026-11-26",
       "title": "Outlook Zero-Day: Opening a Malicious Attachment Steals Your Login Hash",
       "tag": "Daily Brief",
-      "excerpt": "A Microsoft Outlook zero-day (CVE-2026-124194) is being actively exploited. Opening a specially crafted email attachment — no links to click, just opening the file — causes Outlook to silently connect to an attacker's server and leak your Windows login hash. The attacker can then...",
+      "excerpt": "A Microsoft Outlook zero-day (CVE-2026-124194) is being actively exploited. Opening a specially crafted email attachment \u2014 no links to click, just opening the file \u2014 causes Outlook to silently connect to an attacker's server and leak your Windows login hash. The attacker can then...",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -67,7 +85,7 @@
       "date": "2026-11-25",
       "title": "Accidental Payment Scam: Don't Send Money Back",
       "tag": "Daily Brief",
-      "excerpt": "You get an unexpected payment — Venmo, Cash App, Zelle, or a text\nmessage says someone sent you money by mistake. Then a message follows:\n\"They accidentally sent you money, please send it back.\" If you send it\nback, you lose. The original payment may be fraudulent and get reversed\nby the bank, but the money you voluntarily sent is gone for good.\n\nWhat to do: Do not send money back. Leave the funds untouched and\ncontact your bank or payment service through its official app, website,\nor customer-service number. Do not trust screenshots or messages from\nthe sender as proof. Avoid clicking links from strangers — they lead to\nfake login pages.\n\nThis matters: Scammers use stolen cards or hacked accounts to send the\ninitial payment. When the real owner disputes it, the bank reverses...",
+      "excerpt": "You get an unexpected payment \u2014 Venmo, Cash App, Zelle, or a text\nmessage says someone sent you money by mistake. Then a message follows:\n\"They accidentally sent you money, please send it back.\" If you send it\nback, you lose. The original payment may be fraudulent and get reversed\nby the bank, but the money you voluntarily sent is gone for good.\n\nWhat to do: Do not send money back. Leave the funds untouched and\ncontact your bank or payment service through its official app, website,\nor customer-service number. Do not trust screenshots or messages from\nthe sender as proof. Avoid clicking links from strangers \u2014 they lead to\nfake login pages.\n\nThis matters: Scammers use stolen cards or hacked accounts to send the\ninitial payment. When the real owner disputes it, the bank reverses...",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -82,7 +100,7 @@
       "id": "onyx-2026-11-24-daily-brief-auto",
       "type": "newsletter",
       "date": "2026-11-24",
-      "title": "CISA adds four new actively exploited vulnerabilities to catalog — patch GPUStack, FreeSwitch, OpenSSH, Aspera now",
+      "title": "CISA adds four new actively exploited vulnerabilities to catalog \u2014 patch GPUStack, FreeSwitch, OpenSSH, Aspera now",
       "tag": "Daily Brief",
       "excerpt": "CISA added four new actively exploited vulnerabilities on November 9: GPUStack (CVE-2026-102895), SignalWire FreeSwitch (CVE-2026-116779), OpenBSD OpenSSH (CVE-2026-123158), and IBM Aspera Faspex (CVE-2026-123218). Check the CISA Known Exploited Vulnerabilities catalog at cisa.gov/known-exploited-vulnerabilities-catalog and update any affected software immediately.",
       "tags": [
@@ -92,34 +110,59 @@
         "#ComputerRepair",
         "#Security"
       ]
-    },
-    {
-      "id": "onyx-2026-11-23-daily-brief-auto",
-      "type": "newsletter",
-      "date": "2026-11-23",
-      "title": "AI Voice Clone Scams Are Calling — Hang Up and Call Back on a Known Number",
-      "tag": "Daily Brief",
-      "excerpt": "AI voice clone scams are calling people right now. The caller sounds exactly like a family member — a grandchild, a child, a spouse — and says they're in trouble. They need money immediately for bail, a car repair, a medical emergency. It's not them. Scammers use AI to clone voices from social media videos.\n\nThe call feels real because the voice is real — it's a copy of someone you love. The scammer pressures you to act fast, send money, don't tell anyone.\n\nWhat to do: Hang up. Call the person back on a number you know is theirs. If you can't reach them, call another family member to check. Never send money or gift cards based on a surprise call, no matter how real the voice sounds.\n\nSource: FTC Consumer Alert — AI Voice Clone Scams (November 2026) — consumer.ftc.gov; Microsoft —...",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair",
-        "#DailyBrief"
-      ],
-      "image": "assets/img/news/2026-11-23-composite.jpg",
-      "comic": "assets/img/news/2026-11-23-comic-square.jpg",
-      "read_more": "#contact"
     }
   ],
   "posts": [
     {
+      "id": "onyx-2026-11-28-post-4",
+      "type": "news",
+      "date": "2026-11-28",
+      "title": "Windows Quick Assist Gives Free Remote Help \u2014 No Third-Party Tool Needed",
+      "tag": "Tech Note",
+      "summary": "Windows Quick Assist (built into Windows 10 and 11) lets someone you trust see your screen and help fix problems. Open Start, search Quick Assist, click \"Help someone\" and share the code. Free, no install",
+      "truth": "I've seen people pay $100+ for \"remote support\" scams when Windows has had this built in since 2016. The scammer asks you to install TeamViewer or AnyDesk \u2014 Quick Assist needs zero downloads.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-28-post-2",
+      "type": "news",
+      "date": "2026-11-28",
+      "title": "Clay Electric Outage Texts Tell You the Power Is Out Before Your Neighbor Knows \u2014 Free Signup",
+      "tag": "Tech Note",
+      "summary": "Sign up free at clayelectric.com for outage texts and the live outage map at clayelectric.outagemap.coop \u2014 covers Columbia County and Lake City",
+      "truth": "Every storm season someone loses a computer to a power surge because they didn't know the power was flickering. A $30 surge strip and outage alerts cost less than a motherboard.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
+      "id": "onyx-2026-11-28-post-1",
+      "type": "news",
+      "date": "2026-11-28",
+      "title": "CISA Confirms 18 New Actively Exploited Vulnerabilities This Week \u2014 Free Patch List at cisa.gov",
+      "tag": "Tech Note",
+      "summary": "CISA's Known Exploited Vulnerabilities catalog added 18 new vulnerabilities in the last 7 days. Check if you run OSGeo GeoServer, Drupal, Mitel MiCollab, or Danfoss AK-SM \u2014 patch immediately free at cisa.gov/known-exploited-vulnerabilities-catalog",
+      "truth": "Most people think \"I'm too small to be a target.\" The automated scanners don't care \u2014 they hit every IP address. If you run a vulnerable service on the internet, it's not a matter of if, it's when.",
+      "tags": [
+        "#OnyxSystems",
+        "#LakeCityFL",
+        "#ComputerRepair"
+      ]
+    },
+    {
       "id": "onyx-2026-11-27-post-1",
       "type": "news",
       "date": "2026-11-27",
-      "title": "Microsoft Defender now discovers local AI agents running on your PC — free and built into Windows 11",
+      "title": "Microsoft Defender now discovers local AI agents running on your PC \u2014 free and built into Windows 11",
       "tag": "Tech Note",
-      "summary": "Open Windows Security > Virus & threat protection > Manage settings. Microsoft Defender automatically detects 50+ local AI agents like Ollama, LM Studio, and Jan and shows their configured model connections — no setup needed.",
-      "truth": "Most people don't realize their AI chat apps are visible to Windows security. This is a good thing — it means Defender can flag if something suspicious starts running.",
+      "summary": "Open Windows Security > Virus & threat protection > Manage settings. Microsoft Defender automatically detects 50+ local AI agents like Ollama, LM Studio, and Jan and shows their configured model connections \u2014 no setup needed.",
+      "truth": "Most people don't realize their AI chat apps are visible to Windows security. This is a good thing \u2014 it means Defender can flag if something suspicious starts running.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -137,9 +180,9 @@
       "id": "onyx-2026-11-26-post-1",
       "type": "news",
       "date": "2026-11-26",
-      "title": "CISA warns SharePoint servers under active attack — patch CVE-2026-65660 and CVE-2026-67279 now",
+      "title": "CISA warns SharePoint servers under active attack \u2014 patch CVE-2026-65660 and CVE-2026-67279 now",
       "tag": "Tech Note",
-      "summary": "Apply the November 2026 Microsoft security update via Windows Update or the Microsoft Update Catalog — it patches the actively exploited SharePoint code injection and SSH workflow flaws.",
+      "summary": "Apply the November 2026 Microsoft security update via Windows Update or the Microsoft Update Catalog \u2014 it patches the actively exploited SharePoint code injection and SSH workflow flaws.",
       "truth": "",
       "tags": [
         "#OnyxSystems",
@@ -148,41 +191,13 @@
       ]
     },
     {
-      "id": "onyx-2026-11-26-post-2",
-      "type": "news",
-      "date": "2026-11-26",
-      "title": "Firefox 160 blocks sites from hijacking your email links — new mailto permission control free at firefox.com",
-      "tag": "Tech Note",
-      "summary": "Update to Firefox 160 at firefox.com or Settings > General > Firefox Updates — the mailto block setting is in Privacy & Security > Applications > mailto.",
-      "truth": "I see so many customers who accidentally set some random site as their default email handler — this stops that cold.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-26-post-3",
-      "type": "news",
-      "date": "2026-11-26",
-      "title": "Windows 11 26H2 brings Hotpatch updates — security patches without restart for Enterprise at microsoft.com",
-      "tag": "Tech Note",
-      "summary": "Check Settings > Windows Update for the 26H2 enablement package — Hotpatch requires Enterprise edition and the latest baseline cumulative update (KB5121794 or later).",
-      "truth": "Most home users don't need Hotpatch, but if you run a business that can't afford downtime, this is the feature to upgrade for.",
-      "tags": [
-        "#OnyxSystems",
-        "#LakeCityFL",
-        "#ComputerRepair"
-      ]
-    },
-    {
-      "id": "onyx-2026-11-26-post-4",
-      "type": "news",
-      "date": "2026-11-26",
-      "title": "Clay Electric outage texts tell you the power is out before your neighbor knows — free at clayelectric.com",
-      "tag": "Tech Note",
-      "summary": "Sign up at clayelectric.com > MyClayElectric or text OUT to 855-939-3840 for real-time outage alerts to your phone.",
-      "truth": "Around here, the power flickers and people wonder if it's just them — this tells you instantly and lets you report it without calling.",
+      "id": "onyx-2026-11-28-post-3",
+      "type": "tip",
+      "date": "2026-11-28",
+      "title": "Deleted a File by Mistake? Recuva Recovers It Free \u2014 No Tech Skills Needed",
+      "tag": "Tech Tip",
+      "summary": "Recuva (ccleaner.com/recuva) is the free Windows tool that recovers deleted photos, documents, and files from hard drives, USB sticks, and memory cards. Works on Windows 10 and 11",
+      "truth": "People panic and keep using the drive \u2014 that overwrites the deleted data and makes recovery impossible. Stop using the drive the second you realize a file is gone.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -193,10 +208,10 @@
       "id": "onyx-2026-11-27-post-2",
       "type": "tip",
       "date": "2026-11-27",
-      "title": "Firefox 160 address bar now shows Paste and Search when you paste a search term — free update at firefox.com",
+      "title": "Firefox 160 address bar now shows Paste and Search when you paste a search term \u2014 free update at firefox.com",
       "tag": "Tech Tip",
-      "summary": "Update Firefox to 160 via Menu > Help > About Firefox. Copy any text, click the address bar, and paste — Firefox now offers \"Paste and Search\" instead of \"Paste and Go\" when it detects a search term rather than a URL.",
-      "truth": "This is one of those small quality-of-life changes that makes you wonder how you lived without it. Stop copying, clicking search engine, pasting — just paste and search.",
+      "summary": "Update Firefox to 160 via Menu > Help > About Firefox. Copy any text, click the address bar, and paste \u2014 Firefox now offers \"Paste and Search\" instead of \"Paste and Go\" when it detects a search term rather than a URL.",
+      "truth": "This is one of those small quality-of-life changes that makes you wonder how you lived without it. Stop copying, clicking search engine, pasting \u2014 just paste and search.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -212,10 +227,10 @@
       "id": "onyx-2026-11-26-post-5",
       "type": "tip",
       "date": "2026-11-26",
-      "title": "Ventoy puts every ISO on one USB — free multi-boot tool at ventoy.net beats reformatting every time",
+      "title": "Ventoy puts every ISO on one USB \u2014 free multi-boot tool at ventoy.net beats reformatting every time",
       "tag": "Tech Note",
-      "summary": "Download Ventoy at ventoy.net, run it on your USB drive, then drag and drop ISO files — no reformatting needed.",
-      "truth": "I used to carry a bag of USB drives for every Windows version and Linux distro — now one Ventoy drive does it all.",
+      "summary": "Download Ventoy at ventoy.net, run it on your USB drive, then drag and drop ISO files \u2014 no reformatting needed.",
+      "truth": "I used to carry a bag of USB drives for every Windows version and Linux distro \u2014 now one Ventoy drive does it all.",
       "tags": [
         "#OnyxSystems",
         "#LakeCityFL",
@@ -223,13 +238,13 @@
       ]
     }
   ],
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "word": {
-    "word": "Firewall",
+    "word": "Bandwidth",
     "pos": "noun",
-    "definition": "A security barrier that controls what network traffic is allowed in and out of a device or network.",
-    "example": "The office firewall blocked the suspicious login attempt.",
-    "date": "2026-11-26"
+    "definition": "The amount of data that can move through a connection in a given time \u2014 think of it as the width of the pipe.",
+    "example": "Four video calls at once ate all the bandwidth.",
+    "date": "2026-11-28"
   },
   "crossword": {
     "title": "math metrick",
@@ -349,21 +364,21 @@
       ]
     },
     "category": "math",
-    "source_url": "https://crosswordlabs.com/view/math-metrick-2",
-    "slug": "math-metrick-2",
-    "fetched_at": "2026-07-14T19:21:58.100667+00:00",
-    "date": "2026-11-26"
+    "source_url": "https://crosswordlabs.com/view/math-metrick-4",
+    "slug": "math-metrick-4",
+    "fetched_at": "2026-07-14T19:21:40.730064+00:00",
+    "date": "2026-11-28"
   },
   "trivia": {
-    "q": "What does 'SSL/TLS' protect?",
-    "a": "The encrypted channel between your browser and a site, shown by the padlock icon.",
-    "category": "Security",
-    "date": "2026-11-26"
+    "q": "What does 'bandwidth' limit?",
+    "a": "How much data can move through a connection at once \u2014 the width of the pipe.",
+    "category": "Network",
+    "date": "2026-11-28"
   },
   "joke": {
-    "q": "How do computers say goodbye?",
-    "a": "Byte me.",
-    "date": "2026-11-26"
+    "q": "Why did the monitor blush?",
+    "a": "It saw the computer's desktop background.",
+    "date": "2026-11-28"
   },
   "poll": {
     "poll": {
